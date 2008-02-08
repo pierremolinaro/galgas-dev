@@ -4335,7 +4335,7 @@ enterIndex (const GGS_lstring & inKey,
   e_enumConstantMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -4361,7 +4361,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4381,7 +4381,7 @@ _insertElement (C_Compiler & inLexique,
     e_enumConstantMap info  ;
     info.mHasConstructor = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -4586,7 +4586,7 @@ enterIndex (const GGS_lstring & inKey,
   e_enumUsedConstantMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -4612,7 +4612,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4629,7 +4629,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_enumUsedConstantMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -4815,7 +4815,7 @@ enterIndex (const GGS_lstring & inKey,
   e_enumMessageMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -4841,7 +4841,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4858,7 +4858,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_enumMessageMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -5228,7 +5228,7 @@ enterIndex (const GGS_lstring & inKey,
   e_constructorMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -5254,7 +5254,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5274,7 +5274,7 @@ _insertElement (C_Compiler & inLexique,
     e_constructorMap info  ;
     info.mFormalInputArgumentList = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -5484,7 +5484,7 @@ enterIndex (const GGS_lstring & inKey,
   e_readerMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -5510,7 +5510,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5530,7 +5530,7 @@ _insertElement (C_Compiler & inLexique,
     e_readerMap info  ;
     info.mReaderFormalArgumentList = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -5740,7 +5740,7 @@ enterIndex (const GGS_lstring & inKey,
   e_modifierMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -5766,7 +5766,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5786,7 +5786,7 @@ _insertElement (C_Compiler & inLexique,
     e_modifierMap info  ;
     info.mModifierFormalArgumentList = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -6198,7 +6198,7 @@ enterIndex (const GGS_lstring & inKey,
   e_classMessageMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -6224,7 +6224,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6241,7 +6241,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_classMessageMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -6651,7 +6651,7 @@ enterIndex (const GGS_lstring & inKey,
   e_ModelMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -6677,7 +6677,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6697,7 +6697,7 @@ _insertElement (C_Compiler & inLexique,
     e_ModelMap info  ;
     info.mType = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -6911,7 +6911,7 @@ enterIndex (const GGS_lstring & inKey,
   e_ActionMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -6937,7 +6937,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6960,7 +6960,7 @@ _insertElement (C_Compiler & inLexique,
     info.mSignature = inParameter0 ;
     info.mIsExtern = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -9336,7 +9336,7 @@ enterIndex (const GGS_lstring & inKey,
   e_entityPropertyMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -9362,7 +9362,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9382,7 +9382,7 @@ _insertElement (C_Compiler & inLexique,
     e_entityPropertyMap info  ;
     info.mPropertyType = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -9604,7 +9604,7 @@ enterIndex (const GGS_lstring & inKey,
   e_mapEntityMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -9630,7 +9630,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9659,7 +9659,7 @@ _insertElement (C_Compiler & inLexique,
     info.mSearchErrorMessage = inParameter2 ;
     info.mElementTypeIsOveriddenByConstraints = inParameter3 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -9885,7 +9885,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeSuperClassesMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -9911,7 +9911,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9928,7 +9928,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_typeSuperClassesMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -10147,7 +10147,7 @@ enterIndex (const GGS_lstring & inKey,
   e_entityToImplementMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -10173,7 +10173,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10214,7 +10214,7 @@ _insertElement (C_Compiler & inLexique,
     info.mMetamodelName = inParameter6 ;
     info.mID = inParameter7 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -11809,7 +11809,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_accessors_map info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -11835,7 +11835,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11858,7 +11858,7 @@ _insertElement (C_Compiler & inLexique,
     info.mAccessorSignature = inParameter0 ;
     info.mReturnedType = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -16515,7 +16515,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeTableMethodes info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -16541,7 +16541,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -16561,7 +16561,7 @@ _insertElement (C_Compiler & inLexique,
     e_typeTableMethodes info  ;
     info.aListeTypesParametres = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -16976,7 +16976,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_externTypeConstructorMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -17002,7 +17002,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -17022,7 +17022,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_externTypeConstructorMap info  ;
     info.aListeDesAttributs = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -17547,7 +17547,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_terminalSymbolsMapForUse info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -17573,7 +17573,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -17593,7 +17593,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_terminalSymbolsMapForUse info  ;
     info.aListeDesAttributs = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -17818,7 +17818,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_lexiqueComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -17844,7 +17844,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -17864,7 +17864,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_lexiqueComponents info  ;
     info.mTerminalSymbolMap = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -18074,7 +18074,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeTableEnAvant info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -18100,7 +18100,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -18120,7 +18120,7 @@ _insertElement (C_Compiler & inLexique,
     e_typeTableEnAvant info  ;
     info.mType = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -18334,7 +18334,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_nonterminalSymbolAlts info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -18360,7 +18360,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -18383,7 +18383,7 @@ _insertElement (C_Compiler & inLexique,
     info.mFormalParametersList = inParameter0 ;
     info.mReturnedEntity = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -18934,7 +18934,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_semanticsEntitiesForUse info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -18960,7 +18960,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -18980,7 +18980,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_semanticsEntitiesForUse info  ;
     info.aDefEntite = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -19327,7 +19327,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_typesForGrammarComponent info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -19353,7 +19353,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -19373,7 +19373,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_typesForGrammarComponent info  ;
     info.mType = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -20052,7 +20052,7 @@ enterIndex (const GGS_lstring & inKey,
   e_L_grammarsMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -20078,7 +20078,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20098,7 +20098,7 @@ _insertElement (C_Compiler & inLexique,
     e_L_grammarsMap info  ;
     info.mStartSymbolParametersMap = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -20312,7 +20312,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_nonterminalSymbolAltsForGrammar info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -20338,7 +20338,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20361,7 +20361,7 @@ _insertElement (C_Compiler & inLexique,
     info.mFormalParametersList = inParameter0 ;
     info.mReturnedEntityTypeName = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -20941,7 +20941,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_nonTerminalSymbolsForGrammar info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -20967,7 +20967,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20987,7 +20987,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_nonTerminalSymbolsForGrammar info  ;
     info.mNonterminalSymbolParametersMap = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -21220,7 +21220,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_syntaxComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -21246,7 +21246,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -21272,7 +21272,7 @@ _insertElement (C_Compiler & inLexique,
     info.mProductionRulesList = inParameter1 ;
     info.mLexiqueComponentName = inParameter2 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -22854,7 +22854,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_startSymbolEntityAndMetamodel info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -22880,7 +22880,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -22903,7 +22903,7 @@ _insertElement (C_Compiler & inLexique,
     info.mReturnedEntityName = inParameter0 ;
     info.mReturnedMetamodelName = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -23418,7 +23418,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeClassInheritedMessagesMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -23444,7 +23444,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -23461,7 +23461,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_typeClassInheritedMessagesMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -23664,7 +23664,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeSemanticAttributesMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -23690,7 +23690,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -23710,7 +23710,7 @@ _insertElement (C_Compiler & inLexique,
     e_typeSemanticAttributesMap info  ;
     info.mAttributType = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -25027,7 +25027,7 @@ enterIndex (const GGS_lstring & inKey,
   e_domainModifierMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -25053,7 +25053,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -25073,7 +25073,7 @@ _insertElement (C_Compiler & inLexique,
     e_domainModifierMap info  ;
     info.mFormalParametersList = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -25278,7 +25278,7 @@ enterIndex (const GGS_lstring & inKey,
   e_domainAttributeMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -25304,7 +25304,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -25321,7 +25321,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_domainAttributeMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -26235,7 +26235,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeTableBlocsDeTable info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -26261,7 +26261,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -26284,7 +26284,7 @@ _insertElement (C_Compiler & inLexique,
     info.aSignatureDebut = inParameter0 ;
     info.aSignatureFin = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -26686,7 +26686,7 @@ enterIndex (const GGS_lstring & inKey,
   e_mapModifierMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -26712,7 +26712,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -26732,7 +26732,7 @@ _insertElement (C_Compiler & inLexique,
     e_mapModifierMap info  ;
     info.mMethodSignature = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -26942,7 +26942,7 @@ enterIndex (const GGS_lstring & inKey,
   e_mapMethodMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -26968,7 +26968,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -26988,7 +26988,7 @@ _insertElement (C_Compiler & inLexique,
     e_mapMethodMap info  ;
     info.mMethodSignature = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -27704,7 +27704,7 @@ enterIndex (const GGS_lstring & inKey,
   e_mapIndexSearchReaderMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -27730,7 +27730,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -27750,7 +27750,7 @@ _insertElement (C_Compiler & inLexique,
     e_mapIndexSearchReaderMap info  ;
     info.mRetrieveErrorMessage = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -29614,7 +29614,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeEnumMessageMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -29640,7 +29640,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -29660,7 +29660,7 @@ _insertElement (C_Compiler & inLexique,
     e_typeEnumMessageMap info  ;
     info.mMessageStringList = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -30241,7 +30241,7 @@ enterIndex (const GGS_lstring & inKey,
   e_enumModifierMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -30267,7 +30267,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -30293,7 +30293,7 @@ _insertElement (C_Compiler & inLexique,
     info.mSignature = inParameter1 ;
     info.mArgumentTypeAndNameList = inParameter2 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -30858,7 +30858,7 @@ enterIndex (const GGS_lstring & inKey,
   e_enumMethodMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -30884,7 +30884,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -30910,7 +30910,7 @@ _insertElement (C_Compiler & inLexique,
     info.mSignature = inParameter1 ;
     info.mArgumentTypeAndNameList = inParameter2 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -31697,7 +31697,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_cli_options info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -31723,7 +31723,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -31752,7 +31752,7 @@ _insertElement (C_Compiler & inLexique,
     info.mComment = inParameter2 ;
     info.mDefaultValue = inParameter3 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -31991,7 +31991,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_optionComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -32017,7 +32017,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -32043,7 +32043,7 @@ _insertElement (C_Compiler & inLexique,
     info.mUintOptionsMap = inParameter1 ;
     info.mStringOptionsMap = inParameter2 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -32275,7 +32275,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_grammarComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -32301,7 +32301,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -32327,7 +32327,7 @@ _insertElement (C_Compiler & inLexique,
     info.mLexiqueName = inParameter1 ;
     info.mOptionsMap = inParameter2 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -32575,7 +32575,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_semanticsComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -32601,7 +32601,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -32639,7 +32639,7 @@ _insertElement (C_Compiler & inLexique,
     info.mOptionsComponents = inParameter5 ;
     info.mSemanticsEntitiesMap = inParameter6 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -32899,7 +32899,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_metamodelsComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -32925,7 +32925,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -32951,7 +32951,7 @@ _insertElement (C_Compiler & inLexique,
     info.mEntityMap = inParameter1 ;
     info.mSuperMetamodels = inParameter2 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -33179,7 +33179,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_treewalkingComponents info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->rootForKey (inKey),
+                      mSharedMapRoot->_mRoot,
                       outIndex) ;
 }
 
@@ -33205,7 +33205,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   element_type * p = (element_type *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo, mSharedMapRoot->rootForKey (inPtr->mKey), attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -33228,7 +33228,7 @@ _insertElement (C_Compiler & inLexique,
     info.mRootEntityName = inParameter0 ;
     info.mRoutineSignature = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->rootForKey (inKey), elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }

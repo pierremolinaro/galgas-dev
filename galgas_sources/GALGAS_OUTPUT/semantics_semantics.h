@@ -9013,9 +9013,9 @@ class elementOf_GGS_routineDispatcherSortedList : public AC_galgas_sortedlist::c
                                 const GGS_string& ) ;
 
 //--- Access to next
-  public : inline elementOf_GGS_routineDispatcherSortedList * nextObject (void) const { return (elementOf_GGS_routineDispatcherSortedList *) internalGreaterItem () ; }
+  public : inline elementOf_GGS_routineDispatcherSortedList * nextObject (void) const { return (elementOf_GGS_routineDispatcherSortedList *) internalNextItem () ; }
 //--- Access to previous
-  public : inline elementOf_GGS_routineDispatcherSortedList * previousObject (void) const { return (elementOf_GGS_routineDispatcherSortedList *) internalSmallerItem () ; }
+  public : inline elementOf_GGS_routineDispatcherSortedList * previousObject (void) const { return (elementOf_GGS_routineDispatcherSortedList *) internalPreviousItem () ; }
 //--- Element comparison
   protected : virtual bool
   isEqualToObject (const cSortedListElement * inOperand) const ;

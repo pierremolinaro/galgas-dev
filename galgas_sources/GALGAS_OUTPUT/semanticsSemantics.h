@@ -2287,9 +2287,9 @@ class elementOf_GGS_sortedTypeList : public AC_galgas_sortedlist::cSortedListEle
                                 const GGS_string& ) ;
 
 //--- Access to next
-  public : inline elementOf_GGS_sortedTypeList * nextObject (void) const { return (elementOf_GGS_sortedTypeList *) internalGreaterItem () ; }
+  public : inline elementOf_GGS_sortedTypeList * nextObject (void) const { return (elementOf_GGS_sortedTypeList *) internalNextItem () ; }
 //--- Access to previous
-  public : inline elementOf_GGS_sortedTypeList * previousObject (void) const { return (elementOf_GGS_sortedTypeList *) internalSmallerItem () ; }
+  public : inline elementOf_GGS_sortedTypeList * previousObject (void) const { return (elementOf_GGS_sortedTypeList *) internalPreviousItem () ; }
 //--- Element comparison
   protected : virtual bool
   isEqualToObject (const cSortedListElement * inOperand) const ;

@@ -1006,9 +1006,9 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << ") ;\n\n"
 //--- Access to next and previous item
              "//--- Access to next\n"
-             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalGreaterItem () ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * nextObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalNextItem () ; }\n"
              "//--- Access to previous\n"
-             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalSmallerItem () ; }\n"
+             "  public : inline elementOf_GGS_" << aNomListe << " * previousObject (void) const { return (elementOf_GGS_" << aNomListe << " *) internalPreviousItem () ; }\n"
 
 //--- Element comparison
              "//--- Element comparison\n"
