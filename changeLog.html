@@ -20,8 +20,13 @@
    <p><strong>GALGAS ChangeLog</strong></p>
    <p>1.6.14</p>
    <ul>
-    <li>New @string constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithsequenceofcharacters"><span class="api">stringWithSequenceOfCharacters</span></a>;</li>
-    <li>Optimisation: a constructor of a class without any attribute returns now a shared singleton object, instead of instancing a new one;</li>
+     <li>New @string constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithsequenceofcharacters"><span class="api">stringWithSequenceOfCharacters</span></a>;</li>
+     <li>Optimisation: a constructor of a class without any attribute returns now a shared singleton object, instead of instancing a new one;</li>
+     <li>New implementation of enumeration (for stringsets, maps, lists and sorted lists)):
+       <a href="http://galgas.rts-software.org/doku.php?id=foreach_instruction">
+         <span class="api">foreach instruction</span>
+      </a>; theses collections can now be enumerated in ascending or descending orders; for maps, the ascending order is now ascending order of their keys;
+     </li>
    </ul>
    <p>1.6.13</p>
    <ul>
