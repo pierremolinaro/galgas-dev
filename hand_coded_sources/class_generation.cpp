@@ -32,7 +32,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
                                     const GGS_lstring & inClassName,
                                     const C_String & inTargetFileName,
                                     const bool inGenerateDebug) {
-  GGS_typeTableMethodesAimplementer::element_type * current = inMap.mFirstItem ;
+  GGS_typeTableMethodesAimplementer::cElement * current = inMap.mFirstItem ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (! current->champEstAbstraite) {
@@ -50,7 +50,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
         inCppFile << " */" ;
       }
     //--- Engendrer les arguments formels declares par l'utilisateur
-      GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
+      GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
       while (currentArgument != NULL) {
         macroValidPointer (currentArgument) ;
         inCppFile << ",\n                                " ;
@@ -83,13 +83,13 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
 static void
 generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap,
                                  AC_OutputStream & inHfile) {
-  GGS_typeTableMethodesAimplementer::element_type * current = inMap.mFirstItem ;
+  GGS_typeTableMethodesAimplementer::cElement * current = inMap.mFirstItem ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "//--- Method '" << current->mKey << "'\n"
                "  public : virtual void method_" << current->mKey << " (C_Compiler &" ;
   //--- Engendrer les arguments formels declares par l'utilisateur
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = current->mInfo.aListeTypeEtNomsArguments.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
@@ -175,7 +175,7 @@ inHfile << "//--- _castFrom class method (implements cast expression)\n"
                "  public : static GGS_" << aNomClasse
             << " constructor_new (C_Compiler & inLexique" ;
     sint32 variableIndex = 0 ;
-    GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                "
@@ -201,7 +201,7 @@ inHfile << "//--- _castFrom class method (implements cast expression)\n"
 
 //--- Implicitly declared Readers
              "//--- Readers\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeAttributsCourants.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : " ;
@@ -213,7 +213,7 @@ inHfile << "//--- _castFrom class method (implements cast expression)\n"
   inHfile << "\n" ;
 
 //--- Generate 'message' reader prototypes              
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
+  GGS_typeClassMessagesMap::cElement * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inHfile << "//--- '" << messageCourant->mKey << "' message\n"
@@ -262,7 +262,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
   C_String generatedZone3 ; generatedZone3.setCapacity (20000) ;
 //--- Generate constructor
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
   generatedZone3 << "//--- Constructor\n"
                     "  public : cPtr_" << aNomClasse << " (" ;
   bool first = true ;
@@ -306,7 +306,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- Pour chaque message abstrait, engendrer les declarations de methodes virtuelles pures correspondantes
 //    et engendrer la methode statique correspondante
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
+  GGS_typeClassMessagesMap::cElement * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     generatedZone3 << "  public : virtual const char * message_" << messageCourant->mKey << " (void) const ;\n" ;
@@ -376,7 +376,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     : mAncestorClassesMap.lastObject ()->mKey.string () ;
 
 //--- Generate Constructor
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "cPtr_" << aNomClasse << "::\n"
                "cPtr_" << aNomClasse << " (" ;
   sint16 variableIndex = 0 ;
@@ -511,7 +511,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Pour chaque message abstrait, engendrer la methode statique correspondante
-  GGS_typeClassMessagesMap::element_type * messageCourant = mMessagesMap.firstObject () ;
+  GGS_typeClassMessagesMap::cElement * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile.writeCppHyphenLineComment () ;

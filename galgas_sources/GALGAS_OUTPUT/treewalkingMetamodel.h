@@ -90,7 +90,7 @@ class GGS_treewalkingRule : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_treewalkingRule : public AC_galgas_entity_list {
-  public : typedef cPtr_treewalkingRule element_type ;
+  public : typedef cPtr_treewalkingRule cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_treewalkingRule constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_treewalkingRule
@@ -99,12 +99,12 @@ class GGS__list_treewalkingRule : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_treewalkingRule * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -203,7 +203,7 @@ class GGS_treewalkingComponentRoot : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_treewalkingComponentRoot : public AC_galgas_entity_list {
-  public : typedef cPtr_treewalkingComponentRoot element_type ;
+  public : typedef cPtr_treewalkingComponentRoot cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_treewalkingComponentRoot constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_treewalkingComponentRoot
@@ -212,12 +212,12 @@ class GGS__list_treewalkingComponentRoot : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_treewalkingComponentRoot * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -309,7 +309,7 @@ class GGS_referenceCallInstruction : public GGS_semanticInstruction {
 //---------------------------------------------------------------------------*
 
 class GGS__list_referenceCallInstruction : public AC_galgas_entity_list {
-  public : typedef cPtr_referenceCallInstruction element_type ;
+  public : typedef cPtr_referenceCallInstruction cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_referenceCallInstruction constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_referenceCallInstruction
@@ -318,12 +318,12 @@ class GGS__list_referenceCallInstruction : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_referenceCallInstruction * operator () (UNUSED_LOCATION_ARGS) const { return this ;}

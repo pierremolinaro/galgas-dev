@@ -422,7 +422,9 @@ abstract class @AC_galgasType {
     !@localConstantBuildStyleEnum outStyle
   :
     error inErrorLocation :
-       "variables of this type cannot be enumerated by in 'foreach' instruction" -> outForeachList, outStyle ;
+       "variables of this type cannot be enumerated by in 'foreach' instruction"
+       -> outForeachList, outStyle
+    ;
   end method ;
 
 #--- By default, object does not accept modifier call

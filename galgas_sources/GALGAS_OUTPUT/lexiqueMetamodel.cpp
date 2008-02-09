@@ -207,8 +207,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS__list_lexicalListDeclaration & argument_5,
                     const GGS__list_lexicalImplicitRule & argument_6,
                     const GGS__list_lexicalExplicitRule & argument_7) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -231,8 +231,8 @@ _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS__list_lexicalListDeclaration & argument_5,
                     const GGS__list_lexicalImplicitRule & argument_6,
                     const GGS__list_lexicalExplicitRule & argument_7) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -294,7 +294,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexiqueComponentRoot::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -357,7 +357,7 @@ _addModel (const GGS_lexiqueComponentRoot & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexiqueComponentRoot & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -385,7 +385,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexiqueComponentRoot & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -413,7 +413,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexiqueComponentRoot & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -441,7 +441,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexiqueComponentRoot & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -716,8 +716,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalImplicitRule::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -726,8 +726,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalImplicitRule::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -782,7 +782,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalImplicitRule::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -838,7 +838,7 @@ _addModel (const GGS_lexicalImplicitRule & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalImplicitRule & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -859,7 +859,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalImplicitRule & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -880,7 +880,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalImplicitRule & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -901,7 +901,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalImplicitRule & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1065,8 +1065,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalErrorMessageDeclaration::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -1077,8 +1077,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalErrorMessageDeclaration::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -1134,7 +1134,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalErrorMessageDeclaration::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1191,7 +1191,7 @@ _addModel (const GGS_lexicalErrorMessageDeclaration & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalErrorMessageDeclaration & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1213,7 +1213,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalErrorMessageDeclaration & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1235,7 +1235,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalErrorMessageDeclaration & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1257,7 +1257,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalErrorMessageDeclaration & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1438,8 +1438,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalAttribute::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -1450,8 +1450,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalAttribute::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -1507,7 +1507,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalAttribute::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1564,7 +1564,7 @@ _addModel (const GGS_lexicalAttribute & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalAttribute & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1586,7 +1586,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalAttribute & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1608,7 +1608,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalAttribute & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1630,7 +1630,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalAttribute & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1811,8 +1811,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalStyle::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -1823,8 +1823,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalStyle::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -1880,7 +1880,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalStyle::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1937,7 +1937,7 @@ _addModel (const GGS_lexicalStyle & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalStyle & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1959,7 +1959,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalStyle & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1981,7 +1981,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalStyle & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2003,7 +2003,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalStyle & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2200,8 +2200,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstringlist & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstring & argument_3) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -2216,8 +2216,8 @@ _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstringlist & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_lstring & argument_3) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -2275,7 +2275,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_terminalDeclaration::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -2334,7 +2334,7 @@ _addModel (const GGS_terminalDeclaration & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_terminalDeclaration & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2358,7 +2358,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_terminalDeclaration & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2382,7 +2382,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_terminalDeclaration & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2406,7 +2406,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_terminalDeclaration & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2645,8 +2645,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_2,
                     const GGS_lstringlist & argument_3,
                     const GGS__list_lexicalListEntry & argument_4) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -2663,8 +2663,8 @@ _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_2,
                     const GGS_lstringlist & argument_3,
                     const GGS__list_lexicalListEntry & argument_4) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3,
@@ -2723,7 +2723,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalListDeclaration::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -2783,7 +2783,7 @@ _addModel (const GGS_lexicalListDeclaration & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalListDeclaration & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2808,7 +2808,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalListDeclaration & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2833,7 +2833,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalListDeclaration & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2858,7 +2858,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalListDeclaration & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3090,8 +3090,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalListEntry::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -3102,8 +3102,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalListEntry::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -3159,7 +3159,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalListEntry::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -3216,7 +3216,7 @@ _addModel (const GGS_lexicalListEntry & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalListEntry & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3238,7 +3238,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalListEntry & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3260,7 +3260,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalListEntry & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3282,7 +3282,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalListEntry & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3463,8 +3463,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalExplicitRule::
 _internalAppendValues (const GGS_lexicalExpression & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -3475,8 +3475,8 @@ _internalAppendValues (const GGS_lexicalExpression & argument_0,
 /* void GGS__list_lexicalExplicitRule::
 _internalPrependValues (const GGS_lexicalExpression & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -3532,7 +3532,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalExplicitRule::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -3589,7 +3589,7 @@ _addModel (const GGS_lexicalExplicitRule & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalExplicitRule & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3611,7 +3611,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalExplicitRule & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3633,7 +3633,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalExplicitRule & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3655,7 +3655,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalExplicitRule & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3816,8 +3816,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalExpression::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -3825,8 +3825,8 @@ _internalAppendValues () {
 
 /* void GGS__list_lexicalExpression::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -3880,7 +3880,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalExpression::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -3936,7 +3936,7 @@ _addModel (const GGS_lexicalExpression & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalExpression & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3956,7 +3956,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalExpression & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3976,7 +3976,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalExpression & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3996,7 +3996,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalExpression & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4134,8 +4134,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalOrExpression::
 _internalAppendValues (const GGS_lexicalExpression & argument_0,
                     const GGS_lexicalExpression & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -4146,8 +4146,8 @@ _internalAppendValues (const GGS_lexicalExpression & argument_0,
 /* void GGS__list_lexicalOrExpression::
 _internalPrependValues (const GGS_lexicalExpression & argument_0,
                     const GGS_lexicalExpression & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -4203,7 +4203,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalOrExpression::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -4260,7 +4260,7 @@ _addModel (const GGS_lexicalOrExpression & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalOrExpression & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4282,7 +4282,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalOrExpression & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4304,7 +4304,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalOrExpression & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4326,7 +4326,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalOrExpression & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4499,8 +4499,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalCharacterMatch::
 _internalAppendValues (const GGS_lchar & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -4509,8 +4509,8 @@ _internalAppendValues (const GGS_lchar & argument_0) {
 
 /* void GGS__list_lexicalCharacterMatch::
 _internalPrependValues (const GGS_lchar & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -4565,7 +4565,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalCharacterMatch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -4621,7 +4621,7 @@ _addModel (const GGS_lexicalCharacterMatch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalCharacterMatch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4642,7 +4642,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalCharacterMatch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4663,7 +4663,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalCharacterMatch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4684,7 +4684,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalCharacterMatch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4848,8 +4848,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalCharacterIntervalMatch::
 _internalAppendValues (const GGS_lchar & argument_0,
                     const GGS_lchar & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -4860,8 +4860,8 @@ _internalAppendValues (const GGS_lchar & argument_0,
 /* void GGS__list_lexicalCharacterIntervalMatch::
 _internalPrependValues (const GGS_lchar & argument_0,
                     const GGS_lchar & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -4917,7 +4917,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalCharacterIntervalMatch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -4974,7 +4974,7 @@ _addModel (const GGS_lexicalCharacterIntervalMatch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalCharacterIntervalMatch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4996,7 +4996,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalCharacterIntervalMatch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5018,7 +5018,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalCharacterIntervalMatch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5040,7 +5040,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalCharacterIntervalMatch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5213,8 +5213,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalStringMatch::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -5223,8 +5223,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalStringMatch::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -5279,7 +5279,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalStringMatch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -5335,7 +5335,7 @@ _addModel (const GGS_lexicalStringMatch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalStringMatch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5356,7 +5356,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalStringMatch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5377,7 +5377,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalStringMatch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5398,7 +5398,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalStringMatch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5562,8 +5562,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalStringNotMatch::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -5574,8 +5574,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalStringNotMatch::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -5631,7 +5631,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalStringNotMatch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -5688,7 +5688,7 @@ _addModel (const GGS_lexicalStringNotMatch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalStringNotMatch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5710,7 +5710,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalStringNotMatch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5732,7 +5732,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalStringNotMatch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5754,7 +5754,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalStringNotMatch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5915,8 +5915,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalInstruction::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -5924,8 +5924,8 @@ _internalAppendValues () {
 
 /* void GGS__list_lexicalInstruction::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -5979,7 +5979,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -6035,7 +6035,7 @@ _addModel (const GGS_lexicalInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6055,7 +6055,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6075,7 +6075,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6095,7 +6095,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6233,8 +6233,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalStructuredSendInstruction::
 _internalAppendValues (const GGS__list_lexicalSendSearch & argument_0,
                     const GGS_lexicalSendDefaultAction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -6245,8 +6245,8 @@ _internalAppendValues (const GGS__list_lexicalSendSearch & argument_0,
 /* void GGS__list_lexicalStructuredSendInstruction::
 _internalPrependValues (const GGS__list_lexicalSendSearch & argument_0,
                     const GGS_lexicalSendDefaultAction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -6302,7 +6302,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalStructuredSendInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -6359,7 +6359,7 @@ _addModel (const GGS_lexicalStructuredSendInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalStructuredSendInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6381,7 +6381,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalStructuredSendInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6403,7 +6403,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalStructuredSendInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6425,7 +6425,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalStructuredSendInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6598,8 +6598,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalSimpleSendInstruction::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -6608,8 +6608,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalSimpleSendInstruction::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -6664,7 +6664,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalSimpleSendInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -6720,7 +6720,7 @@ _addModel (const GGS_lexicalSimpleSendInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalSimpleSendInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6741,7 +6741,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalSimpleSendInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6762,7 +6762,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalSimpleSendInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6783,7 +6783,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalSimpleSendInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6927,8 +6927,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalSendDefaultAction::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -6936,8 +6936,8 @@ _internalAppendValues () {
 
 /* void GGS__list_lexicalSendDefaultAction::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -6991,7 +6991,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalSendDefaultAction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -7047,7 +7047,7 @@ _addModel (const GGS_lexicalSendDefaultAction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalSendDefaultAction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -7067,7 +7067,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalSendDefaultAction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7087,7 +7087,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalSendDefaultAction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -7107,7 +7107,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalSendDefaultAction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7237,8 +7237,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalSendTerminalByDefault::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -7247,8 +7247,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalSendTerminalByDefault::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -7303,7 +7303,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalSendTerminalByDefault::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -7359,7 +7359,7 @@ _addModel (const GGS_lexicalSendTerminalByDefault & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalSendTerminalByDefault & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -7380,7 +7380,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalSendTerminalByDefault & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7401,7 +7401,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalSendTerminalByDefault & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -7422,7 +7422,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalSendTerminalByDefault & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7578,8 +7578,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalErrorByDefault::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -7588,8 +7588,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalErrorByDefault::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -7644,7 +7644,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalErrorByDefault::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -7700,7 +7700,7 @@ _addModel (const GGS_lexicalErrorByDefault & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalErrorByDefault & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -7721,7 +7721,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalErrorByDefault & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7742,7 +7742,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalErrorByDefault & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -7763,7 +7763,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalErrorByDefault & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7927,8 +7927,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalSendSearch::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -7939,8 +7939,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalSendSearch::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -7996,7 +7996,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalSendSearch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -8053,7 +8053,7 @@ _addModel (const GGS_lexicalSendSearch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalSendSearch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -8075,7 +8075,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalSendSearch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -8097,7 +8097,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalSendSearch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -8119,7 +8119,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalSendSearch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -8300,8 +8300,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalRepeatInstruction::
 _internalAppendValues (const GGS__list_lexicalInstruction & argument_0,
                     const GGS__list_lexicalWhileBranch & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -8312,8 +8312,8 @@ _internalAppendValues (const GGS__list_lexicalInstruction & argument_0,
 /* void GGS__list_lexicalRepeatInstruction::
 _internalPrependValues (const GGS__list_lexicalInstruction & argument_0,
                     const GGS__list_lexicalWhileBranch & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -8369,7 +8369,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalRepeatInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -8426,7 +8426,7 @@ _addModel (const GGS_lexicalRepeatInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalRepeatInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -8448,7 +8448,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalRepeatInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -8470,7 +8470,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalRepeatInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -8492,7 +8492,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalRepeatInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -8673,8 +8673,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalWhileBranch::
 _internalAppendValues (const GGS_lexicalExpression & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -8685,8 +8685,8 @@ _internalAppendValues (const GGS_lexicalExpression & argument_0,
 /* void GGS__list_lexicalWhileBranch::
 _internalPrependValues (const GGS_lexicalExpression & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -8742,7 +8742,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalWhileBranch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -8799,7 +8799,7 @@ _addModel (const GGS_lexicalWhileBranch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalWhileBranch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -8821,7 +8821,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalWhileBranch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -8843,7 +8843,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalWhileBranch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -8865,7 +8865,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalWhileBranch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -9046,8 +9046,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalSelectInstruction::
 _internalAppendValues (const GGS__list_lexicalSelectBranch & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -9058,8 +9058,8 @@ _internalAppendValues (const GGS__list_lexicalSelectBranch & argument_0,
 /* void GGS__list_lexicalSelectInstruction::
 _internalPrependValues (const GGS__list_lexicalSelectBranch & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -9115,7 +9115,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalSelectInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -9172,7 +9172,7 @@ _addModel (const GGS_lexicalSelectInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalSelectInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -9194,7 +9194,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalSelectInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -9216,7 +9216,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalSelectInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -9238,7 +9238,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalSelectInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -9419,8 +9419,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalSelectBranch::
 _internalAppendValues (const GGS_lexicalExpression & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -9431,8 +9431,8 @@ _internalAppendValues (const GGS_lexicalExpression & argument_0,
 /* void GGS__list_lexicalSelectBranch::
 _internalPrependValues (const GGS_lexicalExpression & argument_0,
                     const GGS__list_lexicalInstruction & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -9488,7 +9488,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalSelectBranch::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -9545,7 +9545,7 @@ _addModel (const GGS_lexicalSelectBranch & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalSelectBranch & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -9567,7 +9567,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalSelectBranch & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -9589,7 +9589,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalSelectBranch & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -9611,7 +9611,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalSelectBranch & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -9800,8 +9800,8 @@ _cloneObject (void) const {
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS__list_lexicalActualArgument & argument_1,
                     const GGS_lstringlist & argument_2) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE)) ;
@@ -9814,8 +9814,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS__list_lexicalActualArgument & argument_1,
                     const GGS_lstringlist & argument_2) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2
                                 COMMA_HERE)) ;
@@ -9872,7 +9872,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalActionInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -9930,7 +9930,7 @@ _addModel (const GGS_lexicalActionInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalActionInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -9953,7 +9953,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalActionInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -9976,7 +9976,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalActionInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -9999,7 +9999,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalActionInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -10177,8 +10177,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalActualArgument::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -10186,8 +10186,8 @@ _internalAppendValues () {
 
 /* void GGS__list_lexicalActualArgument::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -10241,7 +10241,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalActualArgument::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -10297,7 +10297,7 @@ _addModel (const GGS_lexicalActualArgument & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalActualArgument & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -10317,7 +10317,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalActualArgument & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -10337,7 +10337,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalActualArgument & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -10357,7 +10357,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalActualArgument & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -10487,8 +10487,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalAttributeArgument::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -10497,8 +10497,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalAttributeArgument::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -10553,7 +10553,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalAttributeArgument::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -10609,7 +10609,7 @@ _addModel (const GGS_lexicalAttributeArgument & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalAttributeArgument & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -10630,7 +10630,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalAttributeArgument & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -10651,7 +10651,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalAttributeArgument & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -10672,7 +10672,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalAttributeArgument & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -10828,8 +10828,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalCharacterArgument::
 _internalAppendValues (const GGS_lchar & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -10838,8 +10838,8 @@ _internalAppendValues (const GGS_lchar & argument_0) {
 
 /* void GGS__list_lexicalCharacterArgument::
 _internalPrependValues (const GGS_lchar & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -10894,7 +10894,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalCharacterArgument::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -10950,7 +10950,7 @@ _addModel (const GGS_lexicalCharacterArgument & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalCharacterArgument & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -10971,7 +10971,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalCharacterArgument & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -10992,7 +10992,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalCharacterArgument & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -11013,7 +11013,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalCharacterArgument & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -11157,8 +11157,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalCurrentCharacterArgument::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -11166,8 +11166,8 @@ _internalAppendValues () {
 
 /* void GGS__list_lexicalCurrentCharacterArgument::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -11221,7 +11221,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalCurrentCharacterArgument::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -11277,7 +11277,7 @@ _addModel (const GGS_lexicalCurrentCharacterArgument & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalCurrentCharacterArgument & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -11297,7 +11297,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalCurrentCharacterArgument & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -11317,7 +11317,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalCurrentCharacterArgument & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -11337,7 +11337,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalCurrentCharacterArgument & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -11485,8 +11485,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalFunctionArgument::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS__list_lexicalActualArgument & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -11497,8 +11497,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalFunctionArgument::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS__list_lexicalActualArgument & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -11554,7 +11554,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalFunctionArgument::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -11611,7 +11611,7 @@ _addModel (const GGS_lexicalFunctionArgument & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalFunctionArgument & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -11633,7 +11633,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalFunctionArgument & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -11655,7 +11655,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalFunctionArgument & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -11677,7 +11677,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalFunctionArgument & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -11850,8 +11850,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalDropInstruction::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -11860,8 +11860,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalDropInstruction::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -11916,7 +11916,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalDropInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -11972,7 +11972,7 @@ _addModel (const GGS_lexicalDropInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalDropInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -11993,7 +11993,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalDropInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -12014,7 +12014,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalDropInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -12035,7 +12035,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalDropInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -12191,8 +12191,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalErrorInstruction::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -12201,8 +12201,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalErrorInstruction::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -12257,7 +12257,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalErrorInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -12313,7 +12313,7 @@ _addModel (const GGS_lexicalErrorInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalErrorInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -12334,7 +12334,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalErrorInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -12355,7 +12355,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalErrorInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -12376,7 +12376,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalErrorInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -12532,8 +12532,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalTagInstruction::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -12542,8 +12542,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_lexicalTagInstruction::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -12598,7 +12598,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalTagInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -12654,7 +12654,7 @@ _addModel (const GGS_lexicalTagInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalTagInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -12675,7 +12675,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalTagInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -12696,7 +12696,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalTagInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -12717,7 +12717,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalTagInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -12881,8 +12881,8 @@ _cloneObject (void) const {
 /* void GGS__list_lexicalRewindInstruction::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -12893,8 +12893,8 @@ _internalAppendValues (const GGS_lstring & argument_0,
 /* void GGS__list_lexicalRewindInstruction::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -12950,7 +12950,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalRewindInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -13007,7 +13007,7 @@ _addModel (const GGS_lexicalRewindInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalRewindInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -13029,7 +13029,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalRewindInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -13051,7 +13051,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalRewindInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -13073,7 +13073,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalRewindInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -13234,8 +13234,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_lexicalLogInstruction::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -13243,8 +13243,8 @@ _internalAppendValues () {
 
 /* void GGS__list_lexicalLogInstruction::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -13298,7 +13298,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_lexicalLogInstruction::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -13354,7 +13354,7 @@ _addModel (const GGS_lexicalLogInstruction & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_lexicalLogInstruction & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -13374,7 +13374,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_lexicalLogInstruction & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -13394,7 +13394,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_lexicalLogInstruction & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -13414,7 +13414,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_lexicalLogInstruction & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {

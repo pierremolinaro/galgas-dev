@@ -56,7 +56,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << " {\n"
 //--- Attributes
              "//--- Attributes\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * attributCourant = aListeAttributsCourants.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * attributCourant = aListeAttributsCourants.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
     attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
@@ -155,7 +155,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  public : static GGS_" << aNomClasse
             << " constructor_new (C_Compiler & inLexique" ;
     sint32 variableIndex = 0 ;
-    GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inHfile << ",\n                                "
@@ -183,7 +183,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Implicitly declared Readers
              "//--- Readers\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeAttributsCourants.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : " ;
@@ -212,7 +212,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.writeCppTitleComment (C_String ("GALGAS list of entity '@") + aNomClasse + "'") ;
 
   inHfile << "class GGS_" << listClassName << " : public AC_galgas_entity_list {\n"
-             "  public : typedef cPtr_" << aNomClasse << " element_type ;\n"
+             "  public : typedef cPtr_" << aNomClasse << " cElement ;\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -226,14 +226,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Get first inserted object
              "//--- Get first object\n"
-             "/*  public : inline element_type * firstObject (void) const {\n"
-             "    return (element_type *) internalFirstObject () ;\n"
+             "/*  public : inline cElement * firstObject (void) const {\n"
+             "    return (cElement *) internalFirstObject () ;\n"
              "  }*/\n"
 
 //--- Get last inserted object
              "//--- Get last object\n"
-             "/*  public : inline element_type * lastObject (void) const {\n"
-             "    return (element_type *) internalLastObject () ;\n"
+             "/*  public : inline cElement * lastObject (void) const {\n"
+             "    return (cElement *) internalLastObject () ;\n"
              "  }*/\n"
 
 //--- operators () for method call
@@ -351,7 +351,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "cPtr_" << aNomClasse << "::\n"
                "cPtr_" << aNomClasse << " (" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = aListeTousAttributsNonExternes.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -563,8 +563,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
-               "  macroMyNew (nouvelElement, element_type (" ;
+               "  cElement * nouvelElement = (cElement *) NULL ;\n" 
+               "  macroMyNew (nouvelElement, cElement (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -601,8 +601,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
-               "  macroMyNew (nouvelElement, element_type (" ;
+               "  cElement * nouvelElement = (cElement *) NULL ;\n" 
+               "  macroMyNew (nouvelElement, cElement (" ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -672,7 +672,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "/* void GGS_" << listClassName << "::\n"
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
-               "    element_type * _p = firstObject () ;\n"
+               "    cElement * _p = firstObject () ;\n"
                "    _alloc () ;\n"
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
@@ -739,7 +739,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "method_first (C_Compiler & _inLexique,\n"
                "              GGS_" << aNomClasse << " & outElement\n"
                "              COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -769,7 +769,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "method_last (C_Compiler & _inLexique,\n"
                "             GGS_" << aNomClasse << " & outElement\n"
                "             COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -798,7 +798,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "modifier_popFirst (C_Compiler & _inLexique,\n"
                "                   GGS_" << aNomClasse << " & outElement\n"
                "                   COMMA_LOCATION_ARGS) {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -826,7 +826,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "modifier_popLast (C_Compiler & _inLexique,\n"
                "                  GGS_" << aNomClasse << " & outElement\n"
                "                  COMMA_LOCATION_ARGS) {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -954,7 +954,7 @@ generate_metamodel_header_file (C_Compiler & inLexique,
 //--- Include declaration of predefined types
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"galgas/predefined_types.h\"\n" ;
-  GGS_stringlist::element_type * currentInclusion = inHeaderInclusionList.firstObject () ;
+  GGS_stringlist::cElement * currentInclusion = inHeaderInclusionList.firstObject () ;
   while (currentInclusion != NULL) {
     macroValidPointer (currentInclusion) ;
     generatedZone2 << "#include \"" << currentInclusion->mValue << ".h\"\n" ;
@@ -969,7 +969,7 @@ generate_metamodel_header_file (C_Compiler & inLexique,
 
 //--- Generate entities predeclarations
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
-  GGS_typeEntitiesToGenerateList::element_type * element = inEntitiesToGenerateList.firstObject () ;
+  GGS_typeEntitiesToGenerateList::cElement * element = inEntitiesToGenerateList.firstObject () ;
   while (element != NULL) {
     macroValidPointer (element) ;
     element->mEntityToGenerate (HERE)->generatePredeclarations (generatedZone3) ;
@@ -1046,7 +1046,7 @@ generate_metamodel_cpp_file (C_Compiler & inLexique,
                     "\n" ;
 
 //------------- Generate classes -----------------
-  GGS_typeEntitiesToGenerateList::element_type * element = inEntitiesToGenerateList.firstObject () ;
+  GGS_typeEntitiesToGenerateList::cElement * element = inEntitiesToGenerateList.firstObject () ;
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
     macroValidPointer (element) ;

@@ -4077,6 +4077,17 @@ rule <semantic_instruction>
       @foreachEnumerationList foreachEnumerationList [emptyList] ;
       repeat
         @location magicNumber := here ;
+      #--- Ascending or descending ?
+        @bool ascending ;
+        select
+          ascending := true ;
+        or
+          $<$ ;
+          ascending := true ;
+        or
+          $>$ ;
+          ascending := false ;
+        end select ;
       #--- Source expression
         @typeExpression sourceExpression ;
         @AC_galgasType sourceExpressionType ;
@@ -4090,7 +4101,11 @@ rule <semantic_instruction>
       #--- Check this variable can be enumerated
         @typeListeAttributsSemantiques formalEnumerationList ;
         @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
-        [sourceExpressionType acceptForeachInstruction !magicNumber ?formalEnumerationList ?localConstantBuildStyleEnum] ;
+        [sourceExpressionType acceptForeachInstruction
+          !magicNumber
+          ?formalEnumerationList
+          ?localConstantBuildStyleEnum
+        ] ;
       #--- Extract type name
         @string typeName ;
         [sourceExpressionType getTypeName ?typeName] ;
@@ -4102,7 +4117,7 @@ rule <semantic_instruction>
           !localConstantBuildStyleEnum
           ?*
         ;
-        foreachEnumerationList += !sourceExpression !magicNumber !typeName ;
+        foreachEnumerationList += !sourceExpression !magicNumber !typeName !ascending ;
       while
         $,$ ;
       end repeat ;

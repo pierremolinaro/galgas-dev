@@ -92,7 +92,7 @@ class agregatChainageEtat {
 template <typename INFO> class cGalgasVariablesMap ;
 
 template <typename INFO> class cElementTableControlePhase {
-  public : typedef cElementTableControlePhase <INFO> element_type ;
+  public : typedef cElementTableControlePhase <INFO> cElement ;
 //--- Protection contre la duplication 
   private : cElementTableControlePhase (cElementTableControlePhase <INFO> &) ;
   private : void operator = (cElementTableControlePhase <INFO> &) ;
@@ -152,9 +152,9 @@ template <typename INFO> class classeSurchargeTableControlePhase {
 //---------------------------------------------------------------------------*
 
 template <typename INFO> class cGalgasVariablesMap {
-  public : typedef cElementTableControlePhase <INFO> element_type ;
+  public : typedef cElementTableControlePhase <INFO> cElement ;
   public : typedef classeSurchargeTableControlePhase <INFO> typeSurchargeTable ;
-  public : element_type * _mRoot ;
+  public : cElement * _mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
   private : sint32 mListLength ;
   public : inline sint32 count (void) const {
@@ -290,30 +290,30 @@ template <typename INFO> class cGalgasVariablesMap {
 
 //--- Search methods
   private : void chercherInterne (C_Compiler & inLexique,
-                                  element_type * & resultat,
+                                  cElement * & resultat,
                                   const GGS_lstring & clef,
                                   const char * messageErreurRecherche
                                   COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForReadOnlyAccess (C_Compiler & inLexique,
+  public : cElement * searchForReadOnlyAccess (C_Compiler & inLexique,
                                          const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                          const char * messageErreurPhase
                                          COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForDestructiveReadAccess (C_Compiler & inLexique,
+  public : cElement * searchForDestructiveReadAccess (C_Compiler & inLexique,
                                                 const GGS_lstring & clef,
                                                 const GGS_location & inLocation,
                                                 const char * messageErreurPhase
                                                 COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForReadWriteAccess (C_Compiler & inLexique,
+  public : cElement * searchForReadWriteAccess (C_Compiler & inLexique,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurPhase
                                           COMMA_LOCATION_ARGS) ;
 
-  public : element_type * searchForWriteAccess (C_Compiler & inLexique,
+  public : cElement * searchForWriteAccess (C_Compiler & inLexique,
                                       const GGS_lstring & clef,
                                       const GGS_location & inLocation,
                                       const char * messageErreurPhase
@@ -362,31 +362,31 @@ template <typename INFO> class cGalgasVariablesMap {
                                  const bool inIsDeclaredUnused,
                                  const bool inUsed,
                                  const GGS_lstring & clef,
-                                 element_type * & racine,
+                                 cElement * & racine,
                                  bool & extension) ;
 
   private : void verificationRecursiveConsommation (C_Compiler & inLexique,
-                                                    element_type * element,
+                                                    cElement * element,
                                                     const GGS_location & positionErreur
                                                     COMMA_LOCATION_ARGS) ;
   
-  private : void remettreVariablesDansEtatInitial (element_type * element) ;
+  private : void remettreVariablesDansEtatInitial (cElement * element) ;
   
-  private : void surchargerEtatVariables (element_type * element) ;
+  private : void surchargerEtatVariables (cElement * element) ;
   
-  private : void dechargerEtatVariables (element_type * element) ;
+  private : void dechargerEtatVariables (cElement * element) ;
   
-  private : void initialiserChampEtatApres (element_type * element) ;
+  private : void initialiserChampEtatApres (cElement * element) ;
   
   private : void verifierChampEtatApres (C_Compiler & inLexique,
-                                         element_type * element,
+                                         cElement * element,
                                          const GGS_location & positionErreur,
                                          const char * message1,
                                          const char * message2) ;
 
 //--- Methodes statiques privees pour equilibrer l'arbre binaire
-  private : static void rotateRight (element_type * & a) ;
-  private : static void rotateLeft (element_type * & a) ;
+  private : static void rotateRight (cElement * & a) ;
+  private : static void rotateLeft (cElement * & a) ;
 } ;
 
 //---------------------------------------------------------------------------*

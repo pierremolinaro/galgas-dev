@@ -58,7 +58,7 @@ void cPtr_typeNonterminalToGenerate::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
                              const C_String & /* inTargetFileName */,
                              sint32 & /* ioPrototypeIndex */) const {
-  GGS_M_nonterminalSymbolAlts::element_type * currentAltForNonTerminal
+  GGS_M_nonterminalSymbolAlts::cElement * currentAltForNonTerminal
         = mNonterminalSymbolParametersMap.firstObject () ;
   while (currentAltForNonTerminal != NULL) {
     macroValidPointer (currentAltForNonTerminal) ;
@@ -71,7 +71,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     }
     inHfile << "nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal->mKey
             << " (" << mLexiqueClassName << " &" ;
-    GGS_L_EXsignature::element_type * currentArgument
+    GGS_L_EXsignature::cElement * currentArgument
                = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
     while (currentArgument != NULL) {
       inHfile << ",\n                                " ;
@@ -124,7 +124,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inTargetFileName,
                                sint32 & ioPrototypeIndex) const {
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
-  GGS_typeAltProductionsMap::element_type * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
+  GGS_typeAltProductionsMap::cElement * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
   bool prototypesForSelectedAndRepeatNotDeclared = true ;
   while (currentAltForNonTerminal != NULL) {
     macroValidPointer (currentAltForNonTerminal) ;
@@ -143,7 +143,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << '_' << aNomProduction.columnNumber ()
             << '_' << currentAltForNonTerminal->mKey << " ("
             << mLexiqueClassName << " &" ;
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
     while (currentArgument != NULL) {
       inHfile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
@@ -180,7 +180,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                   const bool inGenerateDebug) const {
   inCppFile.writeCppTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
-  GGS_typeAltProductionsMap::element_type * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
+  GGS_typeAltProductionsMap::cElement * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
   bool first = true ;
   while (currentAltForNonTerminal != NULL) {
     macroValidPointer (currentAltForNonTerminal) ;
@@ -218,7 +218,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << " */" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
     while (currentArgument != NULL) {
       inCppFile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
@@ -261,7 +261,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " _entityInstance ="
                    " GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                 << "::constructor_new (_inLexique" ;
-      GGS_entityPropertyMap::element_type * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
+      GGS_entityPropertyMap::cElement * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
       while (currentProperty != NULL) {
         macroValidPointer (currentProperty) ;
         inCppFile << ", var_cas_" << currentProperty->mKey ;
@@ -278,7 +278,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   const bool hasParseLabel = mHasParseLabel.boolValue () ;
 //--- If yes, generate parse only method, based on first label instructions
   if (hasParseLabel) {
-    GGS_typeAltProductionsMap::element_type * firstLabelDef = mAltProductionMap.firstObject () ;
+    GGS_typeAltProductionsMap::cElement * firstLabelDef = mAltProductionMap.firstObject () ;
     macroValidPointer (firstLabelDef) ;
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     if (first) {
@@ -343,7 +343,7 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
   inHfile.writeCppTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
-  GGS_typeEntitiesToGenerateList::element_type * element = listeEntitesAengendrer.firstObject () ;
+  GGS_typeEntitiesToGenerateList::cElement * element = listeEntitesAengendrer.firstObject () ;
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
     macroValidPointer (element) ;

@@ -95,7 +95,7 @@ class GGS_metamodelComponentRoot : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_metamodelComponentRoot : public AC_galgas_entity_list {
-  public : typedef cPtr_metamodelComponentRoot element_type ;
+  public : typedef cPtr_metamodelComponentRoot cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_metamodelComponentRoot constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_metamodelComponentRoot
@@ -104,12 +104,12 @@ class GGS__list_metamodelComponentRoot : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_metamodelComponentRoot * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -210,7 +210,7 @@ class GGS_metamodelEntity : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_metamodelEntity : public AC_galgas_entity_list {
-  public : typedef cPtr_metamodelEntity element_type ;
+  public : typedef cPtr_metamodelEntity cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_metamodelEntity constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_metamodelEntity
@@ -219,12 +219,12 @@ class GGS__list_metamodelEntity : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_metamodelEntity * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -319,7 +319,7 @@ class GGS_metamodelProperty : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_metamodelProperty : public AC_galgas_entity_list {
-  public : typedef cPtr_metamodelProperty element_type ;
+  public : typedef cPtr_metamodelProperty cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_metamodelProperty constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_metamodelProperty
@@ -328,12 +328,12 @@ class GGS__list_metamodelProperty : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_metamodelProperty * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -421,7 +421,7 @@ class GGS_metamodelMultipleReference : public GGS_metamodelProperty {
 //---------------------------------------------------------------------------*
 
 class GGS__list_metamodelMultipleReference : public AC_galgas_entity_list {
-  public : typedef cPtr_metamodelMultipleReference element_type ;
+  public : typedef cPtr_metamodelMultipleReference cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_metamodelMultipleReference constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_metamodelMultipleReference
@@ -430,12 +430,12 @@ class GGS__list_metamodelMultipleReference : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_metamodelMultipleReference * operator () (UNUSED_LOCATION_ARGS) const { return this ;}

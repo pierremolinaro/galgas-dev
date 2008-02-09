@@ -33,7 +33,7 @@
 static bool
 instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & inList) {
   bool use = false ;
-  GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
+  GGS_tListeInstructionsLexicales::cElement * courant = inList.firstObject () ;
   while ((courant != NULL) && ! use) {
     macroValidPointer (courant) ;
     use = courant->attributInstruction(HERE)->instruction__uses_loop_variable () ;
@@ -47,7 +47,7 @@ instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & in
 static bool
 instructions_list_uses_loop_variable (const GGS_typeListeTestsEtInstructions & inList) {
   bool use = false ;
-  GGS_typeListeTestsEtInstructions::element_type * current = inList.firstObject () ;
+  GGS_typeListeTestsEtInstructions::cElement * current = inList.firstObject () ;
   while ((current != NULL) && ! use) {
     macroValidPointer (current) ;
     use = instructions_list_uses_loop_variable (current->attributListeInstructions) ;
@@ -63,7 +63,7 @@ generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inLi
                                     const C_String & inLexiqueName,
                                     const bool inGenerateEnterToken,
                                     AC_OutputStream & inCppFile) {
-  GGS_tListeInstructionsLexicales::element_type * courant = inList.firstObject () ;
+  GGS_tListeInstructionsLexicales::cElement * courant = inList.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     courant->attributInstruction(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile) ;
@@ -80,7 +80,7 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      const bool inGenerateEnterToken,
                      bool & outNonEmptyList) {
   bool premier = true ;
-  GGS_typeListeTestsEtInstructions::element_type * courant = inList.firstObject () ;
+  GGS_typeListeTestsEtInstructions::cElement * courant = inList.firstObject () ;
   outNonEmptyList = courant != NULL ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
@@ -91,7 +91,7 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
     }
     inCppFile << "if (" ;
     macroValidPointer (courant->attributListeConditions.firstObject ()) ;
-    GGS_typeListeConditionsLexicales::element_type * cond = courant->attributListeConditions.firstObject () ;
+    GGS_typeListeConditionsLexicales::cElement * cond = courant->attributListeConditions.firstObject () ;
     bool premiereCondition = true ;
     while (cond != NULL) {
       macroValidPointer (cond) ;
@@ -141,7 +141,7 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
 //--- Create entries array
   const sint32 entriesCount = inMap.count () ;
   TC_UniqueArray <cTableEntry> entriesArray (entriesCount COMMA_HERE) ;
-  GGS_typeTableMotsReserves::element_type * p = inMap.firstObject () ;
+  GGS_typeTableMotsReserves::cElement * p = inMap.firstObject () ;
   sint32 index = 0 ;
   while (p != NULL) {
     macroValidPointer (p) ;
@@ -210,7 +210,7 @@ static void
 generateTerminalSymbolsTable (const GGS_typeTableTablesDeMotsReserves & inMap,
                               const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) {
-  GGS_typeTableTablesDeMotsReserves::element_type * currentMap = inMap.firstObject () ;
+  GGS_typeTableTablesDeMotsReserves::cElement * currentMap = inMap.firstObject () ;
   while (currentMap != NULL) {
     generateKeyWordTableImplementation (currentMap->mInfo.attributSimpleTable, inLexiqueName, currentMap->mKey, inCppFile) ;
     currentMap = currentMap->nextObject () ;
@@ -237,7 +237,7 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
                "    case  " << inLexiqueName << "_1_:\n"
                "      s << \"$$\" ;\n"
                "      break ;\n" ;
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
+  GGS_typeTableDefinitionTerminaux::cElement * currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     macroValidPointer (currentTerminal) ;    
     inCppFile << "    case  " << inLexiqueName << "_1_" ;
@@ -248,7 +248,7 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
     inCppFile.writeCstringConstant (currentTerminal->mKey) ;
     inCppFile << "\n"   
                  "        << '$' ;\n" ;
-    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = currentTerminal->mInfo.attributListeDesAttributs.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * currentAttribute = currentTerminal->mInfo.attributListeDesAttributs.firstObject () ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
       currentAttribute->mAttributType (HERE)->generateAttributeGetLexicalValue (currentAttribute->aNomAttribut, inCppFile) ;
@@ -295,7 +295,7 @@ static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & i
 static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDeMotsReserves & inMap,
                                                      const C_String & inLexiqueName,
                                                      AC_OutputStream & inHfile) {
-  GGS_typeTableTablesDeMotsReserves::element_type * currentMap = inMap.firstObject () ;
+  GGS_typeTableTablesDeMotsReserves::cElement * currentMap = inMap.firstObject () ;
   while (currentMap != NULL) {
     generateKeyWordTableDeclaration (currentMap->mInfo.attributSimpleTable, inLexiqueName, currentMap->mKey, inHfile) ;
     currentMap = currentMap->nextObject () ;
@@ -307,7 +307,7 @@ static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDe
 static void
 generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
                                  AC_OutputStream & inCppFile) {
-  GGS_typeLexicalAttributesMap::element_type * currentMap = inMap.firstObject () ;
+  GGS_typeLexicalAttributesMap::cElement * currentMap = inMap.firstObject () ;
   while (currentMap != NULL) {
     currentMap->mInfo.attributType(HERE)->generateAttributeInitialization (currentMap->mKey, inCppFile) ;
     currentMap = currentMap->nextObject () ;
@@ -323,7 +323,7 @@ routine_buildLexicalRulesFromList (C_Compiler & ioLexique,
                                    COMMA_LOCATION_ARGS) {
 //--- First, find the longest string
   sint32 longestString = 0 ;
-  GGS_typeTableMotsReserves::element_type * currentEntry = keyWordsMap.firstObject () ;
+  GGS_typeTableMotsReserves::cElement * currentEntry = keyWordsMap.firstObject () ;
   while (currentEntry != NULL) {
     macroValidPointer (currentEntry) ;
     const sint32 length = currentEntry->mKey.length () ;
@@ -447,7 +447,7 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
 static void
 generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
                                AC_OutputStream & inCppFile) {
-  GGS_typeListeArgumentsRoutExterne::element_type * courant = inList.firstObject () ;
+  GGS_typeListeArgumentsRoutExterne::cElement * courant = inList.firstObject () ;
   bool premier = true ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
@@ -516,7 +516,7 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
 //--- Engendrer la liste des arguments (au moins 1)
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
 //--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
-  GGS_typeListeMessagesErreur::element_type * courant = attributListeMessageErreur.firstObject () ;
+  GGS_typeListeMessagesErreur::cElement * courant = attributListeMessageErreur.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     inCppFile << ", gErrorMessage_" << courant->mErrorMessageIndex.uintValue () ;
@@ -703,7 +703,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
   bool premier = true ;
-  GGS_typeListeRecherche::element_type * courant = attributListeRecherches.firstObject () ;
+  GGS_typeListeRecherche::cElement * courant = attributListeRecherches.firstObject () ;
   while (courant != NULL) {
     macroValidPointer (courant) ;
     if (! premier) {
@@ -1133,7 +1133,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class cTokenFor_" << inLexiqueName << " : public cToken {\n" ;
 //  generateAttributeDeclaration (table_attributs, generatedZone2) ;
-  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+  GGS_typeLexicalAttributesMap::cElement * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     currentAttribute->mInfo.attributType(HERE)->generateAttributeDeclaration (currentAttribute->mKey, generatedZone2) ;
     currentAttribute = currentAttribute->nextObject () ;
@@ -1161,7 +1161,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
   generatedZone3 << "//--- Terminal symbols enumeration\n"
                     "  public : enum {" ;
   generatedZone3 <<  inLexiqueName << "_1_" ;
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
+  GGS_typeTableDefinitionTerminaux::cElement * currentTerminal = table_des_terminaux.firstObject () ;
   while (currentTerminal != NULL) {
     macroValidPointer (currentTerminal) ;    
     generatedZone3 << ",\n  " ;
@@ -1268,7 +1268,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "}\n\n" ;
 
 //---------------------------------------- Generate error message list
-  GGS_typeTableMessagesErreurs::element_type * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
+  GGS_typeTableMessagesErreurs::cElement * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
   if (currentMessage != NULL) {
     generatedZone2.writeCppTitleComment ("Lexical error message list") ;
     sint32 messageNumber = 0 ;
@@ -1293,7 +1293,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 // --------------------------------------- Generate syntax error messages
   C_String errorMessageList ;
 
-  GGS_typeTableDefinitionTerminaux::element_type * currentTerminal = table_des_terminaux.firstObject () ;
+  GGS_typeTableDefinitionTerminaux::cElement * currentTerminal = table_des_terminaux.firstObject () ;
   if (currentTerminal != NULL) {
     generatedZone2.writeCppTitleComment ("Syntax error messages") ;
   }
@@ -1345,7 +1345,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
               "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
-  GGS_M_styles::element_type * style = inStylesMap.firstObject () ;
+  GGS_M_styles::cElement * style = inStylesMap.firstObject () ;
   while (style != NULL) {
     macroValidPointer (style) ;
     generatedZone2.writeCstringConstant (style->mInfo.mTitle) ;
@@ -1395,7 +1395,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "  _p->_mTokenCode = inToken._mTokenCode ;\n"
                     "  _p->_mFirstLocation = _mTokenFirstLocation ;\n"
                     "  _p->_mLastLocation  = _mTokenLastLocation ;\n" ;
-  GGS_typeLexicalAttributesMap::element_type * currentAttribute = table_attributs.firstObject () ;
+  GGS_typeLexicalAttributesMap::cElement * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     generatedZone2 << "  _p->" << currentAttribute->mKey << " = inToken." << currentAttribute->mKey << " ;\n" ;
     currentAttribute = currentAttribute->nextObject () ;

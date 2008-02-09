@@ -38,7 +38,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
                     "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
@@ -127,7 +127,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "#include <typeinfo>\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_stringset::element_type * currentInclusion = inInclusionsForImplementationFile.firstObject () ;
+  GGS_stringset::cElement * currentInclusion = inInclusionsForImplementationFile.firstObject () ;
   while (currentInclusion != NULL) {
     macroValidPointer (currentInclusion) ;
     generatedZone2 << "#include \"" << currentInclusion->mKey << "\"\n" ;
@@ -151,7 +151,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     ":mBuiltinOptions (inAcceptsDebugOption) {\n"
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
-  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
@@ -171,7 +171,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                  << (generateDebug ? "true" : "false")
                  << ") ;\n"
                  << "    const char * extensions [] = {" ;
-  GGS_ruleDescriptorForProgramList::element_type * currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
+  GGS_ruleDescriptorForProgramList::cElement * currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
   while (currentDescriptor != NULL) {
     macroValidPointer (currentDescriptor) ;
     generatedZone2 << "\"" << currentDescriptor->mSourceExtension << "\", " ;
@@ -244,7 +244,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "        sint16 r = 0 ;\n" ;
   generatedZone2.incIndentation (+8) ;
   uint32 grammarIndex = 0 ;
-  GGS_ruleDescriptorForProgramList::element_type * currentRule = inRuleDescriptorForProgramList.firstObject () ;
+  GGS_ruleDescriptorForProgramList::cElement * currentRule = inRuleDescriptorForProgramList.firstObject () ;
   while (currentRule != NULL) {
     macroValidPointer (currentRule) ;
     if (grammarIndex > 0) {

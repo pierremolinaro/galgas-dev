@@ -1279,11 +1279,11 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
+  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       macroValidPointer (currentAltForNonTerminal) ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
@@ -1298,7 +1298,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                      << " (" << inLexiqueName << " & _inLexique" ;
       const sint32 pureBNFleftNonterminalIndex = nonTerminal->mID ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -1342,7 +1342,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
-      GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+      GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
@@ -1357,7 +1357,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "const GGS_lstring & _inFileName" ;
-        GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;

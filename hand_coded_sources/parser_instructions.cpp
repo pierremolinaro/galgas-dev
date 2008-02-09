@@ -35,8 +35,8 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
                                           const GGS_L_ruleSyntaxSignature & inOtherList,
                                           const GGS_location & inEndOfInstructionListLocation) {
   bool sameSignature = true ;
-  GGS_L_ruleSyntaxSignature::element_type * currentReferenceInstruction = inReferenceList.firstObject () ;
-  GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inOtherList.firstObject () ;
+  GGS_L_ruleSyntaxSignature::cElement * currentReferenceInstruction = inReferenceList.firstObject () ;
+  GGS_L_ruleSyntaxSignature::cElement * currentInstruction = inOtherList.firstObject () ;
   while ((currentReferenceInstruction != NULL) && (currentInstruction != NULL) && sameSignature) {
     sameSignature = currentReferenceInstruction->mInstruction (HERE)->isSameSyntaxInstructionThan (_inLexique, currentInstruction->mInstruction (HERE), inEndOfInstructionListLocation) ;
     currentReferenceInstruction = currentReferenceInstruction->nextObject () ;
@@ -79,8 +79,8 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
     errorMessage << "syntax signature error : a repeat instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
   }else{
-    GGS_L_branchList_ForGrammarComponent::element_type * currentReferenceBranch = mRepeatList.firstObject () ;
-    GGS_L_branchList_ForGrammarComponent::element_type * currentOperandBranch = p->mRepeatList.firstObject () ;
+    GGS_L_branchList_ForGrammarComponent::cElement * currentReferenceBranch = mRepeatList.firstObject () ;
+    GGS_L_branchList_ForGrammarComponent::cElement * currentOperandBranch = p->mRepeatList.firstObject () ;
     while ((currentReferenceBranch != NULL) && (currentOperandBranch != NULL) && sameSignature) {
       macroValidPointer (currentReferenceBranch) ;
       macroValidPointer (currentOperandBranch) ;
@@ -117,8 +117,8 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
     errorMessage << "syntax signature error: a select instruction is expected here" ;
     inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
   }else{
-    GGS_L_branchList_ForGrammarComponent::element_type * currentReferenceBranch = mSelectList.firstObject () ;
-    GGS_L_branchList_ForGrammarComponent::element_type * currentOperandBranch = p->mSelectList.firstObject () ;
+    GGS_L_branchList_ForGrammarComponent::cElement * currentReferenceBranch = mSelectList.firstObject () ;
+    GGS_L_branchList_ForGrammarComponent::cElement * currentOperandBranch = p->mSelectList.firstObject () ;
     while ((currentReferenceBranch != NULL) && (currentOperandBranch != NULL) && sameSignature) {
       macroValidPointer (currentReferenceBranch) ;
       macroValidPointer (currentOperandBranch) ;
@@ -180,7 +180,7 @@ void
 routine_checkLabelSignatures (C_Compiler & _inLexique,
                               GGS_typeAltProductionsMap & inAltProductionMap
                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeAltProductionsMap::element_type * current = inAltProductionMap.firstObject () ;
+  GGS_typeAltProductionsMap::cElement * current = inAltProductionMap.firstObject () ;
   if (current != NULL) { // current may be NULL in case of error
     macroValidPointer (current) ;
     GGS_L_ruleSyntaxSignature referenceSyntaxList = current->mInfo.mSyntaxSignature ;
@@ -201,7 +201,7 @@ void
 routine_checkParseRewindSignatures (C_Compiler & _inLexique,
                                     GGS_L_parse_rewind_signature_list & inParseRewindSignatureList
                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_L_parse_rewind_signature_list::element_type * current = inParseRewindSignatureList.firstObject () ;
+  GGS_L_parse_rewind_signature_list::cElement * current = inParseRewindSignatureList.firstObject () ;
   macroValidPointer (current) ;
   GGS_L_ruleSyntaxSignature referenceList = current->mSignature ;
   current = current->nextObject () ;
@@ -240,7 +240,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
+    GGS_L_assignedVariables::cElement * argument = aListeTypeEffectifs.firstObject () ;
     while (argument != NULL) {
       macroValidPointer (argument) ;
       inCppFile << "_inLexique._assignFromAttribute_"
@@ -251,7 +251,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     }
   }
   if (inGenerateDebug) {
-    GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
+    GGS_L_assignedVariables::cElement * argument = aListeTypeEffectifs.firstObject () ;
     inCppFile << "#ifdef DEBUG_TRACE_ENABLED\n"
                  "  { C_String message_ "
               << ((argument == NULL) ? "" : "(\" ?\") ")
@@ -284,7 +284,7 @@ bool cPtr_typeInstructionVerifSyntaxique::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = false ;
-  GGS_L_assignedVariables::element_type * argument = aListeTypeEffectifs.firstObject () ;
+  GGS_L_assignedVariables::cElement * argument = aListeTypeEffectifs.firstObject () ;
   while ((argument != NULL) && !used) {
     macroValidPointer (argument) ;
     used = argument->aNomVariableCible.isSameObjectAs (inArgumentCppName) ;
@@ -336,7 +336,7 @@ generateInstruction (AC_OutputStream & inCppFile,
             << (inGenerateSemanticInstructions ? mAltName.cString () : "parse")
             << " (_inLexique" ;
   if (inGenerateSemanticInstructions) {
-    GGS_typeExpressionList::element_type * argument = mParametersExpressionList.firstObject () ;
+    GGS_typeExpressionList::cElement * argument = mParametersExpressionList.firstObject () ;
     while (argument != NULL) {
       macroValidPointer (argument) ;
       inCppFile << ", " ;
@@ -364,7 +364,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   if (inGenerateSemanticInstructions) {
-    GGS_typeExpressionList::element_type * argument = mParametersExpressionList.firstObject () ;
+    GGS_typeExpressionList::cElement * argument = mParametersExpressionList.firstObject () ;
     while ((argument != NULL) && !used) {
       macroValidPointer (argument) ;
       used = argument->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -379,7 +379,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeInstructionAppelNonTerminal::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
-  GGS_typeExpressionList::element_type * argument = mParametersExpressionList.firstObject () ;
+  GGS_typeExpressionList::cElement * argument = mParametersExpressionList.firstObject () ;
   while ((argument != NULL) && !used) {
     macroValidPointer (argument) ;
     used = argument->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
@@ -409,7 +409,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
              << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
   ioPrototypeIndex ++ ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = mIFbranchesList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     generateSelectAndRepeatPrototypesForList (currentBranch->mInstructionList,
@@ -434,7 +434,7 @@ generateInstruction (AC_OutputStream & inCppFile,
            << '_' << ioPrototypeIndex
            << " (_inLexique)) {\n" ;
   ioPrototypeIndex ++ ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = mIFbranchesList.firstObject () ;
   sint16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
   while (currentBranch != NULL) {
@@ -466,7 +466,7 @@ bool cPtr_C_select_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = false ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = mIFbranchesList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
@@ -480,7 +480,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_C_select_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = mIFbranchesList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
@@ -510,7 +510,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
             << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
   ioPrototypeIndex ++ ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = aListesBranchesRepeter.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     generateSelectAndRepeatPrototypesForList (currentBranch->mInstructionList,
@@ -536,7 +536,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   inCppFile << "{ bool syntaxRepeat_" << prototypeIndex << " = true ;\n"
                "  while (syntaxRepeat_" << prototypeIndex << ") {\n" ;
   inCppFile.incIndentation (+4) ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = aListesBranchesRepeter.firstObject () ;
   macroValidPointer (currentBranch) ;
   generateInstructionListForList (currentBranch->mInstructionList, inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
@@ -580,7 +580,7 @@ bool cPtr_C_repeat_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = false ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = aListesBranchesRepeter.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
@@ -594,7 +594,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_C_repeat_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = aListesBranchesRepeter.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = aListesBranchesRepeter.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
@@ -618,7 +618,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inTargetFileName,
                                      sint32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
-  GGS_typeListeBranchesInstructions::element_type * p = mBranchList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * p = mBranchList.firstObject () ;
   const sint32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
   generateSelectAndRepeatPrototypesForList (p->mInstructionList,
@@ -649,7 +649,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        sint32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
-  GGS_typeListeBranchesInstructions::element_type * p = mBranchList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * p = mBranchList.firstObject () ;
   const sint32 v = mInstructionLocation.location () ; // For making 'context_xxx' variable unique
   const sint32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
@@ -685,7 +685,7 @@ bool cPtr_C_parse_rewind_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = false ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = mBranchList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = mBranchList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalArgumentIsUsedForList (currentBranch->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
@@ -699,7 +699,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_C_parse_rewind_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
-  GGS_typeListeBranchesInstructions::element_type * currentBranch = mBranchList.firstObject () ;
+  GGS_typeListeBranchesInstructions::cElement * currentBranch = mBranchList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;
@@ -723,7 +723,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                    const C_String & inTargetFileName,
                                    sint32 & ioPrototypeIndex,
                                    const bool inNotDeclared) {
-  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_L_expression_instructionsList_list::cElement * currentBranch = mIFbranchesList.firstObject () ;
   const sint32 kPrototypeIndex = ioPrototypeIndex ;
 //--- Generate for first branch
   generateSelectAndRepeatPrototypesForList (currentBranch->mInstructionList,
@@ -764,7 +764,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+    GGS_L_expression_instructionsList_list::cElement * currentBranch = mIFbranchesList.firstObject () ;
     const sint32 kPrototypeIndex = ioPrototypeIndex ;
     bool first = true ;
     while (currentBranch != NULL) {
@@ -799,7 +799,7 @@ generateInstruction (AC_OutputStream & inCppFile,
 bool cPtr_C_parse_when_else_instruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionsList, inGenerateSemanticInstructions) ;
-  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_L_expression_instructionsList_list::cElement * currentBranch = mIFbranchesList.firstObject () ;
   while ((currentBranch != NULL) && ! used) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
@@ -815,7 +815,7 @@ bool cPtr_C_parse_when_else_instruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
-  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_L_expression_instructionsList_list::cElement * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = currentBranch->mIFexpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
@@ -830,7 +830,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_C_parse_when_else_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
-  GGS_L_expression_instructionsList_list::element_type * currentBranch = mIFbranchesList.firstObject () ;
+  GGS_L_expression_instructionsList_list::cElement * currentBranch = mIFbranchesList.firstObject () ;
   while ((! used) && (currentBranch != NULL)) {
     macroValidPointer (currentBranch) ;
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch->mInstructionList) ;

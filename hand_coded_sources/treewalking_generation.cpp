@@ -71,7 +71,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
             << "_type *) _gDispatcherTree.entry (_currentObject->" << inCalledPropertyName << ".getPtr () COMMA_HERE) ;\n"
                "  (* _f) (_inLexique, _currentObject->" << inCalledPropertyName
             << ".getPtr ()" ;
-  GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
     macroValidPointer (argCourant) ;
     ioCppFile << ", " ;
@@ -99,7 +99,7 @@ generateCallInstruction (AC_OutputStream & ioCppFile,
             << "_type *) _gDispatcherTree.entry (_ptr->ptr () COMMA_HERE) ;\n"
                "    MF_Assert (dynamic_cast <cPtr_" << inEntityName << " *> (_ptr->ptr ()) != NULL, \"Treewalking dispatch error\", 0, 0) ;\n"
                "    (* _f) (_inLexique, (cPtr_" << inEntityName << " *) _ptr->ptr ()" ;
-  GGS_typeExpressionList::element_type * argCourant = inExpressionList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = inExpressionList.firstObject () ;
   while (argCourant != NULL) {
     macroValidPointer (argCourant) ;
     ioCppFile << ", " ;
@@ -125,7 +125,7 @@ bool cPtr_callInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -160,7 +160,7 @@ generate_treewalking_header (C_Compiler & inLexique,
                  << "#define " << inTreewalkingComponentName << "_CONSTRAINTS_DEFINED\n"
                     "\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_stringset::element_type * currentIncludedFile = inFilesToImportInHeaderSet.firstObject () ;
+  GGS_stringset::cElement * currentIncludedFile = inFilesToImportInHeaderSet.firstObject () ;
   while (currentIncludedFile != NULL) {
     generatedZone2 << "#include \"" << currentIncludedFile->mKey << ".h\"\n" ;
     currentIncludedFile = currentIncludedFile->nextObject () ;
@@ -174,7 +174,7 @@ generate_treewalking_header (C_Compiler & inLexique,
                     "_walk_throught_" << inTreewalkingComponentName
                    << " (C_Compiler & _inLexique,\n"
                       "                                const GGS_" << inRootEntity << " & _rootObject" ;
-  GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = inRootRoutineSignature.firstObject () ;
+  GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, generatedZone3) ;
@@ -213,7 +213,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                     "#endif\n\n" ;
 //--- Include declaration of header file
   generatedZone2 << "#include \"" << inTreewalkingComponentName << ".h\"\n" ;
-  GGS_stringset::element_type * currentInclude = inFilesToImportInImplementationSet.firstObject () ;
+  GGS_stringset::cElement * currentInclude = inFilesToImportInImplementationSet.firstObject () ;
   while (currentInclude != NULL) {
     macroValidPointer (currentInclude) ;
     generatedZone2 << "#include \"" << currentInclude->mKey << "\"\n" ;
@@ -234,7 +234,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
 
 //--- Generate routine declarations
   generatedZone3.writeCppTitleComment ("Treewalking routine prototype declaration") ;
-  GGS_treewalkingRoutineToGenerateList::element_type * currentRoutine = inTreewalkingRoutineToGenerateList.firstObject () ;
+  GGS_treewalkingRoutineToGenerateList::cElement * currentRoutine = inTreewalkingRoutineToGenerateList.firstObject () ;
   while (currentRoutine != NULL) {
     macroValidPointer (currentRoutine) ;
     generatedZone3 << "static void\n"
@@ -242,7 +242,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                    << " (C_Compiler & _inLexique"
                       ",\n                                "
                       "const cPtr_" << currentRoutine->mMetamodelClass << " * _currentObject" ;
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
     while (currentArgument != NULL) {
       generatedZone3 << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, generatedZone3) ;
@@ -264,7 +264,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                    << "_type (C_Compiler & _inLexique"
                       ",\n                                "
                       "const cPtr_" << currentRoutine->mMetamodelClass << " * _currentObject" ;
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
     while (currentArgument != NULL) {
       generatedZone3 << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, generatedZone3) ;
@@ -283,7 +283,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
   C_String currentMetamodelName ;
   C_String codeForDispacher ;
   TC_UniqueArray <C_String> metamodelsWithDispatcher ;
-  GGS_routineDispatcherSortedList::element_type * currentEntry = inRoutineDispatcherSortedList.firstObject () ;
+  GGS_routineDispatcherSortedList::cElement * currentEntry = inRoutineDispatcherSortedList.firstObject () ;
   while (currentEntry != NULL) {
     if (currentEntry->mMetamodelName.string () != currentMetamodelName) {
       if (currentMetamodelName.length () > 0) {
@@ -332,7 +332,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
     }else{
       generatedZone3 << "/* _currentObject */" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentRoutine->mFormalArgumentList.firstObject () ;
     while (currentArgument != NULL) {
       generatedZone3 << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, generatedZone3) ;
@@ -381,7 +381,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                     "_walk_throught_" << inTreewalkingComponentName
                    << " (C_Compiler & _inLexique,\n"
                       "                                const GGS_" << inRootEntity << " & _rootObject" ;
-  GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = inRootRoutineSignature.firstObject () ;
+  GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
     generatedZone3 << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, generatedZone3) ;
