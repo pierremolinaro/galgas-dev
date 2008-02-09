@@ -151,8 +151,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_formalParameters::
 _internalAppendValues (const GGS__list_formalParameter & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -161,8 +161,8 @@ _internalAppendValues (const GGS__list_formalParameter & argument_0) {
 
 /* void GGS__list_formalParameters::
 _internalPrependValues (const GGS__list_formalParameter & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -217,7 +217,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_formalParameters::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -273,7 +273,7 @@ _addModel (const GGS_formalParameters & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_formalParameters & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -294,7 +294,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_formalParameters & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -315,7 +315,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_formalParameters & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -336,7 +336,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_formalParameters & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -516,8 +516,8 @@ _internalAppendValues (const GGS_formalArgumentPassingMode& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_bool& argument_3) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -532,8 +532,8 @@ _internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
                     const GGS_lstring & argument_1,
                     const GGS_lstring & argument_2,
                     const GGS_bool& argument_3) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1,
                                 argument_2,
                                 argument_3
@@ -591,7 +591,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_formalParameter::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -650,7 +650,7 @@ _addModel (const GGS_formalParameter & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_formalParameter & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -674,7 +674,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_formalParameter & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -698,7 +698,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_formalParameter & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -722,7 +722,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_formalParameter & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -917,8 +917,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_actualParameter::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -926,8 +926,8 @@ _internalAppendValues () {
 
 /* void GGS__list_actualParameter::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -981,7 +981,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_actualParameter::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1037,7 +1037,7 @@ _addModel (const GGS_actualParameter & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_actualParameter & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1057,7 +1057,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_actualParameter & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1077,7 +1077,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_actualParameter & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1097,7 +1097,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_actualParameter & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1227,8 +1227,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_outputActualParameter::
 _internalAppendValues (const GGS_semanticExpression & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -1237,8 +1237,8 @@ _internalAppendValues (const GGS_semanticExpression & argument_0) {
 
 /* void GGS__list_outputActualParameter::
 _internalPrependValues (const GGS_semanticExpression & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -1293,7 +1293,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_outputActualParameter::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1349,7 +1349,7 @@ _addModel (const GGS_outputActualParameter & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_outputActualParameter & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1370,7 +1370,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_outputActualParameter & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1391,7 +1391,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_outputActualParameter & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1412,7 +1412,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_outputActualParameter & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1568,8 +1568,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_outputInputActualParameter::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -1578,8 +1578,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_outputInputActualParameter::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -1634,7 +1634,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_outputInputActualParameter::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1690,7 +1690,7 @@ _addModel (const GGS_outputInputActualParameter & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_outputInputActualParameter & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1711,7 +1711,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_outputInputActualParameter & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1732,7 +1732,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_outputInputActualParameter & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1753,7 +1753,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_outputInputActualParameter & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1909,8 +1909,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_inputActualParameter::
 _internalAppendValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -1919,8 +1919,8 @@ _internalAppendValues (const GGS_lstring & argument_0) {
 
 /* void GGS__list_inputActualParameter::
 _internalPrependValues (const GGS_lstring & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -1975,7 +1975,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_inputActualParameter::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -2031,7 +2031,7 @@ _addModel (const GGS_inputActualParameter & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_inputActualParameter & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2052,7 +2052,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_inputActualParameter & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2073,7 +2073,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_inputActualParameter & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2094,7 +2094,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_inputActualParameter & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2238,8 +2238,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_inputJokerActualParameter::
 _internalAppendValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
 
@@ -2247,8 +2247,8 @@ _internalAppendValues () {
 
 /* void GGS__list_inputJokerActualParameter::
 _internalPrependValues () {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (HERE)) ;
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
 
@@ -2302,7 +2302,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_inputJokerActualParameter::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -2358,7 +2358,7 @@ _addModel (const GGS_inputJokerActualParameter & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_inputJokerActualParameter & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2378,7 +2378,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_inputJokerActualParameter & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2398,7 +2398,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_inputJokerActualParameter & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2418,7 +2418,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_inputJokerActualParameter & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2558,8 +2558,8 @@ _cloneObject (void) const {
 
 /* void GGS__list_actualParameters::
 _internalAppendValues (const GGS__list_actualParameter & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalAppendItem (nouvelElement) ;
 } */
@@ -2568,8 +2568,8 @@ _internalAppendValues (const GGS__list_actualParameter & argument_0) {
 
 /* void GGS__list_actualParameters::
 _internalPrependValues (const GGS__list_actualParameter & argument_0) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_HERE)) ;
   _internalPrependItem (nouvelElement) ;
 } */
@@ -2624,7 +2624,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 /* void GGS__list_actualParameters::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -2680,7 +2680,7 @@ _addModel (const GGS_actualParameters & inOperand) {
 method_first (C_Compiler & _inLexique,
               GGS_actualParameters & outElement
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2701,7 +2701,7 @@ method_first (C_Compiler & _inLexique,
 method_last (C_Compiler & _inLexique,
              GGS_actualParameters & outElement
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2722,7 +2722,7 @@ method_last (C_Compiler & _inLexique,
 modifier_popFirst (C_Compiler & _inLexique,
                    GGS_actualParameters & outElement
                    COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -2743,7 +2743,7 @@ modifier_popFirst (C_Compiler & _inLexique,
 modifier_popLast (C_Compiler & _inLexique,
                   GGS_actualParameters & outElement
                   COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {

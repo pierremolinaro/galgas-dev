@@ -190,7 +190,7 @@ class GGS_semanticExpression : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_semanticExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_semanticExpression element_type ;
+  public : typedef cPtr_semanticExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_semanticExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_semanticExpression
@@ -199,12 +199,12 @@ class GGS__list_semanticExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_semanticExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -293,7 +293,7 @@ class GGS_outExpressionList : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_outExpressionList : public AC_galgas_entity_list {
-  public : typedef cPtr_outExpressionList element_type ;
+  public : typedef cPtr_outExpressionList cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_outExpressionList constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_outExpressionList
@@ -302,12 +302,12 @@ class GGS__list_outExpressionList : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_outExpressionList * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -391,7 +391,7 @@ class GGS_variableExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_variableExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_variableExpression element_type ;
+  public : typedef cPtr_variableExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_variableExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_variableExpression
@@ -400,12 +400,12 @@ class GGS__list_variableExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_variableExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -485,7 +485,7 @@ class GGS_selfInExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_selfInExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_selfInExpression element_type ;
+  public : typedef cPtr_selfInExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_selfInExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_selfInExpression
@@ -494,12 +494,12 @@ class GGS__list_selfInExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_selfInExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -579,7 +579,7 @@ class GGS_hereExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_hereExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_hereExpression element_type ;
+  public : typedef cPtr_hereExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_hereExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_hereExpression
@@ -588,12 +588,12 @@ class GGS__list_hereExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_hereExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -673,7 +673,7 @@ class GGS_trueExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_trueExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_trueExpression element_type ;
+  public : typedef cPtr_trueExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_trueExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_trueExpression
@@ -682,12 +682,12 @@ class GGS__list_trueExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_trueExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -767,7 +767,7 @@ class GGS_falseExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_falseExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_falseExpression element_type ;
+  public : typedef cPtr_falseExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_falseExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_falseExpression
@@ -776,12 +776,12 @@ class GGS__list_falseExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_falseExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -863,7 +863,7 @@ class GGS_literalCharExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalCharExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalCharExpression element_type ;
+  public : typedef cPtr_literalCharExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalCharExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalCharExpression
@@ -872,12 +872,12 @@ class GGS__list_literalCharExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalCharExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -959,7 +959,7 @@ class GGS_literalStringExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalStringExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalStringExpression element_type ;
+  public : typedef cPtr_literalStringExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalStringExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalStringExpression
@@ -968,12 +968,12 @@ class GGS__list_literalStringExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalStringExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1055,7 +1055,7 @@ class GGS_literalDoubleExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalDoubleExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalDoubleExpression element_type ;
+  public : typedef cPtr_literalDoubleExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalDoubleExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalDoubleExpression
@@ -1064,12 +1064,12 @@ class GGS__list_literalDoubleExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalDoubleExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1151,7 +1151,7 @@ class GGS_literalUIntExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalUIntExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalUIntExpression element_type ;
+  public : typedef cPtr_literalUIntExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalUIntExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalUIntExpression
@@ -1160,12 +1160,12 @@ class GGS__list_literalUIntExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalUIntExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1247,7 +1247,7 @@ class GGS_literalUInt64Expression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalUInt64Expression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalUInt64Expression element_type ;
+  public : typedef cPtr_literalUInt64Expression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalUInt64Expression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalUInt64Expression
@@ -1256,12 +1256,12 @@ class GGS__list_literalUInt64Expression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalUInt64Expression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1343,7 +1343,7 @@ class GGS_literalSIntExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalSIntExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalSIntExpression element_type ;
+  public : typedef cPtr_literalSIntExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalSIntExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalSIntExpression
@@ -1352,12 +1352,12 @@ class GGS__list_literalSIntExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalSIntExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1439,7 +1439,7 @@ class GGS_literalSInt64Expression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_literalSInt64Expression : public AC_galgas_entity_list {
-  public : typedef cPtr_literalSInt64Expression element_type ;
+  public : typedef cPtr_literalSInt64Expression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_literalSInt64Expression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_literalSInt64Expression
@@ -1448,12 +1448,12 @@ class GGS__list_literalSInt64Expression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_literalSInt64Expression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1539,7 +1539,7 @@ class GGS_constructorExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_constructorExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_constructorExpression element_type ;
+  public : typedef cPtr_constructorExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_constructorExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_constructorExpression
@@ -1548,12 +1548,12 @@ class GGS__list_constructorExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_constructorExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1643,7 +1643,7 @@ class GGS_readerCallExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_readerCallExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_readerCallExpression element_type ;
+  public : typedef cPtr_readerCallExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_readerCallExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_readerCallExpression
@@ -1652,12 +1652,12 @@ class GGS__list_readerCallExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_readerCallExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1745,7 +1745,7 @@ class GGS_optionExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_optionExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_optionExpression element_type ;
+  public : typedef cPtr_optionExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_optionExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_optionExpression
@@ -1754,12 +1754,12 @@ class GGS__list_optionExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_optionExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1847,7 +1847,7 @@ class GGS_concatExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_concatExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_concatExpression element_type ;
+  public : typedef cPtr_concatExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_concatExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_concatExpression
@@ -1856,12 +1856,12 @@ class GGS__list_concatExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_concatExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -1951,7 +1951,7 @@ class GGS_orExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_orExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_orExpression element_type ;
+  public : typedef cPtr_orExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_orExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_orExpression
@@ -1960,12 +1960,12 @@ class GGS__list_orExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_orExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2055,7 +2055,7 @@ class GGS_xorExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_xorExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_xorExpression element_type ;
+  public : typedef cPtr_xorExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_xorExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_xorExpression
@@ -2064,12 +2064,12 @@ class GGS__list_xorExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_xorExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2159,7 +2159,7 @@ class GGS_andExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_andExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_andExpression element_type ;
+  public : typedef cPtr_andExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_andExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_andExpression
@@ -2168,12 +2168,12 @@ class GGS__list_andExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_andExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2263,7 +2263,7 @@ class GGS_equalExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_equalExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_equalExpression element_type ;
+  public : typedef cPtr_equalExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_equalExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_equalExpression
@@ -2272,12 +2272,12 @@ class GGS__list_equalExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_equalExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2367,7 +2367,7 @@ class GGS_notEqualExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_notEqualExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_notEqualExpression element_type ;
+  public : typedef cPtr_notEqualExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_notEqualExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_notEqualExpression
@@ -2376,12 +2376,12 @@ class GGS__list_notEqualExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_notEqualExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2471,7 +2471,7 @@ class GGS_lowerOrEqualExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_lowerOrEqualExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_lowerOrEqualExpression element_type ;
+  public : typedef cPtr_lowerOrEqualExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_lowerOrEqualExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_lowerOrEqualExpression
@@ -2480,12 +2480,12 @@ class GGS__list_lowerOrEqualExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_lowerOrEqualExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2575,7 +2575,7 @@ class GGS_greaterOrEqualExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_greaterOrEqualExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_greaterOrEqualExpression element_type ;
+  public : typedef cPtr_greaterOrEqualExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_greaterOrEqualExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_greaterOrEqualExpression
@@ -2584,12 +2584,12 @@ class GGS__list_greaterOrEqualExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_greaterOrEqualExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2679,7 +2679,7 @@ class GGS_strictGreaterExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_strictGreaterExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_strictGreaterExpression element_type ;
+  public : typedef cPtr_strictGreaterExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_strictGreaterExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_strictGreaterExpression
@@ -2688,12 +2688,12 @@ class GGS__list_strictGreaterExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_strictGreaterExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2783,7 +2783,7 @@ class GGS_strictLowerExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_strictLowerExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_strictLowerExpression element_type ;
+  public : typedef cPtr_strictLowerExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_strictLowerExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_strictLowerExpression
@@ -2792,12 +2792,12 @@ class GGS__list_strictLowerExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_strictLowerExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2887,7 +2887,7 @@ class GGS_leftShiftExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_leftShiftExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_leftShiftExpression element_type ;
+  public : typedef cPtr_leftShiftExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_leftShiftExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_leftShiftExpression
@@ -2896,12 +2896,12 @@ class GGS__list_leftShiftExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_leftShiftExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -2991,7 +2991,7 @@ class GGS_rightShiftExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_rightShiftExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_rightShiftExpression element_type ;
+  public : typedef cPtr_rightShiftExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_rightShiftExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_rightShiftExpression
@@ -3000,12 +3000,12 @@ class GGS__list_rightShiftExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_rightShiftExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3095,7 +3095,7 @@ class GGS_addExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_addExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_addExpression element_type ;
+  public : typedef cPtr_addExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_addExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_addExpression
@@ -3104,12 +3104,12 @@ class GGS__list_addExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_addExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3199,7 +3199,7 @@ class GGS_subExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_subExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_subExpression element_type ;
+  public : typedef cPtr_subExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_subExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_subExpression
@@ -3208,12 +3208,12 @@ class GGS__list_subExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_subExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3303,7 +3303,7 @@ class GGS_multiplicationExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_multiplicationExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_multiplicationExpression element_type ;
+  public : typedef cPtr_multiplicationExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_multiplicationExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_multiplicationExpression
@@ -3312,12 +3312,12 @@ class GGS__list_multiplicationExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_multiplicationExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3407,7 +3407,7 @@ class GGS_divisionExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_divisionExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_divisionExpression element_type ;
+  public : typedef cPtr_divisionExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_divisionExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_divisionExpression
@@ -3416,12 +3416,12 @@ class GGS__list_divisionExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_divisionExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3511,7 +3511,7 @@ class GGS_moduloExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_moduloExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_moduloExpression element_type ;
+  public : typedef cPtr_moduloExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_moduloExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_moduloExpression
@@ -3520,12 +3520,12 @@ class GGS__list_moduloExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_moduloExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3613,7 +3613,7 @@ class GGS_unaryMinusExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_unaryMinusExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_unaryMinusExpression element_type ;
+  public : typedef cPtr_unaryMinusExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_unaryMinusExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_unaryMinusExpression
@@ -3622,12 +3622,12 @@ class GGS__list_unaryMinusExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_unaryMinusExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3713,7 +3713,7 @@ class GGS_notExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_notExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_notExpression element_type ;
+  public : typedef cPtr_notExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_notExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_notExpression
@@ -3722,12 +3722,12 @@ class GGS__list_notExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_notExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3813,7 +3813,7 @@ class GGS_negateExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_negateExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_negateExpression element_type ;
+  public : typedef cPtr_negateExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_negateExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_negateExpression
@@ -3822,12 +3822,12 @@ class GGS__list_negateExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_negateExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -3911,7 +3911,7 @@ class GGS_varInExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_varInExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_varInExpression element_type ;
+  public : typedef cPtr_varInExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_varInExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_varInExpression
@@ -3920,12 +3920,12 @@ class GGS__list_varInExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_varInExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -4009,7 +4009,7 @@ class GGS_descriptionInExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_descriptionInExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_descriptionInExpression element_type ;
+  public : typedef cPtr_descriptionInExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_descriptionInExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_descriptionInExpression
@@ -4018,12 +4018,12 @@ class GGS__list_descriptionInExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_descriptionInExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -4113,7 +4113,7 @@ class GGS_castInExpression : public GGS_semanticExpression {
 //---------------------------------------------------------------------------*
 
 class GGS__list_castInExpression : public AC_galgas_entity_list {
-  public : typedef cPtr_castInExpression element_type ;
+  public : typedef cPtr_castInExpression cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_castInExpression constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_castInExpression
@@ -4122,12 +4122,12 @@ class GGS__list_castInExpression : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_castInExpression * operator () (UNUSED_LOCATION_ARGS) const { return this ;}

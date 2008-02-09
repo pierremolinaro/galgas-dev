@@ -120,25 +120,30 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
+    GGS_foreachEnumerationList::cElement * enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile << "const GGS_" << enumeratedVariable->mCppTypeName
-                << " _var_" << enumeratedVariable->mLocationOffset.location () << " = " ;
+      ioCppFile << "GGS_" << enumeratedVariable->mCppTypeName
+                << "::cEnumerator enumerator_" << enumeratedVariable->mLocationOffset.location ()
+                << " (" ;
       enumeratedVariable->mSourceExpression (HERE)->generateExpression (ioCppFile) ;
-      ioCppFile << " ;\n" ;
-      ioCppFile << "const GGS_" << enumeratedVariable->mCppTypeName
-                << "::element_type * operand_" << enumeratedVariable->mLocationOffset.location ()
-                << " = _var_" << enumeratedVariable->mLocationOffset.location () << ".firstObject () ;\n" ;
+      ioCppFile << ", " << (enumeratedVariable->mAscending.boolValue () ? "true" : "false")
+                << ") ;\n"
+                << "const GGS_" << enumeratedVariable->mCppTypeName
+                << "::cElement * operand_" << enumeratedVariable->mLocationOffset.location ()
+                << " = NULL ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     macroValidPointer (enumeratedVariable) ;
-    ioCppFile <<  "while ((operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
+    ioCppFile <<  "while (((operand_" <<enumeratedVariable->mLocationOffset.location ()
+              << " = (GGS_" << enumeratedVariable->mCppTypeName
+              << "::cElement *) enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject ()))" ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile <<  "\n    && (operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
+      ioCppFile <<  "\n    && ((operand_" <<enumeratedVariable->mLocationOffset.location ()
+                << " = enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject ()))" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
  //--- While expression
@@ -155,14 +160,15 @@ generateInstruction (AC_OutputStream & ioCppFile,
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
     generateInstructionListForList (mInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+    ioCppFile << "}\n" ;
+  //--- Generate reset instructions
     enumeratedVariable = mForeachEnumerationList.firstObject () ;
     while (enumeratedVariable != NULL) {
       macroValidPointer (enumeratedVariable) ;
-      ioCppFile << "  operand_" << enumeratedVariable->mLocationOffset.location () << " = operand_"
-                << enumeratedVariable->mLocationOffset.location () << "->nextObject () ;\n" ;
+      ioCppFile << "enumerator_" << enumeratedVariable->mLocationOffset.location ()
+                << ".reset () ;\n" ;
       enumeratedVariable = enumeratedVariable->nextObject () ;
     }
-    ioCppFile << "}\n" ;
   }
 }
 
@@ -172,7 +178,7 @@ bool cPtr_typeForeachInstruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mInstructionList, inGenerateSemanticInstructions)
     || mWhileExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-  GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  GGS_foreachEnumerationList::cElement * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
     used = enumeratedVariable->mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
@@ -188,7 +194,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mInstructionList, inArgumentCppName, inGenerateSemanticInstructions)
     || mWhileExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-  GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  GGS_foreachEnumerationList::cElement * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
     used = enumeratedVariable->mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -203,7 +209,7 @@ bool cPtr_typeForeachInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = formalCurrentObjectArgumentIsUsedForList (mInstructionList)
     || mWhileExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-  GGS_foreachEnumerationList::element_type * enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  GGS_foreachEnumerationList::cElement * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while ((enumeratedVariable != NULL) && ! used) {
     macroValidPointer (enumeratedVariable) ;
     used = enumeratedVariable->mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;

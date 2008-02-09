@@ -89,7 +89,7 @@ class GGS_programRule : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_programRule : public AC_galgas_entity_list {
-  public : typedef cPtr_programRule element_type ;
+  public : typedef cPtr_programRule cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_programRule constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_programRule
@@ -98,12 +98,12 @@ class GGS__list_programRule : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_programRule * operator () (UNUSED_LOCATION_ARGS) const { return this ;}
@@ -206,7 +206,7 @@ class GGS_programComponentRoot : public AC_galgas_entity {
 //---------------------------------------------------------------------------*
 
 class GGS__list_programComponentRoot : public AC_galgas_entity_list {
-  public : typedef cPtr_programComponentRoot element_type ;
+  public : typedef cPtr_programComponentRoot cElement ;
 //--- Constructor 'emptyList'
   public : static GGS__list_programComponentRoot constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
   public : static GGS__list_programComponentRoot
@@ -215,12 +215,12 @@ class GGS__list_programComponentRoot : public AC_galgas_entity_list {
                              COMMA_LOCATION_ARGS) ;
 
 //--- Get first object
-/*  public : inline element_type * firstObject (void) const {
-    return (element_type *) internalFirstObject () ;
+/*  public : inline cElement * firstObject (void) const {
+    return (cElement *) internalFirstObject () ;
   }*/
 //--- Get last object
-/*  public : inline element_type * lastObject (void) const {
-    return (element_type *) internalLastObject () ;
+/*  public : inline cElement * lastObject (void) const {
+    return (cElement *) internalLastObject () ;
   }*/
 //--- Operator () used for method call
   public : inline const GGS__list_programComponentRoot * operator () (UNUSED_LOCATION_ARGS) const { return this ;}

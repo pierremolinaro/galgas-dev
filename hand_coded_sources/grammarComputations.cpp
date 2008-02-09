@@ -156,7 +156,7 @@ generateClassRegistering (AC_OutputStream & inCppfile,
                           const GGS_stringset & inClassesNamesSet) {
   const sint32 classCount = inClassesNamesSet.count () ;
   inCppfile << "// classCount : " << classCount << '\n' ;
-  GGS_stringset::element_type * currentClass = inClassesNamesSet.firstObject () ;
+  GGS_stringset::cElement * currentClass = inClassesNamesSet.firstObject () ;
   sint32 index = 0 ;
   while (currentClass != NULL) {
     macroValidPointer (currentClass) ;
@@ -182,7 +182,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_L_syntaxComponents_ForGrammar::element_type * component = inSyntaxComponentsList.firstObject () ;
+  GGS_L_syntaxComponents_ForGrammar::cElement * component = inSyntaxComponentsList.firstObject () ;
   while (component != NULL) {
     macroValidPointer (component) ;
     generatedZone2 << "#include \"" << component->mSyntaxComponentName << ".h\"\n" ;
@@ -210,10 +210,10 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   }
   generatedZone3 << " {\n" ;
 //--- declaration des non-terminaux de la grammaire d'origine
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
+  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       generatedZone3 << "  public : virtual " ;
       if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
@@ -224,7 +224,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
       }
       generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                      << " (" << inLexiqueName << " &" ;
-      GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
         generatedZone3 << ",\n                                " ;
@@ -290,7 +290,7 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
                             cInfo & inInfo,
                             C_Compiler & inLexique,
                             bool & ioOk) {
-  GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
+  GGS_L_ruleSyntaxSignature::cElement * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
     currentInstruction->mInstruction (HERE)->fixInfos (inInfo, inLexique, ioOk) ;
@@ -305,7 +305,7 @@ void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
+  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mRepeatList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     fixInfoForInstructionsList (currentBranch->mInstructionList,
@@ -322,7 +322,7 @@ void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
+  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mSelectList.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
     fixInfoForInstructionsList (currentBranch->mInstructionList,
@@ -915,10 +915,10 @@ routine_analyzeGrammar (C_Compiler & inLexique,
     cInfo symbolsInfo ;
     symbolsInfo.mTerminalSymbolMap = ioTerminalSymbolMap ;
     symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
-    GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
+    GGS_L_syntaxComponents_ForGrammar::cElement * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
     while (currentSyntaxComponent != NULL) {
       macroValidPointer (currentSyntaxComponent) ;
-      GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
+      GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
       while (currentRule != NULL) {
         macroValidPointer (currentRule) ;
         GGS_luint index ;

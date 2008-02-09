@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate list declaration and implementation                             *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -48,7 +48,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_list::cListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
     attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
@@ -116,7 +116,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
              "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
-             "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n\n"
+             "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
 
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
@@ -124,7 +124,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'listWithValue'
              "  public : static GGS_" << aNomListe << " constructor_listWithValue (C_Compiler & _inLexique" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -156,14 +156,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Get first inserted object
              "//--- Get first object\n"
-             "  public : inline element_type * firstObject (void) const {\n"
-             "    return (element_type *) internalFirstObject () ;\n"
+             "  public : inline cElement * firstObject (void) const {\n"
+             "    return (cElement *) internalFirstObject () ;\n"
              "  }\n"
 
 //--- Get last inserted object
              "//--- Get last object\n"
-             "  public : inline element_type * lastObject (void) const {\n"
-             "    return (element_type *) internalLastObject () ;\n"
+             "  public : inline cElement * lastObject (void) const {\n"
+             "    return (cElement *) internalLastObject () ;\n"
              "  }\n"
 
 //--- operators () for method call
@@ -310,8 +310,21 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & _inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
-             "                      const sint32 inIndentation = 0) const ;\n" ;
+             "                      const sint32 inIndentation = 0) const ;\n\n" ;
 
+//--- Enumerator declaration
+  inHfile << "//--------------------------------- List Enumerator\n"
+             "  public : class cEnumerator : public cAbstractListEnumerator {\n"
+             "  //--- Constructor\n"
+             "    public : inline cEnumerator (const GGS_" << aNomListe << " & inList,\n"
+             "                                 const bool inAscending) :\n"
+             "    cAbstractListEnumerator (inList, inAscending) {\n"
+             "    }\n"
+             "  //--- Iterator method\n"
+             "    public : inline cElement * nextObject (void) {\n"
+             "      return (cElement *) internalNextObject () ;\n"
+             "    }\n"
+             "  } ;\n\n" ;
 //--- End of list class declaration
  inHfile << "} ;\n\n" ;
 }
@@ -343,7 +356,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
                "elementOf_GGS_" << aNomListe << " (" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -450,8 +463,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                    "
                "COMMA_LOCATION_ARGS) {\n"
-               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
-               "  macroMyNew (nouvelElement, element_type (" ;
+               "  cElement * nouvelElement = (cElement *) NULL ;\n" 
+               "  macroMyNew (nouvelElement, cElement (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -486,8 +499,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                    "
                "COMMA_LOCATION_ARGS) {\n"
-               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
-               "  macroMyNew (nouvelElement, element_type (" ;
+               "  cElement * nouvelElement = (cElement *) NULL ;\n" 
+               "  macroMyNew (nouvelElement, cElement (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -633,7 +646,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
-               "    element_type * _p = firstObject () ;\n"
+               "    cElement * _p = firstObject () ;\n"
                "    _alloc () ;\n"
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
@@ -708,7 +721,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "                          const sint32 inCount) const {\n"
                "  ioList._alloc () ;\n"
                "  if (inCount > 0) {\n"
-               "    element_type * _p = firstObject () ;\n"
+               "    cElement * _p = firstObject () ;\n"
                "    for (sint32 i=0 ; i<inFirstIndex ; i++) {\n"
                "      macroValidPointer (_p) ;\n"
                "      _p = _p->nextObject () ;\n"
@@ -794,7 +807,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n              "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -840,7 +853,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -885,7 +898,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -931,7 +944,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -980,7 +993,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_sortedlist::cSortedListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * attributCourant = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
     attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
@@ -1049,7 +1062,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
              "class GGS_" << aNomListe << " : public AC_galgas_sortedlist {\n"
-             "  public : typedef elementOf_GGS_" << aNomListe << " element_type ;\n"
+             "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n"
 //--- Constructors and assignment operator declaration
              "//--- Default Constructor\n"
              "  public : GGS_" << aNomListe << " (void) ;\n"
@@ -1065,7 +1078,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'sortedListWithValue'
              "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (C_Compiler & _inLexique" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -1081,14 +1094,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Get smallest object
              "//--- Get smallest object\n"
-             "  public : inline element_type * firstObject (void) const {\n"
-             "    return (element_type *) internalSmallestObject () ;\n"
+             "  public : inline cElement * firstObject (void) const {\n"
+             "    return (cElement *) internalSmallestObject () ;\n"
              "  }\n"
 
 //--- Get greatest object
              "//--- Get greatest object\n"
-             "  public : inline element_type * lastObject (void) const {\n"
-             "    return (element_type *) internalGreatestObject () ;\n"
+             "  public : inline cElement * lastObject (void) const {\n"
+             "    return (cElement *) internalGreatestObject () ;\n"
              "  }\n"
 
 //--- operators () for method call
@@ -1204,6 +1217,19 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 
+//--- Enumerator declaration
+             "//--------------------------------- Sorted List Enumerator\n"
+             "  public : class cEnumerator : public cAbstractSortedListEnumerator {\n"
+             "  //--- Constructor\n"
+             "    public : inline cEnumerator (const GGS_" << aNomListe << " & inList,\n"
+             "                                 const bool inAscending) :\n"
+             "    cAbstractSortedListEnumerator (inList, inAscending) {\n"
+             "    }\n"
+             "  //--- Iterator method\n"
+             "    public : inline cElement * nextObject (void) {\n"
+             "      return (cElement *) internalNextObject () ;\n"
+             "    }\n"
+             "  } ;\n\n"
 //--- End of list class declaration
              "} ;\n\n" ;
 }
@@ -1235,7 +1261,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
                "elementOf_GGS_" << aNomListe << " (" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -1293,7 +1319,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "compareForSorting (const cSortedListElement * inOperand) const {\n"
                "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
   
-  GGS_EXsortDescriptorList::element_type * sortAttribute = mSortDescriptorList.firstObject () ;
+  GGS_EXsortDescriptorList::cElement * sortAttribute = mSortDescriptorList.firstObject () ;
   if (sortAttribute != NULL) {
     macroValidPointer (sortAttribute) ;
     inCppFile << "  sint32 result = "
@@ -1378,8 +1404,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  element_type * nouvelElement = (element_type *) NULL ;\n" 
-               "  macroMyNew (nouvelElement, element_type (" ;
+               "  cElement * nouvelElement = (cElement *) NULL ;\n" 
+               "  macroMyNew (nouvelElement, cElement (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1477,7 +1503,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
-               "    element_type * _p = firstObject () ;\n"
+               "    cElement * _p = firstObject () ;\n"
                "    _alloc () ;\n"
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
@@ -1566,7 +1592,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -1612,7 +1638,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -1657,7 +1683,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
@@ -1703,7 +1729,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
-               "  element_type * _p = NULL ;\n"
+               "  cElement * _p = NULL ;\n"
                "  if (_isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"

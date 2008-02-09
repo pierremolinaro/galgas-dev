@@ -193,7 +193,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
       }else{
         ioCppFile << inTargetVariableCppName << ".writeString (" ;
       }
-      GGS_stringlist::element_type * currentString = p2->mLiteralStringList.firstObject () ;
+      GGS_stringlist::cElement * currentString = p2->mLiteralStringList.firstObject () ;
       while (currentString != NULL) {
         macroValidPointer (currentString) ;
         if (first) {

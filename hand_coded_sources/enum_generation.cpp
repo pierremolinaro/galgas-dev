@@ -56,7 +56,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
-  GGS_enumConstantMap::element_type * constant = mConstantMap.firstObject () ;
+  GGS_enumConstantMap::cElement * constant = mConstantMap.firstObject () ;
   while (constant != NULL) {
     macroValidPointer (constant) ;
     inHfile << ", enum_" << constant->mKey ;
@@ -91,7 +91,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Messages
   inHfile << "//--- Readers\n" ;
-  GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
+  GGS_typeEnumMessageMap::cElement * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     macroValidPointer (m) ;
     inHfile << "  public : GGS_string reader_" << m->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
@@ -101,11 +101,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Modifiers
   inHfile << "//--- Modifiers\n" ;
-  GGS_enumModifierMap::element_type * modifier = mEnumActionMap.firstObject () ;
+  GGS_enumModifierMap::cElement * modifier = mEnumActionMap.firstObject () ;
   while (modifier != NULL) {
     macroValidPointer (modifier) ;
     inHfile << "  public : void modifier_" << modifier->mKey << " (C_Compiler & _inLexique" ;
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = modifier->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = modifier->mInfo.mArgumentTypeAndNameList.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
@@ -120,11 +120,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Methods
   inHfile << "//--- Methods\n" ;
-  GGS_enumMethodMap::element_type * method = mMethodMap.firstObject () ;
+  GGS_enumMethodMap::cElement * method = mMethodMap.firstObject () ;
   while (method != NULL) {
     macroValidPointer (method) ;
     inHfile << "  public : void method_" << method->mKey << " (C_Compiler & _inLexique" ;
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inHfile << ",\n                                " ;
@@ -238,7 +238,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Readers
-  GGS_typeEnumMessageMap::element_type * m = mEnumMessageMap.firstObject () ;
+  GGS_typeEnumMessageMap::cElement * m = mEnumMessageMap.firstObject () ;
   while (m != NULL) {
     macroValidPointer (m) ;
     inCppFile.writeCppHyphenLineComment () ;
@@ -246,7 +246,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "reader_" << m->mKey << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
-    GGS_L_lstringList::element_type * e = m->mInfo.mMessageStringList.firstObject () ;
+    GGS_L_lstringList::cElement * e = m->mInfo.mMessageStringList.firstObject () ;
     while (e != NULL) {
       macroValidPointer (e) ;
       inCppFile << ",\n    " ;
@@ -260,10 +260,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
 
 //--- Modifiers
-  GGS_enumModifierMap::element_type * modifier = mEnumActionMap.firstObject () ;
+  GGS_enumModifierMap::cElement * modifier = mEnumActionMap.firstObject () ;
   while (modifier != NULL) {
     macroValidPointer (modifier) ;
-    GGS_enumModifierDefinitionList::element_type * definition = modifier->mInfo.mActionDefinitionList.firstObject ()  ;
+    GGS_enumModifierDefinitionList::cElement * definition = modifier->mInfo.mActionDefinitionList.firstObject ()  ;
     bool lexiqueIsUsed = false ;
     while ((definition != NULL) && ! lexiqueIsUsed) {
       macroValidPointer (definition) ;
@@ -276,7 +276,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (lexiqueIsUsed) {
       inCppFile << " _inLexique" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = modifier->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = modifier->mInfo.mArgumentTypeAndNameList.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inCppFile << ",\n                                " ;
@@ -327,10 +327,10 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
 
 //--- Methods
-  GGS_enumMethodMap::element_type * method = mMethodMap.firstObject () ;
+  GGS_enumMethodMap::cElement * method = mMethodMap.firstObject () ;
   while (method != NULL) {
     macroValidPointer (method) ;
-    GGS_enumMethodDefinitionList::element_type * definition = method->mInfo.mActionDefinitionList.firstObject ()  ;
+    GGS_enumMethodDefinitionList::cElement * definition = method->mInfo.mActionDefinitionList.firstObject ()  ;
     bool lexiqueIsUsed = false ;
     while ((definition != NULL) && ! lexiqueIsUsed) {
       macroValidPointer (definition) ;
@@ -343,7 +343,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (lexiqueIsUsed) {
       inCppFile << " _inLexique" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::element_type * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
     while (currentArgument != NULL) {
       macroValidPointer (currentArgument) ;
       inCppFile << ",\n                                " ;
@@ -402,7 +402,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;
-  GGS_enumConstantMap::element_type * constant = mConstantMap.firstObject () ;
+  GGS_enumConstantMap::cElement * constant = mConstantMap.firstObject () ;
   while (constant != NULL) {
     macroValidPointer (constant) ;
     inCppFile << "  case enum_" << constant->mKey << ":\n"

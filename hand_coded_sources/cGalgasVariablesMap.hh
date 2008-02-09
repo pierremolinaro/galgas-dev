@@ -43,8 +43,8 @@ mKey (clef),
 mEntryIndex (numeroElement),
 champNature (nature),
 mIsDeclaredUnused (inIsDeclaredUnused) {
-  mInfPtr = (element_type *) NULL ;
-  mSupPtr = (element_type *) NULL ;
+  mInfPtr = (cElement *) NULL ;
+  mSupPtr = (cElement *) NULL ;
   mInfo = inInfo ;
   champUtilise = inUsed ;
   champEtat  = etat ;
@@ -57,8 +57,8 @@ mIsDeclaredUnused (inIsDeclaredUnused) {
 template <typename INFO>
 cElementTableControlePhase <INFO>::
 ~cElementTableControlePhase (void) {
-  macroMyDelete (mInfPtr, element_type) ;
-  macroMyDelete (mSupPtr, element_type) ;
+  macroMyDelete (mInfPtr, cElement) ;
+  macroMyDelete (mSupPtr, cElement) ;
   macroVoidPointer (champChainageEtat) ;
 }
 
@@ -68,7 +68,7 @@ template <typename INFO>
 cGalgasVariablesMap <INFO>::
 cGalgasVariablesMap (void) {
   aListeSurcharges = (typeSurchargeTable *) NULL ;
-  _mRoot = (element_type *) NULL ;
+  _mRoot = (cElement *) NULL ;
   mListLength = 0 ;
 }
 
@@ -93,7 +93,7 @@ void cGalgasVariablesMap <INFO>::build (void) {
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::_drop_operation (void) {
   mListLength = 0 ;
-  macroMyDelete (_mRoot, element_type) ;
+  macroMyDelete (_mRoot, cElement) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -106,7 +106,7 @@ reader_hasKey (C_Compiler & /* inLexique */,
   const bool allBuilt = _isBuilt () && inKey._isBuilt() ;
   bool found = false ;
   if (allBuilt) {
-    element_type * current = _mRoot ;
+    cElement * current = _mRoot ;
     while ((current != NULL) && ! found) {
       macroValidPointer (current) ;
       const sint32 comparaison = current->mKey.compareStringByLength (inKey) ;
@@ -144,16 +144,16 @@ cGalgasVariablesMap (const cGalgasVariablesMap <INFO> & inOperand) {
     exit (1) ;
   }
   aListeSurcharges = (typeSurchargeTable *) NULL ;
-  _mRoot = (element_type *) NULL ;
+  _mRoot = (cElement *) NULL ;
   mListLength = 0 ;
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::rotateLeft (element_type * & a) {
+void cGalgasVariablesMap <INFO>::rotateLeft (cElement * & a) {
 // faire la rotation 
-  element_type * b = a->mSupPtr ;
+  cElement * b = a->mSupPtr ;
   a->mSupPtr = b->mInfPtr ;
   b->mInfPtr = a;
 
@@ -174,9 +174,9 @@ void cGalgasVariablesMap <INFO>::rotateLeft (element_type * & a) {
 //---------------------------------------------------------------------
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::rotateRight (element_type * & a) {
+void cGalgasVariablesMap <INFO>::rotateRight (cElement * & a) {
 // faire la rotation 
-  element_type * b = a->mInfPtr ;
+  cElement * b = a->mInfPtr ;
   a->mInfPtr = b->mSupPtr ;
   b->mSupPtr = a ;
  
@@ -443,7 +443,7 @@ insertKey (C_Compiler & inLexique,
       bool found = false ;
       while ((surchargeCourante != NULL) && ! found) {
         macroValidPointer (surchargeCourante) ;
-        element_type * resultat = surchargeCourante->champTable ;
+        cElement * resultat = surchargeCourante->champTable ;
         while ((resultat != NULL) && ! found) {
           macroValidPointer (resultat) ;
           const sint32 comparaison = resultat->mKey.compareStringByLength (inKey) ;
@@ -488,10 +488,10 @@ internalRecursiveInsert (bool & insertionOk,
                 const bool inIsDeclaredUnused,
                 const bool inUsed,
                 const GGS_lstring & clef,
-                element_type * & racine,
+                cElement * & racine,
                 bool & extension) {
   if (racine == NULL) {
-    macroMyNew (racine, element_type (inInfo, nature, etat, clef, mListLength, inIsDeclaredUnused, inUsed)) ;
+    macroMyNew (racine, cElement (inInfo, nature, etat, clef, mListLength, inIsDeclaredUnused, inUsed)) ;
     mListLength ++ ; 
     insertionOk = true ;
     extension = true ;
@@ -548,7 +548,7 @@ internalRecursiveInsert (bool & insertionOk,
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
 chercherInterne (C_Compiler & inLexique,
-                 element_type * & resultat,
+                 cElement * & resultat,
                  const GGS_lstring & clef,
                  const char * messageErreurRecherche
                  COMMA_LOCATION_ARGS) {
@@ -606,7 +606,7 @@ searchForReadOnlyAccess (C_Compiler & inLexique,
                          const GGS_location & inLocation,
                          const char * messageErreurPhase
                          COMMA_LOCATION_ARGS) {
-  element_type * resultat = (element_type *) NULL ;
+  cElement * resultat = (cElement *) NULL ;
   const char * messageErreurRecherche = "the '%' variable is not declared" ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
@@ -630,7 +630,7 @@ searchForDestructiveReadAccess (C_Compiler & inLexique,
                                 const char * messageErreurPhase
                                 COMMA_LOCATION_ARGS) {
   const char * messageErreurRecherche = "the '%' variable is not declared" ;
-  element_type * resultat = (element_type *) NULL ;
+  cElement * resultat = (cElement *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
@@ -655,7 +655,7 @@ searchForReadWriteAccess (C_Compiler & inLexique,
                           const char * messageErreurPhase
                           COMMA_LOCATION_ARGS) {
   const char * messageErreurRecherche = "the '%' variable is not declared" ;
-  element_type * resultat = (element_type *) NULL ;
+  cElement * resultat = (cElement *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
@@ -679,7 +679,7 @@ searchForWriteAccess (C_Compiler & inLexique,
                       const char * messageErreurPhase
                       COMMA_LOCATION_ARGS) {
   const char * messageErreurRecherche = "the '%' variable is not declared" ;
-  element_type * resultat = (element_type *) NULL ;
+  cElement * resultat = (cElement *) NULL ;
   chercherInterne (inLexique, resultat, clef, messageErreurRecherche COMMA_THERE) ;
   if (resultat != NULL) { // Symbole trouve
     macroValidPointer (resultat) ;
@@ -719,7 +719,7 @@ epilogue_verifyVariableUsing (C_Compiler & inLexique,
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
 verificationRecursiveConsommation (C_Compiler & inLexique,
-                                   element_type * element,
+                                   cElement * element,
                                    const GGS_location & positionErreur
                                    COMMA_LOCATION_ARGS) {
   if (element != NULL) {
@@ -801,7 +801,7 @@ verificationRecursiveConsommation (C_Compiler & inLexique,
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-remettreVariablesDansEtatInitial (element_type * element) {
+remettreVariablesDansEtatInitial (cElement * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     remettreVariablesDansEtatInitial (element->mInfPtr) ;
@@ -842,7 +842,7 @@ remettreVariablesDansEtatInitial (element_type * element) {
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
-surchargerEtatVariables (element_type * element) {
+surchargerEtatVariables (cElement * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     surchargerEtatVariables (element->mInfPtr) ;
@@ -856,7 +856,7 @@ surchargerEtatVariables (element_type * element) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::dechargerEtatVariables (element_type * element) {
+void cGalgasVariablesMap <INFO>::dechargerEtatVariables (cElement * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     dechargerEtatVariables (element->mInfPtr) ;
@@ -872,7 +872,7 @@ void cGalgasVariablesMap <INFO>::dechargerEtatVariables (element_type * element)
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::initialiserChampEtatApres (element_type * element) {
+void cGalgasVariablesMap <INFO>::initialiserChampEtatApres (cElement * element) {
   if (element != NULL) {
     macroValidPointer (element) ;
     initialiserChampEtatApres (element->mInfPtr) ;
@@ -888,7 +888,7 @@ void cGalgasVariablesMap <INFO>::initialiserChampEtatApres (element_type * eleme
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::
 verifierChampEtatApres (C_Compiler & inLexique,
-                        element_type * element,
+                        cElement * element,
                         const GGS_location & positionErreur,
                         const char * message1,
                         const char * message2) {
@@ -915,7 +915,7 @@ void cGalgasVariablesMap <INFO>::prologue_testBloc (C_Compiler & COMMA_UNUSED_LO
   macroMyNew (tempo, typeSurchargeTable) ;
   tempo->mNextItem = aListeSurcharges ;
   tempo->champTable = _mRoot ;
-  _mRoot = (element_type *) NULL ;
+  _mRoot = (cElement *) NULL ;
   aListeSurcharges = tempo ;
 
   typeSurchargeTable * surchargeCourante = aListeSurcharges ;
@@ -959,7 +959,7 @@ epilogue_testPart (C_Compiler & inLexique,
                    const GGS_location & positionErreur
                    COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, _mRoot, positionErreur COMMA_THERE) ;
-  macroMyDelete (_mRoot, element_type) ;
+  macroMyDelete (_mRoot, cElement) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;
@@ -1018,7 +1018,7 @@ epilogue_repeatPart (C_Compiler & inLexique,
                      const GGS_location & positionErreur
                      COMMA_LOCATION_ARGS) {
   verificationRecursiveConsommation (inLexique, _mRoot, positionErreur COMMA_THERE) ;
-  macroMyDelete (_mRoot, element_type) ;
+  macroMyDelete (_mRoot, cElement) ;
 //--- Verification de l'etat des variables
   macroValidPointer (aListeSurcharges) ;
   aListeSurcharges->champCompteur ++ ;

@@ -629,8 +629,8 @@ appendForDescription (C_Compiler & _inLexique,
 void GGS_typeListeBranchesInstructions::
 _internalAppendValues (const GGS_typeInstructionList & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
 }
@@ -640,8 +640,8 @@ _internalAppendValues (const GGS_typeInstructionList & argument_0
 void GGS_typeListeBranchesInstructions::
 _internalPrependValues (const GGS_typeInstructionList & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
 }
@@ -700,7 +700,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_typeListeBranchesInstructions::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -740,7 +740,7 @@ internalSubListWithRange (GGS_typeListeBranchesInstructions & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -806,7 +806,7 @@ void GGS_typeListeBranchesInstructions::
 method_first (C_Compiler & _inLexique,
               GGS_typeInstructionList & _out_0
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -826,7 +826,7 @@ void GGS_typeListeBranchesInstructions::
 method_last (C_Compiler & _inLexique,
              GGS_typeInstructionList & _out_0
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -846,7 +846,7 @@ void GGS_typeListeBranchesInstructions::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_typeInstructionList & _out_0
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -868,7 +868,7 @@ void GGS_typeListeBranchesInstructions::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_typeInstructionList & _out_0
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1274,8 +1274,8 @@ void GGS_L_parse_rewind_signature_list::
 _internalAppendValues (const GGS_L_ruleSyntaxSignature & argument_0,
                     const GGS_location & argument_1
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -1287,8 +1287,8 @@ void GGS_L_parse_rewind_signature_list::
 _internalPrependValues (const GGS_L_ruleSyntaxSignature & argument_0,
                     const GGS_location & argument_1
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -1353,7 +1353,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_L_parse_rewind_signature_list::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -1395,7 +1395,7 @@ internalSubListWithRange (GGS_L_parse_rewind_signature_list & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -1462,7 +1462,7 @@ method_first (C_Compiler & _inLexique,
               GGS_L_ruleSyntaxSignature & _out_0,
               GGS_location & _out_1
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1485,7 +1485,7 @@ method_last (C_Compiler & _inLexique,
              GGS_L_ruleSyntaxSignature & _out_0,
              GGS_location & _out_1
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -1508,7 +1508,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_L_ruleSyntaxSignature & _out_0,
                  GGS_location & _out_1
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -1533,7 +1533,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_L_ruleSyntaxSignature & _out_0,
                 GGS_location & _out_1
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -2349,7 +2349,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_typeAltProductionsMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_typeAltProductionsMap * info = (e_typeAltProductionsMap *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -2357,9 +2357,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_typeAltProductionsMap::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_typeAltProductionsMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_typeAltProductionsMap * info = (e_typeAltProductionsMap *) inInfo ;
   p->mInfo = * info ;
 }
@@ -2403,8 +2403,8 @@ _operator_isNotEqual (const GGS_typeAltProductionsMap & inOperand) const {
 
 void GGS_typeAltProductionsMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -2470,11 +2470,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_entityPropertyMap   & outParameter6,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -2602,7 +2602,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @typeAltProductionsMap " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;

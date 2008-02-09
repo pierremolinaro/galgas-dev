@@ -449,7 +449,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                     "#define NONTERMINAL(nt) ((-nt)-1)\n"
                     "#define END_PRODUCTION  (0)\n\n"
                     "static const sint16 gProductions [] = {\n" ;
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
+  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   sint16 productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal != NULL) {
@@ -554,7 +554,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
     macroValidPointer (nonTerminal) ;
     generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal->mID COMMA_HERE) >= 0 ;
-    GGS_M_nonterminalSymbolAltsForGrammar::element_type * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
+    GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       macroValidPointer (currentAltForNonTerminal) ;
       macroValidPointer (currentAltForNonTerminal) ;
@@ -568,7 +568,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                      << "::\n"
                      << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                      << " (" << inLexiqueName << " & " << (existeProduction ? "_inLexique" : "") ;
-      GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
       sint16 numeroParametre = 1 ;
       while (parametre != NULL) {
         macroValidPointer (parametre) ;
@@ -612,7 +612,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "const GGS_lstring & _inFileName" ;
-        GGS_L_signature::element_type * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;

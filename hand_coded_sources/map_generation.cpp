@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate map declaration and implementation                              *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -74,13 +74,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    return this ;\n"
              "  }\n\n"
              "//--- Search method(s)\n" ;
-  GGS_mapIndexSearchReaderMap::element_type * currentMethod = mMapIndexSearchReaderMap.firstObject () ;
+  GGS_mapIndexSearchReaderMap::cElement * currentMethod = mMapIndexSearchReaderMap.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "  public : void\n"
                "  method_" << currentMethod->mKey << " (C_Compiler & inLexique,\n"
                "                     GGS_lstring & outKey" ;
-    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mMapAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mMapAttributesList.firstObject () ;
     sint32 attributeIndex = 1 ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
@@ -181,14 +181,14 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Search methods
-  GGS_mapIndexSearchReaderMap::element_type * currentMethod = mMapIndexSearchReaderMap.firstObject () ;
+  GGS_mapIndexSearchReaderMap::cElement * currentMethod = mMapIndexSearchReaderMap.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
                  "method_" << currentMethod->mKey << " (C_Compiler & inLexique,\n"
                  "                   GGS_lstring & outKey" ;
-    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mMapAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mMapAttributesList.firstObject () ;
     sint32 attributeIndex = 1 ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
@@ -260,7 +260,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "class e_" << aNomTable << " {\n" ;
 
 //--- declarer les attributs
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
@@ -307,10 +307,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class elementOf_GGS_" << aNomTable << " ;\n\n" ;
   inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
   inHfile << "//--- Element Class\n"
-             "  public : typedef elementOf_GGS_" << aNomTable << " element_type ;\n\n"
+             "  public : typedef elementOf_GGS_" << aNomTable << " cElement ;\n\n"
              "//--- Get pointers\n"
-             "  public : inline element_type * firstObject (void) const { return (element_type *) internalFirstObject () ; }\n"
-             "  public : inline element_type * lastObject (void) const { return (element_type *) internalLastObject () ; }\n\n"
+             "  public : inline cElement * firstObject (void) const { return (cElement *) internalFirstObject () ; }\n"
+             "  public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }\n\n"
              "//--- Comparison methods\n"
              "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & inOperand) const ;\n"
              "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & inOperand) const ;\n\n"
@@ -332,7 +332,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n\n" ;
 
 //--- Declaring remove methods
-  GGS_insertOrSearchMethodList::element_type * currentMethod = mRemoveMethodList.firstObject () ;
+  GGS_insertOrSearchMethodList::cElement * currentMethod = mRemoveMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//--- '" << currentMethod->mMethodName << "' Remove Modifier\n" ;
@@ -343,7 +343,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
@@ -368,7 +368,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::element_type * currentAttribute = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
@@ -393,7 +393,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile <<  ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -412,7 +412,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  protected : void _removeElement (C_Compiler & inLexique,\n"
                "                                   const char * inErrorMessage,\n"
                "                                   const GGS_lstring & inKey,\n" ;
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -430,7 +430,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : void _insertElement (C_Compiler & inLexique,\n"
              "                                   const char * inErrorMessage,\n"
              "                                   const GGS_lstring & inKey,\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
@@ -470,6 +470,19 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Generate 'overriddenMap' reader declaration
               "  public : GGS_" << aNomTable << " reader_overriddenMap (C_Compiler & inLexique\n"
               "                                            COMMA_LOCATION_ARGS) const ;\n"
+//--- Enumerator declaration
+             "//--------------------------------- Map Enumerator\n"
+             "  public : class cEnumerator : public cAbstractMapEnumerator {\n"
+             "  //--- Constructor\n"
+             "    public : inline cEnumerator (const GGS_" << aNomTable << " & inMap,\n"
+             "                                 const bool inAscending) :\n"
+             "    cAbstractMapEnumerator (inMap, inAscending) {\n"
+             "    }\n"
+             "  //--- Iterator method\n"
+             "    public : inline cElement * nextObject (void) {\n"
+             "      return (cElement *) internalNextObject () ;\n"
+             "    }\n"
+             "  } ;\n\n"
 //--- End of class Declaration
               "} ;\n\n" ;
 }
@@ -517,7 +530,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  ioString << \"\\n\" ;\n"
                "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  ioString << \"|-key \" << inElementIndex << \":\" << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "  ioString << \"\\n\" ;\n"
@@ -561,7 +574,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  AC_galgas_map_element * p = NULL ;\n"
                "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
-               "  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;\n"
+               "  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;\n"
                "  return p ;\n"
                "}\n\n" ;
 
@@ -569,9 +582,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
                "assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {\n"
-               "  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
+               "  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
-               "  element_type * p = (element_type *) inPtr ;\n"
+               "  cElement * p = (cElement *) inPtr ;\n"
                "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
                "  p->mInfo = * info ;\n"
                "}\n\n" ;
@@ -614,8 +627,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomTable << "::\n"
                "internalInsertForDuplication (AC_galgas_map_element * inPtr) {\n"
-               "  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
-               "  element_type * p = (element_type *) inPtr ;\n"
+               "  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
+               "  cElement * p = (cElement *) inPtr ;\n"
                "  sint32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
                "  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;\n"
@@ -657,7 +670,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       current = current->nextObject () ;
     }
     inCppFile << "    }else{\n"
-                 "      element_type * _p = (element_type *) removedElement ;\n"
+                 "      cElement * _p = (cElement *) removedElement ;\n"
                  "      elementID = _p->mID ;\n" ;
     current = mNonExternAttributesList.firstObject () ;
     attributeIndex = 0 ;
@@ -672,7 +685,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "  if (outIndex != NULL) {\n"
                  "    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;\n"
                  "  }\n"
-                 "  macroMyDelete (removedElement, element_type) ;\n"
+                 "  macroMyDelete (removedElement, cElement) ;\n"
                  "}\n\n" ;
   }
 
@@ -744,11 +757,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) const {\n"
-               "  element_type * node = NULL  ;\n"
+               "  cElement * node = NULL  ;\n"
                "  if (_isBuilt () && inKey._isBuilt ()) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
-               "    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
-               "    node = (element_type *) p ;\n"
+               "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
+               "    node = (cElement *) p ;\n"
                "    if (node == NULL) {\n"
                "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n"
                "    }\n"
@@ -776,7 +789,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Implement search routines
-  GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
+  GGS_insertOrSearchMethodList::cElement * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
@@ -788,7 +801,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -830,7 +843,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -872,7 +885,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -964,7 +977,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  s << \"<map @" << aNomTable << " \" ;\n"
                "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
-               "    element_type * p = firstObject () ;\n"
+               "    cElement * p = firstObject () ;\n"
                "    sint32 elementID = 0 ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
@@ -1013,7 +1026,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class e_" << aNomTable << " {\n" ;
 
 //--- declarer les attributs
-  GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
@@ -1042,7 +1055,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
 //--- Declaring search methods
-  GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
+  GGS_insertOrSearchMethodList::cElement * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inHfile << "//--- '" << currentMethod->mMethodName << "' search method\n"
@@ -1050,7 +1063,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << currentMethod->mMethodName
             << " (C_Compiler & inLexique"
                ",\n                                const GGS_lstring & inKey" ;
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -1089,7 +1102,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << currentMethod->mMethodName
             << " (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -1168,7 +1181,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Implementing search methods
-  GGS_insertOrSearchMethodList::element_type * currentMethod = mSearchMethodList.firstObject () ;
+  GGS_insertOrSearchMethodList::cElement * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
@@ -1176,7 +1189,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << currentMethod->mMethodName
               << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -1188,7 +1201,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
   //--- Inserer les messages d'erreur
-    inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
+    inCppFile << "  GGS_" << aNomTable << "::cElement * info = "
               << currentMethod->mMethodName << " (inLexique, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << " COMMA_THERE) ;\n"
@@ -1229,7 +1242,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
       current = current->nextObject () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
-    inCppFile << "  GGS_" << aNomTable << "::element_type * info = "
+    inCppFile << "  GGS_" << aNomTable << "::cElement * info = "
               << currentMethod->mMethodName << " (inLexique, inKey, inKey, " ;
     inCppFile.writeCstringConstant (currentMethod->mErrorMessage) ;
     inCppFile << " COMMA_THERE) ;\n"
@@ -1267,7 +1280,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << currentMethod->mMethodName
               << " (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
-    GGS_typeListeAttributsSemantiques::element_type * current = mNonExternAttributesList.firstObject () ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;

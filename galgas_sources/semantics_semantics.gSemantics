@@ -1012,6 +1012,7 @@ list @foreachEnumerationList  {
   @typeExpression mSourceExpression ;
   @location mLocationOffset ;
   @string mCppTypeName ;
+  @bool mAscending ;
 }
 
 #---------------------------------------------------------------------------*

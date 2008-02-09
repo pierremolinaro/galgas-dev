@@ -87,7 +87,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_typeLexicalAttributesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_typeLexicalAttributesMap * info = (e_typeLexicalAttributesMap *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -95,9 +95,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_typeLexicalAttributesMap::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_typeLexicalAttributesMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_typeLexicalAttributesMap * info = (e_typeLexicalAttributesMap *) inInfo ;
   p->mInfo = * info ;
 }
@@ -141,8 +141,8 @@ _operator_isNotEqual (const GGS_typeLexicalAttributesMap & inOperand) const {
 
 void GGS_typeLexicalAttributesMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -184,11 +184,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_AC_galgasType   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -280,7 +280,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @typeLexicalAttributesMap " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -338,7 +338,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_tagMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_tagMap * info = (e_tagMap *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -346,9 +346,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_tagMap::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_tagMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_tagMap * info = (e_tagMap *) inInfo ;
   p->mInfo = * info ;
 }
@@ -392,8 +392,8 @@ _operator_isNotEqual (const GGS_tagMap & inOperand) const {
 
 void GGS_tagMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -431,11 +431,11 @@ _searchElement (C_Compiler & inLexique,
                const GGS_lstring & inKey,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -526,7 +526,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @tagMap " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -589,7 +589,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_lexicalTypeMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_lexicalTypeMap * info = (e_lexicalTypeMap *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -597,9 +597,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_lexicalTypeMap::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_lexicalTypeMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_lexicalTypeMap * info = (e_lexicalTypeMap *) inInfo ;
   p->mInfo = * info ;
 }
@@ -643,8 +643,8 @@ _operator_isNotEqual (const GGS_lexicalTypeMap & inOperand) const {
 
 void GGS_lexicalTypeMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -686,11 +686,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_AC_galgasType   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -782,7 +782,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @lexicalTypeMap " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -845,7 +845,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_typeTableMessagesErreurs *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_typeTableMessagesErreurs * info = (e_typeTableMessagesErreurs *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -853,9 +853,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_typeTableMessagesErreurs::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_typeTableMessagesErreurs *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_typeTableMessagesErreurs * info = (e_typeTableMessagesErreurs *) inInfo ;
   p->mInfo = * info ;
 }
@@ -899,8 +899,8 @@ _operator_isNotEqual (const GGS_typeTableMessagesErreurs & inOperand) const {
 
 void GGS_typeTableMessagesErreurs::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -942,11 +942,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_lstring   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -1053,7 +1053,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @typeTableMessagesErreurs " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -1116,7 +1116,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_M_styles *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_M_styles * info = (e_M_styles *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -1124,9 +1124,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_M_styles::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_M_styles *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_M_styles * info = (e_M_styles *) inInfo ;
   p->mInfo = * info ;
 }
@@ -1170,8 +1170,8 @@ _operator_isNotEqual (const GGS_M_styles & inOperand) const {
 
 void GGS_M_styles::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -1213,11 +1213,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_lstring   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -1324,7 +1324,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @M_styles " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -1395,7 +1395,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_typeTableDefinitionTerminaux *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_typeTableDefinitionTerminaux * info = (e_typeTableDefinitionTerminaux *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -1403,9 +1403,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_typeTableDefinitionTerminaux::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_typeTableDefinitionTerminaux *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_typeTableDefinitionTerminaux * info = (e_typeTableDefinitionTerminaux *) inInfo ;
   p->mInfo = * info ;
 }
@@ -1449,8 +1449,8 @@ _operator_isNotEqual (const GGS_typeTableDefinitionTerminaux & inOperand) const 
 
 void GGS_typeTableDefinitionTerminaux::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -1500,11 +1500,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_luint   & outParameter2,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -1608,7 +1608,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @typeTableDefinitionTerminaux " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -1671,7 +1671,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_typeTableMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_typeTableMotsReserves * info = (e_typeTableMotsReserves *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -1679,9 +1679,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_typeTableMotsReserves::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_typeTableMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_typeTableMotsReserves * info = (e_typeTableMotsReserves *) inInfo ;
   p->mInfo = * info ;
 }
@@ -1725,8 +1725,8 @@ _operator_isNotEqual (const GGS_typeTableMotsReserves & inOperand) const {
 
 void GGS_typeTableMotsReserves::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -1768,11 +1768,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_lstring   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -1864,7 +1864,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @typeTableMotsReserves " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -1927,7 +1927,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_typeTableTablesDeMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_typeTableTablesDeMotsReserves * info = (e_typeTableTablesDeMotsReserves *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -1935,9 +1935,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_typeTableTablesDeMotsReserves::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_typeTableTablesDeMotsReserves *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_typeTableTablesDeMotsReserves * info = (e_typeTableTablesDeMotsReserves *) inInfo ;
   p->mInfo = * info ;
 }
@@ -1981,8 +1981,8 @@ _operator_isNotEqual (const GGS_typeTableTablesDeMotsReserves & inOperand) const
 
 void GGS_typeTableTablesDeMotsReserves::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -2024,11 +2024,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_typeTableMotsReserves   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -2120,7 +2120,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @typeTableTablesDeMotsReserves " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
@@ -2920,8 +2920,8 @@ appendForDescription (C_Compiler & _inLexique,
 void GGS_typeListeConditionsLexicales::
 _internalAppendValues (const GGS_typeConditionLexicale & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
 }
@@ -2931,8 +2931,8 @@ _internalAppendValues (const GGS_typeConditionLexicale & argument_0
 void GGS_typeListeConditionsLexicales::
 _internalPrependValues (const GGS_typeConditionLexicale & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
 }
@@ -2991,7 +2991,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_typeListeConditionsLexicales::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -3031,7 +3031,7 @@ internalSubListWithRange (GGS_typeListeConditionsLexicales & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -3097,7 +3097,7 @@ void GGS_typeListeConditionsLexicales::
 method_first (C_Compiler & _inLexique,
               GGS_typeConditionLexicale & _out_0
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3117,7 +3117,7 @@ void GGS_typeListeConditionsLexicales::
 method_last (C_Compiler & _inLexique,
              GGS_typeConditionLexicale & _out_0
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3137,7 +3137,7 @@ void GGS_typeListeConditionsLexicales::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_typeConditionLexicale & _out_0
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3159,7 +3159,7 @@ void GGS_typeListeConditionsLexicales::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_typeConditionLexicale & _out_0
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3330,8 +3330,8 @@ appendForDescription (C_Compiler & _inLexique,
 void GGS_tListeInstructionsLexicales::
 _internalAppendValues (const GGS_typeInstructionLexicale & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
 }
@@ -3341,8 +3341,8 @@ _internalAppendValues (const GGS_typeInstructionLexicale & argument_0
 void GGS_tListeInstructionsLexicales::
 _internalPrependValues (const GGS_typeInstructionLexicale & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
 }
@@ -3401,7 +3401,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_tListeInstructionsLexicales::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -3441,7 +3441,7 @@ internalSubListWithRange (GGS_tListeInstructionsLexicales & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -3507,7 +3507,7 @@ void GGS_tListeInstructionsLexicales::
 method_first (C_Compiler & _inLexique,
               GGS_typeInstructionLexicale & _out_0
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3527,7 +3527,7 @@ void GGS_tListeInstructionsLexicales::
 method_last (C_Compiler & _inLexique,
              GGS_typeInstructionLexicale & _out_0
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3547,7 +3547,7 @@ void GGS_tListeInstructionsLexicales::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_typeInstructionLexicale & _out_0
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3569,7 +3569,7 @@ void GGS_tListeInstructionsLexicales::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_typeInstructionLexicale & _out_0
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3641,8 +3641,8 @@ void GGS_typeListeTestsEtInstructions::
 _internalAppendValues (const GGS_typeListeConditionsLexicales & argument_0,
                     const GGS_tListeInstructionsLexicales & argument_1
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -3654,8 +3654,8 @@ void GGS_typeListeTestsEtInstructions::
 _internalPrependValues (const GGS_typeListeConditionsLexicales & argument_0,
                     const GGS_tListeInstructionsLexicales & argument_1
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -3720,7 +3720,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_typeListeTestsEtInstructions::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -3762,7 +3762,7 @@ internalSubListWithRange (GGS_typeListeTestsEtInstructions & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -3829,7 +3829,7 @@ method_first (C_Compiler & _inLexique,
               GGS_typeListeConditionsLexicales & _out_0,
               GGS_tListeInstructionsLexicales & _out_1
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3852,7 +3852,7 @@ method_last (C_Compiler & _inLexique,
              GGS_typeListeConditionsLexicales & _out_0,
              GGS_tListeInstructionsLexicales & _out_1
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -3875,7 +3875,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_typeListeConditionsLexicales & _out_0,
                  GGS_tListeInstructionsLexicales & _out_1
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -3900,7 +3900,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_typeListeConditionsLexicales & _out_0,
                 GGS_tListeInstructionsLexicales & _out_1
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4073,8 +4073,8 @@ appendForDescription (C_Compiler & _inLexique,
 void GGS_typeListeArgumentsRoutExterne::
 _internalAppendValues (const GGS_typeArgumentRoutineExterne & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
 }
@@ -4084,8 +4084,8 @@ _internalAppendValues (const GGS_typeArgumentRoutineExterne & argument_0
 void GGS_typeListeArgumentsRoutExterne::
 _internalPrependValues (const GGS_typeArgumentRoutineExterne & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
 }
@@ -4144,7 +4144,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_typeListeArgumentsRoutExterne::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -4184,7 +4184,7 @@ internalSubListWithRange (GGS_typeListeArgumentsRoutExterne & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -4250,7 +4250,7 @@ void GGS_typeListeArgumentsRoutExterne::
 method_first (C_Compiler & _inLexique,
               GGS_typeArgumentRoutineExterne & _out_0
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4270,7 +4270,7 @@ void GGS_typeListeArgumentsRoutExterne::
 method_last (C_Compiler & _inLexique,
              GGS_typeArgumentRoutineExterne & _out_0
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -4290,7 +4290,7 @@ void GGS_typeListeArgumentsRoutExterne::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_typeArgumentRoutineExterne & _out_0
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -4312,7 +4312,7 @@ void GGS_typeListeArgumentsRoutExterne::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_typeArgumentRoutineExterne & _out_0
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5141,8 +5141,8 @@ appendForDescription (C_Compiler & _inLexique,
 void GGS_typeListeMessagesErreur::
 _internalAppendValues (const GGS_luint & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
 }
@@ -5152,8 +5152,8 @@ _internalAppendValues (const GGS_luint & argument_0
 void GGS_typeListeMessagesErreur::
 _internalPrependValues (const GGS_luint & argument_0
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
 }
@@ -5212,7 +5212,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_typeListeMessagesErreur::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -5252,7 +5252,7 @@ internalSubListWithRange (GGS_typeListeMessagesErreur & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -5318,7 +5318,7 @@ void GGS_typeListeMessagesErreur::
 method_first (C_Compiler & _inLexique,
               GGS_luint & _out_0
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5338,7 +5338,7 @@ void GGS_typeListeMessagesErreur::
 method_last (C_Compiler & _inLexique,
              GGS_luint & _out_0
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5358,7 +5358,7 @@ void GGS_typeListeMessagesErreur::
 modifier_popFirst (C_Compiler & _inLexique,
                  GGS_luint & _out_0
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -5380,7 +5380,7 @@ void GGS_typeListeMessagesErreur::
 modifier_popLast (C_Compiler & _inLexique,
                 GGS_luint & _out_0
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -5853,8 +5853,8 @@ void GGS_typeListeRecherche::
 _internalAppendValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_THERE)) ;
   _internalAppendItem (nouvelElement) ;
@@ -5866,8 +5866,8 @@ void GGS_typeListeRecherche::
 _internalPrependValues (const GGS_lstring & argument_0,
                     const GGS_lstring & argument_1
                     COMMA_LOCATION_ARGS) {
-  element_type * nouvelElement = (element_type *) NULL ;
-  macroMyNew (nouvelElement, element_type (argument_0,
+  cElement * nouvelElement = (cElement *) NULL ;
+  macroMyNew (nouvelElement, cElement (argument_0,
                                 argument_1
                                 COMMA_THERE)) ;
   _internalPrependItem (nouvelElement) ;
@@ -5932,7 +5932,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_typeListeRecherche::
 _insulateList (void) {
   if (_shared ()) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     _alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
@@ -5974,7 +5974,7 @@ internalSubListWithRange (GGS_typeListeRecherche & ioList,
                           const sint32 inCount) const {
   ioList._alloc () ;
   if (inCount > 0) {
-    element_type * _p = firstObject () ;
+    cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (_p) ;
       _p = _p->nextObject () ;
@@ -6041,7 +6041,7 @@ method_first (C_Compiler & _inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6064,7 +6064,7 @@ method_last (C_Compiler & _inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -6087,7 +6087,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
@@ -6112,7 +6112,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
-  element_type * _p = NULL ;
+  cElement * _p = NULL ;
   if (_isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
@@ -7785,7 +7785,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_tokensInListMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_tokensInListMap * info = (e_tokensInListMap *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -7793,9 +7793,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_tokensInListMap::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_tokensInListMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_tokensInListMap * info = (e_tokensInListMap *) inInfo ;
   p->mInfo = * info ;
 }
@@ -7839,8 +7839,8 @@ _operator_isNotEqual (const GGS_tokensInListMap & inOperand) const {
 
 void GGS_tokensInListMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -7882,11 +7882,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_lstring   & outParameter0,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -7978,7 +7978,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @tokensInListMap " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;

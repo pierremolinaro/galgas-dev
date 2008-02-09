@@ -33,7 +33,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     ioCppFile << "_walk_throught_" << mTreeWalkingComponentName << " (_inLexique, " ;
     mModelVariableCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ", " ;
@@ -57,7 +57,7 @@ bool cPtr_C_treewalkingInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = mModelVariableCppName.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -71,7 +71,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_C_treewalkingInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
@@ -97,7 +97,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
 
   if (inGenerateSemanticInstructions) {
     ioCppFile << "GGS_" << mTypeName << "::class_method_" << mTypeMethodName << " (_inLexique"  ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ", " ;
@@ -123,7 +123,7 @@ bool cPtr_typeCallOfTypeMethodInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool used = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! used) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     used = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -137,7 +137,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeCallOfTypeMethodInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
@@ -176,7 +176,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << " (HERE)->" ;
     }  
     ioCppFile << "method_" << aNomMethodeSimple << " (_inLexique"  ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ", " ;
@@ -204,7 +204,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeMethodCallInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
@@ -219,7 +219,7 @@ bool cPtr_typeMethodCallInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = aNomCppVariable.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! used) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     used = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -247,7 +247,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".modifier_" << aNomMethodeSimple << " (_inLexique"  ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ", " ;
@@ -272,7 +272,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeModifierCallInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
@@ -287,7 +287,7 @@ bool cPtr_typeModifierCallInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = aNomCppVariable.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! used) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     used = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -314,7 +314,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     aNomCppAttribut (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".method_" << aMethodeDeListe << " (_inLexique" ;
-    GGS_typeCplusPlusNameList::element_type * current = aListeNomsCppArguments.firstObject () ;
+    GGS_typeCplusPlusNameList::cElement * current = aListeNomsCppArguments.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
       ioCppFile << ",  " ;
@@ -337,7 +337,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 bool cPtr_typeInstructionAppelMethodeListe::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeCplusPlusNameList::element_type * argCourant = aListeNomsCppArguments.firstObject () ;
+  GGS_typeCplusPlusNameList::cElement * argCourant = aListeNomsCppArguments.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mCppName (HERE)->isCurrentObject () ;
@@ -352,7 +352,7 @@ bool cPtr_typeInstructionAppelMethodeListe::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomCppAttribut.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeCplusPlusNameList::element_type * argCourant = aListeNomsCppArguments.firstObject () ;
+  GGS_typeCplusPlusNameList::cElement * argCourant = aListeNomsCppArguments.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mCppName.isSameObjectAs (inArgumentCppName) ;
@@ -385,7 +385,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << " (_inLexique,"
                  "\n                                " ;
     mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ",\n                                " ;
@@ -412,7 +412,7 @@ bool cPtr_C_grammarInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
    bool isUsed = mSourceFileCppName.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -426,7 +426,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_C_grammarInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
@@ -453,8 +453,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     sint16 nombreArgumentsTestes = 0 ;
     if (mIsExternActionCall.boolValue ()) {
-      GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
-      GGS_L_EXsignature::element_type * typeArgumentCourant = mFormalParameterList.firstObject () ;
+      GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
+      GGS_L_EXsignature::cElement * typeArgumentCourant = mFormalParameterList.firstObject () ;
       while (typeArgumentCourant != NULL) {
         macroValidPointer (typeArgumentCourant) ;
         if (typeArgumentCourant->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
@@ -475,7 +475,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       }
     }
     ioCppFile << "::routine_" << mRoutineName << " (_inLexique" ;
-    GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
       ioCppFile << ",  " ;
@@ -504,7 +504,7 @@ bool cPtr_typeRoutineCallInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
@@ -518,7 +518,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeRoutineCallInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::element_type * argCourant = mExpressionsList.firstObject () ;
+  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
     isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;

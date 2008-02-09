@@ -151,7 +151,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
   generatedZone3 << inOptionClassName << "::" << inOptionClassName
           << " (void)\n"
              ":mStringValue (1 COMMA_HERE) {\n" ;
-  GGS_M_cli_options::element_type * currentOption = inBoolOptionsMap.firstObject () ;
+  GGS_M_cli_options::cElement * currentOption = inBoolOptionsMap.firstObject () ;
   sint32 index = 0 ;
   while (currentOption != NULL) {
     macroValidPointer (currentOption) ;

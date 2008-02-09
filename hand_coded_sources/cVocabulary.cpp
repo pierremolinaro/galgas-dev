@@ -47,7 +47,7 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
-  GGS_M_terminalSymbolsMapForUse::element_type * t = inTerminalSymbolMap.firstObject () ;
+  GGS_M_terminalSymbolsMapForUse::cElement * t = inTerminalSymbolMap.firstObject () ;
   while (t != NULL) {
     macroValidPointer (t) ;
     mStringsArray.addObject (t->mKey) ;  
@@ -57,7 +57,7 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
   mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  GGS_M_nonTerminalSymbolsForGrammar::element_type * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
+  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
   while (nonTerminal != NULL) {
     macroValidPointer (nonTerminal) ;
     mStringsArray.addObject (nonTerminal->mKey) ;  

@@ -46,7 +46,7 @@
 template <typename INFO> class cTableMethodesAimplementer ;
 
 template <typename INFO> class cElementTableMethodesAimplementer {
-  public : typedef cElementTableMethodesAimplementer <INFO> element_type ;
+  public : typedef cElementTableMethodesAimplementer <INFO> cElement ;
   private : cElementTableMethodesAimplementer <INFO> * mNextItem ;
   public : cElementTableMethodesAimplementer <INFO> * mInfPtr ;
   public : cElementTableMethodesAimplementer <INFO> * mSupPtr ;
@@ -54,7 +54,7 @@ template <typename INFO> class cElementTableMethodesAimplementer {
   public : INFO mInfo ;
   public : const bool champEstAbstraite ;
   public : const sint32 mEntryIndex ;
-  public : inline element_type * nextObject (void) const { return mNextItem ; }
+  public : inline cElement * nextObject (void) const { return mNextItem ; }
   public : cElementTableMethodesAimplementer (const INFO & info,
                                               const GGS_lstring & clef,
                                               const sint32 numeroElement,
@@ -75,7 +75,7 @@ template <typename INFO> class cElementTableMethodesAimplementer {
 //---------------------------------------------------------------------------*
 
 template <typename INFO> class cTableMethodesAimplementer {
-  public : typedef cElementTableMethodesAimplementer <INFO> element_type ;
+  public : typedef cElementTableMethodesAimplementer <INFO> cElement ;
   public : cElementTableMethodesAimplementer <INFO> * _mRoot ;
   public : cElementTableMethodesAimplementer <INFO> * mFirstItem ;
   public : cElementTableMethodesAimplementer <INFO> * mLastItem ;

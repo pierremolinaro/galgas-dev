@@ -43,7 +43,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.writeCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
   
   inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
-  GGS_domainAttributeMap::element_type * currentAttribute = mAttributeMap.firstObject () ;
+  GGS_domainAttributeMap::cElement * currentAttribute = mAttributeMap.firstObject () ;
   while (currentAttribute != NULL) {
     macroValidPointer (currentAttribute) ;
     inHfile << "//--- '" << currentAttribute->mKey << "' attribute\n"
@@ -55,7 +55,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
     currentAttribute = currentAttribute->nextObject () ;
   }
-  GGS_domainRelationMap::element_type * currentRelation = mRelationMap.firstObject () ;
+  GGS_domainRelationMap::cElement * currentRelation = mRelationMap.firstObject () ;
   while (currentRelation != NULL) {
     macroValidPointer (currentRelation) ;
     inHfile << "//--- '" << currentRelation->mKey << "' relation\n"
@@ -114,7 +114,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //--- Constructor
   inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void)" ;
-  GGS_domainRelationMap::element_type * currentRelation = mRelationMap.firstObject () ;
+  GGS_domainRelationMap::cElement * currentRelation = mRelationMap.firstObject () ;
   bool first = true ;
   while (currentRelation != NULL) {
     macroValidPointer (currentRelation) ;
@@ -149,7 +149,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "}\n\n" ;
 
 //--- Accessors
-  GGS_domainAttributeMap::element_type * currentAttribute = mAttributeMap.firstObject () ;
+  GGS_domainAttributeMap::cElement * currentAttribute = mAttributeMap.firstObject () ;
   while (currentAttribute != NULL) {
     macroValidPointer (currentAttribute) ;
     inCppFile.writeCppHyphenLineComment () ;
@@ -186,7 +186,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
               << "\n"
                  "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
                  "  bool bitCountExtended = false ;\n" ;
-    GGS_stringlist::element_type * currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
+    GGS_stringlist::cElement * currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
     sint32 idx = 1 ;
     while (currentDomainRelation != NULL) {
       macroValidPointer (currentDomainRelation) ;
@@ -223,7 +223,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   while (currentRelation != NULL) {
     macroValidPointer (currentRelation) ;
     inCppFile << "  const uint16 bitNeededCountArray" << relationIndex << " [] = {" ;
-    GGS_stringlist::element_type * currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
+    GGS_stringlist::cElement * currentDomainRelation = currentRelation->mInfo.mDomains.firstObject () ;
     while (currentDomainRelation != NULL) {
       macroValidPointer (currentDomainRelation) ;
       inCppFile << "_attribute_" << currentDomainRelation->mValue << ".mBitCount, " ;

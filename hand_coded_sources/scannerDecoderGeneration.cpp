@@ -238,10 +238,10 @@ void cPtr_typeInstructionSiLexical::
 generateDecoderFromInstruction (C_Lexique & /* inLexique */,
                                 cDecoderTargetState & /* ioCurrentState */,
                                 cDecoderController & /* ioDecoderController */) {
-/*  GGS_typeListeTestsEtInstructions::element_type * currentBranch = attributListeBranches.firstObject () ;
+/*  GGS_typeListeTestsEtInstructions::cElement * currentBranch = attributListeBranches.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    GGS_typeListeConditionsLexicales::element_type * currentCondition = currentBranch->attributListeConditions.firstObject () ;
+    GGS_typeListeConditionsLexicales::cElement * currentCondition = currentBranch->attributListeConditions.firstObject () ;
     while (currentCondition != NULL) {
       macroValidPointer (currentCondition) ;
       currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,
@@ -266,10 +266,10 @@ generateDecoderFromInstruction (C_Lexique & /* inLexique */,
                                 cDecoderController & /* ioDecoderController */) {
 //--- Target state
 //  const sint32 targetState = ioDecoderController.newState (GGS_lstring (inLexique, "")) ;
-/*  GGS_typeListeTestsEtInstructions::element_type * currentBranch = attributListeBranches.firstObject () ;
+/*  GGS_typeListeTestsEtInstructions::cElement * currentBranch = attributListeBranches.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    GGS_typeListeConditionsLexicales::element_type * currentCondition = currentBranch->attributListeConditions.firstObject () ;
+    GGS_typeListeConditionsLexicales::cElement * currentCondition = currentBranch->attributListeConditions.firstObject () ;
     while (currentCondition != NULL) {
       macroValidPointer (currentCondition) ;
       currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,
@@ -300,7 +300,7 @@ generateDecoderForInstructionList (C_Lexique & /* inLexique */,
                                    cDecoderState * /* ioCurrentState */,
                                    const sint32 /* inTargetStateNumber */,
                                    cDecoderController & /* ioDecoderController */) {
-/*  GGS_tListeInstructionsLexicales::element_type * currentInstruction = inInstructionList.firstObject () ;
+/*  GGS_tListeInstructionsLexicales::cElement * currentInstruction = inInstructionList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
     currentInstruction->attributInstruction (HERE)->generateDecoderFromInstruction (inLexique,
@@ -474,7 +474,7 @@ scannerDecoderGeneration (C_Lexique & inLexique,
                           C_String & inCppFile) {
   cDecoderController decoderController ;
 //--- Enter tokens from lists
-  GGS_tokensInListMap::element_type * currentEntry = inTokensInListMap.firstObject () ;
+  GGS_tokensInListMap::cElement * currentEntry = inTokensInListMap.firstObject () ;
   while (currentEntry != NULL) {
     C_String key = currentEntry->mKey ;
     const sint32 keyLength = key.length () ;
@@ -520,10 +520,10 @@ scannerDecoderGeneration (C_Lexique & inLexique,
   }
 //--- Enter tokens from rules
   const sint32 targetState = decoderController.newState () ;
-  GGS_typeListeTestsEtInstructions::element_type * currentRule = inRuleList.firstObject () ;
+  GGS_typeListeTestsEtInstructions::cElement * currentRule = inRuleList.firstObject () ;
   while (currentRule != NULL) {
     macroValidPointer (currentRule) ;
-    GGS_typeListeConditionsLexicales::element_type * currentCondition = currentRule->attributListeConditions.firstObject () ;
+    GGS_typeListeConditionsLexicales::cElement * currentCondition = currentRule->attributListeConditions.firstObject () ;
     while (currentCondition != NULL) {
       macroValidPointer (currentCondition) ;
       currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,

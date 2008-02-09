@@ -29,7 +29,7 @@
 static void
 printInstructionsListForGrammar (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                                  C_HTML_FileWrite & inHTMLfile) {
-  GGS_L_ruleSyntaxSignature::element_type * currentInstruction = inInstructionsList.firstObject () ;
+  GGS_L_ruleSyntaxSignature::cElement * currentInstruction = inInstructionsList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
     currentInstruction->mInstruction (HERE)->printInstructionForGrammar (inHTMLfile) ;
@@ -45,7 +45,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mRepeatList.firstObject () ;
+  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mRepeatList.firstObject () ;
   bool first = true ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
@@ -74,7 +74,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_L_branchList_ForGrammarComponent::element_type * currentBranch = mSelectList.firstObject () ;
+  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mSelectList.firstObject () ;
   bool first = true ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
@@ -119,7 +119,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList) {
 //--- Print message
   sint32 productionsCount = 0 ;
-  GGS_L_syntaxComponents_ForGrammar::element_type * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
+  GGS_L_syntaxComponents_ForGrammar::cElement * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
   while (currentSyntaxComponent != NULL) {
     macroValidPointer (currentSyntaxComponent) ;
     productionsCount += currentSyntaxComponent->mProductionRulesList.count () ;
@@ -142,7 +142,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                << currentSyntaxComponent->mSyntaxComponentName
                << "' component" ;
     inHTMLfile.outputRawData ("</td></tr>") ;
-    GGS_L_productionRules_ForGrammarComponent::element_type * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
+    GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
     while (currentRule != NULL) {
       macroValidPointer (currentRule) ;
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;

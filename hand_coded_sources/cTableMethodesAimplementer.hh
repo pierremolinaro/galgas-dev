@@ -49,9 +49,9 @@ cElementTableMethodesAimplementer <INFO>
                                                       const sint32 numeroElement,
                                                       const bool estAbstraite)
 :champEstAbstraite (estAbstraite), mEntryIndex (numeroElement) {
-  mNextItem = (element_type *) NULL ;
-  mInfPtr = (element_type *) NULL ;
-  mSupPtr = (element_type *) NULL ;
+  mNextItem = (cElement *) NULL ;
+  mInfPtr = (cElement *) NULL ;
+  mSupPtr = (cElement *) NULL ;
   mKey = clef ;
   mInfo = info ;
 }
@@ -60,8 +60,8 @@ cElementTableMethodesAimplementer <INFO>
 
 template <typename INFO>
 cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (void) {
-  macroMyDelete (mInfPtr, element_type) ;
-  macroMyDelete (mSupPtr, element_type) ;
+  macroMyDelete (mInfPtr, cElement) ;
+  macroMyDelete (mSupPtr, cElement) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -72,9 +72,9 @@ cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (vo
 
 template <typename INFO>
 cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) {
-  _mRoot = (element_type *) NULL ;
-  mFirstItem = (element_type *) NULL ;
-  mLastItem = (element_type *) NULL ;
+  _mRoot = (cElement *) NULL ;
+  mFirstItem = (cElement *) NULL ;
+  mLastItem = (cElement *) NULL ;
   mListLength = 0 ;
   mReferenceCountPtr = (sint32 *) NULL ;
 }
@@ -91,9 +91,9 @@ cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
 template <typename INFO>
 cTableMethodesAimplementer <INFO>
             ::cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> & source) {
-  _mRoot = (element_type *) NULL ;
-  mFirstItem = (element_type *) NULL ;
-  mLastItem = (element_type *) NULL ;
+  _mRoot = (cElement *) NULL ;
+  mFirstItem = (cElement *) NULL ;
+  mLastItem = (cElement *) NULL ;
   mListLength = 0 ;
   mReferenceCountPtr = (sint32 *) NULL ;
   *this = source ;
@@ -121,16 +121,16 @@ void cTableMethodesAimplementer <INFO>
 //---------------------------------------------------------------------------*
 
 template <typename INFO> void cTableMethodesAimplementer <INFO>::_drop_operation (void) {
-  mFirstItem = (element_type *) NULL ;
-  mLastItem = (element_type *) NULL ;
+  mFirstItem = (cElement *) NULL ;
+  mLastItem = (cElement *) NULL ;
   mListLength = 0 ;
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) == 1) {
-      macroMyDelete (_mRoot, element_type) ;
+      macroMyDelete (_mRoot, cElement) ;
       macroMyDelete (mReferenceCountPtr, sint32) ;
     }else{
-      _mRoot = (element_type *) NULL ;
+      _mRoot = (cElement *) NULL ;
       (*mReferenceCountPtr) -- ;
       mReferenceCountPtr = (sint32 *) NULL ;
     }
@@ -161,9 +161,9 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
       mReferenceCountPtr = (sint32 *) NULL ;
       macroMyNew (mReferenceCountPtr, sint32 (1)) ;
       cElementTableMethodesAimplementer <INFO> * p = mFirstItem ;
-      mLastItem = (element_type *) NULL ;
-      mFirstItem = (element_type *) NULL ;
-      _mRoot = (element_type *) NULL ;
+      mLastItem = (cElement *) NULL ;
+      mFirstItem = (cElement *) NULL ;
+      _mRoot = (cElement *) NULL ;
       mListLength = 0 ;
       while (p != NULL) {
         macroValidPointer (p) ;

@@ -95,7 +95,7 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
   MF_Assert (reinterpret_cast <e_commandLineOptionMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
   AC_galgas_map_element * p = NULL ;
   e_commandLineOptionMap * info = (e_commandLineOptionMap *) inInfo ;
-  macroMyNew (p, element_type (inKey, nextIndex (), * info)) ;
+  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;
   return p ;
 }
 
@@ -103,9 +103,9 @@ new_element (const GGS_lstring & inKey, void * inInfo) {
 
 void GGS_commandLineOptionMap::
 assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   MF_Assert (reinterpret_cast <e_commandLineOptionMap *> (inInfo) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  cElement * p = (cElement *) inPtr ;
   e_commandLineOptionMap * info = (e_commandLineOptionMap *) inInfo ;
   p->mInfo = * info ;
 }
@@ -149,8 +149,8 @@ _operator_isNotEqual (const GGS_commandLineOptionMap & inOperand) const {
 
 void GGS_commandLineOptionMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
-  MF_Assert (reinterpret_cast <element_type *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
-  element_type * p = (element_type *) inPtr ;
+  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
+  cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
@@ -200,11 +200,11 @@ _searchElement (C_Compiler & inLexique,
                GGS_lstring   & outParameter2,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
-  element_type * node = NULL  ;
+  cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey) ;
-    MF_Assert ((p == NULL) || (reinterpret_cast <element_type *> (p) != NULL), "Dynamic cast error", 0, 0) ;
-    node = (element_type *) p ;
+    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
+    node = (cElement *) p ;
     if (node == NULL) {
       emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;
     }
@@ -308,7 +308,7 @@ reader_description (C_Compiler & _inLexique
   s << "<map @commandLineOptionMap " ;
   if (_isBuilt ()) {
     s << count () << " object" << ((count () > 1) ? "s " : " ") ;
-    element_type * p = firstObject () ;
+    cElement * p = firstObject () ;
     sint32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;

@@ -35,7 +35,7 @@ buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
                       TC_Array2 <bool> & outPopUpTree,
                       const sint32 inTerminalSymbolCount) {
   outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
-  GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
+  GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList.firstObject () ;
   while (currentMark != NULL) {
     macroValidPointer (currentMark) ;
     const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
@@ -73,13 +73,13 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "#import \"command_line_interface/C_builtin_CLI_Options.h\"\n"
                     "#import \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
-  GGS_M_optionComponents::element_type * currentOptionComponent = inOptionComponentsMap.firstObject () ;
+  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  GGS_L_nibAndClassList::element_type * currentNib = inNibAndClassList.firstObject () ;
+  GGS_L_nibAndClassList::cElement * currentNib = inNibAndClassList.firstObject () ;
   while (currentNib != NULL) {
     macroValidPointer (currentNib) ;
     TC_UniqueArray <C_String> result ;
@@ -131,7 +131,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
       mainArray << ",\n  " ;
       bool first = true ;
-      GGS_labelForPopUpList::element_type * currentMark = inLabelForPopUpList.firstObject () ;
+      GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList.firstObject () ;
       while (currentMark != NULL) {
         macroValidPointer (currentMark) ;
         const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
