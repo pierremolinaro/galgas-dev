@@ -18,6 +18,21 @@
  <body>
   <div style="font: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>1.6.15</p>
+   <ul>
+     <li>Shift operators on
+       <a href="http://galgas.rts-software.org/doku.php?id=uint_type#and_operators"><span class="api">@uint</span></a>
+       and
+       <a href="http://galgas.rts-software.org/doku.php?id=sint_type#and_operators"><span class="api">@sint</span></a>:
+       now the actual size of the shift is the value of the right-hand operand masked by 31;
+     </li>
+     <li>Shift operators on
+       <a href="http://galgas.rts-software.org/doku.php?id=uint64_type#and_operators"><span class="api">@uint64</span></a>
+       and
+       <a href="http://galgas.rts-software.org/doku.php?id=sint64_type#and_operators"><span class="api">@sint64</span></a>:
+       now the actual size of the shift is the value of the right-hand operand masked by 63;
+     </li>
+   </ul>
    <p>1.6.14</p>
    <ul>
      <li>New @string constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithsequenceofcharacters"><span class="api">stringWithSequenceOfCharacters</span></a>;</li>
