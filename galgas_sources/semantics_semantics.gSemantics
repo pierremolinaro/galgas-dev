@@ -1496,5 +1496,46 @@ extern routine fixFileGenerationStartDirectory
 ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#              F I L E    W R A P P E R                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+sortedlist @wrapperFileSortedList {
+  @string mRegularFileName ;
+  @string mAbsoluteFilePath ;
+}{
+  mRegularFileName <
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @wrapperDirectorySortedList ;
+
+sortedlist @wrapperDirectorySortedList {
+  @string mDirectoryName ;
+  @wrapperFileSortedList mRegularFileSortedList ;
+  @wrapperDirectorySortedList mDirectorySortedList ;
+}{
+  mDirectoryName <
+}
+
+#---------------------------------------------------------------------------*
+
+map @wrapperExtensionMap {
+  insert insertKey error message "the '%K' extension has been already declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @C_wrapperToImplement extends @typeEntityToGenerate {
+  @lstring mWrapperName ;
+  @string mSourceDirectory ; # Used for comment in generated code
+  @wrapperExtensionMap mExtensionMap ; # Used for comment in generated code
+  @wrapperFileSortedList mRegularFileSortedList ;
+  @wrapperDirectorySortedList mDirectorySortedList ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

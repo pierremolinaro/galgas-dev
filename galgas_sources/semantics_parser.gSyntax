@@ -5549,6 +5549,114 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#     W R A P P E R    D E C L A R A T I O N                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine recursivelyEnumerateDirectories
+  ??@string inAbsoluteSourcePath
+  ??@wrapperExtensionMap inExtensionMap
+  !@wrapperFileSortedList outWrapperFileSortedList
+  !@wrapperDirectorySortedList outWrapperDirectorySortedList :
+#--- Enumerates regular files
+  @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
+  outWrapperFileSortedList := [@wrapperFileSortedList emptySortedList] ;
+  foreach files (@string kFile) :
+    if [inExtensionMap hasKey ![kFile pathExtension]] then
+      outWrapperFileSortedList += !kFile !inAbsoluteSourcePath . "/" . kFile ;
+    end if ;
+  end foreach ;
+#--- Enumerates regular directories
+  @stringlist directories := [inAbsoluteSourcePath directories !false] ;
+  outWrapperDirectorySortedList := [@wrapperDirectorySortedList emptySortedList] ;
+  foreach directories (@string kDirectory) :
+    @wrapperFileSortedList internalWrapperFileSortedList ;
+    @wrapperDirectorySortedList internalWrapperDirectorySortedList ;
+    recursivelyEnumerateDirectories
+      !inAbsoluteSourcePath . "/" . kDirectory
+      !inExtensionMap
+      ?internalWrapperFileSortedList
+      ?internalWrapperDirectorySortedList
+    ;
+    outWrapperDirectorySortedList +=
+      !kDirectory
+      !internalWrapperFileSortedList
+      !internalWrapperDirectorySortedList
+    ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+:
+  $wrapper$ ;
+  @lstring wrapperName ;
+  $identifier$ ? wrapperName ;
+  $in$ ;
+  @lstring sourcePath ;
+  $literal_string$ ? sourcePath ;
+  ${$ ;
+  @wrapperExtensionMap extensionMap [emptyMap] ;
+  repeat
+    @lstring extension ;
+    $literal_string$ ? extension ;
+    [!?extensionMap insertKey !extension] ;
+  while
+    $,$ ;
+  end repeat ;
+  $}$ ;
+#--- Build absolute path
+  @string absoluteSourcePath ;
+  if [sourcePath firstCharacterOrNul] == '/' then
+    absoluteSourcePath := [sourcePath string] ;
+  else
+    absoluteSourcePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/" . [sourcePath string] ;
+  end if ;
+#--- Enumerate pathes
+  @wrapperFileSortedList wrapperFileSortedList ;
+  @wrapperDirectorySortedList wrapperDirectorySortedList ;
+  recursivelyEnumerateDirectories !absoluteSourcePath !extensionMap ?wrapperFileSortedList ?wrapperDirectorySortedList ;
+#---- Enter wrapper in generated list
+  @typeEntityToGenerate w := [@C_wrapperToImplement new
+    !wrapperName
+    ![sourcePath string]
+    !extensionMap
+    !wrapperFileSortedList
+    !wrapperDirectorySortedList
+  ] ;
+  listeEntitesAengendrer += !w ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+:
+  $wrapper$ ;
+  $identifier$ ? * ;
+  $in$ ;
+  $literal_string$ ? * ;
+  ${$ ;
+  repeat
+    $literal_string$ ? * ;
+  while
+    $,$ ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #     E X T E R N   T Y P E   D E C L A R A T I O N                         *
 #                                                                           *
 #---------------------------------------------------------------------------*

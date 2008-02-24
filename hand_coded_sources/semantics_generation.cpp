@@ -351,6 +351,7 @@ generate_header_file (C_Compiler & inLexique,
                     "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_stringset.h\"\n"
                     "#include \"galgas/GGS_binaryset.h\"\n"
+                    "#include \"galgas/C_GGS_wrapper.h\"\n"
                     "#include \"galgas/predefined_types.h\"\n"
                     "#include \"galgas/AC_galgas_class.h\"\n"
                     "#include \"galgas/AC_galgas_entity.h\"\n"
