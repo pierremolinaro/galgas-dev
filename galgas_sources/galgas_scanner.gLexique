@@ -124,7 +124,8 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "unused",
   "warning",
   "when",              
-  "while" ;
+  "while",
+  "wrapper" ;
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat

@@ -3328,6 +3328,10 @@ routine handleStringReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
+  elsif [inReaderName string] == "directories" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+    build_stringlist_type  ?outReturnedType ;
   elsif [inReaderName string] == "regularFilesWithExtensions" then
     build_stringlist_type  ?outReturnedType ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
