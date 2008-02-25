@@ -1159,6 +1159,15 @@ class @typeExternTypeToGenerate extends @typeEntityToGenerate {
   @lstring mGalgasName ;
   @lstring mCppClassName ;
   @lstring mIncludePath ;
+#--- Constructor map
+  @M_externTypeConstructorMap mConstructorMap ;
+#--- Modifiers map
+  @typeTableMethodes mModifiersMap ;  
+#--- Readers map
+  @typeTableMethodes mReadersInInstructionMap ;  
+#--- Attributes for handling operator '+=' call
+  @bool mAcceptAddAssignOperatorCall ;
+  @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -220,10 +220,6 @@ inHfile << "//--- _castFrom class method (implements cast expression)\n"
                "  public : GGS_string reader_" << messageCourant->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
-
-/* §  inHfile << "//--- Class message\n"
-             "  public : GGS_string reader_message (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n\n" ; */
-
 //--- Engendrer la declaration de la surcharge de l'operateur ()
   inHfile << "//--- operator ()\n"
              "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
