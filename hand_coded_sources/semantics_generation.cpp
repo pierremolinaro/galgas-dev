@@ -130,58 +130,6 @@ routine_appendJokersIfNeeded (C_Compiler &,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeExternTypeToGenerate::
-generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Compiler & /* inLexique */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeExternTypeToGenerate::
-generatePredeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "#include \"" << mIncludePath << "\"\n"
-             "typedef " << mCppClassName << " GGS_" << mGalgasName << " ;\n"
-             "typedef " << mCppClassName << " GGG_" << mGalgasName << " ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeExternTypeToGenerate::
-generateHdeclarations (AC_OutputStream & /* inHfile */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeExternTypeToGenerate::isCppClassNeeded (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeExternTypeToGenerate::
-generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
-                               const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeExternTypeToGenerate::
-generateCppClassImplementation (AC_OutputStream & /* inCppFile */,
-                                  const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
-                                  const bool /* inGenerateDebug */) const {
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          C_Compiler & /* inLexique */) const {

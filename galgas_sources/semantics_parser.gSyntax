@@ -5824,16 +5824,27 @@ rule <semantics_declaration_begining_by_extern>
     $;$ ;
   end repeat ;
 #--- enter the new type into the list of entities to be generated
-  @typeEntityToGenerate t := [@typeExternTypeToGenerate new !externTypeName !cppClassName !path] ;
+  @typeEntityToGenerate t := [@typeExternTypeToGenerate new
+    !externTypeName
+    !cppClassName
+    !path
+    !constructorsMap
+    !modifiersMap
+    !readersInInstructionMap
+    !acceptAddAssignOperatorCall
+    !addAssignOperatorCallTypeList
+  ] ;
   listeEntitesAengendrer += !t ;
 #--- Enter the new type in entities map
-  @AC_galgasType c := [@typeGalgasExternType new !externTypeName
-                                                 !cppClassName
-                                                 !constructorsMap
-                                                 !modifiersMap
-                                                 !readersInInstructionMap
-                                                 !acceptAddAssignOperatorCall
-                                                 !addAssignOperatorCallTypeList] ;
+  @AC_galgasType c := [@typeGalgasExternType new
+    !externTypeName
+    !cppClassName
+    !constructorsMap
+    !modifiersMap
+    !readersInInstructionMap
+    !acceptAddAssignOperatorCall
+    !addAssignOperatorCallTypeList
+  ] ;
   @AC_semanticsEntity e := [@typeEntiteType new !c] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !e] ;
   $}$ ;
