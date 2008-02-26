@@ -2949,7 +2949,7 @@ createProject (const C_String & inCreatedProjectPathName,
   }else if (! projectNameIsCorrect) {
     co << "** Cannot create GALGAS project: the project name should begin by a letter followed by zero, one or more letters, digits and underscore character.\n" ;
 //--- if creation directory exists, emit an error and do nothing
-  }else if (inCreatedProjectPathName.isDirectory ()) {
+  }else if (inCreatedProjectPathName.directoryExists ()) {
     co << "** Cannot create GALGAS project: '" << inCreatedProjectPathName << "' directory already exists.\n" ;
   }else{
   //--- LIBPM path

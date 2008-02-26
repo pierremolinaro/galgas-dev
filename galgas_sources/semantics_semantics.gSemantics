@@ -1157,8 +1157,6 @@ abstract class @typeEntityToGenerate {
 
 class @typeExternTypeToGenerate extends @typeEntityToGenerate {
   @lstring mGalgasName ;
-  @lstring mCppClassName ;
-  @lstring mIncludePath ;
 #--- Constructor map
   @M_externTypeConstructorMap mConstructorMap ;
 #--- Modifiers map

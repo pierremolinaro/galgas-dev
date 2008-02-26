@@ -5620,19 +5620,23 @@ rule <semantics_declaration>
   else
     absoluteSourcePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/" . [sourcePath string] ;
   end if ;
-#--- Enumerate pathes
-  @wrapperFileSortedList wrapperFileSortedList ;
-  @wrapperDirectorySortedList wrapperDirectorySortedList ;
-  recursivelyEnumerateDirectories !absoluteSourcePath !extensionMap ?wrapperFileSortedList ?wrapperDirectorySortedList ;
-#---- Enter wrapper in generated list
-  @typeEntityToGenerate w := [@C_wrapperToImplement new
-    !wrapperName
-    ![sourcePath string]
-    !extensionMap
-    !wrapperFileSortedList
-    !wrapperDirectorySortedList
-  ] ;
-  listeEntitesAengendrer += !w ;
+  if not [absoluteSourcePath directoryExists] then
+    error sourcePath:"The '" . absoluteSourcePath . "' does not exist" ;
+  else
+  #--- Enumerate pathes
+    @wrapperFileSortedList wrapperFileSortedList ;
+     @wrapperDirectorySortedList wrapperDirectorySortedList ;
+    recursivelyEnumerateDirectories !absoluteSourcePath !extensionMap ?wrapperFileSortedList ?wrapperDirectorySortedList ;
+  #---- Enter wrapper in generated list
+    @typeEntityToGenerate w := [@C_wrapperToImplement new
+      !wrapperName
+      ![sourcePath string]
+      !extensionMap
+      !wrapperFileSortedList
+      !wrapperDirectorySortedList
+    ] ;
+    listeEntitesAengendrer += !w ;
+  end if ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   ?!@ActionMap unused ioExternActionMap
@@ -5719,13 +5723,6 @@ rule <semantics_declaration_begining_by_extern>
 #--- Parse extern type name
   @lstring externTypeName ;
   $type_name$ ? externTypeName ;
-#--- Parse C++ class name
-  $class$ ;
-  @lstring cppClassName ;
-  $identifier$ ? cppClassName ;
-  $in$ ;
-  @lstring path ;
-  $literal_string$ ? path ; 
   ${$ ;
 #--- Default behaviour : no operator, no method available
   @typeTableMethodes modifiersMap [emptyMap] ;
@@ -5826,8 +5823,6 @@ rule <semantics_declaration_begining_by_extern>
 #--- enter the new type into the list of entities to be generated
   @typeEntityToGenerate t := [@typeExternTypeToGenerate new
     !externTypeName
-    !cppClassName
-    !path
     !constructorsMap
     !modifiersMap
     !readersInInstructionMap
@@ -5838,7 +5833,6 @@ rule <semantics_declaration_begining_by_extern>
 #--- Enter the new type in entities map
   @AC_galgasType c := [@typeGalgasExternType new
     !externTypeName
-    !cppClassName
     !constructorsMap
     !modifiersMap
     !readersInInstructionMap
@@ -5860,12 +5854,6 @@ label importSemantics
 #--- Parse extern type name
   @lstring externTypeName ;
   $type_name$ ? externTypeName ;
-#--- Parse C++ class name
-  $class$ ;
-  @lstring cppClassName ;
-  $identifier$ ? cppClassName ;
-  $in$ ;
-  $literal_string$ ? * ; 
   ${$ ;
 #--- Default behaviour : no operator, no method available
   @typeTableMethodes EXmodifiersMap [emptyMap] ;
@@ -5973,13 +5961,14 @@ label importSemantics
     $;$ ;
   end repeat ;
 #--- Enter the new type in entities map
-  @AC_galgasType c := [@typeGalgasExternType new !externTypeName
-                                                 !cppClassName
-                                                 !EXconstructorsMap
-                                                 !EXmodifiersMap
-                                                 !readersInInstructionMap
-                                                 !acceptAddAssignOperatorCall
-                                                 !addAssignOperatorCallTypeList] ;
+  @AC_galgasType c := [@typeGalgasExternType new
+    !externTypeName
+    !EXconstructorsMap
+    !EXmodifiersMap
+    !readersInInstructionMap
+    !acceptAddAssignOperatorCall
+     !addAssignOperatorCallTypeList
+  ] ;
   @AC_semanticsEntity e := [@typeEntiteType new !c] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !externTypeName !e] ;
   @TypeModel t := [@ExternTypeModel new !constructorMap !readerMap !modifierMap !addAssignFormalInputArgumentList] ;
