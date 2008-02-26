@@ -1729,9 +1729,6 @@ class @typeGalgasUndefinedExternType extends @AC_galgasType {
 #--- Galgas class name
   @lstring mGalgasClassName ;
 
-#--- C++ class name
-  @lstring mCppClassName ;
-
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := [mGalgasClassName string] ;
@@ -3082,8 +3079,8 @@ routine checkAssignmentTypesCompatibility
                               "', I have got the class type '@" . [attNomType2 string] . "\"" ;
     end if ;
 
-  when @typeGalgasUndefinedExternType (@lstring attNomType1 @lstring attCppClassName1)
-    :: @typeGalgasUndefinedExternType (@lstring attNomType2 @lstring attCppClassName2) :
+  when @typeGalgasUndefinedExternType (@lstring attNomType1)
+    :: @typeGalgasUndefinedExternType (@lstring attNomType2) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting an extern variable of extern '@" . [attNomType1 string] .
                                "' type variable, and I got an extern '@" . [attNomType2 string] . "' type variable" ;
@@ -3268,6 +3265,9 @@ routine handleStringReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "fileExists" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_bool new] ;
+  elsif [inReaderName string] == "directoryExists" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "characterAtIndex" then
