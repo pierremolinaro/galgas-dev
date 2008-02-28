@@ -3220,6 +3220,17 @@ map @M_treewalkingComponents {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    Map of declared filewrappers                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_filewrappers {
+  insert insertKey error message "a file wrapper named '%K' is already declared in %L" ;
+  search searchKey error message "there is no file wrapper named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #              List of attributes for GUI description                       *
 #                                                                           *
 #---------------------------------------------------------------------------*

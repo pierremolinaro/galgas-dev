@@ -67,6 +67,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "extern",
   "extract",
   "false",
+  "filewrapper",
   "foreach",
   "grammar",
   "gui",
@@ -124,8 +125,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "unused",
   "warning",
   "when",              
-  "while",
-  "wrapper" ;
+  "while" ;
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat
