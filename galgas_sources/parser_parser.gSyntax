@@ -149,6 +149,7 @@ nonterminal <semantic_instruction>
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@M_filewrappers inFileWrappers
 label parse
 ;
 
@@ -166,6 +167,7 @@ nonterminal <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -174,6 +176,7 @@ label parse
 nonterminal <expression>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_filewrappers inFileWrappers
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -193,6 +196,7 @@ nonterminal <actual_parameters_list>
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_filewrappers inFileWrappers
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeInstructionList ioInstructionList
 
@@ -225,6 +229,7 @@ nonterminal <syntax_instructions_list>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -244,6 +249,7 @@ nonterminal <syntax_instructions_list_no_verif>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -615,6 +621,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   $block$ ;
 #--- Nom de la map
@@ -640,6 +647,7 @@ rule <syntax_instruction>
     ?prologueExpressionList
     !?ioVariablesMap
     !inOptionsComponentsMapForUse
+    !inFileWrappers
     !ioEntitiesMap
     !?ioInstructionList
   ;
@@ -666,6 +674,7 @@ rule <syntax_instruction>
     !inAllMetamodelClassMap
     !inTreewalkingComponentMap
     !inIsInvokedWithinParseLoopInstruction
+    !inFileWrappers
   ;
   $end$ ;
   $block$ ;
@@ -677,6 +686,7 @@ rule <syntax_instruction>
     ?epilogueExpressionList
     !?ioVariablesMap
     !inOptionsComponentsMapForUse
+    !inFileWrappers
     !ioEntitiesMap
     !?ioInstructionList
   ;
@@ -1927,7 +1937,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@M_filewrappers ioFileWrappers
 :
   $rule$ ;
   @lstring ruleName ;
@@ -2074,6 +2084,7 @@ rule <syntax_declaration>
     !inAllMetamodelClassMap
     !inTreewalkingComponentMap
     !false # inIsInvokedWithinParseLoopInstruction
+    !ioFileWrappers
   ;
   [!?altProductionsMap insertKey
     !altName
@@ -2133,6 +2144,7 @@ rule <syntax_declaration>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !false # inIsInvokedWithinParseLoopInstruction
+      !ioFileWrappers
     ;
     [!?altProductionsMap insertKey
       !altName
@@ -2242,6 +2254,7 @@ rule <syntax_instructions_list>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   block ioVariablesMap.verifyVariableUsing () :
     <syntax_instructions_list_no_verif>
@@ -2258,6 +2271,7 @@ rule <syntax_instructions_list>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !inIsInvokedWithinParseLoopInstruction
+      !inFileWrappers
     ;
     @location positionErreur := here ;
   end block (!positionErreur) ;
@@ -2285,6 +2299,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap unused inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ??@bool unused inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers unused inFileWrappers
 :
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
@@ -2342,6 +2357,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   @lstring nonterminalSymbolName ;
   $non_terminal_symbol$ ? nonterminalSymbolName ;
@@ -2377,6 +2393,7 @@ rule <syntax_instruction>
     ?parametersExpressionList
     !?ioVariablesMap
     !inOptionsComponentsMapForUse
+    !inFileWrappers
     !ioEntitiesMap
     !?ioInstructionList
   ;
@@ -2494,6 +2511,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   $select$ ;
   @location positionDebut := here ;
@@ -2517,6 +2535,7 @@ rule <syntax_instruction>
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
         !inIsInvokedWithinParseLoopInstruction
+        !inFileWrappers
       ;
       listeBranchesChoix += !firstBranchInstructionList ;
       selectList += !firstBranchSyntaxSignature ;
@@ -2540,6 +2559,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !inIsInvokedWithinParseLoopInstruction
+          !inFileWrappers
         ;
         listeBranchesChoix += !listeInstructionsBrancheChoix ;
         selectList += !syntaxSignature ;
@@ -2602,6 +2622,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   $repeat$ ;
   @location positionDebut := here ;
@@ -2625,7 +2646,8 @@ rule <syntax_instruction>
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
         !inIsInvokedWithinParseLoopInstruction
-       ;
+        !inFileWrappers
+      ;
       listeBranchesRepeter += !listeInstructionsPremiereBranche ;
       whileList += !repeatBranchInstructionsList ;
       @location positionErreurPremiereBranche := here ;
@@ -2649,6 +2671,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !inIsInvokedWithinParseLoopInstruction
+          !inFileWrappers
         ;
         listeBranchesRepeter += !listeInstructionsBrancheRepeter ;
         whileList += !syntaxSignature ;
@@ -2712,6 +2735,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   $parse$ ;
   @typeInstruction instruction ;
@@ -2723,6 +2747,7 @@ rule <syntax_instruction>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
+      !inFileWrappers
       !?ioVariablesMap
       ?variantExpression
       ?variantResultType
@@ -2735,6 +2760,7 @@ rule <syntax_instruction>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
+      !inFileWrappers
       !?ioVariablesMap
       ?conditionalExpression
       ?resultType
@@ -2760,6 +2786,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !true # inIsInvokedWithinParseLoopInstruction
+          !inFileWrappers
         ;
       end block (!here) ;
     end block () ;
@@ -2792,6 +2819,7 @@ rule <syntax_instruction>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !inIsInvokedWithinParseLoopInstruction
+      !inFileWrappers
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
@@ -2818,6 +2846,7 @@ rule <syntax_instruction>
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
         !inIsInvokedWithinParseLoopInstruction
+        !inFileWrappers
       ;
       branchList += !instructionsList ;
       parse_rewind_signature_list += !syntaxSignature !branchStartLocation ;
@@ -2840,6 +2869,7 @@ rule <syntax_instruction>
           <expression>
             !ioEntitiesMap
             !inOptionsComponentsMapForUse
+            !inFileWrappers
             !?ioVariablesMap
             ?expression
             ?resultType
@@ -2862,6 +2892,7 @@ rule <syntax_instruction>
             !inAllMetamodelClassMap
             !inTreewalkingComponentMap
             !inIsInvokedWithinParseLoopInstruction
+            !inFileWrappers
           ;
           branchList += !expression !instructionsList ;
           parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -2887,6 +2918,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !inIsInvokedWithinParseLoopInstruction
+          !inFileWrappers
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
         foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
@@ -2954,6 +2986,7 @@ rule <syntax_instructions_list_no_verif>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
+  ??@M_filewrappers inFileWrappers
 :
   @entityPropertyMap propertyMap [emptyMap] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
@@ -2974,6 +3007,7 @@ rule <syntax_instructions_list_no_verif>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !inIsInvokedWithinParseLoopInstruction
+      !inFileWrappers
     ;
   while
     <semantic_instruction>
@@ -2986,6 +3020,7 @@ rule <syntax_instructions_list_no_verif>
       !propertyMap
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
+      !inFileWrappers
     ;
   end repeat ;
 label importSyntax
