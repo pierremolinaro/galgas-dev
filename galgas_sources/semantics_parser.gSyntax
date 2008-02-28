@@ -36,21 +36,25 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -60,6 +64,7 @@ nonterminal <parse_semantics_component_for_importing>
   ?!@M_semanticsComponents ioSemanticsMapForUse
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label parse
 ;
 
@@ -69,6 +74,7 @@ nonterminal <parse_grammar_component_for_importing>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label parse
 ;
 
@@ -86,6 +92,7 @@ nonterminal <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioExternActionMap
@@ -94,6 +101,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label parse
 ;
 nonterminal <semantics_declaration_begining_by_extern>
@@ -134,6 +142,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
+  ?!@M_filewrappers ioFileWrappers
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -143,6 +152,7 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label parse
 ;
 
@@ -488,6 +498,7 @@ rule <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   $semantics$ ;
 #--- Obtenir le nom du component semantique
@@ -538,6 +549,7 @@ rule <galgas_component>
     ?componentEntitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
+    !?ioFileWrappers
   ;
 #-------------- Semantic Declarations
   parse
@@ -547,6 +559,7 @@ rule <galgas_component>
     @typeTableNomRoutinesDeclarees UNUSED_tableNomRoutinesDeclarees [emptyMap] ;
     @typeTableEnAvant UNUSED_tableEnAvant := tableEnAvant ;
     @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
+    @M_filewrappers UNUSED_FileWrappers [emptyMap] ;
     repeat
     while
     <semantics_declaration> importSemantics
@@ -557,6 +570,7 @@ rule <galgas_component>
       !?UNUSED_tableEnAvant
       !?UNUSED_tableRoutinesAimplementer
       !ioTreewalkingComponentMap
+      !?UNUSED_FileWrappers
     ;
     end repeat ;
   #--- Second pass on semantic declarations
@@ -575,6 +589,7 @@ rule <galgas_component>
         !?tableEnAvant
         !?tableRoutinesAimplementer
         !ioTreewalkingComponentMap
+        !?ioFileWrappers
       ; 
     end repeat ;
   end parse ;
@@ -615,6 +630,7 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -640,6 +656,7 @@ label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   $semantics$ ;
   @lstring componentName ;
@@ -671,6 +688,7 @@ label importSemantics
     !?componentSemanticsEntitiesMap
     !?ioMetamodelComponentMap
     !?ioTreewalkingComponentMap
+    !?ioFileWrappers
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [emptyMap] ;
@@ -685,6 +703,7 @@ label importSemantics
       !?tableEnAvant
       !?tableRoutinesAimplementer
       !ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   end repeat ;
 #--- Enter component entities in map
@@ -732,6 +751,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $semantics$ ;
   $identifier$ ? * ;
@@ -804,6 +824,7 @@ rule <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
+  ?!@M_filewrappers ioFileWrappers
 :
   outAllMetamodelClassMap := [@entityToImplementMap emptyMap] ;
   outActionMap := [@ActionMap emptyMap] ;
@@ -879,6 +900,7 @@ rule <import_headers_semantics_and_grammars>
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
+          !?ioFileWrappers
         ;
       end select ;
     or
@@ -924,6 +946,7 @@ rule <import_headers_semantics_and_grammars>
           !?ioMetamodelComponentMap
           !?ioOptionsComponentsMapForUse
           !?ioTreewalkingComponentMap
+          !?ioFileWrappers
         ;
       end select ;
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
@@ -975,6 +998,7 @@ rule <import_headers_semantics_and_grammars>
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
+          !?ioFileWrappers
         ;
       end select ;
       if not [outImportedSemanticsComponents hasKey ![componentName string]] then
@@ -1022,6 +1046,7 @@ rule <import_headers_semantics_and_grammars>
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
+          !?ioFileWrappers
         ;
       end select ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
@@ -1075,6 +1100,7 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   outActionMap := [@ActionMap emptyMap] ;
   outModelMap := [@ModelMap emptyMap] ;
@@ -1131,6 +1157,7 @@ label importSemantics
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
+          !?ioFileWrappers
         ;
       end select ;
       @M_semanticsEntitiesForUse importedEntities ;
@@ -1164,6 +1191,7 @@ label importSemantics
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
+          !?ioFileWrappers
         ;
       end select ;
       [ioMetamodelComponentMap searchKey !metamodelComponentName ?3*] ;
@@ -1186,6 +1214,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $routine$ ;
 #---- Nom de la routine -------------------------------------------------------
@@ -1261,6 +1290,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $routine$ ;
 #---- Nom de la routine -------------------------------------------------------
@@ -1449,6 +1479,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   @bool estAbstraite ;
   select
@@ -1620,6 +1651,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   @bool estAbstraite ;
   select
@@ -4528,6 +4560,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $mapindex$ ;
   @lstring mapindexTypeName ;
@@ -4594,6 +4627,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $mapindex$ ;
   @lstring mapindexTypeName ;
@@ -4661,6 +4695,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $map$ ;
   @lstring mapTypeName ;
@@ -4957,6 +4992,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $map$ ;
   @lstring mapTypeName ;
@@ -5257,6 +5293,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $list$ ;
   @lstring listTypeName ;
@@ -5312,6 +5349,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $list$ ;
   @lstring listTypeName ;
@@ -5372,6 +5410,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $sortedlist$ ;
   @lstring listTypeName ;
@@ -5453,6 +5492,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $sortedlist$ ;
   @lstring listTypeName ;
@@ -5596,10 +5636,12 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
-  $wrapper$ ;
+  $filewrapper$ ;
   @lstring wrapperName ;
   $identifier$ ? wrapperName ;
+  [!?ioFileWrappers insertKey ! wrapperName] ;
   $in$ ;
   @lstring sourcePath ;
   $literal_string$ ? sourcePath ;
@@ -5621,7 +5663,7 @@ rule <semantics_declaration>
     absoluteSourcePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/" . [sourcePath string] ;
   end if ;
   if not [absoluteSourcePath directoryExists] then
-    error sourcePath:"The '" . absoluteSourcePath . "' does not exist" ;
+    error sourcePath: "The '" . absoluteSourcePath . "' directory does not exist" ;
   else
   #--- Enumerate pathes
     @wrapperFileSortedList wrapperFileSortedList ;
@@ -5645,9 +5687,12 @@ label importSemantics
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
-  $wrapper$ ;
-  $identifier$ ? * ;
+  $filewrapper$ ;
+  @lstring wrapperName ;
+  $identifier$ ? wrapperName ;
+  [!?ioFileWrappers insertKey ! wrapperName] ;
   $in$ ;
   $literal_string$ ? * ;
   ${$ ;
@@ -5673,6 +5718,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $extern$ ;
   <semantics_declaration_begining_by_extern>
@@ -5692,6 +5738,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $extern$ ;
   <semantics_declaration_begining_by_extern> importSemantics
@@ -6156,6 +6203,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $enum$ ;
 #--- Enum type name
@@ -6380,6 +6428,7 @@ label importSemantics
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $enum$ ;
 #--- Enum type name

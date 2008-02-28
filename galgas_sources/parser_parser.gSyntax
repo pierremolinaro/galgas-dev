@@ -36,21 +36,25 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -63,6 +67,7 @@ nonterminal <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioExternActionMap
@@ -71,6 +76,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label parse
 ;
 
@@ -87,6 +93,7 @@ nonterminal <syntax_declaration>
   ?@lstring inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
@@ -118,6 +125,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
+  ?!@M_filewrappers ioFileWrappers
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -127,6 +135,7 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 label parse
 ;
 
@@ -270,6 +279,7 @@ rule <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
@@ -301,6 +311,7 @@ rule <galgas_component>
   @ModelMap modelMap ;
   @ActionMap actionMap ;
   @entityToImplementMap allMetamodelClassMap ;
+  @M_filewrappers fileWrappers  [emptyMap] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedOptionComponents
@@ -320,6 +331,7 @@ rule <galgas_component>
     ?entitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
+    !?fileWrappers
   ;
   listeEntitesAengendrer := [@typeEntitiesToGenerateList emptyList] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMapForGrammar [emptyMap] ;
@@ -340,6 +352,7 @@ rule <galgas_component>
       !componentName
       !allMetamodelClassMap
       !ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   while
     <semantics_declaration>
@@ -350,6 +363,7 @@ rule <galgas_component>
       !?tableEnAvant
       !?tableRoutinesAimplementer
       !ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   end repeat ;
 #--- Check that all routines have been implemented
@@ -382,6 +396,7 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   $syntax$ ;
   @lstring syntaxComponentName ;
@@ -430,6 +445,7 @@ label importSyntax
     ?entitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
+    !?ioFileWrappers
   ;
 #--- 
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [emptyList] ;
@@ -457,6 +473,7 @@ label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -494,6 +511,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -1104,6 +1122,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $operator$ ;
   @lstring operatorAttributes ;
@@ -1645,6 +1664,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $nonterminal$ ;
   @lstring ruleName ;
@@ -1907,6 +1927,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 :
   $rule$ ;
   @lstring ruleName ;

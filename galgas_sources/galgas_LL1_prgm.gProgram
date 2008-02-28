@@ -35,6 +35,7 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     @M_optionComponents optionComponentsMap [emptyMap] ;
     @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
     @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
+    @M_filewrappers fileWrappers [emptyMap] ;
     grammar galgas_LL1_grammar in inSourceFile
       !?lexiqueMapForUse
       !?semanticsComponentsMap
@@ -43,6 +44,7 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
       !?optionComponentsMap
       !?metamodelComponentMap
       !?treewalkingComponentMap
+      !?fileWrappers
     ;
   }
 

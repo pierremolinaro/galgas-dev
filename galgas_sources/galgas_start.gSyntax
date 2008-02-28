@@ -37,21 +37,25 @@ nonterminal <galgas_start_symbol>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 label compileFile
@@ -65,21 +69,25 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -94,6 +102,7 @@ rule <galgas_start_symbol>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   repeat
   while
@@ -105,6 +114,7 @@ rule <galgas_start_symbol>
       !?ioOptionsComponentsMap
       !?ioMetamodelComponentMap
       !?ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   end repeat ;
 label importLexique
@@ -118,6 +128,7 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   repeat
   while
@@ -125,12 +136,14 @@ label importSyntax
       !?ioSyntaxComponentsMap
       !?ioMetamodelComponentMap
       !?ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   end repeat ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   repeat
   while
@@ -138,6 +151,7 @@ label importSemantics
       !?ioSemanticsComponentsMap
       !?ioMetamodelComponentMap
       !?ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   end repeat ;
 label importGrammarForSemantics
@@ -145,6 +159,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@M_filewrappers ioFileWrappers
 :
   repeat
   while
@@ -153,6 +168,7 @@ label importGrammarForSemantics
       !?ioMetamodelComponentMap
       !?ioOptionsComponentsMapForUse
       !?ioTreewalkingComponentMap
+      !?ioFileWrappers
     ;
   end repeat ;
 label compileFile
@@ -164,6 +180,7 @@ label compileFile
   @M_optionComponents optionsComponentsMap [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
   @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
+  @M_filewrappers fileWrappers [emptyMap] ;
   repeat
   while
     <galgas_component>
@@ -174,6 +191,7 @@ label compileFile
       !?optionsComponentsMap
       !?metamodelComponentMap
       !?treewalkingComponentMap
+      !?fileWrappers
     ;
   end repeat ;
 label importOptions
