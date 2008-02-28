@@ -99,6 +99,7 @@ nonterminal <semantic_instructions_list>
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@M_filewrappers inFileWrappers
 label parse
 ;
 
@@ -244,6 +245,7 @@ rule <galgas_component>
       !currentTreewalkingRoutinePropertyMap
       !metamodelEntityMap
       !ioTreewalkingComponentMap
+      !ioFileWrappers
     ;
     $}$ ;
     ruleDescriptorForProgramList += 

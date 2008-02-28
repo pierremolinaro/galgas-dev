@@ -79,6 +79,7 @@ nonterminal <treewalking_routine>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@M_filewrappers inFileWrappers
 label firstLocalPhase
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@treewalkingRoutineHeaderMap ioTreewalkingRoutineHeaderMap
@@ -107,18 +108,9 @@ nonterminal <semantic_instructions_list>
   ??@entityPropertyMap ioPropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@M_filewrappers inFileWrappers
 label parse
 ;
-
-#nonterminal <parse_grammar_component_for_importing>
-#  ??@lstring inFileName
-#  ?!@M_grammarComponents ioGrammarComponentsMap
-#  ?!@M_metamodelsComponents ioMetamodelComponentMap
-#  ?!@M_optionComponents ioOptionsComponentsMapForUse
-#  ?!@M_treewalkingComponents ioTreewalkingComponentMap
-#  ?!@M_filewrappers ioFileWrappers
-#label parse
-#;
 
 nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedSemanticsComponents
@@ -344,6 +336,7 @@ rule <parse_treewalking_document>
         !treewalkingRoutineHeaderMap
         !?treewalkingRoutineToGenerateList
         !ioTreewalkingComponentMap
+        !fileWrappers
       ;
     end repeat ;
   end parse ;
@@ -404,6 +397,7 @@ rule <treewalking_routine>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
   ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@M_filewrappers inFileWrappers
 :
   $rule$ ;
   @lstring metamodelClassName ;
@@ -447,6 +441,7 @@ rule <treewalking_routine>
     !allMetamodelPropertyMap
     !inMetamodelEntityMap
     !inTreewalkingComponentMap
+    !inFileWrappers
   ;
 #---
   ioTreewalkingRoutineToGenerateList +=
