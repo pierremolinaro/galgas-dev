@@ -1511,6 +1511,8 @@ extern routine fixFileGenerationStartDirectory
 sortedlist @wrapperFileSortedList {
   @string mRegularFileName ;
   @string mAbsoluteFilePath ;
+  @uint mWrapperDirectoryIndex ;
+  @uint mWrapperFileIndex ;
 }{
   mRegularFileName <
 }
@@ -1523,6 +1525,7 @@ sortedlist @wrapperDirectorySortedList {
   @string mDirectoryName ;
   @wrapperFileSortedList mRegularFileSortedList ;
   @wrapperDirectorySortedList mDirectorySortedList ;
+  @uint mWrapperDirectoryIndex ;
 }{
   mDirectoryName <
 }

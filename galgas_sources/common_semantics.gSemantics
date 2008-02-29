@@ -3220,11 +3220,21 @@ map @M_treewalkingComponents {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Map of declared filewrappers                                           *
+#              F I L E    W R A P P E R                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+map @M_regularFiles {
+  @uint mWrapperDirectoryIndex ;
+  @uint mWrapperFileIndex ;
+  insert insertKey error message "a regular file named '%K' is already declared in %L" ;
+  search searchKey error message "there is no regular file named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @M_filewrappers {
+  @M_regularFiles mRegularFileMap ;
   insert insertKey error message "a file wrapper named '%K' is already declared in %L" ;
   search searchKey error message "there is no file wrapper named '%K'" ;
 }
