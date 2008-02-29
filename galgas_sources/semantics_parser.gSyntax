@@ -5705,15 +5705,33 @@ end rule ;
 
 routine recursivelyEnumerateDirectories
   ??@string inAbsoluteSourcePath
+  ??@string inPathInWrapper
   ??@wrapperExtensionMap inExtensionMap
   !@wrapperFileSortedList outWrapperFileSortedList
-  !@wrapperDirectorySortedList outWrapperDirectorySortedList :
+  !@wrapperDirectorySortedList outWrapperDirectorySortedList
+  ?!@uint ioWrapperFileIndex
+  ?!@uint ioWrapperDirectoryIndex
+  ?!@M_regularFiles ioRegularFileMap
+:
+  @uint currentDirectoryIndex := ioWrapperDirectoryIndex ;
+  ioWrapperDirectoryIndex ++ ;
 #--- Enumerates regular files
   @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
   outWrapperFileSortedList := [@wrapperFileSortedList emptySortedList] ;
   foreach files (@string kFile) :
     if [inExtensionMap hasKey ![kFile pathExtension]] then
-      outWrapperFileSortedList += !kFile !inAbsoluteSourcePath . "/" . kFile ;
+      outWrapperFileSortedList +=
+        !kFile
+        !inAbsoluteSourcePath . "/" . kFile
+        !currentDirectoryIndex
+        !ioWrapperFileIndex
+      ;
+      [!?ioRegularFileMap insertKey
+        ![@lstring new !inPathInWrapper . kFile !here]
+        !currentDirectoryIndex
+        !ioWrapperFileIndex
+      ] ;
+      ioWrapperFileIndex ++ ;
     end if ;
   end foreach ;
 #--- Enumerates regular directories
@@ -5724,14 +5742,19 @@ routine recursivelyEnumerateDirectories
     @wrapperDirectorySortedList internalWrapperDirectorySortedList ;
     recursivelyEnumerateDirectories
       !inAbsoluteSourcePath . "/" . kDirectory
+      !inPathInWrapper . kDirectory . "/"
       !inExtensionMap
       ?internalWrapperFileSortedList
       ?internalWrapperDirectorySortedList
+      !?ioWrapperFileIndex
+      !?ioWrapperDirectoryIndex
+      !?ioRegularFileMap
     ;
     outWrapperDirectorySortedList +=
       !kDirectory
       !internalWrapperFileSortedList
       !internalWrapperDirectorySortedList
+      !currentDirectoryIndex
     ;
   end foreach ;
 end routine ;
@@ -5751,7 +5774,6 @@ rule <semantics_declaration>
   $filewrapper$ ;
   @lstring wrapperName ;
   $identifier$ ? wrapperName ;
-  [!?ioFileWrappers insertKey ! wrapperName] ;
   $in$ ;
   @lstring sourcePath ;
   $literal_string$ ? sourcePath ;
@@ -5777,8 +5799,20 @@ rule <semantics_declaration>
   else
   #--- Enumerate pathes
     @wrapperFileSortedList wrapperFileSortedList ;
-     @wrapperDirectorySortedList wrapperDirectorySortedList ;
-    recursivelyEnumerateDirectories !absoluteSourcePath !extensionMap ?wrapperFileSortedList ?wrapperDirectorySortedList ;
+    @wrapperDirectorySortedList wrapperDirectorySortedList ;
+    @uint wrapperFileIndex := 0 ;
+    @uint wrapperDirectoryIndex := 0 ;
+    @M_regularFiles regularFileMap [emptyMap] ;
+    recursivelyEnumerateDirectories
+     !absoluteSourcePath
+     !"/"
+     !extensionMap
+     ?wrapperFileSortedList
+     ?wrapperDirectorySortedList
+     !?wrapperFileIndex
+     !?wrapperDirectoryIndex
+     !?regularFileMap
+   ;
   #---- Enter wrapper in generated list
     @typeEntityToGenerate w := [@C_wrapperToImplement new
       !wrapperName
@@ -5788,6 +5822,9 @@ rule <semantics_declaration>
       !wrapperDirectorySortedList
     ] ;
     listeEntitesAengendrer += !w ;
+  #--- Enter in wrapper map
+log regularFileMap ;
+    [!?ioFileWrappers insertKey !wrapperName !regularFileMap] ;
   end if ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -5802,16 +5839,50 @@ label importSemantics
   $filewrapper$ ;
   @lstring wrapperName ;
   $identifier$ ? wrapperName ;
-  [!?ioFileWrappers insertKey ! wrapperName] ;
   $in$ ;
-  $literal_string$ ? * ;
+  @lstring sourcePath ;
+  $literal_string$ ? sourcePath ;
   ${$ ;
+  @wrapperExtensionMap extensionMap [emptyMap] ;
   repeat
-    $literal_string$ ? * ;
+    @lstring extension ;
+    $literal_string$ ? extension ;
+    [!?extensionMap insertKey !extension] ;
   while
     $,$ ;
   end repeat ;
   $}$ ;
+  if not [ioFileWrappers hasKey ![wrapperName string]] then
+  #--- Build absolute path
+    @string absoluteSourcePath ;
+    if [sourcePath firstCharacterOrNul] == '/' then
+      absoluteSourcePath := [sourcePath string] ;
+    else
+      absoluteSourcePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/" . [sourcePath string] ;
+    end if ;
+    if not [absoluteSourcePath directoryExists] then
+      error sourcePath: "The '" . absoluteSourcePath . "' directory does not exist" ;
+    else
+    #--- Enumerate pathes
+      @wrapperFileSortedList wrapperFileSortedList ;
+      @wrapperDirectorySortedList wrapperDirectorySortedList ;
+      @uint wrapperFileIndex := 0 ;
+      @uint wrapperDirectoryIndex := 0 ;
+      @M_regularFiles regularFileMap [emptyMap] ;
+      recursivelyEnumerateDirectories
+        !absoluteSourcePath
+        !"/"
+        !extensionMap
+        ?wrapperFileSortedList
+        ?wrapperDirectorySortedList
+        !?wrapperFileIndex
+        !?wrapperDirectoryIndex
+        !?regularFileMap
+      ;
+    #--- Enter in wrapper map
+      [!?ioFileWrappers insertKey !wrapperName !regularFileMap] ;
+    end if ;
+  end if ;
 end rule ;
 
 #---------------------------------------------------------------------------*
