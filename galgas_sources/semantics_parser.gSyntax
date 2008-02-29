@@ -5740,6 +5740,7 @@ routine recursivelyEnumerateDirectories
   foreach directories (@string kDirectory) :
     @wrapperFileSortedList internalWrapperFileSortedList ;
     @wrapperDirectorySortedList internalWrapperDirectorySortedList ;
+    @uint theDirectoryIndex := ioWrapperDirectoryIndex ;
     recursivelyEnumerateDirectories
       !inAbsoluteSourcePath . "/" . kDirectory
       !inPathInWrapper . kDirectory . "/"
@@ -5754,7 +5755,7 @@ routine recursivelyEnumerateDirectories
       !kDirectory
       !internalWrapperFileSortedList
       !internalWrapperDirectorySortedList
-      !currentDirectoryIndex
+      !theDirectoryIndex
     ;
   end foreach ;
 end routine ;
@@ -5823,7 +5824,6 @@ rule <semantics_declaration>
     ] ;
     listeEntitesAengendrer += !w ;
   #--- Enter in wrapper map
-log regularFileMap ;
     [!?ioFileWrappers insertKey !wrapperName !regularFileMap] ;
   end if ;
 label importSemantics
