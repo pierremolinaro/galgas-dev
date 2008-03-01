@@ -30,7 +30,7 @@
 #include "galgas/GGS_lsint64.h"
 #include "galgas/GGS_stringset.h"
 #include "galgas/GGS_binaryset.h"
-#include "galgas/C_GGS_wrapper.h"
+#include "galgas/GGS_filewrapper.h"
 #include "galgas/predefined_types.h"
 #include "galgas/AC_galgas_class.h"
 #include "galgas/AC_galgas_entity.h"

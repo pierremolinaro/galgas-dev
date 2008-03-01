@@ -327,26 +327,6 @@
 		CF19AF7D0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF19AF7E0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
 		CF19AF7F0A2B718E00813ED1 /* include_C_while_instruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */; };
-		CF19D1280D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D1290D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D12A0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D12B0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D12C0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D12D0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D12E0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D12F0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D1300D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D1310D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D1320D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D1330D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D1340D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D1350D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D1360D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D1370D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D1380D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D1390D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
-		CF19D13A0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */; };
-		CF19D13B0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */; };
 		CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF1EF69E0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */; };
@@ -1716,6 +1696,36 @@
 		CFB822320BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
 		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
 		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */; };
+		CFBD0DC00D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC10D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC20D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC30D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC40D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC50D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC60D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC70D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC80D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DC90D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */; };
+		CFBD0DD40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DD50D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DD60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DD70D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DD80D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DD90D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DDA0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DDB0D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DDC0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DDD0D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DDE0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DDF0D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DE00D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DE10D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DE20D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DE30D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DE40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DE50D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
+		CFBD0DE60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */; };
+		CFBD0DE70D78AC580031CA4B /* GGS_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */; };
 		CFC1767309FE1CD30026596C /* include_typeDecrementInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */; };
 		CFC1767409FE1CD30026596C /* include_typeDivideOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */; };
 		CFC1767509FE1CD30026596C /* include_typeModuloOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */; };
@@ -2518,6 +2528,26 @@
 		CFE675DD0C0B03C8007C1E98 /* C_GGS_Object.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF8611D09C0ACF600F90D05 /* C_GGS_Object.h */; };
 		CFE675DE0C0B03CE007C1E98 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1415E060DB7CB00601791 /* AC_galgas_map.h */; };
 		CFE675DF0C0B03CF007C1E98 /* C_Lexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF8259F708536AC20077AEAF /* C_Lexique.h */; };
+		CFE709150D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709160D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE709170D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709180D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE709190D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE7091A0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE7091B0D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE7091C0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE7091D0D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE7091E0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE7091F0D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709200D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE709210D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709220D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE709230D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709240D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE709250D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709260D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
+		CFE709270D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */; };
+		CFE709280D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
 		CFE838200AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838210AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838220AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
@@ -3790,8 +3820,6 @@
 		CF0EBFD10B84680C0047465A /* include_typeGalgasUndefinedMapindexType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedMapindexType.h; sourceTree = "<group>"; };
 		CF197A3B0C944C5B002069B2 /* include_C_parse_loop_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_parse_loop_instruction.h; sourceTree = "<group>"; };
 		CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
-		CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_GGS_wrapper.h; sourceTree = "<group>"; };
-		CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_wrapper.cpp; sourceTree = "<group>"; };
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
@@ -4028,6 +4056,9 @@
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
 		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
+		CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperWithStaticPath.h; sourceTree = "<group>"; };
+		CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_filewrapper.cpp; sourceTree = "<group>"; };
+		CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGS_filewrapper.h; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
 		CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDivideOperation.h; sourceTree = "<group>"; };
 		CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeModuloOperation.h; sourceTree = "<group>"; };
@@ -4110,7 +4141,6 @@
 		CFD214CF0913BE2E0011F11E /* include_typeEmissionTerminalParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionTerminalParDefaut.h; sourceTree = "<group>"; };
 		CFD214D00913BE2E0011F11E /* include_typeEntiteActionExterne.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteActionExterne.h; sourceTree = "<group>"; };
 		CFD214D10913BE2E0011F11E /* include_typeEntiteDest.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteDest.h; sourceTree = "<group>"; };
-		CFD214D20913BE2E0011F11E /* include_typeEntiteNonTerminal.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteNonTerminal.h; sourceTree = "<group>"; };
 		CFD214D30913BE2E0011F11E /* include_typeEntiteRoutine.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutine.h; sourceTree = "<group>"; };
 		CFD214D40913BE2E0011F11E /* include_typeEntiteType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteType.h; sourceTree = "<group>"; };
 		CFD214D50913BE2E0011F11E /* include_typeEntityToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntityToGenerate.h; sourceTree = "<group>"; };
@@ -4280,6 +4310,8 @@
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
 		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
+		CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperObjectInstanciation.h; sourceTree = "<group>"; };
+		CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_filewrapper.h; sourceTree = "<group>"; };
 		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
 		CFEC15F509CA026700204242 /* metamodel_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_generation.cpp; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
@@ -4679,6 +4711,9 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */,
+				CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */,
+				CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */,
 				CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */,
 				CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */,
 				CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */,
@@ -4844,7 +4879,6 @@
 				CFD214CF0913BE2E0011F11E /* include_typeEmissionTerminalParDefaut.h */,
 				CFD214D00913BE2E0011F11E /* include_typeEntiteActionExterne.h */,
 				CFD214D10913BE2E0011F11E /* include_typeEntiteDest.h */,
-				CFD214D20913BE2E0011F11E /* include_typeEntiteNonTerminal.h */,
 				CFD214D30913BE2E0011F11E /* include_typeEntiteRoutine.h */,
 				CFD214D40913BE2E0011F11E /* include_typeEntiteType.h */,
 				CFD214D50913BE2E0011F11E /* include_typeEntityToGenerate.h */,
@@ -5422,8 +5456,8 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
-				CF19D1260D70939A006B0EBD /* C_GGS_wrapper.h */,
-				CF19D1270D70939A006B0EBD /* C_GGS_wrapper.cpp */,
+				CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */,
+				CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */,
 				CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */,
 				CFA1415E060DB7CB00601791 /* AC_galgas_map.h */,
 				CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */,
@@ -5737,7 +5771,6 @@
 				CFF2FFAD0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A3C0C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578DB0D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D1280D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59EFF70D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59EFF80D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59EFF90D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -5748,6 +5781,10 @@
 				CF59EFFE0D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59EFFF0D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F0000D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC10D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DD70D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709170D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709180D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5937,7 +5974,6 @@
 				CFF2FFB90C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A420C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578E10D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D12A0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F0010D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0020D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F0030D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -5948,6 +5984,10 @@
 				CF59F0080D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F0090D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F00A0D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC00D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DD50D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709150D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709160D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6136,7 +6176,6 @@
 				CFF2FFBB0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A430C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578E30D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D1300D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F01F0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0200D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F0210D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -6147,6 +6186,10 @@
 				CF59F0260D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F0270D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F0280D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC40D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DDD0D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE7091D0D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE7091E0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6335,7 +6378,6 @@
 				CFF2FFAF0C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A3D0C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578DF0D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D1360D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F03D0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F03E0D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F03F0D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -6346,6 +6388,10 @@
 				CF59F0440D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F0450D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F0460D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC90D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DE70D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709270D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709280D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6516,7 +6562,6 @@
 				CFF2FFB10C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A3E0C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578DD0D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D1320D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F0290D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F02A0D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F02B0D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -6527,6 +6572,10 @@
 				CF59F0300D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F0310D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F0320D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC60D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DE10D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709210D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709220D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6697,7 +6746,6 @@
 				CFF2FFB30C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A3F0C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578D70D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D12C0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F00B0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F00C0D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F00D0D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -6708,6 +6756,10 @@
 				CF59F0120D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F0130D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F0140D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC80D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DE50D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709250D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709260D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6878,7 +6930,6 @@
 				CFF2FFB50C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A400C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578E50D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D1380D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F0470D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0480D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F0490D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -6889,6 +6940,10 @@
 				CF59F04E0D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F04F0D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F0500D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC20D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DD90D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709190D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE7091A0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7059,7 +7114,6 @@
 				CFF2FFB70C267E6C003BC992 /* buildMapsForMetamodel.h in Headers */,
 				CF197A410C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578D90D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D1340D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F0330D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0340D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F0350D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -7070,6 +7124,10 @@
 				CF59F03A0D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F03B0D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F03C0D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC50D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DDF0D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE7091F0D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709200D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7259,7 +7317,6 @@
 				CFEDF2B90C2D161F0038713A /* buildMapsForMetamodel.h in Headers */,
 				CF197A440C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578D50D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D12E0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F0150D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0160D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F0170D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -7270,6 +7327,10 @@
 				CF59F01C0D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F01D0D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F01E0D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC70D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DE30D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE709230D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE709240D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7458,7 +7519,6 @@
 				CFEDF4190C2D16610038713A /* buildMapsForMetamodel.h in Headers */,
 				CF197A450C944C5B002069B2 /* include_C_parse_loop_instruction.h in Headers */,
 				CFD578E70D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
-				CF19D13A0D70939A006B0EBD /* C_GGS_wrapper.h in Headers */,
 				CF59F0510D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0520D71CAB700427156 /* include_classGalgasType.h in Headers */,
 				CF59F0530D71CAB700427156 /* include_entityGalgasType.h in Headers */,
@@ -7469,6 +7529,10 @@
 				CF59F0580D71CAB700427156 /* include_mapType.h in Headers */,
 				CF59F0590D71CAB700427156 /* include_multipleReferenceGalgasType.h in Headers */,
 				CF59F05A0D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */,
+				CFBD0DC30D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h in Headers */,
+				CFBD0DDB0D78AC580031CA4B /* GGS_filewrapper.h in Headers */,
+				CFE7091B0D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h in Headers */,
+				CFE7091C0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8082,9 +8146,9 @@
 				CF2EE34D0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFAC0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578DC0D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D1290D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F05D0D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C060D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DD60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8251,9 +8315,9 @@
 				CF2EE3590C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFB80C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578E20D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D12B0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0630D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C050D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DD40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8420,9 +8484,9 @@
 				CF2EE35B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFBA0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578E40D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D1310D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0640D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C090D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DDC0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8628,9 +8692,9 @@
 				CF2EE34F0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFAE0C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578E00D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D1370D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0650D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0E0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DE60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8797,9 +8861,9 @@
 				CF2EE3510C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFB00C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578DE0D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D1330D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0610D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0B0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DE00D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8966,9 +9030,9 @@
 				CFF2FFB20C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CF0915A30C296EE7003C327E /* treewalking_generation.cpp in Sources */,
 				CFD578D80D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D12D0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F05E0D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0D0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DE40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9135,9 +9199,9 @@
 				CF2EE3550C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFB40C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578E60D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D1390D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0600D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C070D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DD80D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9304,9 +9368,9 @@
 				CF2EE3570C19AC0C00AD8BEE /* buildMapsForSemantics.cpp in Sources */,
 				CFF2FFB60C267E6C003BC992 /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578DA0D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D1350D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0660D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0A0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DDE0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9473,9 +9537,9 @@
 				CFEDF3580C2D161F0038713A /* buildMapsForSemantics.cpp in Sources */,
 				CFEDF3590C2D161F0038713A /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578D60D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D12F0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F05F0D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0C0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DE20D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9642,9 +9706,9 @@
 				CFEDF4B80C2D16610038713A /* buildMapsForSemantics.cpp in Sources */,
 				CFEDF4B90C2D16610038713A /* buildMapsForMetamodel.cpp in Sources */,
 				CFD578E80D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
-				CF19D13B0D70939A006B0EBD /* C_GGS_wrapper.cpp in Sources */,
 				CF59F0620D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C080D733E3100AC867C /* extern_type_generation.cpp in Sources */,
+				CFBD0DDA0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

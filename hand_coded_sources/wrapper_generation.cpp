@@ -150,7 +150,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
                "static const cRegularFileWrapper * gWrapperAllFiles_" << inWrapperName
             << "_" << inWrapperDirectoryIndex << " ["
             << (wrapperFileIndexes.count () + 1) << "] = {\n" ;
-  for (uint32 i=0 ; i<wrapperFileIndexes.count () ; i++) {
+  for (sint32 i=0 ; i<wrapperFileIndexes.count () ; i++) {
     inCppFile << "  & gWrapperFile_"
               << wrapperFileIndexes (i COMMA_HERE)
               << '_' << inWrapperName
@@ -171,7 +171,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //--- Generate directory wrapper
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "//--- Directory '" << inWrapperDirectory << "'\n\n"
-               "static const cDirectoryWrapper gWrapperDirectory_" << inWrapperDirectoryIndex << "_" << inWrapperName
+               "const cDirectoryWrapper gWrapperDirectory_" << inWrapperDirectoryIndex << "_" << inWrapperName
             << " = {\n"
                "  \"" << inWrapperDirectory << "\",\n"
             << "  " << inRegularFileSortedList.count () << ",\n"

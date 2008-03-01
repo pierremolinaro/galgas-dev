@@ -305,25 +305,26 @@ routine comparison_types_check
   ??@AC_galgasType inRightExpressionType
 :
   match inLeftExpressionType :: inRightExpressionType :
-  when @typeGalgas_binaryset () :: @typeGalgas_binaryset () :
-  when @typeGalgas_stringset () :: @typeGalgas_stringset () :
-  when @typeGalgas_bool ()      :: @typeGalgas_bool () :
-  when @typeGalgas_char ()      :: @typeGalgas_char () :
-  when @typeGalgas_uint ()      :: @typeGalgas_uint () :
-  when @typeGalgas_sint ()      :: @typeGalgas_sint () :
-  when @typeGalgas_uint64 ()    :: @typeGalgas_uint64 () :
-  when @typeGalgas_sint64 ()    :: @typeGalgas_sint64 () :
-  when @typeGalgas_double ()    :: @typeGalgas_double () :
-  when @typeGalgas_string ()    :: @typeGalgas_string () :
-  when @typeGalgas_lbool ()     :: @typeGalgas_lbool () :
-  when @typeGalgas_lchar ()     :: @typeGalgas_lchar () :
-  when @typeGalgas_luint ()     :: @typeGalgas_luint () :
-  when @typeGalgas_lsint ()     :: @typeGalgas_lsint () :
-  when @typeGalgas_luint64 ()   :: @typeGalgas_luint64 () :
-  when @typeGalgas_lsint64 ()   :: @typeGalgas_lsint64 () :
-  when @typeGalgas_ldouble ()   :: @typeGalgas_ldouble () :
-  when @typeGalgas_lstring ()   :: @typeGalgas_lstring () :
-  when @typeGalgas_location ()  :: @typeGalgas_location () :
+  when @typeGalgas_binaryset ()   :: @typeGalgas_binaryset () :
+  when @typeGalgas_stringset ()   :: @typeGalgas_stringset () :
+  when @typeGalgas_bool ()        :: @typeGalgas_bool () :
+  when @typeGalgas_char ()        :: @typeGalgas_char () :
+  when @typeGalgas_uint ()        :: @typeGalgas_uint () :
+  when @typeGalgas_sint ()        :: @typeGalgas_sint () :
+  when @typeGalgas_uint64 ()      :: @typeGalgas_uint64 () :
+  when @typeGalgas_sint64 ()      :: @typeGalgas_sint64 () :
+  when @typeGalgas_double ()      :: @typeGalgas_double () :
+  when @typeGalgas_string ()      :: @typeGalgas_string () :
+  when @typeGalgas_lbool ()       :: @typeGalgas_lbool () :
+  when @typeGalgas_lchar ()       :: @typeGalgas_lchar () :
+  when @typeGalgas_luint ()       :: @typeGalgas_luint () :
+  when @typeGalgas_lsint ()       :: @typeGalgas_lsint () :
+  when @typeGalgas_luint64 ()     :: @typeGalgas_luint64 () :
+  when @typeGalgas_lsint64 ()     :: @typeGalgas_lsint64 () :
+  when @typeGalgas_ldouble ()     :: @typeGalgas_ldouble () :
+  when @typeGalgas_lstring ()     :: @typeGalgas_lstring () :
+  when @typeGalgas_location ()    :: @typeGalgas_location () :
+  when @typeGalgas_filewrapper () :: @typeGalgas_filewrapper () :
   when @typeGalgas_enum (@lstring inTypeName1 4*) :: @typeGalgas_enum (@lstring inTypeName2 4*) :
     if [inTypeName1 string] != [inTypeName2 string] then
       error here : "comparison between an '@" . [inTypeName1 string] .
@@ -1487,6 +1488,7 @@ end rule ;
 #   reader call         :   [expression reader !... ]                          *
 #   constructor call    :   [@class method !... ]                              *
 #   option value        :   [option option_component_name.option_name]         *
+#   filewrapper         :   [filewrapper filewrapper_name."path"]              *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1500,6 +1502,28 @@ rule <factor>
 :
   $[$ ;
   select
+  #--- File wrapper
+    $filewrapper$ ;
+  #--- Get filewrapper name
+    @lstring filewrapperName ;
+    $identifier$ ? filewrapperName ;
+    @M_regularFiles regularFileMap ;
+    [inFileWrappers searchKey !filewrapperName ?regularFileMap] ;
+    select
+      outExpression := [@typeFileWrapperObjectInstanciation new !filewrapperName] ;
+      outResultType := [@typeGalgas_filewrapper new] ;
+    or
+      $.$ ;
+    #--- Get path
+      @lstring path ;
+      $literal_string$ ?path ;
+    #--- 
+      @uint wrapperFileIndex ;
+      [regularFileMap searchKey !path ?* ?wrapperFileIndex] ;
+      outExpression := [@typeFileWrapperWithStaticPath new !filewrapperName !wrapperFileIndex] ;
+      outResultType := [@typeGalgas_string new] ;
+    end select ;
+  or
   #--- Get source identity characteristics
     @typeExpression expressionValue ;
     @AC_galgasType expressionType ;
