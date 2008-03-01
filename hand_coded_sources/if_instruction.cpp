@@ -1616,6 +1616,77 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFileWrapperWithStaticPath::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "GGS_string (gWrapperFileContent_" << mFileIndex.uintValue ()
+            << "_" << mFileWrapperName << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperWithStaticPath::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperWithStaticPath::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperWithStaticPath::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFileWrapperObjectInstanciation::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "GGS_filewrapper (gWrapperDirectory_0_" << mFileWrapperName << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperObjectInstanciation::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperObjectInstanciation::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperObjectInstanciation::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark IF instruction
 #endif
 

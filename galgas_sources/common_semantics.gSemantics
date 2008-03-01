@@ -1709,6 +1709,24 @@ class @typeGalgas_stringset extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    F I L E W R A P P E R    T Y P E                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgas_filewrapper extends @AC_galgasType {
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := "filewrapper" ;
+  end method ;
+
+
+#--- Error message
+  message "a '@filewrapper' type" ;
+  message messageGalgasType "a '@filewrapper' type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   M E T H O D S    M A P                                                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3007,25 +3025,26 @@ routine checkAssignmentTypesCompatibility
   ??@bool inAcceptPolymorphism
 :
   match inFormalType :: inEffectiveType :
-  when @typeGalgas_binaryset ()  :: @typeGalgas_binaryset () :
-  when @typeGalgas_stringset ()  :: @typeGalgas_stringset () :
-  when @typeGalgas_uint ()       :: @typeGalgas_uint () :
-  when @typeGalgas_sint ()       :: @typeGalgas_sint () :
-  when @typeGalgas_uint64 ()     :: @typeGalgas_uint64 () :
-  when @typeGalgas_sint64 ()     :: @typeGalgas_sint64 () :
-  when @typeGalgas_char ()       :: @typeGalgas_char () :
-  when @typeGalgas_string ()     :: @typeGalgas_string () :
-  when @typeGalgas_bool ()       :: @typeGalgas_bool () :
-  when @typeGalgas_double ()     :: @typeGalgas_double () :
-  when @typeGalgas_lbool ()      :: @typeGalgas_lbool () :
-  when @typeGalgas_lchar ()      :: @typeGalgas_lchar () :
-  when @typeGalgas_luint ()      :: @typeGalgas_luint () :
-  when @typeGalgas_lsint ()      :: @typeGalgas_lsint () :
-  when @typeGalgas_luint64 ()    :: @typeGalgas_luint64 () :
-  when @typeGalgas_lsint64 ()    :: @typeGalgas_lsint64 () :
-  when @typeGalgas_ldouble ()    :: @typeGalgas_ldouble () :
-  when @typeGalgas_lstring ()    :: @typeGalgas_lstring () :
-  when @typeGalgas_location ()   :: @typeGalgas_location () :
+  when @typeGalgas_binaryset ()    :: @typeGalgas_binaryset () :
+  when @typeGalgas_stringset ()    :: @typeGalgas_stringset () :
+  when @typeGalgas_uint ()         :: @typeGalgas_uint () :
+  when @typeGalgas_sint ()         :: @typeGalgas_sint () :
+  when @typeGalgas_uint64 ()       :: @typeGalgas_uint64 () :
+  when @typeGalgas_sint64 ()       :: @typeGalgas_sint64 () :
+  when @typeGalgas_char ()         :: @typeGalgas_char () :
+  when @typeGalgas_string ()       :: @typeGalgas_string () :
+  when @typeGalgas_bool ()         :: @typeGalgas_bool () :
+  when @typeGalgas_double ()       :: @typeGalgas_double () :
+  when @typeGalgas_lbool ()        :: @typeGalgas_lbool () :
+  when @typeGalgas_lchar ()        :: @typeGalgas_lchar () :
+  when @typeGalgas_luint ()        :: @typeGalgas_luint () :
+  when @typeGalgas_lsint ()        :: @typeGalgas_lsint () :
+  when @typeGalgas_luint64 ()      :: @typeGalgas_luint64 () :
+  when @typeGalgas_lsint64 ()      :: @typeGalgas_lsint64 () :
+  when @typeGalgas_ldouble ()      :: @typeGalgas_ldouble () :
+  when @typeGalgas_lstring ()      :: @typeGalgas_lstring () :
+  when @typeGalgas_location ()     :: @typeGalgas_location () :
+  when @typeGalgas_filewrapper () :: @typeGalgas_filewrapper () :
 
   when @typeGalgasUndefinedClassType (@lstring kNomType1)
     :: @typeGalgasClassType (@lstring kNomType2 2* @typeSuperClassesMap kAncestorClassesMap ...) :
@@ -3386,6 +3405,17 @@ routine handleReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   else
     cast inReceiverType :
+    when >= @typeGalgas_filewrapper do
+      if [inReaderName string] == "allFilePathes" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        build_stringlist_type  ?outReturnedType ;
+      elsif [inReaderName string] == "allDirectoryPathes" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        build_stringlist_type  ?outReturnedType ;
+      else
+        error inReaderName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when >= @typeGalgasUndefinedMapindexType do
       if [inReaderName string] == "isRegular" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3399,7 +3429,7 @@ routine handleReaderCall
       elsif [inReaderName string] == "isSolved" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      else # Inherited @ string reader ?
+      else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
@@ -3845,7 +3875,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when >= @typeGalgasClassType t do # § (* * @typeListeAttributsSemantiques kNonExternAttributesList * @typeClassInheritedMessagesMap kMessagesMap * *) ->
+    when >= @typeGalgasClassType t do
       outReturnedType := [@typeGalgas_string new] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
@@ -3859,7 +3889,7 @@ routine handleReaderCall
           error inReaderName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
         end if ;
       end if ;
-    when >= @typeGalgas_enum e do # § (* * @typeEnumMessageMap kMessagesMap)
+    when >= @typeGalgas_enum e do
       @typeEnumMessageMap kMessagesMap := [e mMessagesMap] ;
       [kMessagesMap searchKey ! inReaderName ?*] ;
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ; #--- No argument
@@ -4007,6 +4037,9 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
 
   e := [@typeEntiteType new ![@typeGalgas_stringset new]] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"stringset" !here] !e] ;
+
+  e := [@typeEntiteType new ![@typeGalgas_filewrapper new]] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"filewrapper" !here] !e] ;
 
   @AC_galgasType t ; build_uintlist_type ?t ;
   e := [@typeEntiteType new !t] ;

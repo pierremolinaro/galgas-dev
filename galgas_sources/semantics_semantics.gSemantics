@@ -298,6 +298,23 @@ class @typeReaderCallInExpression extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H              *
+#---------------------------------------------------------------------------*
+
+class @typeFileWrapperWithStaticPath extends @typeExpression {
+  @lstring mFileWrapperName ;
+  @uint mFileIndex ;
+}
+ 
+#---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    O B J E C T    I N S T A N C I A T I O N       *
+#---------------------------------------------------------------------------*
+
+class @typeFileWrapperObjectInstanciation extends @typeExpression {
+  @lstring mFileWrapperName ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   D E S C R I P T I O N    O P E R A N D                                  *
 #---------------------------------------------------------------------------*
 
