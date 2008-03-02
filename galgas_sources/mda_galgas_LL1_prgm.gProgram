@@ -149,6 +149,29 @@ message "a GALGAS GUI source file"
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
   compileGuiComponentLL1 !inSourceFile !outputDirectory ;
+#@filewrapper w := [filewrapper wrapperTest] ;
+#log w ;
+#@bool b := [w directoryExistsAtPath !"/"] ;
+#message "Path: '/'" ;
+#log b ;
+#b := [w directoryExistsAtPath !"/makefile_msys_on_win32"] ;
+#message "Path: '/makefile_msys_on_win32'" ;
+#log b ;
+#b := [w directoryExistsAtPath !"makefile_msys_on_win32"] ;
+#message "Path: 'makefile_msys_on_win32'" ;
+#log b ;
+#b := [w directoryExistsAtPath !"makefile_msys_on_win34/azert"] ;
+#message "Path: 'makefile_msys_on_win34/azert'" ;
+#log b ;
+#b := [w directoryExistsAtPath !"makefile_msys_on_win34/azert/"] ;
+#message "Path: 'makefile_msys_on_win34/azert/'" ;
+#log b ;
+#b := [w directoryExistsAtPath !"toto"] ;
+#message "Path: 'toto'" ;
+#log b ;
+#@string s := [w fileContentsAtPath !"/makefile_msys_on_win34/../makefile_msys_on_win34/azert/clean.bat"] ;
+#message "Path: '/makefile_msys_on_win34/../makefile_msys_on_win34/azert/clean.bat'" ;
+#log s ;
 }
 
 #---------------------------------------------------------------------------*

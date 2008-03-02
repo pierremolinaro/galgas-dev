@@ -115,6 +115,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "send",
   "sortedlist",
   "state",
+  "struct",
   "style",
   "switch",
   "syntax", 

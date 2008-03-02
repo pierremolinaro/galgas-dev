@@ -189,7 +189,7 @@ enum @localVariableStateAutomaton {
 
 #---------------------------------------------------------------------------*
 
-filewrapper wrapperTest in "../zzz" {"ext1", "bat", "ext2"}
+#filewrapper wrapperTest in "../zzz" {"ext1", "bat", "ext2"}
 
 #---------------------------------------------------------------------------*
 
