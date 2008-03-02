@@ -138,6 +138,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
               << '_' << inWrapperName
               << " = {\n"
               << "  \"" << f->mRegularFileName << "\",\n"
+              << "  \"" << f->mRegularFileName.pathExtension () << "\",\n"
                  "  gWrapperFileContent_"
               << f->mWrapperFileIndex.uintValue ()
               << '_' << inWrapperName << "\n"

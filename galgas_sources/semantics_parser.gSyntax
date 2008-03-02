@@ -3455,7 +3455,7 @@ rule <semantic_instruction>
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
-    [variableType handleModifierCall !modifiedObjectName !methodName ?methodSignature] ;
+    [variableType handleModifierCall !methodName ?methodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>
@@ -5720,9 +5720,11 @@ routine recursivelyEnumerateDirectories
   outWrapperFileSortedList := [@wrapperFileSortedList emptySortedList] ;
   foreach files (@string kFile) :
     if [inExtensionMap hasKey ![kFile pathExtension]] then
+      @string absoluteFilePath := inAbsoluteSourcePath . "/" . kFile ;
+      #log absoluteFilePath ;
       outWrapperFileSortedList +=
         !kFile
-        !inAbsoluteSourcePath . "/" . kFile
+        !absoluteFilePath
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ;

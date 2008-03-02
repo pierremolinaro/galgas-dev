@@ -429,7 +429,6 @@ abstract class @AC_galgasType {
 
 #--- By default, object does not accept modifier call
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -899,10 +898,9 @@ class @typeGalgas_string extends @AC_galgasType {
     end if ;
   end method ;
 
-#--- string accepts modifier call
+#--- String accepts modifier call
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1263,7 +1261,6 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1314,7 +1311,6 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1365,7 +1361,6 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1415,7 +1410,6 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1465,7 +1459,6 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1515,7 +1508,6 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1565,7 +1557,6 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1615,7 +1606,6 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -1719,6 +1709,20 @@ class @typeGalgas_filewrapper extends @AC_galgasType {
     outTypeName := "filewrapper" ;
   end method ;
 
+#--- File wrapper accepts modifier call
+  override
+  method handleModifierCall
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    if [inModifierName string] == "setCurrentDirectory" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+    else
+      error inModifierName : "this modifier is not defined"
+       -> outModifierSignature ;
+    end if ;
+  end method ;
 
 #--- Error message
   message "a '@filewrapper' type" ;
@@ -1799,7 +1803,6 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 #--- Handle modifier call : return modifier signature
   override method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -2226,7 +2229,6 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- Modifiers are 'popFirst' and 'popLast' methods
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -2410,7 +2412,6 @@ class @typeGalgasDomainType extends @AC_galgasType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -2469,7 +2470,6 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- Modifiers are 'popSmallest' and 'popLast' methods
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -2585,7 +2585,6 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Modifiers are insert methods and (when map defines automaton) search methods
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -2990,7 +2989,6 @@ class @typeGalgas_enum extends @AC_galgasType {
 #--- Modifiers
   override
   method handleModifierCall
-    ??@lstring unused inModifiedObjectName
     ??@lstring inModifierName
     !@L_EXsignature outModifierSignature
   :
@@ -3412,6 +3410,25 @@ routine handleReaderCall
       elsif [inReaderName string] == "allDirectoryPathes" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         build_stringlist_type  ?outReturnedType ;
+      elsif [inReaderName string] == "currentDirectory" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "directoryExistsAtPath" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "fileExistsAtPath" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "fileContentsAtPath" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "absolutePathForPath" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_string new] ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
