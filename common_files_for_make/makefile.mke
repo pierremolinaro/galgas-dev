@@ -55,6 +55,7 @@ SOURCES += semantics_instructions.cpp
 SOURCES += domain_generation.cpp
 SOURCES += treewalking_generation.cpp
 SOURCES += wrapper_generation.cpp
+SOURCES += extern_type_generation.cpp
 SOURCES += list_generation.cpp
 SOURCES += class_generation.cpp
 SOURCES += map_generation.cpp
