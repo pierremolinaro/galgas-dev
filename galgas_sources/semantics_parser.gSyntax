@@ -4035,12 +4035,23 @@ rule <semantic_instruction>
     $identifier$ ? altName ;
   end select ;
 #--- Parse file name
-  $in$ ;
-  @lstring nomFichierSource ;
-  @typeCplusPlusName nomCppFichierSource ;
-  @AC_galgasType typeNomFichierSource ;
-  <read_access> ?nomFichierSource ?nomCppFichierSource ?typeNomFichierSource !?ioVariablesMap ;
-  @typeGalgas_lstring gs := (cast typeNomFichierSource if >= @typeGalgas_lstring else error nomFichierSource) ;
+  @bool sourceIsFile ;
+  @typeCplusPlusName nomCppSource ;
+  select
+    $in$ ;
+    sourceIsFile := true ;
+    @lstring nomFichierSource ;
+    @AC_galgasType typeNomFichierSource ;
+    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
+    @typeGalgas_lstring gs := (cast typeNomFichierSource if >= @typeGalgas_lstring else error nomFichierSource) ;
+  or
+    $on$ ;
+    sourceIsFile := false ;
+    @lstring nomFichierSource ;
+    @AC_galgasType typeNomFichierSource ;
+    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
+    @typeGalgas_string gs := (cast typeNomFichierSource if >= @typeGalgas_string else error nomFichierSource) ;
+  end select ;
 #--- Analyse des arguments effectifs
   @typeExpressionList expressionsList ;
   @L_actualParametersSignature listeTypesParametresEffectifs ;
@@ -4090,7 +4101,8 @@ rule <semantic_instruction>
 #--- Engendrer l'instruction
   @typeInstruction instruction ;
   instruction := [@C_grammarInstruction new
-    !nomCppFichierSource
+    !sourceIsFile
+    !nomCppSource
     !grammarName
     !expressionsList
     !altName

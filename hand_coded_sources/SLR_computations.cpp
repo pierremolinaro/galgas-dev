@@ -911,7 +911,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "void " ;
         }
         generatedZone3 << inTargetFileName
-                       << "::_performParsing" << currentAltForNonTerminal->mKey
+                       << "::_performSourceFileParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "const GGS_lstring & _inFileName" ;

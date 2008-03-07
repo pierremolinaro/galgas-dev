@@ -277,7 +277,7 @@ nt_gui_component_start_symbol_ (galgas_scanner & _inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_guiComponentRoot guiLL1grammar::_performParsing (C_Compiler & _inCompiler,
+GGS_guiComponentRoot guiLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName
                                 COMMA_LOCATION_ARGS) {
   GGS_guiComponentRoot _outReturnedModelInstance ;

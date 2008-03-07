@@ -7978,7 +7978,7 @@ nt_semantics_component_start_symbol_ (galgas_scanner & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_semanticsComponentRoot semanticsSLRgrammar::_performParsing (C_Compiler & _inCompiler,
+GGS_semanticsComponentRoot semanticsSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName,
                                 GGS_location & parameter_1
                                 COMMA_LOCATION_ARGS) {

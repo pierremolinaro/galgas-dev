@@ -6477,7 +6477,7 @@ nt_program_component_start_symbol_ (galgas_scanner & _inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_programComponentRoot programSLRgrammar::_performParsing (C_Compiler & _inCompiler,
+GGS_programComponentRoot programSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName
                                 COMMA_LOCATION_ARGS) {
   GGS_programComponentRoot _outReturnedModelInstance ;

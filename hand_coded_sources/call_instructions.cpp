@@ -381,10 +381,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
     if (mMetamodelClassVariableName.length () > 0) {
       ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
     }
-    ioCppFile << mGrammarName << "::_performParsing" << mAltSymbol
+    ioCppFile << mGrammarName << "::_performSourceFileParsing_" << mAltSymbol
               << " (_inLexique,"
                  "\n                                " ;
-    mSourceFileCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    mSourceCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -411,7 +411,7 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 bool cPtr_C_grammarInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-   bool isUsed = mSourceFileCppName.isSameObjectAs (inArgumentCppName) ;
+   bool isUsed = mSourceCppName.isSameObjectAs (inArgumentCppName) ;
   GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;

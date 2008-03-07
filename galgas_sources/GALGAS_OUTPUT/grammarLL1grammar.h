@@ -27,7 +27,7 @@
 
 class grammarLL1grammar : public grammarModelBuilder {
   public : virtual GGS_grammarComponentRoot nt_grammar_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_grammarComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_grammarComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual GGS_grammarLabel nt_grammar_start_symbol_label_ (galgas_scanner &,

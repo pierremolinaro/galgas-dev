@@ -52,7 +52,7 @@ class treewalkingSLRgrammar : public expressionModelBuilder,
   public : virtual GGS_semanticInstruction nt_semantic_instruction_ (galgas_scanner &) ;
   public : virtual GGS_semanticInstructions nt_semantic_instruction_list_ (galgas_scanner &) ;
   public : virtual GGS_treewalkingComponentRoot nt_treewalking_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_treewalkingComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_treewalkingComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual GGS_treewalkingRule nt_treewalking_rule_ (galgas_scanner &) ;

@@ -40,7 +40,7 @@ class syntaxSLRgrammar : public syntaxModelBuilder,
   public : virtual GGS_semanticDeclaration nt_semantic_declaration_ (galgas_scanner &) ;
   public : virtual GGS_semanticInstruction nt_semantic_instruction_ (galgas_scanner &) ;
   public : virtual GGS_syntaxComponentRoot nt_syntax_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_syntaxComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_syntaxComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual GGS_syntaxInstruction nt_syntax_instruction_ (galgas_scanner &) ;

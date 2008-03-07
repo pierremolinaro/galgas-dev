@@ -168,7 +168,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           var_cas_treewalkingComponentMap = GGS_M_treewalkingComponents::constructor_emptyMap (_inLexique COMMA_HERE) ;
           GGS_M_filewrappers  var_cas_fileWrappers ;
           var_cas_fileWrappers = GGS_M_filewrappers::constructor_emptyMap (_inLexique COMMA_HERE) ;
-            galgas_LL1_grammar::_performParsing (_inLexique,
+            galgas_LL1_grammar::_performSourceFileParsing_ (_inLexique,
                                           var_cas_inSourceFile,
                                           var_cas_lexiqueMapForUse,
                                           var_cas_semanticsComponentsMap,
@@ -559,7 +559,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           GGS_string var_cas_outputDirectory ;
           ::routine_getOutputDirectory (_inLexique,  var_cas_inSourceFile,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (203)) ;
           GGS_lstringlist  var_cas_fileList ;
-            projectLL1grammar::_performParsing (_inLexique,
+            projectLL1grammar::_performSourceFileParsing_ (_inLexique,
                                           var_cas_inSourceFile,
                                           var_cas_fileList
                                           COMMA_SOURCE_FILE_AT_LINE (210)) ;

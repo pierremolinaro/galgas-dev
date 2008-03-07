@@ -7559,7 +7559,7 @@ nt_syntax_component_start_symbol_ (galgas_scanner & _inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_syntaxComponentRoot syntaxSLRgrammar::_performParsing (C_Compiler & _inCompiler,
+GGS_syntaxComponentRoot syntaxSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName
                                 COMMA_LOCATION_ARGS) {
   GGS_syntaxComponentRoot _outReturnedModelInstance ;
