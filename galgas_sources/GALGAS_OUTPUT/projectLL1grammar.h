@@ -28,7 +28,7 @@
 class projectLL1grammar : public projectModelBuilder {
   public : virtual void nt_project_component_start_symbol_ (galgas_scanner &,
                                 GGS_lstringlist &) ;
-  public : static void _performParsing (C_Compiler & _inCompiler,
+  public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName,
                                 GGS_lstringlist &
                                 COMMA_LOCATION_ARGS) ;

@@ -28,7 +28,7 @@
 class guiLL1grammar : public guiModelBuilder {
   public : virtual GGS_guiAttribute nt_gui_attribute_ (galgas_scanner &) ;
   public : virtual GGS_guiComponentRoot nt_gui_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_guiComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_guiComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual GGS_guiLabel nt_gui_label_ (galgas_scanner &) ;

@@ -358,7 +358,7 @@ _treewalking_routine_semanticsComponentRoot (C_Compiler & _inLexique,
         GGS_semanticsComponentRoot  var_cas_semanticsComponentRoot ;
         GGS_location  var_cas_endOfSourceFile ;
         GGS_typeList  var_cas_unusedTypeList ;
-          var_cas_semanticsComponentRoot = semanticsSLRgrammar::_performParsing (_inLexique,
+          var_cas_semanticsComponentRoot = semanticsSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                         var_cas_sourceFilePath,
                                         var_cas_endOfSourceFile
                                         COMMA_SOURCE_FILE_AT_LINE (48)) ;

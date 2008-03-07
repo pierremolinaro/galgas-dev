@@ -355,7 +355,7 @@ nt_grammar_component_start_symbol_ (galgas_scanner & _inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_grammarComponentRoot grammarLL1grammar::_performParsing (C_Compiler & _inCompiler,
+GGS_grammarComponentRoot grammarLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName
                                 COMMA_LOCATION_ARGS) {
   GGS_grammarComponentRoot _outReturnedModelInstance ;

@@ -6541,7 +6541,7 @@ nt_treewalking_component_start_symbol_ (galgas_scanner & _inLexique) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_treewalkingComponentRoot treewalkingSLRgrammar::_performParsing (C_Compiler & _inCompiler,
+GGS_treewalkingComponentRoot treewalkingSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName
                                 COMMA_LOCATION_ARGS) {
   GGS_treewalkingComponentRoot _outReturnedModelInstance ;

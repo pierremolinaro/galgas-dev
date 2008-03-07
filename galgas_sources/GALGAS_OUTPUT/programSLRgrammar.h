@@ -52,7 +52,7 @@ class programSLRgrammar : public expressionModelBuilder,
   public : virtual GGS_semanticInstruction nt_semantic_instruction_ (galgas_scanner &) ;
   public : virtual GGS_semanticInstructions nt_semantic_instruction_list_ (galgas_scanner &) ;
   public : virtual GGS_programComponentRoot nt_program_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_programComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_programComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual GGS_programRule nt_program_rule_ (galgas_scanner &) ;

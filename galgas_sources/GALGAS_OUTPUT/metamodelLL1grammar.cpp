@@ -521,7 +521,7 @@ nt_metamodel_component_start_symbol_ (galgas_scanner & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_metamodelComponentRoot metamodelLL1grammar::_performParsing (C_Compiler & _inCompiler,
+GGS_metamodelComponentRoot metamodelLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName,
                                 GGS_location & parameter_1
                                 COMMA_LOCATION_ARGS) {

@@ -48,7 +48,7 @@ class lexiqueLL1grammar : public lexiqueModelBuilder {
   public : virtual GGS_lexicalInstruction nt_lexical_send_instruction_ (galgas_scanner &) ;
   public : virtual GGS_lexicalExpression nt_lexical_term_ (galgas_scanner &) ;
   public : virtual GGS_lexiqueComponentRoot nt_lexique_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_lexiqueComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_lexiqueComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual GGS_lexicalWhileBranch nt_repeat_while_branch_ (galgas_scanner &) ;

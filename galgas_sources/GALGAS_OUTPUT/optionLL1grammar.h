@@ -28,7 +28,7 @@
 class optionLL1grammar : public optionModelBuilder {
   public : virtual GGS_commandLineOption nt_option_ (galgas_scanner &) ;
   public : virtual GGS_optionComponentRoot nt_option_component_start_symbol_ (galgas_scanner &) ;
-  public : static GGS_optionComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_optionComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName
                                 COMMA_LOCATION_ARGS) ;
   public : virtual sint16 select_repeat_optionModelBuilder_0 (galgas_scanner &) ;

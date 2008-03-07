@@ -155,7 +155,7 @@ pr_project_component_start_symbol_projectModelBuilder_30_4_ (_inLexique, paramet
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void projectLL1grammar::_performParsing (C_Compiler & _inCompiler,
+void projectLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & _inFileName,
                                 GGS_lstringlist & parameter_1
                                 COMMA_LOCATION_ARGS) {

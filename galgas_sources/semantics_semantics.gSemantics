@@ -921,7 +921,8 @@ map @M_nonTerminalSymbolForSyntax {
 #---------------------------------------------------------------------------*
 
 class @C_grammarInstruction extends @typeInstruction {
-  @typeCplusPlusName mSourceFileCppName ;
+  @bool mSourceIsFile ; # if false, next arg is a @string
+  @typeCplusPlusName mSourceCppName ; # @lstring var or @string var
   @lstring mGrammarName ;
   @typeExpressionList mExpressionsList ;
   @lstring mAltSymbol ;

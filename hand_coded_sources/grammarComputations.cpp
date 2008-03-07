@@ -240,7 +240,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         }else{
           generatedZone3 << "void " ;
         }
-        generatedZone3 << "_performParsing" << currentAltForNonTerminal->mKey 
+        generatedZone3 << "_performSourceFileParsing_" << currentAltForNonTerminal->mKey 
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "const GGS_lstring & inFileName" ;

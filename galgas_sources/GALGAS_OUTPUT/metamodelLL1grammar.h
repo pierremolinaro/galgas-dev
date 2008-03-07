@@ -33,7 +33,7 @@ class metamodelLL1grammar : public metamodelModelBuilder {
   public : virtual GGS_metamodelEntity nt_entity_declaration_ (galgas_scanner &) ;
   public : virtual GGS_metamodelComponentRoot nt_metamodel_component_start_symbol_ (galgas_scanner &,
                                 GGS_location &) ;
-  public : static GGS_metamodelComponentRoot _performParsing (C_Compiler & _inCompiler,
+  public : static GGS_metamodelComponentRoot _performSourceFileParsing_ (C_Compiler & _inCompiler,
                                 const GGS_lstring & inFileName,
                                 GGS_location &
                                 COMMA_LOCATION_ARGS) ;

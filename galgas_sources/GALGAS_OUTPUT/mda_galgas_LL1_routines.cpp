@@ -96,7 +96,7 @@ void routine_compileOptionComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileOptionComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_optionComponentRoot  var_cas_optionComponentRoot ;
-    var_cas_optionComponentRoot = optionLL1grammar::_performParsing (_inLexique,
+    var_cas_optionComponentRoot = optionLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (74)) ;
   GGS_commandLineOptionMap  var_cas_boolOptionMap ;
@@ -126,7 +126,7 @@ void routine_compileMetamodelComponentLL1 (C_Compiler & _inLexique,
   var_cas_metamodelComponentName = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (107)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (107)) ;
   GGS_metamodelComponentRoot  var_cas_metamodelComponentRoot ;
   GGS_location  var_cas_endOfSourceFile ;
-    var_cas_metamodelComponentRoot = metamodelLL1grammar::_performParsing (_inLexique,
+    var_cas_metamodelComponentRoot = metamodelLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile,
                                   var_cas_endOfSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (110)) ;
@@ -312,7 +312,7 @@ void routine_compileLexiqueComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileLexiqueComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_lexiqueComponentRoot  var_cas_lexiqueComponentRoot ;
-    var_cas_lexiqueComponentRoot = lexiqueLL1grammar::_performParsing (_inLexique,
+    var_cas_lexiqueComponentRoot = lexiqueLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (253)) ;
   GGS_terminalMap  var_cas_terminalMap ;
@@ -336,7 +336,7 @@ void routine_compileSemanticsComponentLL1 (C_Compiler & _inLexique,
   #endif
   GGS_semanticsComponentRoot  var_cas_semanticsComponentRoot ;
   GGS_location  var_cas_endOfSourceFile ;
-    var_cas_semanticsComponentRoot = semanticsSLRgrammar::_performParsing (_inLexique,
+    var_cas_semanticsComponentRoot = semanticsSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile,
                                   var_cas_endOfSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (270)) ;
@@ -393,7 +393,7 @@ void routine_compileSyntaxComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileSyntaxComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_syntaxComponentRoot  var_cas_syntaxComponentRoot ;
-    var_cas_syntaxComponentRoot = syntaxSLRgrammar::_performParsing (_inLexique,
+    var_cas_syntaxComponentRoot = syntaxSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (311)) ;
   #ifdef DEBUG_TRACE_ENABLED
@@ -414,7 +414,7 @@ void routine_compileGrammarComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileGrammarComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_grammarComponentRoot  var_cas_grammarComponentRoot ;
-    var_cas_grammarComponentRoot = grammarLL1grammar::_performParsing (_inLexique,
+    var_cas_grammarComponentRoot = grammarLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (321)) ;
   #ifdef DEBUG_TRACE_ENABLED
@@ -435,7 +435,7 @@ void routine_compileGuiComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileGuiComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_guiComponentRoot  var_cas_guiComponentRoot ;
-    var_cas_guiComponentRoot = guiLL1grammar::_performParsing (_inLexique,
+    var_cas_guiComponentRoot = guiLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (331)) ;
   #ifdef DEBUG_TRACE_ENABLED
@@ -456,7 +456,7 @@ void routine_compileProgramComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileProgramComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_programComponentRoot  var_cas_programComponentRoot ;
-    var_cas_programComponentRoot = programSLRgrammar::_performParsing (_inLexique,
+    var_cas_programComponentRoot = programSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (341)) ;
   #ifdef DEBUG_TRACE_ENABLED
@@ -477,7 +477,7 @@ void routine_compileTreewalkingComponentLL1 (C_Compiler & _inLexique,
     printf ("ENTER routine_compileTreewalkingComponentLL1 at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_treewalkingComponentRoot  var_cas_treewalkingComponentRoot ;
-    var_cas_treewalkingComponentRoot = treewalkingSLRgrammar::_performParsing (_inLexique,
+    var_cas_treewalkingComponentRoot = treewalkingSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                   var_cas_inSourceFile
                                   COMMA_SOURCE_FILE_AT_LINE (351)) ;
   #ifdef DEBUG_TRACE_ENABLED
