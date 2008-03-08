@@ -3402,8 +3402,8 @@ end rule ;
 #    M O D I F I E R    C A L L   I N S T R U C T I O N                     *
 #               [!?object modifier !... !?... ?...] ;                       *
 #                                                                           *
-#    T Y P E    M E T H O D   C A L L    I N S T R U C T I O N              *
-#               [@aType type_method_name !... !?... ?...] ;                 *
+#    C O N S T R U C T O R   C A L L    I N S T R U C T I O N               *
+#               [@aType type_method_name !... !... !...] ;                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -3422,11 +3422,12 @@ rule <semantic_instruction>
   $[$ ;
 #--- Get source identity characteristics
   @typeInstruction instruction ;
-  select
+  select #--- METHOD CALL
     @lstring readObjectName ;
     @AC_galgasType variableType ;
     @typeCplusPlusName cppVariableName ;
     <read_access> ?readObjectName ?cppVariableName ?variableType !?ioVariablesMap ;
+  #--- Method name
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
@@ -3444,18 +3445,36 @@ rule <semantic_instruction>
     ;
   #--- Generate instruction
     instruction := [@typeMethodCallInstruction new !cppVariableName !methodName !expressionsList] ;
-  or
+  or #---- MODIFIER CALL
     $!?$ ;
     @lstring modifiedObjectName ;
     $identifier$ ? modifiedObjectName ;
     @AC_galgasType variableType ;
     @typeCplusPlusName cppVariableName ;
     [!?ioVariablesMap searchForReadWriteAccess !modifiedObjectName ?variableType ?cppVariableName] ; 
-  #--- Get method name
-    @lstring methodName ;
-    $identifier$ ? methodName ;
+  #--- Struct attributes
+    @lstringlist structAttributeList [emptyList] ;
+    repeat
+    while
+      $.$ ;
+      @lstring structAttributeName ;
+      $identifier$ ? structAttributeName ;
+      structAttributeList += !structAttributeName ;
+      @typeGalgasStructType structType := (cast variableType if >= @typeGalgasStructType else error structAttributeName) ;
+      @bool found := false ;
+      foreach [structType mAttributesList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found :
+        found := [kAttributeName string] == [structAttributeName string] ;
+        variableType := kAttributType ;
+      end foreach ;
+      if not found then
+        error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
+      end if ;
+    end repeat ;
+  #--- Get modifier name
+    @lstring modifierName ;
+    $identifier$ ? modifierName ;
     @L_EXsignature methodSignature ;
-    [variableType handleModifierCall !methodName ?methodSignature] ;
+    [variableType handleModifierCall !modifierName ?methodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>
@@ -3468,8 +3487,8 @@ rule <semantic_instruction>
       !?ioInstructionList
     ;
   #--- Generate instruction
-    instruction := [@typeModifierCallInstruction new !cppVariableName !methodName !expressionsList] ;
-  or #--------- TYPE METHOD
+    instruction := [@typeModifierCallInstruction new !cppVariableName !structAttributeList !modifierName !expressionsList] ;
+  or #--------- CONSTRUCTOR
     @lstring typeName ;
     $type_name$ ? typeName ;
     @lstring typeMethodName ;
@@ -3479,7 +3498,6 @@ rule <semantic_instruction>
     @AC_semanticsEntity theEntity  ;
     [ioComponentSemanticsEntitiesMap searchKey !typeName ? theEntity] ;
     @AC_galgasType type := [(cast theEntity if >=@typeEntiteType else error typeName) aDefType] ;
-    # $ extract theEntity->@typeEntiteType (?type) error typeName : messageTypeEntite ;
     [type handleClassMethodCall !typeMethodName ?typeMethodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
@@ -5707,6 +5725,91 @@ rule <attributes_definition_list>
     outAttributeListModel += !typeName ;
     $;$ ;
   end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     S T R U C T   T Y P E   D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
+:
+  $struct$ ;
+  @lstring listTypeName ;
+  $type_name$ ? listTypeName ;
+  ${$ ;
+#-- Declaration des attributs de la list
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
+  @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+  @typeSemanticAttributesMap tableAttributs [emptyMap] ;
+  @typeListModel attributeListModel [emptyList] ;
+  <attributes_definition_list>
+    !tableEnAvant
+    !?attributeListModel
+    !?tableAttributs
+    !?listeTousAttributsSemantiques
+    ?listeAttributsSemantiquesCourants
+    !?ioComponentSemanticsEntitiesMap
+  ;
+#--- Construction de l'attribut semantique
+  $}$ ;
+  @AC_galgasType c := [@typeGalgasStructType new
+    !listTypeName
+    !listeTousAttributsSemantiques
+  ] ;
+  @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+  @typeEntityToGenerate def := [@C_structToImplement new
+    !listTypeName
+    !listeTousAttributsSemantiques
+  ] ;
+  listeEntitesAengendrer += !def ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@M_filewrappers unused ioFileWrappers
+:
+  $struct$ ;
+  @lstring listTypeName ;
+  $type_name$ ? listTypeName ;
+  ${$ ;
+#-- Declaration des attributs de la list
+  @typeListModel attributeListModel [emptyList] ;
+  @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
+  @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
+  @typeSemanticAttributesMap tableAttributs [emptyMap] ;
+  <attributes_definition_list>
+    !tableEnAvant
+    !?attributeListModel
+    !?tableAttributs
+    !?listeTousAttributsSemantiques
+    ?listeAttributsSemantiquesCourants
+    !?ioComponentSemanticsEntitiesMap
+  ;
+#--- Construction de l'attribut semantique
+  $}$ ;
+  @AC_galgasType c := [@typeGalgasStructType new
+    !listTypeName
+    !listeTousAttributsSemantiques
+  ] ;
+  @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !listTypeName !entite] ;
+  @TypeModel t := [@ListModel new !attributeListModel] ;
+  [!?ioModelMap insertKey !listTypeName !t] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

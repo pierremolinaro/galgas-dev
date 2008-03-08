@@ -2283,6 +2283,37 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    L I S T    T Y P E                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgasStructType extends @AC_galgasType {
+  @lstring mStructTypeName ;
+  @typeListeAttributsSemantiques mAttributesList ;
+
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := [mStructTypeName string] ;
+  end method ;
+
+#--- A struct accepts 'new' constructor
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "new" then
+      outAccessorTypesList := mAttributesList ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+  message "a struct type" ;
+  message messageGalgasType "a struct type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    U I N T L I S T    T Y P E                               *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3042,7 +3073,14 @@ routine checkAssignmentTypesCompatibility
   when @typeGalgas_ldouble ()      :: @typeGalgas_ldouble () :
   when @typeGalgas_lstring ()      :: @typeGalgas_lstring () :
   when @typeGalgas_location ()     :: @typeGalgas_location () :
-  when @typeGalgas_filewrapper () :: @typeGalgas_filewrapper () :
+  when @typeGalgas_filewrapper ()  :: @typeGalgas_filewrapper () :
+
+  when @typeGalgasStructType (@lstring kNomType1 *)::@typeGalgasStructType (@lstring kNomType2 *) :
+    @bool accept := [kNomType1 string] == [kNomType2 string] ;
+    if not accept then
+      error inErrorLocation : "I was expecting the struct type '@" . [kNomType1 string] .
+                              "', I have got the struc type '@" . [kNomType2 string] . "\"" ;
+    end if ;
 
   when @typeGalgasUndefinedClassType (@lstring kNomType1)
     :: @typeGalgasClassType (@lstring kNomType2 2* @typeSuperClassesMap kAncestorClassesMap ...) :
@@ -3893,7 +3931,7 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when >= @typeGalgasClassType t do
-      outReturnedType := [@typeGalgas_string new] ;
+      outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
@@ -3905,6 +3943,17 @@ routine handleReaderCall
         if not found then
           error inReaderName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
         end if ;
+      end if ;
+    when >= @typeGalgasStructType t do
+      outReturnedType := [@typeGalgas_string new] ; # Any Value
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @bool found := false ;
+      foreach [t mAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found :
+        outReturnedType := kAttributType ;
+        found := [inReaderName string] == [kNomAttribut string] ;
+      end foreach ;
+      if not found then
+        error inReaderName: "this reader is not defined (you can name as reader any struct attribute)" ;
       end if ;
     when >= @typeGalgas_enum e do
       @typeEnumMessageMap kMessagesMap := [e mMessagesMap] ;

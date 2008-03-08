@@ -239,13 +239,19 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 void cPtr_typeModifierCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
-                       const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
-                       const bool /* inGenerateDebug */,
-                       const bool inGenerateSemanticInstructions) const {
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
 
   if (inGenerateSemanticInstructions) {
     aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+    while (structAttribute != NULL) {
+      macroValidPointer (structAttribute) ;
+      ioCppFile << "." << structAttribute->mValue ;
+      structAttribute = structAttribute->nextObject () ;
+    }
     ioCppFile << ".modifier_" << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
