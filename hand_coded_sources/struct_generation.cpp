@@ -224,29 +224,29 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasStructType::
-generateAttributeDeclaration (const GGS_lstring & nom,
-                              AC_OutputStream & inHfile) const {
+generateAttributeDeclaration (const GGS_lstring & /* nom */,
+                              AC_OutputStream & /* inHfile */) const {
 }  
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasStructType::
-generateAttributeInitialization (const GGS_lstring & nom,
-                                 AC_OutputStream & inCppFile) const {
+generateAttributeInitialization (const GGS_lstring & /* nom */,
+                                 AC_OutputStream & /* inCppFile */) const {
 }  
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasStructType::
-generateCppClassName (AC_OutputStream & fichier) const {
-
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mStructTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasStructType::
-generateAttributeGetLexicalValue (const C_String & inAttributeName,
-                                  AC_OutputStream & inCppFile) const {
+generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
+                                  AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
