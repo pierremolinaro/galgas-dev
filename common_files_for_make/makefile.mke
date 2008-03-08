@@ -60,6 +60,7 @@ SOURCES += list_generation.cpp
 SOURCES += class_generation.cpp
 SOURCES += map_generation.cpp
 SOURCES += enum_generation.cpp
+SOURCES += struct_generation.cpp
 SOURCES += assignment_instructions.cpp
 SOURCES += foreach_instructions.cpp
 SOURCES += if_instruction.cpp
