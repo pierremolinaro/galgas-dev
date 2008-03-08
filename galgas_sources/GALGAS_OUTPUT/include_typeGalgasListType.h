@@ -21,13 +21,16 @@ class cPtr_typeGalgasListType : public cPtr_typeGalgasUndefinedListType {
   private : typedef cPtr_typeGalgasUndefinedListType inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
-                                                    AC_OutputStream & inHfile) const ;
+  public : virtual void
+  generateAttributeDeclaration (const GGS_lstring & nom,
+                                AC_OutputStream & inHfile) const ;
 
-public : virtual void generateAttributeInitialization (const GGS_lstring & nom,
-                                                       AC_OutputStream & inCppFile) const ;
+  public : virtual void
+  generateAttributeInitialization (const GGS_lstring & nom,
+                                   AC_OutputStream & inCppFile) const ;
 
-public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
+  public : virtual void
+  generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- END OF USER ZONE 2
 
