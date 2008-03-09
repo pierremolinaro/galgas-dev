@@ -14,7 +14,9 @@
 
 //---------------------------------------------------------------------------*
 
-#pragma mark cPtr_C_structToImplement
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_C_structToImplement
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -219,7 +221,9 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
 //---------------------------------------------------------------------------*
 
-#pragma mark cPtr_typeGalgasStructType
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_typeGalgasStructType
+#endif
 
 //---------------------------------------------------------------------------*
 
