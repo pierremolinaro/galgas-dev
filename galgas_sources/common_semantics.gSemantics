@@ -3387,6 +3387,9 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "reversedString" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
+  elsif [inReaderName string] == "escapedString" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "componentsSeparatedByString" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
