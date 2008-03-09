@@ -214,7 +214,8 @@ class @typeMessageInstruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 class @typeMethodCallInstruction extends @typeInstruction {
-  @typeCplusPlusName aNomCppVariable ;
+  @AC_galgasType mExpressionType ;
+  @typeExpression mExpression ;
   @lstring aNomMethodeSimple ;
   @typeExpressionList mExpressionsList ;
 }
@@ -951,6 +952,7 @@ class @C_treewalkingInstruction extends @typeInstruction {
 
 class @typeAppendInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @lstringlist mStructAttributeList ;
   @typeExpressionList mSourceExpressions ;
 }
 
@@ -962,6 +964,7 @@ class @typeAppendInstruction extends @typeInstruction {
 
 class @typeRemoveInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @lstringlist mStructAttributeList ;
   @typeExpressionList mSourceExpressions ;
 }
 
@@ -973,6 +976,7 @@ class @typeRemoveInstruction extends @typeInstruction {
 
 class @typeIncrementInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @lstringlist mStructAttributeList ;
   @location mInstructionLocation ;
 }
 
@@ -984,6 +988,7 @@ class @typeIncrementInstruction extends @typeInstruction {
 
 class @typeDecrementInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @lstringlist mStructAttributeList ;
   @location mInstructionLocation ;
 }
 

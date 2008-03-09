@@ -535,66 +535,6 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark -
-#endif
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeCurrentObjectName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeDirectName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeAutomaticName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeLocationAutomaticName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeCppThisName::getVariableKind (void) const {
-  return k_me_constant ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeCppInheritedName::getVariableKind (void) const {
-  return k_super_constant ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeOperandName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeKeyName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
-
-enumVariableKind cPtr_typeNullName::getVariableKind (void) const {
-  return k_other_variable ;
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED

@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate semantics instructions                                          *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -931,6 +931,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+    while (structAttribute != NULL) {
+      macroValidPointer (structAttribute) ;
+      ioCppFile << "." << structAttribute->mValue ;
+      structAttribute = structAttribute->nextObject () ;
+    }
     ioCppFile << "._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.lineNumber ()
               << ")) ;\n" ;
@@ -976,6 +982,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+    while (structAttribute != NULL) {
+      macroValidPointer (structAttribute) ;
+      ioCppFile << "." << structAttribute->mValue ;
+      structAttribute = structAttribute->nextObject () ;
+    }
     ioCppFile << "._decrement_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.lineNumber ()
               << ")) ;\n" ;
@@ -1021,6 +1033,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+    while (structAttribute != NULL) {
+      macroValidPointer (structAttribute) ;
+      ioCppFile << "." << structAttribute->mValue ;
+      structAttribute = structAttribute->nextObject () ;
+    }
     ioCppFile << "._addAssign_operation (" ;
     GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
     bool first = true ;
@@ -1098,6 +1116,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+    while (structAttribute != NULL) {
+      macroValidPointer (structAttribute) ;
+      ioCppFile << "." << structAttribute->mValue ;
+      structAttribute = structAttribute->nextObject () ;
+    }
     ioCppFile << ".minusAssign_operation (" ;
     GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
     bool first = true ;

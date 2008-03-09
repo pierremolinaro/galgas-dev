@@ -438,7 +438,6 @@ abstract class @AC_galgasType {
 
 #--- By default, class does not accept reader instruction call
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -833,7 +832,6 @@ class @typeGalgas_string extends @AC_galgasType {
 #--- By default, class does not accept method instruction call
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -1811,7 +1809,6 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 
 #--- By default, class does not accept reader instruction call
   override method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -2245,7 +2242,6 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List accept 'first' and last' reader in instruction
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -2515,7 +2511,6 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- List accept 'smallest' and greatest' reader in instruction
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -2625,7 +2620,6 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Methods are search methods (when map defines no automaton)
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -2727,7 +2721,6 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
 #--- mapindex accept method calls corresponding to search declarations
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inReaderName
     !@L_EXsignature outReaderSignature
   :
@@ -2829,7 +2822,6 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- Handle method call : return method signature
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inMethodName
     !@L_EXsignature outMethodSignature
   :
@@ -3029,7 +3021,6 @@ class @typeGalgas_enum extends @AC_galgasType {
 #--- Methods
   override
   method handleMethodInstructionCall
-    ??@lstring unused inReadObjectName
     ??@lstring inMethodName
     !@L_EXsignature outReaderSignature
   :
