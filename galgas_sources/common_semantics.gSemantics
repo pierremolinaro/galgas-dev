@@ -2304,7 +2304,7 @@ class @typeGalgasStructType extends @AC_galgasType {
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := mAttributesList ;
     else
-      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
+      error inClassMethodName : "the '" . inClassMethodName  . "' constructor is not defined" -> outAccessorTypesList ;
     end if ;
   end method ;
 
