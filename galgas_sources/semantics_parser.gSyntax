@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS semantics component parser definition                             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -401,6 +401,20 @@ nonterminal <instruction_beginning_with_identifier>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_filewrappers inFileWrappers
+label parse
+;
+
+nonterminal <instruction_beginning_with_identifier_and_structure_access>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_filewrappers inFileWrappers
+  ??@typeCplusPlusName inNomCppVariableSource
+  ??@AC_galgasType inTargetType
+  ??@lstringlist inStructAttributeList
 label parse
 ;
 
@@ -2319,7 +2333,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  . =     I N S T R U C T I O N     idf .= ... ;                           *
+#  .=     I N S T R U C T I O N     idf .= ... ;                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -2443,30 +2457,89 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   + =    I N S T R U C T I O N                                            *
+#               I N S T R U C T I O N     B E G I N N I N G                 *
 #                                                                           *
-#  variable += !source_exp !... !source_exp ;                               *
+#                  W I T H    A N    I D E N T I F I E R                    *
+#                                                                           *
+#  A N D    A C C E S S    T O    S T R U C T U R E    F I E L D            *
+#                                                                           *
+#  variable.field. ...                                                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <instruction_beginning_with_identifier>
-  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_filewrappers inFileWrappers
+:
+#--- Perform an io access for target variable
+  @AC_galgasType targetType ;
+  @typeCplusPlusName nomCppVariableSource ;
+  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetType ?nomCppVariableSource] ;
+#--- Struct attributes
+  @lstringlist structAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    @lstring structAttributeName ;
+    $identifier$ ? structAttributeName ;
+    structAttributeList += !structAttributeName ;
+    @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
+    @bool found := false ;
+    foreach [structType mAttributesList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found :
+      found := [kAttributeName string] == [structAttributeName string] ;
+      targetType := kAttributType ;
+    end foreach ;
+    if not found then
+      error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
+    end if ;
+  end repeat ;
+#--- Instruction
+  <instruction_beginning_with_identifier_and_structure_access>
+    !inTreewalkingRoutineHeaderMap
+    !?ioVariablesMap
+    !?ioInstructionList
+    !inOptionsComponentsMapForUse
+    !ioComponentSemanticsEntitiesMap
+    !inMetamodelEntityMap
+    !inFileWrappers
+    !nomCppVariableSource
+    !targetType
+    !structAttributeList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   + =    I N S T R U C T I O N                                            *
+#                                                                           *
+#  variable += !source_exp !... !source_exp ;                               *
+#  variable.field. ... += !source_exp !... !source_exp ;                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier_and_structure_access>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_filewrappers inFileWrappers
+  ??@typeCplusPlusName inNomCppVariableSource
+  ??@AC_galgasType inTargetType
+  ??@lstringlist inStructAttributeList
 :
+#---- Operator
   $+=$ ;
-#--- Perform an io access for target variable
-  @AC_galgasType targetVariableType ;
-  @typeCplusPlusName nomCppVariableSource ;
-  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
 #--- Does the variable class accept the += operator ?
   @typeListeAttributsSemantiques formalParametersList ;
-  cast targetVariableType :
+  cast inTargetType :
   when == @typeGalgas_multipleReferenceEntity mre do
     formalParametersList := [@typeListeAttributsSemantiques emptyList] ;
     @AC_semanticsEntity entite ;
@@ -2474,7 +2547,7 @@ rule <instruction_beginning_with_identifier>
     @AC_galgasType elementType := [(cast entite if >= @typeEntiteType else error here) aDefType] ;
     formalParametersList += !elementType ![@lstring new !"" !here] ;
   else
-    [targetVariableType handleAddAssignOperatorCall !here ?formalParametersList] ;
+    [inTargetType handleAddAssignOperatorCall !here ?formalParametersList] ;
   end cast ;
 #--- Parse argument list
   @typeTypesList typeList := [@typeTypesList emptyList] ;
@@ -2509,7 +2582,7 @@ rule <instruction_beginning_with_identifier>
       ;
     end foreach ;
   end if ;
-  @typeInstruction instruction := [@typeAppendInstruction new !nomCppVariableSource !expressionList] ;
+  @typeInstruction instruction := [@typeAppendInstruction new !inNomCppVariableSource !inStructAttributeList !expressionList] ;
   ioInstructionList += !instruction ;
 end rule ;
 
@@ -2521,24 +2594,22 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <instruction_beginning_with_identifier>
+rule <instruction_beginning_with_identifier_and_structure_access>
   ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-  ?@lstring nomVarDest
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_filewrappers inFileWrappers
+  ??@typeCplusPlusName inNomCppVariableSource
+  ??@AC_galgasType inTargetType
+  ??@lstringlist inStructAttributeList
 :
   $-=$ ;
-#--- Perform an io access for target variable
-  @AC_galgasType targetVariableType ;
-  @typeCplusPlusName nomCppVariableSource ;
-  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
 #--- Does the variable class accept the += operator ?
   @typeListeAttributsSemantiques formalParametersList ;
-  [targetVariableType handleMinusAssignOperatorCall !here ?formalParametersList] ;
+  [inTargetType handleMinusAssignOperatorCall !here ?formalParametersList] ;
 #--- Parse argument list
   @typeTypesList typeList := [@typeTypesList emptyList] ;
   @typeExpressionList expressionList [emptyList] ;
@@ -2572,7 +2643,7 @@ rule <instruction_beginning_with_identifier>
       ;
     end foreach ;
   end if ;
-  @typeInstruction instruction := [@typeRemoveInstruction new !nomCppVariableSource !expressionList] ;
+  @typeInstruction instruction := [@typeRemoveInstruction new !inNomCppVariableSource !inStructAttributeList !expressionList] ;
   ioInstructionList += !instruction ;
 end rule ;
 
@@ -2584,25 +2655,23 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <instruction_beginning_with_identifier>
+rule <instruction_beginning_with_identifier_and_structure_access>
   ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-  ?@lstring nomVarDest
-  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeVariablesMap unused ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_filewrappers unused inFileWrappers
+  ??@typeCplusPlusName inNomCppVariableSource
+  ??@AC_galgasType inTargetType
+  ??@lstringlist inStructAttributeList
 :
   $++$ ;
-#--- Perform an io access for target variable
-  @AC_galgasType targetVariableType ;
-  @typeCplusPlusName nomCppVariableSource ;
-  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
 #--- Does the variable class accept the ++ operator ?
-  [targetVariableType handleIncrementOperatorCall !here] ;
+  [inTargetType handleIncrementOperatorCall !here] ;
 #--- Generate instruction
-  @typeInstruction instruction := [@typeIncrementInstruction new !nomCppVariableSource !here] ;
+  @typeInstruction instruction := [@typeIncrementInstruction new !inNomCppVariableSource !inStructAttributeList !here] ;
   ioInstructionList += !instruction ;
 end rule ;
 
@@ -2614,25 +2683,23 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <instruction_beginning_with_identifier>
+rule <instruction_beginning_with_identifier_and_structure_access>
   ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-  ?@lstring nomVarDest
-  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeVariablesMap unused ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_filewrappers unused inFileWrappers
+  ??@typeCplusPlusName inNomCppVariableSource
+  ??@AC_galgasType inTargetType
+  ??@lstringlist inStructAttributeList
 :
   $--$ ;
-#--- Perform an io access for target variable
-  @AC_galgasType targetVariableType ;
-  @typeCplusPlusName nomCppVariableSource ;
-  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetVariableType ?nomCppVariableSource] ;
 #--- Does the variable class accept the ++ operator ?
-  [targetVariableType handleDecrementOperatorCall !here] ;
+  [inTargetType handleDecrementOperatorCall !here] ;
 #--- Generate instruction
-  @typeInstruction instruction := [@typeDecrementInstruction new !nomCppVariableSource !here] ;
+  @typeInstruction instruction := [@typeDecrementInstruction new !inNomCppVariableSource !inStructAttributeList !here] ;
   ioInstructionList += !instruction ;
 end rule ;
 
@@ -3423,15 +3490,21 @@ rule <semantic_instruction>
 #--- Get source identity characteristics
   @typeInstruction instruction ;
   select #--- METHOD CALL
-    @lstring readObjectName ;
-    @AC_galgasType variableType ;
-    @typeCplusPlusName cppVariableName ;
-    <read_access> ?readObjectName ?cppVariableName ?variableType !?ioVariablesMap ;
+    @typeExpression expression ;
+    @AC_galgasType expressionType ;
+    <expression>
+      !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !inFileWrappers
+      !?ioVariablesMap
+      ?expression
+      ?expressionType
+    ;
   #--- Method name
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
-    [variableType handleMethodInstructionCall !readObjectName !methodName ?methodSignature] ;
+    [expressionType handleMethodInstructionCall !methodName ?methodSignature] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>
@@ -3444,7 +3517,7 @@ rule <semantic_instruction>
       !?ioInstructionList
     ;
   #--- Generate instruction
-    instruction := [@typeMethodCallInstruction new !cppVariableName !methodName !expressionsList] ;
+    instruction := [@typeMethodCallInstruction new !expressionType !expression !methodName !expressionsList] ;
   or #---- MODIFIER CALL
     $!?$ ;
     @lstring modifiedObjectName ;

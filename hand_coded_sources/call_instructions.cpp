@@ -163,19 +163,20 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
 
   if (inGenerateSemanticInstructions) {
-    bool ifGenerated = false ;
-    const enumVariableKind variableKind = aNomCppVariable (HERE)->getVariableKind () ;
-    if (variableKind == k_super_constant) {
+    cPtr_typeCppInheritedName * inheritedAccess = dynamic_cast <cPtr_typeCppInheritedName *> (mExpression (HERE)) ;
+    if (inheritedAccess != NULL) {
       ioCppFile << "inherited::" ;
-    }else if (variableKind == k_other_variable) {
-      ifGenerated = true ;
-      ioCppFile << "if (" ;
-      aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << "._isBuilt ()) {\n  " ;
-      aNomCppVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << " (HERE)->" ;
-    }  
-    ioCppFile << "method_" << aNomMethodeSimple << " (_inLexique"  ;
+    }else{
+      C_String var ; var << "_temp_" << aNomMethodeSimple.location () ;
+      ioCppFile << "const " ;
+      mExpressionType (HERE)->generateCppClassName (ioCppFile) ;
+      ioCppFile << " " << var << " = " ;
+      mExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << " ;\n"
+                   "if (" << var << "._isBuilt ()) {\n"
+                   "  " << var << " (HERE)->method_" ;
+    }
+    ioCppFile << aNomMethodeSimple << " (_inLexique"  ;
     GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -186,7 +187,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << aNomMethodeSimple.lineNumber ()
               << ")) ;\n" ;
-    if (ifGenerated) {
+    if (inheritedAccess == NULL) {
       ioCppFile << "}\n" ;
     }
   }
@@ -218,7 +219,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 bool cPtr_typeMethodCallInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-  bool used = aNomCppVariable.isSameObjectAs (inArgumentCppName) ;
+  bool used = mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! used) && argCourant != NULL) {
     macroValidPointer (argCourant) ;

@@ -21,7 +21,6 @@ class cPtr_typeOperandName : public cPtr_typeCplusPlusName {
   private : typedef cPtr_typeCplusPlusName inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual enumVariableKind getVariableKind (void) const ;
 public : virtual void generateVariableAddress (AC_OutputStream & fichier) const ;
 public : virtual void generateCplusPlusName (AC_OutputStream & fichier) const ;
 
