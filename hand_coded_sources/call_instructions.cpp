@@ -384,13 +384,19 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "  " ;
     if (mMetamodelClassVariableName.length () > 0) {
       ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
     }
     ioCppFile << mGrammarName << "::_performSourceFileParsing_" << mAltSymbol
-              << " (_inLexique,"
-                 "\n                                " ;
+              << " (_inLexique"
+                 ",\n                                " ;
+	if (dynamic_cast <cPtr_typeNullName *> (mSentStringName (HERE)) != NULL) {
+	  ioCppFile << "NULL" ;
+	}else{
+	  ioCppFile << "& " ;
+      mSentStringName (HERE)->generateCplusPlusName (ioCppFile) ;
+	}
+    ioCppFile << ",\n                                " ;
     mSourceCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
@@ -440,6 +446,50 @@ formalCurrentObjectArgumentIsUsed (void) const {
     argCourant = argCourant->nextObject () ;
   }
   return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeSendInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & /* inTargetFileName */,
+                     sint32 & /* ioPrototypeIndex */,
+                     const bool /* inGenerateDebug */,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "_inLexique.appendToSentString (" ;
+    mExpression (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << ") ;\n" ; 
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeSendInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  return inGenerateSemanticInstructions ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeSendInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+					  const bool /* inGenerateSemanticInstructions */) const {
+  return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeSendInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*

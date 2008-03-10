@@ -4171,6 +4171,19 @@ rule <semantic_instruction>
     !?ioInstructionList
     !?expressionsList
   ;
+#--- Sent string
+  @typeCplusPlusName sentStringName ;
+  select
+    sentStringName := [@typeNullName new !here] ; # No sent string
+  or
+    $send$ ;
+    $on$ ;
+    @lstring sentVariableName ;
+    $identifier$ ? sentVariableName ;
+    @AC_galgasType targetType ;
+    [!?ioVariablesMap searchForReadWriteAccess !sentVariableName ?targetType ?sentStringName] ;
+    @typeGalgas_lstring gs := (cast targetType if >= @typeGalgas_lstring else error sentVariableName) ;
+  end select ;
 #--- returned model
   @lstring metamodelClassVariableName [new !"" !here] ;
   select
@@ -4199,6 +4212,7 @@ rule <semantic_instruction>
     !altName
     !metamodelClassVariableName
     !lexiqueClassName
+    !sentStringName
   ] ;
   ioInstructionList += !instruction ;
   $;$ ;
@@ -4281,6 +4295,46 @@ rule <semantic_instruction>
   ] ;
   ioInstructionList += !instruction ;
   $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     Instruction 'send string_expression ;'                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
+  ??@typeTableEnAvant unused inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
+  ??@entityToImplementMap unused  inMetamodelEntityMap
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ??@M_filewrappers inFileWrappers
+:
+  $send$ ;
+#--- Source expression
+  @typeExpression expression ;
+  @AC_galgasType expressionType ;
+  <expression>
+    !ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inFileWrappers
+    !?ioVariablesMap
+    ?expression
+    ?expressionType
+  ;
+#--- Check expression type
+  @typeGalgas_string classType := (cast expressionType if >= @typeGalgas_string else error here) ;
+  $;$ ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction := [@typeSendInstruction new
+    !expression
+  ] ;
+  ioInstructionList += !instruction ;
 end rule ;
 
 #---------------------------------------------------------------------------*

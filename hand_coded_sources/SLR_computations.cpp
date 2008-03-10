@@ -914,6 +914,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
+						  "GGS_string * _inSentStringPointer"
+                          ",\n                                "
                           "const GGS_lstring & _inFileName" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint32 numeroParametre = 1 ;
@@ -960,7 +962,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                        << (onlyOutputArguments ? "(! found) && " : "")
                        << "sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSentStringPointer, sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
