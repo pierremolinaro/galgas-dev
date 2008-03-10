@@ -2,7 +2,7 @@
 //                                                                           *
 //   Scanner Generation (hand-coded file)                                    *
 //                                                                           *
-//  Copyright (C) 2000, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 2000, ..., 2008 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -1147,6 +1147,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
                     "  public : "
                  << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
+				    "					    GGS_string * inSentStringPointer,\n"
                     "                       const C_String & inSourceFileName\n"
                     "                       COMMA_LOCATION_ARGS) ;\n"
                     "\n"
@@ -1262,9 +1263,10 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   generatedZone2.writeCppTitleComment ("Constructor") ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
+					"				 GGS_string * inSentStringPointer,\n"
                     "                const C_String & inSourceFileName\n"
                     "                COMMA_LOCATION_ARGS)\n"
-                    ": C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {\n"
+                    ": C_Lexique (inParametersPtr, inSentStringPointer, inSourceFileName COMMA_THERE) {\n"
                     "}\n\n" ;
 
 //---------------------------------------- Generate error message list

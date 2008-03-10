@@ -1807,6 +1807,16 @@
 		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFC71BE70B9DED5E0086499A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFC71BE80B9DED610086499A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
+		CFC9405E0D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC9405F0D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940600D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940610D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940620D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940630D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940640D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940650D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940660D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
+		CFC940670D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
 		CFC953680B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC953690B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
 		CFC9536A0B6CD8040031B8F6 /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC953670B6CD8040031B8F6 /* TC_Array2.h */; };
@@ -4099,6 +4109,7 @@
 		CFC1767209FE1CD30026596C /* include_typeSubOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeSubOperation.h; sourceTree = "<group>"; };
 		CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeUnaryMinusOperation.h; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeSendInstruction.h; sourceTree = "<group>"; };
 		CFC953670B6CD8040031B8F6 /* TC_Array2.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_Array2.h; sourceTree = "<group>"; };
 		CFCAABC709BCD3FF0042E80C /* include_BoolModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_BoolModel.h; sourceTree = "<group>"; };
 		CFCAABC809BCD3FF0042E80C /* include_CharModel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_CharModel.h; sourceTree = "<group>"; };
@@ -4744,6 +4755,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */,
 				CF7D281E0D830B4300F40DB6 /* include_C_structToImplement.h */,
 				CF7D281F0D830B4300F40DB6 /* include_typeGalgasStructType.h */,
 				CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */,
@@ -5823,6 +5835,7 @@
 				CFE709180D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28200D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28210D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC9405E0D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6028,6 +6041,7 @@
 				CFE709160D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D282C0D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D282D0D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940640D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6232,6 +6246,7 @@
 				CFE7091E0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D282E0D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D282F0D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940650D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6436,6 +6451,7 @@
 				CFE709280D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28220D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28230D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC9405F0D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6622,6 +6638,7 @@
 				CFE709220D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28240D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28250D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940600D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6808,6 +6825,7 @@
 				CFE709260D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28260D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28270D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940610D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6994,6 +7012,7 @@
 				CFE7091A0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28280D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28290D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940620D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7180,6 +7199,7 @@
 				CFE709200D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D282A0D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D282B0D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940630D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7385,6 +7405,7 @@
 				CFE709240D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28300D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28310D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940660D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7589,6 +7610,7 @@
 				CFE7091C0D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */,
 				CF7D28320D830B4300F40DB6 /* include_C_structToImplement.h in Headers */,
 				CF7D28330D830B4300F40DB6 /* include_typeGalgasStructType.h in Headers */,
+				CFC940670D8593B10057303A /* include_typeSendInstruction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

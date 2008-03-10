@@ -243,6 +243,8 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         generatedZone3 << "_performSourceFileParsing_" << currentAltForNonTerminal->mKey 
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
+						  "GGS_string * _inSentStringPointer"
+                          ",\n                                "
                           "const GGS_lstring & inFileName" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         while (parametre != NULL) {

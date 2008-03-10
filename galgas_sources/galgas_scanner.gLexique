@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS scanner definition                                                *
 #                                                                           *
-#  Copyright (C) 1997-2006 Pierre Molinaro.                                 *
+#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -119,6 +119,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "switch",
   "syntax", 
   "tag",
+  "template",
   "then",
   "treewalking",
   "true",
