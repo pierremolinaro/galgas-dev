@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS scanner component parser definition                               *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -62,6 +62,12 @@ extern routine buildLexicalRulesFromList
 
 nonterminal <style_declaration>
   ?!@M_styles ioStylesMap
+label parse
+;
+
+nonterminal <template_declaration>
+  ??@bool inIsTemplate
+  ?!@templateDelimiterMap ioTemplateDelimiterMap
 label parse
 ;
 
@@ -199,6 +205,8 @@ label parse
 ;
 
 extern routine generate_scanner
+  ??@bool inIsTemplate
+  ??@templateDelimiterMap inTemplateDelimiterMap
   ??@lstring lexiqueName 
   ??@typeLexicalAttributesMap table_attributs
   ??@typeTableDefinitionTerminaux table_des_terminaux
@@ -245,6 +253,13 @@ rule <galgas_component>
   ?!@M_filewrappers unused ioFileWrappers
 :
 #--- Lexique header
+  @bool isTemplate ;
+  select
+    isTemplate := false ;
+  or
+    $template$ ;
+    isTemplate := true ;
+  end select ;
   $lexique$ ;
   @lstring lexiqueName ;
   $identifier$ ? lexiqueName ;
@@ -258,6 +273,7 @@ rule <galgas_component>
   @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
   @stringset usedErrorMessageSet [emptySet] ;
   @tokensInListMap tokensInListMap [emptyMap] ;
+  @templateDelimiterMap templateDelimiterMap [emptyMap] ;
 
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
@@ -271,6 +287,11 @@ rule <galgas_component>
   repeat
   while 
     <style_declaration> !?stylesMap ;
+  while
+    <template_declaration>
+     !isTemplate
+     !?templateDelimiterMap
+    ;
   while
     <attribute_or_terminal_symbol_declaration>
       !?table_des_terminaux
@@ -315,8 +336,14 @@ rule <galgas_component>
   end foreach ;
 #--- Enter lexique in lexique map
   [!?ioLexiqueMapForUse insertKey !lexiqueName !terminalSymbolsMapForUse] ;
+#--- For a template lexique, al least one template should be defined
+  if isTemplate & ([templateDelimiterMap count] == 0) then
+    error here: "a template lexique should define at least one template" ;
+  end if ;
 #--- Generate scanner
   generate_scanner
+    !isTemplate
+    !templateDelimiterMap
     !lexiqueName 
     !table_attributs
     !table_des_terminaux
@@ -330,6 +357,10 @@ rule <galgas_component>
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 :
+  select
+  or
+    $template$ ;
+  end select ;
   $lexique$ ;
   @lstring lexiqueName ;
   $identifier$ ? lexiqueName ;
@@ -352,6 +383,8 @@ label importLexique
   repeat
   while 
     <style_declaration> !? stylesMap ;
+  while
+    <template_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration>
       !?table_des_terminaux
@@ -387,12 +420,18 @@ label importSyntax
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@M_filewrappers unused ioFileWrappers
 :
+  select
+  or
+    $template$ ;
+  end select ;
   $lexique$ ;
   $identifier$ ? * ;
   $:$ ;
   repeat
   while 
     <style_declaration> parse;
+  while
+    <template_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
@@ -413,12 +452,18 @@ label importSemantics
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@M_filewrappers unused ioFileWrappers
 :
+  select
+  or
+    $template$ ;
+  end select ;
   $lexique$ ;
   $identifier$ ? * ;
   $:$ ;
   repeat
   while 
     <style_declaration> parse ;
+  while
+    <template_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
@@ -440,12 +485,18 @@ label importGrammarForSemantics
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@M_filewrappers unused ioFileWrappers
 :
+  select
+  or
+    $template$ ;
+  end select ;
   $lexique$ ;
   $identifier$ ? * ;
   $:$ ;
   repeat
   while 
     <style_declaration> parse ;
+  while
+    <template_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
@@ -463,12 +514,18 @@ label importGrammarForSemantics
 label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
+  select
+  or
+    $template$ ;
+  end select ;
   $lexique$ ;
   $identifier$ ? * ;
   $:$ ;
   repeat
   while 
     <style_declaration> parse ;
+  while
+    <template_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
@@ -503,6 +560,28 @@ rule <style_declaration>
   while $,$ ;
   end repeat ;
   $;$ ;
+end rule ;
+
+#-------------------------------------------------------------------*
+#           template declaration                                    *
+#-------------------------------------------------------------------*
+
+rule <template_declaration>
+  ??@bool inIsTemplate
+  ?!@templateDelimiterMap ioTemplateDelimiterMap
+:
+  $template$ ;
+#--- Check lexique is declared as template lexique
+  if not inIsTemplate then
+    error here: "the lexique should be declared as template lexique" ;
+  end if ;
+  @lstring startString ;
+  $literal_string$ ? startString ;
+  $...$ ;
+  @lstring endString ;
+  $literal_string$ ? endString ;
+  $;$ ;
+  [!? ioTemplateDelimiterMap insertKey !startString !endString] ;
 end rule ;
 
 #-------------------------------------------------------------------*

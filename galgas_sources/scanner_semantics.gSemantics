@@ -21,6 +21,14 @@ import semantics common_semantics in "common_semantics.gSemantics" ;
 
 #------------------------------------------------------------------*
 
+map @templateDelimiterMap {
+  @lstring mEndString ; # Start string is the key
+  insert insertKey error message "the template start string '%K' is already declared in %L" ;
+  search searchKey error message "the template start string '%K' is not declared" ;
+}
+
+#------------------------------------------------------------------*
+
 map @typeLexicalAttributesMap {
   @AC_galgasType attributType ;
   insert insertKey error message "the lexical attribute '%K' is already declared in %L" ;

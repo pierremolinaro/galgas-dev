@@ -1449,6 +1449,8 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
 void 
 routine_generate_scanner (C_Compiler & inLexique,
+                          const GGS_bool inIsTemplate,
+                          const GGS_templateDelimiterMap inTemplateDelimiterMap,
                           const GGS_lstring inLexiqueName,
                           const GGS_typeLexicalAttributesMap table_attributs,
                           const GGS_typeTableDefinitionTerminaux table_des_terminaux,
