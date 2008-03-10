@@ -4182,7 +4182,7 @@ rule <semantic_instruction>
     $identifier$ ? sentVariableName ;
     @AC_galgasType targetType ;
     [!?ioVariablesMap searchForReadWriteAccess !sentVariableName ?targetType ?sentStringName] ;
-    @typeGalgas_lstring gs := (cast targetType if >= @typeGalgas_lstring else error sentVariableName) ;
+    @typeGalgas_string gs := (cast targetType if >= @typeGalgas_string else error sentVariableName) ;
   end select ;
 #--- returned model
   @lstring metamodelClassVariableName [new !"" !here] ;

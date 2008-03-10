@@ -611,7 +611,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
-						  "GGS_string * _inSentStringPointer"
+                          "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring & _inFileName" ;
         GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -635,7 +635,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSentStringPointer, sourceFileName COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
@@ -660,6 +660,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
+                          "        if (_inSentStringPtr != NULL) {\n"
+                          "          _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "        }\n"
                           "      }\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           GGS_lstring entityName ;

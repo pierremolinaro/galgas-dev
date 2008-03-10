@@ -299,7 +299,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "                             TC_UniqueArray <C_popupEntry> & outPopUpEntries) {\n"
                     "  if (gScannerPtr == NULL) {\n"
                     "    macroMyNew (gIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
-                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (gIOParametersPtr, NULL, \"\" COMMA_HERE)) ;\n"
+                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (gIOParametersPtr, \"\" COMMA_HERE)) ;\n"
                     "  }\n"
                     "  AC_sourceText * sourceTextPtr = NULL ;\n"
                     "  macroMyNew (sourceTextPtr,\n"

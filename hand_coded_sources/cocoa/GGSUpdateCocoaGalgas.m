@@ -453,7 +453,7 @@
 
 - (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
          returnCode:(int) inReturnCode
-	 contextInfo:(void  *) inContextInfo {
+   contextInfo:(void  *) inContextInfo {
   NSString * lastAvailableVersion = (NSString *) inContextInfo ;
   // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == YES) {
@@ -677,7 +677,7 @@
 
 - (void) lauchGalgasUpdaterAlertDidEnd:(NSAlert *) alert
          returnCode:(int) inReturnCode
-	 contextInfo:(void  *) inContextInfo {
+   contextInfo:(void  *) inContextInfo {
   if (inReturnCode == YES) {
     NSString * galgasUpdaterApp = [[[self temporaryPathForGalgasUpdaterArchive] stringByDeletingPathExtension] stringByDeletingPathExtension] ;
     NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;

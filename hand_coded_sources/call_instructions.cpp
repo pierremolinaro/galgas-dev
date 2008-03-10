@@ -390,12 +390,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << mGrammarName << "::_performSourceFileParsing_" << mAltSymbol
               << " (_inLexique"
                  ",\n                                " ;
-	if (dynamic_cast <cPtr_typeNullName *> (mSentStringName (HERE)) != NULL) {
-	  ioCppFile << "NULL" ;
-	}else{
-	  ioCppFile << "& " ;
+    if (dynamic_cast <cPtr_typeNullName *> (mSentStringName (HERE)) != NULL) {
+      ioCppFile << "NULL" ;
+    }else{
+      ioCppFile << "& " ;
       mSentStringName (HERE)->generateCplusPlusName (ioCppFile) ;
-	}
+    }
     ioCppFile << ",\n                                " ;
     mSourceCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
@@ -481,7 +481,7 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 
 bool cPtr_typeSendInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-					  const bool /* inGenerateSemanticInstructions */) const {
+            const bool /* inGenerateSemanticInstructions */) const {
   return mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
