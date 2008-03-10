@@ -392,7 +392,7 @@ scanThenGetStyledRangeArray (NSString * inSourceString,
                              TC_UniqueArray <C_popupEntry> & outPopUpEntries) {
   if (gScannerPtr == NULL) {
     macroMyNew (gIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;
-    macroMyNew (gScannerPtr, galgas_scanner (gIOParametersPtr, NULL, "" COMMA_HERE)) ;
+    macroMyNew (gScannerPtr, galgas_scanner (gIOParametersPtr, "" COMMA_HERE)) ;
   }
   AC_sourceText * sourceTextPtr = NULL ;
   macroMyNew (sourceTextPtr,
