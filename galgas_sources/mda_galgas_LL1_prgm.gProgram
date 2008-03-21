@@ -149,6 +149,10 @@ message "a GALGAS GUI source file"
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
   compileGuiComponentLL1 !inSourceFile !outputDirectory ;
+  @string s := "option azerty\n" ;
+  @optionComponentRoot optionComponentRoot ;
+  grammar optionLL1grammar on s -> optionComponentRoot ;
+
 #  @string s1 := "azer\"yu'\niop" ;
 #  log s1 ;
 #  @string s := [s1 escapedString] ;

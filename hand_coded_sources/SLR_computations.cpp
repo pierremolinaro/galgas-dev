@@ -875,35 +875,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
-        GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-        bool onlyOutputArguments = false ; // DON'T USE PARSING CACHING (otherwise, set to true)
-        while ((parametre != NULL) && onlyOutputArguments) {
-          macroValidPointer (parametre) ;
-          onlyOutputArguments = parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut ;
-          parametre = parametre->nextObject () ;
-        }
-        if (onlyOutputArguments) {
-          generatedZone3 << "class _" << inTargetFileName << "_" << currentAltForNonTerminal->mKey << " {\n"
-                            "  public : C_String mFileName ;\n" ;
-          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-            generatedZone3 << "  public : GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                           << " mReturnedModelInstance ;\n" ;      
-            parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-            sint16 numeroParametre = 1 ;
-            while (parametre != NULL) {
-              macroValidPointer (parametre) ;
-              generatedZone3 << "  public : GGS_" << parametre->mGalgasTypeName
-                             << " mParameter" << numeroParametre << " ;\n" ;
-              parametre = parametre->nextObject () ;
-              numeroParametre ++ ;
-            }
-          }
-          generatedZone3 << "} ;\n\n" ;
-          generatedZone3.writeCppHyphenLineComment () ;
-          generatedZone3 << "static TC_UniqueArray <_" << inTargetFileName << "_" << currentAltForNonTerminal->mKey
-                         << "> gCache" << currentAltForNonTerminal->mKey << " ;\n\n" ;
-          generatedZone3.writeCppHyphenLineComment () ;
-        }
       //--- Define file parsing static method
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " " ;      
@@ -917,7 +888,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring _inFileName" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint32 numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
@@ -935,32 +906,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
                           "    ? _inFileName.string ()\n"
-                          "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n" ;
-        if (onlyOutputArguments) {
-          generatedZone3 << "  bool found = false ;\n"
-                            "  for (sint32 i=0 ; (i<gCache" << currentAltForNonTerminal->mKey << ".count ()) && ! found ; i++) {\n"
-                            "    found = gCache" << currentAltForNonTerminal->mKey << " (i COMMA_HERE).mFileName == sourceFileName ;\n"
-                            "    if (found) {\n" ;
-          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-            generatedZone3 << "      _outReturnedModelInstance = gCache" << currentAltForNonTerminal->mKey
-                           << " (i COMMA_HERE).mReturnedModelInstance ;\n" ;      
-          }
-          parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-          numeroParametre = 1 ;
-          while (parametre != NULL) {
-            macroValidPointer (parametre) ;
-            generatedZone3 << "      parameter_" << numeroParametre
-                           << " = gCache" << currentAltForNonTerminal->mKey
-                           << " (i COMMA_HERE).mParameter" << numeroParametre << " ;\n" ;
-            parametre = parametre->nextObject () ;
-            numeroParametre ++ ;
-          }
-          generatedZone3 << "    }\n"
-                            "  }\n" ;
-        }
-        generatedZone3 << "  if ("
-                       << (onlyOutputArguments ? "(! found) && " : "")
-                       << "sourceFileName.fileExists ()) {\n"
+                          "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
+                          "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
@@ -985,24 +932,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << ") ;\n" ;
-        if (onlyOutputArguments) {
-          generatedZone3 << "        _" << inTargetFileName << "_" << currentAltForNonTerminal->mKey << " entry ;\n"
-                            "        entry.mFileName = sourceFileName ;\n" ;
-          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-            generatedZone3 << "        entry.mReturnedModelInstance = _outReturnedModelInstance ;\n" ;      
-          }
-          parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-          numeroParametre = 1 ;
-          while (parametre != NULL) {
-            macroValidPointer (parametre) ;
-            generatedZone3 << "        entry.mParameter" << numeroParametre << " = parameter_" << numeroParametre << " ;\n" ;
-            parametre = parametre->nextObject () ;
-            numeroParametre ++ ;
-          }
-          generatedZone3 << "        gCache" << currentAltForNonTerminal->mKey << ".addObject (entry) ;\n" ;
-        }
-        generatedZone3 << "        if (_inSentStringPtr != NULL) {\n"
+        generatedZone3 << ") ;\n"
+                          "        if (_inSentStringPtr != NULL) {\n"
                           "          _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
                           "        }\n"
                           "      }\n" ;
@@ -1031,7 +962,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "    }\n"
                           "    macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n"
-                          "  }else" << (onlyOutputArguments ? " if (! found) " : "") << "{\n"
+                          "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
                           "    _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
@@ -1081,7 +1012,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                          << " _outReturnedModelInstance ;\n" ;      
         }
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"ERROR_MESSAGE\" COMMA_HERE)) ;\n"
+                          "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  if (scanner_->sourceText () != NULL) {\n"
                           "    scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generateClassRegistering (generatedZone3, inClassesNamesSet) ;
@@ -1104,24 +1035,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre = parametre->nextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << ") ;\n" ;
-        if (onlyOutputArguments) {
-          generatedZone3 << "      _" << inTargetFileName << "_" << currentAltForNonTerminal->mKey << " entry ;\n"
-                            "      entry.mFileName = sourceFileName ;\n" ;
-          if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-            generatedZone3 << "      entry.mReturnedModelInstance = _outReturnedModelInstance ;\n" ;      
-          }
-          parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-          numeroParametre = 1 ;
-          while (parametre != NULL) {
-            macroValidPointer (parametre) ;
-            generatedZone3 << "      entry.mParameter" << numeroParametre << " = parameter_" << numeroParametre << " ;\n" ;
-            parametre = parametre->nextObject () ;
-            numeroParametre ++ ;
-          }
-          generatedZone3 << "      gCache" << currentAltForNonTerminal->mKey << ".addObject (entry) ;\n" ;
-        }
-        generatedZone3 << "      if (_inSentStringPtr != NULL) {\n"
+        generatedZone3 << ") ;\n"
+                          "      if (_inSentStringPtr != NULL) {\n"
                           "        _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
                           "      }\n"
                           "    }\n" ;

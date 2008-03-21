@@ -1346,6 +1346,8 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       while (currentAltForNonTerminal != NULL) {
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
+      //--- Define file parsing static method
+        generatedZone3.writeCppHyphenLineComment () ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " " ;      
@@ -1448,6 +1450,78 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << "  }\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
+        }
+        generatedZone3 << "}\n\n" ;
+      //--- Define string parsing static method
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " " ;      
+        }else{
+          generatedZone3 << "void " ;
+        }
+        generatedZone3 << inTargetFileName
+                       << "::_performSourceStringParsing_" << currentAltForNonTerminal->mKey
+                       << " (C_Compiler & _inCompiler"
+                          ",\n                                "
+                          "GGS_string * _inSentStringPtr"
+                          ",\n                                "
+                          "const GGS_string _inSourceString" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        numeroParametre = 1 ;
+        while (parametre != NULL) {
+          macroValidPointer (parametre) ;
+          generatedZone3 << ",\n                                " ;
+          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+          generatedZone3 << " parameter_" << numeroParametre ;
+          parametre = parametre->nextObject () ;
+          numeroParametre ++ ;
+        }
+        generatedZone3 << "\n                                "
+                          "COMMA_LOCATION_ARGS) {\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " _outReturnedModelInstance ;\n" ;      
+        }
+        generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
+                          "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
+        generateClassRegistering (generatedZone3, inClassesNamesSet) ;
+        generatedZone3 << "  const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                          "                                                    gActionTableIndex, gSuccessorTable,\n"
+                          "                                                    gProductionsTable) ;\n"
+                          "  if (ok && ! scanner_->mParseOnlyFlag) {\n"
+                          "    " << inTargetFileName << " _grammar ;\n"
+                          "    " ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "_outReturnedModelInstance = " ;      
+        }
+        generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                       << " (*scanner_" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        numeroParametre = 1 ;
+        while (parametre != NULL) {
+          macroValidPointer (parametre) ;
+          generatedZone3 << ", parameter_" << numeroParametre ;
+          parametre = parametre->nextObject () ;
+          numeroParametre ++ ;
+        }
+        generatedZone3 << ") ;\n"
+                          "    if (_inSentStringPtr != NULL) {\n"
+                          "      _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "    }\n"
+                          "  }\n" ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          GGS_lstring entityName ;
+          GGS_lstring metamodelName ;
+          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
+                                                               currentAltForNonTerminal->mKey,
+                                                               entityName,
+                                                               metamodelName
+                                                               COMMA_HERE) ;
+        }
+        generatedZone3 << "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
         }
