@@ -2361,10 +2361,6 @@ rule <instruction_beginning_with_identifier_and_structure_access>
     ?sourceExpression
     ?sourceType
   ;
-#--- Get target entity infos
-#  @AC_galgasType targetVarType ;
-#  @typeCplusPlusName targetVarCppName ;
-#  [!?ioVariablesMap searchForReadWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
 #--- Match target and source types
   @string sourceExpressionConverter ;
   match inTargetType :: sourceType :
@@ -4117,7 +4113,7 @@ rule <semantic_instruction>
   ??@M_filewrappers inFileWrappers
 :
   $grammar$ ;
-#--- Nom du fichier is
+#--- Grammar Name
   @lstring grammarName ;
   $identifier$ ? grammarName ;
 #--- Alt option ?

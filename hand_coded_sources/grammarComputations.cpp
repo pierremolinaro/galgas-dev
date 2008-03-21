@@ -245,7 +245,29 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
-                          "const GGS_lstring & inFileName" ;
+                          "const GGS_lstring inFileName" ;
+        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        while (parametre != NULL) {
+          macroValidPointer (parametre) ;
+          generatedZone3 << ",\n                                " ;
+          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+          parametre = parametre->nextObject () ;
+        }
+        generatedZone3 << "\n                                "
+                          "COMMA_LOCATION_ARGS) ;\n" ;
+        generatedZone3 << "  public : static " ;
+        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
+          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
+                         << " " ;      
+        }else{
+          generatedZone3 << "void " ;
+        }
+        generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal->mKey 
+                       << " (C_Compiler & _inCompiler"
+                          ",\n                                "
+                          "GGS_string * _inSentStringPtr"
+                          ",\n                                "
+                          "const GGS_string inSourceString" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;

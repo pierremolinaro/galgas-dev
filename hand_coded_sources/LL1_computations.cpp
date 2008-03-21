@@ -613,7 +613,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
-                          "const GGS_lstring & _inFileName" ;
+                          "const GGS_lstring _inFileName" ;
         GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
         sint16 numeroParametre = 1 ;
         while (parametre != NULL) {
