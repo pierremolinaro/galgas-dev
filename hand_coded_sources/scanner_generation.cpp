@@ -1143,13 +1143,14 @@ generate_scanner_header_file (C_Compiler & inLexique,
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n"
-                    "//--- Constructor\n"
-                    "  public : "
-                 << inLexiqueName
-                 << " (C_galgas_io * inParametersPtr,\n"
+                    "//--- Constructors\n"
+                    "  public : " << inLexiqueName << " (C_galgas_io * inParametersPtr,\n"
                     "                       const C_String & inSourceFileName\n"
-                    "                       COMMA_LOCATION_ARGS) ;\n"
-                    "\n"
+                    "                       COMMA_LOCATION_ARGS) ;\n\n"
+                    "  public : " << inLexiqueName << " (C_galgas_io * inParametersPtr,\n"
+                    "                       const C_String & inSourceString,\n"
+                    "                       const C_String & inStringForError\n"
+                    "                       COMMA_LOCATION_ARGS) ;\n\n"
                     "//--- Declaring a protected virtual destructor enables the compiler to raise\n"
                     "//    an error if a direct delete is performed; only the static method\n"
                     "//    C_GGS_Object::detachPointer may invoke delete.\n"
@@ -1258,13 +1259,21 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "  #define COMMA_LINE_AND_SOURCE_FILE\n"
                     "#endif\n\n" ;
 
-// --------------------------------------- Constructor
-  generatedZone2.writeCppTitleComment ("Constructor") ;
+// --------------------------------------- Constructors
+  generatedZone2.writeCppTitleComment ("Constructors") ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceFileName\n"
                     "                COMMA_LOCATION_ARGS)\n"
                     ": C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {\n"
+                    "}\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
+                 << " (C_galgas_io * inParametersPtr,\n"
+                    "                const C_String & inSourceString,\n"
+                    "                const C_String & inStringForError\n"
+                    "                COMMA_LOCATION_ARGS)\n"
+                    ": C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE) {\n"
                     "}\n\n" ;
 
 //---------------------------------------- Generate error message list
