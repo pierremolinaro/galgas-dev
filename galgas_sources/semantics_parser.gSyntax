@@ -4126,21 +4126,37 @@ rule <semantic_instruction>
   end select ;
 #--- Parse file name
   @bool sourceIsFile ;
-  @typeCplusPlusName nomCppSource ;
+  @typeExpression sourceExpression ;
   select
     $in$ ;
     sourceIsFile := true ;
-    @lstring nomFichierSource ;
-    @AC_galgasType typeNomFichierSource ;
-    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
-    @typeGalgas_lstring gs := (cast typeNomFichierSource if >= @typeGalgas_lstring else error nomFichierSource) ;
+    @AC_galgasType sourceExpressionType ;
+#    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
+    <expression>
+      !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !inFileWrappers
+      !?ioVariablesMap
+      ?sourceExpression
+      ?sourceExpressionType
+    ;
+    @typeGalgas_lstring gs := (cast sourceExpressionType if >= @typeGalgas_lstring else error here) ;
   or
     $on$ ;
     sourceIsFile := false ;
-    @lstring nomFichierSource ;
-    @AC_galgasType typeNomFichierSource ;
-    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
-    @typeGalgas_string gs := (cast typeNomFichierSource if >= @typeGalgas_string else error nomFichierSource) ;
+    @AC_galgasType sourceExpressionType ;
+#    @lstring nomFichierSource ;
+#    @AC_galgasType typeNomFichierSource ;
+#    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
+    <expression>
+      !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !inFileWrappers
+      !?ioVariablesMap
+      ?sourceExpression
+      ?sourceExpressionType
+    ;
+    @typeGalgas_string gs := (cast sourceExpressionType if >= @typeGalgas_string else error here) ;
   end select ;
 #--- Analyse des arguments effectifs
   @typeExpressionList expressionsList ;
@@ -4205,7 +4221,7 @@ rule <semantic_instruction>
   @typeInstruction instruction ;
   instruction := [@C_grammarInstruction new
     !sourceIsFile
-    !nomCppSource
+    !sourceExpression
     !grammarName
     !expressionsList
     !altName

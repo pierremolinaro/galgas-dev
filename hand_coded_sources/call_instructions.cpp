@@ -387,7 +387,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
     if (mMetamodelClassVariableName.length () > 0) {
       ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
     }
-    ioCppFile << mGrammarName << "::_performSourceFileParsing_" << mAltSymbol
+    ioCppFile << mGrammarName << "::"
+              << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
+              << mAltSymbol
               << " (_inLexique"
                  ",\n                                " ;
     if (dynamic_cast <cPtr_typeNullName *> (mSentStringName (HERE)) != NULL) {
@@ -397,7 +399,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       mSentStringName (HERE)->generateCplusPlusName (ioCppFile) ;
     }
     ioCppFile << ",\n                                " ;
-    mSourceCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    mSourceExpression (HERE)->generateExpression (ioCppFile) ;
     GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
     while (argCourant != NULL) {
       macroValidPointer (argCourant) ;
@@ -424,7 +426,7 @@ isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
 bool cPtr_C_grammarInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
-   bool isUsed = mSourceCppName.isSameObjectAs (inArgumentCppName) ;
+  bool isUsed = mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
@@ -438,7 +440,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 
 bool cPtr_C_grammarInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
-  bool isUsed = false ;
+  bool isUsed = mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
   GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
   while ((! isUsed) && argCourant != NULL) {
     macroValidPointer (argCourant) ;
