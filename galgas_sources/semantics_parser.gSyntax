@@ -2333,19 +2333,21 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  .=     I N S T R U C T I O N     idf .= ... ;                            *
+#  .=     I N S T R U C T I O N     idf.field1.field2 .= ... ;              *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <instruction_beginning_with_identifier>
+rule <instruction_beginning_with_identifier_and_structure_access>
   ??@treewalkingRoutineHeaderMap unused inTreewalkingRoutineHeaderMap
-  ?@lstring inTargetVarName
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_filewrappers inFileWrappers
+  ??@typeCplusPlusName inTargetVarCppName
+  ??@AC_galgasType inTargetType
+  ??@lstringlist inStructAttributeList
 :
   $.=$ ;
 #--- Parse source expression
@@ -2360,24 +2362,25 @@ rule <instruction_beginning_with_identifier>
     ?sourceType
   ;
 #--- Get target entity infos
-  @AC_galgasType targetVarType ;
-  @typeCplusPlusName targetVarCppName ;
-  [!?ioVariablesMap searchForReadWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
+#  @AC_galgasType targetVarType ;
+#  @typeCplusPlusName targetVarCppName ;
+#  [!?ioVariablesMap searchForReadWriteAccess !inTargetVarName ?targetVarType ?targetVarCppName] ;
 #--- Match target and source types
   @string sourceExpressionConverter ;
-  match targetVarType :: sourceType :
+  match inTargetType :: sourceType :
   when @typeGalgas_string () :: @typeGalgas_string () :
     sourceExpressionConverter := "" ;
   when @typeGalgas_string () :: @typeGalgas_lstring () :
     sourceExpressionConverter := "ggs_string" ;
   else
-    error here: "for '.=' operator, " . [targetVarType messageGalgasType]
+    error here: "for '.=' operator, " . [inTargetType messageGalgasType]
     . " target object type is not compatible with " . [sourceType messageGalgasType]
     . " source expression type" -> sourceExpressionConverter ;
   end match ;
 #--- Generate instruction
   @typeInstruction instruction := [@C_dotEqualInstruction new
-    !targetVarCppName
+    !inTargetVarCppName
+    !inStructAttributeList
     !sourceExpression
     !sourceExpressionConverter
   ] ;

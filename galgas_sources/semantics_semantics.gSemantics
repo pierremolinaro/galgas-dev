@@ -649,6 +649,7 @@ class @C_assignmentInstruction extends @typeInstruction {
 
 class @C_dotEqualInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @lstringlist mStructAttributeList ;
   @typeExpression mSourceExpression ;
   @string mSourceExpressionConverter ;
 }

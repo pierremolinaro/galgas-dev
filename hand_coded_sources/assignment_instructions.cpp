@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate assignment instructions                                         *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -248,6 +248,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     C_String targetVariableCppName ;
     mTargetVarCppName (HERE)->generateCplusPlusName (targetVariableCppName) ;
+    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+    while (structAttribute != NULL) {
+      macroValidPointer (structAttribute) ;
+      ioCppFile << "." << structAttribute->mValue ;
+      structAttribute = structAttribute->nextObject () ;
+    }
     const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
     if (mSourceExpressionConverter.length () > 0) {
       ioCppFile << targetVariableCppName
