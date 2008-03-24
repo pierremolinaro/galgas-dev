@@ -735,7 +735,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << "\n                                "
-                          "COMMA_LOCATION_ARGS) {\n" ;
+                          "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
           generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
                          << " _outReturnedModelInstance ;\n" ;      
