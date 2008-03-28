@@ -51,7 +51,7 @@ buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
 static void
 generate_mm_file_for_cocoa (C_Compiler & inLexique,
                             const C_String & inCocoaComponentName,
-                            const GGS_L_nibAndClassList & inNibAndClassList,
+                            const GGS_lstringlist & inNibAndClassList,
                             const GGS_string & inBlockComment,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap,
@@ -79,7 +79,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  GGS_L_nibAndClassList::cElement * currentNib = inNibAndClassList.firstObject () ;
+  GGS_lstringlist::cElement * currentNib = inNibAndClassList.firstObject () ;
   while (currentNib != NULL) {
     macroValidPointer (currentNib) ;
     TC_UniqueArray <C_String> result ;
@@ -377,7 +377,7 @@ void
 routine_generateCocoaComponent (C_Compiler & inLexique,
                                 const GGS_lstring inGUIcomponentName,
                                 const GGS_lstring inGUIkindName,
-                                const GGS_L_nibAndClassList inNibAndClassList,
+                                const GGS_lstringlist inNibAndClassList,
                                 const GGS_string inBlockComment,
                                 const GGS_lstring inLexiqueComponentName,
                                 const GGS_M_optionComponents inOptionComponentsMap,

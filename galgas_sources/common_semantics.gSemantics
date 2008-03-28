@@ -41,16 +41,6 @@ list @typeInstructionList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   L I S T    O F    L S T R I N G S                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_lstringList {
-  @lstring mString ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   A C T I O N ,    M E T H O D    S I G N A T U R E                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -855,6 +845,8 @@ class @typeGalgas_string extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     if [inClassMethodName string] == "stringWithSourceFilePath" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "retrieveAndResetTemplateString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "stringWithCurrentDirectory" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -2126,16 +2118,6 @@ map @M_startSymbolEntityAndMetamodel {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                       Liste d'identificateurs                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_identifiers {
-  @lstring aIdentificateur ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #           Class inherited messages map                                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2929,7 +2911,7 @@ class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 map @typeEnumMessageMap {
-  @L_lstringList mMessageStringList ;
+  @lstringlist mMessageStringList ;
   insert insertKey error message "the '%K' message name is already declared in %L" ;
   search searchKey error message "the '%K' message name is not declared" ;
 }
@@ -3283,16 +3265,6 @@ map @M_filewrappers {
   @M_regularFiles mRegularFileMap ;
   insert insertKey error message "a file wrapper named '%K' is already declared in %L" ;
   search searchKey error message "there is no file wrapper named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#              List of attributes for GUI description                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @L_nibAndClassList {
-  @lstring mValue ;
 }
 
 #---------------------------------------------------------------------------*

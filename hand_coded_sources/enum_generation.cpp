@@ -246,11 +246,11 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "reader_" << m->mKey << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
-    GGS_L_lstringList::cElement * e = m->mInfo.mMessageStringList.firstObject () ;
+    GGS_lstringlist::cElement * e = m->mInfo.mMessageStringList.firstObject () ;
     while (e != NULL) {
       macroValidPointer (e) ;
       inCppFile << ",\n    " ;
-      inCppFile.writeCstringConstant (e->mString) ;
+      inCppFile.writeCstringConstant (e->mValue) ;
       e = e->nextObject () ;
     } 
     inCppFile << "\n  } ;\n"

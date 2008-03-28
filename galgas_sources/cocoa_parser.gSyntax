@@ -98,7 +98,7 @@ label parse
 extern routine generateCocoaComponent
   ??@lstring nomPRGMprincipal
   ??@lstring inGUIkindName
-  ??@L_nibAndClassList inNIBandClassList
+  ??@lstringlist inNIBandClassList
   ??@string inBlockComment
   ??@lstring inLexiqueClassName
   ??@M_optionComponents inOptionsComponents
@@ -215,7 +215,7 @@ rule <galgas_component>
     lexiqueImported := true ;
   end select ;
 #--- Assignment list
-  @L_nibAndClassList nibAndClassList [emptyList] ;
+  @lstringlist nibAndClassList [emptyList] ;
   @labelForPopUpList labelForPopUpList [emptyList] ;
   @string blockComment := "" ; # Means undefined
   repeat
