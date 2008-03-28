@@ -994,7 +994,6 @@
 		CF6DF15A09E3F23700506859 /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CF6DF15B09E3F23700506859 /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CF6DF15C09E3F23700506859 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CF6DF15D09E3F23700506859 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF6DF15E09E3F23700506859 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CF6DF15F09E3F23700506859 /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CF6DF16009E3F23700506859 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -1082,7 +1081,6 @@
 		CF6DF1D409E3F30400506859 /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CF6DF1D509E3F30400506859 /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CF6DF1D609E3F30400506859 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CF6DF1D709E3F30400506859 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF6DF1D809E3F30400506859 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CF6DF1D909E3F30400506859 /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CF6DF1DA09E3F30400506859 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -1488,8 +1486,6 @@
 		CF91860E0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */; };
 		CF91860F0B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */; };
 		CF9186100B0C7A8C00502447 /* include_C_dotEqualInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */; };
-		CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
-		CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CF9568600B16DA7300693C30 /* include_C_sortedListTypeToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */; };
 		CF9568610B16DA7300693C30 /* include_typeGalgasSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */; };
 		CF9568620B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */; };
@@ -1696,6 +1692,16 @@
 		CFA313BD09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
+		CFA97CB50D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CB60D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CB70D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CB80D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CB90D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CBA0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CBB0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CBC0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CBD0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFA97CBE0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
 		CFB822150BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
 		CFB822160BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
 		CFB822190BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
@@ -1962,7 +1968,6 @@
 		CFD6CCFE08519D4C0000FA6E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFD6CCFF08519D4C0000FA6E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFD6CD0408519D4C0000FA6E /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CFD6CD0608519D4C0000FA6E /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CFD6CD0708519D4C0000FA6E /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFD6CD0808519D4C0000FA6E /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFD6CD0908519D4C0000FA6E /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -2020,7 +2025,6 @@
 		CFD6CDA508519DD00000FA6E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFD6CDA608519DD00000FA6E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFD6CDAB08519DD00000FA6E /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CFD6CDAD08519DD00000FA6E /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CFD6CDAE08519DD00000FA6E /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFD6CDAF08519DD00000FA6E /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFD6CDB008519DD00000FA6E /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -2077,7 +2081,6 @@
 		CFD6CE3E08519E080000FA6E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFD6CE3F08519E080000FA6E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFD6CE4408519E080000FA6E /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CFD6CE4608519E080000FA6E /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CFD6CE4708519E080000FA6E /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFD6CE4808519E080000FA6E /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFD6CE4908519E080000FA6E /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -2135,7 +2138,6 @@
 		CFD6CEE508519E740000FA6E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFD6CEE608519E740000FA6E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFD6CEEB08519E740000FA6E /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CFD6CEED08519E740000FA6E /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CFD6CEEE08519E740000FA6E /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFD6CEEF08519E740000FA6E /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFD6CEF008519E740000FA6E /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -2836,7 +2838,6 @@
 		CFEDF2E80C2D161F0038713A /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFEDF2E90C2D161F0038713A /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFEDF2EA0C2D161F0038713A /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CFEDF2EB0C2D161F0038713A /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CFEDF2EC0C2D161F0038713A /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEDF2ED0C2D161F0038713A /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFEDF2EE0C2D161F0038713A /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -3174,7 +3175,6 @@
 		CFEDF4480C2D16610038713A /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFEDF4490C2D16610038713A /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
 		CFEDF44A0C2D16610038713A /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
-		CFEDF44B0C2D16610038713A /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93AC4605B483DC0089AD65 /* enum_generation.cpp */; };
 		CFEDF44C0C2D16610038713A /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEDF44D0C2D16610038713A /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFEDF44E0C2D16610038713A /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */; };
@@ -4056,7 +4056,6 @@
 		CF9040E6057F270E007362F4 /* grammar_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = grammar_parser.cpp; sourceTree = "<group>"; };
 		CF907E3A0A3F3D28007D2341 /* include_C_classToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_classToImplement.h; sourceTree = "<group>"; };
 		CF9186080B0C7A8C00502447 /* include_C_dotEqualInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_dotEqualInstruction.h; sourceTree = "<group>"; };
-		CF93AC4605B483DC0089AD65 /* enum_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = enum_generation.cpp; sourceTree = "<group>"; };
 		CF95685D0B16DA7300693C30 /* include_C_sortedListTypeToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_sortedListTypeToImplement.h; sourceTree = "<group>"; };
 		CF95685E0B16DA7300693C30 /* include_typeGalgasSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasSortedListType.h; sourceTree = "<group>"; };
 		CF95685F0B16DA7300693C30 /* include_typeGalgasUndefinedSortedListType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasUndefinedSortedListType.h; sourceTree = "<group>"; };
@@ -4093,6 +4092,7 @@
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
+		CFA97CB40D9D5208001A9599 /* enum_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enum_generation.cpp; sourceTree = "<group>"; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
 		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
@@ -5327,7 +5327,7 @@
 				CFF53794057A514300854C83 /* class_generation.cpp */,
 				CFF5379C057A516000854C83 /* foreach_instructions.cpp */,
 				CFF5379D057A516000854C83 /* map_generation.cpp */,
-				CF93AC4605B483DC0089AD65 /* enum_generation.cpp */,
+				CFA97CB40D9D5208001A9599 /* enum_generation.cpp */,
 				CFF537A4057A518B00854C83 /* semantics_instructions.cpp */,
 				CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */,
 				CFF537A2057A518B00854C83 /* semantics_generation.cpp */,
@@ -8115,7 +8115,6 @@
 				CFF13E3A059730EB00C43F5E /* cli_options_parser.cpp in Sources */,
 				CFF13E420597311700C43F5E /* option_component_generation.cpp in Sources */,
 				CFD7E274059B5B8E00410349 /* galgas_cli_options.cpp in Sources */,
-				CF93AC4805B483DC0089AD65 /* enum_generation.cpp in Sources */,
 				CFEEBE6805C056D0009FE498 /* cocoa_parser.cpp in Sources */,
 				CFEEBE6C05C056F9009FE498 /* cocoa_generation.cpp in Sources */,
 				CFA1415F060DB7CB00601791 /* AC_galgas_map.cpp in Sources */,
@@ -8229,6 +8228,7 @@
 				CFBD0DD60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D283A0D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72230D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CB50D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8283,7 +8283,6 @@
 				CF6DF15A09E3F23700506859 /* cli_options_parser.cpp in Sources */,
 				CF6DF15B09E3F23700506859 /* option_component_generation.cpp in Sources */,
 				CF6DF15C09E3F23700506859 /* galgas_cli_options.cpp in Sources */,
-				CF6DF15D09E3F23700506859 /* enum_generation.cpp in Sources */,
 				CF6DF15E09E3F23700506859 /* cocoa_parser.cpp in Sources */,
 				CF6DF15F09E3F23700506859 /* cocoa_generation.cpp in Sources */,
 				CF6DF16009E3F23700506859 /* AC_galgas_map.cpp in Sources */,
@@ -8400,6 +8399,7 @@
 				CFBD0DD40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D283D0D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72350D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CBB0D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8454,7 +8454,6 @@
 				CF6DF1D409E3F30400506859 /* cli_options_parser.cpp in Sources */,
 				CF6DF1D509E3F30400506859 /* option_component_generation.cpp in Sources */,
 				CF6DF1D609E3F30400506859 /* galgas_cli_options.cpp in Sources */,
-				CF6DF1D709E3F30400506859 /* enum_generation.cpp in Sources */,
 				CF6DF1D809E3F30400506859 /* cocoa_parser.cpp in Sources */,
 				CF6DF1D909E3F30400506859 /* cocoa_generation.cpp in Sources */,
 				CF6DF1DA09E3F30400506859 /* AC_galgas_map.cpp in Sources */,
@@ -8571,6 +8570,7 @@
 				CFBD0DDC0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D28400D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE722F0D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CBC0D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8667,7 +8667,6 @@
 				CFF13E3C059730EB00C43F5E /* cli_options_parser.cpp in Sources */,
 				CFF13E430597311700C43F5E /* option_component_generation.cpp in Sources */,
 				CFD7E272059B5B8E00410349 /* galgas_cli_options.cpp in Sources */,
-				CF93AC4705B483DC0089AD65 /* enum_generation.cpp in Sources */,
 				CFEEBE6705C056D0009FE498 /* cocoa_parser.cpp in Sources */,
 				CFEEBE6B05C056F9009FE498 /* cocoa_generation.cpp in Sources */,
 				CFA14161060DB7CB00601791 /* AC_galgas_map.cpp in Sources */,
@@ -8781,6 +8780,7 @@
 				CFBD0DE60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D283B0D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72250D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CB60D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8835,7 +8835,6 @@
 				CFD6CCFE08519D4C0000FA6E /* cli_options_parser.cpp in Sources */,
 				CFD6CCFF08519D4C0000FA6E /* option_component_generation.cpp in Sources */,
 				CFD6CD0408519D4C0000FA6E /* galgas_cli_options.cpp in Sources */,
-				CFD6CD0608519D4C0000FA6E /* enum_generation.cpp in Sources */,
 				CFD6CD0708519D4C0000FA6E /* cocoa_parser.cpp in Sources */,
 				CFD6CD0808519D4C0000FA6E /* cocoa_generation.cpp in Sources */,
 				CFD6CD0908519D4C0000FA6E /* AC_galgas_map.cpp in Sources */,
@@ -8952,6 +8951,7 @@
 				CFBD0DE00D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D28410D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72270D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CB70D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9006,7 +9006,6 @@
 				CFD6CDA508519DD00000FA6E /* cli_options_parser.cpp in Sources */,
 				CFD6CDA608519DD00000FA6E /* option_component_generation.cpp in Sources */,
 				CFD6CDAB08519DD00000FA6E /* galgas_cli_options.cpp in Sources */,
-				CFD6CDAD08519DD00000FA6E /* enum_generation.cpp in Sources */,
 				CFD6CDAE08519DD00000FA6E /* cocoa_parser.cpp in Sources */,
 				CFD6CDAF08519DD00000FA6E /* cocoa_generation.cpp in Sources */,
 				CFD6CDB008519DD00000FA6E /* AC_galgas_map.cpp in Sources */,
@@ -9123,6 +9122,7 @@
 				CFBD0DE40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D28430D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72290D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CB80D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9177,7 +9177,6 @@
 				CFD6CE3E08519E080000FA6E /* cli_options_parser.cpp in Sources */,
 				CFD6CE3F08519E080000FA6E /* option_component_generation.cpp in Sources */,
 				CFD6CE4408519E080000FA6E /* galgas_cli_options.cpp in Sources */,
-				CFD6CE4608519E080000FA6E /* enum_generation.cpp in Sources */,
 				CFD6CE4708519E080000FA6E /* cocoa_parser.cpp in Sources */,
 				CFD6CE4808519E080000FA6E /* cocoa_generation.cpp in Sources */,
 				CFD6CE4908519E080000FA6E /* AC_galgas_map.cpp in Sources */,
@@ -9294,6 +9293,7 @@
 				CFBD0DD80D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D283C0D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE722B0D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CB90D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9348,7 +9348,6 @@
 				CFD6CEE508519E740000FA6E /* cli_options_parser.cpp in Sources */,
 				CFD6CEE608519E740000FA6E /* option_component_generation.cpp in Sources */,
 				CFD6CEEB08519E740000FA6E /* galgas_cli_options.cpp in Sources */,
-				CFD6CEED08519E740000FA6E /* enum_generation.cpp in Sources */,
 				CFD6CEEE08519E740000FA6E /* cocoa_parser.cpp in Sources */,
 				CFD6CEEF08519E740000FA6E /* cocoa_generation.cpp in Sources */,
 				CFD6CEF008519E740000FA6E /* AC_galgas_map.cpp in Sources */,
@@ -9465,6 +9464,7 @@
 				CFBD0DDE0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D283F0D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE722D0D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CBA0D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9519,7 +9519,6 @@
 				CFEDF2E80C2D161F0038713A /* cli_options_parser.cpp in Sources */,
 				CFEDF2E90C2D161F0038713A /* option_component_generation.cpp in Sources */,
 				CFEDF2EA0C2D161F0038713A /* galgas_cli_options.cpp in Sources */,
-				CFEDF2EB0C2D161F0038713A /* enum_generation.cpp in Sources */,
 				CFEDF2EC0C2D161F0038713A /* cocoa_parser.cpp in Sources */,
 				CFEDF2ED0C2D161F0038713A /* cocoa_generation.cpp in Sources */,
 				CFEDF2EE0C2D161F0038713A /* AC_galgas_map.cpp in Sources */,
@@ -9636,6 +9635,7 @@
 				CFBD0DE20D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D283E0D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72310D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CBD0D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9690,7 +9690,6 @@
 				CFEDF4480C2D16610038713A /* cli_options_parser.cpp in Sources */,
 				CFEDF4490C2D16610038713A /* option_component_generation.cpp in Sources */,
 				CFEDF44A0C2D16610038713A /* galgas_cli_options.cpp in Sources */,
-				CFEDF44B0C2D16610038713A /* enum_generation.cpp in Sources */,
 				CFEDF44C0C2D16610038713A /* cocoa_parser.cpp in Sources */,
 				CFEDF44D0C2D16610038713A /* cocoa_generation.cpp in Sources */,
 				CFEDF44E0C2D16610038713A /* AC_galgas_map.cpp in Sources */,
@@ -9807,6 +9806,7 @@
 				CFBD0DDA0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
 				CF7D28420D830C8E00F40DB6 /* struct_generation.cpp in Sources */,
 				CFDE72330D85C62600596413 /* galgas_template_scanner.cpp in Sources */,
+				CFA97CBE0D9D5208001A9599 /* enum_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

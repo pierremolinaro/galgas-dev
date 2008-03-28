@@ -6845,7 +6845,7 @@ rule <semantics_declaration>
     end repeat ;
     $}$ ;
   #--- Build message string list
-    @L_lstringList messageStringList [emptyList] ;
+    @lstringlist messageStringList [emptyList] ;
     foreach constantMap (@lstring constantName *) :
       @lstring name := [@lstring new ![constantName string] !here] ;
       @lstring cstString ;
@@ -6997,7 +6997,7 @@ label importSemantics
     $identifier$ ? messageName ;
   #--- Enter message definition into message map
     [!?enumMessageMap insertKey !messageName] ;
-    @L_lstringList messageStringList [emptyList] ;
+    @lstringlist messageStringList [emptyList] ;
     [!? exEnumMessageMap insertKey !messageName !messageStringList] ;
     ${$ ;
     repeat
