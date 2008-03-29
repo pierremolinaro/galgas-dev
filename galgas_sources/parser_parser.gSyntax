@@ -36,25 +36,25 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -67,7 +67,7 @@ nonterminal <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioExternActionMap
@@ -76,7 +76,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label parse
 ;
 
@@ -93,7 +93,7 @@ nonterminal <syntax_declaration>
   ?@lstring inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSyntax
   ?!@M_nonTerminalSymbolsForGrammar ioNonTerminalSymbolsMap
   ?!@L_productionRules_ForGrammarComponent ioProductionRulesListForGrammar
@@ -125,7 +125,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -135,7 +135,7 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label parse
 ;
 
@@ -149,7 +149,7 @@ nonterminal <semantic_instruction>
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 label parse
 ;
 
@@ -167,7 +167,7 @@ nonterminal <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -176,7 +176,7 @@ label parse
 nonterminal <expression>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -196,7 +196,7 @@ nonterminal <actual_parameters_list>
   !@typeExpressionList outExpressionList
   ?!@typeVariablesMap ioVariablesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeInstructionList ioInstructionList
 
@@ -229,7 +229,7 @@ nonterminal <syntax_instructions_list>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -249,7 +249,7 @@ nonterminal <syntax_instructions_list_no_verif>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 label importSyntax
   ?!@L_ruleSyntaxSignature ioInstructionList
 label parse
@@ -285,7 +285,7 @@ rule <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 :
   @typeEntitiesToGenerateList listeEntitesAengendrer ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
@@ -317,7 +317,9 @@ rule <galgas_component>
   @ModelMap modelMap ;
   @ActionMap actionMap ;
   @entityToImplementMap allMetamodelClassMap ;
-  @M_filewrappers fileWrappers  [emptyMap] ;
+  @semanticContext semanticContext [new
+    ![@M_filewrappers emptyMap]
+  ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedOptionComponents
@@ -337,7 +339,7 @@ rule <galgas_component>
     ?entitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
-    !?fileWrappers
+    !?semanticContext
   ;
   listeEntitesAengendrer := [@typeEntitiesToGenerateList emptyList] ;
   @M_nonTerminalSymbolsForGrammar nonTerminalSymbolsMapForGrammar [emptyMap] ;
@@ -358,7 +360,7 @@ rule <galgas_component>
       !componentName
       !allMetamodelClassMap
       !ioTreewalkingComponentMap
-      !?ioFileWrappers
+      !?ioSemanticContext
     ;
   while
     <semantics_declaration>
@@ -369,7 +371,7 @@ rule <galgas_component>
       !?tableEnAvant
       !?tableRoutinesAimplementer
       !ioTreewalkingComponentMap
-      !?ioFileWrappers
+      !?ioSemanticContext
     ;
   end repeat ;
 #--- Check that all routines have been implemented
@@ -402,7 +404,7 @@ label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 :
   $syntax$ ;
   @lstring syntaxComponentName ;
@@ -451,7 +453,7 @@ label importSyntax
     ?entitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
-    !?ioFileWrappers
+    !?ioSemanticContext
   ;
 #--- 
   @L_productionRules_ForGrammarComponent productionRulesListForGrammar [emptyList] ;
@@ -479,7 +481,7 @@ label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -517,7 +519,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $syntax$ ;
   $identifier$ ? * ;
@@ -621,7 +623,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   $block$ ;
 #--- Nom de la map
@@ -647,7 +649,7 @@ rule <syntax_instruction>
     ?prologueExpressionList
     !?ioVariablesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !ioEntitiesMap
     !?ioInstructionList
   ;
@@ -674,7 +676,7 @@ rule <syntax_instruction>
     !inAllMetamodelClassMap
     !inTreewalkingComponentMap
     !inIsInvokedWithinParseLoopInstruction
-    !inFileWrappers
+    !inSemanticContext
   ;
   $end$ ;
   $block$ ;
@@ -686,7 +688,7 @@ rule <syntax_instruction>
     ?epilogueExpressionList
     !?ioVariablesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !ioEntitiesMap
     !?ioInstructionList
   ;
@@ -1132,7 +1134,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $operator$ ;
   @lstring operatorAttributes ;
@@ -1674,7 +1676,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $nonterminal$ ;
   @lstring ruleName ;
@@ -1937,7 +1939,7 @@ rule <syntax_declaration>
   ?@lstring unused inSyntaxComponentName
   ?@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 :
   $rule$ ;
   @lstring ruleName ;
@@ -2084,7 +2086,7 @@ rule <syntax_declaration>
     !inAllMetamodelClassMap
     !inTreewalkingComponentMap
     !false # inIsInvokedWithinParseLoopInstruction
-    !ioFileWrappers
+    !ioSemanticContext
   ;
   [!?altProductionsMap insertKey
     !altName
@@ -2144,7 +2146,7 @@ rule <syntax_declaration>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !false # inIsInvokedWithinParseLoopInstruction
-      !ioFileWrappers
+      !ioSemanticContext
     ;
     [!?altProductionsMap insertKey
       !altName
@@ -2254,7 +2256,7 @@ rule <syntax_instructions_list>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   block ioVariablesMap.verifyVariableUsing () :
     <syntax_instructions_list_no_verif>
@@ -2271,7 +2273,7 @@ rule <syntax_instructions_list>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !inIsInvokedWithinParseLoopInstruction
-      !inFileWrappers
+      !inSemanticContext
     ;
     @location positionErreur := here ;
   end block (!positionErreur) ;
@@ -2299,7 +2301,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap unused inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ??@bool unused inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
 :
   @lstring terminalSymbolName ;
   $terminal$ ? terminalSymbolName ;
@@ -2357,7 +2359,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   @lstring nonterminalSymbolName ;
   $non_terminal_symbol$ ? nonterminalSymbolName ;
@@ -2393,7 +2395,7 @@ rule <syntax_instruction>
     ?parametersExpressionList
     !?ioVariablesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !ioEntitiesMap
     !?ioInstructionList
   ;
@@ -2511,7 +2513,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   $select$ ;
   @location positionDebut := here ;
@@ -2535,7 +2537,7 @@ rule <syntax_instruction>
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
         !inIsInvokedWithinParseLoopInstruction
-        !inFileWrappers
+        !inSemanticContext
       ;
       listeBranchesChoix += !firstBranchInstructionList ;
       selectList += !firstBranchSyntaxSignature ;
@@ -2559,7 +2561,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !inIsInvokedWithinParseLoopInstruction
-          !inFileWrappers
+          !inSemanticContext
         ;
         listeBranchesChoix += !listeInstructionsBrancheChoix ;
         selectList += !syntaxSignature ;
@@ -2622,7 +2624,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   $repeat$ ;
   @location positionDebut := here ;
@@ -2646,7 +2648,7 @@ rule <syntax_instruction>
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
         !inIsInvokedWithinParseLoopInstruction
-        !inFileWrappers
+        !inSemanticContext
       ;
       listeBranchesRepeter += !listeInstructionsPremiereBranche ;
       whileList += !repeatBranchInstructionsList ;
@@ -2671,7 +2673,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !inIsInvokedWithinParseLoopInstruction
-          !inFileWrappers
+          !inSemanticContext
         ;
         listeBranchesRepeter += !listeInstructionsBrancheRepeter ;
         whileList += !syntaxSignature ;
@@ -2735,7 +2737,7 @@ rule <syntax_instruction>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   $parse$ ;
   @typeInstruction instruction ;
@@ -2747,7 +2749,7 @@ rule <syntax_instruction>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?variantExpression
       ?variantResultType
@@ -2760,7 +2762,7 @@ rule <syntax_instruction>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?conditionalExpression
       ?resultType
@@ -2786,7 +2788,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !true # inIsInvokedWithinParseLoopInstruction
-          !inFileWrappers
+          !inSemanticContext
         ;
       end block (!here) ;
     end block () ;
@@ -2819,7 +2821,7 @@ rule <syntax_instruction>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !inIsInvokedWithinParseLoopInstruction
-      !inFileWrappers
+      !inSemanticContext
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
@@ -2846,7 +2848,7 @@ rule <syntax_instruction>
         !inAllMetamodelClassMap
         !inTreewalkingComponentMap
         !inIsInvokedWithinParseLoopInstruction
-        !inFileWrappers
+        !inSemanticContext
       ;
       branchList += !instructionsList ;
       parse_rewind_signature_list += !syntaxSignature !branchStartLocation ;
@@ -2869,7 +2871,7 @@ rule <syntax_instruction>
           <expression>
             !ioEntitiesMap
             !inOptionsComponentsMapForUse
-            !inFileWrappers
+            !inSemanticContext
             !?ioVariablesMap
             ?expression
             ?resultType
@@ -2892,7 +2894,7 @@ rule <syntax_instruction>
             !inAllMetamodelClassMap
             !inTreewalkingComponentMap
             !inIsInvokedWithinParseLoopInstruction
-            !inFileWrappers
+            !inSemanticContext
           ;
           branchList += !expression !instructionsList ;
           parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
@@ -2918,7 +2920,7 @@ rule <syntax_instruction>
           !inAllMetamodelClassMap
           !inTreewalkingComponentMap
           !inIsInvokedWithinParseLoopInstruction
-          !inFileWrappers
+          !inSemanticContext
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
         foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
@@ -2986,7 +2988,7 @@ rule <syntax_instructions_list_no_verif>
   ??@entityToImplementMap inAllMetamodelClassMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@bool inIsInvokedWithinParseLoopInstruction
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
 :
   @entityPropertyMap propertyMap [emptyMap] ;
   @typeTableEnAvant tableEnAvant [emptyMap] ;
@@ -3007,7 +3009,7 @@ rule <syntax_instructions_list_no_verif>
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
       !inIsInvokedWithinParseLoopInstruction
-      !inFileWrappers
+      !inSemanticContext
     ;
   while
     <semantic_instruction>
@@ -3020,7 +3022,7 @@ rule <syntax_instructions_list_no_verif>
       !propertyMap
       !inAllMetamodelClassMap
       !inTreewalkingComponentMap
-      !inFileWrappers
+      !inSemanticContext
     ;
   end repeat ;
 label importSyntax

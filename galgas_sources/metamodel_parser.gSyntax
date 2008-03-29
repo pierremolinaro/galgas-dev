@@ -33,25 +33,25 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -75,7 +75,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -85,7 +85,7 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label parse
 ;
 
@@ -129,7 +129,7 @@ rule <galgas_component>
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   <parse_metamodel> !?ioMetamodelComponentMap !true ;
 label importLexique
@@ -140,14 +140,14 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importGrammarForSemantics
@@ -155,7 +155,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   <parse_metamodel> !?ioMetamodelComponentMap !false ;
 label importOptions
@@ -233,7 +233,9 @@ rule <parse_metamodel>
   @stringset includedMetamodelComponents ;
   @stringset includedGrammarComponents ;
   @entityToImplementMap allMetamodelClassMap ;
-  @M_filewrappers fileWrappers [emptyMap] ;
+  @semanticContext semanticContext [new
+    ![@M_filewrappers emptyMap]
+  ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedMetamodelComponents
@@ -253,7 +255,7 @@ rule <parse_metamodel>
     ?semanticsEntitiesMap
     ?tableEnAvant
     ?allMetamodelClassMap
-    !?fileWrappers
+    !?semanticContext
   ;
 #--- Header inclusion list
   @stringlist headerInclusionList [emptyList] ;

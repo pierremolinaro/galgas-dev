@@ -33,25 +33,25 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -82,7 +82,7 @@ nonterminal <parse_syntax_for_importing>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 label parse
 ;
 
@@ -114,7 +114,7 @@ rule <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@M_filewrappers ioFileWrappers
+  ?!@semanticContext ioSemanticContext
 :
   $grammar$ ;
 #--- Grammar name
@@ -178,7 +178,7 @@ rule <galgas_component>
           !?syntaxComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
-          !?ioFileWrappers
+          !?ioSemanticContext
         ;
       end select ;
       $;$ ;
@@ -344,7 +344,7 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $grammar$ ;
   $identifier$ ? * ;
@@ -397,7 +397,7 @@ label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $grammar$ ;
   $identifier$ ? * ;
@@ -451,7 +451,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@M_filewrappers unused ioFileWrappers
+  ?!@semanticContext unused ioSemanticContext
 :
   $grammar$ ;
   @lstring grammarName ;

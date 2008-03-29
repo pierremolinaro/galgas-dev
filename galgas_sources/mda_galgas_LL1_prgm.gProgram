@@ -68,7 +68,9 @@ message "a '.ggs' GALGAS source file"
   @M_optionComponents optionComponentsMap [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
   @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
-  @M_filewrappers fileWrappers [emptyMap] ;
+  @semanticContext semanticContext [new
+    ![@M_filewrappers emptyMap]
+  ] ;
   grammar galgas_LL1_grammar in inSourceFile
     !?lexiqueMapForUse
     !?semanticsComponentsMap
@@ -77,7 +79,7 @@ message "a '.ggs' GALGAS source file"
     !?optionComponentsMap
     !?metamodelComponentMap
     !?treewalkingComponentMap
-    !?fileWrappers
+    !?semanticContext
   ;
 }
 

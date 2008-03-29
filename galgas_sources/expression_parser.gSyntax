@@ -32,7 +32,7 @@ import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 nonterminal <expression>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -42,7 +42,7 @@ label parse
 nonterminal <concatenation_term>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -52,7 +52,7 @@ label parse
 nonterminal <relation_term>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -62,7 +62,7 @@ label parse
 nonterminal <relation_factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -72,7 +72,7 @@ label parse
 nonterminal <simple_expression>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -82,7 +82,7 @@ label parse
 nonterminal <term>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -92,7 +92,7 @@ label parse
 nonterminal <factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -112,7 +112,7 @@ nonterminal <output_expression_list>
   ??@typeListeAttributsSemantiques inAttributesList
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
 label parse
 ;
@@ -615,7 +615,7 @@ end routine ;
 rule <expression>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -623,7 +623,7 @@ rule <expression>
   <concatenation_term>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?outExpression
     ?outResultType
@@ -639,7 +639,7 @@ rule <expression>
     <concatenation_term>
        !ioEntitiesMap
        !inOptionsComponentsMapForUse
-       !inFileWrappers
+       !inSemanticContext
        !?ioVariablesMap
        ?rightOperand
        ?secondOperandType
@@ -662,7 +662,7 @@ end rule ;
 rule <concatenation_term>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -670,7 +670,7 @@ rule <concatenation_term>
   <relation_term>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?outExpression
     ?outResultType
@@ -686,7 +686,7 @@ rule <concatenation_term>
     <relation_term>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightOperand
       ?secondOperandType
@@ -707,7 +707,7 @@ rule <concatenation_term>
     <relation_term>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightOperand
       ?secondOperandType
@@ -730,7 +730,7 @@ end rule ;
 rule <relation_term>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -738,7 +738,7 @@ rule <relation_term>
   <relation_factor>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?outExpression
     ?outResultType
@@ -754,7 +754,7 @@ rule <relation_term>
     <relation_factor>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightOperand
       ?secondOperandType
@@ -777,7 +777,7 @@ end rule ;
 rule <relation_factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -785,7 +785,7 @@ rule <relation_factor>
   <simple_expression>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?outExpression
     ?outResultType
@@ -801,7 +801,7 @@ rule <relation_factor>
     <simple_expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType ;
@@ -818,7 +818,7 @@ rule <relation_factor>
     <simple_expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -836,7 +836,7 @@ rule <relation_factor>
     <simple_expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -854,7 +854,7 @@ rule <relation_factor>
     <simple_expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -872,7 +872,7 @@ rule <relation_factor>
     <simple_expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -890,7 +890,7 @@ rule <relation_factor>
     <simple_expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -910,7 +910,7 @@ end rule ;
 rule <simple_expression>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -918,7 +918,7 @@ rule <simple_expression>
   <term>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?outExpression
     ?outResultType
@@ -934,7 +934,7 @@ rule <simple_expression>
     <term>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -951,7 +951,7 @@ rule <simple_expression>
     <term>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -968,7 +968,7 @@ rule <simple_expression>
     <term>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -985,7 +985,7 @@ rule <simple_expression>
     <term>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -1004,7 +1004,7 @@ end rule ;
 rule <term>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1012,7 +1012,7 @@ rule <term>
   <factor>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?outExpression
     ?outResultType
@@ -1028,7 +1028,7 @@ rule <term>
     <factor>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -1045,7 +1045,7 @@ rule <term>
     <factor>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -1062,7 +1062,7 @@ rule <term>
     <factor>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?rightExpression
       ?rightType
@@ -1081,7 +1081,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1093,7 +1093,7 @@ rule <factor>
   <factor>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?expression
     ?type
@@ -1111,7 +1111,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1132,7 +1132,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1142,7 +1142,7 @@ rule <factor>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?outExpression
       ?outResultType
@@ -1154,7 +1154,7 @@ rule <factor>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?castedExpression
       ?castExpressionType
@@ -1201,7 +1201,7 @@ rule <factor>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?errorLocationExpression
       ?errorLocationExpressionType
@@ -1228,7 +1228,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1240,7 +1240,7 @@ rule <factor>
   <factor>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?ifCondition
     ?operandType
@@ -1258,7 +1258,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1270,7 +1270,7 @@ rule <factor>
   <factor>
     !ioEntitiesMap
     !inOptionsComponentsMapForUse
-    !inFileWrappers
+    !inSemanticContext
     !?ioVariablesMap
     ?ifCondition
     ?operandType
@@ -1288,7 +1288,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1307,7 +1307,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1326,7 +1326,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1351,7 +1351,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1371,7 +1371,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1391,7 +1391,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1411,7 +1411,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1431,7 +1431,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1451,7 +1451,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1471,7 +1471,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse unused ioEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ??@M_filewrappers unused inFileWrappers
+  ??@semanticContext unused inSemanticContext
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1495,7 +1495,7 @@ end rule ;
 rule <factor>
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
   !@AC_galgasType outResultType
@@ -1508,7 +1508,7 @@ rule <factor>
     @lstring filewrapperName ;
     $identifier$ ? filewrapperName ;
     @M_regularFiles regularFileMap ;
-    [inFileWrappers searchKey !filewrapperName ?regularFileMap] ;
+    [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap] ;
     select
       outExpression := [@typeFileWrapperObjectInstanciation new !filewrapperName] ;
       outResultType := [@typeGalgas_filewrapper new] ;
@@ -1530,7 +1530,7 @@ rule <factor>
     <expression>
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?expressionValue
       ?expressionType
@@ -1554,7 +1554,7 @@ rule <factor>
         !accessorsTypeList
         !ioEntitiesMap
         !inOptionsComponentsMapForUse
-        !inFileWrappers
+        !inSemanticContext
         !?ioVariablesMap
       ;
       outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod] ;
@@ -1578,7 +1578,7 @@ rule <factor>
       !listeAttributsSemantiques
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
     ;
     outExpression := [@typeConstructorExpression new
@@ -1674,7 +1674,7 @@ rule <output_expression_list>
   ??@typeListeAttributsSemantiques inFormalAttributesList
   ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
-  ??@M_filewrappers inFileWrappers
+  ??@semanticContext inSemanticContext
   ?!@typeVariablesMap ioVariablesMap
 :
   @typeTypesList effectiveTypesList [emptyList] ;
@@ -1687,7 +1687,7 @@ rule <output_expression_list>
     <expression> 
       !ioEntitiesMap
       !inOptionsComponentsMapForUse
-      !inFileWrappers
+      !inSemanticContext
       !?ioVariablesMap
       ?expression
       ?resultType
