@@ -51,9 +51,6 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
   import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
-  
-  error 100 ;
-  warning 100 ;
 
 #---------------------------------------------------------------------------*
 

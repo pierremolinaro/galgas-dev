@@ -1,0 +1,6 @@
+semantics MDA_PROJECT_semantics :
+  import option MDA_PROJECT_options in "MDA_PROJECT_options.ggs" ;
+
+# ADD YOUR CODE HERE
+
+end semantics ;

@@ -1,0 +1,8 @@
+compile "PROJECT_lexique.ggs" ;
+compile "PROJECT_options.ggs" ;
+compile "PROJECT_semantics.ggs" ;
+compile "PROJECT_syntax.ggs" ;
+compile "PROJECT_grammar.ggs" ;
+compile "PROJECT_cocoa.ggs" ;
+compile "PROJECT_program.ggs" ;
+

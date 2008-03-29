@@ -64,11 +64,4 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-filewrapper test in "../zzz" { "ggs" } {
-  template t1 "/templateTest.ggs" ?@string PARAMETER1 ;
-  template t2 "/templateVide.ggs" ;
-}
-
-#---------------------------------------------------------------------------*
-
 end syntax ;

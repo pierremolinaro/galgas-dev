@@ -1,0 +1,6 @@
+semantics PROJECT_semantics :
+  import option PROJECT_options in "PROJECT_options.ggs" ;
+
+# ADD YOUR CODE HERE
+
+end semantics ;

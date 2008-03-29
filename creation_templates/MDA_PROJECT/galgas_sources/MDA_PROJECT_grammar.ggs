@@ -1,0 +1,8 @@
+grammar MDA_PROJECT_grammar "LL1":
+import lexique MDA_PROJECT_lexique in "MDA_PROJECT_lexique.ggs" ;
+import option MDA_PROJECT_options in "MDA_PROJECT_options.ggs" ;
+import syntax MDA_PROJECT_syntax in "MDA_PROJECT_syntax.ggs" ;
+
+root <start_symbol> -> MDA_PROJECT_metamodel ;
+
+end grammar ;

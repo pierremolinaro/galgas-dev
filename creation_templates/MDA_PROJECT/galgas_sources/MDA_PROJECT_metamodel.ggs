@@ -1,0 +1,8 @@
+metamodel MDA_PROJECT_metamodel root @MDA_PROJECT_root :
+
+entity @MDA_PROJECT_root {
+}
+
+# ADD YOUR CODE HERE
+
+end metamodel ;

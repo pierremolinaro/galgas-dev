@@ -94,8 +94,6 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
 
 static void
 generate_cpp_file_for_prgm (C_Compiler & inLexique,
-                            const uint32 inMaxErrorCount,
-                            const uint32 inMaxWarningCount,
                             const C_String & inVersionString,
                             const C_String & inProgramComponentName,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
@@ -210,8 +208,8 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.writeCstringConstant (inVersionString) ;
   generatedZone2 << ",\n"
                     "      #endif\n"
-                    "      " << inMaxErrorCount << ",\n"
-                    "      " << inMaxWarningCount << ") ;\n"
+                    "      100,\n"
+                    "      100) ;\n"
                     "  //--- Build galgas io object\n"
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
                     "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
@@ -386,8 +384,6 @@ routine_generatePRGM (C_Compiler & inLexique,
                       const GGS_lstring inProgramComponentName,
                       const GGS_lstring inVersionString,
                       const GGS_ruleDescriptorForProgramList inRuleDescriptorForProgramList,
-                      const GGS_luint inMaxErrorCount,
-                      const GGS_luint inMaxWarningCount,
                       const GGS_M_optionComponents inOptionsComponentsMap,
                       const GGS_stringset inInclusionsForImplementationFile
                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -396,8 +392,6 @@ routine_generatePRGM (C_Compiler & inLexique,
                                    inProgramComponentName,
                                    inOptionsComponentsMap) ; 
     generate_cpp_file_for_prgm (inLexique,
-                                inMaxErrorCount.uintValue (),
-                                inMaxWarningCount.uintValue (),
                                 inVersionString,
                                 inProgramComponentName,
                                 inRuleDescriptorForProgramList,

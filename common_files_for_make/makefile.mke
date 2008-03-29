@@ -107,5 +107,6 @@ SOURCES += galgasTemplateGrammar.cpp
 SOURCES += galgas_LL1_grammar.cpp
 SOURCES += ggs_LL1_compile_component.cpp
 SOURCES += galgas_LL1_prgm.cpp
+SOURCES += projectCreation.cpp
 
 #---------------------------------------------------------------*

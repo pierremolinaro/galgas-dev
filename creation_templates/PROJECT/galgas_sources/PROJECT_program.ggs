@@ -1,0 +1,14 @@
+program PROJECT_program "version 1.0.0":
+import semantics PROJECT_semantics in "PROJECT_semantics.ggs" ;
+import grammar PROJECT_grammar in "PROJECT_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+
+when . "PROJECT"
+message "a source text file with the .PROJECT extension"
+??@lstring inSourceFile {
+  grammar PROJECT_grammar in inSourceFile ;
+}
+
+end program ;

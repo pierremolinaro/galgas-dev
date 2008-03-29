@@ -1,0 +1,14 @@
+syntax %PROJECT_NAME%_syntax :
+import lexique %PROJECT_NAME%_lexique in "%PROJECT_NAME%_lexique.ggs" ;
+import option %PROJECT_NAME%_options in "%PROJECT_NAME%_options.ggs" ;
+import semantics %PROJECT_NAME%_semantics in "%PROJECT_NAME%_semantics.ggs" ;
+
+# ADD YOUR CODE HERE
+
+nonterminal <start_symbol> ;
+
+rule <start_symbol> :
+# ADD YOUR CODE HERE
+end rule ;
+
+end syntax ;

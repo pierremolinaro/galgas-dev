@@ -107,8 +107,6 @@ extern routine generatePRGM
   ??@lstring nomPRGMprincipal
   ??@lstring versionString
   ??@ruleDescriptorForProgramList inRuleDescriptorForProgramList
-  ??@luint nombreMaxErreurs
-  ??@luint nombreMaxAlertes
   ??@M_optionComponents inOptionsComponentsMap
   ??@stringset inInclusionsForImplementationFile
 ;
@@ -174,15 +172,21 @@ rule <galgas_component>
     inclusionsForImplementationFile += !kSemanticComponentName . ".h" ;
   end foreach ;
 #--- Max errors count
-  $error$ ;
-  @luint nombreMaxErreurs ; # Nombre maximum d'erreurs
-  $unsigned_literal_integer$ ? nombreMaxErreurs ;
-  $;$ ;
+  select
+    $error$ ;
+    warning here: "the 'error ... ;' declaration is obsolete and should be removed" ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- Max warnings count
-  $warning$ ;
-  @luint nombreMaxAlertes ; # Nombre maximum d'alertes
-  $unsigned_literal_integer$ ? nombreMaxAlertes ;
-  $;$ ;
+  select
+    $warning$ ;
+    warning here: "the 'warning ... ;' declaration is obsolete and should be removed" ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- WHEN clauses
   @ruleDescriptorForProgramList ruleDescriptorForProgramList [emptyList] ;
   $when$ ;
@@ -262,8 +266,6 @@ rule <galgas_component>
     !nomPRGMprincipal
     !versionString
     !ruleDescriptorForProgramList
-    !nombreMaxErreurs
-    !nombreMaxAlertes
     !optionsComponentsMap
     !inclusionsForImplementationFile
   ;
@@ -281,13 +283,19 @@ label importLexique
 #--- Import clauses
   <import_headers_semantics_and_grammars> parse ;
 #--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -325,13 +333,19 @@ label importSyntax
 #--- Import clauses
   <import_headers_semantics_and_grammars> parse ;
 #--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -368,13 +382,19 @@ label importSemantics
 #--- Import clauses
   <import_headers_semantics_and_grammars> parse ;
 #--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -412,13 +432,19 @@ label importGrammarForSemantics
 #--- Import clauses
   <import_headers_semantics_and_grammars> parse ;
 #--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -452,13 +478,19 @@ label importOptions
 #--- Import clauses
   <import_headers_semantics_and_grammars> parse ;
 #--- Max errors count
-  $error$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $error$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- Max warnings count
-  $warning$ ;
-  $unsigned_literal_integer$ ? * ;
-  $;$ ;
+  select
+    $warning$ ;
+    $unsigned_literal_integer$ ? * ;
+    $;$ ;
+  or
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
