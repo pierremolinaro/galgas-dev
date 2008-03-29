@@ -353,6 +353,7 @@ routine_buildLexicalRulesFromList (C_Compiler & ioLexique,
 
 static void
 generate_scanning_method (AC_OutputStream & inCppFile,
+                          const bool inIsTemplate,
                           const C_String & inLexiqueName,
                           const GGS_typeLexicalAttributesMap & table_attributs,
                           const GGS_typeListeTestsEtInstructions & programme_principal) {
@@ -362,11 +363,29 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "parseLexicalToken (void) {\n"
                "  cTokenFor_" << inLexiqueName << " _token ;\n" ;
   inCppFile.incIndentation (+2) ;
-   if (instructions_list_uses_loop_variable (programme_principal)) {
-     inCppFile << "bool loop_ = true ;\n" ;
-   }
+  if (instructions_list_uses_loop_variable (programme_principal)) {
+    inCppFile << "bool loop_ = true ;\n" ;
+  }
   inCppFile << "_token._mTokenCode = -1 ;\n"
-               "while (_token._mTokenCode < 0) {\n" ;
+               "while ((_token._mTokenCode < 0) && (mCurrentChar != '\\0')) {\n" ;
+  if (inIsTemplate) {
+    inCppFile << "  while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
+                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (_gTemplateStartStrings) ;\n"
+                 "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
+                 "      mTemplateString << mCurrentChar ;\n"
+                 "      advance () ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n"
+                 "    const bool foundEndDelimitor = testForInputString (_gTemplateEndStrings [_mMatchedTemplateDelimiterIndex],\n"
+                 "                                                       (sint32) strlen (_gTemplateEndStrings [_mMatchedTemplateDelimiterIndex])) ;\n"
+                 "    if (foundEndDelimitor) {\n"
+                 "      _mMatchedTemplateDelimiterIndex = -1 ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n" ;
+    inCppFile.incIndentation (+2) ;
+  }
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
   inCppFile << "_mTokenFirstLocation = _mCurrentLocation ;\n"
@@ -388,6 +407,10 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "  advance () ; // ... go throught unknown character\n"
                "}\n" ;
   inCppFile.incIndentation (-2) ;
+  if (inIsTemplate) {
+    inCppFile << "}\n" ;
+    inCppFile.incIndentation (-2) ;
+  }
   inCppFile << "}\n"
                "return _token._mTokenCode > 0 ;\n" ;
   inCppFile.incIndentation (-2) ;
@@ -1109,6 +1132,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 
 static void
 generate_scanner_header_file (C_Compiler & inLexique,
+                              const bool inIsTemplate,
                               const GGS_lstring & inLexiqueName,
                               const GGS_typeLexicalAttributesMap & table_attributs,
                               const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
@@ -1157,6 +1181,10 @@ generate_scanner_header_file (C_Compiler & inLexique,
                     "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "    protected : virtual ~" << inLexiqueName << " (void) {}\n"
                     "  #endif\n\n" ;
+  if (inIsTemplate) {
+    generatedZone2 << "//--- Scanner mode\n"
+                      "  private : sint32 _mMatchedTemplateDelimiterIndex ;\n\n" ;  
+  }
   
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3 << "//--- Terminal symbols enumeration\n"
@@ -1230,6 +1258,8 @@ generate_scanner_header_file (C_Compiler & inLexique,
 
 static void
 generate_scanner_cpp_file (C_Compiler & inLexique,
+                           const bool inIsTemplate,
+                           const GGS_templateDelimiterMap & inTemplateDelimiterMap,
                            const C_String & inLexiqueName,
                            const GGS_typeLexicalAttributesMap & table_attributs,
                            const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
@@ -1259,22 +1289,55 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "  #define COMMA_LINE_AND_SOURCE_FILE\n"
                     "#endif\n\n" ;
 
-// --------------------------------------- Constructors
+//--------------------------------------- Template delimiters
+  if (inIsTemplate) {
+    generatedZone2.writeCppTitleComment ("Template Delimiters") ;
+    generatedZone2 << "static const char * _gTemplateStartStrings [" << (inTemplateDelimiterMap.count () + 1) << "] = {\n" ;
+    GGS_templateDelimiterMap::cElement * currentDelimiter = inTemplateDelimiterMap.firstObject () ;
+    while (currentDelimiter != NULL) {
+      macroValidPointer (currentDelimiter) ;
+      generatedZone2 << "  " ;
+      generatedZone2.writeCstringConstant (currentDelimiter->mKey) ;
+      generatedZone2 << ",\n" ;
+      currentDelimiter = currentDelimiter->nextObject () ;
+    }
+    generatedZone2 << "  NULL\n"
+                      "} ;\n\n"
+                      "static const char * _gTemplateEndStrings [" << (inTemplateDelimiterMap.count () + 1) << "] = {\n" ;
+    currentDelimiter = inTemplateDelimiterMap.firstObject () ;
+    while (currentDelimiter != NULL) {
+      macroValidPointer (currentDelimiter) ;
+      generatedZone2 << "  " ;
+      generatedZone2.writeCstringConstant (currentDelimiter->mInfo.mEndString) ;
+      generatedZone2 << ",\n" ;
+      currentDelimiter = currentDelimiter->nextObject () ;
+    }
+    generatedZone2 << "  NULL\n"
+                      "} ;\n\n" ;
+  }
+
+//--------------------------------------- Constructors
   generatedZone2.writeCppTitleComment ("Constructors") ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceFileName\n"
-                    "                COMMA_LOCATION_ARGS)\n"
-                    ": C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {\n"
-                    "}\n\n" ;
+                    "                COMMA_LOCATION_ARGS) :\n"
+                    "C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {\n" ;
+  if (inIsTemplate) {
+    generatedZone2 << "  _mMatchedTemplateDelimiterIndex = -1 ;\n" ;
+  }
+  generatedZone2 << "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceString,\n"
                     "                const C_String & inStringForError\n"
-                    "                COMMA_LOCATION_ARGS)\n"
-                    ": C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE) {\n"
-                    "}\n\n" ;
+                    "                COMMA_LOCATION_ARGS) :\n"
+                    "C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE) {\n" ;
+  if (inIsTemplate) {
+    generatedZone2 << "  _mMatchedTemplateDelimiterIndex = -1 ;\n" ;
+  }
+  generatedZone2 << "}\n\n" ;
 
 //---------------------------------------- Generate error message list
   GGS_typeTableMessagesErreurs::cElement * currentMessage = inLexicalErrorsMessageMap.firstObject () ;
@@ -1339,6 +1402,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
 //---------------------------------------- Generate parsing method
   generate_scanning_method (generatedZone2,
+                            inIsTemplate,
                             inLexiqueName,
                             table_attributs,
                             programme_principal) ;
@@ -1353,7 +1417,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                      "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
-              "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
+                     "  const char * kStylesArray [" << (inStylesMap.count () + 1) << "] = {" ;
   GGS_M_styles::cElement * style = inStylesMap.firstObject () ;
   while (style != NULL) {
     macroValidPointer (style) ;
@@ -1458,8 +1522,8 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
 void 
 routine_generate_scanner (C_Compiler & inLexique,
-                          const GGS_bool /* inIsTemplate */,
-                          const GGS_templateDelimiterMap /* inTemplateDelimiterMap */,
+                          const GGS_bool inIsTemplate,
+                          const GGS_templateDelimiterMap inTemplateDelimiterMap,
                           const GGS_lstring inLexiqueName,
                           const GGS_typeLexicalAttributesMap table_attributs,
                           const GGS_typeTableDefinitionTerminaux table_des_terminaux,
@@ -1479,11 +1543,14 @@ routine_generate_scanner (C_Compiler & inLexique,
     if (ok) {
     //--- Generate header file
       generate_scanner_header_file (inLexique,
+                                    inIsTemplate.boolValue (),
                                     inLexiqueName,
                                     table_attributs, table_des_terminaux,
                                     table_tables_mots_reserves) ;
     //--- Generate implementation file
       generate_scanner_cpp_file (inLexique,
+                                 inIsTemplate.boolValue (),
+                                 inTemplateDelimiterMap,
                                  inLexiqueName,
                                  table_attributs, table_des_terminaux,
                                  table_tables_mots_reserves, programme_principal,

@@ -105,5 +105,8 @@ SOURCES += semantics_parser.cpp
 SOURCES += domain_parser.cpp
 SOURCES += treewalking_parser.cpp
 SOURCES += commonSemantics.cpp
+SOURCES += galgasTemplateScanner.cpp
+SOURCES += galgasTemplateParser.cpp
+SOURCES += galgasTemplateGrammar.cpp
 
 #---------------------------------------------------------------*
