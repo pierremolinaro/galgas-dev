@@ -1,48 +1,48 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas LL1, SLR, LR1 command line tools *
+# MAKEFILE for building galgas command line tools               *
 #                                                               *
 #---------------------------------------------------------------*
 
-all:
-	$(MAKE) -f makefile_LL1 all
-	$(MAKE) -f makefile_SLR all
-	$(MAKE) -f makefile_LR1 all
+#--- Release and debug versions of common_sources_makefile.mke
+EXECUTABLE := galgas
+EXECUTABLE_DEBUG := galgas_debug
+
+#--- Install directory (for "install" goal)
+INSTALL_DIR := /usr/local/bin
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := allObjects/objects
+DEBUG_OBJECTS_DIR := allObjects/debug_objects
 
 #---------------------------------------------------------------*
 
-clean:
-	$(MAKE) -f makefile_LL1 clean
-	$(MAKE) -f makefile_SLR clean
-	$(MAKE) -f makefile_LR1 clean
+#--- Linker Options for this platform
+PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------*
 
-install:
-	$(MAKE) -f makefile_LL1 install
-	$(MAKE) -f makefile_SLR install
-	$(MAKE) -f makefile_LR1 install
+include ../common_files_for_make/makefile.mke
 
 #---------------------------------------------------------------*
-
-uninstall:
-	$(MAKE) -f makefile_LL1 uninstall
-	$(MAKE) -f makefile_SLR uninstall
-	$(MAKE) -f makefile_LR1 uninstall
-
+#                                                               *
+#     Include gcc tools for MAC OS X                            *
+#                                                               *
 #---------------------------------------------------------------*
 
-install_debug:
-	$(MAKE) -f makefile_LL1 install_debug
-	$(MAKE) -f makefile_SLR install_debug
-	$(MAKE) -f makefile_LR1 install_debug
+include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
 
 #---------------------------------------------------------------*
-
-uninstall_debug:
-	$(MAKE) -f makefile_LL1 uninstall_debug
-	$(MAKE) -f makefile_SLR uninstall_debug
-	$(MAKE) -f makefile_LR1 uninstall_debug
-
+#                                                               *
+#     Include makefile that performs actual work                *
+#                                                               *
 #---------------------------------------------------------------*
 
+include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+
+#---------------------------------------------------------------*

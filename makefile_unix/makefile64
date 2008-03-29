@@ -1,34 +1,48 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas LL1, SLR, LR1 command line tools *
+# MAKEFILE for building galgas command line tools               *
 #                                                               *
 #---------------------------------------------------------------*
 
-all:
-	$(MAKE) -f makefile64_LL1 all
-	$(MAKE) -f makefile64_SLR all
-	$(MAKE) -f makefile64_LR1 all
+#--- Release and debug versions of common_sources_makefile.mke
+EXECUTABLE := galgas64
+EXECUTABLE_DEBUG := galgas64_debug
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects64
+DEBUG_OBJECTS_DIR := debug_objects64
+
+#--- Install directory (for "install" goal)
+INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------*
 
-clean:
-	$(MAKE) -f makefile64_LL1 clean
-	$(MAKE) -f makefile64_SLR clean
-	$(MAKE) -f makefile64_LR1 clean
+#--- Linker Options for this platform
+PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------*
 
-install:
-	$(MAKE) -f makefile64_LL1 install
-	$(MAKE) -f makefile64_SLR install
-	$(MAKE) -f makefile64_LR1 install
+include ../common_files_for_make/makefile.mke
 
 #---------------------------------------------------------------*
-
-uninstall:
-	$(MAKE) -f makefile64_LL1 uninstall
-	$(MAKE) -f makefile64_SLR uninstall
-	$(MAKE) -f makefile64_LR1 uninstall
-
+#                                                               *
+#     Include gcc tools for Unix                                *
+#                                                               *
 #---------------------------------------------------------------*
 
+include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_64.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include makefile that performs actual work                *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+
+#---------------------------------------------------------------*
