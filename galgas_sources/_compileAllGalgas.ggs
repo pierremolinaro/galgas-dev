@@ -26,6 +26,9 @@ compile "commonSemantics.gSemantics" ;
 #--- Common Scanner
 compile "galgas_scanner.gLexique" ;
 
+#--- Project Creation
+compile "projectCreation.gSemantics" ;
+
 #--- Template
 compile "galgasTemplateScanner.gLexique" ;
 compile "galgasTemplateParser.gSyntax" ;

@@ -1,0 +1,14 @@
+program %PROJECT_NAME%_program "version 1.0.0":
+import semantics %PROJECT_NAME%_semantics in "%PROJECT_NAME%_semantics.ggs" ;
+import grammar %PROJECT_NAME%_grammar in "%PROJECT_NAME%_grammar.ggs" ;
+#--- max error and warning count
+error 100 ;
+warning 100 ;
+
+when . "%PROJECT_NAME%"
+message "a source text file with the .%PROJECT_NAME% extension"
+??@lstring inSourceFile {
+  grammar %PROJECT_NAME%_grammar in inSourceFile ;
+}
+
+end program ;

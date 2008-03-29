@@ -1,0 +1,10 @@
+compile "MDA_PROJECT_lexique.ggs" ;
+compile "MDA_PROJECT_metamodel.ggs" ;
+compile "MDA_PROJECT_treewalking.ggs" ;
+compile "MDA_PROJECT_options.ggs" ;
+compile "MDA_PROJECT_semantics.ggs" ;
+compile "MDA_PROJECT_syntax.ggs" ;
+compile "MDA_PROJECT_grammar.ggs" ;
+compile "MDA_PROJECT_cocoa.ggs" ;
+compile "MDA_PROJECT_program.ggs" ;
+

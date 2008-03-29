@@ -1,0 +1,65 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Project Creation                                                         *
+#                                                                           *
+#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics projectCreation :
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F I L E W R A P P E R     T E M P L A T E S                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper projectCreationFileWrapper in "../creation_templates/actual_templates/project" {
+ "command", "bat"
+} {
+#--- Project
+  template xcodeProject "/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
+  template commonMakefileProject "/common_files_for_make/makefile.mke" ?@string PROJECT_NAME ;
+  template all_ggs "/galgas_sources/_all_PROJECT.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_grammar "/galgas_sources/PROJECT_grammar.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_lexique "/galgas_sources/PROJECT_lexique.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_options "/galgas_sources/PROJECT_options.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_program "/galgas_sources/PROJECT_program.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_semantics "/galgas_sources/PROJECT_semantics.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_syntax "/galgas_sources/PROJECT_syntax.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_computations "/hand_coded_sources/PROJECT_computations.cpp" ?@string PROJECT_NAME ;
+  template makefile_macosx_makefile "/makefile_macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_makefile64 "/makefile_macosx/makefile64" ?@string PROJECT_NAME ;
+  template makefile_mingw_on_macosx_makefile "/makefile_macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_msys_on_win32_makefile "/makefile_msys_on_win32/makefile.mke" ?@string PROJECT_NAME ;
+  template makefile_unix_makefile "/makefile_unix/makefile" ?@string PROJECT_NAME ;
+  template makefile_unix_makefile64 "/makefile_unix/makefile64" ?@string PROJECT_NAME ;
+  template makefile_x86linux_on_macosx_makefile "/makefile_unix/makefile" ?@string PROJECT_NAME ;
+#--- MDA Project
+#  template xcodeProject "/mda-project/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
+#  template commonMakefileProject "/mda-project/common_files_for_make/makefile.mke" ?@string PROJECT_NAME ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine projectCreation
+  ??@string inProjectName
+  ??@bool inIsMDAproject
+:
+
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

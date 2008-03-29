@@ -1,0 +1,8 @@
+grammar PROJECT_grammar "LL1":
+import lexique PROJECT_lexique in "PROJECT_lexique.ggs" ;
+import option PROJECT_options in "PROJECT_options.ggs" ;
+import syntax PROJECT_syntax in "PROJECT_syntax.ggs" ;
+
+root <start_symbol> ;
+
+end grammar ;
