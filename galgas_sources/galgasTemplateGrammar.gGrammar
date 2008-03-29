@@ -21,7 +21,11 @@ grammar galgasTemplateGrammar "LL1" :
   import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
   import syntax galgasTemplateParser in "galgasTemplateParser.gSyntax" ;
 
-  root <lexique_component_start_symbol> ;
+  root <lexique_component_start_symbol>
+    ?!@typeVariablesMap ioTemplateVariableMap
+    ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+    !@templateInstructionList outResultingInstructionList
+  ;
 end grammar ;
 
 #---------------------------------------------------------------------------*

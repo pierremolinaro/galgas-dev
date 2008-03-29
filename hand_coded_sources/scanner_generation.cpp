@@ -369,18 +369,18 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "_token._mTokenCode = -1 ;\n"
                "while ((_token._mTokenCode < 0) && (mCurrentChar != '\\0')) {\n" ;
   if (inIsTemplate) {
-    inCppFile << "  while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
-                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (_gTemplateStartStrings) ;\n"
-                 "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
-                 "      mTemplateString << mCurrentChar ;\n"
-                 "      advance () ;\n"
-                 "    }\n"
-                 "  }\n"
-                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n"
+    inCppFile << "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n"
                  "    const bool foundEndDelimitor = testForInputString (_gTemplateEndStrings [_mMatchedTemplateDelimiterIndex],\n"
                  "                                                       (sint32) strlen (_gTemplateEndStrings [_mMatchedTemplateDelimiterIndex])) ;\n"
                  "    if (foundEndDelimitor) {\n"
                  "      _mMatchedTemplateDelimiterIndex = -1 ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "  while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
+                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (_gTemplateStartStrings) ;\n"
+                 "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
+                 "      _token._mTemplateStringBeforeToken << mCurrentChar ;\n"
+                 "      advance () ;\n"
                  "    }\n"
                  "  }\n"
                  "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n" ;
@@ -412,6 +412,10 @@ generate_scanning_method (AC_OutputStream & inCppFile,
     inCppFile.incIndentation (-2) ;
   }
   inCppFile << "}\n"
+               "if ((mCurrentChar == '\\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {\n"
+               "  _token._mTokenCode = 0 ;\n"
+               "  _enterToken (_token) ;\n"
+               "}\n"
                "return _token._mTokenCode > 0 ;\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n\n" ;  
@@ -1467,7 +1471,8 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "  macroMyNew (_p, cTokenFor_" << inLexiqueName << " ()) ;\n"
                     "  _p->_mTokenCode = inToken._mTokenCode ;\n"
                     "  _p->_mFirstLocation = _mTokenFirstLocation ;\n"
-                    "  _p->_mLastLocation  = _mTokenLastLocation ;\n" ;
+                    "  _p->_mLastLocation  = _mTokenLastLocation ;\n"
+                    "  _p->_mTemplateStringBeforeToken  = inToken._mTemplateStringBeforeToken ;\n" ;
   GGS_typeLexicalAttributesMap::cElement * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     generatedZone2 << "  _p->" << currentAttribute->mKey << " = inToken." << currentAttribute->mKey << " ;\n" ;

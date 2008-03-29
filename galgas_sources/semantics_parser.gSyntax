@@ -6020,11 +6020,11 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 rule <semantics_declaration>
-  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
-  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ?!@M_filewrappers ioFileWrappers
@@ -6088,26 +6088,68 @@ rule <semantics_declaration>
   repeat
   while
     $template$ ;
+  #--- Template name
     @lstring templateName ;
     $identifier$ ? templateName ;
+  #--- Template path
     @lstring templatePath ;
     $literal_string$ ? templatePath ;
     @lstring templateAbsolutePath [new
       !absoluteSourcePath . "/" . [templatePath string]
       ![templatePath location]
     ] ;
-    @string resultingString := "" ;
-    grammar galgasTemplateGrammar in templateAbsolutePath send in resultingString ;
-    log resultingString ;
+  #--- Template formal arguments
+    @typeListeTypesEtNomsArgMethode templateArgumentTypesList [emptyList] ;
+    @typeVariablesMap templateVariableMap [emptyMap] ;
+    repeat
+    while
+      $?$ ;
+      @AC_galgasType type_semantique ;
+      @lstring galgasTypeName ; # Not used here
+      <formal_argument_type>
+        !ioComponentSemanticsEntitiesMap
+        ?type_semantique
+        !?tableEnAvant
+        ?galgasTypeName
+      ;
+      @bool parameterIsUsed ;
+      select
+        parameterIsUsed := true ;
+      or
+        $unused$ ;
+        parameterIsUsed := false ;
+      end select ;
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+      @typeCplusPlusName cppName := [@typeAutomaticName new ![parameterName location] ![parameterName string]] ;
+      templateArgumentTypesList += !type_semantique ![@formalArgumentPassingMode argumentConstantIn] !cppName !true ;
+      if parameterIsUsed then
+        [!?templateVariableMap insertConstInArgument !parameterName !type_semantique !cppName] ;
+      else
+        [!?templateVariableMap insertUnusedConstInArgument !parameterName !type_semantique !cppName] ;
+      end if ;
+    end repeat ;
+    @templateInstructionList templateInstructionList ;
+    grammar galgasTemplateGrammar in templateAbsolutePath
+      !?templateVariableMap
+      !ioComponentSemanticsEntitiesMap
+      ?templateInstructionList
+    ;
+    listeEntitesAengendrer += ![@C_filewrapperTemplateToImplement new
+      !wrapperName
+      !templateName
+      !templateArgumentTypesList
+      !templateInstructionList
+    ] ;
     $;$ ;
   end repeat ;
   $}$ ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   ?!@ActionMap unused ioExternActionMap
-  ?!@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
-  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ?!@M_filewrappers ioFileWrappers
@@ -6168,6 +6210,26 @@ label importSemantics
     $identifier$ ?templateName ;
     @lstring templatePath ;
     $literal_string$ ?templatePath ;
+    @typeListeAttributsSemantiques templateArgumentTypesList [emptyList] ;
+    repeat
+    while
+      $?$ ;
+      @AC_galgasType type_semantique ;
+      @lstring galgasTypeName ; # Not used here
+      <formal_argument_type>
+        !ioComponentSemanticsEntitiesMap
+        ?type_semantique
+        !?tableEnAvant
+        ?galgasTypeName
+      ;
+      select
+      or
+        $unused$ ;
+      end select ;
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+      templateArgumentTypesList += !type_semantique !parameterName ;
+    end repeat ;
     $;$ ;
   end repeat ;
   $}$ ;
@@ -6595,7 +6657,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                   DECLARATION D'UNE extern routine EXTERNE               *
+#                   DECLARATION D'UNE routine EXTERNE                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

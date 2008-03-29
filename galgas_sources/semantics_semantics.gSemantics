@@ -1591,4 +1591,13 @@ class @C_structToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+class @C_filewrapperTemplateToImplement extends @typeEntityToGenerate {
+  @lstring mFilewrapperName ;
+  @lstring mTemplateName ;
+  @typeListeTypesEtNomsArgMethode mTemplateArgumentList ;
+  @templateInstructionList mTemplateInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

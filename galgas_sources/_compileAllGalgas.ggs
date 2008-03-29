@@ -106,12 +106,12 @@ compile "mda_galgas_LL1_routines.gSemantics" ;
 compile "mda_galgas_LL1_prgm.gProgram" ;
 
 #--- Old style components
-compile "parser_parser.gSyntax" ;
 compile "common_semantics.gSemantics" ;
 compile "semantics_semantics.gSemantics" ;
-compile "parser_semantics.gSemantics" ;
-compile "domain_parser.gSyntax" ;
 compile "semantics_parser.gSyntax" ;
+compile "domain_parser.gSyntax" ;
+compile "parser_semantics.gSemantics" ;
+compile "parser_parser.gSyntax" ;
 compile "metamodel_parser.gSyntax" ;
 compile "treewalking_parser.gSyntax" ;
 compile "scanner_semantics.gSemantics" ;
