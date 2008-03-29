@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS LL1 program definition                                            *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -35,7 +35,9 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
     @M_optionComponents optionComponentsMap [emptyMap] ;
     @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
     @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
-    @M_filewrappers fileWrappers [emptyMap] ;
+    @semanticContext semanticContext [new
+      ![@M_filewrappers emptyMap]
+    ] ;
     grammar galgas_LL1_grammar in inSourceFile
       !?lexiqueMapForUse
       !?semanticsComponentsMap
@@ -44,7 +46,7 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
       !?optionComponentsMap
       !?metamodelComponentMap
       !?treewalkingComponentMap
-      !?fileWrappers
+      !?semanticContext
     ;
   }
 
