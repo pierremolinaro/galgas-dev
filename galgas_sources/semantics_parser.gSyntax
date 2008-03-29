@@ -22,6 +22,8 @@ import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
+import grammar galgasTemplateGrammar in "galgasTemplateGrammar.gGrammar" ;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 #          Nonterminal symbols declaration                                  *
@@ -4131,7 +4133,6 @@ rule <semantic_instruction>
     $in$ ;
     sourceIsFile := true ;
     @AC_galgasType sourceExpressionType ;
-#    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
     <expression>
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
@@ -4145,9 +4146,6 @@ rule <semantic_instruction>
     $on$ ;
     sourceIsFile := false ;
     @AC_galgasType sourceExpressionType ;
-#    @lstring nomFichierSource ;
-#    @AC_galgasType typeNomFichierSource ;
-#    <read_access> ?nomFichierSource ?nomCppSource ?typeNomFichierSource !?ioVariablesMap ;
     <expression>
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
@@ -4192,7 +4190,7 @@ rule <semantic_instruction>
     sentStringName := [@typeNullName new !here] ; # No sent string
   or
     $send$ ;
-    $on$ ;
+    $in$ ;
     @lstring sentVariableName ;
     $identifier$ ? sentVariableName ;
     @AC_galgasType targetType ;
@@ -6085,6 +6083,25 @@ rule <semantics_declaration>
   #--- Enter in wrapper map
     [!?ioFileWrappers insertKey !wrapperName !regularFileMap] ;
   end if ;
+#--- Parse templates
+  ${$ ;
+  repeat
+  while
+    $template$ ;
+    @lstring templateName ;
+    $identifier$ ? templateName ;
+    @lstring templatePath ;
+    $literal_string$ ? templatePath ;
+    @lstring templateAbsolutePath [new
+      !absoluteSourcePath . "/" . [templatePath string]
+      ![templatePath location]
+    ] ;
+    @string resultingString := "" ;
+    grammar galgasTemplateGrammar in templateAbsolutePath send in resultingString ;
+    log resultingString ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   ?!@ActionMap unused ioExternActionMap
@@ -6142,6 +6159,18 @@ label importSemantics
       [!?ioFileWrappers insertKey !wrapperName !regularFileMap] ;
     end if ;
   end if ;
+#--- Parse templates
+  ${$ ;
+  repeat
+  while
+    $template$ ;
+    @lstring templateName ;
+    $identifier$ ?templateName ;
+    @lstring templatePath ;
+    $literal_string$ ?templatePath ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*

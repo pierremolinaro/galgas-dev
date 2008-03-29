@@ -2038,13 +2038,13 @@ rule <syntax_declaration>
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?7*] ;
     foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) :
       cast kPropertyType :
-      when >= @typeGalgas_singleReferenceEntity do # § (@lstring kReferenceEntityName 2*) ->
+      when >= @typeGalgas_singleReferenceEntity do
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;
-      when >= @typeGalgas_multipleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
+      when >= @typeGalgas_multipleReferenceEntity e do
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
@@ -2383,7 +2383,7 @@ rule <syntax_instruction>
   end if ;
   if inIsInvokedWithinParseLoopInstruction & ([altName string] != "parse") then
     if not [nonterminalSymbolAltMap hasKey !"parse"] then
-      error here : "As this nonterminal is inked wintin a 'parse loop ...' instruction, it must be declared with 'parse' label" ;
+      error here : "As this nonterminal is invoked within a 'parse loop ...' instruction, it must be declared with 'parse' label" ;
     end if ;
   end if ;
 #--- Parse effective parameter list

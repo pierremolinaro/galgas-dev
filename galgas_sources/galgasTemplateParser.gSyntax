@@ -1,0 +1,46 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Template parser                                                          *
+#                                                                           *
+#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgasTemplateParser :
+import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
+
+nonterminal <lexique_component_start_symbol> ;
+
+#---------------------------------------------------------------------------*
+
+rule <lexique_component_start_symbol> :
+  send [@string retrieveAndResetTemplateString] ;
+  repeat
+  while
+    @lstring parameterName ;
+    $identifier$ ? parameterName ;
+    log parameterName ;
+    send [@string retrieveAndResetTemplateString] ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+#filewrapper test in "../zzz" { "ggs" } {
+#  template t1 "/templateTest.ggs" ;
+#}
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
