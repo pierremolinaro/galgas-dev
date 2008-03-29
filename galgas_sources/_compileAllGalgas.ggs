@@ -124,14 +124,8 @@ compile "scanner_parser.gSyntax" ;
 compile "expression_parser.gSyntax" ;
 compile "program_parser.gSyntax" ;
 compile "ggs_LL1_compile_component.gSyntax" ;
-compile "ggs_SLR_compile_component.gSyntax" ;
-compile "ggs_LR1_compile_component.gSyntax" ;
 compile "galgas_start.gSyntax" ;
 compile "galgas_LL1_grammar.gGrammar" ;
 compile "galgas_LL1_prgm.gProgram" ;
-compile "galgas_SLR_grammar.gGrammar" ;
-compile "galgas_SLR_prgm.gProgram" ;
-compile "galgas_LR1_grammar.gGrammar" ;
-compile "galgas_LR1_prgm.gProgram" ;
 
 #---------------------------------------------------------------------------*

@@ -1,11 +1,4 @@
 #---------------------------------------------------------------*
-#                                                               *
-#               This file is included by                        *
-#      makefile_LL1.mke, makefile_LR1.mke and makefile_SLR.mke  *
-#                                                               *
-# If defines the common datas for galgas_LL1, galgas_LR1 and    *
-# galgas_SLR command line tools.                                *
-#---------------------------------------------------------------*
 
 #--- Lib PM directory
 ifdef LIBPM_PATH_ENV_VAR
@@ -36,6 +29,8 @@ include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke
 #     Source files names list (without their actual path)       *
 #                                                               *
 #---------------------------------------------------------------*
+
+SOURCES :=
 
 #--- Files from libpm --------------------
 include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke
@@ -109,5 +104,8 @@ SOURCES += commonSemantics.cpp
 SOURCES += galgasTemplateScanner.cpp
 SOURCES += galgasTemplateParser.cpp
 SOURCES += galgasTemplateGrammar.cpp
+SOURCES += galgas_LL1_grammar.cpp
+SOURCES += ggs_LL1_compile_component.cpp
+SOURCES += galgas_LL1_prgm.cpp
 
 #---------------------------------------------------------------*

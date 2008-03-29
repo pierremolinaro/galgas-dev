@@ -1,27 +1,44 @@
 #---------------------------------------------------------------*
 #                                                               *
-# MAKEFILE for building galgas LL1, SLR, LR1 command line tools *
+# MAKEFILE for building galgas_LL1 command line tools           *
 #                                                               *
 #---------------------------------------------------------------*
 
-all:
-	$(MAKE) -f makefile_LL1 all
-	$(MAKE) -f makefile_SLR all
-	$(MAKE) -f makefile_LR1 all
+#--- Release and debug versions of galgas
+EXECUTABLE := galgas.exe
+EXECUTABLE_DEBUG := galgas_debug.exe
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Object files directory                                    *
+#                                                               *
+#---------------------------------------------------------------*
+
+OBJECTS_DIR := objects
+DEBUG_OBJECTS_DIR := debug_objects
+
+
+#--- Linker Options for this platform
+PLATFORM_LINKER_OPTIONS := -lcomdlg32
 
 #---------------------------------------------------------------*
 
-clean:
-	$(MAKE) -f makefile_LL1 clean
-	$(MAKE) -f makefile_SLR clean
-	$(MAKE) -f makefile_LR1 clean
+include ../common_files_for_make/makefile.mke
 
 #---------------------------------------------------------------*
-
-install:
-	$(MAKE) -f makefile_LL1 install
-	$(MAKE) -f makefile_SLR install
-	$(MAKE) -f makefile_LR1 install
-
+#                                                               *
+#     Include MinGW gcc tools definitions for MAC OS X          *
+#                                                               *
 #---------------------------------------------------------------*
 
+include $(LIB_PM_PATH)/included_makefiles/mingw_on_macosx_gcc_tools_32.mke
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Include makefile that performs actual work                *
+#                                                               *
+#---------------------------------------------------------------*
+
+include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+
+#---------------------------------------------------------------*
