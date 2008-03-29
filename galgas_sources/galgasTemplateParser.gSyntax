@@ -19,27 +19,55 @@
 
 syntax galgasTemplateParser :
 import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
+import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
-nonterminal <lexique_component_start_symbol> ;
+nonterminal <lexique_component_start_symbol>
+  ?!@typeVariablesMap ioTemplateVariableMap
+  ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  !@templateInstructionList outResultingInstructionList
+;
 
 #---------------------------------------------------------------------------*
 
-rule <lexique_component_start_symbol> :
-  send [@string retrieveAndResetTemplateString] ;
-  repeat
-  while
-    @lstring parameterName ;
-    $identifier$ ? parameterName ;
-    log parameterName ;
-    send [@string retrieveAndResetTemplateString] ;
-  end repeat ;
+routine enterTemplateString
+  ?!@templateInstructionList outResultingInstructionList
+:
+  @string s := [@string retrieveAndResetTemplateString]  ;
+  if [s length] > 0 then
+    outResultingInstructionList += ![@templateInstructionString new !s] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+rule <lexique_component_start_symbol>
+  ?!@typeVariablesMap ioTemplateVariableMap
+  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  !@templateInstructionList outResultingInstructionList
+:
+  outResultingInstructionList := [@templateInstructionList emptyList] ;
+  block ioTemplateVariableMap.verifyVariableUsing () :
+    enterTemplateString !?outResultingInstructionList ;
+    repeat
+    while
+      @lstring parameterName ;
+      $identifier$ ? parameterName ;
+      @AC_galgasType type ;
+      @typeCplusPlusName cppName ;
+      [!?ioTemplateVariableMap searchForReadOnlyAccess !parameterName ?type ?cppName] ;
+      @typeGalgas_string x := (cast type if >= @typeGalgas_string else error parameterName) ;
+      outResultingInstructionList += ![@templateInstructionConstant new !cppName] ;
+      enterTemplateString !?outResultingInstructionList ;
+    end repeat ;
+  end block (!here) ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-#filewrapper test in "../zzz" { "ggs" } {
-#  template t1 "/templateTest.ggs" ;
-#}
+filewrapper test in "../zzz" { "ggs" } {
+  template t1 "/templateTest.ggs" ?@string PARAMETER1 ;
+  template t2 "/templateVide.ggs" ?@string PARAMETER1 ;
+}
 
 #---------------------------------------------------------------------------*
 

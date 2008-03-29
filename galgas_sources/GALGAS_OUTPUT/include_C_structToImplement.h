@@ -29,7 +29,7 @@ class cPtr_C_structToImplement : public cPtr_typeEntityToGenerate {
 
   public : virtual void
   generateHdeclarations_2 (AC_OutputStream & inHfile,
-                                               C_Compiler & inLexique) const ;
+                           C_Compiler & inLexique) const ;
 
   public : virtual bool isCppClassNeeded (void) const ;
 

@@ -4092,4 +4092,27 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+abstract class @templateInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionList {
+  @templateInstruction mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionString extends @templateInstruction {
+  @string mTemplateString ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionConstant extends @templateInstruction {
+  @typeCplusPlusName mCppName ;
+}
+
+#---------------------------------------------------------------------------*
+
 end semantics ;
