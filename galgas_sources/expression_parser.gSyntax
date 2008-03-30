@@ -1484,11 +1484,12 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                         F A C T O R                                          *
-#   description         :   [expression description]                           *
-#   reader call         :   [expression reader !... ]                          *
-#   constructor call    :   [@class method !... ]                              *
-#   option value        :   [option option_component_name.option_name]         *
-#   filewrapper         :   [filewrapper filewrapper_name."path"]              *
+#   description          :   [expression description]                          *
+#   reader call          :   [expression reader !... ]                         *
+#   constructor call     :   [@class method !... ]                             *
+#   option value         :   [option option_component_name.option_name]        *
+#   filewrapper          :   [filewrapper filewrapper_name."path"]             *
+#   filewrapper template :   [filewrapper fw.tpte !...]                        *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1508,20 +1509,43 @@ rule <factor>
     @lstring filewrapperName ;
     $identifier$ ? filewrapperName ;
     @M_regularFiles regularFileMap ;
-    [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap] ;
+    @filewrapperTemplateMap templateMap ;
+    [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap ?templateMap] ;
     select
       outExpression := [@typeFileWrapperObjectInstanciation new !filewrapperName] ;
       outResultType := [@typeGalgas_filewrapper new] ;
     or
       $.$ ;
-    #--- Get path
-      @lstring path ;
-      $literal_string$ ?path ;
-    #--- 
-      @uint wrapperFileIndex ;
-      [regularFileMap searchKey !path ?* ?wrapperFileIndex] ;
-      outExpression := [@typeFileWrapperWithStaticPath new !filewrapperName !wrapperFileIndex] ;
-      outResultType := [@typeGalgas_string new] ;
+      select
+      #--- Get template name
+        @lstring templateName ;
+        $identifier$ ?templateName ;
+      #---
+        @typeListeAttributsSemantiques formalAttributeList ;
+        [templateMap searchKey !templateName ?formalAttributeList] ;
+      #--- Out expression list
+        @typeExpressionList expressionList ;
+        <output_expression_list>
+          ?expressionList
+          !formalAttributeList
+          !ioEntitiesMap
+          !inOptionsComponentsMapForUse
+          !inSemanticContext
+          !?ioVariablesMap
+        ;
+      #---
+        outExpression := [@typeFileWrapperTemplateCall new !filewrapperName !templateName !expressionList] ;
+        outResultType := [@typeGalgas_string new] ;
+      or
+      #--- Get path
+        @lstring path ;
+        $literal_string$ ?path ;
+      #--- 
+        @uint wrapperFileIndex ;
+        [regularFileMap searchKey !path ?* ?wrapperFileIndex] ;
+        outExpression := [@typeFileWrapperWithStaticPath new !filewrapperName !wrapperFileIndex] ;
+        outResultType := [@typeGalgas_string new] ;
+      end select ;
     end select ;
   or
   #--- Get source identity characteristics

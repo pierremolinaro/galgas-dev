@@ -162,3 +162,63 @@ isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
 }
 
 //---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Filewrapper template call
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFileWrapperTemplateCall::generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "_template_filewrapper_" << mFileWrapperName << "_" << mTemplateName << " (" ;
+  GGS_typeExpressionList::cElement * current = mOutExpressionList.firstObject () ;
+  bool first = true ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (first) {
+      first = false ;
+    }else{
+      ioCppFile << ", " ;
+    }
+    current->mExpression (HERE)->generateExpression (ioCppFile) ;
+    current = current->nextObject () ;
+  }
+  ioCppFile << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperTemplateCall::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::cElement * current = mOutExpressionList.firstObject () ;
+  while ((current != NULL) && ! isUsed) {
+    macroValidPointer (current) ;
+    isUsed = current->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    current = current->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperTemplateCall::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFileWrapperTemplateCall::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::cElement * current = mOutExpressionList.firstObject () ;
+  while ((current != NULL) && ! isUsed) {
+    macroValidPointer (current) ;
+    isUsed = current->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    current = current->nextObject () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*

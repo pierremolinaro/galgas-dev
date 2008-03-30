@@ -319,6 +319,16 @@ class @typeFileWrapperWithStaticPath extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    T E M P L A T E     C A L L                    *
+#---------------------------------------------------------------------------*
+
+class @typeFileWrapperTemplateCall extends @typeExpression {
+  @lstring mFileWrapperName ;
+  @lstring mTemplateName ;
+  @typeExpressionList mOutExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   F I L E W R A P P E R    O B J E C T    I N S T A N C I A T I O N       *
 #---------------------------------------------------------------------------*
 

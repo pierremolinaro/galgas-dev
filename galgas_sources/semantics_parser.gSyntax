@@ -6048,6 +6048,7 @@ rule <semantics_declaration>
   end repeat ;
   $}$ ;
 #--- Build absolute path
+  @M_regularFiles regularFileMap [emptyMap] ;
   @string absoluteSourcePath ;
   if [sourcePath firstCharacterOrNul] == '/' then
     absoluteSourcePath := [sourcePath string] ;
@@ -6062,7 +6063,6 @@ rule <semantics_declaration>
     @wrapperDirectorySortedList wrapperDirectorySortedList ;
     @uint wrapperFileIndex := 0 ;
     @uint wrapperDirectoryIndex := 0 ;
-    @M_regularFiles regularFileMap [emptyMap] ;
     recursivelyEnumerateDirectories
      !absoluteSourcePath
      !"/"
@@ -6082,10 +6082,9 @@ rule <semantics_declaration>
       !wrapperDirectorySortedList
     ] ;
     listeEntitesAengendrer += !w ;
-  #--- Enter in wrapper map
-    [!?ioSemanticContext.mFilewrappers insertKey !wrapperName !regularFileMap] ;
   end if ;
 #--- Parse templates
+  @filewrapperTemplateMap templateMap [emptyMap] ;
   ${$ ;
   repeat
   while
@@ -6102,6 +6101,7 @@ rule <semantics_declaration>
     ] ;
   #--- Template formal arguments
     @typeListeTypesEtNomsArgMethode templateArgumentTypesList [emptyList] ;
+    @typeListeAttributsSemantiques formalAttributeList [emptyList] ;
     @typeVariablesMap templateVariableMap [emptyMap] ;
     repeat
     while
@@ -6114,6 +6114,7 @@ rule <semantics_declaration>
         !?tableEnAvant
         ?galgasTypeName
       ;
+      formalAttributeList += !type_semantique ![@lstring new !"" !here] ;
       @bool parameterIsUsed ;
       select
         parameterIsUsed := true ;
@@ -6131,6 +6132,7 @@ rule <semantics_declaration>
         [!?templateVariableMap insertUnusedConstInArgument !parameterName !type_semantique !cppName] ;
       end if ;
     end repeat ;
+    [!?templateMap insertKey !templateName !formalAttributeList] ;
     @templateInstructionList templateInstructionList ;
     grammar galgasTemplateGrammar in templateAbsolutePath
       !?templateVariableMap
@@ -6145,6 +6147,8 @@ rule <semantics_declaration>
     ] ;
     $;$ ;
   end repeat ;
+#--- Enter in wrapper map
+  [!?ioSemanticContext.mFilewrappers insertKey !wrapperName !regularFileMap !templateMap] ;
   $}$ ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -6172,6 +6176,7 @@ label importSemantics
     $,$ ;
   end repeat ;
   $}$ ;
+  @M_regularFiles regularFileMap [emptyMap] ;
   if not [[ioSemanticContext mFilewrappers] hasKey ![wrapperName string]] then
   #--- Build absolute path
     @string absoluteSourcePath ;
@@ -6188,7 +6193,6 @@ label importSemantics
       @wrapperDirectorySortedList wrapperDirectorySortedList ;
       @uint wrapperFileIndex := 0 ;
       @uint wrapperDirectoryIndex := 0 ;
-      @M_regularFiles regularFileMap [emptyMap] ;
       recursivelyEnumerateDirectories
         !absoluteSourcePath
         !"/"
@@ -6199,11 +6203,10 @@ label importSemantics
         !?wrapperDirectoryIndex
         !?regularFileMap
       ;
-    #--- Enter in wrapper map
-      [!?ioSemanticContext.mFilewrappers insertKey !wrapperName !regularFileMap] ;
     end if ;
   end if ;
 #--- Parse templates
+  @filewrapperTemplateMap templateMap [emptyMap] ;
   ${$ ;
   repeat
   while
@@ -6213,6 +6216,7 @@ label importSemantics
     @lstring templatePath ;
     $literal_string$ ?templatePath ;
     @typeListeAttributsSemantiques templateArgumentTypesList [emptyList] ;
+    @typeListeAttributsSemantiques formalAttributeList [emptyList] ;
     repeat
     while
       $?$ ;
@@ -6224,6 +6228,7 @@ label importSemantics
         !?tableEnAvant
         ?galgasTypeName
       ;
+      formalAttributeList += !type_semantique ![@lstring new !"" !here] ;
       select
       or
         $unused$ ;
@@ -6231,9 +6236,14 @@ label importSemantics
       @lstring parameterName ;
       $identifier$ ? parameterName ;
       templateArgumentTypesList += !type_semantique !parameterName ;
+      [!?templateMap insertKey !templateName !formalAttributeList] ;
     end repeat ;
     $;$ ;
   end repeat ;
+#--- Enter in wrapper map
+  if not [[ioSemanticContext mFilewrappers] hasKey ![wrapperName string]] then
+    [!?ioSemanticContext.mFilewrappers insertKey !wrapperName !regularFileMap !templateMap] ;
+  end if ;
   $}$ ;
 end rule ;
 

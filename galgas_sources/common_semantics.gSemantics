@@ -3261,8 +3261,17 @@ map @M_regularFiles {
 
 #---------------------------------------------------------------------------*
 
+map @filewrapperTemplateMap {
+  @typeListeAttributsSemantiques mFormalAttributeList ;
+  insert insertKey error message "the '%K' template is already declared" ;
+  search searchKey error message "the '%K' template is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @M_filewrappers {
   @M_regularFiles mRegularFileMap ;
+  @filewrapperTemplateMap mTemplateMap ;
   insert insertKey error message "a file wrapper named '%K' is already declared in %L" ;
   search searchKey error message "there is no file wrapper named '%K'" ;
 }
@@ -3649,6 +3658,27 @@ routine handleReaderCall
       if [inReaderName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "isalnum" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isalpha" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "iscntrl" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isdigit" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "islower" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isupper" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isxdigit" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
