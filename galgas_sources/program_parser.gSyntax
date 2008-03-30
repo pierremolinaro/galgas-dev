@@ -106,6 +106,8 @@ label parse
 extern routine generatePRGM
   ??@lstring nomPRGMprincipal
   ??@lstring versionString
+  ??@typeInstructionList inPrologueInstructionList
+  ??@typeInstructionList inEpilogueInstructionList
   ??@ruleDescriptorForProgramList inRuleDescriptorForProgramList
   ??@M_optionComponents inOptionsComponentsMap
   ??@stringset inInclusionsForImplementationFile
@@ -174,7 +176,7 @@ rule <galgas_component>
 #--- Max errors count
   select
     $error$ ;
-    warning here: "the 'error ... ;' declaration is obsolete and should be removed" ;
+    warning here: "in GALGAS 1.7.2 and later, the 'error ... ;' declaration is obsolete and should be removed" ;
     $unsigned_literal_integer$ ? * ;
     $;$ ;
   or
@@ -182,10 +184,36 @@ rule <galgas_component>
 #--- Max warnings count
   select
     $warning$ ;
-    warning here: "the 'warning ... ;' declaration is obsolete and should be removed" ;
+    warning here: "in GALGAS 1.7.2 and later, the 'warning ... ;' declaration is obsolete and should be removed" ;
     $unsigned_literal_integer$ ? * ;
     $;$ ;
   or
+  end select ;
+#--- Prologue clause
+  @typeInstructionList prologueInstructionList [emptyList] ;
+  select
+    warning here:"in GALGAS 1.7.2 and later, a 'routine {}' declaration is required here" ;
+  or
+    $routine$ ;
+    ${$ ;
+    @typeVariablesMap variablesMap [emptyMap] ;
+    @typeTableEnAvant tableEnAvant [emptyMap] ;
+    @entityToImplementMap metamodelEntityMap [emptyMap] ;
+    @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
+    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+    <semantic_instructions_list>
+      !treewalkingRoutineHeaderMap
+      !tableEnAvant
+      !componentEntitiesMap
+      !optionsComponentsMap
+      !?variablesMap
+      !?prologueInstructionList
+      !currentTreewalkingRoutinePropertyMap
+      !metamodelEntityMap
+      !ioTreewalkingComponentMap
+      !ioSemanticContext
+    ;
+    $}$ ;
   end select ;
 #--- WHEN clauses
   @ruleDescriptorForProgramList ruleDescriptorForProgramList [emptyList] ;
@@ -261,10 +289,38 @@ rule <galgas_component>
   while
     $when$ ;
   end repeat ;
+#--- end clause
+  @typeInstructionList epilogueInstructionList [emptyList] ;
+  select
+    warning here:"in GALGAS 1.7.2 and later, a 'routine {}' declaration is required here" ;
+  or
+    $routine$ ;
+    ${$ ;
+    @typeVariablesMap variablesMap [emptyMap] ;
+    @typeTableEnAvant tableEnAvant [emptyMap] ;
+    @entityToImplementMap metamodelEntityMap [emptyMap] ;
+    @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
+    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+    <semantic_instructions_list>
+      !treewalkingRoutineHeaderMap
+      !tableEnAvant
+      !componentEntitiesMap
+      !optionsComponentsMap
+      !?variablesMap
+      !?epilogueInstructionList
+      !currentTreewalkingRoutinePropertyMap
+      !metamodelEntityMap
+      !ioTreewalkingComponentMap
+      !ioSemanticContext
+    ;
+    $}$ ;
+  end select ;
 #--- Engendrer le programme principal
   generatePRGM
     !nomPRGMprincipal
     !versionString
+    !prologueInstructionList
+    !epilogueInstructionList
     !ruleDescriptorForProgramList
     !optionsComponentsMap
     !inclusionsForImplementationFile
@@ -296,6 +352,14 @@ label importLexique
     $;$ ;
   or
   end select ;
+#--- root clauses
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -316,6 +380,14 @@ label importLexique
   while
     $when$ ;
   end repeat ;
+#--- end clause
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
 #--- End program
   $end$ ;
   $program$ ;
@@ -346,6 +418,14 @@ label importSyntax
     $;$ ;
   or
   end select ;
+#--- root clauses
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -366,6 +446,15 @@ label importSyntax
   while
     $when$ ;
   end repeat ;
+#--- end clause
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
+#--- End program
   $end$ ;
   $program$ ;
   $;$ ;
@@ -395,6 +484,14 @@ label importSemantics
     $;$ ;
   or
   end select ;
+#--- root clauses
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -415,6 +512,15 @@ label importSemantics
   while
     $when$ ;
   end repeat ;
+#--- end clause
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
+#--- End program
   $end$ ;
   $program$ ;
   $;$ ;
@@ -445,6 +551,14 @@ label importGrammarForSemantics
     $;$ ;
   or
   end select ;
+#--- root clauses
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -465,6 +579,15 @@ label importGrammarForSemantics
   while
     $when$ ;
   end repeat ;
+#--- end clause
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
+#--- End program
   $end$ ;
   $program$ ;
   $;$ ;
@@ -491,6 +614,14 @@ label importOptions
     $;$ ;
   or
   end select ;
+#--- root clauses
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
 #--- when clauses
   $when$ ;
   repeat
@@ -511,6 +642,15 @@ label importOptions
   while
     $when$ ;
   end repeat ;
+#--- end clause
+  select
+  or
+    $routine$ ;
+    ${$ ;
+    <semantic_instructions_list> parse ;
+    $}$ ;
+  end select ;
+#--- End program
   $end$ ;
   $program$ ;
   $;$ ;

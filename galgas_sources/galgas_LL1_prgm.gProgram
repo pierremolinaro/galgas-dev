@@ -18,34 +18,58 @@
 #---------------------------------------------------------------------------*
 
 program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
-  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  
-  when . "ggs"
-  message "a '.ggs' GALGAS source file"
-  ??@lstring inSourceFile {
-    fixFileGenerationStartDirectory !inSourceFile ;
-    @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
-    @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
-    @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
-    @M_grammarComponents grammarComponentsMap [emptyMap] ;
-    @M_optionComponents optionComponentsMap [emptyMap] ;
-    @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
-    @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
-    @semanticContext semanticContext [new
-      ![@M_filewrappers emptyMap]
-    ] ;
-    grammar galgas_LL1_grammar in inSourceFile
-      !?lexiqueMapForUse
-      !?semanticsComponentsMap
-      !?syntaxComponentsMap
-      !?grammarComponentsMap
-      !?optionComponentsMap
-      !?metamodelComponentMap
-      !?treewalkingComponentMap
-      !?semanticContext
-    ;
-  }
+
+#---------------------------------------------------------------------------*
+
+import semantics projectCreation in "projectCreation.gSemantics" ;
+
+import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#--- Prologue routine 
+
+routine {
+  @string creationProjectName := [option galgas_cli_options.create_project] ;
+  @string libpmPath := [option galgas_cli_options.libpm] ;
+  projectCreation !creationProjectName !libpmPath ;
+}
+
+#---------------------------------------------------------------------------*
+
+when . "ggs"
+message "a '.ggs' GALGAS source file"
+??@lstring inSourceFile {
+  fixFileGenerationStartDirectory !inSourceFile ;
+  @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
+  @M_semanticsComponents semanticsComponentsMap [emptyMap] ;
+  @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
+  @M_grammarComponents grammarComponentsMap [emptyMap] ;
+  @M_optionComponents optionComponentsMap [emptyMap] ;
+  @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
+  @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
+  @semanticContext semanticContext [new
+    ![@M_filewrappers emptyMap]
+  ] ;
+  grammar galgas_LL1_grammar in inSourceFile
+    !?lexiqueMapForUse
+    !?semanticsComponentsMap
+    !?syntaxComponentsMap
+    !?grammarComponentsMap
+    !?optionComponentsMap
+    !?metamodelComponentMap
+    !?treewalkingComponentMap
+    !?semanticContext
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#--- Epilogue routine
+
+routine {
+}
+
+#---------------------------------------------------------------------------*
 
 end program ;
 

@@ -450,7 +450,7 @@
 		CF86361B0586289600B23462 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
 		CF86365005862B0600B23462 /* GGS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_binaryset.cpp; sourceTree = "<group>"; };
 		CF86365105862B0600B23462 /* GGS_binaryset.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_binaryset.h; sourceTree = "<group>"; };
-		CF8E30560D9EE52E00EF3764 /* F_main-fake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "F_main-fake.cpp"; path = "../../../../libpm/command_line_interface/F_main-fake.cpp"; sourceTree = SOURCE_ROOT; };
+		CF8E30560D9EE52E00EF3764 /* F_main-fake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "F_main-fake.cpp"; sourceTree = "<group>"; };
 		CF9041F0057F687D007362F4 /* AC_galgas_domain.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AC_galgas_domain.h; sourceTree = "<group>"; };
 		CF904220057F6B8D007362F4 /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
 		CFA5D1610A32F661009B4370 /* C_ErrorOut.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_ErrorOut.cpp; sourceTree = "<group>"; };

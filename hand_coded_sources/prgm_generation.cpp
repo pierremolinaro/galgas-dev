@@ -70,10 +70,11 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "} ;\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "void " << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & inOptions,\n"
+  generatedZone2 << "void " << inProgramComponentName << "_prologue (C_Compiler & _inLexique,\n"
                     "                                      const TC_UniqueArray <C_String> & inSourceFilesArray) ;\n"
                     "\n"
-                    "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & inOptions) ;\n"
+                    "void " << inProgramComponentName << "_epilogue (C_Compiler & _inLexique,\n"
+                    "                                      const TC_UniqueArray <C_String> & inSourceFilesArray) ;\n"
                     "\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 //--- Fin du fichier d'en tete
@@ -95,6 +96,8 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
 static void
 generate_cpp_file_for_prgm (C_Compiler & inLexique,
                             const C_String & inVersionString,
+                            const GGS_typeInstructionList inPrologueInstructionList,
+                            const GGS_typeInstructionList inEpilogueInstructionList,
                             const C_String & inProgramComponentName,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
                             const GGS_M_optionComponents & inOptionsComponentsMap,
@@ -236,7 +239,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      verboseOptionOn = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
                     "                                                         \"verbose_output\",\n"
                     "                                                         false) ;\n"
-                    "      " << inProgramComponentName << "_prologue (options, sourceFilesArray) ;\n"
+                    "      " << inProgramComponentName << "_prologue (* _commonLexique, sourceFilesArray) ;\n"
                     "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
                     "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
                     "        sint16 r = 0 ;\n" ;
@@ -320,7 +323,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "        }\n"
                     "      }\n"
                     "    //--- Epilogue\n"
-                    "      " << inProgramComponentName << "_epilogue (options) ;\n"
+                    "      " << inProgramComponentName << "_epilogue (* _commonLexique, sourceFilesArray) ;\n"
                     "    }catch (const M_STD_NAMESPACE exception & e) {\n"
                     "      F_default_display_exception (e) ;\n"
                     "      returnCode = 1 ; // Error code\n"
@@ -354,20 +357,40 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  }\n"
                     "  return returnCode ;\n"
                     "}\n\n" ;
+  generatedZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
+  const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
+  generatedZone2 << "void\n"
+                 << inProgramComponentName << "_prologue (C_Compiler & "
+                 << (lexiqueIsUsedInPrologue ? "_inLexique" : "/* _inLexique */")
+                 << ",\n"
+                    "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
+  sint32 unusedPrototypeIndex = 0 ;
+  generateInstructionListForList (inPrologueInstructionList,
+                                  generatedZone2,
+                                  "",
+                                  unusedPrototypeIndex,
+                                  false, // inGenerateDebug,
+                                  true) ; // inGenerateSemanticInstructions
+  generatedZone2 << "}\n\n" ;
+  generatedZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
+  const bool lexiqueIsUsedInEpilogue = isLexiqueFormalArgumentUsedForList (inEpilogueInstructionList, true) ;
+  generatedZone2 << "void\n"
+                 << inProgramComponentName << "_epilogue (C_Compiler & "
+                 << (lexiqueIsUsedInEpilogue ? "_inLexique" : "/* _inLexique */")
+                 << ",\n"
+                    "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
+  unusedPrototypeIndex = 0 ;
+  generateInstructionListForList (inEpilogueInstructionList,
+                                  generatedZone2,
+                                  "",
+                                  unusedPrototypeIndex,
+                                  false, // inGenerateDebug,
+                                  true) ; // inGenerateSemanticInstructions
+  generatedZone2 << "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
 //--- User Zone 2 : prologue and epilogue
-  C_String userZone2 ; userZone2.setCapacity (1000) ;
+  C_String userZone2 ;
   userZone2 << "\n\n" ;
-  userZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
-  userZone2 << "void\n"
-            << inProgramComponentName << "_prologue (const C_options_for_" << inProgramComponentName << " & /* inOptions */,\n"
-               "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n"
-               "// ADD YOUR CODE HERE\n"
-               "}\n" ;
-  userZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
-  userZone2 << "void " << inProgramComponentName << "_epilogue (const C_options_for_" << inProgramComponentName << " & /* inOptions */) {\n"
-               "// ADD YOUR CODE HERE\n"
-               "}\n\n" ;
 //--- Generate file
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",
@@ -383,6 +406,8 @@ void
 routine_generatePRGM (C_Compiler & inLexique,
                       const GGS_lstring inProgramComponentName,
                       const GGS_lstring inVersionString,
+                      const GGS_typeInstructionList inPrologueInstructionList,
+                      const GGS_typeInstructionList inEpilogueInstructionList,
                       const GGS_ruleDescriptorForProgramList inRuleDescriptorForProgramList,
                       const GGS_M_optionComponents inOptionsComponentsMap,
                       const GGS_stringset inInclusionsForImplementationFile
@@ -393,6 +418,8 @@ routine_generatePRGM (C_Compiler & inLexique,
                                    inOptionsComponentsMap) ; 
     generate_cpp_file_for_prgm (inLexique,
                                 inVersionString,
+                                inPrologueInstructionList,
+                                inEpilogueInstructionList,
                                 inProgramComponentName,
                                 inRuleDescriptorForProgramList,
                                 inOptionsComponentsMap,

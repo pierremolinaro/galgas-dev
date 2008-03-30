@@ -23,6 +23,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+  import semantics projectCreation in "projectCreation.gSemantics" ;
 
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
@@ -51,6 +52,14 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
   import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+
+routine {
+  @string creationProjectName := [option galgas_cli_options.create_project] ;
+  @string libpmPath := [option galgas_cli_options.libpm] ;
+  projectCreation !creationProjectName !libpmPath ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -214,6 +223,11 @@ message "a GALGAS project source file"
       error kFile:"unhandled extension" ;
     end if ;
   end foreach ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine {
 }
 
 #---------------------------------------------------------------------------*
