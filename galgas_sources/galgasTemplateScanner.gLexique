@@ -215,104 +215,6 @@ rule '.' :
   end select ;
 end rule ;
 
-
-# -------------------------- Type Name -----------------------------
-
-$type_name$ ! tokenString error message "a type name (@...)" style typeNameStyle ;
-
-message incorrectTypeNameError : "in a type name, a letter should follow the '@' character" ;
-
-rule '@' :
-  select
-  when 'a'->'z' | 'A'->'Z' | '_' :
-    repeat
-      enterCharacterIntoString (tokenString, *) ;
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end repeat ;
-  default
-    error incorrectTypeNameError ;
-  end select ;
-  send $type_name$ ; 
-end rule ;
-
-#--------------------------------- Character constant ------------------------------------
-$literal_char$ ! charValue error message "a character constant" style characterStyle ;
-
-message incorrectCharConstant : "incorrect literal character" ;
-
-message ASCIIcodeTooLargeError : "ASCII code > 255" ;
-
-rule '\'' :
-  select
-  when '\\' :
-    select
-    when 'f' :
-      enterCharacterIntoCharacter (charValue, '\f') ;
-    when 'n' :
-      enterCharacterIntoCharacter (charValue, '\n') ;
-    when 'r' :
-      enterCharacterIntoCharacter (charValue, '\r') ;
-    when 't' :
-      enterCharacterIntoCharacter (charValue, '\t') ;
-    when 'v' :
-      enterCharacterIntoCharacter (charValue, '\v') ;
-    when '\\' :
-      enterCharacterIntoCharacter (charValue, '\\') ;
-    when '0' :
-      enterCharacterIntoCharacter (charValue, '\0') ;
-    when '\'' :
-      enterCharacterIntoCharacter (charValue, '\'') ;
-    when 'x' | 'X' :
-      select
-      when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        repeat
-          enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
-        while '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        end repeat ;
-      default
-        error incorrectCharConstant ;
-      end select ;
-    default
-      error incorrectCharConstant ;
-    end select ;
-  when ' ' -> '\xFF' :
-     enterCharacterIntoCharacter (charValue, *) ;
-  default
-    error incorrectCharConstant ;
-  end select ;
-  select
-  when '\'' :
-    send $literal_char$ ;
-  default
-    error incorrectCharConstant ;
-  end select ;
-end rule ;
-
-#----------------------- Grammar terminal symbol ---------------------------
-$terminal$ ! tokenString error message "a terminal symbol ($...$)" style terminalStyle ;
-
-message incorrect_terminal_start : "incorrect terminal start" ;
-
-message incorrect_terminal_end : "terminal does not end with '$'" ;
-
-rule '$' :
-  select
-  when '!' -> '#' | '%' -> '~'  : # All printable characters, but '$'
-    repeat
-      enterCharacterIntoString (tokenString, *) ;
-    while '!' -> '#' | '%' -> '~' :
-    end repeat ;
-  default
-    error incorrect_terminal_start ;
-  end select ;
-  select
-  when '$' :
-  default
-    error incorrect_terminal_end ;
-  end select ;
-  send $terminal$ ; 
-end rule ;
-
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",
@@ -331,75 +233,15 @@ rule list galgasDelimitorsList ;
 $<$ error message "the '<' delimitor" style delimitersStyle ;
 $<=$ error message "the '<=' delimitor" style delimitersStyle ;
 $<<$ error message "the '<<' delimitor" style delimitersStyle ;
-$non_terminal_symbol$ ! tokenString error message "a non terminal symbol <...>" style nonTerminalStyle ;
 
 rule '<' :
-  tag onlyInfDelimiter ;
   select
   when '=' :
     send $<=$ ;
   when '<' :
     send $<<$ ;
-  when 'a' -> 'z' | 'A' ->'Z' :
-    repeat
-      enterCharacterIntoString (tokenString, *) ;
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
-    end repeat ;
-    select
-    when '>' :
-      send $non_terminal_symbol$ ;
-    default
-      rewind onlyInfDelimiter send $<$ ;
-    end select ;
   default
     send $<$ ;
-  end select ;
-end rule ;
-
-# -------------------- Characters string --------------------------------------
-$literal_string$ ! tokenString error message "a character string constant \"...\"" style stringStyle ;
-
-message incorrectStringEnd : "string does not end with '\"'" ;
-
-rule '"' :
-  repeat
-  while '\\' :
-    select
-    when 'f' :
-      enterCharacterIntoString (tokenString, '\f') ;
-    when 'n' :
-      enterCharacterIntoString (tokenString, '\n') ;
-    when 'r' :
-      enterCharacterIntoString (tokenString, '\r') ;
-    when 't' :
-      enterCharacterIntoString (tokenString, '\t') ;
-    when 'v' :
-      enterCharacterIntoString (tokenString, '\v') ;
-    when '\\' :
-      enterCharacterIntoString (tokenString, '\\') ;
-    when '0' :
-      enterCharacterIntoString (tokenString, '\0') ;
-    when '"' :
-      enterCharacterIntoString (tokenString, '"') ;
-    when '\'' :
-      enterCharacterIntoString (tokenString, '\'') ;
-    when '0' -> '9' :
-      repeat
-        enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
-      while '0' -> '9' :
-      end repeat ;
-      enterCharacterIntoString (tokenString, charValue) ;
-    default
-      error incorrectCharConstant ;
-    end select ;
-   while ' ' | '!' | '#'-> '\xFF' :
-    enterCharacterIntoString (tokenString, *) ;
-  end repeat ;
-  select
-  when '"' :
-    send $literal_string$ ;
-  default
-    error incorrectStringEnd ;
   end select ;
 end rule ;
 
