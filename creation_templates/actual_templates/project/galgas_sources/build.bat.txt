@@ -1,0 +1,2 @@
+galgas -v _all_%PROJECT_NAME%.ggs
+pause

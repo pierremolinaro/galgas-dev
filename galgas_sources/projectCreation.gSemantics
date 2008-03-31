@@ -29,6 +29,7 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
 } {
 #--- Project
   template commonMakefileProject "/common_files_for_make/makefile.mke" ?@string PROJECT_NAME ;
+  template build_bat "/galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
   template all_ggs "/galgas_sources/_all_PROJECT.ggs" ?@string PROJECT_NAME ;
   template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.ggs" ?@string PROJECT_NAME ;
   template PROJECT_grammar "/galgas_sources/PROJECT_grammar.ggs" ?@string PROJECT_NAME ;
@@ -71,6 +72,7 @@ routine performProjectCreation ??@string inProjectName :
   [[filewrapper projectCreationFileWrapper.PROJECT_program !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_program.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_semantics !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_semantics.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_syntax !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_syntax.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.build_bat !inProjectName] writeToFile !galgas_sources_DIR . "/build.bat"] ;
 #--- hand_coded_sources
   @string hand_coded_sources_DIR := inProjectName . "/hand_coded_sources" ;
   [hand_coded_sources_DIR makeDirectory] ;
@@ -125,7 +127,6 @@ end routine ;
 
 routine projectCreation
   ??@string inProjectName
-  ??@string unused inLIBPMlocation
 :
   if [inProjectName length] > 0 then
     message "*** PERFORM PROJECT CREATION (--create-project=" . inProjectName . " option) ***\n" ;
@@ -139,7 +140,10 @@ routine projectCreation
       index ++ ;
     end loop ;
     if not ok then
-      message "** Cannot create GALGAS project: the project name should begin by a letter followed by zero, one or more letters, digits and underscore character.\n" ;
+      message "** Cannot create GALGAS project: the project name '"
+        . inProjectName
+        . "' should begin by a letter followed by zero, one or more letters, digits and underscore character.\n"
+      ;
     end if ;
     if ok then
       ok := not [inProjectName directoryExists] ;
