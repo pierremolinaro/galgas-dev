@@ -12,6 +12,7 @@ cp ${DIR}/PROJECT/project_xcode/English.lproj/InfoPlist.strings ${DIR}/actual_te
 mkdir -p ${DIR}/actual_templates/project/common_files_for_make &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/common_files_for_make/makefile.mke > ${DIR}/actual_templates/project/common_files_for_make/makefile.mke &&
 mkdir -p ${DIR}/actual_templates/project/galgas_sources &&
+sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/build.bat > ${DIR}/actual_templates/project/galgas_sources/build.bat.txt &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/_all_PROJECT.ggs > ${DIR}/actual_templates/project/galgas_sources/_all_PROJECT.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_cocoa.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_cocoa.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_grammar.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_grammar.ggs &&

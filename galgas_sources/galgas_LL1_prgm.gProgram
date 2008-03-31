@@ -31,8 +31,7 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
 routine {
   @string creationProjectName := [option galgas_cli_options.create_project] ;
-  @string libpmPath := [option galgas_cli_options.libpm] ;
-  projectCreation !creationProjectName !libpmPath ;
+  projectCreation !creationProjectName ;
 }
 
 #---------------------------------------------------------------------------*
