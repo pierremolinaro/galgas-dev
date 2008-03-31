@@ -71,6 +71,12 @@ nonterminal <template_declaration>
 label parse
 ;
 
+nonterminal <replace_declaration>
+  ??@bool inIsTemplate
+  ?!@templateReplacementMap ioTemplateReplacementMap
+label parse
+;
+
 nonterminal <attribute_or_terminal_symbol_declaration>
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeLexicalAttributesMap table_attributs
@@ -207,6 +213,7 @@ label parse
 extern routine generate_scanner
   ??@bool inIsTemplate
   ??@templateDelimiterMap inTemplateDelimiterMap
+  ??@templateReplacementMap inTemplateReplacementMap
   ??@lstring lexiqueName 
   ??@typeLexicalAttributesMap table_attributs
   ??@typeTableDefinitionTerminaux table_des_terminaux
@@ -274,7 +281,7 @@ rule <galgas_component>
   @stringset usedErrorMessageSet [emptySet] ;
   @tokensInListMap tokensInListMap [emptyMap] ;
   @templateDelimiterMap templateDelimiterMap [emptyMap] ;
-
+  @templateReplacementMap templateReplacementMap [emptyMap] ;
 #--- Define lexical types
   @lexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
@@ -291,6 +298,11 @@ rule <galgas_component>
     <template_declaration>
      !isTemplate
      !?templateDelimiterMap
+    ;
+  while
+    <replace_declaration>
+      !isTemplate
+      !? templateReplacementMap
     ;
   while
     <attribute_or_terminal_symbol_declaration>
@@ -344,6 +356,7 @@ rule <galgas_component>
   generate_scanner
     !isTemplate
     !templateDelimiterMap
+    !templateReplacementMap
     !lexiqueName 
     !table_attributs
     !table_des_terminaux
@@ -385,6 +398,8 @@ label importLexique
     <style_declaration> !? stylesMap ;
   while
     <template_declaration> parse ;
+  while
+    <replace_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration>
       !?table_des_terminaux
@@ -433,6 +448,8 @@ label importSyntax
   while
     <template_declaration> parse ;
   while
+    <replace_declaration> parse ;
+  while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
     <key_words_list_declaration> parse ;
@@ -464,6 +481,8 @@ label importSemantics
     <style_declaration> parse ;
   while
     <template_declaration> parse ;
+  while
+    <replace_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
@@ -498,6 +517,8 @@ label importGrammarForSemantics
   while
     <template_declaration> parse ;
   while
+    <replace_declaration> parse ;
+  while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
     <key_words_list_declaration> parse ;
@@ -526,6 +547,8 @@ label importOptions
     <style_declaration> parse ;
   while
     <template_declaration> parse ;
+  while
+    <replace_declaration> parse ;
   while
     <attribute_or_terminal_symbol_declaration> parse ;
   while
@@ -582,6 +605,28 @@ rule <template_declaration>
   $literal_string$ ? endString ;
   $;$ ;
   [!? ioTemplateDelimiterMap insertKey !startString !endString] ;
+end rule ;
+
+#-------------------------------------------------------------------*
+#           template replacement                                    *
+#-------------------------------------------------------------------*
+
+rule <replace_declaration>
+  ??@bool inIsTemplate
+  ?!@templateReplacementMap ioTemplateReplacementMap
+:
+  $replace$ ;
+#--- Check lexique is declared as template lexique
+  if not inIsTemplate then
+    error here: "the lexique should be declared as template lexique" ;
+  end if ;
+  @lstring startString ;
+  $literal_string$ ? startString ;
+  $->$ ;
+  @lstring endString ;
+  $literal_string$ ? endString ;
+  $;$ ;
+  [!?ioTemplateReplacementMap insertKey !startString !endString] ;
 end rule ;
 
 #-------------------------------------------------------------------*

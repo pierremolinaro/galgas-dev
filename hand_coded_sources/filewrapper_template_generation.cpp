@@ -134,7 +134,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 void cPtr_templateInstructionString::
 generateTemplateInstruction (AC_OutputStream & inCppFile) const {
   inCppFile << "  _result << " ;
-  inCppFile.writeCstringConstant (mTemplateString) ;
+  inCppFile.writeCstringConstant (mTemplateString, 240) ;
   inCppFile << " ;\n" ;
 }
 

@@ -377,6 +377,13 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "    }\n"
                  "  }\n"
                  "  while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
+                 "    sint32 _replacementIndex = 0 ;\n"
+                 "    while (_replacementIndex >= 0) {\n"
+                 "     _replacementIndex = findTemplateDelimiterIndex (_gTemplateReplacementKeyStrings) ;\n"
+                 "       if (_replacementIndex >= 0) {\n"
+                 "         _token._mTemplateStringBeforeToken << _gTemplateReplacementStrings [_replacementIndex] ;\n"
+                 "      }\n"
+                 "    }\n"
                  "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (_gTemplateStartStrings) ;\n"
                  "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
                  "      _token._mTemplateStringBeforeToken << mCurrentChar ;\n"
@@ -1264,6 +1271,7 @@ static void
 generate_scanner_cpp_file (C_Compiler & inLexique,
                            const bool inIsTemplate,
                            const GGS_templateDelimiterMap & inTemplateDelimiterMap,
+                           const GGS_templateReplacementMap & inTemplateReplacementMap,
                            const C_String & inLexiqueName,
                            const GGS_typeLexicalAttributesMap & table_attributs,
                            const GGS_typeTableDefinitionTerminaux & table_des_terminaux,
@@ -1315,6 +1323,33 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
       generatedZone2.writeCstringConstant (currentDelimiter->mInfo.mEndString) ;
       generatedZone2 << ",\n" ;
       currentDelimiter = currentDelimiter->nextObject () ;
+    }
+    generatedZone2 << "  NULL\n"
+                      "} ;\n\n" ;
+  }
+
+//--------------------------------------- Template replacement
+  if (inIsTemplate) {
+    generatedZone2.writeCppTitleComment ("Template Replacements") ;
+    generatedZone2 << "static const char * _gTemplateReplacementKeyStrings [" << (inTemplateReplacementMap.count () + 1) << "] = {\n" ;
+    GGS_templateReplacementMap::cElement * currentReplacement = inTemplateReplacementMap.firstObject () ;
+    while (currentReplacement != NULL) {
+      macroValidPointer (currentReplacement) ;
+      generatedZone2 << "  " ;
+      generatedZone2.writeCstringConstant (currentReplacement->mKey) ;
+      generatedZone2 << ",\n" ;
+      currentReplacement = currentReplacement->nextObject () ;
+    }
+    generatedZone2 << "  NULL\n"
+                      "} ;\n\n"
+                      "static const char * _gTemplateReplacementStrings [" << (inTemplateReplacementMap.count () + 1) << "] = {\n" ;
+    currentReplacement = inTemplateReplacementMap.firstObject () ;
+    while (currentReplacement != NULL) {
+      macroValidPointer (currentReplacement) ;
+      generatedZone2 << "  " ;
+      generatedZone2.writeCstringConstant (currentReplacement->mInfo.mReplacedString) ;
+      generatedZone2 << ",\n" ;
+      currentReplacement = currentReplacement->nextObject () ;
     }
     generatedZone2 << "  NULL\n"
                       "} ;\n\n" ;
@@ -1529,6 +1564,7 @@ void
 routine_generate_scanner (C_Compiler & inLexique,
                           const GGS_bool inIsTemplate,
                           const GGS_templateDelimiterMap inTemplateDelimiterMap,
+                          const GGS_templateReplacementMap inTemplateReplacementMap,
                           const GGS_lstring inLexiqueName,
                           const GGS_typeLexicalAttributesMap table_attributs,
                           const GGS_typeTableDefinitionTerminaux table_des_terminaux,
@@ -1556,6 +1592,7 @@ routine_generate_scanner (C_Compiler & inLexique,
       generate_scanner_cpp_file (inLexique,
                                  inIsTemplate.boolValue (),
                                  inTemplateDelimiterMap,
+                                 inTemplateReplacementMap,
                                  inLexiqueName,
                                  table_attributs, table_des_terminaux,
                                  table_tables_mots_reserves, programme_principal,

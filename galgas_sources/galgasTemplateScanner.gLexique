@@ -20,6 +20,8 @@ template lexique galgasTemplateScanner :
 
 template "%" ... "%" ;
 
+replace "!%" -> "%" ;
+
 @lstring identifierString ;
 @luint uint32value ;
 @lsint sint32value ;
