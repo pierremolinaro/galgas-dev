@@ -1466,38 +1466,26 @@
 		CFE709280D7965E700825B21 /* include_typeGalgas_filewrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */; };
 		CFE838200AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFE838210AF0D8E5006823FE /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
-		CFEAAD9F0DA3C6080039B209 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD990DA3C6080039B209 /* tinystr.cpp */; };
-		CFEAADA00DA3C6080039B209 /* tinystr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9A0DA3C6080039B209 /* tinystr.h */; };
 		CFEAADA10DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
 		CFEAADA20DA3C6080039B209 /* tinyxml.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9C0DA3C6080039B209 /* tinyxml.h */; };
 		CFEAADA30DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
 		CFEAADA40DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADA50DA3C6080039B209 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD990DA3C6080039B209 /* tinystr.cpp */; };
-		CFEAADA60DA3C6080039B209 /* tinystr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9A0DA3C6080039B209 /* tinystr.h */; };
 		CFEAADA70DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
 		CFEAADA80DA3C6080039B209 /* tinyxml.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9C0DA3C6080039B209 /* tinyxml.h */; };
 		CFEAADA90DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
 		CFEAADAA0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADAB0DA3C6080039B209 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD990DA3C6080039B209 /* tinystr.cpp */; };
-		CFEAADAC0DA3C6080039B209 /* tinystr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9A0DA3C6080039B209 /* tinystr.h */; };
 		CFEAADAD0DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
 		CFEAADAE0DA3C6080039B209 /* tinyxml.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9C0DA3C6080039B209 /* tinyxml.h */; };
 		CFEAADAF0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
 		CFEAADB00DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADB10DA3C6080039B209 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD990DA3C6080039B209 /* tinystr.cpp */; };
-		CFEAADB20DA3C6080039B209 /* tinystr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9A0DA3C6080039B209 /* tinystr.h */; };
 		CFEAADB30DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
 		CFEAADB40DA3C6080039B209 /* tinyxml.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9C0DA3C6080039B209 /* tinyxml.h */; };
 		CFEAADB50DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
 		CFEAADB60DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADB70DA3C6080039B209 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD990DA3C6080039B209 /* tinystr.cpp */; };
-		CFEAADB80DA3C6080039B209 /* tinystr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9A0DA3C6080039B209 /* tinystr.h */; };
 		CFEAADB90DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
 		CFEAADBA0DA3C6080039B209 /* tinyxml.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9C0DA3C6080039B209 /* tinyxml.h */; };
 		CFEAADBB0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
 		CFEAADBC0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADBD0DA3C6080039B209 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD990DA3C6080039B209 /* tinystr.cpp */; };
-		CFEAADBE0DA3C6080039B209 /* tinystr.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9A0DA3C6080039B209 /* tinystr.h */; };
 		CFEAADBF0DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
 		CFEAADC00DA3C6080039B209 /* tinyxml.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEAAD9C0DA3C6080039B209 /* tinyxml.h */; };
 		CFEAADC10DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
@@ -3030,8 +3018,6 @@
 		CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperObjectInstanciation.h; sourceTree = "<group>"; };
 		CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_filewrapper.h; sourceTree = "<group>"; };
 		CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metamodel_methods.cpp; sourceTree = "<group>"; };
-		CFEAAD990DA3C6080039B209 /* tinystr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinystr.cpp; sourceTree = "<group>"; };
-		CFEAAD9A0DA3C6080039B209 /* tinystr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinystr.h; sourceTree = "<group>"; };
 		CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		CFEAAD9C0DA3C6080039B209 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -3753,8 +3739,6 @@
 		CFEAAD980DA3C6080039B209 /* tiny_xml */ = {
 			isa = PBXGroup;
 			children = (
-				CFEAAD990DA3C6080039B209 /* tinystr.cpp */,
-				CFEAAD9A0DA3C6080039B209 /* tinystr.h */,
 				CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */,
 				CFEAAD9C0DA3C6080039B209 /* tinyxml.h */,
 				CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */,
@@ -4521,7 +4505,6 @@
 				CF3D5B9E0D9E976800BE06A6 /* include_templateInstructionString.h in Headers */,
 				CF8E30250D9EE03700EF3764 /* projectCreation.h in Headers */,
 				CF8E10B20D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h in Headers */,
-				CFEAADA00DA3C6080039B209 /* tinystr.h in Headers */,
 				CFEAADA20DA3C6080039B209 /* tinyxml.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4738,7 +4721,6 @@
 				CF3D5BC20D9E976800BE06A6 /* include_templateInstructionString.h in Headers */,
 				CF8E302F0D9EE03700EF3764 /* projectCreation.h in Headers */,
 				CF8E10B70D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h in Headers */,
-				CFEAADAC0DA3C6080039B209 /* tinystr.h in Headers */,
 				CFEAADAE0DA3C6080039B209 /* tinyxml.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4954,7 +4936,6 @@
 				CF3D5BB60D9E976800BE06A6 /* include_templateInstructionString.h in Headers */,
 				CF8E30290D9EE03700EF3764 /* projectCreation.h in Headers */,
 				CF8E10B40D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h in Headers */,
-				CFEAADB20DA3C6080039B209 /* tinystr.h in Headers */,
 				CFEAADB40DA3C6080039B209 /* tinyxml.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5159,7 +5140,6 @@
 				CF3D5BA20D9E976800BE06A6 /* include_templateInstructionString.h in Headers */,
 				CF8E30270D9EE03700EF3764 /* projectCreation.h in Headers */,
 				CF8E10B30D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h in Headers */,
-				CFEAADA60DA3C6080039B209 /* tinystr.h in Headers */,
 				CFEAADA80DA3C6080039B209 /* tinyxml.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5376,7 +5356,6 @@
 				CF3D5BBA0D9E976800BE06A6 /* include_templateInstructionString.h in Headers */,
 				CF8E302B0D9EE03700EF3764 /* projectCreation.h in Headers */,
 				CF8E10B50D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h in Headers */,
-				CFEAADB80DA3C6080039B209 /* tinystr.h in Headers */,
 				CFEAADBA0DA3C6080039B209 /* tinyxml.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5592,7 +5571,6 @@
 				CF3D5BBE0D9E976800BE06A6 /* include_templateInstructionString.h in Headers */,
 				CF8E302D0D9EE03700EF3764 /* projectCreation.h in Headers */,
 				CF8E10B60D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h in Headers */,
-				CFEAADBE0DA3C6080039B209 /* tinystr.h in Headers */,
 				CFEAADC00DA3C6080039B209 /* tinyxml.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6107,7 +6085,6 @@
 				CFCB12610D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BC80D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30240D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAAD9F0DA3C6080039B209 /* tinystr.cpp in Sources */,
 				CFEAADA10DA3C6080039B209 /* tinyxml.cpp in Sources */,
 				CFEAADA30DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
 				CFEAADA40DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
@@ -6286,7 +6263,6 @@
 				CFCB12970D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BD10D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E302E0D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADAB0DA3C6080039B209 /* tinystr.cpp in Sources */,
 				CFEAADAD0DA3C6080039B209 /* tinyxml.cpp in Sources */,
 				CFEAADAF0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
 				CFEAADB00DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
@@ -6465,7 +6441,6 @@
 				CFCB12850D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BCE0D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30280D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADB10DA3C6080039B209 /* tinystr.cpp in Sources */,
 				CFEAADB30DA3C6080039B209 /* tinyxml.cpp in Sources */,
 				CFEAADB50DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
 				CFEAADB60DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
@@ -6683,7 +6658,6 @@
 				CFCB12670D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BC90D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADA50DA3C6080039B209 /* tinystr.cpp in Sources */,
 				CFEAADA70DA3C6080039B209 /* tinyxml.cpp in Sources */,
 				CFEAADA90DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
 				CFEAADAA0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
@@ -6862,7 +6836,6 @@
 				CFCB128B0D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BCF0D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E302A0D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADB70DA3C6080039B209 /* tinystr.cpp in Sources */,
 				CFEAADB90DA3C6080039B209 /* tinyxml.cpp in Sources */,
 				CFEAADBB0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
 				CFEAADBC0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
@@ -7041,7 +7014,6 @@
 				CFCB12910D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BD00D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E302C0D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADBD0DA3C6080039B209 /* tinystr.cpp in Sources */,
 				CFEAADBF0DA3C6080039B209 /* tinyxml.cpp in Sources */,
 				CFEAADC10DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
 				CFEAADC20DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
