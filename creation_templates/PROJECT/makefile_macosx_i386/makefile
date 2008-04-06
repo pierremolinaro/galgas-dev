@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#MAKEFILE for building "%PROJECT_NAME%" 32-bit command line tools for x86 Linux, built on Mac OS X*
+# MAKEFILE for building "PROJECT" 32-bits command line tools for Mac OS X   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%
-EXECUTABLE_DEBUG := %PROJECT_NAME%_debug
+EXECUTABLE := PROJECT
+EXECUTABLE_DEBUG := PROJECT_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -32,7 +32,7 @@ INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                       Link Options for i386 Linux                         *
+#                       Linker Options for Mac OS X                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -48,11 +48,11 @@ include ../common_files_for_make/makefile.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                  Include i386 Linux tools for MAC OS X                    *
+#                      Include gcc tools for MAC OS X                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_i386_gcc_tools_32.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *

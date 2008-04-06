@@ -55,10 +55,10 @@ rule @lexicalAttribute
   else
     @string m := "" ;
     m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
-    @bool first := true ;
-    foreach inAllowedLexicalTypeNameSet (@string kTypeName) :
-      if first then
-        first := false ;
+    @bool firstLoop := true ;
+    foreach inAllowedLexicalTypeNameSet (@string kTypeName) do
+      if firstLoop then
+        firstLoop := false ;
       else
         m .= "," ;
       end if ;
@@ -75,7 +75,7 @@ rule @terminalDeclaration
   ?!@terminalMap ioTerminalMap
 :
   @stringlist argumentTypeList [emptyList] ;
-  foreach mSentAttributeList (@lstring kAttributeName) :
+  foreach mSentAttributeList (@lstring kAttributeName) do
     @string attributeTypeName ;
     [inLexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
     argumentTypeList += !attributeTypeName ;
@@ -90,7 +90,7 @@ rule @lexicalListDeclaration
   ?!@terminalMap ioTerminalMap
 :
   @stringlist argumentTypeList [emptyList] ;
-  foreach mSentAttributeList (@lstring kAttributeName) :
+  foreach mSentAttributeList (@lstring kAttributeName) do
     @string attributeTypeName ;
     [inLexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
     argumentTypeList += !attributeTypeName ;

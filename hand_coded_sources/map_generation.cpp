@@ -801,8 +801,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
-    sint32 attributeIndex = 0 ;
+    current = mNonExternAttributesList.firstObject () ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
@@ -843,8 +843,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
-    sint32 attributeIndex = 0 ;
+    current = mNonExternAttributesList.firstObject () ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                " ;
@@ -885,8 +885,8 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
-    sint32 attributeIndex = 0 ;
+    current = mNonExternAttributesList.firstObject () ;
+    attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
       inCppFile << ",\n                                const " ;
@@ -1063,7 +1063,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << currentMethod->mMethodName
             << " (C_Compiler & inLexique"
                ",\n                                const GGS_lstring & inKey" ;
-    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+    current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -1102,7 +1102,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << currentMethod->mMethodName
             << " (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
-    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+    current = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;

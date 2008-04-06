@@ -130,19 +130,19 @@ routine compileMetamodelComponentLL1
     else
       m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
     end if ;
-    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) :
+    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
       m .= "\n  - @" . kKey ;
     end foreach ;
     error endOfSourceFile : m ;
   end if ;
 #--- Checks inheritance has no circularity
-  foreach typeMap (@lstring kTypeName @ACGalgasType kType) :
+  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
     [kType checkNoCircularity ![typeMap count]] ;
   end foreach ;
 #--- If no error, build type sorted list for C++ code generation
   @sortedTypeList sortedTypeList [emptySortedList] ;
   if [@uint errorCount] == 0 then
-    foreach typeList (@ACGalgasType kType) :
+    foreach typeList (@ACGalgasType kType) do
       [kType enterInSortedList !?sortedTypeList !typeMap] ;
     end foreach ;
   end if ;
@@ -158,7 +158,7 @@ routine compileMetamodelComponentLL1
     . "\n"
     . [@string CppLineComment]
     . "#include \"galgas/predefined_types.h\"\n" ;
-    foreach importedComponentSet (@string kComponentName) :
+    foreach importedComponentSet (@string kComponentName) do
       generatedUserZone2 .= "#include \"" . kComponentName . ".h\"\n" ;
     end foreach ;
     generatedUserZone2 .= "\n" ;
@@ -169,14 +169,14 @@ routine compileMetamodelComponentLL1
       [@string CppLineComment]
     . "sint32 _metamodel_index_for_" . metamodelComponentName . " (void) ;\n\n"
     . [@string CppTitleComment !"Class Predeclarations"] ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
       [kType generatePredeclarationInHeader !?generatedUserZone3] ;
     end foreach ;
     generatedUserZone3 .= "\n" ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
       [kType generateDeclaration_1_inHeader !?generatedUserZone3] ;
     end foreach ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
       [kType generateDeclaration_2_inHeader !?generatedUserZone3] ;
     end foreach ;
     generatedUserZone3 .= [@string CppLineComment]
@@ -226,7 +226,7 @@ routine compileMetamodelComponentLL1
     . "sint32 _metamodel_index_for_" . metamodelComponentName . " (void) {\n"
     . "  return gMetamodelManager.mMetamodelComponentIndex ;\n"
     . "}\n\n" ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) :
+    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
       [kType generateImplementation !?generatedCode3] ;
     end foreach ;
     generatedCode3 .= [@string CppLineComment] ;
@@ -290,13 +290,13 @@ routine compileSemanticsComponentLL1
     else
       m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
     end if ;
-    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) :
+    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
       m .= "\n  - @" . kKey ;
     end foreach ;
     error endOfSourceFile : m ;
   end if ;
 #--- Checks inheritance has no circularity
-  foreach typeMap (@lstring kTypeName @ACGalgasType kType) :
+  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
     [kType checkNoCircularity ![typeMap count]] ;
   end foreach ;
 end routine ;

@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#MAKEFILE for building "%PROJECT_NAME%" command line tools for Win32, built with MSYS*
+# MAKEFILE for building "PROJECT" 32-bits command line tools for Mac OS X   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%.exe
-EXECUTABLE_DEBUG := %PROJECT_NAME%_debug.exe
+EXECUTABLE := PROJECT
+EXECUTABLE_DEBUG := PROJECT_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -24,11 +24,19 @@ DEBUG_OBJECTS_DIR := debug_objects
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                         Linker Options for Win32                          *
+#                  Install directory (for "install" goal)                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-PLATFORM_LINKER_OPTIONS := -lcomdlg32
+INSTALL_DIR := /usr/local/bin
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                       Linker Options for Mac OS X                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+PLATFORM_LINKER_OPTIONS :=
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -40,11 +48,11 @@ include ../common_files_for_make/makefile.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                       Include MinGW tools for MSYS                        *
+#                      Include gcc tools for MAC OS X                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/msys_on_win32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_ppc_gcc_tools_32.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *

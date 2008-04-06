@@ -48,13 +48,13 @@ rule @optionComponentRoot
   . inOptionComponentName . "::" . inOptionComponentName . " (void)\n"
   . ":mStringValue (1 COMMA_HERE) {\n" ;
   @uint index := 0 ;
-  foreach inBoolOptionMap (4*) :
+  foreach inBoolOptionMap (4*) do
     generatedUserZone3 .= "  mBoolOptionValues [" . [index string] . "] = false ;\n" ;
     index ++ ;
   end foreach ;
   generatedUserZone3 .= "  mBoolOptionValues [" . [index string] . "] = false ; // Extra unused entry\n" ;
   index := 0 ;
-  foreach inUIntOptionMap (4*) :
+  foreach inUIntOptionMap (4*) do
     generatedUserZone3 .= "  mUintOptionValues [" . [index string] . "] = 0 ;\n" ;
     index ++ ;
   end foreach ;
@@ -88,7 +88,7 @@ rule @optionComponentRoot
   . "char " . inOptionComponentName
   . "::getBoolOptionChar (const sint32 inIndex) const {\n"
     "  const char kCharArray [". [([inBoolOptionMap count] + 1) string] . "] = {" ;
-  foreach inBoolOptionMap (* @lchar kOptionChar 2*) :
+  foreach inBoolOptionMap (* @lchar kOptionChar 2*) do
     generatedUserZone3.= [@string CppChar ![kOptionChar char]] . ", " ;
   end foreach ;
   generatedUserZone3 .= "'\\0'} ;\n"
@@ -100,7 +100,7 @@ rule @optionComponentRoot
   . "const char * " . inOptionComponentName
   . "::getBoolOptionString (const sint32 inIndex) const {\n"
     "  const char * kStringArray [". [([inBoolOptionMap count] + 1) string] . "] = {" ;
-  foreach inBoolOptionMap (2* @lstring kOptionString *) :
+  foreach inBoolOptionMap (2* @lstring kOptionString *) do
     generatedUserZone3.= [@string CppString ![kOptionString string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -113,7 +113,7 @@ rule @optionComponentRoot
   . "const char * " . inOptionComponentName
   . "::getBoolOptionDescription (const sint32 inIndex) const {\n"
   . "  const char * kDescriptionArray [". [([inBoolOptionMap count] + 1) string] . "] = {" ;
-  foreach inBoolOptionMap (3* @lstring kOptionComment) :
+  foreach inBoolOptionMap (3* @lstring kOptionComment) do
     generatedUserZone3.= [@string CppString ![kOptionComment string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -128,7 +128,7 @@ rule @optionComponentRoot
     "                         const char * inOptionName,\n"
     "                         bool * outFound) const {\n"
   . "  const char * kKeyArray [". [([inBoolOptionMap count] + 1) string] . "] = {" ;
-  foreach inBoolOptionMap (@lstring kKey 3*) :
+  foreach inBoolOptionMap (@lstring kKey 3*) do
     generatedUserZone3.= [@string CppString ![kKey string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -170,7 +170,7 @@ rule @optionComponentRoot
   . "uint32 " . inOptionComponentName
   . "::getUintOptionDefaultValue (const sint32 inIndex) const {\n"
     "  static const uint32 kDefaultValues [" . [([inUIntOptionMap count] + 1) string] . "] = {\n" ;
-  foreach inUIntOptionMap (4*) :
+  foreach inUIntOptionMap (4*) do
     generatedUserZone3.= "  0,\n" ;
   end foreach ;
   generatedUserZone3 .= "  0} ;\n"
@@ -191,7 +191,7 @@ rule @optionComponentRoot
   . "char " . inOptionComponentName
   . "::getUintOptionChar (const sint32 inIndex) const {\n"
     "  static const char kCharArray [". [([inUIntOptionMap count] + 1) string] . "] = {" ;
-  foreach inUIntOptionMap (* @lchar kOptionChar 2*) :
+  foreach inUIntOptionMap (* @lchar kOptionChar 2*) do
     generatedUserZone3.= [@string CppChar ![kOptionChar char]] . ", " ;
   end foreach ;
   generatedUserZone3 .=
@@ -204,7 +204,7 @@ rule @optionComponentRoot
   . "const char * " . inOptionComponentName
   . "::getUintOptionString (const sint32 inIndex) const {\n"
     "  static const char * kStringArray [". [([inUIntOptionMap count] + 1) string] . "] = {" ;
-  foreach inUIntOptionMap (2* @lstring kOptionString *) :
+  foreach inUIntOptionMap (2* @lstring kOptionString *) do
     generatedUserZone3.= [@string CppString ![kOptionString string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -217,7 +217,7 @@ rule @optionComponentRoot
   . "const char * " . inOptionComponentName
   . "::getUintOptionDescription (const sint32 inIndex) const {\n"
   . "  static const char * kDescriptionArray [". [([inUIntOptionMap count] + 1) string] . "] = {" ;
-  foreach inUIntOptionMap (3* @lstring kOptionComment) :
+  foreach inUIntOptionMap (3* @lstring kOptionComment) do
     generatedUserZone3.= [@string CppString ![kOptionComment string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -232,7 +232,7 @@ rule @optionComponentRoot
     "                         const char * inOptionName,\n"
     "                         bool * outFound) const {\n"
     "  static const char * kKeyArray [". [([inUIntOptionMap count] + 1) string] . "] = {" ;
-  foreach inUIntOptionMap (@lstring kKey 3*) :
+  foreach inUIntOptionMap (@lstring kKey 3*) do
     generatedUserZone3.= [@string CppString ![kKey string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -285,7 +285,7 @@ rule @optionComponentRoot
   . "::\n"
     "getStringOptionChar (const sint32 inIndex) const {\n"
     "  static const char kCharArray [". [([inStringOptionMap count] + 1) string] . "] = {" ;
-  foreach inStringOptionMap (* @lchar kOptionChar 2*) :
+  foreach inStringOptionMap (* @lchar kOptionChar 2*) do
     generatedUserZone3.= [@string CppChar ![kOptionChar char]] . ", " ;
   end foreach ;
   generatedUserZone3 .=
@@ -298,7 +298,7 @@ rule @optionComponentRoot
   . "const char * " . inOptionComponentName . "::\n"
     "getStringOptionString (const sint32 inIndex) const {\n"
     "  static const char * kStringArray [". [([inStringOptionMap count] + 1) string] . "] = {" ;
-  foreach inStringOptionMap (2* @lstring kOptionString *) :
+  foreach inStringOptionMap (2* @lstring kOptionString *) do
     generatedUserZone3.= [@string CppString ![kOptionString string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -311,7 +311,7 @@ rule @optionComponentRoot
   . "const char * " . inOptionComponentName . "::\n"
     "getStringOptionDescription (const sint32 inIndex) const {\n"
   . "  static const char * kDescriptionArray [". [([inStringOptionMap count] + 1) string] . "] = {" ;
-  foreach inStringOptionMap (3* @lstring kOptionComment) :
+  foreach inStringOptionMap (3* @lstring kOptionComment) do
     generatedUserZone3.= [@string CppString ![kOptionComment string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=
@@ -326,7 +326,7 @@ rule @optionComponentRoot
     "                           const char * inOptionName,\n"
     "                           bool * outFound) const {\n"
     "  static const char * kKeyArray [".  [([inStringOptionMap count] + 1) string] . "] = {" ;
-  foreach inStringOptionMap (@lstring kKey 3*) :
+  foreach inStringOptionMap (@lstring kKey 3*) do
     generatedUserZone3.= [@string CppString ![kKey string]] . ",\n    " ;
   end foreach ;
   generatedUserZone3 .=

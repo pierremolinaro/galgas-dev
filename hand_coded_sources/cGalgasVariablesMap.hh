@@ -443,14 +443,14 @@ insertKey (C_Compiler & inLexique,
       bool found = false ;
       while ((surchargeCourante != NULL) && ! found) {
         macroValidPointer (surchargeCourante) ;
-        cElement * resultat = surchargeCourante->champTable ;
-        while ((resultat != NULL) && ! found) {
-          macroValidPointer (resultat) ;
-          const sint32 comparaison = resultat->mKey.compareStringByLength (inKey) ;
+        cElement * result = surchargeCourante->champTable ;
+        while ((result != NULL) && ! found) {
+          macroValidPointer (result) ;
+          const sint32 comparaison = result->mKey.compareStringByLength (inKey) ;
           if (comparaison > 0) {
-            resultat = resultat->mInfPtr ;
+            result = result->mInfPtr ;
           }else if (comparaison < 0) {
-            resultat = resultat->mSupPtr ;
+            result = result->mSupPtr ;
           }else{
             found = true ;
           }
@@ -572,7 +572,7 @@ chercherInterne (C_Compiler & inLexique,
     while ((resultat == NULL) && (surchargeCourante != NULL)) {
       macroValidPointer (surchargeCourante) ;
       resultat = surchargeCourante->champTable ;
-      bool found = false ;
+      found = false ;
       while ((resultat != NULL) && ! found) {
         macroValidPointer (resultat) ;
         const sint32 comparaison = resultat->mKey.compareStringByLength (clef) ;

@@ -170,7 +170,7 @@ rule <galgas_component>
     !?ioSemanticContext
   ;
   inclusionsForImplementationFile += ![nomPRGMprincipal string] . ".h" ;
-  foreach includedSemanticsComponents (@string kSemanticComponentName) :
+  foreach includedSemanticsComponents (@string kSemanticComponentName) do
     inclusionsForImplementationFile += !kSemanticComponentName . ".h" ;
   end foreach ;
 #--- Max errors count

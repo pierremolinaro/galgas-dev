@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    MAKEFILE for building "%PROJECT_NAME%" 64-bit command line tools for Unix     *
+# MAKEFILE for building "PROJECT" 32-bits command line tools for Mac OS X   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,48 +10,66 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%64
-EXECUTABLE_DEBUG := %PROJECT_NAME%64_debug
+EXECUTABLE := PROJECT
+EXECUTABLE_DEBUG := PROJECT_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                         Object files directories                          *
+#                  Install directory (for "install" goal)                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-OBJECTS_DIR       := objects64
-DEBUG_OBJECTS_DIR := debug_objects64
+INSTALL_DIR := /usr/local/bin
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                         Linker Options for Unix                           *
+#                        'all' goal                                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-PLATFORM_LINKER_OPTIONS := 
+all:$(EXECUTABLE) $(EXECUTABLE_DEBUG)
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                        Include Common Definitions                         *
+#                        'clean' goal                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include ../common_files_for_make/makefile.mke
+clean:$(EXECUTABLE)
+	rm -f $(EXECUTABLE) $(EXECUTABLE_DEBUG)
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                            Include Unix tools                             *
+#                      Build ppc executable                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/unix_gcc_tools_64.mke
+../makefile_macosx_ppc/%:
+	$(MAKE) -C ../makefile_macosx_ppc $<
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                Include makefile that performs actual work                 *
+#                      Build i386 executable                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/generic_makefile.mke
+../makefile_macosx_i386/%:
+	$(MAKE) -C ../makefile_macosx_i386 $<
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                      Build EXECUTABLES                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+$(EXECUTABLE):../makefile_macosx_ppc/$(EXECUTABLE) ../makefile_macosx_i386/$(EXECUTABLE)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE) ../makefile_macosx_i386/$(EXECUTABLE) -output $(EXECUTABLE)
+	lipo -info $(EXECUTABLE)
+
+#---------------------------------------------------------------------------*
+
+$(EXECUTABLE_DEBUG):../makefile_macosx_ppc/$(EXECUTABLE_DEBUG) ../makefile_macosx_i386/$(EXECUTABLE_DEBUG)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE_DEBUG) ../makefile_macosx_i386/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
+	lipo -info $(EXECUTABLE_DEBUG)
 
 #---------------------------------------------------------------------------*

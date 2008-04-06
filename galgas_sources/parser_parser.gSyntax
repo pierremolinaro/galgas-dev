@@ -375,7 +375,7 @@ rule <galgas_component>
     ;
   end repeat ;
 #--- Check that all routines have been implemented
-  foreach tableNomRoutinesDeclarees (@lstring nomRoutine) :
+  foreach tableNomRoutinesDeclarees (@lstring nomRoutine) do
     if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
       error nomRoutine : "the routine '" . [nomRoutine string] .
                          "' is not implemented within the component" ;
@@ -2038,7 +2038,7 @@ rule <syntax_declaration>
     listeInstructions += ![@typeInstructionDeclarationVarLocale new !nomCppVariable !definitionType] ;
   elsif [returnedEntity string] != "" then
     [inAllMetamodelClassMap searchKey !returnedEntity ?allPropertiesMap ?7*] ;
-    foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) :
+    foreach allPropertiesMap (@lstring kKey @AC_galgasType kPropertyType) do
       cast kPropertyType :
       when >= @typeGalgas_singleReferenceEntity do
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
@@ -2165,7 +2165,7 @@ rule <syntax_declaration>
 #--- Check if all label rules have the same syntax signature
   checkLabelSignatures !?altProductionsMap ;
 #--- Check that all label rules are implemented
-  foreach nonterminalSymbolAltMap (@lstring nonTerminalAltName @L_EXsignature altSignature @lstring kReturnedEntity) :
+  foreach nonterminalSymbolAltMap (@lstring nonTerminalAltName @L_EXsignature altSignature @lstring kReturnedEntity) do
     if [nonTerminalAltName string] != "parse" & not [altProductionsMap hasKey ![nonTerminalAltName string]] then
       error here : "the '" . [nonTerminalAltName string] . "' label is not implemented within the rule" ;
     end if ;
@@ -2825,7 +2825,7 @@ rule <syntax_instruction>
     ;
     branchList += !firstBranchInstructionsList ;
     parse_rewind_signature_list += !firstBranchSyntaxSignature !instructionStartLocation ;
-    foreach firstBranchSyntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
+    foreach firstBranchSyntaxSignature (@AC_instruction_ForGrammar grammarInstruction) do
       ioSyntaxSignature += !grammarInstruction ;
     end foreach ;
   #--- One or more 'rewind' branches
@@ -2923,7 +2923,7 @@ rule <syntax_instruction>
           !inSemanticContext
         ;
         parse_rewind_signature_list += !syntaxSignature  !branchStartLocation ;
-        foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) :
+        foreach syntaxSignature (@AC_instruction_ForGrammar grammarInstruction) do
           ioSyntaxSignature += !grammarInstruction ;
         end foreach ;
       end block (!here) ;

@@ -38,7 +38,7 @@ rule @metamodelComponentRoot
   !@typeList outTypeList
 :
 #--- Walk throught inherited metamodels
-  foreach mSuperMetamodels (@lstring kSuperMetamodelName) :
+  foreach mSuperMetamodels (@lstring kSuperMetamodelName) do
     if not [ioImportedComponentSet hasKey ![kSuperMetamodelName string]] then
       if [kSuperMetamodelName string] != [mMetamodelComponentName string] then
         @lstring sourceFilePath [new
@@ -62,7 +62,7 @@ rule @metamodelComponentRoot
     end if ;
   end foreach ;
 #--- Walk throught imported components
-  foreach mMetamodelImportedComponents (@lstring kImportedComponentName) :
+  foreach mMetamodelImportedComponents (@lstring kImportedComponentName) do
     if not [ioImportedComponentSet hasKey ![kImportedComponentName string]] then
       if [kImportedComponentName string] != [mMetamodelComponentName string] then
         @lstring sourceFilePath [new
@@ -118,7 +118,7 @@ rule @metamodelEntity
   @attributeList propertyList [emptyList] ;
   call mProperties !?ioTypeMap !?propertyList ;
 #--- Create galgas types and enter in type list
-  foreach mEntityNameList (@lstring kEntityName) :
+  foreach mEntityNameList (@lstring kEntityName) do
     @ACGalgasType t := [@entityGalgasType new
       !mIsAbstract
       !kEntityName
