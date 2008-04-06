@@ -298,6 +298,33 @@ nonterminal <semantic_instructions_list_no_verif>
 label parse
 ;
 
+nonterminal <constant_while_before_in_foreach_instruction>
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
+  ??@typeTableEnAvant inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
+  ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@semanticContext inSemanticContext
+  !@typeExpression outWhileExpression
+  !@typeInstructionList out_before_instructionList
+label secondPhase
+  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
+  ??@typeTableEnAvant inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
+  ??@entityToImplementMap inMetamodelEntityMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
+  ??@semanticContext inSemanticContext
+  !@foreachEnumerationList outForeachEnumerationList
+  !@typeInstructionList out_do_instructionList
+label parse
+;
+
 nonterminal <semantic_instruction>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
@@ -4358,33 +4385,6 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <constant_while_before_in_foreach_instruction>
-  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
-  ??@typeTableEnAvant inTableEnAvant
-  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
-  ??@entityToImplementMap inMetamodelEntityMap
-  ??@M_treewalkingComponents inTreewalkingComponentMap
-  ??@semanticContext inSemanticContext
-  !@typeExpression outWhileExpression
-  !@typeInstructionList out_before_instructionList
-label secondPhase
-  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
-  ??@typeTableEnAvant inTableEnAvant
-  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
-  ??@entityToImplementMap inMetamodelEntityMap
-  ??@M_treewalkingComponents inTreewalkingComponentMap
-  ??@semanticContext inSemanticContext
-  !@foreachEnumerationList outForeachEnumerationList
-  !@typeInstructionList out_do_instructionList
-label parse
-;
-
 rule <constant_while_before_in_foreach_instruction>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
@@ -4428,6 +4428,7 @@ rule <constant_while_before_in_foreach_instruction>
       ?outWhileExpression
       ?resultType
      ;
+  @typeGalgas_bool b := (cast resultType if >= @typeGalgas_bool else error here) ;
   end select ;
 #--- Before instruction list
   out_before_instructionList := [@typeInstructionList emptyList] ;

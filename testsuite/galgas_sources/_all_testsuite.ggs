@@ -1,0 +1,6 @@
+compile "testsuite_lexique.ggs" ;
+compile "testsuite_syntax.ggs" ;
+compile "testsuite_grammar.ggs" ;
+compile "testsuite_program.ggs" ;
+
+compile "testsuite_foreach_instruction.ggs" ;

@@ -1,0 +1,12 @@
+syntax testsuite_syntax :
+import lexique testsuite_lexique in "testsuite_lexique.ggs" ;
+
+# ADD YOUR CODE HERE
+
+nonterminal <start_symbol> ;
+
+rule <start_symbol> :
+# ADD YOUR CODE HERE
+end rule ;
+
+end syntax ;
