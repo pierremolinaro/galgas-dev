@@ -1,0 +1,25 @@
+program testsuite_program "version 1.0.0":
+
+#--- Import clauses
+import semantics testsuite_foreach_instruction in "testsuite_foreach_instruction.ggs" ;
+import grammar testsuite_grammar in "testsuite_grammar.ggs" ;
+
+#--- Prologue routine
+routine {
+  testsuite_foreach_instruction ;
+}
+
+#--- 'when' clauses
+when . "testsuite"
+message "a source text file with the .testsuite extension"
+??@lstring inSourceFile {
+  grammar testsuite_grammar in inSourceFile ;
+}
+
+#--- Epilogue routine
+routine {
+}
+
+#---
+
+end program ;

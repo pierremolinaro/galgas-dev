@@ -1,0 +1,7 @@
+grammar testsuite_grammar "LL1":
+import lexique testsuite_lexique in "testsuite_lexique.ggs" ;
+import syntax testsuite_syntax in "testsuite_syntax.ggs" ;
+
+root <start_symbol> ;
+
+end grammar ;
