@@ -535,7 +535,7 @@ class @entityGalgasType extends @ACGalgasType {
       ioGeneratedUserZone3 .= "//--- 'new' constructor\n"
       . "  public : static GGS_" . mEntityName . " constructor_new (C_Compiler & inLexique" ;
       @uint n := 0 ;
-      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) do
         ioGeneratedUserZone3 .= ",\n"
         . "                                const GGS_" . [attributeTypeIndex key]
         . " & argument_" . [n string] ;
@@ -551,7 +551,7 @@ class @entityGalgasType extends @ACGalgasType {
     . "//--- 'description' reader\n"
     . "  public : virtual const char * actualTypeName (void) const ;\n\n"
     . "//--- Readers\n" ;
-    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+    foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) do
       ioGeneratedUserZone3 .= "  public : GGS_" . [attributeTypeIndex key]
       . " reader_" . attributeName  . " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     end foreach ;
@@ -609,7 +609,7 @@ class @entityGalgasType extends @ACGalgasType {
     end if ;
     ioGeneratedUserZone3 .= " {\n"
     . "//--- Attributes\n" ;
-    foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+    foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) do
       ioGeneratedUserZone3 .= "  public : GGS_" . [attributeTypeIndex key]
       . " " . attributeName . " ;\n" ;
     end foreach ;
@@ -620,7 +620,7 @@ class @entityGalgasType extends @ACGalgasType {
       ioGeneratedUserZone3 .= "LOCATION_ARGS" ;
     else
       @uint n := 0 ;
-      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) do
         if n > 0 then
           ioGeneratedUserZone3 .= ",\n"
           . "                                " ;
@@ -672,7 +672,7 @@ class @entityGalgasType extends @ACGalgasType {
       ioGeneratedCode .= "LOCATION_ARGS) :\n" ;
     else
       @uint n := 0 ;
-      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex @lstring attributeName) do
         if n > 0 then
           ioGeneratedCode .= ",\n"
           . "                                " ;
@@ -690,7 +690,7 @@ class @entityGalgasType extends @ACGalgasType {
         ioGeneratedCode .= "THERE)" ;
       else
         @uint n := 0 ;
-        foreach inheritedAttributeList (* *) :
+        foreach inheritedAttributeList (* *) do
           if n > 0 then
             ioGeneratedCode .= ",\n"
             . "                                " ;
@@ -705,7 +705,7 @@ class @entityGalgasType extends @ACGalgasType {
       ioGeneratedCode .= "cPtr_entity (THERE)" ;
     end if ;
     @uint n := [inheritedAttributeList length] ;
-    foreach mPropertyList (* @lstring attributeName) :
+    foreach mPropertyList (* @lstring attributeName) do
       ioGeneratedCode .= ",\n" . attributeName . " (argument_" . [n string]. ")" ;
       n ++ ;
     end foreach ;
@@ -719,11 +719,11 @@ class @entityGalgasType extends @ACGalgasType {
       ioGeneratedCode .= "  if (! equal) {\n"
       . "    const cPtr_" . mEntityName . " * _p = dynamic_cast <const cPtr_" . mEntityName . " *> (inOperand) ;\n"
       . "    macroValidPointer (_p) ;\n" ;
-      @bool first := true ;
-      foreach allAttributeList (* @lstring attributeName) :
-        if first then
+      @bool firstLoop := true ;
+      foreach allAttributeList (* @lstring attributeName) do
+        if firstLoop then
           ioGeneratedCode .= "    equal = " ;
-          first := false ;
+          firstLoop := false ;
         else
           ioGeneratedCode .= "\n         && " ;
         end if ;
@@ -753,10 +753,10 @@ class @entityGalgasType extends @ACGalgasType {
     ioGeneratedCode .=
       "  ioString << \"-> instance of @" . mEntityName . "\" ;\n"
     . "  ioString << \"\\n\" ;\n" ;
-    @bool first := true ;
-    foreach allAttributeList (* @lstring attributeName) :
-      if first then
-        first := false ;
+    @bool firstLoop := true ;
+    foreach allAttributeList (* @lstring attributeName) do
+      if firstLoop then
+        firstLoop := false ;
       else
         ioGeneratedCode .= "  ioString << \"\\n\" ;\n" ;
       end if ; 
@@ -866,7 +866,7 @@ class @entityGalgasType extends @ACGalgasType {
         "GGS_" . mEntityName . " GGS_" . mEntityName . "::\n"
       . "constructor_new (C_Compiler & /* inLexique */" ;
       @uint n := 0 ;
-      foreach allAttributeList (@typeMapIndex attributeTypeIndex *) :
+      foreach allAttributeList (@typeMapIndex attributeTypeIndex *) do
         ioGeneratedCode .= ",\n                                "
         . "const GGS_" . [attributeTypeIndex key]
         . " & argument_" . [n string] ;
@@ -880,7 +880,7 @@ class @entityGalgasType extends @ACGalgasType {
         ioGeneratedCode .= "THERE)) ;" ;
       else
         n := 0 ;
-        foreach allAttributeList (* *) :
+        foreach allAttributeList (* *) do
         if n > 0 then
           ioGeneratedCode .= ",\n                                " ;
         end if ;
@@ -894,7 +894,7 @@ class @entityGalgasType extends @ACGalgasType {
         "  return result ;\n"
       . "}\n\n" ;
     end if ;
-    foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) :
+    foreach mPropertyList (@typeMapIndex attributeTypeIndex @lstring attributeName) do
     ioGeneratedCode .= [@string CppLineComment]
       . "GGS_" . [attributeTypeIndex key] . " GGS_" . mEntityName . "::\n"
       . "reader_" . attributeName . " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"

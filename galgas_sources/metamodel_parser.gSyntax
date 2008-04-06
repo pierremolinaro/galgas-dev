@@ -259,13 +259,13 @@ rule <parse_metamodel>
   ;
 #--- Header inclusion list
   @stringlist headerInclusionList [emptyList] ;
-  foreach semanticsComponentsMap (@lstring kSemanticComponentName 7*) :
+  foreach semanticsComponentsMap (@lstring kSemanticComponentName 7*) do
     headerInclusionList += ![kSemanticComponentName string] ;
   end foreach ;
 #--- Check super metamodels are defined, build all entity map
   @stringset superMetamodels [emptySet] ;
   @entityToImplementMap allEntityMap [emptyMap] ;
-  foreach superMetamodelList (@lstring kSuperMetamodelName) :
+  foreach superMetamodelList (@lstring kSuperMetamodelName) do
     headerInclusionList += ![kSuperMetamodelName string] ;
     performMetamodelInclusion
       !ioMetamodelComponentMap
@@ -289,9 +289,9 @@ rule <parse_metamodel>
                      @entityPropertyMap kAllPropertiesMap
                      *
                      @entityPropertyMap kEntityPropertiesMap
-                     5*) :
+                     5*) do
     foreach kEntityPropertiesMap (@lstring kAttributeName
-                                  @AC_galgasType kPropertyType) :
+                                  @AC_galgasType kPropertyType) do
       cast kPropertyType :
       when >= @typeGalgas_singleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
         [allEntityMap searchKey ![e mEntityTypeName] ?8*] ;
@@ -486,7 +486,7 @@ rule <entity_declaration>
     $;$ ;
   end repeat ;
   $}$ ;
-  foreach entityNameList (@lstring kEntityName) :
+  foreach entityNameList (@lstring kEntityName) do
     [!?ioEntityMap insertKey
       !kEntityName
       !allMetamodelPropertyMap

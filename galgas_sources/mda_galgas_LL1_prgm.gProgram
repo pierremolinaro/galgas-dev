@@ -193,7 +193,7 @@ message "a GALGAS project source file"
   @lstringlist fileList ;
   grammar projectLL1grammar in inSourceFile ?fileList ;
 #--- loop for compiling each file
-  foreach fileList (@lstring kFile) :
+  foreach fileList (@lstring kFile) do
     message "----- Compiling '" . kFile . "'\n" ;
     @string extension := [kFile pathExtension] ;
     @lstring fullFilePath [new

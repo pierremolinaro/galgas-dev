@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-# MAKEFILE for building "%PROJECT_NAME%" 32-bits command line tools for Mac OS X   *
+# MAKEFILE for building "PROJECT" 64-bits command line tools for Mac OS X   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%
-EXECUTABLE_DEBUG := %PROJECT_NAME%_debug
+EXECUTABLE := PROJECT64
+EXECUTABLE_DEBUG := PROJECT64_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -19,8 +19,8 @@ EXECUTABLE_DEBUG := %PROJECT_NAME%_debug
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-OBJECTS_DIR       := objects
-DEBUG_OBJECTS_DIR := debug_objects
+OBJECTS_DIR       := objects64
+DEBUG_OBJECTS_DIR := debug_objects64
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -52,7 +52,7 @@ include ../common_files_for_make/makefile.mke
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/macosx_i386_gcc_tools_64.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *

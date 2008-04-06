@@ -200,18 +200,18 @@ rule <galgas_component>
                               !importedProductionRulesList
                               !syntaxComponentName ;
     #--- Build nonterminal symbol map for grammar
-      foreach importedNonterminalSymbolsMap (@lstring ntSymbol @M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) :
+      foreach importedNonterminalSymbolsMap (@lstring ntSymbol @M_nonterminalSymbolAltsForGrammar importedAltSignaturesMap) do
         if [nonterminalSymbolsMapForGrammar hasKey ![ntSymbol string]] then
           @M_nonterminalSymbolAltsForGrammar altSignatureMap ;
           [nonterminalSymbolsMapForGrammar searchKey !ntSymbol ?altSignatureMap] ;
-          foreach altSignatureMap (@lstring altName @L_signature altSignature @lstring kReturnedEntity) :
+          foreach altSignatureMap (@lstring altName @L_signature altSignature @lstring kReturnedEntity) do
             @M_nonterminalSymbolAltsForGrammar temp := importedAltSignaturesMap ;
             @L_signature importedAltSignature ;
             @lstring importedReturnedType ;
             [temp searchKey !altName ?importedAltSignature ?importedReturnedType] ;
             checkSignature_ForGrammarComponent !importedAltSignature !altSignature ![ntSymbol location] ![altName location] ;
           end foreach ;
-          foreach importedAltSignaturesMap (@lstring importedAltName @L_signature importedAltSignature *) :
+          foreach importedAltSignaturesMap (@lstring importedAltName @L_signature importedAltSignature *) do
             if [importedAltName string] != "parse" then
               [altSignatureMap searchKey !importedAltName ?* ?*] ;
             end if ;
@@ -256,7 +256,7 @@ rule <galgas_component>
   @luint startSymbolIndex ;
   [nonterminalSymbolsMapForGrammar searchKeyGetID !startSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
 #--- Check signatures (added 8/13/2004)
-  foreach startSymbolAltMap (@lstring cstAltName @L_signature cstAltMap @lstring kReturnedEntity) :
+  foreach startSymbolAltMap (@lstring cstAltName @L_signature cstAltMap @lstring kReturnedEntity) do
     @L_signature altMap ;
     @lstring returnedEntity ;
     [grammarAltMap searchKey !cstAltName ?altMap ?returnedEntity] ;
@@ -265,7 +265,7 @@ rule <galgas_component>
 
     end if ;
   end foreach ;
-  foreach grammarAltMap (@lstring cstAltName ...) :
+  foreach grammarAltMap (@lstring cstAltName ...) do
     [startSymbolAltMap searchKey !cstAltName ?* ?*] ;
   end foreach ;
 #--- Analyze grammar

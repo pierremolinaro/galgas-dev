@@ -35,7 +35,7 @@ rule @semanticsComponentRoot
   !@typeList outTypeList
 :
 #--- Walk throught imported components
-  foreach mImportedSemanticsComponentSet (@string kComponentName) :
+  foreach mImportedSemanticsComponentSet (@string kComponentName) do
     if not [ioImportedComponentSet hasKey !kComponentName] then
       if kComponentName != [mSemanticsComponentName string] then
         @lstring sourceFilePath [new

@@ -173,7 +173,7 @@ rule <galgas_component>
   @M_optionComponents optionsComponentsMap ;
   if [ioGrammarComponentsMap count] == 1 then
     @lstring grammarKey [new !"" !here] ;
-    foreach ioGrammarComponentsMap (@lstring kKey 3*) :
+    foreach ioGrammarComponentsMap (@lstring kKey 3*) do
       grammarKey := kKey ;
     end foreach ;
     [ioGrammarComponentsMap searchKey

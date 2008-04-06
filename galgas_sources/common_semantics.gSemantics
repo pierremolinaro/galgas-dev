@@ -1941,7 +1941,7 @@ routine checkSignature_ForGrammarComponent
     error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   else
     foreach inFormalReferenceSignature (@formalArgumentPassingMode passingMode1 @lstring kType1),
-            inFormalTestedSignature  (@formalArgumentPassingMode passingMode2 @lstring kType2) :
+            inFormalTestedSignature  (@formalArgumentPassingMode passingMode2 @lstring kType2) do
       if passingMode1 != passingMode2 then
         error kType2 : "Prototype has " . [passingMode1 formalArgumentMessage] .
                        ", and " . [passingMode1 formalArgumentMessage] . " has been found" ;
@@ -2619,7 +2619,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     @AC_galgasType keyType := [@typeGalgas_lstring new] ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += !keyType ![@lstring new !"???" !here] ; # Unused second argument
-    foreach mNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) :
+    foreach mNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) do
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
@@ -2711,7 +2711,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
       ![@typeGalgas_lstring new]
       ![@formalArgumentPassingMode argumentOut]
     ] ;
-    foreach mMapAttributesList (@AC_galgasType kAttributType *) :
+    foreach mMapAttributesList (@AC_galgasType kAttributType *) do
       outReaderSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
     end foreach ;
   end method ;
@@ -3143,7 +3143,7 @@ routine verifierCompatibiliteSignatures
     error ouSignalerErreur : "one or more parameters missing" ;
   else 
     foreach signatureReference (@AC_galgasType attTypeG @formalArgumentPassingMode passingMode1),
-            signatureTestee (@AC_galgasType attTypeD @formalArgumentPassingMode passingMode2) :
+            signatureTestee (@AC_galgasType attTypeD @formalArgumentPassingMode passingMode2) do
       checkAssignmentTypesCompatibility
          !attTypeG
          !attTypeD
@@ -3932,7 +3932,7 @@ routine handleReaderCall
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
         @bool found := false ;
-        foreach [t mNonExternAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found :
+        foreach [t mNonExternAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
           outReturnedType := kAttributType ;
           found := [inReaderName string] == [kNomAttribut string] ;
         end foreach ;
@@ -3944,7 +3944,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @bool found := false ;
-      foreach [t mAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found :
+      foreach [t mAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
         outReturnedType := kAttributType ;
         found := [inReaderName string] == [kNomAttribut string] ;
       end foreach ;
@@ -4006,7 +4006,7 @@ routine importSemanticsComponent
   #--- Add Imported metamodels
     ioAlreadyImportedMetamodelComponents := ioAlreadyImportedMetamodelComponents | importedMetamodelComponents ;
   #--- Recursively import other semantics components
-    foreach importedSemanticsComponents (@string kKey) :
+    foreach importedSemanticsComponents (@string kKey) do
       importSemanticsComponent
         !?ioSemanticsComponentsMap
         !?ioMetamodelComponentMap
@@ -4018,13 +4018,13 @@ routine importSemanticsComponent
       ;
     end foreach ;
   #--- Add imported types
-    foreach modelMap (@lstring kKey @TypeModel kType) :
+    foreach modelMap (@lstring kKey @TypeModel kType) do
       if not [ioModelMap hasKey ![kKey string]] then
         [!?ioModelMap insertKey !kKey !kType] ;
       end if ;
     end foreach ;
   #--- Add actions
-    foreach actionMap (@lstring kKey @L_signature kSignature @bool kIsExtern) :
+    foreach actionMap (@lstring kKey @L_signature kSignature @bool kIsExtern) do
       if not [ioActionMap hasKey ![kKey string]] then
         [!?ioActionMap insertKey !kKey !kSignature !kIsExtern] ;
       end if ;

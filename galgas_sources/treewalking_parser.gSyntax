@@ -260,7 +260,7 @@ rule <parse_treewalking_document>
     ?allMetamodelClassMap
     !?semanticContext
   ;
-  foreach includedSemanticsComponents (@string kSemanticComponentName) :
+  foreach includedSemanticsComponents (@string kSemanticComponentName) do
     inclusionsForImplementationFile += !kSemanticComponentName . ".h" ;
   end foreach ;
 #--- Get metamodel root entity
@@ -275,7 +275,7 @@ rule <parse_treewalking_document>
        ?importedMetamodels
     ] ;
     @stringset superMetamodels [emptySet] ;
-    foreach importedMetamodels (@string kSuperMetamodelName) :
+    foreach importedMetamodels (@string kSuperMetamodelName) do
       performMetamodelInclusion
         !metamodelComponentMap
         ![@lstring new !kSuperMetamodelName !here]
@@ -337,7 +337,7 @@ rule <parse_treewalking_document>
   if inGenerateTreewalkingCode then
   #--- check if a class defines a routine, check a routine defined by a super class 
   #    should have the same signature
-    foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature *) :
+    foreach treewalkingRoutineHeaderMap (@lstring kKey @L_EXsignature kRoutineSignature *) do
       @uint entityID ;
       @string metamodelName ;
       [metamodelEntityMap searchKey !kKey ?6* ?metamodelName ?entityID] ;
@@ -412,7 +412,7 @@ rule <treewalking_routine>
     ?signatureForGrammarComponent
   ;
 #--- Add metamodel attributes as local constants
-  foreach allMetamodelPropertyMap (@lstring kKey @AC_galgasType kType) :
+  foreach allMetamodelPropertyMap (@lstring kKey @AC_galgasType kType) do
     cast kType :
     when >= @typeGalgas_singleReferenceEntity do
     when >= @typeGalgas_multipleReferenceEntity do
