@@ -173,14 +173,6 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ".mValue ++ ;\n" ;
   }
   ioCppFile << "}\n" ;
-//--- Generate reset instructions
-/*  enumeratedVariable = mForeachEnumerationList.firstObject () ;
-  while (enumeratedVariable != NULL) {
-    macroValidPointer (enumeratedVariable) ;
-    ioCppFile << "enumerator_" << enumeratedVariable->mLocationOffset.location ()
-              << ".reset () ;\n" ;
-    enumeratedVariable = enumeratedVariable->nextObject () ;
-  }*/
   ioCppFile.incIndentation (-2) ;
   ioCppFile << "}\n" ;
 }
