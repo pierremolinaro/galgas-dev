@@ -189,32 +189,28 @@ rule <galgas_component>
     $;$ ;
   or
   end select ;
-#--- Prologue clause
+#--- prologue routine
+  $routine$ ;
+  ${$ ;
   @typeInstructionList prologueInstructionList [emptyList] ;
-  select
-    warning here:"in GALGAS 1.7.2 and later, a 'routine {}' declaration is required here" ;
-  or
-    $routine$ ;
-    ${$ ;
-    @typeVariablesMap variablesMap [emptyMap] ;
-    @typeTableEnAvant tableEnAvant [emptyMap] ;
-    @entityToImplementMap metamodelEntityMap [emptyMap] ;
-    @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
-    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
-    <semantic_instructions_list>
-      !treewalkingRoutineHeaderMap
-      !tableEnAvant
-      !componentEntitiesMap
-      !optionsComponentsMap
-      !?variablesMap
-      !?prologueInstructionList
-      !currentTreewalkingRoutinePropertyMap
-      !metamodelEntityMap
-      !ioTreewalkingComponentMap
-      !ioSemanticContext
-    ;
-    $}$ ;
-  end select ;
+  @typeVariablesMap prologueVariablesMap [emptyMap] ;
+  @typeTableEnAvant prologueTableEnAvant [emptyMap] ;
+  @entityToImplementMap prologueMetamodelEntityMap [emptyMap] ;
+  @entityPropertyMap prologueTreewalkingRoutinePropertyMap [emptyMap] ;
+  @treewalkingRoutineHeaderMap prologueRoutineHeaderMap [emptyMap] ;
+  <semantic_instructions_list>
+    !prologueRoutineHeaderMap
+    !prologueTableEnAvant
+    !componentEntitiesMap
+    !optionsComponentsMap
+    !?prologueVariablesMap
+    !?prologueInstructionList
+    !prologueTreewalkingRoutinePropertyMap
+    !prologueMetamodelEntityMap
+    !ioTreewalkingComponentMap
+    !ioSemanticContext
+  ;
+  $}$ ;
 #--- WHEN clauses
   @ruleDescriptorForProgramList ruleDescriptorForProgramList [emptyList] ;
   $when$ ;
@@ -289,32 +285,28 @@ rule <galgas_component>
   while
     $when$ ;
   end repeat ;
-#--- end clause
+#--- epilogue routine
   @typeInstructionList epilogueInstructionList [emptyList] ;
-  select
-    warning here:"in GALGAS 1.7.2 and later, a 'routine {}' declaration is required here" ;
-  or
-    $routine$ ;
-    ${$ ;
-    @typeVariablesMap variablesMap [emptyMap] ;
-    @typeTableEnAvant tableEnAvant [emptyMap] ;
-    @entityToImplementMap metamodelEntityMap [emptyMap] ;
-    @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
-    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
-    <semantic_instructions_list>
-      !treewalkingRoutineHeaderMap
-      !tableEnAvant
-      !componentEntitiesMap
-      !optionsComponentsMap
-      !?variablesMap
-      !?epilogueInstructionList
-      !currentTreewalkingRoutinePropertyMap
-      !metamodelEntityMap
-      !ioTreewalkingComponentMap
-      !ioSemanticContext
-    ;
-    $}$ ;
-  end select ;
+  $routine$ ;
+  ${$ ;
+  @typeVariablesMap variablesMap [emptyMap] ;
+  @typeTableEnAvant epilogueTableEnAvant [emptyMap] ;
+  @entityToImplementMap metamodelEntityMap [emptyMap] ;
+  @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
+  @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+  <semantic_instructions_list>
+    !treewalkingRoutineHeaderMap
+    !epilogueTableEnAvant
+    !componentEntitiesMap
+    !optionsComponentsMap
+    !?variablesMap
+    !?epilogueInstructionList
+    !currentTreewalkingRoutinePropertyMap
+    !metamodelEntityMap
+    !ioTreewalkingComponentMap
+    !ioSemanticContext
+  ;
+  $}$ ;
 #--- Engendrer le programme principal
   generatePRGM
     !nomPRGMprincipal
@@ -352,14 +344,11 @@ label importLexique
     $;$ ;
   or
   end select ;
-#--- root clauses
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- prologue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- when clauses
   $when$ ;
   repeat
@@ -380,14 +369,11 @@ label importLexique
   while
     $when$ ;
   end repeat ;
-#--- end clause
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- epilogue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- End program
   $end$ ;
   $program$ ;
@@ -418,14 +404,11 @@ label importSyntax
     $;$ ;
   or
   end select ;
-#--- root clauses
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- prologue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- when clauses
   $when$ ;
   repeat
@@ -446,14 +429,11 @@ label importSyntax
   while
     $when$ ;
   end repeat ;
-#--- end clause
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- epilogue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- End program
   $end$ ;
   $program$ ;
@@ -484,14 +464,11 @@ label importSemantics
     $;$ ;
   or
   end select ;
-#--- root clauses
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- prologue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- when clauses
   $when$ ;
   repeat
@@ -512,14 +489,11 @@ label importSemantics
   while
     $when$ ;
   end repeat ;
-#--- end clause
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- epilogue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- End program
   $end$ ;
   $program$ ;
@@ -551,14 +525,11 @@ label importGrammarForSemantics
     $;$ ;
   or
   end select ;
-#--- root clauses
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- prologue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- when clauses
   $when$ ;
   repeat
@@ -579,14 +550,11 @@ label importGrammarForSemantics
   while
     $when$ ;
   end repeat ;
-#--- end clause
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- epilogue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- End program
   $end$ ;
   $program$ ;
@@ -614,14 +582,11 @@ label importOptions
     $;$ ;
   or
   end select ;
-#--- root clauses
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- prologue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- when clauses
   $when$ ;
   repeat
@@ -642,14 +607,11 @@ label importOptions
   while
     $when$ ;
   end repeat ;
-#--- end clause
-  select
-  or
-    $routine$ ;
-    ${$ ;
-    <semantic_instructions_list> parse ;
-    $}$ ;
-  end select ;
+#--- epilogue routine
+  $routine$ ;
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 #--- End program
   $end$ ;
   $program$ ;

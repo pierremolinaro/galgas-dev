@@ -31,14 +31,14 @@ rule <start_symbol> :
   if undefinedClassCount == 1 then
     @string s := "1 class is undefined:" ;
     @stringlist undefinedClasses := [classMap unsolvedIndexKeyStringList] ;
-    foreach undefinedClasses (@string kClassName) :
+    foreach undefinedClasses (@string kClassName) do
       s.= "\n- " . kClassName ;
     end foreach ;
     error here: s ;
   elsif undefinedClassCount > 1 then
     @string s := [undefinedClassCount string] . " classes are undefined:" ;
     @stringlist undefinedClasses := [classMap unsolvedIndexKeyStringList] ;
-    foreach undefinedClasses (@string kClassName) :
+    foreach undefinedClasses (@string kClassName) do
       s.= "\n- " . kClassName ;
     end foreach ;
     error here: s ;
@@ -47,7 +47,7 @@ rule <start_symbol> :
 #    build list of classes to generate
   @classesToGenerateList classesToGenerateList [emptySortedList] ;
   if noError then
-    foreach classMap (@lstring kClassName @classMapIndex kSuperClassIndex) :
+    foreach classMap (@lstring kClassName @classMapIndex kSuperClassIndex) do
       @string classPath := [kClassName string] ;
       @stringset superClassSet [setWithString ![kClassName string]] ;
       @classMapIndex superClassIndex := kSuperClassIndex ;
@@ -76,7 +76,7 @@ rule <start_symbol> :
 #--- Generate code
   if noError then
     @string codeToGenerate := "" ;
-    foreach classesToGenerateList (@lstring kClassName @classMapIndex kSuperClassIndex *) :
+    foreach classesToGenerateList (@lstring kClassName @classMapIndex kSuperClassIndex *) do
       codeToGenerate .= "class " ;
       codeToGenerate .= [kClassName string] ;
       if [kSuperClassIndex isRegular] then

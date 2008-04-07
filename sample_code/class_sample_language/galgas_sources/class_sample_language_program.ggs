@@ -1,13 +1,16 @@
 program class_sample_language_program "version 1.0.0":
 import grammar class_sample_language_grammar in "class_sample_language_grammar.ggs" ;
-#--- max error and warning count
-error 100 ;
-warning 100 ;
+
+routine {
+}
 
 when . "class_sample_language"
 message "an '.class_sample_language' source file"
 ??@lstring inSourceFile {
   grammar class_sample_language_grammar in inSourceFile;
+}
+
+routine {
 }
 
 end program ;
