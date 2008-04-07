@@ -1,14 +1,16 @@
 program SLR_expression_program "version 1.0.0":
 import grammar SLR_expression_grammar in "SLR_expression_grammar.ggs" ;
-#--- max error and warning count
-error 100 ;
-warning 100 ;
 
+routine {
+}
 
 when . "SLR_expression"
 message "an '.SLR_expression' source file"
 ??@lstring inSourceFile {
   grammar SLR_expression_grammar in inSourceFile;
+}
+
+routine {
 }
 
 end program ;

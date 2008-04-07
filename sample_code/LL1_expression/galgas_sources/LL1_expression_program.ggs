@@ -1,13 +1,16 @@
 program LL1_expression_program "version 1.0.0":
 import grammar LL1_expression_grammar in "LL1_expression_grammar.ggs" ;
-#--- max error and warning count
-error 100 ;
-warning 100 ;
+
+routine {
+}
 
 when . "LL1_expression"
 message "an '.LL1_expression' source file"
 ??@lstring inSourceFile {
   grammar LL1_expression_grammar in inSourceFile;
+}
+
+routine {
 }
 
 end program ;
