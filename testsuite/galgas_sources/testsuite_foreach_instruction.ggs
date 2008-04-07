@@ -9,11 +9,11 @@ routine testsuite_foreach_instruction :
   message "--- begin of foreach instruction test 1\n" ;
   foreach < strList (@string s)
   before
-    message "  before\n" ;
+    message "  before (element '" . s . "')\n" ;
   do
     message "  do '" . s . "'\n" ;
   between
-    message "  between\n" ;
+    message "  between (element '" . s . "')\n" ;
   after
     message "  after\n" ;
   end foreach ;
@@ -34,12 +34,24 @@ routine testsuite_foreach_instruction :
   foreach < strList (@string s)
   while n < 2
   before
-    message "  before\n" ;
+    message "  before (element '" . s . "')\n" ;
   do
     message "  do '" . s . "', n: " . [n string] . "\n" ;
     n ++ ;
   between
-    message "  between\n" ;
+    message "  between (element '" . s . "')\n" ;
+  after
+    message "  after\n" ;
+  end foreach ;
+  message "--- begin of foreach instruction test 4\n" ;
+  foreach < strList (@string s)
+  while s != "c"
+  before
+    message "  before (element '" . s . "')\n" ;
+  do
+    message "  do '" . s . "\n" ;
+  between
+    message "  between (element '" . s . "')\n" ;
   after
     message "  after\n" ;
   end foreach ;

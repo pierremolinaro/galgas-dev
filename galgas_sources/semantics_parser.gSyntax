@@ -308,7 +308,6 @@ nonterminal <constant_while_before_in_foreach_instruction>
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@semanticContext inSemanticContext
-  !@typeExpression outWhileExpression
   !@typeInstructionList out_before_instructionList
 label secondPhase
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
@@ -321,6 +320,7 @@ label secondPhase
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@semanticContext inSemanticContext
   !@foreachEnumerationList outForeachEnumerationList
+  !@typeExpression outWhileExpression
   !@typeInstructionList out_do_instructionList
 label parse
 ;
@@ -4395,7 +4395,6 @@ rule <constant_while_before_in_foreach_instruction>
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@semanticContext inSemanticContext
-  !@typeExpression outWhileExpression
   !@typeInstructionList out_before_instructionList
 :
 #--- First phase: handle while expression and before instructions
@@ -4416,19 +4415,9 @@ rule <constant_while_before_in_foreach_instruction>
   end repeat ;
 #--- While expression
   select
-    outWhileExpression := [@typeTrueBool new] ;
   or
     $while$ ;
-    @AC_galgasType resultType ;
-    <expression>
-      !ioComponentSemanticsEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-      ?outWhileExpression
-      ?resultType
-     ;
-  @typeGalgas_bool b := (cast resultType if >= @typeGalgas_bool else error here) ;
+    <expression> parse ;
   end select ;
 #--- Before instruction list
   out_before_instructionList := [@typeInstructionList emptyList] ;
@@ -4464,6 +4453,7 @@ label secondPhase
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@semanticContext inSemanticContext
   !@foreachEnumerationList outForeachEnumerationList
+  !@typeExpression outWhileExpression
   !@typeInstructionList out_do_instructionList
 :
   block ioVariablesMap.repeatPart () :
@@ -4516,11 +4506,20 @@ label secondPhase
     while
       $,$ ;
     end repeat ;
-  #--- While expression
     select
+      outWhileExpression := [@typeTrueBool new] ;
     or
       $while$ ;
-      <expression> parse ;
+      @AC_galgasType resultType ;
+      <expression>
+        !ioComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !inSemanticContext
+        !?ioVariablesMap
+        ?outWhileExpression
+        ?resultType
+       ;
+    @typeGalgas_bool b := (cast resultType if >= @typeGalgas_bool else error here) ;
     end select ;
   #--- Before instruction list
     select
@@ -4579,7 +4578,6 @@ rule <semantic_instruction>
         !inMetamodelEntityMap
         !inTreewalkingComponentMap
         !inSemanticContext
-        ?whileExpression
         ?before_instructionList
       ;
     rewind
@@ -4594,110 +4592,10 @@ rule <semantic_instruction>
         !inTreewalkingComponentMap
         !inSemanticContext
         ?foreachEnumerationList
+        ?whileExpression
         ?do_instructionList
       ;
     end parse ;
-
-
-#    block ioVariablesMap.repeatPart () :
-#    #--- Parse enumerated variables
-#      repeat
-#        @location magicNumber := here ;
-#      #--- Ascending or descending ?
-#        @bool ascending ;
-#        select
-#          ascending := true ;
-#        or
-#          $<$ ;
-#          ascending := true ;
-#        or
-#          $>$ ;
-#          ascending := false ;
-#        end select ;
-#      #--- Source expression
-#        @typeExpression sourceExpression ;
-#        @AC_galgasType sourceExpressionType ;
-#        <expression>
-#          !ioComponentSemanticsEntitiesMap
-#          !inOptionsComponentsMapForUse
-#          !inSemanticContext
-#          !?ioVariablesMap
-#          ?sourceExpression
-#          ?sourceExpressionType
-#        ;
-#      #--- Check this variable can be enumerated
-#        @typeListeAttributsSemantiques formalEnumerationList ;
-#        @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
-#        [sourceExpressionType acceptForeachInstruction
-#          !magicNumber
-#          ?formalEnumerationList
-#          ?localConstantBuildStyleEnum
-#        ] ;
-#      #--- Extract type name
-#        @string typeName ;
-#        [sourceExpressionType getTypeName ?typeName] ;
-#      #--- Parse effective input attribute list
-#        <parse_effective_input_parameters_list>
-#          !?ioVariablesMap
-#          !formalEnumerationList
-#          !magicNumber
-#          !localConstantBuildStyleEnum
-#          ?*
-#        ;
-#        foreachEnumerationList += !sourceExpression !magicNumber !typeName !ascending ;
-#      while
-#        $,$ ;
-#      end repeat ;
-#    #--- While expression
-#      select
-#        whileExpression := [@typeTrueBool new] ;
-#      or
-#        $while$ ;
-#        @AC_galgasType resultType ;
-#        <expression>
-#          !ioComponentSemanticsEntitiesMap
-#          !inOptionsComponentsMapForUse
-#          !inSemanticContext
-#          !?ioVariablesMap
-#          ?whileExpression
-#          ?resultType
-#         ;
-#      end select ;
-#    #--- Before instruction list
-##      block ioVariablesMap.repeatPart () :
-##        select
-##        or
-##          $before$ ;
-##          <semantic_instructions_list_no_verif>
-##            !inTreewalkingRoutineHeaderMap
-##            !inTableEnAvant
-##            !ioComponentSemanticsEntitiesMap
-##            !inOptionsComponentsMapForUse
-##            !?ioVariablesMap
-##            !?before_instructionList
-##            !inCurrentTreewalkingRoutinePropertyMap
-##            !inMetamodelEntityMap
-##            !inTreewalkingComponentMap
-##            !inSemanticContext
-##          ;
-##        end select ;
-##      end block (!here) ;
-#    #--- Repeated instruction list
-#      $do$ ;
-#    #--- Liste d'instructions
-#      <semantic_instructions_list_no_verif>
-#        !inTreewalkingRoutineHeaderMap
-#        !inTableEnAvant
-#        !ioComponentSemanticsEntitiesMap
-#        !inOptionsComponentsMapForUse
-#        !?ioVariablesMap
-#        !?do_instructionList
-#        !inCurrentTreewalkingRoutinePropertyMap
-#        !inMetamodelEntityMap
-#        !inTreewalkingComponentMap
-#        !inSemanticContext
-#      ;
-#    end block (!here) ;
   #--- Between instruction list
    @typeInstructionList between_instructionList [emptyList] ;
     block ioVariablesMap.repeatPart () :
