@@ -9,11 +9,11 @@ routine testsuite_foreach_instruction :
   message "--- begin of foreach instruction test 1\n" ;
   foreach < strList (@string s)
   before
-    message "  before (element '" . s . "')\n" ;
+    message "  before\n" ;
   do
     message "  do '" . s . "'\n" ;
   between
-    message "  between (element '" . s . "')\n" ;
+    message "  between\n" ;
   after
     message "  after\n" ;
   end foreach ;
@@ -34,12 +34,12 @@ routine testsuite_foreach_instruction :
   foreach < strList (@string s)
   while n < 2
   before
-    message "  before (element '" . s . "')\n" ;
+    message "  before\n" ;
   do
     message "  do '" . s . "', n: " . [n string] . "\n" ;
     n ++ ;
   between
-    message "  between (element '" . s . "')\n" ;
+    message "  between\n" ;
   after
     message "  after\n" ;
   end foreach ;
@@ -47,13 +47,31 @@ routine testsuite_foreach_instruction :
   foreach < strList (@string s)
   while s != "c"
   before
-    message "  before (element '" . s . "')\n" ;
+    message "  before\n" ;
   do
-    message "  do '" . s . "\n" ;
+    message "  do '" . s . "'\n" ;
   between
-    message "  between (element '" . s . "')\n" ;
+    message "  between\n" ;
   after
     message "  after\n" ;
+  end foreach ;
+  message "--- begin of foreach instruction test 5\n" ;
+  foreach < strList (@string s)
+  :index
+  before
+    message "  before (index: " . [index string] . ")\n" ;
+  do
+    message "  do '" . s . "' (index: " . [index string] . ")\n" ;
+  between
+    message "  between (index: " . [index string] . ")\n" ;
+  after
+    message "  after (index: " . [index string] . ")\n" ;
+  end foreach ;
+  message "--- begin of foreach instruction test 6\n" ;
+  foreach < strList (@string s)
+  :index
+  do
+    message "  do '" . s . "' (index: " . [index string] . ")\n" ;
   end foreach ;
 end routine ;
 

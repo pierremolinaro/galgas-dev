@@ -1065,6 +1065,7 @@ list @foreachEnumerationList  {
 
 class @typeForeachInstruction extends @typeInstruction {
   @foreachEnumerationList mForeachEnumerationList ;
+  @typeCplusPlusName mIndexVariable ;
   @typeExpression mWhileExpression ;
   @typeInstructionList mBeforeInstructionList ;
   @typeInstructionList mDoInstructionList ;

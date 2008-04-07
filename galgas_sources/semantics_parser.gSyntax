@@ -308,6 +308,7 @@ nonterminal <constant_while_before_in_foreach_instruction>
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@semanticContext inSemanticContext
+  !@typeCplusPlusName outIndexVariable
   !@typeInstructionList out_before_instructionList
 label secondPhase
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
@@ -4395,9 +4396,11 @@ rule <constant_while_before_in_foreach_instruction>
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@semanticContext inSemanticContext
+  !@typeCplusPlusName outIndexVariable
   !@typeInstructionList out_before_instructionList
 :
 #--- First phase: handle while expression and before instructions
+  block ioVariablesMap.repeatPart () :
 #--- Parse enumerated variables
   repeat
     select
@@ -4413,6 +4416,20 @@ rule <constant_while_before_in_foreach_instruction>
   while
     $,$ ;
   end repeat ;
+#--- Optional index
+  select
+    outIndexVariable := [@typeNullName new !here] ;
+  or
+    $:$ ;
+    @lstring indexVariableName ;
+    $identifier$ ? indexVariableName ;
+    outIndexVariable := [@typeAutomaticName new ![indexVariableName location] ![indexVariableName string]] ;
+    [!?ioVariablesMap insertUsedConstInArgument
+       !indexVariableName
+       ![@typeGalgas_uint new]
+       !outIndexVariable
+    ] ;
+  end select ;
 #--- While expression
   select
   or
@@ -4421,7 +4438,6 @@ rule <constant_while_before_in_foreach_instruction>
   end select ;
 #--- Before instruction list
   out_before_instructionList := [@typeInstructionList emptyList] ;
-  block ioVariablesMap.repeatPart () :
     select
     or
       $before$ ;
@@ -4506,6 +4522,19 @@ label secondPhase
     while
       $,$ ;
     end repeat ;
+  #--- Optional index
+    select
+    or
+      $:$ ;
+      @lstring indexVariableName ;
+      $identifier$ ? indexVariableName ;
+      @typeCplusPlusName indexVariable := [@typeAutomaticName new ![indexVariableName location] ![indexVariableName string]] ;
+      [!?ioVariablesMap insertUsedConstInArgument
+         !indexVariableName
+         ![@typeGalgas_uint new]
+         !indexVariable
+      ] ;
+    end select ;
     select
       outWhileExpression := [@typeTrueBool new] ;
     or
@@ -4567,6 +4596,7 @@ rule <semantic_instruction>
     @typeExpression whileExpression ;
     @foreachEnumerationList foreachEnumerationList ;
     @typeInstructionList do_instructionList ;
+    @typeCplusPlusName indexVariable ;
     parse do
       <constant_while_before_in_foreach_instruction>
         !inTreewalkingRoutineHeaderMap
@@ -4578,6 +4608,7 @@ rule <semantic_instruction>
         !inMetamodelEntityMap
         !inTreewalkingComponentMap
         !inSemanticContext
+        ?indexVariable
         ?before_instructionList
       ;
     rewind
@@ -4597,10 +4628,19 @@ rule <semantic_instruction>
       ;
     end parse ;
   #--- Between instruction list
-   @typeInstructionList between_instructionList [emptyList] ;
+    @typeInstructionList between_instructionList [emptyList] ;
     block ioVariablesMap.repeatPart () :
       select
       or
+        cast indexVariable :
+        when == @typeAutomaticName a do
+          [!?ioVariablesMap insertUsedConstInArgument
+            ![@lstring new ![a mName] ![a mVariableLocation]]
+            ![@typeGalgas_uint new]
+            !indexVariable
+          ] ;
+        else
+        end cast ;
         $between$ ;
         <semantic_instructions_list_no_verif>
           !inTreewalkingRoutineHeaderMap
@@ -4621,6 +4661,15 @@ rule <semantic_instruction>
     block ioVariablesMap.repeatPart () :
       select
       or
+        cast indexVariable :
+        when == @typeAutomaticName a do
+          [!?ioVariablesMap insertUsedConstInArgument
+            ![@lstring new ![a mName] ![a mVariableLocation]]
+            ![@typeGalgas_uint new]
+            !indexVariable
+          ] ;
+        else
+        end cast ;
         $after$ ;
         <semantic_instructions_list_no_verif>
           !inTreewalkingRoutineHeaderMap
@@ -4639,6 +4688,7 @@ rule <semantic_instruction>
   end block () ;
   instruction := [@typeForeachInstruction new
     !foreachEnumerationList
+    !indexVariable
     !whileExpression
     !before_instructionList
     !do_instructionList
