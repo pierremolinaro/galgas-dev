@@ -118,6 +118,14 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
                            const C_String & inTargetFileName,
 													 sint32 & ioPrototypeIndex,
 													 const bool inGenerateDebug) const {
+  ioCppFile << "{\n" ;
+  ioCppFile.incIndentation (+2) ;
+//--- Generate index variable declaration, and initialization to zero
+  if (dynamic_cast <cPtr_typeNullName *> (mIndexVariable (HERE)) == NULL) {
+    ioCppFile << "  GGS_uint " ;
+    mIndexVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << " (true, 0) ;\n" ;
+  }
   GGS_foreachEnumerationList::cElement * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
@@ -158,15 +166,23 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   generateInstructionListForList (mDoInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+//--- Generate index variable declaration, and initialization to zero
+  if (dynamic_cast <cPtr_typeNullName *> (mIndexVariable (HERE)) == NULL) {
+    ioCppFile << "  " ;
+    mIndexVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".mValue ++ ;\n" ;
+  }
   ioCppFile << "}\n" ;
 //--- Generate reset instructions
-  enumeratedVariable = mForeachEnumerationList.firstObject () ;
+/*  enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
     ioCppFile << "enumerator_" << enumeratedVariable->mLocationOffset.location ()
               << ".reset () ;\n" ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
-  }
+  }*/
+  ioCppFile.incIndentation (-2) ;
+  ioCppFile << "}\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -176,6 +192,8 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
                                 const C_String & inTargetFileName,
 													      sint32 & ioPrototypeIndex,
 													      const bool inGenerateDebug) const {
+  ioCppFile << "{\n" ;
+  ioCppFile.incIndentation (+2) ;
 //--- Declare enumerators
   GGS_foreachEnumerationList::cElement * enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while (enumeratedVariable != NULL) {
@@ -188,15 +206,25 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
               << ") ;\n" ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
+//--- Declare pointers on current elements, and goto first elements
+  enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  while (enumeratedVariable != NULL) {
+    macroValidPointer (enumeratedVariable) ;
+    ioCppFile << "const GGS_" << enumeratedVariable->mCppTypeName
+              << "::cElement * operand_" << enumeratedVariable->mLocationOffset.location ()
+              << " = (GGS_" << enumeratedVariable->mCppTypeName
+              << "::cElement *) enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject () ;\n" ;
+    enumeratedVariable = enumeratedVariable->nextObject () ;
+  }
 //--- Test if enumerated objects have element, and if while expression is initially true
 	enumeratedVariable = mForeachEnumerationList.firstObject () ;
   macroValidPointer (enumeratedVariable) ;
 	const sint32 locationForLoopVar = enumeratedVariable->mLocationOffset.location () ;
-  ioCppFile << "if ((enumerator_" << enumeratedVariable->mLocationOffset.location () << ".count () > 0)" ;
+  ioCppFile << "if ((operand_" << enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
   enumeratedVariable = enumeratedVariable->nextObject () ;
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
-    ioCppFile << " && (enumerator_" << enumeratedVariable->mLocationOffset.location () << ".count () > 0)" ;
+    ioCppFile << " && (operand_" << enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
     enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   if ((dynamic_cast <cPtr_typeTrueBool *> (mWhileExpression (HERE))) == NULL) {
@@ -205,18 +233,14 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
     ioCppFile << ".isBuiltAndTrue ())" ;    
   }
   ioCppFile << ") {\n" ;
+//--- Generate index variable declaration, and initialization to zero
+  if (dynamic_cast <cPtr_typeNullName *> (mIndexVariable (HERE)) == NULL) {
+    ioCppFile << "  GGS_uint " ;
+    mIndexVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << " (true, 0) ;\n" ;
+  }
 //--- Generate before instructions
   generateInstructionListForList (mBeforeInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
-//--- Declare pointers on current elements, and goto first elements
-  enumeratedVariable = mForeachEnumerationList.firstObject () ;
-  while (enumeratedVariable != NULL) {
-    macroValidPointer (enumeratedVariable) ;
-    ioCppFile << "  const GGS_" << enumeratedVariable->mCppTypeName
-              << "::cElement * operand_" << enumeratedVariable->mLocationOffset.location ()
-              << " = (GGS_" << enumeratedVariable->mCppTypeName
-              << "::cElement *) enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject () ;\n" ;
-    enumeratedVariable = enumeratedVariable->nextObject () ;
-  }
   ioCppFile << "  bool _foreach_loop_" << locationForLoopVar << " ;\n"
 	             "  do{\n" ;
   ioCppFile.incIndentation (+2) ;
@@ -229,6 +253,12 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   }
 //--- Do instructions
   generateInstructionListForList (mDoInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
+//--- Generate index variable declaration, and initialization to zero
+  if (dynamic_cast <cPtr_typeNullName *> (mIndexVariable (HERE)) == NULL) {
+    ioCppFile << "  " ;
+    mIndexVariable (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << ".mValue ++ ;\n" ;
+  }
 //--- Goto next elements
   enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while (enumeratedVariable != NULL) {
@@ -266,14 +296,8 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
 //--- After instructions
   generateInstructionListForList (mAfterInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
   ioCppFile << "}\n" ;
-//--- Generate reset instructions
-  enumeratedVariable = mForeachEnumerationList.firstObject () ;
-  while (enumeratedVariable != NULL) {
-    macroValidPointer (enumeratedVariable) ;
-    ioCppFile << "enumerator_" << enumeratedVariable->mLocationOffset.location ()
-              << ".reset () ;\n" ;
-    enumeratedVariable = enumeratedVariable->nextObject () ;
-  }
+  ioCppFile.incIndentation (-2) ;
+  ioCppFile << "}\n" ;
 }
 
 //---------------------------------------------------------------------------*

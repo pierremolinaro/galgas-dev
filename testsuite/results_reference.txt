@@ -15,3 +15,24 @@
   between
   do 'b', n: 1
   after
+--- begin of foreach instruction test 4
+  before
+  do 'a'
+  between
+  do 'b'
+  after
+--- begin of foreach instruction test 5
+  before (index: 0)
+  do 'a' (index: 0)
+  between (index: 1)
+  do 'b' (index: 1)
+  between (index: 2)
+  do 'c' (index: 2)
+  between (index: 3)
+  do 'd' (index: 3)
+  after (index: 4)
+--- begin of foreach instruction test 6
+  do 'a' (index: 0)
+  do 'b' (index: 1)
+  do 'c' (index: 2)
+  do 'd' (index: 3)

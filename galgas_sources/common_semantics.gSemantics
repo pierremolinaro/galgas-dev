@@ -267,7 +267,6 @@ map @enumConstantMap {
 
 map @enumUsedConstantMap {
   insert insertKey error message "the '%K' constant is already used in %L" ;
-#  search searchKey error message "the '%K' constant is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
