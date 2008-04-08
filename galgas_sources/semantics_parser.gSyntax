@@ -1792,7 +1792,6 @@ label importSemantics
       or
         @lstring messageName ;
         $identifier$ ? messageName ;
-        # warning messageName:"old class feature" ;
       #--- Chaine definissant le message d'erreur
         @lstring messageText ;
         $literal_string$ ? messageText ;
@@ -2021,12 +2020,7 @@ rule <non_abstract_method>
   ??@string inClassMessage
   ??@semanticContext inSemanticContext
 :
-  select
-    $method$ ;
-  or
-    $reader$ ;
-    warning here: "old syntax: from GALGAS 1.5.1, use 'method' instead of 'reader'" ;
-  end select ;
+  $method$ ;
   @lstring methodName ;
   @typeInstructionList instructionsList ;
   @L_EXsignature methodSignature ;
@@ -2054,12 +2048,7 @@ rule <non_abstract_method>
   [!?tableDesMethodes insertKey !methodName !methodSignature] ;
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
   $end$ ;
-  select
-    $method$ ;
-  or
-    $reader$ ;
-    warning here: "old syntax: from GALGAS 1.5.1, use 'method' instead of 'reader'" ;
-  end select ;
+  $method$ ;
   $;$ ;
 end rule ;
 
@@ -2083,12 +2072,7 @@ rule <overrided_method>
   ??@semanticContext inSemanticContext
 :
   $override$ ;
-  select
-    $method$ ;
-  or
-    $reader$ ;
-    warning here: "old syntax: from GALGAS 1.5.1, use 'method' instead of 'reader'" ;
-  end select ;
+  $method$ ;
   @lstring methodName ;
   @typeInstructionList instructionsList ;
   @L_EXsignature methodSignature ;
@@ -2124,12 +2108,7 @@ rule <overrided_method>
 #--- Insert reader into reader table
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
   $end$ ;
-  select
-    $method$ ;
-  or
-    $reader$ ;
-    warning here: "old syntax: from GALGAS 1.5.1, use 'method' instead of 'reader'" ;
-  end select ;
+  $method$ ;
   $;$ ;
 end rule ;
 
@@ -3017,7 +2996,6 @@ rule <extract_instruction>
   warning here:"simple extract instruction is obsolete: use cast expression instead" ;
 #--- Nom de la classe pour la conversion
   $->$ ;
-  # warning here:"simple extract instruction is obsolete" ;
   @lstring nomClasse ;
   $type_name$ ? nomClasse ;
 #--- Obtenir les caracteristiques de la classe nommee
