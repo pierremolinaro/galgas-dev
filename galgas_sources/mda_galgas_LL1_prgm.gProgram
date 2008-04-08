@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
+program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION" :
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;

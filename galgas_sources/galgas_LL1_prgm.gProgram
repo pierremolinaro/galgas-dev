@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_LL1_prgm "version GALGAS_BETA_VERSION (LL(1) grammar)" :
+program galgas_LL1_prgm "version GALGAS_BETA_VERSION" :
 
 #---------------------------------------------------------------------------*
 
