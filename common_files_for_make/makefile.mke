@@ -15,6 +15,7 @@ endif
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
 SOURCES_DIR += ../hand_coded_sources
+SOURCES_DIR += ../../libpm/expat
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -24,6 +25,8 @@ SOURCES_DIR += ../hand_coded_sources
 
 include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke
 
+C_COMPILER_OPTIONS += -fexceptions -DHAVE_EXPAT_CONFIG_H
+
 #---------------------------------------------------------------*
 #                                                               *
 #     Source files names list (without their actual path)       *
@@ -31,6 +34,14 @@ include $(LIB_PM_PATH)/included_makefiles/default_build_options.mke
 #---------------------------------------------------------------*
 
 SOURCES :=
+
+SOURCES += xmlparse.c
+SOURCES += xmltok.c
+SOURCES += xmlrole.c
+SOURCES += xmlwf.c
+SOURCES += xmlfile.c
+SOURCES += codepage.c
+SOURCES += pm_filemap.c
 
 #--- Files from libpm --------------------
 include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke
