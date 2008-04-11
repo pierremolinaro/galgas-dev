@@ -27,6 +27,12 @@ nonterminal <lexique_component_start_symbol>
   !@templateInstructionList outResultingInstructionList
 ;
 
+nonterminal <template_instruction>
+  ?!@typeVariablesMap ioTemplateVariableMap
+  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ?!@templateInstructionList ioResultingInstructionList
+;
+
 #---------------------------------------------------------------------------*
 
 routine enterTemplateString
@@ -40,9 +46,25 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexique_component_start_symbol>
+rule <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ?!@templateInstructionList ioResultingInstructionList
+:
+  @lstring parameterName ;
+  $identifier$ ? parameterName ;
+  @AC_galgasType type ;
+  @typeCplusPlusName cppName ;
+  [!?ioTemplateVariableMap searchForReadOnlyAccess !parameterName ?type ?cppName] ;
+  @typeGalgas_string x := (cast type if >= @typeGalgas_string else error parameterName) ;
+  ioResultingInstructionList += ![@templateInstructionConstant new !cppName] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <lexique_component_start_symbol>
+  ?!@typeVariablesMap ioTemplateVariableMap
+  ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   !@templateInstructionList outResultingInstructionList
 :
   outResultingInstructionList := [@templateInstructionList emptyList] ;
@@ -50,13 +72,11 @@ rule <lexique_component_start_symbol>
     enterTemplateString !?outResultingInstructionList ;
     repeat
     while
-      @lstring parameterName ;
-      $identifier$ ? parameterName ;
-      @AC_galgasType type ;
-      @typeCplusPlusName cppName ;
-      [!?ioTemplateVariableMap searchForReadOnlyAccess !parameterName ?type ?cppName] ;
-      @typeGalgas_string x := (cast type if >= @typeGalgas_string else error parameterName) ;
-      outResultingInstructionList += ![@templateInstructionConstant new !cppName] ;
+      <template_instruction>
+        !?ioTemplateVariableMap
+        !inComponentSemanticsEntitiesMap
+        !?outResultingInstructionList
+      ;
       enterTemplateString !?outResultingInstructionList ;
     end repeat ;
   end block (!here) ;
