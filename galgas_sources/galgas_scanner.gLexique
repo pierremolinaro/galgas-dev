@@ -130,7 +130,9 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "unused",
   "warning",
   "when",              
-  "while" ;
+  "while",
+  "xmlmapping",
+  "xmlparse" ;
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat
@@ -331,6 +333,7 @@ rule list galgasDelimitorsList ;
 
 # --------- Special delimitors / non terminal symbol --------------------------
 $<$ error message "the '<' delimitor" style delimitersStyle ;
+$<->$ error message "the '<->' delimitor" style delimitersStyle ;
 $<=$ error message "the '<=' delimitor" style delimitersStyle ;
 $<<$ error message "the '<<' delimitor" style delimitersStyle ;
 $non_terminal_symbol$ ! tokenString error message "a non terminal symbol <...>" style nonTerminalStyle ;
@@ -340,6 +343,8 @@ rule '<' :
   select
   when '=' :
     send $<=$ ;
+  when "->" :
+    send $<->$ ;
   when '<' :
     send $<<$ ;
   when 'a' -> 'z' | 'A' ->'Z' :
