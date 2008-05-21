@@ -121,7 +121,7 @@ class @typeConditionChaine extends @typeConditionLexicale {
 }
 
 class @typeConditionNonChaine extends @typeConditionLexicale {
-  @lstring attributChaine ;
+  @lstringlist mStrings ;
   @luint mEndOfFileErrorMessageIndex ;
 }
 
