@@ -822,11 +822,34 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionNonChaine::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "notTestForInputString (" ;
-  inCppFile.writeCstringConstant (attributChaine) ;
-  inCppFile << ", " << attributChaine.length ()
-            << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
-            << " COMMA_LINE_AND_SOURCE_FILE)" ;
+  if (mStrings.count () == 1) {
+    inCppFile << "notTestForInputString (" ;
+    GGS_lstringlist::cElement * chaine = mStrings.firstObject () ;
+    macroValidPointer (chaine) ;
+    inCppFile.writeCstringConstant (chaine->mValue) ;
+    inCppFile << ", " << chaine->mValue.length ()
+              << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
+              << " COMMA_LINE_AND_SOURCE_FILE)" ;
+  }else{
+    inCppFile << "(" ;
+    bool first = true ;
+    GGS_lstringlist::cElement * chaine = mStrings.firstObject () ;
+    while (chaine != NULL) {
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << " && " ;
+      }
+      macroValidPointer (chaine) ;
+      inCppFile << "notTestForInputString (" ;
+      inCppFile.writeCstringConstant (chaine->mValue) ;
+      inCppFile << ", " << chaine->mValue.length ()
+                << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
+                << " COMMA_LINE_AND_SOURCE_FILE)" ;
+      chaine = chaine->nextObject () ;
+    }
+    inCppFile << ")" ;
+  }
 }
 
 //---------------------------------------------------------------------------*

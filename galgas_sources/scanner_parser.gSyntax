@@ -167,12 +167,6 @@ nonterminal <lexical_test_term>
 label parse
 ;
 
-nonterminal <up_boundary>
-  ?@lchar caractere
-  !@typeConditionLexicale conditionLexicale
-label parse
-;
-
 nonterminal <lexical_parameters_non_empty_list>
   !@typeListeArgumentsRoutExterne listeArgumentsRoutExterne
   ?!@typeLexicalAttributesMap tableDesAttributs
@@ -797,15 +791,21 @@ rule <while_branches_list>
     select
       $~$ ;
       lcl := [@typeListeConditionsLexicales emptyList] ;
-      @lstring ch ;
-      $literal_string$ ? ch ;
+      @lstringlist stringList [emptyList] ;
+      repeat
+        @lstring ch ;
+        $literal_string$ ? ch ;
+        stringList += !ch ;
+      while
+        $,$ ;
+      end repeat ;
       $error$ ;
       @lstring errorMessageName ;
       $identifier$ ? errorMessageName ;
       @luint errorMessageIndex ;
       [table_des_messages_erreur searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
       ioUsedErrorMessageSet += ![errorMessageName string] ;
-      lcl += ![@typeConditionNonChaine new !ch !errorMessageIndex] ;
+      lcl += ![@typeConditionNonChaine new !stringList !errorMessageIndex] ;
       $:$ ;
       <lexical_instructions_list>
         ?li
@@ -869,22 +869,13 @@ rule <lexical_test_term>
 :
   @lchar c ;
   $literal_char$ ? c ;
-  <up_boundary> !c ?tt ;
-end rule ;
-
-#-------------------------------------------------------------------*
-
-rule <up_boundary>
-  ?@lchar th
-  !@typeConditionLexicale ts
-:
   select
-    ts := [@typeConditionCaractere new !th] ;
+    tt := [@typeConditionCaractere new !c] ;
   or
     $->$ ;
     @lchar bs ;
     $literal_char$ ? bs ; # borne sup de l'intervalle
-    ts := [@typeConditionIntervalle new !th !bs] ;
+    tt := [@typeConditionIntervalle new !c !bs] ;
   end select ;
 end rule ;
 
