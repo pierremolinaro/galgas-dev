@@ -64,7 +64,7 @@ enum enumAccesVariable {ecriture, lectureSeule, lectureDestructive, lectureEcrit
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//        classe permettant de realiser un chainage de l'etat d'une variable  *
+//        classe permettant de realiser un chainage de l'etat d'une variable *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -74,9 +74,10 @@ class agregatChainageEtat {
   public : enumEtatVariable champEtatApres ;
 //--- Constructeur (pas de destructeur)
   public : inline agregatChainageEtat (const enumEtatVariable etat,
-                                       agregatChainageEtat * suivant)
-   : champEtatAvant (etat), champEtatApres (etat) {
-    mNextItem = suivant ;
+                                       agregatChainageEtat * suivant) :
+  mNextItem (suivant),
+  champEtatAvant (etat),
+  champEtatApres (etat) {
   }
 //--- Protection contre la duplication 
   private : agregatChainageEtat (agregatChainageEtat &) ;

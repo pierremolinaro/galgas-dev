@@ -35,14 +35,6 @@ C_COMPILER_OPTIONS += -fexceptions -DHAVE_EXPAT_CONFIG_H
 
 SOURCES :=
 
-SOURCES += xmlparse.c
-SOURCES += xmltok.c
-SOURCES += xmlrole.c
-SOURCES += xmlwf.c
-SOURCES += xmlfile.c
-SOURCES += codepage.c
-SOURCES += pm_filemap.c
-
 #--- Files from libpm --------------------
 include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke
 SOURCES += C_BDD_Set1.cpp
