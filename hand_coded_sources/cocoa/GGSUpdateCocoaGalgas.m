@@ -675,7 +675,7 @@
 
 //--------------------------------------------------------------------------*
 
-- (void) lauchGalgasUpdaterAlertDidEnd:(NSAlert *) alert
+- (void) lauchGalgasUpdaterAlertDidEnd:(NSAlert *) inUnusedAlertlert
          returnCode:(int) inReturnCode
    contextInfo:(void  *) inContextInfo {
   if (inReturnCode == YES) {
