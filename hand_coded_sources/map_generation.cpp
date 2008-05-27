@@ -266,7 +266,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
     current = current->nextObject () ;
   }
-  
+  inHfile << "\n" ;
+  if (mNonExternAttributesList.count () > 0) {
+    inHfile << "public : e_" << aNomTable << " (void) ;\n\n" ;
+  }
   inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
   inHfile.writeCppHyphenLineComment () ;
   inHfile << "class elementOf_GGS_" << aNomTable << " : public AC_galgas_map_element {\n"
@@ -508,6 +511,24 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
+  if (mNonExternAttributesList.count () > 0) {
+    inCppFile.writeCppTitleComment (C_String ("class 'e_") + aNomTable + "'") ;
+    inCppFile << "e_" << aNomTable << "::e_" << aNomTable << " (void) :\n" ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+    bool first = true ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << ",\n" ;
+      }
+      inCppFile << current->aNomAttribut << " ()" ;
+      current = current->nextObject () ;
+    }
+    inCppFile << " {\n}\n\n" ;
+  }
+
   inCppFile.writeCppTitleComment (C_String ("class map '@") + aNomTable + "'") ;
 
 //--- Constructor for type element
