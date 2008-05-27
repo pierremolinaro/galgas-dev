@@ -149,11 +149,20 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
 //--------------------------------------- Get bool options count
   generatedZone2.writeCppTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
-                    "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption)\n"
-                    ":mBuiltinOptions (inAcceptsDebugOption) {\n"
+                    "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) :\n"
+                    "mBuiltinOptions (inAcceptsDebugOption),\n"
+                    "mGalgasOptions ()" ;
+  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  while (currentOptionComponent != NULL) {
+    macroValidPointer (currentOptionComponent) ;
+    generatedZone2 << ",\n"
+                      "mOptions_" << currentOptionComponent->mKey << " ()" ;
+    currentOptionComponent = currentOptionComponent->nextObject () ;
+  }
+  generatedZone2 << "{\n"
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
-  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
+  currentOptionComponent = inOptionsComponentsMap.firstObject () ;
   while (currentOptionComponent != NULL) {
     macroValidPointer (currentOptionComponent) ;
     generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
