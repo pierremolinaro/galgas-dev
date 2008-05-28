@@ -114,6 +114,10 @@ class cLR1_items_AVL_tree {
   recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
                                   const c_LR1_item & in_LR1_item,
                                   bool & outExtension) ;
+
+//--- No copy
+  private : cLR1_items_AVL_tree (cLR1_items_AVL_tree &) ;
+  private : cLR1_items_AVL_tree & operator = (cLR1_items_AVL_tree &) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -264,8 +268,8 @@ class cLR1ItemUniqueArray {
   public : virtual ~cLR1ItemUniqueArray (void) ;
 
 //--- No copy
-  private : cLR1ItemUniqueArray (const cLR1ItemUniqueArray &) {}
-  private : void operator = (const cLR1ItemUniqueArray &) {}
+  private : cLR1ItemUniqueArray (const cLR1ItemUniqueArray &) ;
+  private : cLR1ItemUniqueArray & operator = (const cLR1ItemUniqueArray &) ;
 
 //--- Get Count
   public : inline sint32 count (void) const { return mCount ; }
@@ -329,10 +333,10 @@ void swap (cLR1ItemUniqueArray & ioOperand1,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-cLR1ItemUniqueArray::cLR1ItemUniqueArray (void) {
-  mArray = NULL ;
-  mCount = 0 ;
-  mCapacity = 0 ;
+cLR1ItemUniqueArray::cLR1ItemUniqueArray (void) :
+mArray (NULL),
+mCount (0),
+mCapacity (0) {
 }
 
 //---------------------------------------------------------------------------*
@@ -489,8 +493,8 @@ class c_LR1_items_set {
   public : virtual ~c_LR1_items_set (void) ;
 
 //--- No copy
-  private : c_LR1_items_set (const c_LR1_items_set &) {}
-  private : void operator = (const c_LR1_items_set &) {}
+  private : c_LR1_items_set (const c_LR1_items_set &) ;
+  private : c_LR1_items_set & operator = (const c_LR1_items_set &) ;
 
 //--- Add a new LR1 item (returns false if already present)
   public : void add_LR1_item (const sint32 inProductionRuleIndex,
@@ -540,7 +544,7 @@ class c_LR1_items_set {
 
 //--- No copy
   private : c_LR1_items_set (c_LR1_items_set &) ;
-  private : void operator = (c_LR1_items_set &) ;
+  private : c_LR1_items_set & operator = (c_LR1_items_set &) ;
 
 //--- Friend
   friend void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) ;
@@ -799,15 +803,19 @@ class cLR1_items_sets_AVL_tree {
                            c_LR1_items_set & io_LR1_items_set,
                            TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
                            bool & outExtension) ;
+
+//--- No copy
+  private : cLR1_items_sets_AVL_tree (cLR1_items_sets_AVL_tree &) ;
+  private : cLR1_items_sets_AVL_tree & operator = (cLR1_items_sets_AVL_tree &) ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 cLR1_items_sets_AVL_tree::cLR1_items_sets_AVL_tree (const sint32 inInfo) :
-mInfoIndex (inInfo) {
-  mPtrToInf = (cLR1_items_sets_AVL_tree *) NULL;
-  mPtrToSup = (cLR1_items_sets_AVL_tree *) NULL;
-  mBalance = 0 ;
+mPtrToInf (NULL),
+mInfoIndex (inInfo),
+mPtrToSup (NULL),
+mBalance (0) {
 }
 
 //---------------------------------------------------------------------------*
@@ -960,6 +968,10 @@ class c_LR1_items_sets_collection {
 //--- Default constructor and destructor
   public : c_LR1_items_sets_collection (void) ;
   public : virtual ~c_LR1_items_sets_collection (void) ;
+
+//--- No copy
+  private : c_LR1_items_sets_collection (c_LR1_items_sets_collection &) ;
+  private : c_LR1_items_sets_collection & operator = (c_LR1_items_sets_collection &) ;
 
 //--- Search or insert a LR1 items set (return set index)
   public : sint32 searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) ;

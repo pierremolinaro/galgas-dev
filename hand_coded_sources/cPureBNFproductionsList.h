@@ -55,7 +55,7 @@ class cProduction {
 
 //--- No copy
   private : cProduction (const cProduction &) ;
-  private : void operator = (const cProduction &) ;
+  private : cProduction & operator = (const cProduction &) ;
 
   friend void swap (cProduction & ioProduction1, cProduction & ioProduction2) ;
 } ;

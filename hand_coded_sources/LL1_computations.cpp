@@ -229,13 +229,14 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
   
 //---------------------------------------------------------------------------*
 
-cEcrireNonTerminal::cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
-                                        const cVocabulary & inVocabulary,
-                                        const C_String & nomClasseLexique) :
+cEcrireNonTerminal::
+cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
+                    const cVocabulary & inVocabulary,
+                    const C_String & nomClasseLexique) :
 mFichierBNF (inHTMLfile),
-mVocabulary (inVocabulary) {
-  aNomClasseLexique = nomClasseLexique ;
-  aIndice = 0 ;
+mVocabulary (inVocabulary),
+aNomClasseLexique (nomClasseLexique),
+aIndice (0) {
 }
 
 //---------------------------------------------------------------------------*

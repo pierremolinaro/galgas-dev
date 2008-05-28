@@ -1196,7 +1196,9 @@ generate_scanner_header_file (C_Compiler & inLexique,
     currentAttribute->mInfo.attributType(HERE)->generateAttributeDeclaration (currentAttribute->mKey, generatedZone2) ;
     currentAttribute = currentAttribute->nextObject () ;
   }
-  generatedZone2 << "} ;\n\n" ;
+  generatedZone2 << "\n"
+                    "  public : cTokenFor_" << inLexiqueName << " (void) ;\n"
+                    "} ;\n\n" ;
 
 // --------------- Declaration de la classe de l'analyseur lexical  
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
@@ -1380,6 +1382,24 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
 //--------------------------------------- Constructors
   generatedZone2.writeCppTitleComment ("Constructors") ;
+
+//--------------- Token Class declaration  
+  generatedZone2 << "cTokenFor_" << inLexiqueName << "::cTokenFor_" << inLexiqueName << " (void) :\n" ;
+  bool first = true ;
+  GGS_typeLexicalAttributesMap::cElement * currentAttribute = table_attributs.firstObject () ;
+  while (currentAttribute != NULL) {
+    if (first) {
+      first = false ;
+    }else{
+      generatedZone2 << ",\n" ;
+    }
+    generatedZone2 << currentAttribute->mKey << " ()" ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  generatedZone2 << " {\n"
+                    "}\n\n" ;
+
+  generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceFileName\n"
@@ -1531,7 +1551,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "  _p->_mFirstLocation = _mTokenFirstLocation ;\n"
                     "  _p->_mLastLocation  = _mTokenLastLocation ;\n"
                     "  _p->_mTemplateStringBeforeToken  = inToken._mTemplateStringBeforeToken ;\n" ;
-  GGS_typeLexicalAttributesMap::cElement * currentAttribute = table_attributs.firstObject () ;
+  currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     generatedZone2 << "  _p->" << currentAttribute->mKey << " = inToken." << currentAttribute->mKey << " ;\n" ;
     currentAttribute = currentAttribute->nextObject () ;
