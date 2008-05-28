@@ -81,7 +81,7 @@ class agregatChainageEtat {
   }
 //--- Protection contre la duplication 
   private : agregatChainageEtat (agregatChainageEtat &) ;
-  private : void operator = (agregatChainageEtat &) ;
+  private : agregatChainageEtat & operator = (agregatChainageEtat &) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -96,7 +96,7 @@ template <typename INFO> class cElementTableControlePhase {
   public : typedef cElementTableControlePhase <INFO> cElement ;
 //--- Protection contre la duplication 
   private : cElementTableControlePhase (cElementTableControlePhase <INFO> &) ;
-  private : void operator = (cElementTableControlePhase <INFO> &) ;
+  private : cElementTableControlePhase <INFO> & operator = (cElementTableControlePhase <INFO> &) ;
 
 //--- Attributs
   public : cElementTableControlePhase <INFO> * mInfPtr ;
@@ -131,17 +131,17 @@ template <typename INFO> class cElementTableControlePhase {
 template <typename INFO> class classeSurchargeTableControlePhase {
 //--- Interdire la duplication
   private : classeSurchargeTableControlePhase (classeSurchargeTableControlePhase <INFO> &) ;
-  private : void operator = (classeSurchargeTableControlePhase <INFO> &) ;
+  private : classeSurchargeTableControlePhase <INFO> & operator = (classeSurchargeTableControlePhase <INFO> &) ;
 //--- Attributs
   private : classeSurchargeTableControlePhase <INFO> * mNextItem ;
   public : cElementTableControlePhase <INFO> * champTable ;
   public : sint16 champCompteur ;
   public : inline classeSurchargeTableControlePhase <INFO> * nextObject (void) const { return mNextItem ; }
 //--- Constructeur (pas de destructeur)
-  public : classeSurchargeTableControlePhase (void) {
-    mNextItem = (classeSurchargeTableControlePhase <INFO> *) NULL ;
-    champTable = (cElementTableControlePhase <INFO> *) NULL ;
-    champCompteur = 0 ;
+  public : classeSurchargeTableControlePhase (void) :
+  mNextItem ((classeSurchargeTableControlePhase <INFO> *) NULL),
+  champTable ((cElementTableControlePhase <INFO> *) NULL),
+  champCompteur (0) {
   }
   friend class cGalgasVariablesMap <INFO> ;
 } ;
@@ -162,9 +162,9 @@ template <typename INFO> class cGalgasVariablesMap {
     return mListLength ;
   }
 
-//--- No copy
+//--- Handle copy
   public : cGalgasVariablesMap (const cGalgasVariablesMap <INFO> &) ;
-  public : void operator = (const cGalgasVariablesMap <INFO> &) ;
+  public : cGalgasVariablesMap <INFO> & operator = (const cGalgasVariablesMap <INFO> &) ;
 
 //--- Constructor and destructor
   public : cGalgasVariablesMap (void) ; // Default Constructor

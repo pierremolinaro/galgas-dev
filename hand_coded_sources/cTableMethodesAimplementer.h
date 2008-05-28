@@ -63,7 +63,7 @@ template <typename INFO> class cElementTableMethodesAimplementer {
 
 //--- Protection contre la duplication
   private : cElementTableMethodesAimplementer (const cElementTableMethodesAimplementer <INFO> &) ;
-  private : void operator = (const cElementTableMethodesAimplementer <INFO> &) ;
+  private : cElementTableMethodesAimplementer <INFO> & operator = (const cElementTableMethodesAimplementer <INFO> &) ;
   friend class cTableMethodesAimplementer <INFO> ;
 
 } ;
@@ -90,7 +90,7 @@ template <typename INFO> class cTableMethodesAimplementer {
 
 //--- Gerer la duplication
   public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
-  public : void operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
+  public : cTableMethodesAimplementer <INFO> & operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 
   public : inline virtual bool _isBuilt (void) const {
     return mReferenceCountPtr != NULL ;

@@ -28,9 +28,12 @@
 
 //---------------------------------------------------------------------------*
 
-cVocabulary::cVocabulary (void) {
-  mOriginalGrammarSymbolsCount = 0 ;
-  mStartSymbol = 0 ;
+cVocabulary::cVocabulary (void) :
+mStringsArray (),
+mGenerateChoiceArray (),
+mTerminalSymbolsCount (0),
+mOriginalGrammarSymbolsCount (0),
+mStartSymbol (0) {
 }
 
 //---------------------------------------------------------------------------*

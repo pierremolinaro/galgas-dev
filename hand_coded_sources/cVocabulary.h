@@ -86,7 +86,7 @@ class cVocabulary {
 
 //--- No copy
   private : cVocabulary (cVocabulary &) ;
-  private : void operator = (cVocabulary &) ;
+  private : cVocabulary & operator = (cVocabulary &) ;
 
 //--- Private data
   private : TC_UniqueArray <C_String> mStringsArray ;

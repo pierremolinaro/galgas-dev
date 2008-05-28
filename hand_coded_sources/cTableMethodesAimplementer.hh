@@ -102,8 +102,8 @@ cTableMethodesAimplementer <INFO>
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cTableMethodesAimplementer <INFO>
-            ::operator = (const cTableMethodesAimplementer <INFO> & source) {
+cTableMethodesAimplementer <INFO> & cTableMethodesAimplementer <INFO>::
+operator = (const cTableMethodesAimplementer <INFO> & source) {
   if (this != & source) {
     _drop_operation () ;
     _mRoot = source._mRoot ;
@@ -116,6 +116,7 @@ void cTableMethodesAimplementer <INFO>
       (*mReferenceCountPtr) ++ ;
     }
   }
+  return * this ;
 }
 
 //---------------------------------------------------------------------------*

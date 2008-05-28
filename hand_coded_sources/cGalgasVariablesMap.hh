@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generic map used for GALGAS variables (handles read/write access)        *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -39,17 +39,17 @@ cElementTableControlePhase (const INFO & inInfo,
                             const sint32 numeroElement,
                             const bool inIsDeclaredUnused,
                             const bool inUsed) :
+mInfPtr (NULL),
+mSupPtr (NULL),
 mKey (clef),
+mInfo (inInfo),
 mEntryIndex (numeroElement),
+champChainageEtat (NULL),
+mBalance (0),
 champNature (nature),
+champEtat (etat),
+champUtilise (inUsed),
 mIsDeclaredUnused (inIsDeclaredUnused) {
-  mInfPtr = (cElement *) NULL ;
-  mSupPtr = (cElement *) NULL ;
-  mInfo = inInfo ;
-  champUtilise = inUsed ;
-  champEtat  = etat ;
-  champChainageEtat = (agregatChainageEtat *) NULL ;
-  mBalance = 0 ;
 }
 
 //---------------------------------------------------------------------------*
@@ -65,11 +65,10 @@ cElementTableControlePhase <INFO>::
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-cGalgasVariablesMap <INFO>::
-cGalgasVariablesMap (void) {
-  aListeSurcharges = (typeSurchargeTable *) NULL ;
-  _mRoot = (cElement *) NULL ;
-  mListLength = 0 ;
+cGalgasVariablesMap <INFO>::cGalgasVariablesMap (void) :
+_mRoot (NULL),
+aListeSurcharges (NULL),
+mListLength (0) {
 }
 
 //---------------------------------------------------------------------------*
@@ -125,27 +124,28 @@ reader_hasKey (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::
+cGalgasVariablesMap <INFO> & cGalgasVariablesMap <INFO>::
 operator = (const cGalgasVariablesMap <INFO> & inOperand) {
   if (inOperand.mListLength > 0) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
     exit (1) ;
   }
   _drop_operation () ;
+  return * this ;
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
 cGalgasVariablesMap <INFO>::
-cGalgasVariablesMap (const cGalgasVariablesMap <INFO> & inOperand) {
+cGalgasVariablesMap (const cGalgasVariablesMap <INFO> & inOperand) :
+_mRoot (NULL),
+aListeSurcharges (NULL),
+mListLength (0) {
   if (inOperand.mListLength > 0) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
     exit (1) ;
   }
-  aListeSurcharges = (typeSurchargeTable *) NULL ;
-  _mRoot = (cElement *) NULL ;
-  mListLength = 0 ;
 }
 
 //---------------------------------------------------------------------------*

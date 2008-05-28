@@ -130,7 +130,7 @@ class c_LR0_items_set {
 
 //--- No copy
   private : c_LR0_items_set (c_LR0_items_set &) ;
-  private : void operator = (c_LR0_items_set &) ;
+  private : c_LR0_items_set & operator = (c_LR0_items_set &) ;
 
 //--- Friend
   friend void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) ;
