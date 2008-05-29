@@ -43,17 +43,18 @@
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-cElementTableMethodesAimplementer <INFO>
-                 ::cElementTableMethodesAimplementer (const INFO & info,
-                                                      const GGS_lstring & clef,
-                                                      const sint32 numeroElement,
-                                                      const bool estAbstraite)
-:champEstAbstraite (estAbstraite), mEntryIndex (numeroElement) {
-  mNextItem = (cElement *) NULL ;
-  mInfPtr = (cElement *) NULL ;
-  mSupPtr = (cElement *) NULL ;
-  mKey = clef ;
-  mInfo = info ;
+cElementTableMethodesAimplementer <INFO>::
+cElementTableMethodesAimplementer (const INFO & info,
+                                   const GGS_lstring & clef,
+                                   const sint32 numeroElement,
+                                   const bool estAbstraite) :
+mNextItem (NULL),
+mInfPtr (NULL),
+mSupPtr (NULL),
+mKey (clef),
+mInfo (info),
+champEstAbstraite (estAbstraite),
+mEntryIndex (numeroElement) {
 }
 
 //---------------------------------------------------------------------------*
@@ -71,12 +72,12 @@ cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (vo
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) {
-  _mRoot = (cElement *) NULL ;
-  mFirstItem = (cElement *) NULL ;
-  mLastItem = (cElement *) NULL ;
-  mListLength = 0 ;
-  mReferenceCountPtr = (sint32 *) NULL ;
+cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) :
+_mRoot (NULL),
+mFirstItem (NULL),
+mLastItem (NULL),
+mListLength (0),
+mReferenceCountPtr (NULL) {
 }
 
 //---------------------------------------------------------------------------*
@@ -89,13 +90,13 @@ cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-cTableMethodesAimplementer <INFO>
-            ::cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> & source) {
-  _mRoot = (cElement *) NULL ;
-  mFirstItem = (cElement *) NULL ;
-  mLastItem = (cElement *) NULL ;
-  mListLength = 0 ;
-  mReferenceCountPtr = (sint32 *) NULL ;
+cTableMethodesAimplementer <INFO>::
+cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> & source) :
+_mRoot (NULL),
+mFirstItem (NULL),
+mLastItem (NULL),
+mListLength (0),
+mReferenceCountPtr (NULL) {
   *this = source ;
 }
 

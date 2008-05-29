@@ -552,7 +552,8 @@ class c_LR1_items_set {
 
 //---------------------------------------------------------------------------*
 
-c_LR1_items_set::c_LR1_items_set (void):
+c_LR1_items_set::c_LR1_items_set (void) :
+mItemsSet (),
 mRoot (NULL),
 mHashCode (0),
 mArrayIsSorted (true) {
@@ -813,8 +814,8 @@ class cLR1_items_sets_AVL_tree {
 
 cLR1_items_sets_AVL_tree::cLR1_items_sets_AVL_tree (const sint32 inInfo) :
 mPtrToInf (NULL),
-mInfoIndex (inInfo),
 mPtrToSup (NULL),
+mInfoIndex (inInfo),
 mBalance (0) {
 }
 
@@ -1004,7 +1005,8 @@ class c_LR1_items_sets_collection {
 
 //---------------------------------------------------------------------------*
 
-c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) {
+c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) :
+m_LR1_items_sets_array () {
   m_LR1_items_sets_array.makeRoomUsingSwap (500) ;
   for (uint32 i=0 ; i<kSlotCount ; i++) {
     _mRoot [i] = (cLR1_items_sets_AVL_tree *) NULL ;

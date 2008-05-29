@@ -118,7 +118,17 @@ class cTableEntry {
   public : C_String mEntryString ;
   public : sint32 mEntryStringLength ;
   public : C_String mTokenCode ;
+  
+  public : cTableEntry (void) ;
 } ;
+
+//---------------------------------------------------------------------------*
+
+cTableEntry::cTableEntry (void) :
+mEntryString (),
+mEntryStringLength (0),
+mTokenCode () {
+}
 
 //---------------------------------------------------------------------------*
 
@@ -1404,22 +1414,26 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                  << " (C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceFileName\n"
                     "                COMMA_LOCATION_ARGS) :\n"
-                    "C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {\n" ;
+                    "C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE)" ;
   if (inIsTemplate) {
-    generatedZone2 << "  _mMatchedTemplateDelimiterIndex = -1 ;\n" ;
+    generatedZone2 << ",\n"
+                      "_mMatchedTemplateDelimiterIndex (-1)" ;
   }
-  generatedZone2 << "}\n\n" ;
+  generatedZone2 << " {\n"
+                    "}\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceString,\n"
                     "                const C_String & inStringForError\n"
                     "                COMMA_LOCATION_ARGS) :\n"
-                    "C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE) {\n" ;
+                    "C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE)" ;
   if (inIsTemplate) {
-    generatedZone2 << "  _mMatchedTemplateDelimiterIndex = -1 ;\n" ;
+    generatedZone2 << ",\n"
+                      "_mMatchedTemplateDelimiterIndex (-1)" ;
   }
-  generatedZone2 << "}\n\n" ;
+  generatedZone2 << " {\n"
+                    "}\n\n" ;
 
 //---------------------------------------- Generate error message list
   GGS_typeTableMessagesErreurs::cElement * currentMessage = inLexicalErrorsMessageMap.firstObject () ;

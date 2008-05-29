@@ -64,16 +64,17 @@ class cProduction {
 //---------------------------------------------------------------------------*
 
 class cPureBNFproductionsList : public TC_FIFO <cProduction> {
-   public : TC_UniqueArray <sint32> tableauIndicePremiereProduction ;
-   public : TC_UniqueArray <sint32> tableauIndiceDerniereProduction ;
-   public : TC_UniqueArray <sint32> tableauIndirectionProduction ;
+  public : TC_UniqueArray <sint32> tableauIndicePremiereProduction ;
+  public : TC_UniqueArray <sint32> tableauIndiceDerniereProduction ;
+  public : TC_UniqueArray <sint32> tableauIndirectionProduction ;
 
-   public : TC_UniqueArray <sint32> mFirstProductionIndex ;
-   public : TC_UniqueArray <sint32> mLastProductionIndex ;
-   public : TC_UniqueArray <sint32> mProductionIndex ;
+  public : TC_UniqueArray <sint32> mFirstProductionIndex ;
+  public : TC_UniqueArray <sint32> mLastProductionIndex ;
+  public : TC_UniqueArray <sint32> mProductionIndex ;
 
-   public : void buildProductionsArray (const sint32 inTerminalSymbolsCount,
-                                        const sint32 inNonTerminalSymbolsCount) ;
+  public : void buildProductionsArray (const sint32 inTerminalSymbolsCount,
+                                       const sint32 inNonTerminalSymbolsCount) ;
+  public : cPureBNFproductionsList (void) ;
 } ;
 
 //---------------------------------------------------------------------------*
