@@ -1054,12 +1054,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     current = current->nextObject () ;
   }
   
-  inHfile << "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Compiler & _inLexique,\n"
-             "                                         C_String & ioString,\n"
-             "                                         const sint32 inIndentation\n"
-             "                                         COMMA_LOCATION_ARGS) const ;\n"
-             "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
+  if (mNonExternAttributesList.count ()) {
+    inHfile << "  public : e_" << aNomTable << " (void) ;\n\n" ;
+  }
+  inHfile << "} ;\n\n" ; //--- Fin de la declaration de la classe e_...
 
 // ---------------------- declaration de la classe table -----------------
   inHfile.writeCppTitleComment (C_String ("Map '@") + aNomTable + "'") ;
@@ -1184,6 +1182,25 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
 
   inCppFile << "#include \"" << aNomClasseGenerique << ".hh\"\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
+
+  if (mNonExternAttributesList.count () > 0) {
+    inCppFile << "e_" << aNomTable << "::e_" << aNomTable << " (void) :\n" ;
+    GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+    bool first = true ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << ",\n" ;
+      }
+      inCppFile << current->aNomAttribut << " ()" ;
+      current = current->nextObject () ;
+    }
+    inCppFile << " {\n"
+                 "}\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
+  }
 
 //--- Instanciate the template
   inCppFile << "template class "

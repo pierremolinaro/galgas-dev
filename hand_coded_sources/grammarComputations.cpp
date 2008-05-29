@@ -51,14 +51,37 @@
 class cInfo {
   public : GGS_M_terminalSymbolsMapForUse mTerminalSymbolMap ;
   public : GGS_M_nonTerminalSymbolsForGrammar mNonterminalSymbolsMapForGrammar ;
+  
+  public : cInfo (void) ;
 } ;
 
 //---------------------------------------------------------------------------*
 
-cProduction::cProduction (void) {
-  aLigneDefinition = 0 ;
-  aColonneDefinition = 0 ;
-  aNumeroNonTerminalGauche = 0 ;
+cInfo::cInfo (void) :
+mTerminalSymbolMap (),
+mNonterminalSymbolsMapForGrammar () {
+}
+
+//---------------------------------------------------------------------------*
+
+cProduction::cProduction (void) :
+mSourceFileName (),
+aLigneDefinition (0),
+aColonneDefinition (0),
+aNumeroNonTerminalGauche (0),
+aDerivation (),
+aPremierDeProduction () {
+}
+
+//---------------------------------------------------------------------------*
+
+cPureBNFproductionsList::cPureBNFproductionsList (void) :
+tableauIndicePremiereProduction (),
+tableauIndiceDerniereProduction (),
+tableauIndirectionProduction (),
+mFirstProductionIndex (),
+mLastProductionIndex (),
+mProductionIndex () {
 }
 
 //---------------------------------------------------------------------------*

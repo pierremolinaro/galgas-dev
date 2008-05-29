@@ -54,17 +54,17 @@ class c_LR0_item {
 
 //---------------------------------------------------------------------------*
 
-c_LR0_item::c_LR0_item (void) {
-  mProductionRuleIndex = -1 ;
-  mLocationIndex = -1 ;
+c_LR0_item::c_LR0_item (void) :
+mProductionRuleIndex (-1),
+mLocationIndex (-1) {
 }
 
 //---------------------------------------------------------------------------*
 
 c_LR0_item::c_LR0_item (const sint32 inProductionRuleIndex,
-                        const sint32 inLocationIndex) {
-  mProductionRuleIndex = inProductionRuleIndex ;
-  mLocationIndex = inLocationIndex ;
+                        const sint32 inLocationIndex) :
+mProductionRuleIndex (inProductionRuleIndex),
+mLocationIndex (inLocationIndex) {
 }
 
 //---------------------------------------------------------------------------*
@@ -138,7 +138,8 @@ class c_LR0_items_set {
 
 //---------------------------------------------------------------------------*
 
-c_LR0_items_set::c_LR0_items_set (void) {
+c_LR0_items_set::c_LR0_items_set (void) :
+mItemsSet () {
 }
 
 //---------------------------------------------------------------------------*
@@ -316,16 +317,20 @@ class cLR0_items_sets_AVL_tree {
                           c_LR0_items_set & io_LR0_items_set,
                           TC_UniqueArray <c_LR0_items_set> & io_LR0_items_sets_array,
                           bool & outExtension) ;
+
+//--- No copy
+  private : cLR0_items_sets_AVL_tree (cLR0_items_sets_AVL_tree &) ;
+  private : cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 cLR0_items_sets_AVL_tree::
 cLR0_items_sets_AVL_tree (const sint32 inInfo) :
-mInfo (inInfo) {
-  mPtrToInf = (cLR0_items_sets_AVL_tree *) NULL ;
-  mPtrToSup = (cLR0_items_sets_AVL_tree *) NULL ;
-  mBalance = 0 ;
+mPtrToInf (NULL),
+mPtrToSup (NULL),
+mInfo (inInfo),
+mBalance (0) {
 } ;
 
 //---------------------------------------------------------------------------*
@@ -486,6 +491,10 @@ class c_LR0_items_sets_collection {
   public : c_LR0_items_sets_collection (void) ;
   public : virtual ~c_LR0_items_sets_collection (void) ;
 
+//--- No copy
+  private : c_LR0_items_sets_collection (c_LR0_items_sets_collection &) ;
+  private : c_LR0_items_sets_collection & operator = (c_LR0_items_sets_collection &) ;
+
 //--- Search or insert a LR0 items set (return set index)
   public : sint32 searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) ;
 
@@ -516,9 +525,10 @@ class c_LR0_items_sets_collection {
 
 //---------------------------------------------------------------------------*
 
-c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) {
+c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) :
+m_LR0_items_sets_array (),
+_mRoot (NULL) {
   m_LR0_items_sets_array.makeRoomUsingSwap (500) ;
-  _mRoot = (cLR0_items_sets_AVL_tree *) NULL ;
 }
 
 //---------------------------------------------------------------------------*
@@ -602,13 +612,14 @@ class c_LR0_automaton_transition {
 
 //---------------------------------------------------------------------------*
 
-c_LR0_automaton_transition::c_LR0_automaton_transition (const sint32 inSourceState,
-                                                        const sint32 inAction,
-                                                        const sint32 inTargetState) {
-  mSourceState = inSourceState ;
-  mAction = inAction ;
-  mTargetState = inTargetState ;
-} ;
+c_LR0_automaton_transition::
+c_LR0_automaton_transition (const sint32 inSourceState,
+                            const sint32 inAction,
+                            const sint32 inTargetState) :
+mSourceState (inSourceState),
+mAction (inAction),
+mTargetState (inTargetState) {
+}
 
 //---------------------------------------------------------------------------*
 

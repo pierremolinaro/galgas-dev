@@ -36371,7 +36371,8 @@ const char * GGS_templateInstructionConstant::actualTypeName (void) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_semanticContext::GGS_semanticContext (void) {
+GGS_semanticContext::GGS_semanticContext (void) :
+mFilewrappers () {
 }
 
 //---------------------------------------------------------------------------*

@@ -117,14 +117,27 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.writeCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
-  inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) {\n"
+  inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mAttributeList.firstObject () ;
+  bool first = true ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    if (first) {
+      first = false ;
+    }else{
+      inCppFile << ",\n" ;
+    }
+    inCppFile << current->aNomAttribut << " ()" ;
+    current = current->nextObject () ;
+  }
+  inCppFile << " {\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << mStructName << "::~GGS_" << mStructName << " (void) {\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mStructName << "::_drop_operation (void) {\n" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mAttributeList.firstObject () ;
+  current = mAttributeList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "  " << current->aNomAttribut << "._drop_operation () ;\n" ;
@@ -135,7 +148,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   inCppFile << "bool GGS_" << mStructName << "::_isBuilt (void) const {\n" ;
   current = mAttributeList.firstObject () ;
   inCppFile << "  return " ;
-  bool first = true ;
+  first = true ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (first) {

@@ -89,8 +89,8 @@ galgasTemplateScanner::
 galgasTemplateScanner (C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE) {
-  _mMatchedTemplateDelimiterIndex = -1 ;
+C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE),
+_mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //---------------------------------------------------------------------------*
@@ -100,8 +100,8 @@ galgasTemplateScanner (C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE) {
-  _mMatchedTemplateDelimiterIndex = -1 ;
+C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE),
+_mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //---------------------------------------------------------------------------*

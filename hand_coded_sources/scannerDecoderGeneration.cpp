@@ -118,6 +118,7 @@ class cDecoderController : public TC_UniqueArray <cDecoderState *> {
 //---------------------------------------------------------------------------*
 
 cDecoderTargetState::cDecoderTargetState (void) :
+mTerminal (),
 mNextState (-1) { 
 }
 
@@ -171,7 +172,8 @@ newState (cDecoderTargetState & ioSourceState) {
 
 cDecoderState::
 cDecoderState (void):
-mDefaultResponse (-1) {
+mDefaultResponse (-1),
+mDefaultTerminal () {
 }
 
 //---------------------------------------------------------------------------*
