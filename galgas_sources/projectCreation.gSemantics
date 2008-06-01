@@ -2,17 +2,17 @@
 #                                                                           *
 #  Project Creation                                                         *
 #                                                                           *
-#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                          *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
 #  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
+#  Free Software Foundation.                                               *
 #                                                                           *
 #  This program is distributed in the hope it will be useful, but WITHOUT   *
 #  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
+#  FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for *
+#   more details.                                                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -63,95 +63,95 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
 #---------------------------------------------------------------------------*
 
 routine performProjectCreation ??@string inProjectName :
-  @string common_files_for_make_DIR := inProjectName . "/common_files_for_make" ;
+  @string common_files_for_make_DIR := inProjectName ."/common_files_for_make" ;
 #-- common_files_for_make
   [common_files_for_make_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.commonMakefileProject !inProjectName] writeToFile !common_files_for_make_DIR . "/makefile.mke"] ;
+  [[filewrapper projectCreationFileWrapper.commonMakefileProject !inProjectName] writeToFile !common_files_for_make_DIR ."/makefile.mke"] ;
 #--- galgas_sources
-  @string galgas_sources_DIR := inProjectName . "/galgas_sources" ;
+  @string galgas_sources_DIR := inProjectName ."/galgas_sources" ;
   [galgas_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.all_ggs !inProjectName] writeToFile !galgas_sources_DIR . "/_all_" . inProjectName . ".ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_cocoa.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_grammar.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_lexique.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_options !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_options.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_program !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_program.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_semantics.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !inProjectName] writeToFile !galgas_sources_DIR . "/" . inProjectName . "_syntax.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.build_bat !inProjectName] writeToFile !galgas_sources_DIR . "/build.bat"] ;
+  [[filewrapper projectCreationFileWrapper.all_ggs !inProjectName] writeToFile !galgas_sources_DIR ."/_all_" .inProjectName .".ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_cocoa.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_grammar.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_lexique.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_options !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_options.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_program !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_program.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_semantics.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_syntax.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.build_bat !inProjectName] writeToFile !galgas_sources_DIR ."/build.bat"] ;
 #--- hand_coded_sources
-  @string hand_coded_sources_DIR := inProjectName . "/hand_coded_sources" ;
+  @string hand_coded_sources_DIR := inProjectName ."/hand_coded_sources" ;
   [hand_coded_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_computations !inProjectName] writeToFile !hand_coded_sources_DIR . "/" . inProjectName . "_computations.cpp"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_computations !inProjectName] writeToFile !hand_coded_sources_DIR ."/" .inProjectName ."_computations.cpp"] ;
 #--- makefile_macosx
-  @string makefile_macosx_DIR := inProjectName . "/makefile_macosx" ;
+  @string makefile_macosx_DIR := inProjectName ."/makefile_macosx" ;
   [makefile_macosx_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx/build.command"] writeToFile !makefile_macosx_DIR . "/build.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx/clean.command"] writeToFile !makefile_macosx_DIR . "/clean.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx/build64.command"] writeToFile !makefile_macosx_DIR . "/build64.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx/clean64.command"] writeToFile !makefile_macosx_DIR . "/clean64.command"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFile !makefile_macosx_DIR . "/makefile"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_macosx_makefile64 !inProjectName] writeToFile !makefile_macosx_DIR . "/makefile64"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx/build.command"] writeToExecutableFile !makefile_macosx_DIR ."/build.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx/clean.command"] writeToExecutableFile !makefile_macosx_DIR ."/clean.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx/build64.command"] writeToExecutableFile !makefile_macosx_DIR ."/build64.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx/clean64.command"] writeToExecutableFile !makefile_macosx_DIR ."/clean64.command"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFile !makefile_macosx_DIR ."/makefile"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_makefile64 !inProjectName] writeToFile !makefile_macosx_DIR ."/makefile64"] ;
 #--- makefile_macosx_ppc
-  @string makefile_macosx_ppc_DIR := inProjectName . "/makefile_macosx_ppc" ;
+  @string makefile_macosx_ppc_DIR := inProjectName ."/makefile_macosx_ppc" ;
   [makefile_macosx_ppc_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/build.command"] writeToFile !makefile_macosx_ppc_DIR . "/build.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/clean.command"] writeToFile !makefile_macosx_ppc_DIR . "/clean.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/build64.command"] writeToFile !makefile_macosx_ppc_DIR . "/build64.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/clean64.command"] writeToFile !makefile_macosx_ppc_DIR . "/clean64.command"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_macosx_ppc_makefile !inProjectName] writeToFile !makefile_macosx_ppc_DIR . "/makefile"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_macosx_ppc_makefile64 !inProjectName] writeToFile !makefile_macosx_ppc_DIR . "/makefile64"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/build.command"] writeToExecutableFile !makefile_macosx_ppc_DIR ."/build.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/clean.command"] writeToExecutableFile !makefile_macosx_ppc_DIR ."/clean.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/build64.command"] writeToExecutableFile !makefile_macosx_ppc_DIR ."/build64.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_ppc/clean64.command"] writeToExecutableFile !makefile_macosx_ppc_DIR ."/clean64.command"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_ppc_makefile !inProjectName] writeToFile !makefile_macosx_ppc_DIR ."/makefile"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_ppc_makefile64 !inProjectName] writeToFile !makefile_macosx_ppc_DIR ."/makefile64"] ;
 #--- makefile_macosx_i386
-  @string makefile_macosx_i386_DIR := inProjectName . "/makefile_macosx_i386" ;
+  @string makefile_macosx_i386_DIR := inProjectName ."/makefile_macosx_i386" ;
   [makefile_macosx_i386_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/build.command"] writeToFile !makefile_macosx_i386_DIR . "/build.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/clean.command"] writeToFile !makefile_macosx_i386_DIR . "/clean.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/build64.command"] writeToFile!makefile_macosx_i386_DIR . "/build64.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/clean64.command"] writeToFile !makefile_macosx_i386_DIR . "/clean64.command"] ;
-  [[filewrapper projectCreationFileWrapper. makefile_macosx_i386_makefile !inProjectName] writeToFile !makefile_macosx_i386_DIR . "/makefile"] ;
-  [[filewrapper projectCreationFileWrapper. makefile_macosx_i386_makefile64 !inProjectName] writeToFile !makefile_macosx_i386_DIR . "/makefile64"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/build.command"] writeToExecutableFile !makefile_macosx_i386_DIR ."/build.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/clean.command"] writeToExecutableFile !makefile_macosx_i386_DIR ."/clean.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/build64.command"] writeToExecutableFile !makefile_macosx_i386_DIR ."/build64.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_i386/clean64.command"] writeToExecutableFile !makefile_macosx_i386_DIR ."/clean64.command"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_i386_makefile !inProjectName] writeToFile !makefile_macosx_i386_DIR ."/makefile"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_i386_makefile64 !inProjectName] writeToFile !makefile_macosx_i386_DIR ."/makefile64"] ;
 #--- makefile_macosx_universal
-  @string makefile_macosx_universal_DIR := inProjectName . "/makefile_macosx_universal" ;
+  @string makefile_macosx_universal_DIR := inProjectName ."/makefile_macosx_universal" ;
   [makefile_macosx_universal_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/build.command"] writeToFile ! makefile_macosx_universal_DIR . "/build.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/clean.command"] writeToFile ! makefile_macosx_universal_DIR . "/clean.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/build64.command"] writeToFile! makefile_macosx_universal_DIR . "/build64.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/clean64.command"] writeToFile ! makefile_macosx_universal_DIR . "/clean64.command"] ;
-  [[filewrapper projectCreationFileWrapper. makefile_macosx_universal_makefile !inProjectName] writeToFile ! makefile_macosx_universal_DIR . "/makefile"] ;
-  [[filewrapper projectCreationFileWrapper. makefile_macosx_universal_makefile64 !inProjectName] writeToFile ! makefile_macosx_universal_DIR . "/makefile64"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/build.command"] writeToExecutableFile ! makefile_macosx_universal_DIR ."/build.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/clean.command"] writeToExecutableFile ! makefile_macosx_universal_DIR ."/clean.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/build64.command"] writeToExecutableFile! makefile_macosx_universal_DIR ."/build64.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_macosx_universal/clean64.command"] writeToExecutableFile ! makefile_macosx_universal_DIR ."/clean64.command"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_universal_makefile !inProjectName] writeToFile ! makefile_macosx_universal_DIR ."/makefile"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_macosx_universal_makefile64 !inProjectName] writeToFile ! makefile_macosx_universal_DIR ."/makefile64"] ;
 #--- makefile_mingw_on_macosx
-  @string makefile_mingw_on_macosx_DIR := inProjectName . "/makefile_mingw_on_macosx" ;
+  @string makefile_mingw_on_macosx_DIR := inProjectName ."/makefile_mingw_on_macosx" ;
   [makefile_mingw_on_macosx_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_mingw_on_macosx/build.command"] writeToFile !makefile_mingw_on_macosx_DIR . "/build.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_mingw_on_macosx/clean.command"] writeToFile !makefile_mingw_on_macosx_DIR . "/clean.command"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_mingw_on_macosx_makefile !inProjectName] writeToFile !makefile_mingw_on_macosx_DIR . "/makefile"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_mingw_on_macosx/build.command"] writeToExecutableFile !makefile_mingw_on_macosx_DIR ."/build.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_mingw_on_macosx/clean.command"] writeToExecutableFile !makefile_mingw_on_macosx_DIR ."/clean.command"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_mingw_on_macosx_makefile !inProjectName] writeToFile !makefile_mingw_on_macosx_DIR ."/makefile"] ;
 #--- makefile_msys_on_win32
-  @string makefile_mingw_on_win32_DIR := inProjectName . "/makefile_msys_on_win32" ;
+  @string makefile_mingw_on_win32_DIR := inProjectName ."/makefile_msys_on_win32" ;
   [makefile_mingw_on_win32_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/build.bat"] writeToFile !makefile_mingw_on_win32_DIR . "/build.bat"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/clean.bat"] writeToFile !makefile_mingw_on_win32_DIR . "/clean.bat"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/install.bat"] writeToFile !makefile_mingw_on_win32_DIR . "/install.bat"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFile !makefile_mingw_on_win32_DIR . "/makefile.mke"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/build.bat"] writeToFile !makefile_mingw_on_win32_DIR ."/build.bat"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/clean.bat"] writeToFile !makefile_mingw_on_win32_DIR ."/clean.bat"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/install.bat"] writeToFile !makefile_mingw_on_win32_DIR ."/install.bat"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFile !makefile_mingw_on_win32_DIR ."/makefile.mke"] ;
 #--- makefile_unix
-  @string makefile_unix_DIR := inProjectName . "/makefile_unix" ;
+  @string makefile_unix_DIR := inProjectName ."/makefile_unix" ;
   [makefile_unix_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.makefile_unix_makefile !inProjectName] writeToFile !makefile_unix_DIR . "/makefile"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_unix_makefile64 !inProjectName] writeToFile !makefile_unix_DIR . "/makefile64"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_unix_makefile !inProjectName] writeToFile !makefile_unix_DIR ."/makefile"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_unix_makefile64 !inProjectName] writeToFile !makefile_unix_DIR ."/makefile64"] ;
 #--- makefile_x86linux_on_macosx_DIR
-  @string makefile_x86linux_on_macosx_DIR := inProjectName . "/makefile_x86linux_on_macosx" ;
+  @string makefile_x86linux_on_macosx_DIR := inProjectName ."/makefile_x86linux_on_macosx" ;
   [makefile_x86linux_on_macosx_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_x86linux_on_macosx/build.command"] writeToFile ! makefile_x86linux_on_macosx_DIR . "/build.command"] ;
-  [[filewrapper projectCreationFileWrapper."/makefile_x86linux_on_macosx/clean.command"] writeToFile ! makefile_x86linux_on_macosx_DIR . "/clean.command"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_x86linux_on_macosx_makefile !inProjectName] writeToFile !makefile_x86linux_on_macosx_DIR . "/makefile"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_x86linux_on_macosx/build.command"] writeToExecutableFile ! makefile_x86linux_on_macosx_DIR ."/build.command"] ;
+  [[filewrapper projectCreationFileWrapper."/makefile_x86linux_on_macosx/clean.command"] writeToExecutableFile ! makefile_x86linux_on_macosx_DIR ."/clean.command"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_x86linux_on_macosx_makefile !inProjectName] writeToFile !makefile_x86linux_on_macosx_DIR ."/makefile"] ;
 #--- project XCode
-  @string projectxcode_DIR := inProjectName . "/project_xcode" ;
-  [projectxcode_DIR . "/" . inProjectName . ".xcodeproj" makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.xcodeProject !inProjectName] writeToFile !projectxcode_DIR . "/" . inProjectName  . ".xcodeproj/project.pbxproj"] ;
-  [[filewrapper projectCreationFileWrapper.info_plist !inProjectName] writeToFile !projectxcode_DIR . "/Info.plist"] ;
-  [[filewrapper projectCreationFileWrapper."/project_xcode/main.m"] writeToFile !projectxcode_DIR . "/main.m"] ;
-  [projectxcode_DIR . "/English.lproj" makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/Credits.rtf"] writeToFile !projectxcode_DIR . "/English.lproj/Credits.rtf"] ;
-  [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/InfoPlist.strings"] writeToFile !projectxcode_DIR . "/English.lproj/InfoPlist.strings"] ;
+  @string projectxcode_DIR := inProjectName ."/project_xcode" ;
+  [projectxcode_DIR ."/" .inProjectName .".xcodeproj" makeDirectory] ;
+  [[filewrapper projectCreationFileWrapper.xcodeProject !inProjectName] writeToFile !projectxcode_DIR ."/" .inProjectName  .".xcodeproj/project.pbxproj"] ;
+  [[filewrapper projectCreationFileWrapper.info_plist !inProjectName] writeToFile !projectxcode_DIR ."/Info.plist"] ;
+  [[filewrapper projectCreationFileWrapper."/project_xcode/main.m"] writeToFile !projectxcode_DIR ."/main.m"] ;
+  [projectxcode_DIR ."/English.lproj" makeDirectory] ;
+  [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/Credits.rtf"] writeToFile !projectxcode_DIR ."/English.lproj/Credits.rtf"] ;
+  [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/InfoPlist.strings"] writeToFile !projectxcode_DIR ."/English.lproj/InfoPlist.strings"] ;
 
    message "*** DONE ***\n" ;
 end routine ;
@@ -162,7 +162,7 @@ routine projectCreation
   ??@string inProjectName
 :
   if [inProjectName length] > 0 then
-    message "*** PERFORM PROJECT CREATION (--create-project=" . inProjectName . " option) ***\n" ;
+    message "*** PERFORM PROJECT CREATION (--create-project=" .inProjectName ." option) ***\n" ;
   #--- First check the project name is correct (not empty, only letters, digits and '_')
     @bool ok := [[inProjectName characterAtIndex !0] isalpha] ;
     @uint index := 1 ;
@@ -174,14 +174,14 @@ routine projectCreation
     end loop ;
     if not ok then
       message "** Cannot create GALGAS project: the project name '"
-        . inProjectName
-        . "' should begin by a letter followed by zero, one or more letters, digits and underscore character.\n"
+        .inProjectName
+        ."' should begin by a letter followed by zero, one or more letters, digits and underscore character.\n"
       ;
     end if ;
     if ok then
       ok := not [inProjectName directoryExists] ;
       if not ok then
-        message "*** Cannot create GALGAS project: '" . inProjectName . "' directory already exists. ***\n" ;
+        message "*** Cannot create GALGAS project: '" .inProjectName ."' directory already exists.***\n" ;
       end if ;
     end if ;
     if ok then

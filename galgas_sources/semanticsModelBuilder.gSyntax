@@ -55,6 +55,16 @@ nonterminal <sortedlist_sort_descriptor> -> @sortedListSortDescriptor ;
 
 nonterminal <obsolete_declaration> ;
 
+nonterminal <enum_modifier> -> @enumModifier ;
+
+nonterminal <enum_modifier_case> -> @enumModifierCase ;
+
+nonterminal <enum_case_message> -> @enumCaseMessage ;
+
+nonterminal <enum_method> -> @enumMethod ;
+
+nonterminal <enum_method_case> -> @enumMethodCase ;
+
 #---------------------------------------------------------------------------*
 
 rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semanticsComponentRoot :
@@ -452,19 +462,39 @@ rule <semantic_declaration> -> @enumDeclaration :
   $enum$ ;
   $type_name$ ? mEnumTypeName ;
   ${$ ;
+  mConstructorConstantList := [@lstringlist emptyList] ;
   mConstantList := [@lstringlist emptyList] ;
   repeat
-    @lstring constantName ;
-    $identifier$ ? constantName ;
-    mConstantList += !constantName ;
+    select
+      repeat
+        @lstring constantName ;
+        $identifier$ ? constantName ;
+        mConstantList += !constantName ;
+      while
+       $,$ ;
+      end repeat ;
+    or
+      $constructor$ ;
+      repeat
+        @lstring constantName ;
+        $identifier$ ? constantName ;
+        mConstructorConstantList += !constantName ;
+      while
+       $,$ ;
+      end repeat ;
+    end select ;
+    $;$ ;
   while
-    $,$ ;
   end repeat ;
   $}$ ;
   ${$ ;
   repeat
   while
     <enum_message_declaration> +> mEnumMessageList ;
+  while
+    <enum_modifier> +> mEnumModifierList ;
+  while
+    <enum_method> +> mEnumMethodList ;
   end repeat ;
   $}$ ;
 end rule ;
@@ -488,6 +518,89 @@ rule <enum_message_association> -> @enumMessageAssociation :
   $identifier$ ? mConstantName ;
   $->$ ;
   $literal_string$ ? mMessage ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_modifier> -> @enumModifier :
+  $modifier$ ;
+  $identifier$ ? mModifierName ;
+  $??$ ;
+  @lstring typeName ;
+  $type_name$ ? typeName ;
+  if [typeName string] != "location" then
+    error typeName: "only '@location' type is allowed here" ;
+  end if ;
+  @lstring mFormalParameterName ;
+  $identifier$ ? mLocationFormalArgumentName ;
+  ${$ ;
+  repeat
+    <enum_modifier_case> +> mEnumModifierCaseList ;
+  while
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_modifier_case> -> @enumModifierCase :
+  $identifier$ ? mSourceConstantName ;
+  $->$ ;
+  $identifier$ ? mTargetConstantName ;
+  <enum_case_message> -> mEnumModifierCaseMessage ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_case_message> -> @enumCaseMessage :
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_case_message> -> @enumCaseErrorMessage :
+  $error$ ;
+  $identifier$ ? mLocationParameterName ;
+  $:$ ;
+  $literal_string$ ? mMessage ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_case_message> -> @enumCaseWarningMessage :
+  $warning$ ;
+  $identifier$ ? mLocationParameterName ;
+  $:$ ;
+  $literal_string$ ? mMessage ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_method> -> @enumMethod :
+  $method$ ;
+  $identifier$ ? mMethodName ;
+  $??$ ;
+  @lstring typeName ;
+  $type_name$ ? typeName ;
+  if [typeName string] != "location" then
+    error typeName: "only '@location' type is allowed here" ;
+  end if ;
+  @lstring mFormalParameterName ;
+  $identifier$ ? mLocationFormalArgumentName ;
+  ${$ ;
+  repeat
+    <enum_method_case> +> mEnumMethodCaseList ;
+  while
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_method_case> -> @enumMethodCase :
+  $identifier$ ? mConstantName ;
+  <enum_case_message> -> mEnumMethodCaseMessage ;
   $;$ ;
 end rule ;
 

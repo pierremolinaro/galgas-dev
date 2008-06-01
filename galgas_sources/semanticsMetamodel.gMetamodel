@@ -166,8 +166,11 @@ entity @sortedListDeclaration extends @semanticDeclaration {
 
 entity @enumDeclaration extends @semanticDeclaration {
   @lstring mEnumTypeName ;
+  @lstringlist mConstructorConstantList ;
   @lstringlist mConstantList ;
   @enumMessage [] mEnumMessageList ;
+  @enumModifier [] mEnumModifierList ;
+  @enumMethod [] mEnumMethodList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -182,6 +185,56 @@ entity @enumMessage {
 entity @enumMessageAssociation {
   @lstring mConstantName ;
   @lstring mMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumModifier {
+  @lstring mModifierName ;
+  @lstring mLocationFormalArgumentName ;
+  @enumModifierCase [] mEnumModifierCaseList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumModifierCase {
+  @lstring mSourceConstantName ;
+  @lstring mTargetConstantName ;
+  @enumCaseMessage mEnumModifierCaseMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumCaseMessage {
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumCaseErrorMessage extends @enumCaseMessage {
+  @lstring mLocationParameterName ;
+  @lstring mMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumCaseWarningMessage extends @enumCaseMessage {
+  @lstring mLocationParameterName ;
+  @lstring mMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumMethod {
+  @lstring mMethodName ;
+  @lstring mLocationFormalArgumentName ;
+  @enumMethodCase [] mEnumMethodCaseList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @enumMethodCase {
+  @lstring mConstantName ;
+  @enumCaseMessage mEnumMethodCaseMessage ;
 }
 
 #---------------------------------------------------------------------------*

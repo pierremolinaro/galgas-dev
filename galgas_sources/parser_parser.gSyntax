@@ -49,6 +49,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -136,6 +137,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 label parse
 ;
 
@@ -483,6 +485,7 @@ label importSemantics
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@semanticContext unused ioSemanticContext
+  ?!@stringset unused ioImportedSemanticsComponentNameSet
 :
   $syntax$ ;
   $identifier$ ? * ;
