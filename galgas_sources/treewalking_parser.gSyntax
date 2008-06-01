@@ -238,6 +238,7 @@ rule <parse_treewalking_document>
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @semanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
+    ![@stringset emptySet]
   ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents

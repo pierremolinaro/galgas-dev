@@ -22,7 +22,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_TextFileWrite.h"
 #include "time/C_DateTime.h"
-#include "generic_arraies/TC_UniqueArray.h"
+#include "collections/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -1394,12 +1394,13 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   generatedZone2.writeCppTitleComment ("Constructors") ;
 
 //--------------- Token Class declaration  
-  generatedZone2 << "cTokenFor_" << inLexiqueName << "::cTokenFor_" << inLexiqueName << " (void) :\n" ;
+  generatedZone2 << "cTokenFor_" << inLexiqueName << "::cTokenFor_" << inLexiqueName << " (void)" ;
   bool first = true ;
   GGS_typeLexicalAttributesMap::cElement * currentAttribute = table_attributs.firstObject () ;
   while (currentAttribute != NULL) {
     if (first) {
       first = false ;
+      generatedZone2 << " :\n" ;
     }else{
       generatedZone2 << ",\n" ;
     }

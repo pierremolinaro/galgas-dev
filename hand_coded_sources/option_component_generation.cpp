@@ -20,7 +20,7 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "time/C_DateTime.h"
-#include "generic_arraies/TC_UniqueArray.h"
+#include "collections/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 

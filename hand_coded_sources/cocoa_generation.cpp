@@ -21,7 +21,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_TextFileWrite.h"
 #include "time/C_DateTime.h"
-#include "generic_arraies/TC_Array2.h"
+#include "collections/TC_Array2.h"
 
 //---------------------------------------------------------------------------*
 

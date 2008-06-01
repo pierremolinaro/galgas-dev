@@ -620,6 +620,7 @@ rule <galgas_component>
     @M_semanticsEntitiesForUse UNUSED_componentSemanticsEntitiesMap := componentEntitiesMap ;
     @semanticContext UNUSED_semanticContext [new
       ![@M_filewrappers emptyMap]
+      ![@stringset emptySet]
     ] ;
     repeat
     while

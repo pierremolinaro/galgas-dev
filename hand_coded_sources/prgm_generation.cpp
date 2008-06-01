@@ -69,15 +69,8 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "} ;\n\n" ;
+  generatedZone2.writeCppHyphenLineComment () ;
 
-  generatedZone2.writeCppHyphenLineComment () ;
-  generatedZone2 << "void " << inProgramComponentName << "_prologue (C_Compiler & _inLexique,\n"
-                    "                                      const TC_UniqueArray <C_String> & inSourceFilesArray) ;\n"
-                    "\n"
-                    "void " << inProgramComponentName << "_epilogue (C_Compiler & _inLexique,\n"
-                    "                                      const TC_UniqueArray <C_String> & inSourceFilesArray) ;\n"
-                    "\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
 //--- Fin du fichier d'en tete
   C_String generatedZone3 ; generatedZone3.setCapacity (100) ;
   generatedZone3.writeCppHyphenLineComment () ;
@@ -112,7 +105,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.writeCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/F_DisplayException.h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
-                    "#include \"generic_arraies/TC_UniqueArray.h\"\n"
+                    "#include \"collections/TC_UniqueArray.h\"\n"
                     "#include \"command_line_interface/F_Analyze_CLI_Options.h\"\n"
                     "#include \"command_line_interface/mainForLIBPM.h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
@@ -169,13 +162,52 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
   generatedZone2 << "}\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+
+//--- Prologue
+  generatedZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
+  const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
+  generatedZone2 << "static void\n"
+                 << inProgramComponentName << "_prologue (C_Compiler & "
+                 << (lexiqueIsUsedInPrologue ? "_inLexique" : "/* _inLexique */")
+                 << ",\n"
+                    "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
+  sint32 unusedPrototypeIndex = 0 ;
+  generateInstructionListForList (inPrologueInstructionList,
+                                  generatedZone2,
+                                  "",
+                                  unusedPrototypeIndex,
+                                  false, // inGenerateDebug,
+                                  true) ; // inGenerateSemanticInstructions
+  generatedZone2 << "}\n\n" ;
+
+//--- Epilogue
+  generatedZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
+  const bool lexiqueIsUsedInEpilogue = isLexiqueFormalArgumentUsedForList (inEpilogueInstructionList, true) ;
+  generatedZone2 << "static void\n"
+                 << inProgramComponentName << "_epilogue (C_Compiler & "
+                 << (lexiqueIsUsedInEpilogue ? "_inLexique" : "/* _inLexique */")
+                 << ",\n"
+                    "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
+  unusedPrototypeIndex = 0 ;
+  generateInstructionListForList (inEpilogueInstructionList,
+                                  generatedZone2,
+                                  "",
+                                  unusedPrototypeIndex,
+                                  false, // inGenerateDebug,
+                                  true) ; // inGenerateSemanticInstructions
+  generatedZone2 << "}\n\n" ;
 
 //--- Generate 'mainForLIBPM' routine
+  generatedZone2.writeCppTitleComment ("M A I N    F O R    L I B P M") ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
                     "  bool verboseOptionOn = true ;\n"
                     "  sint16 returnCode = 0 ; // No error\n"
+                    "//--- Fix parameters for BDD package\n"
+                    "  C_BDD::setHashMapSize (18) ;\n"
+                    "  C_BDD::setITEcacheSize (15) ;\n"
+                    "  C_BDD::setANDcacheSize (1) ;\n"
+                    "  C_BDD::forAllOnBitsGreaterCacheSize (17) ;\n"
                     "  {\n"
                     "  //--- Input/output parameters\n"
                     "    C_options_for_" << inProgramComponentName << " options ("
@@ -367,46 +399,12 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  }\n"
                     "  return returnCode ;\n"
                     "}\n\n" ;
-  generatedZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
-  const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
-  generatedZone2 << "void\n"
-                 << inProgramComponentName << "_prologue (C_Compiler & "
-                 << (lexiqueIsUsedInPrologue ? "_inLexique" : "/* _inLexique */")
-                 << ",\n"
-                    "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
-  sint32 unusedPrototypeIndex = 0 ;
-  generateInstructionListForList (inPrologueInstructionList,
-                                  generatedZone2,
-                                  "",
-                                  unusedPrototypeIndex,
-                                  false, // inGenerateDebug,
-                                  true) ; // inGenerateSemanticInstructions
-  generatedZone2 << "}\n\n" ;
-  generatedZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
-  const bool lexiqueIsUsedInEpilogue = isLexiqueFormalArgumentUsedForList (inEpilogueInstructionList, true) ;
-  generatedZone2 << "void\n"
-                 << inProgramComponentName << "_epilogue (C_Compiler & "
-                 << (lexiqueIsUsedInEpilogue ? "_inLexique" : "/* _inLexique */")
-                 << ",\n"
-                    "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
-  unusedPrototypeIndex = 0 ;
-  generateInstructionListForList (inEpilogueInstructionList,
-                                  generatedZone2,
-                                  "",
-                                  unusedPrototypeIndex,
-                                  false, // inGenerateDebug,
-                                  true) ; // inGenerateSemanticInstructions
-  generatedZone2 << "}\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
-//--- User Zone 2 : prologue and epilogue
-  C_String userZone2 ;
-  userZone2 << "\n\n" ;
 //--- Generate file
   inLexique.generateFile ("//",
                           inProgramComponentName + ".cpp",
                           "\n\n", // User Zone 1
                           generatedZone2,
-                          userZone2, // User Zone 2
+                          "\n\n", // User Zone 2
                           "\n") ;
 }
 

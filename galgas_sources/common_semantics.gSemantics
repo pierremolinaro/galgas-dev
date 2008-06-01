@@ -4149,6 +4149,7 @@ class @templateInstructionConstant extends @templateInstruction {
 
 struct @semanticContext {
   @M_filewrappers mFilewrappers ;
+  @stringset mImportedSemanticComponents ;
 }
 
 #---------------------------------------------------------------------------*

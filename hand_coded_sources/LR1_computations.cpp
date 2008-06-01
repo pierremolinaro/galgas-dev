@@ -21,7 +21,7 @@
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
 #include "utilities/MF_MemoryControl.h"
-#include "generic_arraies/TC_UniqueArray2.h"
+#include "collections/TC_UniqueArray2.h"
 
 //---------------------------------------------------------------------------*
 

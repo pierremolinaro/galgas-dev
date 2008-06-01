@@ -215,12 +215,17 @@ rule <parse_semantics_component_for_importing>
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
 :
-  grammar galgas_LL1_grammar label importSemantics in inFileName
-    !?ioSemanticsMapForUse
-    !?ioMetamodelComponentMap
-    !?ioTreewalkingComponentMap
-    !?ioSemanticContext
-  ;
+#  if not [[ioSemanticContext mImportedSemanticComponents] hasKey ![inFileName string]] then
+#    ioSemanticContext.mImportedSemanticComponents += ![inFileName string] ;
+#    message "IMPORT SEMANTICS '" . inFileName . "'\n" ;
+    grammar galgas_LL1_grammar label importSemantics in inFileName
+      !?ioSemanticsMapForUse
+      !?ioMetamodelComponentMap
+      !?ioTreewalkingComponentMap
+      !?ioSemanticContext
+    ;
+#    message "IMPORT SEMANTICS '" . inFileName . "' DONE\n" ;
+#  end if ;
 end rule ;
 
 #------------------------------------------------------------------------------*
