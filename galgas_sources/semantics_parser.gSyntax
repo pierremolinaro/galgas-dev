@@ -22,6 +22,8 @@ import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
+import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
+
 import grammar galgasTemplateGrammar in "galgasTemplateGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -51,6 +53,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -59,15 +62,6 @@ label importGrammarForSemantics
   ?!@semanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
-;
-
-nonterminal <parse_semantics_component_for_importing>
-  ??@lstring inFileName
-  ?!@M_semanticsComponents ioSemanticsMapForUse
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
-label parse
 ;
 
 nonterminal <parse_grammar_component_for_importing>
@@ -155,6 +149,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 label parse
 ;
 
@@ -719,6 +714,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 :
   $semantics$ ;
   @lstring componentName ;
@@ -751,6 +747,7 @@ label importSemantics
     !?ioMetamodelComponentMap
     !?ioTreewalkingComponentMap
     !?ioSemanticContext
+    !?ioImportedSemanticsComponentNameSet
   ;
   @typeTableRoutinesAimplementer tableRoutinesAimplementer [emptyMap] ;
   @typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees [emptyMap] ;
@@ -860,6 +857,29 @@ label importOptions
   $;$ ;
 end rule ;
 
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Parse semantics component for importing                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+routine parse_semantics_component_for_importing
+  ??@lstring inFileName
+  ?!@M_semanticsComponents ioSemanticsMapForUse
+  ?!@M_metamodelsComponents ioMetamodelComponentMap
+  ?!@M_treewalkingComponents ioTreewalkingComponentMap
+  ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
+:
+  grammar galgas_LL1_grammar label importSemantics in inFileName
+    !?ioSemanticsMapForUse
+    !?ioMetamodelComponentMap
+    !?ioTreewalkingComponentMap
+    !?ioSemanticContext
+    !?ioImportedSemanticsComponentNameSet
+  ;
+end routine ;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 # I M P O R T  H E A D E R S,  S E M A N T I C S  A N D  G R A M M A R S    *
@@ -867,7 +887,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <import_headers_semantics_and_grammars>
-  !@stringset outImportedSemanticsComponents
+  !@stringset outImportedSemanticsComponentNameSet
   !@stringset outIncludedMetamodelComponents
   !@stringset outImportedOptionComponents
   !@stringset outImportedGrammarComponents
@@ -876,7 +896,7 @@ rule <import_headers_semantics_and_grammars>
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
   !@stringset outInclusionsForHeaderFile
   !@M_optionComponents ioOptionsComponentsMapForUse
@@ -892,7 +912,7 @@ rule <import_headers_semantics_and_grammars>
   outActionMap := [@ActionMap emptyMap] ;
   outInclusionsForHeaderFile := [@stringset emptySet] ;
   outInclusionsForImplementationFile := [@stringset emptySet] ;
-  outImportedSemanticsComponents := [@stringset emptySet] ;
+  outImportedSemanticsComponentNameSet := [@stringset emptySet] ;
   outIncludedMetamodelComponents := [@stringset emptySet] ;
   outImportedOptionComponents := [@stringset emptySet] ;
   outImportedGrammarComponents := [@stringset emptySet] ;
@@ -952,19 +972,17 @@ rule <import_headers_semantics_and_grammars>
       $identifier$ ? treewalkingComponentName ;
       outInclusionsForHeaderFile += ![treewalkingComponentName string] ;
       outInclusionsForImplementationFile += ![treewalkingComponentName string] . ".h" ;
-      select
-      or
-        $in$ ;
-        @lstring fileName ;
-        $literal_string$ ? fileName ;
-        <parse_semantics_component_for_importing> 
-          !fileName
-          !?ioSemanticsComponentsMap
-          !?ioMetamodelComponentMap
-          !?ioTreewalkingComponentMap
-          !?ioSemanticContext
-        ;
-      end select ;
+      $in$ ;
+      @lstring fileName ;
+      $literal_string$ ? fileName ;
+      parse_semantics_component_for_importing
+        !fileName
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+        !?ioTreewalkingComponentMap
+        !?ioSemanticContext
+        !?outImportedSemanticsComponentNameSet
+      ;
     or
       $option$ ;
       @lstring optionComponentName ;
@@ -974,19 +992,15 @@ rule <import_headers_semantics_and_grammars>
       @M_cli_options boolOptionsMap ;
       @M_cli_options uintOptionsMap ;
       @M_cli_options stringOptionsMap ;
-      select
-        [ioOptionsComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
-      or
-        $in$ ;
-        @lstring fileName ;
-        $literal_string$ ? fileName ;
-        @M_optionComponents importedOptionComponentsMap [emptyMap] ;
-        <parse_option_component_for_importing>
-          !fileName
-          !?importedOptionComponentsMap
-        ;
-        [importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
-      end select ;
+      $in$ ;
+      @lstring fileName ;
+      $literal_string$ ? fileName ;
+      @M_optionComponents importedOptionComponentsMap [emptyMap] ;
+      <parse_option_component_for_importing>
+        !fileName
+        !?importedOptionComponentsMap
+      ;
+      [importedOptionComponentsMap searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
       [!?ioOptionsComponentsMapForUse insertKey !optionComponentName !boolOptionsMap !uintOptionsMap !stringOptionsMap] ;
     or
       $grammar$ ;
@@ -995,22 +1009,18 @@ rule <import_headers_semantics_and_grammars>
       outInclusionsForImplementationFile += ![grammarComponentName string] . ".h" ;
       outImportedGrammarComponents += ![grammarComponentName string] ;
       @M_grammarComponents grammarComponentsMap ;
-      select
-        grammarComponentsMap := ioGrammarComponentsMap ;
-      or
-        $in$ ;
-        @lstring sourceFile ;
-        $literal_string$ ? sourceFile ;
-        grammarComponentsMap := [@M_grammarComponents emptyMap] ;
-        <parse_grammar_component_for_importing> 
-          !sourceFile
-          !?grammarComponentsMap
-          !?ioMetamodelComponentMap
-          !?ioOptionsComponentsMapForUse
-          !?ioTreewalkingComponentMap
-          !?ioSemanticContext
-        ;
-      end select ;
+      $in$ ;
+      @lstring sourceFile ;
+      $literal_string$ ? sourceFile ;
+      grammarComponentsMap := [@M_grammarComponents emptyMap] ;
+      <parse_grammar_component_for_importing> 
+        !sourceFile
+        !?grammarComponentsMap
+        !?ioMetamodelComponentMap
+        !?ioOptionsComponentsMapForUse
+        !?ioTreewalkingComponentMap
+        !?ioSemanticContext
+      ;
       @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
       @lstring lexiqueClassName ;
       [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?lexiqueClassName ?*] ;
@@ -1050,20 +1060,20 @@ rule <import_headers_semantics_and_grammars>
       @lstring componentName ;
       $identifier$ ?componentName ;
       outInclusionsForHeaderFile += ![componentName string] ;
-      select
-      or
-        $in$ ;
-        @lstring sourceFile ;
-        $literal_string$ ?sourceFile ;
-        <parse_semantics_component_for_importing> 
+      $in$ ;
+      @lstring sourceFile ;
+      $literal_string$ ?sourceFile ;
+      if not [outImportedSemanticsComponentNameSet hasKey ![componentName string]] then
+        outImportedSemanticsComponentNameSet += ![componentName string] ;
+#        message "'IMPORTING '" . sourceFile . "'\n" ;
+        parse_semantics_component_for_importing
           !sourceFile
           !?ioSemanticsComponentsMap
           !?ioMetamodelComponentMap
           !?ioTreewalkingComponentMap
           !?ioSemanticContext
+          !?outImportedSemanticsComponentNameSet
         ;
-      end select ;
-      if not [outImportedSemanticsComponents hasKey ![componentName string]] then
         @M_semanticsEntitiesForUse importedEntities ;
         @M_optionComponents importedOptionsComponentsMap ;
         [ioSemanticsComponentsMap searchKey !componentName ?5* ?importedOptionsComponentsMap ?importedEntities] ;
@@ -1072,7 +1082,7 @@ rule <import_headers_semantics_and_grammars>
             [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
           end if ;
         end foreach ;
-        outInclusionsForHeaderFile += ![componentName string] ;
+#        message "'IMPORTING '" . sourceFile . "' DONE\n" ;
       #--- Check that every used option component is already declared
         foreach importedOptionsComponentsMap (@lstring optionComponentMap ...) do
           if not [ioOptionsComponentsMapForUse hasKey ![optionComponentMap string]] then
@@ -1091,26 +1101,22 @@ rule <import_headers_semantics_and_grammars>
         !componentName
       ;
     #---
-      outInclusionsForHeaderFile += ![componentName string] ;
-      outImportedSemanticsComponents += ![componentName string] ;
     or
       $metamodel$ ;
       @lstring metamodelComponentName ;
       $identifier$ ? metamodelComponentName ;
       outInclusionsForHeaderFile += ![metamodelComponentName string] ;
-      select
-      or
-        $in$ ;
-        @lstring sourceFile ;
-        $literal_string$ ?sourceFile ;
-        <parse_semantics_component_for_importing> 
-          !sourceFile
-          !?ioSemanticsComponentsMap
-          !?ioMetamodelComponentMap
-          !?ioTreewalkingComponentMap
-          !?ioSemanticContext
-        ;
-      end select ;
+      $in$ ;
+      @lstring sourceFile ;
+      $literal_string$ ?sourceFile ;
+      parse_semantics_component_for_importing
+        !sourceFile
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+        !?ioTreewalkingComponentMap
+        !?ioSemanticContext
+        !?outImportedSemanticsComponentNameSet
+      ;
       if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
         @entityToImplementMap metamodelClassMap ;
         [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?metamodelClassMap ?*] ;
@@ -1163,6 +1169,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 :
   outActionMap := [@ActionMap emptyMap] ;
   outModelMap := [@ModelMap emptyMap] ;
@@ -1178,50 +1185,59 @@ label importSemantics
     or
       $treewalking$ ;
       $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_semantics_component_for_importing> parse ;
-     end select ;
+      $in$ ;
+      $literal_string$ ? * ;
     or
       $option$ ;
       @lstring optionComponentName ;
       $identifier$ ? optionComponentName ;
       outIncludedOptionComponents += ![optionComponentName string] ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_option_component_for_importing> parse ;
-     end select ;
+      $in$ ;
+      $literal_string$ ? * ;
+      <parse_option_component_for_importing> parse ;
     or
       $grammar$ ;
       $identifier$ ? * ;
-      select
-      or
-        $in$ ;
-        $literal_string$ ? * ;
-        <parse_grammar_component_for_importing> parse ;
-      end select ;
+      $in$ ;
+      $literal_string$ ? * ;
+      <parse_grammar_component_for_importing> parse ;
     or
       $semantics$ ;
       @lstring componentName ;
       $identifier$ ?componentName ;
       outIncludedSemanticsComponents += ![componentName string] ;
-      select
-      or
-        $in$ ;
-        @lstring sourceFile ;
-        $literal_string$ ? sourceFile ;
-        <parse_semantics_component_for_importing> 
-          !sourceFile
-          !?ioSemanticsComponentsMap
-          !?ioMetamodelComponentMap
-          !?ioTreewalkingComponentMap
-          !?ioSemanticContext
-        ;
-      end select ;
+      $in$ ;
+      @lstring sourceFile ;
+      $literal_string$ ? sourceFile ;
+##      if not [ioImportedSemanticsComponentNameSet hasKey ![componentName string]] then
+##        message "'IMPORTING INDIRECT '" . sourceFile . "'\n" ;
+##        parse_semantics_component_for_importing
+##          !sourceFile
+##          !?ioSemanticsComponentsMap
+##          !?ioMetamodelComponentMap
+##          !?ioTreewalkingComponentMap
+##          !?ioSemanticContext
+##          !?ioImportedSemanticsComponentNameSet
+##        ;
+##        ioImportedSemanticsComponentNameSet += ![componentName string] ;
+##        @M_semanticsEntitiesForUse importedEntities ;
+##        @M_optionComponents importedOptionsComponentsMap ;
+##        [ioSemanticsComponentsMap searchKey !componentName ?5* ?importedOptionsComponentsMap ?importedEntities] ;
+##        foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) do
+##          if not [ioComponentSemanticsEntitiesMap hasKey ![entityName string]] then
+##            [!?ioComponentSemanticsEntitiesMap insertKey !entityName !entityType] ;
+##          end if ;
+##        end foreach ;
+##        message "'IMPORTING INDIRECT '" . sourceFile . "' DONE\n" ;
+##     end if ;
+      parse_semantics_component_for_importing
+        !sourceFile
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+        !?ioTreewalkingComponentMap
+        !?ioSemanticContext
+        !?ioImportedSemanticsComponentNameSet
+      ;
       @M_semanticsEntitiesForUse importedEntities ;
       [ioSemanticsComponentsMap searchKey !componentName ?5* ?* ?importedEntities] ;
       foreach importedEntities (@lstring entityName @AC_semanticsEntity entityType) do
@@ -1243,19 +1259,17 @@ label importSemantics
       $metamodel$ ;
       @lstring metamodelComponentName ;
       $identifier$ ?metamodelComponentName ;
-      select
-      or
-        $in$ ;
-        @lstring sourceFile ;
-        $literal_string$ ?sourceFile ;
-        <parse_semantics_component_for_importing> 
-          !sourceFile
-          !?ioSemanticsComponentsMap
-          !?ioMetamodelComponentMap
-          !?ioTreewalkingComponentMap
-          !?ioSemanticContext
-        ;
-      end select ;
+      $in$ ;
+      @lstring sourceFile ;
+      $literal_string$ ?sourceFile ;
+      parse_semantics_component_for_importing
+        !sourceFile
+        !?ioSemanticsComponentsMap
+        !?ioMetamodelComponentMap
+        !?ioTreewalkingComponentMap
+        !?ioSemanticContext
+        !?ioImportedSemanticsComponentNameSet
+      ;
       [ioMetamodelComponentMap searchKey !metamodelComponentName ?3*] ;
     end select ;
     $;$ ;

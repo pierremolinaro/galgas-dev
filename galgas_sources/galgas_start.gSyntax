@@ -50,6 +50,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext unused ioSemanticContext
+  ?!@stringset unused ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -82,6 +83,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext unused ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
@@ -144,6 +146,7 @@ label importSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@semanticContext ioSemanticContext
+  ?!@stringset ioImportedSemanticsComponentNameSet
 :
   repeat
   while
@@ -152,6 +155,7 @@ label importSemantics
       !?ioMetamodelComponentMap
       !?ioTreewalkingComponentMap
       !?ioSemanticContext
+      !?ioImportedSemanticsComponentNameSet
     ;
   end repeat ;
 label importGrammarForSemantics
