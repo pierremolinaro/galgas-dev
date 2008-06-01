@@ -235,6 +235,7 @@ rule <parse_metamodel>
   @entityToImplementMap allMetamodelClassMap ;
   @semanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
+    ![@stringset emptySet]
   ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents

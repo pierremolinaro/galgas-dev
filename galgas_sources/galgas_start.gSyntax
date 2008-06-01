@@ -182,6 +182,7 @@ label compileFile
   @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
   @semanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
+    ![@stringset emptySet]
   ] ;
   repeat
   while

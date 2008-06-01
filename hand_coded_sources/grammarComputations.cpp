@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file handles all computations performed on grammars                 *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -17,6 +17,10 @@
 //  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
 //  more details.                                                            *
 //                                                                           *
+//---------------------------------------------------------------------------*
+
+// #define LOG_GRAMMAR_COMPUTATIONS
+
 //---------------------------------------------------------------------------*
 
 #include "files/C_HTML_FileWrite.h"
@@ -599,11 +603,6 @@ analyzeGrammar (C_Compiler & inLexique,
   const bool outputHTMLfile = inLexique.boolOptionValueFromKeys (galgas_cli_component,
                                                                  outputHTMLgrammarFile
                                                                  COMMA_HERE) ;
-//--- Create "style.css" file if it does not exist
-//  if (outputHTMLfile) {
-//    createStyleFile (inLexique, inLexique.sourceFileName ().stringByDeletingLastPathComponent (), "style.css", verboseOptionOn) ;
-//  }
-
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file (if file is the empty string, no file is created)
@@ -638,16 +637,21 @@ analyzeGrammar (C_Compiler & inLexique,
                              ) ;
   }
 
-//--- Fix parameters for BDD package
-  C_BDD::setHashMapSize (17) ;
-  C_BDD::setITEcacheSize (14) ;
-
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError) && (HTMLfile != NULL)) {
     HTMLfile->writeCppTitleComment ("Original grammar", "title") ;
+    #ifdef LOG_GRAMMAR_COMPUTATIONS
+      printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE\n") ; fflush (stdout) ;
+    #endif
     printOriginalGrammar (*HTMLfile, inSyntaxComponentsList) ;
+    #ifdef LOG_GRAMMAR_COMPUTATIONS
+      printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE DONE \n") ; fflush (stdout) ;
+    #endif
   }
 //--- Building pure BNF productions ---------------------------------------------------------------------
+  #ifdef LOG_GRAMMAR_COMPUTATIONS
+    printf ("BUILD PURE BNF PRODUCTIONS\n") ; fflush (stdout) ;
+  #endif
   cVocabulary vocabulary ;
   cPureBNFproductionsList pureBNFproductions ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
@@ -675,6 +679,9 @@ analyzeGrammar (C_Compiler & inLexique,
       co.flush () ;
     }
   }
+  #ifdef LOG_GRAMMAR_COMPUTATIONS
+    printf ("BUILD PURE BNF PRODUCTIONS DONE\n") ; fflush (stdout) ;
+  #endif
 
 //--- Define vocabulary BDD sets descriptor
   const C_BDD_Descriptor vocabularyDescriptor ((uint32) (vocabulary.getAllSymbolsCount () - 1)) ;
@@ -682,8 +689,10 @@ analyzeGrammar (C_Compiler & inLexique,
 //--- Compute the BDD bit count
   const uint16 bddBitCount = bddBitCountForVocabulary (vocabulary) ;
 
-//--- Compute 
 //--- Search for identical productions -----------------------------------------------------------
+  #ifdef LOG_GRAMMAR_COMPUTATIONS
+    printf ("SEARCH FOR IDENTICAL PRODUCTIONS\n") ; fflush (stdout) ;
+  #endif
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     if (verboseOptionOn) {
       co << "  Searching for identical productions... " ;
@@ -698,6 +707,7 @@ analyzeGrammar (C_Compiler & inLexique,
     }else if (verboseOptionOn) {
       co << "none, ok.\n" ;
     }
+    co.flush () ;
   }
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError) && (HTMLfile != NULL)) {
   //--- Enregistrer les caracteristiques de la grammaire
@@ -723,7 +733,13 @@ analyzeGrammar (C_Compiler & inLexique,
               << " bits for BDDs." ;
     HTMLfile->outputRawData ("</li>\n</ul>\n") ;
   }
+  #ifdef LOG_GRAMMAR_COMPUTATIONS
+    printf ("SEARCH FOR IDENTICAL PRODUCTIONS DONE\n") ; fflush (stdout) ;
+  #endif
 //--- Getting useful symbols ---------------------------------------------------------------------
+  #ifdef LOG_GRAMMAR_COMPUTATIONS
+    printf ("GETTING USEFUL SYMBOLS\n") ; fflush (stdout) ;
+  #endif
   C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (pureBNFproductions,
@@ -734,6 +750,9 @@ analyzeGrammar (C_Compiler & inLexique,
                                  warningFlag,
                                  verboseOptionOn) ;
   }
+  #ifdef LOG_GRAMMAR_COMPUTATIONS
+    printf ("GETTING USEFUL SYMBOLS DONE\n") ; fflush (stdout) ;
+  #endif
 //--- Calculer l'ensemble des non terminaux pouvant se deriver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
   C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
@@ -957,6 +976,13 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                         GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
+    #ifdef LOG_GRAMMAR_COMPUTATIONS
+      printf ("MARK AND SWEEP BDD NODES\n") ; fflush (stdout) ;
+    #endif
+    C_BDD::markAndSweepUnusedNodes () ;
+    #ifdef LOG_GRAMMAR_COMPUTATIONS
+      printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
+    #endif
    //--- Fix info about terminal and nonterminal symbols
     bool ok = true ;
     cInfo symbolsInfo ;

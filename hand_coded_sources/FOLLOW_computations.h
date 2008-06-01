@@ -23,8 +23,8 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_UniqueArray.h"
-#include "generic_arraies/TC_UniqueArray.h"
+#include "collections/TC_UniqueArray.h"
+#include "collections/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 

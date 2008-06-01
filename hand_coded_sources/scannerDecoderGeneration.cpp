@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------*
 
-#include "generic_arraies/TC_UniqueArray.h"
+#include "collections/TC_UniqueArray.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas/C_galgas_CLI_Options.h"
 

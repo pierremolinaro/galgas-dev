@@ -75,6 +75,7 @@ message "a '.ggs' GALGAS source file"
   @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
   @semanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
+    ![@stringset emptySet]
   ] ;
   grammar galgas_LL1_grammar in inSourceFile
     !?lexiqueMapForUse

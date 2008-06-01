@@ -20,7 +20,7 @@
 
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_BDD_Set2.h"
-#include "generic_arraies/TC_Array2.h"
+#include "collections/TC_Array2.h"
 
 //---------------------------------------------------------------------------*
 
