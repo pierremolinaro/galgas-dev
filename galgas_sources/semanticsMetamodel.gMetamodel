@@ -238,5 +238,26 @@ entity @enumMethodCase {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+entity @filewrapperDeclaration extends @semanticDeclaration {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperPath ;
+  @lstringlist mFilewrapperExtensionList ;
+  @filewrapperTemplate [] mFilewrapperTemplateList ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @filewrapperTemplate {
+  @lstring mFilewrapperTemplateName ;
+  @lstring mFilewrapperTemplatePath ;
+  @formalInputParameterList mFilewrapperTemplateFormalInputParameters ;
+}
+
+#---------------------------------------------------------------------------*
 
 end metamodel ;

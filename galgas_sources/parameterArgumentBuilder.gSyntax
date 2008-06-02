@@ -33,6 +33,8 @@ nonterminal <expression> -> @semanticExpression ;
 
 nonterminal <formal_parameter_list> -> @formalParameters ;
 
+nonterminal <formal_input_parameter_list> -> @formalInputParameterList ;
+
 nonterminal <formal_parameter> -> @formalParameter ;
 
 nonterminal <actual_parameter_list> -> @actualParameters ;
@@ -116,6 +118,37 @@ rule <actual_parameter_list> -> @actualParameters :
     $identifier$ ?inputActualParameterName ;
     mActualParameter += ![@inputActualParameter new !inputActualParameterName] ;
   end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    I N P U T    P A R A M E T E R S                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+nonterminal <formal_input_parameter> -> @formalInputParameter ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_input_parameter_list> -> @formalInputParameterList :
+  repeat
+    <formal_input_parameter> +> mFormalInputParameterList ;
+  while
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <formal_input_parameter> -> @formalInputParameter : 
+  $?$ ;
+  $type_name$ ? mFormalParameterTypeName ;
+  select
+    mIsUnused := false ;
+  or
+    $unused$ ;
+    mIsUnused := true ;
+  end select ;
+  $identifier$ ? mFormalParameterName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
