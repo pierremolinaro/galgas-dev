@@ -518,31 +518,6 @@ static const char k_default_style [] = {
 
 //---------------------------------------------------------------------------*
 
-/* static void
-createStyleFile (C_Compiler & inLexique,
-                 const C_String & inCurrentDirectory, 
-                 const char * inStyleFileName,
-                 const bool inVerboseOptionOn) {
-  C_String f = inCurrentDirectory ;
-  if (f.length () > 0) {
-    f << '/' ;
-  }
-  f << inStyleFileName ;
-  if (! f.fileExists ()) {
-    if (inLexique.mPerformGeneration) {
-      C_TextFileWrite styleFile (f COMMA_SAFARI_CREATOR COMMA_HERE) ;
-      styleFile << k_default_style ;
-      if (inVerboseOptionOn) {
-        inLexique.ggs_printSuccess ((C_String ("Written '") + f + "'.\n").cString ()) ;
-      }
-    }else{
-      inLexique.ggs_printWarning ((C_String ("Need to write '") + f + "'.\n").cString ()) ;
-    }
-  }
-}*/
-
-//---------------------------------------------------------------------------*
-
 static uint16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
   uint16 bddBitCount = 0 ;
   uint32 temp = (uint32) (inVocabulary.getAllSymbolsCount () - 1) ;
@@ -625,7 +600,7 @@ analyzeGrammar (C_Compiler & inLexique,
     HTMLfile->outputRawData ("<h1>") ;
     *HTMLfile << s ;
     HTMLfile->outputRawData ("</h1>") ;
-  //--- Create links to page entries
+ //--- Create links to page entries
     HTMLfile->outputRawData ("<p><a class=\"header_link\" href=\"#pure_bnf\">Pure BNF productions</a></p>"
                              "<p><a class=\"header_link\" href=\"#vocabulary\">Vocabulary</a></p>"
                              "<p><a class=\"header_link\" href=\"#identical_productions\">Identical productions</a></p>"
@@ -635,6 +610,15 @@ analyzeGrammar (C_Compiler & inLexique,
                              "<p><a class=\"header_link\" href=\"#follow_by_empty\">Follow by empty</a></p>"
                              "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
                              ) ;
+  }else if ((! outputHTMLfile) && HTMLfileName.fileExists ()) { // Delete HTML file
+    if (inLexique.mPerformGeneration) {
+      HTMLfileName.deleteFile () ;
+      if (verboseOptionOn) {
+        inLexique.ggs_printSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString ()) ;
+      }
+    }else{
+      inLexique.ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString ()) ;
+    }
   }
 
 //--- Print original grammar in BNF file

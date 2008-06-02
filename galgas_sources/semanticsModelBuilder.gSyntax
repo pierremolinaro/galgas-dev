@@ -65,6 +65,8 @@ nonterminal <enum_method> -> @enumMethod ;
 
 nonterminal <enum_method_case> -> @enumMethodCase ;
 
+nonterminal <formal_input_parameter_list> -> @formalInputParameterList ;
+
 #---------------------------------------------------------------------------*
 
 rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semanticsComponentRoot :
@@ -601,6 +603,47 @@ end rule ;
 rule <enum_method_case> -> @enumMethodCase :
   $identifier$ ? mConstantName ;
   <enum_case_message> -> mEnumMethodCaseMessage ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+nonterminal <filewrapper_template> -> @filewrapperTemplate ;
+
+rule <semantic_declaration> -> @filewrapperDeclaration :
+  $filewrapper$ ;
+  $identifier$ ? mFilewrapperName ;
+  $in$ ;
+  $literal_string$ ? mFilewrapperPath ;
+  ${$ ;
+  mFilewrapperExtensionList := [@lstringlist emptyList] ;
+  repeat
+    @lstring extension ;
+    $literal_string$ ? extension ;
+    mFilewrapperExtensionList += !extension ;
+  while
+    $,$ ;
+  end repeat ;
+  $}$ ;
+  ${$ ;
+  repeat
+  while
+    <filewrapper_template> +> mFilewrapperTemplateList ;
+  end repeat ;
+  $}$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <filewrapper_template> -> @filewrapperTemplate :
+  $template$ ;
+  $identifier$ ? mFilewrapperTemplateName ;
+  $literal_string$ ? mFilewrapperTemplatePath ;
+  <formal_input_parameter_list> -> mFilewrapperTemplateFormalInputParameters ;
   $;$ ;
 end rule ;
 
