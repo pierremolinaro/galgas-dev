@@ -69,15 +69,29 @@ nonterminal <build_lexical_or>
 
 nonterminal <character_or_interval> ??@lchar inCharacter -> @lexicalExpression ;
 
+nonterminal <template_delimitor> -> @templateDelimitor ;
+
+nonterminal <template_replacement> -> @templateReplacement ;
+
 #---------------------------------------------------------------------------*
 
 rule <lexique_component_start_symbol> -> @lexiqueComponentRoot :
+  select
+    mIsTemplate := true ;
+    $template$ ;
+  or
+    mIsTemplate := false ;
+  end select ;
   $lexique$ ;
 #--- Lexique Component Name
   $identifier$ ? mLexiqueComponentName ;
   $:$ ;
 #--- Parse the option list
   repeat
+  while 
+    <template_delimitor> +> mTemplateDelimitorList ;
+  while 
+    <template_replacement> +> mTemplateReplacementList ;
   while 
     <lexical_attribute_declaration> +> mLexicalAttributeList ;
   while 
@@ -99,6 +113,26 @@ rule <lexique_component_start_symbol> -> @lexiqueComponentRoot :
   end repeat ;
   $end$ ;
   $lexique$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_delimitor> -> @templateDelimitor :
+  $template$ ;
+  $literal_string$ ? mStartString ;
+  $...$ ;
+  $literal_string$ ? mEndString ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_replacement> -> @templateReplacement :
+  $replace$ ;
+  $literal_string$ ? mMatchString ;
+  $->$ ;
+  $literal_string$ ? mReplacementString ;
   $;$ ;
 end rule ;
 

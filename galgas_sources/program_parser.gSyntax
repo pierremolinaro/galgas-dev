@@ -178,7 +178,7 @@ rule <galgas_component>
 #--- Max errors count
   select
     $error$ ;
-    warning here: "in GALGAS 1.7.2 and later, the 'error ... ;' declaration is obsolete and should be removed" ;
+    error here: "in GALGAS 1.7.2 and later, the 'error ... ;' declaration is obsolete and should be removed" ;
     $unsigned_literal_integer$ ? * ;
     $;$ ;
   or
@@ -186,13 +186,18 @@ rule <galgas_component>
 #--- Max warnings count
   select
     $warning$ ;
-    warning here: "in GALGAS 1.7.2 and later, the 'warning ... ;' declaration is obsolete and should be removed" ;
+    error here: "in GALGAS 1.7.2 and later, the 'warning ... ;' declaration is obsolete and should be removed" ;
     $unsigned_literal_integer$ ? * ;
     $;$ ;
   or
   end select ;
 #--- prologue routine
-  $routine$ ;
+  select
+    $before$ ;
+  or
+    $routine$ ;
+    warning here: "in GALGAS 1.7.5 and later, the 'routine' keyword that introduces the prologue routine has been replaced by the 'before' keyword" ;
+  end select ;
   ${$ ;
   @typeInstructionList prologueInstructionList [emptyList] ;
   @typeVariablesMap prologueVariablesMap [emptyMap] ;
@@ -289,7 +294,12 @@ rule <galgas_component>
   end repeat ;
 #--- epilogue routine
   @typeInstructionList epilogueInstructionList [emptyList] ;
-  $routine$ ;
+  select
+    $after$ ;
+  or
+    $routine$ ;
+    warning here: "in GALGAS 1.7.5 and later, the 'routine' keyword that introduces the epilogue routine has been replaced by the 'after' keyword" ;
+  end select ;
   ${$ ;
   @typeVariablesMap variablesMap [emptyMap] ;
   @typeTableEnAvant epilogueTableEnAvant [emptyMap] ;
@@ -347,7 +357,11 @@ label importLexique
   or
   end select ;
 #--- prologue routine
-  $routine$ ;
+  select
+    $before$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -372,7 +386,11 @@ label importLexique
     $when$ ;
   end repeat ;
 #--- epilogue routine
-  $routine$ ;
+  select
+    $after$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -407,7 +425,11 @@ label importSyntax
   or
   end select ;
 #--- prologue routine
-  $routine$ ;
+  select
+    $before$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -432,7 +454,11 @@ label importSyntax
     $when$ ;
   end repeat ;
 #--- epilogue routine
-  $routine$ ;
+  select
+    $after$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -468,7 +494,11 @@ label importSemantics
   or
   end select ;
 #--- prologue routine
-  $routine$ ;
+  select
+    $before$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -493,7 +523,11 @@ label importSemantics
     $when$ ;
   end repeat ;
 #--- epilogue routine
-  $routine$ ;
+  select
+    $after$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -529,7 +563,11 @@ label importGrammarForSemantics
   or
   end select ;
 #--- prologue routine
-  $routine$ ;
+  select
+    $before$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -554,7 +592,11 @@ label importGrammarForSemantics
     $when$ ;
   end repeat ;
 #--- epilogue routine
-  $routine$ ;
+  select
+    $after$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -586,7 +628,11 @@ label importOptions
   or
   end select ;
 #--- prologue routine
-  $routine$ ;
+  select
+    $before$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;
@@ -611,7 +657,11 @@ label importOptions
     $when$ ;
   end repeat ;
 #--- epilogue routine
-  $routine$ ;
+  select
+    $after$ ;
+  or
+    $routine$ ;
+  end select ;
   ${$ ;
   <semantic_instructions_list> parse ;
   $}$ ;

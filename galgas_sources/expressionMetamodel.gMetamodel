@@ -167,4 +167,19 @@ entity @castInExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
+entity @filewrapperInExpression extends @semanticExpression {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperPath ;
+}
+
+#---------------------------------------------------------------------------*
+
+entity @filewrapperTemplateInExpression extends @semanticExpression {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperTemplateName ;
+  @outExpressionList mActualOutputParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
 end metamodel ;

@@ -5,7 +5,7 @@ import semantics PROJECT_semantics in "PROJECT_semantics.ggs" ;
 import grammar PROJECT_grammar in "PROJECT_grammar.ggs" ;
 
 #--- Prologue routine
-routine {
+before {
 }
 
 #--- 'when' clauses
@@ -16,7 +16,7 @@ message "a source text file with the .PROJECT extension"
 }
 
 #--- Epilogue routine
-routine {
+after {
 }
 
 #---

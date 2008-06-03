@@ -151,8 +151,12 @@ entity @foreachInstructionEnumeratedObject {
 
 entity @foreachInstruction extends @semanticInstruction {
   @foreachInstructionEnumeratedObject [] mEnumeratedObjects ;
+  @lstring mIndexVariableName ;
   @semanticExpression mWhileExpression ;
-  @semanticInstructions mInstructionList ;
+  @semanticInstruction [] mBeforeInstructionList ;
+  @semanticInstruction [] mBetweenInstructionList ;
+  @semanticInstructions mDoInstructionList ;
+  @semanticInstruction [] mAfterInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

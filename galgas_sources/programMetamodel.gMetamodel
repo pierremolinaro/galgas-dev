@@ -37,8 +37,8 @@ entity @programRule {
 entity @programComponentRoot {
   @lstring mProgramName ;
   @lstring mVersionString ;
-  @luint mErrorMaximumCount ;
-  @luint mWarningMaximumCount ;
+  @semanticInstructions mPrologueInstructionList ;
+  @semanticInstructions mEpilogueInstructionList ;
   @programRule [1, *] mProgramRules ;
   @semanticDeclaration [] mSemanticDeclarations ;
 }

@@ -519,6 +519,29 @@ rule <factor> -> @semanticExpression expression :
       $identifier$ ?optionName ;
       expression := [@optionExpression new !optionComponentName !optionName] ;
     end select ;
+  or
+    $filewrapper$ ;
+    @lstring filewrapperName ;
+    $identifier$ ? filewrapperName ;
+    $.$ ;
+    select
+      @lstring filePath ;
+      $literal_string$ ? filePath ;
+      expression := [@filewrapperInExpression new
+        !filewrapperName
+        !filePath
+      ] ;
+    or
+      @lstring filewrapperTemplateName ;
+      $identifier$ ? filewrapperTemplateName ;
+      @outExpressionList expressionList ;
+      <output_expression_list> -> expressionList ;
+      expression := [@filewrapperTemplateInExpression new
+        !filewrapperName
+        !filewrapperTemplateName
+        !expressionList
+      ] ;
+    end select ;
   end select ;
   $]$ ;
 end rule ;
