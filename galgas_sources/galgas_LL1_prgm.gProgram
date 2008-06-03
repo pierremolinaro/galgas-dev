@@ -29,7 +29,7 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 #---------------------------------------------------------------------------*
 #--- Prologue routine 
 
-routine {
+before {
   @string creationProjectName := [option galgas_cli_options.create_project] ;
   projectCreation !creationProjectName ;
 }
@@ -66,7 +66,7 @@ message "a '.ggs' GALGAS source file"
 #---------------------------------------------------------------------------*
 #--- Epilogue routine
 
-routine {
+after {
 }
 
 #---------------------------------------------------------------------------*

@@ -55,7 +55,7 @@ program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION" :
 
 #---------------------------------------------------------------------------*
 
-routine {
+before {
   @string creationProjectName := [option galgas_cli_options.create_project] ;
   projectCreation !creationProjectName ;
 }
@@ -227,7 +227,7 @@ message "a GALGAS project source file"
 
 #---------------------------------------------------------------------------*
 
-routine {
+after {
 }
 
 #---------------------------------------------------------------------------*

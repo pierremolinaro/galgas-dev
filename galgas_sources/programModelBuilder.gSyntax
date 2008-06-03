@@ -75,13 +75,11 @@ rule <program_component_start_symbol> -> @programComponentRoot :
     $literal_string$ ? * ;
     $;$ ;
   end repeat ;
-#--- Errors and warnings
-  $error$ ;
-  $unsigned_literal_integer$ ? mErrorMaximumCount ;
-  $;$ ;
-  $warning$ ;
-  $unsigned_literal_integer$ ? mWarningMaximumCount ;
-  $;$ ;
+#--- Prologue
+  $before$ ;
+  ${$ ;
+  <semantic_instruction_list> -> mPrologueInstructionList ;
+  $}$ ;
 #--- Program rules
   repeat
   while
@@ -89,6 +87,11 @@ rule <program_component_start_symbol> -> @programComponentRoot :
   while
     <semantic_declaration> +> mSemanticDeclarations ;
   end repeat ;
+#--- Epilogue
+  $after$ ;
+  ${$ ;
+  <semantic_instruction_list> -> mEpilogueInstructionList ;
+  $}$ ;
 #---
   $end$ ;
   $program$ ;

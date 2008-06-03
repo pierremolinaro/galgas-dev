@@ -213,13 +213,43 @@ rule <semantic_instruction> -> @foreachInstruction :
     $,$ ;
   end repeat ;
   select
+    mIndexVariableName := [@lstring new !"" !here] ;
+  or
+    $:$ ;
+    $identifier$ ? mIndexVariableName ;
+  end select ;
+  select
     mWhileExpression := [@trueExpression new] ;
   or
     $while$ ;
     <expression> -> mWhileExpression ;
   end select ;
-  $:$ ;
-  <semantic_instruction_list> -> mInstructionList ;
+  select
+  or
+    $before$ ;
+    repeat
+    while
+      <semantic_instruction> +> mBeforeInstructionList ;
+    end repeat ;
+  end select ;
+  select
+  or
+    $between$ ;
+    repeat
+    while
+      <semantic_instruction> +> mBetweenInstructionList ;
+    end repeat ;
+  end select ;
+  $do$ ;
+  <semantic_instruction_list> -> mDoInstructionList ;
+  select
+  or
+    $after$ ;
+    repeat
+    while
+      <semantic_instruction> +> mBetweenInstructionList ;
+    end repeat ;
+  end select ;
   $end$ ;
   $foreach$ ;
   $;$ ;
