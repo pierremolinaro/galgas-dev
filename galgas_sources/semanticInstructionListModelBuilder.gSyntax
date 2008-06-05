@@ -247,7 +247,7 @@ rule <semantic_instruction> -> @foreachInstruction :
     $after$ ;
     repeat
     while
-      <semantic_instruction> +> mBetweenInstructionList ;
+      <semantic_instruction> +> mAfterInstructionList ;
     end repeat ;
   end select ;
   $end$ ;
