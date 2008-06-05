@@ -378,7 +378,9 @@ list @typeListeAttributsSemantiques ;
 #---------------------------------------------------------------------------*
 
 enum @localConstantBuildStyleEnum {
-  constructor listStyle, mapStyle, firstIsKeyOtherMapStyle ;
+  constructor listStyle ;
+  constructor mapStyle ;
+  constructor firstIsKeyOtherMapStyle ;
 }{
 }
 
@@ -2955,6 +2957,25 @@ map @enumMethodMap {
 
 #---------------------------------------------------------------------------*
 
+list @enumOperatorDefinitionList {
+  @lstring mLeftSourceState ;
+  @lstring mRightSourceState ;
+  @lstring mTargetState ;
+  @typeInstructionList mInstructionList ; # Actually: no instruction, error instruction or warning instruction
+}
+
+#---------------------------------------------------------------------------*
+
+map @enumOperatorMap {
+  @enumOperatorDefinitionList mActionDefinitionList ;
+  @L_EXsignature mSignature ;
+  @typeListeTypesEtNomsArgMethode mArgumentTypeAndNameList ;
+  insert insertKey error message "the '%K' method is already declared in %L" ;
+  search searchKey error message "the '%K' method is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgas_enum extends @AC_galgasType {
 #--- Enumeration name
   @lstring mEnumTypeName ;
@@ -2970,6 +2991,9 @@ class @typeGalgas_enum extends @AC_galgasType {
 
 #--- Method map
   @enumMethodMap mMethodMap ;
+
+#--- Operator map
+  @enumOperatorMap mOperatorMap ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -3116,8 +3140,8 @@ routine checkAssignmentTypesCompatibility
                                "' type variable, and I got an extern '@" . [attNomType2 string] . "' type variable" ;
     end if ;
 
-  when @typeGalgas_enum (@lstring aTypeName1 4*)
-    :: @typeGalgas_enum (@lstring aTypeName2 4*) :
+  when @typeGalgas_enum (@lstring aTypeName1 5*)
+    :: @typeGalgas_enum (@lstring aTypeName2 5*) :
     if [aTypeName1 string] != [aTypeName2 string] then
       error inErrorLocation : "I was expecting an enum variable of  '@" . [aTypeName1 string] .
                                 "' type variable, and I got an enum '@" . [aTypeName2 string] . "' type variable" ;
