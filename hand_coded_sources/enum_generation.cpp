@@ -137,6 +137,28 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << '\n' ;
 
+
+//--- Operators
+  inHfile << "//--- Operators\n" ;
+  GGS_enumOperatorMap::cElement * currentOperator = mOperatorMap.firstObject () ;
+  while (currentOperator != NULL) {
+    macroValidPointer (currentOperator) ;
+    inHfile << "  public : GGS_" << mEnumTypeName << " method_" << currentOperator->mKey
+            << " (C_Compiler & _inLexique,\n"
+               "           const GGS_" << mEnumTypeName << " & inOperand" ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentOperator->mInfo.mArgumentTypeAndNameList.firstObject () ;
+    while (currentArgument != NULL) {
+      macroValidPointer (currentArgument) ;
+      inHfile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+      currentArgument = currentArgument->nextObject () ;
+    }
+    inHfile << "\n                                "
+               "COMMA_LOCATION_ARGS) const ;\n" ;
+    currentOperator = currentOperator->nextObject () ;
+  }
+  inHfile << '\n' ;
+
 //--- 
   inHfile << "//--- 'description' reader\n"
              "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
