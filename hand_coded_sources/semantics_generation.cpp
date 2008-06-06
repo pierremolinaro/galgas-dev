@@ -547,22 +547,22 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 void
 generateFormalArgumentFromTypeName (const C_String & inTypeName,
-                                    const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
+                                    const GGS_EXformalArgumentPassingMode & inFormalArgumentPassingMode,
                                     AC_OutputStream & inFile) {
   switch (inFormalArgumentPassingMode.enumValue ()) {
-  case GGS_formalArgumentPassingMode::enum_argumentIn :
+  case GGS_EXformalArgumentPassingMode::enum_argumentIn :
     inFile << "GGS_" << inTypeName ;
     break ;
-  case GGS_formalArgumentPassingMode::enum_argumentOut :
+  case GGS_EXformalArgumentPassingMode::enum_argumentOut :
     inFile << "GGS_" << inTypeName << " &" ;
     break ;
-  case GGS_formalArgumentPassingMode::enum_argumentInOut :
+  case GGS_EXformalArgumentPassingMode::enum_argumentInOut :
     inFile << "GGS_" << inTypeName << " &" ;
     break ;
-  case GGS_formalArgumentPassingMode::enum_argumentConstantIn :
+  case GGS_EXformalArgumentPassingMode::enum_argumentConstantIn :
     inFile << "const GGS_" << inTypeName ;
     break ;
-  case GGS_formalArgumentPassingMode::kNotBuilt :
+  case GGS_EXformalArgumentPassingMode::kNotBuilt :
     break ;
   }
 }
@@ -578,28 +578,28 @@ generateFormalArgumentFromTypeName (const C_String & inTypeName,
 
 void
 generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
-                                const GGS_formalArgumentPassingMode & inFormalArgumentPassingMode,
+                                const GGS_EXformalArgumentPassingMode & inFormalArgumentPassingMode,
                                 AC_OutputStream & inFile) {
   macroValidPointer (inTypePtr) ;
   switch (inFormalArgumentPassingMode.enumValue ()) {
-  case GGS_formalArgumentPassingMode::enum_argumentIn :
+  case GGS_EXformalArgumentPassingMode::enum_argumentIn :
     inTypePtr->generateCppClassName (inFile) ;
     inFile << ' ' ;
     break ;
-  case GGS_formalArgumentPassingMode::enum_argumentOut :
+  case GGS_EXformalArgumentPassingMode::enum_argumentOut :
     inTypePtr->generateCppClassName (inFile) ;
     inFile << " &" ;
     break ;
-  case GGS_formalArgumentPassingMode::enum_argumentInOut :
+  case GGS_EXformalArgumentPassingMode::enum_argumentInOut :
     inTypePtr->generateCppClassName (inFile) ;
     inFile << " &" ;
     break ;
-  case GGS_formalArgumentPassingMode::enum_argumentConstantIn :
+  case GGS_EXformalArgumentPassingMode::enum_argumentConstantIn :
     inFile << "const " ;
     inTypePtr->generateCppClassName (inFile) ;
     inFile << ' ' ;
     break ;
-  case GGS_formalArgumentPassingMode::kNotBuilt :
+  case GGS_EXformalArgumentPassingMode::kNotBuilt :
     break ;
   }
 }

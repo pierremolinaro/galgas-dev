@@ -844,8 +844,8 @@ routine verifierCompatibiliteArgEffectifsSignature
     error inErrorLocation : "too much arguments" ;
   else
   #--- Check signatures
-    foreach signatureReference (@AC_galgasType attSignatureType @formalArgumentPassingMode formalArgPassingMode),
-            inEffectiveArgumentsSignature (@AC_galgasType attEffectiveType @actualParametersPassingMode parameterPassingMode) do
+    foreach signatureReference (@AC_galgasType attSignatureType @EXformalArgumentPassingMode formalArgPassingMode),
+            inEffectiveArgumentsSignature (@AC_galgasType attEffectiveType @EXactualParametersPassingMode parameterPassingMode) do
       match formalArgPassingMode::parameterPassingMode :
       when argumentConstantIn :: parameterOut :
         checkAssignmentTypesCompatibility !attSignatureType !attEffectiveType !inErrorLocation !true ;
@@ -1262,7 +1262,9 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 class @C_mapToImplement extends @typeEntityToGenerate {
-  @lstring aNomTable ;
+  @lstring mMapTypeName ;
+  @lstring mEnumTypeName ; # Empty if no associated enumeration
+  @lstring mCheckFinalStateMethod ; # Empty if no associated enumeration
   @typeListeAttributsSemantiques mNonExternAttributesList ;
   @insertOrSearchMethodList mInsertMethodList ;
   @insertOrSearchMethodList mSearchMethodList ;

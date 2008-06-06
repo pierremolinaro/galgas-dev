@@ -965,7 +965,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
-          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "      parameter_" << numeroParametre << "._drop_operation () ;\n" ;
           }
           parametre = parametre->nextObject () ;
@@ -981,7 +981,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
-          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "    parameter_" << numeroParametre << "._drop_operation () ;\n" ;
           }
           parametre = parametre->nextObject () ;

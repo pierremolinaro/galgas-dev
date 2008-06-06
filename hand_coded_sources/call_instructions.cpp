@@ -516,7 +516,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       GGS_L_EXsignature::cElement * typeArgumentCourant = mFormalParameterList.firstObject () ;
       while (typeArgumentCourant != NULL) {
         macroValidPointer (typeArgumentCourant) ;
-        if (typeArgumentCourant->mFormalArgumentPassingMode.enumValue () != GGS_formalArgumentPassingMode::enum_argumentOut) {
+        if (typeArgumentCourant->mFormalArgumentPassingMode.enumValue () != GGS_EXformalArgumentPassingMode::enum_argumentOut) {
           if (nombreArgumentsTestes == 0) {
             ioCppFile << "if (" ;
           }else{
