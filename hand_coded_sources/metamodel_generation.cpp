@@ -340,7 +340,8 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_metamodelEntityToImplement::
-generateCppClassImplementation (AC_OutputStream & inCppFile,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                  AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
@@ -1050,7 +1051,8 @@ generate_metamodel_cpp_file (C_Compiler & inLexique,
   sint32 select_repeat_production_index = 0 ;
   while (element != NULL) {
     macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateCppClassImplementation (generatedZone3,
+    element->mEntityToGenerate (HERE)->generateCppClassImplementation (inLexique,
+                                         generatedZone3,
                                          inMetamodelComponentName,
                                          select_repeat_production_index,
                                          false) ;

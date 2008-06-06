@@ -260,7 +260,7 @@ class @MapModel extends @TypeModel {
 map @enumConstantMap {
   @bool mHasConstructor ;
   insert insertKey error message "the '%K' constant is already declared in %L" ;
-  search searchKey error message "the '%K' constant is not declared" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' constant is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2959,8 +2959,11 @@ map @enumMethodMap {
 
 list @enumOperatorDefinitionList {
   @lstring mLeftSourceState ;
+  @luint mLeftSourceStateIndex ;
   @lstring mRightSourceState ;
+  @luint mRightSourceStateIndex ;
   @lstring mTargetState ;
+  @luint mTargetStateIndex ;
   @typeInstructionList mInstructionList ; # Actually: no instruction, error instruction or warning instruction
 }
 

@@ -34,7 +34,8 @@ public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
                                                    const C_String & inTargetFileName,
                                                    sint32 & /* ioPrototypeIndex */) const ;
 
-public : virtual void generateCppClassImplementation (AC_OutputStream & inCppFile,
+public : virtual void generateCppClassImplementation (C_Compiler & inLexique,
+                                                  AC_OutputStream & inCppFile,
                                                   const C_String & inTargetFileName,
                                                   sint32 & ioPrototypeIndex,
                                                   const bool inGenerateDebug) const ;

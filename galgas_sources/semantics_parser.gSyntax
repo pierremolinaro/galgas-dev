@@ -7045,14 +7045,21 @@ rule <semantics_declaration>
     repeat
       @lstring leftConstant ;
       $identifier$ ? leftConstant ;
+      @luint leftConstantIndex ;
+      [constantMap searchKeyAndGetIndex !leftConstant ?leftConstantIndex ?*] ;
       $,$ ;
       @lstring rightConstant ;
       $identifier$ ? rightConstant ;
+      @luint rightConstantIndex ;
+      [constantMap searchKeyAndGetIndex !rightConstant ?rightConstantIndex ?*] ;
       $->$ ;
       @lstring targetConstant ;
       $identifier$ ? targetConstant ;
+      @luint targetConstantIndex ;
+      [constantMap searchKeyAndGetIndex !targetConstant ?targetConstantIndex ?*] ;
       @typeInstructionList instructionList [emptyList] ;
       select
+        $;$ ;
       or
         <error_instruction>
           !ioComponentSemanticsEntitiesMap
@@ -7070,8 +7077,15 @@ rule <semantics_declaration>
           !?instructionList
         ;
       end select ;
-      enumOperatorDefinitionList += !leftConstant !rightConstant !targetConstant !instructionList ;
-      $;$ ;
+      enumOperatorDefinitionList +=
+        !leftConstant
+        !leftConstantIndex
+        !rightConstant
+        !rightConstantIndex
+        !targetConstant
+        !targetConstantIndex
+        !instructionList
+      ;
     while
     end repeat ;
     [!?operatorMap insertKey !operatorName !enumOperatorDefinitionList !signature !argumentList] ;
@@ -7359,21 +7373,35 @@ label importSemantics
     repeat
       @lstring leftConstant ;
       $identifier$ ? leftConstant ;
+      @luint leftConstantIndex ;
+      [constantMap searchKeyAndGetIndex !leftConstant ?leftConstantIndex ?*] ;
       $,$ ;
       @lstring rightConstant ;
       $identifier$ ? rightConstant ;
+      @luint rightConstantIndex ;
+      [constantMap searchKeyAndGetIndex !rightConstant ?rightConstantIndex ?*] ;
       $->$ ;
       @lstring targetConstant ;
       $identifier$ ? targetConstant ;
+      @luint targetConstantIndex ;
+      [constantMap searchKeyAndGetIndex !targetConstant ?targetConstantIndex ?*] ;
       @typeInstructionList instructionList [emptyList] ;
       select
+        $;$ ;
       or
         <error_instruction> parse ;
       or
         <warning_instruction> parse ;
       end select ;
-      enumOperatorDefinitionList += !leftConstant !rightConstant !targetConstant !instructionList ;
-      $;$ ;
+      enumOperatorDefinitionList +=
+        !leftConstant
+        !leftConstantIndex
+        !rightConstant
+        !rightConstantIndex
+        !targetConstant
+        !targetConstantIndex
+        !instructionList
+      ;
     while
     end repeat ;
     [!?operatorMap insertKey !operatorName !enumOperatorDefinitionList !signature !argumentList] ;

@@ -360,7 +360,8 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_classToImplement::
-generateCppClassImplementation (AC_OutputStream & inCppFile,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & inCppFile,
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {

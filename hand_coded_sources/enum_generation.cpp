@@ -193,7 +193,8 @@ generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType::
-generateCppClassImplementation (AC_OutputStream & inCppFile,
+generateCppClassImplementation (C_Compiler & inCompiler,
+                                AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
@@ -415,25 +416,78 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
   }
 
 
-//--- Operator
+//--- Operators
+  const sint32 constantCount = mConstantMap.count () ;
+  const sint32 squareConstantCount = constantCount * constantCount ;
+  TC_UniqueArray <C_String> constantNameArray (constantCount COMMA_HERE) ;
+  GGS_enumConstantMap::cElement * constant = mConstantMap.firstObject () ;
+  while (constant != NULL) {
+    macroValidPointer (constant) ;
+    constantNameArray.addObject (C_String ("enum_") + constant->mKey) ;
+    constant = constant->nextObject () ;
+  }
   GGS_enumOperatorMap::cElement * currentOperator = mOperatorMap.firstObject () ;
   while (currentOperator != NULL) {
     macroValidPointer (currentOperator) ;
+    TC_UniqueArray <C_String> resultArray (constantCount * constantCount COMMA_HERE) ;
+    TC_UniqueArray <sint32> errorArray (constantCount * constantCount COMMA_HERE) ;
+    const C_String defaultResult = C_String ("kNotBuilt") ;
+    for (sint32 i=0 ; i<squareConstantCount ; i++) {
+      resultArray (i COMMA_HERE) = defaultResult ;
+      errorArray (i COMMA_HERE) = -1 ; // 'Internal error: combination not handled
+    }
     GGS_enumOperatorDefinitionList::cElement * definition = currentOperator->mInfo.mActionDefinitionList.firstObject ()  ;
-    bool lexiqueIsUsed = false ;
-    while ((definition != NULL) && ! lexiqueIsUsed) {
+    sint32 errorMessageIndex = 1 ;
+    while (definition != NULL) {
       macroValidPointer (definition) ;
-      lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition->mInstructionList, true) ;
+      const sint32 kIndex = ((sint32) definition->mLeftSourceStateIndex.uintValue ()) * constantCount + (sint32) definition->mRightSourceStateIndex.uintValue () ;
+      resultArray (kIndex COMMA_HERE) = C_String ("enum_") + definition->mTargetState.string () ;
+      if (errorArray (kIndex COMMA_HERE) != -1) { // Currently undefined
+        definition->mLeftSourceStateIndex.signalSemanticError (inCompiler, "This combination is already defined" COMMA_HERE) ;
+      }
+      if (definition->mInstructionList.count () == 0) {
+        errorArray (kIndex COMMA_HERE) = 0 ; // No Error
+      }else{
+        errorArray (kIndex COMMA_HERE) = errorMessageIndex ;
+        errorMessageIndex ++ ;
+      }
       definition = definition->nextObject () ;
     }
     inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "static const GGS_" << mEnumTypeName << "::enumeration kResultFor" << mEnumTypeName
+              << "_" << currentOperator->mKey
+              << " [" << squareConstantCount << "] = {" ;
+    for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
+      for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
+        const sint32 kIndex = leftOp * constantCount + rightOp ;
+        inCppFile << "\n  "
+                     "GGS_" << mEnumTypeName << "::" << resultArray (kIndex COMMA_HERE) ;
+        if (kIndex < (squareConstantCount-1)) {
+          inCppFile << "," ;
+        }
+        inCppFile << " /* " << constantNameArray (leftOp COMMA_HERE) << ", " << constantNameArray (rightOp COMMA_HERE) << " */" ;
+      }
+    }
+    inCppFile << "\n} ;\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "static const sint32 kErrorFor" << mEnumTypeName
+              << "_" << currentOperator->mKey
+              << " [" << squareConstantCount << "] = {" ;
+    for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
+      for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
+        const sint32 kIndex = leftOp * constantCount + rightOp ;
+        inCppFile << "\n  " << errorArray (kIndex COMMA_HERE) ;
+        if (kIndex < (squareConstantCount-1)) {
+          inCppFile << "," ;
+        }
+        inCppFile << " /* " << constantNameArray (leftOp COMMA_HERE) << ", " << constantNameArray (rightOp COMMA_HERE) << " */" ;
+      }
+    }
+    inCppFile << "\n} ;\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::\n"
                  "operator_" << currentOperator->mKey
-              << " (C_Compiler & " ;
-    if (lexiqueIsUsed) {
-      inCppFile << " _inLexique" ;
-    }
-    inCppFile << ",\n"
+              << " (C_Compiler & _inLexique,\n"
                  "                                const GGS_" << mEnumTypeName << " & inOperand" ;
     GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentOperator->mInfo.mArgumentTypeAndNameList.firstObject () ;
     while (currentArgument != NULL) {
@@ -464,24 +518,41 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                  "  #endif\n"
                  "  enumeration result = kNotBuilt ;\n"
                  "  if ((mValue > 0) && (inOperand.mValue > 0)) {\n"
-                 "    const sint32 kIndex = (mValue - 1) * " << mConstantMap.count () << " + inOperand.mValue - 1 ;\n" ;
-    
-/*    definition = currentOperator->mInfo.mActionDefinitionList.firstObject () ;
+                 "    const sint32 kIndex = (mValue - 1) * " << mConstantMap.count () << " + inOperand.mValue - 1 ;\n"
+                 "    result = kResultFor" << mEnumTypeName
+              << "_" << currentOperator->mKey << " [kIndex] ;\n"
+                 "    const sint32 error = kErrorFor" << mEnumTypeName
+              << "_" << currentOperator->mKey << " [kIndex] ;\n"
+                 "    if (error != 0) {\n"
+                 "      switch (error) {\n" ;
+    definition = currentOperator->mInfo.mActionDefinitionList.firstObject ()  ;
+    errorMessageIndex = 1 ;
     while (definition != NULL) {
       macroValidPointer (definition) ;
-      inCppFile << "  case enum_" << definition->mSourceState << ":\n" ;
-      inCppFile.incIndentation (2) ;
-      generateInstructionListForList (definition->mInstructionList,
-                                      inCppFile,
-                                      inTargetFileName,
-                                      ioPrototypeIndex,
-                                      inGenerateDebug,
-                                      true) ;
-      inCppFile.incIndentation (-2) ;
-      inCppFile << "    break ;\n" ;
+      if (definition->mInstructionList.count () > 0) {
+        inCppFile << "      case " << errorMessageIndex << ":\n" ;
+        errorMessageIndex ++ ;
+        inCppFile.incIndentation (6) ;
+        generateInstructionListForList (definition->mInstructionList,
+                                        inCppFile,
+                                        inTargetFileName,
+                                        ioPrototypeIndex,
+                                        inGenerateDebug,
+                                        true) ;
+        inCppFile.incIndentation (-6) ;
+        inCppFile << "      break ;\n" ;
+      }
       definition = definition->nextObject () ;
-    }*/
-    inCppFile << "  }\n"
+    }
+    inCppFile << "      default: // error == -1\n"
+                 "        { C_String errorMessage ;\n"
+                 "          errorMessage << \"Unhandled configuration in enum operator\" ;\n"
+                 "          _inLexique.onTheFlySemanticError (errorMessage COMMA_HERE) ;\n"
+                 "        }\n"
+                 "      break ;\n"
+                 "      }\n"
+                 "    }\n"
+                 "  }\n"
                  "  return GGS_" << mEnumTypeName << " (result) ;\n"
                  "}\n\n" ;
     currentOperator = currentOperator->nextObject () ;
@@ -497,7 +568,7 @@ generateCppClassImplementation (AC_OutputStream & inCppFile,
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;
-  GGS_enumConstantMap::cElement * constant = mConstantMap.firstObject () ;
+  constant = mConstantMap.firstObject () ;
   while (constant != NULL) {
     macroValidPointer (constant) ;
     inCppFile << "  case enum_" << constant->mKey << ":\n"
