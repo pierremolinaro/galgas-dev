@@ -187,7 +187,8 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_wrapperToImplement::
-generateCppClassImplementation (AC_OutputStream & inCppFile,
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {

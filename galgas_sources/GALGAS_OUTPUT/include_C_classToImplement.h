@@ -40,7 +40,8 @@ class cPtr_C_classToImplement : public cPtr_typeEntityToGenerate {
                                sint32 & /* ioPrototypeIndex */) const ;
 
   public : virtual void
-  generateCppClassImplementation (AC_OutputStream & inCppFile,
+  generateCppClassImplementation (C_Compiler & inLexique,
+                                  AC_OutputStream & inCppFile,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) const ;

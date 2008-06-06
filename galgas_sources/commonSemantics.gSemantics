@@ -154,8 +154,8 @@ enum @variableStateAutomaton {
 
 #--- Operator "end of repeated branch"
   operator endOfRepeatedBranch ??@location inErrorLocation {
-    localVariableDeclared, localVariableDeclared -> localVariableDeclared ;
-    localVariableUsed, localVariableUsed -> localVariableUsed ;
+    localVariableDeclared, localVariableDeclared -> localVariableDeclared error inErrorLocation:"error 1";
+    localVariableUsed, localVariableUsed -> localVariableUsed warning inErrorLocation:"warning 1";
   }
 }
 
