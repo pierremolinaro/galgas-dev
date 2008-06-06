@@ -7051,10 +7051,8 @@ rule <semantics_declaration>
       $->$ ;
       @lstring targetConstant ;
       $identifier$ ? targetConstant ;
-      $:$ ;
       @typeInstructionList instructionList [emptyList] ;
       select
-        $;$ ;
       or
         <error_instruction>
           !ioComponentSemanticsEntitiesMap
@@ -7367,10 +7365,8 @@ label importSemantics
       $->$ ;
       @lstring targetConstant ;
       $identifier$ ? targetConstant ;
-      $:$ ;
       @typeInstructionList instructionList [emptyList] ;
       select
-        $;$ ;
       or
         <error_instruction> parse ;
       or

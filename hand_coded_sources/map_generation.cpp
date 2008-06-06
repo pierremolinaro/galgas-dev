@@ -268,7 +268,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
   inHfile << "\n" ;
   if (mNonExternAttributesList.count () > 0) {
-    inHfile << "public : e_" << aNomTable << " (void) ;\n\n" ;
+    inHfile << "  public : e_" << aNomTable << " (void) ;\n" ;
   }
   inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
   inHfile.writeCppHyphenLineComment () ;

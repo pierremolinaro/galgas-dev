@@ -151,6 +151,12 @@ enum @variableStateAutomaton {
     constantInputFormalParameterDefined -> constantInputFormalParameterUsed error inErrorLocation: "a constant input parameter cannot be dropped" ;
     constantInputFormalParameterUsed    -> constantInputFormalParameterUsed error inErrorLocation: "a constant input parameter cannot be dropped" ;
   }
+
+#--- Operator "end of repeated branch"
+  operator endOfRepeatedBranch ??@location inErrorLocation {
+    localVariableDeclared, localVariableDeclared -> localVariableDeclared ;
+    localVariableUsed, localVariableUsed -> localVariableUsed ;
+  }
 }
 
 #---------------------------------------------------------------------------*
