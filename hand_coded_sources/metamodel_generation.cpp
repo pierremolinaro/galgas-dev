@@ -228,13 +228,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Get first object\n"
              "/*  public : inline cElement * firstObject (void) const {\n"
              "    return (cElement *) internalFirstObject () ;\n"
-             "  }*/\n"
+             "  } */\n"
 
 //--- Get last inserted object
              "//--- Get last object\n"
              "/*  public : inline cElement * lastObject (void) const {\n"
              "    return (cElement *) internalLastObject () ;\n"
-             "  }*/\n"
+             "  } */\n"
 
 //--- operators () for method call
              "//--- Operator () used for method call\n"
