@@ -407,7 +407,7 @@ generate_treewalking_implementation (C_Compiler & inLexique,
                     "  }else{\n" ;
   currentArgument = inRootRoutineSignature.firstObject () ;
   while (currentArgument != NULL) {
-    if (currentArgument->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+    if (currentArgument->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
       generatedZone3 << "    " ;
       currentArgument->mCppName (HERE)->generateCplusPlusName (generatedZone3) ;
       generatedZone3 << "._drop_operation () ;\n" ;

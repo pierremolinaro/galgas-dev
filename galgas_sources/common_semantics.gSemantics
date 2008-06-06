@@ -18,7 +18,45 @@
 
 semantics common_semantics extends commonSemantics :
 
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
+#import semantics commonSemantics in "commonSemantics.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @EXactualParametersPassingMode {
+  constructor parameterOut ;
+  constructor parameterOutIn ;
+  constructor parameterIn ;
+}{
+  reader actualArgumentMessage {
+    parameterOutIn -> "an output/input (!?) actual parameter" ;
+    parameterIn -> "an input (?) actual parameter" ;
+    parameterOut -> "an output (!) actual parameter" ;
+  }
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @EXformalArgumentPassingMode {
+  constructor argumentIn ;
+  constructor argumentOut ;
+  constructor argumentInOut ;
+  constructor argumentConstantIn ;
+}{
+  reader formalArgumentMessage {
+    argumentConstantIn -> "a constant input (??) formal argument" ;
+    argumentIn -> "an input (?) formal argument" ;
+    argumentOut -> "an output (!) formal argument" ;
+    argumentInOut -> "an input/output (?!) argument" ;
+  }
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -46,7 +84,7 @@ list @typeInstructionList {
 #---------------------------------------------------------------------------*
 
 list @L_signature {
-  @formalArgumentPassingMode mFormalArgumentPassingMode ;
+  @EXformalArgumentPassingMode mFormalArgumentPassingMode ;
   @lstring mGalgasTypeName ;
 }
 
@@ -579,7 +617,7 @@ class @typeNullName extends @typeCplusPlusName {
 
 list @typeListeTypesEtNomsArgMethode {
   @AC_galgasType mType ;
-  @formalArgumentPassingMode mFormalArgumentPassingMode ;
+  @EXformalArgumentPassingMode mFormalArgumentPassingMode ;
   @typeCplusPlusName mCppName ;
   @bool mModeIn ;
 }
@@ -669,7 +707,7 @@ list @typeTypesList {
 
 list @L_EXsignature {
   @AC_galgasType mType ;
-  @formalArgumentPassingMode mFormalArgumentPassingMode ;
+  @EXformalArgumentPassingMode mFormalArgumentPassingMode ;
 }
 
 #---------------------------------------------------------------------------*
@@ -680,7 +718,7 @@ list @L_EXsignature {
 
 list @L_actualParametersSignature {
   @AC_galgasType mType ;
-  @actualParametersPassingMode mFormalArgumentPassingMode ;
+  @EXactualParametersPassingMode mFormalArgumentPassingMode ;
 }
 
 #---------------------------------------------------------------------------*
@@ -828,13 +866,13 @@ class @typeGalgas_string extends @AC_galgasType {
   :
     if [inReaderName string] == "writeToFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inReaderName string] == "writeToExecutableFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inReaderName string] == "makeDirectoryAndWriteToFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inReaderName string] == "makeDirectory" then
       outReaderSignature := [@L_EXsignature emptyList] ;
     else
@@ -900,11 +938,11 @@ class @typeGalgas_string extends @AC_galgasType {
   :
     if [inModifierName string] == "setCapacity" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setCharacterAtIndex" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_char new] ![@formalArgumentPassingMode argumentIn] ;
-      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_char new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "this modifier is not defined"
        -> outModifierSignature ;
@@ -919,13 +957,13 @@ class @typeGalgas_string extends @AC_galgasType {
   :
     if [inTypeMethodName string] == "generateFile" then
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
-      outTypeMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inTypeMethodName : "This type method is not defined" -> outTypeMethodSignature ;
     end if ;
@@ -1260,10 +1298,10 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setString" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1310,10 +1348,10 @@ class @typeGalgas_lchar extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setChar" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_char new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_char new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1360,10 +1398,10 @@ class @typeGalgas_lbool extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setBool" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_bool new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_bool new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1409,10 +1447,10 @@ class @typeGalgas_luint extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setUint" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1458,10 +1496,10 @@ class @typeGalgas_luint64 extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setUint64" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_uint64 new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1507,10 +1545,10 @@ class @typeGalgas_lsint extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setSint" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_sint new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_sint new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1556,10 +1594,10 @@ class @typeGalgas_lsint64 extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setSint64" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_sint64 new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_sint64 new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1605,10 +1643,10 @@ class @typeGalgas_ldouble extends @C_galgasPrimitiveType {
   :
     if [inModifierName string] == "setDouble" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_double new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_double new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setLocation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "variables of this type do not support modifier call"
        -> outModifierSignature ;
@@ -1711,7 +1749,7 @@ class @typeGalgas_filewrapper extends @AC_galgasType {
   :
     if [inModifierName string] == "setCurrentDirectory" then
       outModifierSignature := [@L_EXsignature emptyList] ;
-      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentIn] ;
+      outModifierSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     else
       error inModifierName : "this modifier is not defined"
        -> outModifierSignature ;
@@ -1944,8 +1982,8 @@ routine checkSignature_ForGrammarComponent
   elsif [inFormalReferenceSignature length] > [inFormalTestedSignature length] then
     error inFormalTestedLocation : "too much formal parameters (from prototype in " . [inFormalReferenceLocation locationString] . ")" ;
   else
-    foreach inFormalReferenceSignature (@formalArgumentPassingMode passingMode1 @lstring kType1),
-            inFormalTestedSignature  (@formalArgumentPassingMode passingMode2 @lstring kType2) do
+    foreach inFormalReferenceSignature (@EXformalArgumentPassingMode passingMode1 @lstring kType1),
+            inFormalTestedSignature  (@EXformalArgumentPassingMode passingMode2 @lstring kType2) do
       if passingMode1 != passingMode2 then
         error kType2 : "Prototype has " . [passingMode1 formalArgumentMessage] .
                        ", and " . [passingMode1 formalArgumentMessage] . " has been found" ;
@@ -2304,9 +2342,9 @@ routine build_uintlist_type !@AC_galgasType outType :
   @typeListeAttributsSemantiques attributesList [emptyList] ;
   attributesList += ![@typeGalgas_uint new] ![@lstring new !"mValue" !here] ;
   @L_EXsignature extractSignature [emptyList] ;
-  extractSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentOut] ;
   @L_EXsignature inputSignature [emptyList] ;
-  inputSignature += ![@typeGalgas_uint new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
   outType := [@typeGalgasListType new
     ![@lstring new !"uintlist" !here]
     !attributesList
@@ -2325,9 +2363,9 @@ routine build_uint64list_type !@AC_galgasType outType :
   @typeListeAttributsSemantiques attributesList [emptyList] ;
   attributesList += ![@typeGalgas_uint64 new] ![@lstring new !"mValue" !here] ;
   @L_EXsignature extractSignature [emptyList] ;
-  extractSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_uint64 new] ![@EXformalArgumentPassingMode argumentOut] ;
   @L_EXsignature inputSignature [emptyList] ;
-  inputSignature += ![@typeGalgas_uint64 new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_uint64 new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
   outType := [@typeGalgasListType new
     ![@lstring new !"uint64list" !here]
     !attributesList
@@ -2346,9 +2384,9 @@ routine build_stringlist_type !@AC_galgasType outType :
   @typeListeAttributsSemantiques attributesList [emptyList] ;
   attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue" !here] ;
   @L_EXsignature extractSignature [emptyList] ;
-  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
   @L_EXsignature inputSignature [emptyList] ;
-  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
   outType := [@typeGalgasListType new
     ![@lstring new !"stringlist" !here]
     !attributesList
@@ -2367,9 +2405,9 @@ routine build_lstringlist_type !@AC_galgasType outType :
   @typeListeAttributsSemantiques attributesList [emptyList] ;
   attributesList += ![@typeGalgas_lstring new] ![@lstring new !"mValue" !here] ;
   @L_EXsignature extractSignature [emptyList] ;
-  extractSignature += ![@typeGalgas_lstring new] ![@formalArgumentPassingMode argumentOut] ;
+  extractSignature += ![@typeGalgas_lstring new] ![@EXformalArgumentPassingMode argumentOut] ;
   @L_EXsignature inputSignature [emptyList] ;
-  inputSignature += ![@typeGalgas_lstring new] ![@formalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += ![@typeGalgas_lstring new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
   outType := [@typeGalgasListType new
     ![@lstring new !"lstringlist" !here]
     !attributesList
@@ -2713,10 +2751,10 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
     [mMapIndexSearchReaderMap searchKey !inReaderName ?*] ;
     outReaderSignature := [@L_EXsignature listWithValue
       ![@typeGalgas_lstring new]
-      ![@formalArgumentPassingMode argumentOut]
+      ![@EXformalArgumentPassingMode argumentOut]
     ] ;
     foreach mMapAttributesList (@AC_galgasType kAttributType *) do
-      outReaderSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      outReaderSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
     end foreach ;
   end method ;
 
@@ -2730,7 +2768,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
       outTypeMethodSignature +=
         ![@typeGalgas_lstring new]
-        ![@formalArgumentPassingMode argumentIn]
+        ![@EXformalArgumentPassingMode argumentIn]
       ;
       outTypeMethodSignature +=
         ![@typeGalgasMapType new
@@ -2740,7 +2778,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !mModifierMethodMap
            !mReaderMethodMap
          ]
-        ![@formalArgumentPassingMode argumentInOut]
+        ![@EXformalArgumentPassingMode argumentInOut]
       ;
       outTypeMethodSignature +=
         ![@typeGalgasMapindexType new
@@ -2752,7 +2790,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
            !mModifierMethodMap
            !mReaderMethodMap
          ] ## self ??
-        ![@formalArgumentPassingMode argumentOut]
+        ![@EXformalArgumentPassingMode argumentOut]
       ;
     else
       error inTypeMethodName : "a map index only accepts 'regularIndex' type method" -> outTypeMethodSignature ;
@@ -3171,8 +3209,8 @@ routine verifierCompatibiliteSignatures
   elsif [signatureReference length] > [signatureTestee length] then
     error ouSignalerErreur : "one or more parameters missing" ;
   else 
-    foreach signatureReference (@AC_galgasType attTypeG @formalArgumentPassingMode passingMode1),
-            signatureTestee (@AC_galgasType attTypeD @formalArgumentPassingMode passingMode2) do
+    foreach signatureReference (@AC_galgasType attTypeG @EXformalArgumentPassingMode passingMode1),
+            signatureTestee (@AC_galgasType attTypeD @EXformalArgumentPassingMode passingMode2) do
       checkAssignmentTypesCompatibility
          !attTypeG
          !attTypeD

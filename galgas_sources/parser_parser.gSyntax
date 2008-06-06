@@ -772,9 +772,9 @@ routine implicitDeclaration
     parametersMapOneArgument := [@M_nonterminalSymbolAlts emptyMap] ;
     parametersMapForGrammarOneArgument := [@M_nonterminalSymbolAltsForGrammar emptyMap] ;
     @L_signature signatureForGrammar [emptyList] ;
-    signatureForGrammar += ![@formalArgumentPassingMode argumentConstantIn] !inReturnedEntityName ;
+    signatureForGrammar += ![@EXformalArgumentPassingMode argumentConstantIn] !inReturnedEntityName ;
     @L_EXsignature listeDeTypesFormels [emptyList] ;
-    listeDeTypesFormels += !entityType ![@formalArgumentPassingMode argumentConstantIn] ;
+    listeDeTypesFormels += !entityType ![@EXformalArgumentPassingMode argumentConstantIn] ;
     [!?parametersMapOneArgument insertKey ![@lstring new !"" !here] !listeDeTypesFormels !inReturnedEntityName] ;
     [!?parametersMapForGrammarOneArgument insertKey
       ![@lstring new !"" !here] # Empty Id
@@ -960,7 +960,7 @@ routine implicitDeclaration
     listeInstructions += !instruction ;
     listeTypeEtNomsArguments +=
       !entityType
-      ![@formalArgumentPassingMode argumentConstantIn]
+      ![@EXformalArgumentPassingMode argumentConstantIn]
       !var_inE
       !true
     ;
@@ -1044,7 +1044,7 @@ routine implicitDeclarationImportSyntax
   else
     nonterminalSymbolParametersMapOneParameter := [@M_nonterminalSymbolAltsForGrammar emptyMap] ;
     @L_signature signature [emptyList] ;
-    signature += ![@formalArgumentPassingMode argumentConstantIn] !inReturnedEntityName ;
+    signature += ![@EXformalArgumentPassingMode argumentConstantIn] !inReturnedEntityName ;
     [!?nonterminalSymbolParametersMapOneParameter insertKey
       ![@lstring new !"" !here] # Alt Name
       !signature
@@ -1260,7 +1260,7 @@ rule <syntax_declaration>
     if hasSemantics then 
       listeTypeEtNomsArguments +=
         !baseEntityType
-        ![@formalArgumentPassingMode argumentConstantIn]
+        ![@EXformalArgumentPassingMode argumentConstantIn]
         !automaticVar_inE
         !true
       ;
@@ -1306,7 +1306,7 @@ rule <syntax_declaration>
     if hasSemantics then 
       listeTypeEtNomsArguments +=
         !baseEntityType
-        ![@formalArgumentPassingMode argumentConstantIn]
+        ![@EXformalArgumentPassingMode argumentConstantIn]
         !automaticVar_inE
         !true
       ;
@@ -1352,7 +1352,7 @@ rule <syntax_declaration>
     if hasSemantics then 
       listeTypeEtNomsArguments +=
         !baseEntityType
-        ![@formalArgumentPassingMode argumentConstantIn]
+        ![@EXformalArgumentPassingMode argumentConstantIn]
         !automaticVar_inE
         !true
       ;
@@ -1411,7 +1411,7 @@ rule <syntax_declaration>
     if hasSemantics then 
       listeTypeEtNomsArguments +=
         !baseEntityType
-        ![@formalArgumentPassingMode argumentConstantIn]
+        ![@EXformalArgumentPassingMode argumentConstantIn]
         !automaticVar_inE
         !true
       ;
@@ -1435,7 +1435,7 @@ rule <syntax_declaration>
     if hasSemantics then 
       listeTypeEtNomsArguments +=
         !baseEntityType
-        ![@formalArgumentPassingMode argumentConstantIn]
+        ![@EXformalArgumentPassingMode argumentConstantIn]
         !automaticVar_inE
         !true
       ;
@@ -2656,8 +2656,7 @@ rule <syntax_instruction>
       ;
       listeBranchesRepeter += !listeInstructionsPremiereBranche ;
       whileList += !repeatBranchInstructionsList ;
-      @location positionErreurPremiereBranche := here ;
-    end block (!positionErreurPremiereBranche) ;
+    end block (!here) ;
     $while$ ;
     repeat
       block ioVariablesMap.repeatPart () :

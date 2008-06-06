@@ -683,7 +683,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
-          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "      parameter_" << numeroParametre << "._drop_operation () ;\n" ;
           }
           parametre = parametre->nextObject () ;
@@ -699,7 +699,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre != NULL) {
           macroValidPointer (parametre) ;
-          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_formalArgumentPassingMode::enum_argumentOut) {
+          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "    parameter_" << numeroParametre << "._drop_operation () ;\n" ;
           }
           parametre = parametre->nextObject () ;

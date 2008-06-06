@@ -1027,7 +1027,7 @@ rule <import_headers_semantics_and_grammars>
       @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
       foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) do
         @L_EXsignature formalParametersList [emptyList] ;
-        foreach signature (@formalArgumentPassingMode passingMode @lstring typeName) do
+        foreach signature (@EXformalArgumentPassingMode passingMode @lstring typeName) do
           @AC_semanticsEntity e ;
           [ioComponentSemanticsEntitiesMap searchKey !typeName ?e] ;
           @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
@@ -2146,7 +2146,7 @@ rule <formal_arguments_list>
   repeat
   while
     $??$ ; # '??'  : constant input formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentConstantIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2173,7 +2173,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $?$ ; # '?'  : input formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentIn] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2200,7 +2200,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $?!$ ; # '?!' : input/output formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentInOut] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2226,7 +2226,7 @@ rule <formal_arguments_list>
     end select ;
   while
     $!$ ; # '!' : output formal parameter
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
     @AC_galgasType type_semantique ;
     @lstring galgasTypeName ;
     <formal_argument_type>
@@ -2251,7 +2251,7 @@ label importGrammarForSemantics
   repeat
   while
     $??$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentConstantIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2263,7 +2263,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentIn] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentIn] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2275,7 +2275,7 @@ label importGrammarForSemantics
     end select ;
   while
     $?!$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentInOut] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentInOut] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2287,7 +2287,7 @@ label importGrammarForSemantics
     end select ;
   while
     $!$ ;
-    @formalArgumentPassingMode passingMode := [@formalArgumentPassingMode argumentOut] ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
     @lstring galgasTypeName ; 
     <formal_argument_type> importGrammarForSemantics ?galgasTypeName ;
     outSignature += !passingMode !galgasTypeName ;
@@ -2788,12 +2788,12 @@ rule <parse_parameters_list>
       !?ioVariablesMap
       ?expressionValue
       ?expressionType ;
-    @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterOut] ;
+    @EXactualParametersPassingMode parameterPassingMode := [@EXactualParametersPassingMode parameterOut] ;
     listeTypesParametresEffectifs += !expressionType !parameterPassingMode ;
     outExpressionList += !expressionValue ;
   while
     $?$ ;
-    @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterIn] ;
+    @EXactualParametersPassingMode parameterPassingMode := [@EXactualParametersPassingMode parameterIn] ;
     select
       $*$ ;
       listeTypesParametresEffectifs += ![@typeGalgas_jokerInParameterList new] !parameterPassingMode ;
@@ -2831,7 +2831,7 @@ rule <parse_parameters_list>
     @lstring nomArgument ;
     $identifier$ ? nomArgument ;
     [!?ioVariablesMap searchForReadWriteAccess !nomArgument ?typeArgument ?nomCppArgument] ;
-    @actualParametersPassingMode parameterPassingMode := [@actualParametersPassingMode parameterOutIn] ;
+    @EXactualParametersPassingMode parameterPassingMode := [@EXactualParametersPassingMode parameterOutIn] ;
     listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
     @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
     outExpressionList += !e ;
@@ -5292,8 +5292,8 @@ rule <semantics_declaration>
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
+    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList (@lstring kKey ...) do
@@ -5352,6 +5352,18 @@ rule <semantics_declaration>
     listeEntitesAengendrer += !def ;
     $}$ ;
   or
+    @lstring enumTypeName ;
+    @lstring checkFinalStateMethod ;
+    select
+      enumTypeName := [@lstring new !"" !here] ;
+      checkFinalStateMethod := [@lstring new !"" !here] ;
+    or
+      $($ ;
+      $type_name$ ? enumTypeName ;
+      $:$ ;
+      $identifier$ ? checkFinalStateMethod ;
+      $)$ ;
+    end select ;
     ${$ ;
   #--- Parse Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
@@ -5372,8 +5384,8 @@ rule <semantics_declaration>
     @insertOrSearchMethodList removeMethodList [emptyList] ;
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
+    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
@@ -5484,6 +5496,8 @@ rule <semantics_declaration>
   #--- Insertion dans la map des classes definies dans le fichier source courant
     @typeEntityToGenerate def := [@C_mapToImplement new
       !mapTypeName
+      !enumTypeName
+      !checkFinalStateMethod
       !listeTousAttributsSemantiques
       !insertMethodList
       !searchMethodList
@@ -5587,8 +5601,8 @@ label importSemantics
     ;
   #--- Build insert and search method map
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
+    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     foreach insertMethodList (@lstring kKey ...) do
@@ -5641,6 +5655,14 @@ label importSemantics
     [!?ioModelMap insertKey !mapTypeName !type] ;
     $}$ ;
   or
+    select
+    or
+      $($ ;
+      $type_name$ ? * ;
+      $:$ ;
+      $identifier$ ? * ;
+      $)$ ;
+    end select ;
     ${$ ;
   #--- Map attributes
     @typeListeAttributsSemantiques listeTousAttributsSemantiques [emptyList] ;
@@ -5658,8 +5680,8 @@ label importSemantics
   #--- Declaration des methodes d'insertion, de recherche, et de block
     @typeTableBlocsDeTable tableMethodesBloc [emptyMap] ;
   #--- Build insert and search method map
-    @formalArgumentPassingMode inPassingMode [argumentIn] ;
-    @formalArgumentPassingMode outPassingMode [argumentOut] ;
+    @EXformalArgumentPassingMode inPassingMode [argumentIn] ;
+    @EXformalArgumentPassingMode outPassingMode [argumentOut] ;
     @AC_galgasType lstringType := [@typeGalgas_lstring new] ;
     @AC_galgasType luintType := [@typeGalgas_luint new] ;
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
@@ -5830,8 +5852,8 @@ rule <semantics_declaration>
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
-      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
+      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+      inputSignature += !kAttributType ![@EXformalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -5886,8 +5908,8 @@ label importSemantics
     @L_EXsignature extractSignature [emptyList] ;
     @L_EXsignature inputSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
-      inputSignature += !kAttributType ![@formalArgumentPassingMode argumentIn] ;
+      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
+      inputSignature += !kAttributType ![@EXformalArgumentPassingMode argumentIn] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -5946,7 +5968,7 @@ rule <semantics_declaration>
     ;
     @L_EXsignature extractSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -6028,7 +6050,7 @@ label importSemantics
     ;
     @L_EXsignature extractSignature [emptyList] ;
     foreach listeTousAttributsSemantiques (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      extractSignature += !kAttributType ![@formalArgumentPassingMode argumentOut] ;
+      extractSignature += !kAttributType ![@EXformalArgumentPassingMode argumentOut] ;
     end foreach ;
   #--- Construction de l'attribut semantique
     $}$ ;
@@ -6351,7 +6373,7 @@ rule <semantics_declaration>
       @lstring parameterName ;
       $identifier$ ? parameterName ;
       @typeCplusPlusName cppName := [@typeAutomaticName new ![parameterName location] ![parameterName string]] ;
-      templateArgumentTypesList += !type_semantique ![@formalArgumentPassingMode argumentConstantIn] !cppName !true ;
+      templateArgumentTypesList += !type_semantique ![@EXformalArgumentPassingMode argumentConstantIn] !cppName !true ;
       if parameterIsUsed then
         [!?templateVariableMap insertConstInArgument !parameterName !type_semantique !cppName] ;
       else
@@ -7023,7 +7045,7 @@ rule <semantics_declaration>
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -7106,7 +7128,7 @@ rule <semantics_declaration>
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -7183,7 +7205,7 @@ rule <semantics_declaration>
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -7351,7 +7373,7 @@ label importSemantics
         error typeName:"the type should be '@location'" ;
       end if ;
       @AC_galgasType type_semantique := [@typeGalgas_location new] ;
-      @formalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
+      @EXformalArgumentPassingMode argumentConstantIn [argumentConstantIn] ;
       select
         $unused$ ;
         @lstring nomArgument ;
@@ -7414,7 +7436,7 @@ label importSemantics
     @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
     select
     or
-      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
+      signature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
       $??$ ;
       @lstring typeName ;
       $type_name$ ? typeName ;
@@ -7458,7 +7480,7 @@ label importSemantics
     @typeListeTypesEtNomsArgMethode argumentList [emptyList] ;
     select
     or
-      signature += ![@typeGalgas_location new] ![@formalArgumentPassingMode argumentConstantIn] ;
+      signature += ![@typeGalgas_location new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
       $??$ ;
       @lstring typeName ;
       $type_name$ ? typeName ;

@@ -24,7 +24,7 @@ semantics commonSemantics :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-enum @actualParametersPassingMode {
+enum @actualParameterPassingMode {
   constructor parameterOut ;
   constructor parameterOutIn ;
   constructor parameterIn ;
@@ -162,7 +162,8 @@ enum @variableStateAutomaton {
 #---------------------------------------------------------------------------*
 
 enum @localVariableStateAutomaton {
-  constructor localVariableDeclared ; localVariableUsed ; localVariableDropped ;
+  constructor localVariableDeclared ;
+  localVariableUsed, localVariableDropped ;
 }{
 
 #--- Modifier Write

@@ -256,9 +256,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 void cPtr_C_mapToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
-  inHfile.writeCppTitleComment (C_String ("Element of map '@") + aNomTable + "'") ;
+  inHfile.writeCppTitleComment (C_String ("Element of map '@") + mMapTypeName + "'") ;
 //--- Starting map element class declaration
-  inHfile << "class e_" << aNomTable << " {\n" ;
+  inHfile << "class e_" << mMapTypeName << " {\n" ;
 
 //--- declarer les attributs
   GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
@@ -269,23 +269,23 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
   inHfile << "\n" ;
   if (mNonExternAttributesList.count () > 0) {
-    inHfile << "  public : e_" << aNomTable << " (void) ;\n" ;
+    inHfile << "  public : e_" << mMapTypeName << " (void) ;\n" ;
   }
   inHfile << "} ;\n\n" ; //--- End of map element class declaration e_...
   inHfile.writeCppHyphenLineComment () ;
-  inHfile << "class elementOf_GGS_" << aNomTable << " : public AC_galgas_map_element {\n"
+  inHfile << "class elementOf_GGS_" << mMapTypeName << " : public AC_galgas_map_element {\n"
              "//--- Constructor\n"
-             "  public : elementOf_GGS_" << aNomTable << " (const GGS_lstring & inKey,\n"
+             "  public : elementOf_GGS_" << mMapTypeName << " (const GGS_lstring & inKey,\n"
              "                                     const sint32 inIndex,\n"
-             "                                     const e_" << aNomTable << " & inInfo) ;\n"
+             "                                     const e_" << mMapTypeName << " & inInfo) ;\n"
              "//--- Get pointers\n"
-             "  public : inline elementOf_GGS_" << aNomTable << " * nextObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mNextItem ; }\n"
-             "  public : inline elementOf_GGS_" << aNomTable << " * infObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mInfPtr ; }\n"
-             "  public : inline elementOf_GGS_" << aNomTable << " * supObject (void) const { return (elementOf_GGS_" << aNomTable << " *) mSupPtr ; }\n"
+             "  public : inline elementOf_GGS_" << mMapTypeName << " * nextObject (void) const { return (elementOf_GGS_" << mMapTypeName << " *) mNextItem ; }\n"
+             "  public : inline elementOf_GGS_" << mMapTypeName << " * infObject (void) const { return (elementOf_GGS_" << mMapTypeName << " *) mInfPtr ; }\n"
+             "  public : inline elementOf_GGS_" << mMapTypeName << " * supObject (void) const { return (elementOf_GGS_" << mMapTypeName << " *) mSupPtr ; }\n"
              "//--- Comparison\n"
              "  protected : virtual bool isEqualToMapElement (const AC_galgas_map_element * inOperand) const ;\n"
              "//--- Data member\n"
-             "  public : e_" << aNomTable << " mInfo ;\n"
+             "  public : e_" << mMapTypeName << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
              "  public : void appendForMapDescription (C_Compiler & _inLexique,\n"
              "                                         const sint32 inElementIndex,\n"
@@ -299,25 +299,25 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 void cPtr_C_mapToImplement::
 generatePredeclarations (AC_OutputStream & inHfile) const {
-  inHfile << "class GGS_" << aNomTable << " ;\n" ;
+  inHfile << "class GGS_" << mMapTypeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_C_mapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile.writeCppTitleComment (C_String ("Map '@") + aNomTable + "'") ;
+  inHfile.writeCppTitleComment (C_String ("Map '@") + mMapTypeName + "'") ;
 
-  inHfile << "class elementOf_GGS_" << aNomTable << " ;\n\n" ;
-  inHfile << "class GGS_" << aNomTable << " : public AC_galgas_map {\n" ;
+  inHfile << "class elementOf_GGS_" << mMapTypeName << " ;\n\n" ;
+  inHfile << "class GGS_" << mMapTypeName << " : public AC_galgas_map {\n" ;
   inHfile << "//--- Element Class\n"
-             "  public : typedef elementOf_GGS_" << aNomTable << " cElement ;\n\n"
+             "  public : typedef elementOf_GGS_" << mMapTypeName << " cElement ;\n\n"
              "//--- Get pointers\n"
              "  public : inline cElement * firstObject (void) const { return (cElement *) internalFirstObject () ; }\n"
              "  public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }\n\n"
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & inOperand) const ;\n\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element *\n"
              "  new_element (const GGS_lstring & inKey, void * inInfo) ;\n\n"
@@ -328,10 +328,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void enterIndex (const GGS_lstring & inKey,\n"
              "                            AC_galgas_index_core & outIndex) ;\n\n"
              "//--- Get object pointer (for method call)\n"
-             "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
-             "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n\n"
+             "  public : inline GGS_" << mMapTypeName << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
+             "  public : inline const GGS_" << mMapTypeName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n\n"
              "//--- 'emptyMap' constructor\n"
-             "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n\n"
+             "  public : static GGS_" << mMapTypeName << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n\n" ;
 
@@ -468,17 +468,17 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
-              "  public : static GGS_" << aNomTable << " constructor_mapWithMapToOverride (C_Compiler & inLexique,\n"
-              "                                            const GGS_" << aNomTable << " & inMapToOverride\n"
+              "  public : static GGS_" << mMapTypeName << " constructor_mapWithMapToOverride (C_Compiler & inLexique,\n"
+              "                                            const GGS_" << mMapTypeName << " & inMapToOverride\n"
               "                                            COMMA_LOCATION_ARGS) ;\n"
 //--- Generate 'overriddenMap' reader declaration
-              "  public : GGS_" << aNomTable << " reader_overriddenMap (C_Compiler & inLexique\n"
+              "  public : GGS_" << mMapTypeName << " reader_overriddenMap (C_Compiler & inLexique\n"
               "                                            COMMA_LOCATION_ARGS) const ;\n"
 //--- Enumerator declaration
              "//--------------------------------- Map Enumerator\n"
              "  public : class cEnumerator : public cAbstractMapEnumerator {\n"
              "  //--- Constructor\n"
-             "    public : inline cEnumerator (const GGS_" << aNomTable << " & inMap,\n"
+             "    public : inline cEnumerator (const GGS_" << mMapTypeName << " & inMap,\n"
              "                                 const bool inAscending) :\n"
              "    cAbstractMapEnumerator (inMap, inAscending) {\n"
              "    }\n"
@@ -514,8 +514,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   if (mNonExternAttributesList.count () > 0) {
-    inCppFile.writeCppTitleComment (C_String ("class 'e_") + aNomTable + "'") ;
-    inCppFile << "e_" << aNomTable << "::e_" << aNomTable << " (void) :\n" ;
+    inCppFile.writeCppTitleComment (C_String ("class 'e_") + mMapTypeName + "'") ;
+    inCppFile << "e_" << mMapTypeName << "::e_" << mMapTypeName << " (void) :\n" ;
     GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
     bool first = true ;
     while (current != NULL) {
@@ -531,20 +531,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " {\n}\n\n" ;
   }
 
-  inCppFile.writeCppTitleComment (C_String ("class map '@") + aNomTable + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("class map '@") + mMapTypeName + "'") ;
 
 //--- Constructor for type element
-  inCppFile << "elementOf_GGS_" << aNomTable << "::\n"
-               "elementOf_GGS_" << aNomTable << " (const GGS_lstring & inKey,\n"
+  inCppFile << "elementOf_GGS_" << mMapTypeName << "::\n"
+               "elementOf_GGS_" << mMapTypeName << " (const GGS_lstring & inKey,\n"
                "              const sint32 inIndex,\n"
-               "              const e_" << aNomTable << " & inInfo) :\n"
+               "              const e_" << mMapTypeName << " & inInfo) :\n"
                "AC_galgas_map_element (inKey, inIndex),\n"
                "mInfo (inInfo) {\n"
                "}\n\n" ;
 
 //--- Method for 'reader' element
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void elementOf_GGS_" << aNomTable << "::\n"
+  inCppFile << "void elementOf_GGS_" << mMapTypeName << "::\n"
                "appendForMapDescription (C_Compiler & _inLexique,\n"
                "                         const sint32 inElementIndex,\n"
                "                         C_String & ioString,\n"
@@ -565,14 +565,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- 'isEqualToMapElement' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "bool elementOf_GGS_" << aNomTable << "::\n" ;
+  inCppFile << "bool elementOf_GGS_" << mMapTypeName << "::\n" ;
   current = mNonExternAttributesList.firstObject () ;
   if (current == NULL) {
     inCppFile << "isEqualToMapElement (const AC_galgas_map_element * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
     inCppFile << "isEqualToMapElement (const AC_galgas_map_element * inOperand) const {\n"
-                 "  const elementOf_GGS_" << aNomTable << " * _p = dynamic_cast <const elementOf_GGS_" << aNomTable << " *> (inOperand) ;\n"
+                 "  const elementOf_GGS_" << mMapTypeName << " * _p = dynamic_cast <const elementOf_GGS_" << mMapTypeName << " *> (inOperand) ;\n"
                  "  macroValidPointer (_p) ;\n"
                  "  return " ;
     bool first = true ;
@@ -592,41 +592,41 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- 'new_element' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "AC_galgas_map_element * GGS_" << aNomTable << "::\n"
+  inCppFile << "AC_galgas_map_element * GGS_" << mMapTypeName << "::\n"
                "new_element (const GGS_lstring & inKey, void * inInfo) {\n"
-               "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
+               "  MF_Assert (reinterpret_cast <e_" << mMapTypeName << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  AC_galgas_map_element * p = NULL ;\n"
-               "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
+               "  e_" << mMapTypeName << " * info = (e_" << mMapTypeName << " *) inInfo ;\n"
                "  macroMyNew (p, cElement (inKey, nextIndex (), * info)) ;\n"
                "  return p ;\n"
                "}\n\n" ;
 
 //--- 'assignInfo' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomTable << "::\n"
+  inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {\n"
                "  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
-               "  MF_Assert (reinterpret_cast <e_" << aNomTable << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
+               "  MF_Assert (reinterpret_cast <e_" << mMapTypeName << " *> (inInfo) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  cElement * p = (cElement *) inPtr ;\n"
-               "  e_" << aNomTable << " * info = (e_" << aNomTable << " *) inInfo ;\n"
+               "  e_" << mMapTypeName << " * info = (e_" << mMapTypeName << " *) inInfo ;\n"
                "  p->mInfo = * info ;\n"
                "}\n\n" ;
 
 //--- 'constructor_emptyMap' static method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+  inCppFile << "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::\n"
                "constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  GGS_" << aNomTable << " result ;\n"
+               "  GGS_" << mMapTypeName << " result ;\n"
                "  macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
                "  return result ;\n"
                "}\n\n" ;
 
 //--- 'enterIndex'  method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomTable << "::\n"
+  inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "enterIndex (const GGS_lstring & inKey,\n"
                "            AC_galgas_index_core & outIndex) {\n"
-               "  e_" << aNomTable << " info  ;\n"
+               "  e_" << mMapTypeName << " info  ;\n"
                "  internalEnterIndex (inKey,\n"
                "                      (void *) & info,\n"
                "                      mSharedMapRoot->_mRoot,\n"
@@ -635,20 +635,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Generate comparison
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
-               "_operator_isEqual (const GGS_" << aNomTable << " & inOperand) const {\n"
+  inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
+               "_operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
                "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_bool GGS_" << aNomTable << "::\n"
-               "_operator_isNotEqual (const GGS_" << aNomTable << " & inOperand) const {\n"
+  inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
+               "_operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
                "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
 //--- 'internalInsertForDuplication' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomTable << "::\n"
+  inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "internalInsertForDuplication (AC_galgas_map_element * inPtr) {\n"
                "  MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                "  cElement * p = (cElement *) inPtr ;\n"
@@ -660,7 +660,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- 'removeElement' method
   if (mRemoveMethodList.firstObject () != NULL) {
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << aNomTable << "::\n"
+    inCppFile << "void GGS_" << mMapTypeName << "::\n"
                  "_removeElement (C_Compiler & inLexique,\n"
                  "                const char * inErrorMessage,\n"
                  "                const GGS_lstring & inKey,\n" ;
@@ -714,7 +714,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- '_insertElement' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomTable << "::\n"
+  inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "_insertElement (C_Compiler & inLexique,\n"
                "                const char * inErrorMessage,\n"
                "                const GGS_lstring & inKey,\n" ;
@@ -742,7 +742,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile<<  "   && inKey._isBuilt ()) {\n"
                "    insulateMap () ;\n"
-               "    e_" << aNomTable << " info  ;\n" ;
+               "    e_" << mMapTypeName << " info  ;\n" ;
   current = mNonExternAttributesList.firstObject () ;
   attributeIndex = 0 ;
   while (current != NULL) {
@@ -764,7 +764,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- '_searchElement' method
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << aNomTable << "::\n"
+  inCppFile << "void GGS_" << mMapTypeName << "::\n"
                "_searchElement (C_Compiler & inLexique,\n"
                "               const char * inErrorMessage,\n"
                "               const GGS_lstring & inKey,\n" ;
@@ -817,7 +817,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" 
-              << aNomTable << "::\n"
+              << mMapTypeName << "::\n"
               << "method_" << currentMethod->mMethodName
               << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
@@ -859,7 +859,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_"
-              << aNomTable << "::\n"
+              << mMapTypeName << "::\n"
                  "modifier_" << currentMethod->mMethodName
               << " (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
@@ -901,7 +901,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_"
-              << aNomTable << "::\n"
+              << mMapTypeName << "::\n"
                  "modifier_" << currentMethod->mMethodName
               << " (C_Compiler & _inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
@@ -956,11 +956,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement 'mapWithMapToOverride' constructor
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+  inCppFile << "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::\n"
                "constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,\n"
-               "                                  const GGS_" << aNomTable << " & inMapToOverride\n"
+               "                                  const GGS_" << mMapTypeName << " & inMapToOverride\n"
                "                                  COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  GGS_" << aNomTable << " result ; // Not Built\n"
+               "  GGS_" << mMapTypeName << " result ; // Not Built\n"
                "  if (inMapToOverride.mSharedMapRoot != NULL) {\n"
                "    macroValidPointer (inMapToOverride.mSharedMapRoot) ;\n"
                "    macroMyNew (result.mSharedMapRoot, cMapRoot) ;\n"
@@ -973,10 +973,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement reader 'overriddenMap'
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomTable << " GGS_" << aNomTable << "::\n"
+  inCppFile << "GGS_" << mMapTypeName << " GGS_" << mMapTypeName << "::\n"
                "reader_overriddenMap (C_Compiler & /* inLexique */\n"
                "                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
-               "  GGS_" << aNomTable << " result ; // Not Built\n"
+               "  GGS_" << mMapTypeName << " result ; // Not Built\n"
                "  if (mSharedMapRoot != NULL) {\n"
                "    macroValidPointer (mSharedMapRoot) ;\n"
                "    result.mSharedMapRoot = mSharedMapRoot->mNextMap ;\n"
@@ -992,12 +992,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement reader 'description'
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
+  inCppFile << "GGS_string GGS_" << mMapTypeName << "::\n"
                "reader_description (C_Compiler & _inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
-               "  s << \"<map @" << aNomTable << " \" ;\n"
+               "  s << \"<map @" << mMapTypeName << " \" ;\n"
                "  if (_isBuilt ()) {\n"
                "    s << count () << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    cElement * p = firstObject () ;\n"
