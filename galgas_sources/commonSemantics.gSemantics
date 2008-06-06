@@ -58,7 +58,7 @@ enum @formalArgumentPassingMode {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     L O C A L    V A R I A B L E    S T A T E    A U T O M A T O N        *
+#     V A R I A B L E    S T A T E    A U T O M A T O N                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -160,47 +160,86 @@ enum @variableStateAutomaton {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  V A R I A B L E    M A P                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
-enum @localVariableStateAutomaton {
-  constructor localVariableDeclared ;
-  localVariableUsed, localVariableDropped ;
-}{
-
-#--- Modifier Write
-  modifier writeAccess ??@location inErrorLocation {
-    localVariableDeclared -> localVariableUsed ;
-    localVariableUsed -> localVariableUsed ;
-    localVariableDropped -> localVariableUsed ;
-  }
-
-#--- Modifier Read
-  modifier readAccess ??@location inErrorLocation {
-    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it has no value" ;
-    localVariableUsed -> localVariableUsed ;
-    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it is dropped" ;
-  }
-
-#--- Modifier Read/write
-  modifier readWriteAccess ??@location inErrorLocation {
-    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, has no value" ;
-    localVariableUsed -> localVariableUsed ;
-    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, it is dropped" ;
-  }
-
-#--- Modifier Drop
-  modifier dropAccess ??@location inErrorLocation {
-    localVariableDeclared -> localVariableDropped error inErrorLocation: "the local variable cannot be dropped, has no value" ;
-    localVariableUsed -> localVariableDropped ;
-    localVariableDropped -> localVariableDropped error inErrorLocation: "the local variable is already dropped" ;
-  }
-
-#--- Method checkFinalState
-  method checkFinalState ??@location inErrorLocation {
-    localVariableDeclared warning inErrorLocation: "the local variable is unused" ;
-    localVariableUsed ;
-    localVariableDropped ;
-  }
+map @variableMap (@variableStateAutomaton:checkFinalState) {
+#--- Inserting
+  insert insertListOfEntitiesLocalVariable error message "the variable '%K' is already declared" ;
+  insert insertSingleEntityLocalVariable error message "the variable '%K' is already declared" ;
+  insert insertEntityAttributeLocalVariable error message "the variable '%K' is already declared" ;
+  insert insertInArgument error message "the variable '%K' is already declared" ;
+  insert insertUnusedInArgument error message "the variable '%K' is already declared" ;
+  insert insertConstInArgument error message "the variable '%K' is already declared" ;
+  insert insertUsedConstInArgument error message "the variable '%K' is already declared" ;
+  insert insertUsedConstInArgumentNoShadow error message "the variable '%K' is already declared" ;
+  insert insertUnusedConstInArgument error message "the variable '%K' is already declared" ;
+  insert insertLocalVariable error message "the variable '%K' is already declared" ;
+  insert insertOutArgument error message "the variable '%K' is already declared" ;
+  insert insertOutProperty error message "the variable '%K' is already declared" ;
+  insert insertInOutArgument error message "the variable '%K' is already declared" ;
+  insert insertUsedInOutArgument error message "the variable '%K' is already declared" ;
+  insert insertUnusedInOutArgument error message "the variable '%K' is already declared" ;
+#--- Searching
+  search searchForReadOnlyAccess error message "the variable '%K' cannot be accessed in read only mode" ;
+  search searchForDestructiveReadAccess error message "the variable '%K' cannot be accessed in destructive read mode" ;
+  search searchForReadWriteAccess error message "the variable '%K' cannot be accessed in read/write mode" ;
+  search searchForWriteAccess error message "the variable '%K' cannot be accessed in write mode" ;
+#--- Blocks
+#  block  verifyVariableUsing : () : (?@location positionErreur) ;
+#  block  testBloc : () : () ;
+#  block  testPart : () : (?@location positionErreur) ;
+#  block  repeatBlock : () : () ;
+#  block  repeatPart : () : (?@location positionErreur) ;
+#--- Attributes
+#  @AC_galgasType mArgumentType ;
+#  @typeCplusPlusName mCplusPlusName ;
 }
+
+#---------------------------------------------------------------------------*
+
+#enum @localVariableStateAutomaton {
+#  constructor localVariableDeclared ;
+#  localVariableUsed, localVariableDropped ;
+#}{
+#
+##--- Modifier Write
+#  modifier writeAccess ??@location inErrorLocation {
+#    localVariableDeclared -> localVariableUsed ;
+#    localVariableUsed -> localVariableUsed ;
+#    localVariableDropped -> localVariableUsed ;
+#  }
+#
+##--- Modifier Read
+#  modifier readAccess ??@location inErrorLocation {
+#    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it has no value" ;
+#    localVariableUsed -> localVariableUsed ;
+#    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be read, it is dropped" ;
+#  }
+#
+##--- Modifier Read/write
+#  modifier readWriteAccess ??@location inErrorLocation {
+#    localVariableDeclared -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, has no value" ;
+#    localVariableUsed -> localVariableUsed ;
+#    localVariableDropped -> localVariableUsed error inErrorLocation: "the local variable cannot be modified, it is dropped" ;
+#  }
+#
+##--- Modifier Drop
+#  modifier dropAccess ??@location inErrorLocation {
+#    localVariableDeclared -> localVariableDropped error inErrorLocation: "the local variable cannot be dropped, has no value" ;
+#    localVariableUsed -> localVariableDropped ;
+#    localVariableDropped -> localVariableDropped error inErrorLocation: "the local variable is already dropped" ;
+#  }
+#
+##--- Method checkFinalState
+#  method checkFinalState ??@location inErrorLocation {
+#    localVariableDeclared warning inErrorLocation: "the local variable is unused" ;
+#    localVariableUsed ;
+#    localVariableDropped ;
+#  }
+#}
 
 #---------------------------------------------------------------------------*
 

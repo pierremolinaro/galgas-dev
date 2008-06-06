@@ -558,15 +558,6 @@ rule <galgas_component>
 #--- Obtenir le nom du component semantique
   @lstring componentName ;
   $identifier$ ? componentName ;
-  select
-  or
-    $extends$ ;
-    repeat
-      $identifier$ ? * ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
 #--- No lexique
   @string defLexique := "" ;
@@ -691,15 +682,6 @@ label importSyntax
 :
   $semantics$ ;
   $identifier$ ? * ;
-  select
-  or
-    $extends$ ;
-    repeat
-      $identifier$ ? * ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -719,15 +701,6 @@ label importSemantics
   $semantics$ ;
   @lstring componentName ;
   $identifier$ ? componentName ;
-  select
-  or
-    $extends$ ;
-    repeat
-      $identifier$ ? * ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
   @M_semanticsEntitiesForUse componentSemanticsEntitiesMap ;
   enterBuiltinTypes ?componentSemanticsEntitiesMap ;
@@ -787,15 +760,6 @@ label importLexique
 :
   $semantics$ ;
   $identifier$ ? * ;
-  select
-  or
-    $extends$ ;
-    repeat
-      $identifier$ ? * ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -814,15 +778,6 @@ label importGrammarForSemantics
 :
   $semantics$ ;
   $identifier$ ? * ;
-  select
-  or
-    $extends$ ;
-    repeat
-      $identifier$ ? * ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -837,15 +792,6 @@ label importOptions
 :
   $semantics$ ;
   $identifier$ ? * ;
-  select
-  or
-    $extends$ ;
-    repeat
-      $identifier$ ? * ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
   <import_headers_semantics_and_grammars> parse ;
   repeat

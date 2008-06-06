@@ -96,7 +96,7 @@ message "a GALGAS option source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileOptionComponentLL1 !inSourceFile !outputDirectory ;
+  compileOptionComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -106,7 +106,7 @@ message "a GALGAS metamodel source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileMetamodelComponentLL1 !inSourceFile !outputDirectory ;
+  compileMetamodelComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -116,7 +116,7 @@ message "a GALGAS lexique source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileLexiqueComponentLL1 !inSourceFile !outputDirectory ;
+  compileLexiqueComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -126,7 +126,7 @@ message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileSemanticsComponentLL1 !inSourceFile !outputDirectory ;
+  compileSemanticsComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -136,7 +136,7 @@ message "a GALGAS syntax source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileSyntaxComponentLL1 !inSourceFile !outputDirectory ;
+  compileSyntaxComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -146,7 +146,7 @@ message "a GALGAS grammar source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileGrammarComponentLL1 !inSourceFile !outputDirectory ;
+  compileGrammarComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -156,7 +156,7 @@ message "a GALGAS GUI source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileGuiComponentLL1 !inSourceFile !outputDirectory ;
+  compileGuiComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -166,7 +166,7 @@ message "a GALGAS program source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileProgramComponentLL1 !inSourceFile !outputDirectory ;
+  compileProgramComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -176,7 +176,7 @@ message "a GALGAS treewalking source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileTreewalkingComponentLL1 !inSourceFile !outputDirectory ;
+  compileTreewalkingComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -202,23 +202,23 @@ message "a GALGAS project source file"
       ![kFile location]
     ] ;
     if extension == "gTreewalking" then
-      compileTreewalkingComponentLL1 !fullFilePath !outputDirectory ;
+      compileTreewalkingComponent !fullFilePath !outputDirectory ;
     elsif extension == "gSemantics" then
-      compileSemanticsComponentLL1 !fullFilePath !outputDirectory ;
+      compileSemanticsComponent !fullFilePath !outputDirectory ;
     elsif extension == "gLexique" then
-      compileLexiqueComponentLL1 !fullFilePath !outputDirectory ;
+      compileLexiqueComponent !fullFilePath !outputDirectory ;
     elsif extension == "gSyntax" then
-      compileSyntaxComponentLL1 !fullFilePath !outputDirectory ;
+      compileSyntaxComponent !fullFilePath !outputDirectory ;
     elsif extension == "gMetamodel" then
-      compileMetamodelComponentLL1 !fullFilePath !outputDirectory ;
+      compileMetamodelComponent !fullFilePath !outputDirectory ;
     elsif extension == "gOption" then
-      compileOptionComponentLL1 !fullFilePath !outputDirectory ;
+      compileOptionComponent !fullFilePath !outputDirectory ;
     elsif extension == "gGrammar" then
-      compileGrammarComponentLL1 !fullFilePath !outputDirectory ;
+      compileGrammarComponent !fullFilePath !outputDirectory ;
     elsif extension == "gProgram" then
-      compileProgramComponentLL1 !fullFilePath !outputDirectory ;
+      compileProgramComponent !fullFilePath !outputDirectory ;
     elsif extension == "gGui" then
-      compileGuiComponentLL1 !fullFilePath !outputDirectory ;
+      compileGuiComponent !fullFilePath !outputDirectory ;
     else
       error kFile:"unhandled extension" ;
     end if ;

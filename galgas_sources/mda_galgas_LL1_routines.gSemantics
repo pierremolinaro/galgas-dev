@@ -65,7 +65,7 @@ end routine ;
   
 #---------------------------------------------------------------------------*
 
-routine compileOptionComponentLL1
+routine compileOptionComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
 :
@@ -100,7 +100,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileMetamodelComponentLL1
+routine compileMetamodelComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
 :
@@ -245,7 +245,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileLexiqueComponentLL1
+routine compileLexiqueComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
@@ -260,7 +260,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileSemanticsComponentLL1
+routine compileSemanticsComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
@@ -268,6 +268,8 @@ routine compileSemanticsComponentLL1
   @semanticsComponentRoot semanticsComponentRoot ;
   @location endOfSourceFile ;
   grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
+#--- Recursively parse all imported files
+
 #--- Analyze imported files
   @typeMap typeMap ;
   constructBuiltinTypeMap ?typeMap ;
@@ -303,7 +305,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileSyntaxComponentLL1
+routine compileSyntaxComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
@@ -313,7 +315,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileGrammarComponentLL1
+routine compileGrammarComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
@@ -323,7 +325,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileGuiComponentLL1
+routine compileGuiComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
@@ -333,7 +335,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileProgramComponentLL1
+routine compileProgramComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
@@ -343,7 +345,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileTreewalkingComponentLL1
+routine compileTreewalkingComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
