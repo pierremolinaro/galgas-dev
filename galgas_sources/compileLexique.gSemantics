@@ -1,0 +1,87 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'lexique' component metamodel                                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics compileLexique :
+
+import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
+import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
+import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+
+routine compileLexiqueComponent
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @lexiqueComponentRoot lexiqueComponentRoot ;
+  grammar lexiqueLL1grammar in inSourceFile ?lexiqueComponentRoot ;
+#--- Lexical attribute type name set
+  @stringset allowedLexicalTypeNameSet [emptySet] ;
+  allowedLexicalTypeNameSet += !"lstring" ;
+  allowedLexicalTypeNameSet += !"lchar" ;
+  allowedLexicalTypeNameSet += !"luint" ;
+  allowedLexicalTypeNameSet += !"luint64" ;
+  allowedLexicalTypeNameSet += !"lsint" ;
+  allowedLexicalTypeNameSet += !"lsint64" ;
+  allowedLexicalTypeNameSet += !"ldouble" ;
+#--- Build lexical attribute map
+  @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
+  foreach [lexiqueComponentRoot mLexicalAttributeList] (@lstring mTypeName @lstring mName) do
+    if [allowedLexicalTypeNameSet hasKey ![mTypeName string]] then
+      [!?lexicalAttributeMap insertKey !mName ![mTypeName string]] ;
+    else
+      @string m := "" ;
+      m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
+      @bool firstLoop := true ;
+      foreach allowedLexicalTypeNameSet (@string kTypeName)
+      do
+        m .= " @" . kTypeName ;
+      between
+        m .= "," ;
+      end foreach ;
+      error mTypeName: m ;
+    end if ;
+  end foreach ;
+#--- Build terminal map
+  @terminalMap terminalMap [emptyMap] ;
+  foreach [lexiqueComponentRoot mTerminalDeclarationList] (@lstring mName @lstringlist mSentAttributeList 2*) do
+    @stringlist argumentTypeList [emptyList] ;
+    foreach mSentAttributeList (@lstring kAttributeName) do
+      @string attributeTypeName ;
+      [lexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
+      argumentTypeList += !attributeTypeName ;
+    end foreach ;
+    [!?terminalMap insertKey !mName !argumentTypeList] ;
+  end foreach ;
+  foreach [lexiqueComponentRoot mLexicalListDeclarationList] (3* @lstringlist mSentAttributeList @lexicalListEntryList mEntryList) do
+    @stringlist argumentTypeList [emptyList] ;
+    foreach mSentAttributeList (@lstring kAttributeName) do
+      @string attributeTypeName ;
+      [lexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
+      argumentTypeList += !attributeTypeName ;
+    end foreach ;
+    foreach mEntryList (* @lstring mTerminalSpelling) do
+      [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+    end foreach ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

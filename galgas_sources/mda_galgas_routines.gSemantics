@@ -25,7 +25,6 @@ semantics mda_galgas_routines :
 
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
-  import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
   import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
@@ -38,14 +37,12 @@ semantics mda_galgas_routines :
   import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
-  import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
   import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
   import treewalking buildMapsForMetamodel in "buildMapsForMetamodel.gTreewalking" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
   import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
-  import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
@@ -242,21 +239,6 @@ routine compileMetamodelComponent
       !generatedCode3
     ] ;
   end if ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileLexiqueComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-  @lexiqueComponentRoot lexiqueComponentRoot ;
-  grammar lexiqueLL1grammar in inSourceFile -> lexiqueComponentRoot ;
-#--- Get terminal symbol map
-  @terminalMap terminalMap ;
-  treewalking lexiqueTreewalkingForBuildingTerminalMap on lexiqueComponentRoot
-    ?terminalMap
-  ;
 end routine ;
 
 #---------------------------------------------------------------------------*

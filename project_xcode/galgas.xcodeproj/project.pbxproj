@@ -16,18 +16,6 @@
 		CF0357E50B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
-		CF0CB3D40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
-		CF0CB3D50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
-		CF0CB3D80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
-		CF0CB3D90BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
-		CF0CB3EC0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
-		CF0CB3ED0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
-		CF0CB3F00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
-		CF0CB3F10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
-		CF0CB3F70BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
-		CF0CB3F80BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
-		CF0CB3F90BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
-		CF0CB3FA0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
@@ -64,10 +52,6 @@
 		CF0CB79C0BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
 		CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
 		CF0CB79E0BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
-		CF0CB7A70BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
-		CF0CB7A80BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
-		CF0CB7AD0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
-		CF0CB7AE0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
 		CF0CB7AF0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CF0CB7B00BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
 		CF0CB7B10BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
@@ -96,10 +80,6 @@
 		CF0CB7ED0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
 		CF0CB7EE0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7DE0BC0170300E6FABE /* metamodelModelBuilder.cpp */; };
 		CF0CB7EF0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7DF0BC0170300E6FABE /* metamodelModelBuilder.h */; };
-		CF0CB7F80BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
-		CF0CB7F90BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
-		CF0CB7FE0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
-		CF0CB7FF0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
 		CF0CB8000BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
 		CF0CB8010BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */; };
 		CF0CB8020BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
@@ -112,10 +92,6 @@
 		CF0CB8170BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
 		CF0CB8180BC0187500E6FABE /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
 		CF0CB8190BC0187500E6FABE /* optionModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */; };
-		CF0CB8220BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
-		CF0CB8230BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
-		CF0CB8280BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
-		CF0CB8290BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
 		CF0CB82A0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
 		CF0CB82B0BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */; };
 		CF0CB82C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
@@ -179,6 +155,14 @@
 		CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CF27C88B0B6FB42D008C1B22 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
+		CF29BACB0DFAE94300E8B1BF /* compileLexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF29BAC90DFAE94300E8B1BF /* compileLexique.cpp */; };
+		CF29BACC0DFAE94300E8B1BF /* compileLexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF29BACA0DFAE94300E8B1BF /* compileLexique.h */; };
+		CF29BACD0DFAE94300E8B1BF /* compileLexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF29BAC90DFAE94300E8B1BF /* compileLexique.cpp */; };
+		CF29BACE0DFAE94300E8B1BF /* compileLexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF29BACA0DFAE94300E8B1BF /* compileLexique.h */; };
+		CF29BACF0DFAE94300E8B1BF /* compileLexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF29BAC90DFAE94300E8B1BF /* compileLexique.cpp */; };
+		CF29BAD00DFAE94300E8B1BF /* compileLexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF29BACA0DFAE94300E8B1BF /* compileLexique.h */; };
+		CF29BAD10DFAE94300E8B1BF /* compileLexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF29BAC90DFAE94300E8B1BF /* compileLexique.cpp */; };
+		CF29BAD20DFAE94300E8B1BF /* compileLexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF29BACA0DFAE94300E8B1BF /* compileLexique.h */; };
 		CF2A87B9058CCE6B003EF2F4 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF2A87BA058CCE6E003EF2F4 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF2A87BD058CCE82003EF2F4 /* galgas_LL1_prgm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380D057A53D600854C83 /* galgas_LL1_prgm.cpp */; };
@@ -1634,7 +1618,6 @@
 		CFEDF25D0C2D161F0038713A /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
 		CFEDF25E0C2D161F0038713A /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
 		CFEDF25F0C2D161F0038713A /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
-		CFEDF2600C2D161F0038713A /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
 		CFEDF2610C2D161F0038713A /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CFEDF2620C2D161F0038713A /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
 		CFEDF2630C2D161F0038713A /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
@@ -1833,7 +1816,6 @@
 		CFEDF3280C2D161F0038713A /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CFEDF32A0C2D161F0038713A /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
 		CFEDF32B0C2D161F0038713A /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
-		CFEDF32C0C2D161F0038713A /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
 		CFEDF32D0C2D161F0038713A /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFEDF32E0C2D161F0038713A /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
 		CFEDF32F0C2D161F0038713A /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
@@ -1967,7 +1949,6 @@
 		CFEDF3BE0C2D16610038713A /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
 		CFEDF3BF0C2D16610038713A /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
 		CFEDF3C00C2D16610038713A /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
-		CFEDF3C10C2D16610038713A /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */; };
 		CFEDF3C20C2D16610038713A /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CFEDF3C30C2D16610038713A /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
 		CFEDF3C40C2D16610038713A /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
@@ -2165,7 +2146,6 @@
 		CFEDF4880C2D16610038713A /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CFEDF48A0C2D16610038713A /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
 		CFEDF48B0C2D16610038713A /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
-		CFEDF48C0C2D16610038713A /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */; };
 		CFEDF48D0C2D16610038713A /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFEDF48E0C2D16610038713A /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
 		CFEDF48F0C2D16610038713A /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
@@ -2550,8 +2530,6 @@
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueTreewalkingForBuildingTerminalMap.cpp; sourceTree = "<group>"; };
-		CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueTreewalkingForBuildingTerminalMap.h; sourceTree = "<group>"; };
 		CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueSemantics.cpp; sourceTree = "<group>"; };
 		CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueSemantics.h; sourceTree = "<group>"; };
 		CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_entity.h; sourceTree = "<group>"; };
@@ -2591,6 +2569,8 @@
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
+		CF29BAC90DFAE94300E8B1BF /* compileLexique.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compileLexique.cpp; sourceTree = "<group>"; };
+		CF29BACA0DFAE94300E8B1BF /* compileLexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compileLexique.h; sourceTree = "<group>"; };
 		CF2EE34B0C19AC0C00AD8BEE /* buildMapsForSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = buildMapsForSemantics.cpp; sourceTree = "<group>"; };
 		CF2EE34C0C19AC0C00AD8BEE /* buildMapsForSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = buildMapsForSemantics.h; sourceTree = "<group>"; };
 		CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCoca.mm; sourceTree = "<group>"; };
@@ -3999,10 +3979,10 @@
 				CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */,
 				CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */,
 				CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */,
-				CF0CB3D00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp */,
-				CF0CB3D10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h */,
 				CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */,
 				CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */,
+				CF29BAC90DFAE94300E8B1BF /* compileLexique.cpp */,
+				CF29BACA0DFAE94300E8B1BF /* compileLexique.h */,
 				CFF5376D057A506700854C83 /* scanner_parser.cpp */,
 				CF76F4A7090E73B900036FAC /* scanner_parser.h */,
 				CF76F4AE090E73C200036FAC /* scanner_semantics.h */,
@@ -4488,19 +4468,14 @@
 				CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47EFF0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F010BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CF0CB3D50BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
-				CF0CB3F80BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4280BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E50BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 				CF0CB7850BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CF0CB79A0BC0130500E6FABE /* optionSemantics.h in Headers */,
-				CF0CB7AE0BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
 				CF0CB7C30BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
 				CF0CB7D80BC0161E00E6FABE /* optionMetamodel.h in Headers */,
 				CF0CB7EB0BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
-				CF0CB7FF0BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
 				CF0CB8150BC0187500E6FABE /* optionModelBuilder.h in Headers */,
-				CF0CB8290BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
 				CF0CB83B0BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB84D0BC019CB00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB8630BC0203700E6FABE /* semanticsMetamodel.h in Headers */,
@@ -4694,7 +4669,6 @@
 				CFEFE94B0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F170BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F190BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CF0CB3ED0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB42A0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
@@ -4826,6 +4800,7 @@
 				CFB9E4A90DF28AC500885084 /* TF_AVL_Tree.h in Headers */,
 				CFEEB5D40DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5D60DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
+				CF29BACC0DFAE94300E8B1BF /* compileLexique.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4921,7 +4896,6 @@
 				CFEFE94C0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F1B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F1D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CF0CB3F10BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CF0CB4060BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB42C0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
@@ -5052,6 +5026,7 @@
 				CFB9E4C10DF28AC500885084 /* TF_AVL_Tree.h in Headers */,
 				CFEEB5D80DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5DA0DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
+				CF29BACE0DFAE94300E8B1BF /* compileLexique.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5154,19 +5129,14 @@
 				CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CFD47F030BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
 				CFD47F050BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
-				CF0CB3D90BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
-				CF0CB3FA0BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB4220BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5DF0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
 				CF0CB77F0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CF0CB7940BC0130500E6FABE /* optionSemantics.h in Headers */,
-				CF0CB7A80BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
 				CF0CB7BD0BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
 				CF0CB7D20BC0161E00E6FABE /* optionMetamodel.h in Headers */,
 				CF0CB7E50BC0170300E6FABE /* metamodelModelBuilder.h in Headers */,
-				CF0CB7F90BC017C800E6FABE /* lexiqueModelBuilder.h in Headers */,
 				CF0CB80F0BC0187500E6FABE /* optionModelBuilder.h in Headers */,
-				CF0CB8230BC0192C00E6FABE /* lexiqueLL1grammar.h in Headers */,
 				CF0CB8350BC0198800E6FABE /* metamodelLL1grammar.h in Headers */,
 				CF0CB8470BC019CA00E6FABE /* optionLL1grammar.h in Headers */,
 				CF0CB85D0BC0203600E6FABE /* semanticsMetamodel.h in Headers */,
@@ -5360,7 +5330,6 @@
 				CFEDF25D0C2D161F0038713A /* include_typeLexicalLogInstruction.h in Headers */,
 				CFEDF25E0C2D161F0038713A /* optionHeaderGeneration.h in Headers */,
 				CFEDF25F0C2D161F0038713A /* optionImplementationGeneration.h in Headers */,
-				CFEDF2600C2D161F0038713A /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CFEDF2610C2D161F0038713A /* lexiqueSemantics.h in Headers */,
 				CFEDF2620C2D161F0038713A /* AC_galgas_entity.h in Headers */,
 				CFEDF2630C2D161F0038713A /* AC_galgas_class.h in Headers */,
@@ -5492,6 +5461,7 @@
 				CFB9E4CD0DF28AC500885084 /* TF_AVL_Tree.h in Headers */,
 				CFEEB5DC0DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5DE0DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
+				CF29BAD00DFAE94300E8B1BF /* compileLexique.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5587,7 +5557,6 @@
 				CFEDF3BE0C2D16610038713A /* include_typeLexicalLogInstruction.h in Headers */,
 				CFEDF3BF0C2D16610038713A /* optionHeaderGeneration.h in Headers */,
 				CFEDF3C00C2D16610038713A /* optionImplementationGeneration.h in Headers */,
-				CFEDF3C10C2D16610038713A /* lexiqueTreewalkingForBuildingTerminalMap.h in Headers */,
 				CFEDF3C20C2D16610038713A /* lexiqueSemantics.h in Headers */,
 				CFEDF3C30C2D16610038713A /* AC_galgas_entity.h in Headers */,
 				CFEDF3C40C2D16610038713A /* AC_galgas_class.h in Headers */,
@@ -5718,6 +5687,7 @@
 				CFB9E4D90DF28AC500885084 /* TF_AVL_Tree.h in Headers */,
 				CFEEB5E00DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5E20DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
+				CF29BAD20DFAE94300E8B1BF /* compileLexique.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6174,19 +6144,14 @@
 				CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CFD47EFE0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F000BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CF0CB3D40BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
-				CF0CB3F70BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4290BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E40BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 				CF0CB7840BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CF0CB7990BC0130500E6FABE /* optionSemantics.cpp in Sources */,
-				CF0CB7AD0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
 				CF0CB7C20BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
 				CF0CB7D70BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
 				CF0CB7EA0BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
-				CF0CB7FE0BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
 				CF0CB8140BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
-				CF0CB8280BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
 				CF0CB83A0BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB84C0BC019CB00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB8620BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */,
@@ -6351,7 +6316,6 @@
 				CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */,
 				CFD47F160BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F180BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CF0CB3EC0BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB42B0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E60BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
@@ -6413,6 +6377,7 @@
 				CFFFBFA30DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5D30DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5D50DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
+				CF29BACB0DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6530,7 +6495,6 @@
 				CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */,
 				CFD47F1A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F1C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CF0CB3F00BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB42D0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
@@ -6592,6 +6556,7 @@
 				CFFFBFA50DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5D70DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5D90DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
+				CF29BACD0DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6749,19 +6714,14 @@
 				CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CFD47F020BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
 				CFD47F040BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
-				CF0CB3D80BBFB3EB00E6FABE /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
-				CF0CB3F90BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB4230BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
 				CF0CB77E0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CF0CB7930BC0130500E6FABE /* optionSemantics.cpp in Sources */,
-				CF0CB7A70BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
 				CF0CB7BC0BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
 				CF0CB7D10BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
 				CF0CB7E40BC0170300E6FABE /* metamodelModelBuilder.cpp in Sources */,
-				CF0CB7F80BC017C800E6FABE /* lexiqueModelBuilder.cpp in Sources */,
 				CF0CB80E0BC0187500E6FABE /* optionModelBuilder.cpp in Sources */,
-				CF0CB8220BC0192C00E6FABE /* lexiqueLL1grammar.cpp in Sources */,
 				CF0CB8340BC0198800E6FABE /* metamodelLL1grammar.cpp in Sources */,
 				CF0CB8460BC019CA00E6FABE /* optionLL1grammar.cpp in Sources */,
 				CF0CB85C0BC0203600E6FABE /* semanticsMetamodel.cpp in Sources */,
@@ -6926,7 +6886,6 @@
 				CFEDF3280C2D161F0038713A /* ggs_LL1_compile_component.cpp in Sources */,
 				CFEDF32A0C2D161F0038713A /* optionHeaderGeneration.cpp in Sources */,
 				CFEDF32B0C2D161F0038713A /* optionImplementationGeneration.cpp in Sources */,
-				CFEDF32C0C2D161F0038713A /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CFEDF32D0C2D161F0038713A /* lexiqueSemantics.cpp in Sources */,
 				CFEDF32E0C2D161F0038713A /* AC_galgas_entity.cpp in Sources */,
 				CFEDF32F0C2D161F0038713A /* AC_galgas_class.cpp in Sources */,
@@ -6988,6 +6947,7 @@
 				CFFFBFA60DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5DB0DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5DD0DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
+				CF29BACF0DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7105,7 +7065,6 @@
 				CFEDF4880C2D16610038713A /* ggs_LL1_compile_component.cpp in Sources */,
 				CFEDF48A0C2D16610038713A /* optionHeaderGeneration.cpp in Sources */,
 				CFEDF48B0C2D16610038713A /* optionImplementationGeneration.cpp in Sources */,
-				CFEDF48C0C2D16610038713A /* lexiqueTreewalkingForBuildingTerminalMap.cpp in Sources */,
 				CFEDF48D0C2D16610038713A /* lexiqueSemantics.cpp in Sources */,
 				CFEDF48E0C2D16610038713A /* AC_galgas_entity.cpp in Sources */,
 				CFEDF48F0C2D16610038713A /* AC_galgas_class.cpp in Sources */,
@@ -7167,6 +7126,7 @@
 				CFFFBFA70DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5DF0DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5E10DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
+				CF29BAD10DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7291,6 +7251,7 @@
 		CF0DA691085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -7307,6 +7268,7 @@
 		CF0DA694085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = i386;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -7323,10 +7285,7 @@
 		CF0DA6A3085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = i386;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;

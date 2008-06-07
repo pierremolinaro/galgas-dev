@@ -22,7 +22,6 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION" :
 #---------------------------------------------------------------------------*
 
 import semantics projectCreation in "projectCreation.gSemantics" ;
-
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 

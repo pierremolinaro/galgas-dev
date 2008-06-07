@@ -2,7 +2,7 @@
 #                                                                           *
 #  'option' component parser, as model builder                              *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -19,514 +19,587 @@
 
 syntax lexiqueModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
+import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 
-nonterminal <lexique_component_start_symbol> -> @lexiqueComponentRoot ;
+nonterminal <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponentRoot;
 
-nonterminal <lexical_attribute_declaration> -> @lexicalAttribute ;
+nonterminal <lexical_attribute_declaration> ?!@lexicalAttributeList ioLexicalAttributeList ;
 
-nonterminal <style_declaration> -> @lexicalStyle ;
+nonterminal <style_declaration> ?!@lexicalStyleList ioLexicalStyleList ;
 
-nonterminal <terminal_declaration> -> @terminalDeclaration ;
+nonterminal <terminal_declaration> ?!@terminalDeclarationList ioTerminalDeclarationList ;
 
-nonterminal <lexical_list_declaration> -> @lexicalListDeclaration ;
+nonterminal <lexical_list_declaration> ?!@lexicalListDeclarationList ioLexicalListDeclarationList ;
 
-nonterminal <lexical_list_entry> -> @lexicalListEntry ;
+nonterminal <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList ;
 
-nonterminal <lexical_explicit_rule> -> @lexicalExplicitRule ;
+nonterminal <lexical_explicit_rule> ?!@lexicalExplicitRuleList ioLexicalExplicitRuleList ;
 
-nonterminal <lexical_implicit_rule> -> @lexicalImplicitRule ;
+nonterminal <lexical_implicit_rule> ?!@lexicalImplicitRuleList ioLexicalImplicitRuleList ;
 
-nonterminal <lexical_error_message_declaration> -> @lexicalErrorMessageDeclaration ;
+nonterminal <lexical_error_message_declaration> ?!@lexicalErrorMessageDeclarationList ioLexicalErrorMessageDeclaration ;
 
-nonterminal <lexical_instruction> -> @lexicalInstruction ;
+nonterminal <lexical_instruction> ?!@lexicalInstructionList ioInstructionList ;
 
-nonterminal <lexical_send_instruction> -> @lexicalInstruction ;
+nonterminal <lexical_send_instruction> !@lexicalInstruction outInstruction ;
 
-nonterminal <function_call_or_attribute> ??@lstring inIdf -> @lexicalActualArgument ;
+nonterminal <function_call_or_attribute> ??@lstring inIdf !@lexicalActualArgument outArgument ;
 
-nonterminal <lexical_action_effective_argument> -> @lexicalActualArgument ;
+nonterminal <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList ;
 
-nonterminal <lexical_expression> -> @lexicalExpression ;
+nonterminal <lexical_expression> !@lexicalExpression outExpression ;
 
-nonterminal <lexical_term> -> @lexicalExpression ;
+nonterminal <lexical_term> !@lexicalExpression outExpression ;
 
-nonterminal <lexical_factor> -> @lexicalExpression ;
+nonterminal <lexical_factor> !@lexicalExpression outExpression ;
 
-nonterminal <search_in_lexical_send> -> @lexicalSendSearch ;
+nonterminal <repeat_while_branch> ?!@lexicalWhileBranchList ioLexicalWhileBranchList ;
 
-nonterminal <default_send_action> -> @lexicalSendDefaultAction ;
+nonterminal <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList ;
 
-nonterminal <repeat_while_branch> -> @lexicalWhileBranch ;
-
-nonterminal <lexical_select_branch> -> @lexicalSelectBranch ;
-
-nonterminal <build_lexical_or>
-  ??@lexicalExpression inLeftExpression
-  ??@lexicalExpression inRightExpression
--> @lexicalExpression
-;
-
-nonterminal <character_or_interval> ??@lchar inCharacter -> @lexicalExpression ;
-
-nonterminal <template_delimitor> -> @templateDelimitor ;
-
-nonterminal <template_replacement> -> @templateReplacement ;
+nonterminal <template_replacement> ?!@templateReplacementList ioTemplateReplacementList ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexique_component_start_symbol> -> @lexiqueComponentRoot :
+rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponentRoot :
+  @lstring lexiqueComponentName ;
+  @bool isTemplate ;
+  @templateDelimitorList templateDelimitorList [emptyList] ;
+  @templateReplacementList templateReplacementList [emptyList] ;
+  @lexicalAttributeList lexicalAttributeList [emptyList] ;
+  @lexicalStyleList lexicalStyleList [emptyList] ;
+  @terminalDeclarationList terminalDeclarationList [emptyList] ;
+  @lexicalErrorMessageDeclarationList lexicalErrorMessageDeclarationList [emptyList] ;
+  @lexicalListDeclarationList lexicalListDeclarationList [emptyList] ;
+  @lexicalImplicitRuleList lexicalImplicitRuleList [emptyList] ;
+  @lexicalExplicitRuleList lexicalExplicitRuleList [emptyList] ;
   select
-    mIsTemplate := true ;
+    isTemplate := true ;
     $template$ ;
   or
-    mIsTemplate := false ;
+    isTemplate := false ;
   end select ;
   $lexique$ ;
 #--- Lexique Component Name
-  $identifier$ ? mLexiqueComponentName ;
+  $identifier$ ? lexiqueComponentName ;
   $:$ ;
 #--- Parse the option list
   repeat
   while 
-    <template_delimitor> +> mTemplateDelimitorList ;
+    <template_delimitor> !? templateDelimitorList ;
   while 
-    <template_replacement> +> mTemplateReplacementList ;
+    <template_replacement> !? templateReplacementList ;
   while 
-    <lexical_attribute_declaration> +> mLexicalAttributeList ;
+    <lexical_attribute_declaration> !? lexicalAttributeList ;
   while 
-    <style_declaration> +> mLexicalStyleList ;
+    <style_declaration> !? lexicalStyleList ;
   while 
-    <terminal_declaration> +> mTerminalDeclarationList ;
+    <terminal_declaration> !? terminalDeclarationList ;
   while 
-    <lexical_list_declaration> +> mLexicalListDeclarationList ;
+    <lexical_list_declaration> !? lexicalListDeclarationList ;
   while
     $rule$ ;
     select
-      <lexical_explicit_rule> +> mLexicalExplicitRuleList ;
+      <lexical_explicit_rule> !? lexicalExplicitRuleList ;
     or
-      <lexical_implicit_rule> +> mLexicalImplicitRuleList ;
+      <lexical_implicit_rule> !? lexicalImplicitRuleList ;
     end select ;
     $;$ ;
   while
-    <lexical_error_message_declaration> +> mLexicalErrorMessageDeclarationList ;
+    <lexical_error_message_declaration> !? lexicalErrorMessageDeclarationList ;
   end repeat ;
   $end$ ;
   $lexique$ ;
   $;$ ;
+  outLexiqueComponentRoot := [@lexiqueComponentRoot new
+    !lexiqueComponentName
+    !isTemplate
+    !templateDelimitorList
+    !templateReplacementList
+    !lexicalAttributeList
+    !lexicalStyleList
+    !terminalDeclarationList
+    !lexicalErrorMessageDeclarationList
+    !lexicalListDeclarationList
+    !lexicalImplicitRuleList
+    !lexicalExplicitRuleList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <template_delimitor> -> @templateDelimitor :
+rule <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList :
   $template$ ;
-  $literal_string$ ? mStartString ;
+  @lstring startString ;
+  $literal_string$ ? startString ;
   $...$ ;
-  $literal_string$ ? mEndString ;
+  @lstring endString ;
+  $literal_string$ ? endString ;
   $;$ ;
+  ioTemplateDelimitorList += !startString !endString ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <template_replacement> -> @templateReplacement :
+rule <template_replacement> ?!@templateReplacementList ioTemplateReplacement :
   $replace$ ;
-  $literal_string$ ? mMatchString ;
+  @lstring matchString ;
+  $literal_string$ ? matchString ;
   $->$ ;
-  $literal_string$ ? mReplacementString ;
+  @lstring replacementString ;
+  $literal_string$ ? replacementString ;
   $;$ ;
+  ioTemplateReplacement += !matchString !replacementString ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_error_message_declaration> -> @lexicalErrorMessageDeclaration :
+rule <lexical_error_message_declaration>
+  ?!@lexicalErrorMessageDeclarationList ioLexicalErrorMessageDeclarationList
+:
   $message$ ;
-  $identifier$ ?mMessageName ;
+  @lstring messageName ;
+  $identifier$ ?messageName ;
   $:$ ;
-  $literal_string$ ?mMessageValue ;
+  @lstring messageValue ;
+  $literal_string$ ?messageValue ;
   $;$ ;
+  ioLexicalErrorMessageDeclarationList += !messageName !messageValue ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_implicit_rule> -> @lexicalImplicitRule :
+rule <lexical_implicit_rule> ?!@lexicalImplicitRuleList ioLexicalImplicitRuleList :
   $list$ ;
-  $identifier$ ? mListName ;
+  @lstring listName ;
+  $identifier$ ? listName ;
+  ioLexicalImplicitRuleList += !listName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_explicit_rule> -> @lexicalExplicitRule :
-  <lexical_expression> -> mLexicalRuleExpression ;
+rule <lexical_explicit_rule> ?!@lexicalExplicitRuleList ioLexicalExplicitRuleList :
+  @lexicalExpression lexicalRuleExpression ;
+  <lexical_expression> ?lexicalRuleExpression ;
   $:$ ;
+  @lexicalInstructionList instructionList [emptyList] ;
   repeat
   while
-    <lexical_instruction> +> mInstructionList ;
+    <lexical_instruction> !?instructionList ;
   end repeat ;
   $end$ ;
   $rule$ ;
+  ioLexicalExplicitRuleList += !lexicalRuleExpression !instructionList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalInstruction outInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $send$ ;
-  <lexical_send_instruction> -> outInstruction ;
+  @lexicalInstruction instruction ;
+  <lexical_send_instruction> ?instruction ;
+  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_send_instruction> -> @lexicalSimpleSendInstruction :
-  $terminal$ ? mSentTerminal ;
+rule <lexical_send_instruction> !@lexicalInstruction outInstruction :
+  @lstring sentTerminal ;
+  $terminal$ ? sentTerminal ;
+  outInstruction := [@lexicalSimpleSendInstruction new !sentTerminal] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_send_instruction> -> @lexicalStructuredSendInstruction :
+rule <lexical_send_instruction> !@lexicalInstruction outInstruction :
+  @lexicalSendSearchList lexicalSendSearchList [emptyList] ;
   repeat
-    <search_in_lexical_send> +> mLexicalSendSearchList ;
+    $search$ ;
+    @lstring attributeName ;
+    $identifier$ ? attributeName ;
+    $in$ ;
+    @lstring searchListName ;
+    $identifier$ ? searchListName ;
+    lexicalSendSearchList += !attributeName !searchListName ;
   while
   end repeat ;
   $default$ ;
-  <default_send_action> -> mLexicalSendDefaultAction ;
+  @lexicalSendDefaultAction lexicalSendDefaultAction ;
+  select
+    @lstring defaultSentTerminal ;
+    $terminal$ ? defaultSentTerminal ;
+    lexicalSendDefaultAction := [@lexicalSendTerminalByDefault new !defaultSentTerminal] ;
+  or
+    $error$ ;
+    @lstring defaultErrorMessageName ;
+    $identifier$ ? defaultErrorMessageName ;
+    lexicalSendDefaultAction := [@lexicalErrorByDefault new !defaultErrorMessageName] ;
+  end select ;
+  outInstruction := [@lexicalStructuredSendInstruction new
+    !lexicalSendSearchList
+    !lexicalSendDefaultAction
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <search_in_lexical_send> -> @lexicalSendSearch :
-  $search$ ;
-  $identifier$ ? mAttributeName ;
-  $in$ ;
-  $identifier$ ? mSearchListName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <default_send_action> -> @lexicalSendTerminalByDefault :
-  $terminal$ ? mDefaultSentTerminal ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <default_send_action> -> @lexicalErrorByDefault :
-  $error$ ;
-  $identifier$ ? mDefaultErrorMessageName ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <lexical_instruction> -> @lexicalRepeatInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $repeat$ ;
+  @lexicalInstructionList repeatedInstructionList [emptyList] ;
   repeat
   while
-    <lexical_instruction> +> mRepeatedInstructionList ;
+    <lexical_instruction> !?repeatedInstructionList ;
   end repeat ;
+  @lexicalWhileBranchList lexicalWhileBranchList [emptyList] ;
   repeat
-    <repeat_while_branch> +> mLexicalWhileBranchList ;
+    <repeat_while_branch> !?lexicalWhileBranchList ;
   while
   end repeat ;
   $end$ ;
   $repeat$ ;
   $;$ ;
+  @lexicalInstruction i := [@lexicalRepeatInstruction new
+    !repeatedInstructionList
+    !lexicalWhileBranchList
+  ] ;
+  ioInstructionList += !i ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <repeat_while_branch> -> @lexicalWhileBranch :
+rule <repeat_while_branch> ?!@lexicalWhileBranchList ioLexicalWhileBranchList :
   $while$ ;
-  <lexical_expression> -> mWhileExpression ;
+  @lexicalExpression whileExpression ;
+  <lexical_expression> ?whileExpression ;
   $:$ ;
+  @lexicalInstructionList whileInstructionList [emptyList] ;
   repeat
   while
-    <lexical_instruction> +> mWhileInstructionList ;
+    <lexical_instruction> !?whileInstructionList ;
   end repeat ;
+  ioLexicalWhileBranchList += !whileExpression !whileInstructionList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalSelectInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $select$ ;
+  @lexicalSelectBranchList lexicalWhileBranchList [emptyList] ;
   repeat
-    <lexical_select_branch> +> mLexicalWhileBranchList ;
+    @lexicalExpression selectExpression ;
+    $when$ ;
+    <lexical_expression> ?selectExpression ;
+    $:$ ;
+    @lexicalInstructionList selectInstructionList [emptyList] ;
+    repeat
+    while
+      <lexical_instruction> !?selectInstructionList ;
+    end repeat ;
+    lexicalWhileBranchList += !selectExpression !selectInstructionList ;
   while
   end repeat ;
   $default$ ;
+  @lexicalInstructionList defaultInstructionList [emptyList] ;
   repeat
   while
-    <lexical_instruction> +> mDefaultInstructionList ;
+    <lexical_instruction> !?defaultInstructionList ;
   end repeat ;
   $end$ ;
   $select$ ;
   $;$ ;
+  @lexicalInstruction i := [@lexicalSelectInstruction new
+    !lexicalWhileBranchList
+    !defaultInstructionList
+  ] ;
+  ioInstructionList += !i ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_select_branch> -> @lexicalSelectBranch :
-  $when$ ;
-  <lexical_expression> -> mSelectExpression ;
-  $:$ ;
-  repeat
-  while
-    <lexical_instruction> +> mSelectInstructionList ;
-  end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <lexical_instruction> -> @lexicalActionInstruction :
-  $identifier$ ? mActionName ;
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
+  @lstring actionName ;
+  $identifier$ ? actionName ;
   $($ ;
+  @lexicalActualArgumentList actualArgumentList [emptyList] ;
   repeat
-    <lexical_action_effective_argument> +> mActualArgumentList ;
+    <lexical_action_effective_argument> !?actualArgumentList ;
   while
     $,$ ;
   end repeat ;
   $)$ ;
-  mErrorMessageList := [@lstringlist emptyList] ;
+  @lstringlist errorMessageList := [@lstringlist emptyList] ;
   select
   or
     $error$ ;
     repeat
       @lstring errorMessageName ;
       $identifier$ ? errorMessageName ;
-      mErrorMessageList += ! errorMessageName ;
+      errorMessageList += ! errorMessageName ;
     while
       $,$ ;
     end repeat ;
   end select ;
   $;$ ;
+  @lexicalInstruction i := [@lexicalActionInstruction new
+    !actionName
+    !actualArgumentList
+    !errorMessageList
+  ] ;
+  ioInstructionList += !i ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_action_effective_argument> -> @lexicalCharacterArgument :
-  $literal_char$ ? mCharacter ;
+rule <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList :
+  @lchar character ;
+  $literal_char$ ? character ;
+  ioLexicalActualArgumentList += ![@lexicalCharacterArgument new !character] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_action_effective_argument> -> @lexicalCurrentCharacterArgument :
+rule <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList :
   $*$ ;
+  ioLexicalActualArgumentList += ![@lexicalCurrentCharacterArgument new] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_action_effective_argument> -> @lexicalActualArgument outArgument :
+rule <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList :
   @lstring idf ;
   $identifier$ ? idf ;
-  <function_call_or_attribute> !idf -> outArgument ;
+  @lexicalActualArgument argument ;
+  <function_call_or_attribute> !idf ?argument ;
+  ioLexicalActualArgumentList += !argument ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <function_call_or_attribute> ??@lstring inIdf -> @lexicalAttributeArgument :
-  mAttributeName := inIdf ;
+rule <function_call_or_attribute> ??@lstring inIdf !@lexicalActualArgument outArgument :
+  outArgument := [@lexicalAttributeArgument new !inIdf] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <function_call_or_attribute> ??@lstring inIdf -> @lexicalFunctionArgument :
-  mFunctionName := inIdf ;
+rule <function_call_or_attribute> ??@lstring inIdf !@lexicalActualArgument outArgument :
   $($ ;
+  @lexicalActualArgumentList functionActualArgumentList [emptyList] ;
   repeat
-    <lexical_action_effective_argument> +> mFunctionActualArgumentList ;
+    <lexical_action_effective_argument> !?functionActualArgumentList ;
   while
     $,$ ;
   end repeat ;
   $)$ ;
+  outArgument := [@lexicalFunctionArgument new !inIdf !functionActualArgumentList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalErrorInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $error$ ;
-  $identifier$ ? mErrorMessageName ;
+  @lstring errorMessageName ;
+  $identifier$ ? errorMessageName ;
   $;$ ;
+  ioInstructionList += ![@lexicalErrorInstruction new !errorMessageName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalDropInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $drop$ ;
-  $terminal$ ? mTerminalName ;
+  @lstring terminalName ;
+  $terminal$ ? terminalName ;
   $;$ ;
+  ioInstructionList += ![@lexicalDropInstruction new !terminalName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalTagInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $tag$ ;
-  $identifier$ ? mTagName ;
+  @lstring tagName ;
+  $identifier$ ? tagName ;
   $;$ ;
+  ioInstructionList += ![@lexicalTagInstruction new !tagName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalRewindInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $rewind$ ;
-  $identifier$ ? mTagName ;
+  @lstring tagName ;
+  $identifier$ ? tagName ;
   $send$ ;
-  $terminal$ ? mTerminalName ;
+  @lstring terminalName ;
+  $terminal$ ? terminalName ;
   $;$ ;
+  ioInstructionList += ![@lexicalRewindInstruction new !tagName !terminalName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_instruction> -> @lexicalLogInstruction :
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $log$ ;
   $;$ ;
+  ioInstructionList += ![@lexicalLogInstruction new] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_expression> -> @lexicalExpression outExpression :
-  <lexical_term> -> outExpression ;
+rule <lexical_expression> !@lexicalExpression outExpression :
+  <lexical_term> ?outExpression ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_term> -> @lexicalExpression outExpression :
-  <lexical_factor> -> outExpression ;
+rule <lexical_term> !@lexicalExpression outExpression :
+  <lexical_factor> ?outExpression ;
   repeat
   while
     $|$ ;
     @lexicalExpression rightExpression ;
-    <lexical_factor> -> rightExpression ;
-    <build_lexical_or> !outExpression !rightExpression -> outExpression ; 
+    <lexical_factor> ?rightExpression ;
+    outExpression := [@lexicalOrExpression new !outExpression !rightExpression] ;
   end repeat ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <build_lexical_or>
-  ??@lexicalExpression inLeftExpression
-  ??@lexicalExpression inRightExpression
--> @lexicalOrExpression :
-  mLeftOperand := inLeftExpression ;
-  mRightOperand := inRightExpression ;
+rule <lexical_factor>!@lexicalExpression outExpression :
+  @lstring string ;
+  $literal_string$ ? string ;
+  outExpression := [@lexicalStringMatch new !string] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_factor> -> @lexicalStringMatch :
-  $literal_string$ ? mString ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <lexical_factor> -> @lexicalStringNotMatch :
+rule <lexical_factor> !@lexicalExpression outExpression :
   $~$ ;
-  $literal_string$ ? mString ;
+  @lstring string ;
+  $literal_string$ ? string ;
   $error$ ;
-  $identifier$ ?mErrorMessage ;
+  @lstring errorMessage ;
+  $identifier$ ?errorMessage ;
+  outExpression := [@lexicalStringNotMatch new !string !errorMessage] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_factor> -> @lexicalExpression outExpression :
+rule <lexical_factor> !@lexicalExpression outExpression :
   @lchar character ;
   $literal_char$ ?character ;
-  <character_or_interval> !character -> outExpression ;
+  select
+    outExpression := [@lexicalCharacterMatch new !character] ;
+  or
+    $->$ ;
+    @lchar upperBound ;
+    $literal_char$ ? upperBound ;
+    outExpression := [@lexicalCharacterIntervalMatch new !character !upperBound] ;
+  end select ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <character_or_interval> ??@lchar inCharacter -> @lexicalCharacterMatch:
-  mCharacter := inCharacter ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <character_or_interval> ??@lchar inCharacter -> @lexicalCharacterIntervalMatch:
-  mLowerBound := inCharacter ;
-  $->$ ;
-  $literal_char$ ? mUpperBound ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <lexical_list_declaration> -> @lexicalListDeclaration :
+rule <lexical_list_declaration> ?!@lexicalListDeclarationList ioLexicalListDeclarationList :
+  @lstring name ;
   $list$ ;
-  $identifier$ ? mName ;
-  mSentAttributeList := [@lstringlist emptyList] ;
+  $identifier$ ? name ;
+  @lstringlist sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ;
     @lstring sentAttribute ;
     $identifier$ ?sentAttribute ;
-    mSentAttributeList += ! sentAttribute ;
+    sentAttributeList += ! sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;
-  $literal_string$ ? mErrorMessage ;
+  @lstring errorMessage ;
+  $literal_string$ ? errorMessage ;
+  @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
-    $identifier$ ? mStyle ;
+    $identifier$ ? theStyle ;
   or
-    mStyle := [@lstring new !"" !here] ;
+    theStyle := [@lstring new !"" !here] ;
   end select ;
   $:$ ;
+  @lexicalListEntryList entryList [emptyList] ;
   repeat
-    <lexical_list_entry> +> mEntryList ;
+    <lexical_list_entry> !?entryList ;
   while
     $,$ ;
   end repeat ;
   $;$ ;
+  ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_list_entry> -> @lexicalListEntry :
-  $literal_string$ ? mEntrySpelling ;
+rule <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList :
+  @lstring entrySpelling ;
+  @lstring terminalSpelling ;
+  $literal_string$ ? entrySpelling ;
   select
     $->$ ;
-    $literal_string$ ? mTerminalSpelling ;
+    $literal_string$ ? terminalSpelling ;
   or
-    mTerminalSpelling := mEntrySpelling ;
+    terminalSpelling := entrySpelling ;
   end select ;
+  ioLexicalListEntryList += !entrySpelling !terminalSpelling ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_attribute_declaration> -> @lexicalAttribute :
-  $type_name$ ? mTypeName  ;
-  $identifier$ ? mName ;
+rule <lexical_attribute_declaration> ?!@lexicalAttributeList ioLexicalAttributeList :
+  @lstring typeName ;
+  $type_name$ ? typeName  ;
+  @lstring name ;
+  $identifier$ ? name ;
   $;$ ;
+  ioLexicalAttributeList += !typeName !name ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <terminal_declaration> -> @terminalDeclaration :
-  $terminal$ ? mName  ;
-  mSentAttributeList := [@lstringlist emptyList] ;
+rule <terminal_declaration> ?!@terminalDeclarationList ioTerminalDeclarationList :
+  @lstring name ;
+  $terminal$ ? name  ;
+  @lstringlist sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ;
     @lstring sentAttribute ;
     $identifier$ ?sentAttribute ;
-    mSentAttributeList += ! sentAttribute ;
+    sentAttributeList += ! sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;
-  $literal_string$ ? mErrorMessage ;
+  @lstring errorMessage ;
+  $literal_string$ ? errorMessage ;
+  @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
-    $identifier$ ? mStyle ;
+    $identifier$ ? theStyle ;
   or
-    mStyle := [@lstring new !"" !here] ;
+    theStyle := [@lstring new !"" !here] ;
   end select ;
   $;$ ;
+  ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <style_declaration> -> @lexicalStyle :
+rule <style_declaration> ?!@lexicalStyleList ioLexicalStyleList :
   $style$ ;
-  $identifier$ ? mName  ;
+  @lstring name ;
+  $identifier$ ? name  ;
   $->$ ;
-  $literal_string$ ? mComment ;
+  @lstring comment ;
+  $literal_string$ ? comment ;
   $;$ ;
+  ioLexicalStyleList += !name !comment ;
 end rule ;
 
 #---------------------------------------------------------------------------*

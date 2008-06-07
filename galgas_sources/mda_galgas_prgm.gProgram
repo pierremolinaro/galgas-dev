@@ -24,10 +24,10 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
   import semantics projectCreation in "projectCreation.gSemantics" ;
+  import semantics compileLexique in "compileLexique.gSemantics" ;
 
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
-  import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
   import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
@@ -39,7 +39,6 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
-  import treewalking lexiqueTreewalkingForBuildingTerminalMap in "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
