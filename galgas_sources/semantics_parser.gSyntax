@@ -362,7 +362,7 @@ nonterminal <extract_instruction>
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
-  !@typeInstruction outInstruction
+  ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
@@ -381,10 +381,12 @@ label parse
 ;
 
 nonterminal <input_parameters_list>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_assignedVariables listeAffectationParametresEffectifs
   !@typeCplusPlusNameList outAllVariablesList
-  ?@typeListeAttributsSemantiques listeAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiques
   ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
 label parse
 ;
 
@@ -2370,10 +2372,12 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <input_parameters_list>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_assignedVariables listeAffectationParametresEffectifs
   !@typeCplusPlusNameList outAllVariablesList
-  ?@typeListeAttributsSemantiques listeAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiques
   ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
 :
   @typeListeCibles listeCibles [emptyList] ;
   repeat
@@ -2381,7 +2385,22 @@ rule <input_parameters_list>
     $?$ ;
     select
       @lstring nomVariableDest ;
-      $identifier$ ? nomVariableDest ;
+      select
+        @AC_galgasType definitionType ;
+        @lstring typeName ;
+        <type_parsing>
+          ![@typeTableEnAvant emptyMap]
+          !ioComponentSemanticsEntitiesMap
+          ?definitionType
+          ?typeName
+        ;
+        $identifier$ ? nomVariableDest ;
+        @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariableDest location] ![nomVariableDest string]] ;
+        [!?ioVariablesMap insertLocalVariable !nomVariableDest !definitionType !nomCppVariable] ;
+        ioInstructionList += ![@typeInstructionDeclarationVarLocale new ! nomCppVariable !definitionType] ;
+      or
+        $identifier$ ? nomVariableDest ;
+      end select ;
       @AC_galgasType typeVarDest ;
       @typeCplusPlusName nomCppDest ;
       [!?ioVariablesMap searchForWriteAccess !nomVariableDest ?typeVarDest ?nomCppDest] ;
@@ -2925,7 +2944,6 @@ rule <semantic_instruction>
   @lstring nomTypeSource := [classType mClassTypeName] ;
   @typeClassInheritedMessagesMap tableMessagesAbstraits := [classType mMessagesMap] ;
 #--- Parse simple or structured extract instruction
-  @typeInstruction instruction ;
   <extract_instruction>
     !inTreewalkingRoutineHeaderMap
     !inTableEnAvant
@@ -2935,13 +2953,12 @@ rule <semantic_instruction>
     !sourceVarCppName
     !nomTypeSource
     !tableMessagesAbstraits
-    ?instruction
+    !?ioInstructionList
     !inCurrentTreewalkingRoutinePropertyMap
     !inMetamodelEntityMap
     !inTreewalkingComponentMap
     !inSemanticContext
   ;
-  ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
 
@@ -2958,7 +2975,7 @@ rule <extract_instruction>
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
-  !@typeInstruction outInstruction
+  ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap unused inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap unused inMetamodelEntityMap
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
@@ -2985,10 +3002,12 @@ rule <extract_instruction>
   @typeCplusPlusNameList allVariablesList ;
   $($ ;
   <input_parameters_list>
+    !ioComponentSemanticsEntitiesMap
     ?listeAffectationParametresEffectifs
     ?allVariablesList
     !listeAttributsSemantiques
     !?ioVariablesMap
+    !?ioInstructionList
   ;
   $)$ ;
 #------------------------------------------------- Error message
@@ -3010,7 +3029,7 @@ rule <extract_instruction>
   $identifier$ ? messageName ;
   [tableMessagesAbstraits searchKey !messageName] ;
 #------------------------------------------------- Generate instruction
-  outInstruction := [@typeSimpleExtractInstruction new !inSourceVarCppName
+  ioInstructionList += ![@typeSimpleExtractInstruction new !inSourceVarCppName
                                                        !nomClasse
                                                        !listeAffectationParametresEffectifs
                                                        !errorExpression
@@ -3030,7 +3049,7 @@ rule <extract_instruction>
   ?@typeCplusPlusName inSourceVarCppName
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap unused tableMessagesAbstraits
-  !@typeInstruction outInstruction
+  ?!@typeInstructionList ioInstructionList
   ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
@@ -3104,7 +3123,7 @@ rule <extract_instruction>
         !inTreewalkingComponentMap
         !inSemanticContext
       ;
-      outInstruction := [@typeStructuredExtractInstructionWithElse new
+      ioInstructionList += ![@typeStructuredExtractInstructionWithElse new
         !inSourceVarCppName !casesList !elseInstructionList
       ] ;
     end block (!here) ;
@@ -4930,8 +4949,7 @@ rule <optional_assignment>
   ??@semanticContext unused inSemanticContext
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
 :
-  @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !inVariableCppName !inVariableType] ;
-  ioInstructionList += !instruction ;
+  ioInstructionList += ![@typeInstructionDeclarationVarLocale new !inVariableCppName !inVariableType] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
