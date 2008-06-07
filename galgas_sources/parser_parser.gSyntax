@@ -1217,10 +1217,15 @@ rule <syntax_declaration>
     ] ;
     listeInstructions += !instruction ;
     if hasSemantics then
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_e]]
         ]
@@ -1246,10 +1251,15 @@ rule <syntax_declaration>
     ] ;
     listeInstructions += !instruction ;
     if hasSemantics then
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_e]]
         ]
@@ -1292,17 +1302,22 @@ rule <syntax_declaration>
     if hasSemantics then
       @typeExpressionList expressionList [listWithValue ![@typeVarInExpression new !automaticVar_inE]] ;
       expressionList += ![@typeVarInExpression new !automaticVar_right] ;
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           !expressionList
         ]
       ] ;
       listeInstructions += !instruction ;
     end if ;
-  elsif [operatorAttributes string] == "right infix" then  #--------------------------------------
+  elsif [operatorAttributes string] == "right infix" then
     if hasSemantics then 
       listeTypeEtNomsArguments +=
         !baseEntityType
@@ -1338,10 +1353,15 @@ rule <syntax_declaration>
     if hasSemantics then
       @typeExpressionList expressionList [listWithValue ![@typeVarInExpression new !automaticVar_inE]] ;
       expressionList += ![@typeVarInExpression new !automaticVar_right] ;
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           !expressionList
         ]
@@ -1384,10 +1404,15 @@ rule <syntax_declaration>
     if hasSemantics then
       @typeExpressionList expressionList [listWithValue ![@typeVarInExpression new !automaticVar_inE]] ;
       expressionList += ![@typeVarInExpression new !automaticVar_right] ;
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           !expressionList
         ]
@@ -1421,10 +1446,15 @@ rule <syntax_declaration>
       ![nonterminalBaseName location]
     ] ;
     if hasSemantics then
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_inE]]
         ]
@@ -1445,10 +1475,15 @@ rule <syntax_declaration>
       ![nonterminalBaseName location]
     ] ;
     if hasSemantics then
+      @AC_galgasType returnedEntityType := [@typeGalgas_singleReferenceEntity new
+        !returnedEntityName
+        ![@typeListeAttributsSemantiques emptyList]
+        ![@stringset emptySet]
+      ] ;
       instruction := [@C_assignmentInstruction new
         !automaticVar_e
         ![@typeConstructorExpression new
-          ![returnedEntityName string]
+          !returnedEntityType
           !"new"
           ![@typeExpressionList listWithValue ![@typeVarInExpression new !automaticVar_inE]]
         ]
@@ -2015,7 +2050,6 @@ rule <syntax_declaration>
     @typeSuperClassesMap superEntityMap ;
     [inAllMetamodelClassMap searchKey ! returnedEntity ?4* ?superEntityMap ?3*] ;
     if not [superEntityMap hasKey ![formalReturnedEntity string]] then
-      # message "superEntityStringSet : " . [superEntityStringSet description] ;
       error returnedEntity: "the '@" . [formalReturnedEntity string] . "' entity or one of its inherited entities is expected here" ;
     end if ;
   end if ;
@@ -2050,12 +2084,12 @@ rule <syntax_declaration>
         [!?tableArgumentsMethode insertSingleEntityLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeInstruction instruction := [@typeInstructionDeclarationVarLocale new !nomCppVariable !kPropertyType] ;
         listeInstructions += !instruction ;
-      when >= @typeGalgas_multipleReferenceEntity e do
+      when >= @typeGalgas_multipleReferenceEntity unused e do
         @lstring nomVariable := [@lstring new ![kKey string] ![returnedEntity location]] ;
         @typeCplusPlusName nomCppVariable := [@typeAutomaticName new ![nomVariable location] ! [nomVariable string]] ;
         [!?tableArgumentsMethode insertListOfEntitiesLocalVariable !nomVariable !kPropertyType !nomCppVariable] ;
         @typeExpression sourceExpression := [@typeConstructorExpression new
-          !"_list_" . [[e mEntityTypeName] string]
+          !kPropertyType
           !"emptyList"
           ![@typeExpressionList emptyList]
         ] ;
@@ -2428,7 +2462,6 @@ rule <syntax_instruction>
       @AC_galgasType type ;
       [!?ioVariablesMap searchForReadWriteAccess !returnedEntityVariableName ?type ?*] ;
       variableEntityName := [(cast type if >= @typeGalgas_multipleReferenceEntity else error returnedEntityVariableName) mEntityTypeName] ;
-      #extract type->@typeGalgas_multipleReferenceEntity (?variableEntityName ?2*) error returnedEntityVariableName : messageGalgasType ;
     else
       @AC_galgasType type ;
       [!?ioVariablesMap searchForWriteAccess !returnedEntityVariableName ?type ?*] ;

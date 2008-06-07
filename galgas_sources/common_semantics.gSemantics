@@ -2904,7 +2904,7 @@ class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
     outTypeName := "$$" ;
   end method ;
 
-#--- By default, class does not accept constructor call
+#--- constructor
   override
   method handleConstructorCall
     ??@lstring inClassMethodName
@@ -2937,6 +2937,19 @@ class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
   override
   method getTypeName !@string outTypeName :
     outTypeName := "$$" ;
+  end method ;
+
+#--- constructor
+  override
+  method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "emptyList" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "Only the 'emptyList' constructor is defined" -> outAccessorTypesList ;
+    end if ;
   end method ;
 
 #--- Error message
@@ -3140,6 +3153,14 @@ routine checkAssignmentTypesCompatibility
     if not accept then
       error inErrorLocation : "I was expecting the single reference type '@" . [attNomType1 string] .
                               "', I have got the single reference type '@" . [attNomType2 string] . "\"" ;
+    end if ;
+
+  when @typeGalgas_multipleReferenceEntity (@lstring attNomType1 2*)
+    :: @typeGalgas_multipleReferenceEntity (@lstring attNomType2 2*) :
+    @bool accept := [attNomType1 string] == [attNomType2 string] ;
+    if not accept then
+      error inErrorLocation : "I was expecting the multiple reference type of '@" . [attNomType1 string] .
+                              "', I have got the multiple reference type of '@" . [attNomType2 string] . "\"" ;
     end if ;
 
   when @typeGalgasUndefinedMapindexType (@lstring attNomType1 ...) :: @typeGalgasUndefinedMapindexType (@lstring attNomType2 ...) :
@@ -3993,6 +4014,17 @@ routine handleReaderCall
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
+      end if ;
+    when >= @typeGalgas_singleReferenceEntity t do
+      outReturnedType := [@typeGalgas_string new] ; # Any Value
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @bool found := false ;
+      foreach [t mConstructorTypesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
+        outReturnedType := kAttributType ;
+        found := [inReaderName string] == [kNomAttribut string] ;
+      end foreach ;
+      if not found then
+        error inReaderName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
       end if ;
     when >= @typeGalgasClassType t do
       outReturnedType := [@typeGalgas_string new] ; # Any Value

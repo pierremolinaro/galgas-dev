@@ -707,7 +707,8 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeConstructorExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_" << mClassName << "::constructor_" << mClassMethodName << " (_inLexique" ;
+  mType (HERE)->generateCppClassName (ioCppFile) ;
+  ioCppFile << "::constructor_" << mClassMethodName << " (_inLexique" ;
   GGS_typeExpressionList::cElement * current = mExpressionList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;

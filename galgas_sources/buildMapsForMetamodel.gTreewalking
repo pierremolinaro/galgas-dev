@@ -22,7 +22,7 @@ import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
 import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
 import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
 import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;

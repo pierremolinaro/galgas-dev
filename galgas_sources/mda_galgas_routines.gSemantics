@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics mda_galgas_LL1_routines :
+semantics mda_galgas_routines :
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
@@ -26,6 +26,7 @@ semantics mda_galgas_LL1_routines :
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel lexiqueMetamodel in "lexiqueMetamodel.gMetamodel" ;
+  import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
   import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
@@ -260,6 +261,16 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+#routine recursivelyImportSemanticComponent
+#  ?!@ListOfSemanticDeclaration ioSemanticDeclarationList
+#  ?!@stringset ioParsedFileSet
+#  ??@lstringlist inListOfFilesToParse
+#:
+#
+#end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine compileSemanticsComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
@@ -269,38 +280,44 @@ routine compileSemanticsComponent
   @location endOfSourceFile ;
   grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
 #--- Recursively parse all imported files
-
-#--- Analyze imported files
-  @typeMap typeMap ;
-  constructBuiltinTypeMap ?typeMap ;
-  @stringset importedComponentSet [emptySet] ;
-  @routineMap routineMap [emptyMap] ;
-  @typeList typeList ;
-  treewalking buildMapsForSemantics on semanticsComponentRoot
-    ![inSourceFile stringByDeletingLastPathComponent]
-    !endOfSourceFile
-    !?importedComponentSet
-    !?typeMap
-    !?routineMap
-    ?typeList
-  ;
-#--- Warn for undefined types
-  if [typeMap unsolvedIndexCount] > 0 then
-    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
-    if [typeMap unsolvedIndexCount] == 1 then
-      m := "1 type is not defined:" ;
-    else
-      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
-    end if ;
-    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
-      m .= "\n  - @" . kKey ;
-    end foreach ;
-    error endOfSourceFile : m ;
-  end if ;
-#--- Checks inheritance has no circularity
-  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
-    [kType checkNoCircularity ![typeMap count]] ;
-  end foreach ;
+  @ListOfSemanticDeclaration semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
+  @stringset parsedFileSet [setWithString ![inSourceFile lastPathComponent]] ;
+#  recursivelyImportSemanticComponent
+#    !?semanticDeclarationList
+#    !?parsedFileSet
+#    ![semanticsComponentRoot mImportedComponentFileNameList]
+# ;
+##--- Analyze imported files
+#  @typeMap typeMap ;
+#  constructBuiltinTypeMap ?typeMap ;
+#  @stringset importedComponentSet [emptySet] ;
+#  @routineMap routineMap [emptyMap] ;
+#  @typeList typeList ;
+#  treewalking buildMapsForSemantics on semanticsComponentRoot
+#    ![inSourceFile stringByDeletingLastPathComponent]
+#    !endOfSourceFile
+#    !?importedComponentSet
+#    !?typeMap
+#    !?routineMap
+#    ?typeList
+#  ;
+##--- Warn for undefined types
+#  if [typeMap unsolvedIndexCount] > 0 then
+#    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
+#    if [typeMap unsolvedIndexCount] == 1 then
+#      m := "1 type is not defined:" ;
+#    else
+#      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
+#    end if ;
+#    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
+#      m .= "\n  - @" . kKey ;
+#    end foreach ;
+#    error endOfSourceFile : m ;
+#  end if ;
+##--- Checks inheritance has no circularity
+#  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
+#    [kType checkNoCircularity ![typeMap count]] ;
+#  end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*

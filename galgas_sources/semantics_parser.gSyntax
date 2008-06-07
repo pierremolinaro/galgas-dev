@@ -494,7 +494,7 @@ label parse
 nonterminal <formal_argument_type>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@AC_galgasType type_semantique
-  ?!@typeTableEnAvant tableEnAvant
+  ??@typeTableEnAvant tableEnAvant
   !@lstring outGalgasTypeName 
 label importGrammarForSemantics
   !@lstring outGalgasTypeName 
@@ -1093,6 +1093,16 @@ rule <import_headers_semantics_and_grammars>
           ] ;
           [!?ioComponentSemanticsEntitiesMap insertKey
             !kMetamodelClassName
+            ![@typeEntiteType new !t]
+          ] ;
+          t := [@typeGalgas_multipleReferenceEntity new
+            !kMetamodelClassName
+            ![@luint new !0 !here]
+            ![@luint new ![@uint max] !here]
+          ] ;
+          @lstring ListOf_entityName [new !"ListOf" . [[kMetamodelClassName string] stringByCapitalizingFirstCharacter] ![kMetamodelClassName location]] ;
+          [!?ioComponentSemanticsEntitiesMap insertKey
+            !ListOf_entityName
             ![@typeEntiteType new !t]
           ] ;
         end foreach ;
@@ -2098,7 +2108,7 @@ rule <formal_arguments_list>
     <formal_argument_type>
       !ioComponentSemanticsEntitiesMap
       ?type_semantique
-      !?tableEnAvant
+      !tableEnAvant
       ?galgasTypeName
     ;
     listeDeTypes += !type_semantique !passingMode ;
@@ -2125,7 +2135,7 @@ rule <formal_arguments_list>
     <formal_argument_type>
       !ioComponentSemanticsEntitiesMap
       ?type_semantique
-      !?tableEnAvant
+      !tableEnAvant
       ?galgasTypeName
     ;
     listeDeTypes += !type_semantique !passingMode ;
@@ -2152,7 +2162,7 @@ rule <formal_arguments_list>
     <formal_argument_type>
       !ioComponentSemanticsEntitiesMap
       ?type_semantique
-      !?tableEnAvant
+      !tableEnAvant
       ?galgasTypeName
     ;
     listeDeTypes += !type_semantique !passingMode ;
@@ -2178,7 +2188,7 @@ rule <formal_arguments_list>
     <formal_argument_type>
       !ioComponentSemanticsEntitiesMap
       ?type_semantique
-      !?tableEnAvant
+      !tableEnAvant
       ?galgasTypeName
     ;
     listeDeTypes += !type_semantique !passingMode ;
@@ -4961,7 +4971,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <optional_assignment>
-  ??@lstring inTypeName
+  ??@lstring unused inTypeName
   ??@lstring inTargetVarName
   ??@typeCplusPlusName inTargetVariableCppName
   ??@AC_galgasType inVariableType
@@ -4991,7 +5001,7 @@ rule <optional_assignment>
   $]$ ;
 #--- Generate instruction
   @typeExpression  e := [@typeConstructorExpression new 
-    ![inTypeName string]
+    !inVariableType
     ![constructorName string]
     !expressionList
   ] ;
@@ -6305,7 +6315,7 @@ rule <semantics_declaration>
       <formal_argument_type>
         !ioComponentSemanticsEntitiesMap
         ?type_semantique
-        !?tableEnAvant
+        !tableEnAvant
         ?galgasTypeName
       ;
       formalAttributeList += !type_semantique ![@lstring new !"" !here] ;
@@ -6419,7 +6429,7 @@ label importSemantics
       <formal_argument_type>
         !ioComponentSemanticsEntitiesMap
         ?type_semantique
-        !?tableEnAvant
+        !tableEnAvant
         ?galgasTypeName
       ;
       formalAttributeList += !type_semantique ![@lstring new !"" !here] ;
@@ -6529,7 +6539,7 @@ rule <semantics_declaration_begining_by_extern>
       <formal_argument_type>
         !ioComponentSemanticsEntitiesMap
         ?type_semantique
-        !?tableEnAvant
+        !tableEnAvant
         ?galgasTypeName
       ;
       @lstring parameterName ;
@@ -6589,7 +6599,7 @@ rule <semantics_declaration_begining_by_extern>
         <formal_argument_type>
           !ioComponentSemanticsEntitiesMap
           ?type_semantique
-          !?tableEnAvant
+          !tableEnAvant
           ?galgasTypeName
         ;
         @lstring parameterName ;
@@ -6665,7 +6675,7 @@ label importSemantics
       <formal_argument_type>
         !ioComponentSemanticsEntitiesMap
         ?type_semantique
-        !?tableEnAvant
+        !tableEnAvant
         ?galgasTypeName
       ;
       @lstring parameterName ;
@@ -6733,7 +6743,7 @@ label importSemantics
         <formal_argument_type>
           !ioComponentSemanticsEntitiesMap
           ?type_semantique
-          !?tableEnAvant
+          !tableEnAvant
           ?galgasTypeName
         ;
         @lstring parameterName ;
@@ -6767,7 +6777,7 @@ end rule ;
 rule <formal_argument_type>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   !@AC_galgasType type_semantique
-  ?!@typeTableEnAvant tableEnAvant
+  ??@typeTableEnAvant tableEnAvant
   !@lstring outGalgasTypeName 
 :
   $type_name$ ? outGalgasTypeName ;
@@ -6789,7 +6799,7 @@ end rule ;
 rule <formal_argument_type>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   !@AC_galgasType type_semantique
-  ?!@typeTableEnAvant tableEnAvant
+  ??@typeTableEnAvant tableEnAvant
   !@lstring outGalgasTypeName 
 :
   $list$ ;
@@ -6814,7 +6824,7 @@ end rule ;
 rule <formal_argument_type>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   !@AC_galgasType type_semantique
-  ?!@typeTableEnAvant tableEnAvant
+  ??@typeTableEnAvant tableEnAvant
   !@lstring outGalgasTypeName 
 :
   $map$ ;
@@ -6839,7 +6849,7 @@ end rule ;
 rule <formal_argument_type>
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   !@AC_galgasType type_semantique
-  ?!@typeTableEnAvant tableEnAvant
+  ??@typeTableEnAvant tableEnAvant
   !@lstring outGalgasTypeName 
 :
   $abstract$ ;

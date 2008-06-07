@@ -297,9 +297,9 @@ rule <parse_metamodel>
     foreach kEntityPropertiesMap (@lstring kAttributeName
                                   @AC_galgasType kPropertyType) do
       cast kPropertyType :
-      when >= @typeGalgas_singleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
+      when >= @typeGalgas_singleReferenceEntity e do
         [allEntityMap searchKey ![e mEntityTypeName] ?8*] ;
-      when >= @typeGalgas_multipleReferenceEntity e do # § (@lstring kReferenceEntityName 2*) ->
+      when >= @typeGalgas_multipleReferenceEntity e do
         [allEntityMap searchKey ![e mEntityTypeName] ?8*] ;
       else
       end cast ;
