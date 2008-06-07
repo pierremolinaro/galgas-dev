@@ -2,7 +2,7 @@
 #                                                                           *
 #  'lexique' component metamodel                                            *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,68 +17,52 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel lexiqueMetamodel root @lexiqueComponentRoot :
+semantics lexiqueMetamodel :
 
 #---------------------------------------------------------------------------*
 
-entity @lexiqueComponentRoot {
-  @lstring mLexiqueComponentName ;
-  @bool mIsTemplate ;
-  @templateDelimitor [] mTemplateDelimitorList ;
-  @templateReplacement [] mTemplateReplacementList ;
-  @lexicalAttribute [] mLexicalAttributeList ;
-  @lexicalStyle [] mLexicalStyleList ;
-  @terminalDeclaration [] mTerminalDeclarationList ;
-  @lexicalErrorMessageDeclaration [] mLexicalErrorMessageDeclarationList ;
-  @lexicalListDeclaration [] mLexicalListDeclarationList ;
-  @lexicalImplicitRule [] mLexicalImplicitRuleList ;
-  @lexicalExplicitRule [] mLexicalExplicitRuleList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @templateDelimitor {
+list @templateDelimitorList {
   @lstring mStartString ;
   @lstring mEndString ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @templateReplacement {
+list @templateReplacementList {
   @lstring mMatchString ;
   @lstring mReplacementString ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalImplicitRule {
+list @lexicalImplicitRuleList {
   @lstring mListName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalErrorMessageDeclaration {
+list @lexicalErrorMessageDeclarationList {
   @lstring mMessageName ;
   @lstring mMessageValue ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalAttribute {
+list @lexicalAttributeList {
   @lstring mTypeName ;
   @lstring mName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalStyle {
+list @lexicalStyleList {
   @lstring mName ;
   @lstring mComment ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @terminalDeclaration {
+list @terminalDeclarationList {
   @lstring mName ;
   @lstringlist mSentAttributeList ;
   @lstring mErrorMessage ;
@@ -87,203 +71,248 @@ entity @terminalDeclaration {
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalListDeclaration {
-  @lstring mName ;
-  @lstring mStyle ; # Empty string if no style
-  @lstring mErrorMessage ;
-  @lstringlist mSentAttributeList ;
-  @lexicalListEntry [] mEntryList ;  
-}
-
-#---------------------------------------------------------------------------*
-
-entity @lexicalListEntry {
+list @lexicalListEntryList {
   @lstring mEntrySpelling ;
   @lstring mTerminalSpelling ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalExplicitRule {
+list @lexicalListDeclarationList {
+  @lstring mName ;
+  @lstring mStyle ; # Empty string if no style
+  @lstring mErrorMessage ;
+  @lstringlist mSentAttributeList ;
+  @lexicalListEntryList mEntryList ;  
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalInstructionList ;
+
+#---------------------------------------------------------------------------*
+
+list @lexicalExplicitRuleList {
   @lexicalExpression mLexicalRuleExpression ;
-  @lexicalInstruction [] mInstructionList ;
+  @lexicalInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @lexicalExpression {
-}
-
-#---------------------------------------------------------------------------*
-
-entity @lexicalOrExpression extends @lexicalExpression {
+class @lexicalOrExpression extends @lexicalExpression {
   @lexicalExpression mLeftOperand ;
   @lexicalExpression mRightOperand ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalCharacterMatch extends @lexicalExpression {
+class @lexicalCharacterMatch extends @lexicalExpression {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalCharacterIntervalMatch extends @lexicalExpression {
+class @lexicalCharacterIntervalMatch extends @lexicalExpression {
   @lchar mLowerBound ;
   @lchar mUpperBound ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalStringMatch extends @lexicalExpression {
+class @lexicalStringMatch extends @lexicalExpression {
   @lstring mString ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalStringNotMatch extends @lexicalExpression {
+class @lexicalStringNotMatch extends @lexicalExpression {
   @lstring mString ;
   @lstring mErrorMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @lexicalInstruction {
+abstract class @lexicalInstruction {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalStructuredSendInstruction extends @lexicalInstruction {
-  @lexicalSendSearch [] mLexicalSendSearchList ;
+list @lexicalSendSearchList ;
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalSendDefaultAction {
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalStructuredSendInstruction extends @lexicalInstruction {
+  @lexicalSendSearchList mLexicalSendSearchList ;
   @lexicalSendDefaultAction mLexicalSendDefaultAction ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalSimpleSendInstruction extends @lexicalInstruction {
+class @lexicalSimpleSendInstruction extends @lexicalInstruction {
   @lstring mSentTerminal ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @lexicalSendDefaultAction {
-}
-
-#---------------------------------------------------------------------------*
-
-entity @lexicalSendTerminalByDefault extends @lexicalSendDefaultAction {
+class @lexicalSendTerminalByDefault extends @lexicalSendDefaultAction {
   @lstring mDefaultSentTerminal ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalErrorByDefault extends @lexicalSendDefaultAction {
+class @lexicalErrorByDefault extends @lexicalSendDefaultAction {
   @lstring mDefaultErrorMessageName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalSendSearch {
+list @lexicalSendSearchList {
   @lstring mAttributeName ;
   @lstring mSearchListName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalRepeatInstruction extends @lexicalInstruction {
-  @lexicalInstruction [] mRepeatedInstructionList ;
-  @lexicalWhileBranch [1, *] mLexicalWhileBranchList ;
+list @lexicalWhileBranchList ;
+list @lexicalSelectBranchList ;
+
+#---------------------------------------------------------------------------*
+
+class @lexicalRepeatInstruction extends @lexicalInstruction {
+  @lexicalInstructionList mRepeatedInstructionList ;
+  @lexicalWhileBranchList mLexicalWhileBranchList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalWhileBranch {
+list @lexicalWhileBranchList {
   @lexicalExpression mWhileExpression ;
-  @lexicalInstruction [] mWhileInstructionList ;
+  @lexicalInstructionList mWhileInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalSelectInstruction extends @lexicalInstruction {
-  @lexicalSelectBranch [2, *] mLexicalWhileBranchList ;
-  @lexicalInstruction [] mDefaultInstructionList ;
+class @lexicalSelectInstruction extends @lexicalInstruction {
+  @lexicalSelectBranchList mLexicalWhileBranchList ;
+  @lexicalInstructionList mDefaultInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalSelectBranch {
+list @lexicalInstructionList {
+  @lexicalInstruction mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalSelectBranchList {
   @lexicalExpression mSelectExpression ;
-  @lexicalInstruction [] mSelectInstructionList ;
+  @lexicalInstructionList mSelectInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalActionInstruction extends @lexicalInstruction {
+list @lexicalActualArgumentList ;
+
+#---------------------------------------------------------------------------*
+
+class @lexicalActionInstruction extends @lexicalInstruction {
   @lstring mActionName ;
-  @lexicalActualArgument [2, *] mActualArgumentList ;
+  @lexicalActualArgumentList mActualArgumentList ;
   @lstringlist mErrorMessageList ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @lexicalActualArgument {
+abstract class @lexicalActualArgument {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalAttributeArgument extends @lexicalActualArgument {
+list @lexicalActualArgumentList {
+  @lexicalActualArgument mLexicalActualArgument ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalAttributeArgument extends @lexicalActualArgument {
   @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalCharacterArgument extends @lexicalActualArgument {
+class @lexicalCharacterArgument extends @lexicalActualArgument {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalCurrentCharacterArgument extends @lexicalActualArgument {
+class @lexicalCurrentCharacterArgument extends @lexicalActualArgument {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalFunctionArgument extends @lexicalActualArgument {
+class @lexicalFunctionArgument extends @lexicalActualArgument {
   @lstring mFunctionName ;
-  @lexicalActualArgument [1, *] mFunctionActualArgumentList ;
+  @lexicalActualArgumentList mFunctionActualArgumentList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalDropInstruction extends @lexicalInstruction {
+class @lexicalDropInstruction extends @lexicalInstruction {
   @lstring mTerminalName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalErrorInstruction extends @lexicalInstruction {
+class @lexicalErrorInstruction extends @lexicalInstruction {
   @lstring mErrorMessageName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalTagInstruction extends @lexicalInstruction {
+class @lexicalTagInstruction extends @lexicalInstruction {
   @lstring mTagName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalRewindInstruction extends @lexicalInstruction {
+class @lexicalRewindInstruction extends @lexicalInstruction {
   @lstring mTagName ;
   @lstring mTerminalName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @lexicalLogInstruction extends @lexicalInstruction {
+class @lexicalLogInstruction extends @lexicalInstruction {
 }
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+class @lexiqueComponentRoot {
+  @lstring mLexiqueComponentName ;
+  @bool mIsTemplate ;
+  @templateDelimitorList mTemplateDelimitorList ;
+  @templateReplacementList mTemplateReplacementList ;
+  @lexicalAttributeList mLexicalAttributeList ;
+  @lexicalStyleList mLexicalStyleList ;
+  @terminalDeclarationList mTerminalDeclarationList ;
+  @lexicalErrorMessageDeclarationList mLexicalErrorMessageDeclarationList ;
+  @lexicalListDeclarationList mLexicalListDeclarationList ;
+  @lexicalImplicitRuleList mLexicalImplicitRuleList ;
+  @lexicalExplicitRuleList mLexicalExplicitRuleList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

@@ -35,11 +35,11 @@ compile "galgasTemplateParser.gSyntax" ;
 compile "galgasTemplateGrammar.gGrammar" ;
 
 #--- Lexique Component
+compile "lexiqueMetamodel.gSemantics" ;
 compile "lexiqueSemantics.gSemantics" ;
-compile "lexiqueMetamodel.gMetamodel" ;
 compile "lexiqueModelBuilder.gSyntax" ;
 compile "lexiqueLL1grammar.gGrammar" ;
-compile "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
+compile "compileLexique.gSemantics" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;

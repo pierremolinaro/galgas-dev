@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'lexique' LL1 grammar                                                  *
+#  'lexique' LL1 grammar                                                    *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -21,6 +21,7 @@ grammar lexiqueLL1grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax lexiqueModelBuilder in "lexiqueModelBuilder.gSyntax" ;
 
-  root <lexique_component_start_symbol> -> lexiqueMetamodel
+  root <lexique_component_start_symbol>
+    !@lexiqueComponentRoot outLexiqueComponentRoot
   ; # LL1
 end grammar ;
