@@ -42,7 +42,7 @@ routine compileLexiqueComponent
   allowedLexicalTypeNameSet += !"ldouble" ;
 #--- Build lexical attribute map
   @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
-  foreach [lexiqueComponentRoot mLexicalAttributeList] (@lstring mTypeName @lstring mName) do
+  foreach [lexiqueComponentRoot mLexicalAttributeList] do
     if [allowedLexicalTypeNameSet hasKey ![mTypeName string]] then
       [!?lexicalAttributeMap insertKey !mName ![mTypeName string]] ;
     else
@@ -60,7 +60,7 @@ routine compileLexiqueComponent
   end foreach ;
 #--- Build terminal map
   @terminalMap terminalMap [emptyMap] ;
-  foreach [lexiqueComponentRoot mTerminalDeclarationList] (@lstring mName @lstringlist mSentAttributeList 2*) do
+  foreach [lexiqueComponentRoot mTerminalDeclarationList] do
     @stringlist argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @string attributeTypeName ;
@@ -69,14 +69,14 @@ routine compileLexiqueComponent
     end foreach ;
     [!?terminalMap insertKey !mName !argumentTypeList] ;
   end foreach ;
-  foreach [lexiqueComponentRoot mLexicalListDeclarationList] (3* @lstringlist mSentAttributeList @lexicalListEntryList mEntryList) do
+  foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
     @stringlist argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @string attributeTypeName ;
       [lexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
       argumentTypeList += !attributeTypeName ;
     end foreach ;
-    foreach mEntryList (* @lstring mTerminalSpelling) do
+    foreach mEntryList do
       [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
     end foreach ;
   end foreach ;

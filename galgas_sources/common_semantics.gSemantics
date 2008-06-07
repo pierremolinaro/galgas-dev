@@ -1716,9 +1716,8 @@ class @typeGalgas_stringset extends @AC_galgasType {
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
-    @AC_galgasType keyType := [@typeGalgas_string new] ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
-    outForeachList += !keyType ![@lstring new !"mKey" !here] ; # Unused second argument
+    outForeachList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
   end method ;
 
@@ -2656,9 +2655,8 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
-    @AC_galgasType keyType := [@typeGalgas_lstring new] ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
-    outForeachList += !keyType ![@lstring new !"???" !here] ; # Unused second argument
+    outForeachList += ![@typeGalgas_lstring new] ![@lstring new !"key" !here] ;
     foreach mNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) do
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
