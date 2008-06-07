@@ -242,7 +242,13 @@ routine matchConcatOperator
   when @typeGalgasUndefinedListType (@lstring kListType1) :: @typeGalgasUndefinedListType (@lstring kListType2) :
     if [kListType1 string] != [kListType2 string] then
       error here:"concatenation operator error: lists should have the same type (here '@" 
-        . [kListType1 string] . "' and '@" . [kListType2 string] . "')" ;
+        . [kListType1 string] . "' is different from '@" . [kListType2 string] . "')" ;
+    end if ;
+    outResultType := inLeftExpressionType ;
+  when @typeGalgas_multipleReferenceEntity (@lstring kListType1 2*) :: @typeGalgas_multipleReferenceEntity (@lstring kListType2 2*) :
+    if [kListType1 string] != [kListType2 string] then
+      error here:"concatenation operator error: multiple references should refer the same type (here '@" 
+        . [kListType1 string] . "' is different from '@" . [kListType2 string] . "')" ;
     end if ;
     outResultType := inLeftExpressionType ;
   else
@@ -1606,7 +1612,7 @@ rule <factor>
       !?ioVariablesMap
     ;
     outExpression := [@typeConstructorExpression new
-      ![className string]
+      !outResultType
       ![mClassMethodName string]
       !expressionList
     ] ;

@@ -17,12 +17,12 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program mda_galgas_LL1_prgm "version GALGAS_BETA_VERSION" :
+program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import semantics mda_galgas_LL1_routines in "mda_galgas_LL1_routines.gSemantics" ;
+  import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
   import semantics projectCreation in "projectCreation.gSemantics" ;
 
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;

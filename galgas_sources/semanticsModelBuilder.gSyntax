@@ -72,22 +72,6 @@ rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semant
   $semantics$ ;
 #--- Semantics Component Name
   $identifier$ ? mSemanticsComponentName ;
-#--- Imported semantics components
-  mImportedSemanticsComponentSet := [@stringset emptySet] ;
-  select
-  or
-    $extends$ ;
-    repeat
-      @lstring importedSemanticsComponentName ;
-      $identifier$ ? importedSemanticsComponentName ;
-      if [mImportedSemanticsComponentSet hasKey ![importedSemanticsComponentName string]] then
-        warning importedSemanticsComponentName: "this component is already named" ;
-      end if ;
-      mImportedSemanticsComponentSet += ![importedSemanticsComponentName string] ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
   $:$ ;
 #--- Loop on import and semantics declarations
   mImportedComponentFileNameList := [@lstringlist emptyList] ;

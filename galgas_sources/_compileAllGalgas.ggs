@@ -105,8 +105,8 @@ compile "projectModelBuilder.gSyntax" ;
 compile "projectLL1grammar.gGrammar" ;
 
 #--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
-compile "mda_galgas_LL1_routines.gSemantics" ;
-compile "mda_galgas_LL1_prgm.gProgram" ;
+compile "mda_galgas_routines.gSemantics" ;
+compile "mda_galgas_prgm.gProgram" ;
 
 #--- Old style components
 compile "common_semantics.gSemantics" ;
