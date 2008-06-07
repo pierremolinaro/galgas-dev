@@ -4380,7 +4380,10 @@ rule <constant_while_before_in_foreach_instruction>
   #--- Source expression
     <expression> parse ;
   #--- Parse effective input attribute list
-    <parse_effective_input_parameters_list> parse ;
+    select
+      <parse_effective_input_parameters_list> parse ;
+    or
+    end select ;
   while
     $,$ ;
   end repeat ;
@@ -4479,13 +4482,31 @@ label secondPhase
       @string typeName ;
       [sourceExpressionType getTypeName ?typeName] ;
     #--- Parse effective input attribute list
-      <parse_effective_input_parameters_list>
-        !?ioVariablesMap
-        !formalEnumerationList
-        !magicNumber
-        !localConstantBuildStyleEnum
-        ?*
-      ;
+      select
+        <parse_effective_input_parameters_list>
+          !?ioVariablesMap
+          !formalEnumerationList
+          !magicNumber
+          !localConstantBuildStyleEnum
+          ?*
+        ;
+      or
+        @bool mapStyle := localConstantBuildStyleEnum != [@localConstantBuildStyleEnum listStyle] ;
+        @bool firstOne := true ;
+        foreach formalEnumerationList (@AC_galgasType type @lstring attributeName) do
+          @typeCplusPlusName cppName ;
+          if (localConstantBuildStyleEnum == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
+            cppName := [@typeKeyName new !magicNumber] ;
+          else
+            cppName := [@typeOperandName new !magicNumber ![attributeName string] !mapStyle] ;
+          end if ;
+          [!?ioVariablesMap insertUsedConstInArgument !attributeName !type !cppName] ;
+          firstOne := false ;
+        end foreach ;
+
+
+
+      end select ;
       outForeachEnumerationList += !sourceExpression !magicNumber !typeName !ascending ;
     while
       $,$ ;
