@@ -186,10 +186,12 @@ label parse
 ;
 
 nonterminal <input_parameters_list>
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@L_assignedVariables listeAffectationParametresEffectifs
   !@typeCplusPlusNameList outAllVariablesList
-  ?@typeListeAttributsSemantiques listeAttributsSemantiques
+  ??@typeListeAttributsSemantiques listeAttributsSemantiques
   ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
 label parse
 ;
 
@@ -2329,7 +2331,7 @@ rule <syntax_instruction>
   ??@string inLexiqueClassName
   ?!@M_nonTerminalSymbolForSyntax unused ioNonTerminalSymbolMapForSyntax
   ?@bool unused inCheckNonTerminalsAreDeclaredWithParseLabel
-  ??@M_semanticsEntitiesForUse unused ioEntitiesMap
+  ??@M_semanticsEntitiesForUse inEntitiesMap
   ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -2341,25 +2343,24 @@ rule <syntax_instruction>
   ??@bool unused inIsInvokedWithinParseLoopInstruction
   ??@semanticContext unused inSemanticContext
 :
-  @lstring terminalSymbolName ;
-  $terminal$ ? terminalSymbolName ;
+  $terminal$ ?@lstring terminalSymbolName ;
   @typeListeAttributsSemantiques listeDesAttributsFormels ;
   [tableTerminaux searchKey !terminalSymbolName ?listeDesAttributsFormels] ;
   @L_assignedVariables listeTypeEffectifs ;
   @typeCplusPlusNameList allVariablesList ;
   <input_parameters_list>
+    !inEntitiesMap
     ?listeTypeEffectifs
     ?allVariablesList
     !listeDesAttributsFormels
     !?ioVariablesMap
+    !?ioInstructionList
   ;
-  @typeInstruction instruction ;
-  instruction := [@typeInstructionVerifSyntaxique new
+  ioInstructionList += ![@typeInstructionVerifSyntaxique new
     !terminalSymbolName
     !listeTypeEffectifs
     !inLexiqueClassName
   ] ;
-  ioInstructionList += !instruction ;
   @uint terminalSymbolIndex := 0 ;
   @AC_instruction_ForGrammar i := [@T_terminalInstruction_forGrammarComponent new ![terminalSymbolName location] !terminalSymbolName !terminalSymbolIndex] ;
   ioSyntaxSignature += !i ;
