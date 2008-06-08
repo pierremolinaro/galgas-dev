@@ -665,7 +665,14 @@ rule <galgas_component>
   foreach tableNomRoutinesDeclarees (@lstring nomRoutine) do
     if not [tableRoutinesAimplementer hasKey ![nomRoutine string]] then
       error nomRoutine : "the routine '" . [nomRoutine string] .
-                         "' is not implemented within the component" ;
+                         "' is not implemented in the component" ;
+    end if ;
+  end foreach ;
+#--- Check that all forward types have been implemented
+  foreach tableEnAvant do
+    if not [componentEntitiesMap hasKey ![key string]] then
+      error key : "the '@" . [key string] .
+                         "' forward type is not implemented in the component" ;
     end if ;
   end foreach ;
 #--- Generate component

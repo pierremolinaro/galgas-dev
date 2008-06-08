@@ -2,7 +2,7 @@
 #                                                                           *
 #  'grammar' component metamodel                                            *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,34 +17,35 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel grammarMetamodel root @grammarComponentRoot :
+semantics grammarMetamodel :
 import "commonSemantics.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-entity @startSymbolLabelFormalParameter {
+list @startSymbolLabelFormalParameterList {
   @formalArgumentPassingMode mFormalAgumentPassingMode ;
   @lstring mTypeName ;
+  @lstring mArgumentName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @grammarLabel {
+list @grammarLabelList {
   @lstring mLabelName ;
-  @startSymbolLabelFormalParameter [] mFormalParameters ;
+  @startSymbolLabelFormalParameterList mFormalParameterList ;
   @lstring mMetamodelName ; # Empty string if no metamodel
 }
 
 #---------------------------------------------------------------------------*
 
-entity @grammarComponentRoot {
+class @grammarComponentRoot {
   @lstring mGrammarName ;
   @lstring mGrammarClass ;
   @lstring mStartSymbol ;
-  @grammarLabel [1, *] mLabels ;
+  @grammarLabelList mLabelList ;
 }
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+end semantics ;

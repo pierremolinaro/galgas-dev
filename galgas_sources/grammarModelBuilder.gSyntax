@@ -21,15 +21,23 @@ syntax grammarModelBuilder :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
+import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <grammar_component_start_symbol> -> @grammarComponentRoot ;
+nonterminal <grammar_component_start_symbol>
+  !@grammarComponentRoot outGrammarComponentRoot
+;
 
-nonterminal <grammar_start_symbol_label> ??@lstring inLabelName -> @grammarLabel ;
+nonterminal <grammar_start_symbol_label>
+  ??@lstring inLabelName
+  ?!@grammarLabelList ioLabelList
+;
 
-nonterminal <label_formal_parameter> !@lstring outArgumentName -> @startSymbolLabelFormalParameter ;
+nonterminal <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -37,10 +45,12 @@ nonterminal <label_formal_parameter> !@lstring outArgumentName -> @startSymbolLa
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <grammar_component_start_symbol> -> @grammarComponentRoot :
+rule <grammar_component_start_symbol>
+  !@grammarComponentRoot outGrammarComponentRoot
+:
   $grammar$ ;
-  $identifier$ ? mGrammarName ;
-  $literal_string$ ? mGrammarClass ;
+  $identifier$ ? @lstring mGrammarName ;
+  $literal_string$ ? @lstring mGrammarClass ;
   $:$ ;
 #--- Old style imports
 #--- Loop on import declarations
@@ -67,10 +77,11 @@ rule <grammar_component_start_symbol> -> @grammarComponentRoot :
   end repeat ;
 #--- Root symbol
   $root$ ;
-  $non_terminal_symbol$ ? mStartSymbol ;
+  $non_terminal_symbol$ ?@lstring  mStartSymbol ;
   @lstring labelName [new !"" !here] ;
+  @grammarLabelList mLabelList [emptyList] ;
   repeat
-    <grammar_start_symbol_label> !labelName +> mLabels ;
+    <grammar_start_symbol_label> !labelName !? mLabelList ;
   while
     $label$ ;
     $identifier$ ? labelName ;
@@ -80,76 +91,115 @@ rule <grammar_component_start_symbol> -> @grammarComponentRoot :
   $end$ ;
   $grammar$ ;
   $;$ ;
+  outGrammarComponentRoot := [@grammarComponentRoot new
+    !mGrammarName
+    !mGrammarClass
+    !mStartSymbol
+    !mLabelList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <grammar_start_symbol_label> ??@lstring inLabelName -> @grammarLabel :
-  mLabelName := inLabelName ;
+rule <grammar_start_symbol_label>
+  ??@lstring inLabelName
+  ?!@grammarLabelList ioLabelList
+:
   @stringset argumentNameSet [emptySet] ;
+  @startSymbolLabelFormalParameterList mFormalParameterList [emptyList] ;
   repeat
   while
     @lstring argumentName ;
-    <label_formal_parameter> ?argumentName +> mFormalParameters ;
+    <label_formal_parameter> ?argumentName !?mFormalParameterList ;
     if [argumentNameSet hasKey ![argumentName string]] then
       error argumentName: "there is already an argument named '" . argumentName . "'" ;
     end if ;
     argumentNameSet += ![argumentName string] ;
   end repeat ;
+  @lstring mMetamodelName ;
   select
     mMetamodelName := [@lstring new !"" !here] ;
   or
     $->$ ;
     $identifier$ ? mMetamodelName ;
   end select ;
+  ioLabelList += !inLabelName !mFormalParameterList !mMetamodelName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <label_formal_parameter> !@lstring outArgumentName -> @startSymbolLabelFormalParameter :
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+:
   $?$ ;
-  mFormalAgumentPassingMode := [@formalArgumentPassingMode argumentIn] ;
-  $type_name$ ? mTypeName ;
+  $type_name$ ?@lstring mTypeName ;
   select
   or
    $unused$ ;
   end select ;
   $identifier$ ?outArgumentName ;
+  ioStartSymbolLabelFormalParameterList +=
+    ![@formalArgumentPassingMode argumentIn]
+    !mTypeName
+    !outArgumentName
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <label_formal_parameter> !@lstring outArgumentName -> @startSymbolLabelFormalParameter :
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+:
   $??$ ;
-  mFormalAgumentPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
-  $type_name$ ? mTypeName ;
+  $type_name$ ?@lstring mTypeName ;
   select
   or
    $unused$ ;
   end select ;
   $identifier$ ?outArgumentName ;
+  ioStartSymbolLabelFormalParameterList +=
+    ![@formalArgumentPassingMode argumentConstantIn]
+    !mTypeName
+    !outArgumentName
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <label_formal_parameter> !@lstring outArgumentName -> @startSymbolLabelFormalParameter :
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+:
   $?!$ ;
-  mFormalAgumentPassingMode := [@formalArgumentPassingMode argumentInOut] ;
-  $type_name$ ? mTypeName ;
+  $type_name$ ?@lstring mTypeName ;
   select
   or
    $unused$ ;
   end select ;
   $identifier$ ?outArgumentName ;
+  ioStartSymbolLabelFormalParameterList +=
+    ![@formalArgumentPassingMode argumentInOut]
+    !mTypeName
+    !outArgumentName
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <label_formal_parameter> !@lstring outArgumentName -> @startSymbolLabelFormalParameter :
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@startSymbolLabelFormalParameterList ioStartSymbolLabelFormalParameterList
+:
   $!$ ;
-  mFormalAgumentPassingMode := [@formalArgumentPassingMode argumentOut] ;
-  $type_name$ ? mTypeName ;
+  $type_name$ ?@lstring mTypeName ;
   $identifier$ ?outArgumentName ;
+  ioStartSymbolLabelFormalParameterList +=
+    ![@formalArgumentPassingMode argumentOut]
+    !mTypeName
+    !outArgumentName
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
