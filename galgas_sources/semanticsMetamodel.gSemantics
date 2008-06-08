@@ -17,19 +17,19 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel semanticsMetamodel extends instructionMetamodel root @semanticsComponentRoot :
+semantics semanticsMetamodel :
 
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-entity @semanticsComponentRoot {
+class @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
   @lstringlist mImportedComponentFileNameList ;
-  @semanticDeclaration [] mSemanticDeclarationList ;
+  @semanticDeclarationList mSemanticDeclarationList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -38,7 +38,7 @@ entity @semanticsComponentRoot {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @attributeInCollection {
+class @attributeInCollection {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
 }
@@ -49,21 +49,21 @@ entity @attributeInCollection {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @mapDeclaration extends @semanticDeclaration {
-  @lstring mMapTypeName ;
-  @attributeInCollection [] mAttributeList ;
-  @mapMethod [] mInsertMethodList ;
-  @mapMethod [] mSearchMethodList ;
-  @mapMethod [] mRemoveMethodList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @mapMethod {
+list @mapMethod {
   @lstring mMethodName ;
   @lstring mGetIDMethodName ;
   @lstring mErrorMessage ;
   @lstring mShadowErrorMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @mapDeclaration extends @semanticDeclaration {
+  @lstring mMapTypeName ;
+  @attributeInCollectionList mAttributeList ;
+  @mapMethodList mInsertMethodList ;
+  @mapMethodList mSearchMethodList ;
+  @mapMethodList mRemoveMethodList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -72,7 +72,7 @@ entity @mapMethod {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @mapindexDeclaration extends @semanticDeclaration {
+class @mapindexDeclaration extends @semanticDeclaration {
   @lstring mMapIndexName ;
   @lstring mMapTypeName ;
   @lstring mSearchMethodName ;
@@ -85,46 +85,46 @@ entity @mapindexDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @classDeclaration extends @semanticDeclaration {
+list @abstractMethodDefinition {
+  @lstring mMethodName ;
+  @formalParameters mSignature ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @overridenMethodDefinition {
+  @lstring mMethodName ;
+  @formalParameters mSignature ;
+  @semanticInstructions mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @methodDefinition {
+  @lstring mMethodName ;
+  @formalParameters mSignature ;
+  @semanticInstructions mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @classMessageDefinition {
+  @lstring mMessageName ;
+  @lstring mMessageValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @classDeclaration extends @semanticDeclaration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @lstring mSuperClassName ; # Empty if no super class
-  @attributeInCollection [] mAttributeList ;
-  @abstractMethodDefinition [] mAbstractMethodList ;
-  @overridenMethodDefinition [] mOverridenMethodList ;
-  @methodDefinition [] mMethodList ;
-  @classMessageDefinition [] mMessageList ;
+  @attributeInCollectionList mAttributeList ;
+  @abstractMethodDefinitionList mAbstractMethodList ;
+  @overridenMethodDefinitionList mOverridenMethodList ;
+  @methodDefinitionList mMethodList ;
+  @classMessageDefinitionList mMessageList ;
   @string mClassMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @abstractMethodDefinition {
-  @lstring mMethodName ;
-  @formalParameters mSignature ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @overridenMethodDefinition {
-  @lstring mMethodName ;
-  @formalParameters mSignature ;
-  @semanticInstructions mInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @methodDefinition {
-  @lstring mMethodName ;
-  @formalParameters mSignature ;
-  @semanticInstructions mInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @classMessageDefinition {
-  @lstring mMessageName ;
-  @lstring mMessageValue ;
 }
 
 #---------------------------------------------------------------------------*
@@ -133,9 +133,9 @@ entity @classMessageDefinition {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @listDeclaration extends @semanticDeclaration {
+class @listDeclaration extends @semanticDeclaration {
   @lstring mListTypeName ;
-  @attributeInCollection [] mAttributeList ;
+  @attributeInCollectionList mAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -144,17 +144,17 @@ entity @listDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @sortedListSortDescriptor {
+list @sortedListSortDescriptor {
   @lstring mSortedAttributeName ;
   @bool mAscending ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @sortedListDeclaration extends @semanticDeclaration {
+class @sortedListDeclaration extends @semanticDeclaration {
   @lstring mSortedListTypeName ;
-  @attributeInCollection [] mAttributeList ;
-  @sortedListSortDescriptor [] mSortDescriptorList ;
+  @attributeInCollectionList mAttributeList ;
+  @sortedListSortDescriptorList mSortDescriptorList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -163,40 +163,21 @@ entity @sortedListDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @enumDeclaration extends @semanticDeclaration {
-  @lstring mEnumTypeName ;
-  @lstringlist mConstructorConstantList ;
-  @lstringlist mConstantList ;
-  @enumMessage [] mEnumMessageList ;
-  @enumModifier [] mEnumModifierList ;
-  @enumMethod [] mEnumMethodList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @enumMessage {
-  @lstring mEnumMessageName ;
-  @enumMessageAssociation [] mMessageAssociationList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @enumMessageAssociation {
+list @enumMessageAssociation {
   @lstring mConstantName ;
   @lstring mMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @enumModifier {
-  @lstring mModifierName ;
-  @lstring mLocationFormalArgumentName ;
-  @enumModifierCase [] mEnumModifierCaseList ;
+list @enumMessageList {
+  @lstring mEnumMessageName ;
+  @enumMessageAssociationList mMessageAssociationList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @enumModifierCase {
+class @enumModifierCase {
   @lstring mSourceConstantName ;
   @lstring mTargetConstantName ;
   @enumCaseMessage mEnumModifierCaseMessage ;
@@ -204,36 +185,61 @@ entity @enumModifierCase {
 
 #---------------------------------------------------------------------------*
 
-entity @enumCaseMessage {
+list @enumModifier {
+  @lstring mModifierName ;
+  @lstring mLocationFormalArgumentName ;
+  @enumModifierCaseList mEnumModifierCaseList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @enumCaseErrorMessage extends @enumCaseMessage {
+class @enumCaseMessage {
+}
+
+#---------------------------------------------------------------------------*
+
+list @enumCaseMessageList {
+  @enumCaseMessage mEnumCaseMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumCaseErrorMessage extends @enumCaseMessage {
   @lstring mLocationParameterName ;
   @lstring mMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @enumCaseWarningMessage extends @enumCaseMessage {
+class @enumCaseWarningMessage extends @enumCaseMessage {
   @lstring mLocationParameterName ;
   @lstring mMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @enumMethod {
+class @enumMethod {
   @lstring mMethodName ;
   @lstring mLocationFormalArgumentName ;
-  @enumMethodCase [] mEnumMethodCaseList ;
+  @enumMethodCaseList mEnumMethodCaseList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @enumMethodCase {
+class @enumMethodCase {
   @lstring mConstantName ;
   @enumCaseMessage mEnumMethodCaseMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumDeclaration extends @semanticDeclaration {
+  @lstring mEnumTypeName ;
+  @lstringlist mConstructorConstantList ;
+  @lstringlist mConstantList ;
+  @enumMessageList mEnumMessageList ;
+  @enumModifierList mEnumModifierList ;
+  @enumMethodList mEnumMethodList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -242,16 +248,7 @@ entity @enumMethodCase {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @filewrapperDeclaration extends @semanticDeclaration {
-  @lstring mFilewrapperName ;
-  @lstring mFilewrapperPath ;
-  @lstringlist mFilewrapperExtensionList ;
-  @filewrapperTemplate [] mFilewrapperTemplateList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @filewrapperTemplate {
+list @filewrapperTemplate {
   @lstring mFilewrapperTemplateName ;
   @lstring mFilewrapperTemplatePath ;
   @formalInputParameterList mFilewrapperTemplateFormalInputParameters ;
@@ -259,4 +256,13 @@ entity @filewrapperTemplate {
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+class @filewrapperDeclaration extends @semanticDeclaration {
+  @lstring mFilewrapperName ;
+  @lstring mFilewrapperPath ;
+  @lstringlist mFilewrapperExtensionList ;
+  @filewrapperTemplateList mFilewrapperTemplateList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

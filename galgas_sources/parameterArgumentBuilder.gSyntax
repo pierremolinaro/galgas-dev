@@ -20,8 +20,8 @@
 syntax parameterArgumentBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -29,49 +29,54 @@ import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMeta
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <expression> -> @semanticExpression ;
+nonterminal <expression> !@semanticExpression outExpression ;
 
-nonterminal <formal_parameter_list> -> @formalParameters ;
+nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
 
-nonterminal <formal_input_parameter_list> -> @formalInputParameterList ;
+nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList ;
 
-nonterminal <formal_parameter> -> @formalParameter ;
+nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
 
-nonterminal <actual_parameter_list> -> @actualParameters ;
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          F O R M A L    P A R A M E T E R    L I S T                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
-#---------------------------------------------------------------------------*
-
-rule <formal_parameter_list> -> @formalParameters :
+rule <formal_parameter_list> !@formalParameterList outFormalParameterList :
+  outFormalParameterList := [@formalParameterList emptyList] ;
   repeat
   while
-    <formal_parameter> +> mFormalParameterList ;
+    @formalArgumentPassingMode mFormalParameterPassingMode ;
+    select
+      $?$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentIn] ;
+    or
+      $??$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
+    or
+      $?!$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentInOut] ;
+    or
+      $!$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
+    end select ;
+    $type_name$ ?@lstring mFormalParameterTypeName ;
+    @bool mIsUnused ;
+    select
+      mIsUnused := false ;
+    or
+      $unused$ ;
+      mIsUnused := true ;
+    end select ;
+    $identifier$ ?@lstring mFormalParameterName ;
+    outFormalParameterList +=
+      !mFormalParameterPassingMode
+      !mFormalParameterTypeName
+      !mFormalParameterName
+      !mIsUnused
+    ;
   end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <formal_parameter> -> @formalParameter :
-  select
-    $?$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentIn] ;
-  or
-    $??$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentConstantIn] ;
-  or
-    $?!$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentInOut] ;
-  or
-    $!$ ;
-    mFormalParameterPassingMode := [@formalArgumentPassingMode argumentOut] ;
-  end select ;
-  $type_name$ ? mFormalParameterTypeName ;
-  select
-    mIsUnused := false ;
-  or
-    $unused$ ;
-    mIsUnused := true ;
-  end select ;
-  $identifier$ ? mFormalParameterName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -80,13 +85,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <actual_parameter_list> -> @actualParameters :
+rule <actual_parameter_list> !@actualParameterList outActualParameterList :
+  outActualParameterList := [@actualParameterList emptyList] ;
   repeat
   while
     $?$ ;
     select
       $*$ ;
-      mActualParameter += ![@inputJokerActualParameter new] ;
+      outActualParameterList += ![@inputJokerActualParameter new] ;
     or
       @luint count ;
       $unsigned_literal_integer$ ? count ;
@@ -97,7 +103,7 @@ rule <actual_parameter_list> -> @actualParameters :
       else
         loop n :
         while n > 0 do
-          mActualParameter += ![@inputJokerActualParameter new] ;
+          outActualParameterList += ![@inputJokerActualParameter new] ;
           n -- ;
         end loop ;
       end if ;
@@ -105,18 +111,18 @@ rule <actual_parameter_list> -> @actualParameters :
   while
     $!$ ;
     @semanticExpression e ;
-    <expression> -> e ;
-    mActualParameter += ![@outputActualParameter new !e] ;
+    <expression> ? e ;
+    outActualParameterList += ![@outputActualParameter new !e] ;
   while
     $!?$ ;
     @lstring outputInputActualParameterName ;
     $identifier$ ?outputInputActualParameterName ;
-    mActualParameter += ![@outputInputActualParameter new !outputInputActualParameterName] ;
+    outActualParameterList += ![@outputInputActualParameter new !outputInputActualParameterName] ;
   while
     $?$ ;
     @lstring inputActualParameterName ;
     $identifier$ ?inputActualParameterName ;
-    mActualParameter += ![@inputActualParameter new !inputActualParameterName] ;
+    outActualParameterList += ![@inputActualParameter new !inputActualParameterName] ;
   end repeat ;
 end rule ;
 
@@ -126,29 +132,26 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <formal_input_parameter> -> @formalInputParameter ;
-
-#---------------------------------------------------------------------------*
-
-rule <formal_input_parameter_list> -> @formalInputParameterList :
+rule <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList :
+  outFormalInputParameterList := [@formalInputParameterList emptyList] ;
   repeat
-    <formal_input_parameter> +> mFormalInputParameterList ;
+    $?$ ;
+    $type_name$ ?@lstring mFormalParameterTypeName ;
+    @bool mIsUnused ;
+    select
+      mIsUnused := false ;
+    or
+      $unused$ ;
+      mIsUnused := true ;
+    end select ;
+    $identifier$ ?@lstring mFormalParameterName ;
+    outFormalInputParameterList +=
+      !mFormalParameterTypeName
+      !mFormalParameterName
+      !mIsUnused
+    ;
   while
   end repeat ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <formal_input_parameter> -> @formalInputParameter : 
-  $?$ ;
-  $type_name$ ? mFormalParameterTypeName ;
-  select
-    mIsUnused := false ;
-  or
-    $unused$ ;
-    mIsUnused := true ;
-  end select ;
-  $identifier$ ? mFormalParameterName ;
 end rule ;
 
 #---------------------------------------------------------------------------*

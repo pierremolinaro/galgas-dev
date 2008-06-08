@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines instructions                                      *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,30 +17,30 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract metamodel instructionMetamodel extends parameterArgumentMetamodel :
+semantics instructionMetamodel :
 
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-abstract entity @syntaxInstruction {
+abstract class @syntaxInstruction {
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @semanticInstruction extends @syntaxInstruction {
+abstract class @semanticInstruction extends @syntaxInstruction {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @semanticInstructions {
-  @semanticInstruction [] mInstruction ;
+list @semanticInstructionList {
+  @semanticInstruction mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @semanticDeclaration {
+abstract class @semanticDeclaration {
 }
 
 #---------------------------------------------------------------------------*
@@ -49,10 +49,10 @@ abstract entity @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @routineDeclaration extends @semanticDeclaration {
+class @routineDeclaration extends @semanticDeclaration {
   @lstring mRoutineName ;
-  @formalParameters mFormalParameters ;
-  @semanticInstructions mRoutineInstructions ;
+  @formalParameterList mFormalParameterList ;
+  @semanticInstructionList mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -61,9 +61,9 @@ entity @routineDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @externRoutineDeclaration extends @semanticDeclaration {
+class @externRoutineDeclaration extends @semanticDeclaration {
   @lstring mActionName ;
-  @formalParameters mFormalParameters ;
+  @formalParameterList mFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -72,14 +72,14 @@ entity @externRoutineDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @localVariableDeclaration extends @semanticInstruction {
+class @localVariableDeclaration extends @semanticInstruction {
   @lstring mTypeName ;
   @lstring mVariableName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @localVariableDeclarationWithInitialization extends @semanticInstruction {
+class @localVariableDeclarationWithInitialization extends @semanticInstruction {
   @lstring mTypeName ;
   @lstring mVariableName ;
   @lstring mConstructorName ;
@@ -88,7 +88,7 @@ entity @localVariableDeclarationWithInitialization extends @semanticInstruction 
 
 #---------------------------------------------------------------------------*
 
-entity @localVariableDeclarationWithAssignment extends @semanticInstruction {
+class @localVariableDeclarationWithAssignment extends @semanticInstruction {
   @lstring mTypeName ;
   @lstring mVariableName ;
   @semanticExpression mSourceExpression ;
@@ -100,7 +100,7 @@ entity @localVariableDeclarationWithAssignment extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @assignmentInstruction extends @semanticInstruction {
+class @assignmentInstruction extends @semanticInstruction {
   @lstring mTargetVariableName ;
   @semanticExpression mSourceExpression ;
 }
@@ -113,7 +113,7 @@ entity @assignmentInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @appendInstruction extends @semanticInstruction {
+class @appendInstruction extends @semanticInstruction {
   @lstring mTargetVariableName ;
   @semanticExpression mSourceExpression ;
 }
@@ -124,39 +124,45 @@ entity @appendInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract entity @foreachInstructionEnumeratedObjectElement {
+abstract class @foreachInstructionEnumeratedObjectElement {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @foreachInstructionJoker extends @foreachInstructionEnumeratedObjectElement {
+class @foreachInstructionJoker extends @foreachInstructionEnumeratedObjectElement {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @foreachInstructionEnumeratedConstant extends @foreachInstructionEnumeratedObjectElement {
+class @foreachInstructionEnumeratedConstant extends @foreachInstructionEnumeratedObjectElement {
   @lstring mTypeName ;
   @lstring mConstantName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @foreachInstructionEnumeratedObject {
+list @foreachInstructionEnumeratedObjectElementList {
+  @foreachInstructionEnumeratedObjectElement mElement ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @foreachInstructionEnumeratedObjectList {
   @semanticExpression mEnumeratedExpression ;
-  @foreachInstructionEnumeratedObjectElement [] mElements ;
+  @foreachInstructionEnumeratedObjectElementList mElementList ;
   @bool mEndsWithEllipsis ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @foreachInstruction extends @semanticInstruction {
-  @foreachInstructionEnumeratedObject [] mEnumeratedObjects ;
+class @foreachInstruction extends @semanticInstruction {
+  @foreachInstructionEnumeratedObjectList mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
   @semanticExpression mWhileExpression ;
-  @semanticInstruction [] mBeforeInstructionList ;
-  @semanticInstruction [] mBetweenInstructionList ;
-  @semanticInstructions mDoInstructionList ;
-  @semanticInstruction [] mAfterInstructionList ;
+  @semanticInstructionList mBeforeInstructionList ;
+  @semanticInstructionList mBetweenInstructionList ;
+  @semanticInstructionList mDoInstructionList ;
+  @semanticInstructionList mAfterInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -165,10 +171,16 @@ entity @foreachInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @ifInstruction extends @semanticInstruction {
-  @semanticExpression [] mIFexpressionList ;
-  @semanticInstructions [] mIFinstructionListList ;
-  @semanticInstructions [0, 1] mElseInstructionList ;
+list @ifBranchList {
+  @semanticExpression mIFexpression ;
+  @semanticInstructionList mIFinstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifInstruction extends @semanticInstruction {
+  @ifBranchList mBranchList ;
+  @semanticInstructionList mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -177,10 +189,10 @@ entity @ifInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @methodCallInstruction extends @semanticInstruction {
+class @methodCallInstruction extends @semanticInstruction {
   @semanticExpression mReceiverExpression ;
   @lstring mMethodName ;
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -189,10 +201,10 @@ entity @methodCallInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @modifierCallInstruction extends @semanticInstruction {
+class @modifierCallInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
   @lstring mModifierName ;
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -201,7 +213,7 @@ entity @modifierCallInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @errorInstruction extends @semanticInstruction {
+class @errorInstruction extends @semanticInstruction {
   @semanticExpression mReceiverExpression ;
   @semanticExpression mErrorExpression ;
   @lstringlist mBuiltVariableList ;
@@ -213,7 +225,7 @@ entity @errorInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @warningInstruction extends @semanticInstruction {
+class @warningInstruction extends @semanticInstruction {
   @semanticExpression mReceiverExpression ;
   @semanticExpression mErrorExpression ;
 }
@@ -224,9 +236,9 @@ entity @warningInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @routineCallInstruction extends @semanticInstruction {
+class @routineCallInstruction extends @semanticInstruction {
   @lstring mRoutineName ;
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -235,36 +247,42 @@ entity @routineCallInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract entity @matchEntry {
+abstract class @matchEntry {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @constantMatchEntry extends @matchEntry {
+list @matchEntryList {
+  @matchEntry mEntry ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @constantMatchEntry extends @matchEntry {
   @lstring mConstantName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @classMatchEntry extends @matchEntry {
+class @classMatchEntry extends @matchEntry {
   @lstring mClassName ;
-  @foreachInstructionEnumeratedObjectElement [] mElements ;
+  @foreachInstructionEnumeratedObjectElementList mElements ;
   @bool mEndsWithEllipsis ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @matchInstructionBranch {
-  @matchEntry [] mMatchedEntryList ;
-  @semanticInstructions mMatchBranchInstructionList ;
+list @matchInstructionBranchList {
+  @matchEntryList mMatchEntryList ;
+  @semanticInstructionList mMatchBranchInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @matchInstruction extends @semanticInstruction {
+class @matchInstruction extends @semanticInstruction {
   @lstringlist mMatchedVariableNameList ;
-  @matchInstructionBranch [] mMatchInstructionBranchList ;
-  @semanticInstructions [0, 1] mElseInstructionList ;
+  @matchInstructionBranchList mMatchInstructionBranchList ;
+  @semanticInstructionList mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -273,36 +291,36 @@ entity @matchInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @castInstructionBranch {
+list @castInstructionBranchList {
   @bool mUseKindOfClass ;
   @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
   @bool mConstantVarNameIsUnused ; # true if no constant var
-  @semanticInstructions mCastBranchInstructionList ;
+  @semanticInstructionList mCastBranchInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract entity @elseOrDefaultForCastInstruction {
+abstract class @elseOrDefaultForCastInstruction {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @elseForCastInstruction extends @elseOrDefaultForCastInstruction {
-  @semanticInstructions mElseInstructionList ;
+class @elseForCastInstruction extends @elseOrDefaultForCastInstruction {
+  @semanticInstructionList mElseInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @defaultForCastInstruction extends @elseOrDefaultForCastInstruction {
+class @defaultForCastInstruction extends @elseOrDefaultForCastInstruction {
   @semanticExpression mErrorLocationExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @castInstruction extends @semanticInstruction {
+class @castInstruction extends @semanticInstruction {
   @semanticExpression mExpression ;
-  @castInstructionBranch [] mCastInstructionBranchList ;
+  @castInstructionBranchList mCastInstructionBranchList ;
   @elseOrDefaultForCastInstruction mElseOrDefault ;
 }
 
@@ -312,7 +330,7 @@ entity @castInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @addInstruction extends @semanticInstruction {
+class @addInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
   @outExpressionList mExpressionList ;
 }
@@ -323,7 +341,7 @@ entity @addInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @incrementInstruction extends @semanticInstruction {
+class @incrementInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
 }
 
@@ -333,7 +351,7 @@ entity @incrementInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @decrementInstruction extends @semanticInstruction {
+class @decrementInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
 }
 
@@ -343,11 +361,11 @@ entity @decrementInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @loopInstruction extends @semanticInstruction {
+class @loopInstruction extends @semanticInstruction {
   @semanticExpression mVariantExpression ;
-  @semanticInstructions mFirstInstructions ;
+  @semanticInstructionList mFirstInstructions ;
   @semanticExpression mLoopExpression ;
-  @semanticInstructions mSecondInstructions ;
+  @semanticInstructionList mSecondInstructions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -356,7 +374,7 @@ entity @loopInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @messageInstruction extends @semanticInstruction {
+class @messageInstruction extends @semanticInstruction {
   @semanticExpression mExpression ;
 }
 
@@ -366,7 +384,7 @@ entity @messageInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @logInstruction extends @semanticInstruction {
+class @logInstruction extends @semanticInstruction {
   @lstringlist mLoggedVariableList ;
 }
 
@@ -376,11 +394,11 @@ entity @logInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @grammarInstruction extends @semanticInstruction {
+class @grammarInstruction extends @semanticInstruction {
   @lstring mGrammarComponentName ;
   @lstring mLabelName ;
   @semanticExpression mSourceFileExpression ;
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
   @lstring mReturnedModelName ; # Empty string if no returned model
 }
 
@@ -390,10 +408,10 @@ entity @grammarInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @treewalkingInstruction extends @semanticInstruction {
+class @treewalkingInstruction extends @semanticInstruction {
   @lstring mTreewalkingComponentName ;
   @lstring mModelName ;
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -402,12 +420,12 @@ entity @treewalkingInstruction extends @semanticInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @typeMethodInstruction extends @semanticInstruction {
+class @typeMethodInstruction extends @semanticInstruction {
   @lstring mTypeName ;
   @lstring mMethodName ;
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+end semantics ;
