@@ -19,41 +19,55 @@
 
 syntax optionModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
+import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
 
-nonterminal <option_component_start_symbol> -> @optionComponentRoot ;
+nonterminal <option_component_start_symbol> !@optionComponentRoot outOptionComponentRoot;
 
-nonterminal <option> -> @commandLineOption ;
+nonterminal <option> ?!@commandLineOptionList ioCommandLineOptionList ;
 
 #---------------------------------------------------------------------------*
 
-rule <option_component_start_symbol> -> @optionComponentRoot :
+rule <option_component_start_symbol>
+ !@optionComponentRoot outOptionComponentRoot
+:
   $option$ ;
 #--- Option Component Name
-  $identifier$ ? mOptionComponentName ;
+  $identifier$ ?@lstring mOptionComponentName ;
   $:$ ;
 #--- Parse the option list
+  @commandLineOptionList mOptions [emptyList] ;
   repeat
   while 
-    <option> +> mOptions ;
+    <option> !?mOptions ;
   end repeat ;
   $end$ ;
   $option$ ;
   $;$ ;
+  outOptionComponentRoot := [@optionComponentRoot new
+    !mOptionComponentName
+    !mOptions
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <option> -> @commandLineOption :
-  $type_name$ ? mOptionTypeName  ;
-  $identifier$ ? mOptionInternalName ;
+rule <option> ?!@commandLineOptionList ioCommandLineOptionList :
+  $type_name$ ?@lstring mOptionTypeName  ;
+  $identifier$ ?@lstring mOptionInternalName ;
   $:$ ;
-  $literal_char$ ? mOptionInvocationLetter ;
+  $literal_char$ ?@lchar mOptionInvocationLetter ;
   $,$ ;
-  $literal_string$ ? mOptionInvocationString ;
+  $literal_string$ ?@lstring mOptionInvocationString ;
   $->$ ;
-  $literal_string$ ? mOptionComment ;
+  $literal_string$ ?@lstring mOptionComment ;
   $;$ ;
+  ioCommandLineOptionList +=
+    !mOptionTypeName
+    !mOptionInternalName
+    !mOptionInvocationLetter
+    !mOptionInvocationString
+    !mOptionComment
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

@@ -43,12 +43,10 @@ compile "compileLexique.gSemantics" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;
-compile "optionMetamodel.gMetamodel" ;
+compile "optionMetamodel.gSemantics" ;
 compile "optionModelBuilder.gSyntax" ;
 compile "optionLL1grammar.gGrammar" ;
-compile "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
-compile "optionHeaderGeneration.gTreewalking" ;
-compile "optionImplementationGeneration.gTreewalking" ;
+compile "optionCompilation.gSemantics" ;
 
 #--- Expression
 compile "expressionMetamodel.gMetamodel" ;
@@ -86,14 +84,15 @@ compile "syntaxModelBuilder.gSyntax" ;
 compile "syntaxSLRgrammar.gGrammar" ;
 
 #--- Grammar component
-compile "grammarMetamodel.gMetamodel" ;
+compile "grammarMetamodel.gSemantics" ;
 compile "grammarModelBuilder.gSyntax" ;
 compile "grammarLL1grammar.gGrammar" ;
 
 #--- GUI component
-compile "guiMetamodel.gMetamodel" ;
+compile "guiMetamodel.gSemantics" ;
 compile "guiModelBuilder.gSyntax" ;
 compile "guiLL1grammar.gGrammar" ;
+compile "guiCompilation.gSemantics" ;
 
 #--- Program component
 compile "programMetamodel.gMetamodel" ;

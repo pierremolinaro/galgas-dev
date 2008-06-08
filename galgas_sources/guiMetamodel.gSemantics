@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'gui' LL(1) grammar                                                      *
+#  'gui' component metamodel                                                *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,13 +17,31 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar guiLL1grammar "LL1" :
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax guiModelBuilder in "guiModelBuilder.gSyntax" ;
-
-  root <gui_component_start_symbol>
-    !@guiComponentRoot outGuiComponentRoot
-  ; # LL1
-end grammar ;
+semantics guiMetamodel :
 
 #---------------------------------------------------------------------------*
+
+list @guiAttributeList {
+  @lstring mKey ;
+  @lstring mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @guiLabelList {
+  @lstring mAttribute1 ;
+  @lstring mAttribute2 ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @guiComponentRoot {
+  @lstring mGUIName ;
+  @lstring mGUIClass ;
+  @guiAttributeList mAttributes ;
+  @guiLabelList mLabels ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
