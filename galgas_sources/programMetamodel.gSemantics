@@ -2,7 +2,7 @@
 #                                                                           *
 #  'gui' component metamodel                                                *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,15 +17,15 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel programMetamodel extends instructionMetamodel root @programComponentRoot :
+semantics programMetamodel :
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-entity @programRule {
+list @programRuleList {
   @lstring mSourceFileExtension ;
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
@@ -39,10 +39,10 @@ entity @programComponentRoot {
   @lstring mVersionString ;
   @semanticInstructions mPrologueInstructionList ;
   @semanticInstructions mEpilogueInstructionList ;
-  @programRule [1, *] mProgramRules ;
-  @semanticDeclaration [] mSemanticDeclarations ;
+  @programRuleList mProgramRules ;
+  @semanticDeclarationList mSemanticDeclarations ;
 }
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+end semantics ;

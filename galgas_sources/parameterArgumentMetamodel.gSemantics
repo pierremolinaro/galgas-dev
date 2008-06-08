@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,10 +17,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract metamodel parameterArgumentMetamodel extends expressionMetamodel :
+semantics parameterArgumentMetamodel :
 import "commonSemantics.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -28,13 +28,7 @@ import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @formalParameters {
-  @formalParameter [] mFormalParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @formalParameter {
+list @formalParameterList {
   @formalArgumentPassingMode mFormalParameterPassingMode ;
   @lstring mFormalParameterTypeName ;
   @lstring mFormalParameterName ;
@@ -47,13 +41,7 @@ entity @formalParameter {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @formalInputParameterList {
-  @formalInputParameter [] mFormalInputParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @formalInputParameter {
+list @formalInputParameterList {
   @lstring mFormalParameterTypeName ;
   @lstring mFormalParameterName ;
   @bool mIsUnused ;
@@ -65,38 +53,38 @@ entity @formalInputParameter {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract entity @actualParameter {
+abstract class @actualParameter {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @outputActualParameter extends @actualParameter {
+class @outputActualParameter extends @actualParameter {
   @semanticExpression mOutputActualParameterExpression ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @outputInputActualParameter extends @actualParameter {
+class @outputInputActualParameter extends @actualParameter {
   @lstring mOutputInputActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @inputActualParameter extends @actualParameter {
+class @inputActualParameter extends @actualParameter {
   @lstring mInputActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @inputJokerActualParameter extends @actualParameter {
+class @inputJokerActualParameter extends @actualParameter {
 }
 
 #---------------------------------------------------------------------------*
 
-entity @actualParameters {
-  @actualParameter [] mActualParameter ;
+list @actualParameterList {
+  @actualParameter mActualParameter ;
 }
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+end semantics ;

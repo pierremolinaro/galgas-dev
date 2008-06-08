@@ -2,7 +2,7 @@
 #                                                                           *
 #  'metamodel' component parser, as model builder                           *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -19,21 +19,28 @@
 
 syntax semanticInstructionListModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
-nonterminal <semantic_instruction_list> -> @semanticInstructions ;
+nonterminal <expression> !@semanticExpression outExpression ;
 
-nonterminal <semantic_instruction> -> @semanticInstruction ;
+nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
 
-nonterminal <expression> -> @semanticExpression ;
+nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
+
+nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
+
+nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
+
 
 nonterminal <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject ;
-
-nonterminal <actual_parameter_list> -> @actualParameters ;
 
 nonterminal <match_instruction_branch> -> @matchInstructionBranch ;
 
@@ -45,9 +52,7 @@ nonterminal <output_expression_list> -> @outExpressionList ;
 
 nonterminal <match_entry> -> @matchEntry ;
 
-nonterminal <semantic_declaration> -> @semanticDeclaration ;
-
-nonterminal <formal_parameter_list> -> @formalParameters ;
+nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -55,10 +60,13 @@ nonterminal <formal_parameter_list> -> @formalParameters ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction_list> -> @semanticInstructions :
+rule <semantic_instruction_list> !@semanticInstructionList outInstructionsList :
+  outInstructionsList := [@semanticInstructionList emptyList] ;
   repeat
   while
-    <semantic_instruction> +> mInstruction ;
+    @semanticInstruction instruction ;
+    <semantic_instruction> +? instruction ;
+    outInstructionsList += !instruction ;
   end repeat ;
 end rule ;
 
@@ -68,15 +76,22 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @routineDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $routine$ ;
-  $identifier$ ? mRoutineName ;
-  <formal_parameter_list> -> mFormalParameters ;
+  $identifier$ ? @lstring mRoutineName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
   $:$ ;
-  <semantic_instruction_list> -> mRoutineInstructions ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
   $end$ ;
   $routine$ ;
   $;$ ;
+  outSemanticDeclaration := [@routineDeclaration new
+    !mRoutineName
+    !mFormalParameterList
+    !mRoutineInstructionList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -85,12 +100,17 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @externRoutineDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $extern$ ;
   $routine$ ;
-  $identifier$ ? mActionName ;
-  <formal_parameter_list> -> mFormalParameters ;
+  $identifier$ ? @lstring mActionName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
+  outSemanticDeclaration := [@externRoutineDeclaration new
+    !mActionName
+    !mFormalParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -99,25 +119,25 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @semanticInstruction instruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   @lstring typeName ;
   $type_name$ ? typeName ;
   @lstring variableName ;
   $identifier$ ? variableName ;
   select
-    instruction := [@localVariableDeclaration new !typeName !variableName] ;
+    outInstruction := [@localVariableDeclaration new !typeName !variableName] ;
   or
     $:=$ ;
     @semanticExpression sourceExpression ;
     <expression> -> sourceExpression ;
-    instruction := [@localVariableDeclarationWithAssignment new !typeName !variableName !sourceExpression] ;
+    outInstruction := [@localVariableDeclarationWithAssignment new !typeName !variableName !sourceExpression] ;
   or
     $[$ ;
     @lstring constructorName ;
     $identifier$ ? constructorName ;
     @outExpressionList expressionList ;
     <output_expression_list> -> expressionList ;
-    instruction := [@localVariableDeclarationWithInitialization new !typeName !variableName !constructorName !expressionList] ;
+    outInstruction := [@localVariableDeclarationWithInitialization new !typeName !variableName !constructorName !expressionList] ;
     $]$ ;
   end select ;
   $;$ ;
@@ -129,11 +149,15 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @assignmentInstruction :
-  $identifier$ ? mTargetVariableName ;
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $identifier$ ?@lstring mTargetVariableName ;
   $:=$ ;
-  <expression> -> mSourceExpression ;
+  <expression> ?mSourceExpression ;
   $;$ ;
+  outInstruction := [@assignmentInstruction new
+    !mTargetVariableName
+    !mSourceExpression
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -142,7 +166,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @incrementInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @incrementInstruction :
   $identifier$ ? mReceiverName ;
   $++$ ;
   $;$ ;
@@ -154,7 +178,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @decrementInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @decrementInstruction :
   $identifier$ ? mReceiverName ;
   $--$ ;
   $;$ ;
@@ -205,7 +229,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @foreachInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @foreachInstruction :
   $foreach$ ;
   repeat
     <foreach_enumerated_object> +> mEnumeratedObjects ;
@@ -261,7 +285,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @ifInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @ifInstruction :
   $if$ ;
   repeat
     <expression> +> mIFexpressionList ;
@@ -286,7 +310,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @methodCallInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @methodCallInstruction :
   $[$ ;
   <expression> -> mReceiverExpression ;
   $identifier$ ?mMethodName ;
@@ -301,7 +325,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @modifierCallInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @modifierCallInstruction :
   $[$ ;
   $!?$ ;
   $identifier$ ?mReceiverName ;
@@ -317,7 +341,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @errorInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @errorInstruction :
   $error$ ;
   <expression> -> mReceiverExpression ;
   $:$ ;
@@ -343,7 +367,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @warningInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @warningInstruction :
   $warning$ ;
   <expression> -> mReceiverExpression ;
   $:$ ;
@@ -357,7 +381,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @routineCallInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @routineCallInstruction :
   $identifier$ ? mRoutineName ;
   <actual_parameter_list> -> mActualParameterList ;
   $;$ ;
@@ -427,7 +451,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @matchInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @matchInstruction :
   $match$ ;
   mMatchedVariableNameList := [@lstringlist emptyList] ;
   @lstring matchedVariableName ;
@@ -503,7 +527,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @castInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @castInstruction :
   $cast$ ;
   <expression> -> mExpression ;
   $:$ ;
@@ -523,7 +547,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @addInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @addInstruction :
   $identifier$ ? mReceiverName ;
   $+=$ ;
   <output_expression_list> -> mExpressionList ;
@@ -536,7 +560,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @appendInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @appendInstruction :
   $identifier$ ? mTargetVariableName ;
   $.=$ ;
   <expression> -> mSourceExpression ;
@@ -549,7 +573,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @loopInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @loopInstruction :
   $loop$ ;
   <expression> -> mVariantExpression ;
   $:$ ;
@@ -569,7 +593,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @messageInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @messageInstruction :
   $message$ ;
   <expression> -> mExpression ;
   $;$ ;
@@ -581,7 +605,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @logInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @logInstruction :
   $log$ ;
   mLoggedVariableList := [@lstringlist emptyList] ;
   repeat
@@ -600,7 +624,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @grammarInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @grammarInstruction :
   $grammar$ ;
   $identifier$ ?mGrammarComponentName ;
   select
@@ -627,7 +651,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @treewalkingInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @treewalkingInstruction :
   $treewalking$ ;
   $identifier$ ? mTreewalkingComponentName ;
   $on$ ;
@@ -642,7 +666,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> -> @typeMethodInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction -> @typeMethodInstruction :
   $[$ ;
   $type_name$ ? mTypeName ;
   $identifier$ ? mMethodName ;
