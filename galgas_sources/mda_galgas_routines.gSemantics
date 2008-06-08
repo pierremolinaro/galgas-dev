@@ -22,13 +22,13 @@ semantics mda_galgas_routines :
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+  import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 
   import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
-  import metamodel grammarMetamodel in "grammarMetamodel.gMetamodel" ;
   import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
   import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
   import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
@@ -319,7 +319,7 @@ routine compileGrammarComponent
   ??@string unused inOutputDirectory
 :
   @grammarComponentRoot grammarComponentRoot ;
-  grammar grammarLL1grammar in inSourceFile -> grammarComponentRoot ;
+  grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
 end routine ;
 
 #---------------------------------------------------------------------------*
