@@ -20,16 +20,15 @@
 syntax guiModelBuilder :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
+import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <gui_component_start_symbol> -> @guiComponentRoot ;
+nonterminal <gui_component_start_symbol> !@guiComponentRoot outGuiComponentRoot ;
 
-nonterminal <gui_attribute> -> @guiAttribute ;
+nonterminal <gui_attribute> ?!@guiAttributeList ioAttributes ;
 
-nonterminal <gui_label> -> @guiLabel ;
+nonterminal <gui_label> ?!@guiLabelList ioLabels ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -37,10 +36,12 @@ nonterminal <gui_label> -> @guiLabel ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <gui_component_start_symbol> -> @guiComponentRoot :
+rule <gui_component_start_symbol>
+  !@guiComponentRoot outGuiComponentRoot
+:
   $gui$ ;
-  $identifier$ ? mGUIName ;
-  $literal_string$ ? mGUIClass ;
+  $identifier$ ?@lstring mGUIName ;
+  $literal_string$ ?@lstring mGUIClass ;
   $:$ ;
 #--- Old style imports
 #--- Loop on import declarations
@@ -69,36 +70,46 @@ rule <gui_component_start_symbol> -> @guiComponentRoot :
     $literal_string$ ? * ;
     $;$ ;
   end repeat ;
-#--- Attributes and label
+#--- Attributes and labels
+  @guiAttributeList mAttributes [emptyList] ;
+  @guiLabelList mLabels [emptyList] ;
   repeat
   while
-    <gui_attribute> +> mAttributes ;
+    <gui_attribute> !?mAttributes ;
   while
-    <gui_label> +> mLabels ;
+    <gui_label> !?mLabels ;
   end repeat ;
 #---
   $end$ ;
   $gui$ ;
   $;$ ;
+  outGuiComponentRoot := [@guiComponentRoot new
+    !mGUIName
+    !mGUIClass
+    !mAttributes
+    !mLabels
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <gui_attribute> -> @guiAttribute :
-  $identifier$ ? mKey ;
+rule <gui_attribute> ?!@guiAttributeList ioAttributes :
+  $identifier$ ?@lstring mKey ;
   $:$ ;
-  $literal_string$ ? mValue ;
+  $literal_string$ ?@lstring mValue ;
   $;$ ;
+  ioAttributes += !mKey !mValue ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <gui_label> -> @guiLabel :
+rule <gui_label> ?!@guiLabelList ioLabels :
   $label$ ;
-  $terminal$ ? mAttribute1 ;
+  $terminal$ ?@lstring mAttribute1 ;
   $,$ ;
-  $terminal$ ? mAttribute2 ;
+  $terminal$ ?@lstring mAttribute2 ;
   $;$ ;
+  ioLabels += !mAttribute1 !mAttribute2 ;
 end rule ;
 
 #---------------------------------------------------------------------------*

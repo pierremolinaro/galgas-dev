@@ -23,20 +23,15 @@ semantics mda_galgas_routines :
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
+  import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
 
-  import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
-  import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
   import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
   import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
 
-  import treewalking optionHeaderGeneration in "optionHeaderGeneration.gTreewalking" ;
-  import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
-  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
-  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
   import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
   import treewalking buildMapsForMetamodel in "buildMapsForMetamodel.gTreewalking" ;
 
@@ -46,7 +41,6 @@ semantics mda_galgas_routines :
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
-  import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
   import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
@@ -59,41 +53,6 @@ routine getOutputDirectory
 :
   outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
   outOuputDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-end routine ;
-  
-#---------------------------------------------------------------------------*
-
-routine compileOptionComponent
-  ??@lstring inSourceFile
-  ??@string inOutputDirectory
-:
-#--- Parse option component
-  @optionComponentRoot optionComponentRoot ;
-  grammar optionLL1grammar in inSourceFile -> optionComponentRoot ;
-#--- Treewalking for defining option map
-  @commandLineOptionMap boolOptionMap ;
-  @commandLineOptionMap uintOptionMap ;
-  @commandLineOptionMap stringOptionMap ;
-  treewalking optionTreewalkingForBuildingOptionMap on optionComponentRoot
-    ?boolOptionMap
-    ?uintOptionMap
-    ?stringOptionMap
- ;
-#--- Treewalking for generating C++ files
-  treewalking optionHeaderGeneration on optionComponentRoot
-    !inOutputDirectory
-    ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-  ;
-  treewalking optionImplementationGeneration on optionComponentRoot
-    !inOutputDirectory
-    ![[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -320,16 +279,6 @@ routine compileGrammarComponent
 :
   @grammarComponentRoot grammarComponentRoot ;
   grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileGuiComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-  @guiComponentRoot guiComponentRoot ;
-  grammar guiLL1grammar in inSourceFile -> guiComponentRoot ;
 end routine ;
 
 #---------------------------------------------------------------------------*

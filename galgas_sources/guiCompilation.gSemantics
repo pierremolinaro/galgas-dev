@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'gui' component metamodel                                                *
+#  'gui' component compilation                                              *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,32 +17,21 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel guiMetamodel root @guiComponentRoot :
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
+semantics guiCompilation :
+import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
+import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
-entity @guiAttribute {
-  @lstring mKey ;
-  @lstring mValue ;
-}
+routine compileGuiComponent
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+:
+  @guiComponentRoot guiComponentRoot ;
+  grammar guiLL1grammar in inSourceFile ?guiComponentRoot ;
+end routine ;
+
 
 #---------------------------------------------------------------------------*
 
-entity @guiLabel {
-  @lstring mAttribute1 ;
-  @lstring mAttribute2 ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @guiComponentRoot {
-  @lstring mGUIName ;
-  @lstring mGUIClass ;
-  @guiAttribute [] mAttributes ;
-  @guiLabel [] mLabels ;
-}
-
-#---------------------------------------------------------------------------*
-
-end metamodel ;
+end semantics ;

@@ -36,14 +36,6 @@
 		CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
 		CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
 		CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
-		CF0CB77E0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
-		CF0CB77F0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
-		CF0CB7840BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
-		CF0CB7850BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
-		CF0CB7860BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
-		CF0CB7870BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
-		CF0CB7880BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
-		CF0CB7890BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
 		CF0CB7930BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
 		CF0CB7940BC0130500E6FABE /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
 		CF0CB7990BC0130500E6FABE /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
@@ -1045,6 +1037,208 @@
 		CFA313B509FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313BF09FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
 		CFA313C109FD3F0A006B55E7 /* semantics_instructions.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */; };
+		CFA5C5D00DFBEF3500DD782E /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
+		CFA5C5D10DFBEF3500DD782E /* optionCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */; };
+		CFA5C5D20DFBEF3500DD782E /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
+		CFA5C5D30DFBEF3500DD782E /* optionCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */; };
+		CFA5C5D40DFBEF3500DD782E /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
+		CFA5C5D50DFBEF3500DD782E /* optionCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */; };
+		CFA5C5D60DFBEF3500DD782E /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
+		CFA5C5D70DFBEF3500DD782E /* optionCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */; };
+		CFA5C5DE0DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
+		CFA5C5DF0DFC003F00DD782E /* guiCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */; };
+		CFA5C5E00DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
+		CFA5C5E10DFC003F00DD782E /* guiCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */; };
+		CFA5C5E20DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
+		CFA5C5E30DFC003F00DD782E /* guiCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */; };
+		CFA5C5E40DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
+		CFA5C5E50DFC003F00DD782E /* guiCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */; };
+		CFA5C6060DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */; };
+		CFA5C6070DFC007D00DD782E /* include_guiComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */; };
+		CFA5C6080DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */; };
+		CFA5C6090DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */; };
+		CFA5C60A0DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */; };
+		CFA5C60B0DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */; };
+		CFA5C60C0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */; };
+		CFA5C60D0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */; };
+		CFA5C60E0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */; };
+		CFA5C60F0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */; };
+		CFA5C6100DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */; };
+		CFA5C6110DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */; };
+		CFA5C6120DFC007D00DD782E /* include_lexicalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */; };
+		CFA5C6130DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */; };
+		CFA5C6140DFC007D00DD782E /* include_lexicalInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */; };
+		CFA5C6150DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */; };
+		CFA5C6160DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */; };
+		CFA5C6170DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */; };
+		CFA5C6180DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */; };
+		CFA5C6190DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */; };
+		CFA5C61A0DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */; };
+		CFA5C61B0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */; };
+		CFA5C61C0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */; };
+		CFA5C61D0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */; };
+		CFA5C61E0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */; };
+		CFA5C61F0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */; };
+		CFA5C6200DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */; };
+		CFA5C6210DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */; };
+		CFA5C6220DFC007D00DD782E /* include_optionComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */; };
+		CFA5C6230DFC007D00DD782E /* include_templateDelimitorList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */; };
+		CFA5C6240DFC007D00DD782E /* include_templateReplacementList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */; };
+		CFA5C6250DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */; };
+		CFA5C6260DFC007D00DD782E /* include_guiComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */; };
+		CFA5C6270DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */; };
+		CFA5C6280DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */; };
+		CFA5C6290DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */; };
+		CFA5C62A0DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */; };
+		CFA5C62B0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */; };
+		CFA5C62C0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */; };
+		CFA5C62D0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */; };
+		CFA5C62E0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */; };
+		CFA5C62F0DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */; };
+		CFA5C6300DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */; };
+		CFA5C6310DFC007D00DD782E /* include_lexicalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */; };
+		CFA5C6320DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */; };
+		CFA5C6330DFC007D00DD782E /* include_lexicalInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */; };
+		CFA5C6340DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */; };
+		CFA5C6350DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */; };
+		CFA5C6360DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */; };
+		CFA5C6370DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */; };
+		CFA5C6380DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */; };
+		CFA5C6390DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */; };
+		CFA5C63A0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */; };
+		CFA5C63B0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */; };
+		CFA5C63C0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */; };
+		CFA5C63D0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */; };
+		CFA5C63E0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */; };
+		CFA5C63F0DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */; };
+		CFA5C6400DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */; };
+		CFA5C6410DFC007D00DD782E /* include_optionComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */; };
+		CFA5C6420DFC007D00DD782E /* include_templateDelimitorList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */; };
+		CFA5C6430DFC007D00DD782E /* include_templateReplacementList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */; };
+		CFA5C6440DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */; };
+		CFA5C6450DFC007D00DD782E /* include_guiComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */; };
+		CFA5C6460DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */; };
+		CFA5C6470DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */; };
+		CFA5C6480DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */; };
+		CFA5C6490DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */; };
+		CFA5C64A0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */; };
+		CFA5C64B0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */; };
+		CFA5C64C0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */; };
+		CFA5C64D0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */; };
+		CFA5C64E0DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */; };
+		CFA5C64F0DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */; };
+		CFA5C6500DFC007D00DD782E /* include_lexicalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */; };
+		CFA5C6510DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */; };
+		CFA5C6520DFC007D00DD782E /* include_lexicalInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */; };
+		CFA5C6530DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */; };
+		CFA5C6540DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */; };
+		CFA5C6550DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */; };
+		CFA5C6560DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */; };
+		CFA5C6570DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */; };
+		CFA5C6580DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */; };
+		CFA5C6590DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */; };
+		CFA5C65A0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */; };
+		CFA5C65B0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */; };
+		CFA5C65C0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */; };
+		CFA5C65D0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */; };
+		CFA5C65E0DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */; };
+		CFA5C65F0DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */; };
+		CFA5C6600DFC007D00DD782E /* include_optionComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */; };
+		CFA5C6610DFC007D00DD782E /* include_templateDelimitorList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */; };
+		CFA5C6620DFC007D00DD782E /* include_templateReplacementList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */; };
+		CFA5C6630DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */; };
+		CFA5C6640DFC007D00DD782E /* include_guiComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */; };
+		CFA5C6650DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */; };
+		CFA5C6660DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */; };
+		CFA5C6670DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */; };
+		CFA5C6680DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */; };
+		CFA5C6690DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */; };
+		CFA5C66A0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */; };
+		CFA5C66B0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */; };
+		CFA5C66C0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */; };
+		CFA5C66D0DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */; };
+		CFA5C66E0DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */; };
+		CFA5C66F0DFC007D00DD782E /* include_lexicalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */; };
+		CFA5C6700DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */; };
+		CFA5C6710DFC007D00DD782E /* include_lexicalInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */; };
+		CFA5C6720DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */; };
+		CFA5C6730DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */; };
+		CFA5C6740DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */; };
+		CFA5C6750DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */; };
+		CFA5C6760DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */; };
+		CFA5C6770DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */; };
+		CFA5C6780DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */; };
+		CFA5C6790DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */; };
+		CFA5C67A0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */; };
+		CFA5C67B0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */; };
+		CFA5C67C0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */; };
+		CFA5C67D0DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */; };
+		CFA5C67E0DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */; };
+		CFA5C67F0DFC007D00DD782E /* include_optionComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */; };
+		CFA5C6800DFC007D00DD782E /* include_templateDelimitorList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */; };
+		CFA5C6810DFC007E00DD782E /* include_templateReplacementList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */; };
+		CFA5C6820DFC007E00DD782E /* include_grammarComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */; };
+		CFA5C6830DFC007E00DD782E /* include_guiComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */; };
+		CFA5C6840DFC007E00DD782E /* include_lexicalActionInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */; };
+		CFA5C6850DFC007E00DD782E /* include_lexicalActualArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */; };
+		CFA5C6860DFC007E00DD782E /* include_lexicalAttributeArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */; };
+		CFA5C6870DFC007E00DD782E /* include_lexicalCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */; };
+		CFA5C6880DFC007E00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */; };
+		CFA5C6890DFC007E00DD782E /* include_lexicalCharacterMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */; };
+		CFA5C68A0DFC007E00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */; };
+		CFA5C68B0DFC007E00DD782E /* include_lexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */; };
+		CFA5C68C0DFC007E00DD782E /* include_lexicalErrorByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */; };
+		CFA5C68D0DFC007E00DD782E /* include_lexicalErrorInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */; };
+		CFA5C68E0DFC007E00DD782E /* include_lexicalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */; };
+		CFA5C68F0DFC007E00DD782E /* include_lexicalFunctionArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */; };
+		CFA5C6900DFC007E00DD782E /* include_lexicalInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */; };
+		CFA5C6910DFC007E00DD782E /* include_lexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */; };
+		CFA5C6920DFC007E00DD782E /* include_lexicalOrExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */; };
+		CFA5C6930DFC007E00DD782E /* include_lexicalRepeatInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */; };
+		CFA5C6940DFC007E00DD782E /* include_lexicalRewindInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */; };
+		CFA5C6950DFC007E00DD782E /* include_lexicalSelectInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */; };
+		CFA5C6960DFC007E00DD782E /* include_lexicalSendDefaultAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */; };
+		CFA5C6970DFC007E00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */; };
+		CFA5C6980DFC007E00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */; };
+		CFA5C6990DFC007E00DD782E /* include_lexicalStringMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */; };
+		CFA5C69A0DFC007E00DD782E /* include_lexicalStringNotMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */; };
+		CFA5C69B0DFC007E00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */; };
+		CFA5C69C0DFC007E00DD782E /* include_lexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */; };
+		CFA5C69D0DFC007E00DD782E /* include_lexiqueComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */; };
+		CFA5C69E0DFC007E00DD782E /* include_optionComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */; };
+		CFA5C69F0DFC007E00DD782E /* include_templateDelimitorList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */; };
+		CFA5C6A00DFC007E00DD782E /* include_templateReplacementList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */; };
+		CFA5C6A10DFC007E00DD782E /* include_grammarComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */; };
+		CFA5C6A20DFC007E00DD782E /* include_guiComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */; };
+		CFA5C6A30DFC007E00DD782E /* include_lexicalActionInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */; };
+		CFA5C6A40DFC007E00DD782E /* include_lexicalActualArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */; };
+		CFA5C6A50DFC007E00DD782E /* include_lexicalAttributeArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */; };
+		CFA5C6A60DFC007E00DD782E /* include_lexicalCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */; };
+		CFA5C6A70DFC007E00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */; };
+		CFA5C6A80DFC007E00DD782E /* include_lexicalCharacterMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */; };
+		CFA5C6A90DFC007E00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */; };
+		CFA5C6AA0DFC007E00DD782E /* include_lexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */; };
+		CFA5C6AB0DFC007E00DD782E /* include_lexicalErrorByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */; };
+		CFA5C6AC0DFC007E00DD782E /* include_lexicalErrorInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */; };
+		CFA5C6AD0DFC007E00DD782E /* include_lexicalExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */; };
+		CFA5C6AE0DFC007E00DD782E /* include_lexicalFunctionArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */; };
+		CFA5C6AF0DFC007E00DD782E /* include_lexicalInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */; };
+		CFA5C6B00DFC007E00DD782E /* include_lexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */; };
+		CFA5C6B10DFC007E00DD782E /* include_lexicalOrExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */; };
+		CFA5C6B20DFC007E00DD782E /* include_lexicalRepeatInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */; };
+		CFA5C6B30DFC007E00DD782E /* include_lexicalRewindInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */; };
+		CFA5C6B40DFC007E00DD782E /* include_lexicalSelectInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */; };
+		CFA5C6B50DFC007E00DD782E /* include_lexicalSendDefaultAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */; };
+		CFA5C6B60DFC007E00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */; };
+		CFA5C6B70DFC007E00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */; };
+		CFA5C6B80DFC007E00DD782E /* include_lexicalStringMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */; };
+		CFA5C6B90DFC007E00DD782E /* include_lexicalStringNotMatch.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */; };
+		CFA5C6BA0DFC007E00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */; };
+		CFA5C6BB0DFC007E00DD782E /* include_lexicalTagInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */; };
+		CFA5C6BC0DFC007E00DD782E /* include_lexiqueComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */; };
+		CFA5C6BD0DFC007E00DD782E /* include_optionComponentRoot.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */; };
+		CFA5C6BE0DFC007E00DD782E /* include_templateDelimitorList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */; };
+		CFA5C6BF0DFC007E00DD782E /* include_templateReplacementList.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */; };
 		CFA97CB50D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
 		CFA97CB60D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
 		CFA97CBB0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
@@ -1234,22 +1428,6 @@
 		CFD1939B09FCFC0300920886 /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFD193A009FCFC0300920886 /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFD193A109FCFC0300920886 /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
-		CFD47EFE0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
-		CFD47EFF0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
-		CFD47F000BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
-		CFD47F010BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
-		CFD47F020BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
-		CFD47F030BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
-		CFD47F040BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
-		CFD47F050BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
-		CFD47F160BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
-		CFD47F170BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
-		CFD47F180BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
-		CFD47F190BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
-		CFD47F1A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
-		CFD47F1B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
-		CFD47F1C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
-		CFD47F1D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
 		CFD578D50D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD578D30D50EE6400D3E2C5 /* cDecisionTableElement.h */; };
 		CFD578D60D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
 		CFD578DB0D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD578D30D50EE6400D3E2C5 /* cDecisionTableElement.h */; };
@@ -1616,12 +1794,9 @@
 		CFEDF25B0C2D161F0038713A /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CFEDF25C0C2D161F0038713A /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
 		CFEDF25D0C2D161F0038713A /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
-		CFEDF25E0C2D161F0038713A /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
-		CFEDF25F0C2D161F0038713A /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
 		CFEDF2610C2D161F0038713A /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CFEDF2620C2D161F0038713A /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
 		CFEDF2630C2D161F0038713A /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
-		CFEDF2640C2D161F0038713A /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
 		CFEDF2650C2D161F0038713A /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
 		CFEDF2660C2D161F0038713A /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
 		CFEDF2670C2D161F0038713A /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
@@ -1814,12 +1989,9 @@
 		CFEDF3260C2D161F0038713A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFEDF3270C2D161F0038713A /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CFEDF3280C2D161F0038713A /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
-		CFEDF32A0C2D161F0038713A /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
-		CFEDF32B0C2D161F0038713A /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
 		CFEDF32D0C2D161F0038713A /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFEDF32E0C2D161F0038713A /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
 		CFEDF32F0C2D161F0038713A /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
-		CFEDF3300C2D161F0038713A /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
 		CFEDF3310C2D161F0038713A /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
 		CFEDF3320C2D161F0038713A /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CFEDF3330C2D161F0038713A /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
@@ -1947,12 +2119,9 @@
 		CFEDF3BC0C2D16610038713A /* include_typeDescriptionInExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */; };
 		CFEDF3BD0C2D16610038713A /* include_typeConditionNonChaine.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */; };
 		CFEDF3BE0C2D16610038713A /* include_typeLexicalLogInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */; };
-		CFEDF3BF0C2D16610038713A /* optionHeaderGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */; };
-		CFEDF3C00C2D16610038713A /* optionImplementationGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */; };
 		CFEDF3C20C2D16610038713A /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CFEDF3C30C2D16610038713A /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB41C0BBFCADB00E6FABE /* AC_galgas_entity.h */; };
 		CFEDF3C40C2D16610038713A /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */; };
-		CFEDF3C50C2D16610038713A /* optionTreewalkingForBuildingOptionMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */; };
 		CFEDF3C60C2D16610038713A /* optionSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB78E0BC0130500E6FABE /* optionSemantics.h */; };
 		CFEDF3C70C2D16610038713A /* lexiqueMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7A20BC0142B00E6FABE /* lexiqueMetamodel.h */; };
 		CFEDF3C80C2D16610038713A /* metamodelMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB7B70BC0152500E6FABE /* metamodelMetamodel.h */; };
@@ -2144,12 +2313,9 @@
 		CFEDF4860C2D16610038713A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFEDF4870C2D16610038713A /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CFEDF4880C2D16610038713A /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
-		CFEDF48A0C2D16610038713A /* optionHeaderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */; };
-		CFEDF48B0C2D16610038713A /* optionImplementationGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */; };
 		CFEDF48D0C2D16610038713A /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFEDF48E0C2D16610038713A /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */; };
 		CFEDF48F0C2D16610038713A /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
-		CFEDF4900C2D16610038713A /* optionTreewalkingForBuildingOptionMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */; };
 		CFEDF4910C2D16610038713A /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
 		CFEDF4920C2D16610038713A /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
 		CFEDF4930C2D16610038713A /* metamodelMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7B60BC0152500E6FABE /* metamodelMetamodel.cpp */; };
@@ -2536,8 +2702,6 @@
 		CF0CB41D0BBFCADB00E6FABE /* AC_galgas_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_entity.cpp; sourceTree = "<group>"; };
 		CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
 		CF0CB5D90BBFF41200E6FABE /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
-		CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionTreewalkingForBuildingOptionMap.cpp; sourceTree = "<group>"; };
-		CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionTreewalkingForBuildingOptionMap.h; sourceTree = "<group>"; };
 		CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionSemantics.cpp; sourceTree = "<group>"; };
 		CF0CB78E0BC0130500E6FABE /* optionSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionSemantics.h; sourceTree = "<group>"; };
 		CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueMetamodel.cpp; sourceTree = "<group>"; };
@@ -2806,6 +2970,41 @@
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
 		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
+		CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = optionCompilation.cpp; sourceTree = "<group>"; };
+		CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optionCompilation.h; sourceTree = "<group>"; };
+		CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiCompilation.cpp; sourceTree = "<group>"; };
+		CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiCompilation.h; sourceTree = "<group>"; };
+		CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_grammarComponentRoot.h; sourceTree = "<group>"; };
+		CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_guiComponentRoot.h; sourceTree = "<group>"; };
+		CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalActionInstruction.h; sourceTree = "<group>"; };
+		CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalActualArgument.h; sourceTree = "<group>"; };
+		CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalAttributeArgument.h; sourceTree = "<group>"; };
+		CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalCharacterArgument.h; sourceTree = "<group>"; };
+		CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalCharacterIntervalMatch.h; sourceTree = "<group>"; };
+		CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalCharacterMatch.h; sourceTree = "<group>"; };
+		CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalCurrentCharacterArgument.h; sourceTree = "<group>"; };
+		CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalDropInstruction.h; sourceTree = "<group>"; };
+		CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalErrorByDefault.h; sourceTree = "<group>"; };
+		CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalErrorInstruction.h; sourceTree = "<group>"; };
+		CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalExpression.h; sourceTree = "<group>"; };
+		CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalFunctionArgument.h; sourceTree = "<group>"; };
+		CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalInstruction.h; sourceTree = "<group>"; };
+		CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalLogInstruction.h; sourceTree = "<group>"; };
+		CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalOrExpression.h; sourceTree = "<group>"; };
+		CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalRepeatInstruction.h; sourceTree = "<group>"; };
+		CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalRewindInstruction.h; sourceTree = "<group>"; };
+		CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalSelectInstruction.h; sourceTree = "<group>"; };
+		CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalSendDefaultAction.h; sourceTree = "<group>"; };
+		CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalSendTerminalByDefault.h; sourceTree = "<group>"; };
+		CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalSimpleSendInstruction.h; sourceTree = "<group>"; };
+		CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalStringMatch.h; sourceTree = "<group>"; };
+		CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalStringNotMatch.h; sourceTree = "<group>"; };
+		CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalStructuredSendInstruction.h; sourceTree = "<group>"; };
+		CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexicalTagInstruction.h; sourceTree = "<group>"; };
+		CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_lexiqueComponentRoot.h; sourceTree = "<group>"; };
+		CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_optionComponentRoot.h; sourceTree = "<group>"; };
+		CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateDelimitorList.h; sourceTree = "<group>"; };
+		CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateReplacementList.h; sourceTree = "<group>"; };
 		CFA97CB40D9D5208001A9599 /* enum_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enum_generation.cpp; sourceTree = "<group>"; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
@@ -2996,10 +3195,6 @@
 		CFD215270913BE2E0011F11E /* include_typeVarInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeVarInExpression.h; sourceTree = "<group>"; };
 		CFD215280913BE2E0011F11E /* include_typeWarningInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeWarningInstruction.h; sourceTree = "<group>"; };
 		CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
-		CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionHeaderGeneration.cpp; sourceTree = "<group>"; };
-		CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionHeaderGeneration.h; sourceTree = "<group>"; };
-		CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = optionImplementationGeneration.cpp; sourceTree = "<group>"; };
-		CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = optionImplementationGeneration.h; sourceTree = "<group>"; };
 		CFD578D30D50EE6400D3E2C5 /* cDecisionTableElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cDecisionTableElement.h; sourceTree = "<group>"; };
 		CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cDecisionTableElement.cpp; sourceTree = "<group>"; };
 		CFD5E6150B85BB6F00E44FFF /* include_typeCallOfTypeMethodInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeCallOfTypeMethodInstruction.h; sourceTree = "<group>"; };
@@ -3473,6 +3668,37 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFA5C5E70DFC007D00DD782E /* include_grammarComponentRoot.h */,
+				CFA5C5E80DFC007D00DD782E /* include_guiComponentRoot.h */,
+				CFA5C5E90DFC007D00DD782E /* include_lexicalActionInstruction.h */,
+				CFA5C5EA0DFC007D00DD782E /* include_lexicalActualArgument.h */,
+				CFA5C5EB0DFC007D00DD782E /* include_lexicalAttributeArgument.h */,
+				CFA5C5EC0DFC007D00DD782E /* include_lexicalCharacterArgument.h */,
+				CFA5C5ED0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h */,
+				CFA5C5EE0DFC007D00DD782E /* include_lexicalCharacterMatch.h */,
+				CFA5C5EF0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h */,
+				CFA5C5F00DFC007D00DD782E /* include_lexicalDropInstruction.h */,
+				CFA5C5F10DFC007D00DD782E /* include_lexicalErrorByDefault.h */,
+				CFA5C5F20DFC007D00DD782E /* include_lexicalErrorInstruction.h */,
+				CFA5C5F30DFC007D00DD782E /* include_lexicalExpression.h */,
+				CFA5C5F40DFC007D00DD782E /* include_lexicalFunctionArgument.h */,
+				CFA5C5F50DFC007D00DD782E /* include_lexicalInstruction.h */,
+				CFA5C5F60DFC007D00DD782E /* include_lexicalLogInstruction.h */,
+				CFA5C5F70DFC007D00DD782E /* include_lexicalOrExpression.h */,
+				CFA5C5F80DFC007D00DD782E /* include_lexicalRepeatInstruction.h */,
+				CFA5C5F90DFC007D00DD782E /* include_lexicalRewindInstruction.h */,
+				CFA5C5FA0DFC007D00DD782E /* include_lexicalSelectInstruction.h */,
+				CFA5C5FB0DFC007D00DD782E /* include_lexicalSendDefaultAction.h */,
+				CFA5C5FC0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h */,
+				CFA5C5FD0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h */,
+				CFA5C5FE0DFC007D00DD782E /* include_lexicalStringMatch.h */,
+				CFA5C5FF0DFC007D00DD782E /* include_lexicalStringNotMatch.h */,
+				CFA5C6000DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h */,
+				CFA5C6010DFC007D00DD782E /* include_lexicalTagInstruction.h */,
+				CFA5C6020DFC007D00DD782E /* include_lexiqueComponentRoot.h */,
+				CFA5C6030DFC007D00DD782E /* include_optionComponentRoot.h */,
+				CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */,
+				CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */,
 				CF8E10B10D9FEEAD001F7A2E /* include_typeFileWrapperTemplateCall.h */,
 				CF3D5B970D9E976800BE06A6 /* include_C_filewrapperTemplateToImplement.h */,
 				CF3D5B980D9E976800BE06A6 /* include_templateInstruction.h */,
@@ -3840,6 +4066,8 @@
 				CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */,
 				CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */,
 				CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */,
+				CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */,
+				CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */,
 				CF6702F805C073220065267C /* cocoaGalgas.mm */,
 				CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */,
 				CF76F4C3090E73FE00036FAC /* cocoa_parser.h */,
@@ -3862,16 +4090,12 @@
 				CF0CB7CC0BC0161E00E6FABE /* optionMetamodel.h */,
 				CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */,
 				CF0CB78E0BC0130500E6FABE /* optionSemantics.h */,
-				CFD47EFA0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp */,
-				CFD47EFB0BB2FBD40078C3D4 /* optionHeaderGeneration.h */,
-				CFD47EFC0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp */,
-				CFD47EFD0BB2FBD40078C3D4 /* optionImplementationGeneration.h */,
-				CF0CB7780BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp */,
-				CF0CB7790BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h */,
 				CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */,
 				CF0CB8090BC0187500E6FABE /* optionModelBuilder.h */,
 				CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */,
 				CF0CB8410BC019CA00E6FABE /* optionLL1grammar.h */,
+				CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */,
+				CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */,
 				CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */,
 				CFF13E39059730EB00C43F5E /* cli_options_parser.h */,
 			);
@@ -4466,11 +4690,8 @@
 				CF48FB060BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 				CFEFE7D80BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
-				CFD47EFF0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
-				CFD47F010BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
 				CF0CB4280BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E50BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
-				CF0CB7850BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CF0CB79A0BC0130500E6FABE /* optionSemantics.h in Headers */,
 				CF0CB7C30BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
 				CF0CB7D80BC0161E00E6FABE /* optionMetamodel.h in Headers */,
@@ -4574,6 +4795,37 @@
 				CFB9E49B0DF28AC500885084 /* TC_UniqueArray2.h in Headers */,
 				CFB9E49C0DF28AC500885084 /* TC_UniqueFixedSizeArray.h in Headers */,
 				CFB9E49D0DF28AC500885084 /* TF_AVL_Tree.h in Headers */,
+				CFA5C6820DFC007E00DD782E /* include_grammarComponentRoot.h in Headers */,
+				CFA5C6830DFC007E00DD782E /* include_guiComponentRoot.h in Headers */,
+				CFA5C6840DFC007E00DD782E /* include_lexicalActionInstruction.h in Headers */,
+				CFA5C6850DFC007E00DD782E /* include_lexicalActualArgument.h in Headers */,
+				CFA5C6860DFC007E00DD782E /* include_lexicalAttributeArgument.h in Headers */,
+				CFA5C6870DFC007E00DD782E /* include_lexicalCharacterArgument.h in Headers */,
+				CFA5C6880DFC007E00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */,
+				CFA5C6890DFC007E00DD782E /* include_lexicalCharacterMatch.h in Headers */,
+				CFA5C68A0DFC007E00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */,
+				CFA5C68B0DFC007E00DD782E /* include_lexicalDropInstruction.h in Headers */,
+				CFA5C68C0DFC007E00DD782E /* include_lexicalErrorByDefault.h in Headers */,
+				CFA5C68D0DFC007E00DD782E /* include_lexicalErrorInstruction.h in Headers */,
+				CFA5C68E0DFC007E00DD782E /* include_lexicalExpression.h in Headers */,
+				CFA5C68F0DFC007E00DD782E /* include_lexicalFunctionArgument.h in Headers */,
+				CFA5C6900DFC007E00DD782E /* include_lexicalInstruction.h in Headers */,
+				CFA5C6910DFC007E00DD782E /* include_lexicalLogInstruction.h in Headers */,
+				CFA5C6920DFC007E00DD782E /* include_lexicalOrExpression.h in Headers */,
+				CFA5C6930DFC007E00DD782E /* include_lexicalRepeatInstruction.h in Headers */,
+				CFA5C6940DFC007E00DD782E /* include_lexicalRewindInstruction.h in Headers */,
+				CFA5C6950DFC007E00DD782E /* include_lexicalSelectInstruction.h in Headers */,
+				CFA5C6960DFC007E00DD782E /* include_lexicalSendDefaultAction.h in Headers */,
+				CFA5C6970DFC007E00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */,
+				CFA5C6980DFC007E00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */,
+				CFA5C6990DFC007E00DD782E /* include_lexicalStringMatch.h in Headers */,
+				CFA5C69A0DFC007E00DD782E /* include_lexicalStringNotMatch.h in Headers */,
+				CFA5C69B0DFC007E00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */,
+				CFA5C69C0DFC007E00DD782E /* include_lexicalTagInstruction.h in Headers */,
+				CFA5C69D0DFC007E00DD782E /* include_lexiqueComponentRoot.h in Headers */,
+				CFA5C69E0DFC007E00DD782E /* include_optionComponentRoot.h in Headers */,
+				CFA5C69F0DFC007E00DD782E /* include_templateDelimitorList.h in Headers */,
+				CFA5C6A00DFC007E00DD782E /* include_templateReplacementList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4667,12 +4919,9 @@
 				CF48FB0C0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 				CFEFE7DE0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE94B0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
-				CFD47F170BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
-				CFD47F190BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
 				CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB42A0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E70BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
-				CF0CB7870BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CF0CB79C0BC0130500E6FABE /* optionSemantics.h in Headers */,
 				CF0CB7B00BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
 				CF0CB7C50BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
@@ -4801,6 +5050,39 @@
 				CFEEB5D40DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5D60DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
 				CF29BACC0DFAE94300E8B1BF /* compileLexique.h in Headers */,
+				CFA5C5D10DFBEF3500DD782E /* optionCompilation.h in Headers */,
+				CFA5C5DF0DFC003F00DD782E /* guiCompilation.h in Headers */,
+				CFA5C6060DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */,
+				CFA5C6070DFC007D00DD782E /* include_guiComponentRoot.h in Headers */,
+				CFA5C6080DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */,
+				CFA5C6090DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */,
+				CFA5C60A0DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */,
+				CFA5C60B0DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */,
+				CFA5C60C0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */,
+				CFA5C60D0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */,
+				CFA5C60E0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */,
+				CFA5C60F0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */,
+				CFA5C6100DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */,
+				CFA5C6110DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */,
+				CFA5C6120DFC007D00DD782E /* include_lexicalExpression.h in Headers */,
+				CFA5C6130DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */,
+				CFA5C6140DFC007D00DD782E /* include_lexicalInstruction.h in Headers */,
+				CFA5C6150DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */,
+				CFA5C6160DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */,
+				CFA5C6170DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */,
+				CFA5C6180DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */,
+				CFA5C6190DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */,
+				CFA5C61A0DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */,
+				CFA5C61B0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */,
+				CFA5C61C0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */,
+				CFA5C61D0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */,
+				CFA5C61E0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */,
+				CFA5C61F0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */,
+				CFA5C6200DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */,
+				CFA5C6210DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */,
+				CFA5C6220DFC007D00DD782E /* include_optionComponentRoot.h in Headers */,
+				CFA5C6230DFC007D00DD782E /* include_templateDelimitorList.h in Headers */,
+				CFA5C6240DFC007D00DD782E /* include_templateReplacementList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4894,12 +5176,9 @@
 				CF48FB0D0BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 				CFEFE7DF0BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE94C0BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
-				CFD47F1B0BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
-				CFD47F1D0BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
 				CF0CB4060BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */,
 				CF0CB42C0BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E90BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
-				CF0CB7890BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CF0CB79E0BC0130500E6FABE /* optionSemantics.h in Headers */,
 				CF0CB7B20BC0142D00E6FABE /* lexiqueMetamodel.h in Headers */,
 				CF0CB7C70BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
@@ -5027,6 +5306,39 @@
 				CFEEB5D80DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5DA0DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
 				CF29BACE0DFAE94300E8B1BF /* compileLexique.h in Headers */,
+				CFA5C5D30DFBEF3500DD782E /* optionCompilation.h in Headers */,
+				CFA5C5E10DFC003F00DD782E /* guiCompilation.h in Headers */,
+				CFA5C6250DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */,
+				CFA5C6260DFC007D00DD782E /* include_guiComponentRoot.h in Headers */,
+				CFA5C6270DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */,
+				CFA5C6280DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */,
+				CFA5C6290DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */,
+				CFA5C62A0DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */,
+				CFA5C62B0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */,
+				CFA5C62C0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */,
+				CFA5C62D0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */,
+				CFA5C62E0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */,
+				CFA5C62F0DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */,
+				CFA5C6300DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */,
+				CFA5C6310DFC007D00DD782E /* include_lexicalExpression.h in Headers */,
+				CFA5C6320DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */,
+				CFA5C6330DFC007D00DD782E /* include_lexicalInstruction.h in Headers */,
+				CFA5C6340DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */,
+				CFA5C6350DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */,
+				CFA5C6360DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */,
+				CFA5C6370DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */,
+				CFA5C6380DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */,
+				CFA5C6390DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */,
+				CFA5C63A0DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */,
+				CFA5C63B0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */,
+				CFA5C63C0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */,
+				CFA5C63D0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */,
+				CFA5C63E0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */,
+				CFA5C63F0DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */,
+				CFA5C6400DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */,
+				CFA5C6410DFC007D00DD782E /* include_optionComponentRoot.h in Headers */,
+				CFA5C6420DFC007D00DD782E /* include_templateDelimitorList.h in Headers */,
+				CFA5C6430DFC007D00DD782E /* include_templateReplacementList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5127,11 +5439,8 @@
 				CF48FB070BA7FB9500785C28 /* include_typeDescriptionInExpression.h in Headers */,
 				CFEFE7D90BB1A520006F37CB /* include_typeConditionNonChaine.h in Headers */,
 				CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
-				CFD47F030BB2FBD40078C3D4 /* optionHeaderGeneration.h in Headers */,
-				CFD47F050BB2FBD40078C3D4 /* optionImplementationGeneration.h in Headers */,
 				CF0CB4220BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5DF0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
-				CF0CB77F0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CF0CB7940BC0130500E6FABE /* optionSemantics.h in Headers */,
 				CF0CB7BD0BC0152600E6FABE /* metamodelMetamodel.h in Headers */,
 				CF0CB7D20BC0161E00E6FABE /* optionMetamodel.h in Headers */,
@@ -5235,6 +5544,37 @@
 				CFB9E4B30DF28AC500885084 /* TC_UniqueArray2.h in Headers */,
 				CFB9E4B40DF28AC500885084 /* TC_UniqueFixedSizeArray.h in Headers */,
 				CFB9E4B50DF28AC500885084 /* TF_AVL_Tree.h in Headers */,
+				CFA5C6A10DFC007E00DD782E /* include_grammarComponentRoot.h in Headers */,
+				CFA5C6A20DFC007E00DD782E /* include_guiComponentRoot.h in Headers */,
+				CFA5C6A30DFC007E00DD782E /* include_lexicalActionInstruction.h in Headers */,
+				CFA5C6A40DFC007E00DD782E /* include_lexicalActualArgument.h in Headers */,
+				CFA5C6A50DFC007E00DD782E /* include_lexicalAttributeArgument.h in Headers */,
+				CFA5C6A60DFC007E00DD782E /* include_lexicalCharacterArgument.h in Headers */,
+				CFA5C6A70DFC007E00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */,
+				CFA5C6A80DFC007E00DD782E /* include_lexicalCharacterMatch.h in Headers */,
+				CFA5C6A90DFC007E00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */,
+				CFA5C6AA0DFC007E00DD782E /* include_lexicalDropInstruction.h in Headers */,
+				CFA5C6AB0DFC007E00DD782E /* include_lexicalErrorByDefault.h in Headers */,
+				CFA5C6AC0DFC007E00DD782E /* include_lexicalErrorInstruction.h in Headers */,
+				CFA5C6AD0DFC007E00DD782E /* include_lexicalExpression.h in Headers */,
+				CFA5C6AE0DFC007E00DD782E /* include_lexicalFunctionArgument.h in Headers */,
+				CFA5C6AF0DFC007E00DD782E /* include_lexicalInstruction.h in Headers */,
+				CFA5C6B00DFC007E00DD782E /* include_lexicalLogInstruction.h in Headers */,
+				CFA5C6B10DFC007E00DD782E /* include_lexicalOrExpression.h in Headers */,
+				CFA5C6B20DFC007E00DD782E /* include_lexicalRepeatInstruction.h in Headers */,
+				CFA5C6B30DFC007E00DD782E /* include_lexicalRewindInstruction.h in Headers */,
+				CFA5C6B40DFC007E00DD782E /* include_lexicalSelectInstruction.h in Headers */,
+				CFA5C6B50DFC007E00DD782E /* include_lexicalSendDefaultAction.h in Headers */,
+				CFA5C6B60DFC007E00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */,
+				CFA5C6B70DFC007E00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */,
+				CFA5C6B80DFC007E00DD782E /* include_lexicalStringMatch.h in Headers */,
+				CFA5C6B90DFC007E00DD782E /* include_lexicalStringNotMatch.h in Headers */,
+				CFA5C6BA0DFC007E00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */,
+				CFA5C6BB0DFC007E00DD782E /* include_lexicalTagInstruction.h in Headers */,
+				CFA5C6BC0DFC007E00DD782E /* include_lexiqueComponentRoot.h in Headers */,
+				CFA5C6BD0DFC007E00DD782E /* include_optionComponentRoot.h in Headers */,
+				CFA5C6BE0DFC007E00DD782E /* include_templateDelimitorList.h in Headers */,
+				CFA5C6BF0DFC007E00DD782E /* include_templateReplacementList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5328,12 +5668,9 @@
 				CFEDF25B0C2D161F0038713A /* include_typeDescriptionInExpression.h in Headers */,
 				CFEDF25C0C2D161F0038713A /* include_typeConditionNonChaine.h in Headers */,
 				CFEDF25D0C2D161F0038713A /* include_typeLexicalLogInstruction.h in Headers */,
-				CFEDF25E0C2D161F0038713A /* optionHeaderGeneration.h in Headers */,
-				CFEDF25F0C2D161F0038713A /* optionImplementationGeneration.h in Headers */,
 				CFEDF2610C2D161F0038713A /* lexiqueSemantics.h in Headers */,
 				CFEDF2620C2D161F0038713A /* AC_galgas_entity.h in Headers */,
 				CFEDF2630C2D161F0038713A /* AC_galgas_class.h in Headers */,
-				CFEDF2640C2D161F0038713A /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CFEDF2650C2D161F0038713A /* optionSemantics.h in Headers */,
 				CFEDF2660C2D161F0038713A /* lexiqueMetamodel.h in Headers */,
 				CFEDF2670C2D161F0038713A /* metamodelMetamodel.h in Headers */,
@@ -5462,6 +5799,39 @@
 				CFEEB5DC0DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5DE0DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
 				CF29BAD00DFAE94300E8B1BF /* compileLexique.h in Headers */,
+				CFA5C5D50DFBEF3500DD782E /* optionCompilation.h in Headers */,
+				CFA5C5E30DFC003F00DD782E /* guiCompilation.h in Headers */,
+				CFA5C6440DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */,
+				CFA5C6450DFC007D00DD782E /* include_guiComponentRoot.h in Headers */,
+				CFA5C6460DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */,
+				CFA5C6470DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */,
+				CFA5C6480DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */,
+				CFA5C6490DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */,
+				CFA5C64A0DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */,
+				CFA5C64B0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */,
+				CFA5C64C0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */,
+				CFA5C64D0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */,
+				CFA5C64E0DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */,
+				CFA5C64F0DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */,
+				CFA5C6500DFC007D00DD782E /* include_lexicalExpression.h in Headers */,
+				CFA5C6510DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */,
+				CFA5C6520DFC007D00DD782E /* include_lexicalInstruction.h in Headers */,
+				CFA5C6530DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */,
+				CFA5C6540DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */,
+				CFA5C6550DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */,
+				CFA5C6560DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */,
+				CFA5C6570DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */,
+				CFA5C6580DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */,
+				CFA5C6590DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */,
+				CFA5C65A0DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */,
+				CFA5C65B0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */,
+				CFA5C65C0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */,
+				CFA5C65D0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */,
+				CFA5C65E0DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */,
+				CFA5C65F0DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */,
+				CFA5C6600DFC007D00DD782E /* include_optionComponentRoot.h in Headers */,
+				CFA5C6610DFC007D00DD782E /* include_templateDelimitorList.h in Headers */,
+				CFA5C6620DFC007D00DD782E /* include_templateReplacementList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5555,12 +5925,9 @@
 				CFEDF3BC0C2D16610038713A /* include_typeDescriptionInExpression.h in Headers */,
 				CFEDF3BD0C2D16610038713A /* include_typeConditionNonChaine.h in Headers */,
 				CFEDF3BE0C2D16610038713A /* include_typeLexicalLogInstruction.h in Headers */,
-				CFEDF3BF0C2D16610038713A /* optionHeaderGeneration.h in Headers */,
-				CFEDF3C00C2D16610038713A /* optionImplementationGeneration.h in Headers */,
 				CFEDF3C20C2D16610038713A /* lexiqueSemantics.h in Headers */,
 				CFEDF3C30C2D16610038713A /* AC_galgas_entity.h in Headers */,
 				CFEDF3C40C2D16610038713A /* AC_galgas_class.h in Headers */,
-				CFEDF3C50C2D16610038713A /* optionTreewalkingForBuildingOptionMap.h in Headers */,
 				CFEDF3C60C2D16610038713A /* optionSemantics.h in Headers */,
 				CFEDF3C70C2D16610038713A /* lexiqueMetamodel.h in Headers */,
 				CFEDF3C80C2D16610038713A /* metamodelMetamodel.h in Headers */,
@@ -5688,6 +6055,39 @@
 				CFEEB5E00DFAA15200EDAF05 /* mda_galgas_prgm.h in Headers */,
 				CFEEB5E20DFAA15200EDAF05 /* mda_galgas_routines.h in Headers */,
 				CF29BAD20DFAE94300E8B1BF /* compileLexique.h in Headers */,
+				CFA5C5D70DFBEF3500DD782E /* optionCompilation.h in Headers */,
+				CFA5C5E50DFC003F00DD782E /* guiCompilation.h in Headers */,
+				CFA5C6630DFC007D00DD782E /* include_grammarComponentRoot.h in Headers */,
+				CFA5C6640DFC007D00DD782E /* include_guiComponentRoot.h in Headers */,
+				CFA5C6650DFC007D00DD782E /* include_lexicalActionInstruction.h in Headers */,
+				CFA5C6660DFC007D00DD782E /* include_lexicalActualArgument.h in Headers */,
+				CFA5C6670DFC007D00DD782E /* include_lexicalAttributeArgument.h in Headers */,
+				CFA5C6680DFC007D00DD782E /* include_lexicalCharacterArgument.h in Headers */,
+				CFA5C6690DFC007D00DD782E /* include_lexicalCharacterIntervalMatch.h in Headers */,
+				CFA5C66A0DFC007D00DD782E /* include_lexicalCharacterMatch.h in Headers */,
+				CFA5C66B0DFC007D00DD782E /* include_lexicalCurrentCharacterArgument.h in Headers */,
+				CFA5C66C0DFC007D00DD782E /* include_lexicalDropInstruction.h in Headers */,
+				CFA5C66D0DFC007D00DD782E /* include_lexicalErrorByDefault.h in Headers */,
+				CFA5C66E0DFC007D00DD782E /* include_lexicalErrorInstruction.h in Headers */,
+				CFA5C66F0DFC007D00DD782E /* include_lexicalExpression.h in Headers */,
+				CFA5C6700DFC007D00DD782E /* include_lexicalFunctionArgument.h in Headers */,
+				CFA5C6710DFC007D00DD782E /* include_lexicalInstruction.h in Headers */,
+				CFA5C6720DFC007D00DD782E /* include_lexicalLogInstruction.h in Headers */,
+				CFA5C6730DFC007D00DD782E /* include_lexicalOrExpression.h in Headers */,
+				CFA5C6740DFC007D00DD782E /* include_lexicalRepeatInstruction.h in Headers */,
+				CFA5C6750DFC007D00DD782E /* include_lexicalRewindInstruction.h in Headers */,
+				CFA5C6760DFC007D00DD782E /* include_lexicalSelectInstruction.h in Headers */,
+				CFA5C6770DFC007D00DD782E /* include_lexicalSendDefaultAction.h in Headers */,
+				CFA5C6780DFC007D00DD782E /* include_lexicalSendTerminalByDefault.h in Headers */,
+				CFA5C6790DFC007D00DD782E /* include_lexicalSimpleSendInstruction.h in Headers */,
+				CFA5C67A0DFC007D00DD782E /* include_lexicalStringMatch.h in Headers */,
+				CFA5C67B0DFC007D00DD782E /* include_lexicalStringNotMatch.h in Headers */,
+				CFA5C67C0DFC007D00DD782E /* include_lexicalStructuredSendInstruction.h in Headers */,
+				CFA5C67D0DFC007D00DD782E /* include_lexicalTagInstruction.h in Headers */,
+				CFA5C67E0DFC007D00DD782E /* include_lexiqueComponentRoot.h in Headers */,
+				CFA5C67F0DFC007D00DD782E /* include_optionComponentRoot.h in Headers */,
+				CFA5C6800DFC007D00DD782E /* include_templateDelimitorList.h in Headers */,
+				CFA5C6810DFC007E00DD782E /* include_templateReplacementList.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6142,11 +6542,8 @@
 				CFDB3A730B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C8C0B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CFD47EFE0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
-				CFD47F000BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
 				CF0CB4290BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E40BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
-				CF0CB7840BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CF0CB7990BC0130500E6FABE /* optionSemantics.cpp in Sources */,
 				CF0CB7C20BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
 				CF0CB7D70BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
@@ -6314,12 +6711,9 @@
 				CFC71BE70B9DED5E0086499A /* metamodel_methods.cpp in Sources */,
 				CF21A4F10BAEE75A00C34B66 /* galgas_LL1_grammar.cpp in Sources */,
 				CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */,
-				CFD47F160BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
-				CFD47F180BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
 				CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB42B0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E60BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
-				CF0CB7860BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CF0CB79B0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
 				CF0CB7AF0BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
 				CF0CB7C40BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
@@ -6378,6 +6772,8 @@
 				CFEEB5D30DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5D50DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CF29BACB0DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
+				CFA5C5D00DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
+				CFA5C5DE0DFC003F00DD782E /* guiCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6493,12 +6889,9 @@
 				CFC71BE80B9DED610086499A /* metamodel_methods.cpp in Sources */,
 				CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */,
 				CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */,
-				CFD47F1A0BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
-				CFD47F1C0BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
 				CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB42D0BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E80BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
-				CF0CB7880BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
 				CF0CB7B10BC0142D00E6FABE /* lexiqueMetamodel.cpp in Sources */,
 				CF0CB7C60BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
@@ -6557,6 +6950,8 @@
 				CFEEB5D70DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5D90DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CF29BACD0DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
+				CFA5C5D20DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
+				CFA5C5E00DFC003F00DD782E /* guiCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6712,11 +7107,8 @@
 				CFDB3A750B8866D500DDA180 /* treewalking_parser.cpp in Sources */,
 				CFFC8C890B8A04DA00920BB1 /* treewalking_generation.cpp in Sources */,
 				CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CFD47F020BB2FBD40078C3D4 /* optionHeaderGeneration.cpp in Sources */,
-				CFD47F040BB2FBD40078C3D4 /* optionImplementationGeneration.cpp in Sources */,
 				CF0CB4230BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
-				CF0CB77E0BC011EB00E6FABE /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CF0CB7930BC0130500E6FABE /* optionSemantics.cpp in Sources */,
 				CF0CB7BC0BC0152600E6FABE /* metamodelMetamodel.cpp in Sources */,
 				CF0CB7D10BC0161E00E6FABE /* optionMetamodel.cpp in Sources */,
@@ -6884,12 +7276,9 @@
 				CFEDF3260C2D161F0038713A /* metamodel_methods.cpp in Sources */,
 				CFEDF3270C2D161F0038713A /* galgas_LL1_grammar.cpp in Sources */,
 				CFEDF3280C2D161F0038713A /* ggs_LL1_compile_component.cpp in Sources */,
-				CFEDF32A0C2D161F0038713A /* optionHeaderGeneration.cpp in Sources */,
-				CFEDF32B0C2D161F0038713A /* optionImplementationGeneration.cpp in Sources */,
 				CFEDF32D0C2D161F0038713A /* lexiqueSemantics.cpp in Sources */,
 				CFEDF32E0C2D161F0038713A /* AC_galgas_entity.cpp in Sources */,
 				CFEDF32F0C2D161F0038713A /* AC_galgas_class.cpp in Sources */,
-				CFEDF3300C2D161F0038713A /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CFEDF3310C2D161F0038713A /* optionSemantics.cpp in Sources */,
 				CFEDF3320C2D161F0038713A /* lexiqueMetamodel.cpp in Sources */,
 				CFEDF3330C2D161F0038713A /* metamodelMetamodel.cpp in Sources */,
@@ -6948,6 +7337,8 @@
 				CFEEB5DB0DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5DD0DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CF29BACF0DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
+				CFA5C5D40DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
+				CFA5C5E20DFC003F00DD782E /* guiCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7063,12 +7454,9 @@
 				CFEDF4860C2D16610038713A /* metamodel_methods.cpp in Sources */,
 				CFEDF4870C2D16610038713A /* galgas_LL1_grammar.cpp in Sources */,
 				CFEDF4880C2D16610038713A /* ggs_LL1_compile_component.cpp in Sources */,
-				CFEDF48A0C2D16610038713A /* optionHeaderGeneration.cpp in Sources */,
-				CFEDF48B0C2D16610038713A /* optionImplementationGeneration.cpp in Sources */,
 				CFEDF48D0C2D16610038713A /* lexiqueSemantics.cpp in Sources */,
 				CFEDF48E0C2D16610038713A /* AC_galgas_entity.cpp in Sources */,
 				CFEDF48F0C2D16610038713A /* AC_galgas_class.cpp in Sources */,
-				CFEDF4900C2D16610038713A /* optionTreewalkingForBuildingOptionMap.cpp in Sources */,
 				CFEDF4910C2D16610038713A /* optionSemantics.cpp in Sources */,
 				CFEDF4920C2D16610038713A /* lexiqueMetamodel.cpp in Sources */,
 				CFEDF4930C2D16610038713A /* metamodelMetamodel.cpp in Sources */,
@@ -7127,6 +7515,8 @@
 				CFEEB5DF0DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5E10DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CF29BAD10DFAE94300E8B1BF /* compileLexique.cpp in Sources */,
+				CFA5C5D60DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
+				CFA5C5E40DFC003F00DD782E /* guiCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

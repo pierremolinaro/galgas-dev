@@ -2,7 +2,7 @@
 #                                                                           *
 #  'option' metamodel                                                       *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,14 +17,11 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel optionMetamodel root @optionComponentRoot :
+semantics optionMetamodel :
 
-entity @optionComponentRoot {
-  @lstring mOptionComponentName ;
-  @commandLineOption [] mOptions ;
-}
+#---------------------------------------------------------------------------*
 
-entity @commandLineOption {
+list @commandLineOptionList {
   @lstring mOptionTypeName ;
   @lstring mOptionInternalName ;
   @lchar mOptionInvocationLetter ;
@@ -32,4 +29,13 @@ entity @commandLineOption {
   @lstring mOptionComment ;
 }
 
-end metamodel ;
+#---------------------------------------------------------------------------*
+
+class @optionComponentRoot {
+  @lstring mOptionComponentName ;
+  @commandLineOptionList mOptions ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

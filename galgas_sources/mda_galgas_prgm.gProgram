@@ -26,22 +26,18 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics projectCreation in "projectCreation.gSemantics" ;
   import semantics compileLexique in "compileLexique.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
+  import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
+  import semantics optionCompilation in "optionCompilation.gSemantics" ;
+  import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
+  import semantics guiCompilation in "guiCompilation.gSemantics" ;
 
-  import metamodel optionMetamodel in "optionMetamodel.gMetamodel" ;
   import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
-  import metamodel guiMetamodel in "guiMetamodel.gMetamodel" ;
   import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
   import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
 
-  import treewalking optionHeaderGeneration in "optionHeaderGeneration.gTreewalking" ;
-  import treewalking optionTreewalkingForBuildingOptionMap in "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
-  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
-  import treewalking optionImplementationGeneration in "optionImplementationGeneration.gTreewalking" ;
-
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
   import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
