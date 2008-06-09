@@ -26,6 +26,12 @@ import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
+list @semanticDeclarationList {
+  @semanticDeclaration mSemanticDeclaration ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
   @lstringlist mImportedComponentFileNameList ;
@@ -38,7 +44,7 @@ class @semanticsComponentRoot {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @attributeInCollection {
+list @attributeInCollectionList {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
 }
@@ -49,7 +55,7 @@ class @attributeInCollection {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @mapMethod {
+list @mapMethodList {
   @lstring mMethodName ;
   @lstring mGetIDMethodName ;
   @lstring mErrorMessage ;
@@ -85,30 +91,30 @@ class @mapindexDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstractMethodDefinition {
+list @abstractMethodDefinitionList {
   @lstring mMethodName ;
-  @formalParameters mSignature ;
+  @formalParameterList mSignature ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @overridenMethodDefinition {
+list @overridenMethodDefinitionList {
   @lstring mMethodName ;
-  @formalParameters mSignature ;
-  @semanticInstructions mInstructionList ;
+  @formalParameterList mSignature ;
+  @semanticInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @methodDefinition {
+list @methodDefinitionList {
   @lstring mMethodName ;
-  @formalParameters mSignature ;
-  @semanticInstructions mInstructionList ;
+  @formalParameterList mSignature ;
+  @semanticInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @classMessageDefinition {
+list @classMessageDefinitionList {
   @lstring mMessageName ;
   @lstring mMessageValue ;
 }
@@ -144,7 +150,7 @@ class @listDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @sortedListSortDescriptor {
+list @sortedListSortDescriptorList {
   @lstring mSortedAttributeName ;
   @bool mAscending ;
 }
@@ -163,7 +169,7 @@ class @sortedListDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @enumMessageAssociation {
+list @enumMessageAssociationList {
   @lstring mConstantName ;
   @lstring mMessage ;
 }
@@ -177,7 +183,12 @@ list @enumMessageList {
 
 #---------------------------------------------------------------------------*
 
-class @enumModifierCase {
+class @enumCaseMessage {
+}
+
+#---------------------------------------------------------------------------*
+
+list @enumModifierCaseList {
   @lstring mSourceConstantName ;
   @lstring mTargetConstantName ;
   @enumCaseMessage mEnumModifierCaseMessage ;
@@ -185,21 +196,10 @@ class @enumModifierCase {
 
 #---------------------------------------------------------------------------*
 
-list @enumModifier {
+list @enumModifierList {
   @lstring mModifierName ;
   @lstring mLocationFormalArgumentName ;
   @enumModifierCaseList mEnumModifierCaseList ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @enumCaseMessage {
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumCaseMessageList {
-  @enumCaseMessage mEnumCaseMessage ;
 }
 
 #---------------------------------------------------------------------------*
@@ -218,17 +218,17 @@ class @enumCaseWarningMessage extends @enumCaseMessage {
 
 #---------------------------------------------------------------------------*
 
-class @enumMethod {
-  @lstring mMethodName ;
-  @lstring mLocationFormalArgumentName ;
-  @enumMethodCaseList mEnumMethodCaseList ;
+list @enumMethodCaseList {
+  @lstring mConstantName ;
+  @enumCaseMessage mEnumMethodCaseMessage ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @enumMethodCase {
-  @lstring mConstantName ;
-  @enumCaseMessage mEnumMethodCaseMessage ;
+list @enumMethodList {
+  @lstring mMethodName ;
+  @lstring mLocationFormalArgumentName ;
+  @enumMethodCaseList mEnumMethodCaseList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -248,7 +248,7 @@ class @enumDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @filewrapperTemplate {
+list @filewrapperTemplateList {
   @lstring mFilewrapperTemplateName ;
   @lstring mFilewrapperTemplatePath ;
   @formalInputParameterList mFilewrapperTemplateFormalInputParameters ;

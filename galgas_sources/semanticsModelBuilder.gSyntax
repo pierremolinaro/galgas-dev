@@ -19,68 +19,54 @@
 
 syntax semanticsModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
-import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+nonterminal <semantics_component_start_symbol>
+  !@location outEndOfSourceFile
+  !@semanticsComponentRoot outSemanticsComponentRoot
+;
+
+nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
+
+nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
+
+nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
+
+nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
+
+nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
+
+nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
 #---------------------------------------------------------------------------*
-
-nonterminal <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semanticsComponentRoot ;
-
-nonterminal <semantic_declaration> -> @semanticDeclaration ;
-
-nonterminal <attribute_declaration> -> @attributeInCollection ;
-
-nonterminal <map_method_declaration> -> @mapMethod ;
-
-nonterminal <class_abstract_method_declaration> -> @abstractMethodDefinition ;
-
-nonterminal <class_method_declaration> -> @methodDefinition ;
-
-nonterminal <class_overriden_method_declaration> -> @overridenMethodDefinition ;
-
-nonterminal <class_message_declaration> -> @classMessageDefinition ;
-
-nonterminal <formal_parameter_list> -> @formalParameters ;
-
-nonterminal <enum_message_declaration> -> @enumMessage ;
-
-nonterminal <enum_message_association> -> @enumMessageAssociation ;
-
-nonterminal <semantic_instruction_list> -> @semanticInstructions ;
-
-nonterminal <sortedlist_sort_descriptor> -> @sortedListSortDescriptor ;
 
 nonterminal <obsolete_declaration> ;
 
-nonterminal <enum_modifier> -> @enumModifier ;
-
-nonterminal <enum_modifier_case> -> @enumModifierCase ;
-
-nonterminal <enum_case_message> -> @enumCaseMessage ;
-
-nonterminal <enum_method> -> @enumMethod ;
-
-nonterminal <enum_method_case> -> @enumMethodCase ;
-
-nonterminal <formal_input_parameter_list> -> @formalInputParameterList ;
-
-#---------------------------------------------------------------------------*
-
-rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semanticsComponentRoot :
+rule <semantics_component_start_symbol>
+  !@location outEndOfSourceFile
+  !@semanticsComponentRoot outSemanticsComponentRoot
+:
   $semantics$ ;
 #--- Semantics Component Name
-  $identifier$ ? mSemanticsComponentName ;
+  $identifier$ ? @lstring mSemanticsComponentName ;
   $:$ ;
 #--- Loop on import and semantics declarations
-  mImportedComponentFileNameList := [@lstringlist emptyList] ;
+  @lstringlist mImportedComponentFileNameList [emptyList] ;
+  @semanticDeclarationList mSemanticDeclarationList [emptyList] ;
   repeat
   while
     $import$ ;
     select
-      @lstring importedComponentFileName ;
-      $literal_string$ ? importedComponentFileName ;
+      $literal_string$ ? @lstring importedComponentFileName ;
       mImportedComponentFileNameList += !importedComponentFileName ;
     or
       $semantics$ ;
@@ -105,7 +91,9 @@ rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semant
     end select ;
     $;$ ;
   while
-    <semantic_declaration> +> mSemanticDeclarationList ;
+    @semanticDeclaration semanticDeclaration ;
+    <semantic_declaration> ? semanticDeclaration ;
+    mSemanticDeclarationList += !semanticDeclaration ;
   while
     <obsolete_declaration> ;
   end repeat ;
@@ -114,6 +102,11 @@ rule <semantics_component_start_symbol> !@location outEndOfSourceFile -> @semant
   outEndOfSourceFile := here ;
   $semantics$ ;
   $;$ ;
+  outSemanticsComponentRoot := [@semanticsComponentRoot new
+    !mSemanticsComponentName
+    !mImportedComponentFileNameList
+    !mSemanticDeclarationList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -122,10 +115,15 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <attribute_declaration> -> @attributeInCollection :
-  $type_name$ ? mAttributeTypeName ;
-  $identifier$ ? mAttributeName ;
+nonterminal <attribute_declaration> ?!@attributeInCollectionList ioAttributeInCollectionList ;
+
+#---------------------------------------------------------------------------*
+
+rule <attribute_declaration> ?!@attributeInCollectionList ioAttributeInCollectionList :
+  $type_name$ ? @lstring mAttributeTypeName ;
+  $identifier$ ? @lstring mAttributeName ;
   $;$ ;
+  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -142,32 +140,13 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @mapDeclaration :
-  $map$ ;
-#--- Map type name
-  $type_name$ ? mMapTypeName ;
-  ${$ ;
-#--- Map properties
-  repeat
-  while
-    <attribute_declaration> +> mAttributeList ;
-  while
-    $insert$ ;
-    <map_method_declaration> +> mInsertMethodList ;
-  while
-    $search$ ;
-    <map_method_declaration> +> mSearchMethodList ;
-  while
-    $remove$ ;
-    <map_method_declaration> +> mRemoveMethodList ;
-  end repeat ;
-  $}$ ;
-end rule ;
+nonterminal <map_method_declaration> ?!@mapMethodList ioMapMethodList ;
 
 #---------------------------------------------------------------------------*
 
-rule <map_method_declaration> -> @mapMethod :
-  $identifier$ ? mMethodName ;
+rule <map_method_declaration> ?!@mapMethodList ioMapMethodList :
+  $identifier$ ? @lstring mMethodName ;
+  @lstring mGetIDMethodName ;
   select
     mGetIDMethodName := [@lstring new !"" !here] ;
   or
@@ -176,7 +155,8 @@ rule <map_method_declaration> -> @mapMethod :
   end select ;
   $error$ ;
   $message$ ;
-  $literal_string$ ? mErrorMessage ;
+  $literal_string$ ? @lstring mErrorMessage ;
+  @lstring mShadowErrorMessage ;
   select
     mShadowErrorMessage := [@lstring new !"" !here] ;
   or
@@ -184,6 +164,47 @@ rule <map_method_declaration> -> @mapMethod :
     $literal_string$ ? mShadowErrorMessage ;
   end select ;
   $;$ ;
+  ioMapMethodList +=
+    !mMethodName
+    !mGetIDMethodName
+    !mErrorMessage
+    !mShadowErrorMessage
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  $map$ ;
+#--- Map type name
+  $type_name$ ? @lstring mMapTypeName ;
+  ${$ ;
+#--- Map properties
+  @attributeInCollectionList mAttributeList [emptyList] ;
+  @mapMethodList mInsertMethodList [emptyList] ;
+  @mapMethodList mSearchMethodList [emptyList] ;
+  @mapMethodList mRemoveMethodList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  while
+    $insert$ ;
+    <map_method_declaration> !? mInsertMethodList ;
+  while
+    $search$ ;
+    <map_method_declaration> !? mSearchMethodList ;
+  while
+    $remove$ ;
+    <map_method_declaration> !? mRemoveMethodList ;
+  end repeat ;
+  $}$ ;
+  outSemanticDeclaration := [@mapDeclaration new
+    !mMapTypeName
+    !mAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mRemoveMethodList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -200,120 +221,32 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @mapindexDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $mapindex$ ;
-  $type_name$ ? mMapIndexName ;
+  $type_name$ ?@lstring mMapIndexName ;
   $($ ;
-  $type_name$ ? mMapTypeName ;
+  $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
   ${$ ;
   $search$ ;
-  $identifier$ ? mSearchMethodName ;
+  $identifier$ ? @lstring mSearchMethodName ;
   $error$ ;
   $message$ ;
-  $literal_string$ ? mSearchMethodErrorMessage ;
+  $literal_string$ ? @lstring mSearchMethodErrorMessage ;
   $;$ ;
   $}$ ;
+  outSemanticDeclaration := [@mapindexDeclaration new
+    !mMapIndexName
+    !mMapTypeName
+    !mSearchMethodName
+    !mSearchMethodErrorMessage
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    C L A S S    D E C L A R A T I O N                                     *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_declaration> -> @classDeclaration :
-  select
-    mIsAbstract := false ;
-  or
-    $abstract$ ;
-    mIsAbstract := true ;
-  end select ;
-  $class$ ;
-  $type_name$ ? mClassTypeName ;
-  select
-    mSuperClassName := [@lstring new !"" !here] ;
-  or
-    $extends$ ;
-    $type_name$ ? mSuperClassName ;
-  end select ;
-  ${$ ;
-  mClassMessage := "" ;
-#--- Class properties
-  repeat
-  while
-    <attribute_declaration> +> mAttributeList ;
-  while
-    <class_abstract_method_declaration> +> mAbstractMethodList ;
-  while
-    <class_overriden_method_declaration> +> mOverridenMethodList ;
-  while
-    <class_method_declaration> +> mMethodList ;
-  while
-    <class_message_declaration> +> mMessageList ;
-  while
-    $message$ ;
-    if [mClassMessage length] > 0 then
-      error here: "the class message is already defined" ;
-    end if ;
-    @lstring classMessage ;
-    $literal_string$ ? classMessage ;
-    if [classMessage length] == 0 then
-      error classMessage: "the class message string should be not empty" ;
-    end if ;
-    mClassMessage := [classMessage string] ;
-    $;$ ;
-  end repeat ;
-  $}$ ;
-end rule ;
-
-
-#---------------------------------------------------------------------------*
-
-rule <class_message_declaration> -> @classMessageDefinition :
-  $message$ ;
-  $identifier$ ? mMessageName ;
-  $literal_string$ ? mMessageValue ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <class_abstract_method_declaration> -> @abstractMethodDefinition :
-  $abstract$ ;
-  $method$ ;
-  $identifier$ ? mMethodName ;
-  <formal_parameter_list> -> mSignature ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <class_overriden_method_declaration> -> @overridenMethodDefinition :
-  $override$ ;
-  $method$ ;
-  $identifier$ ? mMethodName ;
-  <formal_parameter_list> -> mSignature ;
-  $:$ ;
-  <semantic_instruction_list> -> mInstructionList ;
-  $end$ ;
-  $method$ ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <class_method_declaration> -> @methodDefinition :
-  $method$ ;
-  $identifier$ ? mMethodName ;
-  <formal_parameter_list> -> mSignature ;
-  $:$ ;
-  <semantic_instruction_list> -> mInstructionList ;
-  $end$ ;
-  $method$ ;
-  $;$ ;
-end rule ;
-
 #---------------------------------------------------------------------------*
 
 rule <obsolete_declaration> :
@@ -368,20 +301,178 @@ rule <obsolete_declaration> :
 end rule ;
 
 #---------------------------------------------------------------------------*
+
+nonterminal <class_message_declaration> ?!@classMessageDefinitionList ioClassMessageDefinitionList ;
+
+#---------------------------------------------------------------------------*
+
+rule <class_message_declaration> ?!@classMessageDefinitionList ioClassMessageDefinitionList :
+  $message$ ;
+  $identifier$ ? @lstring mMessageName ;
+  $literal_string$ ? @lstring mMessageValue ;
+  $;$ ;
+  ioClassMessageDefinitionList += !mMessageName !mMessageValue ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <class_abstract_method_declaration>
+  ?!@abstractMethodDefinitionList ioAbstractMethodDefinitionList
+;
+
+#---------------------------------------------------------------------------*
+
+rule <class_abstract_method_declaration>
+  ?!@abstractMethodDefinitionList ioAbstractMethodDefinitionList
+:
+  $abstract$ ;
+  $method$ ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalParameterList mSignature ;
+  <formal_parameter_list> ? mSignature ;
+  $;$ ;
+  ioAbstractMethodDefinitionList += !mMethodName !mSignature ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <class_overriden_method_declaration>
+  ?!@overridenMethodDefinitionList ioOverridenMethodDefinitionList
+;
+
+#---------------------------------------------------------------------------*
+
+rule <class_overriden_method_declaration>
+  ?!@overridenMethodDefinitionList ioOverridenMethodDefinitionList
+:
+  $override$ ;
+  $method$ ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalParameterList mSignature ;
+  <formal_parameter_list> ? mSignature ;
+  $:$ ;
+  @semanticInstructionList mInstructionList ;
+  <semantic_instruction_list> ? mInstructionList ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
+  ioOverridenMethodDefinitionList +=
+    !mMethodName
+    !mSignature
+    !mInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <class_method_declaration> ?!@methodDefinitionList ioMethodDefinitionList ;
+
+#---------------------------------------------------------------------------*
+
+rule <class_method_declaration> ?!@methodDefinitionList ioMethodDefinitionList :
+  $method$ ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalParameterList mSignature ;
+  <formal_parameter_list> ? mSignature ;
+  $:$ ;
+  @semanticInstructionList mInstructionList ;
+  <semantic_instruction_list> ? mInstructionList ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
+  ioMethodDefinitionList +=
+    !mMethodName
+    !mSignature
+    !mInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  @bool mIsAbstract ;
+  select
+    mIsAbstract := false ;
+  or
+    $abstract$ ;
+    mIsAbstract := true ;
+  end select ;
+  $class$ ;
+  $type_name$ ?@lstring mClassTypeName ;
+  @lstring mSuperClassName ; # Empty if no super class
+  select
+    mSuperClassName := [@lstring new !"" !here] ;
+  or
+    $extends$ ;
+    $type_name$ ? mSuperClassName ;
+  end select ;
+  ${$ ;
+  @string mClassMessage := "" ;
+#--- Class properties
+  @attributeInCollectionList mAttributeList [emptyList] ;
+  @abstractMethodDefinitionList mAbstractMethodList [emptyList] ;
+  @overridenMethodDefinitionList mOverridenMethodList [emptyList] ;
+  @methodDefinitionList mMethodList [emptyList] ;
+  @classMessageDefinitionList mMessageList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  while
+    <class_abstract_method_declaration> !? mAbstractMethodList ;
+  while
+    <class_overriden_method_declaration> !? mOverridenMethodList ;
+  while
+    <class_method_declaration> !? mMethodList ;
+  while
+    <class_message_declaration> !? mMessageList ;
+  while
+    $message$ ;
+    if [mClassMessage length] > 0 then
+      error here: "the class message is already defined" ;
+    end if ;
+    @lstring classMessage ;
+    $literal_string$ ? classMessage ;
+    if [classMessage length] == 0 then
+      error classMessage: "the class message string should be not empty" ;
+    end if ;
+    mClassMessage := [classMessage string] ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+  outSemanticDeclaration := [@classDeclaration new
+    !mIsAbstract
+    !mClassTypeName
+    !mSuperClassName # Empty if no super class
+    !mAttributeList
+    !mAbstractMethodList
+    !mOverridenMethodList
+    !mMethodList
+    !mMessageList
+    !mClassMessage
+  ] ;
+end rule ;
+
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    L I S T    D E C L A R A T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @listDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $list$ ;
-  $type_name$ ? mListTypeName ;
+  $type_name$ ?@lstring mListTypeName ;
   ${$ ;
+  @attributeInCollectionList mAttributeList [emptyList] ;
   repeat
   while
-    <attribute_declaration> +> mAttributeList ;
+    <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
+  outSemanticDeclaration := [@listDeclaration new
+    !mListTypeName
+    !mAttributeList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -419,18 +510,18 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @sortedListDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @sortedListDeclaration :
   $sortedlist$ ;
   $type_name$ ? mSortedListTypeName ;
   ${$ ;
   repeat
   while
-    <attribute_declaration> +> mAttributeList ;
+    <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
   ${$ ;
   repeat
-    <sortedlist_sort_descriptor> +> mSortDescriptorList ;
+    <sortedlist_sort_descriptor> !? mSortDescriptorList ;
   while
     $,$ ;
   end repeat ;
@@ -443,7 +534,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> -> @enumDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @enumDeclaration :
   $enum$ ;
   $type_name$ ? mEnumTypeName ;
   ${$ ;
@@ -475,11 +566,11 @@ rule <semantic_declaration> -> @enumDeclaration :
   ${$ ;
   repeat
   while
-    <enum_message_declaration> +> mEnumMessageList ;
+    <enum_message_declaration> !? mEnumMessageList ;
   while
-    <enum_modifier> +> mEnumModifierList ;
+    <enum_modifier> !? mEnumModifierList ;
   while
-    <enum_method> +> mEnumMethodList ;
+    <enum_method> !? mEnumMethodList ;
   end repeat ;
   $}$ ;
 end rule ;
@@ -491,7 +582,7 @@ rule <enum_message_declaration> -> @enumMessage :
   $identifier$ ? mEnumMessageName ;
   ${$ ;
   repeat
-    <enum_message_association> +> mMessageAssociationList ;
+    <enum_message_association> !? mMessageAssociationList ;
   while
   end repeat ;
   $}$ ;
@@ -521,7 +612,7 @@ rule <enum_modifier> -> @enumModifier :
   $identifier$ ? mLocationFormalArgumentName ;
   ${$ ;
   repeat
-    <enum_modifier_case> +> mEnumModifierCaseList ;
+    <enum_modifier_case> !? mEnumModifierCaseList ;
   while
   end repeat ;
   $}$ ;
@@ -575,7 +666,7 @@ rule <enum_method> -> @enumMethod :
   $identifier$ ? mLocationFormalArgumentName ;
   ${$ ;
   repeat
-    <enum_method_case> +> mEnumMethodCaseList ;
+    <enum_method_case> !? mEnumMethodCaseList ;
   while
   end repeat ;
   $}$ ;
@@ -597,7 +688,7 @@ end rule ;
 
 nonterminal <filewrapper_template> -> @filewrapperTemplate ;
 
-rule <semantic_declaration> -> @filewrapperDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @filewrapperDeclaration :
   $filewrapper$ ;
   $identifier$ ? mFilewrapperName ;
   $in$ ;
@@ -615,7 +706,7 @@ rule <semantic_declaration> -> @filewrapperDeclaration :
   ${$ ;
   repeat
   while
-    <filewrapper_template> +> mFilewrapperTemplateList ;
+    <filewrapper_template> !? mFilewrapperTemplateList ;
   end repeat ;
   $}$ ;
 end rule ;
