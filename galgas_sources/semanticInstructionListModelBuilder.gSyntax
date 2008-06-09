@@ -39,18 +39,7 @@ nonterminal <semantic_instruction_list> !@semanticInstructionList outInstruction
 
 nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
 
-
-nonterminal <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject ;
-
-nonterminal <match_instruction_branch> -> @matchInstructionBranch ;
-
-nonterminal <cast_instruction_branch> -> @castInstructionBranch ;
-
-nonterminal <cast_else_or_default> -> @elseOrDefaultForCastInstruction ;
-
-nonterminal <output_expression_list> -> @outExpressionList ;
-
-nonterminal <match_entry> -> @matchEntry ;
+nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 
 nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
@@ -65,7 +54,7 @@ rule <semantic_instruction_list> !@semanticInstructionList outInstructionsList :
   repeat
   while
     @semanticInstruction instruction ;
-    <semantic_instruction> +? instruction ;
+    <semantic_instruction> ? instruction ;
     outInstructionsList += !instruction ;
   end repeat ;
 end rule ;
@@ -91,7 +80,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
-  ;
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -129,14 +118,14 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   or
     $:=$ ;
     @semanticExpression sourceExpression ;
-    <expression> -> sourceExpression ;
+    <expression> ? sourceExpression ;
     outInstruction := [@localVariableDeclarationWithAssignment new !typeName !variableName !sourceExpression] ;
   or
     $[$ ;
     @lstring constructorName ;
     $identifier$ ? constructorName ;
     @outExpressionList expressionList ;
-    <output_expression_list> -> expressionList ;
+    <output_expression_list> ? expressionList ;
     outInstruction := [@localVariableDeclarationWithInitialization new !typeName !variableName !constructorName !expressionList] ;
     $]$ ;
   end select ;
@@ -152,7 +141,8 @@ end rule ;
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $identifier$ ?@lstring mTargetVariableName ;
   $:=$ ;
-  <expression> ?mSourceExpression ;
+  @semanticExpression mSourceExpression ;
+  <expression> ? mSourceExpression ;
   $;$ ;
   outInstruction := [@assignmentInstruction new
     !mTargetVariableName
@@ -166,10 +156,11 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @incrementInstruction :
-  $identifier$ ? mReceiverName ;
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $identifier$ ? @lstring mReceiverName ;
   $++$ ;
   $;$ ;
+  outInstruction := [@incrementInstruction new !mReceiverName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -178,10 +169,11 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @decrementInstruction :
-  $identifier$ ? mReceiverName ;
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $identifier$ ?@lstring mReceiverName ;
   $--$ ;
   $;$ ;
+  outInstruction := [@decrementInstruction new !mReceiverName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -190,13 +182,23 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
-  <expression> -> mEnumeratedExpression ;
+nonterminal <foreach_enumerated_object>
+  ?!@foreachInstructionEnumeratedObjectList ioForeachInstructionEnumeratedObjectList
+;
+
+#---------------------------------------------------------------------------*
+
+rule <foreach_enumerated_object>
+  ?!@foreachInstructionEnumeratedObjectList ioForeachInstructionEnumeratedObjectList
+:
+  @semanticExpression mEnumeratedExpression ;
+  <expression> ? mEnumeratedExpression ;
   $($ ;
+  @foreachInstructionEnumeratedObjectElementList mElementList [emptyList] ;
   repeat
   while
     $*$ ;
-    mElements += ![@foreachInstructionJoker new] ;
+    mElementList += ![@foreachInstructionJoker new] ;
   while
     @luint count ;
     $unsigned_literal_integer$ ?count ;
@@ -207,7 +209,7 @@ rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
     end if ;
     loop n :
     while n > 0 do
-      mElements += ![@foreachInstructionJoker new] ;
+      mElementList += ![@foreachInstructionJoker new] ;
       n -- ;
     end loop ;
   while
@@ -216,8 +218,9 @@ rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
     @lstring constantName ;
     $identifier$ ?constantName ;
     @foreachInstructionEnumeratedConstant c [new !typeName !constantName] ;
-    mElements += !c ;
+    mElementList += !c ;
   end repeat ;
+  @bool mEndsWithEllipsis ;
   select
     mEndsWithEllipsis := false ;
   or
@@ -225,58 +228,73 @@ rule <foreach_enumerated_object> -> @foreachInstructionEnumeratedObject :
     mEndsWithEllipsis := true ;
   end select ;
   $)$ ;
+  ioForeachInstructionEnumeratedObjectList +=
+    !mEnumeratedExpression
+    !mElementList
+    !mEndsWithEllipsis
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @foreachInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $foreach$ ;
+  @foreachInstructionEnumeratedObjectList mEnumeratedObjectList [emptyList] ;
   repeat
-    <foreach_enumerated_object> +> mEnumeratedObjects ;
+    <foreach_enumerated_object> !?mEnumeratedObjectList ;
   while
     $,$ ;
   end repeat ;
+  @lstring mIndexVariableName ;
   select
     mIndexVariableName := [@lstring new !"" !here] ;
   or
     $:$ ;
     $identifier$ ? mIndexVariableName ;
   end select ;
+  @semanticExpression mWhileExpression ;
   select
     mWhileExpression := [@trueExpression new] ;
   or
     $while$ ;
-    <expression> -> mWhileExpression ;
+    <expression> ? mWhileExpression ;
   end select ;
+  @semanticInstructionList mBeforeInstructionList ;
   select
+    mBeforeInstructionList := [@semanticInstructionList emptyList] ;
   or
     $before$ ;
-    repeat
-    while
-      <semantic_instruction> +> mBeforeInstructionList ;
-    end repeat ;
+    <semantic_instruction_list> ? mBeforeInstructionList ;
   end select ;
+  @semanticInstructionList mBetweenInstructionList ;
   select
+    mBetweenInstructionList := [@semanticInstructionList emptyList] ;
   or
     $between$ ;
-    repeat
-    while
-      <semantic_instruction> +> mBetweenInstructionList ;
-    end repeat ;
+    <semantic_instruction_list> ? mBetweenInstructionList ;
   end select ;
   $do$ ;
-  <semantic_instruction_list> -> mDoInstructionList ;
+  @semanticInstructionList mDoInstructionList ;
+  <semantic_instruction_list> ? mDoInstructionList ;
+  @semanticInstructionList mAfterInstructionList ;
   select
+    mAfterInstructionList := [@semanticInstructionList emptyList] ;
   or
     $after$ ;
-    repeat
-    while
-      <semantic_instruction> +> mAfterInstructionList ;
-    end repeat ;
+    <semantic_instruction_list> ? mAfterInstructionList ;
   end select ;
   $end$ ;
   $foreach$ ;
   $;$ ;
+  outInstruction := [@foreachInstruction new
+    !mEnumeratedObjectList
+    !mIndexVariableName
+    !mWhileExpression
+    !mBeforeInstructionList
+    !mBetweenInstructionList
+    !mDoInstructionList
+    !mAfterInstructionList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -285,23 +303,33 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @ifInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $if$ ;
+  @ifBranchList mBranchList [emptyList] ;
   repeat
-    <expression> +> mIFexpressionList ;
+    @semanticExpression mIFexpressionList ;
+    <expression> ?mIFexpressionList ;
     $then$ ;
-    <semantic_instruction_list> +> mIFinstructionListList ;
+    @semanticInstructionList mIFinstructionList ;
+    <semantic_instruction_list> ? mIFinstructionList ;
+    mBranchList += !mIFexpressionList !mIFinstructionList ;
   while
     $elsif$ ;
   end repeat ;
+  @semanticInstructionList mElseInstructionList ;
   select
+    mElseInstructionList := [@semanticInstructionList emptyList] ;
   or
     $else$ ;
-    <semantic_instruction_list> +> mElseInstructionList ;
+    <semantic_instruction_list> ? mElseInstructionList ;
   end select ;
   $end$ ;
   $if$ ;
   $;$ ;
+  outInstruction := [@ifInstruction new
+    !mBranchList
+    !mElseInstructionList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -310,13 +338,20 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @methodCallInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $[$ ;
-  <expression> -> mReceiverExpression ;
-  $identifier$ ?mMethodName ;
-  <actual_parameter_list> -> mActualParameterList ;
+  @semanticExpression mReceiverExpression ;
+  <expression> ? mReceiverExpression ;
+  $identifier$ ?@lstring mMethodName ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
+  outInstruction := [@methodCallInstruction new
+    !mReceiverExpression
+    !mMethodName
+    !mActualParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -325,14 +360,20 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @modifierCallInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $[$ ;
   $!?$ ;
-  $identifier$ ?mReceiverName ;
-  $identifier$ ?mModifierName ;
-  <actual_parameter_list> -> mActualParameterList ;
+  $identifier$ ?@lstring mReceiverName ;
+  $identifier$ ?@lstring mModifierName ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
+  outInstruction := [@modifierCallInstruction new
+    !mReceiverName
+    !mModifierName
+    !mActualParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -341,12 +382,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @errorInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $error$ ;
-  <expression> -> mReceiverExpression ;
+  @semanticExpression mReceiverExpression ;
+  <expression> ? mReceiverExpression ;
   $:$ ;
-  <expression> -> mErrorExpression ;
-  mBuiltVariableList := [@lstringlist emptyList] ;
+  @semanticExpression mErrorExpression ;
+  <expression> ? mErrorExpression ;
+  @lstringlist mBuiltVariableList [emptyList] ;
   select
   or
     $->$ ;
@@ -359,6 +402,11 @@ rule <semantic_instruction> !@semanticInstruction outInstruction -> @errorInstru
     end repeat ;
   end select ;
   $;$ ;
+  outInstruction := [@errorInstruction new
+    !mReceiverExpression
+    !mErrorExpression
+    !mBuiltVariableList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -367,12 +415,18 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @warningInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $warning$ ;
-  <expression> -> mReceiverExpression ;
+  @semanticExpression mReceiverExpression ;
+  <expression> ? mReceiverExpression ;
   $:$ ;
-  <expression> -> mErrorExpression ;
+  @semanticExpression mWarningExpression ;
+  <expression> ? mWarningExpression ;
   $;$ ;
+  outInstruction := [@warningInstruction new
+    !mReceiverExpression
+    !mWarningExpression
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -381,10 +435,15 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @routineCallInstruction :
-  $identifier$ ? mRoutineName ;
-  <actual_parameter_list> -> mActualParameterList ;
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $identifier$ ?@lstring  mRoutineName ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
   $;$ ;
+  outInstruction := [@routineCallInstruction new
+    !mRoutineName
+    !mActualParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -393,15 +452,21 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <match_entry> -> @constantMatchEntry :
-  $identifier$ ? mConstantName ;
+nonterminal <match_entry> ?!@matchEntryList ioMatchEntryList ;
+
+#---------------------------------------------------------------------------*
+
+rule <match_entry> ?!@matchEntryList ioMatchEntryList :
+  $identifier$ ? @lstring mConstantName ;
+  ioMatchEntryList += ![@constantMatchEntry new !mConstantName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <match_entry> -> @classMatchEntry :
-  $type_name$ ? mClassName ;
+rule <match_entry> ?!@matchEntryList ioMatchEntryList :
+  $type_name$ ?@lstring mClassName ;
   $($ ;
+  @foreachInstructionEnumeratedObjectElementList mElements [emptyList] ;
   repeat
   while
     $*$ ;
@@ -427,6 +492,7 @@ rule <match_entry> -> @classMatchEntry :
     @foreachInstructionEnumeratedConstant c [new !typeName !constantName] ;
     mElements += !c ;
   end repeat ;
+  @bool mEndsWithEllipsis ;
   select
     mEndsWithEllipsis := false ;
   or
@@ -434,28 +500,43 @@ rule <match_entry> -> @classMatchEntry :
     mEndsWithEllipsis := true ;
   end select ;
   $)$ ;
+  ioMatchEntryList += ![@classMatchEntry new
+    !mClassName
+    !mElements
+    !mEndsWithEllipsis
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <match_instruction_branch> -> @matchInstructionBranch :
+nonterminal <match_instruction_branch> ?!@matchInstructionBranchList ioMatchInstructionBranchList ;
+
+#---------------------------------------------------------------------------*
+
+rule <match_instruction_branch> ?!@matchInstructionBranchList ioMatchInstructionBranchList :
   $when$ ;
+  @matchEntryList mMatchEntryList [emptyList] ;
   repeat
-    <match_entry> +> mMatchedEntryList ;
+    <match_entry> !? mMatchEntryList ;
   while
     $::$ ;
   end repeat ;
   $:$ ;
-  <semantic_instruction_list> -> mMatchBranchInstructionList ;
+  @semanticInstructionList mMatchBranchInstructionList ;
+  <semantic_instruction_list> ? mMatchBranchInstructionList ;
+  ioMatchInstructionBranchList +=
+    !mMatchEntryList
+    !mMatchBranchInstructionList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @matchInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $match$ ;
-  mMatchedVariableNameList := [@lstringlist emptyList] ;
   @lstring matchedVariableName ;
   $identifier$ ? matchedVariableName ;
+  @lstringlist mMatchedVariableNameList [emptyList] ;
   mMatchedVariableNameList += !matchedVariableName ;
   $::$ ;
   repeat
@@ -465,18 +546,26 @@ rule <semantic_instruction> !@semanticInstruction outInstruction -> @matchInstru
     $::$ ;
   end repeat ;
   $:$ ;
+  @matchInstructionBranchList mMatchInstructionBranchList [emptyList] ;
   repeat
-    <match_instruction_branch> +> mMatchInstructionBranchList ;
+    <match_instruction_branch> !? mMatchInstructionBranchList ;
   while
   end repeat ;
+  @semanticInstructionList mElseInstructionList ;
   select
+    mElseInstructionList := [@semanticInstructionList emptyList] ;
   or
     $else$ ;
-    <semantic_instruction_list> +> mElseInstructionList ;
+    <semantic_instruction_list> ? mElseInstructionList ;
   end select ;
   $end$ ;
   $match$ ;
   $;$ ;
+  outInstruction := [@matchInstruction new
+    !mMatchedVariableNameList
+    !mMatchInstructionBranchList
+    !mElseInstructionList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -485,8 +574,13 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <cast_instruction_branch> -> @castInstructionBranch :
+nonterminal <cast_instruction_branch> ?!@castInstructionBranchList ioCastInstructionBranchList ;
+
+#---------------------------------------------------------------------------*
+
+rule <cast_instruction_branch> ?!@castInstructionBranchList ioCastInstructionBranchList :
   $when$ ;
+  @bool mUseKindOfClass ;
   select
     $>=$ ;
     mUseKindOfClass := true ;
@@ -494,7 +588,9 @@ rule <cast_instruction_branch> -> @castInstructionBranch :
     $==$ ;
     mUseKindOfClass := false ;
   end select ;
-  $type_name$ ? mTypeName ;
+  $type_name$ ? @lstring mTypeName ;
+  @lstring mConstantVarName ; # Empty string if no constant var
+  @bool mConstantVarNameIsUnused ; # true if no constant var
   select
     $identifier$ ?mConstantVarName ;
     mConstantVarNameIsUnused := false ;
@@ -507,38 +603,63 @@ rule <cast_instruction_branch> -> @castInstructionBranch :
     mConstantVarNameIsUnused := true ;
   end select ;
   $do$ ;
-  <semantic_instruction_list> -> mCastBranchInstructionList ;
+  @semanticInstructionList mCastBranchInstructionList ;
+  <semantic_instruction_list> ? mCastBranchInstructionList ;
+  ioCastInstructionBranchList +=
+    !mUseKindOfClass
+    !mTypeName
+    !mConstantVarName
+    !mConstantVarNameIsUnused
+    !mCastBranchInstructionList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <cast_else_or_default> -> @elseForCastInstruction :
+nonterminal <cast_else_or_default> !@elseOrDefaultForCastInstruction outElseOrDefault ;
+
+#---------------------------------------------------------------------------*
+
+rule <cast_else_or_default> !@elseOrDefaultForCastInstruction outElseOrDefault
+:
   $else$ ;
-  <semantic_instruction_list> -> mElseInstructionList ;
+  @semanticInstructionList mElseInstructionList ;
+  <semantic_instruction_list> ? mElseInstructionList ;
+  outElseOrDefault := [@elseForCastInstruction new !mElseInstructionList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <cast_else_or_default> -> @defaultForCastInstruction :
+rule <cast_else_or_default> !@elseOrDefaultForCastInstruction outElseOrDefault :
   $default$ ;
   $error$ ;
-  <expression> -> mErrorLocationExpression ;
+  @semanticExpression mErrorLocationExpression ;
+  <expression> ? mErrorLocationExpression ;
+  outElseOrDefault := [@defaultForCastInstruction new !mErrorLocationExpression] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @castInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $cast$ ;
-  <expression> -> mExpression ;
+  @semanticExpression mExpression ;
+  <expression> ? mExpression ;
   $:$ ;
+  @castInstructionBranchList mCastInstructionBranchList [emptyList] ;
   repeat
-    <cast_instruction_branch> +> mCastInstructionBranchList ;
+    <cast_instruction_branch> !? mCastInstructionBranchList ;
   while
   end repeat ;
-  <cast_else_or_default> -> mElseOrDefault ;
+  @elseOrDefaultForCastInstruction mElseOrDefault ;
+  <cast_else_or_default> ? mElseOrDefault ;
   $end$ ;
   $cast$ ;
   $;$ ;
+  outInstruction := [@castInstruction new
+    !mExpression
+    !mCastInstructionBranchList
+    !mElseOrDefault
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -547,11 +668,17 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @addInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  @lstring mReceiverName ;
   $identifier$ ? mReceiverName ;
   $+=$ ;
-  <output_expression_list> -> mExpressionList ;
+  @outExpressionList mExpressionList ;
+  <output_expression_list> ? mExpressionList ;
   $;$ ;
+  outInstruction := [@addInstruction new
+    !mReceiverName
+    !mExpressionList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -560,11 +687,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @appendInstruction :
-  $identifier$ ? mTargetVariableName ;
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $identifier$ ? @lstring mTargetVariableName ;
   $.=$ ;
-  <expression> -> mSourceExpression ;
+  @semanticExpression mSourceExpression ;
+  <expression> ? mSourceExpression ;
   $;$ ;
+  outInstruction := [@appendInstruction new
+    !mTargetVariableName
+    !mSourceExpression
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -573,18 +705,28 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @loopInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $loop$ ;
-  <expression> -> mVariantExpression ;
+  @semanticExpression mVariantExpression ;
+  <expression> ? mVariantExpression ;
   $:$ ;
-  <semantic_instruction_list> -> mFirstInstructions ;
+  @semanticInstructionList mFirstInstructions ;
+  <semantic_instruction_list> ? mFirstInstructions ;
   $while$ ;
-  <expression> -> mLoopExpression ;
+  @semanticExpression mLoopExpression ;
+  <expression> ? mLoopExpression ;
   $do$ ;
-  <semantic_instruction_list> -> mSecondInstructions ;
+  @semanticInstructionList mSecondInstructions ;
+  <semantic_instruction_list> ? mSecondInstructions ;
   $end$ ;
   $loop$ ;
   $;$ ;
+  outInstruction := [@loopInstruction new
+    !mVariantExpression
+    !mFirstInstructions
+    !mLoopExpression
+    !mSecondInstructions
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -593,10 +735,14 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @messageInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $message$ ;
-  <expression> -> mExpression ;
+  @semanticExpression mExpression ;
+  <expression> ? mExpression ;
   $;$ ;
+  outInstruction := [@messageInstruction new
+    !mExpression
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -605,9 +751,9 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @logInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $log$ ;
-  mLoggedVariableList := [@lstringlist emptyList] ;
+  @lstringlist mLoggedVariableList [emptyList] ;
   repeat
     @lstring loggedVariableName ;
     $identifier$ ? loggedVariableName ;
@@ -616,6 +762,7 @@ rule <semantic_instruction> !@semanticInstruction outInstruction -> @logInstruct
     $,$ ;
   end repeat ;
   $;$ ;
+  outInstruction := [@logInstruction new !mLoggedVariableList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -624,9 +771,11 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @grammarInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $grammar$ ;
+  @lstring mGrammarComponentName ;
   $identifier$ ?mGrammarComponentName ;
+  @lstring mLabelName ;
   select
     mLabelName := [@lstring new !"" !here] ;
   or
@@ -634,8 +783,11 @@ rule <semantic_instruction> !@semanticInstruction outInstruction -> @grammarInst
     $identifier$ ?mLabelName ;
   end select ;
   $in$ ;
-  <expression> -> mSourceFileExpression ;
-  <actual_parameter_list> -> mActualParameterList ;
+  @semanticExpression mSourceFileExpression ;
+  <expression> ? mSourceFileExpression ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
+  @lstring mReturnedModelName ; # Empty string if no returned model
   select
     mReturnedModelName := [@lstring new !"" !here] ;
   or
@@ -643,6 +795,13 @@ rule <semantic_instruction> !@semanticInstruction outInstruction -> @grammarInst
     $identifier$ ? mReturnedModelName ;
   end select ;
   $;$ ;
+  outInstruction := [@grammarInstruction new
+    !mGrammarComponentName
+    !mLabelName
+    !mSourceFileExpression
+    !mActualParameterList
+    !mReturnedModelName
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -651,13 +810,19 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @treewalkingInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $treewalking$ ;
-  $identifier$ ? mTreewalkingComponentName ;
+  $identifier$ ? @lstring mTreewalkingComponentName ;
   $on$ ;
-  $identifier$ ? mModelName ;
-  <actual_parameter_list> -> mActualParameterList ;
+  $identifier$ ? @lstring mModelName ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
   $;$ ;
+  outInstruction := [@treewalkingInstruction new
+    !mTreewalkingComponentName
+    !mModelName
+    !mActualParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -666,13 +831,19 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstruction outInstruction -> @typeMethodInstruction :
+rule <semantic_instruction> !@semanticInstruction outInstruction :
   $[$ ;
-  $type_name$ ? mTypeName ;
-  $identifier$ ? mMethodName ;
-  <actual_parameter_list> -> mActualParameterList ;
+  $type_name$ ? @lstring mTypeName ;
+  $identifier$ ? @lstring mMethodName ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
+  outInstruction := [@typeMethodInstruction new
+    !mTypeName
+    !mMethodName
+    !mActualParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
