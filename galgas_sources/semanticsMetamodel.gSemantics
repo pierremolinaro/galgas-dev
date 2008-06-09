@@ -26,12 +26,6 @@ import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-list @semanticDeclarationList {
-  @semanticDeclaration mSemanticDeclaration ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
   @lstringlist mImportedComponentFileNameList ;

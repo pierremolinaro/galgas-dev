@@ -19,42 +19,46 @@
 
 syntax syntaxModelBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
-nonterminal <syntax_component_start_symbol> -> @syntaxComponentRoot ;
+nonterminal <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoot ;
 
-nonterminal <nonterminal_declaration> -> @nonterminalDeclaration ;
+nonterminal <nonterminal_declaration> ?!@nonterminalDeclarationList ioNonterminalDeclarationList ;
 
-nonterminal <syntax_rule_declaration> -> @syntaxRule ;
+nonterminal <syntax_rule_declaration> ?!@syntaxRuleList ioRuleList ;
 
-nonterminal <syntax_instruction_list> -> @syntaxInstructions ;
+nonterminal <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList ;
 
-nonterminal <semantic_instruction> -> @semanticInstruction ;
+nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
 
-nonterminal <syntax_instruction> -> @syntaxInstruction ;
+nonterminal <syntax_instruction> !@syntaxInstruction outInstruction ;
 
-nonterminal <formal_parameter_list> -> @formalParameters ;
+nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList ;
 
-nonterminal <actual_parameter_list> -> @actualParameters ;
+nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
 
-nonterminal <nonterminal_label_declaration> ??@lstring inLabelName -> @nonTerminalLabel ;
+nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
-nonterminal <syntax_rule_label> ??@lstring inLabelName -> @syntaxRuleLabel ;
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    C O M P O N E N T                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
-nonterminal <semantic_declaration> -> @semanticDeclaration ;
-
-#---------------------------------------------------------------------------*
-
-rule <syntax_component_start_symbol> -> @syntaxComponentRoot :
+rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoot :
   $syntax$ ;
 #--- Semantics Component Name
-  $identifier$ ? mSyntaxComponentName ;
+  $identifier$ ? @lstring mSyntaxComponentName ;
   $:$ ;
 #--- Loop on import declarations
   repeat
@@ -77,47 +81,73 @@ rule <syntax_component_start_symbol> -> @syntaxComponentRoot :
     $;$ ;
   end repeat ;
 #--- Loop on declarations
+  @nonterminalDeclarationList mNonterminalDeclarationList [emptyList] ;
+  @syntaxRuleList mRuleList [emptyList] ;
+  @semanticDeclarationList mSemanticDeclarationList [emptyList] ;
   repeat
   while
-    <nonterminal_declaration> +> mNonterminalDeclarations ;
+    <nonterminal_declaration> !? mNonterminalDeclarationList ;
   while
-    <syntax_rule_declaration> +> mRules ;
+    <syntax_rule_declaration> !? mRuleList ;
   while
-    <semantic_declaration> +> mSemanticDeclarations ;
+    @semanticDeclaration semanticDeclaration ;
+    <semantic_declaration> ? semanticDeclaration ;
+    mSemanticDeclarationList += !semanticDeclaration ;
   end repeat ;
 #--- end
   $end$ ;
   $syntax$ ;
   $;$ ;
+  outSyntaxComponentRoot := [@syntaxComponentRoot new
+    !mSyntaxComponentName
+    !mNonterminalDeclarationList
+    !mRuleList
+    !mSemanticDeclarationList
+  ] ;
 end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      N O N T E R M I N A L    D E C L A R A T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelList ioNonTerminalLabelList ;
 
 #---------------------------------------------------------------------------*
 
-rule <nonterminal_label_declaration> ??@lstring inLabelName -> @nonTerminalLabel :
-  mLabelName := inLabelName ;
-  <formal_parameter_list> -> mFormalParameters ;
+rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelList ioNonTerminalLabelList :
+  @formalParameterList mFormalParameters ;
+  <formal_parameter_list> ? mFormalParameters ;
+  @lstring mReturnedEntityName ; # Empty string if no returned entity
   select
     mReturnedEntityName := [@lstring new !"" !here] ;
   or
     $->$ ;
     $type_name$ ? mReturnedEntityName ;
   end select ;
+  ioNonTerminalLabelList +=
+    !inLabelName
+    !mFormalParameters
+    !mReturnedEntityName # Empty string if no returned entity
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <nonterminal_declaration> -> @nonterminalDeclaration :
-  mHasParseLabel := false ;
+rule <nonterminal_declaration> ?!@nonterminalDeclarationList ioNonterminalDeclarationList :
+  @bool mHasParseLabel := false ;
   $nonterminal$ ;
-  $non_terminal_symbol$ ?mNonterminalName ;
-  <nonterminal_label_declaration> ![@lstring new !"" !here] +> mLabels ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName ;
+  @nonTerminalLabelList mLabels [emptyList] ;
+  <nonterminal_label_declaration> ![@lstring new !"" !here] !?mLabels ;
   repeat
   while
     $label$ ;
     select
       @lstring labelName ;
       $identifier$ ?labelName ;
-      <nonterminal_label_declaration> !labelName +> mLabels ;
+      <nonterminal_label_declaration> !labelName !?mLabels ;
     or
       $parse$ ;
       if mHasParseLabel then
@@ -127,13 +157,34 @@ rule <nonterminal_declaration> -> @nonterminalDeclaration :
     end select ;
   end repeat ;
   $;$ ;
+  ioNonterminalDeclarationList +=
+    !mNonterminalName
+    !mLabels
+    !mHasParseLabel
+  ;
 end rule ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    R U L E    D E C L A R A T I O N                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
-rule <syntax_rule_label> ??@lstring inLabelName -> @syntaxRuleLabel :
-  mLabelName := inLabelName ;
-  <formal_parameter_list> -> mFormalParameters ;
+nonterminal <syntax_rule_label>
+  ??@lstring inLabelName
+  ?!@syntaxRuleLabelList ioLabelList
+;
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_rule_label>
+  ??@lstring inLabelName
+  ?!@syntaxRuleLabelList ioLabelList
+:
+  @formalParameterList mFormalParameters ;
+  <formal_parameter_list> ? mFormalParameters ;
+  @lstring mReturnedEntityName ; # Empty string if no returned entity
+  @lstring mReturnedVariableName ;  # Empty string if no returned variable
   select
     mReturnedEntityName := [@lstring new !"" !here] ;
     mReturnedVariableName := [@lstring new !"" !here] ;
@@ -147,17 +198,26 @@ rule <syntax_rule_label> ??@lstring inLabelName -> @syntaxRuleLabel :
     end select ;
   end select ;
   $:$ ;
-  <syntax_instruction_list> -> mSyntaxInstructionList ;
+  @syntaxInstructionList mSyntaxInstructionList ;
+  <syntax_instruction_list> ? mSyntaxInstructionList ;
+  ioLabelList +=
+    !inLabelName
+    !mFormalParameters
+    !mReturnedEntityName # Empty string if no returned entity
+    !mReturnedVariableName  # Empty string if no returned variable
+    !mSyntaxInstructionList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <syntax_rule_declaration> -> @syntaxRule :
+rule <syntax_rule_declaration> ?!@syntaxRuleList ioRuleList :
   $rule$ ;
-  $non_terminal_symbol$ ? mNonterminalName ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName ;
   @lstring labelName [new !"" !here] ;
+  @syntaxRuleLabelList mLabelList [emptyList] ;
   repeat
-    <syntax_rule_label> ! labelName +> mLabelList ;
+    <syntax_rule_label> !labelName !? mLabelList ;
   while
     $label$ ;
     $identifier$ ?labelName ;
@@ -165,16 +225,29 @@ rule <syntax_rule_declaration> -> @syntaxRule :
   $end$ ;
   $rule$ ;
   $;$ ;
+  ioRuleList +=
+    !mNonterminalName
+    !mLabelList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#   S Y N T A X    I N S T R U C T I O N    L I S T                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
-rule <syntax_instruction_list> -> @syntaxInstructions :
+rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList :
+  outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
   repeat
   while
-    <semantic_instruction> +> mInstruction ;
+    @semanticInstruction instruction ;
+    <semantic_instruction> ? instruction ;
+    outSyntaxInstructionList += !instruction ;
   while
-    <syntax_instruction> +> mInstruction ;
+    @syntaxInstruction instruction ;
+    <syntax_instruction> ? instruction ;
+    outSyntaxInstructionList += !instruction ;
   end repeat ;
 end rule ;
 
@@ -184,8 +257,9 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> -> @nonterminalCallInstruction :
-  $non_terminal_symbol$ ? mNonterminalName ;
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
+  $non_terminal_symbol$ ? @lstring mNonterminalName ;
+  @lstring mLabelName ; # No label : empty string
   select
     mLabelName := [@lstring new !"" !here] ;
   or
@@ -194,7 +268,10 @@ rule <syntax_instruction> -> @nonterminalCallInstruction :
   or
     $identifier$ ? mLabelName ;
   end select ;
-  <actual_parameter_list> -> mActualParameterList ;
+  @actualParameterList mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList ;
+  @lstring mReturnedValueTargetVariableName ; # Empty String if no returned value
+  @bool mReturnedValueIsAssigned ; # if false, is appended
   select
     mReturnedValueTargetVariableName := [@lstring new !"" !here] ;
     mReturnedValueIsAssigned := true ; # Any Value
@@ -208,6 +285,13 @@ rule <syntax_instruction> -> @nonterminalCallInstruction :
     mReturnedValueIsAssigned := false ;
   end select ;
   $;$ ;
+  outInstruction := [@nonterminalCallInstruction new
+    !mNonterminalName
+    !mLabelName
+    !mActualParameterList
+    !mReturnedValueTargetVariableName
+    !mReturnedValueIsAssigned
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -216,9 +300,9 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> -> @terminalCheckInstruction :
-  $terminal$ ? mTerminalName ;
-  mReturnedValueTargetVariableNames := [@lstringlist emptyList] ;
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
+  $terminal$ ? @lstring mTerminalName ;
+  @lstringlist mReturnedValueTargetVariableNames [emptyList] ;
   repeat
   while
     $?$ ;
@@ -232,6 +316,10 @@ rule <syntax_instruction> -> @terminalCheckInstruction :
     end select ;
   end repeat ;
   $;$ ;
+  outInstruction := [@terminalCheckInstruction new
+    !mTerminalName
+    !mReturnedValueTargetVariableNames
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -240,17 +328,25 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> -> @repeatInstruction :
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $repeat$ ;
-  <syntax_instruction_list> -> mRepeatedInstructionList ;
+  @syntaxInstructionList mRepeatedInstructionList ;
+  <syntax_instruction_list> ? mRepeatedInstructionList ;
+  @listOfSyntaxInstructionList mRepeatBranchList [emptyList] ;
   repeat
     $while$ ;
-    <syntax_instruction_list> +> mRepeatBranchList ;
+    @syntaxInstructionList mInstructionList ;
+    <syntax_instruction_list> ? mInstructionList ;
+    mRepeatBranchList += ! mInstructionList ;
   while
   end repeat ;
   $end$ ;
   $repeat$ ;
   $;$ ;
+  outInstruction := [@repeatInstruction new
+    !mRepeatedInstructionList
+    !mRepeatBranchList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -259,17 +355,24 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> -> @selectInstruction :
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $select$ ;
-  <syntax_instruction_list> +> mSelectBranchList ;
+  @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
+  @syntaxInstructionList instructionList ;
+  <syntax_instruction_list> ? instructionList ;
+  mSelectBranchList += !instructionList ;
   repeat
     $or$ ;
-    <syntax_instruction_list> +> mSelectBranchList ;
+    <syntax_instruction_list> ? instructionList ;
+    mSelectBranchList += !instructionList ;
   while
   end repeat ;
   $end$ ;
   $select$ ;
   $;$ ;
+  outInstruction := [@selectInstruction new
+    !mSelectBranchList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -278,18 +381,25 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> -> @parseDoInstruction :
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $parse$ ;
   $do$ ;
-  <syntax_instruction_list> +> mParseDoBranchList ;
+  @listOfSyntaxInstructionList mParseDoBranchList [emptyList] ;
+  @syntaxInstructionList instructionList ;
+  <syntax_instruction_list> ? instructionList ;
+  mParseDoBranchList += !instructionList ;
   repeat
     $rewind$ ;
-    <syntax_instruction_list> +> mParseDoBranchList ;
+    <syntax_instruction_list> ? instructionList ;
+    mParseDoBranchList += !instructionList ;
   while
   end repeat ;
   $end$ ;
   $parse$ ;
   $;$ ;
+  outInstruction := [@parseDoInstruction new
+    !mParseDoBranchList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -298,22 +408,32 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> -> @blockInstruction :
+rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $block$ ;
-  $identifier$ ? mReceiverVariable ;
+  $identifier$ ? @lstring mReceiverVariable ;
   $.$ ;
-  $identifier$ ? mBlockMethodName ;
+  $identifier$ ? @lstring mBlockMethodName ;
   $($ ;
-  <actual_parameter_list> -> mPrologActualParameterList ;
+  @actualParameterList mPrologActualParameterList ;
+  <actual_parameter_list> ? mPrologActualParameterList ;
   $)$ ;
   $:$ ;
-  <syntax_instruction_list> -> mInstructionList ;
+  @syntaxInstructionList mInstructionList ;
+  <syntax_instruction_list> ? mInstructionList ;
   $end$ ;
   $block$ ;
   $($ ;
-  <actual_parameter_list> -> mEpilogActualParameterList ;
+  @actualParameterList mEpilogActualParameterList ;
+  <actual_parameter_list> ? mEpilogActualParameterList ;
   $)$ ;
   $;$ ;
+  outInstruction := [@blockInstruction new
+    !mReceiverVariable
+    !mBlockMethodName
+    !mPrologActualParameterList
+    !mInstructionList
+    !mEpilogActualParameterList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

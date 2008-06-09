@@ -31,21 +31,17 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
   import semantics guiCompilation in "guiCompilation.gSemantics" ;
 
-  import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
   import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
   import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
   import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
-  import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
   import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
-  import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -92,16 +88,6 @@ message "a GALGAS option source file"
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
   compileOptionComponent !inSourceFile !outputDirectory ;
-}
-
-#---------------------------------------------------------------------------*
-
-when . "gMetamodel"
-message "a GALGAS metamodel source file"
-??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileMetamodelComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
@@ -162,16 +148,6 @@ message "a GALGAS program source file"
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
   compileProgramComponent !inSourceFile !outputDirectory ;
-}
-
-#---------------------------------------------------------------------------*
-
-when . "gTreewalking"
-message "a GALGAS treewalking source file"
-??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileTreewalkingComponent !inSourceFile !outputDirectory ;
 }
 
 #---------------------------------------------------------------------------*
