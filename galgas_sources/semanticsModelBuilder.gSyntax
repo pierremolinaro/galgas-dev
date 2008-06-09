@@ -47,6 +47,8 @@ nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 
 nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
+nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList ;
+
 #---------------------------------------------------------------------------*
 
 nonterminal <obsolete_declaration> ;
@@ -497,8 +499,13 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <sortedlist_sort_descriptor> -> @sortedListSortDescriptor :
-  $identifier$ ? mSortedAttributeName ;
+nonterminal <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorList ioSortedListSortDescriptorList ;
+
+#---------------------------------------------------------------------------*
+
+rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorList ioSortedListSortDescriptorList :
+  $identifier$ ? @lstring mSortedAttributeName ;
+  @bool mAscending ;
   select
     $<$ ;
     mAscending := true ;
@@ -506,26 +513,34 @@ rule <sortedlist_sort_descriptor> -> @sortedListSortDescriptor :
     $>$ ;
     mAscending := false ;
   end select ;
+  ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @sortedListDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $sortedlist$ ;
-  $type_name$ ? mSortedListTypeName ;
+  $type_name$ ?@lstring mSortedListTypeName ;
   ${$ ;
+  @attributeInCollectionList mAttributeList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
   ${$ ;
+  @sortedListSortDescriptorList mSortDescriptorList[emptyList] ;
   repeat
     <sortedlist_sort_descriptor> !? mSortDescriptorList ;
   while
     $,$ ;
   end repeat ;
   $}$ ;
+  outSemanticDeclaration := [@sortedListDeclaration new
+    !mSortedListTypeName
+    !mAttributeList
+    !mSortDescriptorList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -534,12 +549,130 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @enumDeclaration :
-  $enum$ ;
-  $type_name$ ? mEnumTypeName ;
+nonterminal <enum_message_declaration> ?!@enumMessageList ioEnumMessageList ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_message_declaration> ?!@enumMessageList ioEnumMessageList :
+  $reader$ ;
+  $identifier$ ?@lstring mEnumMessageName ;
   ${$ ;
-  mConstructorConstantList := [@lstringlist emptyList] ;
-  mConstantList := [@lstringlist emptyList] ;
+  @enumMessageAssociationList mMessageAssociationList [emptyList] ;
+  repeat
+    $identifier$ ? @lstring mConstantName ;
+    $->$ ;
+    $literal_string$ ? @lstring mMessage ;
+    $;$ ;
+    mMessageAssociationList += !mConstantName !mMessage ;
+  while
+  end repeat ;
+  $}$ ;
+  ioEnumMessageList +=
+    !mEnumMessageName
+    !mMessageAssociationList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <enum_case_message> !@enumCaseMessage outCaseMessage ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_case_message> !@enumCaseMessage outCaseMessage :
+  select
+    outCaseMessage := [@enumCaseMessage new] ;
+  or
+    $error$ ;
+    $identifier$ ? @lstring mLocationParameterName ;
+    $:$ ;
+    $literal_string$ ? @lstring mMessage ;
+    outCaseMessage := [@enumCaseErrorMessage new !mLocationParameterName !mMessage] ;
+  or
+    $warning$ ;
+    $identifier$ ? @lstring mLocationParameterName ;
+    $:$ ;
+    $literal_string$ ?@lstring mMessage ;
+    outCaseMessage := [@enumCaseWarningMessage new !mLocationParameterName !mMessage] ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <enum_modifier> ?!@enumModifierList ioEnumModifierList ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_modifier> ?!@enumModifierList ioEnumModifierList :
+  $modifier$ ;
+  $identifier$ ? @lstring mModifierName ;
+  $??$ ;
+  $type_name$ ? @lstring typeName ;
+  if [typeName string] != "location" then
+    error typeName: "only '@location' type is allowed here" ;
+  end if ;
+  $identifier$ ? @lstring mLocationFormalArgumentName ;
+  ${$ ;
+  @enumModifierCaseList mEnumModifierCaseList [emptyList] ;
+  repeat
+    $identifier$ ? @lstring mSourceConstantName ;
+    $->$ ;
+    $identifier$ ?@lstring mTargetConstantName ;
+    @enumCaseMessage mEnumModifierCaseMessage ;
+    <enum_case_message> ? mEnumModifierCaseMessage ;
+    $;$ ;
+    mEnumModifierCaseList += !mSourceConstantName !mTargetConstantName !mEnumModifierCaseMessage ;
+  while
+  end repeat ;
+  $}$ ;
+  ioEnumModifierList +=
+    !mModifierName
+    !mLocationFormalArgumentName
+    !mEnumModifierCaseList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <enum_method> ?!@enumMethodList ioEnumMethodList ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_method> ?!@enumMethodList ioEnumMethodList :
+  $method$ ;
+  $identifier$ ? @lstring mMethodName ;
+  $??$ ;
+  $type_name$ ? @lstring typeName ;
+  if [typeName string] != "location" then
+    error typeName: "only '@location' type is allowed here" ;
+  end if ;
+  $identifier$ ? @lstring mLocationFormalArgumentName ;
+  ${$ ;
+  @enumMethodCaseList mEnumMethodCaseList [emptyList] ;
+  repeat
+    $identifier$ ? @lstring mConstantName ;
+    @enumCaseMessage caseMessage ;
+    <enum_case_message> ? caseMessage ;
+    $;$ ;
+    mEnumMethodCaseList += !mConstantName !caseMessage ;
+  while
+  end repeat ;
+  $}$ ;
+  ioEnumMethodList +=
+    !mMethodName
+    !mLocationFormalArgumentName
+    !mEnumMethodCaseList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  $enum$ ;
+  $type_name$ ? @lstring mEnumTypeName ;
+  ${$ ;
+  @lstringlist mConstructorConstantList [emptyList] ;
+  @lstringlist mConstantList [emptyList] ;
   repeat
     select
       repeat
@@ -564,6 +697,9 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @enu
   end repeat ;
   $}$ ;
   ${$ ;
+  @enumMessageList mEnumMessageList [emptyList] ;
+  @enumModifierList mEnumModifierList [emptyList] ;
+  @enumMethodList mEnumMethodList [emptyList] ;
   repeat
   while
     <enum_message_declaration> !? mEnumMessageList ;
@@ -573,111 +709,14 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @enu
     <enum_method> !? mEnumMethodList ;
   end repeat ;
   $}$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_message_declaration> -> @enumMessage :
-  $reader$ ;
-  $identifier$ ? mEnumMessageName ;
-  ${$ ;
-  repeat
-    <enum_message_association> !? mMessageAssociationList ;
-  while
-  end repeat ;
-  $}$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_message_association> -> @enumMessageAssociation :
-  $identifier$ ? mConstantName ;
-  $->$ ;
-  $literal_string$ ? mMessage ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_modifier> -> @enumModifier :
-  $modifier$ ;
-  $identifier$ ? mModifierName ;
-  $??$ ;
-  @lstring typeName ;
-  $type_name$ ? typeName ;
-  if [typeName string] != "location" then
-    error typeName: "only '@location' type is allowed here" ;
-  end if ;
-  @lstring mFormalParameterName ;
-  $identifier$ ? mLocationFormalArgumentName ;
-  ${$ ;
-  repeat
-    <enum_modifier_case> !? mEnumModifierCaseList ;
-  while
-  end repeat ;
-  $}$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_modifier_case> -> @enumModifierCase :
-  $identifier$ ? mSourceConstantName ;
-  $->$ ;
-  $identifier$ ? mTargetConstantName ;
-  <enum_case_message> -> mEnumModifierCaseMessage ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_case_message> -> @enumCaseMessage :
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_case_message> -> @enumCaseErrorMessage :
-  $error$ ;
-  $identifier$ ? mLocationParameterName ;
-  $:$ ;
-  $literal_string$ ? mMessage ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_case_message> -> @enumCaseWarningMessage :
-  $warning$ ;
-  $identifier$ ? mLocationParameterName ;
-  $:$ ;
-  $literal_string$ ? mMessage ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_method> -> @enumMethod :
-  $method$ ;
-  $identifier$ ? mMethodName ;
-  $??$ ;
-  @lstring typeName ;
-  $type_name$ ? typeName ;
-  if [typeName string] != "location" then
-    error typeName: "only '@location' type is allowed here" ;
-  end if ;
-  @lstring mFormalParameterName ;
-  $identifier$ ? mLocationFormalArgumentName ;
-  ${$ ;
-  repeat
-    <enum_method_case> !? mEnumMethodCaseList ;
-  while
-  end repeat ;
-  $}$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <enum_method_case> -> @enumMethodCase :
-  $identifier$ ? mConstantName ;
-  <enum_case_message> -> mEnumMethodCaseMessage ;
-  $;$ ;
+  outSemanticDeclaration := [@enumDeclaration new
+    !mEnumTypeName
+    !mConstructorConstantList
+    !mConstantList
+    !mEnumMessageList
+    !mEnumModifierList
+    !mEnumMethodList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -686,15 +725,13 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <filewrapper_template> -> @filewrapperTemplate ;
-
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @filewrapperDeclaration :
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $filewrapper$ ;
-  $identifier$ ? mFilewrapperName ;
+  $identifier$ ? @lstring mFilewrapperName ;
   $in$ ;
-  $literal_string$ ? mFilewrapperPath ;
+  $literal_string$ ? @lstring mFilewrapperPath ;
   ${$ ;
-  mFilewrapperExtensionList := [@lstringlist emptyList] ;
+  @lstringlist mFilewrapperExtensionList [emptyList] ;
   repeat
     @lstring extension ;
     $literal_string$ ? extension ;
@@ -704,21 +741,28 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration -> @fil
   end repeat ;
   $}$ ;
   ${$ ;
+  @filewrapperTemplateList mFilewrapperTemplateList [emptyList] ;
   repeat
   while
-    <filewrapper_template> !? mFilewrapperTemplateList ;
+    $template$ ;
+    $identifier$ ? @lstring mFilewrapperTemplateName ;
+    $literal_string$ ? @lstring mFilewrapperTemplatePath ;
+    @formalInputParameterList mFilewrapperTemplateFormalInputParameters ;
+    <formal_input_parameter_list> ? mFilewrapperTemplateFormalInputParameters ;
+    $;$ ;
+    mFilewrapperTemplateList +=
+      !mFilewrapperTemplateName
+      !mFilewrapperTemplatePath
+      !mFilewrapperTemplateFormalInputParameters
+    ;
   end repeat ;
   $}$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <filewrapper_template> -> @filewrapperTemplate :
-  $template$ ;
-  $identifier$ ? mFilewrapperTemplateName ;
-  $literal_string$ ? mFilewrapperTemplatePath ;
-  <formal_input_parameter_list> -> mFilewrapperTemplateFormalInputParameters ;
-  $;$ ;
+  outSemanticDeclaration := [@filewrapperDeclaration new
+    !mFilewrapperName
+    !mFilewrapperPath
+    !mFilewrapperExtensionList
+    !mFilewrapperTemplateList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

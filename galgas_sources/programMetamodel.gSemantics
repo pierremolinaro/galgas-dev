@@ -29,16 +29,16 @@ list @programRuleList {
   @lstring mSourceFileExtension ;
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
-  @semanticInstructions mInstructionList ;
+  @semanticInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @programComponentRoot {
+class @programComponentRoot {
   @lstring mProgramName ;
   @lstring mVersionString ;
-  @semanticInstructions mPrologueInstructionList ;
-  @semanticInstructions mEpilogueInstructionList ;
+  @semanticInstructionList mPrologueInstructionList ;
+  @semanticInstructionList mEpilogueInstructionList ;
   @programRuleList mProgramRules ;
   @semanticDeclarationList mSemanticDeclarations ;
 }

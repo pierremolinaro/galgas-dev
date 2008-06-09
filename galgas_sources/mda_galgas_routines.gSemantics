@@ -24,25 +24,19 @@ semantics mda_galgas_routines :
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
   import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
-
-  import metamodel metamodelMetamodel in "metamodelMetamodel.gMetamodel" ;
-  import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
-  import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
-  import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
-  import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
-  import metamodel treewalkingMetamodel in "treewalkingMetamodel.gMetamodel" ;
+  import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+  import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
+  import semantics programMetamodel in "programMetamodel.gSemantics" ;
 
   import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
-  import treewalking buildMapsForMetamodel in "buildMapsForMetamodel.gTreewalking" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
-  import grammar metamodelLL1grammar in "metamodelLL1grammar.gGrammar" ;
   import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
-  import grammar treewalkingSLRgrammar in "treewalkingSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -53,151 +47,6 @@ routine getOutputDirectory
 :
   outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
   outOuputDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileMetamodelComponent
-  ??@lstring inSourceFile
-  ??@string inOutputDirectory
-:
-  @string metamodelComponentName := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  @metamodelComponentRoot metamodelComponentRoot ;
-  @location endOfSourceFile ;
-  grammar metamodelLL1grammar in inSourceFile ?endOfSourceFile -> metamodelComponentRoot ;
-#--- Analyze imported files
-  @typeMap typeMap ;
-  constructBuiltinTypeMap ?typeMap ;
-  @stringset importedComponentSet [emptySet] ;
-  @routineMap routineMap [emptyMap] ;
-  @typeList typeList ;
-  treewalking buildMapsForMetamodel on metamodelComponentRoot
-    ![inSourceFile stringByDeletingLastPathComponent]
-    !endOfSourceFile
-    !?importedComponentSet
-    !?typeMap
-    !?routineMap
-    ?typeList
-  ;
-#--- Warn for undefined types
-  if [typeMap unsolvedIndexCount] > 0 then
-    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
-    if [typeMap unsolvedIndexCount] == 1 then
-      m := "1 type is not defined:" ;
-    else
-      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
-    end if ;
-    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
-      m .= "\n  - @" . kKey ;
-    end foreach ;
-    error endOfSourceFile : m ;
-  end if ;
-#--- Checks inheritance has no circularity
-  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
-    [kType checkNoCircularity ![typeMap count]] ;
-  end foreach ;
-#--- If no error, build type sorted list for C++ code generation
-  @sortedTypeList sortedTypeList [emptySortedList] ;
-  if [@uint errorCount] == 0 then
-    foreach typeList (@ACGalgasType kType) do
-      [kType enterInSortedList !?sortedTypeList !typeMap] ;
-    end foreach ;
-  end if ;
-#--- If no error, build header file
-  if [@uint errorCount] == 0 then
-  #--- User Zone 2
-    @string generatedUserZone2 := "" ;
-    generatedUserZone2 .=
-      "#ifndef " . metamodelComponentName . "_METAMODEL_DEFINED\n"
-    . "#define " . metamodelComponentName . "_METAMODEL_DEFINED\n"
-    . "\n"
-    . "#include <string.h>\n"
-    . "\n"
-    . [@string CppLineComment]
-    . "#include \"galgas/predefined_types.h\"\n" ;
-    foreach importedComponentSet (@string kComponentName) do
-      generatedUserZone2 .= "#include \"" . kComponentName . ".h\"\n" ;
-    end foreach ;
-    generatedUserZone2 .= "\n" ;
-  #--- Predeclarations
-    @string generatedUserZone3 := "" ;
-    [!?generatedUserZone3 setCapacity !50000] ;
-    generatedUserZone3 .=
-      [@string CppLineComment]
-    . "sint32 _metamodel_index_for_" . metamodelComponentName . " (void) ;\n\n"
-    . [@string CppTitleComment !"Class Predeclarations"] ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
-      [kType generatePredeclarationInHeader !?generatedUserZone3] ;
-    end foreach ;
-    generatedUserZone3 .= "\n" ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
-      [kType generateDeclaration_1_inHeader !?generatedUserZone3] ;
-    end foreach ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
-      [kType generateDeclaration_2_inHeader !?generatedUserZone3] ;
-    end foreach ;
-    generatedUserZone3 .= [@string CppLineComment]
-    . "#endif\n" ;
-  #--- Generate header file
-    [@string generateFile
-      !inOutputDirectory
-      !metamodelComponentName . ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !generatedUserZone2
-      !"\n\n" # Defaut user zone2
-      !generatedUserZone3
-    ] ;
-  end if ;
-#--- If no error, build implementation file
-  if [@uint errorCount] == 0 then
-  #--- Zone 2
-    @string generatedCode2 := "" ;
-    generatedCode2 .=
-      [@string CppLineComment]
-    . "#include \"version_libpm.h\"\n"
-    . "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
-    . "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
-    . "#endif\n\n"
-    . "#include \"" . metamodelComponentName . ".h\"\n"
-    . "#include \"utilities/MF_MemoryControl.h\"\n\n"
-    . [@string CppLineComment]
-    . "#include <typeinfo>\n\n"
-    . [@string CppLineComment]
-    . "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-    . "  #define SOURCE_FILE_AT_LINE(line) \"" . metamodelComponentName . ".gMetamodel\", line\n"
-    . "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
-    . "#else\n"
-    . "  #define SOURCE_FILE_AT_LINE(line)\n"
-    . "  #define COMMA_SOURCE_FILE_AT_LINE(line)\n"
-    . "#endif\n\n"
-    . [@string CppLineComment] ;
-  #--- Zone 3
-    @string generatedCode3 := "" ;
-    [!?generatedCode3 setCapacity !500000] ;
-    generatedCode3 .=
-      [@string CppTitleComment !"Metamodel Management"]
-    . "static C_MetamodelManager gMetamodelManager (\"" . metamodelComponentName . "\", "
-    . [[sortedTypeList length] string] . ") ;\n\n"
-    . [@string CppLineComment]
-    . "sint32 _metamodel_index_for_" . metamodelComponentName . " (void) {\n"
-    . "  return gMetamodelManager.mMetamodelComponentIndex ;\n"
-    . "}\n\n" ;
-    foreach sortedTypeList (@ACGalgasType kType @string kSortString) do
-      [kType generateImplementation !?generatedCode3] ;
-    end foreach ;
-    generatedCode3 .= [@string CppLineComment] ;
-  #--- Generate implementation file
-    [@string generateFile
-      !inOutputDirectory
-      !metamodelComponentName . ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !generatedCode2
-      !"\n\n" # Defaut user zone2
-      !generatedCode3
-    ] ;
-  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -289,16 +138,6 @@ routine compileProgramComponent
 :
   @programComponentRoot programComponentRoot ;
   grammar programSLRgrammar in inSourceFile -> programComponentRoot ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileTreewalkingComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-  @treewalkingComponentRoot treewalkingComponentRoot ;
-  grammar treewalkingSLRgrammar in inSourceFile -> treewalkingComponentRoot ;
 end routine ;
 
 #---------------------------------------------------------------------------*

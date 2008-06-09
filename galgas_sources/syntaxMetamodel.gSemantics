@@ -17,59 +17,50 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-metamodel syntaxMetamodel extends instructionMetamodel root @syntaxComponentRoot :
+semantics syntaxMetamodel :
 
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-entity @syntaxComponentRoot {
-  @lstring mSyntaxComponentName ;
-  @nonterminalDeclaration [] mNonterminalDeclarations ;
-  @syntaxRule [] mRules ;
-  @semanticDeclaration [] mSemanticDeclarations ;
+list @syntaxInstructionList {
+  @syntaxInstruction mInstruction ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @syntaxInstructions {
-  @syntaxInstruction [] mInstruction ;
-}
-
-#---------------------------------------------------------------------------*
-
-entity @nonTerminalLabel {
+list @nonTerminalLabelList {
   @lstring mLabelName ;
-  @formalParameters mFormalParameters ;
+  @formalParameterList mFormalParameters ;
   @lstring mReturnedEntityName ; # Empty string if no returned entity
 }
 
 #---------------------------------------------------------------------------*
 
-entity @nonterminalDeclaration {
+list @nonterminalDeclarationList {
   @lstring mNonterminalName ;
-  @nonTerminalLabel [1, *] mLabels ;
+  @nonTerminalLabelList mLabels ; # [1, *]
   @bool mHasParseLabel ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @syntaxRuleLabel {
+list @syntaxRuleLabelList {
   @lstring mLabelName ;
-  @formalParameters mFormalParameters ;
+  @formalParameterList mFormalParameters ;
   @lstring mReturnedEntityName ; # Empty string if no returned entity
   @lstring mReturnedVariableName ;  # Empty string if no returned variable
-  @syntaxInstructions mSyntaxInstructionList ;
+  @syntaxInstructionList mSyntaxInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-entity @syntaxRule {
+list @syntaxRuleList {
   @lstring mNonterminalName ;
-  @syntaxRuleLabel [] mLabelList ;
+  @syntaxRuleLabelList mLabelList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -78,10 +69,10 @@ entity @syntaxRule {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @nonterminalCallInstruction extends @syntaxInstruction {
+class @nonterminalCallInstruction extends @syntaxInstruction {
   @lstring mNonterminalName ;
   @lstring mLabelName ; # No label : empty string
-  @actualParameters mActualParameterList ;
+  @actualParameterList mActualParameterList ;
   @lstring mReturnedValueTargetVariableName ; # Empty String if no returned value
   @bool mReturnedValueIsAssigned ; # if false, is appended
 }
@@ -92,7 +83,7 @@ entity @nonterminalCallInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @terminalCheckInstruction extends @syntaxInstruction {
+class @terminalCheckInstruction extends @syntaxInstruction {
   @lstring mTerminalName ;
   @lstringlist mReturnedValueTargetVariableNames ; # Empty String if no returned value
 }
@@ -103,9 +94,15 @@ entity @terminalCheckInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @repeatInstruction extends @syntaxInstruction {
-  @syntaxInstructions mRepeatedInstructionList ;
-  @syntaxInstructions [1, *] mRepeatBranchList ;
+list @listOfSyntaxInstructionList {
+  @syntaxInstructionList mSyntaxInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @repeatInstruction extends @syntaxInstruction {
+  @syntaxInstructionList mRepeatedInstructionList ;
+  @listOfSyntaxInstructionList mRepeatBranchList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -114,8 +111,8 @@ entity @repeatInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @selectInstruction extends @syntaxInstruction {
-  @syntaxInstructions [2, *] mSelectBranchList ;
+class @selectInstruction extends @syntaxInstruction {
+  @listOfSyntaxInstructionList mSelectBranchList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -124,8 +121,8 @@ entity @selectInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @parseDoInstruction extends @syntaxInstruction {
-  @syntaxInstructions [2, *] mParseDoBranchList ;
+class @parseDoInstruction extends @syntaxInstruction {
+  @listOfSyntaxInstructionList mParseDoBranchList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -134,14 +131,23 @@ entity @parseDoInstruction extends @syntaxInstruction {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-entity @blockInstruction extends @syntaxInstruction {
+class @blockInstruction extends @syntaxInstruction {
   @lstring mReceiverVariable ;
   @lstring mBlockMethodName ;
-  @actualParameters mPrologActualParameterList ;
-  @syntaxInstructions mInstructionList ;
-  @actualParameters mEpilogActualParameterList ;
+  @actualParameterList mPrologActualParameterList ;
+  @syntaxInstructionList mInstructionList ;
+  @actualParameterList mEpilogActualParameterList ;
 }
 
 #---------------------------------------------------------------------------*
 
-end metamodel ;
+class @syntaxComponentRoot {
+  @lstring mSyntaxComponentName ;
+  @nonterminalDeclarationList mNonterminalDeclarationList ;
+  @syntaxRuleList mRuleList ;
+  @semanticDeclarationList mSemanticDeclarationList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

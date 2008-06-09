@@ -44,6 +44,12 @@ abstract class @semanticDeclaration {
 }
 
 #---------------------------------------------------------------------------*
+
+list @semanticDeclarationList {
+  @semanticDeclaration mSemanticDeclaration ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *

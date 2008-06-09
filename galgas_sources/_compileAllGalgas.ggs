@@ -67,19 +67,8 @@ compile "semanticsModelBuilder.gSyntax" ;
 compile "semanticsSLRgrammar.gGrammar" ;
 compile "buildMapsForSemantics.gTreewalking" ;
 
-#--- Metamodel Component
-compile "metamodelMetamodel.gMetamodel" ;
-compile "metamodelModelBuilder.gSyntax" ;
-compile "metamodelLL1grammar.gGrammar" ;
-compile "buildMapsForMetamodel.gTreewalking" ;
-
-#--- Treewalking component
-compile "treewalkingMetamodel.gMetamodel" ;
-compile "treewalkingModelBuilder.gSyntax" ;
-compile "treewalkingSLRgrammar.gGrammar" ;
-
 #--- Syntax Component
-compile "syntaxMetamodel.gMetamodel" ;
+compile "syntaxMetamodel.gSemantics" ;
 compile "syntaxModelBuilder.gSyntax" ;
 compile "syntaxSLRgrammar.gGrammar" ;
 
