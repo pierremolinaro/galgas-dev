@@ -33,26 +33,26 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -71,7 +71,7 @@ nonterminal <treewalking_routine>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ??@semanticContext inSemanticContext
+  ??@EXsemanticContext inSemanticContext
 label firstLocalPhase
   ??@M_semanticsEntitiesForUse inSemanticsEntitiesMap
   ?!@treewalkingRoutineHeaderMap ioTreewalkingRoutineHeaderMap
@@ -100,7 +100,7 @@ nonterminal <semantic_instructions_list>
   ??@entityPropertyMap ioPropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ??@semanticContext inSemanticContext
+  ??@EXsemanticContext inSemanticContext
 label parse
 ;
 
@@ -123,7 +123,7 @@ nonterminal <import_headers_semantics_and_grammars>
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
   !@entityToImplementMap outAllMetamodelClassMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   !@stringset outIncludedSemanticsComponents
@@ -133,7 +133,7 @@ label importSemantics
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label parse
 ;
@@ -150,7 +150,7 @@ rule <galgas_component>
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
@@ -165,7 +165,7 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
@@ -176,7 +176,7 @@ label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 :
   <parse_treewalking_document>
@@ -189,7 +189,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   <parse_treewalking_document>
     !?ioMetamodelComponentMap
@@ -239,7 +239,7 @@ rule <parse_treewalking_document>
   @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
-  @semanticContext semanticContext [new
+  @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
   ] ;
@@ -394,7 +394,7 @@ rule <treewalking_routine>
   ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ?!@treewalkingRoutineToGenerateList ioTreewalkingRoutineToGenerateList
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ??@semanticContext inSemanticContext
+  ??@EXsemanticContext inSemanticContext
 :
   $rule$ ;
   @lstring metamodelClassName ;

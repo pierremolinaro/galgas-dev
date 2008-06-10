@@ -18,7 +18,6 @@
 #---------------------------------------------------------------------------*
 
 semantics programMetamodel :
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;

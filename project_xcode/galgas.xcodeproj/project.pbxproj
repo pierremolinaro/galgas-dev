@@ -2318,7 +2318,6 @@
 		CFEDF26F0C2D161F0038713A /* semanticsMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */; };
 		CFEDF2700C2D161F0038713A /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
 		CFEDF2710C2D161F0038713A /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
-		CFEDF2720C2D161F0038713A /* commonSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */; };
 		CFEDF2730C2D161F0038713A /* semanticInstructionListModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5350BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h */; };
 		CFEDF2740C2D161F0038713A /* instructionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5570BC3D930005A1AEC /* instructionMetamodel.h */; };
 		CFEDF2750C2D161F0038713A /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
@@ -2505,7 +2504,6 @@
 		CFEDF33B0C2D161F0038713A /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CFEDF33C0C2D161F0038713A /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CFEDF33D0C2D161F0038713A /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
-		CFEDF33E0C2D161F0038713A /* commonSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */; };
 		CFEDF33F0C2D161F0038713A /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
 		CFEDF3400C2D161F0038713A /* instructionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */; };
 		CFEDF3410C2D161F0038713A /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
@@ -2627,7 +2625,6 @@
 		CFEDF3D00C2D16610038713A /* semanticsMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */; };
 		CFEDF3D10C2D16610038713A /* semanticsModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */; };
 		CFEDF3D20C2D16610038713A /* semanticsSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */; };
-		CFEDF3D30C2D16610038713A /* commonSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */; };
 		CFEDF3D40C2D16610038713A /* semanticInstructionListModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5350BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h */; };
 		CFEDF3D50C2D16610038713A /* instructionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5570BC3D930005A1AEC /* instructionMetamodel.h */; };
 		CFEDF3D60C2D16610038713A /* expressionMetamodel.h in Headers */ = {isa = PBXBuildFile; fileRef = CFEE57830BFB5A4200B99D47 /* expressionMetamodel.h */; };
@@ -2813,7 +2810,6 @@
 		CFEDF49B0C2D16610038713A /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CFEDF49C0C2D16610038713A /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CFEDF49D0C2D16610038713A /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
-		CFEDF49E0C2D16610038713A /* commonSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */; };
 		CFEDF49F0C2D16610038713A /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
 		CFEDF4A00C2D16610038713A /* instructionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */; };
 		CFEDF4A10C2D16610038713A /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
@@ -2997,14 +2993,6 @@
 		CFF8611E09C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CFF8612609C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
 		CFF8612A09C0ACF600F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
-		CFF9E4FB0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */; };
-		CFF9E4FC0BC3C3C2005A1AEC /* commonSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */; };
-		CFF9E4FD0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */; };
-		CFF9E4FE0BC3C3C2005A1AEC /* commonSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */; };
-		CFF9E5070BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */; };
-		CFF9E5080BC3C3C2005A1AEC /* commonSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */; };
-		CFF9E5090BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */; };
-		CFF9E50A0BC3C3C2005A1AEC /* commonSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */; };
 		CFF9E5420BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
 		CFF9E5430BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF9E5350BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h */; };
 		CFF9E5440BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
@@ -3937,8 +3925,6 @@
 		CFF8611D09C0ACF600F90D05 /* C_GGS_Object.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_Object.h; sourceTree = "<group>"; };
 		CFF98D73058CCD4700176BCE /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF98D7C058CCDE200176BCE /* galgas.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = galgas.1; sourceTree = "<group>"; };
-		CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = commonSemantics.cpp; sourceTree = "<group>"; };
-		CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = commonSemantics.h; sourceTree = "<group>"; };
 		CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticInstructionListModelBuilder.cpp; sourceTree = "<group>"; };
 		CFF9E5350BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticInstructionListModelBuilder.h; sourceTree = "<group>"; };
 		CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = instructionMetamodel.cpp; sourceTree = "<group>"; };
@@ -4790,8 +4776,6 @@
 		CFF53727057A4D3F00854C83 /* Common Semantics */ = {
 			isa = PBXGroup;
 			children = (
-				CFF9E4F90BC3C3C2005A1AEC /* commonSemantics.cpp */,
-				CFF9E4FA0BC3C3C2005A1AEC /* commonSemantics.h */,
 				CF5E74F407B00EA600858338 /* common_semantics.cpp */,
 				CF5E74F507B00EA600858338 /* common_semantics.h */,
 			);
@@ -5359,7 +5343,6 @@
 				CFEFE9450BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CF0CB4280BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5E50BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
-				CFF9E4FC0BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFEE57870BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE57890BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF47045D0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
@@ -5691,7 +5674,6 @@
 				CF0CB8650BC0203700E6FABE /* semanticsMetamodel.h in Headers */,
 				CF0CB8870BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
 				CFB8222E0BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
-				CFF9E5080BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5430BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55E0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE579F0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
@@ -6046,7 +6028,6 @@
 				CF0CB8670BC0203700E6FABE /* semanticsMetamodel.h in Headers */,
 				CF0CB88B0BC0273E00E6FABE /* semanticsModelBuilder.h in Headers */,
 				CFB822320BC2D8DE009B1920 /* semanticsSLRgrammar.h in Headers */,
-				CFF9E50A0BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFF9E5450BC3D89C005A1AEC /* semanticInstructionListModelBuilder.h in Headers */,
 				CFF9E55F0BC3D931005A1AEC /* instructionMetamodel.h in Headers */,
 				CFEE57A30BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
@@ -6395,7 +6376,6 @@
 				CFEFE9460BB1C550006F37CB /* include_typeLexicalLogInstruction.h in Headers */,
 				CF0CB4220BBFCADB00E6FABE /* AC_galgas_entity.h in Headers */,
 				CF0CB5DF0BBFF41200E6FABE /* AC_galgas_class.h in Headers */,
-				CFF9E4FE0BC3C3C2005A1AEC /* commonSemantics.h in Headers */,
 				CFEE578B0BFB5A4200B99D47 /* expressionMetamodel.h in Headers */,
 				CFEE578D0BFB5A4200B99D47 /* expressionModelBuilder.h in Headers */,
 				CF47045E0C03574600B027E6 /* include_typeStructuredCastInstruction.h in Headers */,
@@ -6729,7 +6709,6 @@
 				CFEDF26F0C2D161F0038713A /* semanticsMetamodel.h in Headers */,
 				CFEDF2700C2D161F0038713A /* semanticsModelBuilder.h in Headers */,
 				CFEDF2710C2D161F0038713A /* semanticsSLRgrammar.h in Headers */,
-				CFEDF2720C2D161F0038713A /* commonSemantics.h in Headers */,
 				CFEDF2730C2D161F0038713A /* semanticInstructionListModelBuilder.h in Headers */,
 				CFEDF2740C2D161F0038713A /* instructionMetamodel.h in Headers */,
 				CFEDF2750C2D161F0038713A /* expressionMetamodel.h in Headers */,
@@ -7084,7 +7063,6 @@
 				CFEDF3D00C2D16610038713A /* semanticsMetamodel.h in Headers */,
 				CFEDF3D10C2D16610038713A /* semanticsModelBuilder.h in Headers */,
 				CFEDF3D20C2D16610038713A /* semanticsSLRgrammar.h in Headers */,
-				CFEDF3D30C2D16610038713A /* commonSemantics.h in Headers */,
 				CFEDF3D40C2D16610038713A /* semanticInstructionListModelBuilder.h in Headers */,
 				CFEDF3D50C2D16610038713A /* instructionMetamodel.h in Headers */,
 				CFEDF3D60C2D16610038713A /* expressionMetamodel.h in Headers */,
@@ -7786,7 +7764,6 @@
 				CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CF0CB4290BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5E40BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
-				CFF9E4FB0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFEE57860BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE57880BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 				CFDD30750C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
@@ -7937,7 +7914,6 @@
 				CF0CB8640BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */,
 				CF0CB8860BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
 				CFB8222D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
-				CFF9E5070BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5420BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54E0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE579E0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
@@ -8108,7 +8084,6 @@
 				CF0CB8660BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */,
 				CF0CB88A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */,
 				CFB822310BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */,
-				CFF9E5090BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFF9E5440BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFF9E54F0BC3D8F6005A1AEC /* instructionMetamodel.cpp in Sources */,
 				CFEE57A20BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
@@ -8306,7 +8281,6 @@
 				CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
 				CF0CB4230BBFCADB00E6FABE /* AC_galgas_entity.cpp in Sources */,
 				CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */,
-				CFF9E4FD0BC3C3C2005A1AEC /* commonSemantics.cpp in Sources */,
 				CFEE578A0BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */,
 				CFEE578C0BFB5A4200B99D47 /* expressionModelBuilder.cpp in Sources */,
 				CFDD307D0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
@@ -8457,7 +8431,6 @@
 				CFEDF33B0C2D161F0038713A /* semanticsMetamodel.cpp in Sources */,
 				CFEDF33C0C2D161F0038713A /* semanticsModelBuilder.cpp in Sources */,
 				CFEDF33D0C2D161F0038713A /* semanticsSLRgrammar.cpp in Sources */,
-				CFEDF33E0C2D161F0038713A /* commonSemantics.cpp in Sources */,
 				CFEDF33F0C2D161F0038713A /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFEDF3400C2D161F0038713A /* instructionMetamodel.cpp in Sources */,
 				CFEDF3410C2D161F0038713A /* expressionMetamodel.cpp in Sources */,
@@ -8628,7 +8601,6 @@
 				CFEDF49B0C2D16610038713A /* semanticsMetamodel.cpp in Sources */,
 				CFEDF49C0C2D16610038713A /* semanticsModelBuilder.cpp in Sources */,
 				CFEDF49D0C2D16610038713A /* semanticsSLRgrammar.cpp in Sources */,
-				CFEDF49E0C2D16610038713A /* commonSemantics.cpp in Sources */,
 				CFEDF49F0C2D16610038713A /* semanticInstructionListModelBuilder.cpp in Sources */,
 				CFEDF4A00C2D16610038713A /* instructionMetamodel.cpp in Sources */,
 				CFEDF4A10C2D16610038713A /* expressionMetamodel.cpp in Sources */,

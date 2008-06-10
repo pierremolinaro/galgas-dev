@@ -33,26 +33,26 @@ nonterminal <galgas_component>
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_treewalkingComponents ioTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
@@ -252,7 +252,7 @@ rule <galgas_component>
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
 #--- Lexique header
   @bool isTemplate ;
@@ -428,7 +428,7 @@ label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   select
   or
@@ -462,7 +462,7 @@ label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 :
   select
@@ -498,7 +498,7 @@ label importGrammarForSemantics
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   select
   or

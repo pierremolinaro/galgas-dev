@@ -39,7 +39,7 @@ nonterminal <semantics_declaration>
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioExternActionMap
@@ -48,7 +48,7 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
   ??@M_treewalkingComponents inTreewalkingComponentMap
-  ?!@semanticContext ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 label parse
 ;
 
@@ -151,7 +151,7 @@ rule <semantics_declaration>
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   <domain_declaration> 
     !?ioComponentSemanticsEntitiesMap
@@ -165,7 +165,7 @@ label importSemantics
   ?!@typeTableEnAvant unused tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
-  ?!@semanticContext unused ioSemanticContext
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
   <domain_declaration> 
