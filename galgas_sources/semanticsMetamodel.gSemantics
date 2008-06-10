@@ -140,6 +140,17 @@ class @listDeclaration extends @semanticDeclaration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @structDeclaration extends @semanticDeclaration {
+  @lstring mListTypeName ;
+  @attributeInCollectionList mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    S O R T E D    L I S T    D E C L A R A T I O N                        *
 #                                                                           *
 #---------------------------------------------------------------------------*

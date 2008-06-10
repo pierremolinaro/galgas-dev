@@ -472,6 +472,28 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  $struct$ ;
+  $type_name$ ?@lstring mListTypeName ;
+  ${$ ;
+  @attributeInCollectionList mAttributeList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  end repeat ;
+  $}$ ;
+  outSemanticDeclaration := [@structDeclaration new
+    !mListTypeName
+    !mAttributeList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    L I S T    D E C L A R A T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*

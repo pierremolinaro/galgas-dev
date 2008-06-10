@@ -1228,6 +1228,15 @@ class @typeRoutineAengendrer extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
+class @categoryMethodToImplement extends @typeEntityToGenerate {
+  @lstring mClassName ;
+  @lstring mMethodName ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
+  @typeInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @C_listTypeToImplement extends @typeEntityToGenerate {
   @lstring aNomListe ;
   @typeListeAttributsSemantiques mNonExternAttributesList ;
