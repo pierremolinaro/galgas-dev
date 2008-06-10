@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsMetamodel :
-
+import "instructionMetamodel.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
@@ -60,6 +60,8 @@ list @mapMethodList {
 
 class @mapDeclaration extends @semanticDeclaration {
   @lstring mMapTypeName ;
+  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
+  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
   @attributeInCollectionList mAttributeList ;
   @mapMethodList mInsertMethodList ;
   @mapMethodList mSearchMethodList ;
@@ -227,6 +229,23 @@ list @enumMethodList {
 
 #---------------------------------------------------------------------------*
 
+list @enumOperatorCaseList {
+  @lstring mLeftConstantName ;
+  @lstring mRightConstantName ;
+  @lstring mResultConstantName ;
+  @enumCaseMessage mEnumOperatorCaseMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @enumOperatorList {
+  @lstring mOperatorName ;
+  @lstring mLocationFormalArgumentName ;
+  @enumOperatorCaseList mEnumOperatorCaseList ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @enumDeclaration extends @semanticDeclaration {
   @lstring mEnumTypeName ;
   @lstringlist mConstructorConstantList ;
@@ -234,6 +253,7 @@ class @enumDeclaration extends @semanticDeclaration {
   @enumMessageList mEnumMessageList ;
   @enumModifierList mEnumModifierList ;
   @enumMethodList mEnumMethodList ;
+  @enumOperatorList mEnumOperatorList ;
 }
 
 #---------------------------------------------------------------------------*

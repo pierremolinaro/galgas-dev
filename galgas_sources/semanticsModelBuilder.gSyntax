@@ -180,8 +180,21 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $map$ ;
 #--- Map type name
   $type_name$ ? @lstring mMapTypeName ;
-  ${$ ;
+#--- Enum type name
+  @lstring mAssociatedEnumTypeName ; # Empty if no associated enum type
+  @lstring mAssociatedTerminaisonMethodName ; # Empty if no associated enum type
+  select
+    mAssociatedEnumTypeName := [@lstring new !"" !here] ;
+    mAssociatedTerminaisonMethodName := [@lstring new !"" !here] ;
+  or
+    $($ ;
+    $type_name$ ? mAssociatedEnumTypeName ;
+    $:$ ;
+    $identifier$ ? mAssociatedTerminaisonMethodName ;
+    $)$ ;
+  end select ;
 #--- Map properties
+  ${$ ;
   @attributeInCollectionList mAttributeList [emptyList] ;
   @mapMethodList mInsertMethodList [emptyList] ;
   @mapMethodList mSearchMethodList [emptyList] ;
@@ -202,6 +215,8 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $}$ ;
   outSemanticDeclaration := [@mapDeclaration new
     !mMapTypeName
+    !mAssociatedEnumTypeName
+    !mAssociatedTerminaisonMethodName
     !mAttributeList
     !mInsertMethodList
     !mSearchMethodList
@@ -667,6 +682,48 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+nonterminal <enum_operator> ?!@enumOperatorList ioEnumOperatorList ;
+
+#---------------------------------------------------------------------------*
+
+rule <enum_operator> ?!@enumOperatorList ioEnumOperatorList :
+  $operator$ ;
+  $identifier$ ? @lstring mOperatorName ;
+  $??$ ;
+  $type_name$ ? @lstring typeName ;
+  if [typeName string] != "location" then
+    error typeName: "only '@location' type is allowed here" ;
+  end if ;
+  $identifier$ ? @lstring mLocationFormalArgumentName ;
+  ${$ ;
+  @enumOperatorCaseList mEnumOperatorCaseList [emptyList] ;
+  repeat
+    $identifier$ ? @lstring mLeftConstantName ;
+    $,$ ;
+    $identifier$ ? @lstring mRightConstantName ;
+    $->$ ;
+    $identifier$ ? @lstring mResultConstantName ;
+    @enumCaseMessage caseMessage ;
+    <enum_case_message> ? caseMessage ;
+    $;$ ;
+    mEnumOperatorCaseList +=
+     !mLeftConstantName
+     !mRightConstantName
+     !mResultConstantName
+     !caseMessage
+    ;
+  while
+  end repeat ;
+  $}$ ;
+  ioEnumOperatorList +=
+    !mOperatorName
+    !mLocationFormalArgumentName
+    !mEnumOperatorCaseList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $enum$ ;
   $type_name$ ? @lstring mEnumTypeName ;
@@ -700,6 +757,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   @enumMessageList mEnumMessageList [emptyList] ;
   @enumModifierList mEnumModifierList [emptyList] ;
   @enumMethodList mEnumMethodList [emptyList] ;
+  @enumOperatorList mEnumOperatorList [emptyList] ;
   repeat
   while
     <enum_message_declaration> !? mEnumMessageList ;
@@ -707,6 +765,8 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     <enum_modifier> !? mEnumModifierList ;
   while
     <enum_method> !? mEnumMethodList ;
+  while
+    <enum_operator> !? mEnumOperatorList ;
   end repeat ;
   $}$ ;
   outSemanticDeclaration := [@enumDeclaration new
@@ -716,6 +776,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     !mEnumMessageList
     !mEnumModifierList
     !mEnumMethodList
+    !mEnumOperatorList
   ] ;
 end rule ;
 

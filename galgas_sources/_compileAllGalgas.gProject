@@ -3,7 +3,7 @@
 #                                                                           *
 #  Compile all galgas sources                                               *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -28,67 +28,55 @@ compile "commonSemantics.gSemantics" ;
 
 #--- Lexique Component
 compile "lexiqueSemantics.gSemantics" ;
-compile "lexiqueMetamodel.gMetamodel" ;
+compile "lexiqueMetamodel.gSemantics" ;
 compile "lexiqueModelBuilder.gSyntax" ;
 compile "lexiqueLL1grammar.gGrammar" ;
-compile "lexiqueTreewalkingForBuildingTerminalMap.gTreewalking" ;
+compile "compileLexique.gSemantics" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;
-compile "optionMetamodel.gMetamodel" ;
+compile "optionMetamodel.gSemantics" ;
 compile "optionModelBuilder.gSyntax" ;
 compile "optionLL1grammar.gGrammar" ;
-compile "optionTreewalkingForBuildingOptionMap.gTreewalking" ;
-compile "optionHeaderGeneration.gTreewalking" ;
-compile "optionImplementationGeneration.gTreewalking" ;
+compile "optionCompilation.gSemantics" ;
 
 #--- Expression
-compile "expressionMetamodel.gMetamodel" ;
+compile "expressionMetamodel.gSemantics" ;
 compile "expressionModelBuilder.gSyntax" ;
 
 #--- Parameters and arguments
-compile "parameterArgumentMetamodel.gMetamodel" ;
+compile "parameterArgumentMetamodel.gSemantics" ;
 compile "parameterArgumentBuilder.gSyntax" ;
 
 #--- Instructions
-compile "instructionMetamodel.gMetamodel" ;
+compile "instructionMetamodel.gSemantics" ;
 compile "semanticInstructionListModelBuilder.gSyntax" ;
-
-#--- Metamodel Component
-compile "metamodelMetamodel.gMetamodel" ;
-compile "metamodelModelBuilder.gSyntax" ;
-compile "metamodelLL1grammar.gGrammar" ;
-compile "buildMapsForMetamodel.gTreewalking" ;
-
-#--- Treewalking component
-compile "treewalkingMetamodel.gMetamodel" ;
-compile "treewalkingModelBuilder.gSyntax" ;
-compile "treewalkingSLRgrammar.gGrammar" ;
 
 #--- Semantics Component
 compile "semanticsSemantics.gSemantics" ;
-compile "semanticsMetamodel.gMetamodel" ;
+compile "semanticsMetamodel.gSemantics" ;
 compile "semanticsModelBuilder.gSyntax" ;
 compile "semanticsSLRgrammar.gGrammar" ;
-compile "buildMapsForSemantics.gTreewalking" ;
+compile "semanticsCompilation.gSemantics" ;
 
 #--- Syntax Component
-compile "syntaxMetamodel.gMetamodel" ;
+compile "syntaxMetamodel.gSemantics" ;
 compile "syntaxModelBuilder.gSyntax" ;
 compile "syntaxSLRgrammar.gGrammar" ;
 
 #--- Grammar component
-compile "grammarMetamodel.gMetamodel" ;
+compile "grammarMetamodel.gSemantics" ;
 compile "grammarModelBuilder.gSyntax" ;
 compile "grammarLL1grammar.gGrammar" ;
+compile "guiCompilation.gSemantics" ;
 
 #--- GUI component
-compile "guiMetamodel.gMetamodel" ;
+compile "guiMetamodel.gSemantics" ;
 compile "guiModelBuilder.gSyntax" ;
 compile "guiLL1grammar.gGrammar" ;
 
 #--- Program component
-compile "programMetamodel.gMetamodel" ;
+compile "programMetamodel.gSemantics" ;
 compile "programModelBuilder.gSyntax" ;
 compile "programSLRgrammar.gGrammar" ;
 
@@ -97,7 +85,7 @@ compile "projectModelBuilder.gSyntax" ;
 compile "projectLL1grammar.gGrammar" ;
 
 #--- Temporary Program for PPC Cocoa GALGAS Only 
-compile "mda_galgas_LL1_routines.gSemantics" ;
-compile "mda_galgas_LL1_prgm.gProgram" ;
+compile "mda_galgas_routines.gSemantics" ;
+compile "mda_galgas_prgm.gProgram" ;
 
 #---------------------------------------------------------------------------*

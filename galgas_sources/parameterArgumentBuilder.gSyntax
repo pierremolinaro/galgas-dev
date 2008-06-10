@@ -37,6 +37,8 @@ nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalIn
 
 nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
 
+nonterminal <actual_input_parameter_list> !@actualInputParameterList outActualInputParameterList ;
+
 #------------------------------------------------------------------------------*
 #                                                                              *
 #          F O R M A L    P A R A M E T E R    L I S T                         *
@@ -153,6 +155,39 @@ rule <formal_input_parameter_list> !@formalInputParameterList outFormalInputPara
   while
   end repeat ;
 end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <actual_input_parameter_list>
+  !@actualInputParameterList outActualInputParameterList
+:
+  outActualInputParameterList := [@actualInputParameterList emptyList] ;
+  repeat
+  while
+    $?$ ;
+    @lstring mActualParameterTypeName ;
+    select
+      mActualParameterTypeName := [@lstring new !"" !here] ;
+    or
+      $type_name$ ? mActualParameterTypeName ;
+    end select ;
+    @lstring mActualParameterName ;
+    select
+      $identifier$ ?mActualParameterName ;
+    or
+      $*$ ;
+      mActualParameterName := [@lstring new !"" !here] ;
+    end select ;
+    outActualInputParameterList +=
+      !mActualParameterTypeName
+      !mActualParameterName
+    ;
+  end repeat ;
+end rule ;  
 
 #---------------------------------------------------------------------------*
 

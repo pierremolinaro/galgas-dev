@@ -26,13 +26,34 @@ import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
-#routine recursivelyImportSemanticComponent
-#  ?!@ListOfSemanticDeclaration ioSemanticDeclarationList
-#  ?!@stringset ioParsedFileSet
-#  ??@lstringlist inListOfFilesToParse
-#:
-#
-#end routine ;
+routine recursivelyImportSemanticComponent
+  ?!@semanticDeclarationList ioSemanticDeclarationList
+  ?!@stringset ioParsedFileSet
+  ??@lstringlist inListOfFilesToParse
+  ??@string inDirectory
+:
+  foreach inListOfFilesToParse do
+    if not [ioParsedFileSet hasKey ![mValue string]] then
+      ioParsedFileSet += ![mValue string] ;
+      @string extension := [[mValue string] pathExtension] ;
+      if extension == "gSemantics" then
+        @lstring filePath [new
+          ![mValue absolutePathFromPath !inDirectory]
+          ![mValue location]
+        ] ;
+        @semanticsComponentRoot semanticsComponentRoot ;
+        grammar semanticsSLRgrammar in filePath ?* ?semanticsComponentRoot ;
+        ioSemanticDeclarationList := ioSemanticDeclarationList . [semanticsComponentRoot mSemanticDeclarationList] ;
+        recursivelyImportSemanticComponent
+          !?ioSemanticDeclarationList
+          !?ioParsedFileSet
+          ![semanticsComponentRoot mImportedComponentFileNameList]
+          !inDirectory
+        ;
+      end if ;
+    end if ;
+  end foreach ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -45,13 +66,14 @@ routine compileSemanticsComponent
   @location endOfSourceFile ;
   grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile ?semanticsComponentRoot ;
 #--- Recursively parse all imported files
-#  @ListOfSemanticDeclaration semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
-#  @stringset parsedFileSet [setWithString ![inSourceFile lastPathComponent]] ;
-#  recursivelyImportSemanticComponent
-#    !?semanticDeclarationList
-#    !?parsedFileSet
-#    ![semanticsComponentRoot mImportedComponentFileNameList]
-# ;
+  @semanticDeclarationList semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
+  @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
+  recursivelyImportSemanticComponent
+    !?semanticDeclarationList
+    !?parsedFileSet
+    ![semanticsComponentRoot mImportedComponentFileNameList]
+    ![inSourceFile stringByDeletingLastPathComponent]
+  ;
 ##--- Analyze imported files
 #  @typeMap typeMap ;
 #  constructBuiltinTypeMap ?typeMap ;

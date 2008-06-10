@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics parameterArgumentMetamodel :
-import "commonSemantics.gSemantics" ;
+import "expressionMetamodel.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 
@@ -83,6 +83,17 @@ class @inputJokerActualParameter extends @actualParameter {
 
 list @actualParameterList {
   @actualParameter mActualParameter ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @actualInputParameterList {
+  @lstring mActualParameterTypeName ; # Empty if no type
+  @lstring mActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
