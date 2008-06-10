@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics instructionMetamodel :
-
+import "parameterArgumentMetamodel.gSemantics" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 

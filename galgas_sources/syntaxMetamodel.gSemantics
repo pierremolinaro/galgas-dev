@@ -80,7 +80,7 @@ class @nonterminalCallInstruction extends @syntaxInstruction {
 
 class @terminalCheckInstruction extends @syntaxInstruction {
   @lstring mTerminalName ;
-  @lstringlist mReturnedValueTargetVariableNames ; # Empty String if no returned value
+  @actualInputParameterList mActualInputParameterList ;
 }
 
 #---------------------------------------------------------------------------*

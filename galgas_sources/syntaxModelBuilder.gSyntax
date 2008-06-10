@@ -49,6 +49,10 @@ nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList
 
 nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
+nonterminal <actual_input_parameter_list>
+  !@actualInputParameterList outActualInputParameterList
+;
+
 #------------------------------------------------------------------------------*
 #                                                                              *
 #      S Y N T A X    C O M P O N E N T                                        *
@@ -262,23 +266,12 @@ end rule ;
 
 rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $terminal$ ? @lstring mTerminalName ;
-  @lstringlist mReturnedValueTargetVariableNames [emptyList] ;
-  repeat
-  while
-    $?$ ;
-    select
-      $*$ ;
-      mReturnedValueTargetVariableNames += ![@lstring new !"" !here] ;
-    or
-      @lstring returnedValueTargetVariableName ;
-      $identifier$ ? returnedValueTargetVariableName ;
-      mReturnedValueTargetVariableNames += !returnedValueTargetVariableName ;
-    end select ;
-  end repeat ;
+  @actualInputParameterList mActualInputParameterList ;
+  <actual_input_parameter_list> ? mActualInputParameterList ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
     !mTerminalName
-    !mReturnedValueTargetVariableNames
+    !mActualInputParameterList
   ] ;
 end rule ;
 

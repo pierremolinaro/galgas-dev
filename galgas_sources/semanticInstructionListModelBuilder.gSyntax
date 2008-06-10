@@ -193,41 +193,45 @@ rule <foreach_enumerated_object>
 :
   @semanticExpression mEnumeratedExpression ;
   <expression> ? mEnumeratedExpression ;
-  $($ ;
   @foreachInstructionEnumeratedObjectElementList mElementList [emptyList] ;
-  repeat
-  while
-    $*$ ;
-    mElementList += ![@foreachInstructionJoker new] ;
-  while
-    @luint count ;
-    $unsigned_literal_integer$ ?count ;
-    $*$ ;
-    @uint n := [count uint] ;
-    if n == 0 then
-      error count: "this value should be > 0" ;
-    end if ;
-    loop n :
-    while n > 0 do
-      mElementList += ![@foreachInstructionJoker new] ;
-      n -- ;
-    end loop ;
-  while
-    @lstring typeName ;
-    $type_name$ ?typeName ;
-    @lstring constantName ;
-    $identifier$ ?constantName ;
-    @foreachInstructionEnumeratedConstant c [new !typeName !constantName] ;
-    mElementList += !c ;
-  end repeat ;
   @bool mEndsWithEllipsis ;
   select
     mEndsWithEllipsis := false ;
   or
-    $...$ ;
-    mEndsWithEllipsis := true ;
+    $($ ;
+    repeat
+    while
+      $*$ ;
+      mElementList += ![@foreachInstructionJoker new] ;
+    while
+      @luint count ;
+      $unsigned_literal_integer$ ?count ;
+      $*$ ;
+      @uint n := [count uint] ;
+      if n == 0 then
+        error count: "this value should be > 0" ;
+      end if ;
+      loop n :
+      while n > 0 do
+        mElementList += ![@foreachInstructionJoker new] ;
+        n -- ;
+      end loop ;
+    while
+      @lstring typeName ;
+      $type_name$ ?typeName ;
+      @lstring constantName ;
+      $identifier$ ?constantName ;
+      @foreachInstructionEnumeratedConstant c [new !typeName !constantName] ;
+      mElementList += !c ;
+    end repeat ;
+    select
+      mEndsWithEllipsis := false ;
+    or
+      $...$ ;
+      mEndsWithEllipsis := true ;
+    end select ;
+    $)$ ;
   end select ;
-  $)$ ;
   ioForeachInstructionEnumeratedObjectList +=
     !mEnumeratedExpression
     !mElementList
@@ -266,6 +270,9 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
     $before$ ;
     <semantic_instruction_list> ? mBeforeInstructionList ;
   end select ;
+  $do$ ;
+  @semanticInstructionList mDoInstructionList ;
+  <semantic_instruction_list> ? mDoInstructionList ;
   @semanticInstructionList mBetweenInstructionList ;
   select
     mBetweenInstructionList := [@semanticInstructionList emptyList] ;
@@ -273,9 +280,6 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
     $between$ ;
     <semantic_instruction_list> ? mBetweenInstructionList ;
   end select ;
-  $do$ ;
-  @semanticInstructionList mDoInstructionList ;
-  <semantic_instruction_list> ? mDoInstructionList ;
   @semanticInstructionList mAfterInstructionList ;
   select
     mAfterInstructionList := [@semanticInstructionList emptyList] ;
