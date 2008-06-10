@@ -35,7 +35,6 @@ list @syntaxInstructionList {
 list @nonTerminalLabelList {
   @lstring mLabelName ;
   @formalParameterList mFormalParameters ;
-  @lstring mReturnedEntityName ; # Empty string if no returned entity
 }
 
 #---------------------------------------------------------------------------*
@@ -51,8 +50,6 @@ list @nonterminalDeclarationList {
 list @syntaxRuleLabelList {
   @lstring mLabelName ;
   @formalParameterList mFormalParameters ;
-  @lstring mReturnedEntityName ; # Empty string if no returned entity
-  @lstring mReturnedVariableName ;  # Empty string if no returned variable
   @syntaxInstructionList mSyntaxInstructionList ;
 }
 
@@ -73,8 +70,6 @@ class @nonterminalCallInstruction extends @syntaxInstruction {
   @lstring mNonterminalName ;
   @lstring mLabelName ; # No label : empty string
   @actualParameterList mActualParameterList ;
-  @lstring mReturnedValueTargetVariableName ; # Empty String if no returned value
-  @bool mReturnedValueIsAssigned ; # if false, is appended
 }
 
 #---------------------------------------------------------------------------*

@@ -116,14 +116,7 @@ rule <grammar_start_symbol_label>
     end if ;
     argumentNameSet += ![argumentName string] ;
   end repeat ;
-  @lstring mMetamodelName ;
-  select
-    mMetamodelName := [@lstring new !"" !here] ;
-  or
-    $->$ ;
-    $identifier$ ? mMetamodelName ;
-  end select ;
-  ioLabelList += !inLabelName !mFormalParameterList !mMetamodelName ;
+  ioLabelList += !inLabelName !mFormalParameterList ;
 end rule ;
 
 #---------------------------------------------------------------------------*

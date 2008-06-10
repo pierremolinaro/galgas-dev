@@ -433,8 +433,8 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     TC_UniqueArray <sint32> errorArray (constantCount * constantCount COMMA_HERE) ;
     const C_String defaultResult = C_String ("kNotBuilt") ;
     for (sint32 i=0 ; i<squareConstantCount ; i++) {
-      resultArray (i COMMA_HERE) = defaultResult ;
-      errorArray (i COMMA_HERE) = -1 ; // 'Internal error: combination not handled
+      resultArray.addObject (defaultResult) ;
+      errorArray.addObject (-1) ; // 'Internal error: combination not handled
     }
     GGS_enumOperatorDefinitionList::cElement * definition = currentOperator->mInfo.mActionDefinitionList.firstObject ()  ;
     sint32 errorMessageIndex = 1 ;

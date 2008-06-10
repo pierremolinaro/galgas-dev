@@ -20,32 +20,30 @@
 syntax programModelBuilder :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import metamodel expressionMetamodel in "expressionMetamodel.gMetamodel" ;
-import metamodel parameterArgumentMetamodel in "parameterArgumentMetamodel.gMetamodel" ;
-import metamodel instructionMetamodel in "instructionMetamodel.gMetamodel" ;
-import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
+import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
+import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics programMetamodel in "programMetamodel.gSemantics" ;
 import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <program_component_start_symbol> -> @programComponentRoot ;
+nonterminal <program_component_start_symbol> !@programComponentRoot outProgramComponentRoot ;
 
-nonterminal <program_rule> -> @programRule ;
+nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
 
-nonterminal <semantic_instruction_list> -> @semanticInstructions ;
-
-nonterminal <semantic_declaration> -> @semanticDeclaration ;
+nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   G U I    C O M P O N E N T                                              *
+#   P R O G R A M    C O M P O N E N T                                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <program_component_start_symbol> -> @programComponentRoot :
+rule <program_component_start_symbol> !@programComponentRoot outProgramComponentRoot :
   $program$ ;
-  $identifier$ ? mProgramName ;
-  $literal_string$ ? mVersionString ;
+  $identifier$ ? @lstring mProgramName ;
+  $literal_string$ ? @lstring mVersionString ;
   $:$ ;
 #--- Loop on import declarations
   repeat
@@ -78,48 +76,58 @@ rule <program_component_start_symbol> -> @programComponentRoot :
 #--- Prologue
   $before$ ;
   ${$ ;
-  <semantic_instruction_list> -> mPrologueInstructionList ;
+  @semanticInstructionList mPrologueInstructionList [emptyList] ;
+  <semantic_instruction_list> ? mPrologueInstructionList ;
   $}$ ;
 #--- Program rules
+  @semanticDeclarationList mSemanticDeclarations [emptyList] ;
+  @programRuleList mProgramRules [emptyList] ;
   repeat
   while
-    <program_rule> +> mProgramRules ;
+    $when$ ;
+    $.$ ;
+    $literal_string$ ? @lstring mSourceFileExtension ;
+    $message$ ;
+    $literal_string$ ? @lstring mSourceFileHelp ;
+    $??$ ;
+    $type_name$ ? @lstring typeName ;
+    if [typeName string] != "lstring" then
+      error typeName : "the only type allowed here is '@lstring'" ;
+    end if ;
+    $identifier$ ? @lstring mSourceFileVariableName ;
+    ${$ ;
+    @semanticInstructionList mInstructionList ;
+    <semantic_instruction_list> ? mInstructionList ;
+    $}$ ;
+    mProgramRules +=
+      !mSourceFileExtension
+      !mSourceFileHelp
+      !mSourceFileVariableName
+      !mInstructionList
+    ;
   while
-    <semantic_declaration> +> mSemanticDeclarations ;
+    @semanticDeclaration semanticDeclaration ;
+    <semantic_declaration> ? semanticDeclaration ;
+    mSemanticDeclarations += !semanticDeclaration ;
   end repeat ;
 #--- Epilogue
   $after$ ;
   ${$ ;
-  <semantic_instruction_list> -> mEpilogueInstructionList ;
+  @semanticInstructionList mEpilogueInstructionList ;
+  <semantic_instruction_list> ? mEpilogueInstructionList ;
   $}$ ;
 #---
   $end$ ;
   $program$ ;
   $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   P R O G R A M    R U L E                                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <program_rule> -> @programRule :
-  $when$ ;
-  $.$ ;
-  $literal_string$ ? mSourceFileExtension ;
-  $message$ ;
-  $literal_string$ ? mSourceFileHelp ;
-  $??$ ;
-  @lstring typeName ;
-  $type_name$ ? typeName ;
-  if [typeName string] != "lstring" then
-    error typeName : "the only type allowed here is '@lstring'" ;
-  end if ;
-  $identifier$ ? mSourceFileVariableName ;
-  ${$ ;
-  <semantic_instruction_list> -> mInstructionList ;
-  $}$ ;
+  outProgramComponentRoot := [@programComponentRoot new
+    !mProgramName
+    !mVersionString
+    !mPrologueInstructionList
+    !mEpilogueInstructionList
+    !mProgramRules
+    !mSemanticDeclarations
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

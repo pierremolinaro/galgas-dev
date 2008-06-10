@@ -29,11 +29,8 @@ semantics mda_galgas_routines :
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics programMetamodel in "programMetamodel.gSemantics" ;
 
-  import treewalking buildMapsForSemantics in "buildMapsForSemantics.gTreewalking" ;
-
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
-  import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
@@ -51,73 +48,12 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-#routine recursivelyImportSemanticComponent
-#  ?!@ListOfSemanticDeclaration ioSemanticDeclarationList
-#  ?!@stringset ioParsedFileSet
-#  ??@lstringlist inListOfFilesToParse
-#:
-#
-#end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileSemanticsComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-#--- Parse source file
-  @semanticsComponentRoot semanticsComponentRoot ;
-  @location endOfSourceFile ;
-  grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile -> semanticsComponentRoot ;
-#--- Recursively parse all imported files
-  @ListOfSemanticDeclaration semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
-  @stringset parsedFileSet [setWithString ![inSourceFile lastPathComponent]] ;
-#  recursivelyImportSemanticComponent
-#    !?semanticDeclarationList
-#    !?parsedFileSet
-#    ![semanticsComponentRoot mImportedComponentFileNameList]
-# ;
-##--- Analyze imported files
-#  @typeMap typeMap ;
-#  constructBuiltinTypeMap ?typeMap ;
-#  @stringset importedComponentSet [emptySet] ;
-#  @routineMap routineMap [emptyMap] ;
-#  @typeList typeList ;
-#  treewalking buildMapsForSemantics on semanticsComponentRoot
-#    ![inSourceFile stringByDeletingLastPathComponent]
-#    !endOfSourceFile
-#    !?importedComponentSet
-#    !?typeMap
-#    !?routineMap
-#    ?typeList
-#  ;
-##--- Warn for undefined types
-#  if [typeMap unsolvedIndexCount] > 0 then
-#    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
-#    if [typeMap unsolvedIndexCount] == 1 then
-#      m := "1 type is not defined:" ;
-#    else
-#      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
-#    end if ;
-#    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
-#      m .= "\n  - @" . kKey ;
-#    end foreach ;
-#    error endOfSourceFile : m ;
-#  end if ;
-##--- Checks inheritance has no circularity
-#  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
-#    [kType checkNoCircularity ![typeMap count]] ;
-#  end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine compileSyntaxComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
   @syntaxComponentRoot syntaxComponentRoot ;
-  grammar syntaxSLRgrammar in inSourceFile -> syntaxComponentRoot ;
+  grammar syntaxSLRgrammar in inSourceFile ? syntaxComponentRoot ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -137,7 +73,7 @@ routine compileProgramComponent
   ??@string unused inOutputDirectory
 :
   @programComponentRoot programComponentRoot ;
-  grammar programSLRgrammar in inSourceFile -> programComponentRoot ;
+  grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
 end routine ;
 
 #---------------------------------------------------------------------------*

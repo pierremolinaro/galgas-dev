@@ -65,7 +65,7 @@ compile "semanticsSemantics.gSemantics" ;
 compile "semanticsMetamodel.gSemantics" ;
 compile "semanticsModelBuilder.gSyntax" ;
 compile "semanticsSLRgrammar.gGrammar" ;
-compile "buildMapsForSemantics.gTreewalking" ;
+compile "semanticsCompilation.gSemantics" ;
 
 #--- Syntax Component
 compile "syntaxMetamodel.gSemantics" ;
