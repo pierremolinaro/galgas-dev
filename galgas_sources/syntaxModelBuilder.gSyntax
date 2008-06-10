@@ -119,17 +119,9 @@ nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTermina
 rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelList ioNonTerminalLabelList :
   @formalParameterList mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
-  @lstring mReturnedEntityName ; # Empty string if no returned entity
-  select
-    mReturnedEntityName := [@lstring new !"" !here] ;
-  or
-    $->$ ;
-    $type_name$ ? mReturnedEntityName ;
-  end select ;
   ioNonTerminalLabelList +=
     !inLabelName
     !mFormalParameters
-    !mReturnedEntityName # Empty string if no returned entity
   ;
 end rule ;
 
@@ -183,28 +175,12 @@ rule <syntax_rule_label>
 :
   @formalParameterList mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
-  @lstring mReturnedEntityName ; # Empty string if no returned entity
-  @lstring mReturnedVariableName ;  # Empty string if no returned variable
-  select
-    mReturnedEntityName := [@lstring new !"" !here] ;
-    mReturnedVariableName := [@lstring new !"" !here] ;
-  or
-    $->$ ;
-    $type_name$ ? mReturnedEntityName ;
-    select
-      mReturnedVariableName := [@lstring new !"" !here] ;
-    or
-      $identifier$ ? mReturnedVariableName ;
-    end select ;
-  end select ;
   $:$ ;
   @syntaxInstructionList mSyntaxInstructionList ;
   <syntax_instruction_list> ? mSyntaxInstructionList ;
   ioLabelList +=
     !inLabelName
     !mFormalParameters
-    !mReturnedEntityName # Empty string if no returned entity
-    !mReturnedVariableName  # Empty string if no returned variable
     !mSyntaxInstructionList
   ;
 end rule ;
@@ -270,27 +246,11 @@ rule <syntax_instruction> !@syntaxInstruction outInstruction :
   end select ;
   @actualParameterList mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
-  @lstring mReturnedValueTargetVariableName ; # Empty String if no returned value
-  @bool mReturnedValueIsAssigned ; # if false, is appended
-  select
-    mReturnedValueTargetVariableName := [@lstring new !"" !here] ;
-    mReturnedValueIsAssigned := true ; # Any Value
-  or
-    $->$ ;
-    $identifier$ ? mReturnedValueTargetVariableName ;
-    mReturnedValueIsAssigned := true ;
-  or
-    $+>$ ;
-    $identifier$ ? mReturnedValueTargetVariableName ;
-    mReturnedValueIsAssigned := false ;
-  end select ;
   $;$ ;
   outInstruction := [@nonterminalCallInstruction new
     !mNonterminalName
     !mLabelName
     !mActualParameterList
-    !mReturnedValueTargetVariableName
-    !mReturnedValueIsAssigned
   ] ;
 end rule ;
 

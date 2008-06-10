@@ -30,14 +30,13 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics optionCompilation in "optionCompilation.gSemantics" ;
   import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
   import semantics guiCompilation in "guiCompilation.gSemantics" ;
-
-  import metamodel semanticsMetamodel in "semanticsMetamodel.gMetamodel" ;
-  import metamodel syntaxMetamodel in "syntaxMetamodel.gMetamodel" ;
-  import metamodel programMetamodel in "programMetamodel.gMetamodel" ;
+  import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+  import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
+  import semantics programMetamodel in "programMetamodel.gSemantics" ;
+  import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
-  import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
   import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
@@ -172,16 +171,12 @@ message "a GALGAS project source file"
       ![inSourceFile stringByDeletingLastPathComponent] . "/" . [kFile string]
       ![kFile location]
     ] ;
-    if extension == "gTreewalking" then
-      compileTreewalkingComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gSemantics" then
+    if extension == "gSemantics" then
       compileSemanticsComponent !fullFilePath !outputDirectory ;
     elsif extension == "gLexique" then
       compileLexiqueComponent !fullFilePath !outputDirectory ;
     elsif extension == "gSyntax" then
       compileSyntaxComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gMetamodel" then
-      compileMetamodelComponent !fullFilePath !outputDirectory ;
     elsif extension == "gOption" then
       compileOptionComponent !fullFilePath !outputDirectory ;
     elsif extension == "gGrammar" then

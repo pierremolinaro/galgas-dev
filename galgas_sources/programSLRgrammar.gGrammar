@@ -24,7 +24,8 @@ grammar programSLRgrammar "SLR" :
   import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
   import syntax programModelBuilder in "programModelBuilder.gSyntax" ;
 
-  root <program_component_start_symbol> -> programMetamodel
+  root <program_component_start_symbol>
+    !@programComponentRoot outProgramComponentRoot
   ; # SLR
 end grammar ;
 

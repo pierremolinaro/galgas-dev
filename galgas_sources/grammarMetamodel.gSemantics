@@ -34,7 +34,6 @@ list @startSymbolLabelFormalParameterList {
 list @grammarLabelList {
   @lstring mLabelName ;
   @startSymbolLabelFormalParameterList mFormalParameterList ;
-  @lstring mMetamodelName ; # Empty string if no metamodel
 }
 
 #---------------------------------------------------------------------------*
