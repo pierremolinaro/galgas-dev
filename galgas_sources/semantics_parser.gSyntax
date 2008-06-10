@@ -609,6 +609,7 @@ rule <galgas_component>
     @EXsemanticContext UNUSED_semanticContext [new
       ![@M_filewrappers emptyMap]
       ![@stringset emptySet]
+      ![@categoryMethodMap emptyMap]
     ] ;
     repeat
     while
@@ -5809,6 +5810,101 @@ rule <map_method>
   $error$ ;
   $message$ ;
   $literal_string$ ? outMessage ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     C A T E G O R Y    M E T H O D   D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@EXsemanticContext ioSemanticContext
+:
+  $method$ ;
+  $type_name$ ? @lstring className ;
+  $.$ ;
+  $identifier$ ? @lstring methodName ;
+#---- Formal arguments -----------------------------------------
+  @L_EXsignature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !listeDeTypes] ;
+#--- Instructions
+  ${$ ;
+  @typeInstructionList instructionList [emptyList] ;
+  @entityPropertyMap propertyMap [emptyMap] ;
+  @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
+  @entityToImplementMap metamodelEntityMap [emptyMap] ;
+  <semantic_instructions_list>
+    !treewalkingRoutineHeaderMap
+    !tableEnAvant
+    !ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !?tableArgumentsMethode
+    !?instructionList
+    !propertyMap
+    !metamodelEntityMap
+    !inTreewalkingComponentMap
+    !ioSemanticContext
+  ;
+  $}$ ;
+  listeEntitesAengendrer += ![@categoryMethodToImplement new
+    !className
+    !methodName
+    !listeTypeEtNomsArguments
+    !instructionList
+  ] ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $method$ ;
+  $type_name$ ? @lstring className ;
+  $.$ ;
+  $identifier$ ? @lstring methodName ;
+#---- Formal arguments -----------------------------------------
+  @L_EXsignature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !listeDeTypes] ;
+#--- Instructions
+  ${$ ;
+  <semantic_instructions_list> parse ;
+  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*

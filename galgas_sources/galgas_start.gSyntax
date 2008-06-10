@@ -187,6 +187,7 @@ label compileFile
   @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
+    ![@categoryMethodMap emptyMap]
   ] ;
   repeat
   while

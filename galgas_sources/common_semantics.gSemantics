@@ -4243,9 +4243,18 @@ class @templateInstructionConstant extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
+map @categoryMethodMap {
+  @L_EXsignature aListeArgumentsFormels ;
+  insert insertKey error message "the '%K' method is already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' method is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @EXsemanticContext {
   @M_filewrappers mFilewrappers ;
   @stringset mImportedSemanticComponents ;
+  @categoryMethodMap mCategoryMethodMap ;
 }
 
 #---------------------------------------------------------------------------*

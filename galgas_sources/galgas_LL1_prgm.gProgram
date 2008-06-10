@@ -49,6 +49,7 @@ message "a '.ggs' GALGAS source file"
   @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
+    ![@categoryMethodMap emptyMap]
   ] ;
   grammar galgas_LL1_grammar in inSourceFile
     !?lexiqueMapForUse

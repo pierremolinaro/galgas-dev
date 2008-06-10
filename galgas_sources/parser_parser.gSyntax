@@ -324,6 +324,7 @@ rule <galgas_component>
   @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
+    ![@categoryMethodMap emptyMap]
   ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
