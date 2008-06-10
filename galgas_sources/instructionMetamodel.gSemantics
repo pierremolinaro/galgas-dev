@@ -51,25 +51,23 @@ list @semanticDeclarationList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R O U T I N E    D E C L A R A T I O N                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @routineDeclaration extends @semanticDeclaration {
-  @lstring mRoutineName ;
-  @formalParameterList mFormalParameterList ;
-  @semanticInstructionList mRoutineInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 class @externRoutineDeclaration extends @semanticDeclaration {
-  @lstring mActionName ;
+  @lstring mRoutineName ;
   @formalParameterList mFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineDeclaration extends @externRoutineDeclaration {
+  @semanticInstructionList mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*

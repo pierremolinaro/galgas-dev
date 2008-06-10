@@ -18,8 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics grammarMetamodel :
-import "commonSemantics.gSemantics" ;
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
+import "semanticsMetamodel.gSemantics" ;
+import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

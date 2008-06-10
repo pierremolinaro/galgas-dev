@@ -23,7 +23,6 @@ import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

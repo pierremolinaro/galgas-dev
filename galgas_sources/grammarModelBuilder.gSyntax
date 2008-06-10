@@ -20,7 +20,6 @@
 syntax grammarModelBuilder :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*

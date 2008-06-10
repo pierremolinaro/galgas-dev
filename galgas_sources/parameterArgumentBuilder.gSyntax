@@ -19,7 +19,6 @@
 
 syntax parameterArgumentBuilder :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 

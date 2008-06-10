@@ -19,11 +19,160 @@
 semantics semanticsCompilation :
 import "semanticsMetamodel.gSemantics" ;
 import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
-import semantics commonSemantics in "commonSemantics.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
 import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O N S T R U C T    B U I L T I N     T Y P E    M A P                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine constructBuiltinTypeMap
+  !@typeMap outTypeMap
+:
+  outTypeMap := [@typeMap emptyMap] ;
+#--- Enter builtin type
+  [!?outTypeMap insertKey ![@lstring new !"string"    !here] ![@stringGalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"char"      !here] ![@charGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"bool"      !here] ![@boolGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"uint"      !here] ![@uintGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"sint"      !here] ![@sintGalgasType      new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"uint64"    !here] ![@uint64GalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"sint64"    !here] ![@sint64GalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"double"    !here] ![@doubleGalgasType    new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lstring"   !here] ![@lstringGalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lchar"     !here] ![@lcharGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lbool"     !here] ![@lboolGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"luint"     !here] ![@luintGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lsint"     !here] ![@lsintGalgasType     new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"luint64"   !here] ![@luint64GalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"lsint64"   !here] ![@lsint64GalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"ldouble"   !here] ![@ldoubleGalgasType   new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"binaryset" !here] ![@binarysetGalgasType new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"stringset" !here] ![@stringsetGalgasType new]] ;
+  [!?outTypeMap insertKey ![@lstring new !"location"  !here] ![@locationGalgasType  new]] ;
+#--- @lstringlist type
+  @attributeList lstringAttribute [emptyList] ;
+  @typeMapIndex lstringIndex ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"lstring" !here] !?outTypeMap ?lstringIndex] ;
+  lstringAttribute += !lstringIndex ![@lstring new !"mValue" !here] ;
+  @lstring lstringlist [new !"lstringlist" !here] ;
+  [!?outTypeMap insertKey !lstringlist ![@listGalgasType new !lstringlist !lstringAttribute]] ;
+#--- @stringlist type
+  @attributeList stringAttribute [emptyList] ;
+  @typeMapIndex stringIndex ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"string" !here] !?outTypeMap ?stringIndex] ;
+  stringAttribute += !stringIndex ![@lstring new !"mValue" !here] ;
+  @lstring stringlist [new !"stringlist" !here] ;
+  [!?outTypeMap insertKey !stringlist ![@listGalgasType new !stringlist !stringAttribute]] ;
+#--- @uint64list type
+  @attributeList uint64Attribute [emptyList] ;
+  @typeMapIndex uint64Index ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"uint64" !here] !?outTypeMap ?uint64Index] ;
+  uint64Attribute += !uint64Index ![@lstring new !"mValue" !here] ;
+  @lstring uint64list [new !"uint64list" !here] ;
+  [!?outTypeMap insertKey !uint64list ![@listGalgasType new !uint64list !uint64Attribute]] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    B U I L D    S E M A N T I C S   C O N T E X T                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#method @semanticDeclaration.enterType ?!@semanticContext ioSemanticContext {
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @mapDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @mapIndexDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @enumDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @filewrapperDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @sortedListDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @listDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @classDeclaration.enterType
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+##---------------------------------------------------------------------------*
+#
+#override method @externRoutineDeclaration.enterType # Handles also routine declaration
+#  ?!@semanticContext ioSemanticContext
+#{
+#
+#}
+#
+#---------------------------------------------------------------------------*
+
+routine buildSemanticContext
+  ??@semanticDeclarationList inSemanticDeclarationList
+  !@semanticContext outSemanticContext
+:
+#--- Builtin types
+  @typeMap typeMap ;
+  constructBuiltinTypeMap ? typeMap ;
+#--- Build initial semantic context
+  outSemanticContext := [@semanticContext new
+    !typeMap
+  ] ;
+#--- Loop throught all declarations
+  foreach inSemanticDeclarationList do
+#    call mSemanticDeclaration.enterType !?outSemanticContext ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O M P I L E    S E M A N T I C S   C O M P O N E N T                 *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 routine recursivelyImportSemanticComponent
@@ -74,20 +223,10 @@ routine compileSemanticsComponent
     ![semanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
-##--- Analyze imported files
-#  @typeMap typeMap ;
-#  constructBuiltinTypeMap ?typeMap ;
-#  @stringset importedComponentSet [emptySet] ;
-#  @routineMap routineMap [emptyMap] ;
-#  @typeList typeList ;
-#  treewalking buildMapsForSemantics on semanticsComponentRoot
-#    ![inSourceFile stringByDeletingLastPathComponent]
-#    !endOfSourceFile
-#    !?importedComponentSet
-#    !?typeMap
-#    !?routineMap
-#    ?typeList
-#  ;
+#---- Build semantic context
+  @semanticContext semanticContext ;
+  buildSemanticContext !semanticDeclarationList ?semanticContext ;
+
 ##--- Warn for undefined types
 #  if [typeMap unsolvedIndexCount] > 0 then
 #    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
