@@ -3950,7 +3950,7 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when >= @typeGalgasListType do
+    when >= @typeGalgasListType listType do
       if [inReaderName string] == "length" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
@@ -3964,8 +3964,21 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ;
       else
-        error inReaderName :
-           "list supports only 'length' reader call" -> outAccessorTypesList, outReturnedType ;
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        outReturnedType := inReceiverType ; # Temporary
+        @typeListeAttributsSemantiques attributeList := [listType mNonExternAttributesList] ;
+        @bool found := false ;
+        foreach attributeList while not found do
+          found := ([aNomAttribut string] . "AtIndex") == [inReaderName string] ;
+          if (found) then
+            outReturnedType := mAttributType ;
+          end if ;
+        end foreach ;
+        if not found then
+          error inReaderName :
+           "this reader is not supported by a list" ;
+        end if ;
       end if ;
     when >= @typeGalgasSortedListType do
       if [inReaderName string] == "length" then

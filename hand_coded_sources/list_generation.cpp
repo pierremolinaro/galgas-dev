@@ -312,6 +312,19 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n\n" ;
 
+//--- Direct read access
+  inHfile << "//--------------------------------- Direct Access\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "public : " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << " reader_" << current->aNomAttribut << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inHfile << "\n" ;
+
 //--- Enumerator declaration
   inHfile << "//--------------------------------- List Enumerator\n"
              "  public : class cEnumerator : public cAbstractListEnumerator {\n"
