@@ -313,15 +313,31 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                      const sint32 inIndentation = 0) const ;\n\n" ;
 
 //--- Direct read access
-  inHfile << "//--------------------------------- Direct Access\n" ;
+  inHfile << "//--------------------------------- Direct Read Access\n" ;
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << "public : " ;
+    inHfile << "  public : " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << " reader_" << current->aNomAttribut << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
+    inHfile << "\n"
+               "  reader_" << current->aNomAttribut << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
-    numeroVariable ++ ;
+  }
+  inHfile << "\n" ;
+
+//--- Direct write access
+  inHfile << "//--------------------------------- Direct Write Access\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "  public : void\n"
+               "  modifier_set" << current->aNomAttribut.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+               "                              const " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << " & inObject,\n"
+               "                              const GGS_uint & inIndex\n"
+               "                              COMMA_LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
   }
   inHfile << "\n" ;
 
@@ -987,6 +1003,50 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "  }\n"
                "}\n\n" ;
+
+//--- Direct read access
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " GGS_" << aNomListe << "::\n"
+                 "reader_" << current->aNomAttribut << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
+                 "  " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " result ;\n"
+                 "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
+                 "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
+                 "    if (object != NULL) {\n"
+                 "      result = object->" << current->aNomAttribut << " ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
+
+//--- Direct write access
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << aNomListe << "::\n"
+                 "modifier_set" << current->aNomAttribut.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+                 "                              const " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " & inObject,\n"
+                 "                              const GGS_uint & inIndex\n"
+                 "                              COMMA_LOCATION_ARGS) const {\n"
+                 "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
+                 "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
+                 "    if (object != NULL) {\n"
+                 "      object->" << current->aNomAttribut << " = inObject ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
 }
 
 
