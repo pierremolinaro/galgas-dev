@@ -5821,11 +5821,11 @@ end rule ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
-  ??@M_treewalkingComponents unused inTreewalkingComponentMap
+  ??@M_treewalkingComponents inTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   $method$ ;
@@ -5873,14 +5873,14 @@ rule <semantics_declaration>
     !instructionList
   ] ;
 label importSemantics
-  ?!@ModelMap ioModelMap
+  ?!@ModelMap unused ioModelMap
   ?!@ActionMap unused ioExternActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
-  ?!@EXsemanticContext unused ioSemanticContext
+  ?!@EXsemanticContext ioSemanticContext
 :
   $method$ ;
   $type_name$ ? @lstring className ;

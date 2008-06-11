@@ -4,3 +4,4 @@ compile "testsuite_grammar.ggs" ;
 compile "testsuite_program.ggs" ;
 
 compile "testsuite_foreach_instruction.ggs" ;
+compile "testsuite_list.ggs" ;
