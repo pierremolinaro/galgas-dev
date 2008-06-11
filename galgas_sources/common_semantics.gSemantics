@@ -2255,7 +2255,19 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     elsif ([inModifierName string] == "popFirst") | ([inModifierName string] == "popLast") then
       outModifierSignature := mExtractSignature ;
     else
-      error inModifierName: "a list accepts only 'popFirst' and 'popLast' modifiers" -> outModifierSignature ;
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      @bool found := false ;
+      foreach mNonExternAttributesList while not found do
+        found := ("set" . [[aNomAttribut string] stringByCapitalizingFirstCharacter] . "AtIndex") == [inModifierName string] ;
+        if (found) then
+          outModifierSignature += !mAttributType ![@EXformalArgumentPassingMode argumentConstantIn] ;
+          outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+        end if ;
+      end foreach ;
+      if not found then
+        error inModifierName :
+         "the '" . [inModifierName string] . "' modifier is not supported by the list" ;
+      end if ;
     end if ;
   end method ;
 
@@ -3977,7 +3989,7 @@ routine handleReaderCall
         end foreach ;
         if not found then
           error inReaderName :
-           "this reader is not supported by a list" ;
+           "the '" . [inReaderName string] . "' reader is not supported by a list" ;
         end if ;
       end if ;
     when >= @typeGalgasSortedListType do

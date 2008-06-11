@@ -5,13 +5,13 @@
    <meta http-equiv="Content-Style-Type" content="text/css" />
    <title>GALGAS ChangeLog</title>
    <style type="text/css">
-     hilite {
+     span.hilite {
        font-weight:bold;
        color:red;
      }
-     api {
-       font: courier;
-       color:red;
+     span.api {
+       font-family: Courier;
+       background: yellow;
      }
    </style>
  </head>
@@ -20,14 +20,18 @@
    <p><strong>GALGAS ChangeLog</strong></p>
    <p>1.7.5</p>
    <ul>
-    <li>In a program component, the 'routine' keyword that introduces the prologue routine has been replaced by the 'before' keyword;</li>
-    <li>In a program component, the 'routine' keyword that introduces the epilogue routine has been replaced by the 'after' keyword;</li>
+    <li><span class="hilite">CHANGE IN LIBPM</span>: <span class="api">generic_arraies</span> directory is replaced by <span class="api">collections</span>;
+      it is automatically handled by makefiles (perform a make clean before recompiling your project); edit command line tool targets of XCode project: delete removed directory and add the new one;
+    </li>
+    <li>In a program component, the <span class="api">routine</span> keyword that introduces the prologue routine has been replaced by the <span class="api">before</span> keyword;</li>
+    <li>In a program component, the <span class="api">routine</span> keyword that introduces the epilogue routine has been replaced by the <span class="api">after</span> keyword;</li>
+    <li>lists now support direct access by an @uint index (see <a href="http://galgas.rts-software.org/doku.php?id=list_types#direct_access_list_as_array">Direct Access</a>);</li>
     <li>New <span class="api">@string</span> method: <a href="http://galgas.rts-software.org/doku.php?id=string_type#writetoexecutablefile">writeToExecutableFile</a>, that writes to a file and sets its execute permissions;</li>
    </ul>
    <p>1.7.4</p>
    <ul>
     <li>New features for <a href="http://galgas.rts-software.org/doku.php?id=lex#lexical_repeat_instruction">lexical repeat instruction</a>;</li>
-    <li>LIBPM has been adapted to be compiled successfully with "Effective C++ Violations" flag on (command line option -Weffc++);</li>
+    <li>LIBPM has been adapted to be compiled successfully with "Effective C++ Violations" flag on (command line option <span class="api">-Weffc++</api>);</li>
    </ul>
    <p>1.7.3</p>
    <ul>
