@@ -1,8 +1,0 @@
-grammar %PROJECT_NAME%_grammar "LL1":
-import lexique %PROJECT_NAME%_lexique in "%PROJECT_NAME%_lexique.ggs" ;
-import option %PROJECT_NAME%_options in "%PROJECT_NAME%_options.ggs" ;
-import syntax %PROJECT_NAME%_syntax in "%PROJECT_NAME%_syntax.ggs" ;
-
-root <start_symbol> ;
-
-end grammar ;

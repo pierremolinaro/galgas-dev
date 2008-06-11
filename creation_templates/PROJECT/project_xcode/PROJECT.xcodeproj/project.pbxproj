@@ -710,9 +710,8 @@
 				CFB9E5120DF28CB300885084 /* TC_UniqueFixedSizeArray.h */,
 				CFB9E5130DF28CB300885084 /* TF_AVL_Tree.h */,
 			);
-			name = collections;
-			path = ../../../../libpm/collections;
-			sourceTree = SOURCE_ROOT;
+			path = collections;
+			sourceTree = "<group>";
 		};
 		CFD21A8A0913D1890011F11E /* Sources Files */ = {
 			isa = PBXGroup;
