@@ -24,7 +24,7 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
   import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
   import semantics projectCreation in "projectCreation.gSemantics" ;
-  import semantics compileLexique in "compileLexique.gSemantics" ;
+  import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
   import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
   import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
   import semantics optionCompilation in "optionCompilation.gSemantics" ;

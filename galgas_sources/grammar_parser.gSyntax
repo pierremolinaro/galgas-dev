@@ -103,6 +103,7 @@ extern routine analyzeGrammar
   ?!@L_syntaxComponents_ForGrammar ioSyntaxComponentsList
   ?!@M_nonTerminalSymbolsForGrammar ioNonterminalSymbolsMapForGrammar
   ?!@M_startSymbolEntityAndMetamodel inStartSymbolEntityAndMetamodelMap
+  ??@M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
 ;
 
 #---------------------------------------------------------------------------*
@@ -121,6 +122,13 @@ rule <galgas_component>
 #--- Grammar name
   @lstring grammarName ;
   $identifier$ ? grammarName ;
+  @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+  if [grammarName string] != basename then
+    warning grammarName: "GALGAS 1.7.5 and later checks "
+      "the component name ('" . [grammarName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
   @lstring grammarClass ;
   $literal_string$ ? grammarClass ;
   $:$ ;
@@ -269,6 +277,21 @@ rule <galgas_component>
   foreach grammarAltMap (@lstring cstAltName ...) do
     [startSymbolAltMap searchKey !cstAltName ?* ?*] ;
   end foreach ;
+#--- Unused symbols declaration
+  @M_unusedNonTerminalSymbolsForGrammar unusedNonTerminalSymbolsForGrammar [emptyMap] ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
+     @luint nonterminalIndex ;
+     [nonterminalSymbolsMapForGrammar searchKeyGetID !nonterminalSymbolName ?nonterminalIndex ?*] ;
+     [!?unusedNonTerminalSymbolsForGrammar insertKey !nonterminalSymbolName !nonterminalIndex] ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
 #--- Analyze grammar
   analyzeGrammar
     !?grammarName
@@ -280,6 +303,7 @@ rule <galgas_component>
     !?syntaxComponentsList
     !?nonterminalSymbolsMapForGrammar
     !?startSymbolEntityAndMetamodelMap
+    !unusedNonTerminalSymbolsForGrammar
   ;
 #--- insert grammar in grammars map
   [!?ioGrammarComponentsMap insertKey
@@ -338,6 +362,16 @@ label importLexique
     $identifier$ ? * ;
   end repeat ;
   $;$ ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? * ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
   $end$ ;
   $grammar$ ;
   $;$ ;
@@ -391,6 +425,16 @@ label importSyntax
     $identifier$ ? * ;
   end repeat ;
   $;$ ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? * ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
   $end$ ;
   $grammar$ ;
   $;$ ;
@@ -445,6 +489,16 @@ label importSemantics
     $identifier$ ? * ;
   end repeat ;
   $;$ ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? * ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
   $end$ ;
   $grammar$ ;
   $;$ ;
@@ -528,6 +582,16 @@ label importGrammarForSemantics
   end repeat ;
   [!?ioGrammarComponentsMap insertKey !grammarName !grammarAltMap !lexiqueName !ioOptionsComponentsMap] ;
   $;$ ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? * ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
   $end$ ;
   $grammar$ ;
   $;$ ;
@@ -578,6 +642,16 @@ label importOptions
     $identifier$ ? * ;
   end repeat ;
   $;$ ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? * ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
   $end$ ;
   $grammar$ ;
   $;$ ;

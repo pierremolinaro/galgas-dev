@@ -2,8 +2,10 @@
 //                                                                           *
 //  Routines for computing useful symbols of the pure BNF grammar            *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -27,12 +29,15 @@ class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTML_FileWrite ;
 class C_BDD_Set1 ;
-class C_Lexique ;
+class C_Compiler ;
+class GGS_M_unusedNonTerminalSymbolsForGrammar ;
 
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
+useful_symbols_computations (C_Compiler & inLexique,
+                             const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                             const cPureBNFproductionsList & inPureBNFproductions,
                              const uint16 inBDDBitCount,
                              const cVocabulary & inVocabulary,
                              C_HTML_FileWrite * inHTMLfile,

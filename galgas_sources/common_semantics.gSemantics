@@ -2063,6 +2063,13 @@ map @M_nonTerminalSymbolsForGrammar {
 }
 
 #---------------------------------------------------------------------------*
+
+map @M_unusedNonTerminalSymbolsForGrammar {
+  @luint mSymbolIndex ;
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    Map of syntax components                                               *
 #                                                                           *

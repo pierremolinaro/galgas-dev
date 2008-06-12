@@ -86,6 +86,13 @@ rule <galgas_component>
   $option$ ;
   @lstring optionComponentName ;
   $identifier$ ? optionComponentName ;
+  @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+  if [optionComponentName string] != basename then
+    warning optionComponentName: "GALGAS 1.7.5 and later checks "
+      "the component name ('" . [optionComponentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
   $:$ ;
 #--- option declarations
   repeat

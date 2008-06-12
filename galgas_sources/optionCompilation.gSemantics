@@ -477,6 +477,15 @@ routine compileOptionComponent
   @optionComponentRoot optionComponentRoot ;
   grammar optionLL1grammar in inSourceFile ?optionComponentRoot ;
 #--- Check component name
+  @lstring componentName := [optionComponentRoot mOptionComponentName] ;
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
+#--- Check component name
   @string baseName := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   if [[optionComponentRoot mOptionComponentName] string] != baseName then
     error [optionComponentRoot mOptionComponentName]: "the component name is '"

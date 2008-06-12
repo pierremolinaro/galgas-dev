@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-semantics compileLexique :
+semantics lexiqueCompilation :
 
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
@@ -31,6 +31,15 @@ routine compileLexiqueComponent
 :
   @lexiqueComponentRoot lexiqueComponentRoot ;
   grammar lexiqueLL1grammar in inSourceFile ?lexiqueComponentRoot ;
+#--- Check component name
+  @lstring componentName := [lexiqueComponentRoot mLexiqueComponentName] ;
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
 #--- Lexical attribute type name set
   @stringset allowedLexicalTypeNameSet [emptySet] ;
   allowedLexicalTypeNameSet += !"lstring" ;

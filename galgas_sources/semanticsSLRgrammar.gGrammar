@@ -2,7 +2,7 @@
 #                                                                           *
 #  'semantics' SLR grammar                                                  *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -28,4 +28,6 @@ grammar semanticsSLRgrammar "SLR" :
     !@location outEndOfSourceFile
     !@semanticsComponentRoot outSemanticsComponentRoot
   ; # SLR
+
+  unused <actual_input_parameter_list> ;
 end grammar ;
