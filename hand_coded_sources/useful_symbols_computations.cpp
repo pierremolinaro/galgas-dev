@@ -188,13 +188,13 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   if (userUselessSymbolCount > 0) {
     C_String warningMessage ;
     if (userUselessSymbolCount == 1) {
-      warningMessage << "there is 1 useless symbol: " ;
+      warningMessage << "there is 1 useless symbol, not declared as unused: " ;
     }else{
-      warningMessage << "there are " << userUselessSymbolCount << " useless symbols: " ;
+      warningMessage << "there are " << userUselessSymbolCount << " useless symbols, not declared as unused: " ;
     }
     bool first = true ;
     for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-      if (array (symbol COMMA_HERE)) {
+      if (array (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo (symbol)) {
         if (first) {
           first = false ;
         }else{

@@ -2058,8 +2058,8 @@ list @L_productionRules_ForGrammarComponent {
 
 map @M_nonTerminalSymbolsForGrammar {
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
-  insert insertKey error message "internal insert error" ;
-  search searchKey, searchKeyGetID error message "internal search error" ;
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared" ;
+  search searchKey, searchKeyGetID error message "the '<%K>' non terminal symbol is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
