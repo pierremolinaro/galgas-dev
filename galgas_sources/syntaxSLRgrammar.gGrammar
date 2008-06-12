@@ -27,4 +27,6 @@ grammar syntaxSLRgrammar "SLR" :
   root <syntax_component_start_symbol>
     !@syntaxComponentRoot outSyntaxComponentRoot
   ; # SLR
+
+  unused <formal_input_parameter_list> ;
 end grammar ;

@@ -222,6 +222,15 @@ routine compileSemanticsComponent
   @semanticsComponentRoot semanticsComponentRoot ;
   @location endOfSourceFile ;
   grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile ?semanticsComponentRoot ;
+#--- Check component name
+  @lstring componentName := [semanticsComponentRoot mSemanticsComponentName] ;
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
 #--- Recursively parse all imported files
   @semanticDeclarationList semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;

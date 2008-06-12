@@ -2,8 +2,10 @@
 //                                                                           *
 //  Routines for computing useful symbols of the pure BNF grammar            *
 //                                                                           *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -20,6 +22,7 @@
 
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_BDD_Set2.h"
+#include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 
@@ -90,12 +93,24 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static bool
-displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
+displayUnusefulSymbols (C_Compiler & inLexique,
+                        const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                        const C_BDD_Set1 & inUsefulSymbols,
                         const uint16 inBDDBitCount,
                         C_HTML_FileWrite * inHTMLfile,
                         const cVocabulary & inVocabulary,
                         const sint32 inIterationCount,
                         const bool inVerboseOptionOn) {
+  TC_UniqueArray <uint32> unusedNonTerminalArray ;
+  GGS_M_unusedNonTerminalSymbolsForGrammar::cElement * currentNT = inUnusedNonTerminalSymbolsForGrammar.firstObject () ;
+  while (currentNT != NULL) {
+    macroValidPointer (currentNT) ;
+    const uint32 nt = currentNT->mInfo.mSymbolIndex.uintValue () + inVocabulary.getTerminalSymbolsCount () ;
+    unusedNonTerminalArray.addObject (nt) ;
+    // printf ("DECLARED UNUSED %u ", nt) ;
+    currentNT = currentNT->nextObject () ;
+  }
+
   bool warning = false ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
@@ -118,15 +133,23 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
     & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kLowerOrEqual, lastNonterminalToCheck)
     & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kStrictGreater, (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ())
   ;
-  if (! unusefulSymbols.isEqualToBDD (ex_unusefulSymbols.bdd ())) {
-    printf ("\n********* USEFUL SYMBOLS ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+
+//--- Compute user useless symbol count
+  TC_UniqueArray <bool> array ;
+  ex_unusefulSymbols.getArray (array) ;
+  uint32 userUselessSymbolCount = 0 ;
+  const sint32 symbolsCount = inVocabulary.originalGrammarSymbolsCount () ;
+  for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+    if (array (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo (symbol)) {
+      userUselessSymbolCount += array (symbol COMMA_HERE) ;
+      // printf ("ACTUALLY UNUSED %u ", symbol) ;
+    }
   }
   
-  const uint32 n = ex_unusefulSymbols.getValuesCount () ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
   }
-  if (n == 0L) {
+  if (userUselessSymbolCount == 0) {
     if (inHTMLfile != NULL) {
       inHTMLfile->outputRawData ("<span class=\"success\">") ;
       *inHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
@@ -139,11 +162,10 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
     if (inHTMLfile != NULL) {
       inHTMLfile->outputRawData ("<span class=\"warning\">") ;
       *inHTMLfile << "The vocabulary has "
-                  << n
-                  << " unuseful element(s) : \n" ;
+                  << userUselessSymbolCount
+                  << " useless symbol(s) : \n" ;
       TC_UniqueArray <bool> array ;
       ex_unusefulSymbols.getArray (array) ;
-      const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
       inHTMLfile->outputRawData ("<code>") ;
       for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
         if (array (symbol COMMA_HERE)) {
@@ -155,7 +177,6 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
     }
     if (inVerboseOptionOn) {
       co << "warning.\n" ;
-      co.flush () ;
     }
     warning = true ;
   }
@@ -163,13 +184,66 @@ displayUnusefulSymbols (const C_BDD_Set1 & inUsefulSymbols,
     inHTMLfile->outputRawData ("</p>") ;
   }
   co.flush () ;
+//--- Print warning
+  if (userUselessSymbolCount > 0) {
+    C_String warningMessage ;
+    if (userUselessSymbolCount == 1) {
+      warningMessage << "there is 1 useless symbol: " ;
+    }else{
+      warningMessage << "there are " << userUselessSymbolCount << " useless symbols: " ;
+    }
+    bool first = true ;
+    for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+      if (array (symbol COMMA_HERE)) {
+        if (first) {
+          first = false ;
+        }else{
+          warningMessage << ", " ;
+        }
+        inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
+      }
+    }
+    inLexique.onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
+  }
+  
+//--- Check if there are nonterminal symbols declared as unused and actually used
+  uint32 declaredUnusedAndActuallyUsedCount = 0 ;
+  for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
+    if (! array ((uint32) unusedNonTerminalArray (i COMMA_HERE) COMMA_HERE)) {
+      declaredUnusedAndActuallyUsedCount ++ ;
+    }
+  }
+  if (declaredUnusedAndActuallyUsedCount > 0) {
+    C_String warningMessage ;
+    if (declaredUnusedAndActuallyUsedCount == 1) {
+      warningMessage << "there is 1 useful symbol declared as unused: " ;
+    }else{
+      warningMessage << "there are " << declaredUnusedAndActuallyUsedCount << " useful symbols declared as unused: " ;
+    }
+    bool first = true ;
+    for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
+      const sint32 symbol = unusedNonTerminalArray (i COMMA_HERE) ;
+      if (! array (symbol COMMA_HERE)) {
+        if (first) {
+          first = false ;
+        }else{
+          warningMessage << ", " ;
+        }
+        inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
+      }
+    }
+    inLexique.onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
+  }
+//---
   return warning ;
 }
 
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproductions,
+useful_symbols_computations (C_Compiler & inLexique,
+                             const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
+                             const cPureBNFproductionsList & inPureBNFproductions,
                              const uint16 inBDDBitCount,
                              const cVocabulary & inVocabulary,
                              C_HTML_FileWrite * inHTMLfile,
@@ -191,7 +265,9 @@ useful_symbols_computations (const cPureBNFproductionsList & inPureBNFproduction
                         outUsefulSymbols,
                         (uint16) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
-  const bool warning = displayUnusefulSymbols (outUsefulSymbols,
+  const bool warning = displayUnusefulSymbols (inLexique,
+                                               inUnusedNonTerminalSymbolsForGrammar,
+                                               outUsefulSymbols,
                                                inBDDBitCount,
                                                inHTMLfile,
                                                inVocabulary,

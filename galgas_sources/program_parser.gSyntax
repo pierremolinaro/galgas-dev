@@ -132,6 +132,13 @@ rule <galgas_component>
 #--- Get program name
   @lstring nomPRGMprincipal ; # nom fichier programme principal
   $identifier$ ? nomPRGMprincipal ;
+  @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+  if [nomPRGMprincipal string] != basename then
+    warning nomPRGMprincipal: "GALGAS 1.7.5 and later checks "
+      "the component name ('" . [nomPRGMprincipal string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
 #--- Title
   @lstring versionString ;
   $literal_string$ ? versionString ;

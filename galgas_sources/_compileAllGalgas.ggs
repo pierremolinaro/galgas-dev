@@ -36,7 +36,7 @@ compile "lexiqueMetamodel.gSemantics" ;
 compile "lexiqueSemantics.gSemantics" ;
 compile "lexiqueModelBuilder.gSyntax" ;
 compile "lexiqueLL1grammar.gGrammar" ;
-compile "compileLexique.gSemantics" ;
+compile "lexiqueCompilation.gSemantics" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;
@@ -104,7 +104,7 @@ compile "metamodel_parser.gSyntax" ;
 compile "treewalking_parser.gSyntax" ;
 compile "scanner_semantics.gSemantics" ;
 compile "cocoa_parser.gSyntax" ;
-compile "galgas_cocoa.gGui" ;
+compile "cocoaGalgas.gGui" ;
 compile "cli_options_parser.gSyntax" ;
 compile "galgas_cli_options.gOption" ;
 compile "grammar_parser.gSyntax" ;

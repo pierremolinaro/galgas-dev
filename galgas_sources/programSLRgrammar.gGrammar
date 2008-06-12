@@ -27,6 +27,9 @@ grammar programSLRgrammar "SLR" :
   root <program_component_start_symbol>
     !@programComponentRoot outProgramComponentRoot
   ; # SLR
+
+  unused <actual_input_parameter_list> ;
+  unused <formal_input_parameter_list> ;
 end grammar ;
 
 #---------------------------------------------------------------------------*

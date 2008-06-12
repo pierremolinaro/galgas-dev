@@ -533,6 +533,7 @@ static uint16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 
 static void
 analyzeGrammar (C_Compiler & inLexique,
+                const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
                 const GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
                 const GGS_luint & inOriginalGrammarStartSymbol,
@@ -726,7 +727,9 @@ analyzeGrammar (C_Compiler & inLexique,
   #endif
   C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-    useful_symbols_computations (pureBNFproductions,
+    useful_symbols_computations (inLexique,
+                                 inUnusedNonTerminalSymbolsForGrammar,
+                                 pureBNFproductions,
                                  bddBitCount,
                                  vocabulary,
                                  HTMLfile,
@@ -957,7 +960,8 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                         GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                         GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                         GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap
+                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
+                        const GGS_M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS
@@ -995,6 +999,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
     }
     if (ok) {
       analyzeGrammar (inLexique,
+                      inUnusedNonTerminalSymbolsForGrammar,
                       inTargetFileName,
                       inGrammarClass,
                       inOriginalGrammarStartSymbol,

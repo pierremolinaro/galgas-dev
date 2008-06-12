@@ -29,6 +29,15 @@ routine compileGuiComponent
 :
   @guiComponentRoot guiComponentRoot ;
   grammar guiLL1grammar in inSourceFile ?guiComponentRoot ;
+#--- Check component name
+  @lstring componentName := [guiComponentRoot mGUIName] ;
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ; 
 end routine ;
 
 

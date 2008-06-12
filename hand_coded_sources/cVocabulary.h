@@ -73,6 +73,9 @@ class cVocabulary {
 //--- Get all symbols count
   public : sint32 getAllSymbolsCount (void) const ;
 
+//--- Get all original grammar symbols count
+  public : inline sint32 originalGrammarSymbolsCount (void) const { return mOriginalGrammarSymbolsCount ; }
+
 //--- Get symbol
   public : C_String getSymbol (const sint32 symbolIndex
                                COMMA_LOCATION_ARGS) const ;
