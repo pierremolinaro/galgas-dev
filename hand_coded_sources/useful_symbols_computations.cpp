@@ -140,7 +140,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   uint32 userUselessSymbolCount = 0 ;
   const sint32 symbolsCount = inVocabulary.originalGrammarSymbolsCount () ;
   for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-    if (array (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo (symbol)) {
+    if (array (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ( (uint32) symbol)) {
       userUselessSymbolCount += array (symbol COMMA_HERE) ;
       // printf ("ACTUALLY UNUSED %u ", symbol) ;
     }
@@ -194,7 +194,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
     }
     bool first = true ;
     for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-      if (array (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo (symbol)) {
+      if (array (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ((uint32) symbol)) {
         if (first) {
           first = false ;
         }else{
@@ -209,7 +209,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
 //--- Check if there are nonterminal symbols declared as unused and actually used
   uint32 declaredUnusedAndActuallyUsedCount = 0 ;
   for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
-    if (! array ((uint32) unusedNonTerminalArray (i COMMA_HERE) COMMA_HERE)) {
+    if (! array ((sint32) unusedNonTerminalArray (i COMMA_HERE) COMMA_HERE)) {
       declaredUnusedAndActuallyUsedCount ++ ;
     }
   }
@@ -222,7 +222,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
     }
     bool first = true ;
     for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
-      const sint32 symbol = unusedNonTerminalArray (i COMMA_HERE) ;
+      const sint32 symbol = (sint32) unusedNonTerminalArray (i COMMA_HERE) ;
       if (! array (symbol COMMA_HERE)) {
         if (first) {
           first = false ;
