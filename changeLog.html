@@ -21,10 +21,11 @@
    <p>1.7.5</p>
    <ul>
     <li><span class="hilite">CHANGE IN LIBPM</span>: <span class="api">generic_arraies</span> directory is replaced by <span class="api">collections</span>;
-      it is automatically handled by makefiles (perform a make clean before recompiling your project); edit command line tool targets of XCode project: delete removed directory and add the new one;
+      it is automatically handled by makefiles (perform a make clean before recompiling your project); you should edit command line tool targets of XCode project, delete the removed directory then add the new one;
     </li>
-    <li>In a program component, the <span class="api">routine</span> keyword that introduces the prologue routine has been replaced by the <span class="api">before</span> keyword;</li>
-    <li>In a program component, the <span class="api">routine</span> keyword that introduces the epilogue routine has been replaced by the <span class="api">after</span> keyword;</li>
+    <li><span class="hilite">CHANGE IN PROGRAM COMPONENT</span>: the <span class="api">routine</span> keyword that introduces the prologue routine has been replaced by the <span class="api">before</span> keyword;</li>
+    <li><span class="hilite">CHANGE IN PROGRAM COMPONENT</span>: the <span class="api">routine</span> keyword that introduces the epilogue routine has been replaced by the <span class="api">after</span> keyword;</li>
+    <li>New GALGAS compiler check: from now, GALGAS compiler issues a warning when the component name is different from the source file base name;</li>
     <li>lists now support direct access by an @uint index (see <a href="http://galgas.rts-software.org/doku.php?id=list_types#direct_access_list_as_array">Direct Access</a>);</li>
     <li>New <span class="api">@string</span> method: <a href="http://galgas.rts-software.org/doku.php?id=string_type#writetoexecutablefile">writeToExecutableFile</a>, that writes to a file and sets its execute permissions;</li>
    </ul>
