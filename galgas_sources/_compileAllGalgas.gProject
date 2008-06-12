@@ -28,7 +28,7 @@ compile "lexiqueSemantics.gSemantics" ;
 compile "lexiqueMetamodel.gSemantics" ;
 compile "lexiqueModelBuilder.gSyntax" ;
 compile "lexiqueLL1grammar.gGrammar" ;
-compile "compileLexique.gSemantics" ;
+compile "lexiqueCompilation.gSemantics" ;
 
 #--- Option Component
 compile "optionSemantics.gSemantics" ;
