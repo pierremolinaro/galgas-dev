@@ -43,6 +43,7 @@ class @grammarComponentRoot {
   @lstring mGrammarClass ;
   @lstring mStartSymbol ;
   @grammarLabelList mLabelList ;
+  @lstringlist mUnusedNonterminalList ;
 }
 
 #---------------------------------------------------------------------------*

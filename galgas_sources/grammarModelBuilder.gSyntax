@@ -86,6 +86,19 @@ rule <grammar_component_start_symbol>
     $identifier$ ? labelName ;
   end repeat ;
   $;$ ;
+#--- Unused non terminal symbols
+  @lstringlist mUnusedNonterminalList [emptyList] ;
+  repeat
+  while
+   $unused$ ;
+   repeat
+     $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
+     mUnusedNonterminalList += ! nonterminalSymbolName ;
+   while
+     $,$ ;
+   end repeat ;
+   $;$ ;
+  end repeat ;
 #---
   $end$ ;
   $grammar$ ;
@@ -95,6 +108,7 @@ rule <grammar_component_start_symbol>
     !mGrammarClass
     !mStartSymbol
     !mLabelList
+    !mUnusedNonterminalList
   ] ;
 end rule ;
 
