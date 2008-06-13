@@ -31,7 +31,6 @@ import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 #------------------------------------------------------------------------------*
 
 nonterminal <semantics_component_start_symbol>
-  !@location outEndOfSourceFile
   !@semanticsComponentRoot outSemanticsComponentRoot
 ;
 
@@ -54,7 +53,6 @@ nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalIn
 nonterminal <obsolete_declaration> ;
 
 rule <semantics_component_start_symbol>
-  !@location outEndOfSourceFile
   !@semanticsComponentRoot outSemanticsComponentRoot
 :
   $semantics$ ;
@@ -101,13 +99,14 @@ rule <semantics_component_start_symbol>
   end repeat ;
 #--- end
   $end$ ;
-  outEndOfSourceFile := here ;
+  @location endOfSourceFile := here ;
   $semantics$ ;
   $;$ ;
   outSemanticsComponentRoot := [@semanticsComponentRoot new
     !mSemanticsComponentName
     !mImportedComponentFileNameList
     !mSemanticDeclarationList
+    !endOfSourceFile
   ] ;
 end rule ;
 
@@ -845,6 +844,31 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     !mFilewrapperPath
     !mFilewrapperExtensionList
     !mFilewrapperTemplateList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  $method$ ;
+  $type_name$ ? @lstring mClassName ;
+  $.$ ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  ${$ ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $}$ ;
+  outSemanticDeclaration := [@categoryMethodDeclaration new
+    !mClassName
+    !mMethodName
+    !mFormalParameterList
+    !mRoutineInstructionList
   ] ;
 end rule ;
 

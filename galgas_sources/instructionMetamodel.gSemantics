@@ -207,6 +207,7 @@ class @methodCallInstruction extends @semanticInstruction {
 
 class @modifierCallInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
+  @lstringlist mReceiverStructAttributes ;
   @lstring mModifierName ;
   @actualParameterList mActualParameterList ;
 }

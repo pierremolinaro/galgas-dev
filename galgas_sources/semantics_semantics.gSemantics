@@ -1229,10 +1229,12 @@ class @typeRoutineAengendrer extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 class @categoryMethodToImplement extends @typeEntityToGenerate {
+  @bool mOverride ;
   @lstring mClassName ;
   @lstring mMethodName ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
   @typeInstructionList mInstructionList ;
+  @location mMagicNumber ;
 }
 
 #---------------------------------------------------------------------------*

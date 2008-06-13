@@ -28,6 +28,21 @@ class @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
   @lstringlist mImportedComponentFileNameList ;
   @semanticDeclarationList mSemanticDeclarationList ;
+  @location mEndOfSourceFile ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedSemanticsComponentMap {
+  @semanticsComponentRoot mRoot ;
+  insert insertKey error message "the '%K' semantics component has already been parsed" ;
+  search searchKey error message "the '%K' semantics component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @parsedComponentStruct {
+  @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -284,6 +299,19 @@ class @filewrapperDeclaration extends @semanticDeclaration {
   @lstring mFilewrapperPath ;
   @lstringlist mFilewrapperExtensionList ;
   @filewrapperTemplateList mFilewrapperTemplateList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryMethodDeclaration extends @semanticDeclaration {
+  @lstring mClassName ;
+  @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+  @semanticInstructionList mRoutineInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
