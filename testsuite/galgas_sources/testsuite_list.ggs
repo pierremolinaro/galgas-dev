@@ -1,0 +1,24 @@
+semantics testsuite_list :
+
+list @myList {
+  @string mValue ;
+}
+
+routine testsuite_list :
+  @myList strList [emptyList] ;
+  strList += !"a" ;
+  strList += !"b" ;
+  strList += !"c" ;
+  strList += !"d" ;
+  message "--- begin of list direct access\n" ;
+  @string s := [strList mValueAtIndex !0] ;
+  log s ;
+  s := [strList mValueAtIndex !1] ;
+  log s ;
+  s := [strList mValueAtIndex !2] ;
+  log s ;
+  s := [strList mValueAtIndex !3] ;
+  log s ;
+end routine ;
+
+end semantics ;
