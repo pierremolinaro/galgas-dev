@@ -107,7 +107,10 @@ message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileSemanticsComponent !inSourceFile !outputDirectory ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+  ] ;
+  compileSemanticsComponent !inSourceFile !outputDirectory !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -165,6 +168,9 @@ message "a GALGAS project source file"
   @lstringlist fileList ;
   grammar projectLL1grammar in inSourceFile ?fileList ;
 #--- loop for compiling each file
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+  ] ;
   foreach fileList (@lstring kFile) do
     message "----- Compiling '" . kFile . "'\n" ;
     @string extension := [kFile pathExtension] ;
@@ -173,7 +179,7 @@ message "a GALGAS project source file"
       ![kFile location]
     ] ;
     if extension == "gSemantics" then
-      compileSemanticsComponent !fullFilePath !outputDirectory ;
+      compileSemanticsComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
     elsif extension == "gLexique" then
       compileLexiqueComponent !fullFilePath !outputDirectory ;
     elsif extension == "gSyntax" then

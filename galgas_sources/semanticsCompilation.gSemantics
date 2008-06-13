@@ -82,18 +82,21 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#method @semanticDeclaration.enterType ?!@semanticContext ioSemanticContext {
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @mapDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
+method @semanticDeclaration.enterType
+  ?!@semanticContext ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override
+method @mapDeclaration.enterType
+  ?!@semanticContext ioSemanticContext
+{
+  log mMapTypeName ;
+}
+
 ##---------------------------------------------------------------------------*
 #
 #override method @mapIndexDeclaration.enterType
@@ -183,7 +186,25 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+routine parseSemanticComponent
+  ??@lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@semanticsComponentRoot outSemanticsComponentRoot
+:
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  @lstring basenameKey [new !basename !here] ;
+  if [[ioParsedComponentStruct mParsedSemanticsComponentMap] hasKey ! basename] then
+    [[ioParsedComponentStruct mParsedSemanticsComponentMap] searchKey !basenameKey ?outSemanticsComponentRoot] ;
+  else
+    grammar semanticsSLRgrammar in inSourceFile ?outSemanticsComponentRoot ;
+    [!?ioParsedComponentStruct.mParsedSemanticsComponentMap insertKey !basenameKey !outSemanticsComponentRoot] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine recursivelyImportSemanticComponent
+  ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@semanticDeclarationList ioSemanticDeclarationList
   ?!@stringset ioParsedFileSet
   ??@lstringlist inListOfFilesToParse
@@ -199,9 +220,14 @@ routine recursivelyImportSemanticComponent
           ![mValue location]
         ] ;
         @semanticsComponentRoot semanticsComponentRoot ;
-        grammar semanticsSLRgrammar in filePath ?* ?semanticsComponentRoot ;
+        parseSemanticComponent
+          !filePath
+          !?ioParsedComponentStruct
+          ?semanticsComponentRoot
+        ;
         ioSemanticDeclarationList := ioSemanticDeclarationList . [semanticsComponentRoot mSemanticDeclarationList] ;
         recursivelyImportSemanticComponent
+          !?ioParsedComponentStruct
           !?ioSemanticDeclarationList
           !?ioParsedFileSet
           ![semanticsComponentRoot mImportedComponentFileNameList]
@@ -217,14 +243,18 @@ end routine ;
 routine compileSemanticsComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse source file
   @semanticsComponentRoot semanticsComponentRoot ;
-  @location endOfSourceFile ;
-  grammar semanticsSLRgrammar in inSourceFile ?endOfSourceFile ?semanticsComponentRoot ;
+  parseSemanticComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?semanticsComponentRoot
+  ;
 #--- Check component name
-  @lstring componentName := [semanticsComponentRoot mSemanticsComponentName] ;
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  @lstring componentName := [semanticsComponentRoot mSemanticsComponentName] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -235,6 +265,7 @@ routine compileSemanticsComponent
   @semanticDeclarationList semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   recursivelyImportSemanticComponent
+    !?ioParsedComponentStruct
     !?semanticDeclarationList
     !?parsedFileSet
     ![semanticsComponentRoot mImportedComponentFileNameList]

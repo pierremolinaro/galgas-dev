@@ -4518,9 +4518,6 @@ label secondPhase
           [!?ioVariablesMap insertUsedConstInArgument !attributeName !type !cppName] ;
           firstOne := false ;
         end foreach ;
-
-
-
       end select ;
       outForeachEnumerationList += !sourceExpression !magicNumber !typeName !ascending ;
     while
@@ -5835,13 +5832,55 @@ rule <semantics_declaration>
   ??@M_treewalkingComponents inTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
+  @bool overrideDeclaration ;
+  select
+    overrideDeclaration := false ;
+  or
+    $override$ ;
+    overrideDeclaration := true ;
+  end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
   $.$ ;
   $identifier$ ? @lstring methodName ;
+#---- Get class attribute list ---------------------------------
+  @AC_semanticsEntity theEntity ;
+  [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
+  @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
+  @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error className) ;
+#---- Check method definition in super class -------------------
+  @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
+  if overrideDeclaration then #--- Check a super class defines this method
+    @bool found := false ;
+    foreach ancestorClassesMap while not found do
+      @string keyClassMethod := [key string]  . ":" . [methodName string] ;
+      found := [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] ;
+    end foreach ;
+    if not found then
+      error methodName: "this overriden method is not defined in any super class of @" . className
+      . ": you should remove the 'override' key word" ;
+    end if ;
+  else #--- Check no super class defines this method
+    foreach ancestorClassesMap do
+      @string keyClassMethod := [key string]  . ":" . [methodName string] ;
+      if [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] then
+        error methodName: "this method is already defined for super class @" . key
+        . ": you should use the 'override' key word" ;
+     end if ;
+    end foreach ;
+  end if ;
+#---- Add attributes as used local constants -------------------
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  foreach [classType mNonExternAttributesList] do
+    @typeCplusPlusName cppName := [@typeOperandName new
+      ![methodName location] # Magic Number
+      ![aNomAttribut string]
+      !false # not mapStyle
+    ] ;
+    [!?tableArgumentsMethode insertUsedConstInArgument !aNomAttribut !mAttributType !cppName] ;
+  end foreach ;
 #---- Formal arguments -----------------------------------------
   @L_EXsignature listeDeTypes ;
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   @L_signature signatureForGrammarComponent ;
   <formal_arguments_list>
@@ -5874,10 +5913,12 @@ rule <semantics_declaration>
   ;
   $}$ ;
   listeEntitesAengendrer += ![@categoryMethodToImplement new
+    !overrideDeclaration
     !className
     !methodName
     !listeTypeEtNomsArguments
     !instructionList
+    ![methodName location] # Magic Number
   ] ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -5889,6 +5930,10 @@ label importSemantics
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
+  select
+  or
+    $override$ ;
+  end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
   $.$ ;

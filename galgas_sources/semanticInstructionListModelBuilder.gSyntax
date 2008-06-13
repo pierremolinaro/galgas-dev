@@ -368,6 +368,13 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   $[$ ;
   $!?$ ;
   $identifier$ ?@lstring mReceiverName ;
+  @lstringlist mReceiverStructAttributes [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ?@lstring structAttribute ;
+    mReceiverStructAttributes += !structAttribute ;
+  end repeat ;
   $identifier$ ?@lstring mModifierName ;
   @actualParameterList mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
@@ -375,6 +382,7 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   $;$ ;
   outInstruction := [@modifierCallInstruction new
     !mReceiverName
+    !mReceiverStructAttributes
     !mModifierName
     !mActualParameterList
   ] ;

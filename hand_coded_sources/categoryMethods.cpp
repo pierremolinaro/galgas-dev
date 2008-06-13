@@ -20,6 +20,7 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "semantics_semantics.h"
+#include "semantics_instructions.h"
 
 //---------------------------------------------------------------------------*
 
@@ -38,7 +39,6 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 
 void cPtr_categoryMethodToImplement::
 generatePredeclarations (AC_OutputStream & /* inHfile */) const {
-//  inHfile << "class GGS_" << aNomListe << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -65,10 +65,43 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 
 void cPtr_categoryMethodToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
-                                AC_OutputStream & /* inCppFile */,
-                                const C_String & /* inTargetFileName */,
-                                sint32 & /* ioPrototypeIndex */,
-                                const bool /* inGenerateDebug */) const {
+                                AC_OutputStream & inCppFile,
+                                const C_String & inTargetFileName,
+                                sint32 & ioPrototypeIndex,
+                                const bool inGenerateDebug) const {
+  inCppFile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
+  inCppFile << "/* static */ void\n"
+               "category_method__" << mClassName << "__" << mMethodName
+            << " (C_Compiler &" ;
+  if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
+    inCppFile << " _inLexique" ;
+  }
+  inCppFile << ",\n                                "
+               "const cPtr_" << mClassName << " * operand_" << mMagicNumber.location () ;
+  GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
+  while (currentArgument != NULL) {
+    inCppFile << ",\n                                " ;
+    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument->mCppName, true) ;
+    inCppFile << ' ' ;
+    if (! variableUtilisee) {
+      inCppFile << "/* " ;
+    }
+    currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+    if (! variableUtilisee) {
+      inCppFile << " */" ;
+    }
+    currentArgument = currentArgument->nextObject () ;
+  }
+  inCppFile << ") {\n"
+               "  if (operand_" << mMagicNumber.location () << " != NULL) {\n" ;
+  inCppFile.incIndentation (+2) ;
+  generateInstructionListForList (mInstructionList, inCppFile,
+                                  inTargetFileName, ioPrototypeIndex,
+                                  inGenerateDebug, true) ;
+  inCppFile.incIndentation (-2) ;
+  inCppFile << "  }\n"
+               "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
