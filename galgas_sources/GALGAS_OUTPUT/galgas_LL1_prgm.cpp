@@ -110,6 +110,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   C_BDD::setITEcacheSize (15) ;
   C_BDD::setANDcacheSize (1) ;
   C_BDD::forAllOnBitsGreaterCacheSize (17) ;
+  C_PrologueEpilogueAction::runPrologueActions () ;
   {
   //--- Input/output parameters
     C_options_for_galgas_LL1_prgm options (false) ;
@@ -265,6 +266,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     macroDetachPointer (galgasIOptr, C_galgas_io) ;
     macroDetachPointer (_commonLexique, C_Compiler) ;
     C_TreewalkingDispacher::releaseAllTables () ;
+    C_PrologueEpilogueAction::runEpilogueActions () ;
     runAllReleaseRoutines () ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS

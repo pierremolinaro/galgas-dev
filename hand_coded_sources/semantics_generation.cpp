@@ -145,6 +145,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
+  inHfile.writeCppTitleComment (C_String ("Routine '") + aNomRoutine + "'") ;
   inHfile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
   while (currentArgument != NULL) {
