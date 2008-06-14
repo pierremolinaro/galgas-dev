@@ -3,7 +3,9 @@
 //  Generate GALGAS class declaration and implementation                     *
 //                                                                           *
 //  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -160,7 +162,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) ;\n\n" ;
 
 //--- _castFrom class method
-inHfile << "//--- _castFrom class method (implements cast expression)\n"
+  inHfile << "//--- _castFrom class method (implements cast expression)\n"
              "  public : static GGS_" << aNomClasse << "\n"
              "  _castFrom (C_Compiler & inLexique,\n"
              "             cPtr__AC_galgas_class * inPointer,\n"
@@ -168,6 +170,14 @@ inHfile << "//--- _castFrom class method (implements cast expression)\n"
              "             const GGS_location & inErrorLocation\n"
              "             COMMA_LOCATION_ARGS) ;\n\n" ;
 
+
+//--- If no super class, declare static method getClasssID
+  if (superClassName.length () == 0) {
+    inHfile << "//--- 'getClasssID' static method\n"
+               "  protected : static sint32 gClassIDCounter ;\n" 
+               "  protected : static sint32 getClassID (const char * inClassName) ;\n\n" ;  
+  }
+  inHfile << "protected : static const sint32 kClassID ;\n\n" ;
 
 //--- 'new' constructor
   if (! mIsAbstract.boolValue ()) {
@@ -598,6 +608,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  return _result ;\n"
                "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+//--- If no super class, declare static method getClasssID
+  if (superClassName.length () == 0) {
+    inCppFile << "sint32 GGS_" << aNomClasse << "::gClassIDCounter = -1 ;\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "sint32 GGS_" << aNomClasse << "::getClassID (const char * /* inClassName */) {\n"
+                 "  // printf (\"ID %d for class '%s'\\n\", gClassIDCounter + 1, inClassName) ;\n"
+                 "  gClassIDCounter ++ ;\n"
+                 "  return gClassIDCounter ;\n"
+                 "}\n\n" ;  
+    inCppFile.writeCppHyphenLineComment () ;
+  }
+  inCppFile << "const sint32 GGS_" << aNomClasse << "::kClassID = GGS_" << aNomClasse << "::getClassID (\"GGS_" << aNomClasse << "\") ;\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   if (! mIsAbstract.boolValue ()) {

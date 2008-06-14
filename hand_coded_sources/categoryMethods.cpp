@@ -44,7 +44,27 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_categoryMethodToImplement::
-generateHdeclarations (AC_OutputStream & /* inHfile */) const {
+generateHdeclarations (AC_OutputStream & inHfile) const {
+  if (! mOverride.boolValue ()) {
+    inHfile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
+    inHfile << "typedef void (*typeCategoryMethod__" << mClassName << "__" << mMethodName << ") "
+               " (C_Compiler & _inLexique"
+            << ",\n                                "
+               "const cPtr_" << mClassName << " * inObjectPtr" ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
+    while (currentArgument != NULL) {
+      inHfile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+      inHfile << ' ' ;
+      currentArgument->mCppName (HERE)->generateCplusPlusName (inHfile) ;
+      currentArgument = currentArgument->nextObject () ;
+    }
+    inHfile << ") ;\n\n" ;
+    inHfile.writeCppHyphenLineComment () ;
+    inHfile << "void\n"
+               "enterCategoryMethod (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
+               "                     const sint32 inclassID) ;\n\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -102,6 +122,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.incIndentation (-2) ;
   inCppFile << "  }\n"
                "}\n\n" ;
+  if (! mOverride.boolValue ()) {
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "static TC_UniqueArray <typeCategoryMethod__" << mClassName << "__" << mMethodName
+              << "> gDispatchTableFor__" << mClassName << "__" << mMethodName << " ;\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void\n"
+                 "enterCategoryMethod (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
+                 "                     const sint32 inclassID) {\n"
+                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".makeRoomWithDefaultValue (inclassID + 1, NULL) ;\n"
+                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inclassID COMMA_HERE) = inRoutine ;\n"
+                 "}\n\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
