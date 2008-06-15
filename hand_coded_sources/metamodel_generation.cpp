@@ -332,6 +332,13 @@ bool cPtr_C_metamodelEntityToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_metamodelEntityToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_metamodelEntityToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {

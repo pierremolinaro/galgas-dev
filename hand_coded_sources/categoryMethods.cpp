@@ -76,6 +76,20 @@ bool cPtr_categoryMethodToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_categoryMethodToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+  inPrologueActions << " enterCategoryMethod (" ;
+  if (mOverride.boolValue ()) {
+    inPrologueActions << "(typeCategoryMethod__" << mBaseClassName << "__" << mMethodName << ") " ;
+  }
+  inPrologueActions << "category_method__"
+                    << mClassName << "__" << mMethodName << ", GGS_"
+                    << mClassName << "::kClassID) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryMethodToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                              const C_String & /* inTargetFileName*/,
                              sint32 & /* ioPrototypeIndex */) const {

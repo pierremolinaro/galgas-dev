@@ -107,6 +107,13 @@ bool cPtr_C_mapindexToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_mapindexToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapindexToImplement::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                              const C_String & /* inTargetFileName*/,
                              sint32 & /* ioPrototypeIndex */) const {
@@ -495,6 +502,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 bool cPtr_C_mapToImplement::isCppClassNeeded (void) const {
   return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_mapToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1163,6 +1177,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 bool cPtr_typeDefinitionTableAimplementer::isCppClassNeeded (void) const {
   return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeDefinitionTableAimplementer::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*

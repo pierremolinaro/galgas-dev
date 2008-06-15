@@ -104,6 +104,13 @@ bool cPtr_typeExternTypeToGenerate::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeExternTypeToGenerate::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeExternTypeToGenerate::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {

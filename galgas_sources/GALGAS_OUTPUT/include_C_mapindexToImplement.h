@@ -35,6 +35,10 @@ class cPtr_C_mapindexToImplement : public cPtr_typeEntityToGenerate {
   public : virtual bool isCppClassNeeded (void) const ;
 
   public : virtual void
+  enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                               AC_OutputStream & /* inEpilogueActions */) const ;
+
+  public : virtual void
   generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inTargetFileName,
                                sint32 & /* ioPrototypeIndex */) const ;

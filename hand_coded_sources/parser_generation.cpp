@@ -55,6 +55,13 @@ bool cPtr_typeNonterminalToGenerate::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeNonterminalToGenerate::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeNonterminalToGenerate::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
                              const C_String & /* inTargetFileName */,
                              sint32 & /* ioPrototypeIndex */) const {
@@ -116,6 +123,13 @@ generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
 
 bool cPtr_typeProductionAengendrer::isCppClassNeeded (void) const {
   return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeProductionAengendrer::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*

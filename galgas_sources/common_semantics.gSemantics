@@ -4276,6 +4276,7 @@ class @templateInstructionConstant extends @templateInstruction {
 #---------------------------------------------------------------------------*
 
 map @categoryMethodMap {
+  @bool mIsOverride ;
   @L_EXsignature aListeArgumentsFormels ;
   insert insertKey error message "the '%K' method is already declared in %L" ;
   search searchKey, searchKeyAndGetIndex error message "the '%K' method is not declared" ;
