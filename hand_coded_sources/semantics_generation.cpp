@@ -165,6 +165,13 @@ bool cPtr_typeRoutineAengendrer::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeRoutineAengendrer::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeRoutineAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -251,6 +258,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 bool cPtr_typeActionExterneAengendrer::isCppClassNeeded (void) const {
   return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeActionExterneAengendrer::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1524,6 +1538,46 @@ generate_cpp_file (C_Compiler & inLexique,
     element = element->nextObject () ;
   }
   
+//--- Generate prologue et epilogue action
+  C_String prologueActions ;
+  C_String epilogueActions ;
+  element = listeEntitesAengendrer.firstObject () ;
+  while (element != NULL) {
+    macroValidPointer (element) ;
+    element->mEntityToGenerate (HERE)->enterPrologueEpilogueAction (prologueActions,
+                                                                    epilogueActions) ;
+    element = element->nextObject () ;
+  }
+  if ((prologueActions.length () > 0) || (epilogueActions.length () > 0)) {
+    generatedZone3.writeCppTitleComment ("Prologue and epilogue actions") ;
+    if (prologueActions.length () > 0) {
+      generatedZone3 << "static void prologueRoutineFor_" << nomComposant << " (void) {\n"
+                     << prologueActions
+                     << "}\n\n" ;
+      generatedZone3.writeCppHyphenLineComment () ;
+    }
+    if (epilogueActions.length () > 0) {
+      generatedZone3 << "static void epilogueRoutineFor_" << nomComposant << " (void) {\n"
+                     << epilogueActions
+                     << "}\n\n" ;
+      generatedZone3.writeCppHyphenLineComment () ;
+    }
+    generatedZone3 << "C_PrologueEpilogueAction prologueEpilogueObjectFor_" << nomComposant << " (" ;
+    if (prologueActions.length () > 0) {
+      generatedZone3 << "prologueRoutineFor_" << nomComposant ;
+    }else{
+      generatedZone3 << "NULL" ;
+    }
+    generatedZone3 << ",\n"
+                      "                                   " ;
+    if (epilogueActions.length () > 0) {
+      generatedZone3 << "epilogueRoutineFor_" << nomComposant ;
+    }else{
+      generatedZone3 << "NULL" ;
+    }
+    generatedZone3 << ") ;\n\n" ;
+  }
+
 //--- Engendrer la fin du fichier
   generatedZone3.writeCppHyphenLineComment () ;
 

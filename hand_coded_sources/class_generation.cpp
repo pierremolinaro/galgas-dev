@@ -177,7 +177,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  protected : static sint32 gClassIDCounter ;\n" 
                "  protected : static sint32 getClassID (const char * inClassName) ;\n\n" ;  
   }
-  inHfile << "protected : static const sint32 kClassID ;\n\n" ;
+  inHfile << "  public : static const sint32 kClassID ;\n\n" ;
 
 //--- 'new' constructor
   if (! mIsAbstract.boolValue ()) {
@@ -357,6 +357,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 bool cPtr_C_classToImplement::isCppClassNeeded (void) const {
   return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_classToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*

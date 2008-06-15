@@ -26,6 +26,12 @@ public : virtual void generateHdeclarations (AC_OutputStream & inHfile) const = 
 public : virtual void generateHdeclarations_2 (AC_OutputStream & inHfile,
                                                C_Compiler & inLexique) const = 0 ;
 public : virtual bool isCppClassNeeded (void) const = 0 ;
+
+  public : virtual void
+  enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                               AC_OutputStream & /* inEpilogueActions */) const = 0 ;
+
+
 public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
                                                    const C_String & inTargetFileName,
                                                    sint32 & ioPrototypeIndex) const = 0 ;

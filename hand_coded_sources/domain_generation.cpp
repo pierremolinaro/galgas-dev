@@ -98,6 +98,13 @@ bool cPtr_C_domainToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_domainToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_domainToImplement::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {

@@ -64,6 +64,13 @@ bool cPtr_C_wrapperToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_wrapperToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_wrapperToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                              const C_String & /* inTargetFileName */,
                              sint32 & /* ioPrototypeIndex */) const {

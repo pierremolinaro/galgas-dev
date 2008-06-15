@@ -5849,12 +5849,20 @@ rule <semantics_declaration>
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
   @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error className) ;
 #---- Check method definition in super class -------------------
+  @string baseClassName ;
   @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
   if overrideDeclaration then #--- Check a super class defines this method
+    baseClassName := "" ;
     @bool found := false ;
     foreach ancestorClassesMap while not found do
       @string keyClassMethod := [key string]  . ":" . [methodName string] ;
+      baseClassName := [key string] ;
       found := [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] ;
+      if found then
+        @bool isIOverride ;
+        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?isIOverride ?*] ;
+        found := not isIOverride ;
+      end if ;
     end foreach ;
     if not found then
       error methodName: "this overriden method is not defined in any super class of @" . className
@@ -5868,6 +5876,7 @@ rule <semantics_declaration>
         . ": you should use the 'override' key word" ;
      end if ;
     end foreach ;
+    baseClassName := [className string] ;
   end if ;
 #---- Add attributes as used local constants -------------------
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
@@ -5892,7 +5901,7 @@ rule <semantics_declaration>
     ?signatureForGrammarComponent
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !listeDeTypes] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !overrideDeclaration !listeDeTypes] ;
 #--- Instructions
   ${$ ;
   @typeInstructionList instructionList [emptyList] ;
@@ -5914,6 +5923,7 @@ rule <semantics_declaration>
   $}$ ;
   listeEntitesAengendrer += ![@categoryMethodToImplement new
     !overrideDeclaration
+    !baseClassName
     !className
     !methodName
     !listeTypeEtNomsArguments
@@ -5930,9 +5940,12 @@ label importSemantics
   ??@M_treewalkingComponents unused inTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
+  @bool overrideDeclaration ;
   select
+    overrideDeclaration := false ;
   or
     $override$ ;
+    overrideDeclaration := true ;
   end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
@@ -5952,7 +5965,7 @@ label importSemantics
     ?signatureForGrammarComponent
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !listeDeTypes] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !overrideDeclaration !listeDeTypes] ;
 #--- Instructions
   ${$ ;
   <semantic_instructions_list> parse ;

@@ -1230,6 +1230,7 @@ class @typeRoutineAengendrer extends @typeEntityToGenerate {
 
 class @categoryMethodToImplement extends @typeEntityToGenerate {
   @bool mOverride ;
+  @string mBaseClassName ;
   @lstring mClassName ;
   @lstring mMethodName ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;

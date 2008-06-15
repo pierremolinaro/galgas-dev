@@ -367,6 +367,13 @@ bool cPtr_C_listTypeToImplement::isCppClassNeeded (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_listTypeToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                                const C_String & /* inTargetFileName*/,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -1312,6 +1319,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 bool cPtr_C_sortedListTypeToImplement::isCppClassNeeded (void) const {
   return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_sortedListTypeToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*
