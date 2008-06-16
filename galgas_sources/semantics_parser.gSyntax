@@ -5843,6 +5843,21 @@ rule <semantics_declaration>
   $type_name$ ? @lstring className ;
   $.$ ;
   $identifier$ ? @lstring methodName ;
+#---- Formal arguments -----------------------------------------
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @L_EXsignature listeDeTypes ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !overrideDeclaration !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -5860,7 +5875,13 @@ rule <semantics_declaration>
       found := [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] ;
       if found then
         @bool isIOverride ;
-        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?isIOverride ?*] ;
+        @L_EXsignature listeDeTypesPrecedenteDeclaration ;
+        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?isIOverride ?listeDeTypesPrecedenteDeclaration] ;
+        verifierCompatibiliteSignatures
+          !listeDeTypesPrecedenteDeclaration
+          !listeDeTypes
+          !here
+        ;
         found := not isIOverride ;
       end if ;
     end foreach ;
@@ -5879,7 +5900,6 @@ rule <semantics_declaration>
     baseClassName := [className string] ;
   end if ;
 #---- Add attributes as used local constants -------------------
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   foreach [classType mNonExternAttributesList] do
     @typeCplusPlusName cppName := [@typeOperandName new
       ![methodName location] # Magic Number
@@ -5888,20 +5908,6 @@ rule <semantics_declaration>
     ] ;
     [!?tableArgumentsMethode insertUsedConstInArgument !aNomAttribut !mAttributType !cppName] ;
   end foreach ;
-#---- Formal arguments -----------------------------------------
-  @L_EXsignature listeDeTypes ;
-  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
-  <formal_arguments_list>
-    !ioComponentSemanticsEntitiesMap
-    ?listeDeTypes
-    !?tableArgumentsMethode
-    ?listeTypeEtNomsArguments
-    !?tableEnAvant
-    ?signatureForGrammarComponent
-  ;
-  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !overrideDeclaration !listeDeTypes] ;
 #--- Instructions
   ${$ ;
   @typeInstructionList instructionList [emptyList] ;

@@ -242,6 +242,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Engendrer la fin de la declaration de la classe
   inHfile << "} ;\n\n" ;
+  
+  inHfile.writeCppHyphenLineComment () ;
+  if (superClassName.length () == 0) {
+    inHfile << "extern C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " ;\n\n" ;
+  }else{
+    inHfile << "extern C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " ;\n\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -708,22 +715,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     messageCourant = messageCourant->nextObject () ;
   }
 
-//--- Generate declaration of message readers
-// §  inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-//               "reader_message (C_Compiler & /* _inLexique */\n"
-/*               "                COMMA_UNUSED_LOCATION_ARGS) const {\n"
-               "  GGS_string result ;\n"
-               "  if (mPointer != NULL) {\n"
-               "    macroValidPointer (mPointer) ;\n"
-               "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
-               "               \"dynamic cast error\", 0, 0) ;\n"
-               "    cPtr_" << aNomClasse << " * p = (cPtr_" << aNomClasse << " *) mPointer ;\n"
-               "    result = p->_message () ;\n"
-               "  }\n"
-               "  return result ;\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ; */
-
 //--- For every attribute, generate a reader
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
@@ -751,6 +742,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "const char * GGS_" << aNomClasse << "::actualTypeName (void) const {\n"
                "  return \"" << aNomClasse << "\" ;\n"
                "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  if (superClassName.length () == 0) {
+    inCppFile << "C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\") ;\n\n" ;
+  }else{
+    inCppFile << "C_galgasClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\", gClassInfoFor__" << superClassName << ") ;\n\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*

@@ -1993,7 +1993,6 @@
 		CFC1774309FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC1774809FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
 		CFC1774909FE2D080026596C /* include_typeUnaryMinusOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC1774109FE2D080026596C /* include_typeUnaryMinusOperation.h */; };
-		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFC71BE70B9DED5E0086499A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFC71BE80B9DED610086499A /* metamodel_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE8381F0AF0D8E5006823FE /* metamodel_methods.cpp */; };
 		CFC9405E0D8593B10057303A /* include_typeSendInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC9405D0D8593B10057303A /* include_typeSendInstruction.h */; };
@@ -2914,8 +2913,6 @@
 		CFEDF5010C2D16840038713A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CFEDF5020C2D16840038713A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
 		CFEDF5030C2D16840038713A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
-		CFEDF5170C2D17F00038713A /* InfoI386.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFEDF5160C2D17F00038713A /* InfoI386.plist */; };
-		CFEDF5190C2D18500038713A /* InfoPPC.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFEDB1A809E434C700701490 /* InfoPPC.plist */; };
 		CFEDF51A0C2D189C0038713A /* galgasPPC in Resources */ = {isa = PBXBuildFile; fileRef = CFEDF3610C2D161F0038713A /* galgasPPC */; };
 		CFEDF51B0C2D189D0038713A /* galgasDebugPPC in Resources */ = {isa = PBXBuildFile; fileRef = CFEDF4BD0C2D16610038713A /* galgasDebugPPC */; };
 		CFEE57860BFB5A4200B99D47 /* expressionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57820BFB5A4200B99D47 /* expressionMetamodel.cpp */; };
@@ -7602,7 +7599,6 @@
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */,
-				CFC30F93058A225E003D0386 /* Info.plist in Resources */,
 				CF82597D08536A130077AEAF /* I_Action.tiff in Resources */,
 				CF82597E08536A130077AEAF /* I_SaveAs.tiff in Resources */,
 				CF82597F08536A130077AEAF /* I_Stop.tiff in Resources */,
@@ -7632,7 +7628,6 @@
 				CF6DF23209E3F3A700506859 /* MainMenu.nib in Resources */,
 				CF6DF23309E3F3A700506859 /* OC_GGS_Document.nib in Resources */,
 				CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */,
-				CFEDF5170C2D17F00038713A /* InfoI386.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7651,7 +7646,6 @@
 				CFEDF4D90C2D16840038713A /* MainMenu.nib in Resources */,
 				CFEDF4DA0C2D16840038713A /* OC_GGS_Document.nib in Resources */,
 				CFEDF4DC0C2D16840038713A /* galgasUpdate.nib in Resources */,
-				CFEDF5190C2D18500038713A /* InfoPPC.plist in Resources */,
 				CFEDF51A0C2D189C0038713A /* galgasPPC in Resources */,
 				CFEDF51B0C2D189D0038713A /* galgasDebugPPC in Resources */,
 			);
