@@ -171,14 +171,6 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "             COMMA_LOCATION_ARGS) ;\n\n" ;
 
 
-//--- If no super class, declare static method getClasssID
-  if (superClassName.length () == 0) {
-    inHfile << "//--- 'getClasssID' static method\n"
-               "  protected : static sint32 gClassIDCounter ;\n" 
-               "  protected : static sint32 getClassID (const char * inClassName) ;\n\n" ;  
-  }
-  inHfile << "  public : static const sint32 kClassID ;\n\n" ;
-
 //--- 'new' constructor
   if (! mIsAbstract.boolValue ()) {
     inHfile << "//--- 'new' constructor\n"
@@ -622,20 +614,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  return _result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
-//--- If no super class, declare static method getClasssID
-  if (superClassName.length () == 0) {
-    inCppFile << "sint32 GGS_" << aNomClasse << "::gClassIDCounter = -1 ;\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "sint32 GGS_" << aNomClasse << "::getClassID (const char * /* inClassName */) {\n"
-                 "  // printf (\"ID %d for class '%s'\\n\", gClassIDCounter + 1, inClassName) ;\n"
-                 "  gClassIDCounter ++ ;\n"
-                 "  return gClassIDCounter ;\n"
-                 "}\n\n" ;  
-    inCppFile.writeCppHyphenLineComment () ;
-  }
-  inCppFile << "const sint32 GGS_" << aNomClasse << "::kClassID = GGS_" << aNomClasse << "::getClassID (\"GGS_" << aNomClasse << "\") ;\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
   if (! mIsAbstract.boolValue ()) {
