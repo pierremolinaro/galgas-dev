@@ -62,8 +62,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << ") ;\n\n" ;
     inHfile.writeCppHyphenLineComment () ;
     inHfile << "void\n"
-               "enterCategoryMethod (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
+               "enterCategoryMethod__" << mClassName << "__" << mMethodName
+            << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                "                     const sint32 inclassID) ;\n\n" ;
+    inHfile.writeCppHyphenLineComment () ;
+    inHfile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
+               "findCategoryMethod__" << mClassName << "__" << mMethodName
+            << " (AC_galgasClassRunTimeInformation * inClassPtr) ;\n\n" ;
   }
 }
 
@@ -78,13 +83,13 @@ bool cPtr_categoryMethodToImplement::isCppClassNeeded (void) const {
 void cPtr_categoryMethodToImplement::
 enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
                              AC_OutputStream & /* inEpilogueActions */) const {
-  inPrologueActions << " enterCategoryMethod (" ;
+  inPrologueActions << " enterCategoryMethod__" << mBaseClassName << "__" << mMethodName << " (" ;
   if (mOverride.boolValue ()) {
     inPrologueActions << "(typeCategoryMethod__" << mBaseClassName << "__" << mMethodName << ") " ;
   }
   inPrologueActions << "category_method__"
-                    << mClassName << "__" << mMethodName << ", GGS_"
-                    << mClassName << "::kClassID) ;\n" ;
+                    << mClassName << "__" << mMethodName << ", gClassInfoFor__"
+                    << mClassName << ".slotID ()) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -104,7 +109,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
-  inCppFile << "/* static */ void\n"
+  inCppFile << "static void\n"
                "category_method__" << mClassName << "__" << mMethodName
             << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
@@ -137,15 +142,31 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }\n"
                "}\n\n" ;
   if (! mOverride.boolValue ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.writeCppTitleComment (C_String ("Virtual Table for category method '@") + mClassName + "." + mMethodName + "'") ;
     inCppFile << "static TC_UniqueArray <typeCategoryMethod__" << mClassName << "__" << mMethodName
               << "> gDispatchTableFor__" << mClassName << "__" << mMethodName << " ;\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void\n"
-                 "enterCategoryMethod (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
+                 "enterCategoryMethod__" << mClassName << "__" << mMethodName
+              << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                  "                     const sint32 inclassID) {\n"
                  "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".makeRoomWithDefaultValue (inclassID + 1, NULL) ;\n"
                  "  gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inclassID COMMA_HERE) = inRoutine ;\n"
+                 "}\n\n" ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
+               "findCategoryMethod__" << mClassName << "__" << mMethodName
+              << " (AC_galgasClassRunTimeInformation * inClassPtr) {\n"
+                 "  typeCategoryMethod__" << mClassName << "__" << mMethodName << " result = "
+                 "gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) ;\n"
+                 "  if (result == NULL) {\n"
+                 "    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;\n"
+                 "    if (superClassPtr == NULL) {\n"
+                 "      result = findCategoryMethod__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
+                 "      gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) = result ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "  return result ;\n"
                  "}\n\n" ;
   }
 }
