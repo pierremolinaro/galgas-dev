@@ -728,10 +728,6 @@
 		CF2A8852058CCF53003EF2F4 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
 		CF2A8854058CCF55003EF2F4 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
-		CF31B53C0DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
-		CF31B53D0DFE88C7001C97A7 /* semanticsCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */; };
-		CF31B53E0DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
-		CF31B53F0DFE88C7001C97A7 /* semanticsCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */; };
 		CF31B5400DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5410DFE88C7001C97A7 /* semanticsCompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */; };
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
@@ -5599,7 +5595,6 @@
 				CF158BE00DFD65E3005BF0E0 /* include_varInExpression.h in Headers */,
 				CF158BE10DFD65E3005BF0E0 /* include_warningInstruction.h in Headers */,
 				CF158BE20DFD65E3005BF0E0 /* include_xorExpression.h in Headers */,
-				CF31B53D0DFE88C7001C97A7 /* semanticsCompilation.h in Headers */,
 				CF31B5500DFE88E0001C97A7 /* include_blockInstruction.h in Headers */,
 				CF31B5510DFE88E0001C97A7 /* include_nonterminalCallInstruction.h in Headers */,
 				CF31B5520DFE88E0001C97A7 /* include_parseDoInstruction.h in Headers */,
@@ -6656,7 +6651,6 @@
 				CF158C410DFD65E3005BF0E0 /* include_varInExpression.h in Headers */,
 				CF158C420DFD65E3005BF0E0 /* include_warningInstruction.h in Headers */,
 				CF158C430DFD65E3005BF0E0 /* include_xorExpression.h in Headers */,
-				CF31B53F0DFE88C7001C97A7 /* semanticsCompilation.h in Headers */,
 				CF31B5580DFE88E0001C97A7 /* include_blockInstruction.h in Headers */,
 				CF31B5590DFE88E0001C97A7 /* include_nonterminalCallInstruction.h in Headers */,
 				CF31B55A0DFE88E0001C97A7 /* include_parseDoInstruction.h in Headers */,
@@ -7851,7 +7845,6 @@
 				CFFFBFA20DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFFCE4A70DFD26AC00081F68 /* treewalking_parser.cpp in Sources */,
 				CFFCE4CA0DFD299700081F68 /* metamodel_parser.cpp in Sources */,
-				CF31B53C0DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */,
 				CF3F51CE0DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A50E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 			);
@@ -8372,7 +8365,6 @@
 				CFFFBFA40DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFFCE4C70DFD298A00081F68 /* metamodel_parser.cpp in Sources */,
 				CFFCE4CC0DFD29A800081F68 /* treewalking_parser.cpp in Sources */,
-				CF31B53E0DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */,
 				CF3F51D30DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A70E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 			);
