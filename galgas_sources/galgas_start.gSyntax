@@ -36,26 +36,22 @@ nonterminal <galgas_start_symbol>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -69,26 +65,22 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -103,7 +95,6 @@ rule <galgas_start_symbol>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   repeat
@@ -115,7 +106,6 @@ rule <galgas_start_symbol>
       !?ioGrammarComponentsMap
       !?ioOptionsComponentsMap
       !?ioMetamodelComponentMap
-      !?ioTreewalkingComponentMap
       !?ioSemanticContext
     ;
   end repeat ;
@@ -129,7 +119,6 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   repeat
@@ -137,14 +126,12 @@ label importSyntax
     <galgas_component> importSyntax
       !?ioSyntaxComponentsMap
       !?ioMetamodelComponentMap
-      !?ioTreewalkingComponentMap
       !?ioSemanticContext
     ;
   end repeat ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
@@ -153,7 +140,6 @@ label importSemantics
     <galgas_component> importSemantics
       !?ioSemanticsComponentsMap
       !?ioMetamodelComponentMap
-      !?ioTreewalkingComponentMap
       !?ioSemanticContext
       !?ioImportedSemanticsComponentNameSet
     ;
@@ -162,7 +148,6 @@ label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   repeat
@@ -171,7 +156,6 @@ label importGrammarForSemantics
       !?ioGrammarComponentsMap
       !?ioMetamodelComponentMap
       !?ioOptionsComponentsMapForUse
-      !?ioTreewalkingComponentMap
       !?ioSemanticContext
     ;
   end repeat ;
@@ -183,7 +167,6 @@ label compileFile
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @M_optionComponents optionsComponentsMap [emptyMap] ;
   @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
-  @M_treewalkingComponents treewalkingComponentMap [emptyMap] ;
   @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
@@ -198,7 +181,6 @@ label compileFile
       !?grammarComponentsMap
       !?optionsComponentsMap
       !?metamodelComponentMap
-      !?treewalkingComponentMap
       !?semanticContext
     ;
   end repeat ;

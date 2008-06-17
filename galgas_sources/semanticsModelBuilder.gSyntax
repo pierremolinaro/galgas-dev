@@ -79,11 +79,6 @@ rule <semantics_component_start_symbol>
       $in$ ;
       $literal_string$ ?* ;
     or
-      $treewalking$ ;
-      $identifier$ ?* ;
-      $in$ ;
-      $literal_string$ ?* ;
-    or
       $grammar$ ;
       $identifier$ ?* ;
       $in$ ;

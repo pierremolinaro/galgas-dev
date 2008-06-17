@@ -409,18 +409,6 @@ class @grammarInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  T R E E W A L K I N G    I N S T R U C T I O N                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @treewalkingInstruction extends @semanticInstruction {
-  @lstring mTreewalkingComponentName ;
-  @lstring mModelName ;
-  @actualParameterList mActualParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
 #                                                                           *
 #---------------------------------------------------------------------------*

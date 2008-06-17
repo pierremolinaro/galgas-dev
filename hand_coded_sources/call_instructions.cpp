@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate call instructions                                               *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -20,65 +20,6 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "semantics_semantics.h"
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-void cPtr_C_treewalkingInstruction::
-generateInstruction (AC_OutputStream & ioCppFile,
-                     const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
-                     const bool /* inGenerateDebug */,
-                     const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions) {
-    ioCppFile << "_walk_throught_" << mTreeWalkingComponentName << " (_inLexique, " ;
-    mModelVariableCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
-    while (argCourant != NULL) {
-      macroValidPointer (argCourant) ;
-      ioCppFile << ", " ;
-      argCourant->mExpression (HERE)->generateExpression (ioCppFile) ;
-      argCourant = argCourant->nextObject () ;
-    }
-    ioCppFile << ") ;\n" ; 
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_C_treewalkingInstruction::
-isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
-  return inGenerateSemanticInstructions ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_C_treewalkingInstruction::
-formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                      const bool /* inGenerateSemanticInstructions */) const {
-  bool isUsed = mModelVariableCppName.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
-  while ((! isUsed) && argCourant != NULL) {
-    macroValidPointer (argCourant) ;
-    isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->nextObject () ;
-  }
-  return isUsed ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool cPtr_C_treewalkingInstruction::
-formalCurrentObjectArgumentIsUsed (void) const {
-  bool isUsed = false ;
-  GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;
-  while ((! isUsed) && argCourant != NULL) {
-    macroValidPointer (argCourant) ;
-    isUsed = argCourant->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    argCourant = argCourant->nextObject () ;
-  }
-  return isUsed ;
-}
 
 //---------------------------------------------------------------------------*
 
@@ -186,7 +127,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                    "  typeCategoryMethod__" << mCategoryMethodClassBaseName
                 << "__" << mMethodName << " _method = findCategoryMethod__"
                 << mCategoryMethodClassBaseName << "__" << mMethodName
-                << " (& gClassInfoFor__" << staticClassName << ") ;\n"
+                << " (_temp_" << mMethodName.location () << "._galgasObjectRunTimeInfo ()) ;\n"
                    "  if (_method != NULL) {\n"
                    "    _method (_inLexique, " << var << " (HERE)"  ;
       GGS_typeExpressionList::cElement * argCourant = mExpressionsList.firstObject () ;

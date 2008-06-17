@@ -64,8 +64,6 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
       $syntax$ ;
     or
       $option$ ;
-    or
-      $treewalking$ ;
     end select ;
     $identifier$ ?* ;
     $in$ ;

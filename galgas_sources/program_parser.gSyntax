@@ -32,26 +32,22 @@ nonterminal <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
@@ -65,7 +61,6 @@ nonterminal <import_headers_semantics_and_grammars>
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -85,22 +80,18 @@ label importSemantics
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label parse
 ;
 
 nonterminal <semantic_instructions_list>
-  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
   ??@typeTableEnAvant inTableEnAvant
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
   ??@entityToImplementMap inMetamodelEntityMap
-  ??@M_treewalkingComponents inTreewalkingComponentMap
   ??@EXsemanticContext inSemanticContext
 label parse
 ;
@@ -124,7 +115,6 @@ rule <galgas_component>
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@M_metamodelsComponents ioMetamodelComponentMap
-  ?!@M_treewalkingComponents ioTreewalkingComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
 #--- Program header
@@ -165,7 +155,6 @@ rule <galgas_component>
     !?ioLexiqueMapForUse
     !?ioSemanticsComponentsMap
     !?ioMetamodelComponentMap
-    !?ioTreewalkingComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -210,18 +199,13 @@ rule <galgas_component>
   @typeVariablesMap prologueVariablesMap [emptyMap] ;
   @typeTableEnAvant prologueTableEnAvant [emptyMap] ;
   @entityToImplementMap prologueMetamodelEntityMap [emptyMap] ;
-  @entityPropertyMap prologueTreewalkingRoutinePropertyMap [emptyMap] ;
-  @treewalkingRoutineHeaderMap prologueRoutineHeaderMap [emptyMap] ;
   <semantic_instructions_list>
-    !prologueRoutineHeaderMap
     !prologueTableEnAvant
     !componentEntitiesMap
     !optionsComponentsMap
     !?prologueVariablesMap
     !?prologueInstructionList
-    !prologueTreewalkingRoutinePropertyMap
     !prologueMetamodelEntityMap
-    !ioTreewalkingComponentMap
     !ioSemanticContext
   ;
   $}$ ;
@@ -275,18 +259,13 @@ rule <galgas_component>
     @typeInstructionList instructionList [emptyList] ;
     @typeTableEnAvant tableEnAvant [emptyMap] ;
     @entityToImplementMap metamodelEntityMap [emptyMap] ;
-    @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
-    @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
     <semantic_instructions_list>
-      !treewalkingRoutineHeaderMap
       !tableEnAvant
       !componentEntitiesMap
       !optionsComponentsMap
       !?variablesMap
       !?instructionList
-      !currentTreewalkingRoutinePropertyMap
       !metamodelEntityMap
-      !ioTreewalkingComponentMap
       !ioSemanticContext
     ;
     $}$ ;
@@ -311,18 +290,13 @@ rule <galgas_component>
   @typeVariablesMap variablesMap [emptyMap] ;
   @typeTableEnAvant epilogueTableEnAvant [emptyMap] ;
   @entityToImplementMap metamodelEntityMap [emptyMap] ;
-  @entityPropertyMap currentTreewalkingRoutinePropertyMap [emptyMap] ;
-  @treewalkingRoutineHeaderMap treewalkingRoutineHeaderMap [emptyMap] ;
   <semantic_instructions_list>
-    !treewalkingRoutineHeaderMap
     !epilogueTableEnAvant
     !componentEntitiesMap
     !optionsComponentsMap
     !?variablesMap
     !?epilogueInstructionList
-    !currentTreewalkingRoutinePropertyMap
     !metamodelEntityMap
-    !ioTreewalkingComponentMap
     !ioSemanticContext
   ;
   $}$ ;
@@ -408,7 +382,6 @@ label importLexique
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $program$ ;
@@ -476,7 +449,6 @@ label importSyntax
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
-  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 :
@@ -546,7 +518,6 @@ label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
   ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
-  ?!@M_treewalkingComponents unused ioTreewalkingComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $program$ ;
