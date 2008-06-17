@@ -85,7 +85,7 @@ end routine ;
 method @semanticDeclaration.enterType
   ?!@semanticContext ioSemanticContext
 {
-
+  message "@semanticDeclaration.enterType\n" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -94,7 +94,7 @@ override
 method @mapDeclaration.enterType
   ?!@semanticContext ioSemanticContext
 {
-  log mMapTypeName ;
+  message "@mapDeclaration.enterType\n" ;
 }
 
 ##---------------------------------------------------------------------------*
@@ -176,7 +176,7 @@ routine buildSemanticContext
   ] ;
 #--- Loop throught all declarations
   foreach inSemanticDeclarationList do
-#    call mSemanticDeclaration.enterType !?outSemanticContext ;
+    [mSemanticDeclaration enterType !?outSemanticContext] ;
   end foreach ;
 end routine ;
 

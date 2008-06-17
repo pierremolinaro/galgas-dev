@@ -1457,7 +1457,7 @@ rule <parent_class>
   @AC_galgasType typeUtilisateur :=
       [(cast entite if >= @typeEntiteType else error outSuperClassName) aDefType] ;
   @typeGalgasClassType classType := (cast typeUtilisateur if >= @typeGalgasClassType else error outSuperClassName) ;
-  tableDesMethodes := [classType mReaderMap] ;
+  tableDesMethodes := [classType mMethodMap] ;
   listeTousAttributsSemantiques := [classType mNonExternAttributesList] ;
   tableDesClassesAncetres := [classType mAncestorClassesMap] ;
   tableMessagesAbstraits := [classType mMessagesMap] ;
@@ -1487,7 +1487,7 @@ label importSemantics
   @AC_galgasType typeUtilisateur :=
       [(cast entite if >= @typeEntiteType else error superClassName) aDefType] ;
   @typeGalgasClassType classType := (cast typeUtilisateur if >= @typeGalgasClassType else error superClassName) ;
-  tableDesMethodes := [classType mReaderMap] ;
+  tableDesMethodes := [classType mMethodMap] ;
   listeTousAttributsSemantiques := [classType mNonExternAttributesList] ;
   tableDesClassesAncetres := [classType mAncestorClassesMap] ;
   tableMessagesAbstraits := [classType mMessagesMap] ;
@@ -2867,71 +2867,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#      call instruction                                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  ??@treewalkingRoutineHeaderMap inTreewalkingRoutineHeaderMap
-  ??@typeTableEnAvant unused inTableEnAvant
-  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  ?!@typeInstructionList ioInstructionList
-  ??@entityPropertyMap inCurrentTreewalkingRoutinePropertyMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
-  ??@M_treewalkingComponents unused inTreewalkingComponentMap
-  ??@EXsemanticContext inSemanticContext
-:
-  $call$ ;
-#--- Called property
-  @lstring calledPropertyName ;
-  $identifier$ ?calledPropertyName ;
-  @AC_galgasType propertyType ;
-  [inCurrentTreewalkingRoutinePropertyMap searchKey !calledPropertyName ?propertyType] ;
-  @lstring entityName ;
-  cast propertyType :
-  when >= @typeGalgas_singleReferenceEntity ref do
-    entityName := [ref mEntityTypeName] ;
-  when >= @typeGalgas_multipleReferenceEntity ref do
-    entityName := [ref mEntityTypeName] ;
-  else
-    error calledPropertyName: "this property should be a single or a multiple reference" -> entityName ;
-  end cast ;
-#--- Check a treewalking routine is actually defined
-  @L_EXsignature routineSignature ;
-  if [inTreewalkingRoutineHeaderMap hasKey ![entityName string]] then
-    [inTreewalkingRoutineHeaderMap searchKey !entityName ?routineSignature ?*] ;
-  else
-    error calledPropertyName:
-      "there is no treewalking routine for the '%" . [entityName string] . "' metamodel class"
-      -> routineSignature
-    ;
-  end if ;
-#--- Check argument list types
-  @typeExpressionList expressionsList ;
-  <actual_parameters_list>
-    !routineSignature
-    ?expressionsList
-    !?ioVariablesMap
-    !inOptionsComponentsMapForUse
-    !inSemanticContext
-    !ioComponentSemanticsEntitiesMap
-    !?ioInstructionList
-  ;
-  $;$ ;
-#--- Generate instruction
-  @typeInstruction instruction := [@callInstruction new
-    !calledPropertyName
-    !entityName
-    !propertyType
-    !expressionsList
-  ] ;
-  ioInstructionList += !instruction ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #      extract instruction                                                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3518,7 +3453,13 @@ rule <semantic_instruction>
     @lstring methodName ;
     $identifier$ ? methodName ;
     @L_EXsignature methodSignature ;
-    [expressionType handleMethodInstructionCall !methodName ?methodSignature] ;
+    @string categoryMethodClassBaseName ;
+    [expressionType handleMethodInstructionCall
+      !methodName
+      ![inSemanticContext mCategoryMethodMap]
+      ?methodSignature
+      ?categoryMethodClassBaseName
+    ] ;
   #--- Actual parameters
     @typeExpressionList expressionsList ;
     <actual_parameters_list>
@@ -3531,7 +3472,13 @@ rule <semantic_instruction>
       !?ioInstructionList
     ;
   #--- Generate instruction
-    instruction := [@typeMethodCallInstruction new !expressionType !expression !methodName !expressionsList] ;
+    instruction := [@typeMethodCallInstruction new
+     !expressionType
+     !expression
+     !methodName
+     !categoryMethodClassBaseName
+     !expressionsList
+   ] ;
   or #---- MODIFIER CALL
     $!?$ ;
     @lstring modifiedObjectName ;
