@@ -16,6 +16,9 @@
 		CF0357E50B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
+		CF0900160E07A2CA00825C95 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
+		CF0900170E07A2CB00825C95 /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
+		CF0900180E07A2CC00825C95 /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
 		CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CF0CB4040BBFB97A00E6FABE /* lexiqueSemantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */; };
 		CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
@@ -1355,10 +1358,6 @@
 		CF6E113706269BEC001B909F /* GGS_lsint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E112F06269BEC001B909F /* GGS_lsint.cpp */; };
 		CF6E113906269BEC001B909F /* GGS_sint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6E113106269BEC001B909F /* GGS_sint.cpp */; };
 		CF6E114606269E77001B909F /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF6E114506269E77001B909F /* main.mm */; };
-		CF6EBC6009FA8B800078DDF9 /* include_callInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */; };
-		CF6EBC6109FA8B800078DDF9 /* include_callInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */; };
-		CF6EBC6609FA8B800078DDF9 /* include_callInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */; };
-		CF6EBC6709FA8B800078DDF9 /* include_callInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */; };
 		CF7A1430058CFF87007126C1 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF7A1431058CFF88007126C1 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF7A1436058CFF94007126C1 /* galgas_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53806057A53A700854C83 /* galgas_start.cpp */; };
@@ -2251,7 +2250,6 @@
 		CFEAADC20DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
 		CFEC15F709CA026700204242 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
 		CFEC160109CA026700204242 /* metamodel_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEC15F509CA026700204242 /* metamodel_generation.cpp */; };
-		CFEDF2060C2D161F0038713A /* include_callInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */; };
 		CFEDF2070C2D161F0038713A /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFEDF2080C2D161F0038713A /* cGalgasVariablesMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3131509FD3B95006B55E7 /* cGalgasVariablesMap.h */; };
 		CFEDF2090C2D161F0038713A /* cGalgasVariablesMap.hh in Headers */ = {isa = PBXBuildFile; fileRef = CFA3131609FD3B95006B55E7 /* cGalgasVariablesMap.hh */; };
@@ -2558,7 +2556,6 @@
 		CFEDF3550C2D161F0038713A /* projectLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A10C186FBB00DF8818 /* projectLL1grammar.cpp */; };
 		CFEDF3560C2D161F0038713A /* projectModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A30C186FBB00DF8818 /* projectModelBuilder.cpp */; };
 		CFEDF35C0C2D161F0038713A /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
-		CFEDF3670C2D16610038713A /* include_callInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */; };
 		CFEDF3680C2D16610038713A /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFEDF3690C2D16610038713A /* cGalgasVariablesMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3131509FD3B95006B55E7 /* cGalgasVariablesMap.h */; };
 		CFEDF36A0C2D16610038713A /* cGalgasVariablesMap.hh in Headers */ = {isa = PBXBuildFile; fileRef = CFA3131609FD3B95006B55E7 /* cGalgasVariablesMap.hh */; };
@@ -3445,7 +3442,6 @@
 		CF6E113106269BEC001B909F /* GGS_sint.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_sint.cpp; sourceTree = "<group>"; };
 		CF6E113206269BEC001B909F /* GGS_sint.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_sint.h; sourceTree = "<group>"; };
 		CF6E114506269E77001B909F /* main.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_callInstruction.h; sourceTree = "<group>"; };
 		CF76F499090E738800036FAC /* semantics_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_parser.h; sourceTree = "<group>"; };
 		CF76F4A0090E739A00036FAC /* expression_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = expression_parser.h; sourceTree = "<group>"; };
 		CF76F4A7090E73B900036FAC /* scanner_parser.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = scanner_parser.h; sourceTree = "<group>"; };
@@ -4494,7 +4490,6 @@
 				CFC1767109FE1CD30026596C /* include_typeMultiplyOperation.h */,
 				CFC1767209FE1CD30026596C /* include_typeSubOperation.h */,
 				CFD1939909FCFC0300920886 /* include_typeAddOperation.h */,
-				CF6EBC5F09FA8B800078DDF9 /* include_callInstruction.h */,
 				CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */,
 				CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */,
 				CF446B6609C9C50D005CBDC8 /* include_TypeModel.h */,
@@ -5292,7 +5287,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6EBC6009FA8B800078DDF9 /* include_callInstruction.h in Headers */,
 				CFD1939A09FCFC0300920886 /* include_typeAddOperation.h in Headers */,
 				CFA3131B09FD3B95006B55E7 /* cGalgasVariablesMap.h in Headers */,
 				CFA3131C09FD3B95006B55E7 /* cGalgasVariablesMap.hh in Headers */,
@@ -5613,7 +5607,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6EBC6609FA8B800078DDF9 /* include_callInstruction.h in Headers */,
 				CFD193A009FCFC0300920886 /* include_typeAddOperation.h in Headers */,
 				CFA3133F09FD3B95006B55E7 /* cGalgasVariablesMap.h in Headers */,
 				CFA3134009FD3B95006B55E7 /* cGalgasVariablesMap.hh in Headers */,
@@ -5984,7 +5977,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6EBC6709FA8B800078DDF9 /* include_callInstruction.h in Headers */,
 				CFD193A109FCFC0300920886 /* include_typeAddOperation.h in Headers */,
 				CFA3134509FD3B95006B55E7 /* cGalgasVariablesMap.h in Headers */,
 				CFA3134609FD3B95006B55E7 /* cGalgasVariablesMap.hh in Headers */,
@@ -6346,7 +6338,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6EBC6109FA8B800078DDF9 /* include_callInstruction.h in Headers */,
 				CFD1939B09FCFC0300920886 /* include_typeAddOperation.h in Headers */,
 				CFA3132109FD3B95006B55E7 /* cGalgasVariablesMap.h in Headers */,
 				CFA3132209FD3B95006B55E7 /* cGalgasVariablesMap.hh in Headers */,
@@ -6669,7 +6660,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFEDF2060C2D161F0038713A /* include_callInstruction.h in Headers */,
 				CFEDF2070C2D161F0038713A /* include_typeAddOperation.h in Headers */,
 				CFEDF2080C2D161F0038713A /* cGalgasVariablesMap.h in Headers */,
 				CFEDF2090C2D161F0038713A /* cGalgasVariablesMap.hh in Headers */,
@@ -7018,6 +7008,9 @@
 				CF3F51DF0DFF16EC00F008D2 /* include_categoryMethodToImplement.h in Headers */,
 				CF3F51E00DFF16EC00F008D2 /* include_structDeclaration.h in Headers */,
 				CF4521AE0E01576C00CAE9FC /* lexiqueCompilation.h in Headers */,
+				CF0900160E07A2CA00825C95 /* semantics_semantics.h in Headers */,
+				CF0900170E07A2CB00825C95 /* semantics_parser.h in Headers */,
+				CF0900180E07A2CC00825C95 /* expression_parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7025,7 +7018,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFEDF3670C2D16610038713A /* include_callInstruction.h in Headers */,
 				CFEDF3680C2D16610038713A /* include_typeAddOperation.h in Headers */,
 				CFEDF3690C2D16610038713A /* cGalgasVariablesMap.h in Headers */,
 				CFEDF36A0C2D16610038713A /* cGalgasVariablesMap.hh in Headers */,

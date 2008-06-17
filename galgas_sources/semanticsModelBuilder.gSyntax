@@ -854,6 +854,13 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  @bool mIsOverride ;
+  select
+    mIsOverride := false ;
+  or
+    mIsOverride := true ;
+    $override$ ;
+  end select ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
   $.$ ;
@@ -865,6 +872,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $}$ ;
   outSemanticDeclaration := [@categoryMethodDeclaration new
+    !mIsOverride
     !mClassName
     !mMethodName
     !mFormalParameterList

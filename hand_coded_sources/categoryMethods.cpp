@@ -59,7 +59,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       currentArgument->mCppName (HERE)->generateCplusPlusName (inHfile) ;
       currentArgument = currentArgument->nextObject () ;
     }
-    inHfile << ") ;\n\n" ;
+    inHfile << "\n                                "
+               "COMMA_LOCATION_ARGS) ;\n\n" ;
     inHfile.writeCppHyphenLineComment () ;
     inHfile << "void\n"
                "enterCategoryMethod__" << mClassName << "__" << mMethodName
@@ -132,7 +133,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     currentArgument = currentArgument->nextObject () ;
   }
-  inCppFile << ") {\n"
+  inCppFile << "\n                                "
+               "COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  if (operand_" << mMagicNumber.location () << " != NULL) {\n" ;
   inCppFile.incIndentation (+2) ;
   generateInstructionListForList (mInstructionList, inCppFile,
@@ -161,7 +163,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) ;\n"
                  "  if (result == NULL) {\n"
                  "    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;\n"
-                 "    if (superClassPtr == NULL) {\n"
+                 "    if (superClassPtr != NULL) {\n"
                  "      result = findCategoryMethod__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
                  "      gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) = result ;\n"
                  "    }\n"

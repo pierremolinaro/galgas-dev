@@ -219,14 +219,15 @@ class @typeMessageInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   R E A D E R    C A L L    I N S T R U C T I O N                         *
+#   M E T H O D    C A L L    I N S T R U C T I O N                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 class @typeMethodCallInstruction extends @typeInstruction {
   @AC_galgasType mExpressionType ;
   @typeExpression mExpression ;
-  @lstring aNomMethodeSimple ;
+  @lstring mMethodName ;
+  @string mCategoryMethodClassBaseName ;
   @typeExpressionList mExpressionsList ;
 }
 
@@ -1457,15 +1458,6 @@ extern routine generate_treewalking
   ??@typeListeTypesEtNomsArgMethode inFormalArgumentList
   ??@lstring inRootEntity
 ;
-
-#---------------------------------------------------------------------------*
-
-class @callInstruction extends @typeInstruction {
-  @lstring mCalledPropertyName ;
-  @lstring mEntityName ;
-  @AC_galgasType mPropertyType ;
-  @typeExpressionList mExpressionsList ;
-}
 
 #---------------------------------------------------------------------------*
 

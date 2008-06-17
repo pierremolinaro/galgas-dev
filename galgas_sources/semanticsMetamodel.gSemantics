@@ -308,6 +308,7 @@ class @filewrapperDeclaration extends @semanticDeclaration {
 #---------------------------------------------------------------------------*
 
 class @categoryMethodDeclaration extends @semanticDeclaration {
+  @bool mIsOverride ;
   @lstring mClassName ;
   @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;

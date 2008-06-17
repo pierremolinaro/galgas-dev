@@ -410,6 +410,7 @@ map @ActionMap {
 
 list @L_EXsignature ;
 list @typeListeAttributsSemantiques ;
+map @categoryMethodMap ;
 
 #---------------------------------------------------------------------------*
 
@@ -466,11 +467,13 @@ abstract class @AC_galgasType {
 #--- By default, class does not accept reader instruction call
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    !@L_EXsignature outReaderSignature
+    ??@categoryMethodMap unused inCategoryMethodMap
+    !@L_EXsignature outMethodSignature
+    !@string outCategoryMethodClassBaseName
   :
     error inReaderName :
-       "variables of this type do not support reader instruction"
-       -> outReaderSignature ;
+       "variables of this type do not support method call instruction"
+       -> outMethodSignature, outCategoryMethodClassBaseName ;
   end method ;
 
 #--- By default, class does not accept constructor call
@@ -709,6 +712,15 @@ list @L_EXsignature {
 }
 
 #---------------------------------------------------------------------------*
+
+map @categoryMethodMap {
+  @bool mIsOverride ;
+  @L_EXsignature aListeArgumentsFormels ;
+  insert insertKey error message "the '%K' method is already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' method is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # M E T H O D ,    A C T I O N ,   R O U T I N E    S I G N A T U R E       *
 #                                                                           *
@@ -860,8 +872,11 @@ class @typeGalgas_string extends @AC_galgasType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     if [inReaderName string] == "writeToFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
@@ -1766,8 +1781,8 @@ class @typeGalgas_filewrapper extends @AC_galgasType {
 
 map @typeTableMethodes {
   @L_EXsignature aListeTypesParametres ;
-  insert insertKey error message "a reader named '%K' is already declared" ;
-  search searchKey error message "there is no reader named '%K'" ;
+  insert insertKey error message "a method named '%K' is already declared" ;
+  search searchKey error message "there is no method named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1841,8 +1856,11 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #--- By default, class does not accept reader instruction call
   override method handleMethodInstructionCall
     ??@lstring inReaderName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     [mReadersInInstructionMap searchKey !inReaderName ?outReaderSignature] ;
   end method ;
 
@@ -2283,8 +2301,11 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     if ([inReaderName string] != "first") & ([inReaderName string] != "last") then
       error inReaderName: "a list accepts only 'first' and 'last' methods" ;
     end if ;
@@ -2552,8 +2573,11 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     if ([inReaderName string] != "smallest") & ([inReaderName string] != "greatest") then
       error inReaderName: "a sorted list accepts only 'smallest' and 'greatest' methods" ;
     end if ;
@@ -2661,8 +2685,11 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     [mReaderMethodMap searchKey !inReaderName ?outReaderSignature] ;
   end method ;
 
@@ -2761,8 +2788,11 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     [mMapIndexSearchReaderMap searchKey !inReaderName ?*] ;
     outReaderSignature := [@L_EXsignature listWithValue
       ![@typeGalgas_lstring new]
@@ -2838,7 +2868,7 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
 
 class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- class reader map
-  @typeTableMethodes mReaderMap ;
+  @typeTableMethodes mMethodMap ;
 
 #--- Attributes list (those from inherited classes, followed by those from current class)
   @typeListeAttributsSemantiques mNonExternAttributesList ;  
@@ -2862,9 +2892,38 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   override
   method handleMethodInstructionCall
     ??@lstring inMethodName
+    ??@categoryMethodMap inCategoryMethodMap
     !@L_EXsignature outMethodSignature
+    !@string outCategoryMethodClassBaseName
   :
-    [mReaderMap searchKey !inMethodName ?outMethodSignature] ;
+    outCategoryMethodClassBaseName := "" ;
+    if [mMethodMap hasKey ![inMethodName string]] then
+      [mMethodMap searchKey !inMethodName ?outMethodSignature] ;
+    else
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      @lstring key [new ![mClassTypeName string] . ":" . [inMethodName string] ![inMethodName location]] ;
+      if [inCategoryMethodMap hasKey ![key string]] then
+        @bool isOverride ;
+        [inCategoryMethodMap searchKey !key ?isOverride ?outMethodSignature] ;
+        if not isOverride then
+          outCategoryMethodClassBaseName := [mClassTypeName string] ;
+        end if ;
+      end if ;
+      foreach mAncestorClassesMap while outCategoryMethodClassBaseName == "" do
+        @lstring superKey [new ![key string] . ":" . [inMethodName string] ![inMethodName location]] ;
+        if [inCategoryMethodMap hasKey ![superKey string]] then
+          @bool isOverride ;
+          [inCategoryMethodMap searchKey !superKey ?isOverride ?outMethodSignature] ;
+          if not isOverride then
+            outCategoryMethodClassBaseName := [mClassTypeName string] ;
+          end if ;
+        end if ;
+      end foreach ;
+      if outCategoryMethodClassBaseName == "" then
+        error inMethodName:"there is no '" . inMethodName
+        . "' method defined for '@" . mClassTypeName . "' class" -> outMethodSignature ;
+      end if ;
+    end if ;
   end method ;
 
 #--- Class accepts class method call 'new' if it is not abstract
@@ -3099,8 +3158,11 @@ class @typeGalgas_enum extends @AC_galgasType {
   override
   method handleMethodInstructionCall
     ??@lstring inMethodName
+    ??@categoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
+    !@string outCategoryMethodClassBaseName
   :
+    outCategoryMethodClassBaseName := "" ;
     [mMethodMap searchKey !inMethodName ?* ?outReaderSignature ?*] ;
   end method ;
 
@@ -4271,15 +4333,6 @@ class @templateInstructionString extends @templateInstruction {
 
 class @templateInstructionConstant extends @templateInstruction {
   @typeCplusPlusName mCppName ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @categoryMethodMap {
-  @bool mIsOverride ;
-  @L_EXsignature aListeArgumentsFormels ;
-  insert insertKey error message "the '%K' method is already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' method is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
