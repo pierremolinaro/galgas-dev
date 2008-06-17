@@ -1,7 +1,7 @@
 program class_sample_language_program "version 1.0.0":
 import grammar class_sample_language_grammar in "class_sample_language_grammar.ggs" ;
 
-routine {
+before {
 }
 
 when . "class_sample_language"
@@ -10,7 +10,7 @@ message "an '.class_sample_language' source file"
   grammar class_sample_language_grammar in inSourceFile;
 }
 
-routine {
+after {
 }
 
 end program ;
