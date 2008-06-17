@@ -330,13 +330,9 @@
 		CFF8619309C0DA6100F90D05 /* C_GGS_Object.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF8618F09C0DA6100F90D05 /* C_GGS_Object.h */; };
 		CFF8619409C0DA6100F90D05 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8618E09C0DA6100F90D05 /* C_GGS_Object.cpp */; };
 		DFA61CD5061091C90089CEA5 /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA61CD4061091C90089CEA5 /* AC_galgas_class.cpp */; };
-		DFA61CD5061091C90089CEB5 /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA61CD4061091C90089CEB5 /* AC_galgas_entity.cpp */; };
 		DFA61CD6061091C90089CEA5 /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA61CD4061091C90089CEA5 /* AC_galgas_class.cpp */; };
-		DFA61CD6061091C90089CEB5 /* AC_galgas_entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA61CD4061091C90089CEB5 /* AC_galgas_entity.cpp */; };
 		DFDA45C5090E688B00D522A4 /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDA45C4090E688B00D522A4 /* AC_galgas_class.h */; };
-		DFDA45C5090E688B00D522B4 /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDA45C4090E688B00D522B4 /* AC_galgas_entity.h */; };
 		DFDA45C6090E688B00D522A4 /* AC_galgas_class.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDA45C4090E688B00D522A4 /* AC_galgas_class.h */; };
-		DFDA45C6090E688B00D522B4 /* AC_galgas_entity.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDA45C4090E688B00D522B4 /* AC_galgas_entity.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -548,9 +544,7 @@
 		CFF8618E09C0DA6100F90D05 /* C_GGS_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_GGS_Object.cpp; sourceTree = "<group>"; };
 		CFF8618F09C0DA6100F90D05 /* C_GGS_Object.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_GGS_Object.h; sourceTree = "<group>"; };
 		DFA61CD4061091C90089CEA5 /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
-		DFA61CD4061091C90089CEB5 /* AC_galgas_entity.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_entity.cpp; sourceTree = "<group>"; };
 		DFDA45C4090E688B00D522A4 /* AC_galgas_class.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_class.h; sourceTree = "<group>"; };
-		DFDA45C4090E688B00D522B4 /* AC_galgas_entity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_entity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -836,8 +830,6 @@
 				CFDC50A10961ACE0006A0AFD /* GGS_stringset.h */,
 				DFA61CD4061091C90089CEA5 /* AC_galgas_class.cpp */,
 				DFDA45C4090E688B00D522A4 /* AC_galgas_class.h */,
-				DFA61CD4061091C90089CEB5 /* AC_galgas_entity.cpp */,
-				DFDA45C4090E688B00D522B4 /* AC_galgas_entity.h */,
 				CFA61CD4061091C90089CEA5 /* AC_galgas_map.cpp */,
 				CFDA45C4090E688B00D522A4 /* AC_galgas_map.h */,
 				CFA61CD4061091C90089CEB5 /* AC_galgas_list.cpp */,
@@ -987,7 +979,6 @@
 				CF825DF80853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFE085387EC0077AEAF /* C_Timer.h in Headers */,
 				DFDA45C5090E688B00D522A4 /* AC_galgas_class.h in Headers */,
-				DFDA45C5090E688B00D522B4 /* AC_galgas_entity.h in Headers */,
 				CFDA45C5090E688B00D522A4 /* AC_galgas_map.h in Headers */,
 				CFDA45C5090E688B00D522B4 /* AC_galgas_list.h in Headers */,
 				CFDA45C5090E688B00D522B5 /* AC_galgas_sortedlist.h in Headers */,
@@ -1072,7 +1063,6 @@
 				CF825DEA0853878C0077AEAF /* MF_MemoryControl.h in Headers */,
 				CF825DFC085387EC0077AEAF /* C_Timer.h in Headers */,
 				DFDA45C6090E688B00D522A4 /* AC_galgas_class.h in Headers */,
-				DFDA45C6090E688B00D522B4 /* AC_galgas_entity.h in Headers */,
 				CFDA45C6090E688B00D522A4 /* AC_galgas_map.h in Headers */,
 				CFDA45C6090E688B00D522B4 /* AC_galgas_list.h in Headers */,
 				CFDA45C6090E688B00D522B5 /* AC_galgas_sortedlist.h in Headers */,
@@ -1272,7 +1262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA61CD5061091C90089CEA5 /* AC_galgas_class.cpp in Sources */,
-				DFA61CD5061091C90089CEB5 /* AC_galgas_entity.cpp in Sources */,
 				CFA61CD5061091C90089CEA5 /* AC_galgas_map.cpp in Sources */,
 				CFA61CD5061091C90089CEB5 /* AC_galgas_list.cpp in Sources */,
 				CFA61CD5061091C90089CEB6 /* AC_galgas_sortedlist.cpp in Sources */,
@@ -1359,7 +1348,6 @@
 				CF7A14A2058D0123007126C2 /* GGS_uint64.cpp in Sources */,
 				4F7A14A2058D0123007126C2 /* GGS_luint64.cpp in Sources */,
 				DFA61CD6061091C90089CEA5 /* AC_galgas_class.cpp in Sources */,
-				DFA61CD6061091C90089CEB5 /* AC_galgas_entity.cpp in Sources */,
 				CFA61CD6061091C90089CEA5 /* AC_galgas_map.cpp in Sources */,
 				CFA61CD6061091C90089CEB5 /* AC_galgas_list.cpp in Sources */,
 				CFA61CD6061091C90089CEB6 /* AC_galgas_sortedlist.cpp in Sources */,
