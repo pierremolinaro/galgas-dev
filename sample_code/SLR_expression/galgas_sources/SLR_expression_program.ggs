@@ -1,7 +1,7 @@
 program SLR_expression_program "version 1.0.0":
 import grammar SLR_expression_grammar in "SLR_expression_grammar.ggs" ;
 
-routine {
+before {
 }
 
 when . "SLR_expression"
@@ -10,7 +10,7 @@ message "an '.SLR_expression' source file"
   grammar SLR_expression_grammar in inSourceFile;
 }
 
-routine {
+after {
 }
 
 end program ;

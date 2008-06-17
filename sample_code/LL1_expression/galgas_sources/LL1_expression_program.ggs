@@ -1,7 +1,7 @@
 program LL1_expression_program "version 1.0.0":
 import grammar LL1_expression_grammar in "LL1_expression_grammar.ggs" ;
 
-routine {
+before {
 }
 
 when . "LL1_expression"
@@ -10,7 +10,7 @@ message "an '.LL1_expression' source file"
   grammar LL1_expression_grammar in inSourceFile;
 }
 
-routine {
+after {
 }
 
 end program ;

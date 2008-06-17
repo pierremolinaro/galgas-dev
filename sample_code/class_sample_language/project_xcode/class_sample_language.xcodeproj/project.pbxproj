@@ -104,10 +104,6 @@
 		CF825DA8085387240077AEAF /* C_Lexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DA2085387240077AEAF /* C_Lexique.h */; };
 		CF825DAD085387240077AEAF /* C_Lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825DA1085387240077AEAF /* C_Lexique.cpp */; };
 		CF825DAE085387240077AEAF /* C_Lexique.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DA2085387240077AEAF /* C_Lexique.h */; };
-		CF825DB3085387390077AEAF /* TC_UniqueArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DB1085387390077AEAF /* TC_UniqueArray.h */; };
-		CF825DB4085387390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DB2085387390077AEAF /* TC_UniqueFixedSizeArray.h */; };
-		CF825DB5085387390077AEAF /* TC_UniqueArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DB1085387390077AEAF /* TC_UniqueArray.h */; };
-		CF825DB6085387390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DB2085387390077AEAF /* TC_UniqueFixedSizeArray.h */; };
 		CF825DBD085387530077AEAF /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825DB9085387530077AEAF /* AC_OutputStream.cpp */; };
 		CF825DBE085387530077AEAF /* AC_OutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = CF825DBA085387530077AEAF /* AC_OutputStream.h */; };
 		CF825DBF085387530077AEAF /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825DBB085387530077AEAF /* C_ConsoleOut.cpp */; };
@@ -175,8 +171,31 @@
 		CFA61CD6061091C90089CEA5 /* AC_galgas_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA61CD4061091C90089CEA5 /* AC_galgas_map.cpp */; };
 		CFA61CD6061091C90089CEB5 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA61CD4061091C90089CEB5 /* AC_galgas_list.cpp */; };
 		CFA61CFA0610951F0089CEA5 /* class_sample_language in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF6061095160089CEA5 /* class_sample_language */; };
+		CFB449EC0E085F8100D4032F /* TC_AVL_TreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E00E085F8100D4032F /* TC_AVL_TreeForCollision.h */; };
+		CFB449ED0E085F8100D4032F /* TC_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E10E085F8100D4032F /* TC_Array.h */; };
+		CFB449EE0E085F8100D4032F /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E20E085F8100D4032F /* TC_Array2.h */; };
+		CFB449EF0E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E30E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h */; };
+		CFB449F00E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E40E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h */; };
+		CFB449F10E085F8100D4032F /* TC_FixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E50E085F8100D4032F /* TC_FixedSizeArray.h */; };
+		CFB449F20E085F8100D4032F /* TC_HashMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E60E085F8100D4032F /* TC_HashMap.h */; };
+		CFB449F30E085F8100D4032F /* TC_LinearListForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E70E085F8100D4032F /* TC_LinearListForCollision.h */; };
+		CFB449F40E085F8100D4032F /* TC_UniqueArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E80E085F8100D4032F /* TC_UniqueArray.h */; };
+		CFB449F50E085F8100D4032F /* TC_UniqueArray2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E90E085F8100D4032F /* TC_UniqueArray2.h */; };
+		CFB449F60E085F8100D4032F /* TC_UniqueFixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449EA0E085F8100D4032F /* TC_UniqueFixedSizeArray.h */; };
+		CFB449F70E085F8100D4032F /* TF_AVL_Tree.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449EB0E085F8100D4032F /* TF_AVL_Tree.h */; };
+		CFB449F80E085F8100D4032F /* TC_AVL_TreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E00E085F8100D4032F /* TC_AVL_TreeForCollision.h */; };
+		CFB449F90E085F8100D4032F /* TC_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E10E085F8100D4032F /* TC_Array.h */; };
+		CFB449FA0E085F8100D4032F /* TC_Array2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E20E085F8100D4032F /* TC_Array2.h */; };
+		CFB449FB0E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E30E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h */; };
+		CFB449FC0E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E40E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h */; };
+		CFB449FD0E085F8100D4032F /* TC_FixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E50E085F8100D4032F /* TC_FixedSizeArray.h */; };
+		CFB449FE0E085F8100D4032F /* TC_HashMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E60E085F8100D4032F /* TC_HashMap.h */; };
+		CFB449FF0E085F8100D4032F /* TC_LinearListForCollision.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E70E085F8100D4032F /* TC_LinearListForCollision.h */; };
+		CFB44A000E085F8100D4032F /* TC_UniqueArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E80E085F8100D4032F /* TC_UniqueArray.h */; };
+		CFB44A010E085F8100D4032F /* TC_UniqueArray2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449E90E085F8100D4032F /* TC_UniqueArray2.h */; };
+		CFB44A020E085F8100D4032F /* TC_UniqueFixedSizeArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449EA0E085F8100D4032F /* TC_UniqueFixedSizeArray.h */; };
+		CFB44A030E085F8100D4032F /* TF_AVL_Tree.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB449EB0E085F8100D4032F /* TF_AVL_Tree.h */; };
 		CFBC76070AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */; };
-		CFC30F93058A225E003D0386 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFC30F92058A225E003D0386 /* Info.plist */; };
 		CFCD26D90850D5D000A26954 /* class_sample_languageDebug in Resources */ = {isa = PBXBuildFile; fileRef = CFA61CF8061095160089CEA5 /* class_sample_languageDebug */; };
 		CFD284A70A3C3F5B0066AF65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD284A60A3C3F5B0066AF65 /* main.m */; };
 		CFD284A90A3C411C0066AF65 /* class_sample_language_lexique.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE9BAAF0A3C303800C9F7EC /* class_sample_language_lexique.cpp */; };
@@ -381,8 +400,6 @@
 		CF825D96085386FD0077AEAF /* C_TextFileWrite.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_TextFileWrite.h; sourceTree = "<group>"; };
 		CF825DA1085387240077AEAF /* C_Lexique.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_Lexique.cpp; sourceTree = "<group>"; };
 		CF825DA2085387240077AEAF /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_Lexique.h; sourceTree = "<group>"; };
-		CF825DB1085387390077AEAF /* TC_UniqueArray.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray.h; sourceTree = "<group>"; };
-		CF825DB2085387390077AEAF /* TC_UniqueFixedSizeArray.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = TC_UniqueFixedSizeArray.h; sourceTree = "<group>"; };
 		CF825DB9085387530077AEAF /* AC_OutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_OutputStream.cpp; sourceTree = "<group>"; };
 		CF825DBA085387530077AEAF /* AC_OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_OutputStream.h; sourceTree = "<group>"; };
 		CF825DBB085387530077AEAF /* C_ConsoleOut.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_ConsoleOut.cpp; sourceTree = "<group>"; };
@@ -413,6 +430,18 @@
 		CFA61CD4061091C90089CEB5 /* AC_galgas_list.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_list.cpp; sourceTree = "<group>"; };
 		CFA61CF6061095160089CEA5 /* class_sample_language */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = class_sample_language; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA61CF8061095160089CEA5 /* class_sample_languageDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = class_sample_languageDebug; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFB449E00E085F8100D4032F /* TC_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_AVL_TreeForCollision.h; sourceTree = "<group>"; };
+		CFB449E10E085F8100D4032F /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
+		CFB449E20E085F8100D4032F /* TC_Array2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array2.h; sourceTree = "<group>"; };
+		CFB449E30E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_BlockBinaryTreeForCollision.h; sourceTree = "<group>"; };
+		CFB449E40E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Block_AVL_TreeForCollision.h; sourceTree = "<group>"; };
+		CFB449E50E085F8100D4032F /* TC_FixedSizeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_FixedSizeArray.h; sourceTree = "<group>"; };
+		CFB449E60E085F8100D4032F /* TC_HashMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_HashMap.h; sourceTree = "<group>"; };
+		CFB449E70E085F8100D4032F /* TC_LinearListForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_LinearListForCollision.h; sourceTree = "<group>"; };
+		CFB449E80E085F8100D4032F /* TC_UniqueArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray.h; sourceTree = "<group>"; };
+		CFB449E90E085F8100D4032F /* TC_UniqueArray2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray2.h; sourceTree = "<group>"; };
+		CFB449EA0E085F8100D4032F /* TC_UniqueFixedSizeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueFixedSizeArray.h; sourceTree = "<group>"; };
+		CFB449EB0E085F8100D4032F /* TF_AVL_Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TF_AVL_Tree.h; sourceTree = "<group>"; };
 		CFBC75C70AC6785A00443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
 		CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildResultTextView.mm; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -591,15 +620,6 @@
 			path = command_line_interface;
 			sourceTree = "<group>";
 		};
-		CF3FF14005878B33000D2F8C /* generic_arraies */ = {
-			isa = PBXGroup;
-			children = (
-				CF825DB1085387390077AEAF /* TC_UniqueArray.h */,
-				CF825DB2085387390077AEAF /* TC_UniqueFixedSizeArray.h */,
-			);
-			path = generic_arraies;
-			sourceTree = "<group>";
-		};
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +651,25 @@
 				CFBC76060AC67F9900443ACA /* OC_GGS_BuildResultTextView.mm */,
 			);
 			path = cocoa_galgas;
+			sourceTree = "<group>";
+		};
+		CFB449DF0E085F8100D4032F /* collections */ = {
+			isa = PBXGroup;
+			children = (
+				CFB449E00E085F8100D4032F /* TC_AVL_TreeForCollision.h */,
+				CFB449E10E085F8100D4032F /* TC_Array.h */,
+				CFB449E20E085F8100D4032F /* TC_Array2.h */,
+				CFB449E30E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h */,
+				CFB449E40E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h */,
+				CFB449E50E085F8100D4032F /* TC_FixedSizeArray.h */,
+				CFB449E60E085F8100D4032F /* TC_HashMap.h */,
+				CFB449E70E085F8100D4032F /* TC_LinearListForCollision.h */,
+				CFB449E80E085F8100D4032F /* TC_UniqueArray.h */,
+				CFB449E90E085F8100D4032F /* TC_UniqueArray2.h */,
+				CFB449EA0E085F8100D4032F /* TC_UniqueFixedSizeArray.h */,
+				CFB449EB0E085F8100D4032F /* TF_AVL_Tree.h */,
+			);
+			path = collections;
 			sourceTree = "<group>";
 		};
 		CFD21A8A0913D1890011F11E /* Sources Files */ = {
@@ -693,13 +732,13 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
+				CFB449DF0E085F8100D4032F /* collections */,
 				CFE37D010B7BA082000D1999 /* bdd */,
 				CFF538EE057A55F400854C83 /* cache */,
 				CFAD482E0591BCF700BF8381 /* cocoa_galgas */,
 				CF31E0ED0598DF5400814123 /* command_line_interface */,
 				CFF538CC057A559D00854C83 /* files */,
 				CFF53871057A555E00854C83 /* galgas */,
-				CF3FF14005878B33000D2F8C /* generic_arraies */,
 				CFF53851057A54FB00854C83 /* streams */,
 				CFF53846057A54DF00854C83 /* time */,
 				CFF5381F057A549B00854C83 /* utilities */,
@@ -871,8 +910,6 @@
 				CF825D92085386E10077AEAF /* mainForLIBPM.h in Headers */,
 				CF825D9A085386FD0077AEAF /* C_TextFileWrite.h in Headers */,
 				CF825DAE085387240077AEAF /* C_Lexique.h in Headers */,
-				CF825DB5085387390077AEAF /* TC_UniqueArray.h in Headers */,
-				CF825DB6085387390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */,
 				CF825DC2085387530077AEAF /* AC_OutputStream.h in Headers */,
 				CF825DC4085387530077AEAF /* C_ConsoleOut.h in Headers */,
 				CF825DCC085387680077AEAF /* C_DateTime.h in Headers */,
@@ -914,6 +951,18 @@
 				CFE37CFB0B7BA07A000D1999 /* C_Display_BDD.h in Headers */,
 				CFE37D080B7BA0CA000D1999 /* predefined_types.h in Headers */,
 				CFDC00940B87249D00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFB449EC0E085F8100D4032F /* TC_AVL_TreeForCollision.h in Headers */,
+				CFB449ED0E085F8100D4032F /* TC_Array.h in Headers */,
+				CFB449EE0E085F8100D4032F /* TC_Array2.h in Headers */,
+				CFB449EF0E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h in Headers */,
+				CFB449F00E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h in Headers */,
+				CFB449F10E085F8100D4032F /* TC_FixedSizeArray.h in Headers */,
+				CFB449F20E085F8100D4032F /* TC_HashMap.h in Headers */,
+				CFB449F30E085F8100D4032F /* TC_LinearListForCollision.h in Headers */,
+				CFB449F40E085F8100D4032F /* TC_UniqueArray.h in Headers */,
+				CFB449F50E085F8100D4032F /* TC_UniqueArray2.h in Headers */,
+				CFB449F60E085F8100D4032F /* TC_UniqueFixedSizeArray.h in Headers */,
+				CFB449F70E085F8100D4032F /* TF_AVL_Tree.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,8 +988,6 @@
 				CF825D88085386E10077AEAF /* mainForLIBPM.h in Headers */,
 				CF825D98085386FD0077AEAF /* C_TextFileWrite.h in Headers */,
 				CF825DA8085387240077AEAF /* C_Lexique.h in Headers */,
-				CF825DB3085387390077AEAF /* TC_UniqueArray.h in Headers */,
-				CF825DB4085387390077AEAF /* TC_UniqueFixedSizeArray.h in Headers */,
 				CF825DBE085387530077AEAF /* AC_OutputStream.h in Headers */,
 				CF825DC0085387530077AEAF /* C_ConsoleOut.h in Headers */,
 				CF825DCA085387680077AEAF /* C_DateTime.h in Headers */,
@@ -982,6 +1029,18 @@
 				CFE37CFF0B7BA07A000D1999 /* C_Display_BDD.h in Headers */,
 				CFE37D0A0B7BA0CA000D1999 /* predefined_types.h in Headers */,
 				CFDC00960B87249D00B10A6E /* AC_galgas_mapindex.h in Headers */,
+				CFB449F80E085F8100D4032F /* TC_AVL_TreeForCollision.h in Headers */,
+				CFB449F90E085F8100D4032F /* TC_Array.h in Headers */,
+				CFB449FA0E085F8100D4032F /* TC_Array2.h in Headers */,
+				CFB449FB0E085F8100D4032F /* TC_BlockBinaryTreeForCollision.h in Headers */,
+				CFB449FC0E085F8100D4032F /* TC_Block_AVL_TreeForCollision.h in Headers */,
+				CFB449FD0E085F8100D4032F /* TC_FixedSizeArray.h in Headers */,
+				CFB449FE0E085F8100D4032F /* TC_HashMap.h in Headers */,
+				CFB449FF0E085F8100D4032F /* TC_LinearListForCollision.h in Headers */,
+				CFB44A000E085F8100D4032F /* TC_UniqueArray.h in Headers */,
+				CFB44A010E085F8100D4032F /* TC_UniqueArray2.h in Headers */,
+				CFB44A020E085F8100D4032F /* TC_UniqueFixedSizeArray.h in Headers */,
+				CFB44A030E085F8100D4032F /* TF_AVL_Tree.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,7 +1129,6 @@
 			files = (
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
-				CFC30F93058A225E003D0386 /* Info.plist in Resources */,
 				CFA61CFA0610951F0089CEA5 /* class_sample_language in Resources */,
 				CFCD26D90850D5D000A26954 /* class_sample_languageDebug in Resources */,
 				CF825D54085386810077AEAF /* I_Action.tiff in Resources */,

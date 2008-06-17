@@ -1,7 +1,7 @@
 program dangling_else_solution_program "version 1.0.0":
 import grammar dangling_else_solution_grammar in "dangling_else_solution_grammar.ggs" ;
 
-routine {
+before {
 }
 
 when . "dangling_else_solution"
@@ -10,7 +10,7 @@ message "an '.dangling_else_solution' source file"
   grammar dangling_else_solution_grammar in inSourceFile;
 }
 
-routine {
+after {
 }
 
 end program ;

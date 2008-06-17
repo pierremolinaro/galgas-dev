@@ -1,7 +1,7 @@
 program LR1_grammar_program "version 1.0.0":
 import grammar LR1_grammar_grammar in "LR1_grammar_grammar.ggs" ;
 
-routine {
+before {
 }
 
 when . "LR1_grammar"
@@ -10,7 +10,7 @@ message "an '.LR1_grammar' source file"
   grammar LR1_grammar_grammar in inSourceFile;
 }
 
-routine {
+after {
 }
 
 end program ;
