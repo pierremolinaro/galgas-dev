@@ -37,18 +37,6 @@ class cPtr_typeGalgas_singleReferenceEntity : public cPtr_AC_galgasType {
                                     AC_OutputStream & inCppFile) const ;
 
   public : virtual void
-  releasePropertyInDestructor (AC_OutputStream & ioHFile,
-                               const C_String & inPropertyName) const ;
-
-  public : virtual void
-  descriptionReaderCall (AC_OutputStream & ioHFile,
-                         const C_String & inPropertyName) const ;
-
-  public : virtual void
-  generateAttributeInMetamodel (AC_OutputStream & ioHFile,
-                                const C_String & inPropertyName) const ;
-
-  public : virtual void
   generateFormalParameter (AC_OutputStream & ioCppFile,
                            const C_String & inPropertyName) const ;
 

@@ -61,7 +61,6 @@ message "a '.ggs' GALGAS source file"
   @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @M_optionComponents optionComponentsMap [emptyMap] ;
-  @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
   @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
@@ -73,7 +72,6 @@ message "a '.ggs' GALGAS source file"
     !?syntaxComponentsMap
     !?grammarComponentsMap
     !?optionComponentsMap
-    !?metamodelComponentMap
     !?semanticContext
   ;
 }

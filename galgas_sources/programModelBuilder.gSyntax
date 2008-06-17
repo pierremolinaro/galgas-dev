@@ -56,9 +56,7 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
       $semantics$ ;
     or
       $lexique$ ;
-    or
-      $metamodel$ ;
-    or
+   or
       $grammar$ ;
     or
       $syntax$ ;

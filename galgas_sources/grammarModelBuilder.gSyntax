@@ -61,8 +61,6 @@ rule <grammar_component_start_symbol>
     or
       $lexique$ ;
     or
-      $metamodel$ ;
-    or
       $grammar$ ;
     or
       $syntax$ ;

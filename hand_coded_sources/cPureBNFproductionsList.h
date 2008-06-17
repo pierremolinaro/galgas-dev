@@ -50,7 +50,6 @@ class cProduction {
   public : void engendrerAppelProduction (const sint16 nombreDeParametres,
                                           const cVocabulary & inVocabulary,
                                           const C_String & inAltName,
-                                          const bool inReturnsEntityInstance,
                                           AC_OutputStream & fichierCPP) const ;
 
 //--- No copy

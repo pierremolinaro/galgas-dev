@@ -56,9 +56,7 @@ rule <gui_component_start_symbol>
       $semantics$ ;
     or
       $lexique$ ;
-    or
-      $metamodel$ ;
-    or
+   or
       $grammar$ ;
     or
       $syntax$ ;

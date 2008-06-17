@@ -325,13 +325,6 @@ generateInstruction (AC_OutputStream & inCppFile,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
-  if (inGenerateSemanticInstructions && (mReturnedEntityVarName.length () > 0)) {
-    if (mReturnedEntityShouldInsertedInList.boolValue ()) {
-      inCppFile << "var_cas_" << mReturnedEntityVarName << "._addAssign_operation (" ;
-    }else{
-      inCppFile << "var_cas_" << mReturnedEntityVarName << " = " ;
-    }
-  }
   inCppFile << "nt_" << mNonterminalName << '_'
             << (inGenerateSemanticInstructions ? mAltName.cString () : "parse")
             << " (_inLexique" ;
@@ -343,9 +336,6 @@ generateInstruction (AC_OutputStream & inCppFile,
       argument->mExpression (HERE)->generateExpression (inCppFile) ;
       argument = argument->nextObject () ;
     }
-  }
-  if (inGenerateSemanticInstructions && mReturnedEntityShouldInsertedInList.boolValue ()) {
-    inCppFile << ")" ;
   }
   inCppFile << ") ;\n" ;
 }

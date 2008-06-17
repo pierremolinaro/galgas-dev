@@ -625,59 +625,12 @@ list @typeListeTypesEtNomsArgMethode {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   P A R S E D    E N T I T Y    I N    M E T A M O D E L                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @entityPropertyMap {
-  @AC_galgasType mPropertyType ;
-  insert insertKey error message "the '%K' property has been already declared in %L" ;
-  search searchKey error message "the '%K' property is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @mapEntityMap {
-  @lstring mElementEntityName ;
-  @lstring mInsertErrorMessage ;
-  @lstring mSearchErrorMessage ;
-  @bool mElementTypeIsOveriddenByConstraints ;
-  insert insertKey error message "the '%K' map has been already declared in %L" ;
-  search searchKey error message "the '%K' map is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #                   Super classes map of a class                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 map @typeSuperClassesMap {
   insert insertKey error message "the class '%K' is already a super class of the current class" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @entityToImplementMap {
-#--- All properties, those defined in super entities and defined in current entity 
-  @entityPropertyMap mAllMetamodelPropertyMap ;
-#--- Entity is abstract ?
-  @bool mIsAbstract ;
-#--- Only properties defined in current entity
-  @entityPropertyMap mCurrentMetamodelPropertyMap ;
-#--- 
-  @lstring mSuperEntityName ;
-#---
-  @typeSuperClassesMap mAncestorClassesMap ;
-#--- All properties
-  @typeListeAttributsSemantiques mPropertyList ;
-#--- Metamodel where the entity is defined
-  @string mMetamodelName ;
-#--- Entity ID
-  @uint mID ;
-#--- Access methods
-  insert insertKey error message "the '@%K' entity has been already declared in %L" ;
-  search searchKey error message "the '@%K' entity is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1925,7 +1878,7 @@ map @typeTableEnAvant {
 
 map @M_nonterminalSymbolAlts {
   @L_EXsignature mFormalParametersList ;
-  @lstring mReturnedEntity ;
+
   insert insertKey error message "the label '%K' has been already declared in %L" ;
   search searchKey error message "the label '%K' is not declared" ;
 }
@@ -1950,6 +1903,7 @@ abstract class @AC_semanticsEntity {
 class @C_grammarForSemantics extends @AC_semanticsEntity {
   @M_nonterminalSymbolAlts mGrammarAltMap ;
   @lstring mLexiqueClassName ;
+
   message messageTypeEntite  "a grammar entity";
   message "a grammar entity";
 }
@@ -2039,6 +1993,7 @@ list @L_ruleSyntaxSignature {
 
 map @L_grammarsMap {
   @M_nonterminalSymbolAlts mStartSymbolParametersMap ;
+
   insert insertKey error message "the '%K' grammar is already defined in %L" ;
   search searchKey error message "the '%K' grammar is not defined" ;
 }
@@ -2051,7 +2006,7 @@ map @L_grammarsMap {
 
 map @M_nonterminalSymbolAltsForGrammar {
   @L_signature mFormalParametersList ;
-  @lstring mReturnedEntityTypeName ;
+
   insert insertKey error message "the rule label '%K' has been already declared in %L" ;
   search searchKey error message "the rule label '%K' is not declared" ;
 }
@@ -2076,6 +2031,7 @@ list @L_productionRules_ForGrammarComponent {
 
 map @M_nonTerminalSymbolsForGrammar {
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
+
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared" ;
   search searchKey, searchKeyGetID error message "the '<%K>' non terminal symbol is not declared" ;
 }
@@ -2965,76 +2921,6 @@ class @typeEntiteRoutine extends @AC_semanticsEntity {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   S I N G L E   E N T I T Y    R E F E R E N C E                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_singleReferenceEntity extends @AC_galgasType {
-  @lstring mEntityTypeName ;
-  @typeListeAttributsSemantiques mConstructorTypesList ;
-  @stringset mSuperEntitySet ;
-
-#--- Get type name
-  override
-  method getTypeName !@string outTypeName :
-    outTypeName := "$$" ;
-  end method ;
-
-#--- constructor
-  override
-  method handleConstructorCall
-    ??@lstring inClassMethodName
-    !@typeListeAttributsSemantiques outAccessorTypesList
-  :
-    if [inClassMethodName string] == "new" then
-      outAccessorTypesList := mConstructorTypesList ;
-    else
-      error inClassMethodName : "Only the 'new' constructor is defined" -> outAccessorTypesList ;
-    end if ;
-  end method ;
-
-#--- Error message
-  message "an entity single reference" ;
-  message messageGalgasType "an entity single reference" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   M U L T I P L E   E N T I T Y    R E F E R E N C E                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @typeGalgas_multipleReferenceEntity extends @AC_galgasType {
-  @lstring mEntityTypeName ;
-  @luint mLowerBound ;
-  @luint mUpperBound ;
-
-#--- Get type name
-  override
-  method getTypeName !@string outTypeName :
-    outTypeName := "$$" ;
-  end method ;
-
-#--- constructor
-  override
-  method handleConstructorCall
-    ??@lstring inClassMethodName
-    !@typeListeAttributsSemantiques outAccessorTypesList
-  :
-    if [inClassMethodName string] == "emptyList" then
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    else
-      error inClassMethodName : "Only the 'emptyList' constructor is defined" -> outAccessorTypesList ;
-    end if ;
-  end method ;
-
-#--- Error message
-  message "an entity multiple reference" ;
-  message messageGalgasType "an entity multiple reference" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  E N U M    T Y P E                                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -3223,25 +3109,6 @@ routine checkAssignmentTypesCompatibility
                               "', I have got the class type '@" . [kNomType2 string] . "\"" ;
     end if ;
 
-  when @typeGalgas_singleReferenceEntity (@lstring attNomType1 2*)
-    :: @typeGalgas_singleReferenceEntity (@lstring attNomType2 * @stringset kSuperEntitySet) :
-    @bool accept := [attNomType1 string] == [attNomType2 string] ;
-    if (not accept) & inAcceptPolymorphism then
-      accept := [kSuperEntitySet hasKey ![attNomType1 string]] ;
-    end if ;
-    if not accept then
-      error inErrorLocation : "I was expecting the single reference type '@" . [attNomType1 string] .
-                              "', I have got the single reference type '@" . [attNomType2 string] . "\"" ;
-    end if ;
-
-  when @typeGalgas_multipleReferenceEntity (@lstring attNomType1 2*)
-    :: @typeGalgas_multipleReferenceEntity (@lstring attNomType2 2*) :
-    @bool accept := [attNomType1 string] == [attNomType2 string] ;
-    if not accept then
-      error inErrorLocation : "I was expecting the multiple reference type of '@" . [attNomType1 string] .
-                              "', I have got the multiple reference type of '@" . [attNomType2 string] . "\"" ;
-    end if ;
-
   when @typeGalgasUndefinedMapindexType (@lstring attNomType1 ...) :: @typeGalgasUndefinedMapindexType (@lstring attNomType2 ...) :
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the map index type '@" . [attNomType1 string] .
@@ -3382,20 +3249,6 @@ map @M_semanticsComponents {
   @M_semanticsEntitiesForUse mSemanticsEntitiesMap ; # OLD STYLE MAP
   insert insertKey error message "a semantics component named '%K' is already declared in %L" ;
   search searchKey error message "there is no semantics component named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    Map of metamodel components                                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @M_metamodelsComponents {
-  @lstring mRootEntity ;
-  @entityToImplementMap mEntityMap ;
-  @stringset mSuperMetamodels ;
-  insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
-  search searchKey error message "there is no metamodel component named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -4094,17 +3947,6 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
-    when >= @typeGalgas_singleReferenceEntity t do
-      outReturnedType := [@typeGalgas_string new] ; # Any Value
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      @bool found := false ;
-      foreach [t mConstructorTypesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
-        outReturnedType := kAttributType ;
-        found := [inReaderName string] == [kNomAttribut string] ;
-      end foreach ;
-      if not found then
-        error inReaderName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
-      end if ;
     when >= @typeGalgasClassType t do
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -4159,7 +4001,6 @@ extern routine check_K_escapeCharacters
 
 routine importSemanticsComponent
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@ModelMap ioModelMap
   ?!@ActionMap ioActionMap
   ?!@stringset ioAlreadyImportedSemanticsComponents
@@ -4188,7 +4029,6 @@ routine importSemanticsComponent
     foreach importedSemanticsComponents (@string kKey) do
       importSemanticsComponent
         !?ioSemanticsComponentsMap
-        !?ioMetamodelComponentMap
         !?ioModelMap
         !?ioActionMap
         !?ioAlreadyImportedSemanticsComponents

@@ -88,7 +88,6 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "mapindex",
   "match",
   "message",
-  "metamodel",
   "method",
   "mod",
   "modifier",
@@ -323,7 +322,7 @@ list galgasDelimitorsList error message "the '%K' delimitor" style delimitersSty
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",
   "/",    "!=",   ">=",      "&",
-  "{",     "}",   "+>",     "-=",
+  "{",     "}",   "-=",
   "^",    ">>",    "~",     "<-" ;
 
 rule list galgasDelimitorsList ;

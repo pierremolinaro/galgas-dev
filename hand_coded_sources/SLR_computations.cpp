@@ -649,8 +649,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                                const uint32 inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
-                               const GGS_stringset & inClassesNamesSet,
-                               const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                               const GGS_stringset & inClassesNamesSet) {
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -826,12 +825,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       macroValidPointer (currentAltForNonTerminal) ;
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " " ;      
-      }else{
-        generatedZone3 << "void " ;
-      }
+      generatedZone3 << "void " ;
       generatedZone3 << inTargetFileName
                      << "::\n"
                      << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
@@ -851,10 +845,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ;
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " _outReturnedModelInstance ;\n" ;      
-      }
       generatedZone3 << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
@@ -866,7 +856,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal->mKey,
-                               currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0,
                                                                       generatedZone3) ;
           generatedZone3 << "    break ;\n" ;
         }
@@ -874,9 +863,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       generatedZone3 << "  default :\n"
                         "    _inLexique.internalBottomUpParserError (HERE) ;\n"
                         "  }\n" ;
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
-      }
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
@@ -887,11 +873,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " " ;      
-        }else{
-          generatedZone3 << "void " ;
-        }
+        generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
@@ -911,10 +893,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
                           "    ? _inFileName.string ()\n"
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
@@ -930,9 +908,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "      if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "        " << inTargetFileName << " _grammar ;\n"
                           "        " ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "_outReturnedModelInstance = " ;      
-        }
         generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                        << " (*scanner_" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -948,15 +923,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "          _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
                           "        }\n"
                           "      }\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          GGS_lstring entityName ;
-          GGS_lstring metamodelName ;
-          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
-                                                               currentAltForNonTerminal->mKey,
-                                                               entityName,
-                                                               metamodelName
-                                                               COMMA_HERE) ;
-        }
         generatedZone3 << "    }else{\n"
                           "      C_String message ;\n"
                           "      message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
@@ -988,17 +954,10 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << "  }\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3.writeCppHyphenLineComment () ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " " ;      
-        }else{
-          generatedZone3 << "void " ;
-        }
+        generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
@@ -1018,10 +977,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  if (scanner_->sourceText () != NULL) {\n"
@@ -1033,9 +988,6 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "    if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "      " << inTargetFileName << " _grammar ;\n"
                           "      " ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "_outReturnedModelInstance = " ;      
-        }
         generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                        << " (*scanner_" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -1050,22 +1002,10 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "      if (_inSentStringPtr != NULL) {\n"
                           "        _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
                           "      }\n"
-                          "    }\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          GGS_lstring entityName ;
-          GGS_lstring metamodelName ;
-          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
-                                                               currentAltForNonTerminal->mKey,
-                                                               entityName,
-                                                               metamodelName
-                                                               COMMA_HERE) ;
-        }
-        generatedZone3 << "  }\n"
-                          "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
-        }
-        generatedZone3 << "}\n\n" ;
+                          "    }\n"
+                          "  }\n"
+                          "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n"
+                          "}\n\n" ;
         currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
       }
     }
@@ -1159,7 +1099,6 @@ SLR_computations (C_Compiler & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -1375,8 +1314,7 @@ SLR_computations (C_Compiler & inLexique,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
                                    inTargetFileName,
-                                   inClassesNamesSet,
-                                   inStartSymbolEntityAndMetamodelMap) ;
+                                   inClassesNamesSet) ;
 
   }
   outOk = conflictCount == 0 ;
