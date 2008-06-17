@@ -961,7 +961,6 @@
 		CF546DE30A3481C80076D39C /* include_typeGalgas_uint64.h in Headers */ = {isa = PBXBuildFile; fileRef = CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */; };
 		CF59EFF70D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */; };
 		CF59EFF80D71CAB700427156 /* include_classGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */; };
-		CF59EFF90D71CAB700427156 /* include_entityGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */; };
 		CF59EFFA0D71CAB700427156 /* include_enumType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF00D71CAB700427156 /* include_enumType.h */; };
 		CF59EFFB0D71CAB700427156 /* include_listGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF10D71CAB700427156 /* include_listGalgasType.h */; };
 		CF59EFFC0D71CAB700427156 /* include_locationGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */; };
@@ -971,7 +970,6 @@
 		CF59F0000D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF60D71CAB700427156 /* include_sortedlistGalgasType.h */; };
 		CF59F0010D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */; };
 		CF59F0020D71CAB700427156 /* include_classGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */; };
-		CF59F0030D71CAB700427156 /* include_entityGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */; };
 		CF59F0040D71CAB700427156 /* include_enumType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF00D71CAB700427156 /* include_enumType.h */; };
 		CF59F0050D71CAB700427156 /* include_listGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF10D71CAB700427156 /* include_listGalgasType.h */; };
 		CF59F0060D71CAB700427156 /* include_locationGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */; };
@@ -981,7 +979,6 @@
 		CF59F00A0D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF60D71CAB700427156 /* include_sortedlistGalgasType.h */; };
 		CF59F0150D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */; };
 		CF59F0160D71CAB700427156 /* include_classGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */; };
-		CF59F0170D71CAB700427156 /* include_entityGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */; };
 		CF59F0180D71CAB700427156 /* include_enumType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF00D71CAB700427156 /* include_enumType.h */; };
 		CF59F0190D71CAB700427156 /* include_listGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF10D71CAB700427156 /* include_listGalgasType.h */; };
 		CF59F01A0D71CAB700427156 /* include_locationGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */; };
@@ -991,7 +988,6 @@
 		CF59F01E0D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF60D71CAB700427156 /* include_sortedlistGalgasType.h */; };
 		CF59F01F0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */; };
 		CF59F0200D71CAB700427156 /* include_classGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */; };
-		CF59F0210D71CAB700427156 /* include_entityGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */; };
 		CF59F0220D71CAB700427156 /* include_enumType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF00D71CAB700427156 /* include_enumType.h */; };
 		CF59F0230D71CAB700427156 /* include_listGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF10D71CAB700427156 /* include_listGalgasType.h */; };
 		CF59F0240D71CAB700427156 /* include_locationGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */; };
@@ -1001,7 +997,6 @@
 		CF59F0280D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF60D71CAB700427156 /* include_sortedlistGalgasType.h */; };
 		CF59F03D0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */; };
 		CF59F03E0D71CAB700427156 /* include_classGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */; };
-		CF59F03F0D71CAB700427156 /* include_entityGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */; };
 		CF59F0400D71CAB700427156 /* include_enumType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF00D71CAB700427156 /* include_enumType.h */; };
 		CF59F0410D71CAB700427156 /* include_listGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF10D71CAB700427156 /* include_listGalgasType.h */; };
 		CF59F0420D71CAB700427156 /* include_locationGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */; };
@@ -1011,7 +1006,6 @@
 		CF59F0460D71CAB700427156 /* include_sortedlistGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF60D71CAB700427156 /* include_sortedlistGalgasType.h */; };
 		CF59F0510D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */; };
 		CF59F0520D71CAB700427156 /* include_classGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */; };
-		CF59F0530D71CAB700427156 /* include_entityGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */; };
 		CF59F0540D71CAB700427156 /* include_enumType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF00D71CAB700427156 /* include_enumType.h */; };
 		CF59F0550D71CAB700427156 /* include_listGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF10D71CAB700427156 /* include_listGalgasType.h */; };
 		CF59F0560D71CAB700427156 /* include_locationGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */; };
@@ -3334,7 +3328,6 @@
 		CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
 		CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_wrapperToImplement.h; sourceTree = "<group>"; };
 		CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_classGalgasType.h; sourceTree = "<group>"; };
-		CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_entityGalgasType.h; sourceTree = "<group>"; };
 		CF59EFF00D71CAB700427156 /* include_enumType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_enumType.h; sourceTree = "<group>"; };
 		CF59EFF10D71CAB700427156 /* include_listGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_listGalgasType.h; sourceTree = "<group>"; };
 		CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_locationGalgasType.h; sourceTree = "<group>"; };
@@ -4328,7 +4321,6 @@
 				CFBD0DBF0D78AAF30031CA4B /* include_typeFileWrapperWithStaticPath.h */,
 				CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */,
 				CF59EFEE0D71CAB700427156 /* include_classGalgasType.h */,
-				CF59EFEF0D71CAB700427156 /* include_entityGalgasType.h */,
 				CF59EFF00D71CAB700427156 /* include_enumType.h */,
 				CF59EFF10D71CAB700427156 /* include_listGalgasType.h */,
 				CF59EFF20D71CAB700427156 /* include_locationGalgasType.h */,
@@ -5296,7 +5288,6 @@
 				CFD578DB0D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
 				CF59EFF70D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59EFF80D71CAB700427156 /* include_classGalgasType.h in Headers */,
-				CF59EFF90D71CAB700427156 /* include_entityGalgasType.h in Headers */,
 				CF59EFFA0D71CAB700427156 /* include_enumType.h in Headers */,
 				CF59EFFB0D71CAB700427156 /* include_listGalgasType.h in Headers */,
 				CF59EFFC0D71CAB700427156 /* include_locationGalgasType.h in Headers */,
@@ -5659,7 +5650,6 @@
 				CFD578E10D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
 				CF59F0010D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0020D71CAB700427156 /* include_classGalgasType.h in Headers */,
-				CF59F0030D71CAB700427156 /* include_entityGalgasType.h in Headers */,
 				CF59F0040D71CAB700427156 /* include_enumType.h in Headers */,
 				CF59F0050D71CAB700427156 /* include_listGalgasType.h in Headers */,
 				CF59F0060D71CAB700427156 /* include_locationGalgasType.h in Headers */,
@@ -6025,7 +6015,6 @@
 				CFD578E30D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
 				CF59F01F0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0200D71CAB700427156 /* include_classGalgasType.h in Headers */,
-				CF59F0210D71CAB700427156 /* include_entityGalgasType.h in Headers */,
 				CF59F0220D71CAB700427156 /* include_enumType.h in Headers */,
 				CF59F0230D71CAB700427156 /* include_listGalgasType.h in Headers */,
 				CF59F0240D71CAB700427156 /* include_locationGalgasType.h in Headers */,
@@ -6337,7 +6326,6 @@
 				CFD578DF0D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
 				CF59F03D0D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F03E0D71CAB700427156 /* include_classGalgasType.h in Headers */,
-				CF59F03F0D71CAB700427156 /* include_entityGalgasType.h in Headers */,
 				CF59F0400D71CAB700427156 /* include_enumType.h in Headers */,
 				CF59F0410D71CAB700427156 /* include_listGalgasType.h in Headers */,
 				CF59F0420D71CAB700427156 /* include_locationGalgasType.h in Headers */,
@@ -6702,7 +6690,6 @@
 				CFD578D50D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
 				CF59F0150D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0160D71CAB700427156 /* include_classGalgasType.h in Headers */,
-				CF59F0170D71CAB700427156 /* include_entityGalgasType.h in Headers */,
 				CF59F0180D71CAB700427156 /* include_enumType.h in Headers */,
 				CF59F0190D71CAB700427156 /* include_listGalgasType.h in Headers */,
 				CF59F01A0D71CAB700427156 /* include_locationGalgasType.h in Headers */,
@@ -7056,7 +7043,6 @@
 				CFD578E70D50EE6400D3E2C5 /* cDecisionTableElement.h in Headers */,
 				CF59F0510D71CAB700427156 /* include_C_wrapperToImplement.h in Headers */,
 				CF59F0520D71CAB700427156 /* include_classGalgasType.h in Headers */,
-				CF59F0530D71CAB700427156 /* include_entityGalgasType.h in Headers */,
 				CF59F0540D71CAB700427156 /* include_enumType.h in Headers */,
 				CF59F0550D71CAB700427156 /* include_listGalgasType.h in Headers */,
 				CF59F0560D71CAB700427156 /* include_locationGalgasType.h in Headers */,

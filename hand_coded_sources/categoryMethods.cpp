@@ -152,7 +152,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "enterCategoryMethod__" << mClassName << "__" << mMethodName
               << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                  "                     const sint32 inclassID) {\n"
-                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".makeRoomWithDefaultValue (inclassID + 1, NULL) ;\n"
+                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".setCountWithDefaultValue (inclassID + 1, NULL) ;\n"
                  "  gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inclassID COMMA_HERE) = inRoutine ;\n"
                  "}\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;

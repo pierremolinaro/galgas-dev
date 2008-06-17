@@ -137,7 +137,7 @@ static TC_UniqueArray <typeCategoryMethod__semanticDeclaration__enterType> gDisp
 void
 enterCategoryMethod__semanticDeclaration__enterType (typeCategoryMethod__semanticDeclaration__enterType inRoutine,
                      const sint32 inclassID) {
-  gDispatchTableFor__semanticDeclaration__enterType.makeRoomWithDefaultValue (inclassID + 1, NULL) ;
+  gDispatchTableFor__semanticDeclaration__enterType.setCountWithDefaultValue (inclassID + 1, NULL) ;
   gDispatchTableFor__semanticDeclaration__enterType (inclassID COMMA_HERE) = inRoutine ;
 }
 
