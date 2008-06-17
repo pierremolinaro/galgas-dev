@@ -3400,19 +3400,6 @@ map @M_metamodelsComponents {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Map of treewalking components                                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @M_treewalkingComponents {
-  @string mRootEntityName ;
-  @L_EXsignature mRoutineSignature ;
-  insert insertKey error message "a metamodel component named '%K' is already declared in %L" ;
-  search searchKey error message "there is no metamodel component named '%K'" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #              F I L E    W R A P P E R                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*

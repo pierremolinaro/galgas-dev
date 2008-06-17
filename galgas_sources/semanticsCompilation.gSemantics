@@ -83,7 +83,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 method @semanticDeclaration.enterType
-  ?!@semanticContext ioSemanticContext
+  ?!@semanticContext unused ioSemanticContext
 {
   message "@semanticDeclaration.enterType\n" ;
 }
@@ -92,75 +92,75 @@ method @semanticDeclaration.enterType
 
 override
 method @mapDeclaration.enterType
-  ?!@semanticContext ioSemanticContext
+  ?!@semanticContext unused ioSemanticContext
 {
   message "@mapDeclaration.enterType\n" ;
 }
 
-##---------------------------------------------------------------------------*
-#
-#override method @mapIndexDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @enumDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @filewrapperDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @sortedListDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @structDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @listDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @classDeclaration.enterType
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
-##---------------------------------------------------------------------------*
-#
-#override method @externRoutineDeclaration.enterType # Handles also routine declaration
-#  ?!@semanticContext ioSemanticContext
-#{
-#
-#}
-#
+#---------------------------------------------------------------------------*
+
+override method @mapindexDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @enumDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @structDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @classDeclaration.enterType
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
+#---------------------------------------------------------------------------*
+
+override method @externRoutineDeclaration.enterType # Handles also routine declaration
+  ?!@semanticContext unused ioSemanticContext
+{
+
+}
+
 #---------------------------------------------------------------------------*
 
 routine buildSemanticContext

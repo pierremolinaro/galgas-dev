@@ -957,18 +957,6 @@ class @C_grammarInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    Treewalking instruction                                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @C_treewalkingInstruction extends @typeInstruction {
-  @lstring mTreeWalkingComponentName ;
-  @typeCplusPlusName mModelVariableCppName ;
-  @typeExpressionList mExpressionsList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #          += instruction (without luint assignment)                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1416,49 +1404,8 @@ extern routine generateSemanticsComponent
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    T R E E W A L K I N G     C O M P O N E N T                            *
+#    M E T A M O D E L     C O M P O N E N T                                *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-map @treewalkingRoutineHeaderMap {
-  @L_EXsignature mRoutineSignature ;
-  @typeListeTypesEtNomsArgMethode mFormalArgumentList ;
-  insert insertKey error message "the '%K' treewalking routine has been already declared in %L" ;
-  search searchKey error message "the '%K' treewalking routine is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @treewalkingRoutineToGenerateList {
-  @lstring mMetamodelClass ;
-  @typeListeTypesEtNomsArgMethode mFormalArgumentList ;
-  @typeInstructionList mInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-sortedlist @routineDispatcherSortedList {
-  @string mMetamodelClassIDString ;
-  @uint mMetamodelClassID ;
-  @string mRoutineName ;
-  @string mEntityName ;
-  @string mMetamodelName ; # Where the entity is defined
-}{
-  mMetamodelName <, mMetamodelClassIDString <
-}
-
-#---------------------------------------------------------------------------*
-
-extern routine generate_treewalking
-  ??@lstring inTreewalkingComponentName
-  ??@stringset inFilesToImportInHeaderSet
-  ??@stringset inFilesToImportInImplementationSet
-  ??@treewalkingRoutineToGenerateList inTreewalkingRoutineToGenerateList
-  ??@routineDispatcherSortedList inRoutineDispatcherSortedList
-  ??@typeListeTypesEtNomsArgMethode inFormalArgumentList
-  ??@lstring inRootEntity
-;
-
 #---------------------------------------------------------------------------*
 
 class @C_metamodelEntityToImplement extends @typeEntityToGenerate {

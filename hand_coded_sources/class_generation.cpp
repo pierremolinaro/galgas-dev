@@ -230,7 +230,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : inline cPtr_" << aNomClasse << " * operator () (LOCATION_ARGS) const {\n"
              "      return (cPtr_" << aNomClasse << " *) mPointer ;\n"
              "    }\n"
-             "  #endif\n" ;
+             "  #endif\n\n" ;
+
+  if (superClassName.length () == 0) {
+    inHfile << "//--- Galgas RTTI\n"
+               "AC_galgasClassRunTimeInformation * _galgasObjectRunTimeInfo (void) const ;\n\n" ;
+  }
 
 //--- Engendrer la fin de la declaration de la classe
   inHfile << "} ;\n\n" ;
@@ -336,6 +341,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                       "  isEqualToObject (const cPtr__AC_galgas_class * inOperand) const ;\n" ;
   }
 
+  generatedZone3 << "\n"
+                    "//--- Galgas RTTI\n"
+                    "  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;\n" ;
+
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
   generatedZone3.writeCppHyphenLineComment () ;
@@ -381,7 +390,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {
-  inCppFile.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
+  inCppFile.writeCppTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Super class name (empty if no super class)
   const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)
@@ -571,6 +580,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.writeCstringConstant (mClassMessage) ;
   inCppFile << ") ;\n" ;
 
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "AC_galgasClassRunTimeInformation * cPtr_" << aNomClasse << "::galgasRTTI (void) const {\n"
+               "  return & gClassInfoFor__" << aNomClasse << " ;\n"
+               "}\n\n" ;
+
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
@@ -720,6 +734,17 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "const char * GGS_" << aNomClasse << "::actualTypeName (void) const {\n"
                "  return \"" << aNomClasse << "\" ;\n"
                "}\n\n" ;
+
+  if (superClassName.length () == 0) {
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "AC_galgasClassRunTimeInformation * GGS_" << aNomClasse << "::_galgasObjectRunTimeInfo (void) const {\n"
+                 "  AC_galgasClassRunTimeInformation * result = NULL ;\n"
+                 "  if (mPointer != NULL) {\n"
+                 "    result = mPointer->galgasRTTI () ;\n"
+                 "  }\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+  }
 
   inCppFile.writeCppHyphenLineComment () ;
   if (superClassName.length () == 0) {
