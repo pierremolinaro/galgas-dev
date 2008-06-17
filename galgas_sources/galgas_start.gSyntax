@@ -35,22 +35,18 @@ nonterminal <galgas_start_symbol>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@EXsemanticContext unused ioSemanticContext
 label importOptions
@@ -64,22 +60,18 @@ nonterminal <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@EXsemanticContext unused ioSemanticContext
 label importOptions
@@ -94,7 +86,6 @@ rule <galgas_start_symbol>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   repeat
@@ -105,7 +96,6 @@ rule <galgas_start_symbol>
       !?ioSyntaxComponentsMap
       !?ioGrammarComponentsMap
       !?ioOptionsComponentsMap
-      !?ioMetamodelComponentMap
       !?ioSemanticContext
     ;
   end repeat ;
@@ -118,20 +108,17 @@ label importLexique
   end repeat ;
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   repeat
   while
     <galgas_component> importSyntax
       !?ioSyntaxComponentsMap
-      !?ioMetamodelComponentMap
       !?ioSemanticContext
     ;
   end repeat ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
@@ -139,14 +126,12 @@ label importSemantics
   while
     <galgas_component> importSemantics
       !?ioSemanticsComponentsMap
-      !?ioMetamodelComponentMap
       !?ioSemanticContext
       !?ioImportedSemanticsComponentNameSet
     ;
   end repeat ;
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@EXsemanticContext ioSemanticContext
 :
@@ -154,7 +139,6 @@ label importGrammarForSemantics
   while
     <galgas_component> importGrammarForSemantics
       !?ioGrammarComponentsMap
-      !?ioMetamodelComponentMap
       !?ioOptionsComponentsMapForUse
       !?ioSemanticContext
     ;
@@ -166,7 +150,6 @@ label compileFile
   @M_syntaxComponents syntaxComponentsMap [emptyMap] ;
   @M_grammarComponents grammarComponentsMap [emptyMap] ;
   @M_optionComponents optionsComponentsMap [emptyMap] ;
-  @M_metamodelsComponents metamodelComponentMap [emptyMap] ;
   @EXsemanticContext semanticContext [new
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
@@ -180,7 +163,6 @@ label compileFile
       !?syntaxComponentsMap
       !?grammarComponentsMap
       !?optionsComponentsMap
-      !?metamodelComponentMap
       !?semanticContext
     ;
   end repeat ;

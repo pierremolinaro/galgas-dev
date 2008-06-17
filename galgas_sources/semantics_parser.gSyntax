@@ -38,22 +38,18 @@ nonterminal <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
@@ -63,7 +59,6 @@ label importOptions
 nonterminal <parse_grammar_component_for_importing>
   ??@lstring inFileName
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMapForUse
   ?!@EXsemanticContext ioSemanticContext
 label parse
@@ -117,7 +112,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedGrammarComponents
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -127,7 +121,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@ActionMap outActionMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
-  !@entityToImplementMap outAllMetamodelClassMap
   ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
@@ -136,7 +129,6 @@ label importSemantics
   !@ModelMap outModelMap
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label parse
@@ -257,7 +249,6 @@ nonterminal <semantic_instructions_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 label parse
 ;
@@ -268,7 +259,6 @@ nonterminal <semantic_instructions_list_no_verif>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 label parse
 ;
@@ -278,7 +268,6 @@ nonterminal <constant_while_before_in_foreach_instruction>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   !@typeCplusPlusName outIndexVariable
   !@typeInstructionList out_before_instructionList
@@ -287,7 +276,6 @@ label secondPhase
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   !@foreachEnumerationList outForeachEnumerationList
   !@typeExpression outWhileExpression
@@ -301,7 +289,6 @@ nonterminal <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 label parse
 ;
@@ -333,7 +320,6 @@ nonterminal <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 label parse
 ;
@@ -393,7 +379,6 @@ nonterminal <instruction_beginning_with_identifier>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 label parse
 ;
@@ -403,7 +388,6 @@ nonterminal <instruction_beginning_with_identifier_and_structure_access>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   ??@typeCplusPlusName inNomCppVariableSource
   ??@AC_galgasType inTargetType
@@ -518,7 +502,6 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   $semantics$ ;
@@ -548,7 +531,6 @@ rule <galgas_component>
   @stringset includedOptionComponents ;
   @stringset includedMetamodelComponents ;
   @stringset includedGrammarComponents ;
-  @entityToImplementMap allMetamodelClassMap ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedMetamodelComponents
@@ -556,7 +538,6 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioLexiqueMapForUse
     !?ioSemanticsComponentsMap
-    !?ioMetamodelComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -566,7 +547,6 @@ rule <galgas_component>
     ?actionMap
     ?componentEntitiesMap
     ?tableEnAvant
-    ?allMetamodelClassMap
     !?ioSemanticContext
   ;
 #-------------- Semantic Declarations
@@ -654,7 +634,6 @@ rule <galgas_component>
    ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $semantics$ ;
@@ -670,7 +649,6 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
@@ -693,7 +671,6 @@ label importSemantics
     ?modelMap
     ?actionMap
     !?componentSemanticsEntitiesMap
-    !?ioMetamodelComponentMap
     !?ioSemanticContext
     !?ioImportedSemanticsComponentNameSet
   ;
@@ -745,7 +722,6 @@ label importLexique
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@EXsemanticContext unused ioSemanticContext
 :
@@ -785,13 +761,11 @@ end rule ;
 routine parse_semantics_component_for_importing
   ??@lstring inFileName
   ?!@M_semanticsComponents ioSemanticsMapForUse
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
   grammar galgas_LL1_grammar label importSemantics in inFileName
     !?ioSemanticsMapForUse
-    !?ioMetamodelComponentMap
     !?ioSemanticContext
     !?ioImportedSemanticsComponentNameSet
   ;
@@ -810,7 +784,6 @@ rule <import_headers_semantics_and_grammars>
   !@stringset outImportedGrammarComponents
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -821,10 +794,8 @@ rule <import_headers_semantics_and_grammars>
 
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
-  !@entityToImplementMap outAllMetamodelClassMap
   ?!@EXsemanticContext ioSemanticContext
 :
-  outAllMetamodelClassMap := [@entityToImplementMap emptyMap] ;
   outActionMap := [@ActionMap emptyMap] ;
   outInclusionsForHeaderFile := [@stringset emptySet] ;
   outInclusionsForImplementationFile := [@stringset emptySet] ;
@@ -915,7 +886,6 @@ rule <import_headers_semantics_and_grammars>
       <parse_grammar_component_for_importing> 
         !sourceFile
         !?grammarComponentsMap
-        !?ioMetamodelComponentMap
         !?ioOptionsComponentsMapForUse
         !?ioSemanticContext
       ;
@@ -923,7 +893,7 @@ rule <import_headers_semantics_and_grammars>
       @lstring lexiqueClassName ;
       [grammarComponentsMap searchKey !grammarComponentName ?nonterminalSymbolParametersMap ?lexiqueClassName ?*] ;
       @M_nonterminalSymbolAlts grammarAltMap [emptyMap] ;
-      foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature @lstring kReturnedEntity) do
+      foreach nonterminalSymbolParametersMap (@lstring altName @L_signature signature) do
         @L_EXsignature formalParametersList [emptyList] ;
         foreach signature (@EXformalArgumentPassingMode passingMode @lstring typeName) do
           @AC_semanticsEntity e ;
@@ -931,7 +901,7 @@ rule <import_headers_semantics_and_grammars>
           @AC_galgasType type := [(cast e if >= @typeEntiteType else error typeName) aDefType] ;
           formalParametersList += !type !passingMode ;
         end foreach ;
-        [!?grammarAltMap insertKey !altName !formalParametersList !kReturnedEntity] ;
+        [!?grammarAltMap insertKey !altName !formalParametersList] ;
       end foreach ;
       @AC_semanticsEntity e := [@C_grammarForSemantics new !grammarAltMap !lexiqueClassName] ;
       [!?ioComponentSemanticsEntitiesMap insertKey !grammarComponentName !e] ;
@@ -967,7 +937,6 @@ rule <import_headers_semantics_and_grammars>
         parse_semantics_component_for_importing
           !sourceFile
           !?ioSemanticsComponentsMap
-          !?ioMetamodelComponentMap
           !?ioSemanticContext
           !?outImportedSemanticsComponentNameSet
         ;
@@ -990,76 +959,12 @@ rule <import_headers_semantics_and_grammars>
     #--- Import semantics component
       importSemanticsComponent
         !?ioSemanticsComponentsMap
-        !?ioMetamodelComponentMap
         !?outModelMap
         !?outActionMap
         !?alreadyImportedSemanticsComponents
         !?alreadyImportedMetamodelComponents
         !componentName
       ;
-    #---
-    or
-      $metamodel$ ;
-      @lstring metamodelComponentName ;
-      $identifier$ ? metamodelComponentName ;
-      outInclusionsForHeaderFile += ![metamodelComponentName string] ;
-      $in$ ;
-      @lstring sourceFile ;
-      $literal_string$ ?sourceFile ;
-      parse_semantics_component_for_importing
-        !sourceFile
-        !?ioSemanticsComponentsMap
-        !?ioMetamodelComponentMap
-        !?ioSemanticContext
-        !?outImportedSemanticsComponentNameSet
-      ;
-      if not [outIncludedMetamodelComponents hasKey ![metamodelComponentName string]] then
-        @entityToImplementMap metamodelClassMap ;
-        [ioMetamodelComponentMap searchKey !metamodelComponentName ?* ?metamodelClassMap ?*] ;
-        foreach metamodelClassMap (@lstring kMetamodelClassName
-                                   @entityPropertyMap kAllMetamodelPropertyMap
-                                   @bool kIsAbstract
-                                   @entityPropertyMap kCurrentMetamodelPropertyMap
-                                   @lstring kSuperEntityName
-                                   @typeSuperClassesMap kSuperEntityMap
-                                   @typeListeAttributsSemantiques kListeAttributsSemantiquesCourants
-                                   @string kMetamodelName
-                                   @uint kID) do
-          [!?outAllMetamodelClassMap insertKey
-            !kMetamodelClassName
-            !kAllMetamodelPropertyMap
-            !kIsAbstract
-            !kCurrentMetamodelPropertyMap
-            !kSuperEntityName
-            !kSuperEntityMap
-            !kListeAttributsSemantiquesCourants
-            !kMetamodelName
-            !kID
-          ] ;
-          @AC_galgasType t := [@typeGalgas_singleReferenceEntity new
-            !kMetamodelClassName
-            !kListeAttributsSemantiquesCourants
-            ![kSuperEntityMap allKeys]
-          ] ;
-          [!?ioComponentSemanticsEntitiesMap insertKey
-            !kMetamodelClassName
-            ![@typeEntiteType new !t]
-          ] ;
-          t := [@typeGalgas_multipleReferenceEntity new
-            !kMetamodelClassName
-            ![@luint new !0 !here]
-            ![@luint new ![@uint max] !here]
-          ] ;
-          @lstring ListOf_entityName [new !"ListOf" . [[kMetamodelClassName string] stringByCapitalizingFirstCharacter] ![kMetamodelClassName location]] ;
-          [!?ioComponentSemanticsEntitiesMap insertKey
-            !ListOf_entityName
-            ![@typeEntiteType new !t]
-          ] ;
-        end foreach ;
-      end if ;
-    #---
-      outInclusionsForHeaderFile += ![metamodelComponentName string] ;
-      outIncludedMetamodelComponents += ![metamodelComponentName string] ;
     end select ;
     $;$ ;
   end repeat ;
@@ -1072,7 +977,6 @@ label importSemantics
   !@ModelMap outModelMap
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
@@ -1112,7 +1016,6 @@ label importSemantics
       parse_semantics_component_for_importing
         !sourceFile
         !?ioSemanticsComponentsMap
-        !?ioMetamodelComponentMap
         !?ioSemanticContext
         !?ioImportedSemanticsComponentNameSet
       ;
@@ -1126,28 +1029,12 @@ label importSemantics
     #--- Import semantics component
       importSemanticsComponent
         !?ioSemanticsComponentsMap
-        !?ioMetamodelComponentMap
         !?outModelMap
         !?outActionMap
         !?alreadyImportedSemanticsComponents
         !?alreadyImportedMetamodelComponents
         !componentName
       ;
-    or
-      $metamodel$ ;
-      @lstring metamodelComponentName ;
-      $identifier$ ?metamodelComponentName ;
-      $in$ ;
-      @lstring sourceFile ;
-      $literal_string$ ?sourceFile ;
-      parse_semantics_component_for_importing
-        !sourceFile
-        !?ioSemanticsComponentsMap
-        !?ioMetamodelComponentMap
-        !?ioSemanticContext
-        !?ioImportedSemanticsComponentNameSet
-      ;
-      [ioMetamodelComponentMap searchKey !metamodelComponentName ?3*] ;
     end select ;
     $;$ ;
   end repeat ;
@@ -1210,14 +1097,12 @@ rule <semantics_declaration>
    $:$ ;
   #--- Instructions
     @typeInstructionList ioInstructionList [emptyList] ;
-    @entityToImplementMap metamodelEntityMap [emptyMap] ;
     <semantic_instructions_list>
       !tableEnAvant
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
       !?tableArgumentsMethode
       !?ioInstructionList
-      !metamodelEntityMap
       !ioSemanticContext
     ;
     $end$ ;
@@ -1862,14 +1747,12 @@ rule <parse_method>
   [!?componentSemanticsEntitiesMap insertKey !inCurrentClassName !entite] ;
 #--- Parse reader instruction list
   outInstructionsList := [@typeInstructionList emptyList] ;
-  @entityToImplementMap metamodelEntityMap [emptyMap] ;
   <semantic_instructions_list>
     !tableEnAvant
     !componentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
     !?methodLocalVariablesMap
     !?outInstructionsList
-    !metamodelEntityMap
     !inSemanticContext
   ;
 end rule ;
@@ -2184,7 +2067,6 @@ rule <instruction_beginning_with_identifier>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $:=$ ;
@@ -2221,7 +2103,6 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   ??@typeCplusPlusName inTargetVarCppName
   ??@AC_galgasType inTargetType
@@ -2367,7 +2248,6 @@ rule <instruction_beginning_with_identifier>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
 #--- Perform an io access for target variable
@@ -2398,7 +2278,6 @@ rule <instruction_beginning_with_identifier>
     !?ioInstructionList
     !inOptionsComponentsMapForUse
     !ioComponentSemanticsEntitiesMap
-    !inMetamodelEntityMap
     !inSemanticContext
     !nomCppVariableSource
     !targetType
@@ -2420,7 +2299,6 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   ??@typeCplusPlusName inNomCppVariableSource
   ??@AC_galgasType inTargetType
@@ -2430,16 +2308,7 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   $+=$ ;
 #--- Does the variable class accept the += operator ?
   @typeListeAttributsSemantiques formalParametersList ;
-  cast inTargetType :
-  when == @typeGalgas_multipleReferenceEntity mre do
-    formalParametersList := [@typeListeAttributsSemantiques emptyList] ;
-    @AC_semanticsEntity entite ;
-    [ioComponentSemanticsEntitiesMap searchKey ![mre mEntityTypeName] ? entite] ;
-    @AC_galgasType elementType := [(cast entite if >= @typeEntiteType else error here) aDefType] ;
-    formalParametersList += !elementType ![@lstring new !"" !here] ;
-  else
-    [inTargetType handleAddAssignOperatorCall !here ?formalParametersList] ;
-  end cast ;
+  [inTargetType handleAddAssignOperatorCall !here ?formalParametersList] ;
 #--- Parse argument list
   @typeTypesList typeList := [@typeTypesList emptyList] ;
   @typeExpressionList expressionList [emptyList] ;
@@ -2490,7 +2359,6 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   ??@typeCplusPlusName inNomCppVariableSource
   ??@AC_galgasType inTargetType
@@ -2550,7 +2418,6 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext unused inSemanticContext
   ??@typeCplusPlusName inNomCppVariableSource
   ??@AC_galgasType inTargetType
@@ -2577,7 +2444,6 @@ rule <instruction_beginning_with_identifier_and_structure_access>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext unused inSemanticContext
   ??@typeCplusPlusName inNomCppVariableSource
   ??@AC_galgasType inTargetType
@@ -2716,7 +2582,6 @@ rule <semantic_instructions_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   block ioVariablesMap.verifyVariableUsing () :
@@ -2726,7 +2591,6 @@ rule <semantic_instructions_list>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !inMetamodelEntityMap
       !inSemanticContext
     ;
   end block (!here) ;
@@ -2744,7 +2608,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $extract$ ;
@@ -2767,7 +2630,6 @@ rule <semantic_instruction>
     !nomTypeSource
     !tableMessagesAbstraits
     !?ioInstructionList
-    !inMetamodelEntityMap
     !inSemanticContext
   ;
   $;$ ;
@@ -2786,7 +2648,6 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap tableMessagesAbstraits
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   warning here:"simple extract instruction is obsolete: use cast expression instead" ;
@@ -2857,7 +2718,6 @@ rule <extract_instruction>
   ?@lstring nomTypeSource
   ?@typeClassInheritedMessagesMap unused tableMessagesAbstraits
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   @typeStructuredExtractCasesList casesList [emptyList] ;
@@ -2901,7 +2761,6 @@ rule <extract_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
         casesList += !nomType1 !indicatif1 !instructionsList !noUsedParameter ;
@@ -2919,7 +2778,6 @@ rule <extract_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elseInstructionList
-        !inMetamodelEntityMap
         !inSemanticContext
       ;
       ioInstructionList += ![@typeStructuredExtractInstructionWithElse new
@@ -2943,7 +2801,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $cast$ ;
@@ -3021,7 +2878,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
         branchList += !castedTypeName !checkForKindOfClass !localConstantCppNameList !instructionsList ;
@@ -3060,7 +2916,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?elseBranchInstructionsList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
         elseOrDefault := [@C_elseForCastInstruction new !elseBranchInstructionsList] ;
@@ -3094,7 +2949,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
 #--- Type name
@@ -3138,7 +2992,6 @@ rule <semantic_instruction>
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext unused inSemanticContext
 :
   $log$ ;
@@ -3167,7 +3020,6 @@ rule <semantic_instruction>
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext unused inSemanticContext
 :
   $drop$ ;
@@ -3198,7 +3050,6 @@ rule <instruction_beginning_with_identifier>
   ?!@typeInstructionList ioInstructionList
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
 #--- Verifier que le nom est bien un nom de routine
@@ -3259,7 +3110,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $[$ ;
@@ -3396,7 +3246,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   @lstring nomVarDest ;
@@ -3407,7 +3256,6 @@ rule <semantic_instruction>
     !?ioInstructionList
     !inOptionsComponentsMapForUse
     !ioComponentSemanticsEntitiesMap
-    !inMetamodelEntityMap
     !inSemanticContext
   ;
   $;$ ;
@@ -3425,7 +3273,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   <warning_instruction>
@@ -3492,7 +3339,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   <error_instruction>
@@ -3578,7 +3424,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $message$ ;
@@ -3614,7 +3459,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $if$ ;
@@ -3641,7 +3485,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheTest
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
         listeBranchesTest += !testBranche !listeInstructionsBrancheTest ;
@@ -3660,7 +3503,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?listeInstructionsBrancheAutre
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
       end select ; 
@@ -3688,7 +3530,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $switch$ ;
@@ -3736,7 +3577,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?branchInstructionList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
         switchBranchlist += !branchConstantSet !branchInstructionList ;
@@ -3771,7 +3611,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $loop$ ;
@@ -3798,7 +3637,6 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList1
-        !inMetamodelEntityMap
         !inSemanticContext
       ;
     end block (!here) ;
@@ -3828,7 +3666,6 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?instructionList2
-        !inMetamodelEntityMap
         !inSemanticContext
       ;
     end block (!here) ;
@@ -3858,7 +3695,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $grammar$ ;
@@ -3921,8 +3757,7 @@ rule <semantic_instruction>
   @M_nonterminalSymbolAlts startSymbolAltMap := [gfs mGrammarAltMap] ;
   @lstring lexiqueClassName := [gfs mLexiqueClassName] ;
   @L_EXsignature startSymbolSignature ;
-  @lstring returnedEntity ;
-  [startSymbolAltMap searchKey !altName ?startSymbolSignature ?returnedEntity] ;
+  [startSymbolAltMap searchKey !altName ?startSymbolSignature] ;
 #--- Verifier la coherence avec la declaration
   verifierCompatibiliteArgEffectifsSignature 
     !startSymbolSignature
@@ -3944,24 +3779,6 @@ rule <semantic_instruction>
     [!?ioVariablesMap searchForReadWriteAccess !sentVariableName ?targetType ?sentStringName] ;
     @typeGalgas_string gs := (cast targetType if >= @typeGalgas_string else error sentVariableName) ;
   end select ;
-#--- returned model
-  @lstring metamodelClassVariableName [new !"" !here] ;
-  select
-    if [returnedEntity string] != "" then
-      error here: "this grammar returns an instance of '@" . [returnedEntity string] . "' metamodel entity" ; 
-    end if ;
-  or
-    $->$ ;
-    $identifier$ ? metamodelClassVariableName ;
-    @AC_galgasType type ;
-    [!?ioVariablesMap searchForWriteAccess !metamodelClassVariableName ?type ?*] ;
-    @lstring variableEntityName :=
-      [(cast type if >= @typeGalgas_singleReferenceEntity else error metamodelClassVariableName) mEntityTypeName] ;
-    if [returnedEntity string] != [variableEntityName string] then
-      error metamodelClassVariableName: "this variable has the '@" . [variableEntityName string]
-        . "', but a variable of '@" . [returnedEntity string] . "' type is expected" ;
-    end if ;
-  end select ;
 #--- Engendrer l'instruction
   @typeInstruction instruction ;
   instruction := [@C_grammarInstruction new
@@ -3970,7 +3787,6 @@ rule <semantic_instruction>
     !grammarName
     !expressionsList
     !altName
-    !metamodelClassVariableName
     !lexiqueClassName
     !sentStringName
   ] ;
@@ -3990,7 +3806,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap unused  inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $send$ ;
@@ -4026,7 +3841,6 @@ rule <constant_while_before_in_foreach_instruction>
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   !@typeCplusPlusName outIndexVariable
   !@typeInstructionList out_before_instructionList
@@ -4082,7 +3896,6 @@ rule <constant_while_before_in_foreach_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?out_before_instructionList
-        !inMetamodelEntityMap
         !inSemanticContext
       ;
     end select ;
@@ -4095,7 +3908,6 @@ label secondPhase
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
   !@foreachEnumerationList outForeachEnumerationList
   !@typeExpression outWhileExpression
@@ -4210,7 +4022,6 @@ label secondPhase
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?out_do_instructionList
-        !inMetamodelEntityMap
         !inSemanticContext
       ;
   end block (!here) ;
@@ -4224,7 +4035,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $foreach$ ;
@@ -4241,7 +4051,6 @@ rule <semantic_instruction>
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
-        !inMetamodelEntityMap
         !inSemanticContext
         ?indexVariable
         ?before_instructionList
@@ -4252,7 +4061,6 @@ rule <semantic_instruction>
         !ioComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
-        !inMetamodelEntityMap
         !inSemanticContext
         ?foreachEnumerationList
         ?whileExpression
@@ -4280,7 +4088,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?between_instructionList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
       end select ;
@@ -4306,7 +4113,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?after_instructionList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
       end select ;
@@ -4440,7 +4246,6 @@ rule <semantic_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   $match$ ;
@@ -4514,7 +4319,6 @@ rule <semantic_instruction>
           !inOptionsComponentsMapForUse
           !?ioVariablesMap
           !?instructionsList
-          !inMetamodelEntityMap
           !inSemanticContext
         ;
         casesList += !case1_name !case2_name !instructionsList ;
@@ -4530,7 +4334,6 @@ rule <semantic_instruction>
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
         !?elsePartInstructionsList
-        !inMetamodelEntityMap
         !inSemanticContext
       ;
     end block (!here) ;
@@ -4560,7 +4363,6 @@ rule <semantic_instructions_list_no_verif>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   ?!@typeInstructionList ioInstructionList
-  ??@entityToImplementMap inMetamodelEntityMap
   ??@EXsemanticContext inSemanticContext
 :
   repeat
@@ -4571,7 +4373,6 @@ rule <semantic_instructions_list_no_verif>
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       !?ioInstructionList
-      !inMetamodelEntityMap
       !inSemanticContext
     ;
   end repeat ;
@@ -5516,14 +5317,12 @@ rule <semantics_declaration>
 #--- Instructions
   ${$ ;
   @typeInstructionList instructionList [emptyList] ;
-  @entityToImplementMap metamodelEntityMap [emptyMap] ;
   <semantic_instructions_list>
     !tableEnAvant
     !ioComponentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
     !?tableArgumentsMethode
     !?instructionList
-    !metamodelEntityMap
     !ioSemanticContext
   ;
   $}$ ;

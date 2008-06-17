@@ -31,22 +31,18 @@ nonterminal <galgas_component>
   ?!@M_syntaxComponents ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 label importSyntax
   ?!@M_syntaxComponents ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label importGrammarForSemantics
   ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_optionComponents ioOptionsComponentsMap
   ?!@EXsemanticContext ioSemanticContext
 label importOptions
@@ -60,7 +56,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@stringset outIncludedGrammarComponents
   ?!@M_lexiqueComponents ioLexiqueMapForUse
   ?!@M_semanticsComponents ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
   !@stringset outInclusionsForImplementationFile
@@ -70,7 +65,6 @@ nonterminal <import_headers_semantics_and_grammars>
   !@ActionMap outActionMap
   !@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   !@typeTableEnAvant tableEnAvant
-  !@entityToImplementMap outAllMetamodelClassMap
   ?!@EXsemanticContext ioSemanticContext
 label importSemantics
   ?!@M_semanticsComponents ioSemanticsComponentsMap
@@ -79,7 +73,6 @@ label importSemantics
   !@ModelMap outModelMap
   !@ActionMap outActionMap
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 label parse
@@ -110,7 +103,6 @@ rule <galgas_component>
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents ioGrammarComponentsMap
   ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@M_metamodelsComponents ioMetamodelComponentMap
   ?!@EXsemanticContext ioSemanticContext
 :
   $gui$ ;
@@ -148,7 +140,6 @@ rule <galgas_component>
   @stringset includedOptionComponents ;
   @stringset includedMetamodelComponents ;
   @stringset includedGrammarComponents ;
-  @entityToImplementMap allMetamodelClassMap ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
     ?includedMetamodelComponents
@@ -156,7 +147,6 @@ rule <galgas_component>
     ?includedGrammarComponents
     !?ioLexiqueMapForUse
     !?ioSemanticsComponentsMap
-    !?ioMetamodelComponentMap
     !?ioGrammarComponentsMap
     !?ioOptionsComponentsMap
     ?inclusionsForImplementationFile
@@ -166,7 +156,6 @@ rule <galgas_component>
     ?actionMap
     ?componentEntitiesMap
     ?tableEnAvant
-    ?allMetamodelClassMap
     !?ioSemanticContext
   ;
   @lstring lexiqueClassName ;
@@ -196,7 +185,7 @@ rule <galgas_component>
     ] ;
   end if ;
   @lstring altName := [@lstring new !"" !here] ;
-  [nonterminalSymbolParametersMap searchKey !altName ?* ?*] ;
+  [nonterminalSymbolParametersMap searchKey !altName ?*] ;
 #--- Retrieve lexique infos
   @M_terminalSymbolsMapForUse terminalSymbolMap ;
   @bool lexiqueImported ;
@@ -316,7 +305,6 @@ label importLexique
   $;$ ;
 label importSyntax
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $gui$ ;
@@ -355,7 +343,6 @@ label importSyntax
   $;$ ;
 label importSemantics
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@EXsemanticContext unused ioSemanticContext
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 :
@@ -395,7 +382,6 @@ label importSemantics
   $;$ ;
 label importGrammarForSemantics
   ?!@M_grammarComponents unused ioGrammarComponentsMap
-  ?!@M_metamodelsComponents unused ioMetamodelComponentMap
   ?!@M_optionComponents unused ioOptionsComponentsMap
   ?!@EXsemanticContext unused ioSemanticContext
 :

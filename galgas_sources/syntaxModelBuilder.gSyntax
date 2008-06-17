@@ -72,8 +72,6 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
     or
       $lexique$ ;
     or
-      $metamodel$ ;
-    or
       $grammar$ ;
     or
       $option$ ;

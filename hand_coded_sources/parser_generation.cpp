@@ -69,14 +69,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
         = mNonterminalSymbolParametersMap.firstObject () ;
   while (currentAltForNonTerminal != NULL) {
     macroValidPointer (currentAltForNonTerminal) ;
-    inHfile << "  protected : virtual " ;
-    if (currentAltForNonTerminal->mInfo.mReturnedEntity.length () > 0) {
-      inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntity
-                << " " ;      
-    }else{
-      inHfile << "void " ;
-    }
-    inHfile << "nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal->mKey
+    inHfile << "  protected : virtual void nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal->mKey
             << " (" << mLexiqueClassName << " &" ;
     GGS_L_EXsignature::cElement * currentArgument
                = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -146,12 +139,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     inHfile << "  protected : " ;
     macroValidPointer (currentAltForNonTerminal) ;
-    if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-      inHfile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                << " " ;      
-    }else{
-      inHfile << "void " ;
-    }
+    inHfile << "void " ;
     inHfile << "pr_" << aNomProduction 
             << '_' << inTargetFileName
             << '_' << aNomProduction.lineNumber ()
@@ -207,16 +195,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.writeCppHyphenLineComment () ;
     }
     macroValidPointer (currentAltForNonTerminal) ;
-    const bool returnsEntity = currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0 ;
-    if (returnsEntity) {
-      inCppFile << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                << " " ;      
-    }else{
-      inCppFile << "void " ;
-    }
+    inCppFile << "void " ;
     inCppFile << inTargetFileName
-              << "::\n"
-              << inTargetFileName
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
@@ -224,9 +204,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << '_' << aNomProduction.columnNumber ()
               << '_' << currentAltForNonTerminal->mKey << " ("
               << mLexiqueClassName << " & " ;
-    const bool hasExplicityReturnedEntity = currentAltForNonTerminal->mInfo.mMDAResultVariableName.length () > 0 ;
-    const bool lexiqueFormalArgumentUsed = (returnsEntity && ! hasExplicityReturnedEntity)
-      || isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
+    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
@@ -270,22 +248,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                    "    _inLexique.exitProduction () ;\n"
                    "  #endif\n";
     }
-  //--- Build returned entity instance
-    if (hasExplicityReturnedEntity) {
-      inCppFile << "  return var_cas_" << currentAltForNonTerminal->mInfo.mMDAResultVariableName << " ;\n" ;
-    }else if (returnsEntity) {
-      inCppFile << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName << " _entityInstance ="
-                   " GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                << "::constructor_new (_inLexique" ;
-      GGS_entityPropertyMap::cElement * currentProperty = currentAltForNonTerminal->mInfo.mAllPropertiesMap.firstObject () ;
-      while (currentProperty != NULL) {
-        macroValidPointer (currentProperty) ;
-        inCppFile << ", var_cas_" << currentProperty->mKey ;
-        currentProperty = currentProperty->nextObject () ;
-      }
-      inCppFile << " COMMA_HERE) ;\n"
-                   "  return _entityInstance ;\n" ;
-    }  
   //--- End of function
     inCppFile << "}\n\n" ;
     currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;

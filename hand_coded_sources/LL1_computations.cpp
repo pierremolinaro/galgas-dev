@@ -265,20 +265,19 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
                                  const sint16 nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
                                  AC_OutputStream & fichierCPP,
-                                 const bool inReturnsEntityInstance,
                                  const C_String & inAltName) {
   const sint32 first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
   if (first >= 0) { // Au moins une production
     const sint32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
     if (first == derniere) { // Une seule production, pas de conflit
       const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
-      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, inReturnsEntityInstance, fichierCPP) ;
+      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
       fichierCPP << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
       for (sint32 j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << ((sint32)(j - first + 1)) << " :\n  " ;
         const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, inReturnsEntityInstance, fichierCPP) ;
+        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
         fichierCPP << "    break ;\n" ;
       }
       fichierCPP << "  default :\n"
@@ -415,8 +414,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                                const C_String & inLexiqueName,
                                const GGS_stringset & inClassesNamesSet,
                                const cVocabulary & inVocabulary,
-                               const cPureBNFproductionsList & inPureBNFproductions,
-                               const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                               const cPureBNFproductionsList & inPureBNFproductions) {
 //--- Generate header file inclusion --------------------------------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -559,12 +557,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
     while (currentAltForNonTerminal != NULL) {
       macroValidPointer (currentAltForNonTerminal) ;
       macroValidPointer (currentAltForNonTerminal) ;
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " " ;      
-      }else{
         generatedZone3 << "void " ;
-      }
       generatedZone3 << inTargetFileName
                      << "::\n"
                      << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
@@ -582,17 +575,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ; 
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " _outReturnedModelInstance ;\n" ;      
-      }
       engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal->mID, numeroParametre,
                                        inPureBNFproductions, generatedZone3,
-                                       currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0,
                                        currentAltForNonTerminal->mKey) ;
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
-      }
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
     }
@@ -603,12 +588,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         macroValidPointer (currentAltForNonTerminal) ;
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " " ;      
-        }else{
-          generatedZone3 << "void " ;
-        }
+        generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
@@ -628,10 +608,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
                           "    ? _inFileName.string ()\n"
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
@@ -648,9 +624,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "      if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "        " << inTargetFileName << " _grammar ;\n"
                           "        " ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "_outReturnedModelInstance = " ;      
-        }
         generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                        << " (*scanner_" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -666,15 +639,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "          _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
                           "        }\n"
                           "      }\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          GGS_lstring entityName ;
-          GGS_lstring metamodelName ;
-          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
-                                                               currentAltForNonTerminal->mKey,
-                                                               entityName,
-                                                               metamodelName
-                                                               COMMA_HERE) ;
-        }
         generatedZone3 << "    }else{\n"
                           "      C_String message ;\n"
                           "      message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
@@ -706,18 +670,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << "  }\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3.writeCppHyphenLineComment () ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " " ;      
-        }else{
-          generatedZone3 << "void " ;
-        }
+        generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal->mKey
                        << " (C_Compiler & _inCompiler"
@@ -737,10 +693,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
@@ -752,9 +704,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "  if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "    " << inTargetFileName << " _grammar ;\n"
                           "    " ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "_outReturnedModelInstance = " ;      
-        }
         generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                        << " (*scanner_" ;
         parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -770,19 +719,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "      _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
                           "    }\n"
                           "  }\n" ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          GGS_lstring entityName ;
-          GGS_lstring metamodelName ;
-          inStartSymbolEntityAndMetamodelMap.method_searchKey (inLexique,
-                                                               currentAltForNonTerminal->mKey,
-                                                               entityName,
-                                                               metamodelName
-                                                               COMMA_HERE) ;
-        }
         generatedZone3 << "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n" ;
-         if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "  return _outReturnedModelInstance ;\n" ;      
-        }
         generatedZone3 << "}\n\n" ;
         currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
       }
@@ -829,7 +766,6 @@ LL1_computations (C_Compiler & inLexique,
                   const C_String & inLexiqueName,
                   const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
-                  const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
                   const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -859,8 +795,7 @@ LL1_computations (C_Compiler & inLexique,
                                    inLexiqueName,
                                    inClassesNamesSet,
                                    inVocabulary,
-                                   inPureBNFproductions,
-                                   inStartSymbolEntityAndMetamodelMap) ;
+                                   inPureBNFproductions) ;
   }
 }
 

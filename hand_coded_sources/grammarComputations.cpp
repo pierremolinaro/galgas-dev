@@ -94,11 +94,7 @@ void cProduction::
 engendrerAppelProduction (const sint16 nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const C_String & inAltName,
-                          const bool inReturnsEntityInstance,
                           AC_OutputStream & fichierCPP) const {
-  if (inReturnsEntityInstance) {
-    fichierCPP << "  _outReturnedModelInstance = " ;
-  }
   fichierCPP << "pr_"
              << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
              << '_'
@@ -243,12 +239,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
     GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
     while (currentAltForNonTerminal != NULL) {
       generatedZone3 << "  public : virtual " ;
-      if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-        generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                       << " " ;      
-      }else{
-        generatedZone3 << "void " ;
-      }
+      generatedZone3 << "void " ;
       generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
                      << " (" << inLexiqueName << " &" ;
       GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
@@ -261,12 +252,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
       generatedZone3 << ") ;\n" ; 
       if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : static " ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " " ;      
-        }else{
           generatedZone3 << "void " ;
-        }
         generatedZone3 << "_performSourceFileParsing_" << currentAltForNonTerminal->mKey 
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
@@ -283,12 +269,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) ;\n" ;
         generatedZone3 << "  public : static " ;
-        if (currentAltForNonTerminal->mInfo.mReturnedEntityTypeName.length () > 0) {
-          generatedZone3 << "GGS_" << currentAltForNonTerminal->mInfo.mReturnedEntityTypeName
-                         << " " ;      
-        }else{
-          generatedZone3 << "void " ;
-        }
+        generatedZone3 << "void " ;
         generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal->mKey 
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
@@ -541,8 +522,7 @@ analyzeGrammar (C_Compiler & inLexique,
                 const GGS_location & errorLocation,
                 const GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                 const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                const GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap) {
+                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
   GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 
@@ -825,7 +805,6 @@ analyzeGrammar (C_Compiler & inLexique,
                       inLexiqueName,
                       classesNamesSet,
                       ok,
-                      inStartSymbolEntityAndMetamodelMap,
                       verboseOptionOn) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
@@ -847,7 +826,6 @@ analyzeGrammar (C_Compiler & inLexique,
                       inLexiqueName,
                       classesNamesSet,
                       ok,
-                      inStartSymbolEntityAndMetamodelMap,
                       verboseOptionOn) ;
     if (ok) {
       errorFlag = kNoError ;
@@ -873,7 +851,6 @@ analyzeGrammar (C_Compiler & inLexique,
                       inLexiqueName,
                       classesNamesSet,
                       ok,
-                      inStartSymbolEntityAndMetamodelMap,
                       verboseOptionOn) ;
     if (ok) {
       errorFlag = kNoError ;
@@ -960,7 +937,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                         GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                         GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                         GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                        GGS_M_startSymbolEntityAndMetamodel & inStartSymbolEntityAndMetamodelMap,
+                        GGS_M_startSymbolEntityAndMetamodel & /* inStartSymbolEntityAndMetamodelMap */,
                         const GGS_M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
@@ -1007,8 +984,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                       errorLocation,
                       ioTerminalSymbolMap,
                       inSyntaxComponentsList,
-                      inNonterminalSymbolsMapForGrammar,
-                      inStartSymbolEntityAndMetamodelMap) ;
+                      inNonterminalSymbolsMapForGrammar) ;
     }
   }
 }

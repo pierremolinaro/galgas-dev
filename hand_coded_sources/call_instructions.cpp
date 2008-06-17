@@ -358,9 +358,6 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    if (mMetamodelClassVariableName.length () > 0) {
-      ioCppFile << "var_cas_" << mMetamodelClassVariableName << " = " ;
-    }
     ioCppFile << mGrammarName << "::"
               << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
               << mAltSymbol

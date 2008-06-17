@@ -950,7 +950,6 @@ class @C_grammarInstruction extends @typeInstruction {
   @lstring mGrammarName ;
   @typeExpressionList mExpressionsList ;
   @lstring mAltSymbol ;
-  @lstring mMetamodelClassVariableName ;
   @lstring mLexiqueClassName ;
   @typeCplusPlusName mSentStringName ;
 }
@@ -1404,42 +1403,6 @@ extern routine generateSemanticsComponent
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M E T A M O D E L     C O M P O N E N T                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @C_metamodelEntityToImplement extends @typeEntityToGenerate {
-#--- Class Name
-  @lstring aNomClasse ;
-
-#--- Is Abstract ?
-  @bool mIsAbstract ;
-
-#--- Liste de tous les attributs not externes, y compris ceux definis dans une classe mere
-  @typeListeAttributsSemantiques aListeTousAttributsNonExternes ;  
-
-#--- Liste des attributs semantiques not externes definis dans cette classe
-  @typeListeAttributsSemantiques aListeAttributsCourants ;
-
-#--- Super class name
-  @string mSuperClassName ; # Empty string if no super class
-
-#--- Metamodel Class ID
-  @uint mMetamodelClassID ;
-}
-
-#---------------------------------------------------------------------------*
-
-extern routine generate_metamodel
-  ?@entityToImplementMap inEntityMap
-  ?@lstring inMetamodelComponentName
-  ?@typeEntitiesToGenerateList listeEntitesAengendrer
-  ?@lstring inRootEntityName
-  ?@stringlist inHeaderInclusionList
-;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #              Grammar descriptor (for program component)                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1450,55 +1413,6 @@ list @ruleDescriptorForProgramList {
   @lstring mSourceFileName ;
   @typeInstructionList mInstructionList ;
 }
-
-#-------------------------------------------------------------------*
-
-routine performMetamodelInclusion
-  ??@M_metamodelsComponents inMetamodelComponentMap
-  ??@lstring inSuperMetamodelName
-  ?!@stringset ioSuperMetamodels
-  ?!@entityToImplementMap ioAllEntityMap
-:
-  if not [ioSuperMetamodels hasKey ![inSuperMetamodelName string]] then
-    ioSuperMetamodels += ![inSuperMetamodelName string] ;
-    @entityToImplementMap superMetamodelEntityMap ;
-    @stringset superMetamodelsOfSuperMetamodels ;
-    [inMetamodelComponentMap searchKey !inSuperMetamodelName ?* ?superMetamodelEntityMap ?superMetamodelsOfSuperMetamodels] ;
-    foreach superMetamodelsOfSuperMetamodels (@string kSuperMetamodel) do
-      performMetamodelInclusion
-        !inMetamodelComponentMap
-        ![@lstring new !kSuperMetamodel !here]
-        !?ioSuperMetamodels
-        !?ioAllEntityMap
-      ;
-    end foreach ;
-    foreach superMetamodelEntityMap (@lstring kEntityName 
-                                     @entityPropertyMap kAllMetamodelPropertyMap
-                                     @bool kIsAbstract
-                                     @entityPropertyMap kCurrentMetamodelPropertyMap
-                                     @lstring kSuperEntityName
-                                     @typeSuperClassesMap kAncestorClassesMap
-                                     @typeListeAttributsSemantiques kPropertyList
-                                     @string kMetamodelName
-                                     @uint kID) do
-      if [ioAllEntityMap hasKey ![kEntityName string]] then
-        error here: "the '@" . [kEntityName string] . "' is already defined in a previously imported metamodel" ;
-      else
-        [!?ioAllEntityMap insertKey
-           !kEntityName 
-           !kAllMetamodelPropertyMap
-           !kIsAbstract
-           !kCurrentMetamodelPropertyMap
-           !kSuperEntityName
-           !kAncestorClassesMap
-           !kPropertyList
-           !kMetamodelName
-           !kID
-         ] ;
-       end if ;
-    end foreach ;
-  end if ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 
