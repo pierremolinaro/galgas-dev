@@ -497,6 +497,7 @@ class @typeStringOption extends @typeExpression {
 
 class @typeVarInExpression extends @typeExpression {
   @typeCplusPlusName mCppVarName ;
+  @lstringlist mStructAttributeList ;
 }
  
 #---------------------------------------------------------------------------*
@@ -873,7 +874,7 @@ routine verifierCompatibiliteArgEffectifsSignature
       cast attExpressionType :
       when >= @typeJokerInExpression do
         @typeCplusPlusName cppVarName := [@typeLocationAutomaticName new !here ![@uint sequenceNumber]] ;
-        @typeExpression e := [@typeVarInExpression new !cppVarName] ;
+        @typeExpression e := [@typeVarInExpression new !cppVarName ![@lstringlist emptyList]] ;
         ioExpressionList += !e ;
         @typeInstruction i := [@typeInstructionDeclarationVarLocale new !cppVarName !attSignatureType] ;
         ioInstructionsList += !i ;

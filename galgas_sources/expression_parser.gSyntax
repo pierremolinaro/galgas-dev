@@ -1118,7 +1118,7 @@ rule <factor>
 :
   @typeCplusPlusName nomCppEntite1 ;
   <read_access> ?* ?nomCppEntite1 ?outResultType !?ioVariablesMap ;
-  outExpression := [@typeVarInExpression new !nomCppEntite1] ;
+  outExpression := [@typeVarInExpression new !nomCppEntite1 ![@lstringlist emptyList]] ;
 end rule ;
 
 #------------------------------------------------------------------------------*

@@ -1398,6 +1398,12 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) const {
   mCppVarName (HERE)->generateCplusPlusName (ioCppFile) ;
+  GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
+  while (structAttribute != NULL) {
+    macroValidPointer (structAttribute) ;
+    ioCppFile << "." << structAttribute->mValue ;
+    structAttribute = structAttribute->nextObject () ;
+  }
 }
 
 //---------------------------------------------------------------------------*

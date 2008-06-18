@@ -118,12 +118,25 @@ rule <actual_parameter_list> !@actualParameterList outActualParameterList :
     $!?$ ;
     @lstring outputInputActualParameterName ;
     $identifier$ ?outputInputActualParameterName ;
-    outActualParameterList += ![@outputInputActualParameter new !outputInputActualParameterName] ;
+    @lstringlist structAttributeList [emptyList] ;
+    repeat
+    while
+      $.$ ;
+      $identifier$ ? @lstring structAttributeName ;
+      structAttributeList += !structAttributeName ;
+    end repeat ;
+    outActualParameterList += ![@outputInputActualParameter new !outputInputActualParameterName !structAttributeList] ;
   while
     $?$ ;
+    @lstring declarationTypeName ;
+    select
+      declarationTypeName := [@lstring new !"" !here] ;
+    or
+      $type_name$ ? declarationTypeName ;
+    end select ;
     @lstring inputActualParameterName ;
     $identifier$ ?inputActualParameterName ;
-    outActualParameterList += ![@inputActualParameter new !inputActualParameterName] ;
+    outActualParameterList += ![@inputActualParameter new !declarationTypeName !inputActualParameterName] ;
   end repeat ;
 end rule ;
 

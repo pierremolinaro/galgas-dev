@@ -18,6 +18,7 @@
 
 semantics optionCompilation :
 import "optionMetamodel.gSemantics" ;
+import "optionSemantics.gSemantics" ;
 import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
 import semantics optionSemantics in "optionSemantics.gSemantics" ;
 import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;

@@ -23,24 +23,6 @@ import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-enum @actualParameterPassingMode {
-  constructor parameterOut ;
-  constructor parameterOutIn ;
-  constructor parameterIn ;
-}{
-  reader actualArgumentMessage {
-    parameterOutIn -> "an output/input (!?) actual parameter" ;
-    parameterIn -> "an input (?) actual parameter" ;
-    parameterOut -> "an output (!) actual parameter" ;
-  }
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S          *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -61,7 +43,7 @@ enum @formalArgumentPassingMode {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  F O R M A L    P A R A M E T E R S                                       *
+#  F O R M A L    P A R A M E T E R    L I S T                              *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -103,11 +85,13 @@ class @outputActualParameter extends @actualParameter {
 
 class @outputInputActualParameter extends @actualParameter {
   @lstring mOutputInputActualParameterName ;
+  @lstringlist mStructAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @inputActualParameter extends @actualParameter {
+  @lstring mDeclarationTypeName ;
   @lstring mInputActualParameterName ;
 }
 
