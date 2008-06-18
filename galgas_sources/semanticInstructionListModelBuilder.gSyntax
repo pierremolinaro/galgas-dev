@@ -42,8 +42,7 @@ nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
 nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationList ioSemanticDeclarationList
- ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
 ;
 
 #---------------------------------------------------------------------------*
@@ -69,8 +68,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationList ioSemanticDeclarationList
- ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
 :
   $routine$ ;
   $identifier$ ? @lstring mRoutineName ;
@@ -82,7 +80,7 @@ rule <semantic_declaration>
   $end$ ;
   $routine$ ;
   $;$ ;
-  ioSemanticDeclarationList += ![@routineDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@routineDeclaration new
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -96,8 +94,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationList ioSemanticDeclarationList
- ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
 :
   $extern$ ;
   $routine$ ;
@@ -105,7 +102,7 @@ rule <semantic_declaration>
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarationList += ![@externRoutineDeclaration new
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@externRoutineDeclaration new
     !mActionName
     !mFormalParameterList
   ] ;

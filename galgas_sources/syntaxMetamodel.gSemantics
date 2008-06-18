@@ -141,7 +141,7 @@ class @syntaxComponentRoot {
   @lstring mSyntaxComponentName ;
   @nonterminalDeclarationList mNonterminalDeclarationList ;
   @syntaxRuleList mRuleList ;
-  @semanticDeclarationList mSemanticDeclarationList ;
+  @semanticDeclarationStruct mSemanticDeclarations ;
 }
 
 #---------------------------------------------------------------------------*

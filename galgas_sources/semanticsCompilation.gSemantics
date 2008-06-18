@@ -356,7 +356,7 @@ routine recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
           ?semanticsComponentRoot
         ;
-        ioSemanticDeclarationList := ioSemanticDeclarationList . [semanticsComponentRoot mSemanticDeclarationList] ;
+        ioSemanticDeclarationList := ioSemanticDeclarationList . [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
         recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
           !?ioSemanticDeclarationList
@@ -393,7 +393,7 @@ routine compileSemanticsComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationList semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
+  @semanticDeclarationList semanticDeclarationList := [[semanticsComponentRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   recursivelyImportSemanticComponent
     !?ioParsedComponentStruct

@@ -86,7 +86,7 @@ routine performProjectGlobalCheckings
 #--- Build all declaration list
   @semanticDeclarationList semanticDeclarationList [emptyList] ;
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    semanticDeclarationList := semanticDeclarationList . [mRoot mSemanticDeclarationList] ;
+    semanticDeclarationList := semanticDeclarationList . [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   end foreach ;
 #---- Build semantic context
   @semanticContext semanticContext ;

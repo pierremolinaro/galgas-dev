@@ -601,7 +601,7 @@ rule <galgas_component>
     @EXsemanticContext UNUSED_semanticContext [new
       ![@M_filewrappers emptyMap]
       ![@stringset emptySet]
-      ![@categoryMethodMap emptyMap]
+      ![@EXcategoryMethodMap emptyMap]
     ] ;
     repeat
     while

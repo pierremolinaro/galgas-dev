@@ -238,6 +238,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "  return result ;\n"
                "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_string GGS_" << mStructName << "::\n"
+               "reader_description (C_Compiler & /*_inLexique*/\n"
+               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
+               "                    const sint32 /* inIndentation */) const {\n"
+               "  return GGS_string (\"\", true) ;\n"
+               "}\n\n" ;
 }  
 
 //---------------------------------------------------------------------------*

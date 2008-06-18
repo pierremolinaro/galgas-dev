@@ -410,7 +410,7 @@ map @ActionMap {
 
 list @L_EXsignature ;
 list @typeListeAttributsSemantiques ;
-map @categoryMethodMap ;
+map @EXcategoryMethodMap ;
 
 #---------------------------------------------------------------------------*
 
@@ -467,7 +467,7 @@ abstract class @AC_galgasType {
 #--- By default, class does not accept reader instruction call
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outMethodSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -673,7 +673,7 @@ enum @categoryMethodKind {
 
 #---------------------------------------------------------------------------*
 
-map @categoryMethodMap {
+map @EXcategoryMethodMap {
   @categoryMethodKind mCategoryMethodKind ;
   @L_EXsignature aListeArgumentsFormels ;
   insert insertKey error message "the '%K' method is already declared in %L" ;
@@ -832,7 +832,7 @@ class @typeGalgas_string extends @AC_galgasType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -1816,7 +1816,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #--- By default, class does not accept reader instruction call
   override method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -2264,7 +2264,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -2581,7 +2581,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -2693,7 +2693,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -2796,7 +2796,7 @@ class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
   override
   method handleMethodInstructionCall
     ??@lstring inReaderName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -2900,7 +2900,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   override
   method handleMethodInstructionCall
     ??@lstring inMethodName
-    ??@categoryMethodMap inCategoryMethodMap
+    ??@EXcategoryMethodMap inCategoryMethodMap
     !@L_EXsignature outMethodSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -3096,7 +3096,7 @@ class @typeGalgas_enum extends @AC_galgasType {
   override
   method handleMethodInstructionCall
     ??@lstring inMethodName
-    ??@categoryMethodMap unused inCategoryMethodMap
+    ??@EXcategoryMethodMap unused inCategoryMethodMap
     !@L_EXsignature outReaderSignature
     !@string outCategoryMethodClassBaseName
   :
@@ -4239,7 +4239,7 @@ class @templateInstructionConstant extends @templateInstruction {
 struct @EXsemanticContext {
   @M_filewrappers mFilewrappers ;
   @stringset mImportedSemanticComponents ;
-  @categoryMethodMap mCategoryMethodMap ;
+  @EXcategoryMethodMap mCategoryMethodMap ;
 }
 
 #---------------------------------------------------------------------------*
