@@ -1362,6 +1362,19 @@ list @typeEntitiesToGenerateList {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    L I S T M A P    T Y P E                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgasListmapToImplement extends @typeEntityToGenerate {
+  @lstring mListmapTypeName ;
+  @lstring mListTypename ;
+#--- List of all attributes of list
+  @typeListeAttributsSemantiques mAttributesList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    E N U M     T Y P E                                                    *
 #                                                                           *
 #---------------------------------------------------------------------------*

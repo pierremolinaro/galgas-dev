@@ -118,6 +118,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
 
+//--- Constructors
+             "//--- Constructors\n"
+             "  public : inline GGS_" << aNomListe << " (void) : AC_galgas_list () {}\n"
+             "  public : GGS_" << aNomListe << " (const bool inBuildObject) ;\n"
+
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
              "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
@@ -703,6 +708,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "COMMA_HERE) ;\n"
                "      _p = _p->nextObject () ;\n"
                "    }\n"
+               "  }\n"
+               "}\n\n" ;
+  inCppFile.writeCppHyphenLineComment () ;
+
+  inCppFile << "GGS_" << aNomListe << "::GGS_" << aNomListe << " (const bool inBuildObject) :\n"
+               "AC_galgas_list () {\n"
+               "  if (inBuildObject) {\n"
+               "    _alloc () ;\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;

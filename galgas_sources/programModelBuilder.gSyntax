@@ -31,7 +31,10 @@ nonterminal <program_component_start_symbol> !@programComponentRoot outProgramCo
 
 nonterminal <semantic_instruction_list> !@semanticInstructionList outInstructionsList ;
 
-nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
+nonterminal <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -77,6 +80,7 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
 #--- Program rules
   @semanticDeclarationList mSemanticDeclarations [emptyList] ;
   @programRuleList mProgramRules [emptyList] ;
+  @abstractCategoryMethodMap abstractCategoryMethodMap [emptyMap] ;
   repeat
   while
     $when$ ;
@@ -101,9 +105,7 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
       !mInstructionList
     ;
   while
-    @semanticDeclaration semanticDeclaration ;
-    <semantic_declaration> ? semanticDeclaration ;
-    mSemanticDeclarations += !semanticDeclaration ;
+    <semantic_declaration> !? mSemanticDeclarations !?abstractCategoryMethodMap ;
   end repeat ;
 #--- Epilogue
   $after$ ;

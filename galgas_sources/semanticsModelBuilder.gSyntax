@@ -2,7 +2,7 @@
 #                                                                           *
 #  'syntax' component parser, as model builder                              *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -44,7 +44,10 @@ nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
 
 nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 
-nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
+nonterminal <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap ioAbstractCategoryMethodMap
+;
 
 nonterminal <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList ;
 
@@ -62,6 +65,7 @@ rule <semantics_component_start_symbol>
 #--- Loop on import and semantics declarations
   @lstringlist mImportedComponentFileNameList [emptyList] ;
   @semanticDeclarationList mSemanticDeclarationList [emptyList] ;
+  @abstractCategoryMethodMap abstractCategoryMethodMap [emptyMap] ;
   repeat
   while
     $import$ ;
@@ -81,9 +85,7 @@ rule <semantics_component_start_symbol>
     end select ;
     $;$ ;
   while
-    @semanticDeclaration semanticDeclaration ;
-    <semantic_declaration> ? semanticDeclaration ;
-    mSemanticDeclarationList += !semanticDeclaration ;
+    <semantic_declaration> !? mSemanticDeclarationList !?abstractCategoryMethodMap ;
   while
     <obsolete_declaration> ;
   end repeat ;
@@ -96,6 +98,7 @@ rule <semantics_component_start_symbol>
     !mSemanticsComponentName
     !mImportedComponentFileNameList
     !mSemanticDeclarationList
+    !abstractCategoryMethodMap
     !endOfSourceFile
   ] ;
 end rule ;
@@ -165,7 +168,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $map$ ;
 #--- Map type name
   $type_name$ ? @lstring mMapTypeName ;
@@ -202,7 +208,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     <map_method_declaration> !? mRemoveMethodList ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@mapDeclaration new
+  ioSemanticDeclarationList += ![@mapDeclaration new
     !mMapTypeName
     !mAssociatedEnumTypeName
     !mAssociatedTerminaisonMethodName
@@ -227,7 +233,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $mapindex$ ;
   $type_name$ ?@lstring mMapIndexName ;
   $($ ;
@@ -241,7 +250,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $literal_string$ ? @lstring mSearchMethodErrorMessage ;
   $;$ ;
   $}$ ;
-  outSemanticDeclaration := [@mapindexDeclaration new
+  ioSemanticDeclarationList += ![@mapindexDeclaration new
     !mMapIndexName
     !mMapTypeName
     !mSearchMethodName
@@ -395,7 +404,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   @bool mIsAbstract ;
   select
     mIsAbstract := false ;
@@ -445,7 +457,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     $;$ ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@classDeclaration new
+  ioSemanticDeclarationList += ![@classDeclaration new
     !mIsAbstract
     !mClassTypeName
     !mSuperClassName # Empty if no super class
@@ -465,7 +477,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $struct$ ;
   $type_name$ ?@lstring mListTypeName ;
   ${$ ;
@@ -475,7 +490,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@structDeclaration new
+  ioSemanticDeclarationList += ![@structDeclaration new
     !mListTypeName
     !mAttributeList
   ] ;
@@ -487,7 +502,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $list$ ;
   $type_name$ ?@lstring mListTypeName ;
   ${$ ;
@@ -497,7 +515,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@listDeclaration new
+  ioSemanticDeclarationList += ![@listDeclaration new
     !mListTypeName
     !mAttributeList
   ] ;
@@ -544,7 +562,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $sortedlist$ ;
   $type_name$ ?@lstring mSortedListTypeName ;
   ${$ ;
@@ -562,7 +583,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     $,$ ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@sortedListDeclaration new
+  ioSemanticDeclarationList += ![@sortedListDeclaration new
     !mSortedListTypeName
     !mAttributeList
     !mSortDescriptorList
@@ -735,7 +756,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $enum$ ;
   $type_name$ ? @lstring mEnumTypeName ;
   ${$ ;
@@ -780,7 +804,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     <enum_operator> !? mEnumOperatorList ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@enumDeclaration new
+  ioSemanticDeclarationList += ![@enumDeclaration new
     !mEnumTypeName
     !mConstructorConstantList
     !mConstantList
@@ -797,7 +821,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $filewrapper$ ;
   $identifier$ ? @lstring mFilewrapperName ;
   $in$ ;
@@ -829,7 +856,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
     ;
   end repeat ;
   $}$ ;
-  outSemanticDeclaration := [@filewrapperDeclaration new
+  ioSemanticDeclarationList += ![@filewrapperDeclaration new
     !mFilewrapperName
     !mFilewrapperPath
     !mFilewrapperExtensionList
@@ -843,7 +870,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList unused ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap ioAbstractCategoryMethodMap
+:
   $abstract$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
@@ -852,18 +882,15 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  outSemanticDeclaration := [@categoryMethodDeclaration new
-    ![@enumCategoryMethodDeclarationKind isAbstract]
-    !mClassName
-    !mMethodName
-    !mFormalParameterList
-    ![@semanticInstructionList emptyList]
-  ] ;
+  ioAbstractCategoryMethodMap += ![mClassName string] !mMethodName !mFormalParameterList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   @enumCategoryMethodDeclarationKind kind ;
   select
     kind := [@enumCategoryMethodDeclarationKind isBaseMethod] ;
@@ -881,7 +908,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   @semanticInstructionList mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $}$ ;
-  outSemanticDeclaration := [@categoryMethodDeclaration new
+  ioSemanticDeclarationList += ![@categoryMethodDeclaration new
     !kind
     !mClassName
     !mMethodName

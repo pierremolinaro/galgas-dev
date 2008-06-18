@@ -420,5 +420,20 @@ class @typeMethodInstruction extends @semanticInstruction {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @abstractCategoryMethodList {
+  @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @abstractCategoryMethodMap (@abstractCategoryMethodList) ;
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

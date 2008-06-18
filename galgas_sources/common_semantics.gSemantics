@@ -2215,7 +2215,7 @@ class @typeGalgasUndefinedListType extends @AC_galgasType {
 
 class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List of all attributes
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
+  @typeListeAttributsSemantiques mAttributeList ;
 #--- Extract Methods signature (for 'first', 'last', 'popFirst', 'popLast')
   @L_EXsignature mExtractSignature ;
 #--- Input Methods signature (for 'prependValue')
@@ -2228,7 +2228,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
-    outForeachList := mNonExternAttributesList ;
+    outForeachList := mAttributeList ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
   
@@ -2245,7 +2245,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     else
       outModifierSignature := [@L_EXsignature emptyList] ;
       @bool found := false ;
-      foreach mNonExternAttributesList while not found do
+      foreach mAttributeList while not found do
         found := ("set" . [[aNomAttribut string] stringByCapitalizingFirstCharacter] . "AtIndex") == [inModifierName string] ;
         if (found) then
           outModifierSignature += !mAttributType ![@EXformalArgumentPassingMode argumentConstantIn] ;
@@ -2280,7 +2280,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
-    outParametersList := mNonExternAttributesList ;
+    outParametersList := mAttributeList ;
   end method ;
 
 #--- A list accepts 'emptyList' and 'listWithValue' constructors
@@ -2291,7 +2291,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     if [inClassMethodName string] == "emptyList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "listWithValue" then
-      outAccessorTypesList := mNonExternAttributesList ;
+      outAccessorTypesList := mAttributeList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
@@ -2303,13 +2303,13 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   G A L G A S    L I S T    T Y P E                                       *
+#   G A L G A S    S T R U C T    T Y P E                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 class @typeGalgasStructType extends @AC_galgasType {
   @lstring mStructTypeName ;
-  @typeListeAttributsSemantiques mAttributesList ;
+  @typeListeAttributsSemantiques mAttributeList ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2322,7 +2322,7 @@ class @typeGalgasStructType extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
   :
     if [inClassMethodName string] == "new" then
-      outAccessorTypesList := mAttributesList ;
+      outAccessorTypesList := mAttributeList ;
     else
       error inClassMethodName : "the '" . inClassMethodName  . "' constructor is not defined" -> outAccessorTypesList ;
     end if ;
@@ -2330,6 +2330,51 @@ class @typeGalgasStructType extends @AC_galgasType {
 
   message "a struct type" ;
   message messageGalgasType "a struct type" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    L I S T M A P    T Y P E                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeGalgasListmapType extends @AC_galgasType {
+  @lstring mListmapTypeName ;
+  @lstring mListTypename ;
+  @typeGalgasListType mListType ;
+
+#--- List of all attributes of list
+  @typeListeAttributsSemantiques mAttributeList ;
+
+#--- Get type name
+  override method getTypeName !@string outTypeName :
+    outTypeName := [mListmapTypeName string] ;
+  end method ;
+
+#--- A listmap accepts 'emptyMap' constructor
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+  :
+    if [inClassMethodName string] == "emptyMap" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    else
+      error inClassMethodName : "the '" . inClassMethodName  . "' constructor is not defined" -> outAccessorTypesList ;
+    end if ;
+  end method ;
+
+#--- listmap accepts operator "+=" call
+  override method handleAddAssignOperatorCall
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outParametersList
+  :
+    outParametersList := [@typeListeAttributsSemantiques emptyList] ;
+    outParametersList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
+    outParametersList := outParametersList . mAttributeList ;
+  end method ;
+
+  message "a listmap type" ;
+  message messageGalgasType "a listmap type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2503,7 +2548,7 @@ class @typeGalgasUndefinedSortedListType extends @AC_galgasType {
 
 class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- List of all attributes
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
+  @typeListeAttributsSemantiques mAttributeList ;
 #--- Extract Methods signature (for 'smallest', 'greatest', 'popSmallest', 'popGreatest')
   @L_EXsignature mExtractSignature ;
 
@@ -2514,7 +2559,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
   :
-    outForeachList := mNonExternAttributesList ;
+    outForeachList := mAttributeList ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
   
@@ -2552,7 +2597,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
-    outParametersList := mNonExternAttributesList ;
+    outParametersList := mAttributeList ;
   end method ;
 
 #--- A list accepts 'emptyList' and 'listWithValue' constructors
@@ -2563,7 +2608,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     if [inClassMethodName string] == "emptySortedList" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "sortedListWithValue" then
-      outAccessorTypesList := mNonExternAttributesList ;
+      outAccessorTypesList := mAttributeList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
@@ -2624,7 +2669,7 @@ map @mapMethodMap {
 
 class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- Liste de tous les attributs semantiques not externes
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
+  @typeListeAttributsSemantiques mAttributeList ;
 
 #--- Table de toutes les methodes de surcharge
   @typeTableBlocsDeTable aTableMethodesSurcharger ;
@@ -2666,7 +2711,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   :
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_lstring new] ![@lstring new !"key" !here] ;
-    foreach mNonExternAttributesList (@AC_galgasType kAttributType @lstring kNomAttribut) do
+    foreach mAttributeList (@AC_galgasType kAttributType @lstring kNomAttribut) do
       outForeachList += !kAttributType !kNomAttribut ;
     end foreach ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
@@ -2834,7 +2879,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
   @typeTableMethodes mMethodMap ;
 
 #--- Attributes list (those from inherited classes, followed by those from current class)
-  @typeListeAttributsSemantiques mNonExternAttributesList ;  
+  @typeListeAttributsSemantiques mAttributeList ;  
 
 #--- Table des classes ancetre de la classe courante
   @typeSuperClassesMap mAncestorClassesMap ;  
@@ -2897,7 +2942,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
     if mClassIsAbstract then
       error inClassMethodName : "an abstract class cannot be instancied" -> outAccessorTypesList ;
     elsif [inClassMethodName string] == "new" then
-      outAccessorTypesList := mNonExternAttributesList ;
+      outAccessorTypesList := mAttributeList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
@@ -3144,6 +3189,13 @@ routine checkAssignmentTypesCompatibility
     if [attNomType1 string] != [attNomType2 string] then
       error inErrorLocation : "I was expecting the class type '@" . [attNomType1 string] .
                               "', I have got the class type '@" . [attNomType2 string] . "\"" ;
+    end if ;
+
+  when @typeGalgasListmapType (@lstring attNomType1 ...)
+    :: @typeGalgasListmapType (@lstring attNomType2 ...) :
+    if [attNomType1 string] != [attNomType2 string] then
+      error inErrorLocation : "I was expecting an extern variable of listmap '@" . [attNomType1 string] .
+                               "' type variable, and I got a listmap '@" . [attNomType2 string] . "' type variable" ;
     end if ;
 
   when @typeGalgasUndefinedExternType (@lstring attNomType1)
@@ -3895,7 +3947,7 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         outReturnedType := inReceiverType ; # Temporary
-        @typeListeAttributsSemantiques attributeList := [listType mNonExternAttributesList] ;
+        @typeListeAttributsSemantiques attributeList := [listType mAttributeList] ;
         @bool found := false ;
         foreach attributeList while not found do
           found := ([aNomAttribut string] . "AtIndex") == [inReaderName string] ;
@@ -3941,6 +3993,19 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when >= @typeGalgasListmapType mapType do
+      if [inReaderName string] == "hasKey" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "listForKey" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [mapType mListType] ;
+      else
+        error inReaderName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when >= @typeGalgas_stringset do
       if [inReaderName string] == "hasKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -3960,7 +4025,7 @@ routine handleReaderCall
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
         @bool found := false ;
-        foreach [t mNonExternAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
+        foreach [t mAttributeList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
           outReturnedType := kAttributType ;
           found := [inReaderName string] == [kNomAttribut string] ;
         end foreach ;
@@ -3972,7 +4037,7 @@ routine handleReaderCall
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @bool found := false ;
-      foreach [t mAttributesList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
+      foreach [t mAttributeList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
         outReturnedType := kAttributType ;
         found := [inReaderName string] == [kNomAttribut string] ;
       end foreach ;
