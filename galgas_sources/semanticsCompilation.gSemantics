@@ -21,7 +21,6 @@ import "semanticsMetamodel.gSemantics" ;
 import "semanticsSemantics.gSemantics" ;
 import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
-import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
 import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -83,11 +82,9 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-method @semanticDeclaration.enterType
+abstract method @semanticDeclaration.enterType
   ?!@semanticContext unused ioSemanticContext
-{
-  message "@semanticDeclaration.enterType\n" ;
-}
+;
 
 #---------------------------------------------------------------------------*
 

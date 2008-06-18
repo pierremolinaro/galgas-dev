@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics mda_galgas_routines :
+  import "semanticsCompilation.gSemantics" ;
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
@@ -28,6 +29,7 @@ semantics mda_galgas_routines :
   import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics programMetamodel in "programMetamodel.gSemantics" ;
+  import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
@@ -74,6 +76,23 @@ routine compileProgramComponent
 :
   @programComponentRoot programComponentRoot ;
   grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine performProjectGlobalCheckings
+  ??@parsedComponentStruct inParsedComponentStruct
+:
+#--- Build all declaration list
+  @semanticDeclarationList semanticDeclarationList [emptyList] ;
+  foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+    semanticDeclarationList := semanticDeclarationList . [mRoot mSemanticDeclarationList] ;
+  end foreach ;
+#---- Build semantic context
+  @semanticContext semanticContext ;
+  buildSemanticContext !semanticDeclarationList ?semanticContext ;
+#--- Check an abstract category method is implemented by every concrete subclass
+
 end routine ;
 
 #---------------------------------------------------------------------------*

@@ -1218,7 +1218,7 @@ class @typeRoutineAengendrer extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 class @categoryMethodToImplement extends @typeEntityToGenerate {
-  @bool mOverride ;
+  @categoryMethodKind mCategoryMethodKind ;
   @string mBaseClassName ;
   @lstring mClassName ;
   @lstring mMethodName ;
