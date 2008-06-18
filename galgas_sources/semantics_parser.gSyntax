@@ -70,6 +70,27 @@ nonterminal <parse_option_component_for_importing>
 label parse
 ;
 
+nonterminal <class_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+  ??@bool inIsAbstract
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+  ??@bool inIsAbstract
+label parse
+;
+
 nonterminal <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
@@ -88,6 +109,26 @@ label importSemantics
   ?!@EXsemanticContext ioSemanticContext
 label parse
 ;
+
+nonterminal <semantics_declaration_beginning_by_abstract>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents ioOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+label parse
+;
+
 nonterminal <semantics_declaration_begining_by_extern>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
@@ -1299,7 +1340,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#     A B S T R A C T    O R    C O N C R E T E    C L A S S                *
+#     D E C L A R A T I O N   B E G I N N I N G    B Y    A B S T R A C T   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1307,18 +1348,142 @@ rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  $abstract$ ;
+  <semantics_declaration_beginning_by_abstract>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !inOptionsComponentsMapForUse
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !?ioSemanticContext
+  ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  $abstract$ ;
+  <semantics_declaration_beginning_by_abstract> importSemantics
+    !?ioModelMap
+    !?ioExternActionMap
+    !?ioComponentSemanticsEntitiesMap
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !?ioSemanticContext
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     A B S T R A C T    O R    C O N C R E T E    C L A S S                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration_beginning_by_abstract>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  <class_declaration>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !inOptionsComponentsMapForUse
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !?ioSemanticContext
+    !true # Is abstract
+  ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  <class_declaration> importSemantics
+    !?ioModelMap
+    !?ioExternActionMap
+    !?ioComponentSemanticsEntitiesMap
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !?ioSemanticContext
+    !true # Is abstract
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  <class_declaration>
+    !?ioComponentSemanticsEntitiesMap
+    !?listeEntitesAengendrer
+    !inOptionsComponentsMapForUse
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !?ioSemanticContext
+    !false # Is not abstract
+  ;
+label importSemantics
+  ?!@ModelMap ioModelMap
+  ?!@ActionMap ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  <class_declaration> importSemantics
+    !?ioModelMap
+    !?ioExternActionMap
+    !?ioComponentSemanticsEntitiesMap
+    !?tableNomRoutinesDeclarees
+    !?tableEnAvant
+    !?tableRoutinesAimplementer
+    !?ioSemanticContext
+    !false # Is not abstract
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <class_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext ioSemanticContext
+  ??@bool inIsAbstract
 :
-  @bool estAbstraite ;
-  select
-    $abstract$ ;
-    estAbstraite := true ;
-  or
-    estAbstraite := false ;
-  end select ;
   $class$ ;
  #--- Abstract class name
   @lstring abstractClassName ;
@@ -1394,7 +1559,7 @@ rule <semantics_declaration>
       $;$ ;
     while
       <abstract_method>
-        !estAbstraite
+        !inIsAbstract
         !?listeAttributsSemantiquesCourants
         !?listeEntitesAengendrer
         !?ioComponentSemanticsEntitiesMap
@@ -1411,7 +1576,7 @@ rule <semantics_declaration>
         !tableDesClassesAncetres
         !messageMapForHeirs
         !tableAttributs
-        !estAbstraite
+        !inIsAbstract
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
@@ -1428,7 +1593,7 @@ rule <semantics_declaration>
         !tableDesClassesAncetres
         !messageMapForHeirs
         !tableAttributs
-        !estAbstraite
+        !inIsAbstract
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
@@ -1455,14 +1620,14 @@ rule <semantics_declaration>
       !tableDesClassesAncetres
       !messageMapForHeirs
       !tableAttributs
-      !estAbstraite
+      !inIsAbstract
       !classMessage] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
   #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
     @typeEntityToGenerate def := [@C_classToImplement new 
        !abstractClassName
-       !estAbstraite
+       !inIsAbstract
        !listeTousAttributsSemantiques
        !tableDesMethodes
        !tableMethodesAimplementer
@@ -1482,14 +1647,8 @@ label importSemantics
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext ioSemanticContext
+  ??@bool inIsAbstract
 :
-  @bool estAbstraite ;
-  select
-    $abstract$ ;
-    estAbstraite := true ;
-  or
-    estAbstraite := false ;
-  end select ;
   $class$ ;
  #--- Abstract class name
   @lstring abstractClassName ;
@@ -1570,7 +1729,7 @@ label importSemantics
       $;$ ;
     while
       <abstract_method>
-        !estAbstraite
+        !inIsAbstract
         !?listeAttributsSemantiquesCourants
         !?listeEntitesAengendrer
         !?ioComponentSemanticsEntitiesMap
@@ -1586,7 +1745,7 @@ label importSemantics
         !tableDesClassesAncetres
         !messageMapForHeirs
         !tableAttributs
-        !estAbstraite
+        !inIsAbstract
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
@@ -1603,7 +1762,7 @@ label importSemantics
         !tableDesClassesAncetres
         !messageMapForHeirs
         !tableAttributs
-        !estAbstraite
+        !inIsAbstract
         !?ioComponentSemanticsEntitiesMap
         !?tableMethodesAimplementer
         !?tableEnAvant
@@ -1626,7 +1785,7 @@ label importSemantics
                                              !tableDesClassesAncetres
                                              !messageMapForHeirs
                                              !tableAttributs
-                                             !estAbstraite
+                                             !inIsAbstract
                                              !classMessage] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
@@ -5241,6 +5400,102 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# A B S T R A C T    C A T E G O R Y    M E T H O D   D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration_beginning_by_abstract>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  @categoryMethodKind categoryMethodKind [abstractMethod] ;
+  $method$ ;
+  $type_name$ ? @lstring className ;
+  $.$ ;
+  $identifier$ ? @lstring methodName ;
+#---- Formal arguments -----------------------------------------
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @L_EXsignature listeDeTypes ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+#---- Get class attribute list ---------------------------------
+  @AC_semanticsEntity theEntity ;
+  [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
+  @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
+  @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error className) ;
+#---- Check method definition in super class -------------------
+  @string baseClassName ;
+  @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
+#--- Check no super class defines this method
+  foreach ancestorClassesMap do
+    @string keyClassMethod := [key string]  . ":" . [methodName string] ;
+    if [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] then
+      error methodName: "this method is already defined for super class @" . key
+      . ": you should use the 'override' key word" ;
+    end if ;
+  end foreach ;
+  baseClassName := [className string] ;
+  $;$ ;
+#--- Generate 
+  @typeInstructionList instructionList [emptyList] ;
+  listeEntitesAengendrer += ![@categoryMethodToImplement new
+    !categoryMethodKind
+    !baseClassName
+    !className
+    !methodName
+    !listeTypeEtNomsArguments
+    !instructionList
+    ![methodName location] # Magic Number
+  ] ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  @categoryMethodKind categoryMethodKind [abstractMethod] ;
+  $method$ ;
+  $type_name$ ? @lstring className ;
+  $.$ ;
+  $identifier$ ? @lstring methodName ;
+#---- Formal arguments -----------------------------------------
+  @L_EXsignature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+  @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #     C A T E G O R Y    M E T H O D   D E C L A R A T I O N                *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -5254,12 +5509,12 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext ioSemanticContext
 :
-  @bool overrideDeclaration ;
+  @categoryMethodKind categoryMethodKind ;
   select
-    overrideDeclaration := false ;
+    categoryMethodKind := [@categoryMethodKind baseMethod] ;
   or
     $override$ ;
-    overrideDeclaration := true ;
+    categoryMethodKind := [@categoryMethodKind overridingMethod] ;
   end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
@@ -5279,7 +5534,7 @@ rule <semantics_declaration>
     ?signatureForGrammarComponent
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !overrideDeclaration !listeDeTypes] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
 #---- Get class attribute list ---------------------------------
   @AC_semanticsEntity theEntity ;
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
@@ -5288,7 +5543,7 @@ rule <semantics_declaration>
 #---- Check method definition in super class -------------------
   @string baseClassName ;
   @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
-  if overrideDeclaration then #--- Check a super class defines this method
+  if categoryMethodKind == [@categoryMethodKind overridingMethod] then #--- Check a super class defines this method
     baseClassName := "" ;
     @bool found := false ;
     foreach ancestorClassesMap while not found do
@@ -5296,15 +5551,15 @@ rule <semantics_declaration>
       baseClassName := [key string] ;
       found := [[ioSemanticContext mCategoryMethodMap] hasKey !keyClassMethod] ;
       if found then
-        @bool isIOverride ;
+        @categoryMethodKind categoryMethodKind ;
         @L_EXsignature listeDeTypesPrecedenteDeclaration ;
-        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?isIOverride ?listeDeTypesPrecedenteDeclaration] ;
+        [[ioSemanticContext mCategoryMethodMap] searchKey ![@lstring new !keyClassMethod !here] ?categoryMethodKind ?listeDeTypesPrecedenteDeclaration] ;
         verifierCompatibiliteSignatures
           !listeDeTypesPrecedenteDeclaration
           !listeDeTypes
           !here
         ;
-        found := not isIOverride ;
+        found := categoryMethodKind != [@categoryMethodKind overridingMethod] ;
       end if ;
     end foreach ;
     if not found then
@@ -5343,7 +5598,7 @@ rule <semantics_declaration>
   ;
   $}$ ;
   listeEntitesAengendrer += ![@categoryMethodToImplement new
-    !overrideDeclaration
+    !categoryMethodKind
     !baseClassName
     !className
     !methodName
@@ -5360,12 +5615,12 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext ioSemanticContext
 :
-  @bool overrideDeclaration ;
+  @categoryMethodKind categoryMethodKind ;
   select
-    overrideDeclaration := false ;
+    categoryMethodKind := [@categoryMethodKind baseMethod] ;
   or
     $override$ ;
-    overrideDeclaration := true ;
+    categoryMethodKind := [@categoryMethodKind overridingMethod] ;
   end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
@@ -5385,7 +5640,7 @@ label importSemantics
     ?signatureForGrammarComponent
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !overrideDeclaration !listeDeTypes] ;
+  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
 #--- Instructions
   ${$ ;
   <semantic_instructions_list> parse ;

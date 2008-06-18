@@ -666,8 +666,15 @@ list @L_EXsignature {
 
 #---------------------------------------------------------------------------*
 
+enum @categoryMethodKind {
+  constructor baseMethod, abstractMethod, overridingMethod ;
+}{
+}
+
+#---------------------------------------------------------------------------*
+
 map @categoryMethodMap {
-  @bool mIsOverride ;
+  @categoryMethodKind mCategoryMethodKind ;
   @L_EXsignature aListeArgumentsFormels ;
   insert insertKey error message "the '%K' method is already declared in %L" ;
   search searchKey, searchKeyAndGetIndex error message "the '%K' method is not declared" ;
@@ -2859,18 +2866,18 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
       outMethodSignature := [@L_EXsignature emptyList] ;
       @lstring key [new ![mClassTypeName string] . ":" . [inMethodName string] ![inMethodName location]] ;
       if [inCategoryMethodMap hasKey ![key string]] then
-        @bool isOverride ;
-        [inCategoryMethodMap searchKey !key ?isOverride ?outMethodSignature] ;
-        if not isOverride then
+        @categoryMethodKind categoryMethodKind ;
+        [inCategoryMethodMap searchKey !key ?categoryMethodKind ?outMethodSignature] ;
+        if categoryMethodKind != [@categoryMethodKind overridingMethod] then
           outCategoryMethodClassBaseName := [mClassTypeName string] ;
         end if ;
       end if ;
       foreach mAncestorClassesMap while outCategoryMethodClassBaseName == "" do
         @lstring superKey [new ![key string] . ":" . [inMethodName string] ![inMethodName location]] ;
         if [inCategoryMethodMap hasKey ![superKey string]] then
-          @bool isOverride ;
-          [inCategoryMethodMap searchKey !superKey ?isOverride ?outMethodSignature] ;
-          if not isOverride then
+          @categoryMethodKind categoryMethodKind ;
+          [inCategoryMethodMap searchKey !superKey ?categoryMethodKind ?outMethodSignature] ;
+          if categoryMethodKind != [@categoryMethodKind overridingMethod] then
             outCategoryMethodClassBaseName := [mClassTypeName string] ;
           end if ;
         end if ;

@@ -307,8 +307,15 @@ class @filewrapperDeclaration extends @semanticDeclaration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+enum @enumCategoryMethodDeclarationKind {
+  constructor isAbstract, isBaseMethod, isOverriding ;
+}{
+}
+
+#---------------------------------------------------------------------------*
+
 class @categoryMethodDeclaration extends @semanticDeclaration {
-  @bool mIsOverride ;
+  @enumCategoryMethodDeclarationKind mKind ;
   @lstring mClassName ;
   @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;

@@ -33,7 +33,6 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics programMetamodel in "programMetamodel.gSemantics" ;
-  import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
@@ -192,6 +191,11 @@ message "a GALGAS project source file"
       error kFile:"unhandled extension" ;
     end if ;
   end foreach ;
+#--- Perform global checkings
+  if [@uint errorCount] == 0 then
+    message "----- Perform global checkings\n" ;
+    performProjectGlobalCheckings !parsedComponentStruct ;
+  end if ;
 }
 
 #---------------------------------------------------------------------------*

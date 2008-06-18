@@ -844,11 +844,31 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
-  @bool mIsOverride ;
+  $abstract$ ;
+  $method$ ;
+  $type_name$ ? @lstring mClassName ;
+  $.$ ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $;$ ;
+  outSemanticDeclaration := [@categoryMethodDeclaration new
+    ![@enumCategoryMethodDeclarationKind isAbstract]
+    !mClassName
+    !mMethodName
+    !mFormalParameterList
+    ![@semanticInstructionList emptyList]
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+  @enumCategoryMethodDeclarationKind kind ;
   select
-    mIsOverride := false ;
+    kind := [@enumCategoryMethodDeclarationKind isBaseMethod] ;
   or
-    mIsOverride := true ;
+    kind := [@enumCategoryMethodDeclarationKind isOverriding] ;
     $override$ ;
   end select ;
   $method$ ;
@@ -862,7 +882,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $}$ ;
   outSemanticDeclaration := [@categoryMethodDeclaration new
-    !mIsOverride
+    !kind
     !mClassName
     !mMethodName
     !mFormalParameterList

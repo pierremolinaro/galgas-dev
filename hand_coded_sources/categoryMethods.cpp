@@ -45,7 +45,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_categoryMethodToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  if (! mOverride.boolValue ()) {
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
     inHfile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
     inHfile << "typedef void (*typeCategoryMethod__" << mClassName << "__" << mMethodName << ") "
                " (C_Compiler & _inLexique"
@@ -84,13 +84,15 @@ bool cPtr_categoryMethodToImplement::isCppClassNeeded (void) const {
 void cPtr_categoryMethodToImplement::
 enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
                              AC_OutputStream & /* inEpilogueActions */) const {
-  inPrologueActions << " enterCategoryMethod__" << mBaseClassName << "__" << mMethodName << " (" ;
-  if (mOverride.boolValue ()) {
-    inPrologueActions << "(typeCategoryMethod__" << mBaseClassName << "__" << mMethodName << ") " ;
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
+    inPrologueActions << " enterCategoryMethod__" << mBaseClassName << "__" << mMethodName << " (" ;
+    if (mCategoryMethodKind.enumValue () == GGS_categoryMethodKind::enum_overridingMethod) {
+      inPrologueActions << "(typeCategoryMethod__" << mBaseClassName << "__" << mMethodName << ") " ;
+    }
+    inPrologueActions << "category_method__"
+                      << mClassName << "__" << mMethodName << ", gClassInfoFor__"
+                      << mClassName << ".slotID ()) ;\n" ;
   }
-  inPrologueActions << "category_method__"
-                    << mClassName << "__" << mMethodName << ", gClassInfoFor__"
-                    << mClassName << ".slotID ()) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -109,41 +111,45 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
-  inCppFile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
-  inCppFile << "static void\n"
-               "category_method__" << mClassName << "__" << mMethodName
-            << " (C_Compiler &" ;
-  if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
-    inCppFile << " _inLexique" ;
-  }
-  inCppFile << ",\n                                "
-               "const cPtr_" << mClassName << " * operand_" << mMagicNumber.location () ;
-  GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
-  while (currentArgument != NULL) {
-    inCppFile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
-    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument->mCppName, true) ;
-    inCppFile << ' ' ;
-    if (! variableUtilisee) {
-      inCppFile << "/* " ;
+//--- Generate method
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
+    inCppFile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
+    inCppFile << "static void\n"
+                 "category_method__" << mClassName << "__" << mMethodName
+              << " (C_Compiler &" ;
+    if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
+      inCppFile << " _inLexique" ;
     }
-    currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
-    if (! variableUtilisee) {
-      inCppFile << " */" ;
+    inCppFile << ",\n                                "
+                 "const cPtr_" << mClassName << " * operand_" << mMagicNumber.location () ;
+    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
+    while (currentArgument != NULL) {
+      inCppFile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+      const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument->mCppName, true) ;
+      inCppFile << ' ' ;
+      if (! variableUtilisee) {
+        inCppFile << "/* " ;
+      }
+      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      if (! variableUtilisee) {
+        inCppFile << " */" ;
+      }
+      currentArgument = currentArgument->nextObject () ;
     }
-    currentArgument = currentArgument->nextObject () ;
+    inCppFile << "\n                                "
+                 "COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "  if (operand_" << mMagicNumber.location () << " != NULL) {\n" ;
+    inCppFile.incIndentation (+2) ;
+    generateInstructionListForList (mInstructionList, inCppFile,
+                                    inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, true) ;
+    inCppFile.incIndentation (-2) ;
+    inCppFile << "  }\n"
+                 "}\n\n" ;
   }
-  inCppFile << "\n                                "
-               "COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  if (operand_" << mMagicNumber.location () << " != NULL) {\n" ;
-  inCppFile.incIndentation (+2) ;
-  generateInstructionListForList (mInstructionList, inCppFile,
-                                  inTargetFileName, ioPrototypeIndex,
-                                  inGenerateDebug, true) ;
-  inCppFile.incIndentation (-2) ;
-  inCppFile << "  }\n"
-               "}\n\n" ;
-  if (! mOverride.boolValue ()) {
+//--- Generate virtual table
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
     inCppFile.writeCppTitleComment (C_String ("Virtual Table for category method '@") + mClassName + "." + mMethodName + "'") ;
     inCppFile << "static TC_UniqueArray <typeCategoryMethod__" << mClassName << "__" << mMethodName
               << "> gDispatchTableFor__" << mClassName << "__" << mMethodName << " ;\n\n" ;
