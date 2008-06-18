@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  Treewalking for building type map of a semantics component               *
+#  Component for building type map of a semantics component                 *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -18,6 +18,7 @@
 
 semantics semanticsCompilation :
 import "semanticsMetamodel.gSemantics" ;
+import "semanticsSemantics.gSemantics" ;
 import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
@@ -92,25 +93,56 @@ method @semanticDeclaration.enterType
 
 override
 method @mapDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@mapDeclaration.enterType\n" ;
+#--- Handle attributes
+  @attributeList attributeList [emptyList] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
+#--- Enter type in type map
+  @ACGalgasType t := [@mapType new
+    !mMapTypeName
+    !attributeList
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mMapTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
 
 override method @mapindexDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@mapindexDeclaration.enterType\n" ;
+#--- Handle map type name
+  @typeMapIndex mapTypeIndex ;
+  [@typeMapIndex makeRegularIndex !mMapTypeName !?ioSemanticContext.mTypeMap ?mapTypeIndex] ;
+#--- Enter type in type map
+  @ACGalgasType t := [@mapindexType new
+    !mMapIndexTypeName
+    !mapTypeIndex
+    !mSearchMethodName
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mMapIndexTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
 
 override method @enumDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@enumDeclaration.enterType\n" ;
+#--- Handle attributes
+  @enumConstructorMap enumConstructorMap [emptyMap] ;
+  foreach mConstructorConstantList do
+    [!?enumConstructorMap insertKey !mValue] ;
+  end foreach ;
+#--- Enter type in type map
+  @ACGalgasType t := [@enumType new
+    !mEnumTypeName
+    !enumConstructorMap
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mEnumTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
@@ -123,42 +155,118 @@ override method @filewrapperDeclaration.enterType
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclaration.enterType
+override method @categoryMethodDeclaration.enterType
   ?!@semanticContext unused ioSemanticContext
 {
-  message "@sortedListDeclaration.enterType\n" ;
+  message "@categoryMethodDeclaration.enterType\n" ;
+}
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclaration.enterType
+  ?!@semanticContext ioSemanticContext
+{
+#--- Handle attributes
+  @attributeList attributeList [emptyList] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
+#--- Enter type in type map
+  @ACGalgasType t := [@listGalgasType new
+    !mSortedListTypeName
+    !attributeList
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mSortedListTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
 
 override method @structDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@structDeclaration.enterType\n" ;
+#--- Handle attributes
+  @attributeList attributeList [emptyList] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
+#--- Enter type in type map
+  @ACGalgasType t := [@structGalgasType new
+    !mStructTypeName
+    !attributeList
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mStructTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
 
 override method @listDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@listDeclaration.enterType\n" ;
+#--- Handle attributes
+  @attributeList attributeList [emptyList] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
+#--- Enter type in type map
+  @ACGalgasType t := [@listGalgasType new
+    !mListTypeName
+    !attributeList
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mListTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
 
 override method @classDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@classDeclaration.enterType\n" ;
+#--- Handle super class
+  @typeMapIndex superClassIndex ;
+  if [mSuperClassName string] == "" then
+    superClassIndex := [@typeMapIndex null] ;
+  else
+    [@typeMapIndex makeRegularIndex !mSuperClassName !?ioSemanticContext.mTypeMap ?superClassIndex] ;
+  end if ;
+#--- Handle attributes
+  @attributeList attributeList [emptyList] ;
+  foreach mAttributeList do
+    @typeMapIndex attributeTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioSemanticContext.mTypeMap ?attributeTypeIndex] ;
+    attributeList += !attributeTypeIndex !mAttributeName ;
+  end foreach ;
+#--- Handle methods
+  @classMethodList methodList [emptyList] ;
+#--- Enter type in type map
+  @ACGalgasType t := [@classGalgasType new
+    !mIsAbstract
+    !mClassTypeName
+    !superClassIndex
+    !attributeList
+    !methodList
+  ] ;
+  [!?ioSemanticContext.mTypeMap insertKey !mClassTypeName !t] ;
 }
 
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclaration.enterType # Handles also routine declaration
-  ?!@semanticContext unused ioSemanticContext
+  ?!@semanticContext ioSemanticContext
 {
-  message "@externRoutineDeclaration.enterType\n" ;
+#--- Build signature
+  @signature routineSignature [emptyList] ;
+  foreach mFormalParameterList do
+    @typeMapIndex parameterTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?parameterTypeIndex] ;
+    routineSignature += !parameterTypeIndex !mFormalParameterName !mFormalParameterPassingMode ;
+  end foreach ;
+#--- Enter routine in routine map
+  [!?ioSemanticContext.mRoutineMap insertKey !mRoutineName !routineSignature] ;
 }
 
 #---------------------------------------------------------------------------*
@@ -173,11 +281,37 @@ routine buildSemanticContext
 #--- Build initial semantic context
   outSemanticContext := [@semanticContext new
     !typeMap
+    ![@routineMap emptyMap]
   ] ;
 #--- Loop throught all declarations
   foreach inSemanticDeclarationList do
     [mSemanticDeclaration enterType !?outSemanticContext] ;
   end foreach ;
+#--- Check there is no undefined type
+  if [@uint errorCount] == 0 then
+    @stringlist undefinedClasses := [[outSemanticContext mTypeMap] unsolvedIndexKeyStringList] ;
+    if [undefinedClasses length] == 1 then
+      @string errorMessage := "there is 1 undefined type:" ;
+      foreach undefinedClasses do
+        errorMessage .= "\n-  @" . mValue ;
+      end foreach ;
+      error here : errorMessage ;
+    elsif [undefinedClasses length] > 1 then
+      @string errorMessage := "there are " . [[undefinedClasses length] string] . " undefined types:" ;
+      foreach undefinedClasses do
+        errorMessage .= "\n-  @" . mValue ;
+      end foreach ;
+      error here : errorMessage ;
+    end if ;
+  end if ;
+#--- Check type cross references are correct
+# * class inheritance graph has no circularity
+# * mapindex type refres to an actual map type
+  if [@uint errorCount] == 0 then
+    foreach [outSemanticContext mTypeMap] do
+      [mType checkNoCircularity ![[outSemanticContext mTypeMap] count]] ;
+    end foreach ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -274,335 +408,8 @@ routine compileSemanticsComponent
 #---- Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext !semanticDeclarationList ?semanticContext ;
-
-##--- Warn for undefined types
-#  if [typeMap unsolvedIndexCount] > 0 then
-#    @string m := [[typeMap unsolvedIndexCount] string] . " type" ;
-#    if [typeMap unsolvedIndexCount] == 1 then
-#      m := "1 type is not defined:" ;
-#    else
-#      m := [[typeMap unsolvedIndexCount] string] . " types are not defined:" ;
-#    end if ;
-#    foreach [typeMap unsolvedIndexKeyStringList] (@string kKey) do
-#      m .= "\n  - @" . kKey ;
-#    end foreach ;
-#    error endOfSourceFile : m ;
-#  end if ;
-##--- Checks inheritance has no circularity
-#  foreach typeMap (@lstring kTypeName @ACGalgasType kType) do
-#    [kType checkNoCircularity ![typeMap count]] ;
-#  end foreach ;
 end routine ;
 
-#---------------------------------------------------------------------------*
-
-#rule @semanticsComponentRoot
-#  ??@string inSourceFileDirectory
-#  ??@location inErrorLocation
-#  ?!@stringset ioImportedComponentSet
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap ioRoutineMap
-#  !@typeList outTypeList
-#:
-##--- Walk throught imported components
-#  foreach mImportedSemanticsComponentSet (@string kComponentName) do
-#    if not [ioImportedComponentSet hasKey !kComponentName] then
-#      if kComponentName != [mSemanticsComponentName string] then
-#        @lstring sourceFilePath [new
-#          !inSourceFileDirectory . "/" . kComponentName . ".gSemantics"
-#          !inErrorLocation
-#        ] ;
-#        @semanticsComponentRoot semanticsComponentRoot ;
-#        @location endOfSourceFile ;
-#        @typeList unusedTypeList ;
-#        grammar semanticsSLRgrammar in sourceFilePath ?endOfSourceFile -> semanticsComponentRoot ;
-#        treewalking buildMapsForSemantics on semanticsComponentRoot
-#          !inSourceFileDirectory
-#          !inErrorLocation
-#          !?ioImportedComponentSet
-#          !?ioTypeMap
-#          !?ioRoutineMap
-#          ?unusedTypeList
-#       ;
-#      end if ;
-#      ioImportedComponentSet += !kComponentName ;
-#    end if ;
-#  end foreach ;
-##--- Walk throught definitions of current files
-#  if [ioImportedComponentSet hasKey ![mSemanticsComponentName string]] then
-#    error mSemanticsComponentName:
-#    "this component is involved in a circularity in 'extends' definitions" -> outTypeList ;
-#  else
-#    outTypeList := [@typeList emptyList] ;
-#    call mSemanticDeclarationList !?ioTypeMap !?ioRoutineMap !?outTypeList ;
-#  end if ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @semanticDeclaration
-#  ?!@typeMap unused ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  R O U T I N E    D E C L A R A T I O N                                   *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @routineDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-#  @signature methodSignature ;
-#  call mFormalParameters ?methodSignature !?ioTypeMap ;
-#  [!?ioRoutineMap insertKey !mRoutineName !methodSignature] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  E X T E R N    R O U T I N E    D E C L A R A T I O N                    *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @externRoutineDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-#  @signature methodSignature ;
-#  call mFormalParameters ?methodSignature !?ioTypeMap ;
-#  [!?ioRoutineMap insertKey !mActionName !methodSignature] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  C L A S S    T Y P E                                                     *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @classDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-##--- Super class index
-#  @typeMapIndex superClassIndex ;
-#  if [mSuperClassName length] == 0 then
-#    superClassIndex := [@typeMapIndex null] ;
-#  else
-#    [@typeMapIndex makeRegularIndex !mSuperClassName !?ioTypeMap ?superClassIndex] ;
-#  end if ;
-##--- Attributes
-#  @attributeList attributeList [emptyList] ;
-#  call mAttributeList !?attributeList !?ioTypeMap ;
-##--- Methods
-#  @classMethodList classMethodList [emptyList] ;
-#  call mAbstractMethodList !?classMethodList !?ioTypeMap ;
-#  call mMethodList !?classMethodList !?ioTypeMap ;
-#  call mOverridenMethodList !?classMethodList !?ioTypeMap ;
-##--- Enter in type map
-#  @ACGalgasType t := [@classGalgasType new
-#    !mIsAbstract
-#    !mClassTypeName
-#    !superClassIndex
-#    !attributeList
-#    !classMethodList
-#  ] ;
-#  [!?ioTypeMap insertKey !mClassTypeName !t] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @formalParameter 
-#  ?!@signature ioMethodSignature
-#  ?!@typeMap ioTypeMap
-#:
-##--- Parameter type index
-#  @typeMapIndex parameterTypeIndex ;
-#  [@typeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioTypeMap ?parameterTypeIndex] ;
-##--- Add formalparameter to signature
-#  ioMethodSignature += !parameterTypeIndex !mFormalParameterName !mFormalParameterPassingMode ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @formalParameters 
-#  !@signature outMethodSignature
-#  ?!@typeMap ioTypeMap
-#:
-#  outMethodSignature := [@signature emptyList] ;
-#  call mFormalParameterList !?outMethodSignature !?ioTypeMap ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @abstractMethodDefinition 
-#  ?!@classMethodList ioClassMethodList
-#  ?!@typeMap ioTypeMap
-#:
-#  @signature methodSignature ;
-#  call mSignature ?methodSignature !?ioTypeMap ;
-#  ioClassMethodList += !mMethodName !methodSignature ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @overridenMethodDefinition 
-#  ?!@classMethodList ioClassMethodList
-#  ?!@typeMap ioTypeMap
-#:
-#  @signature methodSignature ;
-#  call mSignature ?methodSignature !?ioTypeMap ;
-#  ioClassMethodList += !mMethodName !methodSignature ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @methodDefinition 
-#  ?!@classMethodList ioClassMethodList
-#  ?!@typeMap ioTypeMap
-#:
-#  @signature methodSignature ;
-#  call mSignature ?methodSignature !?ioTypeMap ;
-#  ioClassMethodList += !mMethodName !methodSignature ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  E N U M    T Y P E                                                       *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @enumDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-##--- Enter in type map
-#  @ACGalgasType t := [@enumType new
-#    !mEnumTypeName
-#    !mConstantList
-#  ] ;
-#  [!?ioTypeMap insertKey !mEnumTypeName !t] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##  M A P    T Y P E                                                         *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @mapDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-##--- Attributes
-#  @attributeList attributeList [emptyList] ;
-#  call mAttributeList !?attributeList !?ioTypeMap ;
-##--- Enter in type map
-#  @ACGalgasType t := [@mapType new
-#    !mMapTypeName
-#    !attributeList
-#  ] ;
-#  [!?ioTypeMap insertKey !mMapTypeName !t] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##    L I S T    T Y P E                                                     *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @listDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-##--- Attributes
-#  @attributeList attributeList [emptyList] ;
-#  call mAttributeList !?attributeList !?ioTypeMap ;
-##--- Enter in type map
-#  @ACGalgasType t := [@listGalgasType new
-#    !mListTypeName
-#    !attributeList
-#  ] ;
-#  [!?ioTypeMap insertKey !mListTypeName !t] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @attributeInCollection
-#  ?!@attributeList ioAttributeList
-#  ?!@typeMap ioTypeMap
-#:
-#  @typeMapIndex index ;
-#  [@typeMapIndex makeRegularIndex !mAttributeTypeName !?ioTypeMap ?index] ;
-#  ioAttributeList += !index !mAttributeName ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##    S O R T E D    L I S T    T Y P E                                      *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @sortedListSortDescriptor
-#  ?!@sortDescriptorList ioSortDescriptorList
-#:
-#  ioSortDescriptorList += !mSortedAttributeName !mAscending ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-#
-#rule @sortedListDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-##--- Attributes
-#  @attributeList attributeList [emptyList] ;
-#  call mAttributeList !?attributeList !?ioTypeMap ;
-##--- Sort Descriptors
-#  @sortDescriptorList sortDescriptorList [emptyList] ;
-#  call mSortDescriptorList !?sortDescriptorList ;
-##--- Enter in type map
-#  @ACGalgasType t := [@sortedlistGalgasType new
-#    !mSortedListTypeName
-#    !attributeList
-#    !sortDescriptorList
-#  ] ;
-#  [!?ioTypeMap insertKey !mSortedListTypeName !t] ;
-#end rule ;
-#
-##---------------------------------------------------------------------------*
-##                                                                           *
-##    M A P    I N D E X    T Y P E                                          *
-##                                                                           *
-##---------------------------------------------------------------------------*
-#
-#rule @mapindexDeclaration
-#  ?!@typeMap ioTypeMap
-#  ?!@routineMap unused ioRoutineMap
-#  ?!@typeList unused ioTypeList
-#:
-#  @typeMapIndex index ;
-#  [@typeMapIndex makeRegularIndex !mMapTypeName !?ioTypeMap ?index] ;
-##--- Enter in type map
-#  @ACGalgasType t := [@mapindexType new
-#    !mMapIndexName
-#    !index
-#    !mSearchMethodName
-#    !mSearchMethodErrorMessage
-#  ] ;
-#  [!?ioTypeMap insertKey !mMapIndexName !t] ;
-#end rule ;
-#
 #---------------------------------------------------------------------------*
 
 end semantics ;

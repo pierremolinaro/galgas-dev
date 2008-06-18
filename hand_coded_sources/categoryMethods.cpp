@@ -65,7 +65,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "void\n"
                "enterCategoryMethod__" << mClassName << "__" << mMethodName
             << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-               "                     const sint32 inclassID) ;\n\n" ;
+               "                     const sint32 inClassID) ;\n\n" ;
     inHfile.writeCppHyphenLineComment () ;
     inHfile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryMethod__" << mClassName << "__" << mMethodName
@@ -151,9 +151,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void\n"
                  "enterCategoryMethod__" << mClassName << "__" << mMethodName
               << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-                 "                     const sint32 inclassID) {\n"
-                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".setCountWithDefaultValue (inclassID + 1, NULL) ;\n"
-                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << " (inclassID COMMA_HERE) = inRoutine ;\n"
+                 "                     const sint32 inClassID) {\n"
+                 "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
                  "}\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"

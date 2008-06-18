@@ -2545,7 +2545,7 @@ rule <parse_parameters_list>
       $identifier$ ? nomArgument ;
       [!?ioVariablesMap searchForWriteAccess !nomArgument ?typeArgument ?nomCppArgument] ;
       listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
-      @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
+      @typeExpression e := [@typeVarInExpression new !nomCppArgument ![@lstringlist emptyList]] ;
       outExpressionList += !e ;
       if [exclusiveVariables hasKey ![nomArgument string]] then
         error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
@@ -2560,15 +2560,31 @@ rule <parse_parameters_list>
     @lstring nomArgument ;
     $identifier$ ? nomArgument ;
     [!?ioVariablesMap searchForReadWriteAccess !nomArgument ?typeArgument ?nomCppArgument] ;
+    @lstringlist structAttributeList [emptyList] ;
+    repeat
+    while
+      $.$ ;
+      $identifier$ ? @lstring structAttributeName ;
+      @typeGalgasStructType structType := (cast typeArgument if >= @typeGalgasStructType else error structAttributeName) ;
+      @bool found := false ;
+      foreach [structType mAttributesList] while not found do
+        found := [aNomAttribut string] == [structAttributeName string] ;
+        typeArgument := mAttributType ;
+      end foreach ;
+      if not found then
+        error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
+      end if ;
+      structAttributeList += !structAttributeName ;
+    end repeat ;
     @EXactualParametersPassingMode parameterPassingMode := [@EXactualParametersPassingMode parameterOutIn] ;
     listeTypesParametresEffectifs += !typeArgument !parameterPassingMode ;
-    @typeExpression e := [@typeVarInExpression new !nomCppArgument] ;
+    @typeExpression e := [@typeVarInExpression new !nomCppArgument !structAttributeList] ;
     outExpressionList += !e ;
-      if [exclusiveVariables hasKey ![nomArgument string]] then
-        error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
-      else
-         exclusiveVariables += ![nomArgument string] ;
-      end if ;
+    if [exclusiveVariables hasKey ![nomArgument string]] then
+      error nomArgument: "this object is already named as input or output/input effectif argument of current instruction" ;
+    else
+      exclusiveVariables += ![nomArgument string] ;
+    end if ;
   end repeat ;
 end rule ;
 
@@ -3099,8 +3115,8 @@ end rule ;
 #    M O D I F I E R    C A L L   I N S T R U C T I O N                     *
 #               [!?object modifier !... !?... ?...] ;                       *
 #                                                                           *
-#    C O N S T R U C T O R   C A L L    I N S T R U C T I O N               *
-#               [@aType type_method_name !... !... !...] ;                  *
+#    T Y P E    M E T H O D    I N S T R U C T I O N                        *
+#               [@aType type_method_name !... !?... ?...] ;                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -3199,7 +3215,7 @@ rule <semantic_instruction>
     ;
   #--- Generate instruction
     instruction := [@typeModifierCallInstruction new !cppVariableName !structAttributeList !modifierName !expressionsList] ;
-  or #--------- CONSTRUCTOR
+  or #--------- TYPE METHOD
     @lstring typeName ;
     $type_name$ ? typeName ;
     @lstring typeMethodName ;

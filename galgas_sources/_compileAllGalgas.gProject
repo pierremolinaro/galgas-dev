@@ -50,10 +50,10 @@ compile "instructionMetamodel.gSemantics" ;
 compile "semanticInstructionListModelBuilder.gSyntax" ;
 
 #--- Semantics Component
-compile "semanticsSemantics.gSemantics" ;
 compile "semanticsMetamodel.gSemantics" ;
 compile "semanticsModelBuilder.gSyntax" ;
 compile "semanticsSLRgrammar.gGrammar" ;
+compile "semanticsSemantics.gSemantics" ;
 compile "semanticsCompilation.gSemantics" ;
 
 #--- Syntax Component

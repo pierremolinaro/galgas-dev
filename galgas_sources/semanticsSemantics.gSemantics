@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -17,7 +17,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsSemantics :
-import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import "parameterArgumentMetamodel.gSemantics" ;
+import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -220,12 +221,6 @@ abstract class @ACGalgasType {
   method checkNoCircularity ??@uint unused inTypeCount :
   end method ;
 
-  method enterInSortedList
-    ?!@sortedTypeList unused ioSortedTypeList
-    ??@typeMap unused inTypeMap
-  :
-  end method ;
-
   method generatePredeclarationInHeader
     ?!@string unused ioGeneratedUserZone3
   :
@@ -298,18 +293,6 @@ list @signature {
   @typeMapIndex mAttributeTypeIndex ;
   @lstring mFormalArgumentName ;
   @formalArgumentPassingMode mFormalArgumentPassingMode ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  R O U T I N E   M A P                                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @routineMap {
-  @signature mRoutineSignature ;
-  insert insertKey error message "the '@%K' routine has been already declared in %L" ;
-  search searchKey error message "the '@%K' routine is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -575,6 +558,17 @@ class @listGalgasType extends @ACGalgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    S T R U C T    T Y P E                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @structGalgasType extends @ACGalgasType {
+  @lstring mStructTypeName ;
+  @attributeList mAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    S O R T E D    L I S T    T Y P E                                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -593,19 +587,6 @@ class @sortedlistGalgasType extends @ACGalgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M A P    I N D E X    T Y P E                                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @mapindexType extends @ACGalgasType {
-  @lstring mMapIndexName ;
-  @typeMapIndex mMapTypeIndex ;
-  @lstring mSearchMethodName ;
-  @lstring mSearchMethodErrorMessage ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    M A P   T Y P E                                                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -617,19 +598,71 @@ class @mapType extends @ACGalgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    M A P    I N D E X    T Y P E                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @mapindexType extends @ACGalgasType {
+  @lstring mMapIndexTypeName ;
+  @typeMapIndex mIndexOfMapType ;
+  @lstring mSearchMethodName ;
+
+  override
+  method checkNoCircularity ??@uint unused inTypeCount :
+    @lstring mapTypeName ;
+    @ACGalgasType t ;
+    [mIndexOfMapType searchKey ?mapTypeName ?t] ;
+  #--- Check map type is actually a map
+    cast t :
+    when >= @mapType do
+    else
+      error mapTypeName: "tis mapindex type refers to @"
+        . mapTypeName . " as a map, but @" . mapTypeName . " is not a map"
+      ;
+    end cast ;
+  end method ;
+
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    E N U M    T Y P E                                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @enumType extends @ACGalgasType {
-  @lstring mEnumTypeName ;
-  @lstringlist mConstantList ;
+map @enumConstructorMap {
+  insert insertKey error message "the '@%K' constant has been already declared in %L" ;
+  search searchKey error message "the '@%K' constant is not declared, or is not declared as constructor" ;
 }
 
 #---------------------------------------------------------------------------*
 
+class @enumType extends @ACGalgasType {
+  @lstring mEnumTypeName ;
+  @enumConstructorMap mEnumConstructorMap ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R O U T I N E   M A P                                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @routineMap {
+  @signature mRoutineSignature ;
+  insert insertKey error message "the '@%K' routine has been already declared in %L" ;
+  search searchKey error message "the '@%K' routine is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C    C O N T E X T                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
 struct @semanticContext {
   @typeMap mTypeMap ;
+  @routineMap mRoutineMap ;
 }
 
 #---------------------------------------------------------------------------*
