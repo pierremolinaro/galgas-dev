@@ -435,5 +435,32 @@ list @abstractCategoryMethodList {
 listmap @abstractCategoryMethodMap (@abstractCategoryMethodList) ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    M E T H O D    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @categoryMethodList {
+  @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+  @semanticInstructionList mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @categoryMethodMap (@categoryMethodList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           S E M A N T I C   D E C L A R A T I O N S                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+struct @semanticDeclarationStruct {
+  @semanticDeclarationList mSemanticDeclarationList ;
+  @abstractCategoryMethodMap mAbstractCategoryMethodMap ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

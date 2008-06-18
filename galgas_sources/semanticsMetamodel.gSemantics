@@ -304,8 +304,7 @@ class @categoryMethodDeclaration extends @semanticDeclaration {
 class @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
   @lstringlist mImportedComponentFileNameList ;
-  @semanticDeclarationList mSemanticDeclarationList ;
-  @abstractCategoryMethodMap mAbstractCategoryMethodMap ;
+  @semanticDeclarationStruct mSemanticDeclarations ;
   @location mEndOfSourceFile ;
 }
 

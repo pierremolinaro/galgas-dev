@@ -40,7 +40,7 @@ class @programComponentRoot {
   @semanticInstructionList mPrologueInstructionList ;
   @semanticInstructionList mEpilogueInstructionList ;
   @programRuleList mProgramRules ;
-  @semanticDeclarationList mSemanticDeclarations ;
+  @semanticDeclarationStruct mSemanticDeclarations ;
 }
 
 #---------------------------------------------------------------------------*

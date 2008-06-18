@@ -47,8 +47,7 @@ nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList
 nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
 
 nonterminal <semantic_declaration>
- ?!@semanticDeclarationList ioSemanticDeclarationList
- ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
 ;
 
 nonterminal <actual_input_parameter_list>
@@ -87,15 +86,17 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
 #--- Loop on declarations
   @nonterminalDeclarationList mNonterminalDeclarationList [emptyList] ;
   @syntaxRuleList mRuleList [emptyList] ;
-  @semanticDeclarationList mSemanticDeclarationList [emptyList] ;
-  @abstractCategoryMethodMap abstractCategoryMethodMap [emptyMap] ;
+  @semanticDeclarationStruct mSemanticDeclarations [new
+    ![@semanticDeclarationList emptyList]
+    ![@abstractCategoryMethodMap emptyMap]
+  ] ;
   repeat
   while
     <nonterminal_declaration> !? mNonterminalDeclarationList ;
   while
     <syntax_rule_declaration> !? mRuleList ;
   while
-    <semantic_declaration> !?mSemanticDeclarationList !?abstractCategoryMethodMap ;
+    <semantic_declaration> !?mSemanticDeclarations ;
   end repeat ;
 #--- end
   $end$ ;
@@ -105,7 +106,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
     !mSyntaxComponentName
     !mNonterminalDeclarationList
     !mRuleList
-    !mSemanticDeclarationList
+    !mSemanticDeclarations
   ] ;
 end rule ;
 
