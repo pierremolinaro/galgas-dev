@@ -322,6 +322,7 @@ generate_header_file (C_Compiler & inLexique,
                     "#include \"galgas/AC_galgas_domain.h\"\n"
                     "#include \"galgas/AC_galgas_mapindex.h\"\n"
                     "#include \"galgas/AC_galgas_map.h\"\n"
+                    "#include \"galgas/AC_galgas_listmap.h\"\n"
                     "#include \"galgas/AC_galgas_list.h\"\n"
                     "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -685,6 +686,34 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgas_enum::
+generateAttributeInitialization (const GGS_lstring & /* inName */,
+                                 AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapType::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_" << mListmapTypeName ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapType::
+generateAttributeDeclaration (const GGS_lstring & /* inName */,
+                              AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapType::
 generateAttributeInitialization (const GGS_lstring & /* inName */,
                                  AC_OutputStream & /* inCppFile */) const {
 }

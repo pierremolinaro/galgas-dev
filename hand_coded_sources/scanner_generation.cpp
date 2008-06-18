@@ -1164,6 +1164,13 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeGalgasListmapType::
+generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
+                                  AC_OutputStream & /* inCppFile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Files Generation
 #endif

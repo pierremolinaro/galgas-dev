@@ -23,29 +23,6 @@ import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSema
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-
-class @semanticsComponentRoot {
-  @lstring mSemanticsComponentName ;
-  @lstringlist mImportedComponentFileNameList ;
-  @semanticDeclarationList mSemanticDeclarationList ;
-  @location mEndOfSourceFile ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @parsedSemanticsComponentMap {
-  @semanticsComponentRoot mRoot ;
-  insert insertKey error message "the '%K' semantics component has already been parsed" ;
-  search searchKey error message "the '%K' semantics component symbol is not parsed" ;
-}
-
-#---------------------------------------------------------------------------*
-
-struct @parsedComponentStruct {
-  @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
-}
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    Common Rules                                                           *
 #                                                                           *
@@ -320,6 +297,30 @@ class @categoryMethodDeclaration extends @semanticDeclaration {
   @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;
   @semanticInstructionList mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @semanticsComponentRoot {
+  @lstring mSemanticsComponentName ;
+  @lstringlist mImportedComponentFileNameList ;
+  @semanticDeclarationList mSemanticDeclarationList ;
+  @abstractCategoryMethodMap mAbstractCategoryMethodMap ;
+  @location mEndOfSourceFile ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedSemanticsComponentMap {
+  @semanticsComponentRoot mRoot ;
+  insert insertKey error message "the '%K' semantics component has already been parsed" ;
+  search searchKey error message "the '%K' semantics component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @parsedComponentStruct {
+  @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
 }
 
 #---------------------------------------------------------------------------*

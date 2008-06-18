@@ -46,7 +46,10 @@ nonterminal <formal_parameter_list> !@formalParameterList outFormalParameterList
 
 nonterminal <actual_parameter_list> !@actualParameterList outActualParameterList ;
 
-nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
+nonterminal <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+;
 
 nonterminal <actual_input_parameter_list>
   !@actualInputParameterList outActualInputParameterList
@@ -85,15 +88,14 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
   @nonterminalDeclarationList mNonterminalDeclarationList [emptyList] ;
   @syntaxRuleList mRuleList [emptyList] ;
   @semanticDeclarationList mSemanticDeclarationList [emptyList] ;
+  @abstractCategoryMethodMap abstractCategoryMethodMap [emptyMap] ;
   repeat
   while
     <nonterminal_declaration> !? mNonterminalDeclarationList ;
   while
     <syntax_rule_declaration> !? mRuleList ;
   while
-    @semanticDeclaration semanticDeclaration ;
-    <semantic_declaration> ? semanticDeclaration ;
-    mSemanticDeclarationList += !semanticDeclaration ;
+    <semantic_declaration> !?mSemanticDeclarationList !?abstractCategoryMethodMap ;
   end repeat ;
 #--- end
   $end$ ;

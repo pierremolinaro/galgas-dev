@@ -25,6 +25,186 @@
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Map List Implementation
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapToImplement::
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         C_Compiler & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapToImplement::
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << mListmapTypeName << " ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapToImplement::
+generateHdeclarations (AC_OutputStream & inHfile) const {
+  inHfile.writeCppTitleComment (C_String ("Map list '@") + mListmapTypeName + "'") ;
+
+  inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_maplist {\n"
+             "//--- 'emptyMap' constructor\n"
+             "  public : static GGS_" << mListmapTypeName << "\n"
+             "  constructor_emptyMap (C_Compiler & inLexique\n"
+             "                    COMMA_LOCATION_ARGS) ;\n\n"
+             "//--- 'description' reader declaration\n"
+             "  public : GGS_string\n"
+             "  reader_description (C_Compiler & _inLexique\n"
+             "                      COMMA_LOCATION_ARGS,\n"
+             "                      const sint32 inIndentation = 0) const ;\n\n"
+             "//--- Handle '+=' operator\n"
+             "  public : void\n"
+             "  _addAssign_operation (const GGS_string & inKey" ;
+  GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mAttributesList.firstObject () ;
+  sint32 attributeIndex = 0 ;
+  while (currentAttribute != NULL) {
+    macroValidPointer (currentAttribute) ;
+    inHfile << ",\n"
+               "                        const " ;
+    currentAttribute->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "inAttribute" << attributeIndex ;
+    attributeIndex ++ ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  inHfile <<  ") ;\n\n" ;
+//--- Reader list for key
+  inHfile << "//--- Reader 'listForKey'\n"
+             "  public : GGS_" << mListTypename << "\n"
+             "  reader_listForKey (C_Compiler & inLexique,\n"
+             "                     const GGS_string & inKey\n"
+             "                     COMMA_LOCATION_ARGS) const ;\n\n" ;
+//--- End of class declaration
+  inHfile <<  "} ;\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeGalgasListmapToImplement::isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapToImplement::
+generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
+                             const C_String & /* inTargetFileName*/,
+                             sint32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgasListmapToImplement::
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & inCppFile,
+                                const C_String & /* inTargetFileName */,
+                                sint32 & /* ioPrototypeIndex */,
+                                const bool /* inGenerateDebug */) const {
+  inCppFile.writeCppTitleComment (C_String ("list map '@") + mListmapTypeName + "'") ;
+  inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
+               "constructor_emptyMap (C_Compiler & /* inLexique */\n"
+               "                  COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  GGS_" << mListmapTypeName << " result ;\n"
+               "  macroMyNew (result.mSharedMapObject, cRoot) ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_string GGS_" << mListmapTypeName << "::\n"
+               "reader_description (C_Compiler & /* inLexique */\n"
+               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
+               "                    const sint32 /* inIndentation */) const {\n"
+               "  C_String s ;\n"
+               "  s << \"<list @" << mListmapTypeName << "\" ;\n"
+               "  s << \">\" ;\n"
+               "  return GGS_string (true, s) ;\n"
+               "}\n\n" ;
+
+
+//--- Handle '+=' operator
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "void GGS_" << mListmapTypeName << "::\n"
+               "_addAssign_operation (const GGS_string & inKey" ;
+  GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mAttributesList.firstObject () ;
+  sint32 attributeIndex = 0 ;
+  while (currentAttribute != NULL) {
+    macroValidPointer (currentAttribute) ;
+    inCppFile << ",\n"
+                 "                      const " ;
+    currentAttribute->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "inAttribute" << attributeIndex ;
+    attributeIndex ++ ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  inCppFile << ") {\n"
+               "  if (_isBuilt () && inKey._isBuilt ()" ;
+  currentAttribute = mAttributesList.firstObject () ;
+  attributeIndex = 0 ;
+  while (currentAttribute != NULL) {
+    macroValidPointer (currentAttribute) ;
+    inCppFile << " && inAttribute" << attributeIndex << "._isBuilt ()" ;
+    attributeIndex ++ ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  inCppFile << ") {\n"
+               "    insulateSharedStringSet () ;\n"
+               "    destroyDirectAndLinearAccess () ;\n"
+               "    bool extension ; // unused\n"
+               "    cElement * node = internalSearchOrAdd (inKey, mSharedMapObject->_mRoot, extension) ;\n"
+               "    if (node->mListRoot == NULL) {\n"
+               "      macroMyNew (node->mListRoot, GGS_" << mListTypename << " (true)) ;\n"
+               "    }\n"
+               "    GGS_" << mListTypename << " * listPtr = (GGS_" << mListTypename << " *) node->mListRoot ;\n"
+               "    listPtr->_addAssign_operation (" ;
+  currentAttribute = mAttributesList.firstObject () ;
+  attributeIndex = 0 ;
+  while (currentAttribute != NULL) {
+    macroValidPointer (currentAttribute) ;
+    if (attributeIndex > 0) {
+      inCppFile << ", " ;
+    }
+    inCppFile << "inAttribute" << attributeIndex ;
+    attributeIndex ++ ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  inCppFile << ") ;\n"
+               "  }\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "//--- Reader 'listForKey'\n"
+               "GGS_" << mListTypename << " GGS_" << mListmapTypeName << "::\n"
+               "reader_listForKey (C_Compiler & inLexique,\n"
+               "                   const GGS_string & inKey\n"
+               "                   COMMA_LOCATION_ARGS) const {\n"
+               "  GGS_" << mListTypename << " result ;\n"
+               "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+               "    cElement * node = nodeForKey (inKey.string ()) ; \n"
+               "    if (node == NULL) {\n"
+               "      result = GGS_" << mListTypename << "::constructor_emptyList (inLexique COMMA_THERE) ;\n"
+               "    }else{\n"
+               "      result = * ((GGS_" << mListTypename << " *) node->mListRoot) ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Map Index Implementation
 #endif
 

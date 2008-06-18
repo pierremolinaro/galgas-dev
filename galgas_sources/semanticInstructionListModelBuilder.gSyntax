@@ -41,7 +41,10 @@ nonterminal <semantic_instruction> !@semanticInstruction outInstruction ;
 
 nonterminal <output_expression_list> !@outExpressionList outExpressionList ;
 
-nonterminal <semantic_declaration> !@semanticDeclaration outSemanticDeclaration ;
+nonterminal <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -65,7 +68,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $routine$ ;
   $identifier$ ? @lstring mRoutineName ;
   @formalParameterList mFormalParameterList ;
@@ -76,7 +82,7 @@ rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
   $end$ ;
   $routine$ ;
   $;$ ;
-  outSemanticDeclaration := [@routineDeclaration new
+  ioSemanticDeclarationList += ![@routineDeclaration new
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -89,14 +95,17 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration> !@semanticDeclaration outSemanticDeclaration :
+rule <semantic_declaration>
+ ?!@semanticDeclarationList ioSemanticDeclarationList
+ ?!@abstractCategoryMethodMap unused ioAbstractCategoryMethodMap
+:
   $extern$ ;
   $routine$ ;
   $identifier$ ? @lstring mActionName ;
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  outSemanticDeclaration := [@externRoutineDeclaration new
+  ioSemanticDeclarationList += ![@externRoutineDeclaration new
     !mActionName
     !mFormalParameterList
   ] ;

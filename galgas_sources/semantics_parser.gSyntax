@@ -1281,7 +1281,7 @@ rule <parent_class>
       [(cast entite if >= @typeEntiteType else error outSuperClassName) aDefType] ;
   @typeGalgasClassType classType := (cast typeUtilisateur if >= @typeGalgasClassType else error outSuperClassName) ;
   tableDesMethodes := [classType mMethodMap] ;
-  listeTousAttributsSemantiques := [classType mNonExternAttributesList] ;
+  listeTousAttributsSemantiques := [classType mAttributeList] ;
   tableDesClassesAncetres := [classType mAncestorClassesMap] ;
   tableMessagesAbstraits := [classType mMessagesMap] ;
   tableAttributs := [classType mNonExternAttributesMap] ;
@@ -1311,7 +1311,7 @@ label importSemantics
       [(cast entite if >= @typeEntiteType else error superClassName) aDefType] ;
   @typeGalgasClassType classType := (cast typeUtilisateur if >= @typeGalgasClassType else error superClassName) ;
   tableDesMethodes := [classType mMethodMap] ;
-  listeTousAttributsSemantiques := [classType mNonExternAttributesList] ;
+  listeTousAttributsSemantiques := [classType mAttributeList] ;
   tableDesClassesAncetres := [classType mAncestorClassesMap] ;
   tableMessagesAbstraits := [classType mMessagesMap] ;
   tableAttributs := [classType mNonExternAttributesMap] ;
@@ -2423,7 +2423,7 @@ rule <instruction_beginning_with_identifier>
     structAttributeList += !structAttributeName ;
     @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
     @bool found := false ;
-    foreach [structType mAttributesList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
+    foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
       found := [kAttributeName string] == [structAttributeName string] ;
       targetType := kAttributType ;
     end foreach ;
@@ -2726,7 +2726,7 @@ rule <parse_parameters_list>
       $identifier$ ? @lstring structAttributeName ;
       @typeGalgasStructType structType := (cast typeArgument if >= @typeGalgasStructType else error structAttributeName) ;
       @bool found := false ;
-      foreach [structType mAttributesList] while not found do
+      foreach [structType mAttributeList] while not found do
         found := [aNomAttribut string] == [structAttributeName string] ;
         typeArgument := mAttributType ;
       end foreach ;
@@ -2835,7 +2835,7 @@ rule <extract_instruction>
   [ioComponentSemanticsEntitiesMap searchKey !nomClasse ?entite] ;
   @AC_galgasType leType := [(cast entite if >= @typeEntiteType else error nomClasse) aDefType] ;
   @typeGalgasClassType classType := (cast leType if >= @typeGalgasClassType else error nomClasse) ;
-  @typeListeAttributsSemantiques listeAttributsSemantiques := [classType mNonExternAttributesList] ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques := [classType mAttributeList] ;
   @typeSuperClassesMap tableDesClassesAncetres := [classType mAncestorClassesMap] ;
 #--- Verify class is an heir of variable type
   if not [tableDesClassesAncetres hasKey ![nomTypeSource string]] then
@@ -2912,7 +2912,7 @@ rule <extract_instruction>
         @AC_galgasType definitionClasse1 := [(cast entite if >= @typeEntiteType else error nomType1) aDefType] ;
       #--- Verifier que la classe 'nomType1' herite de la classe 'nomTypeBase1'
         @typeGalgasClassType classType1 := (cast definitionClasse1 if >= @typeGalgasClassType else error nomType1) ;
-        @typeListeAttributsSemantiques listeAttributs1 := [classType1 mNonExternAttributesList] ;
+        @typeListeAttributsSemantiques listeAttributs1 := [classType1 mAttributeList] ;
         @typeSuperClassesMap tableDesClassesAncetresType1 := [classType1 mAncestorClassesMap] ;
       #--- Verify class is an heir of variable type
         if not [tableDesClassesAncetresType1 hasKey ![nomTypeSource string]] then
@@ -3348,7 +3348,7 @@ rule <semantic_instruction>
       structAttributeList += !structAttributeName ;
       @typeGalgasStructType structType := (cast variableType if >= @typeGalgasStructType else error structAttributeName) ;
       @bool found := false ;
-      foreach [structType mAttributesList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
+      foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
         found := [kAttributeName string] == [structAttributeName string] ;
         variableType := kAttributType ;
       end foreach ;
@@ -4370,7 +4370,7 @@ rule <parse_match_case>
 #--- Verifier que la classe 'outTypeName' herite de la classe 'baseTypeName1'
   @typeGalgasClassType classType := (cast definitionClasse1 if >= @typeGalgasClassType else error outTypeName) ;
   @typeSuperClassesMap tableDesClassesAncetresType1 := [classType mAncestorClassesMap] ;
-  @typeListeAttributsSemantiques listeAttributs1 := [classType mNonExternAttributesList] ;
+  @typeListeAttributsSemantiques listeAttributs1 := [classType mAttributeList] ;
   @bool isAbstract := [classType mClassIsAbstract] ;
 #--- Check class is not abstract
   if isAbstract then
@@ -4680,7 +4680,7 @@ rule <semantics_declaration>
     [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ? theEntity] ;
     @AC_galgasType aType := [(cast theEntity if >= @typeEntiteType else error mapTypeName) aDefType] ;
     @typeGalgasMapType mapType := (cast aType if >= @typeGalgasMapType else error mapTypeName) ;
-    @typeListeAttributsSemantiques mapAttributesList := [mapType mNonExternAttributesList] ;
+    @typeListeAttributsSemantiques mapAttributesList := [mapType mAttributeList] ;
     @typeTableBlocsDeTable tableMethodesSurcharger := [mapType aTableMethodesSurcharger] ;
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
     @mapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
@@ -4746,7 +4746,7 @@ label importSemantics
     [ioComponentSemanticsEntitiesMap searchKey !mapTypeName ? theEntity] ;
     @AC_galgasType aType := [(cast theEntity if >= @typeEntiteType else error mapTypeName) aDefType] ;
     @typeGalgasMapType mapType := (cast aType if >= @typeGalgasMapType else error mapTypeName) ;
-    @typeListeAttributsSemantiques mapAttributesList := [mapType mNonExternAttributesList] ;
+    @typeListeAttributsSemantiques mapAttributesList := [mapType mAttributeList] ;
     @typeTableBlocsDeTable tableMethodesSurcharger := [mapType aTableMethodesSurcharger] ;
     @mapModifierMap modifierMethodMap := [mapType mModifierMethodMap] ;
     @mapMethodMap readerMethodMap := [mapType mReaderMethodMap] ;
@@ -5577,7 +5577,7 @@ rule <semantics_declaration>
     baseClassName := [className string] ;
   end if ;
 #---- Add attributes as used local constants -------------------
-  foreach [classType mNonExternAttributesList] do
+  foreach [classType mAttributeList] do
     @typeCplusPlusName cppName := [@typeOperandName new
       ![methodName location] # Magic Number
       ![aNomAttribut string]
@@ -5949,6 +5949,76 @@ rule <attributes_definition_list>
     outAttributeListModel += !typeName ;
     $;$ ;
   end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     L I S T M A P   T Y P E   D E C L A R A T I O N                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $listmap$ ;
+  $type_name$ ?@lstring listmapTypeName ;
+  $($ ;
+  $type_name$ ? @lstring listTypeName ;
+  $)$ ;
+  $;$ ;
+#--- Search for list type
+  @AC_semanticsEntity entite ;
+  [ioComponentSemanticsEntitiesMap searchKey !listTypeName ?entite] ;
+  @AC_galgasType type := [(cast entite if >= @typeEntiteType else error listTypeName) aDefType] ;
+  @typeGalgasListType listType := (cast type if >= @typeGalgasListType else error listTypeName) ;
+#--- Construction de l'attribut semantique
+  @AC_galgasType c := [@typeGalgasListmapType new
+    !listmapTypeName
+    !listTypeName
+    !listType
+    ![listType mAttributeList]
+  ] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !listmapTypeName ![@typeEntiteType new !c]] ;
+  @typeEntityToGenerate def := [@typeGalgasListmapToImplement new
+    !listmapTypeName
+    !listTypeName
+    ![listType mAttributeList]
+  ] ;
+  listeEntitesAengendrer += !def ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant unused tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $listmap$ ;
+  $type_name$ ?@lstring listmapTypeName ;
+  $($ ;
+  $type_name$ ? @lstring listTypeName ;
+  $)$ ;
+  $;$ ;
+#--- Search for list type
+  @AC_semanticsEntity entite ;
+  [ioComponentSemanticsEntitiesMap searchKey !listTypeName ?entite] ;
+  @AC_galgasType type := [(cast entite if >= @typeEntiteType else error listTypeName) aDefType] ;
+  @typeGalgasListType listType := (cast type if >= @typeGalgasListType else error listTypeName) ;
+#--- Construction de l'attribut semantique
+  @AC_galgasType c := [@typeGalgasListmapType new
+    !listmapTypeName
+    !listTypeName
+    !listType
+    ![listType mAttributeList]
+  ] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey !listmapTypeName ![@typeEntiteType new !c]] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

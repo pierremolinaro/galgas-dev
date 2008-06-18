@@ -164,7 +164,6 @@
 		CF158BD80DFD65E3005BF0E0 /* include_strictLowerExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */; };
 		CF158BD90DFD65E3005BF0E0 /* include_subExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B780DFD65E2005BF0E0 /* include_subExpression.h */; };
 		CF158BDA0DFD65E3005BF0E0 /* include_syntaxInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */; };
-		CF158BDB0DFD65E3005BF0E0 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */; };
 		CF158BDC0DFD65E3005BF0E0 /* include_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */; };
 		CF158BDD0DFD65E3005BF0E0 /* include_typeMethodInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */; };
 		CF158BDE0DFD65E3005BF0E0 /* include_unaryMinusExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */; };
@@ -261,7 +260,6 @@
 		CF158C390DFD65E3005BF0E0 /* include_strictLowerExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */; };
 		CF158C3A0DFD65E3005BF0E0 /* include_subExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B780DFD65E2005BF0E0 /* include_subExpression.h */; };
 		CF158C3B0DFD65E3005BF0E0 /* include_syntaxInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */; };
-		CF158C3C0DFD65E3005BF0E0 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */; };
 		CF158C3D0DFD65E3005BF0E0 /* include_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */; };
 		CF158C3E0DFD65E3005BF0E0 /* include_typeMethodInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */; };
 		CF158C3F0DFD65E3005BF0E0 /* include_unaryMinusExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */; };
@@ -358,7 +356,6 @@
 		CF158C9A0DFD65E4005BF0E0 /* include_strictLowerExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */; };
 		CF158C9B0DFD65E4005BF0E0 /* include_subExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B780DFD65E2005BF0E0 /* include_subExpression.h */; };
 		CF158C9C0DFD65E4005BF0E0 /* include_syntaxInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */; };
-		CF158C9D0DFD65E4005BF0E0 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */; };
 		CF158C9E0DFD65E4005BF0E0 /* include_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */; };
 		CF158C9F0DFD65E4005BF0E0 /* include_typeMethodInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */; };
 		CF158CA00DFD65E4005BF0E0 /* include_unaryMinusExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */; };
@@ -455,7 +452,6 @@
 		CF158CFB0DFD65E4005BF0E0 /* include_strictLowerExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */; };
 		CF158CFC0DFD65E4005BF0E0 /* include_subExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B780DFD65E2005BF0E0 /* include_subExpression.h */; };
 		CF158CFD0DFD65E4005BF0E0 /* include_syntaxInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */; };
-		CF158CFE0DFD65E4005BF0E0 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */; };
 		CF158CFF0DFD65E4005BF0E0 /* include_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */; };
 		CF158D000DFD65E4005BF0E0 /* include_typeMethodInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */; };
 		CF158D010DFD65E4005BF0E0 /* include_unaryMinusExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */; };
@@ -552,7 +548,6 @@
 		CF158D5C0DFD65E5005BF0E0 /* include_strictLowerExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */; };
 		CF158D5D0DFD65E5005BF0E0 /* include_subExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B780DFD65E2005BF0E0 /* include_subExpression.h */; };
 		CF158D5E0DFD65E5005BF0E0 /* include_syntaxInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */; };
-		CF158D5F0DFD65E5005BF0E0 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */; };
 		CF158D600DFD65E5005BF0E0 /* include_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */; };
 		CF158D610DFD65E5005BF0E0 /* include_typeMethodInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */; };
 		CF158D620DFD65E5005BF0E0 /* include_unaryMinusExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */; };
@@ -649,7 +644,6 @@
 		CF158DBD0DFD65E5005BF0E0 /* include_strictLowerExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */; };
 		CF158DBE0DFD65E5005BF0E0 /* include_subExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B780DFD65E2005BF0E0 /* include_subExpression.h */; };
 		CF158DBF0DFD65E5005BF0E0 /* include_syntaxInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */; };
-		CF158DC00DFD65E5005BF0E0 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */; };
 		CF158DC10DFD65E5005BF0E0 /* include_trueExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */; };
 		CF158DC20DFD65E5005BF0E0 /* include_typeMethodInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */; };
 		CF158DC30DFD65E5005BF0E0 /* include_unaryMinusExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */; };
@@ -676,6 +670,42 @@
 		CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF21A5100BAEEB4700C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CF27C88B0B6FB42D008C1B22 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
+		CF2945010E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */; };
+		CF2945030E0972A400511E49 /* include_structGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FD0E0972A400511E49 /* include_structGalgasType.h */; };
+		CF2945040E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */; };
+		CF2945050E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */; };
+		CF2945070E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */; };
+		CF2945090E0972A400511E49 /* include_structGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FD0E0972A400511E49 /* include_structGalgasType.h */; };
+		CF29450A0E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */; };
+		CF29450B0E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */; };
+		CF29450D0E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */; };
+		CF29450F0E0972A400511E49 /* include_structGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FD0E0972A400511E49 /* include_structGalgasType.h */; };
+		CF2945100E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */; };
+		CF2945110E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */; };
+		CF2945130E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */; };
+		CF2945150E0972A400511E49 /* include_structGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FD0E0972A400511E49 /* include_structGalgasType.h */; };
+		CF2945160E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */; };
+		CF2945170E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */; };
+		CF2945190E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */; };
+		CF29451B0E0972A400511E49 /* include_structGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FD0E0972A400511E49 /* include_structGalgasType.h */; };
+		CF29451C0E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */; };
+		CF29451D0E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */; };
+		CF29451F0E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */; };
+		CF2945210E0972A400511E49 /* include_structGalgasType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FD0E0972A400511E49 /* include_structGalgasType.h */; };
+		CF2945220E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */; };
+		CF2945230E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */; };
+		CF2945850E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
+		CF2945860E09805600511E49 /* AC_galgas_listmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2945840E09805600511E49 /* AC_galgas_listmap.h */; };
+		CF2945870E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
+		CF2945880E09805600511E49 /* AC_galgas_listmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2945840E09805600511E49 /* AC_galgas_listmap.h */; };
+		CF2945890E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
+		CF29458A0E09805600511E49 /* AC_galgas_listmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2945840E09805600511E49 /* AC_galgas_listmap.h */; };
+		CF29458B0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
+		CF29458C0E09805600511E49 /* AC_galgas_listmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2945840E09805600511E49 /* AC_galgas_listmap.h */; };
+		CF29458D0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
+		CF29458E0E09805600511E49 /* AC_galgas_listmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2945840E09805600511E49 /* AC_galgas_listmap.h */; };
+		CF29458F0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */; };
+		CF2945900E09805600511E49 /* AC_galgas_listmap.h in Headers */ = {isa = PBXBuildFile; fileRef = CF2945840E09805600511E49 /* AC_galgas_listmap.h */; };
 		CF2A87B9058CCE6B003EF2F4 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF2A87BA058CCE6E003EF2F4 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF2A87BD058CCE82003EF2F4 /* galgas_LL1_prgm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380D057A53D600854C83 /* galgas_LL1_prgm.cpp */; };
@@ -3248,7 +3278,6 @@
 		CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_strictLowerExpression.h; sourceTree = "<group>"; };
 		CF158B780DFD65E2005BF0E0 /* include_subExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_subExpression.h; sourceTree = "<group>"; };
 		CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_syntaxInstruction.h; sourceTree = "<group>"; };
-		CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_treewalkingInstruction.h; sourceTree = "<group>"; };
 		CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_trueExpression.h; sourceTree = "<group>"; };
 		CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMethodInstruction.h; sourceTree = "<group>"; };
 		CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_unaryMinusExpression.h; sourceTree = "<group>"; };
@@ -3261,6 +3290,12 @@
 		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF1EF69B0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF1EF69C0AD15D840091DDE8 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
+		CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodDeclaration.h; sourceTree = "<group>"; };
+		CF2944FD0E0972A400511E49 /* include_structGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_structGalgasType.h; sourceTree = "<group>"; };
+		CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapToImplement.h; sourceTree = "<group>"; };
+		CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapType.h; sourceTree = "<group>"; };
+		CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_listmap.cpp; sourceTree = "<group>"; };
+		CF2945840E09805600511E49 /* AC_galgas_listmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_listmap.h; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF31B5480DFE88DF001C97A7 /* include_blockInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_blockInstruction.h; sourceTree = "<group>"; };
@@ -4170,6 +4205,10 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */,
+				CF2944FD0E0972A400511E49 /* include_structGalgasType.h */,
+				CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */,
+				CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */,
 				CF3F51D50DFF16EC00F008D2 /* include_categoryMethodToImplement.h */,
 				CF3F51D60DFF16EC00F008D2 /* include_structDeclaration.h */,
 				CF31B5480DFE88DF001C97A7 /* include_blockInstruction.h */,
@@ -4269,7 +4308,6 @@
 				CF158B770DFD65E2005BF0E0 /* include_strictLowerExpression.h */,
 				CF158B780DFD65E2005BF0E0 /* include_subExpression.h */,
 				CF158B790DFD65E2005BF0E0 /* include_syntaxInstruction.h */,
-				CF158B7A0DFD65E2005BF0E0 /* include_treewalkingInstruction.h */,
 				CF158B7B0DFD65E2005BF0E0 /* include_trueExpression.h */,
 				CF158B7C0DFD65E2005BF0E0 /* include_typeMethodInstruction.h */,
 				CF158B7D0DFD65E2005BF0E0 /* include_unaryMinusExpression.h */,
@@ -5029,6 +5067,8 @@
 		CFF53871057A555E00854C83 /* galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */,
+				CF2945840E09805600511E49 /* AC_galgas_listmap.h */,
 				CFBD0DD20D78AC580031CA4B /* GGS_filewrapper.cpp */,
 				CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */,
 				CFA1415D060DB7CB00601791 /* AC_galgas_map.cpp */,
@@ -5460,7 +5500,6 @@
 				CF158BD80DFD65E3005BF0E0 /* include_strictLowerExpression.h in Headers */,
 				CF158BD90DFD65E3005BF0E0 /* include_subExpression.h in Headers */,
 				CF158BDA0DFD65E3005BF0E0 /* include_syntaxInstruction.h in Headers */,
-				CF158BDB0DFD65E3005BF0E0 /* include_treewalkingInstruction.h in Headers */,
 				CF158BDC0DFD65E3005BF0E0 /* include_trueExpression.h in Headers */,
 				CF158BDD0DFD65E3005BF0E0 /* include_typeMethodInstruction.h in Headers */,
 				CF158BDE0DFD65E3005BF0E0 /* include_unaryMinusExpression.h in Headers */,
@@ -5479,6 +5518,11 @@
 				CF3F51D70DFF16EC00F008D2 /* include_categoryMethodToImplement.h in Headers */,
 				CF3F51D80DFF16EC00F008D2 /* include_structDeclaration.h in Headers */,
 				CF4521A60E01576C00CAE9FC /* lexiqueCompilation.h in Headers */,
+				CF2945010E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */,
+				CF2945030E0972A400511E49 /* include_structGalgasType.h in Headers */,
+				CF2945040E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */,
+				CF2945050E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
+				CF2945860E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5810,7 +5854,6 @@
 				CF158C9A0DFD65E4005BF0E0 /* include_strictLowerExpression.h in Headers */,
 				CF158C9B0DFD65E4005BF0E0 /* include_subExpression.h in Headers */,
 				CF158C9C0DFD65E4005BF0E0 /* include_syntaxInstruction.h in Headers */,
-				CF158C9D0DFD65E4005BF0E0 /* include_treewalkingInstruction.h in Headers */,
 				CF158C9E0DFD65E4005BF0E0 /* include_trueExpression.h in Headers */,
 				CF158C9F0DFD65E4005BF0E0 /* include_typeMethodInstruction.h in Headers */,
 				CF158CA00DFD65E4005BF0E0 /* include_unaryMinusExpression.h in Headers */,
@@ -5845,6 +5888,11 @@
 				CF3F52010DFF187000F008D2 /* include_LocationModel.h in Headers */,
 				CF3F52020DFF187100F008D2 /* include_LSIntModel.h in Headers */,
 				CF4521AA0E01576C00CAE9FC /* lexiqueCompilation.h in Headers */,
+				CF29450D0E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */,
+				CF29450F0E0972A400511E49 /* include_structGalgasType.h in Headers */,
+				CF2945100E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */,
+				CF2945110E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
+				CF29458A0E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6175,7 +6223,6 @@
 				CF158CFB0DFD65E4005BF0E0 /* include_strictLowerExpression.h in Headers */,
 				CF158CFC0DFD65E4005BF0E0 /* include_subExpression.h in Headers */,
 				CF158CFD0DFD65E4005BF0E0 /* include_syntaxInstruction.h in Headers */,
-				CF158CFE0DFD65E4005BF0E0 /* include_treewalkingInstruction.h in Headers */,
 				CF158CFF0DFD65E4005BF0E0 /* include_trueExpression.h in Headers */,
 				CF158D000DFD65E4005BF0E0 /* include_typeMethodInstruction.h in Headers */,
 				CF158D010DFD65E4005BF0E0 /* include_unaryMinusExpression.h in Headers */,
@@ -6195,6 +6242,11 @@
 				CF3F51D90DFF16EC00F008D2 /* include_categoryMethodToImplement.h in Headers */,
 				CF3F51DA0DFF16EC00F008D2 /* include_structDeclaration.h in Headers */,
 				CF4521AC0E01576C00CAE9FC /* lexiqueCompilation.h in Headers */,
+				CF2945070E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */,
+				CF2945090E0972A400511E49 /* include_structGalgasType.h in Headers */,
+				CF29450A0E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */,
+				CF29450B0E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
+				CF2945880E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6500,7 +6552,6 @@
 				CF158C390DFD65E3005BF0E0 /* include_strictLowerExpression.h in Headers */,
 				CF158C3A0DFD65E3005BF0E0 /* include_subExpression.h in Headers */,
 				CF158C3B0DFD65E3005BF0E0 /* include_syntaxInstruction.h in Headers */,
-				CF158C3C0DFD65E3005BF0E0 /* include_treewalkingInstruction.h in Headers */,
 				CF158C3D0DFD65E3005BF0E0 /* include_trueExpression.h in Headers */,
 				CF158C3E0DFD65E3005BF0E0 /* include_typeMethodInstruction.h in Headers */,
 				CF158C3F0DFD65E3005BF0E0 /* include_unaryMinusExpression.h in Headers */,
@@ -6519,6 +6570,11 @@
 				CF3F51E10DFF16EC00F008D2 /* include_categoryMethodToImplement.h in Headers */,
 				CF3F51E20DFF16EC00F008D2 /* include_structDeclaration.h in Headers */,
 				CF4521A80E01576C00CAE9FC /* lexiqueCompilation.h in Headers */,
+				CF29451F0E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */,
+				CF2945210E0972A400511E49 /* include_structGalgasType.h in Headers */,
+				CF2945220E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */,
+				CF2945230E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
+				CF2945900E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6850,7 +6906,6 @@
 				CF158D5C0DFD65E5005BF0E0 /* include_strictLowerExpression.h in Headers */,
 				CF158D5D0DFD65E5005BF0E0 /* include_subExpression.h in Headers */,
 				CF158D5E0DFD65E5005BF0E0 /* include_syntaxInstruction.h in Headers */,
-				CF158D5F0DFD65E5005BF0E0 /* include_treewalkingInstruction.h in Headers */,
 				CF158D600DFD65E5005BF0E0 /* include_trueExpression.h in Headers */,
 				CF158D610DFD65E5005BF0E0 /* include_typeMethodInstruction.h in Headers */,
 				CF158D620DFD65E5005BF0E0 /* include_unaryMinusExpression.h in Headers */,
@@ -6873,6 +6928,11 @@
 				CF0900160E07A2CA00825C95 /* semantics_semantics.h in Headers */,
 				CF0900170E07A2CB00825C95 /* semantics_parser.h in Headers */,
 				CF0900180E07A2CC00825C95 /* expression_parser.h in Headers */,
+				CF2945190E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */,
+				CF29451B0E0972A400511E49 /* include_structGalgasType.h in Headers */,
+				CF29451C0E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */,
+				CF29451D0E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
+				CF29458E0E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7203,7 +7263,6 @@
 				CF158DBD0DFD65E5005BF0E0 /* include_strictLowerExpression.h in Headers */,
 				CF158DBE0DFD65E5005BF0E0 /* include_subExpression.h in Headers */,
 				CF158DBF0DFD65E5005BF0E0 /* include_syntaxInstruction.h in Headers */,
-				CF158DC00DFD65E5005BF0E0 /* include_treewalkingInstruction.h in Headers */,
 				CF158DC10DFD65E5005BF0E0 /* include_trueExpression.h in Headers */,
 				CF158DC20DFD65E5005BF0E0 /* include_typeMethodInstruction.h in Headers */,
 				CF158DC30DFD65E5005BF0E0 /* include_unaryMinusExpression.h in Headers */,
@@ -7223,6 +7282,11 @@
 				CF3F51DD0DFF16EC00F008D2 /* include_categoryMethodToImplement.h in Headers */,
 				CF3F51DE0DFF16EC00F008D2 /* include_structDeclaration.h in Headers */,
 				CF4521B00E01576C00CAE9FC /* lexiqueCompilation.h in Headers */,
+				CF2945130E0972A400511E49 /* include_categoryMethodDeclaration.h in Headers */,
+				CF2945150E0972A400511E49 /* include_structGalgasType.h in Headers */,
+				CF2945160E0972A400511E49 /* include_typeGalgasListmapToImplement.h in Headers */,
+				CF2945170E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
+				CF29458C0E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7691,6 +7755,7 @@
 				CFFFBFA20DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CF3F51CE0DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A50E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
+				CF2945850E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7856,6 +7921,7 @@
 				CF31B5400DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */,
 				CF3F51D00DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A90E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
+				CF2945890E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8021,6 +8087,7 @@
 				CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */,
 				CF3F51CF0DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521AB0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
+				CF2945870E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8193,6 +8260,7 @@
 				CFFFBFA40DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CF3F51D30DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A70E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
+				CF29458F0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8358,6 +8426,7 @@
 				CF31B5440DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */,
 				CF3F51D20DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521AD0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
+				CF29458D0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8523,6 +8592,7 @@
 				CF31B5460DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */,
 				CF3F51D10DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521AF0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
+				CF29458B0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
