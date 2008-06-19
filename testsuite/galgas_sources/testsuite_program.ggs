@@ -3,12 +3,16 @@ program testsuite_program "version 1.0.0":
 #--- Import clauses
 import semantics testsuite_foreach_instruction in "testsuite_foreach_instruction.ggs" ;
 import semantics testsuite_list in "testsuite_list.ggs" ;
+import semantics testsuite_struct in "testsuite_struct.ggs" ;
+import semantics testsuite_listmap in "testsuite_listmap.ggs" ;
 import grammar testsuite_grammar in "testsuite_grammar.ggs" ;
 
 #--- Prologue routine
 before {
   testsuite_foreach_instruction ;
   testsuite_list ;
+  testsuite_struct ;
+  testsuite_listmap ;
 }
 
 #--- 'when' clauses

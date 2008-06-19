@@ -1,0 +1,25 @@
+semantics testsuite_listmap :
+
+list @myList {
+  @string mString ;
+  @uint mInt ;
+}
+
+listmap @myListMap (@myList) ;
+
+routine testsuite_listmap :
+  message "--- begin of listmap\n" ;
+  @myListMap m [emptyMap] ;
+  m += !"d" !"d" !37 ;
+  m += !"a" !"b" !23 ;
+  m += !"a" !"c" !98 ;
+  m += !"c" !"f" !11 ;
+  @uint c := [m count] ;
+  log c ;
+  @stringset s := [m allKeys] ;
+  log s ;
+  @stringlist sl := [m keyList] ;
+  log sl ;
+end routine ;
+
+end semantics ;

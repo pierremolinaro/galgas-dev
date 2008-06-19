@@ -3998,6 +3998,15 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "allKeys" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_stringset new] ;
+      elsif [inReaderName string] == "count" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inReaderName string] == "keyList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        build_stringlist_type ? outReturnedType ;
       elsif [inReaderName string] == "listForKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
