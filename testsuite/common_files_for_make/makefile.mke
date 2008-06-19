@@ -55,6 +55,7 @@ SOURCES += testsuite_program.cpp
 
 SOURCES += testsuite_foreach_instruction.cpp
 SOURCES += testsuite_list.cpp
+SOURCES += testsuite_listmap.cpp
 SOURCES += testsuite_struct.cpp
 
 #---------------------------------------------------------------------------*
