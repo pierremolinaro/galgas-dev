@@ -50,6 +50,11 @@ LOGGING s: <struct @struct
 >
 --- begin of listmap
 LOGGING m: <listmap @myListMap:
+| - key 'd', list <list @aList 1 object 
+| | |-at 0 
+| | | |-<@string:"g">
+| | | |-<@uint:37>
+| | >
 | - key 'a', list <list @aList 2 objects 
 | | |-at 0 
 | | | |-<@string:"b">
@@ -63,17 +68,16 @@ LOGGING m: <listmap @myListMap:
 | | | |-<@string:"f">
 | | | |-<@uint:11>
 | | >
-| - key 'd', list <list @aList 1 object 
-| | |-at 0 
-| | | |-<@string:"d">
-| | | |-<@uint:37>
-| | >
 >
 LOGGING c: <@uint:3>
-LOGGING s: <@stringset: 'd'>
-LOGGING sl: <list @stringlist 1 object 
+LOGGING s: <@stringset: 'a' 'c' 'd'>
+LOGGING sl: <list @stringlist 3 objects 
 |-at 0 
 | |-<@string:"d">
+|-at 1 
+| |-<@string:"a">
+|-at 2 
+| |-<@string:"c">
 >
 LOGGING aList: <list @aList 2 objects 
 |-at 0 
@@ -82,4 +86,26 @@ LOGGING aList: <list @aList 2 objects
 |-at 1 
 | |-<@string:"c">
 | |-<@uint:98>
+>
+--- test foreach for listmap
+LOGGING key: <@string:"a">
+LOGGING object: <list @aList 2 objects 
+|-at 0 
+| |-<@string:"b">
+| |-<@uint:23>
+|-at 1 
+| |-<@string:"c">
+| |-<@uint:98>
+>
+LOGGING key: <@string:"c">
+LOGGING object: <list @aList 1 object 
+|-at 0 
+| |-<@string:"f">
+| |-<@uint:11>
+>
+LOGGING key: <@string:"d">
+LOGGING object: <list @aList 1 object 
+|-at 0 
+| |-<@string:"g">
+| |-<@uint:37>
 >

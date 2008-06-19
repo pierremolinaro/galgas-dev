@@ -1594,7 +1594,8 @@ rule <factor>
     [ioEntitiesMap searchKey !className ?e] ;
     outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
     @typeListeAttributsSemantiques listeAttributsSemantiques ;
-    [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques] ;
+    @bool hasLexiqueAndLocationArguments ;
+    [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
   #--- Actual arguments
     @typeExpressionList expressionList ;
     <output_expression_list>
@@ -1608,6 +1609,7 @@ rule <factor>
     outExpression := [@typeConstructorExpression new
       !outResultType
       ![mClassMethodName string]
+      !hasLexiqueAndLocationArguments
       !expressionList
     ] ;
   or

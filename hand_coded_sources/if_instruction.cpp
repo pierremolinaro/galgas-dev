@@ -708,15 +708,27 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeConstructorExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mType (HERE)->generateCppClassName (ioCppFile) ;
-  ioCppFile << "::constructor_" << mClassMethodName << " (_inLexique" ;
+  const bool hasLexiqueAndLocationArguments = mHasLexiqueAndLocationArguments.boolValue () ;
+  ioCppFile << "::constructor_" << mClassMethodName << " (" ;
+  if (hasLexiqueAndLocationArguments) {
+    ioCppFile << "_inLexique" ;
+  }
   GGS_typeExpressionList::cElement * current = mExpressionList.firstObject () ;
+  bool first = ! hasLexiqueAndLocationArguments ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    ioCppFile << ", " ;
+    if (first) {
+      first = false ;
+    }else{
+      ioCppFile << ", " ;
+    }
     current->mExpression (HERE)->generateExpression (ioCppFile) ;
     current = current->nextObject () ;
   }
-  ioCppFile << " COMMA_HERE)" ;
+  if (hasLexiqueAndLocationArguments) {
+    ioCppFile << " COMMA_HERE" ;
+  }
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -751,7 +763,14 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 bool cPtr_typeConstructorExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
-  return true ;
+  bool isUsed = mHasLexiqueAndLocationArguments.boolValue () ;
+  GGS_typeExpressionList::cElement * current = mExpressionList.firstObject () ;
+  while ((current != NULL) && ! isUsed) {
+    macroValidPointer (current) ;
+    isUsed = current->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    current = current->nextObject () ;
+  }
+  return isUsed ;
 }
 
 //---------------------------------------------------------------------------*

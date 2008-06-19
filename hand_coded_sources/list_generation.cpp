@@ -118,30 +118,26 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "class GGS_" << aNomListe << " : public AC_galgas_list {\n"
              "  public : typedef elementOf_GGS_" << aNomListe << " cElement ;\n\n"
 
-//--- Constructors
-             "//--- Constructors\n"
-             "  public : inline GGS_" << aNomListe << " (void) : AC_galgas_list () {}\n"
-             "  public : GGS_" << aNomListe << " (const bool inBuildObject) ;\n"
-
 //--- Constructor 'emptyList'
              "//--- Constructor 'emptyList'\n"
-             "  public : static GGS_" << aNomListe << " constructor_emptyList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
+             "  public : static GGS_" << aNomListe << " constructor_emptyList (void) ;\n"
 
 //--- Constructor 'listWithValue'
-             "  public : static GGS_" << aNomListe << " constructor_listWithValue (C_Compiler & _inLexique" ;
+             "  public : static GGS_" << aNomListe << " constructor_listWithValue (" ;
   GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << ",\n                                "
-               "const " ;
+    if (numeroVariable > 0) {
+      inHfile << ",\n                                " ;
+    }
+    inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << "\n                                "
-             "COMMA_LOCATION_ARGS) ;\n"
+  inHfile << ") ;\n"
 
 //--- Get a sub list
              "//--- Get sublist\n"
@@ -727,17 +723,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
-  inCppFile << "GGS_" << aNomListe << "::GGS_" << aNomListe << " (const bool inBuildObject) :\n"
-               "AC_galgas_list () {\n"
-               "  if (inBuildObject) {\n"
-               "    _alloc () ;\n"
-               "  }\n"
-               "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
-
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_emptyList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptyList (void) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  return result ;\n"
@@ -746,20 +734,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_listWithValue (C_Compiler & /* _inLexique */" ;
+               "constructor_listWithValue (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << ",\n                           "
-                "const " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                                " ;
+    }
+    inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "\n                           "
-               "COMMA_UNUSED_LOCATION_ARGS) {\n"
+  inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  result._addAssign_operation (" ;
@@ -1183,23 +1172,24 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'emptySortedList'
              "//--- Constructor 'emptySortedList'\n"
-             "  public : static GGS_" << aNomListe << " constructor_emptySortedList (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n"
+             "  public : static GGS_" << aNomListe << " constructor_emptySortedList (void) ;\n"
 
 //--- Constructor 'sortedListWithValue'
-             "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (C_Compiler & _inLexique" ;
+             "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (" ;
   GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << ",\n                                "
-               "const " ;
+    if (numeroVariable > 0) {
+      inHfile << ",\n                           " ;
+    }
+    inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << "\n                                "
-             "COMMA_LOCATION_ARGS) ;\n"
+  inHfile << ") ;\n"
 
 //--- Get smallest object
              "//--- Get smallest object\n"
@@ -1652,7 +1642,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement constructor 'emptySortedList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_emptySortedList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptySortedList (void) {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  return result ;\n"
@@ -1661,20 +1651,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement constructor 'sortedListWithValue'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
-               "constructor_sortedListWithValue (C_Compiler & /* _inLexique */" ;
+               "constructor_sortedListWithValue (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << ",\n                           "
-                "const " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                           " ;
+    }
+    inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "\n                           "
-               "COMMA_UNUSED_LOCATION_ARGS) {\n"
+  inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  result._addAssign_operation (" ;
