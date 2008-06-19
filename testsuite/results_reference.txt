@@ -41,9 +41,45 @@ LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
 LOGGING s: <@string:"c">
 LOGGING s: <@string:"d">
+--- test .= operator on list
+LOGGING s: <@string:"d">
 --- begin of struct logging
 LOGGING s: <struct @struct
 | mString <@string:"az">
 | mInt <@uint:34>
 >
---- end of struct logging
+--- begin of listmap
+LOGGING m: <listmap @myListMap:
+| - key 'a', list <list @aList 2 objects 
+| | |-at 0 
+| | | |-<@string:"b">
+| | | |-<@uint:23>
+| | |-at 1 
+| | | |-<@string:"c">
+| | | |-<@uint:98>
+| | >
+| - key 'c', list <list @aList 1 object 
+| | |-at 0 
+| | | |-<@string:"f">
+| | | |-<@uint:11>
+| | >
+| - key 'd', list <list @aList 1 object 
+| | |-at 0 
+| | | |-<@string:"d">
+| | | |-<@uint:37>
+| | >
+>
+LOGGING c: <@uint:3>
+LOGGING s: <@stringset: 'd'>
+LOGGING sl: <list @stringlist 1 object 
+|-at 0 
+| |-<@string:"d">
+>
+LOGGING aList: <list @aList 2 objects 
+|-at 0 
+| |-<@string:"b">
+| |-<@uint:23>
+|-at 1 
+| |-<@string:"c">
+| |-<@uint:98>
+>

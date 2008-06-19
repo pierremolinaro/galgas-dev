@@ -19,6 +19,9 @@ routine testsuite_list :
   log s ;
   s := [strList mValueAtIndex !3] ;
   log s ;
+  message "--- test .= operator on list\n" ;
+  strList .= strList ;
+  log s ;
 end routine ;
 
 end semantics ;

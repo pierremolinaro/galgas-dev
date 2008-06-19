@@ -240,6 +240,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "COMMA_LOCATION_ARGS) ;\n"
 
 //--- Append a new value
+             "//--- Handle '.=' operator\n"
+             "  public : void _dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -575,7 +577,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (_isBuilt ()" ;
+  current = mNonExternAttributesList.firstObject () ;
+  numeroVariable = 0 ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "&& argument_" << numeroVariable << "._isBuilt ()" ;
+    current = current->nextObject () ;
+    numeroVariable ++ ;
+  }
+  inCppFile << ") {\n"
                "    _insulateList () ;\n"
                "    _internalAppendValues (" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -594,17 +605,22 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
-
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  GGS_" << aNomListe << " result ;\n"
+               "  GGS_" << aNomListe << " result = * this ;\n"
+               "  result._dotAssign_operation (inOperand) ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+               
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
                "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
                "    if (count () == 0) {\n"
-               "      result = inOperand ;\n"
+               "      * this = inOperand ;\n"
                "    }else{\n"
-               "      result = * this ;\n"
                "      if (inOperand.count () > 0) {\n"
-               "        result._insulateList () ;\n"
+               "        _insulateList () ;\n"
                "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
                "        while (p != NULL) {\n"
                "          macroValidPointer (p) ;\n" ;
@@ -618,7 +634,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "          result._internalAppendValues (" ;
+  inCppFile << "          _internalAppendValues (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -636,7 +652,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      }\n"
                "    }\n"
                "  }\n"
-               "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
@@ -1266,6 +1281,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "\n                                 "
              "COMMA_LOCATION_ARGS) ;\n"
 
+             "//--- Handle '.=' operator\n"
+             "  public : void _dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
+
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
@@ -1286,7 +1304,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n\n"
+
 //--- Internal methods
              "//--- Internal Methods\n"
               "  protected : void _internalAppendValues (" ;
@@ -1554,18 +1573,24 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ") ;\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
 
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  GGS_" << aNomListe << " result ;\n"
+               "  GGS_" << aNomListe << " result = * this ;\n"
+               "  result._dotAssign_operation (inOperand) ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+               
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "void GGS_" << aNomListe << "::\n"
+               "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
                "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
                "    if (count () == 0) {\n"
-               "      result = inOperand ;\n"
+               "      *this = inOperand ;\n"
                "    }else{\n"
-               "      result = * this ;\n"
                "      if (inOperand.count () > 0) {\n"
-               "        result._insulateList () ;\n"
+               "        _insulateList () ;\n"
                "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
                "        while (p != NULL) {\n"
                "          macroValidPointer (p) ;\n" ;
@@ -1579,7 +1604,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "          result._internalAppendValues (" ;
+  inCppFile << "          _internalAppendValues (" ;
   current = mNonExternAttributesList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
@@ -1597,7 +1622,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      }\n"
                "    }\n"
                "  }\n"
-               "  return result ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
 
