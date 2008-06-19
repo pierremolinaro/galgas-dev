@@ -1,11 +1,11 @@
 semantics testsuite_listmap :
 
-list @myList {
+list @aList {
   @string mString ;
   @uint mInt ;
 }
 
-listmap @myListMap (@myList) ;
+listmap @myListMap (@aList) ;
 
 routine testsuite_listmap :
   message "--- begin of listmap\n" ;
@@ -14,12 +14,15 @@ routine testsuite_listmap :
   m += !"a" !"b" !23 ;
   m += !"a" !"c" !98 ;
   m += !"c" !"f" !11 ;
+  log m ;
   @uint c := [m count] ;
   log c ;
   @stringset s := [m allKeys] ;
   log s ;
   @stringlist sl := [m keyList] ;
   log sl ;
+  @aList aList := [m listForKey !"a"] ;
+  log aList ;
 end routine ;
 
 end semantics ;

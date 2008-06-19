@@ -2346,6 +2346,19 @@ class @typeGalgasListmapType extends @AC_galgasType {
 #--- List of all attributes of list
   @typeListeAttributsSemantiques mAttributeList ;
 
+#--- list object accepts to be enumerated (foreach instruction)
+  override
+  method acceptForeachInstruction
+    ??@location unused inErrorLocation
+    !@typeListeAttributsSemantiques outForeachList
+    !@localConstantBuildStyleEnum outStyle
+  :
+    outForeachList := [@typeListeAttributsSemantiques emptyList] ;
+    outForeachList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
+    outForeachList += !mListType ![@lstring new !"object" !here] ;
+    outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
+  end method ;
+
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := [mListmapTypeName string] ;
@@ -2711,9 +2724,10 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   :
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_lstring new] ![@lstring new !"key" !here] ;
-    foreach mAttributeList (@AC_galgasType kAttributType @lstring kNomAttribut) do
-      outForeachList += !kAttributType !kNomAttribut ;
-    end foreach ;
+    outForeachList := outForeachList . mAttributeList ;
+##    foreach mAttributeList (@AC_galgasType kAttributType @lstring kNomAttribut) do
+##      outForeachList += !kAttributType !kNomAttribut ;
+##    end foreach ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
   end method ;
 

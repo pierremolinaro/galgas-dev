@@ -123,13 +123,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mListmapTypeName << "::\n"
-               "reader_description (C_Compiler & /* inLexique */\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
-               "                    const sint32 /* inIndentation */) const {\n"
-               "  C_String s ;\n"
-               "  s << \"<list @" << mListmapTypeName << "\" ;\n"
-               "  s << \">\" ;\n"
-               "  return GGS_string (true, s) ;\n"
+               "reader_description (C_Compiler & inLexique\n"
+               "                    COMMA_LOCATION_ARGS,\n"
+               "                    const sint32 inIndentation) const {\n"
+               "  return _description (inLexique, \"@" << mListmapTypeName << "\", \"@" << mListTypename << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
 
 

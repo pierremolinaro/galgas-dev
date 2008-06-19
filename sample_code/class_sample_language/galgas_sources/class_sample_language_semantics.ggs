@@ -21,16 +21,4 @@ sortedlist @classesToGenerateList {
   mClassPath <
 }
 
-#domain @classDomain {
-#  @string classSet ;
-#  inheritanceRelation [classSet, classSet] ;
-#}
-
-#sortedlist @sortedListSample {
-#  @char mChar ;
-#  @uint mValue ;
-#}{
-#  mChar <
-#}
-
 end semantics ;
