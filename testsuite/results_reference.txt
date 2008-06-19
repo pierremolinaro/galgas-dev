@@ -36,13 +36,14 @@
   do 'b' (index: 1)
   do 'c' (index: 2)
   do 'd' (index: 3)
---- begin of list direct read
+--- begin of list direct access
 LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
 LOGGING s: <@string:"c">
 LOGGING s: <@string:"d">
---- begin of list direct write
-LOGGING s: <@string:"x">
-LOGGING s: <@string:"y">
-LOGGING s: <@string:"z">
-LOGGING s: <@string:"t">
+--- begin of struct logging
+LOGGING s: <struct @struct
+| mString <@string:"az">
+| mInt <@uint:34>
+>
+--- end of struct logging

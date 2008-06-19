@@ -1,0 +1,15 @@
+semantics testsuite_struct :
+
+struct @struct {
+  @string mString ;
+  @uint mInt ;
+}
+
+routine testsuite_struct :
+  message "--- begin of struct logging\n" ;
+  @struct s [new !"az" !34] ;
+  log s ;
+  message "--- end of struct logging\n" ;
+end routine ;
+
+end semantics ;

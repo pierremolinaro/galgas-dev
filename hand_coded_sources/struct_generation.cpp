@@ -241,10 +241,28 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mStructName << "::\n"
-               "reader_description (C_Compiler & /*_inLexique*/\n"
-               "                    COMMA_UNUSED_LOCATION_ARGS,\n"
-               "                    const sint32 /* inIndentation */) const {\n"
-               "  return GGS_string (\"\", true) ;\n"
+               "reader_description (C_Compiler & _inLexique\n"
+               "                    COMMA_LOCATION_ARGS,\n"
+               "                    const sint32 inIndentation) const {\n"
+               "  C_String _s ;\n"
+               "  _s << \"<struct @" << mStructName << "\" ;\n"
+               "  if (_isBuilt ()) {\n" ;
+  current = mAttributeList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "    _s << \"\\n\" ;\n"
+                 "    _s.writeStringMultiple (\"| \", inIndentation + 1) ;\n"
+                 "    _s << \"" << current->aNomAttribut << " \" ;\n"
+                 "    _s << " << current->aNomAttribut << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+    current = current->nextObject () ;
+  }
+  inCppFile << "  }else{\n"
+               "    _s << \"not built\" ;\n"
+               "  }\n"
+               "  _s << \"\\n\" ;\n"
+               "  _s.writeStringMultiple (\"| \", inIndentation) ;\n"
+               "  _s << \">\" ;\n"
+               "  return GGS_string (true, _s) ;\n"
                "}\n\n" ;
 }  
 

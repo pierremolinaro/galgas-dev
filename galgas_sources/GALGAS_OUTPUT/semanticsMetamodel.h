@@ -8,8 +8,6 @@
 
 //--- START OF USER ZONE 1
 
-#include "galgas/AC_galgas_listmap.h"
-
 //--- END OF USER ZONE 1
 
 #ifndef semanticsMetamodel_DEFINED
