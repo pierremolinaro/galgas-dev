@@ -10,10 +10,10 @@ listmap @myListMap (@aList) ;
 routine testsuite_listmap :
   message "--- begin of listmap\n" ;
   @myListMap m [emptyMap] ;
-  m += !"d" !"d" !37 ;
+  m += !"d" !"g" !37 ;
   m += !"a" !"b" !23 ;
-  m += !"a" !"c" !98 ;
   m += !"c" !"f" !11 ;
+  m += !"a" !"c" !98 ;
   log m ;
   @uint c := [m count] ;
   log c ;
@@ -23,6 +23,11 @@ routine testsuite_listmap :
   log sl ;
   @aList aList := [m listForKey !"a"] ;
   log aList ;
+  message "--- test foreach for listmap\n" ;
+  foreach m do
+    log key ;
+    log object ;
+  end foreach ;
 end routine ;
 
 end semantics ;
