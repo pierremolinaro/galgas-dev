@@ -119,6 +119,7 @@ class @assignmentInstruction extends @semanticInstruction {
 
 class @appendInstruction extends @semanticInstruction {
   @lstring mTargetVariableName ;
+  @lstringlist mStructAttributeList ;
   @semanticExpression mSourceExpression ;
 }
 
@@ -337,6 +338,7 @@ class @castInstruction extends @semanticInstruction {
 
 class @addInstruction extends @semanticInstruction {
   @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
   @outExpressionList mExpressionList ;
 }
 

@@ -550,6 +550,17 @@ class @listGalgasType extends @ACGalgasType {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    L I S T M A P    T Y P E                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listmapGalgasType extends @ACGalgasType {
+  @lstring mListmapTypeName ;
+  @typeMapIndex mAssociatedListTypeIndex ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    S T R U C T    T Y P E                                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
