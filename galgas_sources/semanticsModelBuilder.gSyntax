@@ -122,6 +122,28 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $listmap$ ;
+#--- Map type name
+  $type_name$ ? @lstring mListmapTypeName ;
+  $($ ;
+  $type_name$ ? @lstring mAssociatedListTypeName ;
+  $)$ ;
+  $;$ ;
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@listmapDeclaration new
+    !mListmapTypeName
+    !mAssociatedListTypeName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    M A P    D E C L A R A T I O N                                         *
 #                                                                           *
 #---------------------------------------------------------------------------*

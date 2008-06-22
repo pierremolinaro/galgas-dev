@@ -1,0 +1,3 @@
+gui %PROJECT_NAME%_cocoa "cocoa" :
+import grammar %PROJECT_NAME%_grammar in "%PROJECT_NAME%_grammar.ggs" ;
+end gui ;

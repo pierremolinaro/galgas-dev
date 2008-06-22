@@ -689,12 +689,20 @@ end rule ;
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   @lstring mReceiverName ;
   $identifier$ ? mReceiverName ;
+  @lstringlist mStructAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ? @lstring attributeName ;
+    mStructAttributeList += !attributeName ;
+  end repeat ;
   $+=$ ;
   @outExpressionList mExpressionList ;
   <output_expression_list> ? mExpressionList ;
   $;$ ;
   outInstruction := [@addInstruction new
     !mReceiverName
+    !mStructAttributeList
     !mExpressionList
   ] ;
 end rule ;
@@ -707,12 +715,20 @@ end rule ;
 
 rule <semantic_instruction> !@semanticInstruction outInstruction :
   $identifier$ ? @lstring mTargetVariableName ;
+  @lstringlist mStructAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ? @lstring attributeName ;
+    mStructAttributeList += !attributeName ;
+  end repeat ;
   $.=$ ;
   @semanticExpression mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ ;
   outInstruction := [@appendInstruction new
     !mTargetVariableName
+    !mStructAttributeList
     !mSourceExpression
   ] ;
 end rule ;
