@@ -33,7 +33,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "GGS_string\n"
              "_template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (" ;
   GGS_typeListeTypesEtNomsArgMethode::cElement * current = mTemplateArgumentList.firstObject () ;
-  if (mTemplateArgumentList.count () == NULL) {
+  if (mTemplateArgumentList.count () == 0) {
     inHfile << "void" ;
   }else{
     sint32 numeroVariable = 0 ;
