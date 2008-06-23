@@ -57,20 +57,21 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n"
              "//--- Galgas 'new' destructor\n"
-             "  public : static GGS_" << mStructName << " constructor_new (C_Compiler & inLexique" ;
+             "  public : static GGS_" << mStructName << " constructor_new (" ;
   GGS_typeListeAttributsSemantiques::cElement * current = mAttributeList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inHfile << ",\n                                "
-               "const " ;
+    if (numeroVariable > 0) {
+      inHfile << ",\n                 " ;
+    }
+    inHfile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inHfile << "\n                                "
-             "COMMA_LOCATION_ARGS) ;\n\n"
+  inHfile << ") ;\n\n"
              "//--- Readers\n" ;
   current = mAttributeList.firstObject () ;
   while (current != NULL) {
@@ -78,8 +79,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     inHfile << "  public : inline " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
-               "  reader_" << current->aNomAttribut << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
-               "    return " << current->aNomAttribut << " ;\n"
+               "  reader_" << current->mAttributeName << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "    return " << current->mAttributeName << " ;\n"
                "  }\n\n" ;
     current = current->nextObject () ;
   }
@@ -89,7 +90,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     macroValidPointer (current) ;
     inHfile << "  public : " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << " " << current->aNomAttribut << " ;\n" ;
+    inHfile << " " << current->mAttributeName << " ;\n" ;
     current = current->nextObject () ;
   }
   inHfile << "} ;\n\n" ;
@@ -135,7 +136,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << current->aNomAttribut << " ()" ;
+    inCppFile << current->mAttributeName << " ()" ;
     current = current->nextObject () ;
   }
   inCppFile << " {\n"
@@ -148,7 +149,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mAttributeList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  " << current->aNomAttribut << "._drop_operation () ;\n" ;
+    inCppFile << "  " << current->mAttributeName << "._drop_operation () ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "}\n\n" ;
@@ -164,7 +165,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile << "\n    && " ;
     }
-    inCppFile << current->aNomAttribut << "._isBuilt ()" ;
+    inCppFile << current->mAttributeName << "._isBuilt ()" ;
     current = current->nextObject () ;
   }
   inCppFile << " ;\n"
@@ -180,7 +181,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (! first) {
       inCppFile << "\n    ._operator_and (" ;
     }
-    inCppFile << current->aNomAttribut << "._operator_isEqual (inOperand." << current->aNomAttribut << ")" ;
+    inCppFile << current->mAttributeName << "._operator_isEqual (inOperand." << current->mAttributeName << ")" ;
     if (first) {
       first = false ;
     }else{
@@ -201,7 +202,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (! first) {
       inCppFile << "\n    ._operator_or (" ;
     }
-    inCppFile << current->aNomAttribut << "._operator_isNotEqual (inOperand." << current->aNomAttribut << ")" ;
+    inCppFile << current->mAttributeName << "._operator_isNotEqual (inOperand." << current->mAttributeName << ")" ;
     if (first) {
       first = false ;
     }else{
@@ -213,26 +214,27 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile <<"GGS_" << mStructName << " GGS_" << mStructName << "::\n"
-              "constructor_new (C_Compiler & /* inLexique */" ;
+              "constructor_new (" ;
   current = mAttributeList.firstObject () ;
   sint32 numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << ",\n                 "
-                 "const " ;
+    if (numeroVariable > 0) {
+      inCppFile << ",\n                 " ;
+    }
+    inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
-  inCppFile << "\n                 "
-               "COMMA_UNUSED_LOCATION_ARGS) {\n"
+  inCppFile << ") {\n"
                "  GGS_" << mStructName << " result ;\n" ;
   current = mAttributeList.firstObject () ;
   numeroVariable = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "  result." << current->aNomAttribut << " = argument_" << numeroVariable << " ;\n" ;
+    inCppFile << "  result." << current->mAttributeName << " = argument_" << numeroVariable << " ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -252,8 +254,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     inCppFile << "    _s << \"\\n\" ;\n"
                  "    _s.writeStringMultiple (\"| \", inIndentation + 1) ;\n"
-                 "    _s << \"" << current->aNomAttribut << " \" ;\n"
-                 "    _s << " << current->aNomAttribut << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+                 "    _s << \"" << current->mAttributeName << " \" ;\n"
+                 "    _s << " << current->mAttributeName << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "  }else{\n"

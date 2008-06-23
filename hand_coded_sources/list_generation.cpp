@@ -51,7 +51,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   GGS_typeListeAttributsSemantiques::cElement * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
-    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
+    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->mAttributeName) ;
     attributCourant = attributCourant->nextObject () ;
   }
 //--- declaration constructeur
@@ -323,7 +323,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "  public : " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
-               "  reader_" << current->aNomAttribut << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
+               "  reader_" << current->mAttributeName << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
   inHfile << "\n" ;
@@ -334,7 +334,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : void\n"
-               "  modifier_set" << current->aNomAttribut.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+               "  modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
                "                              const " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
     inHfile << " & inObject,\n"
@@ -417,7 +417,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << ",\n"
-              << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
+              << current->mAttributeName << " (argument_" << numeroVariable << ")" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -444,7 +444,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << current->aNomAttribut << "._operator_isEqual (_p->"  << current->aNomAttribut << ").boolValue ()" ;
+      inCppFile << current->mAttributeName << "._operator_isEqual (_p->"  << current->mAttributeName << ").boolValue ()" ;
       current = current->nextObject () ;
       numeroVariable ++ ;
     }
@@ -474,7 +474,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "  ioString << \"\\n\" ;\n"
                    "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                    "  ioString << \"|-\" ;\n"
-                   "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+                   "  ioString << " << current->mAttributeName << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
       current = current->nextObject () ;
       numeroVariable ++ ;
     }
@@ -626,7 +626,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     inCppFile << "          " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " p_" << numeroVariable << " = p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << " p_" << numeroVariable << " = p->" << current->mAttributeName << " ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -711,7 +711,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "_p->" << current->aNomAttribut ;
+    inCppFile << "_p->" << current->mAttributeName ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -790,7 +790,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "_p->" << current->aNomAttribut ;
+    inCppFile << "_p->" << current->mAttributeName ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -873,7 +873,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -919,7 +919,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -964,7 +964,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1010,7 +1010,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1035,14 +1035,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.writeCppHyphenLineComment () ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomListe << "::\n"
-                 "reader_" << current->aNomAttribut << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
+                 "reader_" << current->mAttributeName << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
                  "  " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " result ;\n"
                  "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
                  "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
                  "    if (object != NULL) {\n"
-                 "      result = object->" << current->aNomAttribut << " ;\n"
+                 "      result = object->" << current->mAttributeName << " ;\n"
                  "    }\n"
                  "  }\n"
                  "  return result ;\n"
@@ -1056,7 +1056,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomListe << "::\n"
-                 "modifier_set" << current->aNomAttribut.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+                 "modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
                  "                              const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & inObject,\n"
@@ -1065,7 +1065,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
                  "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
                  "    if (object != NULL) {\n"
-                 "      object->" << current->aNomAttribut << " = inObject ;\n"
+                 "      object->" << current->mAttributeName << " = inObject ;\n"
                  "    }\n"
                  "  }\n"
                  "}\n\n" ;
@@ -1094,7 +1094,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   GGS_typeListeAttributsSemantiques::cElement * attributCourant = mNonExternAttributesList.firstObject () ;
   while (attributCourant != NULL) {
     macroValidPointer (attributCourant) ;
-    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->aNomAttribut) ;
+    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->mAttributeName) ;
     attributCourant = attributCourant->nextObject () ;
   }
 //--- declaration constructeur
@@ -1393,7 +1393,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << current->aNomAttribut << " (argument_" << numeroVariable << ")" ;
+    inCppFile << current->mAttributeName << " (argument_" << numeroVariable << ")" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1416,7 +1416,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
-    inCppFile << current->aNomAttribut << "._operator_isEqual (_p->"  << current->aNomAttribut << ").boolValue ()" ;
+    inCppFile << current->mAttributeName << "._operator_isEqual (_p->"  << current->mAttributeName << ").boolValue ()" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1464,7 +1464,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-\" ;\n"
-                 "  ioString << " << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+                 "  ioString << " << current->mAttributeName << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1590,7 +1590,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     inCppFile << "          " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " p_" << numeroVariable << " = p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << " p_" << numeroVariable << " = p->" << current->mAttributeName << " ;\n" ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1629,7 +1629,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current != NULL) {
     macroValidPointer (current) ;
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "_p->" << current->aNomAttribut ;
+    inCppFile << "_p->" << current->mAttributeName ;
     current = current->nextObject () ;
     numeroVariable ++ ;
   }
@@ -1721,7 +1721,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1767,7 +1767,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1812,7 +1812,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1858,7 +1858,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }

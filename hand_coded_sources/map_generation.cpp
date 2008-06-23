@@ -61,8 +61,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  } ;\n\n"
              "//--- 'emptyMap' constructor\n"
              "  public : static GGS_" << mListmapTypeName << "\n"
-             "  constructor_emptyMap (C_Compiler & inLexique\n"
-             "                    COMMA_LOCATION_ARGS) ;\n\n"
+             "  constructor_emptyMap (void) ;\n\n"
              "//--- 'description' reader declaration\n"
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & _inLexique\n"
@@ -83,6 +82,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentAttribute = currentAttribute->nextObject () ;
   }
   inHfile <<  ") ;\n\n" ;
+
 //--- Reader list for key
   inHfile << "//--- Reader 'listForKey'\n"
              "  public : GGS_" << mListTypename << "\n"
@@ -148,8 +148,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
-               "constructor_emptyMap (C_Compiler & /* inLexique */\n"
-               "                  COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "constructor_emptyMap (void) {\n"
                "  GGS_" << mListmapTypeName << " result ;\n"
                "  macroMyNew (result.mSharedMapObject, cRoot) ;\n"
                "  return result ;\n"
@@ -436,7 +435,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
       inCppFile << "      outAttribute" << attributeIndex
-                << " = p->mInfo." << currentAttribute->aNomAttribut
+                << " = p->mInfo." << currentAttribute->mAttributeName
                 << " ;\n" ;
       attributeIndex ++ ;
       currentAttribute = currentAttribute->nextObject () ;
@@ -478,7 +477,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->mAttributeName) ;
     current = current->nextObject () ;
   }
   inHfile << "\n" ;
@@ -549,6 +548,22 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Method used for duplicate a map\n"
              "  protected : virtual void internalInsertForDuplication (AC_galgas_map_element * inPtr) ;\n\n" ;
 
+//--- Modifiers "set'Value'ForKey"
+  inHfile << "//--- Modifiers \"set'Value'ForKey\"\n" ;
+  GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mNonExternAttributesList.firstObject () ;
+  while (currentAttribute != NULL) {
+    macroValidPointer (currentAttribute) ;
+    inHfile << "public : void modifier_set" << currentAttribute->mAttributeName.stringWithUpperCaseFirstLetter ()
+            << "ForKey (C_Compiler & inLexique,"
+               "                        const " ;
+    currentAttribute->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    inHfile << "inValue,\n"
+               "                        const GGS_string & inKey\n"
+               "                        COMMA_LOCATION_ARGS) ;\n" ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+  inHfile << "\n" ;
+
 //--- Declaring remove methods
   GGS_insertOrSearchMethodList::cElement * currentMethod = mRemoveMethodList.firstObject () ;
   while (currentMethod != NULL) {
@@ -561,7 +576,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     if (currentMethod->mIsGetIndexMethod.boolValue ()) {
       inHfile << ",\n                                GGS_luint & outIndex" ;
     }
-    GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mNonExternAttributesList.firstObject () ;
+    currentAttribute = mNonExternAttributesList.firstObject () ;
     sint32 attributeIndex = 0 ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
@@ -746,7 +761,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << ",\n" ;
       }
-      inCppFile << current->aNomAttribut << " ()" ;
+      inCppFile << current->mAttributeName << " ()" ;
       current = current->nextObject () ;
     }
     inCppFile << " {\n}\n\n" ;
@@ -779,7 +794,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-                 "  ioString << \"|-value \" << inElementIndex << \":\" << mInfo." << current->aNomAttribut << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+                 "  ioString << \"|-value \" << inElementIndex << \":\" << mInfo." << current->mAttributeName << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
     current = current->nextObject () ;
   }
   inCppFile << "}\n\n" ;
@@ -804,7 +819,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\n           && " ;
       }
-      inCppFile << "(mInfo." << current->aNomAttribut << "._operator_isEqual (_p->mInfo." << current->aNomAttribut << ")).boolValue ()" ;
+      inCppFile << "(mInfo." << current->mAttributeName << "._operator_isEqual (_p->mInfo." << current->mAttributeName << ")).boolValue ()" ;
       current = current->nextObject () ;
     }
     inCppFile << " ;\n" ;
@@ -920,7 +935,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "      outParameter" << attributeIndex << " = _p->mInfo." << current->aNomAttribut << " ;\n" ;
+      inCppFile << "      outParameter" << attributeIndex << " = _p->mInfo." << current->mAttributeName << " ;\n" ;
       attributeIndex ++ ;
       current = current->nextObject () ;
     }
@@ -968,7 +983,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    info." << current->aNomAttribut << " = inParameter" << attributeIndex << " ;\n" ;
+    inCppFile << "    info." << current->mAttributeName << " = inParameter" << attributeIndex << " ;\n" ;
     attributeIndex ++ ;
     current = current->nextObject () ;
   }
@@ -1022,7 +1037,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   attributeIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    outParameter" << attributeIndex << " = node->mInfo." << current->aNomAttribut << " ;\n" ;
+    inCppFile << "    outParameter" << attributeIndex << " = node->mInfo." << current->mAttributeName << " ;\n" ;
     attributeIndex ++ ;
     current = current->nextObject () ;
   }
@@ -1032,13 +1047,44 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "}\n\n" ;
 
+//--- Implement modifiers "set'Value'ForKey"
+  GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mNonExternAttributesList.firstObject () ;
+  while (currentAttribute != NULL) {
+    macroValidPointer (currentAttribute) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mMapTypeName << "::\n"
+                 "modifier_set" << currentAttribute->mAttributeName.stringWithUpperCaseFirstLetter ()
+              << "ForKey (C_Compiler & inLexique,"
+               "                        const " ;
+    currentAttribute->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    inCppFile << "inValue,\n"
+               "                        const GGS_string & inKey\n"
+               "                        COMMA_LOCATION_ARGS) {\n"
+               "  if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {\n"
+               "    insulateMap () ;\n"
+               "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
+               "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
+               "    cElement * node = (cElement *) p ;\n"
+               "    if (node == NULL) {\n"
+               "      C_String errorMessage ;\n"
+               "      errorMessage << \"the '\" << inKey << \"' key does not exist when calling 'set"
+            << currentAttribute->mAttributeName.stringWithUpperCaseFirstLetter ()
+            << "ForKey' modifier\" ;\n"
+               "      inLexique.onTheFlyRunTimeError (errorMessage COMMA_THERE) ;\n"
+               "    }else{\n"
+               "      node->mInfo." << currentAttribute->mAttributeName << " = inValue ;\n"
+               "    }\n"
+               "  }\n"
+               "}\n\n" ;
+    currentAttribute = currentAttribute->nextObject () ;
+  }
+
 //--- Implement search routines
   GGS_insertOrSearchMethodList::cElement * currentMethod = mSearchMethodList.firstObject () ;
   while (currentMethod != NULL) {
     macroValidPointer (currentMethod) ;
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "void GGS_" 
-              << mMapTypeName << "::\n"
+    inCppFile << "void GGS_" << mMapTypeName << "::\n"
               << "method_" << currentMethod->mMethodName
               << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
@@ -1273,7 +1319,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (inHfile, current->mAttributeName) ;
     current = current->nextObject () ;
   }
   
@@ -1425,7 +1471,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << ",\n" ;
       }
-      inCppFile << current->aNomAttribut << " ()" ;
+      inCppFile << current->mAttributeName << " ()" ;
       current = current->nextObject () ;
     }
     inCppFile << " {\n"
@@ -1488,7 +1534,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
+      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current->mAttributeName << " ;\n" ;
       attributeIndex ++ ;
       current = current->nextObject () ;
     }
@@ -1530,7 +1576,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current->aNomAttribut << " ;\n" ;
+      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current->mAttributeName << " ;\n" ;
       attributeIndex ++ ;
       current = current->nextObject () ;
     }
@@ -1565,7 +1611,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     sint32 numeroVariable = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "  info." << current->aNomAttribut << " = inParameter" << numeroVariable << " ;\n" ;
+      inCppFile << "  info." << current->mAttributeName << " = inParameter" << numeroVariable << " ;\n" ;
       numeroVariable ++ ;
       current = current->nextObject () ;
     }
@@ -1595,7 +1641,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "  info." << current->aNomAttribut << " = inParameter" << numeroVariable << " ;\n" ;
+      inCppFile << "  info." << current->mAttributeName << " = inParameter" << numeroVariable << " ;\n" ;
       numeroVariable ++ ;
       current = current->nextObject () ;
     }

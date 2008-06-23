@@ -7,3 +7,4 @@ compile "testsuite_foreach_instruction.ggs" ;
 compile "testsuite_list.ggs" ;
 compile "testsuite_struct.ggs" ;
 compile "testsuite_listmap.ggs" ;
+compile "testsuite_map.ggs" ;
