@@ -208,7 +208,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     macroValidPointer (current) ;
     inHfile << "  public : " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << " reader_" << current->aNomAttribut
+    inHfile << " reader_" << current->mAttributeName
             << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
@@ -307,7 +307,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   current = aListeAttributsCourants.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->aNomAttribut) ;
+    current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->mAttributeName) ;
     current = current->nextObject () ;
   }
 
@@ -449,7 +449,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current != NULL) {
     inCppFile << ",\n" ;
     macroValidPointer (current) ;
-    inCppFile << current->aNomAttribut << " (argument_" << variableIndex << ")" ;
+    inCppFile << current->mAttributeName << " (argument_" << variableIndex << ")" ;
     variableIndex ++ ;
     current = current->nextObject () ;
   }
@@ -489,7 +489,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
         }else{
           inCppFile << "\n         && " ;
         }
-        inCppFile << current->aNomAttribut << "._operator_isEqual (_p->" << current->aNomAttribut << ").boolValue ()" ;
+        inCppFile << current->mAttributeName << "._operator_isEqual (_p->" << current->mAttributeName << ").boolValue ()" ;
         current = current->nextObject () ;
       }
       inCppFile << " ;\n"
@@ -525,7 +525,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "\n"
-                 "           << " << current->aNomAttribut
+                 "           << " << current->mAttributeName
               << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)" ;
     current = current->nextObject () ;
   }
@@ -713,7 +713,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomClasse << "::\n"
-                 "reader_" << current->aNomAttribut
+                 "reader_" << current->mAttributeName
               << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
@@ -722,7 +722,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    macroValidPointer (mPointer) ;\n"
                  "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
                  "               \"dynamic cast error\", 0, 0) ;\n"
-                 "    result = ((cPtr_" << aNomClasse << " *) mPointer)->" << current->aNomAttribut << " ;\n"
+                 "    result = ((cPtr_" << aNomClasse << " *) mPointer)->" << current->mAttributeName << " ;\n"
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;

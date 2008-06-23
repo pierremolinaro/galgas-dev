@@ -261,7 +261,7 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
     GGS_typeListeAttributsSemantiques::cElement * currentAttribute = currentTerminal->mInfo.attributListeDesAttributs.firstObject () ;
     while (currentAttribute != NULL) {
       macroValidPointer (currentAttribute) ;
-      currentAttribute->mAttributType (HERE)->generateAttributeGetLexicalValue (currentAttribute->aNomAttribut, inCppFile) ;
+      currentAttribute->mAttributType (HERE)->generateAttributeGetLexicalValue (currentAttribute->mAttributeName, inCppFile) ;
       currentAttribute = currentAttribute->nextObject () ;
     }
     inCppFile << "      break;\n" ;

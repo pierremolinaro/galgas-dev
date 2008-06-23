@@ -2743,7 +2743,7 @@ rule <parse_parameters_list>
       @typeGalgasStructType structType := (cast typeArgument if >= @typeGalgasStructType else error structAttributeName) ;
       @bool found := false ;
       foreach [structType mAttributeList] while not found do
-        found := [aNomAttribut string] == [structAttributeName string] ;
+        found := [mAttributeName string] == [structAttributeName string] ;
         typeArgument := mAttributType ;
       end foreach ;
       if not found then
@@ -5091,6 +5091,14 @@ rule <semantics_declaration>
         searchMethodList += !getIndexMethodName ![errorMessage string] !true !"" ;
       end if ;
     end repeat ;
+  #--- Modifiers "Set'Value'ForKey"
+    foreach listeTousAttributsSemantiques do
+      @string modifierName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
+      @L_EXsignature modifierSignature [emptyList] ;
+      modifierSignature += !mAttributType !inPassingMode ; 
+      modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
+      [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
+    end foreach ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new
       !mapTypeName
@@ -5369,6 +5377,14 @@ label importSemantics
         [!?mapReaderMethodMap insertKey !getIndexMethodName !getIndexMethodSignature] ;
       end if ;
     end repeat ;
+  #--- Modifiers "Set'Value'ForKey"
+    foreach listeTousAttributsSemantiques do
+      @string modifierName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
+      @L_EXsignature modifierSignature [emptyList] ;
+      modifierSignature += !mAttributType !inPassingMode ; 
+      modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
+      [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
+    end foreach ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new
      !mapTypeName
@@ -5598,10 +5614,10 @@ rule <semantics_declaration>
   foreach [classType mAttributeList] do
     @typeCplusPlusName cppName := [@typeOperandName new
       ![methodName location] # Magic Number
-      ![aNomAttribut string]
+      ![mAttributeName string]
       !false # not mapStyle
     ] ;
-    [!?tableArgumentsMethode insertUsedConstInArgument !aNomAttribut !mAttributType !cppName] ;
+    [!?tableArgumentsMethode insertUsedConstInArgument !mAttributeName !mAttributType !cppName] ;
   end foreach ;
 #--- Instructions
   ${$ ;

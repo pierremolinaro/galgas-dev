@@ -71,7 +71,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     GGS_typeListeAttributsSemantiques::cElement * arg = constructor->mInfo.aListeDesAttributs.firstObject () ;
     while (arg != NULL) {
       macroValidPointer (arg) ;
-      arg->mAttributType(HERE)->generatePublicDeclaration (inHfile, arg->aNomAttribut) ;
+      arg->mAttributType(HERE)->generatePublicDeclaration (inHfile, arg->mAttributeName) ;
       arg = arg->nextObject () ;
     }
     generatedZone2 << "\n                  COMMA_LOCATION_ARGS) ;\n\n" ;

@@ -643,7 +643,7 @@ map @typeSuperClassesMap {
 
 list @typeListeAttributsSemantiques {
   @AC_galgasType mAttributType ;
-  @lstring aNomAttribut ;
+  @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -986,7 +986,7 @@ class @typeGalgas_sint extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
-    outHasLexiqueAndLocationArguments := true ;
+    outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "max" then
@@ -1032,7 +1032,7 @@ class @typeGalgas_sint64 extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
-    outHasLexiqueAndLocationArguments := true ;
+    outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "min" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "max" then
@@ -2282,7 +2282,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
       outModifierSignature := [@L_EXsignature emptyList] ;
       @bool found := false ;
       foreach mAttributeList while not found do
-        found := ("set" . [[aNomAttribut string] stringByCapitalizingFirstCharacter] . "AtIndex") == [inModifierName string] ;
+        found := ("set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex") == [inModifierName string] ;
         if (found) then
           outModifierSignature += !mAttributType ![@EXformalArgumentPassingMode argumentConstantIn] ;
           outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
@@ -2360,7 +2360,7 @@ class @typeGalgasStructType extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
-    outHasLexiqueAndLocationArguments := true ;
+    outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "new" then
       outAccessorTypesList := mAttributeList ;
     else
@@ -2410,7 +2410,7 @@ class @typeGalgasListmapType extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
-    outHasLexiqueAndLocationArguments := true ;
+    outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptyMap" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
@@ -2713,7 +2713,7 @@ class @typeGalgasUndefinedMapType extends @AC_galgasType {
 map @mapModifierMap {
   @L_EXsignature mMethodSignature ;
   insert insertKey error message "an insert or a remove modifier named '%K' is already declared in %L" ;
-  search searchKey error message "there is no insert nor modifier named '%K'" ;
+  search searchKey error message "there is no modifier named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -4015,7 +4015,7 @@ routine handleReaderCall
         @typeListeAttributsSemantiques attributeList := [listType mAttributeList] ;
         @bool found := false ;
         foreach attributeList while not found do
-          found := ([aNomAttribut string] . "AtIndex") == [inReaderName string] ;
+          found := ([mAttributeName string] . "AtIndex") == [inReaderName string] ;
           if (found) then
             outReturnedType := mAttributType ;
           end if ;
