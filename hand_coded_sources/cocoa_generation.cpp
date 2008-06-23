@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate cocoa file                                                      *
 //                                                                           *
-//  Copyright (C) 2004, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 2004, ..., 2008 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -35,14 +35,13 @@ buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
                       TC_Array2 <bool> & outPopUpTree,
                       const sint32 inTerminalSymbolCount) {
   outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
-  GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList.firstObject () ;
-  while (currentMark != NULL) {
+  for (sint32 i=0 ; i<inLabelForPopUpList.count () ; i++) {
+    GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList (i COMMA_HERE) ;
     macroValidPointer (currentMark) ;
     const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
     const sint32 terminalID2 = (sint32) currentMark->mTerminal2ID.uintValue () ;
     // printf ("POP $%s$ (%u), $%s$ (%u)\n", currentMark->mTerminal1.cString (), terminalID1, currentMark->mTerminal2.cString (), terminalID2) ;
     outPopUpTree (terminalID1, terminalID2 COMMA_HERE) = true ;
-    currentMark = currentMark->nextObject () ;
   }
 }
 
@@ -79,13 +78,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  GGS_lstringlist::cElement * currentNib = inNibAndClassList.firstObject () ;
-  while (currentNib != NULL) {
+  for (sint32 i=0 ; i<inNibAndClassList.count () ; i++) {
+    GGS_lstringlist::cElement * currentNib = inNibAndClassList (i COMMA_HERE) ;
     macroValidPointer (currentNib) ;
     TC_UniqueArray <C_String> result ;
     currentNib->mValue.componentsSeparatedByString (".", result) ;
     generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
-    currentNib = currentNib->nextObject () ;
   }
   generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
                     "  #import \"user_default_colors.h\"\n"
@@ -131,8 +129,8 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
       mainArray << ",\n  " ;
       bool first = true ;
-      GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList.firstObject () ;
-      while (currentMark != NULL) {
+      for (sint32 j=0 ; j<inLabelForPopUpList.count () ; j++) {
+        const GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList (j COMMA_HERE) ;
         macroValidPointer (currentMark) ;
         const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
         if (terminalID1 == i) {
@@ -145,7 +143,6 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
           }
           generatedZone3 << (terminalID2 + 1) ;
         }
-        currentMark = currentMark->nextObject () ;
       }
       if (first) {
         mainArray << "NULL" ;
@@ -162,14 +159,13 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
                     "  return [NSArray arrayWithObjects:\n" ;
-  currentNib = inNibAndClassList.firstObject () ;
-  while (currentNib != NULL) {
+  for (sint32 i=0 ; i<inNibAndClassList.count () ; i++) {
+    GGS_lstringlist::cElement * currentNib = inNibAndClassList (i COMMA_HERE) ;
     macroValidPointer (currentNib) ;
     TC_UniqueArray <C_String> result ;
     currentNib->mValue.componentsSeparatedByString (".", result) ;
     generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)
                    << "\", [" << result (1 COMMA_HERE) << " class], nil],\n" ;
-    currentNib = currentNib->nextObject () ;
   }
   generatedZone3 << "    nil\n"
                     "  ] ;\n"

@@ -259,6 +259,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Handling '.' GALGAS operator\n"
              "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
+//--- Direct element access
+             "//--- Direct element access\n"
+             "  public : cElement * operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const ;\n"
+
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -600,6 +604,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "COMMA_HERE) ;\n"
                "  }\n"
                "}\n\n" ;
+
+//--- Direct element access
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_" << aNomListe << "::cElement * GGS_" << aNomListe << "::\n"
+               "operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const {\n"
+               "  MF_AssertThere (inIndex >= 0, \"inIndex (%ld) < 0\", inIndex, 0) ;\n"
+               "  MF_AssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
+               "  return (cElement *) objectAtIndexOrNULL (inIndex) ;\n"
+               "}\n\n" ;
+
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"

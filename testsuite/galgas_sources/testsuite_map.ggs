@@ -1,0 +1,17 @@
+semantics testsuite_map :
+
+map @aMap {
+  @uint value ;
+  insert insertKey error message "the '%K' key is already inserted" ;
+}
+
+routine testsuite_map :
+  message "--- begin of map\n" ;
+  @aMap m [emptyMap] ;
+  [!?m insertKey ![@lstring new !"g" !here] !37] ;
+  log m ;
+  [!?m setValueForKey !56 !"g"] ;
+  log m ;
+end routine ;
+
+end semantics ;
