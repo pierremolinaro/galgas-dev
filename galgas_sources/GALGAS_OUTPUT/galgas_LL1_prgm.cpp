@@ -8,8 +8,6 @@
 
 //--- START OF USER ZONE 1
 
-#include "project_creation.h"
-
 //--- END OF USER ZONE 1
 
 #include "version_libpm.h"
