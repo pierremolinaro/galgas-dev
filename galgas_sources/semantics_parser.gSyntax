@@ -2282,6 +2282,14 @@ rule <instruction_beginning_with_identifier_and_structure_access>
 #--- Match target and source types
   @string sourceExpressionConverter ;
   match inTargetType :: sourceType :
+  when @typeGalgasListmapType (@lstring mTypeName1 ...) :: @typeGalgasListmapType (@lstring mTypeName2 ...) :
+    if [mTypeName1 string] != [mTypeName2 string] then
+      error here: "for '.=' operator, listmap type @" . mTypeName1
+      . " of target object is not compatible with listmap type @" . mTypeName2
+      . " of source expression" -> sourceExpressionConverter ;
+    else
+      sourceExpressionConverter := "" ;
+    end if ;
   when @typeGalgasListType (@lstring mTypeName1 ...) :: @typeGalgasListType (@lstring mTypeName2 ...) :
     if [mTypeName1 string] != [mTypeName2 string] then
       error here: "for '.=' operator, list type @" . mTypeName1

@@ -434,7 +434,7 @@ list @abstractCategoryMethodList {
 
 #---------------------------------------------------------------------------*
 
-listmap @abstractCategoryMethodMap (@abstractCategoryMethodList) ;
+listmap @abstractCategoryMethodListMap (@abstractCategoryMethodList) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -450,7 +450,23 @@ list @categoryMethodList {
 
 #---------------------------------------------------------------------------*
 
-listmap @categoryMethodMap (@categoryMethodList) ;
+listmap @categoryMethodListMap (@categoryMethodList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @overridingCategoryMethodList {
+  @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+  @semanticInstructionList mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @overridingCategoryMethodListMap (@overridingCategoryMethodList) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -460,7 +476,9 @@ listmap @categoryMethodMap (@categoryMethodList) ;
 
 struct @semanticDeclarationStruct {
   @semanticDeclarationList mSemanticDeclarationList ;
-  @abstractCategoryMethodMap mAbstractCategoryMethodMap ;
+  @abstractCategoryMethodListMap mAbstractCategoryMethodListMap ;
+  @categoryMethodListMap mCategoryMethodListMap ;
+  @overridingCategoryMethodListMap mOverridingCategoryMethodListMap ;
 }
 
 #---------------------------------------------------------------------------*

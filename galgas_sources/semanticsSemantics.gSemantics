@@ -218,7 +218,7 @@ mapindex @typeMapIndex ;
 #---------------------------------------------------------------------------*
 
 abstract class @ACGalgasType {
-  method checkNoCircularity ??@uint unused inTypeCount :
+  method checkTypeCrossReferences ??@uint unused inTypeCount :
   end method ;
 
   method generatePredeclarationInHeader
@@ -498,7 +498,7 @@ class @classGalgasType extends @ACGalgasType {
   @classMethodList mMethodList ;
 
   override
-  method checkNoCircularity ??@uint inTypeCount :
+  method checkTypeCrossReferences ??@uint inTypeCount :
     @string classPath := [mClassName string] ;
     @stringset superClassSet [setWithString ![mClassName string]] ;
     @typeMapIndex superClassIndex := mSuperClassIndex ;
@@ -557,6 +557,21 @@ class @listGalgasType extends @ACGalgasType {
 class @listmapGalgasType extends @ACGalgasType {
   @lstring mListmapTypeName ;
   @typeMapIndex mAssociatedListTypeIndex ;
+
+  override
+  method checkTypeCrossReferences ??@uint unused inTypeCount :
+    @lstring listTypeName ;
+    @ACGalgasType t ;
+    [mAssociatedListTypeIndex searchKey ?listTypeName ?t] ;
+  #--- Check list type is actually a list
+    cast t :
+    when >= @listGalgasType do
+    else
+      error listTypeName: "this mapindex type refers to @"
+        . listTypeName . " as a list, but @" . listTypeName . " is not a list"
+      ;
+    end cast ;
+  end method ;
 }
 
 #---------------------------------------------------------------------------*
@@ -611,7 +626,7 @@ class @mapindexType extends @ACGalgasType {
   @lstring mSearchMethodName ;
 
   override
-  method checkNoCircularity ??@uint unused inTypeCount :
+  method checkTypeCrossReferences ??@uint unused inTypeCount :
     @lstring mapTypeName ;
     @ACGalgasType t ;
     [mIndexOfMapType searchKey ?mapTypeName ?t] ;
@@ -619,7 +634,7 @@ class @mapindexType extends @ACGalgasType {
     cast t :
     when >= @mapType do
     else
-      error mapTypeName: "tis mapindex type refers to @"
+      error mapTypeName: "this mapindex type refers to @"
         . mapTypeName . " as a map, but @" . mapTypeName . " is not a map"
       ;
     end cast ;
@@ -659,6 +674,20 @@ map @routineMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    D E S C E N D A N T    C L A S S    L I S T M A P                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @classIndexList {
+  @typeMapIndex mClassMapindex ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @descendantClassListMap (@classIndexList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    S E M A N T I C    C O N T E X T                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -666,6 +695,7 @@ map @routineMap {
 struct @semanticContext {
   @typeMap mTypeMap ;
   @routineMap mRoutineMap ;
+  @descendantClassListMap mDescendantClassListMap ;
 }
 
 #---------------------------------------------------------------------------*

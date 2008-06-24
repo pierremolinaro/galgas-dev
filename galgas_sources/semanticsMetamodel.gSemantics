@@ -290,27 +290,6 @@ class @filewrapperDeclaration extends @semanticDeclaration {
 }
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-enum @enumCategoryMethodDeclarationKind {
-  constructor isAbstract, isBaseMethod, isOverriding ;
-}{
-}
-
-#---------------------------------------------------------------------------*
-
-class @categoryMethodDeclaration extends @semanticDeclaration {
-  @enumCategoryMethodDeclarationKind mKind ;
-  @lstring mClassName ;
-  @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
-  @semanticInstructionList mRoutineInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
 
 class @semanticsComponentRoot {
   @lstring mSemanticsComponentName ;
