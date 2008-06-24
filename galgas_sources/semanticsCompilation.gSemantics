@@ -152,14 +152,6 @@ override method @filewrapperDeclaration.enterType
 
 #---------------------------------------------------------------------------*
 
-override method @categoryMethodDeclaration.enterType
-  ?!@semanticContext unused ioSemanticContext
-{
-  message "@categoryMethodDeclaration.enterType\n" ;
-}
-
-#---------------------------------------------------------------------------*
-
 override method @sortedListDeclaration.enterType
   ?!@semanticContext ioSemanticContext
 {
@@ -229,6 +221,10 @@ override method @classDeclaration.enterType
     superClassIndex := [@typeMapIndex null] ;
   else
     [@typeMapIndex makeRegularIndex !mSuperClassName !?ioSemanticContext.mTypeMap ?superClassIndex] ;
+  #--- Enter in descendant class listmap
+    @typeMapIndex classIndex ;
+    [@typeMapIndex makeRegularIndex !mClassTypeName !?ioSemanticContext.mTypeMap ?classIndex] ;
+    ioSemanticContext.mDescendantClassListMap += ![mSuperClassName string] !classIndex ;
   end if ;
 #--- Handle attributes
   @attributeList attributeList [emptyList] ;
@@ -294,6 +290,7 @@ routine buildSemanticContext
   outSemanticContext := [@semanticContext new
     !typeMap
     ![@routineMap emptyMap]
+    ![@descendantClassListMap emptyMap]
   ] ;
 #--- Loop throught all declarations
   foreach inSemanticDeclarationList do
@@ -318,10 +315,11 @@ routine buildSemanticContext
   end if ;
 #--- Check type cross references are correct
 # * class inheritance graph has no circularity
-# * mapindex type refres to an actual map type
+# * mapindex type refers to an actual map type
+# * listmap type refers to an actual list type
   if [@uint errorCount] == 0 then
     foreach [outSemanticContext mTypeMap] do
-      [mType checkNoCircularity ![[outSemanticContext mTypeMap] count]] ;
+      [mType checkTypeCrossReferences ![[outSemanticContext mTypeMap] count]] ;
     end foreach ;
   end if ;
 end routine ;

@@ -65,7 +65,9 @@ rule <semantics_component_start_symbol>
   @lstringlist mImportedComponentFileNameList [emptyList] ;
   @semanticDeclarationStruct mSemanticDeclarations [new
     ![@semanticDeclarationList emptyList]
-    ![@abstractCategoryMethodMap emptyMap]
+    ![@abstractCategoryMethodListMap emptyMap]
+    ![@categoryMethodListMap emptyMap]
+    ![@overridingCategoryMethodListMap emptyMap]
   ] ;
   repeat
   while
@@ -880,7 +882,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                *
+#A B S T R A C T    C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -895,21 +897,18 @@ rule <semantic_declaration>
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
-  ioSemanticDeclarations.mAbstractCategoryMethodMap += ![mClassName string] !mMethodName !mFormalParameterList ;
+  ioSemanticDeclarations.mAbstractCategoryMethodListMap += ![mClassName string] !mMethodName !mFormalParameterList ;
 end rule ;
 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                *
+#                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
  ?!@semanticDeclarationStruct ioSemanticDeclarations
 :
-  @enumCategoryMethodDeclarationKind kind ;
-  select
-    kind := [@enumCategoryMethodDeclarationKind isBaseMethod] ;
-  or
-    kind := [@enumCategoryMethodDeclarationKind isOverriding] ;
-    $override$ ;
-  end select ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
   $.$ ;
@@ -920,13 +919,40 @@ rule <semantic_declaration>
   @semanticInstructionList mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
   $}$ ;
-  ioSemanticDeclarations.mSemanticDeclarationList += ![@categoryMethodDeclaration new
-    !kind
-    !mClassName
+  ioSemanticDeclarations.mCategoryMethodListMap +=
+    ![mClassName string]
     !mMethodName
     !mFormalParameterList
     !mRoutineInstructionList
-  ] ;
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $override$ ;
+  $method$ ;
+  $type_name$ ? @lstring mClassName ;
+  $.$ ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  ${$ ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $}$ ;
+  ioSemanticDeclarations.mOverridingCategoryMethodListMap +=
+    ![mClassName string]
+    !mMethodName
+    !mFormalParameterList
+    !mRoutineInstructionList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

@@ -54,10 +54,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : cElement (const GGS_string & inKey) ;\n"
              "    public : GGS_" << mListTypename << " object ;\n"
              " //--- Description\n"
-             "   public : virtual GGS_string\n"
-             "   _description (C_Compiler & _inLexique,\n"
-             "                 const sint32 inIndentation\n"
-             "                 COMMA_LOCATION_ARGS) const ;\n"
+             "    public : virtual GGS_string\n"
+             "    _description (C_Compiler & _inLexique,\n"
+             "                  const sint32 inIndentation\n"
+             "                  COMMA_LOCATION_ARGS) const ;\n"
+             "    public : virtual cNode * _nodeClone (void) ;\n"
              "  } ;\n\n"
              "//--- 'emptyMap' constructor\n"
              "  public : static GGS_" << mListmapTypeName << "\n"
@@ -67,6 +68,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  reader_description (C_Compiler & _inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n\n"
+             "//--- Handle '.=' operator\n"
+             "  public : void _dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) ;\n\n"
+             "//--- Handling '.' GALGAS operator\n"
+             "  public : GGS_" << mListmapTypeName << " _operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const ;\n"
              "//--- Handle '+=' operator\n"
              "  public : void\n"
              "  _addAssign_operation (const GGS_string & inKey" ;
@@ -147,6 +152,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mListmapTypeName << "::cNode * GGS_" << mListmapTypeName << "::cElement::_nodeClone (void) {\n"
+               "  cElement * result = NULL ;\n"
+               "  macroMyNew (result, cElement (key)) ;\n"
+               "  result->object = object ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
                "constructor_emptyMap (void) {\n"
                "  GGS_" << mListmapTypeName << " result ;\n"
@@ -162,6 +175,33 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return _description (inLexique, \"@" << mListmapTypeName << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
 
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
+               "_operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const {\n"
+               "  GGS_" << mListmapTypeName << " result = * this ;\n"
+               "  result._dotAssign_operation (inOperand) ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+               
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "void GGS_" << mListmapTypeName << "::\n"
+               "_dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) {\n"
+               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
+               "    if (count () == 0) {\n"
+               "      * this = inOperand ;\n"
+               "    }else if (inOperand.count () > 0) {\n"
+               "      insulateSharedStringSet () ;\n"
+               "      cElement * p = (cElement *) inOperand.firstObject () ;\n"
+               "      while (p != NULL) {\n"
+               "        macroValidPointer (p) ;\n"
+               "        bool extension ; // Unused\n"
+               "        cElement * node = (cElement *) internalSearchOrAdd (p->key, mSharedMapObject->_mRoot, extension) ;\n"
+               "        node->object._dotAssign_operation (p->object) ;\n"
+               "        p = (cElement *) p->nextObject () ;\n"
+               "      }\n"
+               "    }\n"
+               "  }\n"
+               "}\n\n" ;
 
 //--- Handle '+=' operator
   inCppFile.writeCppHyphenLineComment () ;
@@ -190,7 +230,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << ") {\n"
                "    insulateSharedStringSet () ;\n"
-               "    destroyDirectAndLinearAccess () ;\n"
                "    bool extension ; // unused\n"
                "    cElement * node = (cElement *) internalSearchOrAdd (inKey, mSharedMapObject->_mRoot, extension) ;\n"
                "    node->object._addAssign_operation (" ;

@@ -115,7 +115,8 @@ message "a GALGAS syntax source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileSyntaxComponent !inSourceFile !outputDirectory ;
+  @syntaxComponentRoot syntaxComponentRoot ;
+  grammar syntaxSLRgrammar in inSourceFile ? syntaxComponentRoot ;
 }
 
 #---------------------------------------------------------------------------*
@@ -125,7 +126,8 @@ message "a GALGAS grammar source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileGrammarComponent !inSourceFile !outputDirectory ;
+  @grammarComponentRoot grammarComponentRoot ;
+  grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
 }
 
 #---------------------------------------------------------------------------*
@@ -145,7 +147,8 @@ message "a GALGAS program source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
   getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileProgramComponent !inSourceFile !outputDirectory ;
+  @programComponentRoot programComponentRoot ;
+  grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
 }
 
 #---------------------------------------------------------------------------*
@@ -178,13 +181,13 @@ message "a GALGAS project source file"
     elsif extension == "gLexique" then
       compileLexiqueComponent !fullFilePath !outputDirectory ;
     elsif extension == "gSyntax" then
-      compileSyntaxComponent !fullFilePath !outputDirectory ;
+#      compileSyntaxComponent !fullFilePath !outputDirectory ;
     elsif extension == "gOption" then
       compileOptionComponent !fullFilePath !outputDirectory ;
     elsif extension == "gGrammar" then
-      compileGrammarComponent !fullFilePath !outputDirectory ;
+#      compileGrammarComponent !fullFilePath !outputDirectory ;
     elsif extension == "gProgram" then
-      compileProgramComponent !fullFilePath !outputDirectory ;
+#      compileProgramComponent !fullFilePath !outputDirectory ;
     elsif extension == "gGui" then
       compileGuiComponent !fullFilePath !outputDirectory ;
     else

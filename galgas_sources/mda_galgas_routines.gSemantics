@@ -50,49 +50,32 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileSyntaxComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-  @syntaxComponentRoot syntaxComponentRoot ;
-  grammar syntaxSLRgrammar in inSourceFile ? syntaxComponentRoot ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileGrammarComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-  @grammarComponentRoot grammarComponentRoot ;
-  grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine compileProgramComponent
-  ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
-:
-  @programComponentRoot programComponentRoot ;
-  grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine performProjectGlobalCheckings
   ??@parsedComponentStruct inParsedComponentStruct
 :
 #--- Build all declaration list
   @semanticDeclarationList semanticDeclarationList [emptyList] ;
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    semanticDeclarationList := semanticDeclarationList . [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
+    semanticDeclarationList .= [[mRoot mSemanticDeclarations] mSemanticDeclarationList] ;
   end foreach ;
 #---- Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext !semanticDeclarationList ?semanticContext ;
-#--- Check an abstract category method is implemented by every concrete subclass
-
+#--- Check that for every abstract category method, an overridden category method
+#    defined in an concrete subclass
+  if [@uint errorCount] == 0 then
+    @abstractCategoryMethodListMap abstractCategoryMethodListMap [emptyMap] ;
+    @categoryMethodListMap categoryMethodListMap [emptyMap] ;
+    @overridingCategoryMethodListMap overridingCategoryMethodListMap [emptyMap];
+    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+#      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
+    end foreach ;
+  end if ;
+#  foreach [inParsedComponentStruct mDescendantClassListMap] do
+#
+#  end foreach ;
+##  @descendantClassListMap descendantClassListMap := [outSemanticContext mDescendantClassListMap] ;
+#  log descendantClassListMap ;
 end routine ;
 
 #---------------------------------------------------------------------------*

@@ -79,7 +79,9 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
 #--- Program rules
   @semanticDeclarationStruct mSemanticDeclarations [new
     ![@semanticDeclarationList emptyList]
-    ![@abstractCategoryMethodMap emptyMap]
+    ![@abstractCategoryMethodListMap emptyMap]
+    ![@categoryMethodListMap emptyMap]
+    ![@overridingCategoryMethodListMap emptyMap]
   ] ;
   @programRuleList mProgramRules [emptyList] ;
   repeat

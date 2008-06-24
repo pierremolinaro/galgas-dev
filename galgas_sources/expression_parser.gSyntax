@@ -245,9 +245,15 @@ routine matchConcatOperator
         . [kListType1 string] . "' is different from '@" . [kListType2 string] . "')" ;
     end if ;
     outResultType := inLeftExpressionType ;
+  when @typeGalgasListmapType (@lstring kListType1 ...) :: @typeGalgasListmapType (@lstring kListType2 ...) :
+    if [kListType1 string] != [kListType2 string] then
+      error here:"concatenation operator error: listmaps should have the same type (here '@" 
+        . [kListType1 string] . "' is different from '@" . [kListType2 string] . "')" ;
+    end if ;
+    outResultType := inLeftExpressionType ;
   else
-    error here : "concatenation operator error: " . [inLeftExpressionType messageGalgasType] .
-           " . " . [inRightExpressionType messageGalgasType] . ") cannot be concatened" 
+    error here : "concatenation operator error: @" . [inLeftExpressionType messageGalgasType] .
+           " and @" . [inRightExpressionType messageGalgasType] . " objects cannot be concatened" 
            -> outResultType ;
   end match ;
 end routine ;
