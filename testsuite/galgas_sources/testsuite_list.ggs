@@ -1,5 +1,7 @@
 semantics testsuite_list :
 
+extern routine testsuite_hand_coded ;
+
 list @myList {
   @string mValue ;
 }

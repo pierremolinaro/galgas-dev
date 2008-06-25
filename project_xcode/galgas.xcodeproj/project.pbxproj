@@ -4176,8 +4176,8 @@
 				CF9DF7B90E11444C00BDDC4B /* PM_C_Object.cpp */,
 				CFAF370A0E124C9E00C0636A /* PM_C_Array.h */,
 				CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */,
-				CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */,
 				CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */,
+				CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */,
 			);
 			name = Objects;
 			path = objects;

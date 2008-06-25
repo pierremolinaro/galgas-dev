@@ -27,6 +27,7 @@ endif
 #---------------------------------------------------------------------------*
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
+SOURCES_DIR += ../hand_coded_sources
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -58,5 +59,8 @@ SOURCES += testsuite_list.cpp
 SOURCES += testsuite_map.cpp
 SOURCES += testsuite_listmap.cpp
 SOURCES += testsuite_struct.cpp
+
+
+SOURCES += testsuite_hand_coded.cpp
 
 #---------------------------------------------------------------------------*

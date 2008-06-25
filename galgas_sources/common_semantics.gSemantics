@@ -1677,21 +1677,19 @@ class @typeGalgas_stringset extends @AC_galgasType {
     outTypeName := "stringset" ;
   end method ;
 
-#--- Class accepts constructor call 'emptySet'
+#--- stringset accepts constructor call 'emptySet'
   override method handleConstructorCall
     ??@lstring inClassMethodName
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
-    outHasLexiqueAndLocationArguments := true ;
+    outHasLexiqueAndLocationArguments := false ;
     if [inClassMethodName string] == "emptySet" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "setWithString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       @AC_galgasType t := [@typeGalgas_string new] ;
       outAccessorTypesList += !t ![@lstring new !""! here] ;
-    elsif [inClassMethodName string] == "empty" then
-      error inClassMethodName : "in GALGAS 1.3.0 and later, use 'emptySet' constructor instead of 'empty' constructor" -> outAccessorTypesList ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
