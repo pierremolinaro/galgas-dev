@@ -1877,6 +1877,30 @@
 		CFA97CBC0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
 		CFA97CBD0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
 		CFA97CBE0D9D5208001A9599 /* enum_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA97CB40D9D5208001A9599 /* enum_generation.cpp */; };
+		CFAF370C0E124C9F00C0636A /* PM_C_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF370A0E124C9E00C0636A /* PM_C_Array.h */; };
+		CFAF370D0E124C9F00C0636A /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */; };
+		CFAF370E0E124C9F00C0636A /* PM_C_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF370A0E124C9E00C0636A /* PM_C_Array.h */; };
+		CFAF370F0E124C9F00C0636A /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */; };
+		CFAF37100E124C9F00C0636A /* PM_C_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF370A0E124C9E00C0636A /* PM_C_Array.h */; };
+		CFAF37110E124C9F00C0636A /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */; };
+		CFAF37120E124C9F00C0636A /* PM_C_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF370A0E124C9E00C0636A /* PM_C_Array.h */; };
+		CFAF37130E124C9F00C0636A /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */; };
+		CFAF37140E124C9F00C0636A /* PM_C_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF370A0E124C9E00C0636A /* PM_C_Array.h */; };
+		CFAF37150E124C9F00C0636A /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */; };
+		CFAF37160E124C9F00C0636A /* PM_C_Array.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF370A0E124C9E00C0636A /* PM_C_Array.h */; };
+		CFAF37170E124C9F00C0636A /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */; };
+		CFAF374B0E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */; };
+		CFAF374C0E126D0900C0636A /* PM_C_Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */; };
+		CFAF374D0E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */; };
+		CFAF374E0E126D0900C0636A /* PM_C_Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */; };
+		CFAF374F0E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */; };
+		CFAF37500E126D0900C0636A /* PM_C_Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */; };
+		CFAF37510E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */; };
+		CFAF37520E126D0900C0636A /* PM_C_Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */; };
+		CFAF37530E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */; };
+		CFAF37540E126D0900C0636A /* PM_C_Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */; };
+		CFAF37550E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */; };
+		CFAF37560E126D0900C0636A /* PM_C_Dictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */; };
 		CFB5ABDD0DFD16DF00BBAE93 /* expression_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F4A0090E739A00036FAC /* expression_parser.h */; };
 		CFB5ABDE0DFD16E000BBAE93 /* semantics_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF76F499090E738800036FAC /* semantics_parser.h */; };
 		CFB5ABDF0DFD16E100BBAE93 /* semantics_semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDA3E02090E758600FEB333 /* semantics_semantics.h */; };
@@ -3576,6 +3600,10 @@
 		CFA5C6040DFC007D00DD782E /* include_templateDelimitorList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateDelimitorList.h; sourceTree = "<group>"; };
 		CFA5C6050DFC007D00DD782E /* include_templateReplacementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateReplacementList.h; sourceTree = "<group>"; };
 		CFA97CB40D9D5208001A9599 /* enum_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enum_generation.cpp; sourceTree = "<group>"; };
+		CFAF370A0E124C9E00C0636A /* PM_C_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM_C_Array.h; sourceTree = "<group>"; };
+		CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PM_C_Array.cpp; sourceTree = "<group>"; };
+		CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PM_C_Dictionary.cpp; sourceTree = "<group>"; };
+		CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM_C_Dictionary.h; sourceTree = "<group>"; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
 		CFB9E4860DF28AC500885084 /* TC_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_AVL_TreeForCollision.h; sourceTree = "<group>"; };
@@ -4146,6 +4174,10 @@
 			children = (
 				CF9DF7B80E11444C00BDDC4B /* PM_C_Object.h */,
 				CF9DF7B90E11444C00BDDC4B /* PM_C_Object.cpp */,
+				CFAF370A0E124C9E00C0636A /* PM_C_Array.h */,
+				CFAF370B0E124C9F00C0636A /* PM_C_Array.cpp */,
+				CFAF37490E126D0900C0636A /* PM_C_Dictionary.cpp */,
+				CFAF374A0E126D0900C0636A /* PM_C_Dictionary.h */,
 			);
 			name = Objects;
 			path = objects;
@@ -5524,6 +5556,8 @@
 				CF2945050E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
 				CF2945860E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 				CF9DF7BA0E11444C00BDDC4B /* PM_C_Object.h in Headers */,
+				CFAF37140E124C9F00C0636A /* PM_C_Array.h in Headers */,
+				CFAF37540E126D0900C0636A /* PM_C_Dictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5894,6 +5928,8 @@
 				CF2945110E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
 				CF29458A0E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 				CF9DF7BE0E11444C00BDDC4B /* PM_C_Object.h in Headers */,
+				CFAF370E0E124C9F00C0636A /* PM_C_Array.h in Headers */,
+				CFAF374E0E126D0900C0636A /* PM_C_Dictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6248,6 +6284,8 @@
 				CF29450B0E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
 				CF2945880E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 				CF9DF7C00E11444C00BDDC4B /* PM_C_Object.h in Headers */,
+				CFAF37120E124C9F00C0636A /* PM_C_Array.h in Headers */,
+				CFAF37520E126D0900C0636A /* PM_C_Dictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6576,6 +6614,8 @@
 				CF2945230E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
 				CF2945900E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 				CF9DF7BC0E11444C00BDDC4B /* PM_C_Object.h in Headers */,
+				CFAF37160E124C9F00C0636A /* PM_C_Array.h in Headers */,
+				CFAF37560E126D0900C0636A /* PM_C_Dictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6934,6 +6974,8 @@
 				CF29451D0E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
 				CF29458E0E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 				CF9DF7C20E11444C00BDDC4B /* PM_C_Object.h in Headers */,
+				CFAF37100E124C9F00C0636A /* PM_C_Array.h in Headers */,
+				CFAF37500E126D0900C0636A /* PM_C_Dictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7288,6 +7330,8 @@
 				CF2945170E0972A400511E49 /* include_typeGalgasListmapType.h in Headers */,
 				CF29458C0E09805600511E49 /* AC_galgas_listmap.h in Headers */,
 				CF9DF7C40E11444C00BDDC4B /* PM_C_Object.h in Headers */,
+				CFAF370C0E124C9F00C0636A /* PM_C_Array.h in Headers */,
+				CFAF374C0E126D0900C0636A /* PM_C_Dictionary.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7757,6 +7801,8 @@
 				CF4521A50E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF2945850E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CF9DF7BB0E11444C00BDDC4B /* PM_C_Object.cpp in Sources */,
+				CFAF37150E124C9F00C0636A /* PM_C_Array.cpp in Sources */,
+				CFAF37530E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7923,6 +7969,8 @@
 				CF4521A90E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF2945890E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CF9DF7BF0E11444C00BDDC4B /* PM_C_Object.cpp in Sources */,
+				CFAF370F0E124C9F00C0636A /* PM_C_Array.cpp in Sources */,
+				CFAF374D0E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8089,6 +8137,8 @@
 				CF4521AB0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF2945870E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CF9DF7C10E11444C00BDDC4B /* PM_C_Object.cpp in Sources */,
+				CFAF37130E124C9F00C0636A /* PM_C_Array.cpp in Sources */,
+				CFAF37510E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8262,6 +8312,8 @@
 				CF4521A70E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF29458F0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CF9DF7BD0E11444C00BDDC4B /* PM_C_Object.cpp in Sources */,
+				CFAF37170E124C9F00C0636A /* PM_C_Array.cpp in Sources */,
+				CFAF37550E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8428,6 +8480,8 @@
 				CF4521AD0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF29458D0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CF9DF7C30E11444C00BDDC4B /* PM_C_Object.cpp in Sources */,
+				CFAF37110E124C9F00C0636A /* PM_C_Array.cpp in Sources */,
+				CFAF374F0E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8594,6 +8648,8 @@
 				CF4521AF0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF29458B0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CF9DF7C50E11444C00BDDC4B /* PM_C_Object.cpp in Sources */,
+				CFAF370D0E124C9F00C0636A /* PM_C_Array.cpp in Sources */,
+				CFAF374B0E126D0900C0636A /* PM_C_Dictionary.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
