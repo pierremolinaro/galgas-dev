@@ -429,7 +429,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  outIndex.mKey = inKey ;\n"
                "  ioMap.enterIndex (inKey, outIndex.mIndex) ;\n"
                "  if (outIndex.mIndex.retrieve () == NULL) {\n"
-               "    outIndex._drop_operation () ;\n"
+               "    outIndex._drop () ;\n"
                "  }\n"
                "}\n\n" ;
 
@@ -487,9 +487,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    break ;\n"
                  "  }\n"
                  "  if (shouldDropArguments) {\n"
-                 "    outKey._drop_operation () ;\n" ;
+                 "    outKey._drop () ;\n" ;
     for (sint32 i=1 ; i<=mMapAttributesList.count () ; i++) {
-      inCppFile << "    outAttribute" << i << "._drop_operation () ;\n" ;
+      inCppFile << "    outAttribute" << i << "._drop () ;\n" ;
     }
     inCppFile << "  }\n"
                  "}\n\n" ;
@@ -963,7 +963,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "      outParameter" << attributeIndex << "._drop_operation () ;\n" ;
+      inCppFile << "      outParameter" << attributeIndex << "._drop () ;\n" ;
       attributeIndex ++ ;
       current = current->nextObject () ;
     }
@@ -1066,10 +1066,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (node == NULL) {\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "    outParameter" << i << "._drop_operation () ;\n" ;
+      inCppFile << "    outParameter" << i << "._drop () ;\n" ;
     }
     inCppFile << "    if (outIndex != NULL) {\n"
-                 "      outIndex->_drop_operation () ;\n"
+                 "      outIndex->_drop () ;\n"
                  "     }\n"
                  "  }else{\n" ;
   current = mNonExternAttributesList.firstObject () ;
@@ -1232,7 +1232,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.writeCstringConstant (currentMethod->mShadowErrorMessage) ;
       inCppFile << " COMMA_THERE) ;\n" ;
       if (currentMethod->mIsGetIndexMethod.boolValue ()) {
-        inCppFile << "    outIndex._drop_operation () ;\n" ;
+        inCppFile << "    outIndex._drop () ;\n" ;
       }
       inCppFile << "  }else{\n" ;
       inCppFile.incIndentation (2) ;
@@ -1564,7 +1564,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << attributeIndex << "._drop_operation () ;\n" ;
+      inCppFile << "    outParameter" << attributeIndex << "._drop () ;\n" ;
       attributeIndex ++ ;
       current = current->nextObject () ;
     }
@@ -1605,11 +1605,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     attributeIndex = 0 ;
     while (current != NULL) {
       macroValidPointer (current) ;
-      inCppFile << "    outParameter" << attributeIndex << "._drop_operation () ;\n" ;
+      inCppFile << "    outParameter" << attributeIndex << "._drop () ;\n" ;
       attributeIndex ++ ;
       current = current->nextObject () ;
     }
-    inCppFile << "    outIndex._drop_operation () ;\n"
+    inCppFile << "    outIndex._drop () ;\n"
                  "  }else{\n" ;
     current = mNonExternAttributesList.firstObject () ;
     attributeIndex = 0 ;

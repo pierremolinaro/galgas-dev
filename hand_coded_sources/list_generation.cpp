@@ -896,7 +896,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -942,7 +942,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -989,7 +989,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1035,7 +1035,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1744,7 +1744,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1790,7 +1790,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1837,7 +1837,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }
@@ -1883,7 +1883,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = mNonExternAttributesList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << "._drop_operation () ;\n" ;
+    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
     current = current->nextObject () ;
   }

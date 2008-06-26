@@ -204,9 +204,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mEndString ;
@@ -491,9 +491,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mReplacedString ;
@@ -778,9 +778,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.attributType ;
@@ -1047,7 +1047,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -1311,9 +1311,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mAttributType ;
@@ -1598,9 +1598,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mErrorMessage ;
@@ -1900,9 +1900,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mTitle ;
@@ -2220,11 +2220,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mErrorMessage ;
@@ -2561,9 +2561,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.attributNomTerminal ;
@@ -2848,9 +2848,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.attributSimpleTable ;
@@ -4015,7 +4015,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->attributCondition ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4035,7 +4035,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->attributCondition ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4057,7 +4057,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4079,7 +4079,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4487,7 +4487,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->attributInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4507,7 +4507,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->attributInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4529,7 +4529,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4551,7 +4551,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4852,8 +4852,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->attributListeConditions ;
     _out_1 = _p->attributListeInstructions ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4875,8 +4875,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->attributListeConditions ;
     _out_1 = _p->attributListeInstructions ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4900,8 +4900,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4925,8 +4925,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -5363,7 +5363,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->attributArgument ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -5383,7 +5383,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->attributArgument ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -5405,7 +5405,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -5427,7 +5427,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -6523,7 +6523,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mErrorMessageIndex ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -6543,7 +6543,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mErrorMessageIndex ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -6565,7 +6565,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -6587,7 +6587,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -7329,8 +7329,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->attributNomAttribut ;
     _out_1 = _p->attributNomTable ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7352,8 +7352,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->attributNomAttribut ;
     _out_1 = _p->attributNomTable ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7377,8 +7377,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7402,8 +7402,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -9337,9 +9337,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mTerminalSymbol ;

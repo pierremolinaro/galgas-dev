@@ -120,9 +120,9 @@ pr_galgas_component_cocoa_parser_100_4_ (galgas_scanner & _inLexique,
     }
   }else if (((var_cas_grammarName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (175)))._operator_isEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
     GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, (((((GGS_string (true, "the grammar should be named in the header, as follows (replace xxx by actual grammar name):\n"))._operator_concat (GGS_string (true, "gui ")))._operator_concat (var_cas_guiComponentName))._operator_concat (GGS_string (true, "\"")))._operator_concat (var_cas_guiKindName))._operator_concat (GGS_string (true, "\" grammar xxx :")) COMMA_SOURCE_FILE_AT_LINE (178)) ;
-    var_cas_nonterminalSymbolParametersMap._drop_operation () ;
-    var_cas_lexiqueClassName._drop_operation () ;
-    var_cas_optionsComponentsMap._drop_operation () ;
+    var_cas_nonterminalSymbolParametersMap._drop () ;
+    var_cas_lexiqueClassName._drop () ;
+    var_cas_optionsComponentsMap._drop () ;
   }else{
     const GGS_M_grammarComponents  _temp_7079 = var_cas_ioGrammarComponentsMap ;
     if (_temp_7079._isBuilt ()) {

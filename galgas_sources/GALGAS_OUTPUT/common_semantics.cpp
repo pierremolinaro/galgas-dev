@@ -614,7 +614,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -634,7 +634,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -656,7 +656,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -678,7 +678,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -979,8 +979,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mFormalArgumentPassingMode ;
     _out_1 = _p->mGalgasTypeName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1002,8 +1002,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mFormalArgumentPassingMode ;
     _out_1 = _p->mGalgasTypeName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1027,8 +1027,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1052,8 +1052,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1363,7 +1363,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mTypeName ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -1383,7 +1383,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mTypeName ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -1405,7 +1405,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -1427,7 +1427,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -4710,9 +4710,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mHasConstructor ;
@@ -4994,7 +4994,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -5223,7 +5223,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -5659,9 +5659,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mFormalInputArgumentList ;
@@ -5946,9 +5946,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mReaderFormalArgumentList ;
@@ -6233,9 +6233,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mModifierFormalArgumentList ;
@@ -6719,7 +6719,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -7195,9 +7195,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mType ;
@@ -7491,10 +7491,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mSignature ;
@@ -7773,8 +7773,8 @@ method_acceptForeachInstruction (C_Compiler & _inLexique,
                                 GGS_typeListeAttributsSemantiques & var_cas_outForeachList,
                                 GGS_localConstantBuildStyleEnum& var_cas_outStyle COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_inErrorLocation.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type cannot be enumerated by in 'foreach' instruction") COMMA_SOURCE_FILE_AT_LINE (455)) ;
-  var_cas_outForeachList._drop_operation () ;
-  var_cas_outStyle._drop_operation () ;
+  var_cas_outForeachList._drop () ;
+  var_cas_outStyle._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7784,7 +7784,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
                                 GGS_lstring  var_cas_inModifierName,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (464)) ;
-  var_cas_outModifierSignature._drop_operation () ;
+  var_cas_outModifierSignature._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7796,8 +7796,8 @@ method_handleMethodInstructionCall (C_Compiler & _inLexique,
                                 GGS_L_EXsignature & var_cas_outMethodSignature,
                                 GGS_string& var_cas_outCategoryMethodClassBaseName COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support method call instruction") COMMA_SOURCE_FILE_AT_LINE (476)) ;
-  var_cas_outMethodSignature._drop_operation () ;
-  var_cas_outCategoryMethodClassBaseName._drop_operation () ;
+  var_cas_outMethodSignature._drop () ;
+  var_cas_outCategoryMethodClassBaseName._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7809,8 +7809,8 @@ method_handleConstructorCall (C_Compiler & _inLexique,
                                 GGS_bool& var_cas_outHasLexiqueAndLocationArguments COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_outHasLexiqueAndLocationArguments = GGS_bool (true, true) ;
   var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (488)) ;
-  var_cas_outAccessorTypesList._drop_operation () ;
-  var_cas_outHasLexiqueAndLocationArguments._drop_operation () ;
+  var_cas_outAccessorTypesList._drop () ;
+  var_cas_outHasLexiqueAndLocationArguments._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7820,7 +7820,7 @@ method_handleClassMethodCall (C_Compiler & _inLexique,
                                 GGS_lstring  var_cas_inTypeMethodName,
                                 GGS_L_EXsignature & var_cas_outTypeMethodSignature COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_inTypeMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This type method is not defined") COMMA_SOURCE_FILE_AT_LINE (496)) ;
-  var_cas_outTypeMethodSignature._drop_operation () ;
+  var_cas_outTypeMethodSignature._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7830,7 +7830,7 @@ method_handleMinusAssignOperatorCall (C_Compiler & _inLexique,
                                 GGS_location  var_cas_inErrorLocation,
                                 GGS_typeListeAttributsSemantiques & var_cas_outParametersList COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_inErrorLocation.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support call of '-=' operator") COMMA_SOURCE_FILE_AT_LINE (506)) ;
-  var_cas_outParametersList._drop_operation () ;
+  var_cas_outParametersList._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7840,7 +7840,7 @@ method_handleAddAssignOperatorCall (C_Compiler & _inLexique,
                                 GGS_location  var_cas_inErrorLocation,
                                 GGS_typeListeAttributsSemantiques & var_cas_outParametersList COMMA_UNUSED_LOCATION_ARGS) {
   var_cas_inErrorLocation.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support call of '+=' operator") COMMA_SOURCE_FILE_AT_LINE (517)) ;
-  var_cas_outParametersList._drop_operation () ;
+  var_cas_outParametersList._drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9850,10 +9850,10 @@ method_first (C_Compiler & _inLexique,
     _out_2 = _p->mCppName ;
     _out_3 = _p->mModeIn ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -9879,10 +9879,10 @@ method_last (C_Compiler & _inLexique,
     _out_2 = _p->mCppName ;
     _out_3 = _p->mModeIn ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -9910,10 +9910,10 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -9941,10 +9941,10 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -10209,7 +10209,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -10561,8 +10561,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mAttributType ;
     _out_1 = _p->mAttributeName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -10584,8 +10584,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mAttributType ;
     _out_1 = _p->mAttributeName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -10609,8 +10609,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -10634,8 +10634,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -10965,8 +10965,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mType ;
     _out_1 = _p->mEndOfExpressionLocation ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -10988,8 +10988,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mType ;
     _out_1 = _p->mEndOfExpressionLocation ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11013,8 +11013,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11038,8 +11038,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11369,8 +11369,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mType ;
     _out_1 = _p->mFormalArgumentPassingMode ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11392,8 +11392,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mType ;
     _out_1 = _p->mFormalArgumentPassingMode ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11417,8 +11417,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11442,8 +11442,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -11761,10 +11761,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mCategoryMethodKind ;
@@ -12197,8 +12197,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mType ;
     _out_1 = _p->mFormalArgumentPassingMode ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -12220,8 +12220,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mType ;
     _out_1 = _p->mFormalArgumentPassingMode ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -12245,8 +12245,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -12270,8 +12270,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -12505,10 +12505,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mAccessorSignature ;
@@ -13108,7 +13108,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (_inLexique COMMA_HERE), GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (793)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -13518,7 +13518,7 @@ method_handleMethodInstructionCall (C_Compiler & _inLexique,
     var_cas_outReaderSignature = GGS_L_EXsignature ::constructor_emptyList () ;
   }else{
     var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, (GGS_string (true, "this method is not defined (writeToFile, makeDirectoryAndWriteToFile"))._operator_concat (GGS_string (true, " and makeDirectory methods are defined on @string objects) ")) COMMA_SOURCE_FILE_AT_LINE (859)) ;
-    var_cas_outReaderSignature._drop_operation () ;
+    var_cas_outReaderSignature._drop () ;
   }
 }
 
@@ -13572,7 +13572,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE), GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (910)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -13591,7 +13591,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this modifier is not defined") COMMA_SOURCE_FILE_AT_LINE (929)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -13612,7 +13612,7 @@ method_handleClassMethodCall (C_Compiler & _inLexique,
     var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inTypeMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This type method is not defined") COMMA_SOURCE_FILE_AT_LINE (949)) ;
-    var_cas_outTypeMethodSignature._drop_operation () ;
+    var_cas_outTypeMethodSignature._drop () ;
   }
 }
 
@@ -13836,7 +13836,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (995)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -14060,7 +14060,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1041)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -14291,7 +14291,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE), GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1094)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -14757,7 +14757,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (_inLexique COMMA_HERE), GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1216)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -15304,7 +15304,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1280)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -15322,7 +15322,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1298)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -15534,7 +15534,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1332)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -15552,7 +15552,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1350)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -15764,7 +15764,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1384)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -15782,7 +15782,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1402)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -15994,7 +15994,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1435)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -16012,7 +16012,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1453)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -16224,7 +16224,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1486)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -16242,7 +16242,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1504)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -16454,7 +16454,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1537)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -16472,7 +16472,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1555)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -16684,7 +16684,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1588)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -16702,7 +16702,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1606)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -16914,7 +16914,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1639)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -16932,7 +16932,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1657)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -17144,7 +17144,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1694)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -17378,7 +17378,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this modifier is not defined") COMMA_SOURCE_FILE_AT_LINE (1759)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -17692,9 +17692,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.aListeTypesParametres ;
@@ -18174,9 +18174,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.aListeDesAttributs ;
@@ -18790,9 +18790,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.aListeDesAttributs ;
@@ -19092,9 +19092,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mTerminalSymbolMap ;
@@ -19379,9 +19379,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mType ;
@@ -19666,9 +19666,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mFormalParametersList ;
@@ -20317,9 +20317,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.aDefEntite ;
@@ -20761,9 +20761,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mType ;
@@ -21319,7 +21319,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -21339,7 +21339,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -21361,7 +21361,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -21383,7 +21383,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -21579,9 +21579,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mStartSymbolParametersMap ;
@@ -21866,9 +21866,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mFormalParametersList ;
@@ -22278,9 +22278,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mLeftNonterminalSymbolIndex ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -22304,9 +22304,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mLeftNonterminalSymbolIndex ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -22332,9 +22332,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -22360,9 +22360,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -22616,9 +22616,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mNonterminalSymbolParametersMap ;
@@ -22918,9 +22918,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mSymbolIndex ;
@@ -23209,11 +23209,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mNonterminalSymbolsMap ;
@@ -23999,7 +23999,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -24019,7 +24019,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -24041,7 +24041,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -24063,7 +24063,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -24748,9 +24748,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mProductionRulesList ;
     _out_2 = _p->mSyntaxComponentName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -24774,9 +24774,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mProductionRulesList ;
     _out_2 = _p->mSyntaxComponentName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -24802,9 +24802,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -24830,9 +24830,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -25095,10 +25095,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mReturnedEntityName ;
@@ -25391,7 +25391,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -25650,9 +25650,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mAttributType ;
@@ -26082,10 +26082,10 @@ method_first (C_Compiler & _inLexique,
     _out_2 = _p->mIsGetIndexMethod ;
     _out_3 = _p->mShadowErrorMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -26111,10 +26111,10 @@ method_last (C_Compiler & _inLexique,
     _out_2 = _p->mIsGetIndexMethod ;
     _out_3 = _p->mShadowErrorMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -26142,10 +26142,10 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -26173,10 +26173,10 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -26776,7 +26776,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = mAttributeList ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (2332)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -27027,7 +27027,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = mAttributeList ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the '"))._operator_concat (var_cas_inClassMethodName))._operator_concat (GGS_string (true, "' constructor is not defined")) COMMA_SOURCE_FILE_AT_LINE (2365)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -27277,7 +27277,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the '"))._operator_concat (var_cas_inClassMethodName))._operator_concat (GGS_string (true, "' constructor is not defined")) COMMA_SOURCE_FILE_AT_LINE (2415)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -27759,9 +27759,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mFormalParametersList ;
@@ -28028,7 +28028,7 @@ _searchElement (C_Compiler & inLexique,
   }
   if (node == NULL) {
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     if (outIndex != NULL) {
@@ -28188,7 +28188,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "a domain only accepts 'emptyDomain' constructor") COMMA_SOURCE_FILE_AT_LINE (2559)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -28205,7 +28205,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     }
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this modifier is not defined") COMMA_SOURCE_FILE_AT_LINE (2572)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -28651,7 +28651,7 @@ method_handleModifierCall (C_Compiler & _inLexique,
     var_cas_outModifierSignature = mExtractSignature ;
   }else{
     var_cas_inModifierName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "a sorted list accepts only 'popSmallest' and 'popGreatest' modifiers") COMMA_SOURCE_FILE_AT_LINE (2630)) ;
-    var_cas_outModifierSignature._drop_operation () ;
+    var_cas_outModifierSignature._drop () ;
   }
 }
 
@@ -28693,7 +28693,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = mAttributeList ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (2670)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -29038,10 +29038,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.aSignatureDebut ;
@@ -29547,9 +29547,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mMethodSignature ;
@@ -29834,9 +29834,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mMethodSignature ;
@@ -30062,10 +30062,10 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgasUndefinedMapType ::constructor_new (_inLexique, mMapTypeName COMMA_HERE), GGS_lstring ::constructor_new (_inLexique, GGS_string (true, "\?\?\?"), GGS_location (_inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2787)))._operator_isEqual (GGS_string (true, "empty"))).isBuiltAndTrue ()) {
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "in GALGAS 1.3.0 and later, use 'emptyMap' constructor instead of 'empty' constructor") COMMA_SOURCE_FILE_AT_LINE (2788)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (2790)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -30330,7 +30330,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "a map index only accepts 'null' constructor") COMMA_SOURCE_FILE_AT_LINE (2822)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -30646,9 +30646,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mRetrieveErrorMessage ;
@@ -30863,7 +30863,7 @@ method_handleClassMethodCall (C_Compiler & _inLexique,
     var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgasMapindexType ::constructor_new (_inLexique, mMapindexTypeName, mMapTypeName, mMapAttributesList, mMapIndexSearchReaderMap, aTableMethodesSurcharger, mModifierMethodMap, mReaderMethodMap COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (_inLexique COMMA_HERE)) ;
   }else{
     var_cas_inTypeMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "a map index only accepts 'regularIndex' type method") COMMA_SOURCE_FILE_AT_LINE (2908)) ;
-    var_cas_outTypeMethodSignature._drop_operation () ;
+    var_cas_outTypeMethodSignature._drop () ;
   }
 }
 
@@ -31407,7 +31407,7 @@ method_handleMethodInstructionCall (C_Compiler & _inLexique,
     }
     if (((var_cas_outCategoryMethodClassBaseName)._operator_isEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
       var_cas_inMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "there is no '"))._operator_concat (var_cas_inMethodName))._operator_concat (GGS_string (true, "' method defined for '@")))._operator_concat (mClassTypeName))._operator_concat (GGS_string (true, "' class")) COMMA_SOURCE_FILE_AT_LINE (2991)) ;
-      var_cas_outMethodSignature._drop_operation () ;
+      var_cas_outMethodSignature._drop () ;
     }
   }
 }
@@ -31422,12 +31422,12 @@ method_handleConstructorCall (C_Compiler & _inLexique,
   var_cas_outHasLexiqueAndLocationArguments = GGS_bool (true, true) ;
   if ((mClassIsAbstract).isBuiltAndTrue ()) {
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "an abstract class cannot be instancied") COMMA_SOURCE_FILE_AT_LINE (3004)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }else if (((var_cas_inClassMethodName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3005)))._operator_isEqual (GGS_string (true, "new"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = mAttributeList ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (3008)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -32222,9 +32222,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mMessageStringList ;
@@ -32634,9 +32634,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mTargetState ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -32660,9 +32660,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mTargetState ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -32688,9 +32688,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -32716,9 +32716,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -32990,11 +32990,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mActionDefinitionList ;
@@ -33436,8 +33436,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mSourceState ;
     _out_1 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -33459,8 +33459,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mSourceState ;
     _out_1 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -33484,8 +33484,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -33509,8 +33509,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -33753,11 +33753,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mActionDefinitionList ;
@@ -34299,13 +34299,13 @@ method_first (C_Compiler & _inLexique,
     _out_5 = _p->mTargetStateIndex ;
     _out_6 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
-    _out_4._drop_operation () ;
-    _out_5._drop_operation () ;
-    _out_6._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
+    _out_4._drop () ;
+    _out_5._drop () ;
+    _out_6._drop () ;
   }
 }
 
@@ -34337,13 +34337,13 @@ method_last (C_Compiler & _inLexique,
     _out_5 = _p->mTargetStateIndex ;
     _out_6 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
-    _out_4._drop_operation () ;
-    _out_5._drop_operation () ;
-    _out_6._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
+    _out_4._drop () ;
+    _out_5._drop () ;
+    _out_6._drop () ;
   }
 }
 
@@ -34377,13 +34377,13 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
-    _out_4._drop_operation () ;
-    _out_5._drop_operation () ;
-    _out_6._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
+    _out_4._drop () ;
+    _out_5._drop () ;
+    _out_6._drop () ;
   }
 }
 
@@ -34417,13 +34417,13 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
-    _out_4._drop_operation () ;
-    _out_5._drop_operation () ;
-    _out_6._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
+    _out_4._drop () ;
+    _out_5._drop () ;
+    _out_6._drop () ;
   }
 }
 
@@ -34811,11 +34811,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mActionDefinitionList ;
@@ -35067,7 +35067,7 @@ method_handleConstructorCall (C_Compiler & _inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
     var_cas_inClassMethodName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the '"))._operator_concat (var_cas_inClassMethodName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3143))))._operator_concat (GGS_string (true, "' is not declared as constructor")) COMMA_SOURCE_FILE_AT_LINE (3145)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
   }
 }
 
@@ -35776,12 +35776,12 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
-    outParameter3._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
+    outParameter3._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mOptionChar ;
@@ -36162,11 +36162,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mBoolOptionsMap ;
@@ -36521,11 +36521,11 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mNonterminalSymbolParametersMap ;
@@ -36916,15 +36916,15 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
-    outParameter2._drop_operation () ;
-    outParameter3._drop_operation () ;
-    outParameter4._drop_operation () ;
-    outParameter5._drop_operation () ;
-    outParameter6._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
+    outParameter2._drop () ;
+    outParameter3._drop () ;
+    outParameter4._drop () ;
+    outParameter5._drop () ;
+    outParameter6._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mModelMap ;
@@ -37374,10 +37374,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mWrapperDirectoryIndex ;
@@ -37688,9 +37688,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mFormalAttributeList ;
@@ -37984,10 +37984,10 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
-    outParameter1._drop_operation () ;
+    outParameter0._drop () ;
+    outParameter1._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mRegularFileMap ;
@@ -38443,10 +38443,10 @@ method_first (C_Compiler & _inLexique,
     _out_2 = _p->mTerminal2 ;
     _out_3 = _p->mTerminal2ID ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -38472,10 +38472,10 @@ method_last (C_Compiler & _inLexique,
     _out_2 = _p->mTerminal2 ;
     _out_3 = _p->mTerminal2ID ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -38503,10 +38503,10 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -38534,10 +38534,10 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -38763,8 +38763,8 @@ void routine_handleStringReaderCall (C_Compiler & _inLexique,
     var_cas_outReturnedType = GGS_typeGalgas_sint ::constructor_new (_inLexique COMMA_HERE) ;
   }else{
     var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3523)) ;
-    var_cas_outAccessorTypesList._drop_operation () ;
-    var_cas_outReturnedType._drop_operation () ;
+    var_cas_outAccessorTypesList._drop () ;
+    var_cas_outReturnedType._drop () ;
   }
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_handleStringReaderCall\n") ;
@@ -38822,8 +38822,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3574)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgasUndefinedMapindexType *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3577)))._operator_isEqual (GGS_string (true, "isRegular"))).isBuiltAndTrue ()) {
@@ -38840,8 +38840,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3591)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_string *> (_var_186215.getPtr ()) != NULL) {
           ::routine_handleStringReaderCall (_inLexique,  var_cas_inReaderName,  var_cas_outAccessorTypesList,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3593)) ;
@@ -38865,8 +38865,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3615)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_binaryset *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3618)))._operator_isEqual (GGS_string (true, "isFull"))).isBuiltAndTrue ()) {
@@ -39007,8 +39007,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3756)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_uint *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3759)))._operator_isEqual (GGS_string (true, "sint"))).isBuiltAndTrue ()) {
@@ -39034,8 +39034,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3782)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_char *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3785)))._operator_isEqual (GGS_string (true, "string"))).isBuiltAndTrue ()) {
@@ -39064,8 +39064,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3811)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_uint64 *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3814)))._operator_isEqual (GGS_string (true, "sint64"))).isBuiltAndTrue ()) {
@@ -39090,8 +39090,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3836)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_sint *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3839)))._operator_isEqual (GGS_string (true, "uint"))).isBuiltAndTrue ()) {
@@ -39108,8 +39108,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3853)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_sint64 *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3856)))._operator_isEqual (GGS_string (true, "uint64"))).isBuiltAndTrue ()) {
@@ -39126,8 +39126,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3870)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_lchar *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3873)))._operator_isEqual (GGS_string (true, "char"))).isBuiltAndTrue ()) {
@@ -39145,8 +39145,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3888)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_lbool *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3891)))._operator_isEqual (GGS_string (true, "bool"))).isBuiltAndTrue ()) {
@@ -39161,8 +39161,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_location ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3903)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_luint *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3906)))._operator_isEqual (GGS_string (true, "uint"))).isBuiltAndTrue ()) {
@@ -39180,8 +39180,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3921)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_luint64 *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3924)))._operator_isEqual (GGS_string (true, "uint64"))).isBuiltAndTrue ()) {
@@ -39195,8 +39195,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3935)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_lsint *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3938)))._operator_isEqual (GGS_string (true, "sint"))).isBuiltAndTrue ()) {
@@ -39217,8 +39217,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3956)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_lsint64 *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3959)))._operator_isEqual (GGS_string (true, "sint64"))).isBuiltAndTrue ()) {
@@ -39235,8 +39235,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3973)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_ldouble *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3976)))._operator_isEqual (GGS_string (true, "double"))).isBuiltAndTrue ()) {
@@ -39257,8 +39257,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3994)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgasListType *> (_var_186215.getPtr ()) != NULL) {
           const GGS_typeGalgasListType var_cas_listType (_var_186215.getPtr ()) ;
@@ -39304,8 +39304,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_uint ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "sorted list supports only 'length' reader call") COMMA_SOURCE_FILE_AT_LINE (4032)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgasMapType *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (4035)))._operator_isEqual (GGS_string (true, "hasKey"))).isBuiltAndTrue ()) {
@@ -39331,8 +39331,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             ::routine_build_stringlist_type (_inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (4053)) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (4057)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgasListmapType *> (_var_186215.getPtr ()) != NULL) {
           const GGS_typeGalgasListmapType var_cas_mapType (_var_186215.getPtr ()) ;
@@ -39355,8 +39355,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = var_cas_mapType.reader_mListType (_inLexique COMMA_SOURCE_FILE_AT_LINE (4076)) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (4079)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgas_stringset *> (_var_186215.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (4082)))._operator_isEqual (GGS_string (true, "hasKey"))).isBuiltAndTrue ()) {
@@ -39370,8 +39370,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_uint ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (4092)) ;
-            var_cas_outAccessorTypesList._drop_operation () ;
-            var_cas_outReturnedType._drop_operation () ;
+            var_cas_outAccessorTypesList._drop () ;
+            var_cas_outReturnedType._drop () ;
           }
         }else if (dynamic_cast <cPtr_typeGalgasClassType *> (_var_186215.getPtr ()) != NULL) {
           const GGS_typeGalgasClassType var_cas_t (_var_186215.getPtr ()) ;
@@ -39426,8 +39426,8 @@ void routine_handleReaderCall (C_Compiler & _inLexique,
           var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
         }else{
           var_cas_inReaderName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "variables of this type do not support reader call") COMMA_SOURCE_FILE_AT_LINE (4127)) ;
-          var_cas_outAccessorTypesList._drop_operation () ;
-          var_cas_outReturnedType._drop_operation () ;
+          var_cas_outAccessorTypesList._drop () ;
+          var_cas_outReturnedType._drop () ;
         }
       }
     }
@@ -39947,7 +39947,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -39967,7 +39967,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -39989,7 +39989,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -40011,7 +40011,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -40377,10 +40377,10 @@ GGS_EXsemanticContext::~GGS_EXsemanticContext (void) {
 
 //---------------------------------------------------------------------------*
 
-void GGS_EXsemanticContext::_drop_operation (void) {
-  mFilewrappers._drop_operation () ;
-  mImportedSemanticComponents._drop_operation () ;
-  mCategoryMethodMap._drop_operation () ;
+void GGS_EXsemanticContext::_drop (void) {
+  mFilewrappers._drop () ;
+  mImportedSemanticComponents._drop () ;
+  mCategoryMethodMap._drop () ;
 }
 
 //---------------------------------------------------------------------------*

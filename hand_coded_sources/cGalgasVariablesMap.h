@@ -171,7 +171,7 @@ template <typename INFO> class cGalgasVariablesMap {
   public : virtual ~cGalgasVariablesMap (void) ;
 
 //--- Drop operation
-  public : void _drop_operation (void) ;
+  public : void _drop (void) ;
   public : void build (void) ;
 
 //--- Reader 'hasKey"

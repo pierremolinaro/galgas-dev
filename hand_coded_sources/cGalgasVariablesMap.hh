@@ -76,7 +76,7 @@ mListLength (0) {
 template <typename INFO>
 cGalgasVariablesMap <INFO>::
 ~cGalgasVariablesMap (void) {
-  _drop_operation () ;
+  _drop () ;
   macroVoidPointer (aListeSurcharges) ;
 }
 
@@ -84,13 +84,13 @@ cGalgasVariablesMap <INFO>::
 
 template <typename INFO>
 void cGalgasVariablesMap <INFO>::build (void) {
-  _drop_operation () ;
+  _drop () ;
 }
 
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-void cGalgasVariablesMap <INFO>::_drop_operation (void) {
+void cGalgasVariablesMap <INFO>::_drop (void) {
   mListLength = 0 ;
   macroMyDelete (_mRoot, cElement) ;
 }
@@ -130,7 +130,7 @@ operator = (const cGalgasVariablesMap <INFO> & inOperand) {
     printf ("--- FATAL ERROR AT LINE %d, SOURCE %s ---\n", __LINE__, __FILE__) ;
     exit (1) ;
   }
-  _drop_operation () ;
+  _drop () ;
   return * this ;
 }
 

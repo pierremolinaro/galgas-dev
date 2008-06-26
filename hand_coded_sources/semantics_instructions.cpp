@@ -155,7 +155,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       macroValidPointer (affectationCourante) ;
       ioCppFile << "    " ;
       affectationCourante->aNomVariableCible (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << "._drop_operation () ;\n" ;
+      ioCppFile << "._drop () ;\n" ;
       affectationCourante = affectationCourante->nextObject () ;
     }
     ioCppFile << "    if (" ;
@@ -274,7 +274,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       branchCount ++ ;
     }
     ioCppFile << "}else{ // Else part\n" ;
-  //--- Generate _drop_operation instructions
+  //--- Generate _drop instructions
     generateInstructionListForList (mElseInstructionList, ioCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -550,7 +550,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aVariableConsommee (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << "._drop_operation () ;\n" ;
+    ioCppFile << "._drop () ;\n" ;
   }
 }
 
@@ -650,7 +650,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     while (currentVarToDrop != NULL) {
       macroValidPointer (currentVarToDrop) ;
       currentVarToDrop->mVarToDrop (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << "._drop_operation () ;\n" ;
+      ioCppFile << "._drop () ;\n" ;
       currentVarToDrop = currentVarToDrop->nextObject () ;
     }
   }

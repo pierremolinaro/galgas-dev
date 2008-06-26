@@ -193,14 +193,14 @@ void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler
       C_String message ;
       message << "the '" << sourceFileName << "' file exits, but cannot be read" ;
       _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;
-      parameter_3._drop_operation () ;
+      parameter_3._drop () ;
     }
     macroDetachPointer (scanner_, galgasTemplateScanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;
-    parameter_3._drop_operation () ;
+    parameter_3._drop () ;
   }
 }
 
