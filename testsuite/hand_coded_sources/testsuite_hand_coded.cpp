@@ -7,10 +7,11 @@
 
 void
 routine_test_dictionary (void) {
-  const sint32 TEST_SIZE = 5000000 ;
+  const sint32 TEST_SIZE = 1000000 ;
   PM_C_Dictionary dictionary ;
   dictionary._alloc (HERE) ;
   bool ok = true ;
+//--- First insertion
   for (sint32 i=0 ; (i<TEST_SIZE) && ok ; i++) {
     C_String s ; s << i ;
     ok = dictionary._insertObjectForKey (PM_C_Object (), s) ;
@@ -21,6 +22,7 @@ routine_test_dictionary (void) {
   if (ok) {
     printf ("Insertion Test Ok\n") ;
   }
+//--- First remove
   for (sint32 i=0 ; (i<TEST_SIZE) && ok ; i++) {
     C_String s ; s << i ;
     PM_C_Object object ;
@@ -32,6 +34,32 @@ routine_test_dictionary (void) {
   if (ok) {
     printf ("Delete Test Ok\n") ;
   }
+//--- Second insertion
+  for (sint32 i=0 ; (i<TEST_SIZE) && ok ; i++) {
+    C_String s ; s << i ;
+    ok = dictionary._insertObjectForKey (PM_C_Object (), s) ;
+    if (! ok) {
+      printf ("Error when inserting '%s'\n", s.cString ()) ;
+    }
+  }
+  if (ok) {
+    printf ("Insertion Test Ok\n") ;
+  }
+//--- Second Remove
+  for (sint32 i=0 ; (i<TEST_SIZE) && ok ; i++) {
+    C_String s ; s << i ;
+    PM_C_Object object ;
+    ok = dictionary._removeObjectForKey (object, s) ;
+    if (! ok) {
+      printf ("Error when removing '%s'\n", s.cString ()) ;
+    }
+  }
+  if (ok) {
+    printf ("Delete Test Ok\n") ;
+  }
+  cPtrDictionaryNode::printStats () ;
+  cPtrDictionaryNode::disposeUnusedNodes () ;
+  
 /*  GGS_stringset stringset (GGS_stringset::constructor_emptySet (inLexique COMMA_HERE)) ; 
   for (sint32 i=0 ; i<TEST_SIZE ; i++) {
     C_String s ; s << i ;
@@ -68,8 +96,8 @@ routine_test_array (C_Compiler & inLexique) {
 void
 routine_testsuite_hand_coded (C_Compiler & inLexique
                               COMMA_UNUSED_LOCATION_ARGS) {
- // routine_test_dictionary () ;
-  routine_test_array (inLexique) ;
+  routine_test_dictionary () ;
+ // routine_test_array (inLexique) ;
 }
 
 //---------------------------------------------------------------------------*

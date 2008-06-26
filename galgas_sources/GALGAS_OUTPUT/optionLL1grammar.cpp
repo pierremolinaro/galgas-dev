@@ -215,14 +215,14 @@ void optionLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
       C_String message ;
       message << "the '" << sourceFileName << "' file exits, but cannot be read" ;
       _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;
-      parameter_1._drop_operation () ;
+      parameter_1._drop () ;
     }
     macroDetachPointer (scanner_, galgas_scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
     _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;
-    parameter_1._drop_operation () ;
+    parameter_1._drop () ;
   }
 }
 

@@ -755,7 +755,7 @@ pr_syntax_declaration_parser_parser_963_4_ (galgas_scanner & _inLexique,
       "  - \"left infix\" ;\n"
       "  - \"right infix\" ;\n"
       "  - \"infix\".") COMMA_SOURCE_FILE_AT_LINE (1106)) ;
-    var_cas_leftNonTerminalName._drop_operation () ;
+    var_cas_leftNonTerminalName._drop () ;
   }
   GGS_typeAltProductionsMap  var_cas_altProductionsMap ;
   var_cas_altProductionsMap = GGS_typeAltProductionsMap ::constructor_emptyMap (_inLexique COMMA_HERE) ;
@@ -841,7 +841,7 @@ pr_syntax_declaration_parser_parser_963_4_importSyntax (galgas_scanner & _inLexi
       "  - \"left infix\" ;\n"
       "  - \"right infix\" ;\n"
       "  - \"infix\".") COMMA_SOURCE_FILE_AT_LINE (1265)) ;
-    var_cas_leftNonTerminalName._drop_operation () ;
+    var_cas_leftNonTerminalName._drop () ;
   }
   var_cas_ioProductionRulesListForGrammar._addAssign_operation (var_cas_leftNonTerminalName, GGS_uint (true, 0U), var_cas_syntaxSignature) ;
 }

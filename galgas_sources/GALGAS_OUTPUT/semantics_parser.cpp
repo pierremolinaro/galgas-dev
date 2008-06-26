@@ -998,9 +998,9 @@ pr_parent_class_semantics_parser_1264_4_importSemantics (galgas_scanner & _inLex
         var_cas_outMessageMap = var_cas_model.reader_mMessageMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (1328)) ;
       }else{
         var_cas_superClassName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the '@"))._operator_concat (var_cas_superClassName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (1330))))._operator_concat (GGS_string (true, "' type is not a class")) COMMA_SOURCE_FILE_AT_LINE (1331)) ;
-        var_cas_outSuperClasses._drop_operation () ;
-        var_cas_outAttributeList._drop_operation () ;
-        var_cas_outMessageMap._drop_operation () ;
+        var_cas_outSuperClasses._drop () ;
+        var_cas_outAttributeList._drop () ;
+        var_cas_outMessageMap._drop () ;
       }
     }
   }
@@ -1992,7 +1992,7 @@ pr_type_parsing_semantics_parser_2198_4_ (galgas_scanner & _inLexique,
     }
   }else{
     var_cas_outTypeName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the '@"))._operator_concat (var_cas_outTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2212))))._operator_concat (GGS_string (true, "' type is not defined")) COMMA_SOURCE_FILE_AT_LINE (2212)) ;
-    var_cas_outTypeDefinition._drop_operation () ;
+    var_cas_outTypeDefinition._drop () ;
   }
 }
 
@@ -2067,7 +2067,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2
     if ((operand_85684 != NULL) && (operand_85698 != NULL)) {
       if (((operand_85684->mListmapTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2286)))._operator_isNotEqual (operand_85698->mListmapTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2286)))).isBuiltAndTrue ()) {
         GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "for '.=' operator, listmap type @"))._operator_concat (operand_85684->mListmapTypeName))._operator_concat (GGS_string (true, " of target object is not compatible with listmap type @")))._operator_concat (operand_85698->mListmapTypeName))._operator_concat (GGS_string (true, " of source expression")) COMMA_SOURCE_FILE_AT_LINE (2289)) ;
-        var_cas_sourceExpressionConverter._drop_operation () ;
+        var_cas_sourceExpressionConverter._drop () ;
       }else{
         var_cas_sourceExpressionConverter = GGS_string (true, "") ;
       }
@@ -2077,7 +2077,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2
       if ((operand_85684 != NULL) && (operand_85698 != NULL)) {
         if (((operand_85684->mListTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2294)))._operator_isNotEqual (operand_85698->mListTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2294)))).isBuiltAndTrue ()) {
           GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "for '.=' operator, list type @"))._operator_concat (operand_85684->mListTypeName))._operator_concat (GGS_string (true, " of target object is not compatible with list type @")))._operator_concat (operand_85698->mListTypeName))._operator_concat (GGS_string (true, " of source expression")) COMMA_SOURCE_FILE_AT_LINE (2297)) ;
-          var_cas_sourceExpressionConverter._drop_operation () ;
+          var_cas_sourceExpressionConverter._drop () ;
         }else{
           var_cas_sourceExpressionConverter = GGS_string (true, "") ;
         }
@@ -2087,7 +2087,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2
         if ((operand_85684 != NULL) && (operand_85698 != NULL)) {
           if (((operand_85684->mListTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2302)))._operator_isNotEqual (operand_85698->mListTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2302)))).isBuiltAndTrue ()) {
             GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "for '.=' operator, sortedlist type @"))._operator_concat (operand_85684->mListTypeName))._operator_concat (GGS_string (true, " of target object is not compatible with sortedlist type @")))._operator_concat (operand_85698->mListTypeName))._operator_concat (GGS_string (true, " of source expression")) COMMA_SOURCE_FILE_AT_LINE (2305)) ;
-            var_cas_sourceExpressionConverter._drop_operation () ;
+            var_cas_sourceExpressionConverter._drop () ;
           }else{
             var_cas_sourceExpressionConverter = GGS_string (true, "") ;
           }
@@ -2103,7 +2103,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2
               var_cas_sourceExpressionConverter = GGS_string (true, "ggs_string") ;
             }else{
               GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "for '.=' operator, "))._operator_concat (var_cas_inTargetType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (2314))))._operator_concat (GGS_string (true, " target object type is not compatible with ")))._operator_concat (var_cas_sourceType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (2315))))._operator_concat (GGS_string (true, " source expression type")) COMMA_SOURCE_FILE_AT_LINE (2316)) ;
-              var_cas_sourceExpressionConverter._drop_operation () ;
+              var_cas_sourceExpressionConverter._drop () ;
             }
           }
         }
@@ -2222,12 +2222,12 @@ pr_input_parameters_list_semantics_parser_2332_4_ (galgas_scanner & _inLexique,
   }
   if (((var_cas_listeAttributsSemantiques.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2389)))._operator_strictInf (var_cas_listeCibles.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2389)))).isBuiltAndTrue ()) {
     GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "too much arguments: "))._operator_concat (var_cas_listeAttributsSemantiques.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2390)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2390))))._operator_concat (GGS_string (true, " expected, ")))._operator_concat (var_cas_listeCibles.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2391)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2391))))._operator_concat (GGS_string (true, " found")) COMMA_SOURCE_FILE_AT_LINE (2392)) ;
-    var_cas_outAllVariablesList._drop_operation () ;
-    var_cas_listeAffectationParametresEffectifs._drop_operation () ;
+    var_cas_outAllVariablesList._drop () ;
+    var_cas_listeAffectationParametresEffectifs._drop () ;
   }else if ((((var_cas_listeAttributsSemantiques.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2393)))._operator_strictSup (var_cas_listeCibles.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2393))))._operator_and ((var_cas_ellipsis)._operator_not ())).isBuiltAndTrue ()) {
     GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "argument(s) missing: "))._operator_concat (var_cas_listeAttributsSemantiques.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2394)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2394))))._operator_concat (GGS_string (true, " expected, ")))._operator_concat (var_cas_listeCibles.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (2395)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (2395))))._operator_concat (GGS_string (true, " found")) COMMA_SOURCE_FILE_AT_LINE (2396)) ;
-    var_cas_outAllVariablesList._drop_operation () ;
-    var_cas_listeAffectationParametresEffectifs._drop_operation () ;
+    var_cas_outAllVariablesList._drop () ;
+    var_cas_listeAffectationParametresEffectifs._drop () ;
   }else{
     var_cas_listeAffectationParametresEffectifs = GGS_L_assignedVariables ::constructor_emptyList () ;
     var_cas_outAllVariablesList = GGS_typeCplusPlusNameList ::constructor_emptyList () ;
@@ -3497,8 +3497,8 @@ pr_instruction_beginning_with_identifier_semantics_parser_3246_4_ (galgas_scanne
         var_cas_isExternActionCall = GGS_bool (true, true) ;
       }else{
         var_cas_nomVarDest.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "'"))._operator_concat (var_cas_nomVarDest.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (3268))))._operator_concat (GGS_string (true, "' should name a routine or an extern extern routine")) COMMA_SOURCE_FILE_AT_LINE (3270)) ;
-        var_cas_signatureRoutine._drop_operation () ;
-        var_cas_isExternActionCall._drop_operation () ;
+        var_cas_signatureRoutine._drop () ;
+        var_cas_isExternActionCall._drop () ;
       }
     }
   }
@@ -4866,9 +4866,9 @@ pr_parse_match_operand_semantics_parser_4341_4_ (galgas_scanner & _inLexique,
           _temp_163830 (HERE)->method_getTypeName (_inLexique, var_cas_actualTypeName COMMA_SOURCE_FILE_AT_LINE (4369)) ;
         }
         var_cas_variableName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the type of this variable is '@"))._operator_concat (var_cas_actualTypeName))._operator_concat (GGS_string (true, "' ; I was expected an enumeration type or an abstract type")) COMMA_SOURCE_FILE_AT_LINE (4372)) ;
-        var_cas_outBaseTypeName._drop_operation () ;
-        var_cas_outIsEnumeration._drop_operation () ;
-        var_cas_outEnumMessageMap._drop_operation () ;
+        var_cas_outBaseTypeName._drop () ;
+        var_cas_outIsEnumeration._drop () ;
+        var_cas_outEnumMessageMap._drop () ;
       }
     }
   }

@@ -96,7 +96,7 @@ template <typename INFO> class cTableMethodesAimplementer {
     return mReferenceCountPtr != NULL ;
   }
   public : void build (void) ;
-  public : void _drop_operation (void) ;
+  public : void _drop (void) ;
   protected : void insulateMap (void) ;
 
   public : sint32 insertAbstract (C_Compiler & inLexique,

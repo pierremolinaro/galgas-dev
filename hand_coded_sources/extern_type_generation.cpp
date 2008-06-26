@@ -45,7 +45,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : virtual ~GGS_" << mGalgasName << " (void) ;\n"
                     "\n"
                     "//--- Handle 'drop' instruction\n"
-                    "  public : void _drop_operation (void) ;\n"
+                    "  public : void _drop (void) ;\n"
                     "\n"
                     "//--- Method '_isBuilt'\n"
                     "  public : bool _isBuilt (void) const ;\n"

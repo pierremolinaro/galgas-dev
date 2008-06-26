@@ -93,7 +93,7 @@ void routine_matchAndOperator (C_Compiler & _inLexique,
                   var_cas_outResultType = var_cas_inLeftExpressionType ;
                 }else{
                   GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "operand type error : ("))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (156))))._operator_concat (GGS_string (true, " & ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (157))))._operator_concat (GGS_string (true, ") is not valid")) COMMA_SOURCE_FILE_AT_LINE (158)) ;
-                  var_cas_outResultType._drop_operation () ;
+                  var_cas_outResultType._drop () ;
                 }
               }
             }
@@ -159,7 +159,7 @@ void routine_matchOrOperator (C_Compiler & _inLexique,
                   var_cas_outResultType = var_cas_inLeftExpressionType ;
                 }else{
                   GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "operand type error : ("))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (189))))._operator_concat (GGS_string (true, " | ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (190))))._operator_concat (GGS_string (true, ") is not valid")) COMMA_SOURCE_FILE_AT_LINE (191)) ;
-                  var_cas_outResultType._drop_operation () ;
+                  var_cas_outResultType._drop () ;
                 }
               }
             }
@@ -220,7 +220,7 @@ void routine_matchXorOperator (C_Compiler & _inLexique,
                 var_cas_outResultType = var_cas_inLeftExpressionType ;
               }else{
                 GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "operand type error : ("))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (220))))._operator_concat (GGS_string (true, " | ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (221))))._operator_concat (GGS_string (true, ") is not valid")) COMMA_SOURCE_FILE_AT_LINE (222)) ;
-                var_cas_outResultType._drop_operation () ;
+                var_cas_outResultType._drop () ;
               }
             }
           }
@@ -276,7 +276,7 @@ void routine_matchConcatOperator (C_Compiler & _inLexique,
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
             GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "concatenation operator error: @"))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (255))))._operator_concat (GGS_string (true, " and @")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (256))))._operator_concat (GGS_string (true, " objects cannot be concatened")) COMMA_SOURCE_FILE_AT_LINE (257)) ;
-            var_cas_outResultType._drop_operation () ;
+            var_cas_outResultType._drop () ;
           }
         }
       }
@@ -334,7 +334,7 @@ void routine_checkLogicalNegateOperator (C_Compiler & _inLexique,
         var_cas_outResultType = var_cas_inOperandType ;
       }else{
         GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "the ~ operator is not defined for an "))._operator_concat (var_cas_inOperandType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (298))))._operator_concat (GGS_string (true, " object")) COMMA_SOURCE_FILE_AT_LINE (299)) ;
-        var_cas_outResultType._drop_operation () ;
+        var_cas_outResultType._drop () ;
       }
     }
   }
@@ -614,7 +614,7 @@ void routine_left_shift_types_check (C_Compiler & _inLexique,
               var_cas_outResultType = var_cas_inLeftExpressionType ;
             }else{
               GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "shift between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (417))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (418))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (420)) ;
-              var_cas_outResultType._drop_operation () ;
+              var_cas_outResultType._drop () ;
             }
           }
         }
@@ -668,7 +668,7 @@ void routine_right_shift_types_check (C_Compiler & _inLexique,
               var_cas_outResultType = var_cas_inLeftExpressionType ;
             }else{
               GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "shift between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (443))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (444))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (446)) ;
-              var_cas_outResultType._drop_operation () ;
+              var_cas_outResultType._drop () ;
             }
           }
         }
@@ -717,7 +717,7 @@ void routine_addition_types_check (C_Compiler & _inLexique,
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
             GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "addition between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (471))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (472))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (474)) ;
-            var_cas_outResultType._drop_operation () ;
+            var_cas_outResultType._drop () ;
           }
         }
       }
@@ -770,7 +770,7 @@ void routine_substraction_types_check (C_Compiler & _inLexique,
               var_cas_outResultType = var_cas_inLeftExpressionType ;
             }else{
               GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "substraction between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (501))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (502))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (504)) ;
-              var_cas_outResultType._drop_operation () ;
+              var_cas_outResultType._drop () ;
             }
           }
         }
@@ -819,7 +819,7 @@ void routine_multiply_types_check (C_Compiler & _inLexique,
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
             GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "multiplication between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (529))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (530))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (532)) ;
-            var_cas_outResultType._drop_operation () ;
+            var_cas_outResultType._drop () ;
           }
         }
       }
@@ -867,7 +867,7 @@ void routine_divide_types_check (C_Compiler & _inLexique,
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
             GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "division between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (557))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (558))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (560)) ;
-            var_cas_outResultType._drop_operation () ;
+            var_cas_outResultType._drop () ;
           }
         }
       }
@@ -915,7 +915,7 @@ void routine_modulo_types_check (C_Compiler & _inLexique,
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
             GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "modulo between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (585))))._operator_concat (GGS_string (true, " and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (586))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (588)) ;
-            var_cas_outResultType._drop_operation () ;
+            var_cas_outResultType._drop () ;
           }
         }
       }
@@ -947,7 +947,7 @@ void routine_unary_minus_type_check (C_Compiler & _inLexique,
         var_cas_outResultType = var_cas_inExpressionType ;
       }else{
         GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((GGS_string (true, "unary minus for "))._operator_concat (var_cas_inExpressionType.reader_messageGalgasType (_inLexique COMMA_SOURCE_FILE_AT_LINE (608))))._operator_concat (GGS_string (true, " is not valid")) COMMA_SOURCE_FILE_AT_LINE (611)) ;
-        var_cas_outResultType._drop_operation () ;
+        var_cas_outResultType._drop () ;
       }
     }
   }
@@ -2212,8 +2212,8 @@ pr_factor_expression_parser_1502_4_ (galgas_scanner & _inLexique,
             var_cas_outResultType = GGS_typeGalgas_string ::constructor_new (_inLexique COMMA_HERE) ;
           }else{
             var_cas_optionName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, ((((GGS_string (true, "the '"))._operator_concat (var_cas_optionComponentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (1652))))._operator_concat (GGS_string (true, "' option component has no '")))._operator_concat (var_cas_optionName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (1652))))._operator_concat (GGS_string (true, "' option")) COMMA_SOURCE_FILE_AT_LINE (1653)) ;
-            var_cas_outExpression._drop_operation () ;
-            var_cas_outResultType._drop_operation () ;
+            var_cas_outExpression._drop () ;
+            var_cas_outResultType._drop () ;
           }
           } break ;
         default :
@@ -2339,9 +2339,9 @@ pr_read_access_expression_parser_1682_4_ (galgas_scanner & _inLexique,
     var_cas_ioVariablesMap.modifier_searchForReadOnlyAccess (_inLexique, var_cas_nomVariable, var_cas_typeEntite, var_cas_nomCppEntite COMMA_SOURCE_FILE_AT_LINE (1691)) ;
   }else{
     GGS_location (_inLexique).reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "'self' is not defined in this context") COMMA_SOURCE_FILE_AT_LINE (1694)) ;
-    var_cas_nomVariable._drop_operation () ;
-    var_cas_nomCppEntite._drop_operation () ;
-    var_cas_typeEntite._drop_operation () ;
+    var_cas_nomVariable._drop () ;
+    var_cas_nomCppEntite._drop () ;
+    var_cas_typeEntite._drop () ;
   }
 }
 

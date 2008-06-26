@@ -416,7 +416,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mExpression ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -436,7 +436,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mExpression ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -458,7 +458,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 
@@ -480,7 +480,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
+    _out_0._drop () ;
   }
 }
 

@@ -309,8 +309,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mAttributeTypeName ;
     _out_1 = _p->mAttributeName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -332,8 +332,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mAttributeTypeName ;
     _out_1 = _p->mAttributeName ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -357,8 +357,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -382,8 +382,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -930,10 +930,10 @@ method_first (C_Compiler & _inLexique,
     _out_2 = _p->mErrorMessage ;
     _out_3 = _p->mShadowErrorMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -959,10 +959,10 @@ method_last (C_Compiler & _inLexique,
     _out_2 = _p->mErrorMessage ;
     _out_3 = _p->mShadowErrorMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -990,10 +990,10 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -1021,10 +1021,10 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -1906,8 +1906,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mMethodName ;
     _out_1 = _p->mSignature ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1929,8 +1929,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mMethodName ;
     _out_1 = _p->mSignature ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1954,8 +1954,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -1979,8 +1979,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -2330,9 +2330,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mSignature ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2356,9 +2356,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mSignature ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2384,9 +2384,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2412,9 +2412,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2793,9 +2793,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mSignature ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2819,9 +2819,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mSignature ;
     _out_2 = _p->mInstructionList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2847,9 +2847,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -2875,9 +2875,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -3236,8 +3236,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mMessageName ;
     _out_1 = _p->mMessageValue ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -3259,8 +3259,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mMessageName ;
     _out_1 = _p->mMessageValue ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -3284,8 +3284,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -3309,8 +3309,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4311,8 +4311,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mSortedAttributeName ;
     _out_1 = _p->mAscending ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4334,8 +4334,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mSortedAttributeName ;
     _out_1 = _p->mAscending ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4359,8 +4359,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4384,8 +4384,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4912,8 +4912,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mConstantName ;
     _out_1 = _p->mMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4935,8 +4935,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mConstantName ;
     _out_1 = _p->mMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4960,8 +4960,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -4985,8 +4985,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -5316,8 +5316,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mEnumMessageName ;
     _out_1 = _p->mMessageAssociationList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -5339,8 +5339,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mEnumMessageName ;
     _out_1 = _p->mMessageAssociationList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -5364,8 +5364,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -5389,8 +5389,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -5898,9 +5898,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mTargetConstantName ;
     _out_2 = _p->mEnumModifierCaseMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -5924,9 +5924,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mTargetConstantName ;
     _out_2 = _p->mEnumModifierCaseMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -5952,9 +5952,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -5980,9 +5980,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -6361,9 +6361,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mLocationFormalArgumentName ;
     _out_2 = _p->mEnumModifierCaseList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -6387,9 +6387,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mLocationFormalArgumentName ;
     _out_2 = _p->mEnumModifierCaseList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -6415,9 +6415,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -6443,9 +6443,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -7158,8 +7158,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mConstantName ;
     _out_1 = _p->mEnumMethodCaseMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7181,8 +7181,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mConstantName ;
     _out_1 = _p->mEnumMethodCaseMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7206,8 +7206,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7231,8 +7231,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
   }
 }
 
@@ -7582,9 +7582,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mLocationFormalArgumentName ;
     _out_2 = _p->mEnumMethodCaseList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -7608,9 +7608,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mLocationFormalArgumentName ;
     _out_2 = _p->mEnumMethodCaseList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -7636,9 +7636,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -7664,9 +7664,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -8065,10 +8065,10 @@ method_first (C_Compiler & _inLexique,
     _out_2 = _p->mResultConstantName ;
     _out_3 = _p->mEnumOperatorCaseMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -8094,10 +8094,10 @@ method_last (C_Compiler & _inLexique,
     _out_2 = _p->mResultConstantName ;
     _out_3 = _p->mEnumOperatorCaseMessage ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -8125,10 +8125,10 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -8156,10 +8156,10 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
-    _out_3._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
+    _out_3._drop () ;
   }
 }
 
@@ -8567,9 +8567,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mLocationFormalArgumentName ;
     _out_2 = _p->mEnumOperatorCaseList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -8593,9 +8593,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mLocationFormalArgumentName ;
     _out_2 = _p->mEnumOperatorCaseList ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -8621,9 +8621,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -8649,9 +8649,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -9307,9 +9307,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mFilewrapperTemplatePath ;
     _out_2 = _p->mFilewrapperTemplateFormalInputParameters ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -9333,9 +9333,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mFilewrapperTemplatePath ;
     _out_2 = _p->mFilewrapperTemplateFormalInputParameters ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -9361,9 +9361,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -9389,9 +9389,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop_operation () ;
-    _out_1._drop_operation () ;
-    _out_2._drop_operation () ;
+    _out_0._drop () ;
+    _out_1._drop () ;
+    _out_2._drop () ;
   }
 }
 
@@ -10090,9 +10090,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop_operation () ;
+    outParameter0._drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop_operation () ;
+      outIndex->_drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mRoot ;
@@ -10231,8 +10231,8 @@ GGS_parsedComponentStruct::~GGS_parsedComponentStruct (void) {
 
 //---------------------------------------------------------------------------*
 
-void GGS_parsedComponentStruct::_drop_operation (void) {
-  mParsedSemanticsComponentMap._drop_operation () ;
+void GGS_parsedComponentStruct::_drop (void) {
+  mParsedSemanticsComponentMap._drop () ;
 }
 
 //---------------------------------------------------------------------------*

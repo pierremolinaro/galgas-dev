@@ -4332,7 +4332,7 @@ class GGS_semanticDeclarationStruct {
   public : virtual ~GGS_semanticDeclarationStruct (void) ;
 
 //--- Handle 'drop' instruction
-  public : void _drop_operation (void) ;
+  public : void _drop (void) ;
 
 //--- Method '_isBuilt'
   public : bool _isBuilt (void) const ;
