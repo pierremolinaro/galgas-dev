@@ -459,16 +459,25 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeOperandName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "operand_" << mVariableLocation.location () << "->"
-         << (mFieldKind.boolValue () ? "mInfo." : "")
-         << mName ;
+  if (mIteratorNewStyle.boolValue ()) {
+    inFile << "(* (enumerator_" << mVariableLocation.location ()
+           << "._" << mName << " ()))" ;
+  }else{
+    inFile << "operand_" << mVariableLocation.location () << "->"
+           << (mFieldKind.boolValue () ? "mInfo." : "")
+           << mName ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeKeyName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "operand_" << mVariableLocation.location () << "->mKey" ;
+  if (mIteratorNewStyle.boolValue ()) {
+    inFile << "(* (enumerator_" << mVariableLocation.location () << "._key ()))" ;
+  }else{
+    inFile << "operand_" << mVariableLocation.location () << "->mKey" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -531,16 +540,25 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 void cPtr_typeOperandName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& operand_" << mVariableLocation.location () << "->"
-         << (mFieldKind.boolValue () ? "mInfo." : "")
-         << mName ;
+  if (mIteratorNewStyle.boolValue ()) {
+    inFile << "enumerator_" << mVariableLocation.location () << "._"
+           << mName << " ()" ;
+  }else{
+    inFile << "& operand_" << mVariableLocation.location () << "->"
+           << (mFieldKind.boolValue () ? "mInfo." : "")
+           << mName ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeKeyName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& operand_" << mVariableLocation.location () << "->mKey" ;
+  if (mIteratorNewStyle.boolValue ()) {
+    inFile << "enumerator_" << mVariableLocation.location () << "._key ()" ;
+  }else{
+    inFile << "& operand_" << mVariableLocation.location () << "->mKey" ;
+  }
 }
 
 //---------------------------------------------------------------------------*

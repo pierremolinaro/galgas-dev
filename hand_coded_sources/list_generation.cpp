@@ -359,8 +359,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  //--- Iterator method\n"
              "    public : inline cElement * nextObject (void) {\n"
              "      return (cElement *) internalNextObject () ;\n"
-             "    }\n"
-             "  } ;\n\n" ;
+             "    }\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "  public : const " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << "  * _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
+  }
+  inHfile << "  } ;\n\n" ;
 //--- End of list class declaration
  inHfile << "} ;\n\n" ;
 }
@@ -1085,6 +1093,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
     current = current->nextObject () ;
   }
+
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "const " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " * GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+                 "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
+                 "  return & (((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << ") ;\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
 }
 
 
@@ -1345,10 +1366,18 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  //--- Iterator method\n"
              "    public : inline cElement * nextObject (void) {\n"
              "      return (cElement *) internalNextObject () ;\n"
-             "    }\n"
-             "  } ;\n\n"
-//--- End of list class declaration
-             "} ;\n\n" ;
+             "    }\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "    public : const " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << "  * _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
+  }
+  inHfile << "  } ;\n" ;
+//---
+  inHfile << "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1889,7 +1918,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "const " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " * GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+                 "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
+                 "  return & (((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << ") ;\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
 }
 
 

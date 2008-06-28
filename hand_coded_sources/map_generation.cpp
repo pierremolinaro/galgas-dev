@@ -48,7 +48,7 @@ void cPtr_typeGalgasListmapToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.writeCppTitleComment (C_String ("Map list '@") + mListmapTypeName + "'") ;
 
-  inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_maplist {\n"
+  inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_listmap {\n"
              "//--- Node class\n"
              "  public : class cElement : public cNode {\n"
              "    public : cElement (const GGS_string & inKey) ;\n"
@@ -97,6 +97,15 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
              "//--- Create a new node\n"
              "  protected : virtual cNode * _allocNewNode (const GGS_string & inKey) ;\n" ;
+//--- Enumerator
+  inHfile <<  "//--- Enumerator\n"
+              "  public : class cEnumerator : public cAbstractEnumerator {\n"
+              "  //--- Contructor\n"
+              "    public : cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
+              "                          const bool inAscending) ;\n"
+              "  //--- Associated object accessor\n"
+              "    public : const GGS_" << mListTypename << " * _object (void) const ;\n"
+              "  } ;\n" ;
 //--- End of class declaration
   inHfile <<  "} ;\n\n" ;
 }
@@ -265,6 +274,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  return result ;\n"
                "}\n\n" ;
+
+//--- Enumerator
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mListmapTypeName << "::cEnumerator::\n"
+               "cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
+               "             const bool inAscending) :\n"
+               "cAbstractEnumerator (inListMap, inAscending) {\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "const GGS_" << mListTypename << " * GGS_" << mListmapTypeName << "::cEnumerator::\n"
+               "_object (void) const {\n"
+               "  return & ((cElement *) mObjectArray (mCurrentIndex COMMA_HERE))->object ;\n"
+               "}\n\n" ;
+
 }
 
 //---------------------------------------------------------------------------*
@@ -753,8 +777,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  //--- Iterator method\n"
              "    public : inline cElement * nextObject (void) {\n"
              "      return (cElement *) internalNextObject () ;\n"
-             "    }\n"
-             "  } ;\n\n"
+             "    }\n" ;
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "    public : const " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile << "  * _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
+    current = current->nextObject () ;
+  }
+  inHfile << "  } ;\n"
 //--- End of class Declaration
               "} ;\n\n" ;
 }
@@ -1322,6 +1354,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  s << \">\" ;\n"
                "  return GGS_string (true, s) ;\n"
                "}\n\n" ;
+
+  current = mNonExternAttributesList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile << "const " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " * GGS_" << mMapTypeName << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+                 "  return & (((cElement *) mObjectArray (mCurrentIndex COMMA_THERE))->mInfo." << current->mAttributeName << ") ;\n"
+                 "}\n\n" ;
+    current = current->nextObject () ;
+  }
 }
 
 //---------------------------------------------------------------------------*

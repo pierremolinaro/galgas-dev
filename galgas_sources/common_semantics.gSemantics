@@ -448,7 +448,9 @@ abstract class @AC_galgasType {
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
   :
+    outNewStyle := false ;
     error inErrorLocation :
        "variables of this type cannot be enumerated by in 'foreach' instruction"
        -> outForeachList, outStyle
@@ -600,12 +602,14 @@ class @typeLocationAutomaticName extends @typeCplusPlusName {
 class @typeOperandName extends @typeCplusPlusName {
   @string mName ;
   @bool mFieldKind ; # false : zz est vide ; true : zz est 'mInfo.'
+  @bool mIteratorNewStyle ;
 }
 
 #---------------------------------------------------------------------------*
 # C++ name is 'operand_xxx->mKey' followed by the value of mName
 
 class @typeKeyName extends @typeCplusPlusName {
+  @bool mIteratorNewStyle ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1722,7 +1726,9 @@ class @typeGalgas_stringset extends @AC_galgasType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
   :
+    outNewStyle := false ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;
@@ -2261,7 +2267,9 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
   :
+    outNewStyle := false ;
     outForeachList := mAttributeList ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
@@ -2390,7 +2398,9 @@ class @typeGalgasListmapType extends @AC_galgasType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
   :
+    outNewStyle := false ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
     outForeachList += !mListType ![@lstring new !"object" !here] ;
@@ -2613,7 +2623,9 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
   :
+    outNewStyle := false ;
     outForeachList := mAttributeList ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
@@ -2765,7 +2777,9 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
+    !@bool outNewStyle
   :
+    outNewStyle := false ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_lstring new] ![@lstring new !"key" !here] ;
     outForeachList := outForeachList . mAttributeList ;

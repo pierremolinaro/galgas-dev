@@ -775,9 +775,9 @@ routine buildMapWithLocalConstants
       if [typeNameInDeclaration string] == typeName then
         @typeCplusPlusName cppName ;
         if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
-          cppName := [@typeKeyName new !inLocation] ;
+          cppName := [@typeKeyName new !inLocation !false] ;
         else
-          cppName := [@typeOperandName new !inLocation ![attributeName string] !mapStyle] ;
+          cppName := [@typeOperandName new !inLocation ![attributeName string] !mapStyle !false] ;
         end if ;
         [!?ioVariablesMap insertUsedConstInArgument !cstName !type !cppName] ;
       else
@@ -1045,6 +1045,7 @@ class @typeMatchInstruction extends @typeInstruction {
 #---------------------------------------------------------------------------*
 
 list @foreachEnumerationList  {
+  @bool mNewStyle ;
   @typeExpression mSourceExpression ;
   @location mLocationOffset ;
   @string mCppTypeName ;
