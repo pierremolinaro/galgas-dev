@@ -450,10 +450,9 @@ abstract class @AC_galgasType {
     !@localConstantBuildStyleEnum outStyle
     !@bool outNewStyle
   :
-    outNewStyle := false ;
     error inErrorLocation :
        "variables of this type cannot be enumerated by in 'foreach' instruction"
-       -> outForeachList, outStyle
+       -> outForeachList, outStyle, outNewStyle
     ;
   end method ;
 
@@ -1728,7 +1727,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
     !@localConstantBuildStyleEnum outStyle
     !@bool outNewStyle
   :
-    outNewStyle := false ;
+    outNewStyle := true ;
     outForeachList := [@typeListeAttributsSemantiques emptyList] ;
     outForeachList += ![@typeGalgas_string new] ![@lstring new !"key" !here] ;
     outStyle := [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle] ;

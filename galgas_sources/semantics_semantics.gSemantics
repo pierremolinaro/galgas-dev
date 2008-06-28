@@ -758,6 +758,7 @@ map @typeTableAttributsSemantiques {
 #---------------------------------------------------------------------------*
 
 routine buildMapWithLocalConstants
+  ?@bool inEnumeratorNewStyle
   ?@L_nameWithType inLocalDeclarationsList
   ?@typeListeAttributsSemantiques inSemanticAttributsList
   ?!@typeVariablesMap ioVariablesMap
@@ -775,9 +776,9 @@ routine buildMapWithLocalConstants
       if [typeNameInDeclaration string] == typeName then
         @typeCplusPlusName cppName ;
         if (inLocalConstantStyle == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
-          cppName := [@typeKeyName new !inLocation !false] ;
+          cppName := [@typeKeyName new !inLocation !inEnumeratorNewStyle] ;
         else
-          cppName := [@typeOperandName new !inLocation ![attributeName string] !mapStyle !false] ;
+          cppName := [@typeOperandName new !inLocation ![attributeName string] !mapStyle !inEnumeratorNewStyle] ;
         end if ;
         [!?ioVariablesMap insertUsedConstInArgument !cstName !type !cppName] ;
       else

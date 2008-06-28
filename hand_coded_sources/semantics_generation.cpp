@@ -461,7 +461,7 @@ void cPtr_typeOperandName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
     inFile << "(* (enumerator_" << mVariableLocation.location ()
-           << "._" << mName << " ()))" ;
+           << "._" << mName << " (HERE)))" ;
   }else{
     inFile << "operand_" << mVariableLocation.location () << "->"
            << (mFieldKind.boolValue () ? "mInfo." : "")
@@ -474,7 +474,7 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 void cPtr_typeKeyName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
-    inFile << "(* (enumerator_" << mVariableLocation.location () << "._key ()))" ;
+    inFile << "(* (enumerator_" << mVariableLocation.location () << "._key (HERE)))" ;
   }else{
     inFile << "operand_" << mVariableLocation.location () << "->mKey" ;
   }
@@ -542,7 +542,7 @@ void cPtr_typeOperandName::
 generateVariableAddress (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
     inFile << "enumerator_" << mVariableLocation.location () << "._"
-           << mName << " ()" ;
+           << mName << " (HERE)" ;
   }else{
     inFile << "& operand_" << mVariableLocation.location () << "->"
            << (mFieldKind.boolValue () ? "mInfo." : "")
@@ -555,7 +555,7 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 void cPtr_typeKeyName::
 generateVariableAddress (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
-    inFile << "enumerator_" << mVariableLocation.location () << "._key ()" ;
+    inFile << "enumerator_" << mVariableLocation.location () << "._key (HERE)" ;
   }else{
     inFile << "& operand_" << mVariableLocation.location () << "->mKey" ;
   }

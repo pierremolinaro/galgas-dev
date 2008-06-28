@@ -147,9 +147,6 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
   if (enumeratedVariable->mNewStyle.boolValue ()) {
     ioCppFile <<  "while (enumerator_" << enumeratedVariable->mLocationOffset.location () << ".hc ()" ;
   }else{
-/*    ioCppFile << "while (((operand_" <<enumeratedVariable->mLocationOffset.location ()
-              << " = (GGS_" << enumeratedVariable->mCppTypeName
-              << "::cElement *) enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject ()))" ;*/
     ioCppFile << "while (((operand_" <<enumeratedVariable->mLocationOffset.location ()
               << " = enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject ()))" ;
   }
@@ -300,7 +297,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   enumeratedVariable = mForeachEnumerationList.firstObject () ;
   macroValidPointer (enumeratedVariable) ;
   if (enumeratedVariable->mNewStyle.boolValue ()) {
-    ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = ((enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
+    ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = (enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
   }else{
     ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = ((operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
   }
@@ -308,7 +305,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
     if (enumeratedVariable->mNewStyle.boolValue ()) {
-      ioCppFile <<  "\n    && (enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
+      ioCppFile <<  "\n    && enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
     }else{
       ioCppFile <<  "\n    && (operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
     }
