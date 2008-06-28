@@ -103,6 +103,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
               "  //--- Contructor\n"
               "    public : cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
               "                          const bool inAscending) ;\n"
+              "  //--- Next object\n"
+              "    public : cElement * nextObject (void) { return (cElement *) internalNextObject () ; }\n"
               "  //--- Associated object accessor\n"
               "    public : const GGS_" << mListTypename << " * _object (void) const ;\n"
               "  } ;\n" ;
