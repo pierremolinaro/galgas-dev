@@ -4142,10 +4142,12 @@ label secondPhase
     #--- Check this variable can be enumerated
       @typeListeAttributsSemantiques formalEnumerationList ;
       @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
+      @bool iteratorNewStyle ;
       [sourceExpressionType acceptForeachInstruction
         !magicNumber
         ?formalEnumerationList
         ?localConstantBuildStyleEnum
+        ?iteratorNewStyle
       ] ;
     #--- Extract type name
       @string typeName ;
@@ -4165,15 +4167,15 @@ label secondPhase
         foreach formalEnumerationList (@AC_galgasType type @lstring attributeName) do
           @typeCplusPlusName cppName ;
           if (localConstantBuildStyleEnum == [@localConstantBuildStyleEnum firstIsKeyOtherMapStyle]) & firstOne then
-            cppName := [@typeKeyName new !magicNumber] ;
+            cppName := [@typeKeyName new !magicNumber !iteratorNewStyle] ;
           else
-            cppName := [@typeOperandName new !magicNumber ![attributeName string] !mapStyle] ;
+            cppName := [@typeOperandName new !magicNumber ![attributeName string] !mapStyle !iteratorNewStyle] ;
           end if ;
           [!?ioVariablesMap insertUsedConstInArgument !attributeName !type !cppName] ;
           firstOne := false ;
         end foreach ;
       end select ;
-      outForeachEnumerationList += !sourceExpression !magicNumber !typeName !ascending ;
+      outForeachEnumerationList += !iteratorNewStyle !sourceExpression !magicNumber !typeName !ascending ;
     while
       $,$ ;
     end repeat ;
@@ -5624,6 +5626,7 @@ rule <semantics_declaration>
       ![methodName location] # Magic Number
       ![mAttributeName string]
       !false # not mapStyle
+      !false # not iterator new style
     ] ;
     [!?tableArgumentsMethode insertUsedConstInArgument !mAttributeName !mAttributType !cppName] ;
   end foreach ;
