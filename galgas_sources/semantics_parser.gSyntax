@@ -520,6 +520,7 @@ nonterminal <parse_effective_input_parameters_list>
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  ?@bool inEnumeratorNewStyle
   !@bool outNoUsedParameter
 label parse
 ;
@@ -2949,6 +2950,7 @@ rule <extract_instruction>
           !listeAttributs1
           !indicatif1
           ![@localConstantBuildStyleEnum listStyle]
+          !false # No new style of enumerator
           ?noUsedParameter
         ;
       #--- Liste des instructions
@@ -4159,6 +4161,7 @@ label secondPhase
           !formalEnumerationList
           !magicNumber
           !localConstantBuildStyleEnum
+          !iteratorNewStyle
           ?*
         ;
       or
@@ -4414,6 +4417,7 @@ rule <parse_match_case>
     !listeAttributs1
     !inVarLocation
     ![@localConstantBuildStyleEnum listStyle]
+    !false # No new style of enumerator
     ?*
   ;
 end rule ;

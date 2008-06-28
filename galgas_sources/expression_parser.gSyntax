@@ -122,6 +122,7 @@ nonterminal <parse_effective_input_parameters_list>
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  ?@bool inEnumeratorNewStyle
   !@bool outNoUsedParameter
 label parse
 ;
@@ -1753,6 +1754,7 @@ rule <parse_effective_input_parameters_list>
   ?@typeListeAttributsSemantiques inFormalArgumentsList
   ?@location inVarLocation
   ?@localConstantBuildStyleEnum inLocalConstantStyle
+  ?@bool inEnumeratorNewStyle
   !@bool outNoUsedParameter
 :
   outNoUsedParameter := true ;
@@ -1792,6 +1794,7 @@ rule <parse_effective_input_parameters_list>
   end select ;
   $)$ ;
   buildMapWithLocalConstants
+    !inEnumeratorNewStyle
     !argumentsList
     !inFormalArgumentsList
     !?ioVariablesMap
