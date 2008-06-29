@@ -40,7 +40,6 @@
 #include "follow_by_empty_computation.h"
 #include "FOLLOW_computations.h"
 #include "LL1_computations.h"
-#include "grammarComputations.h"
 #include "cPureBNFproductionsList.h"
 #include "SLR_computations.h"
 #include "LR1_computations.h"
@@ -166,27 +165,6 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
     inHTMLfile->outputRawData ("</p>") ;
   }
   return ok ;
-}
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//    Generate class registering instructions in C++ file                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-void
-generateClassRegistering (AC_OutputStream & inCppfile,
-                          const GGS_stringset & inClassesNamesSet) {
-  const sint32 classCount = inClassesNamesSet.count () ;
-  inCppfile << "// classCount : " << classCount << '\n' ;
-  GGS_stringset::cElement * currentClass = inClassesNamesSet.firstObject () ;
-  sint32 index = 0 ;
-  while (currentClass != NULL) {
-    macroValidPointer (currentClass) ;
-    inCppfile << "// " << index << " : " << currentClass->mKey << '\n' ;
-    index ++ ;
-    currentClass = currentClass->nextObject () ;
-  }
 }
 
 //---------------------------------------------------------------------------*
@@ -523,7 +501,6 @@ analyzeGrammar (C_Compiler & inLexique,
                 const GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
                 const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
-  GGS_stringset classesNamesSet ;
   bool warningFlag = false ;
 
 //--- Create GALGAS_OUTPUT directory
@@ -803,7 +780,6 @@ analyzeGrammar (C_Compiler & inLexique,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
-                      classesNamesSet,
                       ok,
                       verboseOptionOn) ;
     if (! ok) {
@@ -824,7 +800,6 @@ analyzeGrammar (C_Compiler & inLexique,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
-                      classesNamesSet,
                       ok,
                       verboseOptionOn) ;
     if (ok) {
@@ -849,7 +824,6 @@ analyzeGrammar (C_Compiler & inLexique,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName,
                       inLexiqueName,
-                      classesNamesSet,
                       ok,
                       verboseOptionOn) ;
     if (ok) {

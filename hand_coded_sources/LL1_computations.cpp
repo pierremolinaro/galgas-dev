@@ -26,7 +26,6 @@
 //---------------------------------------------------------------------------*
 
 #include "LL1_computations.h"
-#include "grammarComputations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 #include "common_semantics.h"
@@ -412,7 +411,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                                const uint32 inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
                                const C_String & inLexiqueName,
-                               const GGS_stringset & inClassesNamesSet,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions) {
 //--- Generate header file inclusion --------------------------------------------------------------
@@ -616,7 +614,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
-        generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "      const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                       gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
@@ -696,7 +693,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
-        generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                   gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
@@ -764,7 +760,6 @@ LL1_computations (C_Compiler & inLexique,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
-                  const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
                   const bool inVerboseOptionOn) {
 //--- Console display
@@ -793,7 +788,6 @@ LL1_computations (C_Compiler & inLexique,
                                    inOriginalGrammarStartSymbol,
                                    inTargetFileName,
                                    inLexiqueName,
-                                   inClassesNamesSet,
                                    inVocabulary,
                                    inPureBNFproductions) ;
   }

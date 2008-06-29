@@ -26,7 +26,6 @@
 //---------------------------------------------------------------------------*
 
 #include "LR1_computations.h"
-#include "grammarComputations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 #include "common_semantics.h"
@@ -1121,8 +1120,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                                const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                                const uint32 inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
-                               const C_String & inTargetFileName,
-                               const GGS_stringset & inClassesNamesSet) {
+                               const C_String & inTargetFileName) {
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -1376,7 +1374,6 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
-        generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "      const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                        gActionTableIndex, gSuccessorTable,\n"
                           "                                                        gProductionsTable) ;\n"
@@ -1454,7 +1451,6 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
                           "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
-        generateClassRegistering (generatedZone3, inClassesNamesSet) ;
         generatedZone3 << "  const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                    gActionTableIndex, gSuccessorTable,\n"
                           "                                                    gProductionsTable) ;\n"
@@ -1580,7 +1576,6 @@ LR1_computations (C_Compiler & inLexique,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
-                  const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
                   const bool inVerboseOptionOn) {
 //--- Console display
@@ -1798,8 +1793,7 @@ LR1_computations (C_Compiler & inLexique,
                                    inNonterminalSymbolsMapForGrammar,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
-                                   inTargetFileName,
-                                   inClassesNamesSet) ;
+                                   inTargetFileName) ;
 
   }
   macroMyDelete (LR1_items_sets_collection, c_LR1_items_sets_collection) ;
