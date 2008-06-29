@@ -1426,7 +1426,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     sint32 messageNumber = 0 ;
     while (currentMessage != NULL) {
       macroValidPointer (currentMessage) ;
-      const bool used = inUsedErrorMessageSet.hasKey (currentMessage->mKey) ;
+      const bool used = inUsedErrorMessageSet._hasKey (currentMessage->mKey) ;
       if (used) {
         generatedZone2 << "//--- Message " << messageNumber << "\n" ;
       }else{

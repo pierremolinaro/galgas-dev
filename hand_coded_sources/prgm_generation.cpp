@@ -122,11 +122,10 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "#include <typeinfo>\n\n" ;
 
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_stringset::cElement * currentInclusion = inInclusionsForImplementationFile.firstObject () ;
-  while (currentInclusion != NULL) {
-    macroValidPointer (currentInclusion) ;
-    generatedZone2 << "#include \"" << currentInclusion->mKey << "\"\n" ;
-    currentInclusion = currentInclusion->nextObject () ;
+  GGS_stringset::cEnumerator inclusionEnumerator (inInclusionsForImplementationFile, true) ;
+  while (inclusionEnumerator.hc ()) {
+    generatedZone2 << "#include \"" << (*inclusionEnumerator._key (HERE)) << "\"\n" ;
+    inclusionEnumerator.next () ;
   }
   generatedZone2 << "\n" ;
 

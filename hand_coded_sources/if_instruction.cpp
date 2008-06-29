@@ -1818,11 +1818,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
     GGS_L_switchBranchlist::cElement * currentBranch = mBranchList.firstObject () ;
     while (currentBranch != NULL) {
       macroValidPointer (currentBranch) ;
-      GGS_stringset::cElement * currentConstant = currentBranch->mConstantSet.firstObject () ;
-      while (currentConstant != NULL) {
-        macroValidPointer (currentConstant) ;
-        ioCppFile << "case GGS_" << mEnumTypeName << "::enum_" << currentConstant->mKey << ":\n" ;
-        currentConstant = currentConstant->nextObject () ;
+      const GGS_stringset::cEnumerator enumerator (currentBranch->mConstantSet, true) ;
+      while (enumerator.hc ()) {
+        ioCppFile << "case GGS_" << mEnumTypeName << "::enum_" << (*enumerator._key (HERE)) << ":\n" ;
+        enumerator.next () ;
       }
       ioCppFile << "  {\n" ;
       generateInstructionListForList (currentBranch->mInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex,

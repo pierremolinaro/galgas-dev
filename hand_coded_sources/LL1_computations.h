@@ -49,7 +49,6 @@ LL1_computations (C_Compiler & inLexique,
                   const uint32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inLexiqueName,
-                  const GGS_stringset & inClassesNamesSet,
                   bool & outOk,
                   const bool inVerboseOptionOn) ;
 
