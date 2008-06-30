@@ -6,7 +6,7 @@ map @aMap {
 }
 
 routine testsuite_map :
-  message "--- begin of map\n" ;
+  message "*************************************** begin of map\n" ;
   @aMap m [emptyMap] ;
   [!?m insertKey ![@lstring new !"g" !here] !37] ;
   log m ;

@@ -1820,7 +1820,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       macroValidPointer (currentBranch) ;
       const GGS_stringset::cEnumerator enumerator (currentBranch->mConstantSet, true) ;
       while (enumerator.hc ()) {
-        ioCppFile << "case GGS_" << mEnumTypeName << "::enum_" << (*enumerator._key (HERE)) << ":\n" ;
+        ioCppFile << "case GGS_" << mEnumTypeName << "::enum_" << enumerator._key (HERE) << ":\n" ;
         enumerator.next () ;
       }
       ioCppFile << "  {\n" ;

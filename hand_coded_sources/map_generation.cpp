@@ -50,28 +50,25 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   inHfile << "class GGS_" << mListmapTypeName << " : public AC_galgas_listmap {\n"
              "//--- Node class\n"
-             "  public : class cElement : public cNode {\n"
-             "    public : cElement (const GGS_string & inKey) ;\n"
-             "    public : GGS_" << mListTypename << " object ;\n"
+             "  public : class cElement : public cPtrListMapObject {\n"
+             " //--- List attribute\n"
+             "    public : GGS_" << mListTypename << " mListObject ;\n"
+             " //--- Constructor\n"
+             "    public : cElement (LOCATION_ARGS) ;\n"
              " //--- Description\n"
-             "    public : virtual GGS_string\n"
+             "    public : virtual C_String\n"
              "    _description (C_Compiler & _inLexique,\n"
              "                  const sint32 inIndentation\n"
              "                  COMMA_LOCATION_ARGS) const ;\n"
-             "    public : virtual cNode * _nodeClone (void) ;\n"
+             "    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;\n"
              "  } ;\n\n"
              "//--- 'emptyMap' constructor\n"
              "  public : static GGS_" << mListmapTypeName << "\n"
              "  constructor_emptyMap (void) ;\n\n"
-             "//--- 'description' reader declaration\n"
-             "  public : GGS_string\n"
-             "  reader_description (C_Compiler & _inLexique\n"
-             "                      COMMA_LOCATION_ARGS,\n"
-             "                      const sint32 inIndentation = 0) const ;\n\n"
              "//--- Handle '.=' operator\n"
-             "  public : void _dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) ;\n\n"
+             "  public : void _dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) ; //Don't pass 'inOperand' by reference !\n\n"
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << mListmapTypeName << " _operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const ;\n"
+             "  public : GGS_" << mListmapTypeName << " _operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const ;\n\n"
              "//--- Handle '+=' operator\n"
              "  public : void\n"
              "  _addAssign_operation (const GGS_string & inKey" ;
@@ -86,30 +83,42 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     attributeIndex ++ ;
     currentAttribute = currentAttribute->nextObject () ;
   }
-  inHfile <<  ") ;\n\n" ;
+  inHfile <<  ") ;\n\n"
+
+//--- 'description' reader
+             "//--- For 'description' reader\n"
+             "  protected : virtual const char * _typeNameForDescriptionReader (void) const ;\n\n"
+
+//--- Reader 'allKeys'
+             "//--- Reader 'allKeys'\n"
+             "  public : GGS_stringset\n"
+             "  reader_allKeys (C_Compiler & inLexique\n"
+             "                  COMMA_LOCATION_ARGS) const ;\n\n"
+
+//--- Reader 'keyList'
+             "//--- Reader 'keyList'\n"
+             "  public : GGS_stringlist\n"
+             "  reader_keyList (C_Compiler & inLexique\n"
+             "                  COMMA_LOCATION_ARGS) const ;\n\n"
 
 //--- Reader list for key
-  inHfile << "//--- Reader 'listForKey'\n"
+             "//--- Reader 'listForKey'\n"
              "  public : GGS_" << mListTypename << "\n"
              "  reader_listForKey (C_Compiler & inLexique,\n"
              "                     const GGS_string & inKey\n"
              "                     COMMA_LOCATION_ARGS) const ;\n\n"
 
-             "//--- Create a new node\n"
-             "  protected : virtual cNode * _allocNewNode (const GGS_string & inKey) ;\n" ;
 //--- Enumerator
-  inHfile <<  "//--- Enumerator\n"
-              "  public : class cEnumerator : public cAbstractEnumerator {\n"
-              "  //--- Contructor\n"
-              "    public : cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
-              "                          const bool inAscending) ;\n"
-              "  //--- Next object\n"
-              "    public : cElement * nextObject (void) { return (cElement *) internalNextObject () ; }\n"
-              "  //--- Associated object accessor\n"
-              "    public : const GGS_" << mListTypename << " * _object (void) const ;\n"
-              "  } ;\n" ;
+             "//--- Enumerator\n"
+             "  public : class cEnumerator : public cAbstractDictionaryEnumerator {\n"
+             "  //--- Contructor\n"
+             "    public : cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
+             "                          const bool inAscending) ;\n"
+             "  //--- Associated object accessor\n"
+             "    public : const GGS_" << mListTypename << " & _object (LOCATION_ARGS) const ;\n"
+             "  } ;\n"
 //--- End of class declaration
-  inHfile <<  "} ;\n\n" ;
+             "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -141,49 +150,42 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
-  inCppFile.writeCppTitleComment (C_String ("list map '@") + mListmapTypeName + "'") ;
-  inCppFile << "GGS_" << mListmapTypeName << "::cElement::cElement (const GGS_string & inKey) :\n"
-               "cNode (inKey),\n"
-               "object (GGS_" << mListTypename << "::constructor_emptyList ()) {\n"
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_" << mListmapTypeName << "::cElement::cElement (LOCATION_ARGS) :\n"
+               "cPtrListMapObject (THERE) {\n"
+               "  mListObject = GGS_" << mListTypename << "::constructor_emptyList () ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_string GGS_" << mListmapTypeName << "::cElement::\n"
+  inCppFile << "cPtrObject * GGS_" << mListmapTypeName << "::cElement::_clone (LOCATION_ARGS) {\n"
+               "  cElement * result = NULL ;\n"
+               "  macroMyNew (result, cElement (THERE)) ;\n"
+               "  result->mListObject = mListObject ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "C_String GGS_" << mListmapTypeName << "::cElement::\n"
                "_description (C_Compiler & _inLexique,\n"
                "              const sint32 inIndentation\n"
                "              COMMA_LOCATION_ARGS) const {\n"
-               "  return object.reader_description (_inLexique COMMA_THERE, inIndentation) ;\n"
+               "  const GGS_string s = mListObject.reader_description (_inLexique COMMA_THERE, inIndentation) ;\n"
+               "  return s.string () ;\n"
                "}\n\n" ;
-  
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << mListmapTypeName << "::cNode * GGS_" << mListmapTypeName << "::_allocNewNode (const GGS_string & inKey) {\n"
-               "  cNode * result = NULL ;\n"
-               "  macroMyNew (result, cElement (inKey)) ;\n"
-               "  return result ;\n"
-               "}\n\n" ;
-
-  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << mListmapTypeName << "::cNode * GGS_" << mListmapTypeName << "::cElement::_nodeClone (void) {\n"
-               "  cElement * result = NULL ;\n"
-               "  macroMyNew (result, cElement (key)) ;\n"
-               "  result->object = object ;\n"
-               "  return result ;\n"
-               "}\n\n" ;
-
+ 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
                "constructor_emptyMap (void) {\n"
                "  GGS_" << mListmapTypeName << " result ;\n"
-               "  macroMyNew (result.mSharedMapObject, cRoot) ;\n"
+               "  result._alloc (HERE) ;\n"
                "  return result ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_string GGS_" << mListmapTypeName << "::\n"
-               "reader_description (C_Compiler & inLexique\n"
-               "                    COMMA_LOCATION_ARGS,\n"
-               "                    const sint32 inIndentation) const {\n"
-               "  return _description (inLexique, \"@" << mListmapTypeName << "\", inIndentation COMMA_THERE) ;\n"
+  inCppFile << "const char * GGS_" << mListmapTypeName << "::\n"
+               "_typeNameForDescriptionReader (void) const {\n"
+               "  return \"@" << mListmapTypeName << "\" ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
@@ -198,17 +200,25 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << mListmapTypeName << "::\n"
                "_dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) {\n"
                "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
-               "    if (count () == 0) {\n"
+               "    if (count (HERE) == 0) {\n"
                "      * this = inOperand ;\n"
-               "    }else if (inOperand.count () > 0) {\n"
-               "      insulateSharedStringSet () ;\n"
-               "      cElement * p = (cElement *) inOperand.firstObject () ;\n"
-               "      while (p != NULL) {\n"
-               "        macroValidPointer (p) ;\n"
-               "        bool extension ; // Unused\n"
-               "        cElement * node = (cElement *) internalSearchOrAdd (p->key, mSharedMapObject->_mRoot, extension) ;\n"
-               "        node->object._dotAssign_operation (p->object) ;\n"
-               "        p = (cElement *) p->nextObject () ;\n"
+               "    }else if (inOperand.count (HERE) > 0) {\n"
+               "      cPtrDictionary * dictPtr = macroPtr (inOperand, cPtrDictionary)  ;\n"
+               "      cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;\n"
+               "      const sint32 objectCount = dictPtr->count () ;\n"
+               "      for (sint32 i=0 ; i<objectCount ; i++) {\n"
+               "        const GGS_string key = nodeSortedArray [i].key () ;\n"
+               "        const PM_C_Object object = nodeSortedArray [i].mObject ;\n"
+               "        cElement * elementPtr = macroPtr (object, cElement) ;\n"
+               "        bool wasInserted = false ;\n"
+               "        cPtrDictionaryNode * nodePtr = _findOrAddNodeForKey (key, wasInserted) ;\n"
+               "        if (wasInserted) {\n"
+               "           cElement * elementPtr = NULL ;\n"
+               "           macroMyNew (elementPtr, cElement (HERE)) ;\n"
+               "           nodePtr->mObject._setPointer (elementPtr) ;\n"
+               "        }\n"
+               "        GGS_" << mListTypename << " & listPtr = macroPtr (nodePtr->mObject, cElement)->mListObject ;\n"
+               "        listPtr._dotAssign_operation (elementPtr->mListObject) ;\n"
                "      }\n"
                "    }\n"
                "  }\n"
@@ -240,10 +250,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentAttribute = currentAttribute->nextObject () ;
   }
   inCppFile << ") {\n"
-               "    insulateSharedStringSet () ;\n"
-               "    bool extension ; // unused\n"
-               "    cElement * node = (cElement *) internalSearchOrAdd (inKey, mSharedMapObject->_mRoot, extension) ;\n"
-               "    node->object._addAssign_operation (" ;
+               "    bool wasInserted = false ;\n"
+               "    cPtrDictionaryNode * nodePtr = _findOrAddNodeForKey (inKey, wasInserted) ;\n"
+               "    MF_Assert (nodePtr != NULL, \"NULL pointer (was inserted %d)\", wasInserted, 0) ;\n"
+               "    if (wasInserted) {\n"
+               "       cElement * elementPtr = NULL ;\n"
+               "       macroMyNew (elementPtr, cElement (HERE)) ;\n"
+               "       nodePtr->mObject._setPointer (elementPtr) ;\n"
+               "    }\n"
+               "    GGS_" << mListTypename << " & listPtr = macroPtr (nodePtr->mObject, cElement)->mListObject ;\n"
+               "    listPtr._addAssign_operation (" ;
   currentAttribute = mAttributesList.firstObject () ;
   attributeIndex = 0 ;
   while (currentAttribute != NULL) {
@@ -260,18 +276,46 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "//--- Reader 'listForKey'\n"
-               "GGS_" << mListTypename << " GGS_" << mListmapTypeName << "::\n"
+  inCppFile << "GGS_" << mListTypename << " GGS_" << mListmapTypeName << "::\n"
                "reader_listForKey (C_Compiler & /* inLexique */,\n"
                "                   const GGS_string & inKey\n"
                "                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  GGS_" << mListTypename << " result ;\n"
                "  if (_isBuilt () && inKey._isBuilt ()) {\n"
-               "    cElement * node = (cElement *) nodeForKey (inKey.string ()) ; \n"
-               "    if (node == NULL) {\n"
+               "    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey) ; \n"
+               "    if (nodePtr == NULL) {\n"
                "      result = GGS_" << mListTypename << "::constructor_emptyList () ;\n"
                "    }else{\n"
-               "      result = node->object ;\n"
+               "      result = macroPtr (nodePtr->mObject, cElement)->mListObject ;\n"
+               "    }\n"
+               "  }\n"
+               "  return result ;\n"
+               "}\n\n" ;
+
+//--- Reader 'allKeys'
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_stringset GGS_" << mListmapTypeName << "::\n"
+               "reader_allKeys (C_Compiler & /* inLexique */\n"
+               "                COMMA_UNUSED_LOCATION_ARGS) const {\n\n"
+               "  GGS_stringset result ;\n"
+               "  result._setPointer (_pointer ()) ;\n"
+               "  return result ;\n"
+               "}\n\n" ;
+
+//--- Reader 'keyList'
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "GGS_stringlist GGS_" << mListmapTypeName << "::\n"
+               "reader_keyList (C_Compiler & /* inLexique */\n"
+               "                COMMA_UNUSED_LOCATION_ARGS) const {\n\n"
+               "  GGS_stringlist result ;\n"
+               "  if (_isBuilt ()) {\n"
+               "    result = GGS_stringlist::constructor_emptyList () ;\n"
+               "    cPtrDictionary * dictPtr = macroPtr (*this, cPtrDictionary)  ;\n"
+               "    cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;\n"
+               "    const sint32 objectCount = dictPtr->count () ;\n"
+               "    for (sint32 i=0 ; i<objectCount ; i++) {\n"
+               "      const GGS_string key = nodeSortedArray [i].key () ;\n"
+               "      result._addAssign_operation (key) ;\n"
                "    }\n"
                "  }\n"
                "  return result ;\n"
@@ -282,13 +326,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << mListmapTypeName << "::cEnumerator::\n"
                "cEnumerator (const GGS_" << mListmapTypeName << " & inListMap,\n"
                "             const bool inAscending) :\n"
-               "cAbstractEnumerator (inListMap, inAscending) {\n"
+               "cAbstractDictionaryEnumerator (inListMap, inAscending) {\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "const GGS_" << mListTypename << " * GGS_" << mListmapTypeName << "::cEnumerator::\n"
-               "_object (void) const {\n"
-               "  return & ((cElement *) mObjectArray (mCurrentIndex COMMA_HERE))->object ;\n"
+  inCppFile << "const GGS_" << mListTypename << " & GGS_" << mListmapTypeName << "::cEnumerator::\n"
+               "_object (LOCATION_ARGS) const {\n"
+               "  cPtrDictionary * dictPtr = macroPtr (mEnumeratedDictionary, cPtrDictionary)  ;\n"
+               "  MF_AssertThere (currentIndex () >= 0, \"Access with negative index %d\", currentIndex (), 0) ;\n"
+               "  MF_AssertThere (currentIndex () < dictPtr->count (), \"Access with index %d >= count %d\", currentIndex (), dictPtr->count ()) ;\n"
+               "  cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;\n"
+               "  PM_C_Object listObject = nodeSortedArray [currentIndex ()].mObject ;\n"
+               "  cElement * objectPtr = macroPtr (listObject, cElement) ;\n"
+               "  return objectPtr->mListObject ;\n"
                "}\n\n" ;
 
 }
@@ -618,8 +668,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   GGS_typeListeAttributsSemantiques::cElement * currentAttribute = mNonExternAttributesList.firstObject () ;
   while (currentAttribute != NULL) {
     macroValidPointer (currentAttribute) ;
-    inHfile << "public : void modifier_set" << currentAttribute->mAttributeName.stringWithUpperCaseFirstLetter ()
-            << "ForKey (C_Compiler & inLexique,"
+    inHfile << "  public : void modifier_set" << currentAttribute->mAttributeName.stringWithUpperCaseFirstLetter ()
+            << "ForKey (C_Compiler & inLexique,\n"
                "                        const " ;
     currentAttribute->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "inValue,\n"

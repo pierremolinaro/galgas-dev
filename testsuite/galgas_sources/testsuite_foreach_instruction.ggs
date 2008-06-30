@@ -6,7 +6,7 @@ routine testsuite_foreach_instruction :
   strList += !"b" ;
   strList += !"c" ;
   strList += !"d" ;
-  message "--- begin of foreach instruction test 1\n" ;
+  message "*************************************** begin of foreach instruction test 1\n" ;
   foreach < strList (@string s)
   before
     message "  before\n" ;
