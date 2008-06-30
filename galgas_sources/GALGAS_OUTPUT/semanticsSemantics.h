@@ -3032,7 +3032,7 @@ class GGS_classIndexList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_descendantClassListMap : public AC_galgas_listmap {
+class GGS_descendantClassListMap : public EXAC_galgas_listmap {
 //--- Node class
   public : class cElement : public cNode {
     public : cElement (const GGS_string & inKey) ;

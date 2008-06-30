@@ -6,7 +6,7 @@ struct @struct {
 }
 
 routine testsuite_struct :
-  message "--- begin of struct logging\n" ;
+  message "*************************************** begin of struct logging\n" ;
   @struct s [new !"az" !34] ;
   log s ;
 end routine ;

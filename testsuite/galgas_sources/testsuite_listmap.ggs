@@ -8,7 +8,7 @@ list @aList {
 listmap @myListMap (@aList) ;
 
 routine testsuite_listmap :
-  message "--- begin of listmap\n" ;
+  message "*************************************** begin of listmap\n" ;
   @myListMap m [emptyMap] ;
   m += !"d" !"g" !37 ;
   m += !"a" !"b" !23 ;

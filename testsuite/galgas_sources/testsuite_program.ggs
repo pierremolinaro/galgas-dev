@@ -12,11 +12,11 @@ import grammar testsuite_grammar in "testsuite_grammar.ggs" ;
 #--- Prologue routine
 before {
   testsuite_hand_coded ;
-#  testsuite_foreach_instruction ;
-#  testsuite_list ;
-#  testsuite_struct ;
-#  testsuite_listmap ;
-#  testsuite_map ;
+  testsuite_foreach_instruction ;
+  testsuite_list ;
+  testsuite_struct ;
+  testsuite_listmap ;
+  testsuite_map ;
 }
 
 #--- 'when' clauses

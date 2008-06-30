@@ -3360,7 +3360,7 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_abstractCategoryMethodListMap : public AC_galgas_listmap {
+class GGS_abstractCategoryMethodListMap : public EXAC_galgas_listmap {
 //--- Node class
   public : class cElement : public cNode {
     public : cElement (const GGS_string & inKey) ;
@@ -3566,7 +3566,7 @@ class GGS_categoryMethodList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_categoryMethodListMap : public AC_galgas_listmap {
+class GGS_categoryMethodListMap : public EXAC_galgas_listmap {
 //--- Node class
   public : class cElement : public cNode {
     public : cElement (const GGS_string & inKey) ;
@@ -3773,7 +3773,7 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GGS_overridingCategoryMethodListMap : public AC_galgas_listmap {
+class GGS_overridingCategoryMethodListMap : public EXAC_galgas_listmap {
 //--- Node class
   public : class cElement : public cNode {
     public : cElement (const GGS_string & inKey) ;

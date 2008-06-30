@@ -12,7 +12,7 @@ routine testsuite_list :
   strList += !"b" ;
   strList += !"c" ;
   strList += !"d" ;
-  message "--- begin of list direct access\n" ;
+  message "*************************************** begin of list direct access\n" ;
   @string s := [strList mValueAtIndex !0] ;
   log s ;
   s := [strList mValueAtIndex !1] ;
