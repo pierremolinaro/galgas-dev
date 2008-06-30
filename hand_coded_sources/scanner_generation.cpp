@@ -33,10 +33,10 @@
 static bool
 instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & inList) {
   bool use = false ;
-  for (sint32 i=0 ; (i<inList.count ()) && ! use ; i++) {
-    GGS_tListeInstructionsLexicales::cElement * courant = inList (i COMMA_HERE) ;
-    macroValidPointer (courant) ;
-    use = courant->attributInstruction(HERE)->instruction__uses_loop_variable () ;
+  GGS_tListeInstructionsLexicales::cEnumerator courant (inList, true) ;
+  while (courant.hc () && ! use) {
+    use = courant._attributInstruction (HERE) (HERE)->instruction__uses_loop_variable () ;
+    courant.next () ;
   }
   return use ;
 }
@@ -46,10 +46,10 @@ instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & in
 static bool
 instructions_list_uses_loop_variable (const GGS_typeListeTestsEtInstructions & inList) {
   bool use = false ;
-  for (sint32 i=0 ; (i<inList.count ()) && ! use ; i++) {
-    GGS_typeListeTestsEtInstructions::cElement * current = inList (i COMMA_HERE) ;
-    macroValidPointer (current) ;
-    use = instructions_list_uses_loop_variable (current->attributListeInstructions) ;
+  GGS_typeListeTestsEtInstructions::cEnumerator courant (inList, true) ;
+  while (courant.hc () && ! use) {
+    use = instructions_list_uses_loop_variable (courant._attributListeInstructions (HERE)) ;
+    courant.next () ;
   }
   return use ;
 }
@@ -61,10 +61,10 @@ generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inLi
                                     const C_String & inLexiqueName,
                                     const bool inGenerateEnterToken,
                                     AC_OutputStream & inCppFile) {
-  for (sint32 i=0 ; i<inList.count () ; i++) {
-    GGS_tListeInstructionsLexicales::cElement * courant = inList (i COMMA_HERE) ;
-    macroValidPointer (courant) ;
-    courant->attributInstruction(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile) ;
+  GGS_tListeInstructionsLexicales::cEnumerator courant (inList, true) ;
+  while (courant.hc ()) {
+    courant._attributInstruction (HERE)(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile) ;
+    courant.next () ;
   }
 }
 
@@ -77,26 +77,32 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      const bool inGenerateEnterToken,
                      bool & outNonEmptyList) {
   outNonEmptyList = inList.firstObject () != NULL ;
-  for (sint32 i=0 ; i<inList.count () ; i++) {
-    GGS_typeListeTestsEtInstructions::cElement * courant = inList (i COMMA_HERE) ;
-    macroValidPointer (courant) ;
-    if (i > 0) {
+  GGS_typeListeTestsEtInstructions::cEnumerator courant (inList, true) ;
+  bool first = true ;
+  while (courant.hc ()) {
+    if (first) {
+      first = false ;
+    }else{
       inCppFile << "}else " ;
     }
     inCppFile << "if (" ;
-    macroValidPointer (courant->attributListeConditions.firstObject ()) ;
-    for (sint32 j=0 ; j<courant->attributListeConditions.count () ; j++) {
-      GGS_typeListeConditionsLexicales::cElement * cond = courant->attributListeConditions (j COMMA_HERE) ;
-      macroValidPointer (cond) ;
-      if (j > 0) {
+    macroValidPointer (courant._attributListeConditions (HERE).firstObject ()) ;
+    GGS_typeListeConditionsLexicales::cEnumerator cond (courant._attributListeConditions (HERE), true) ;
+    bool firstCond = true ;
+    while (cond.hc ()) {
+      if (firstCond) {
+        firstCond = false ;
+      }else{
         inCppFile << " ||\n    " ;
       }
-      cond->attributCondition(HERE)->generateLexicalCondition (inCppFile) ;
+      cond._attributCondition(HERE) (HERE)->generateLexicalCondition (inCppFile) ;
+      cond.next () ;
     }
     inCppFile << ") {\n" ;
     inCppFile.incIndentation (+2) ;
-    generate_scanner_instructions_list (courant->attributListeInstructions, inLexiqueName, inGenerateEnterToken, inCppFile) ;
+    generate_scanner_instructions_list (courant._attributListeInstructions (HERE), inLexiqueName, inGenerateEnterToken, inCppFile) ;
     inCppFile.incIndentation (-2) ;
+    courant.next () ;
   }
 }
 
@@ -480,13 +486,16 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
 static void
 generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
                                AC_OutputStream & inCppFile) {
-  for (sint32 i=0 ; i<inList.count () ; i++) {
-    GGS_typeListeArgumentsRoutExterne::cElement * courant = inList (i COMMA_HERE) ;
-    macroValidPointer (courant) ;
-    if (i > 0) {
+  GGS_typeListeArgumentsRoutExterne::cEnumerator courant (inList, true) ;
+  bool first = true ;
+  while (courant.hc ()) {
+    if (first) {
+      first = false ;
+    }else{
       inCppFile << ", " ;
     }
-    courant->attributArgument(HERE)->generateExternArgument (inCppFile) ;
+    courant._attributArgument(HERE) (HERE)->generateExternArgument (inCppFile) ;
+    courant.next () ;
   }
 }
 
@@ -545,10 +554,10 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
 //--- Engendrer la liste des arguments (au moins 1)
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
 //--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
-  for (sint32 i=0 ; i<attributListeMessageErreur.count () ; i++) {
-    GGS_typeListeMessagesErreur::cElement * courant = attributListeMessageErreur (i COMMA_HERE) ;
-    macroValidPointer (courant) ;
-    inCppFile << ", gErrorMessage_" << courant->mErrorMessageIndex.uintValue () ;
+  GGS_typeListeMessagesErreur::cEnumerator courant (attributListeMessageErreur, true) ;
+  while (courant.hc ()) {
+    inCppFile << ", gErrorMessage_" << courant._mErrorMessageIndex (HERE).uintValue () ;
+    courant.next () ;
   }
 //--- End of instruction
   inCppFile << ") ;\n" ;
@@ -730,19 +739,21 @@ void cPtr_typeInstructionEmettre::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
-  for (sint32 i=0 ; i<attributListeRecherches.count () ; i++) {
-    GGS_typeListeRecherche::cElement * courant = attributListeRecherches (i COMMA_HERE) ;
-    macroValidPointer (courant) ;
-    if (i > 0) {
+  GGS_typeListeRecherche::cEnumerator courant (attributListeRecherches, true) ;
+  bool first = true ;
+  while (courant. hc ()) {
+    if (! first) {
       inCppFile << "if (_token._mTokenCode == -1) {\n" ;
       inCppFile.incIndentation (+2) ;
     }
-    inCppFile << "_token._mTokenCode = search_into_" << courant->attributNomTable << " (_token."
-              << courant->attributNomAttribut << ") ;\n" ;
-    if (i > 0) {
+    inCppFile << "_token._mTokenCode = search_into_" << courant._attributNomTable (HERE) << " (_token."
+              << courant._attributNomAttribut (HERE) << ") ;\n" ;
+    if (! first) {
       inCppFile.incIndentation (-2) ;
       inCppFile << "}\n" ;
     }
+    first = false ;
+    courant.next () ;
   }
   inCppFile << "if (_token._mTokenCode == -1) {\n" ;
   inCppFile.incIndentation (+2) ;

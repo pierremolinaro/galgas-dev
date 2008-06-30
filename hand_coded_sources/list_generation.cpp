@@ -168,7 +168,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  }\n"
 
 //--- operators () for method call
-             "//--- Operators () used for method call\n"
+             "//--- Operator () used for method call\n"
              "  public : const GGS_" << aNomListe << " * operator () (UNUSED_LOCATION_ARGS) const { return this ;} \n"
 
 //--- Declare method 'first'
@@ -260,8 +260,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Direct element access
-             "//--- Direct element access\n"
-             "  public : cElement * operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const ;\n"
+//             "//--- Direct element access\n"
+//             "  public : cElement * operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
@@ -365,7 +365,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     macroValidPointer (current) ;
     inHfile << "  public : const " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "  * _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
+    inHfile << "  & _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
   inHfile << "  } ;\n\n" ;
@@ -614,13 +614,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Direct element access
-  inCppFile.writeCppHyphenLineComment () ;
+/*  inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << "::cElement * GGS_" << aNomListe << "::\n"
                "operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const {\n"
                "  MF_AssertThere (inIndex >= 0, \"inIndex (%ld) < 0\", inIndex, 0) ;\n"
                "  MF_AssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
                "  return (cElement *) objectAtIndexOrNULL (inIndex) ;\n"
-               "}\n\n" ;
+               "}\n\n" ;*/
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
@@ -1100,9 +1100,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " * GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+    inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
                  "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return & (((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << ") ;\n"
+                 "  return ((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << " ;\n"
                  "}\n\n" ;
     current = current->nextObject () ;
   }
@@ -1372,7 +1372,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     macroValidPointer (current) ;
     inHfile << "    public : const " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "  * _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
+    inHfile << "  & _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
   inHfile << "  } ;\n" ;
@@ -1925,9 +1925,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " * GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+    inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
                  "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return & (((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << ") ;\n"
+                 "  return ((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << " ;\n"
                  "}\n\n" ;
     current = current->nextObject () ;
   }

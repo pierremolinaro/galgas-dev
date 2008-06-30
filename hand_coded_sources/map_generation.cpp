@@ -842,7 +842,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     macroValidPointer (current) ;
     inHfile << "    public : const " ;
     current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "  * _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
+    inHfile << "  & _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
     current = current->nextObject () ;
   }
   inHfile << "  } ;\n"
@@ -1184,7 +1184,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapTypeName << "::\n"
                  "modifier_set" << currentAttribute->mAttributeName.stringWithUpperCaseFirstLetter ()
-              << "ForKey (C_Compiler & inLexique,"
+              << "ForKey (C_Compiler & inLexique,\n"
                "                        const " ;
     currentAttribute->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "inValue,\n"
@@ -1420,8 +1420,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " * GGS_" << mMapTypeName << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
-                 "  return & (((cElement *) mObjectArray (mCurrentIndex COMMA_THERE))->mInfo." << current->mAttributeName << ") ;\n"
+    inCppFile << " & GGS_" << mMapTypeName << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+                 "  return ((cElement *) mObjectArray (mCurrentIndex COMMA_THERE))->mInfo." << current->mAttributeName << " ;\n"
                  "}\n\n" ;
     current = current->nextObject () ;
   }
