@@ -35,13 +35,13 @@ buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
                       TC_Array2 <bool> & outPopUpTree,
                       const sint32 inTerminalSymbolCount) {
   outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
-  for (sint32 i=0 ; i<inLabelForPopUpList.count () ; i++) {
-    GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList (i COMMA_HERE) ;
-    macroValidPointer (currentMark) ;
-    const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
-    const sint32 terminalID2 = (sint32) currentMark->mTerminal2ID.uintValue () ;
+  GGS_labelForPopUpList::cEnumerator currentMark (inLabelForPopUpList, true) ;
+  while (currentMark.hc ()) {
+    const sint32 terminalID1 = (sint32) currentMark._mTerminal1ID (HERE).uintValue () ;
+    const sint32 terminalID2 = (sint32) currentMark._mTerminal2ID (HERE).uintValue () ;
     // printf ("POP $%s$ (%u), $%s$ (%u)\n", currentMark->mTerminal1.cString (), terminalID1, currentMark->mTerminal2.cString (), terminalID2) ;
     outPopUpTree (terminalID1, terminalID2 COMMA_HERE) = true ;
+    currentMark.next () ;
   }
 }
 
@@ -129,12 +129,11 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
       mainArray << ",\n  " ;
       bool first = true ;
-      for (sint32 j=0 ; j<inLabelForPopUpList.count () ; j++) {
-        const GGS_labelForPopUpList::cElement * currentMark = inLabelForPopUpList (j COMMA_HERE) ;
-        macroValidPointer (currentMark) ;
-        const sint32 terminalID1 = (sint32) currentMark->mTerminal1ID.uintValue () ;
+      GGS_labelForPopUpList::cEnumerator currentMark (inLabelForPopUpList, true) ;
+      while (currentMark.hc ()) {
+        const sint32 terminalID1 = (sint32) currentMark._mTerminal1ID (HERE).uintValue () ;
         if (terminalID1 == i) {
-          const uint32 terminalID2 = currentMark->mTerminal2ID.uintValue () ;
+          const uint32 terminalID2 = currentMark._mTerminal2ID (HERE).uintValue () ;
           if (first) {
             first = false ;
             generatedZone3 << "static uint16 kPopUpListData_" << i << " [] = {" ;
@@ -143,6 +142,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
           }
           generatedZone3 << (terminalID2 + 1) ;
         }
+        currentMark.next () ;
       }
       if (first) {
         mainArray << "NULL" ;
