@@ -61,6 +61,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                  const sint32 inIndentation\n"
              "                  COMMA_LOCATION_ARGS) const ;\n"
              "    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;\n"
+             "    public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;\n"
              "  } ;\n\n"
              "//--- 'emptyMap' constructor\n"
              "  public : static GGS_" << mListmapTypeName << "\n"
@@ -153,8 +154,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << "::cElement::cElement (LOCATION_ARGS) :\n"
-               "cPtrListMapObject (THERE) {\n"
-               "  mListObject = GGS_" << mListTypename << "::constructor_emptyList () ;\n"
+               "cPtrListMapObject (THERE),\n"
+               "mListObject (GGS_" << mListTypename << "::constructor_emptyList ()) {\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
@@ -163,6 +164,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  macroMyNew (result, cElement (THERE)) ;\n"
                "  result->mListObject = mListObject ;\n"
                "  return result ;\n"
+               "}\n\n" ;
+
+  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile << "bool GGS_" << mListmapTypeName << "::cElement::isEqual (const cPtrListMapObject * inOperand) const {\n"
+               "  const GGS_bool equal = mListObject._operator_isEqual (((cElement *) inOperand)->mListObject) ;\n"
+               "  return equal.boolValue () ;\n"
                "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
