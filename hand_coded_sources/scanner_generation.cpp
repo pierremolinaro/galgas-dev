@@ -833,17 +833,20 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
               << " COMMA_LINE_AND_SOURCE_FILE)" ;
   }else{
     inCppFile << "(" ;
-    for (sint32 i=0 ; i<mStrings.count () ; i++) {
-      GGS_lstringlist::cElement * chaine = mStrings (i COMMA_HERE) ;
-      if (i > 0) {
+    GGS_lstringlist::cEnumerator chaine (mStrings, true) ;
+    bool first = true ;
+    while (chaine.hc ()) {
+      if (first) {
+        first = false ;
+      }else{
         inCppFile << " && " ;
       }
-      macroValidPointer (chaine) ;
       inCppFile << "notTestForInputString (" ;
-      inCppFile.writeCstringConstant (chaine->mValue) ;
-      inCppFile << ", " << chaine->mValue.length ()
+      inCppFile.writeCstringConstant (chaine._mValue (HERE)) ;
+      inCppFile << ", " << chaine._mValue (HERE).length ()
                 << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
                 << " COMMA_LINE_AND_SOURCE_FILE)" ;
+      chaine.next () ;
     }
     inCppFile << ")" ;
   }

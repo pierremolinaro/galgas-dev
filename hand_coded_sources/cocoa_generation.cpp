@@ -78,12 +78,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone2 << "#import \"" << currentOptionComponent->mKey << ".h\"\n" ;
     currentOptionComponent = currentOptionComponent->nextObject () ;
   }
-  for (sint32 i=0 ; i<inNibAndClassList.count () ; i++) {
-    GGS_lstringlist::cElement * currentNib = inNibAndClassList (i COMMA_HERE) ;
-    macroValidPointer (currentNib) ;
+  GGS_lstringlist::cEnumerator currentNib (inNibAndClassList, true) ;
+  while (currentNib.hc ()) {
     TC_UniqueArray <C_String> result ;
-    currentNib->mValue.componentsSeparatedByString (".", result) ;
+    currentNib._mValue (HERE).componentsSeparatedByString (".", result) ;
     generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
+    currentNib.next () ;
   }
   generatedZone2 << "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
                     "  #import \"user_default_colors.h\"\n"
@@ -159,13 +159,13 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
                     "  return [NSArray arrayWithObjects:\n" ;
-  for (sint32 i=0 ; i<inNibAndClassList.count () ; i++) {
-    GGS_lstringlist::cElement * currentNib = inNibAndClassList (i COMMA_HERE) ;
-    macroValidPointer (currentNib) ;
+  currentNib.rewind () ;
+  while (currentNib.hc ()) {
     TC_UniqueArray <C_String> result ;
-    currentNib->mValue.componentsSeparatedByString (".", result) ;
+    currentNib._mValue (HERE).componentsSeparatedByString (".", result) ;
     generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)
                    << "\", [" << result (1 COMMA_HERE) << " class], nil],\n" ;
+    currentNib.next () ;
   }
   generatedZone3 << "    nil\n"
                     "  ] ;\n"
