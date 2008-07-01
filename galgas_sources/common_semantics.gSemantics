@@ -3882,6 +3882,14 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+    when >= @typeGalgas_double do
+      if [inReaderName string] == "string" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      else
+        error inReaderName : "this reader is not defined"
+         -> outAccessorTypesList, outReturnedType ;
+      end if ;
     when >= @typeGalgas_lchar do
       if [inReaderName string] == "char" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
