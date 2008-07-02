@@ -1101,8 +1101,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
-                 "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return ((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << " ;\n"
+                 "  macroValidPointerThere (mCurrentObject) ;\n"
+                 "  return ((cElement *) mCurrentObject)->" << current->mAttributeName << " ;\n"
                  "}\n\n" ;
     current = current->nextObject () ;
   }
@@ -1926,8 +1926,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
-                 "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return ((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << " ;\n"
+                 "  macroValidPointerThere (mCurrentObject) ;\n"
+                 "  return ((cElement *) mCurrentObject)->" << current->mAttributeName << " ;\n"
                  "}\n\n" ;
     current = current->nextObject () ;
   }

@@ -623,8 +623,8 @@ modifier_setMInstructionAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_semanticInstruction  & GGS_semanticInstructionList::cEnumerator::_mInstruction (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mInstruction ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mInstruction ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1093,8 +1093,8 @@ modifier_setMSemanticDeclarationAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_semanticDeclaration  & GGS_semanticDeclarationList::cEnumerator::_mSemanticDeclaration (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSemanticDeclaration ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSemanticDeclaration ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3196,8 +3196,8 @@ modifier_setMElementAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_foreachInstructionEnumeratedObjectElement  & GGS_foreachInstructionEnumeratedObjectElementList::cEnumerator::_mElement (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mElement ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mElement ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3657,22 +3657,22 @@ modifier_setMEndsWithEllipsisAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_semanticExpression  & GGS_foreachInstructionEnumeratedObjectList::cEnumerator::_mEnumeratedExpression (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mEnumeratedExpression ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mEnumeratedExpression ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_foreachInstructionEnumeratedObjectElementList  & GGS_foreachInstructionEnumeratedObjectList::cEnumerator::_mElementList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mElementList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mElementList ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_foreachInstructionEnumeratedObjectList::cEnumerator::_mEndsWithEllipsis (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mEndsWithEllipsis ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mEndsWithEllipsis ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4350,15 +4350,15 @@ modifier_setMIFinstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_semanticExpression  & GGS_ifBranchList::cEnumerator::_mIFexpression (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mIFexpression ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mIFexpression ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_semanticInstructionList  & GGS_ifBranchList::cEnumerator::_mIFinstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mIFinstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mIFinstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5969,8 +5969,8 @@ modifier_setMEntryAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_matchEntry  & GGS_matchEntryList::cEnumerator::_mEntry (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mEntry ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mEntry ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6725,15 +6725,15 @@ modifier_setMMatchBranchInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_matchEntryList  & GGS_matchInstructionBranchList::cEnumerator::_mMatchEntryList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMatchEntryList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMatchEntryList ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_semanticInstructionList  & GGS_matchInstructionBranchList::cEnumerator::_mMatchBranchInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMatchBranchInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMatchBranchInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7508,36 +7508,36 @@ modifier_setMCastBranchInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_castInstructionBranchList::cEnumerator::_mUseKindOfClass (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mUseKindOfClass ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mUseKindOfClass ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_castInstructionBranchList::cEnumerator::_mTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mTypeName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_castInstructionBranchList::cEnumerator::_mConstantVarName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mConstantVarName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mConstantVarName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_castInstructionBranchList::cEnumerator::_mConstantVarNameIsUnused (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mConstantVarNameIsUnused ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mConstantVarNameIsUnused ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_semanticInstructionList  & GGS_castInstructionBranchList::cEnumerator::_mCastBranchInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mCastBranchInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mCastBranchInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10052,15 +10052,15 @@ modifier_setMFormalParameterListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_abstractCategoryMethodList::cEnumerator::_mMethodName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMethodName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMethodName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_formalParameterList  & GGS_abstractCategoryMethodList::cEnumerator::_mFormalParameterList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalParameterList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalParameterList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10697,22 +10697,22 @@ modifier_setMRoutineInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_categoryMethodList::cEnumerator::_mMethodName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMethodName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMethodName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_formalParameterList  & GGS_categoryMethodList::cEnumerator::_mFormalParameterList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalParameterList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalParameterList ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_semanticInstructionList  & GGS_categoryMethodList::cEnumerator::_mRoutineInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mRoutineInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mRoutineInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11350,22 +11350,22 @@ modifier_setMRoutineInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_overridingCategoryMethodList::cEnumerator::_mMethodName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMethodName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMethodName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_formalParameterList  & GGS_overridingCategoryMethodList::cEnumerator::_mFormalParameterList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalParameterList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalParameterList ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_semanticInstructionList  & GGS_overridingCategoryMethodList::cEnumerator::_mRoutineInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mRoutineInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mRoutineInstructionList ;
 }
 
 //---------------------------------------------------------------------------*

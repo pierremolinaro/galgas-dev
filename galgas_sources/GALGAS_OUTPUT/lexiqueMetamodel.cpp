@@ -439,15 +439,15 @@ modifier_setMEndStringAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_templateDelimitorList::cEnumerator::_mStartString (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mStartString ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mStartString ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_templateDelimitorList::cEnumerator::_mEndString (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mEndString ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mEndString ;
 }
 
 //---------------------------------------------------------------------------*
@@ -848,15 +848,15 @@ modifier_setMReplacementStringAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_templateReplacementList::cEnumerator::_mMatchString (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMatchString ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMatchString ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_templateReplacementList::cEnumerator::_mReplacementString (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mReplacementString ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mReplacementString ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1198,8 +1198,8 @@ modifier_setMListNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalImplicitRuleList::cEnumerator::_mListName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mListName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mListName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1600,15 +1600,15 @@ modifier_setMMessageValueAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalErrorMessageDeclarationList::cEnumerator::_mMessageName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMessageName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMessageName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalErrorMessageDeclarationList::cEnumerator::_mMessageValue (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMessageValue ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMessageValue ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2009,15 +2009,15 @@ modifier_setMNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalAttributeList::cEnumerator::_mTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mTypeName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalAttributeList::cEnumerator::_mName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2418,15 +2418,15 @@ modifier_setMCommentAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalStyleList::cEnumerator::_mName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalStyleList::cEnumerator::_mComment (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mComment ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mComment ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2945,29 +2945,29 @@ modifier_setMStyleAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_terminalDeclarationList::cEnumerator::_mName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstringlist  & GGS_terminalDeclarationList::cEnumerator::_mSentAttributeList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSentAttributeList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSentAttributeList ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_terminalDeclarationList::cEnumerator::_mErrorMessage (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mErrorMessage ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mErrorMessage ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_terminalDeclarationList::cEnumerator::_mStyle (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mStyle ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mStyle ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3368,15 +3368,15 @@ modifier_setMTerminalSpellingAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalListEntryList::cEnumerator::_mEntrySpelling (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mEntrySpelling ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mEntrySpelling ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalListEntryList::cEnumerator::_mTerminalSpelling (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mTerminalSpelling ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mTerminalSpelling ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3954,36 +3954,36 @@ modifier_setMEntryListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalListDeclarationList::cEnumerator::_mName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalListDeclarationList::cEnumerator::_mStyle (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mStyle ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mStyle ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalListDeclarationList::cEnumerator::_mErrorMessage (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mErrorMessage ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mErrorMessage ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstringlist  & GGS_lexicalListDeclarationList::cEnumerator::_mSentAttributeList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSentAttributeList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSentAttributeList ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalListEntryList  & GGS_lexicalListDeclarationList::cEnumerator::_mEntryList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mEntryList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mEntryList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4511,15 +4511,15 @@ modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalExpression  & GGS_lexicalExplicitRuleList::cEnumerator::_mLexicalRuleExpression (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mLexicalRuleExpression ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mLexicalRuleExpression ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalInstructionList  & GGS_lexicalExplicitRuleList::cEnumerator::_mInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6667,15 +6667,15 @@ modifier_setMSearchListNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalSendSearchList::cEnumerator::_mAttributeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mAttributeName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mAttributeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_lexicalSendSearchList::cEnumerator::_mSearchListName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSearchListName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSearchListName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7253,15 +7253,15 @@ modifier_setMWhileInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalExpression  & GGS_lexicalWhileBranchList::cEnumerator::_mWhileExpression (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mWhileExpression ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mWhileExpression ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalInstructionList  & GGS_lexicalWhileBranchList::cEnumerator::_mWhileInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mWhileInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mWhileInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7780,8 +7780,8 @@ modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalInstruction  & GGS_lexicalInstructionList::cEnumerator::_mInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8182,15 +8182,15 @@ modifier_setMSelectInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalExpression  & GGS_lexicalSelectBranchList::cEnumerator::_mSelectExpression (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSelectExpression ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSelectExpression ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalInstructionList  & GGS_lexicalSelectBranchList::cEnumerator::_mSelectInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSelectInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSelectInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8856,8 +8856,8 @@ modifier_setMLexicalActualArgumentAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lexicalActualArgument  & GGS_lexicalActualArgumentList::cEnumerator::_mLexicalActualArgument (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mLexicalActualArgument ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mLexicalActualArgument ;
 }
 
 //---------------------------------------------------------------------------*

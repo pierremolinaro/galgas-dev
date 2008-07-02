@@ -34,9 +34,8 @@ static bool
 instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & inList) {
   bool use = false ;
   GGS_tListeInstructionsLexicales::cEnumerator courant (inList, true) ;
-  while (courant.hc () && ! use) {
+  while (courant.no () && ! use) {
     use = courant._attributInstruction (HERE) (HERE)->instruction__uses_loop_variable () ;
-    courant.next () ;
   }
   return use ;
 }
@@ -47,9 +46,8 @@ static bool
 instructions_list_uses_loop_variable (const GGS_typeListeTestsEtInstructions & inList) {
   bool use = false ;
   GGS_typeListeTestsEtInstructions::cEnumerator courant (inList, true) ;
-  while (courant.hc () && ! use) {
+  while (courant.no () && ! use) {
     use = instructions_list_uses_loop_variable (courant._attributListeInstructions (HERE)) ;
-    courant.next () ;
   }
   return use ;
 }
@@ -62,9 +60,8 @@ generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inLi
                                     const bool inGenerateEnterToken,
                                     AC_OutputStream & inCppFile) {
   GGS_tListeInstructionsLexicales::cEnumerator courant (inList, true) ;
-  while (courant.hc ()) {
+  while (courant.no ()) {
     courant._attributInstruction (HERE)(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile) ;
-    courant.next () ;
   }
 }
 
@@ -79,7 +76,7 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
   outNonEmptyList = inList.firstObject () != NULL ;
   GGS_typeListeTestsEtInstructions::cEnumerator courant (inList, true) ;
   bool first = true ;
-  while (courant.hc ()) {
+  while (courant.no ()) {
     if (first) {
       first = false ;
     }else{
@@ -89,20 +86,18 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
     macroValidPointer (courant._attributListeConditions (HERE).firstObject ()) ;
     GGS_typeListeConditionsLexicales::cEnumerator cond (courant._attributListeConditions (HERE), true) ;
     bool firstCond = true ;
-    while (cond.hc ()) {
+    while (cond.no ()) {
       if (firstCond) {
         firstCond = false ;
       }else{
         inCppFile << " ||\n    " ;
       }
       cond._attributCondition(HERE) (HERE)->generateLexicalCondition (inCppFile) ;
-      cond.next () ;
     }
     inCppFile << ") {\n" ;
     inCppFile.incIndentation (+2) ;
     generate_scanner_instructions_list (courant._attributListeInstructions (HERE), inLexiqueName, inGenerateEnterToken, inCppFile) ;
     inCppFile.incIndentation (-2) ;
-    courant.next () ;
   }
 }
 
@@ -488,14 +483,13 @@ generateExternArgumentForList (const GGS_typeListeArgumentsRoutExterne & inList,
                                AC_OutputStream & inCppFile) {
   GGS_typeListeArgumentsRoutExterne::cEnumerator courant (inList, true) ;
   bool first = true ;
-  while (courant.hc ()) {
+  while (courant.no ()) {
     if (first) {
       first = false ;
     }else{
       inCppFile << ", " ;
     }
     courant._attributArgument(HERE) (HERE)->generateExternArgument (inCppFile) ;
-    courant.next () ;
   }
 }
 
@@ -555,9 +549,8 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
 //--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
   GGS_typeListeMessagesErreur::cEnumerator courant (attributListeMessageErreur, true) ;
-  while (courant.hc ()) {
+  while (courant.no ()) {
     inCppFile << ", gErrorMessage_" << courant._mErrorMessageIndex (HERE).uintValue () ;
-    courant.next () ;
   }
 //--- End of instruction
   inCppFile << ") ;\n" ;
@@ -741,7 +734,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) const {
   GGS_typeListeRecherche::cEnumerator courant (attributListeRecherches, true) ;
   bool first = true ;
-  while (courant. hc ()) {
+  while (courant. no ()) {
     if (! first) {
       inCppFile << "if (_token._mTokenCode == -1) {\n" ;
       inCppFile.incIndentation (+2) ;
@@ -753,7 +746,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
       inCppFile << "}\n" ;
     }
     first = false ;
-    courant.next () ;
   }
   inCppFile << "if (_token._mTokenCode == -1) {\n" ;
   inCppFile.incIndentation (+2) ;
@@ -835,7 +827,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
     inCppFile << "(" ;
     GGS_lstringlist::cEnumerator chaine (mStrings, true) ;
     bool first = true ;
-    while (chaine.hc ()) {
+    while (chaine.no ()) {
       if (first) {
         first = false ;
       }else{
@@ -846,7 +838,6 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
       inCppFile << ", " << chaine._mValue (HERE).length ()
                 << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
                 << " COMMA_LINE_AND_SOURCE_FILE)" ;
-      chaine.next () ;
     }
     inCppFile << ")" ;
   }

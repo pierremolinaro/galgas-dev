@@ -153,21 +153,19 @@ generate_option_cpp_file (C_Compiler & inLexique,
              ":mStringValue (1 COMMA_HERE) {\n" ;
   GGS_M_cli_options::cEnumerator currentBoolOption (inBoolOptionsMap, true) ;
   sint32 index = 0 ;
-  while (currentBoolOption.hc ()) {
+  while (currentBoolOption.no ()) {
     generatedZone3 << "  mBoolOptionValues [" << index << "] = " << currentBoolOption._mDefaultValue (HERE) << " ;\n" ;
     index ++ ;
-    currentBoolOption.next () ;
   }
   generatedZone3 << "  mBoolOptionValues [" << index << "] = false ; // Extra unused entry\n" ;
   GGS_M_cli_options::cEnumerator currentUintOption (inUintOptionsMap, true) ;
   index = 0 ;
-  while (currentUintOption. hc ()) {
+  while (currentUintOption.no ()) {
     generatedZone3 << "  mUintOptionValues [" << index << "] = " << currentUintOption._mDefaultValue (HERE) << " ;\n" ;
     index ++ ;
-    currentUintOption.next () ;
   }
   generatedZone3 << "  mUintOptionValues [" << index << "] = 0 ; // Extra unused entry\n"
-             "}\n\n" ;
+                    "}\n\n" ;
 
 //--------------------------------------- Get bool options count
   generatedZone3.writeCppTitleComment ("G E T    B O O L    O P T I O N S    C O U N T") ;
@@ -197,10 +195,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                  << "::getBoolOptionChar (const sint32 inIndex) const {\n"
                     "  const char kCharArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentBoolOption.rewind () ;
-  while (currentBoolOption.hc ()) {
+  while (currentBoolOption.no ()) {
     generatedZone3.writeCcharConstant (currentBoolOption._mOptionChar (HERE).charValue ()) ;
     generatedZone3 << ", " ;
-    currentBoolOption.next () ;
   }          
   generatedZone3 << "'\\0'} ;\n"
                     "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
@@ -212,10 +209,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                  << "::getBoolOptionString (const sint32 inIndex) const {\n"
                     "  const char * kStringArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentBoolOption.rewind () ;
-  while (currentBoolOption.hc ()) {
+  while (currentBoolOption.no ()) {
     generatedZone3.writeCstringConstant (currentBoolOption._mOptionString (HERE)) ;
     generatedZone3 << ",\n    " ;
-    currentBoolOption.next () ;
   }          
   generatedZone3 << "\"\"} ;\n"
                     "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? kStringArray [inIndex] : \"\" ;\n"
@@ -227,10 +223,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                  << "::getBoolOptionDescription (const sint32 inIndex) const {\n"
                  << "  const char * kDescriptionArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentBoolOption.rewind () ;
-  while (currentBoolOption.hc ()) {
+  while (currentBoolOption.no ()) {
     generatedZone3.writeCstringConstant (currentBoolOption._mComment (HERE)) ;
     generatedZone3 << ",\n    " ;
-    currentBoolOption.next () ;
   }          
   generatedZone3 << "\"\"} ;\n"
                     "  return ((inIndex >= 0) && (inIndex < " << inBoolOptionsMap.count () << ")) ? kDescriptionArray [inIndex] : \"\" ;\n"
@@ -244,10 +239,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                     "                         bool * outFound) const {\n"
                  << "  const char * kKeyArray ["<< (inBoolOptionsMap.count () + 1) << "] = {" ;
   currentBoolOption.rewind () ;
-  while (currentBoolOption.hc ()) {
+  while (currentBoolOption.no ()) {
     generatedZone3.writeCstringConstant (currentBoolOption._key (HERE)) ;
     generatedZone3 << ",\n    " ;
-    currentBoolOption.next () ;
   }          
   generatedZone3 << "\"\"} ;\n"
              "  bool result = false ;\n"
@@ -288,9 +282,8 @@ generate_option_cpp_file (C_Compiler & inLexique,
           << "::getUintOptionDefaultValue (const sint32 inIndex) const {\n"
              "  static const uint32 kDefaultValues [" << (inUintOptionsMap.count () + 1) << "] = {\n" ;
   currentUintOption.rewind () ;
-  while (currentUintOption.hc ()) {
+  while (currentUintOption.no ()) {
     generatedZone3 << "  " << currentUintOption._mDefaultValue (HERE) << ",\n" ;
-    currentUintOption.next () ;
   }          
   generatedZone3 << "  0} ;\n"
              "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kDefaultValues [inIndex] : 0 ;\n"
@@ -311,10 +304,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                  << "::getUintOptionChar (const sint32 inIndex) const {\n"
                     "  static const char kCharArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentUintOption.rewind () ;
-  while (currentUintOption.hc ()) {
+  while (currentUintOption.no ()) {
     generatedZone3.writeCcharConstant (currentUintOption._mOptionChar (HERE).charValue ()) ;
     generatedZone3 << ", " ;
-    currentUintOption.next () ;
   }          
   generatedZone3 << "'\\0'} ;\n"
                     "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
@@ -326,10 +318,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                  << "::getUintOptionString (const sint32 inIndex) const {\n"
                      "  static const char * kStringArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentUintOption.rewind () ;
-  while (currentUintOption.hc ()) {
+  while (currentUintOption.no ()) {
     generatedZone3.writeCstringConstant (currentUintOption._mOptionString (HERE)) ;
     generatedZone3 << ",\n    " ;
-    currentUintOption.next () ;
   }          
   generatedZone3 << "\"\"} ;\n"
                     "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kStringArray [inIndex] : \"\" ;\n"
@@ -341,10 +332,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                  << "::getUintOptionDescription (const sint32 inIndex) const {\n"
                  << "  static const char * kDescriptionArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentUintOption.rewind () ;
-  while (currentUintOption.hc ()) {
+  while (currentUintOption.no ()) {
     generatedZone3.writeCstringConstant (currentUintOption._mComment (HERE)) ;
     generatedZone3 << ",\n    " ;
-    currentUintOption.next () ;
   }          
   generatedZone3 << "\"\"} ;\n"
              "  return ((inIndex >= 0) && (inIndex < " << inUintOptionsMap.count () << ")) ? kDescriptionArray [inIndex] : \"\" ;\n"
@@ -358,10 +348,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
                     "                         bool * outFound) const {\n"
                  << "  static const char * kKeyArray ["<< (inUintOptionsMap.count () + 1) << "] = {" ;
   currentUintOption.rewind () ;
-  while (currentUintOption.hc ()) {
+  while (currentUintOption.no ()) {
     generatedZone3.writeCstringConstant (currentUintOption._key (HERE)) ;
     generatedZone3 << ",\n    " ;
-    currentUintOption.next () ;
   }          
   generatedZone3 << "\"\"} ;\n"
              "  uint32 result = 0 ;\n"
@@ -413,10 +402,9 @@ generate_option_cpp_file (C_Compiler & inLexique,
              "getStringOptionChar (const sint32 inIndex) const {\n"
              "  static const char kCharArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
   GGS_M_cli_options::cEnumerator currentStringOption (inStringOptionsMap, true) ;
-  while (currentStringOption.hc ()) {
+  while (currentStringOption.no ()) {
     generatedZone3.writeCcharConstant (currentStringOption._mOptionChar (HERE).charValue ()) ;
     generatedZone3 << ", " ;
-    currentStringOption.next () ;
   }          
   generatedZone3 << "'\\0'} ;\n"
                     "  return ((inIndex >= 0) && (inIndex < " << inStringOptionsMap.count () << ")) ? kCharArray [inIndex] : '\\0' ;\n"
@@ -429,7 +417,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
              "getStringOptionString (const sint32 inIndex) const {\n"
              "  static const char * kStringArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
   currentStringOption.rewind () ;
-  while (currentStringOption.hc ()) {
+  while (currentStringOption.no ()) {
     generatedZone3.writeCstringConstant (currentStringOption._mOptionString (HERE)) ;
     generatedZone3 << ",\n    " ;
     currentStringOption.next() ;
@@ -444,7 +432,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
                     "getStringOptionDescription (const sint32 inIndex) const {\n"
                  << "  static const char * kDescriptionArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
   currentStringOption.rewind () ;
-  while (currentStringOption.hc ()) {
+  while (currentStringOption.no ()) {
     generatedZone3.writeCstringConstant (currentStringOption._mComment (HERE)) ;
     generatedZone3 << ",\n    " ;
     currentStringOption.next () ;
@@ -461,7 +449,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
              "                           bool * outFound) const {\n"
           << "  static const char * kKeyArray ["<< (inStringOptionsMap.count () + 1) << "] = {" ;
   currentStringOption.rewind () ;
-  while (currentStringOption.hc ()) {
+  while (currentStringOption.no ()) {
     generatedZone3.writeCstringConstant (currentStringOption._key (HERE)) ;
     generatedZone3 << ",\n    " ;
     currentStringOption.next () ;
