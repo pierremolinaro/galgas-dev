@@ -36,7 +36,7 @@ buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
                       const sint32 inTerminalSymbolCount) {
   outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
   GGS_labelForPopUpList::cEnumerator currentMark (inLabelForPopUpList, true) ;
-  while (currentMark.hc ()) {
+  while (currentMark.no ()) {
     const sint32 terminalID1 = (sint32) currentMark._mTerminal1ID (HERE).uintValue () ;
     const sint32 terminalID2 = (sint32) currentMark._mTerminal2ID (HERE).uintValue () ;
     // printf ("POP $%s$ (%u), $%s$ (%u)\n", currentMark->mTerminal1.cString (), terminalID1, currentMark->mTerminal2.cString (), terminalID2) ;
@@ -73,12 +73,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "#import \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionComponentsMap, true) ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.no ()) {
     generatedZone2 << "#import \"" << currentOptionComponent._key (HERE) << ".h\"\n" ;
     currentOptionComponent.next () ;
   }
   GGS_lstringlist::cEnumerator currentNib (inNibAndClassList, true) ;
-  while (currentNib.hc ()) {
+  while (currentNib.no ()) {
     TC_UniqueArray <C_String> result ;
     currentNib._mValue (HERE).componentsSeparatedByString (".", result) ;
     generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
@@ -98,7 +98,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                  << ") ;\n"
                  << "static C_galgas_CLI_Options gGalgasOptions ;\n" ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.no ()) {
     generatedZone3 << "static " << currentOptionComponent._key (HERE) << " gOption" << index << " ;\n" ;
     currentOptionComponent.next () ;
     index ++ ;
@@ -106,7 +106,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, & gGalgasOptions, " ;
   index = 0 ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.no ()) {
     generatedZone3 << "& gOption" << index << ", " ;
     currentOptionComponent.next () ;
     index ++ ;
@@ -127,7 +127,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
       mainArray << ",\n  " ;
       bool first = true ;
       GGS_labelForPopUpList::cEnumerator currentMark (inLabelForPopUpList, true) ;
-      while (currentMark.hc ()) {
+      while (currentMark.no ()) {
         const sint32 terminalID1 = (sint32) currentMark._mTerminal1ID (HERE).uintValue () ;
         if (terminalID1 == i) {
           const uint32 terminalID2 = currentMark._mTerminal2ID (HERE).uintValue () ;
@@ -157,7 +157,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
                     "  return [NSArray arrayWithObjects:\n" ;
   currentNib.rewind () ;
-  while (currentNib.hc ()) {
+  while (currentNib.no ()) {
     TC_UniqueArray <C_String> result ;
     currentNib._mValue (HERE).componentsSeparatedByString (".", result) ;
     generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)

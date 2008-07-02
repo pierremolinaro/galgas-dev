@@ -123,9 +123,8 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
 
   generatedZone2.writeCppHyphenLineComment () ;
   GGS_stringset::cEnumerator inclusionEnumerator (inInclusionsForImplementationFile, true) ;
-  while (inclusionEnumerator.hc ()) {
+  while (inclusionEnumerator.no ()) {
     generatedZone2 << "#include \"" << inclusionEnumerator._key (HERE) << "\"\n" ;
-    inclusionEnumerator.next () ;
   }
   generatedZone2 << "\n" ;
 

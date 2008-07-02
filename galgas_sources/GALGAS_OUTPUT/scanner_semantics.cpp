@@ -4183,8 +4183,8 @@ modifier_setAttributConditionAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeConditionLexicale  & GGS_typeListeConditionsLexicales::cEnumerator::_attributCondition (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributCondition ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributCondition ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4653,8 +4653,8 @@ modifier_setAttributInstructionAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeInstructionLexicale  & GGS_tListeInstructionsLexicales::cEnumerator::_attributInstruction (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributInstruction ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributInstruction ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5055,15 +5055,15 @@ modifier_setAttributListeInstructionsAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeListeConditionsLexicales  & GGS_typeListeTestsEtInstructions::cEnumerator::_attributListeConditions (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributListeConditions ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributListeConditions ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_tListeInstructionsLexicales  & GGS_typeListeTestsEtInstructions::cEnumerator::_attributListeInstructions (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributListeInstructions ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributListeInstructions ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5532,8 +5532,8 @@ modifier_setAttributArgumentAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeArgumentRoutineExterne  & GGS_typeListeArgumentsRoutExterne::cEnumerator::_attributArgument (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributArgument ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributArgument ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6690,8 +6690,8 @@ modifier_setMErrorMessageIndexAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_luint  & GGS_typeListeMessagesErreur::cEnumerator::_mErrorMessageIndex (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mErrorMessageIndex ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mErrorMessageIndex ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7533,15 +7533,15 @@ modifier_setAttributNomTableAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_typeListeRecherche::cEnumerator::_attributNomAttribut (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributNomAttribut ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributNomAttribut ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_typeListeRecherche::cEnumerator::_attributNomTable (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->attributNomTable ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->attributNomTable ;
 }
 
 //---------------------------------------------------------------------------*

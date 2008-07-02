@@ -1935,15 +1935,15 @@ modifier_popGreatest (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_ACGalgasType  & GGS_sortedTypeList::cEnumerator::_mType (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mType ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mType ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_string & GGS_sortedTypeList::cEnumerator::_mSortString (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSortString ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSortString ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2285,8 +2285,8 @@ modifier_setMTypeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_ACGalgasType  & GGS_typeList::cEnumerator::_mType (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mType ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mType ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2746,22 +2746,22 @@ modifier_setMFormalArgumentPassingModeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeMapIndex  & GGS_signature::cEnumerator::_mAttributeTypeIndex (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mAttributeTypeIndex ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mAttributeTypeIndex ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_signature::cEnumerator::_mFormalArgumentName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalArgumentName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalArgumentName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_formalArgumentPassingMode & GGS_signature::cEnumerator::_mFormalArgumentPassingMode (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalArgumentPassingMode ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalArgumentPassingMode ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3162,15 +3162,15 @@ modifier_setMAttributeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeMapIndex  & GGS_attributeList::cEnumerator::_mAttributeTypeIndex (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mAttributeTypeIndex ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mAttributeTypeIndex ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_attributeList::cEnumerator::_mAttributeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mAttributeName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mAttributeName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6364,15 +6364,15 @@ modifier_setMMethodSignatureAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_classMethodList::cEnumerator::_mMethodName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMethodName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMethodName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_signature  & GGS_classMethodList::cEnumerator::_mMethodSignature (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mMethodSignature ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mMethodSignature ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7620,15 +7620,15 @@ modifier_setMAscendingAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_sortDescriptorList::cEnumerator::_mAttributeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mAttributeName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mAttributeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_sortDescriptorList::cEnumerator::_mAscending (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mAscending ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mAscending ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9275,8 +9275,8 @@ modifier_setMClassMapindexAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeMapIndex  & GGS_classIndexList::cEnumerator::_mClassMapindex (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mClassMapindex ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mClassMapindex ;
 }
 
 //---------------------------------------------------------------------------*

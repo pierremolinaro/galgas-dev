@@ -380,8 +380,8 @@ modifier_setMInstructionAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_syntaxInstruction  & GGS_syntaxInstructionList::cEnumerator::_mInstruction (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mInstruction ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mInstruction ;
 }
 
 //---------------------------------------------------------------------------*
@@ -782,15 +782,15 @@ modifier_setMFormalParametersAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_nonTerminalLabelList::cEnumerator::_mLabelName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mLabelName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mLabelName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_formalParameterList  & GGS_nonTerminalLabelList::cEnumerator::_mFormalParameters (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalParameters ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalParameters ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1250,22 +1250,22 @@ modifier_setMHasParseLabelAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_nonterminalDeclarationList::cEnumerator::_mNonterminalName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mNonterminalName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mNonterminalName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_nonTerminalLabelList  & GGS_nonterminalDeclarationList::cEnumerator::_mLabels (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mLabels ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mLabels ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_nonterminalDeclarationList::cEnumerator::_mHasParseLabel (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mHasParseLabel ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mHasParseLabel ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1725,22 +1725,22 @@ modifier_setMSyntaxInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_syntaxRuleLabelList::cEnumerator::_mLabelName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mLabelName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mLabelName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_formalParameterList  & GGS_syntaxRuleLabelList::cEnumerator::_mFormalParameters (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mFormalParameters ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mFormalParameters ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_syntaxInstructionList  & GGS_syntaxRuleLabelList::cEnumerator::_mSyntaxInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSyntaxInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSyntaxInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2141,15 +2141,15 @@ modifier_setMLabelListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_syntaxRuleList::cEnumerator::_mNonterminalName (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mNonterminalName ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mNonterminalName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_syntaxRuleLabelList  & GGS_syntaxRuleList::cEnumerator::_mLabelList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mLabelList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mLabelList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2865,8 +2865,8 @@ modifier_setMSyntaxInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_syntaxInstructionList  & GGS_listOfSyntaxInstructionList::cEnumerator::_mSyntaxInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mNextEnumeratedObject) ;
-  return ((cElement *) mNextEnumeratedObject)->mSyntaxInstructionList ;
+  macroValidPointerThere (mCurrentObject) ;
+  return ((cElement *) mCurrentObject)->mSyntaxInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
