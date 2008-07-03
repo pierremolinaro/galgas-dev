@@ -439,15 +439,15 @@ modifier_setMValueAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_guiAttributeList::cEnumerator::_mKey (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mKey ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mKey ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_guiAttributeList::cEnumerator::_mValue (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mValue ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mValue ;
 }
 
 //---------------------------------------------------------------------------*
@@ -848,15 +848,15 @@ modifier_setMAttribute2AtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_guiLabelList::cEnumerator::_mAttribute1 (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mAttribute1 ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mAttribute1 ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_guiLabelList::cEnumerator::_mAttribute2 (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mAttribute2 ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mAttribute2 ;
 }
 
 //---------------------------------------------------------------------------*

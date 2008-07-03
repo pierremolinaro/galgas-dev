@@ -498,22 +498,22 @@ modifier_setMArgumentNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_formalArgumentPassingMode & GGS_startSymbolLabelFormalParameterList::cEnumerator::_mFormalAgumentPassingMode (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalAgumentPassingMode ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalAgumentPassingMode ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_startSymbolLabelFormalParameterList::cEnumerator::_mTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mTypeName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_startSymbolLabelFormalParameterList::cEnumerator::_mArgumentName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mArgumentName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mArgumentName ;
 }
 
 //---------------------------------------------------------------------------*
@@ -914,15 +914,15 @@ modifier_setMFormalParameterListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_grammarLabelList::cEnumerator::_mLabelName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mLabelName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mLabelName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_startSymbolLabelFormalParameterList  & GGS_grammarLabelList::cEnumerator::_mFormalParameterList (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalParameterList ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalParameterList ;
 }
 
 //---------------------------------------------------------------------------*

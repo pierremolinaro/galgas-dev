@@ -507,8 +507,8 @@ modifier_setMExpressionAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_semanticExpression  & GGS_semanticExpressionList::cEnumerator::_mExpression (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mExpression ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mExpression ;
 }
 
 //---------------------------------------------------------------------------*

@@ -890,8 +890,8 @@ modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_typeInstructionList  & GGS_typeListeBranchesInstructions::cEnumerator::_mInstructionList (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mInstructionList ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mInstructionList ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1646,15 +1646,15 @@ modifier_setMErrorLocationAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_L_ruleSyntaxSignature  & GGS_L_parse_rewind_signature_list::cEnumerator::_mSignature (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mSignature ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mSignature ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_location  & GGS_L_parse_rewind_signature_list::cEnumerator::_mErrorLocation (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mErrorLocation ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mErrorLocation ;
 }
 
 //---------------------------------------------------------------------------*

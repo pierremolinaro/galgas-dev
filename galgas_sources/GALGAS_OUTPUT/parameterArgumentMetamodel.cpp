@@ -658,29 +658,29 @@ modifier_setMIsUnusedAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_formalArgumentPassingMode & GGS_formalParameterList::cEnumerator::_mFormalParameterPassingMode (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalParameterPassingMode ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalParameterPassingMode ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_formalParameterList::cEnumerator::_mFormalParameterTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalParameterTypeName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalParameterTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_formalParameterList::cEnumerator::_mFormalParameterName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalParameterName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalParameterName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_formalParameterList::cEnumerator::_mIsUnused (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mIsUnused ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mIsUnused ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1140,22 +1140,22 @@ modifier_setMIsUnusedAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_formalInputParameterList::cEnumerator::_mFormalParameterTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalParameterTypeName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalParameterTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_formalInputParameterList::cEnumerator::_mFormalParameterName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mFormalParameterName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mFormalParameterName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_bool & GGS_formalInputParameterList::cEnumerator::_mIsUnused (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mIsUnused ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mIsUnused ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2282,8 +2282,8 @@ modifier_setMActualParameterAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_actualParameter  & GGS_actualParameterList::cEnumerator::_mActualParameter (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mActualParameter ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mActualParameter ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2684,15 +2684,15 @@ modifier_setMActualParameterNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_actualInputParameterList::cEnumerator::_mActualParameterTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mActualParameterTypeName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mActualParameterTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_actualInputParameterList::cEnumerator::_mActualParameterName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mActualParameterName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mActualParameterName ;
 }
 
 //---------------------------------------------------------------------------*
