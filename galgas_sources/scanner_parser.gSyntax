@@ -55,6 +55,7 @@ extern routine buildLexicalRulesFromList
 
 nonterminal <style_declaration>
   ?!@M_styles ioStylesMap
+  ?!@styleList ioStyleList
 label parse
 ;
 
@@ -207,7 +208,7 @@ extern routine generate_scanner
   ??@typeTableTablesDeMotsReserves table_tables_mots_reserves
   ??@typeListeTestsEtInstructions lexicalRulesList
   ??@typeTableMessagesErreurs table_messages
-  ??@M_styles stylesMap
+  ??@styleList styleList
   ??@stringset inUsedErrorMessageSet
   ??@tokensInListMap inTokensInListMap
 ;
@@ -280,12 +281,13 @@ rule <galgas_component>
 
 #-- Styles map
   @M_styles stylesMap [emptyMap] ;
-  @lstring defaultStyleName [new !"Default style" !here] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
-  [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
+  [!?stylesMap insertKey !defaultStringIdentifier] ;
+  @styleList styleList [emptyList] ;
+  styleList += !"" !"Default style" ;
   repeat
   while 
-    <style_declaration> !?stylesMap ;
+    <style_declaration> !?stylesMap !?styleList ;
   while
     <template_declaration>
      !isTemplate
@@ -355,7 +357,7 @@ rule <galgas_component>
     !table_tables_mots_reserves
     !lexicalRulesList
     !table_messages
-    !stylesMap
+    !styleList
     !usedErrorMessageSet
     !tokensInListMap
   ;
@@ -382,12 +384,13 @@ label importLexique
   buildLexicalTypeMap ?lexicalTypeMap ;
 #-- Styles map
   @M_styles stylesMap [emptyMap] ;
-  @lstring defaultStyleName [new !"Default style" !here] ;
   @lstring defaultStringIdentifier [new !"" !here] ;
-  [!?stylesMap insertKey !defaultStringIdentifier !defaultStyleName] ;
+  [!?stylesMap insertKey !defaultStringIdentifier] ;
+  @styleList styleList [emptyList] ;
+  styleList += !"" !"Default style" ;
   repeat
   while 
-    <style_declaration> !? stylesMap ;
+    <style_declaration> !? stylesMap !? styleList ;
   while
     <template_declaration> parse ;
   while
@@ -558,15 +561,17 @@ end rule ;
 
 rule <style_declaration>
   ?!@M_styles ioStylesMap
+  ?!@styleList ioStyleList
 :
   $style$ ;
   repeat
-    @lstring styleMap ;
-    $identifier$ ? styleMap ;
+    @lstring styleName ;
+    $identifier$ ? styleName ;
     $->$ ;
     @lstring title ;
     $literal_string$ ? title ;
-    [!?ioStylesMap insertKey !styleMap !title] ;
+    [!?ioStylesMap insertKey !styleName] ;
+    ioStyleList += ![styleName string] ![title string] ;
   while $,$ ;
   end repeat ;
   $;$ ;
@@ -664,7 +669,7 @@ rule <attribute_or_terminal_symbol_declaration>
       $identifier$ ? styleName ;
     end select ;
     @luint styleIndex ;
-    [ioStylesMap searchKeyGetID !styleName ?styleIndex ?*] ;
+    [ioStylesMap searchKeyGetID !styleName ?styleIndex] ;
     @string errorMessageString := [errorMessage string] ;
     [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !attributeList !styleIndex] ;
   end select ;
@@ -714,7 +719,7 @@ rule <key_words_list_declaration>
     $identifier$ ? styleName ;
   end select ;
   @luint styleIndex ;
-  [ioStylesMap searchKeyGetID !styleName ?styleIndex ?*] ;
+  [ioStylesMap searchKeyGetID !styleName ?styleIndex] ;
 #--- List of entries
   $:$ ;
   repeat

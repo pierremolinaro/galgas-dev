@@ -240,10 +240,10 @@ void cPtr_typeInstructionSiLexical::
 generateDecoderFromInstruction (C_Lexique & /* inLexique */,
                                 cDecoderTargetState & /* ioCurrentState */,
                                 cDecoderController & /* ioDecoderController */) {
-/*  GGS_typeListeTestsEtInstructions::cElement * currentBranch = attributListeBranches.firstObject () ;
+/*  GGS_typeListeTestsEtInstructions::cEnumerator currentBranch = attributListeBranches.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    GGS_typeListeConditionsLexicales::cElement * currentCondition = currentBranch->attributListeConditions.firstObject () ;
+    GGS_typeListeConditionsLexicales::cEnumerator currentCondition = currentBranch->attributListeConditions.firstObject () ;
     while (currentCondition != NULL) {
       macroValidPointer (currentCondition) ;
       currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,
@@ -268,10 +268,10 @@ generateDecoderFromInstruction (C_Lexique & /* inLexique */,
                                 cDecoderController & /* ioDecoderController */) {
 //--- Target state
 //  const sint32 targetState = ioDecoderController.newState (GGS_lstring (inLexique, "")) ;
-/*  GGS_typeListeTestsEtInstructions::cElement * currentBranch = attributListeBranches.firstObject () ;
+/*  GGS_typeListeTestsEtInstructions::cEnumerator currentBranch = attributListeBranches.firstObject () ;
   while (currentBranch != NULL) {
     macroValidPointer (currentBranch) ;
-    GGS_typeListeConditionsLexicales::cElement * currentCondition = currentBranch->attributListeConditions.firstObject () ;
+    GGS_typeListeConditionsLexicales::cEnumerator currentCondition = currentBranch->attributListeConditions.firstObject () ;
     while (currentCondition != NULL) {
       macroValidPointer (currentCondition) ;
       currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,
@@ -302,7 +302,7 @@ generateDecoderForInstructionList (C_Lexique & /* inLexique */,
                                    cDecoderState * /* ioCurrentState */,
                                    const sint32 /* inTargetStateNumber */,
                                    cDecoderController & /* ioDecoderController */) {
-/*  GGS_tListeInstructionsLexicales::cElement * currentInstruction = inInstructionList.firstObject () ;
+/*  GGS_tListeInstructionsLexicales::cEnumerator currentInstruction = inInstructionList.firstObject () ;
   while (currentInstruction != NULL) {
     macroValidPointer (currentInstruction) ;
     currentInstruction->attributInstruction (HERE)->generateDecoderFromInstruction (inLexique,
@@ -476,9 +476,9 @@ scannerDecoderGeneration (C_Lexique & inLexique,
                           C_String & inCppFile) {
   cDecoderController decoderController ;
 //--- Enter tokens from lists
-  GGS_tokensInListMap::cElement * currentEntry = inTokensInListMap.firstObject () ;
-  while (currentEntry != NULL) {
-    C_String key = currentEntry->mKey ;
+  GGS_tokensInListMap::cEnumerator currentEntry (inTokensInListMap, true) ;
+  while (currentEntry.hc ()) {
+    C_String key = currentEntry._key (HERE) ;
     const sint32 keyLength = key.length () ;
     const uint32 c0 = key (0 COMMA_HERE) & 0xFFUL ;
     cDecoderTargetState * currentTargetStatePtr = & (decoderController (0 COMMA_HERE)->mTransitions [c0]) ;
@@ -496,13 +496,13 @@ scannerDecoderGeneration (C_Lexique & inLexique,
       cDecoderState * currentStatePtr = decoderController (currentTargetStatePtr->mNextState COMMA_HERE) ;
       if (currentStatePtr->mDefaultResponse < 0) {
         currentStatePtr->mDefaultResponse = 0 ;
-        currentStatePtr->mDefaultTerminal = currentEntry->mInfo.mTerminalSymbol ;    
+        currentStatePtr->mDefaultTerminal = currentEntry._mTerminalSymbol (HERE) ;    
       }else if (currentStatePtr->mDefaultTerminal.length () == 0) { // accept, no token
-        currentStatePtr->mDefaultTerminal = currentEntry->mInfo.mTerminalSymbol ;    
+        currentStatePtr->mDefaultTerminal = currentEntry._mTerminalSymbol (HERE) ;    
       }else{
-        currentEntry->mInfo.mTerminalSymbol.signalSemanticWarning (inLexique,
+        currentEntry._mTerminalSymbol (HERE).signalSemanticWarning (inLexique,
           C_String ("the $")
-            + currentEntry->mInfo.mTerminalSymbol
+            + currentEntry._mTerminalSymbol (HERE)
             + "$ and the $"
             + currentTargetStatePtr->mTerminal
             + "$ terminal symbols have the same spelling"
@@ -510,32 +510,30 @@ scannerDecoderGeneration (C_Lexique & inLexique,
       }
     }else if (currentTargetStatePtr->mNextState < 0) { // Error or default transition : change to accept
       currentTargetStatePtr->mNextState = 0 ;
-      currentTargetStatePtr->mTerminal = currentEntry->mInfo.mTerminalSymbol ;
+      currentTargetStatePtr->mTerminal = currentEntry._mTerminalSymbol (HERE) ;
     }else{
-      currentEntry->mInfo.mTerminalSymbol.signalSemanticWarning (inLexique,
+      currentEntry._mTerminalSymbol (HERE).signalSemanticWarning (inLexique,
         C_String ("the $")
-          + currentEntry->mInfo.mTerminalSymbol
+          + currentEntry._mTerminalSymbol (HERE)
           + "$ terminal symbol get no free entry"
         COMMA_HERE) ;
     }
-    currentEntry = currentEntry->nextObject () ;
+    currentEntry.next () ;
   }
 //--- Enter tokens from rules
   const sint32 targetState = decoderController.newState () ;
-  GGS_typeListeTestsEtInstructions::cElement * currentRule = inRuleList.firstObject () ;
-  while (currentRule != NULL) {
-    macroValidPointer (currentRule) ;
-    GGS_typeListeConditionsLexicales::cElement * currentCondition = currentRule->attributListeConditions.firstObject () ;
-    while (currentCondition != NULL) {
-      macroValidPointer (currentCondition) ;
-      currentCondition->attributCondition (HERE)->generateDecoderFromCondition (inLexique,
-        currentRule->attributListeInstructions,
+  GGS_typeListeTestsEtInstructions::cEnumerator currentRule (inRuleList, true) ;
+  while (currentRule.hc ()) {
+    GGS_typeListeConditionsLexicales::cEnumerator currentCondition (currentRule._attributListeConditions (HERE), true) ;
+    while (currentCondition.hc ()) {
+      currentCondition._attributCondition (HERE) (HERE)->generateDecoderFromCondition (inLexique,
+        currentRule._attributListeInstructions (HERE),
         decoderController (0 COMMA_HERE),
         targetState,
         decoderController) ;
-      currentCondition = currentCondition->nextObject () ;
+      currentCondition.next () ;
     }
-    currentRule = currentRule->nextObject () ;
+    currentRule.next () ;
   }
 //--- Write decoder
   const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",

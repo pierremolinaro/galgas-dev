@@ -74,9 +74,17 @@ map @typeTableMessagesErreurs {
 #------------------------------------------------------------------*
 
 map @M_styles {
-  @lstring mTitle ;
   insert insertKey error message "the '%K' style is already declared in %L" ;
   search searchKey, searchKeyGetID error message "the '%K' style is not declared" ;
+}
+
+#------------------------------------------------------------------*
+#                       Style list                                 *
+#------------------------------------------------------------------*
+
+list @styleList {
+  @string mStyleName ;
+  @string mTitle ;
 }
 
 #------------------------------------------------------------------*
@@ -268,7 +276,7 @@ class @typeInstructionErreurLexicale extends @typeInstructionLexicale {
 routine appendToLexicalInstructionList
   ?!@typeListeTestsEtInstructions ioLexicalRulesList
   ??@lstring ioDefinitionString
-  ?!@lstring ioTerminalSymbolName
+  ??@lstring ioTerminalSymbolName
 :
 #--- Build "Compare lstring" lexical condition
   @typeListeConditionsLexicales lexicalConditionsList [emptyList] ;
