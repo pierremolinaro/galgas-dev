@@ -38,11 +38,10 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
                     "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
-  while (currentOptionComponent != NULL) {
-    macroValidPointer (currentOptionComponent) ;
-    generatedZone2 << "#include \"" << currentOptionComponent->mKey << ".h\"\n" ;
-    currentOptionComponent = currentOptionComponent->nextObject () ;
+  GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionsComponentsMap, true) ;
+  while (currentOptionComponent.hc ()) {
+    generatedZone2 << "#include \"" << currentOptionComponent._key (HERE) << ".h\"\n" ;
+    currentOptionComponent.next () ;
   }
   
   generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
@@ -61,12 +60,11 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
                     "//--- Included options\n"
                     "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
                     "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
-  currentOptionComponent = inOptionsComponentsMap.firstObject () ;
-  while (currentOptionComponent != NULL) {
-    macroValidPointer (currentOptionComponent) ;
-    generatedZone2 << "  private : " << currentOptionComponent->mKey
-                   << " mOptions_" << currentOptionComponent->mKey << "; \n" ;
-    currentOptionComponent = currentOptionComponent->nextObject () ;
+  currentOptionComponent.rewind () ;
+  while (currentOptionComponent.hc ()) {
+    generatedZone2 << "  private : " << currentOptionComponent._key (HERE)
+                   << " mOptions_" << currentOptionComponent._key (HERE) << "; \n" ;
+    currentOptionComponent.next () ;
   }
   generatedZone2 << "} ;\n\n" ;
   generatedZone2.writeCppHyphenLineComment () ;
@@ -144,21 +142,19 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) :\n"
                     "mBuiltinOptions (inAcceptsDebugOption),\n"
                     "mGalgasOptions ()" ;
-  GGS_M_optionComponents::cElement * currentOptionComponent = inOptionsComponentsMap.firstObject () ;
-  while (currentOptionComponent != NULL) {
-    macroValidPointer (currentOptionComponent) ;
+  GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionsComponentsMap, true) ;
+  while (currentOptionComponent.hc ()) {
     generatedZone2 << ",\n"
-                      "mOptions_" << currentOptionComponent->mKey << " ()" ;
-    currentOptionComponent = currentOptionComponent->nextObject () ;
+                      "mOptions_" << currentOptionComponent._key (HERE) << " ()" ;
+    currentOptionComponent.next () ;
   }
   generatedZone2 << "{\n"
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
-  currentOptionComponent = inOptionsComponentsMap.firstObject () ;
-  while (currentOptionComponent != NULL) {
-    macroValidPointer (currentOptionComponent) ;
-    generatedZone2 << "  add (& mOptions_" << currentOptionComponent->mKey << ") ;\n" ;
-    currentOptionComponent = currentOptionComponent->nextObject () ;
+  currentOptionComponent.rewind () ;
+  while (currentOptionComponent.hc ()) {
+    generatedZone2 << "  add (& mOptions_" << currentOptionComponent._key (HERE) << ") ;\n" ;
+    currentOptionComponent.next () ;
   }
   generatedZone2 << "}\n\n" ;
 
@@ -214,20 +210,18 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                  << (generateDebug ? "true" : "false")
                  << ") ;\n"
                  << "    const char * extensions [] = {" ;
-  GGS_ruleDescriptorForProgramList::cElement * currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
-  while (currentDescriptor != NULL) {
-    macroValidPointer (currentDescriptor) ;
-    generatedZone2 << "\"" << currentDescriptor->mSourceExtension << "\", " ;
-    currentDescriptor = currentDescriptor->nextObject () ;
+  GGS_ruleDescriptorForProgramList::cEnumerator currentDescriptor (inRuleDescriptorForProgramList, true) ;
+  while (currentDescriptor.hc ()) {
+    generatedZone2 << "\"" << currentDescriptor._mSourceExtension (HERE) << "\", " ;
+    currentDescriptor.next () ;
   }
   generatedZone2 << "NULL} ;\n"
                  << "    const char * helpMessages [] = {" ;
-  currentDescriptor = inRuleDescriptorForProgramList.firstObject () ;
-  while (currentDescriptor != NULL) {
-    macroValidPointer (currentDescriptor) ;
-    generatedZone2.writeCstringConstant (currentDescriptor->mHelpMessage) ;
+  currentDescriptor.rewind () ;
+  while (currentDescriptor.hc ()) {
+    generatedZone2.writeCstringConstant (currentDescriptor._mHelpMessage (HERE)) ;
     generatedZone2 << ", " ;
-    currentDescriptor = currentDescriptor->nextObject () ;
+    currentDescriptor.next () ;
   }
   generatedZone2 << "NULL} ;\n"
                     "    TC_UniqueArray <C_String> sourceFilesArray ;\n"
@@ -287,21 +281,20 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "        sint16 r = 0 ;\n" ;
   generatedZone2.incIndentation (+8) ;
   uint32 grammarIndex = 0 ;
-  GGS_ruleDescriptorForProgramList::cElement * currentRule = inRuleDescriptorForProgramList.firstObject () ;
-  while (currentRule != NULL) {
-    macroValidPointer (currentRule) ;
+  GGS_ruleDescriptorForProgramList::cEnumerator currentRule (inRuleDescriptorForProgramList, true) ;
+  while (currentRule.hc ()) {
     if (grammarIndex > 0) {
       generatedZone2 << "}else " ;
     }
     sint32 prototypeIndex = 0 ;
-    generatedZone2 << "if (fileExtension.compare (\"" << currentRule->mSourceExtension << "\") == 0) {\n"
+    generatedZone2 << "if (fileExtension.compare (\"" << currentRule._mSourceExtension (HERE) << "\") == 0) {\n"
                       "  C_Compiler & _inLexique = * _commonLexique ;\n"
                       "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
                       "  const GGS_location _here (_inLexique) ;\n"
                       "  const GGS_lstring var_cas_"
-                   << currentRule->mSourceFileName
+                   << currentRule._mSourceFileName (HERE)
                    << " (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;\n" ;
-    generateInstructionListForList (currentRule->mInstructionList,
+    generateInstructionListForList (currentRule._mInstructionList (HERE),
                                     generatedZone2,
                                     "",
                                     prototypeIndex,
@@ -337,7 +330,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                       "      co << \".\\n\" ;\n"
                       "    }\n"
                       "  }\n" ;
-    currentRule = currentRule->nextObject () ;
+    currentRule.next () ;
     grammarIndex ++ ;
   }
   generatedZone2.incIndentation (-8) ;

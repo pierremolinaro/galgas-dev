@@ -65,21 +65,18 @@ void cPtr_typeNonterminalToGenerate::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
                              const C_String & /* inTargetFileName */,
                              sint32 & /* ioPrototypeIndex */) const {
-  GGS_M_nonterminalSymbolAlts::cElement * currentAltForNonTerminal
-        = mNonterminalSymbolParametersMap.firstObject () ;
-  while (currentAltForNonTerminal != NULL) {
-    macroValidPointer (currentAltForNonTerminal) ;
-    inHfile << "  protected : virtual void nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal->mKey
+  GGS_M_nonterminalSymbolAlts::cEnumerator currentAltForNonTerminal (mNonterminalSymbolParametersMap, true) ;
+  while (currentAltForNonTerminal.hc ()) {
+    inHfile << "  protected : virtual void nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal._key (HERE)
             << " (" << mLexiqueClassName << " &" ;
-    GGS_L_EXsignature::cElement * currentArgument
-               = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-    while (currentArgument != NULL) {
+    GGS_L_EXsignature::cEnumerator currentArgument (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-      currentArgument = currentArgument->nextObject () ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+      currentArgument.next () ;
     }
     inHfile << ") = 0 ;\n\n" ;
-    currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
+    currentAltForNonTerminal.next () ;
   }
 }
 
@@ -132,34 +129,32 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inTargetFileName,
                                sint32 & ioPrototypeIndex) const {
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
-  GGS_typeAltProductionsMap::cElement * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
+  GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool prototypesForSelectedAndRepeatNotDeclared = true ;
-  while (currentAltForNonTerminal != NULL) {
-    macroValidPointer (currentAltForNonTerminal) ;
+  while (currentAltForNonTerminal.hc ()) {
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     inHfile << "  protected : " ;
-    macroValidPointer (currentAltForNonTerminal) ;
     inHfile << "void " ;
     inHfile << "pr_" << aNomProduction 
             << '_' << inTargetFileName
             << '_' << aNomProduction.lineNumber ()
             << '_' << aNomProduction.columnNumber ()
-            << '_' << currentAltForNonTerminal->mKey << " ("
+            << '_' << currentAltForNonTerminal._key (HERE) << " ("
             << mLexiqueClassName << " &" ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
-    while (currentArgument != NULL) {
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
+    while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-      currentArgument = currentArgument->nextObject () ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+      currentArgument.next () ;
     }
     inHfile << ") ;\n\n" ;
-    generateSelectAndRepeatPrototypesForList (currentAltForNonTerminal->mInfo.mAllInstructionsList,
+    generateSelectAndRepeatPrototypesForList (currentAltForNonTerminal._mAllInstructionsList (HERE),
                                               inHfile,
                                               mLexiqueClassName,
                                               inTargetFileName,
                                               ioPrototypeIndex,
                                               prototypesForSelectedAndRepeatNotDeclared) ;
-    currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
+    currentAltForNonTerminal.next () ;
     prototypesForSelectedAndRepeatNotDeclared = false ;
   }
 //--- 'parse' label declared ?
@@ -184,17 +179,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   const bool inGenerateDebug) const {
   inCppFile.writeCppTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
-  GGS_typeAltProductionsMap::cElement * currentAltForNonTerminal = mAltProductionMap.firstObject () ;
+  GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool first = true ;
-  while (currentAltForNonTerminal != NULL) {
-    macroValidPointer (currentAltForNonTerminal) ;
+  while (currentAltForNonTerminal.hc ()) {
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     if (first) {
       first = false ;
     }else{
       inCppFile.writeCppHyphenLineComment () ;
     }
-    macroValidPointer (currentAltForNonTerminal) ;
     inCppFile << "void " ;
     inCppFile << inTargetFileName
               << "::\n"
@@ -202,9 +195,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << aNomProduction << "_" << inTargetFileName
               << '_' << aNomProduction.lineNumber ()
               << '_' << aNomProduction.columnNumber ()
-              << '_' << currentAltForNonTerminal->mKey << " ("
+              << '_' << currentAltForNonTerminal._key (HERE) << " ("
               << mLexiqueClassName << " & " ;
-    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, true) ;
+    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
@@ -212,35 +205,35 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << " */" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentAltForNonTerminal->mInfo.aListeDeTypesEffectifs.firstObject () ;
-    while (currentArgument != NULL) {
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
+    while (currentArgument.hc ()) {
       inCppFile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
-      const bool variableUtilisee = formalArgumentIsUsedForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, currentArgument->mCppName, true) ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
+      const bool variableUtilisee = formalArgumentIsUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), currentArgument._mCppName (HERE), true) ;
       if (! variableUtilisee) {
         inCppFile << "/* " ;
       }
-      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       if (! variableUtilisee) {
         inCppFile << " */" ;
       }
-      currentArgument = currentArgument->nextObject () ;
+      currentArgument.next () ;
     }
     inCppFile << ") {\n" ;
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
                    "    _inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
-      if (currentAltForNonTerminal->mKey.length () == 0) {
+      if (currentAltForNonTerminal._key (HERE).length () == 0) {
         inCppFile << "NULL, " ;
       }else{
-        inCppFile << "\"" << currentAltForNonTerminal->mKey << "\", " ;
+        inCppFile << "\"" << currentAltForNonTerminal._key (HERE) << "\", " ;
       }
       inCppFile.writeCstringConstant (mProductionTagName) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }
-    generateInstructionListForList (currentAltForNonTerminal->mInfo.mAllInstructionsList, inCppFile,
+    generateInstructionListForList (currentAltForNonTerminal._mAllInstructionsList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, true) ;
     if (inGenerateDebug) {
@@ -250,14 +243,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
   //--- End of function
     inCppFile << "}\n\n" ;
-    currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
+    currentAltForNonTerminal.next () ;
   }
 //--- 'parse' label declared ?
   const bool hasParseLabel = mHasParseLabel.boolValue () ;
 //--- If yes, generate parse only method, based on first label instructions
   if (hasParseLabel) {
-    GGS_typeAltProductionsMap::cElement * firstLabelDef = mAltProductionMap.firstObject () ;
-    macroValidPointer (firstLabelDef) ;
+    GGS_typeAltProductionsMap::cEnumerator firstLabelDef (mAltProductionMap, true) ;
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     if (first) {
       first = false ;
@@ -272,7 +264,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << '_' << aNomProduction.columnNumber ()
               << "_parse ("
               << mLexiqueClassName << " & " ;
-    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef->mInfo.mAllInstructionsList, false) ;
+    const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef._mAllInstructionsList (HERE), false) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
@@ -285,16 +277,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
                    "    _inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
-      if (firstLabelDef->mKey.length () == 0) {
+      if (firstLabelDef._key (HERE).length () == 0) {
         inCppFile << "NULL, " ;
       }else{
-        inCppFile << "\"" << firstLabelDef->mKey << "\", " ;
+        inCppFile << "\"" << firstLabelDef._key (HERE) << "\", " ;
       }
       inCppFile.writeCstringConstant (mProductionTagName) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }
-    generateInstructionListForList (firstLabelDef->mInfo.mAllInstructionsList, inCppFile,
+    generateInstructionListForList (firstLabelDef._mAllInstructionsList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, false) ;
     if (inGenerateDebug) {
@@ -321,14 +313,13 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
   inHfile.writeCppTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
-  GGS_typeEntitiesToGenerateList::cElement * element = listeEntitesAengendrer.firstObject () ;
+  GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
   sint32 select_repeat_production_index = 0 ;
-  while (element != NULL) {
-    macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateCppClassDeclaration (inHfile,
+  while (element.hc ()) {
+    element._mEntityToGenerate (HERE) (HERE)->generateCppClassDeclaration (inHfile,
                                                                     nomComposant,
                                                                     select_repeat_production_index) ;
-    element = element->nextObject () ;
+    element.next () ;
   }
   inHfile << "} ;\n\n" ;
 }
