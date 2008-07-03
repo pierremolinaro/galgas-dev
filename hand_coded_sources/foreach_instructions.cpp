@@ -145,7 +145,7 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
   enumeratedVariable = mForeachEnumerationList.firstObject () ;
   macroValidPointer (enumeratedVariable) ;
   if (enumeratedVariable->mNewStyle.boolValue ()) {
-    ioCppFile <<  "while (enumerator_" << enumeratedVariable->mLocationOffset.location () << ".no ()" ;
+    ioCppFile <<  "while (enumerator_" << enumeratedVariable->mLocationOffset.location () << ".hc ()" ;
   }else{
     ioCppFile << "while (((operand_" <<enumeratedVariable->mLocationOffset.location ()
               << " = enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject ()))" ;
@@ -154,7 +154,7 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
     if (enumeratedVariable->mNewStyle.boolValue ()) {
-      ioCppFile <<  "\n    && enumerator_" << enumeratedVariable->mLocationOffset.location () << ".no ()" ;
+      ioCppFile <<  "\n    && enumerator_" << enumeratedVariable->mLocationOffset.location () << ".hc ()" ;
     }else{
       ioCppFile <<  "\n    && ((operand_" <<enumeratedVariable->mLocationOffset.location ()
                 << " = enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject ()))" ;
@@ -182,6 +182,14 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << "  " ;
     mIndexVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".mValue ++ ;\n" ;
+  }
+  enumeratedVariable = mForeachEnumerationList.firstObject () ;
+  while (enumeratedVariable != NULL) {
+    macroValidPointer (enumeratedVariable) ;
+    if (enumeratedVariable->mNewStyle.boolValue ()) {
+      ioCppFile << "  enumerator_" << enumeratedVariable->mLocationOffset.location () << ".next () ;\n" ;
+    }
+    enumeratedVariable = enumeratedVariable->nextObject () ;
   }
   ioCppFile << "}\n" ;
   ioCppFile.incIndentation (-2) ;
@@ -225,7 +233,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   macroValidPointer (enumeratedVariable) ;
 	const sint32 locationForLoopVar = enumeratedVariable->mLocationOffset.location () ;
   if (enumeratedVariable->mNewStyle.boolValue ()) {
-    ioCppFile << "if (enumerator_" << enumeratedVariable->mLocationOffset.location () << " .no ()" ;
+    ioCppFile << "if (enumerator_" << enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
   }else{
     ioCppFile << "if ((operand_" << enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
   }
@@ -233,7 +241,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
     if (enumeratedVariable->mNewStyle.boolValue ()) {
-      ioCppFile << " && enumerator_" << enumeratedVariable->mLocationOffset.location () << " .no ()" ;
+      ioCppFile << " && enumerator_" << enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
     }else{
       ioCppFile << " && (operand_" << enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
     }
@@ -277,7 +285,9 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   enumeratedVariable = mForeachEnumerationList.firstObject () ;
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
-    if (! enumeratedVariable->mNewStyle.boolValue ()) {
+    if (enumeratedVariable->mNewStyle.boolValue ()) {
+      ioCppFile <<  "  enumerator_" << enumeratedVariable->mLocationOffset.location () << ".next () ;\n" ;
+    }else{
       ioCppFile <<  "  operand_" <<enumeratedVariable->mLocationOffset.location ()
                 << " = enumerator_" << enumeratedVariable->mLocationOffset.location () << ".nextObject () ;\n" ;
     }
@@ -287,7 +297,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   enumeratedVariable = mForeachEnumerationList.firstObject () ;
   macroValidPointer (enumeratedVariable) ;
   if (enumeratedVariable->mNewStyle.boolValue ()) {
-    ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = (enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .no ()" ;
+    ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = (enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
   }else{
     ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = ((operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
   }
@@ -295,7 +305,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   while (enumeratedVariable != NULL) {
     macroValidPointer (enumeratedVariable) ;
     if (enumeratedVariable->mNewStyle.boolValue ()) {
-      ioCppFile <<  "\n    && enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .no ()" ;
+      ioCppFile <<  "\n    && enumerator_" <<enumeratedVariable->mLocationOffset.location () << " .hc ()" ;
     }else{
       ioCppFile <<  "\n    && (operand_" <<enumeratedVariable->mLocationOffset.location () << " != NULL)" ;
     }

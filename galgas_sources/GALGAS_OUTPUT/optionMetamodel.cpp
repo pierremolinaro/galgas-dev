@@ -616,36 +616,36 @@ modifier_setMOptionCommentAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_commandLineOptionList::cEnumerator::_mOptionTypeName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mOptionTypeName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mOptionTypeName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_commandLineOptionList::cEnumerator::_mOptionInternalName (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mOptionInternalName ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mOptionInternalName ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lchar  & GGS_commandLineOptionList::cEnumerator::_mOptionInvocationLetter (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mOptionInvocationLetter ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mOptionInvocationLetter ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_commandLineOptionList::cEnumerator::_mOptionInvocationString (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mOptionInvocationString ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mOptionInvocationString ;
 }
 
 //---------------------------------------------------------------------------*
 
 const GGS_lstring  & GGS_commandLineOptionList::cEnumerator::_mOptionComment (LOCATION_ARGS) const {
-  macroValidPointerThere (mCurrentObject) ;
-  return ((cElement *) mCurrentObject)->mOptionComment ;
+  macroValidPointerThere (mNextEnumeratedObject) ;
+  return ((cElement *) mNextEnumeratedObject)->mOptionComment ;
 }
 
 //---------------------------------------------------------------------------*
