@@ -498,7 +498,7 @@ analyzeGrammar (C_Compiler & inLexique,
                 const GGS_luint & inOriginalGrammarStartSymbol,
                 const GGS_lstring & inLexiqueName,
                 const GGS_location & errorLocation,
-                const GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
+                const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
                 const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                 const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar) {
   bool warningFlag = false ;
@@ -601,7 +601,7 @@ analyzeGrammar (C_Compiler & inLexique,
       co << "  Building pure BNF productions... " ;
     }
   //--- Build vocabulary
-    vocabulary.build (ioTerminalSymbolMap,
+    vocabulary.build (inTerminalSymbolMap,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue ()) ;
   
@@ -908,10 +908,9 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                         GGS_luint & inOriginalGrammarStartSymbol,
                         GGS_lstring & inLexiqueName,
                         const GGS_location errorLocation,
-                        GGS_M_terminalSymbolsMapForUse & ioTerminalSymbolMap,
-                        GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
-                        GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                        GGS_M_startSymbolEntityAndMetamodel & /* inStartSymbolEntityAndMetamodelMap */,
+                        const GGS_M_terminalSymbolsMapForUse inTerminalSymbolMap,
+                        const GGS_L_syntaxComponents_ForGrammar inSyntaxComponentsList,
+                        const GGS_M_nonTerminalSymbolsForGrammar inNonterminalSymbolsMapForGrammar,
                         const GGS_M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
@@ -925,7 +924,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
    //--- Fix info about terminal and nonterminal symbols
     bool ok = true ;
     cInfo symbolsInfo ;
-    symbolsInfo.mTerminalSymbolMap = ioTerminalSymbolMap ;
+    symbolsInfo.mTerminalSymbolMap = inTerminalSymbolMap ;
     symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
     GGS_L_syntaxComponents_ForGrammar::cElement * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
     while (currentSyntaxComponent != NULL) {
@@ -956,7 +955,7 @@ routine_analyzeGrammar (C_Compiler & inLexique,
                       inOriginalGrammarStartSymbol,
                       inLexiqueName,
                       errorLocation,
-                      ioTerminalSymbolMap,
+                      inTerminalSymbolMap,
                       inSyntaxComponentsList,
                       inNonterminalSymbolsMapForGrammar) ;
     }

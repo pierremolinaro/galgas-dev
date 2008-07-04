@@ -89,10 +89,9 @@ extern routine analyzeGrammar
   ?!@luint startSymbolIndex
   ?!@lstring inLexiqueName
   ??@location endOfSourceFile
-  ?!@M_terminalSymbolsMapForUse ioTerminalSymbolMap
-  ?!@L_syntaxComponents_ForGrammar ioSyntaxComponentsList
-  ?!@M_nonTerminalSymbolsForGrammar ioNonterminalSymbolsMapForGrammar
-  ?!@M_startSymbolEntityAndMetamodel inStartSymbolEntityAndMetamodelMap
+  ??@M_terminalSymbolsMapForUse ioTerminalSymbolMap
+  ??@L_syntaxComponents_ForGrammar ioSyntaxComponentsList
+  ??@M_nonTerminalSymbolsForGrammar ioNonterminalSymbolsMapForGrammar
   ??@M_unusedNonTerminalSymbolsForGrammar inUnusedNonTerminalSymbolsForGrammar
 ;
 
@@ -223,7 +222,6 @@ rule <galgas_component>
   $non_terminal_symbol$ ? startSymbolName ;
 #--- (added 8/13/2004, modified 3/19/2006)
   @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
-  @M_startSymbolEntityAndMetamodel startSymbolEntityAndMetamodelMap [emptyMap] ;
   @lstring altName [new !"" !here] ;
   repeat
     @L_signature signature ;
@@ -269,10 +267,9 @@ rule <galgas_component>
     !?startSymbolIndex
     !?lexiqueName
     !here
-    !?terminalSymbolMap
-    !?syntaxComponentsList
-    !?nonterminalSymbolsMapForGrammar
-    !?startSymbolEntityAndMetamodelMap
+    !terminalSymbolMap
+    !syntaxComponentsList
+    !nonterminalSymbolsMapForGrammar
     !unusedNonTerminalSymbolsForGrammar
   ;
 #--- insert grammar in grammars map
