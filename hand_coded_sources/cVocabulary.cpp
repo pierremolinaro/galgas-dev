@@ -50,21 +50,19 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
-  GGS_M_terminalSymbolsMapForUse::cElement * t = inTerminalSymbolMap.firstObject () ;
-  while (t != NULL) {
-    macroValidPointer (t) ;
-    mStringsArray.addObject (t->mKey) ;  
-    t = t->nextObject () ;
+  GGS_M_terminalSymbolsMapForUse::cEnumerator t (inTerminalSymbolMap) ;
+  while (t.hc ()) {
+    mStringsArray.addObject (t._key (HERE)) ;  
+    t.next () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
   mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
-  while (nonTerminal != NULL) {
-    macroValidPointer (nonTerminal) ;
-    mStringsArray.addObject (nonTerminal->mKey) ;  
-    nonTerminal = nonTerminal->nextObject () ;
+  GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
+  while (nonTerminal.hc ()) {
+    mStringsArray.addObject (nonTerminal._key (HERE)) ;  
+    nonTerminal.next () ;
   }
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice

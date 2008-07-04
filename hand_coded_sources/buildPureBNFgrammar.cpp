@@ -35,11 +35,10 @@ fixNewNonterminalSymbolsForList (const GGS_L_ruleSyntaxSignature & inList,
                                  cVocabulary & ioVocabulary,
                                  const C_String & inSyntaxComponentName,
                                  sint32 & ioCount) {
-  GGS_L_ruleSyntaxSignature::cElement * currentInstruction = inList.firstObject () ;
-  while (currentInstruction != NULL) {
-    macroValidPointer (currentInstruction) ;
-    currentInstruction->mInstruction (HERE)->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
-    currentInstruction = currentInstruction->nextObject () ;
+  GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inList, true) ;
+  while (currentInstruction.hc ()) {
+    currentInstruction._mInstruction (HERE) (HERE)->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
+    currentInstruction.next () ;
   }
 }
 
@@ -57,14 +56,13 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                      true) ;
   ioCount ++ ;
 
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mRepeatList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
-    fixNewNonterminalSymbolsForList (currentBranch->mInstructionList,
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  while (currentBranch.hc ()) {
+    fixNewNonterminalSymbolsForList (currentBranch._mInstructionList (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 }
 
@@ -82,14 +80,13 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                      true) ;
   ioCount ++ ;
 
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mSelectList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
-    fixNewNonterminalSymbolsForList (currentBranch->mInstructionList,
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+  while (currentBranch.hc ()) {
+    fixNewNonterminalSymbolsForList (currentBranch._mInstructionList (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 }
 
@@ -148,12 +145,11 @@ buildRightDerivation (const sint32 inTerminalSymbolsCount,
 void cPtr_T_repeatInstruction_forGrammarComponent::
 buildRightDerivation (const sint32 inTerminalSymbolsCount,
                       TC_UniqueArray <sint16> & ioInstructionsList) {
-  GGS_L_branchList_ForGrammarComponent::cElement * firstBranch = mRepeatList.firstObject () ;
-  macroValidPointer (firstBranch) ;
-  GGS_L_ruleSyntaxSignature::cElement * instruction = firstBranch->mInstructionList.firstObject () ;
-  while (instruction != NULL) {
-    instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, ioInstructionsList) ;
-    instruction = instruction->nextObject () ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator firstBranch (mRepeatList, true) ;
+  GGS_L_ruleSyntaxSignature::cEnumerator instruction (firstBranch._mInstructionList (HERE), true) ;
+  while (instruction.hc ()) {
+    instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, ioInstructionsList) ;
+    instruction.next () ;
   }
   ioInstructionsList.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue
                                            + inTerminalSymbolsCount)) ;
@@ -180,14 +176,13 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
 //          <W> = Z, ...
 //     la production analysee devient : A ; <W> ; B
 
- GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mSelectList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
+ GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+  while (currentBranch.hc ()) {
     TC_UniqueArray <sint16> derivation ;
-    GGS_L_ruleSyntaxSignature::cElement * instruction = currentBranch->mInstructionList.firstObject () ;
-    while (instruction != NULL) {
-       instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
-       instruction = instruction->nextObject () ;
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    while (instruction.hc ()) {
+       instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
+       instruction.next () ;
     }
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
@@ -196,21 +191,20 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 
 //--- Construire les productions issues des instructions choix et repeter
-  currentBranch = mSelectList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
-    GGS_L_ruleSyntaxSignature::cElement * instruction = currentBranch->mInstructionList.firstObject () ;
-    while (instruction != NULL) {
-      instruction->mInstruction (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
+  currentBranch.rewind () ;
+  while (currentBranch.hc ()) {
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    while (instruction.hc ()) {
+      instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inSyntaxComponentName,
                                                                      ioProductions) ;
-      instruction = instruction->nextObject () ;
+      instruction.next () ;
     }
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 }
 
@@ -244,23 +238,23 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
   }
 
 //--- Insert a new production for every 'while' branch
-  GGS_L_branchList_ForGrammarComponent::cElement * firstBranch = mRepeatList.firstObject () ;
-  macroValidPointer (firstBranch) ;
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = firstBranch->nextObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  currentBranch.next () ;
+  while (currentBranch.hc ()) {
     TC_UniqueArray <sint16> derivation ;
   //--- insert branch instructions
-    GGS_L_ruleSyntaxSignature::cElement * instruction = currentBranch->mInstructionList.firstObject () ;
-    while (instruction != NULL) {
-       instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
-       instruction = instruction->nextObject () ;
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    while (instruction.hc ()) {
+       instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
+       instruction.next () ;
     }
   //--- insert sequence from X
-    instruction = firstBranch->mInstructionList.firstObject () ;
-    while (instruction != NULL) {
-      instruction->mInstruction (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
-      instruction = instruction->nextObject () ;
+    GGS_L_branchList_ForGrammarComponent::cEnumerator firstBranch (mRepeatList, true) ;
+    GGS_L_ruleSyntaxSignature::cEnumerator firstBranchInstruction (firstBranch._mInstructionList (HERE), true) ;
+//    instruction = firstBranch->mInstructionList.firstObject () ;
+    while (firstBranchInstruction.hc ()) {
+      firstBranchInstruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, derivation) ;
+      firstBranchInstruction.next () ;
     }
   //--- insert <T> production call
     derivation.addObject ((sint16) (mAddedNonterminalmSymbolIndex.mValue + inTerminalSymbolsCount)) ;
@@ -271,22 +265,20 @@ buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
     p.aNumeroNonTerminalGauche = ((sint32) mAddedNonterminalmSymbolIndex.mValue) + inTerminalSymbolsCount ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 
 //--- Construire les productions issues des instructions choix et repeter
-  currentBranch = mRepeatList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
-    GGS_L_ruleSyntaxSignature::cElement * instruction = currentBranch->mInstructionList.firstObject () ;
-    while (instruction != NULL) {
-      macroValidPointer (instruction) ;
-      instruction->mInstruction (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
+  currentBranch.rewind () ;
+  while (currentBranch.hc ()) {
+    GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentBranch._mInstructionList (HERE), true) ;
+    while (instruction.hc ()) {
+      instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inSyntaxComponentName,
                                                                      ioProductions) ;
-      instruction = instruction->nextObject () ;
+      instruction.next () ;
     }
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 }
 
@@ -320,68 +312,60 @@ buildPureBNFgrammar (const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponent
                      cVocabulary & ioVocabulary,
                      cPureBNFproductionsList & ioProductions) {
 //--- Fix new non terminal symbols index and names
-  GGS_L_syntaxComponents_ForGrammar::cElement * currentComponent = inSyntaxComponentsList.firstObject () ;
-  while (currentComponent != NULL) {
-    macroValidPointer (currentComponent) ;
-    GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentComponent->mProductionRulesList.firstObject () ;
+  GGS_L_syntaxComponents_ForGrammar::cEnumerator currentComponent (inSyntaxComponentsList, true) ;
+  while (currentComponent.hc ()) {
+    GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
     sint32 count = 0 ;
-    while (currentRule != NULL) {
-      macroValidPointer (currentRule) ;
-      fixNewNonterminalSymbolsForList (currentRule->mInstructionList,
+    while (currentRule.hc ()) {
+      fixNewNonterminalSymbolsForList (currentRule._mInstructionList (HERE),
                                        ioVocabulary,
-                                       currentComponent->mSyntaxComponentName,
+                                       currentComponent._mSyntaxComponentName (HERE),
                                        count) ;
-      currentRule = currentRule->nextObject () ;
+      currentRule.next () ;
     }
-    currentComponent = currentComponent->nextObject () ;
+    currentComponent.next () ;
   }
 
 //--- Build pure BNF productions from original grammar productions
   const sint32 terminalSymbolsCount = ioVocabulary.getTerminalSymbolsCount () ;
-  currentComponent = inSyntaxComponentsList.firstObject () ;
-  while (currentComponent != NULL) {
-    macroValidPointer (currentComponent) ;
-    GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentComponent->mProductionRulesList.firstObject () ;
-    while (currentRule != NULL) {
-      macroValidPointer (currentRule) ;
+  currentComponent.rewind () ;
+  while (currentComponent.hc ()) {
+    GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
+    while (currentRule.hc ()) {
       TC_UniqueArray <sint16> derivation ;
-      GGS_L_ruleSyntaxSignature::cElement * instruction = currentRule->mInstructionList.firstObject () ;
-      while (instruction != NULL) {
-        macroValidPointer (instruction) ;
-        instruction->mInstruction (HERE)->buildRightDerivation (terminalSymbolsCount, derivation) ;
-        instruction = instruction->nextObject () ;
+      GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentRule._mInstructionList (HERE), true) ;
+      while (instruction .hc ()) {
+        instruction._mInstruction (HERE) (HERE)->buildRightDerivation (terminalSymbolsCount, derivation) ;
+        instruction.next () ;
       }
       cProduction p ;
-      p.mSourceFileName = currentComponent->mSyntaxComponentName ;
-      p.aLigneDefinition = currentRule->mLeftNonterminalSymbol.lineNumber () ;
-      p.aColonneDefinition = currentRule->mLeftNonterminalSymbol.columnNumber () ;
+      p.mSourceFileName = currentComponent._mSyntaxComponentName (HERE) ;
+      p.aLigneDefinition = currentRule._mLeftNonterminalSymbol (HERE).lineNumber () ;
+      p.aColonneDefinition = currentRule._mLeftNonterminalSymbol (HERE).columnNumber () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
-                                 + (sint32) currentRule->mLeftNonterminalSymbolIndex.mValue ;
+                                 + (sint32) currentRule._mLeftNonterminalSymbolIndex (HERE).mValue ;
       swap (p.aDerivation, derivation) ;
       ioProductions.insertByExchange (p) ;
-      currentRule = currentRule->nextObject () ;
+      currentRule.next () ;
     }
-    currentComponent = currentComponent->nextObject () ;
+    currentComponent.next () ;
   }
 
 //--- Build pure BNF productions from 'repeat' and 'select' instructions
-  currentComponent = inSyntaxComponentsList.firstObject () ;
-  while (currentComponent != NULL) {
-    macroValidPointer (currentComponent) ;
-    GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentComponent->mProductionRulesList.firstObject () ;
-    while (currentRule != NULL) {
-      macroValidPointer (currentRule) ;
-      GGS_L_ruleSyntaxSignature::cElement * instruction = currentRule->mInstructionList.firstObject () ;
-      while (instruction != NULL) {
-        macroValidPointer (instruction) ;
-        instruction->mInstruction (HERE)->buildSelectAndRepeatProductions (terminalSymbolsCount,
-                                                     currentComponent->mSyntaxComponentName,
+  currentComponent.rewind () ;
+  while (currentComponent.hc ()) {
+    GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
+    while (currentRule.hc ()) {
+      GGS_L_ruleSyntaxSignature::cEnumerator instruction (currentRule._mInstructionList (HERE), true) ;
+      while (instruction.hc ()) {
+        instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (terminalSymbolsCount,
+                                                     currentComponent._mSyntaxComponentName (HERE),
                                                                               ioProductions) ;
-        instruction = instruction->nextObject () ;
+        instruction.next () ;
       }
-      currentRule = currentRule->nextObject () ;
+      currentRule.next () ;
     }
-    currentComponent = currentComponent->nextObject () ;
+    currentComponent.next () ;
   }
 
 //--- Augment grammar by a new non terminal symbol (denoted <>), and...

@@ -2171,19 +2171,6 @@ list @L_syntaxComponents_ForGrammar {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#              Map of entities and metamodels for start symbol labels       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @M_startSymbolEntityAndMetamodel {
-  @lstring mReturnedEntityName ;
-  @lstring mReturnedMetamodelName ;
-  insert insertKey error message "the label '%K' has been already declared in %L" ;
-  search searchKey error message "the label '%K' is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #           Class inherited messages map                                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
