@@ -193,16 +193,15 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
       }else{
         ioCppFile << inTargetVariableCppName << ".writeString (" ;
       }
-      GGS_stringlist::cElement * currentString = p2->mLiteralStringList.firstObject () ;
-      while (currentString != NULL) {
-        macroValidPointer (currentString) ;
+      GGS_stringlist::cEnumerator currentString (p2->mLiteralStringList, true) ;
+      while (currentString.hc ()) {
         if (first) {
           first = false ;
         }else{
           ioCppFile << "\n" ;
         }
-        ioCppFile.writeCstringConstant (currentString->mValue) ;
-        currentString = currentString->nextObject () ;
+        ioCppFile.writeCstringConstant (currentString._mValue (HERE)) ;
+        currentString.next () ;
       }
       ioPreviousWasLiteralString = true ;
     }else{
@@ -248,11 +247,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     C_String targetVariableCppName ;
     mTargetVarCppName (HERE)->generateCplusPlusName (targetVariableCppName) ;
-    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
-    while (structAttribute != NULL) {
-      macroValidPointer (structAttribute) ;
-      ioCppFile << "." << structAttribute->mValue ;
-      structAttribute = structAttribute->nextObject () ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
     }
     const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
     if (mSourceExpressionConverter.length () > 0) {

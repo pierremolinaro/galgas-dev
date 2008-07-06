@@ -32,20 +32,19 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile.writeCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   inHfile << "GGS_string\n"
              "_template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (" ;
-  GGS_typeListeTypesEtNomsArgMethode::cElement * current = mTemplateArgumentList.firstObject () ;
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
   if (mTemplateArgumentList.count () == 0) {
     inHfile << "void" ;
   }else{
     sint32 numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    while (current.hc ()) {
       if (numeroVariable != 0) {
         inHfile << ",\n                                " ;
       }
       inHfile << "const " ;
-      current->mType(HERE)->generateFormalParameter (inHfile, true) ;
-      current->mCppName(HERE)->generateCplusPlusName (inHfile) ;
-      current = current->nextObject () ;
+      current._mType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
+      current._mCppName (HERE)(HERE)->generateCplusPlusName (inHfile) ;
+      current.next () ;
       numeroVariable ++ ;
     }
   }
@@ -84,50 +83,48 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.writeCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   inCppFile << "GGS_string\n"
                "_template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (" ;
-  GGS_typeListeTypesEtNomsArgMethode::cElement * current = mTemplateArgumentList.firstObject () ;
-  if (current == NULL) {
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
+  if (! current.hc ()) {
     inCppFile << "void" ;
   }else{
     sint32 numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    while (current.hc ()) {
       if (numeroVariable != 0) {
         inCppFile << ",\n                                " ;
       }
       inCppFile << "const " ;
-      current->mType(HERE)->generateFormalParameter (inCppFile, true) ;
-      current->mCppName(HERE)->generateCplusPlusName (inCppFile) ;
-      current = current->nextObject () ;
+      current._mType (HERE)(HERE)->generateFormalParameter (inCppFile, true) ;
+      current._mCppName (HERE)(HERE)->generateCplusPlusName (inCppFile) ;
+      current.nextObject () ;
       numeroVariable ++ ;
     }
   }
   inCppFile << ") {\n"
                "  C_String _result ;\n" ;
-  current = mTemplateArgumentList.firstObject () ;
-  if (current != NULL) {
+  current.rewind () ;
+  if (current.hc ()) {
     inCppFile << "  const bool _isBuilt = " ;
     sint32 numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    while (current.hc ()) {
       if (numeroVariable != 0) {
         inCppFile << "\n    && " ;
       }
-      current->mCppName(HERE)->generateCplusPlusName (inCppFile) ;
+      current._mCppName (HERE)(HERE)->generateCplusPlusName (inCppFile) ;
       inCppFile << "._isBuilt ()" ;
-      current = current->nextObject () ;
+      current.next () ;
       numeroVariable ++ ;
     }
     inCppFile << " ;\n"
                  "  if (_isBuilt) {\n" ;
     inCppFile.incIndentation (+2) ;
   }
-  GGS_templateInstructionList::cElement * currentInstruction = mTemplateInstructionList.firstObject () ;
-  while (currentInstruction != NULL) {
-    currentInstruction->mInstruction (HERE)->generateTemplateInstruction (inCppFile) ;
-    currentInstruction = currentInstruction->nextObject () ;
+  GGS_templateInstructionList::cEnumerator currentInstruction (mTemplateInstructionList, true) ;
+  while (currentInstruction.hc ()) {
+    currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (inCppFile) ;
+    currentInstruction.next () ;
   }
-  current = mTemplateArgumentList.firstObject () ;
-  if (current != NULL) {
+  current.rewind () ;
+  if (current.hc ()) {
     inCppFile << "}\n"
                  "return GGS_string (_isBuilt, _result) ;\n" ;
     inCppFile.incIndentation (-2) ;
@@ -179,17 +176,16 @@ isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
 
 void cPtr_typeFileWrapperTemplateCall::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "_template_filewrapper_" << mFileWrapperName << "_" << mTemplateName << " (" ;
-  GGS_typeExpressionList::cElement * current = mOutExpressionList.firstObject () ;
+  GGS_typeExpressionList::cEnumerator current (mOutExpressionList, true) ;
   bool first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (first) {
       first = false ;
     }else{
       ioCppFile << ", " ;
     }
-    current->mExpression (HERE)->generateExpression (ioCppFile) ;
-    current = current->nextObject () ;
+    current._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+    current.next () ;
   }
   ioCppFile << ")" ;
 }
@@ -199,11 +195,10 @@ void cPtr_typeFileWrapperTemplateCall::generateExpression (AC_OutputStream & ioC
 bool cPtr_typeFileWrapperTemplateCall::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::cElement * current = mOutExpressionList.firstObject () ;
-  while ((current != NULL) && ! isUsed) {
-    macroValidPointer (current) ;
-    isUsed = current->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    current = current->nextObject () ;
+  GGS_typeExpressionList::cEnumerator current (mOutExpressionList, true) ;
+  while ((current.hc ()) && ! isUsed) {
+    isUsed = current._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    current.next () ;
   }
   return isUsed ;
 }
@@ -220,11 +215,10 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 bool cPtr_typeFileWrapperTemplateCall::
 formalCurrentObjectArgumentIsUsedForTest (void) const {
   bool isUsed = false ;
-  GGS_typeExpressionList::cElement * current = mOutExpressionList.firstObject () ;
-  while ((current != NULL) && ! isUsed) {
-    macroValidPointer (current) ;
-    isUsed = current->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    current = current->nextObject () ;
+  GGS_typeExpressionList::cEnumerator current (mOutExpressionList, true) ;
+  while ((current.hc ()) && ! isUsed) {
+    isUsed = current._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    current.next () ;
   }
   return isUsed ;
 }
