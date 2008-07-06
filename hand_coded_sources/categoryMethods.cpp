@@ -51,13 +51,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                " (C_Compiler & _inLexique"
             << ",\n                                "
                "const cPtr_" << mClassName << " * inObjectPtr" ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
-    while (currentArgument != NULL) {
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+    while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
       inHfile << ' ' ;
-      currentArgument->mCppName (HERE)->generateCplusPlusName (inHfile) ;
-      currentArgument = currentArgument->nextObject () ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inHfile) ;
+      currentArgument.next () ;
     }
     inHfile << "\n                                "
                "COMMA_LOCATION_ARGS) ;\n\n" ;
@@ -122,20 +122,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << ",\n                                "
                  "const cPtr_" << mClassName << " * operand_" << mMagicNumber.location () ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
-    while (currentArgument != NULL) {
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+    while (currentArgument.hc ()) {
       inCppFile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
-      const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument->mCppName, true) ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
+      const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
       inCppFile << ' ' ;
       if (! variableUtilisee) {
         inCppFile << "/* " ;
       }
-      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       if (! variableUtilisee) {
         inCppFile << " */" ;
       }
-      currentArgument = currentArgument->nextObject () ;
+      currentArgument.next () ;
     }
     inCppFile << "\n                                "
                  "COMMA_UNUSED_LOCATION_ARGS) {\n"

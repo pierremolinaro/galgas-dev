@@ -58,40 +58,37 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "                      const sint32 inIndentation = 0) const ;\n"
              "//--- Galgas 'new' destructor\n"
              "  public : static GGS_" << mStructName << " constructor_new (" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mAttributeList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                 " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n\n"
              "//--- Readers\n" ;
-  current = mAttributeList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inHfile << "  public : inline " ;
-    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
-               "  reader_" << current->mAttributeName << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
-               "    return " << current->mAttributeName << " ;\n"
+               "  reader_" << current._mAttributeName (HERE) << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {\n"
+               "    return " << current._mAttributeName (HERE) << " ;\n"
                "  }\n\n" ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "//--- Attributes\n" ;
-  current = mAttributeList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inHfile << "  public : " ;
-    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << " " << current->mAttributeName << " ;\n" ;
-    current = current->nextObject () ;
+    current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
+    inHfile << " " << current._mAttributeName (HERE) << " ;\n" ;
+    current.next () ;
   }
   inHfile << "} ;\n\n" ;
 }
@@ -127,17 +124,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.writeCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mAttributeList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
   bool first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (first) {
       first = false ;
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << current->mAttributeName << " ()" ;
-    current = current->nextObject () ;
+    inCppFile << current._mAttributeName (HERE) << " ()" ;
+    current.next () ;
   }
   inCppFile << " {\n"
                "}\n\n" ;
@@ -146,48 +142,45 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mStructName << "::_drop (void) {\n" ;
-  current = mAttributeList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "  " << current->mAttributeName << "._drop () ;\n" ;
-    current = current->nextObject () ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "  " << current._mAttributeName (HERE) << "._drop () ;\n" ;
+    current.next () ;
   }
   inCppFile << "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "bool GGS_" << mStructName << "::_isBuilt (void) const {\n" ;
-  current = mAttributeList.firstObject () ;
+  current.rewind () ;
   inCppFile << "  return " ;
   first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (first) {
       first = false ;
     }else{
       inCppFile << "\n    && " ;
     }
-    inCppFile << current->mAttributeName << "._isBuilt ()" ;
-    current = current->nextObject () ;
+    inCppFile << current._mAttributeName (HERE) << "._isBuilt ()" ;
+    current.next() ;
   }
   inCppFile << " ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mStructName << "::\n"
                "_operator_isEqual (const GGS_" << mStructName << " & inOperand) const {\n" ;
-  current = mAttributeList.firstObject () ;
+  current.rewind () ;
   inCppFile << "  return " ;
   first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (! first) {
       inCppFile << "\n    ._operator_and (" ;
     }
-    inCppFile << current->mAttributeName << "._operator_isEqual (inOperand." << current->mAttributeName << ")" ;
+    inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (inOperand." << current._mAttributeName (HERE) << ")" ;
     if (first) {
       first = false ;
     }else{
       inCppFile << ")" ;
     }
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << " ;\n"
                "}\n\n" ;
@@ -195,47 +188,44 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_bool GGS_" << mStructName << "::\n"
                "_operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const {\n"
                "  return " ;
-  current = mAttributeList.firstObject () ;
+  current.rewind () ;
   first = true ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (! first) {
       inCppFile << "\n    ._operator_or (" ;
     }
-    inCppFile << current->mAttributeName << "._operator_isNotEqual (inOperand." << current->mAttributeName << ")" ;
+    inCppFile << current._mAttributeName (HERE) << "._operator_isNotEqual (inOperand." << current._mAttributeName (HERE) << ")" ;
     if (first) {
       first = false ;
     }else{
       inCppFile << ")" ;
     }
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << " ;\n"
                "}\n\n" ;
   inCppFile.writeCppHyphenLineComment () ;
   inCppFile <<"GGS_" << mStructName << " GGS_" << mStructName << "::\n"
               "constructor_new (" ;
-  current = mAttributeList.firstObject () ;
+  current.rewind () ;
   sint32 numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                 " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  GGS_" << mStructName << " result ;\n" ;
-  current = mAttributeList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "  result." << current->mAttributeName << " = argument_" << numeroVariable << " ;\n" ;
-    current = current->nextObject () ;
+  while (current.hc ()) {
+    inCppFile << "  result." << current._mAttributeName (HERE) << " = argument_" << numeroVariable << " ;\n" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "  return result ;\n"
@@ -249,14 +239,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  C_String _s ;\n"
                "  _s << \"<struct @" << mStructName << "\" ;\n"
                "  if (_isBuilt ()) {\n" ;
-  current = mAttributeList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _s << \"\\n\" ;\n"
                  "    _s.writeStringMultiple (\"| \", inIndentation + 1) ;\n"
-                 "    _s << \"" << current->mAttributeName << " \" ;\n"
-                 "    _s << " << current->mAttributeName << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
-    current = current->nextObject () ;
+                 "    _s << \"" << current._mAttributeName (HERE) << " \" ;\n"
+                 "    _s << " << current._mAttributeName (HERE) << ".reader_description (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+    current.next () ;
   }
   inCppFile << "  }else{\n"
                "    _s << \"not built\" ;\n"

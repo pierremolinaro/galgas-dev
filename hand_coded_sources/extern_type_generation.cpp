@@ -63,19 +63,17 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "                      COMMA_LOCATION_ARGS,\n"
                     "                      const sint32 inIndentation = 0) const ;\n"
                     "//--- Constructors\n" ;
-  GGS_M_externTypeConstructorMap::cElement * constructor = mConstructorMap.firstObject () ;
-  while (constructor != NULL) {
-    macroValidPointer (constructor) ;
+  GGS_M_externTypeConstructorMap::cEnumerator constructor (mConstructorMap) ;
+  while (constructor.hc ()) {
     generatedZone2 << "  public : static GGS_" << mGalgasName
-                   << " constructor_" << constructor->mKey << " (C_Compiler & _inLexique" ;
-    GGS_typeListeAttributsSemantiques::cElement * arg = constructor->mInfo.aListeDesAttributs.firstObject () ;
-    while (arg != NULL) {
-      macroValidPointer (arg) ;
-      arg->mAttributType(HERE)->generatePublicDeclaration (inHfile, arg->mAttributeName) ;
-      arg = arg->nextObject () ;
+                   << " constructor_" << constructor._key (HERE) << " (C_Compiler & _inLexique" ;
+    GGS_typeListeAttributsSemantiques::cEnumerator arg (constructor._aListeDesAttributs (HERE), true) ;
+    while (arg.hc ()) {
+      arg._mAttributType (HERE)(HERE)->generatePublicDeclaration (inHfile, arg._mAttributeName (HERE)) ;
+      arg.next () ;
     }
     generatedZone2 << "\n                  COMMA_LOCATION_ARGS) ;\n\n" ;
-    constructor = constructor->nextObject () ;
+    constructor.next () ;
   }
 
   C_String generatedZone3 ;

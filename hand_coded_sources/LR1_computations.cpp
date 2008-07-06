@@ -1290,30 +1290,27 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
-  while (nonTerminal != NULL) {
-    macroValidPointer (nonTerminal) ;
-    generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal->mKey + "' non terminal implementation") ;
-    GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-    while (currentAltForNonTerminal != NULL) {
-      macroValidPointer (currentAltForNonTerminal) ;
+  GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
+  while (nonTerminal.hc ()) {
+    generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
+    GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
+    while (currentAltForNonTerminal.hc ()) {
       generatedZone3 << "void " ;
       generatedZone3 << inTargetFileName
                      << "::\n"
-                     << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+                     << "nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " & _inLexique" ;
-      const sint32 pureBNFleftNonterminalIndex = nonTerminal->mID ;
+      const sint32 pureBNFleftNonterminalIndex = nonTerminal._mID (HERE) ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+      GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       sint16 numeroParametre = 1 ;
-      while (parametre != NULL) {
-        macroValidPointer (parametre) ;
+      while (parametre.hc ()) {
         generatedZone3 << ",\n                                " ;
-        generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+        generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
         if (first >= 0) {
           generatedZone3 << " parameter_" << numeroParametre ;
         }
-        parametre = parametre->nextObject () ;
+        parametre.next () ;
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ; 
@@ -1327,7 +1324,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "  case " << ip << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      currentAltForNonTerminal->mKey,
+                                                                      currentAltForNonTerminal._key (HERE),
                                                                       generatedZone3) ;
           generatedZone3 << "    break ;\n" ;
         }
@@ -1336,32 +1333,30 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                  "    _inLexique.internalBottomUpParserError (HERE) ;\n"
                         "  }\n" ;
       generatedZone3 << "}\n\n" ;
-      currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
+      currentAltForNonTerminal.next () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
-      GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-      while (currentAltForNonTerminal != NULL) {
-        macroValidPointer (currentAltForNonTerminal) ;
+    if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
+      GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
+      while (currentAltForNonTerminal.hc ()) {
         generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         generatedZone3.writeCppHyphenLineComment () ;
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
-                       << "::_performSourceFileParsing_" << currentAltForNonTerminal->mKey
+                       << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring _inFileName" ;
-        GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
         sint16 numeroParametre = 1 ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
+        while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+          generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
           generatedZone3 << " parameter_" << numeroParametre ;
-          parametre = parametre->nextObject () ;
+          parametre.next () ;
           numeroParametre ++ ;
         }
         generatedZone3 << "\n                                "
@@ -1380,14 +1375,13 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "      if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "        " << inTargetFileName << " _grammar ;\n"
                           "        " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
+        while (parametre.hc ()) {
           generatedZone3 << ", parameter_" << numeroParametre ;
-          parametre = parametre->nextObject () ;
+          parametre.next () ;
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
@@ -1399,14 +1393,13 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "      C_String message ;\n"
                           "      message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
                           "      _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
-          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
+        while (parametre.hc ()) {
+          if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "      parameter_" << numeroParametre << "._drop () ;\n" ;
           }
-          parametre = parametre->nextObject () ;
+          parametre.next () ;
           numeroParametre ++ ;
         }
         generatedZone3 << "    }\n"
@@ -1415,14 +1408,13 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "    C_String message ;\n"
                           "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
                           "    _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
-          if (parametre->mFormalArgumentPassingMode.enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
+        while (parametre.hc ()) {
+          if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "    parameter_" << numeroParametre << "._drop () ;\n" ;
           }
-          parametre = parametre->nextObject () ;
+          parametre.next () ;
           numeroParametre ++ ;
         }
         generatedZone3 << "  }\n" ;
@@ -1430,20 +1422,19 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       //--- Define string parsing static method
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
-                       << "::_performSourceStringParsing_" << currentAltForNonTerminal->mKey
+                       << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_string _inSourceString" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
+        while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
+          generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
           generatedZone3 << " parameter_" << numeroParametre ;
-          parametre = parametre->nextObject () ;
+          parametre.next () ;
           numeroParametre ++ ;
         }
         generatedZone3 << "\n                                "
@@ -1457,14 +1448,13 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "  if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "    " << inTargetFileName << " _grammar ;\n"
                           "    " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
+        parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
+        while (parametre.hc ()) {
           generatedZone3 << ", parameter_" << numeroParametre ;
-          parametre = parametre->nextObject () ;
+          parametre.next () ;
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
@@ -1474,10 +1464,10 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "  }\n" ;
         generatedZone3 << "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n" ;
         generatedZone3 << "}\n\n" ;
-        currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
+        currentAltForNonTerminal.next () ;
       }
     }
-    nonTerminal = nonTerminal->nextObject () ;
+    nonTerminal.next () ;
   }
 //--- Implement non terminal from 'select' and 'repeat' instructions ---------
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;

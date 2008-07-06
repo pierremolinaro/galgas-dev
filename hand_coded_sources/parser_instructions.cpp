@@ -39,7 +39,7 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
   GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inOtherList, true) ;
   while (currentReferenceInstruction.hc () && currentInstruction.hc () && sameSignature) {
     sameSignature = currentReferenceInstruction._mInstruction (HERE) (HERE)->isSameSyntaxInstructionThan (_inLexique, currentInstruction._mInstruction (HERE) (HERE), inEndOfInstructionListLocation) ;
-    currentReferenceInstruction.nextObject () ;
+    currentReferenceInstruction.next () ;
     currentInstruction.next () ;
   }
   if (sameSignature) {
