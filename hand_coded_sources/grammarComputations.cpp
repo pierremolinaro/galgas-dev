@@ -183,11 +183,10 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.writeCppHyphenLineComment () ;
-  GGS_L_syntaxComponents_ForGrammar::cElement * component = inSyntaxComponentsList.firstObject () ;
-  while (component != NULL) {
-    macroValidPointer (component) ;
-    generatedZone2 << "#include \"" << component->mSyntaxComponentName << ".h\"\n" ;
-    component = component->nextObject () ;
+  GGS_L_syntaxComponents_ForGrammar::cEnumerator component (inSyntaxComponentsList, true) ;
+  while (component.hc ()) {
+    generatedZone2 << "#include \"" << component._mSyntaxComponentName (HERE) << ".h\"\n" ;
+    component.next () ;
   }
   generatedZone2 << '\n' ;
 
@@ -195,79 +194,73 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3.writeCppHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
-  component = inSyntaxComponentsList.firstObject () ;
+  component.rewind () ;
 //--- Liens d'heritage
   bool premier = true ;
-  while (component != NULL) {
-    macroValidPointer (component) ;
+  while (component.hc ()) {
     if (premier) {
       generatedZone3 << " :" ;
       premier = false ;
     }else{
       generatedZone3 << ",\n                                " ;
     }
-    generatedZone3 << " public " << component->mSyntaxComponentName ;
-    component = component->nextObject () ;
+    generatedZone3 << " public " << component._mSyntaxComponentName (HERE) ;
+    component.next () ;
   }
   generatedZone3 << " {\n" ;
 //--- declaration des non-terminaux de la grammaire d'origine
-  GGS_M_nonTerminalSymbolsForGrammar::cElement * nonTerminal = inNonterminalSymbolsMapForGrammar.firstObject () ;
-  while (nonTerminal != NULL) {
-    macroValidPointer (nonTerminal) ;
-    GGS_M_nonterminalSymbolAltsForGrammar::cElement * currentAltForNonTerminal = nonTerminal->mInfo.mNonterminalSymbolParametersMap.firstObject () ;
-    while (currentAltForNonTerminal != NULL) {
+  GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
+  while (nonTerminal.hc ()) {
+    GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
+    while (currentAltForNonTerminal.hc ()) {
       generatedZone3 << "  public : virtual " ;
       generatedZone3 << "void " ;
-      generatedZone3 << "nt_" << nonTerminal->mKey << '_' << currentAltForNonTerminal->mKey
+      generatedZone3 << "nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " &" ;
-      GGS_L_signature::cElement * parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-      while (parametre != NULL) {
-        macroValidPointer (parametre) ;
+      GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
+      while (parametre.hc ()) {
         generatedZone3 << ",\n                                " ;
-        generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
-        parametre = parametre->nextObject () ;
+        generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
+        parametre.next () ;
       }
       generatedZone3 << ") ;\n" ; 
-      if (nonTerminal->mID == (sint32) inOriginalGrammarStartSymbol) {
-        generatedZone3 << "  public : static " ;
-          generatedZone3 << "void " ;
-        generatedZone3 << "_performSourceFileParsing_" << currentAltForNonTerminal->mKey 
+      if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
+        generatedZone3 << "  public : static "
+                          "void _performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring inFileName" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
+        parametre.rewind () ;
+        while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
-          parametre = parametre->nextObject () ;
+          generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
+          parametre.next () ;
         }
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) ;\n" ;
         generatedZone3 << "  public : static " ;
         generatedZone3 << "void " ;
-        generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal->mKey 
+        generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_string inSourceString" ;
-        parametre = currentAltForNonTerminal->mInfo.mFormalParametersList.firstObject () ;
-        while (parametre != NULL) {
-          macroValidPointer (parametre) ;
+        parametre.rewind () ;
+        while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
-          generateFormalArgumentFromTypeName (parametre->mGalgasTypeName, parametre->mFormalArgumentPassingMode, generatedZone3) ;
-          parametre = parametre->nextObject () ;
+          generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
+          parametre.next () ;
         }
         generatedZone3 << "\n                                "
                           "COMMA_LOCATION_ARGS) ;\n" ;
       }
-      currentAltForNonTerminal = currentAltForNonTerminal->nextObject () ;
+      currentAltForNonTerminal.next () ;
     }
   //--- Next non terminal
-    nonTerminal = nonTerminal->nextObject () ;
+    nonTerminal.next () ;
   }
 //--- declaration des non-terminaux pour les instructions choix et repeter
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
@@ -300,12 +293,11 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
                             cInfo & inInfo,
                             C_Compiler & inLexique,
                             bool & ioOk) {
-  GGS_L_ruleSyntaxSignature::cElement * currentInstruction = inInstructionsList.firstObject () ;
-  while (currentInstruction != NULL) {
-    macroValidPointer (currentInstruction) ;
-    currentInstruction->mInstruction (HERE)->fixInfos (inInfo, inLexique, ioOk) ;
+  GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inInstructionsList, true) ;
+  while (currentInstruction.hc ()) {
+    currentInstruction._mInstruction (HERE) (HERE)->fixInfos (inInfo, inLexique, ioOk) ;
 
-    currentInstruction = currentInstruction->nextObject () ;
+    currentInstruction.next () ;
   }
 }
 
@@ -315,14 +307,13 @@ void cPtr_T_repeatInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mRepeatList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
-    fixInfoForInstructionsList (currentBranch->mInstructionList,
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
+  while (currentBranch.hc ()) {
+    fixInfoForInstructionsList (currentBranch._mInstructionList (HERE),
                                 inInfo,
                                 inLexique,
                                 ioOk) ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 }
 
@@ -332,14 +323,13 @@ void cPtr_T_selectInstruction_forGrammarComponent::
 fixInfos (cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mSelectList.firstObject () ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
-    fixInfoForInstructionsList (currentBranch->mInstructionList,
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
+  while (currentBranch.hc ()) {
+    fixInfoForInstructionsList (currentBranch._mInstructionList (HERE),
                                 inInfo,
                                 inLexique,
                                 ioOk) ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
 }
 
@@ -926,26 +916,24 @@ routine_analyzeGrammar (C_Compiler & inLexique,
     cInfo symbolsInfo ;
     symbolsInfo.mTerminalSymbolMap = inTerminalSymbolMap ;
     symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
-    GGS_L_syntaxComponents_ForGrammar::cElement * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
-    while (currentSyntaxComponent != NULL) {
-      macroValidPointer (currentSyntaxComponent) ;
-      GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
-      while (currentRule != NULL) {
-        macroValidPointer (currentRule) ;
+    GGS_L_syntaxComponents_ForGrammar::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
+    while (currentSyntaxComponent.hc ()) {
+      GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
+      while (currentRule.hc ()) {
         GGS_luint index ;
         GGS_M_nonterminalSymbolAltsForGrammar unused ;
-        inNonterminalSymbolsMapForGrammar.method_searchKeyGetID (inLexique, currentRule->mLeftNonterminalSymbol,
+        inNonterminalSymbolsMapForGrammar.method_searchKeyGetID (inLexique, currentRule._mLeftNonterminalSymbol (HERE),
                                                   index, unused COMMA_HERE) ;
-        currentRule->mLeftNonterminalSymbolIndex.mValue = index.uintValue () ;
+        currentRule._mLeftNonterminalSymbolIndex (HERE).mValue = index.uintValue () ;
       //--- Fix, for each rule, left nonterminal symbol index
-        fixInfoForInstructionsList (currentRule->mInstructionList,
+        fixInfoForInstructionsList (currentRule._mInstructionList (HERE),
                                     symbolsInfo,
                                     inLexique,
                                     ok) ;
       //--- Next rule
-        currentRule = currentRule->nextObject () ;
+        currentRule.next() ;
       }
-      currentSyntaxComponent = currentSyntaxComponent->nextObject () ;
+      currentSyntaxComponent.next () ;
     }
     if (ok) {
       analyzeGrammar (inLexique,

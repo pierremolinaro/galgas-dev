@@ -48,28 +48,25 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_list::cListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
-  GGS_typeListeAttributsSemantiques::cElement * attributCourant = mNonExternAttributesList.firstObject () ;
-  while (attributCourant != NULL) {
-    macroValidPointer (attributCourant) ;
-    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->mAttributeName) ;
-    attributCourant = attributCourant->nextObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator attributCourant (mNonExternAttributesList, true) ;
+  while (attributCourant.hc ()) {
+    attributCourant._mAttributType (HERE) (HERE)->generatePublicDeclaration (inHfile, attributCourant._mAttributeName (HERE)) ;
+    attributCourant.next () ;
   }
 //--- declaration constructeur
   inHfile << "//--- Constructor\n"
              "  public : elementOf_GGS_" << aNomListe << " (" ;
-  attributCourant = mNonExternAttributesList.firstObject () ;
+  attributCourant.rewind () ;
   bool premier = true ;
-  while (attributCourant != NULL) {
-    macroValidPointer (attributCourant) ;
+  while (attributCourant.hc ()) {
     if (premier) {
       premier = false ;
     }else{
       inHfile << ",\n                                " ;
     }
-    macroValidPointer (attributCourant) ;
     inHfile << "const " ;
-    attributCourant->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    attributCourant = attributCourant->nextObject () ;
+    attributCourant._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
+    attributCourant.next () ;
   }
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n\n"
@@ -124,17 +121,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'listWithValue'
              "  public : static GGS_" << aNomListe << " constructor_listWithValue (" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -174,15 +170,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare method 'first'
              "//--- Method 'first'\n"
              "  public : void method_first (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                              " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                              "
              "COMMA_LOCATION_ARGS) const ;\n"
@@ -190,15 +185,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare method 'last'
              "//--- Method 'last'\n"
              "  public : void method_last (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                             " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                             "
              "COMMA_LOCATION_ARGS) const ;\n"
@@ -206,15 +200,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare modifier 'popLast'
              "//--- Modifier 'popLast'\n"
              "  public : void modifier_popLast (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                                " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
@@ -222,15 +215,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare modifier 'popFirst'
              "//--- Modifier 'popFirst'\n"
              "  public : void modifier_popFirst (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                                 " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                                 "
              "COMMA_LOCATION_ARGS) ;\n"
@@ -240,17 +232,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void _dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -265,48 +256,45 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                                "
                "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
              "//--- Internal Methods\n"
               "  protected : void _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n\n"
              "  protected : void _internalPrependValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << "\n                                "
@@ -321,30 +309,28 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Direct read access
   inHfile << "//--------------------------------- Direct Read Access\n" ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inHfile << "  public : " ;
-    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
-               "  reader_" << current->mAttributeName << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
-    current = current->nextObject () ;
+               "  reader_" << current._mAttributeName (HERE) << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
+    current.next () ;
   }
   inHfile << "\n" ;
 
 //--- Direct write access
   inHfile << "//--------------------------------- Direct Write Access\n" ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inHfile << "  public : void\n"
-               "  modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+               "  modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
                "                              const " ;
-    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << " & inObject,\n"
                "                              const GGS_uint & inIndex\n"
                "                              COMMA_LOCATION_ARGS) const ;\n" ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n" ;
 
@@ -360,13 +346,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : inline cElement * nextObject (void) {\n"
              "      return (cElement *) internalNextObject () ;\n"
              "    }\n" ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inHfile << "  public : const " ;
-    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "  & _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
-    current = current->nextObject () ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inHfile << "  public : /* const */ " ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
+    inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
+    current.next () ;
   }
   inHfile << "  } ;\n\n" ;
 //--- End of list class declaration
@@ -408,29 +393,27 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
                "elementOf_GGS_" << aNomListe << " (" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
                "COMMA_LOCATION_ARGS) :\n"
                "AC_galgas_list::cListElement (THERE)" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << ",\n"
-              << current->mAttributeName << " (argument_" << numeroVariable << ")" ;
-    current = current->nextObject () ;
+              << current._mAttributeName (HERE) << " (argument_" << numeroVariable << ")" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << " {\n"
@@ -438,9 +421,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Element comparison
   inCppFile.writeCppHyphenLineComment () ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
-  if (current == NULL) {
+  if (current.hc ()) {
     inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
@@ -451,13 +434,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    macroValidPointer (_p) ;\n"
                  "    equal = " ;
     numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    while (current.hc ()) {
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << current->mAttributeName << "._operator_isEqual (_p->"  << current->mAttributeName << ").boolValue ()" ;
-      current = current->nextObject () ;
+      inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (_p->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
+      current.next () ;
       numeroVariable ++ ;
     }
     inCppFile << " ;\n"
@@ -467,8 +449,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "}\n\n" ;
 
   inCppFile.writeCppHyphenLineComment () ;
-  current = mNonExternAttributesList.firstObject () ;
-  if (current == NULL) {
+  current.rewind () ;
+  if (current.hc ()) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                  "appendForDescription (C_Compiler & /* _inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
@@ -481,13 +463,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                          const sint32 inIndentation\n"
                  "                          COMMA_LOCATION_ARGS) const {\n" ;
     numeroVariable = 0 ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    while (current.hc ()) {
       inCppFile << "  ioString << \"\\n\" ;\n"
                    "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                    "  ioString << \"|-\" ;\n"
-                   "  ioString << " << current->mAttributeName << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
-      current = current->nextObject () ;
+                   "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+      current.next () ;
       numeroVariable ++ ;
     }
   }
@@ -500,32 +481,30 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                    " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                    "
                "COMMA_LOCATION_ARGS) {\n"
                "  cElement * nouvelElement = (cElement *) NULL ;\n" 
                "  macroMyNew (nouvelElement, cElement (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
@@ -538,28 +517,26 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Engendrer la methode _internalPrependValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_internalPrependValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                    "
                "COMMA_LOCATION_ARGS) {\n"
                "  cElement * nouvelElement = (cElement *) NULL ;\n" 
                "  macroMyNew (nouvelElement, cElement (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
@@ -571,41 +548,38 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  if (_isBuilt ()" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << "&& argument_" << numeroVariable << "._isBuilt ()" ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "    _insulateList () ;\n"
                "    _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
@@ -615,7 +589,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Direct element access
 /*  inCppFile.writeCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomListe << "::cElement * GGS_" << aNomListe << "::\n"
+  inCppFile << "GGS_" << aNomListe << "::cEnumerator GGS_" << aNomListe << "::\n"
                "operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const {\n"
                "  MF_AssertThere (inIndex >= 0, \"inIndex (%ld) < 0\", inIndex, 0) ;\n"
                "  MF_AssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
@@ -642,26 +616,24 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
                "        while (p != NULL) {\n"
                "          macroValidPointer (p) ;\n" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << "          " ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " p_" << numeroVariable << " = p->" << current->mAttributeName << " ;\n" ;
-    current = current->nextObject () ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " p_" << numeroVariable << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "          _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
     inCppFile << "p_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << " COMMA_HERE) ;\n"
@@ -676,39 +648,36 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate 'prepend' method
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "modifier_prependValue (C_Compiler & /* inLexique */" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << ",\n                     "
                  "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                     "
                "COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  if (_isBuilt ()" ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << " && argument_" << numeroVariable << "._isBuilt ()" ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "    _insulateList () ;\n"
                "    _internalPrependValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
@@ -726,15 +695,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
                "      _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "_p->" << current->mAttributeName ;
-    current = current->nextObject () ;
+    inCppFile << "_p->" << current._mAttributeName (HERE) ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
@@ -757,32 +725,30 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
                "constructor_listWithValue (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  result._addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -805,15 +771,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    for (sint32 i=0 ; i<inCount ; i++) {\n"
                "      macroValidPointer (_p) ;\n"
                "      ioList._addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "_p->" << current->mAttributeName ;
-    current = current->nextObject () ;
+    inCppFile << "_p->" << current._mAttributeName (HERE) ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -872,14 +837,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "method_first (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n              " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n              "
                "COMMA_LOCATION_ARGS) const {\n"
@@ -892,21 +856,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
@@ -918,14 +880,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "method_last (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n             " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
@@ -938,21 +899,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
@@ -963,14 +922,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "modifier_popFirst (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n                 " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
@@ -983,23 +941,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "    _insulateList () ;\n"
                "    _internalRemoveFirst () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
@@ -1009,14 +965,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "modifier_popLast (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n                " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
@@ -1029,82 +984,77 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "    _insulateList () ;\n"
                "    _internalRemoveLast () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
 
 //--- Direct read access
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile.writeCppHyphenLineComment () ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomListe << "::\n"
-                 "reader_" << current->mAttributeName << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
+                 "reader_" << current._mAttributeName (HERE) << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
                  "  " ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " result ;\n"
                  "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
                  "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
                  "    if (object != NULL) {\n"
-                 "      result = object->" << current->mAttributeName << " ;\n"
+                 "      result = object->" << current._mAttributeName (HERE) << " ;\n"
                  "    }\n"
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
-    current = current->nextObject () ;
+    current.next () ;
   }
 
 //--- Direct write access
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomListe << "::\n"
-                 "modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
+                 "modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
                  "                              const " ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & inObject,\n"
                  "                              const GGS_uint & inIndex\n"
                  "                              COMMA_LOCATION_ARGS) const {\n"
                  "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
                  "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
                  "    if (object != NULL) {\n"
-                 "      object->" << current->mAttributeName << " = inObject ;\n"
+                 "      object->" << current._mAttributeName (HERE) << " = inObject ;\n"
                  "    }\n"
                  "  }\n"
                  "}\n\n" ;
-    current = current->nextObject () ;
+    current.next () ;
   }
 
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "const " ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+    inCppFile << "/* const */ " ;
+    current._mAttributType (HERE)(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
                  "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return ((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << " ;\n"
+                 "  return ((cElement *) mNextEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
                  "}\n\n" ;
-    current = current->nextObject () ;
+    current.next () ;
   }
 }
 
@@ -1126,28 +1076,25 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_sortedlist::cSortedListElement {\n"
 //--- Attributes
              "//--- Attributes\n" ;
-  GGS_typeListeAttributsSemantiques::cElement * attributCourant = mNonExternAttributesList.firstObject () ;
-  while (attributCourant != NULL) {
-    macroValidPointer (attributCourant) ;
-    attributCourant->mAttributType(HERE)->generatePublicDeclaration (inHfile, attributCourant->mAttributeName) ;
-    attributCourant = attributCourant->nextObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator attributCourant (mNonExternAttributesList, true) ;
+  while (attributCourant.hc ()) {
+    attributCourant._mAttributType (HERE)(HERE)->generatePublicDeclaration (inHfile, attributCourant._mAttributeName (HERE)) ;
+    attributCourant.next () ;
   }
 //--- declaration constructeur
   inHfile << "//--- Constructor\n"
              "  public : elementOf_GGS_" << aNomListe << " (" ;
-  attributCourant = mNonExternAttributesList.firstObject () ;
+  attributCourant.rewind () ;
   bool premier = true ;
-  while (attributCourant != NULL) {
-    macroValidPointer (attributCourant) ;
+  while (attributCourant.hc ()) {
     if (premier) {
       premier = false ;
     }else{
       inHfile << ",\n                                " ;
     }
-    macroValidPointer (attributCourant) ;
     inHfile << "const " ;
-    attributCourant->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-    attributCourant = attributCourant->nextObject () ;
+    attributCourant._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
+    attributCourant.next () ;
   }
   inHfile << ") ;\n\n"
 //--- Access to next and previous item
@@ -1211,17 +1158,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Constructor 'sortedListWithValue'
              "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                           " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -1245,15 +1191,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare method 'smallest'
              "//--- Method 'smallest'\n"
              "  public : void method_smallest (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                              " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                              "
              "COMMA_LOCATION_ARGS) const ;\n"
@@ -1261,15 +1206,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare method 'greatest'
              "//--- Method 'greatest'\n"
              "  public : void method_greatest (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                             " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                             "
              "COMMA_LOCATION_ARGS) const ;\n"
@@ -1277,15 +1221,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare modifier 'popGreatest'
              "//--- Method 'popGreatest'\n"
              "  public : void modifier_popGreatest (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                                " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                                "
              "COMMA_LOCATION_ARGS) ;\n"
@@ -1293,15 +1236,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Declare modifier 'popSmallest'
              "//--- Modifier 'popSmallest'\n"
              "  public : void modifier_popSmallest (C_Compiler & _inLexique" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inHfile << ",\n                                 " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inHfile << "\n                                 "
              "COMMA_LOCATION_ARGS) ;\n"
@@ -1312,17 +1254,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -1334,17 +1275,16 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Internal methods
              "//--- Internal Methods\n"
               "  protected : void _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
     inHfile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inHfile << ") ;\n"
@@ -1367,13 +1307,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : inline cElement * nextObject (void) {\n"
              "      return (cElement *) internalNextObject () ;\n"
              "    }\n" ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inHfile << "    public : const " ;
-    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "  & _" << current->mAttributeName << " (LOCATION_ARGS) const ;\n" ;
-    current = current->nextObject () ;
+    current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
+    inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
+    current.next () ;
   }
   inHfile << "  } ;\n" ;
 //---
@@ -1415,29 +1354,27 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
                "elementOf_GGS_" << aNomListe << " (" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = mNonExternAttributesList.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE)(HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ")" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable == 0) {
       inCppFile << ":\n" ;
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << current->mAttributeName << " (argument_" << numeroVariable << ")" ;
-    current = current->nextObject () ;
+    inCppFile << current._mAttributeName (HERE) << " (argument_" << numeroVariable << ")" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << " {\n"
@@ -1452,15 +1389,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
                "    macroValidPointer (_p) ;\n"
                "    equal = " ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
-    inCppFile << current->mAttributeName << "._operator_isEqual (_p->"  << current->mAttributeName << ").boolValue ()" ;
-    current = current->nextObject () ;
+    inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (_p->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << " ;\n"
@@ -1473,23 +1409,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "compareForSorting (const cSortedListElement * inOperand) const {\n"
                "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
   
-  GGS_EXsortDescriptorList::cElement * sortAttribute = mSortDescriptorList.firstObject () ;
-  if (sortAttribute != NULL) {
-    macroValidPointer (sortAttribute) ;
+  GGS_EXsortDescriptorList::cEnumerator sortAttribute (mSortDescriptorList, true) ;
+  if (sortAttribute.hc ()) {
     inCppFile << "  sint32 result = "
-              << (sortAttribute->mAscendingOrder.boolValue () ? "" : "- ")
-              << sortAttribute->mSortAttribute
-              << ".compare (operand->" << sortAttribute->mSortAttribute << ") ;\n" ;
-    sortAttribute = sortAttribute->nextObject () ;
-    while (sortAttribute != NULL) {
-      macroValidPointer (sortAttribute) ;
+              << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
+              << sortAttribute._mSortAttribute (HERE)
+              << ".compare (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
+    sortAttribute.next () ;
+    while (sortAttribute.hc ()) {
       inCppFile << "  if (result == 0) {\n"
                    "    result = "
-                << (sortAttribute->mAscendingOrder.boolValue () ? "" : "- ")
-                << sortAttribute->mSortAttribute
-                << ".compare (operand->" << sortAttribute->mSortAttribute << ") ;\n"
+                << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
+                << sortAttribute._mSortAttribute (HERE)
+                << ".compare (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n"
                 << "  }\n" ;
-      sortAttribute = sortAttribute->nextObject () ;
+      sortAttribute.next() ;
     }
   }
   inCppFile << "  return result ;\n"
@@ -1500,15 +1434,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                      C_String & ioString,\n"
                "                      const sint32 inIndentation\n"
                "                      COMMA_LOCATION_ARGS) const {\n" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-\" ;\n"
-                 "  ioString << " << current->mAttributeName << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
-    current = current->nextObject () ;
+                 "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "}\n\n" ;
@@ -1546,27 +1479,25 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  cElement * nouvelElement = (cElement *) NULL ;\n" 
                "  macroMyNew (nouvelElement, cElement (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ")) ;\n" 
@@ -1577,30 +1508,28 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  if (_isBuilt ()) {\n"
                "    _insulateList () ;\n"
                "    _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -1627,26 +1556,24 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "        elementOf_GGS_" << aNomListe << " * p = inOperand.firstObject () ;\n"
                "        while (p != NULL) {\n"
                "          macroValidPointer (p) ;\n" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     inCppFile << "          " ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " p_" << numeroVariable << " = p->" << current->mAttributeName << " ;\n" ;
-    current = current->nextObject () ;
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " p_" << numeroVariable << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "          _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
     inCppFile << "p_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -1667,13 +1594,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
                "      _internalAppendValues (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "_p->" << current->mAttributeName ;
-    current = current->nextObject () ;
+    inCppFile << "_p->" << current._mAttributeName (HERE) ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -1695,32 +1621,30 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement constructor 'sortedListWithValue'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
                "constructor_sortedListWithValue (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                           " ;
     }
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result._alloc () ;\n"
                "  result._addAssign_operation (" ;
-  current = mNonExternAttributesList.firstObject () ;
+  current.rewind () ;
   numeroVariable = 0 ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  while (current.hc ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
     inCppFile << "argument_" << numeroVariable ;
-    current = current->nextObject () ;
+    current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
@@ -1741,14 +1665,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "method_smallest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n                 " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) const {\n"
@@ -1761,21 +1684,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
@@ -1787,14 +1708,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "method_greatest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n             " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
@@ -1807,21 +1727,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
@@ -1832,14 +1750,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "modifier_popSmallest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n                 " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
@@ -1852,23 +1769,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "    _insulateList () ;\n"
                "    _internalRemoveSmallest () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
@@ -1878,14 +1793,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "modifier_popGreatest (C_Compiler & _inLexique" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << ",\n                " ;
-    current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
+    current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << numeroVariable ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
@@ -1898,38 +1812,35 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (_p != NULL) {\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current->mAttributeName << " ;\n" ;
+  current.rewind () ;
+  while (current.hc ()) {
+    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "    _insulateList () ;\n"
                "    _internalRemoveGreatest () ;\n"
                "  }else{\n" ;
   numeroVariable = 0 ;
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
     numeroVariable ++ ;
-    current = current->nextObject () ;
+    current.next () ;
   }
   inCppFile << "  }\n"
                "}\n\n" ;
 
-  current = mNonExternAttributesList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
+  current.rewind () ;
+  while (current.hc ()) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "const " ;
-    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current->mAttributeName << " (LOCATION_ARGS) const {\n"
+    current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
                  "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return ((cElement *) mNextEnumeratedObject)->" << current->mAttributeName << " ;\n"
+                 "  return ((cElement *) mNextEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
                  "}\n\n" ;
-    current = current->nextObject () ;
+    current.next () ;
   }
 }
 
