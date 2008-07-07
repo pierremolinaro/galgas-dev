@@ -147,11 +147,11 @@ void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.writeCppTitleComment (C_String ("Routine '") + aNomRoutine + "'") ;
   inHfile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
-  GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
-  while (currentArgument != NULL) {
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+  while (currentArgument.hc ()) {
     inHfile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-    currentArgument = currentArgument->nextObject () ;
+    generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+    currentArgument.next () ;
   }
   inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
 }
@@ -190,20 +190,20 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " _inLexique" ;
   }
-  GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = aListeTypeEtNomsArguments.firstObject () ;
-  while (currentArgument != NULL) {
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+  while (currentArgument.hc ()) {
     inCppFile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
-    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument->mCppName, true) ;
+    generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
+    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
     inCppFile << ' ' ;
     if (! variableUtilisee) {
       inCppFile << "/* " ;
     }
-    currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+    currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
     if (! variableUtilisee) {
       inCppFile << " */" ;
     }
-    currentArgument = currentArgument->nextObject () ;
+    currentArgument.next () ;
   }
   inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  #ifdef DEBUG_TRACE_ENABLED\n"
@@ -245,11 +245,11 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_typeActionExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "void routine_" << aNomAction << " (C_Compiler &" ;
-  GGS_L_EXsignature::cElement * currentArgument = aSignature.firstObject () ;
-  while (currentArgument != NULL) {
+  GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
+  while (currentArgument.hc ()) {
     inHfile << ",\n                                " ;
-    generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-    currentArgument = currentArgument->nextObject () ;
+    generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+    currentArgument.next () ;
   }
   inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
 }
@@ -347,34 +347,30 @@ generate_header_file (C_Compiler & inLexique,
 
   C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
 //--- Generate classes declarations
-  GGS_typeEntitiesToGenerateList::cElement * element = listeEntitesAengendrer.firstObject () ;
+  GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
   generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
-  while (element != NULL) {
-    macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generatePredeclarations (generatedZone3) ;
-    element = element->nextObject () ;
+  while (element.hc ()) {
+    element._mEntityToGenerate (HERE) (HERE)->generatePredeclarations (generatedZone3) ;
+    element.next () ;
   }
   generatedZone3 << '\n' ;
-  element = listeEntitesAengendrer.firstObject () ;
-  while (element != NULL) {
-    macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateHdeclarations (generatedZone3) ;
-    element = element->nextObject () ;
+  element.rewind () ;
+  while (element.hc ()) {
+    element._mEntityToGenerate (HERE) (HERE)->generateHdeclarations (generatedZone3) ;
+    element.next () ;
   }
-  element = listeEntitesAengendrer.firstObject () ;
-  while (element != NULL) {
-    macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateHdeclarations_2 (generatedZone3, inLexique) ;
-    element = element->nextObject () ;
+  element.rewind () ;
+  while (element.hc ()) {
+    element._mEntityToGenerate (HERE) (HERE)->generateHdeclarations_2 (generatedZone3, inLexique) ;
+    element.next () ;
   }
 
 //--- Engendrer la declaration de la classe de l'analyseur
   bool engendrerClasseCpp = false ;
-  element = listeEntitesAengendrer.firstObject () ;
-  while ((element != NULL) && ! engendrerClasseCpp) {
-    macroValidPointer (element) ;
-    engendrerClasseCpp = element->mEntityToGenerate (HERE)->isCppClassNeeded () ;
-    element = element->nextObject () ;
+  element.rewind () ;
+  while (element.hc () && ! engendrerClasseCpp) {
+    engendrerClasseCpp = element._mEntityToGenerate (HERE) (HERE)->isCppClassNeeded () ;
+    element.next () ;
   }
   if (engendrerClasseCpp) {
     engendrerDeclarationPrototypesReglesDeProduction (nomComposant, listeEntitesAengendrer, generatedZone3) ;
@@ -1570,27 +1566,25 @@ generate_cpp_file (C_Compiler & inLexique,
                  
 //--- Engendrer les implementations
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  GGS_typeEntitiesToGenerateList::cElement * element = listeEntitesAengendrer.firstObject () ;
+  GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
   sint32 select_repeat_production_index = 0 ;
-  while (element != NULL) {
-    macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->generateCppClassImplementation (inLexique,
+  while (element.hc ()) {
+    element._mEntityToGenerate (HERE) (HERE)->generateCppClassImplementation (inLexique,
                                          generatedZone3,
                                          nomComposant,
                                          select_repeat_production_index,
                                          generateDebug) ;
-    element = element->nextObject () ;
+    element.next () ;
   }
   
 //--- Generate prologue et epilogue action
   C_String prologueActions ;
   C_String epilogueActions ;
-  element = listeEntitesAengendrer.firstObject () ;
-  while (element != NULL) {
-    macroValidPointer (element) ;
-    element->mEntityToGenerate (HERE)->enterPrologueEpilogueAction (prologueActions,
+  element.rewind () ;
+  while (element.hc ()) {
+    element._mEntityToGenerate (HERE) (HERE)->enterPrologueEpilogueAction (prologueActions,
                                                                     epilogueActions) ;
-    element = element->nextObject () ;
+    element.next () ;
   }
   if ((prologueActions.length () > 0) || (epilogueActions.length () > 0)) {
     generatedZone3.writeCppTitleComment ("Prologue and epilogue actions") ;
