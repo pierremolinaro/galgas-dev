@@ -56,11 +56,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
-  GGS_enumConstantMap::cElement * constant = mConstantMap.firstObject () ;
-  while (constant != NULL) {
-    macroValidPointer (constant) ;
-    inHfile << ", enum_" << constant->mKey ;
-    constant = constant->nextObject () ;
+  GGS_enumConstantMap::cEnumerator constant (mConstantMap) ;
+  while (constant.hc ()) {
+    inHfile << ", enum_" << constant._key (HERE) ;
+    constant.next () ;
   }
   inHfile << "} ;\n\n"
              "//--- Private attribute\n"
@@ -76,86 +75,78 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Is built ?\n"
              "  public : bool _isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
-  constant = mConstantMap.firstObject () ;
-  while (constant != NULL) {
-    macroValidPointer (constant) ;
-    if (constant->mInfo.mHasConstructor.boolValue ()) {
+  constant.rewind () ;
+  while (constant.hc ()) {
+    if (constant._mHasConstructor (HERE).boolValue ()) {
       inHfile << "  public : static inline GGS_" << mEnumTypeName
-              << "  constructor_" << constant->mKey << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
-                 "    return GGS_" << mEnumTypeName << " (enum_" << constant->mKey << ") ;\n"
+              << "  constructor_" << constant._key (HERE) << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "    return GGS_" << mEnumTypeName << " (enum_" << constant._key (HERE) << ") ;\n"
                  "  }\n" ;
     }
-    constant = constant->nextObject () ;
+    constant.next () ;
   }
   inHfile << "\n" ;
 
 //--- Messages
   inHfile << "//--- Readers\n" ;
-  GGS_typeEnumMessageMap::cElement * m = mEnumMessageMap.firstObject () ;
-  while (m != NULL) {
-    macroValidPointer (m) ;
-    inHfile << "  public : GGS_string reader_" << m->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
-    m = m->nextObject () ;
+  GGS_typeEnumMessageMap::cEnumerator m (mEnumMessageMap) ;
+  while (m.hc ()) {
+    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    m.next () ;
   }
   inHfile << '\n' ;
 
 //--- Modifiers
   inHfile << "//--- Modifiers\n" ;
-  GGS_enumModifierMap::cElement * modifier = mEnumActionMap.firstObject () ;
-  while (modifier != NULL) {
-    macroValidPointer (modifier) ;
-    inHfile << "  public : void modifier_" << modifier->mKey << " (C_Compiler & _inLexique" ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = modifier->mInfo.mArgumentTypeAndNameList.firstObject () ;
-    while (currentArgument != NULL) {
-      macroValidPointer (currentArgument) ;
+  GGS_enumModifierMap::cEnumerator modifier (mEnumActionMap) ;
+  while (modifier.hc ()) {
+    inHfile << "  public : void modifier_" << modifier._key (HERE) << " (C_Compiler & _inLexique" ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (modifier._mArgumentTypeAndNameList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-      currentArgument = currentArgument->nextObject () ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+      currentArgument.next () ;
     }
     inHfile << "\n                                "
                "COMMA_LOCATION_ARGS) ;\n" ;
-    modifier = modifier->nextObject () ;
+    modifier.next () ;
   }
   inHfile << '\n' ;
 
 //--- Methods
   inHfile << "//--- Methods\n" ;
-  GGS_enumMethodMap::cElement * method = mMethodMap.firstObject () ;
-  while (method != NULL) {
-    macroValidPointer (method) ;
-    inHfile << "  public : void method_" << method->mKey << " (C_Compiler & _inLexique" ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
-    while (currentArgument != NULL) {
-      macroValidPointer (currentArgument) ;
+  GGS_enumMethodMap::cEnumerator method (mMethodMap) ;
+  while (method.hc ()) {
+    inHfile << "  public : void method_" << method._key (HERE) << " (C_Compiler & _inLexique" ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (method._mArgumentTypeAndNameList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-      currentArgument = currentArgument->nextObject () ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE)(HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+      currentArgument.next () ;
     }
     inHfile << "\n                                "
                "COMMA_LOCATION_ARGS) const ;\n" ;
-    method = method->nextObject () ;
+    method.next () ;
   }
   inHfile << '\n' ;
 
 
 //--- Operators
   inHfile << "//--- Operators\n" ;
-  GGS_enumOperatorMap::cElement * currentOperator = mOperatorMap.firstObject () ;
-  while (currentOperator != NULL) {
-    macroValidPointer (currentOperator) ;
-    inHfile << "  public : GGS_" << mEnumTypeName << " operator_" << currentOperator->mKey
+  GGS_enumOperatorMap::cEnumerator currentOperator (mOperatorMap) ;
+  while (currentOperator.hc ()) {
+    inHfile << "  public : GGS_" << mEnumTypeName << " operator_" << currentOperator._key (HERE)
             << " (C_Compiler & _inLexique,\n"
                "           const GGS_" << mEnumTypeName << " & inOperand" ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentOperator->mInfo.mArgumentTypeAndNameList.firstObject () ;
-    while (currentArgument != NULL) {
-      macroValidPointer (currentArgument) ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentOperator._mArgumentTypeAndNameList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inHfile) ;
-      currentArgument = currentArgument->nextObject () ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+      currentArgument.next () ;
     }
     inHfile << "\n                                "
                "COMMA_LOCATION_ARGS) const ;\n" ;
-    currentOperator = currentOperator->nextObject () ;
+    currentOperator.next () ;
   }
   inHfile << '\n' ;
 
@@ -268,79 +259,72 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "}\n\n" ;
 
 //--- Readers
-  GGS_typeEnumMessageMap::cElement * m = mEnumMessageMap.firstObject () ;
-  while (m != NULL) {
-    macroValidPointer (m) ;
+  GGS_typeEnumMessageMap::cEnumerator m (mEnumMessageMap) ;
+  while (m .hc ()) {
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
-                 "reader_" << m->mKey << " (C_Compiler & /* _inLexique */\n"
+                 "reader_" << m._key (HERE) << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
-                 "  const char * kMessages [" << (m->mInfo.mMessageStringList.count () + 1) << "] = {\"\"" ;
-    GGS_lstringlist::cElement * e = m->mInfo.mMessageStringList.firstObject () ;
-    while (e != NULL) {
-      macroValidPointer (e) ;
+                 "  const char * kMessages [" << (m._mMessageStringList (HERE).count () + 1) << "] = {\"\"" ;
+    GGS_lstringlist::cEnumerator e (m._mMessageStringList (HERE), true) ;
+    while (e.hc ()) {
       inCppFile << ",\n    " ;
-      inCppFile.writeCstringConstant (e->mValue) ;
-      e = e->nextObject () ;
+      inCppFile.writeCstringConstant (e._mValue (HERE)) ;
+      e.next () ;
     } 
     inCppFile << "\n  } ;\n"
                  "  return GGS_string (mValue > 0, kMessages [mValue]) ;\n"
                  "}\n\n" ;
-    m = m->nextObject () ;
+    m.next () ;
   }
 
 //--- Modifiers
-  GGS_enumModifierMap::cElement * modifier = mEnumActionMap.firstObject () ;
-  while (modifier != NULL) {
-    macroValidPointer (modifier) ;
-    GGS_enumModifierDefinitionList::cElement * definition = modifier->mInfo.mActionDefinitionList.firstObject ()  ;
+  GGS_enumModifierMap::cEnumerator modifier (mEnumActionMap) ;
+  while (modifier.hc ()) {
+    GGS_enumModifierDefinitionList::cEnumerator definition (modifier._mActionDefinitionList (HERE), true)  ;
     bool lexiqueIsUsed = false ;
-    while ((definition != NULL) && ! lexiqueIsUsed) {
-      macroValidPointer (definition) ;
-      lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition->mInstructionList, true) ;
-      definition = definition->nextObject () ;
+    while (definition.hc () && ! lexiqueIsUsed) {
+      lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition._mInstructionList (HERE), true) ;
+      definition.next () ;
     }
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
-                 "modifier_" << modifier->mKey << " (C_Compiler &" ;
+                 "modifier_" << modifier._key (HERE) << " (C_Compiler &" ;
     if (lexiqueIsUsed) {
       inCppFile << " _inLexique" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = modifier->mInfo.mArgumentTypeAndNameList.firstObject () ;
-    while (currentArgument != NULL) {
-      macroValidPointer (currentArgument) ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (modifier._mArgumentTypeAndNameList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inCppFile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
       bool variableIsUsed = false ;
-      definition = modifier->mInfo.mActionDefinitionList.firstObject ()  ;
-      while ((definition != NULL) && ! variableIsUsed) {
-        macroValidPointer (definition) ;
-        variableIsUsed = formalArgumentIsUsedForList (definition->mInstructionList, currentArgument->mCppName, true) ;
-        definition = definition->nextObject () ;
+      definition.rewind ()  ;
+      while (definition.hc () && ! variableIsUsed) {
+        variableIsUsed = formalArgumentIsUsedForList (definition._mInstructionList (HERE), currentArgument._mCppName (HERE), true) ;
+        definition.next () ;
       }
       inCppFile << ' ' ;
       if (! variableIsUsed) {
         inCppFile << "/* " ;
       }
-      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       if (! variableIsUsed) {
         inCppFile << " */" ;
       }
-      currentArgument = currentArgument->nextObject () ;
+      currentArgument.next () ;
     }
     inCppFile << "\n                                " ;
     inCppFile << "COMMA_UNUSED_LOCATION_ARGS) {\n"
                  "  #ifdef DEBUG_TRACE_ENABLED\n"
-                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::modifier_" << modifier->mKey << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::modifier_" << modifier._key (HERE) << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                  "  #endif\n"
                  "  switch (mValue) {\n" ;
-    definition = modifier->mInfo.mActionDefinitionList.firstObject () ;
-    while (definition != NULL) {
-      macroValidPointer (definition) ;
-      inCppFile << "  case enum_" << definition->mSourceState << ":\n"
-                   "    mValue = enum_" << definition->mTargetState << " ;\n" ;
+    definition.rewind () ;
+    while (definition.hc ()) {
+      inCppFile << "  case enum_" << definition._mSourceState (HERE) << ":\n"
+                   "    mValue = enum_" << definition._mTargetState (HERE) << " ;\n" ;
       inCppFile.incIndentation (2) ;
-      generateInstructionListForList (definition->mInstructionList,
+      generateInstructionListForList (definition._mInstructionList (HERE),
                                       inCppFile,
                                       inTargetFileName,
                                       ioPrototypeIndex,
@@ -348,65 +332,60 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                       true) ;
       inCppFile.incIndentation (-2) ;
       inCppFile << "    break ;\n" ;
-      definition = definition->nextObject () ;
+      definition.next () ;
     }
     inCppFile << "  default : break ;\n"
                  "  }\n"
                  "}\n\n" ;
-    modifier = modifier->nextObject () ;
+    modifier.next () ;
   }
 
 //--- Methods
-  GGS_enumMethodMap::cElement * method = mMethodMap.firstObject () ;
-  while (method != NULL) {
-    macroValidPointer (method) ;
-    GGS_enumMethodDefinitionList::cElement * definition = method->mInfo.mActionDefinitionList.firstObject ()  ;
+  GGS_enumMethodMap::cEnumerator method (mMethodMap) ;
+  while (method.hc ()) {
+    GGS_enumMethodDefinitionList::cEnumerator definition (method._mActionDefinitionList (HERE), true)  ;
     bool lexiqueIsUsed = false ;
-    while ((definition != NULL) && ! lexiqueIsUsed) {
-      macroValidPointer (definition) ;
-      lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition->mInstructionList, true) ;
-      definition = definition->nextObject () ;
+    while (definition.hc () && ! lexiqueIsUsed) {
+      lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition._mInstructionList (HERE), true) ;
+      definition.next () ;
     }
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
-                 "method_" << method->mKey << " (C_Compiler &" ;
+                 "method_" << method._key (HERE) << " (C_Compiler &" ;
     if (lexiqueIsUsed) {
       inCppFile << " _inLexique" ;
     }
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = method->mInfo.mArgumentTypeAndNameList.firstObject () ;
-    while (currentArgument != NULL) {
-      macroValidPointer (currentArgument) ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (method._mArgumentTypeAndNameList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inCppFile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
       bool variableIsUsed = false ;
-      definition = method->mInfo.mActionDefinitionList.firstObject ()  ;
-      while ((definition != NULL) && ! variableIsUsed) {
-        macroValidPointer (definition) ;
-        variableIsUsed = formalArgumentIsUsedForList (definition->mInstructionList, currentArgument->mCppName, true) ;
-        definition = definition->nextObject () ;
+      definition.rewind ()  ;
+      while (definition.hc () && ! variableIsUsed) {
+        variableIsUsed = formalArgumentIsUsedForList (definition._mInstructionList (HERE), currentArgument._mCppName (HERE), true) ;
+        definition.next () ;
       }
       inCppFile << ' ' ;
       if (! variableIsUsed) {
         inCppFile << "/* " ;
       }
-      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       if (! variableIsUsed) {
         inCppFile << " */" ;
       }
-      currentArgument = currentArgument->nextObject () ;
+      currentArgument.next () ;
     }
     inCppFile << "\n                                " ;
     inCppFile << "COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  #ifdef DEBUG_TRACE_ENABLED\n"
-                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::modifier_" << method->mKey << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::modifier_" << method._key (HERE) << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                  "  #endif\n"
                  "  switch (mValue) {\n" ;
-    definition = method->mInfo.mActionDefinitionList.firstObject () ;
-    while (definition != NULL) {
-      macroValidPointer (definition) ;
-      inCppFile << "  case enum_" << definition->mSourceState << ":\n" ;
+    definition.rewind () ;
+    while (definition.hc ()) {
+      inCppFile << "  case enum_" << definition._mSourceState (HERE) << ":\n" ;
       inCppFile.incIndentation (2) ;
-      generateInstructionListForList (definition->mInstructionList,
+      generateInstructionListForList (definition._mInstructionList (HERE),
                                       inCppFile,
                                       inTargetFileName,
                                       ioPrototypeIndex,
@@ -414,12 +393,12 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                       true) ;
       inCppFile.incIndentation (-2) ;
       inCppFile << "    break ;\n" ;
-      definition = definition->nextObject () ;
+      definition.next () ;
     }
     inCppFile << "  default : break ;\n"
                  "  }\n"
                  "}\n\n" ;
-    method = method->nextObject () ;
+    method.next () ;
   }
 
 
@@ -427,15 +406,13 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   const sint32 constantCount = mConstantMap.count () ;
   const sint32 squareConstantCount = constantCount * constantCount ;
   TC_UniqueArray <C_String> constantNameArray (constantCount COMMA_HERE) ;
-  GGS_enumConstantMap::cElement * constant = mConstantMap.firstObject () ;
-  while (constant != NULL) {
-    macroValidPointer (constant) ;
-    constantNameArray.addObject (C_String ("enum_") + constant->mKey) ;
-    constant = constant->nextObject () ;
+  GGS_enumConstantMap::cEnumerator constant (mConstantMap) ;
+  while (constant.hc ()) {
+    constantNameArray.addObject (C_String ("enum_") + constant._key (HERE)) ;
+    constant.next () ;
   }
-  GGS_enumOperatorMap::cElement * currentOperator = mOperatorMap.firstObject () ;
-  while (currentOperator != NULL) {
-    macroValidPointer (currentOperator) ;
+  GGS_enumOperatorMap::cEnumerator currentOperator (mOperatorMap) ;
+  while (currentOperator.hc ()) {
     TC_UniqueArray <C_String> resultArray (constantCount * constantCount COMMA_HERE) ;
     TC_UniqueArray <sint32> errorArray (constantCount * constantCount COMMA_HERE) ;
     const C_String defaultResult = C_String ("kNotBuilt") ;
@@ -443,26 +420,26 @@ generateCppClassImplementation (C_Compiler & inCompiler,
       resultArray.addObject (defaultResult) ;
       errorArray.addObject (-1) ; // 'Internal error: combination not handled
     }
-    GGS_enumOperatorDefinitionList::cElement * definition = currentOperator->mInfo.mActionDefinitionList.firstObject ()  ;
+    GGS_enumOperatorDefinitionList::cEnumerator definition (currentOperator._mActionDefinitionList (HERE), true)  ;
     sint32 errorMessageIndex = 1 ;
-    while (definition != NULL) {
-      macroValidPointer (definition) ;
-      const sint32 kIndex = ((sint32) definition->mLeftSourceStateIndex.uintValue ()) * constantCount + (sint32) definition->mRightSourceStateIndex.uintValue () ;
-      resultArray (kIndex COMMA_HERE) = C_String ("enum_") + definition->mTargetState.string () ;
+    while (definition.hc ()) {
+      const sint32 kIndex = ((sint32) definition._mLeftSourceStateIndex (HERE).uintValue ()) * constantCount
+                          + (sint32) definition._mRightSourceStateIndex (HERE).uintValue () ;
+      resultArray (kIndex COMMA_HERE) = C_String ("enum_") + definition._mTargetState (HERE).string () ;
       if (errorArray (kIndex COMMA_HERE) != -1) { // Currently undefined
-        definition->mLeftSourceStateIndex.signalSemanticError (inCompiler, "This combination is already defined" COMMA_HERE) ;
+        definition._mLeftSourceStateIndex (HERE).signalSemanticError (inCompiler, "This combination is already defined" COMMA_HERE) ;
       }
-      if (definition->mInstructionList.count () == 0) {
+      if (definition._mInstructionList (HERE).count () == 0) {
         errorArray (kIndex COMMA_HERE) = 0 ; // No Error
       }else{
         errorArray (kIndex COMMA_HERE) = errorMessageIndex ;
         errorMessageIndex ++ ;
       }
-      definition = definition->nextObject () ;
+      definition.next () ;
     }
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "static const GGS_" << mEnumTypeName << "::enumeration kResultFor" << mEnumTypeName
-              << "_" << currentOperator->mKey
+              << "_" << currentOperator._key (HERE)
               << " [" << squareConstantCount << "] = {" ;
     for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
       for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
@@ -478,7 +455,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "\n} ;\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "static const sint32 kErrorFor" << mEnumTypeName
-              << "_" << currentOperator->mKey
+              << "_" << currentOperator._key (HERE)
               << " [" << squareConstantCount << "] = {" ;
     for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
       for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
@@ -493,54 +470,51 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "\n} ;\n\n" ;
     inCppFile.writeCppHyphenLineComment () ;
     inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::\n"
-                 "operator_" << currentOperator->mKey
+                 "operator_" << currentOperator._key (HERE)
               << " (C_Compiler & _inLexique,\n"
                  "                                const GGS_" << mEnumTypeName << " & inOperand" ;
-    GGS_typeListeTypesEtNomsArgMethode::cElement * currentArgument = currentOperator->mInfo.mArgumentTypeAndNameList.firstObject () ;
-    while (currentArgument != NULL) {
-      macroValidPointer (currentArgument) ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentOperator._mArgumentTypeAndNameList (HERE), true) ;
+    while (currentArgument.hc ()) {
       inCppFile << ",\n                                " ;
-      generateFormalArgumentFromType (currentArgument->mType (HERE), currentArgument->mFormalArgumentPassingMode, inCppFile) ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
       bool variableIsUsed = false ;
-      definition = currentOperator->mInfo.mActionDefinitionList.firstObject ()  ;
-      while ((definition != NULL) && ! variableIsUsed) {
-        macroValidPointer (definition) ;
-        variableIsUsed = formalArgumentIsUsedForList (definition->mInstructionList, currentArgument->mCppName, true) ;
-        definition = definition->nextObject () ;
+      definition.rewind ()  ;
+      while (definition.hc () && ! variableIsUsed) {
+        variableIsUsed = formalArgumentIsUsedForList (definition._mInstructionList (HERE), currentArgument._mCppName (HERE), true) ;
+        definition.next () ;
       }
       inCppFile << ' ' ;
       if (! variableIsUsed) {
         inCppFile << "/* " ;
       }
-      currentArgument->mCppName (HERE)->generateCplusPlusName (inCppFile) ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       if (! variableIsUsed) {
         inCppFile << " */" ;
       }
-      currentArgument = currentArgument->nextObject () ;
+      currentArgument.next () ;
     }
     inCppFile << "\n                                " ;
     inCppFile << "COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  #ifdef DEBUG_TRACE_ENABLED\n"
-                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::operator_" << currentOperator->mKey << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+                 "    printf (\"ENTER GGS_" << mEnumTypeName << "::operator_" << currentOperator._key (HERE) << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                  "  #endif\n"
                  "  enumeration result = kNotBuilt ;\n"
                  "  if ((mValue > 0) && (inOperand.mValue > 0)) {\n"
                  "    const sint32 kIndex = (mValue - 1) * " << mConstantMap.count () << " + inOperand.mValue - 1 ;\n"
                  "    result = kResultFor" << mEnumTypeName
-              << "_" << currentOperator->mKey << " [kIndex] ;\n"
+              << "_" << currentOperator._key (HERE) << " [kIndex] ;\n"
                  "    const sint32 error = kErrorFor" << mEnumTypeName
-              << "_" << currentOperator->mKey << " [kIndex] ;\n"
+              << "_" << currentOperator._key (HERE) << " [kIndex] ;\n"
                  "    if (error != 0) {\n"
                  "      switch (error) {\n" ;
-    definition = currentOperator->mInfo.mActionDefinitionList.firstObject ()  ;
+    definition.rewind ()  ;
     errorMessageIndex = 1 ;
-    while (definition != NULL) {
-      macroValidPointer (definition) ;
-      if (definition->mInstructionList.count () > 0) {
+    while (definition. hc ()) {
+      if (definition._mInstructionList (HERE).count () > 0) {
         inCppFile << "      case " << errorMessageIndex << ":\n" ;
         errorMessageIndex ++ ;
         inCppFile.incIndentation (6) ;
-        generateInstructionListForList (definition->mInstructionList,
+        generateInstructionListForList (definition._mInstructionList (HERE),
                                         inCppFile,
                                         inTargetFileName,
                                         ioPrototypeIndex,
@@ -549,7 +523,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
         inCppFile.incIndentation (-6) ;
         inCppFile << "      break ;\n" ;
       }
-      definition = definition->nextObject () ;
+      definition.next () ;
     }
     inCppFile << "      default: // error == -1\n"
                  "        { C_String errorMessage ;\n"
@@ -562,7 +536,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                  "  }\n"
                  "  return GGS_" << mEnumTypeName << " (result) ;\n"
                  "}\n\n" ;
-    currentOperator = currentOperator->nextObject () ;
+    currentOperator.next () ;
   }
 
 //---
@@ -575,13 +549,12 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;
-  constant = mConstantMap.firstObject () ;
-  while (constant != NULL) {
-    macroValidPointer (constant) ;
-    inCppFile << "  case enum_" << constant->mKey << ":\n"
-                 "    s << \" "  << constant->mKey << ">\" ;\n"
+  constant.rewind () ;
+  while (constant.hc ()) {
+    inCppFile << "  case enum_" << constant._key (HERE) << ":\n"
+                 "    s << \" "  << constant._key (HERE) << ">\" ;\n"
                  "    break ;\n" ;
-    constant = constant->nextObject () ;
+    constant.next () ;
   } 
   inCppFile << "  case kNotBuilt:\n"
                "    s << \" (not built)>\" ;\n"
