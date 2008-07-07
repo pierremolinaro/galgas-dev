@@ -29,12 +29,11 @@ static sint32
 wrapperFileCount (const GGS_wrapperFileSortedList & inRegularFileSortedList,
                   const GGS_wrapperDirectorySortedList & inDirectorySortedList) {
   sint32 count = inRegularFileSortedList.count () ;
-  GGS_wrapperDirectorySortedList::cElement * d = inDirectorySortedList.firstObject () ;
-  while (d != NULL) {
-    macroValidPointer (d) ;
-    count += wrapperFileCount (d->mRegularFileSortedList,
-                               d->mDirectorySortedList) ;
-    d = d->nextObject () ;  
+  GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
+  while (d.hc ()) {
+    count += wrapperFileCount (d._mRegularFileSortedList (HERE),
+                               d._mDirectorySortedList (HERE)) ;
+    d.next () ;  
   }
   return count ;
 }
@@ -87,33 +86,31 @@ generateWrapperContents (AC_OutputStream & inCppFile,
                          const uint32 inWrapperDirectoryIndex) {
 //--- Recursively generate sub directories
   TC_UniqueArray <uint32> subDirectories ;
-  GGS_wrapperDirectorySortedList::cElement * d = inDirectorySortedList.firstObject () ;
-  while (d != NULL) {
-    macroValidPointer (d) ;
+  GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
+  while (d.hc ()) {
     generateWrapperContents (inCppFile,
-                             d->mRegularFileSortedList,
-                             d->mDirectorySortedList,
+                             d._mRegularFileSortedList (HERE),
+                             d._mDirectorySortedList (HERE),
                              inWrapperName,
-                             d->mDirectoryName,
-                             d->mWrapperDirectoryIndex.uintValue ()) ;
-    subDirectories.addObject (d->mWrapperDirectoryIndex.uintValue ()) ;
-    d = d->nextObject () ;  
+                             d._mDirectoryName (HERE),
+                             d._mWrapperDirectoryIndex (HERE).uintValue ()) ;
+    subDirectories.addObject (d._mWrapperDirectoryIndex (HERE).uintValue ()) ;
+    d.next () ;  
   }
 //--- Generate regular files
   TC_UniqueArray <uint32> wrapperFileIndexes ;
-  GGS_wrapperFileSortedList::cElement * f = inRegularFileSortedList.firstObject () ;
-  while (f != NULL) {
-    macroValidPointer (f) ;
+  GGS_wrapperFileSortedList::cEnumerator f (inRegularFileSortedList, true) ;
+  while (f.hc ()) {
     TC_UniqueArray <unsigned char> binaryData ;
-    const bool ok = f->mAbsoluteFilePath.binaryDataWithContentOfFile (binaryData) ;
+    const bool ok = f._mAbsoluteFilePath (HERE).binaryDataWithContentOfFile (binaryData) ;
     if (! ok) {
-      printf ("*** error: cannot read file '%s' ***\n", f->mAbsoluteFilePath.string ().cString ()) ;
+      printf ("*** error: cannot read file '%s' ***\n", f._mAbsoluteFilePath (HERE).string ().cString ()) ;
     }
     inCppFile.writeCppHyphenLineComment () ;
-    wrapperFileIndexes.addObject (f->mWrapperFileIndex.uintValue ()) ;
-    inCppFile << "//--- File '" << inWrapperDirectory << "/" << f->mRegularFileName << "'\n\n"
+    wrapperFileIndexes.addObject (f._mWrapperFileIndex (HERE).uintValue ()) ;
+    inCppFile << "//--- File '" << inWrapperDirectory << "/" << f._mRegularFileName (HERE) << "'\n\n"
                  "const char * gWrapperFileContent_"
-              << f->mWrapperFileIndex.uintValue ()
+              << f._mWrapperFileIndex (HERE).uintValue ()
               << '_' << inWrapperName
               << " = // " << (binaryData.count () + 1) << " bytes\n" ;
     bool header = false ;
@@ -141,16 +138,16 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     }
     inCppFile << ";\n\n"
                  "static const cRegularFileWrapper gWrapperFile_"
-              << f->mWrapperFileIndex.uintValue ()
+              << f._mWrapperFileIndex (HERE).uintValue ()
               << '_' << inWrapperName
               << " = {\n"
-              << "  \"" << f->mRegularFileName << "\",\n"
-              << "  \"" << f->mRegularFileName.pathExtension () << "\",\n"
+              << "  \"" << f._mRegularFileName (HERE) << "\",\n"
+              << "  \"" << f._mRegularFileName (HERE).pathExtension () << "\",\n"
                  "  gWrapperFileContent_"
-              << f->mWrapperFileIndex.uintValue ()
+              << f._mWrapperFileIndex (HERE).uintValue ()
               << '_' << inWrapperName << "\n"
                  "} ;\n\n" ;
-    f = f->nextObject () ;  
+    f.next () ;  
   }
 //--- Generate all File wrapper list
   inCppFile.writeCppHyphenLineComment () ;
