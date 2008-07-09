@@ -822,7 +822,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    }\n" ;
   current.rewind () ;
   while (current.hc ()) {
-    inHfile << "    public : const " ;
+    inHfile << "    public : /* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
     current.next () ;
@@ -1381,7 +1381,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   while (current.hc ()) {
     inCppFile.writeCppHyphenLineComment () ;
-    inCppFile << "const " ;
+    inCppFile << "/* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << mMapTypeName << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
                  "  return ((cElement *) mObjectArray (mCurrentIndex COMMA_THERE))->mInfo." << current._mAttributeName (HERE) << " ;\n"
