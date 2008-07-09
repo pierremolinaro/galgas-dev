@@ -34,17 +34,16 @@ generateInstructionListForList (const GGS_typeInstructionList & inList,
                                 const bool inGenerateDebug,
                                 const bool inGenerateSemanticInstructions) {
   ioCppFile.incIndentation (+2) ;
-  GGS_typeInstructionList::cElement * current = inList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
-      current->mInstruction(HERE)->generateInstruction (ioCppFile,
+  GGS_typeInstructionList::cEnumerator current (inList, true) ;
+  while (current.hc ()) {
+    if (inGenerateSemanticInstructions || current._mInstruction (HERE) (HERE)->isSyntacticInstruction ()) {
+      current._mInstruction (HERE)(HERE)->generateInstruction (ioCppFile,
                                                         inTargetFileName,
                                                         ioPrototypeIndex,
                                                         inGenerateDebug,
                                                         inGenerateSemanticInstructions) ;
     }
-    current = current->nextObject () ;
+    current.next () ;
   }
   ioCppFile.incIndentation (-2) ;
 }
@@ -58,15 +57,14 @@ generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionList & inList
                                           const C_String & inTargetFileName,
                                           sint32 & ioPrototypeIndex,
                                           const bool inNotDeclared) {
-  GGS_typeInstructionList::cElement * current = inList.firstObject () ;
-  while (current != NULL) {
-    macroValidPointer (current) ;
-    current->mInstruction(HERE)->generateSelectAndRepeatPrototypes (inHfile,
+  GGS_typeInstructionList::cEnumerator current (inList, true) ;
+  while (current.hc ()) {
+    current._mInstruction (HERE) (HERE)->generateSelectAndRepeatPrototypes (inHfile,
                                                                 inLexiqueClassName,
                                                                 inTargetFileName,
                                                                 ioPrototypeIndex,
                                                                 inNotDeclared) ;
-    current = current->nextObject () ;
+    current.next () ;
   }
 }
 
@@ -75,14 +73,13 @@ generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionList & inList
 bool
 isLexiqueFormalArgumentUsedForList (const GGS_typeInstructionList & inList,
                                     const bool inGenerateSemanticInstructions) {
-  GGS_typeInstructionList::cElement * current = inList.firstObject () ;
+  GGS_typeInstructionList::cEnumerator current (inList, true) ;
   bool formalArgumentIsUsed = false ;
-  while ((current != NULL) && ! formalArgumentIsUsed) {
-    macroValidPointer (current) ;
-    if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
-      formalArgumentIsUsed = current->mInstruction(HERE)->isLexiqueFormalArgumentUsed (inGenerateSemanticInstructions) ;
+  while (current.hc () && ! formalArgumentIsUsed) {
+    if (inGenerateSemanticInstructions || current._mInstruction (HERE) (HERE)->isSyntacticInstruction ()) {
+      formalArgumentIsUsed = current._mInstruction (HERE) (HERE)->isLexiqueFormalArgumentUsed (inGenerateSemanticInstructions) ;
     }
-    current = current->nextObject () ;
+    current.next () ;
   }
   return formalArgumentIsUsed ;
 }
@@ -93,14 +90,13 @@ bool
 formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
                              const GGS_typeCplusPlusName & inArgumentCppName,
                              const bool inGenerateSemanticInstructions) {
-  GGS_typeInstructionList::cElement * current = inList.firstObject () ;
+  GGS_typeInstructionList::cEnumerator current (inList, true) ;
   bool formalArgumentIsUsed = false ;
-  while (current != NULL && ! formalArgumentIsUsed) {
-    macroValidPointer (current) ;
-    if (inGenerateSemanticInstructions || current->mInstruction(HERE)->isSyntacticInstruction ()) {
-      formalArgumentIsUsed = current->mInstruction(HERE)->formalArgumentIsUsed (inArgumentCppName, inGenerateSemanticInstructions) ;
+  while (current.hc () && ! formalArgumentIsUsed) {
+    if (inGenerateSemanticInstructions || current._mInstruction (HERE)(HERE)->isSyntacticInstruction ()) {
+      formalArgumentIsUsed = current._mInstruction (HERE)(HERE)->formalArgumentIsUsed (inArgumentCppName, inGenerateSemanticInstructions) ;
     }
-    current = current->nextObject () ;
+    current.next () ;
   }
   return formalArgumentIsUsed ;
 }
@@ -109,12 +105,11 @@ formalArgumentIsUsedForList (const GGS_typeInstructionList & inList,
 
 bool
 formalCurrentObjectArgumentIsUsedForList (const GGS_typeInstructionList & inList) {
-  GGS_typeInstructionList::cElement * current = inList.firstObject () ;
+  GGS_typeInstructionList::cEnumerator current (inList, true) ;
   bool formalArgumentIsUsed = false ;
-  while (current != NULL && ! formalArgumentIsUsed) {
-    macroValidPointer (current) ;
-    formalArgumentIsUsed = current->mInstruction(HERE)->formalCurrentObjectArgumentIsUsed () ;
-    current = current->nextObject () ;
+  while (current.hc () && ! formalArgumentIsUsed) {
+    formalArgumentIsUsed = current._mInstruction (HERE)(HERE)->formalCurrentObjectArgumentIsUsed () ;
+    current.next () ;
   }
   return formalArgumentIsUsed ;
 }
@@ -150,13 +145,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
     aNomVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".getPtr ()) ;\n"
              << "  if (ptrExtraire_ == NULL) {\n" ;
-    GGS_L_assignedVariables::cElement * affectationCourante = aListeAffectationParametresEffectifs.firstObject () ;
-    while (affectationCourante != NULL) {
-      macroValidPointer (affectationCourante) ;
+    GGS_L_assignedVariables::cEnumerator affectationCourante (aListeAffectationParametresEffectifs, true) ;
+    while (affectationCourante.hc ()) {
       ioCppFile << "    " ;
-      affectationCourante->aNomVariableCible (HERE)->generateCplusPlusName (ioCppFile) ;
+      affectationCourante._aNomVariableCible (HERE) (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << "._drop () ;\n" ;
-      affectationCourante = affectationCourante->nextObject () ;
+      affectationCourante.next () ;
     }
     ioCppFile << "    if (" ;
     aNomVariable (HERE)->generateCplusPlusName (ioCppFile) ;
@@ -176,12 +170,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "  }else{\n" ;
     ioCppFile.incIndentation (4) ;
     ioCppFile << "macroValidPointer (ptrExtraire_) ;\n" ;
-    affectationCourante = aListeAffectationParametresEffectifs.firstObject () ;
-    while (affectationCourante != NULL) {
-      macroValidPointer (affectationCourante) ;
-      affectationCourante->aNomVariableCible (HERE)->generateCplusPlusName (ioCppFile) ;
-      ioCppFile << " = ptrExtraire_->" << affectationCourante->aNomAttributSource << " ;\n" ;
-      affectationCourante = affectationCourante->nextObject () ;
+    affectationCourante.rewind () ;
+    while (affectationCourante.hc ()) {
+      affectationCourante._aNomVariableCible (HERE) (HERE)->generateCplusPlusName (ioCppFile) ;
+      ioCppFile << " = ptrExtraire_->" << affectationCourante._aNomAttributSource (HERE) << " ;\n" ;
+      affectationCourante.next () ;
     }
     ioCppFile.incIndentation (-4) ;
     ioCppFile << "  }\n"
@@ -203,11 +196,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariable.isSameObjectAs (inArgumentCppName)
     || mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-  GGS_L_assignedVariables::cElement * affectationCourante = aListeAffectationParametresEffectifs.firstObject () ;
-  while ((! isUsed) && (affectationCourante != NULL)) {
-    macroValidPointer (affectationCourante) ;
-    isUsed = affectationCourante->aNomVariableCible.isSameObjectAs (inArgumentCppName) ;
-    affectationCourante = affectationCourante->nextObject () ;
+  GGS_L_assignedVariables::cEnumerator affectationCourante (aListeAffectationParametresEffectifs, true) ;
+  while ((! isUsed) && affectationCourante.hc ()) {
+    isUsed = affectationCourante._aNomVariableCible (HERE).isSameObjectAs (inArgumentCppName) ;
+    affectationCourante.next () ;
   }
   return isUsed ;
 }
@@ -218,11 +210,10 @@ bool cPtr_typeSimpleExtractInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = aNomVariable (HERE)->isCurrentObject ()
     || mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-  GGS_L_assignedVariables::cElement * affectationCourante = aListeAffectationParametresEffectifs.firstObject () ;
-  while ((! isUsed) && (affectationCourante != NULL)) {
-    macroValidPointer (affectationCourante) ;
-    isUsed = affectationCourante->aNomVariableCible (HERE)->isCurrentObject () ;
-    affectationCourante = affectationCourante->nextObject () ;
+  GGS_L_assignedVariables::cEnumerator affectationCourante (aListeAffectationParametresEffectifs, true) ;
+  while ((! isUsed) && affectationCourante.hc ()) {
+    isUsed = affectationCourante._aNomVariableCible (HERE) (HERE)->isCurrentObject () ;
+    affectationCourante.next () ;
   }
   return isUsed ;
 }
@@ -249,28 +240,27 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile.incIndentation (+2) ;
     bool first = true ;
     sint32 branchCount = 0 ;
-    GGS_typeStructuredExtractCasesList::cElement * p = mCasesList.firstObject () ;
-    while (p != NULL) {
-      macroValidPointer (p) ;
+    GGS_typeStructuredExtractCasesList::cEnumerator p (mCasesList, true) ;
+    while (p.hc ()) {
       if (first) {
         first = false ;
       }else{
         ioCppFile << "}else{\n" ;
         ioCppFile.incIndentation (+2) ;
       }
-      ioCppFile << "cPtr_" << p->mClassName << " * operand_"
-                << p->mResultVarID.location ()
-                << " = dynamic_cast <cPtr_" << p->mClassName << " *> (" ;
+      ioCppFile << "cPtr_" << p._mClassName (HERE) << " * operand_"
+                << p._mResultVarID (HERE).location ()
+                << " = dynamic_cast <cPtr_" << p._mClassName (HERE) << " *> (" ;
       mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".getPtr ()) ;\n"
-                   "if (operand_" << p->mResultVarID.location () << " != NULL) {\n"
+                   "if (operand_" << p._mResultVarID (HERE).location () << " != NULL) {\n"
                    "  macroValidPointer (operand_"
-                << p->mResultVarID.location ()
+                << p._mResultVarID (HERE).location ()
                 << ") ; \n" ;
-      generateInstructionListForList (p->mInstructionList, ioCppFile,
+      generateInstructionListForList (p._mInstructionList (HERE), ioCppFile,
                                       inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
-      p = p->nextObject () ;
+      p.next () ;
       branchCount ++ ;
     }
     ioCppFile << "}else{ // Else part\n" ;
@@ -291,11 +281,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
 bool cPtr_typeStructuredExtractInstructionWithElse::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionList, inGenerateSemanticInstructions) ;
-  GGS_typeStructuredExtractCasesList::cElement * p = mCasesList.firstObject () ;
-  while ((p != NULL) && ! used) {
-    macroValidPointer (p) ;
-    used = isLexiqueFormalArgumentUsedForList (p->mInstructionList, inGenerateSemanticInstructions) ;
-    p = p->nextObject () ;
+  GGS_typeStructuredExtractCasesList::cEnumerator p (mCasesList, true) ;
+  while (p.hc () && ! used) {
+    used = isLexiqueFormalArgumentUsedForList (p._mInstructionList (HERE), inGenerateSemanticInstructions) ;
+    p.next () ;
   }
   return used ;
 }
@@ -307,11 +296,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool inGenerateSemanticInstructions) const {
   bool used = mVariableName.isSameObjectAs (inArgumentCppName)
         || formalArgumentIsUsedForList (mElseInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
-  GGS_typeStructuredExtractCasesList::cElement * p = mCasesList.firstObject () ;
-  while ((p != NULL) && ! used) {
-    macroValidPointer (p) ;
-    used = formalArgumentIsUsedForList (p->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
-    p = p->nextObject () ;
+  GGS_typeStructuredExtractCasesList::cEnumerator p (mCasesList, true) ;
+  while (p.hc () && ! used) {
+    used = formalArgumentIsUsedForList (p._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
+    p.next () ;
   }
   return used ;
 }
@@ -322,11 +310,10 @@ bool cPtr_typeStructuredExtractInstructionWithElse::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = mVariableName (HERE)->isCurrentObject ()
     || formalCurrentObjectArgumentIsUsedForList (mElseInstructionList) ;
-  GGS_typeStructuredExtractCasesList::cElement * p = mCasesList.firstObject () ;
-  while ((p != NULL) && ! used) {
-    macroValidPointer (p) ;
-    used = formalCurrentObjectArgumentIsUsedForList (p->mInstructionList) ;
-    p = p->nextObject () ;
+  GGS_typeStructuredExtractCasesList::cEnumerator p (mCasesList, true) ;
+  while (p.hc () && ! used) {
+    used = formalCurrentObjectArgumentIsUsedForList (p._mInstructionList (HERE)) ;
+    p.next () ;
   }
   return used ;
 }
@@ -385,17 +372,17 @@ generateInstructions (AC_OutputStream & inCppFile,
                       const bool /* inGenerateDebug */) const {
   inCppFile << "const castBranchDescriptorType _castBranchDescriptor ["
             << inBranchList.count () << "] = {\n" ;
-  GGS_typeStructuredCastBranchList::cElement * p = inBranchList.firstObject () ;
+  GGS_typeStructuredCastBranchList::cEnumerator p (inBranchList, true) ;
   bool first = true ;
-  while (p != NULL) {
+  while (p.hc ()) {
     if (first) {
       first = false ;
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << "  {& typeid (cPtr_" << p->mCastClassName << "), "
-              << (p->mCheckForKindOfClass.boolValue () ? "true" : "false") << "}" ;
-    p = p->nextObject () ;
+    inCppFile << "  {& typeid (cPtr_" << p._mCastClassName (HERE) << "), "
+              << (p._mCheckForKindOfClass (HERE).boolValue () ? "true" : "false") << "}" ;
+    p.next () ;
   }
   inCppFile << "\n"
                "} ;\n" ;
@@ -448,30 +435,28 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << "    macroValidPointer (" << varName << ".getPtr ()) ;\n" ;
     ioCppFile.incIndentation (+4) ;
     bool first = true ;
-    GGS_typeStructuredCastBranchList::cElement * p = mBranchList.firstObject () ;
-    while (p != NULL) {
-      macroValidPointer (p) ;
+    GGS_typeStructuredCastBranchList::cEnumerator p (mBranchList, true) ;
+    while (p.hc ()) {
       if (first) {
         first = false ;
       }else{
         ioCppFile << "}else " ;
       }
-      if (p->mCheckForKindOfClass.boolValue ()) {
-        ioCppFile << "if (dynamic_cast <cPtr_" << p->mCastClassName << " *> (" << varName << ".getPtr ()) != NULL) {\n" ;
+      if (p._mCheckForKindOfClass (HERE).boolValue ()) {
+        ioCppFile << "if (dynamic_cast <cPtr_" << p._mCastClassName (HERE) << " *> (" << varName << ".getPtr ()) != NULL) {\n" ;
        }else{
-        ioCppFile << "if (typeid (cPtr_" << p->mCastClassName << ") == typeid (* (" << varName << ".getPtr ()))) {\n" ;
+        ioCppFile << "if (typeid (cPtr_" << p._mCastClassName (HERE) << ") == typeid (* (" << varName << ".getPtr ()))) {\n" ;
       }
-      GGS_typeCplusPlusNameList::cElement * cstName = p->mLocalConstantName.firstObject () ;
-      if (cstName != NULL) {
-        macroValidPointer (cstName) ;
-        ioCppFile << "  const GGS_" << p->mCastClassName << " " ;
-        cstName->mCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+      GGS_typeCplusPlusNameList::cEnumerator cstName (p._mLocalConstantName (HERE), true) ;
+      if (cstName.hc ()) {
+        ioCppFile << "  const GGS_" << p._mCastClassName (HERE) << " " ;
+        cstName._mCppName (HERE) (HERE)->generateCplusPlusName (ioCppFile) ;
         ioCppFile << " (" << varName << ".getPtr ()) ;\n" ;
       }
-      generateInstructionListForList (p->mInstructionList, ioCppFile,
+      generateInstructionListForList (p._mInstructionList (HERE), ioCppFile,
                                       inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
-      p = p->nextObject () ;
+      p.next () ;
     }
     ioCppFile << "}else{\n" ;
     mElseOrDefault (HERE)->generateInstructions (ioCppFile,
@@ -493,11 +478,10 @@ bool cPtr_typeStructuredCastInstruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = mElseOrDefault (HERE)->isLexiqueFormalArgumentUsed (inGenerateSemanticInstructions)
     || mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-  GGS_typeStructuredCastBranchList::cElement * p = mBranchList.firstObject () ;
-  while ((p != NULL) && ! used) {
-    macroValidPointer (p) ;
-    used = isLexiqueFormalArgumentUsedForList (p->mInstructionList, inGenerateSemanticInstructions) ;
-    p = p->nextObject () ;
+  GGS_typeStructuredCastBranchList::cEnumerator p (mBranchList, true) ;
+  while (p.hc () && ! used) {
+    used = isLexiqueFormalArgumentUsedForList (p._mInstructionList (HERE), inGenerateSemanticInstructions) ;
+    p.next () ;
   }
   return used ;
 }
@@ -509,11 +493,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = mElseOrDefault (HERE)->formalArgumentIsUsed (inArgumentCppName, inGenerateSemanticInstructions)
     || mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-  GGS_typeStructuredCastBranchList::cElement * p = mBranchList.firstObject () ;
-  while ((p != NULL) && ! used) {
-    macroValidPointer (p) ;
-    used = formalArgumentIsUsedForList (p->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
-    p = p->nextObject () ;
+  GGS_typeStructuredCastBranchList::cEnumerator p (mBranchList, true) ;
+  while (p.hc () && ! used) {
+    used = formalArgumentIsUsedForList (p._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
+    p.next () ;
   }
   return used ;
 }
@@ -524,11 +507,10 @@ bool cPtr_typeStructuredCastInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = mElseOrDefault (HERE)->formalCurrentObjectArgumentIsUsed ()
     || mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-  GGS_typeStructuredCastBranchList::cElement * p = mBranchList.firstObject () ;
-  while ((p != NULL) && ! used) {
-    macroValidPointer (p) ;
-    used = formalCurrentObjectArgumentIsUsedForList (p->mInstructionList) ;
-    p = p->nextObject () ;
+  GGS_typeStructuredCastBranchList::cEnumerator p (mBranchList, true) ;
+  while (p.hc () && ! used) {
+    used = formalCurrentObjectArgumentIsUsedForList (p._mInstructionList (HERE)) ;
+    p.next () ;
   }
   return used ;
 }
@@ -646,12 +628,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << mLocation.lineNumber ()
               << ")) ;\n" ;
-    GGS_varToDropList::cElement * currentVarToDrop = mVarToDropList.firstObject () ;
-    while (currentVarToDrop != NULL) {
-      macroValidPointer (currentVarToDrop) ;
-      currentVarToDrop->mVarToDrop (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_varToDropList::cEnumerator currentVarToDrop (mVarToDropList, true) ;
+    while (currentVarToDrop.hc ()) {
+      currentVarToDrop._mVarToDrop (HERE) (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << "._drop () ;\n" ;
-      currentVarToDrop = currentVarToDrop->nextObject () ;
+      currentVarToDrop.next () ;
     }
   }
 }
@@ -670,11 +651,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = mErrorLocationExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
              || mErrorMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-  GGS_varToDropList::cElement * currentVarToDrop = mVarToDropList.firstObject () ;
-  while ((currentVarToDrop != NULL) && ! isUsed) {
-    macroValidPointer (currentVarToDrop) ;
-    isUsed = currentVarToDrop->mVarToDrop.isSameObjectAs (inArgumentCppName)  ;
-    currentVarToDrop = currentVarToDrop->nextObject () ;
+  GGS_varToDropList::cEnumerator currentVarToDrop (mVarToDropList, true) ;
+  while (currentVarToDrop.hc () && ! isUsed) {
+    isUsed = currentVarToDrop._mVarToDrop (HERE).isSameObjectAs (inArgumentCppName)  ;
+    currentVarToDrop.next () ;
   }
   return isUsed ;
 }
@@ -685,11 +665,10 @@ bool cPtr_typeErrorInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = mErrorLocationExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
              || mErrorMessageExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-  GGS_varToDropList::cElement * currentVarToDrop = mVarToDropList.firstObject () ;
-  while ((currentVarToDrop != NULL) && ! isUsed) {
-    macroValidPointer (currentVarToDrop) ;
-    isUsed = currentVarToDrop->mVarToDrop (HERE)->isCurrentObject ()  ;
-    currentVarToDrop = currentVarToDrop->nextObject () ;
+  GGS_varToDropList::cEnumerator currentVarToDrop (mVarToDropList, true) ;
+  while (currentVarToDrop.hc () && ! isUsed) {
+    isUsed = currentVarToDrop._mVarToDrop (HERE) (HERE)->isCurrentObject ()  ;
+    currentVarToDrop.next () ;
   }
   return isUsed ;
 }
@@ -778,7 +757,7 @@ isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) co
 
 bool cPtr_typeMessageInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-                        const bool /* inGenerateSemanticInstructions */) const {
+                      const bool /* inGenerateSemanticInstructions */) const {
   return mMessageExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
 }
 
@@ -822,43 +801,42 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << " (HERE) ;\n" ;
     }
     sint32 index = 0 ;
-    GGS_L_matchInstructionCasesList::cElement * casCourant = aListeCas.firstObject () ;
-    while (casCourant != NULL) {
-      macroValidPointer (casCourant) ;
+    GGS_L_matchInstructionCasesList::cEnumerator casCourant (aListeCas, true) ;
+    while (casCourant.hc ()) {
       if (! mOperand1_isEnumeration.boolValue ()) {
-        ioCppFile << "cPtr_" << casCourant->mCase1_name
+        ioCppFile << "cPtr_" << casCourant._mCase1_name (HERE)
                   << " * operand_" << aIndicatif1.location ()
                   << " = dynamic_cast <"
-                     "cPtr_" << casCourant->mCase1_name
+                     "cPtr_" << casCourant._mCase1_name (HERE)
                   << " *> (ptr_" << aIndicatif1.location () << ") ;\n" ;
       }
       if (! mOperand2_isEnumeration.boolValue ()) {
-        ioCppFile << "cPtr_" << casCourant->mCase2_name
+        ioCppFile << "cPtr_" << casCourant._mCase2_name (HERE)
                   << " * operand_" << aIndicatif2.location ()
                   << " = dynamic_cast <"
-                     "cPtr_" << casCourant->mCase2_name
+                     "cPtr_" << casCourant._mCase2_name (HERE)
                   << " *> (ptr_" << aIndicatif2.location () << ") ;\n" ;
       }
       ioCppFile << "if ((" ;
       if (mOperand1_isEnumeration.boolValue ()) {
         aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
-        ioCppFile << ".enumValue () == GGS_" << aNomTypeBase1 << "::enum_" << casCourant->mCase1_name ;
+        ioCppFile << ".enumValue () == GGS_" << aNomTypeBase1 << "::enum_" << casCourant._mCase1_name (HERE) ;
       }else{
         ioCppFile <<  "operand_" << aIndicatif1.location () << " != NULL" ;
       }
       ioCppFile <<   ") && (" ;
       if (mOperand2_isEnumeration.boolValue ()) {
         aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
-        ioCppFile << ".enumValue () == GGS_" << aNomTypeBase2 << "::enum_" << casCourant->mCase2_name ;
+        ioCppFile << ".enumValue () == GGS_" << aNomTypeBase2 << "::enum_" << casCourant._mCase2_name (HERE) ;
       }else{
         ioCppFile << "operand_" << aIndicatif2.location () << " != NULL" ;
       }
       ioCppFile << ")) {\n" ;
-      generateInstructionListForList (casCourant->mInstructionList, ioCppFile,
+      generateInstructionListForList (casCourant._mInstructionList (HERE), ioCppFile,
                                       inTargetFileName, ioPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
       ioCppFile << "}else{\n" ;
-      casCourant = casCourant->nextObject () ;
+      casCourant.next () ;
       ioCppFile.incIndentation (2) ;
       index ++ ;
     }
@@ -889,11 +867,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   bool isUsed = aNomCppVariable1.isSameObjectAs (inArgumentCppName)
    || aNomCppVariable2.isSameObjectAs (inArgumentCppName)
    || formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
-  GGS_L_matchInstructionCasesList::cElement * casCourant = aListeCas.firstObject () ;
-  while ((! isUsed) && (casCourant != NULL)) {
-    macroValidPointer (casCourant) ;
-    isUsed = formalArgumentIsUsedForList (casCourant->mInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
-    casCourant = casCourant->nextObject () ;
+  GGS_L_matchInstructionCasesList::cEnumerator casCourant (aListeCas, true) ;
+  while ((! isUsed) && casCourant.hc ()) {
+    isUsed = formalArgumentIsUsedForList (casCourant._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
+    casCourant.next () ;
   }
   return isUsed ;
 }
@@ -905,11 +882,10 @@ formalCurrentObjectArgumentIsUsed (void) const {
   bool isUsed = aNomCppVariable1 (HERE)->isCurrentObject ()
    || aNomCppVariable2 (HERE)->isCurrentObject ()
    || formalCurrentObjectArgumentIsUsedForList (mElseInstructionsList) ;
-  GGS_L_matchInstructionCasesList::cElement * casCourant = aListeCas.firstObject () ;
-  while ((! isUsed) && (casCourant != NULL)) {
-    macroValidPointer (casCourant) ;
-    isUsed = formalCurrentObjectArgumentIsUsedForList (casCourant->mInstructionList) ;
-    casCourant = casCourant->nextObject () ;
+  GGS_L_matchInstructionCasesList::cEnumerator casCourant (aListeCas, true) ;
+  while ((! isUsed) && casCourant.hc ()) {
+    isUsed = formalCurrentObjectArgumentIsUsedForList (casCourant._mInstructionList (HERE)) ;
+    casCourant.next () ;
   }
   return isUsed ;
 }
@@ -931,11 +907,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
-    while (structAttribute != NULL) {
-      macroValidPointer (structAttribute) ;
-      ioCppFile << "." << structAttribute->mValue ;
-      structAttribute = structAttribute->nextObject () ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
     }
     ioCppFile << "._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.lineNumber ()
@@ -982,11 +957,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
-    while (structAttribute != NULL) {
-      macroValidPointer (structAttribute) ;
-      ioCppFile << "." << structAttribute->mValue ;
-      structAttribute = structAttribute->nextObject () ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
     }
     ioCppFile << "._decrement_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << mInstructionLocation.lineNumber ()
@@ -1033,24 +1007,22 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
-    while (structAttribute != NULL) {
-      macroValidPointer (structAttribute) ;
-      ioCppFile << "." << structAttribute->mValue ;
-      structAttribute = structAttribute->nextObject () ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
     }
     ioCppFile << "._addAssign_operation (" ;
-    GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
+    GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
     bool first = true ;
-    while (exp != NULL) {
-      macroValidPointer (exp) ;
+    while (exp.hc ()) {
       if (first) {
         first = false ;
       }else{
         ioCppFile << ", " ;
       }
-      exp->mExpression (HERE)->generateExpression (ioCppFile) ;
-      exp = exp->nextObject () ;
+      exp._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+      exp.next () ;
     }
     ioCppFile << ") ;\n" ;
   }
@@ -1061,11 +1033,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
 bool cPtr_typeAppendInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   bool used = false ;
-  GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1076,11 +1047,10 @@ bool cPtr_typeAppendInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool used = mTargetVarCppName.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1090,11 +1060,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeAppendInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = mTargetVarCppName (HERE)->isCurrentObject () ;
-  GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1116,24 +1085,22 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    GGS_lstringlist::cElement * structAttribute = mStructAttributeList.firstObject () ;
-    while (structAttribute != NULL) {
-      macroValidPointer (structAttribute) ;
-      ioCppFile << "." << structAttribute->mValue ;
-      structAttribute = structAttribute->nextObject () ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
     }
     ioCppFile << ".minusAssign_operation (" ;
-    GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
+    GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
     bool first = true ;
-    while (exp != NULL) {
-      macroValidPointer (exp) ;
+    while (exp.hc ()) {
       if (first) {
         first = false ;
       }else{
         ioCppFile << ", " ;
       }
-      exp->mExpression (HERE)->generateExpression (ioCppFile) ;
-      exp = exp->nextObject () ;
+      exp._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+      exp.next () ;
     }
     ioCppFile << ") ;\n" ;
   }
@@ -1144,11 +1111,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
 bool cPtr_typeRemoveInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   bool used = false ;
-  GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1159,11 +1125,10 @@ bool cPtr_typeRemoveInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool used = mTargetVarCppName.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1173,11 +1138,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeRemoveInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = mTargetVarCppName (HERE)->isCurrentObject () ;
-  GGS_typeExpressionList::cElement * exp = mSourceExpressions.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1200,12 +1164,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     aNomVariableTable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".prologue_" << aNomMethodeBloc << " (_inLexique" ;
-    GGS_typeExpressionList::cElement * current = mPrologueExpressionList.firstObject () ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    GGS_typeExpressionList::cEnumerator current (mPrologueExpressionList, true) ;
+    while (current.hc ()) {
       ioCppFile << ", " ;
-      current->mExpression (HERE)->generateExpression (ioCppFile) ;
-      current = current->nextObject () ;
+      current._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+      current.next () ;
     }
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << aNomMethodeBloc.lineNumber ()
@@ -1226,11 +1189,10 @@ bool cPtr_typeMapBlockPrologueInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariableTable.isSameObjectAs (inArgumentCppName) ;
-  GGS_typeExpressionList::cElement * argCourant = mPrologueExpressionList.firstObject () ;
-  while ((! isUsed) && (argCourant != NULL)) {
-    macroValidPointer (argCourant) ;
-    isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->nextObject () ;
+  GGS_typeExpressionList::cEnumerator argCourant (mPrologueExpressionList, true) ;
+  while ((! isUsed) && argCourant.hc ()) {
+    isUsed = argCourant._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    argCourant.next () ;
   }
   return isUsed ;
 }
@@ -1240,11 +1202,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeMapBlockPrologueInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = aNomVariableTable (HERE)->isCurrentObject () ;
-  GGS_typeExpressionList::cElement * exp = mPrologueExpressionList.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mPrologueExpressionList, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp.next () ;
   }
   return used ;    
 }
@@ -1267,12 +1228,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     aNomVariableTable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << ".epilogue_" << aNomMethodeBloc << " (_inLexique" ;
-    GGS_typeExpressionList::cElement * current = mEpilogueExpressionList.firstObject () ;
-    while (current != NULL) {
-      macroValidPointer (current) ;
+    GGS_typeExpressionList::cEnumerator current (mEpilogueExpressionList, true) ;
+    while (current.hc ()) {
       ioCppFile << ", " ;
-      current->mExpression (HERE)->generateExpression (ioCppFile) ;
-      current = current->nextObject () ;
+      current._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+      current.next () ;
     }
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << aNomMethodeBloc.lineNumber ()
@@ -1293,11 +1253,10 @@ bool cPtr_typeMapBlockEpilogueInstruction::
 formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool /* inGenerateSemanticInstructions */) const {
   bool isUsed = aNomVariableTable.isSameObjectAs (inArgumentCppName)  ;
-  GGS_typeExpressionList::cElement * argCourant = mEpilogueExpressionList.firstObject () ;
-  while ((! isUsed) && (argCourant != NULL)) {
-    macroValidPointer (argCourant) ;
-    isUsed = argCourant->mExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
-    argCourant = argCourant->nextObject () ;
+  GGS_typeExpressionList::cEnumerator argCourant (mEpilogueExpressionList, true) ;
+  while ((! isUsed) && argCourant.hc ()) {
+    isUsed = argCourant._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    argCourant.next () ;
   }
   return isUsed ;
 }
@@ -1307,11 +1266,10 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 bool cPtr_typeMapBlockEpilogueInstruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = aNomVariableTable (HERE)->isCurrentObject () ;
-  GGS_typeExpressionList::cElement * exp = mEpilogueExpressionList.firstObject () ;
-  while ((exp != NULL) && ! used) {
-    macroValidPointer (exp) ;
-    used = exp->mExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
-    exp = exp->nextObject () ;
+  GGS_typeExpressionList::cEnumerator exp (mEpilogueExpressionList, true) ;
+  while (exp.hc () && ! used) {
+    used = exp._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    exp.next () ;
   }
   return used ;    
 }

@@ -29,11 +29,10 @@
 static void
 printInstructionsListForGrammar (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                                  C_HTML_FileWrite & inHTMLfile) {
-  GGS_L_ruleSyntaxSignature::cElement * currentInstruction = inInstructionsList.firstObject () ;
-  while (currentInstruction != NULL) {
-    macroValidPointer (currentInstruction) ;
-    currentInstruction->mInstruction (HERE)->printInstructionForGrammar (inHTMLfile) ;
-    currentInstruction = currentInstruction->nextObject () ;
+  GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inInstructionsList, true) ;
+  while (currentInstruction.hc ()) {
+    currentInstruction._mInstruction (HERE) (HERE)->printInstructionForGrammar (inHTMLfile) ;
+    currentInstruction.next () ;
   }
 }
 
@@ -45,10 +44,9 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mRepeatList.firstObject () ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
   bool first = true ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
+  while (currentBranch.hc ()) {
     if (first) {
       first = false ;
     }else{
@@ -57,9 +55,9 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch->mInstructionList, inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch._mInstructionList (HERE), inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "end repeat;" ;
@@ -74,10 +72,9 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_L_branchList_ForGrammarComponent::cElement * currentBranch = mSelectList.firstObject () ;
+  GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
   bool first = true ;
-  while (currentBranch != NULL) {
-    macroValidPointer (currentBranch) ;
+  while (currentBranch.hc ()) {
     if (first) {
       first = false ;
     }else{
@@ -86,9 +83,9 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch->mInstructionList, inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch._mInstructionList (HERE), inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
-    currentBranch = currentBranch->nextObject () ;
+    currentBranch.next () ;
   }
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "end select;" ;
@@ -119,11 +116,10 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList) {
 //--- Print message
   sint32 productionsCount = 0 ;
-  GGS_L_syntaxComponents_ForGrammar::cElement * currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
-  while (currentSyntaxComponent != NULL) {
-    macroValidPointer (currentSyntaxComponent) ;
-    productionsCount += currentSyntaxComponent->mProductionRulesList.count () ;
-    currentSyntaxComponent = currentSyntaxComponent->nextObject () ;
+  GGS_L_syntaxComponents_ForGrammar::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
+  while (currentSyntaxComponent.hc ()) {
+    productionsCount += currentSyntaxComponent._mProductionRulesList (HERE).count () ;
+    currentSyntaxComponent.next () ;
   }
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "The original grammar has "
@@ -134,39 +130,37 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
   inHTMLfile.outputRawData ("</p><table class=\"result\">") ;
 
 //--- Print productions rules by traversing syntax components
-  currentSyntaxComponent = inSyntaxComponentsList.firstObject () ;
-  while (currentSyntaxComponent != NULL) {
-    macroValidPointer (currentSyntaxComponent) ;
+  currentSyntaxComponent.rewind () ;
+  while (currentSyntaxComponent.hc ()) {
     inHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\">") ;
     inHTMLfile << "RULES FROM '"
-               << currentSyntaxComponent->mSyntaxComponentName
+               << currentSyntaxComponent._mSyntaxComponentName (HERE)
                << "' component" ;
     inHTMLfile.outputRawData ("</td></tr>") ;
-    GGS_L_productionRules_ForGrammarComponent::cElement * currentRule = currentSyntaxComponent->mProductionRulesList.firstObject () ;
-    while (currentRule != NULL) {
-      macroValidPointer (currentRule) ;
+    GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
+    while (currentRule.hc ()) {
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
       inHTMLfile << "rule " ;
       inHTMLfile.outputRawData ("<code>") ;
       inHTMLfile << "<"
-                 << currentRule->mLeftNonterminalSymbol
+                 << currentRule._mLeftNonterminalSymbol (HERE)
                  << ">" ;
       inHTMLfile.outputRawData ("</code><br>") ;
       inHTMLfile << "file '" 
-                 << currentSyntaxComponent->mSyntaxComponentName.sourceFileName ()
+                 << currentSyntaxComponent._mSyntaxComponentName (HERE).sourceFileName ()
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "line "
-                 << currentRule->mLeftNonterminalSymbol.lineNumber () ;
+                 << currentRule._mLeftNonterminalSymbol (HERE).lineNumber () ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
-      printInstructionsListForGrammar (currentRule->mInstructionList,
+      printInstructionsListForGrammar (currentRule._mInstructionList (HERE),
                                        inHTMLfile) ;
       inHTMLfile.outputRawData ("</code></td></tr>") ;
     //--- Next rule
-      currentRule = currentRule->nextObject () ;
+      currentRule.next () ;
     }
-    currentSyntaxComponent = currentSyntaxComponent->nextObject () ;
+    currentSyntaxComponent.next () ;
   }
   inHTMLfile.outputRawData ("</table>") ;
 }
