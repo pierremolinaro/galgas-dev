@@ -3785,6 +3785,9 @@ routine handleReaderCall
       if [inReaderName string] == "string" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "uint" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "isalnum" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
