@@ -21,7 +21,8 @@
 //---------------------------------------------------------------------------*
 
 void cPtr_C_structToImplement::
-generatePredeclarations (AC_OutputStream & /* inHfile */) const {
+generatePredeclarations (AC_OutputStream & inHfile) const {
+  inHfile << "class GGS_" << mStructName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
