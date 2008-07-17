@@ -2248,7 +2248,65 @@ rule <instruction_beginning_with_identifier>
 #--- Match target and source types
   checkAssignmentTypesCompatibility !targetVarType !sourceType !here !true ;
 #--- Generate instruction
-  @typeInstruction instruction := [@C_assignmentInstruction new !targetVarCppName !sourceExpression] ;
+  @typeInstruction instruction := [@C_assignmentInstruction new !targetVarCppName ![@lstringlist emptyList] !sourceExpression] ;
+  ioInstructionList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#                 A S S I G N M E N T    I N S T R U C T I O N              *
+#                                                                           *
+#                            idf.field1.field2... := ... ;                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <instruction_beginning_with_identifier>
+  ?@lstring nomVarDest
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@EXsemanticContext inSemanticContext
+:
+#--- Perform an io access for target variable
+  @AC_galgasType targetType ;
+  @typeCplusPlusName nomCppVariableSource ;
+  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetType ?nomCppVariableSource] ;
+#--- Struct attributes
+  @lstringlist structAttributeList [emptyList] ;
+  repeat
+    $.$ ;
+    @lstring structAttributeName ;
+    $identifier$ ? structAttributeName ;
+    structAttributeList += !structAttributeName ;
+    @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
+    @bool found := false ;
+    foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
+      found := [kAttributeName string] == [structAttributeName string] ;
+      targetType := kAttributType ;
+    end foreach ;
+    if not found then
+      error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
+    end if ;
+  while
+  end repeat ;
+#--- Assignment
+  $:=$ ;
+#--- Parse source expression
+  @typeExpression sourceExpression ;
+  @AC_galgasType sourceType ;
+  <expression>
+    !ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?sourceExpression
+    ?sourceType
+  ;
+#--- Match target and source types
+  checkAssignmentTypesCompatibility !targetType !sourceType !here !true ;
+#--- Generate instruction
+  @typeInstruction instruction := [@C_assignmentInstruction new !nomCppVariableSource !structAttributeList !sourceExpression] ;
   ioInstructionList += !instruction ;
 end rule ;
 

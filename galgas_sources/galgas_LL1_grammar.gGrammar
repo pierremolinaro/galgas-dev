@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar galgas_LL1_grammar "LL1" :
+grammar galgas_LL1_grammar "SLR" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import option galgas_cli_options in "galgas_cli_options.gOption" ;
   import syntax grammar_parser in "grammar_parser.gSyntax" ;

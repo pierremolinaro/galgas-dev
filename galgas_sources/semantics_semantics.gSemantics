@@ -651,6 +651,7 @@ class @typeTextTableCall extends @typeExpression {
 
 class @C_assignmentInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
+  @lstringlist mStructAttributeList ;
   @typeExpression mSourceExpression ;
 }
 
