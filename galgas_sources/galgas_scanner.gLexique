@@ -153,6 +153,26 @@ message decimalNumberTooLarge : "decimal number too large" ;
 message floatNumberConversionError : "invalid float number" ;
 message internalError : "internal error" ;
 
+rule "0x" :
+  repeat
+  while '0'->'9' :
+    enterCharacterIntoString (tokenString, *) ;
+  while 'a'->'f' :
+    enterCharacterIntoString (tokenString, *) ;
+  while 'A'->'F' :
+    enterCharacterIntoString (tokenString, *) ;
+  while '_' :
+  end repeat ;
+  select
+  when 'L' :
+    convertHexStringIntoUInt64 (tokenString , uint64value) error decimalNumberTooLarge, internalError ;
+    send $unsigned_literal_integer64$ ;
+  default
+    convertHexStringIntoUInt (tokenString , uint32value) error decimalNumberTooLarge, internalError ;
+    send $unsigned_literal_integer$ ;
+  end select ;
+end rule ;
+
 rule '0'->'9' :
   enterCharacterIntoString (tokenString, *) ;
   repeat

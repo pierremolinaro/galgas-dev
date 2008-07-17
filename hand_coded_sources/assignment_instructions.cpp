@@ -39,6 +39,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
+    }
     ioCppFile << " = " ;
     mSourceExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n" ;
