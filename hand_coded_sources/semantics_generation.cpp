@@ -440,14 +440,21 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeCppThisName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "(*this)" ;
+  inFile << "(*this) /* self */" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeCppThisInCategoryName::
+generateCplusPlusName (AC_OutputStream & inFile) const {
+  inFile << "? /* self in category method*/" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeCppInheritedName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "(*this)" ;
+  inFile << "(*this) /* super */" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -522,6 +529,13 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 void cPtr_typeCppThisName::
 generateVariableAddress (AC_OutputStream & inFile) const {
   inFile << "this" ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeCppThisInCategoryName::
+generateVariableAddress (AC_OutputStream & inFile) const {
+  inFile << "?? */ this in category */" ;
 }
 
 //---------------------------------------------------------------------------*

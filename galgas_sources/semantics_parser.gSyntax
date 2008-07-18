@@ -1864,8 +1864,6 @@ rule <parse_method>
     [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
   end foreach ;
 #--- Insert the predefined "self" variable
-  @lstring me_Constant := [@lstring new !"self" !here] ;
-  @typeCplusPlusName me_constantCppName := [@typeCppThisName new !here] ;
   @AC_galgasType typeDefinition := [@typeGalgasClassType new 
            !inCurrentClassName
            !tableDesMethodes
@@ -1875,10 +1873,8 @@ rule <parse_method>
            !tableAttributsHerites
            !inClassIsAbstract
            !inClassMessage] ;
-  [!?methodLocalVariablesMap insertUsedConstInArgument !me_Constant !typeDefinition !me_constantCppName] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppThisName new !here]] ;
 #--- Insert the predefined "super" variable
-  @lstring super_Constant := [@lstring new !"super" !here] ;
-  @typeCplusPlusName super_constantCppName := [@typeCppInheritedName new !here] ;
   typeDefinition := [@typeGalgasClassType new 
            !inCurrentClassName
            !inAncestorClassMethodsMap
@@ -1889,7 +1885,7 @@ rule <parse_method>
            !inClassIsAbstract
         !inClassMessage
   ] ;
-  [!?methodLocalVariablesMap insertUsedConstInArgument !super_Constant !typeDefinition !super_constantCppName] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"super" !here] !typeDefinition ![@typeCppInheritedName new !here]] ;
 #--- Parse formal arguments
   @L_signature signatureForGrammarComponent ;
   <formal_arguments_list>
@@ -5627,14 +5623,14 @@ rule <semantics_declaration>
   $.$ ;
   $identifier$ ? @lstring methodName ;
 #---- Formal arguments -----------------------------------------
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @L_EXsignature listeDeTypes ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   @L_signature signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
-    !?tableArgumentsMethode
+    !?methodLocalVariablesMap
     ?listeTypeEtNomsArguments
     !?tableEnAvant
     ?signatureForGrammarComponent
@@ -5690,8 +5686,19 @@ rule <semantics_declaration>
       !false # not mapStyle
       !false # not iterator new style
     ] ;
-    [!?tableArgumentsMethode insertUsedConstInArgument !mAttributeName !mAttributType !cppName] ;
+    [!? methodLocalVariablesMap insertUsedConstInArgument !mAttributeName !mAttributType !cppName] ;
   end foreach ;
+#--- Insert the predefined "self" variable
+#  @AC_galgasType typeDefinition := [@typeGalgasClassType new 
+#           !className
+#           !tableDesMethodes
+#           !listeTousAttributsSemantiques
+#           !tableDesClassesAncetres
+#           !messageMapForHeirs
+#           !tableAttributsHerites
+#           !inClassIsAbstract
+#           !inClassMessage] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !classType ![@typeCppThisInCategoryName new ![methodName location]]] ;
 #--- Instructions
   ${$ ;
   @typeInstructionList instructionList [emptyList] ;
@@ -5699,7 +5706,7 @@ rule <semantics_declaration>
     !tableEnAvant
     !ioComponentSemanticsEntitiesMap
     !inOptionsComponentsMapForUse
-    !?tableArgumentsMethode
+    !? methodLocalVariablesMap
     !?instructionList
     !ioSemanticContext
   ;
@@ -5735,13 +5742,13 @@ label importSemantics
   $identifier$ ? @lstring methodName ;
 #---- Formal arguments -----------------------------------------
   @L_EXsignature listeDeTypes ;
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   @L_signature signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
-    !?tableArgumentsMethode
+    !?methodLocalVariablesMap
     ?listeTypeEtNomsArguments
     !?tableEnAvant
     ?signatureForGrammarComponent
