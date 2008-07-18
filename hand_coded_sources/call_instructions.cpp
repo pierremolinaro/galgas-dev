@@ -101,19 +101,49 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
 
   if (inGenerateSemanticInstructions) {
-    cPtr_typeCppInheritedName * inheritedAccess = dynamic_cast <cPtr_typeCppInheritedName *> (mExpression (HERE)) ;
-    if (inheritedAccess != NULL) {
-      ioCppFile << "inherited::" << mMethodName << " (_inLexique"  ;
-      GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
-      while (argCourant.hc ()) {
-        ioCppFile << ", " ;
-        argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
-        argCourant.next () ;
+    cPtr_typeVarInExpression * varInExpression = dynamic_cast <cPtr_typeVarInExpression *> (mExpression (HERE)) ;
+    bool handled = false ;
+    if (varInExpression != NULL) {
+      if (dynamic_cast <cPtr_typeCppInheritedName *> (varInExpression->mCppVarName (HERE)) != NULL) {
+        handled = true ;
+        ioCppFile << "inherited::method_" << mMethodName << " (_inLexique"  ;
+        GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
+        while (argCourant.hc ()) {
+          ioCppFile << ", " ;
+          argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+          argCourant.next () ;
+        }
+        ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                  << mMethodName.lineNumber ()
+                  << ")) ;\n" ;
+      }else if (dynamic_cast <cPtr_typeCppThisName *> (varInExpression->mCppVarName (HERE)) != NULL) {
+        handled = true ;
+        ioCppFile << "method_" << mMethodName << " (_inLexique"  ;
+        GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
+        while (argCourant.hc ()) {
+          ioCppFile << ", " ;
+          argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+          argCourant.next () ;
+        }
+        ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                  << mMethodName.lineNumber ()
+                  << ")) ;\n" ;
+      }else if (dynamic_cast <cPtr_typeCppThisInCategoryName *> (varInExpression->mCppVarName (HERE)) != NULL) {
+        cPtr_typeCppThisInCategoryName * p = dynamic_cast <cPtr_typeCppThisInCategoryName *> (varInExpression->mCppVarName (HERE)) ;
+        handled = true ;
+        ioCppFile << "operand_" << p->mVariableLocation.location () << "->method_" << mMethodName << " (_inLexique"  ;
+        GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
+        while (argCourant.hc ()) {
+          ioCppFile << ", " ;
+          argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+          argCourant.next () ;
+        }
+        ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+                  << mMethodName.lineNumber ()
+                  << ")) ;\n" ;
       }
-      ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-                << mMethodName.lineNumber ()
-                << ")) ;\n" ;
-    }else if (mCategoryMethodClassBaseName.string ().length () > 0) {
+    }
+    if ((! handled) && (mCategoryMethodClassBaseName.string ().length () > 0)) {
       C_String var ; var << "_temp_" << mMethodName.location () ;
       C_String staticClassName ; mExpressionType (HERE)->generateCppClassName (staticClassName) ;
       ioCppFile << "const " << staticClassName << " " << var << " = " ;
@@ -137,7 +167,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                 << ")) ;\n"
                    "  }\n"
                    "}\n" ;
-     }else{
+    }else if (! handled) {
       C_String var ; var << "_temp_" << mMethodName.location () ;
       ioCppFile << "const " ;
       mExpressionType (HERE)->generateCppClassName (ioCppFile) ;

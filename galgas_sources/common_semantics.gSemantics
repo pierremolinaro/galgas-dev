@@ -576,6 +576,12 @@ class @typeCppThisName extends @typeCplusPlusName {
 }
 
 #---------------------------------------------------------------------------*
+# C++ name is implicit (used for method call from category)
+
+class @typeCppThisInCategoryName extends @typeCplusPlusName {
+}
+
+#---------------------------------------------------------------------------*
 # C++ name is implicit (used for inherited method call)
 
 class @typeCppInheritedName extends @typeCplusPlusName {
@@ -1868,6 +1874,7 @@ class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outParametersList
   :
+      [self handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
     if not mAcceptAddAssignOperatorCall then
       [super handleAddAssignOperatorCall !inErrorLocation ?outParametersList] ;
     else

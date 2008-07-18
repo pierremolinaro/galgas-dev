@@ -164,6 +164,12 @@ rule "0x" :
   while '_' :
   end repeat ;
   select
+  when "LS" :
+    convertHexStringIntoSInt64 (tokenString , sint64value) error decimalNumberTooLarge, internalError ;
+    send $signed_literal_integer64$ ;
+  when 'S' | 's' :
+    convertHexStringIntoSInt (tokenString , sint32value) error decimalNumberTooLarge, internalError ;
+    send $signed_literal_integer$ ;
   when 'L' :
     convertHexStringIntoUInt64 (tokenString , uint64value) error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer64$ ;

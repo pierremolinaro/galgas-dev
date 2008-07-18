@@ -68,7 +68,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
         currentArgument = currentArgument->nextObject () ;
       }
     //--- Terminer la declaration
-      inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n" ;
+      inCppFile << " COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
     //--- Engendrer la liste d'instructions
       sint32 prototypeIndex = 0 ; // Non used here
       generateInstructionListForList (current->mInfo.mInstructionList, inCppFile,
@@ -101,9 +101,9 @@ generateClassMethodsDeclaration (const GGS_typeTableMethodesAimplementer & inMap
   //--- Terminer la declaration
     inHfile << "\n                                " ;
     if (current->champEstAbstraite) {
-      inHfile << "COMMA_LOCATION_ARGS) = 0 ;\n" ;
+      inHfile << "COMMA_LOCATION_ARGS) const = 0 ;\n" ;
     }else{
-      inHfile << "COMMA_LOCATION_ARGS) ;\n" ;
+      inHfile << "COMMA_LOCATION_ARGS) const ;\n" ;
     }
     inHfile << "\n" ;
     current = current->nextObject () ;
