@@ -3,7 +3,9 @@
 //  Generate cocoa file                                                      *
 //                                                                           *
 //  Copyright (C) 2004, ..., 2008 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -30,24 +32,6 @@
 //---------------------------------------------------------------------------*
 
 static void
-buildPopUpTreeForGUI (C_Compiler & /* inLexique */,
-                      const GGS_labelForPopUpList & inLabelForPopUpList,
-                      TC_Array2 <bool> & outPopUpTree,
-                      const sint32 inTerminalSymbolCount) {
-  outPopUpTree.reallocArray (inTerminalSymbolCount, inTerminalSymbolCount COMMA_HERE) ;
-  GGS_labelForPopUpList::cEnumerator currentMark (inLabelForPopUpList, true) ;
-  while (currentMark.hc ()) {
-    const sint32 terminalID1 = (sint32) currentMark._mTerminal1ID (HERE).uintValue () ;
-    const sint32 terminalID2 = (sint32) currentMark._mTerminal2ID (HERE).uintValue () ;
-    // printf ("POP $%s$ (%u), $%s$ (%u)\n", currentMark->mTerminal1.cString (), terminalID1, currentMark->mTerminal2.cString (), terminalID2) ;
-    outPopUpTree (terminalID1, terminalID2 COMMA_HERE) = true ;
-    currentMark.next () ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-static void
 generate_mm_file_for_cocoa (C_Compiler & inLexique,
                             const C_String & inCocoaComponentName,
                             const GGS_lstringlist & inNibAndClassList,
@@ -56,8 +40,6 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                             const GGS_M_optionComponents & inOptionComponentsMap,
                             const GGS_labelForPopUpList & inLabelForPopUpList,
                             const sint32 inTerminalSymbolCount) {
-  TC_Array2 <bool> popUpTree ;
-  buildPopUpTreeForGUI (inLexique, inLabelForPopUpList, popUpTree, inTerminalSymbolCount) ;
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"

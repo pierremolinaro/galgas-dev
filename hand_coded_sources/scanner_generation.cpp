@@ -145,7 +145,7 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
 //--- Create entries array
   const sint32 entriesCount = inMap.count () ;
   TC_UniqueArray <cTableEntry> entriesArray (entriesCount COMMA_HERE) ;
-  GGS_typeTableMotsReserves::cEnumerator p (inMap, true) ;
+  GGS_typeTableMotsReserves::cEnumerator p (inMap) ;
   sint32 index = 0 ;
   while (p.hc ()) {
     cTableEntry e ;
@@ -213,7 +213,7 @@ static void
 generateTerminalSymbolsTable (const GGS_typeTableTablesDeMotsReserves & inMap,
                               const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile) {
-  GGS_typeTableTablesDeMotsReserves::cEnumerator currentMap (inMap, true) ;
+  GGS_typeTableTablesDeMotsReserves::cEnumerator currentMap (inMap) ;
   while (currentMap.hc ()) {
     generateKeyWordTableImplementation (currentMap._attributSimpleTable (HERE), inLexiqueName, currentMap._key (HERE), inCppFile) ;
     currentMap.next () ;
@@ -240,7 +240,7 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
                "    case  " << inLexiqueName << "_1_:\n"
                "      s << \"$$\" ;\n"
                "      break ;\n" ;
-  GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux, true) ;
+  GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux) ;
   while (currentTerminal.hc ()) {
     inCppFile << "    case  " << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), inCppFile) ;
@@ -296,7 +296,7 @@ static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & i
 static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDeMotsReserves & inMap,
                                                      const C_String & inLexiqueName,
                                                      AC_OutputStream & inHfile) {
-  GGS_typeTableTablesDeMotsReserves::cEnumerator currentMap (inMap, true) ;
+  GGS_typeTableTablesDeMotsReserves::cEnumerator currentMap (inMap) ;
   while (currentMap.hc ()) {
     generateKeyWordTableDeclaration (currentMap._attributSimpleTable (HERE), inLexiqueName, currentMap._key (HERE), inHfile) ;
     currentMap.next () ;
@@ -308,7 +308,7 @@ static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDe
 static void
 generateAttributeInitialization (const GGS_typeLexicalAttributesMap & inMap,
                                  AC_OutputStream & inCppFile) {
-  GGS_typeLexicalAttributesMap::cEnumerator currentMap (inMap, true) ;
+  GGS_typeLexicalAttributesMap::cEnumerator currentMap (inMap) ;
   while (currentMap.hc ()) {
     currentMap._attributType(HERE)(HERE)->generateAttributeInitialization (currentMap._key (HERE), inCppFile) ;
     currentMap.next () ;
@@ -324,7 +324,7 @@ routine_buildLexicalRulesFromList (C_Compiler & ioLexique,
                                    COMMA_LOCATION_ARGS) {
 //--- First, find the longest string
   sint32 longestString = 0 ;
-  GGS_typeTableMotsReserves::cEnumerator currentEntry (keyWordsMap, true) ;
+  GGS_typeTableMotsReserves::cEnumerator currentEntry (keyWordsMap) ;
   while (currentEntry.hc ()) {
     const sint32 length = currentEntry._key (HERE).length () ;
     if (longestString < length) {
@@ -1191,7 +1191,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
   generatedZone2.writeCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class cTokenFor_" << inLexiqueName << " : public cToken {\n" ;
 //  generateAttributeDeclaration (table_attributs, generatedZone2) ;
-  GGS_typeLexicalAttributesMap::cEnumerator currentAttribute (table_attributs, true) ;
+  GGS_typeLexicalAttributesMap::cEnumerator currentAttribute (table_attributs) ;
   while (currentAttribute.hc ()) {
     currentAttribute._attributType(HERE)(HERE)->generateAttributeDeclaration (currentAttribute._key (HERE), generatedZone2) ;
     currentAttribute.next () ;
@@ -1226,7 +1226,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
   generatedZone3 << "//--- Terminal symbols enumeration\n"
                     "  public : enum {" ;
   generatedZone3 <<  inLexiqueName << "_1_" ;
-  GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux, true) ;
+  GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux) ;
   while (currentTerminal.hc ()) {
     generatedZone3 << ",\n  " ;
     generatedZone3 << inLexiqueName ;
@@ -1329,7 +1329,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   if (inIsTemplate) {
     generatedZone2.writeCppTitleComment ("Template Delimiters") ;
     generatedZone2 << "static const char * _gTemplateStartStrings [" << (inTemplateDelimiterMap.count () + 1) << "] = {\n" ;
-    GGS_templateDelimiterMap::cEnumerator currentDelimiter (inTemplateDelimiterMap, true) ;
+    GGS_templateDelimiterMap::cEnumerator currentDelimiter (inTemplateDelimiterMap) ;
     while (currentDelimiter.hc ()) {
       generatedZone2 << "  " ;
       generatedZone2.writeCstringConstant (currentDelimiter._key (HERE)) ;
@@ -1354,7 +1354,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   if (inIsTemplate) {
     generatedZone2.writeCppTitleComment ("Template Replacements") ;
     generatedZone2 << "static const char * _gTemplateReplacementKeyStrings [" << (inTemplateReplacementMap.count () + 1) << "] = {\n" ;
-    GGS_templateReplacementMap::cEnumerator currentReplacement (inTemplateReplacementMap, true) ;
+    GGS_templateReplacementMap::cEnumerator currentReplacement (inTemplateReplacementMap) ;
     while (currentReplacement.hc ()) {
       generatedZone2 << "  " ;
       generatedZone2.writeCstringConstant (currentReplacement._key (HERE)) ;
@@ -1381,7 +1381,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //--------------- Token Class declaration  
   generatedZone2 << "cTokenFor_" << inLexiqueName << "::cTokenFor_" << inLexiqueName << " (void)" ;
   bool first = true ;
-  GGS_typeLexicalAttributesMap::cEnumerator currentAttribute (table_attributs, true) ;
+  GGS_typeLexicalAttributesMap::cEnumerator currentAttribute (table_attributs) ;
   while (currentAttribute.hc ()) {
     if (first) {
       first = false ;
@@ -1422,7 +1422,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "}\n\n" ;
 
 //---------------------------------------- Generate error message list
-  GGS_typeTableMessagesErreurs::cEnumerator currentMessage (inLexicalErrorsMessageMap, true) ;
+  GGS_typeTableMessagesErreurs::cEnumerator currentMessage (inLexicalErrorsMessageMap) ;
   if (currentMessage.hc ()) {
     generatedZone2.writeCppTitleComment ("Lexical error message list") ;
     sint32 messageNumber = 0 ;
@@ -1446,7 +1446,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 // --------------------------------------- Generate syntax error messages
   C_String errorMessageList ;
 
-  GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux, true) ;
+  GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux) ;
   if (currentTerminal.hc ()) {
     generatedZone2.writeCppTitleComment ("Syntax error messages") ;
   }
@@ -1455,7 +1455,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     constanteCname << "gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), constanteCname) ;
     generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal._key (HERE) << "$' :\n"
-               "static const char * " << constanteCname << " = " ;
+                      "static const char * " << constanteCname << " = " ;
     generatedZone2.writeCstringConstant (currentTerminal._mErrorMessage (HERE)) ;
     generatedZone2 << " ;\n\n" ;
     errorMessageList << ",\n       gSyntaxErrorMessage_" ;
@@ -1464,16 +1464,14 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   }
 
   generatedZone2.writeCppTitleComment ("appendTerminalMessageToSyntaxErrorMessage") ;
-  generatedZone2 << "void "
-           << inLexiqueName
-           << "::\n"
-           << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
-           << "                                           C_String & outSyntaxErrorMessage) {\n" ;
+  generatedZone2 << "void " << inLexiqueName << "::\n"
+                 << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
+                 << "                                           C_String & outSyntaxErrorMessage) {\n" ;
   const sint32 n = table_des_terminaux.count () + 1 ;
   generatedZone2 << "  static const char * syntaxErrorMessageArray [" << n << "] = {"
-             "\"end of source\"" << errorMessageList << "} ;\n"
-             "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
-             "}\n\n" ;
+                    "\"end of source\"" << errorMessageList << "} ;\n"
+                    "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
+                    "}\n\n" ;
 
 //---------------------------------------- Terminal symbol table
   generateTerminalSymbolsTable (table_tables_mots_reserves, inLexiqueName, generatedZone2) ;
