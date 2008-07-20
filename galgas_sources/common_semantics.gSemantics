@@ -2456,6 +2456,27 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    L U I N T L I S T    T Y P E                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_luintlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_luint new] ![@lstring new !"mValue" !here] ;
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_luint new] ![@EXformalArgumentPassingMode argumentOut] ;
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_luint new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  outType := [@typeGalgasListType new
+    ![@lstring new !"luintlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    U I N T 6 4 L I S T    T Y P E                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -4287,6 +4308,10 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   @AC_galgasType t ; build_uintlist_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"uintlist" !here] !e] ;
+
+  build_luintlist_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"luintlist" !here] !e] ;
 
   build_uint64list_type ?t ;
   e := [@typeEntiteType new !t] ;

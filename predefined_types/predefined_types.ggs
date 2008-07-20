@@ -4,6 +4,10 @@ list @UINTLIST {
   @uint mValue ;
 }
 
+list @LUINTLIST {
+  @luint mValue ;
+}
+
 list @UINT64LIST {
   @uint64 mValue ;
 }
