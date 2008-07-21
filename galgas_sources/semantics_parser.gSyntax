@@ -5700,7 +5700,7 @@ rule <semantics_declaration>
 #           !inClassMessage] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !classType ![@typeCppThisInCategoryName new ![methodName location]]] ;
 #--- Instructions
-  ${$ ;
+  $:$ ;
   @typeInstructionList instructionList [emptyList] ;
   <semantic_instructions_list>
     !tableEnAvant
@@ -5710,7 +5710,9 @@ rule <semantics_declaration>
     !?instructionList
     !ioSemanticContext
   ;
-  $}$ ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
   listeEntitesAengendrer += ![@categoryMethodToImplement new
     !categoryMethodKind
     !baseClassName
@@ -5756,9 +5758,11 @@ label importSemantics
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
   [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
 #--- Instructions
-  ${$ ;
+  $:$ ;
   <semantic_instructions_list> parse ;
-  $}$ ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -7271,7 +7275,7 @@ rule <semantics_declaration>
     $reader$ ;
     @lstring messageName ;
     $identifier$ ? messageName ;
-    ${$ ;
+    $:$ ;
     @typeEnumCstMessageStringMap cstMessageStringMap [emptyMap] ;
     repeat
       @lstring cstName ;
@@ -7283,7 +7287,9 @@ rule <semantics_declaration>
       $;$ ;
     while
     end repeat ;
-    $}$ ;
+    $end$ ;
+    $reader$ ;
+    $;$ ;
   #--- Build message string list
     @lstringlist messageStringList [emptyList] ;
     foreach constantMap (@lstring constantName *) do
@@ -7524,7 +7530,7 @@ label importSemantics
     [!?enumMessageMap insertKey !messageName] ;
     @lstringlist messageStringList [emptyList] ;
     [!? exEnumMessageMap insertKey !messageName !messageStringList] ;
-    ${$ ;
+    $:$ ;
     repeat
       $identifier$ ? * ;
       $->$ ;
@@ -7532,7 +7538,9 @@ label importSemantics
       $;$ ;
     while
     end repeat ;
-    $}$ ;
+    $end$ ;
+    $reader$ ;
+    $;$ ;
   end repeat ;
   $}$ ;
 #--- Enter enum type into semantic entities map
