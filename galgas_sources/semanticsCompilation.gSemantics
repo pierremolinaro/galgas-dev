@@ -91,7 +91,7 @@ abstract method @semanticDeclaration.enterType
 override
 method @mapDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle attributes
   @attributeList attributeList [emptyList] ;
   foreach mAttributeList do
@@ -105,13 +105,13 @@ method @mapDeclaration.enterType
     !attributeList
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mMapTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @mapindexDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle map type name
   @typeMapIndex mapTypeIndex ;
   [@typeMapIndex makeRegularIndex !mMapTypeName !?ioSemanticContext.mTypeMap ?mapTypeIndex] ;
@@ -122,13 +122,13 @@ override method @mapindexDeclaration.enterType
     !mSearchMethodName
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mMapIndexTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @enumDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle attributes
   @enumConstructorMap enumConstructorMap [emptyMap] ;
   foreach mConstructorConstantList do
@@ -140,21 +140,21 @@ override method @enumDeclaration.enterType
     !enumConstructorMap
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mEnumTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclaration.enterType
   ?!@semanticContext unused ioSemanticContext
-{
+:
   message "@filewrapperDeclaration.enterType\n" ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle attributes
   @attributeList attributeList [emptyList] ;
   foreach mAttributeList do
@@ -168,13 +168,13 @@ override method @sortedListDeclaration.enterType
     !attributeList
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mSortedListTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @structDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle attributes
   @attributeList attributeList [emptyList] ;
   foreach mAttributeList do
@@ -188,13 +188,13 @@ override method @structDeclaration.enterType
     !attributeList
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mStructTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @listDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle attributes
   @attributeList attributeList [emptyList] ;
   foreach mAttributeList do
@@ -208,13 +208,13 @@ override method @listDeclaration.enterType
     !attributeList
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mListTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @classDeclaration.enterType
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Handle super class
   @typeMapIndex superClassIndex ;
   if [mSuperClassName string] == "" then
@@ -244,13 +244,13 @@ override method @classDeclaration.enterType
     !methodList
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mClassTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclaration.enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
-{
+:
 #--- Build signature
   @signature routineSignature [emptyList] ;
   foreach mFormalParameterList do
@@ -260,13 +260,13 @@ override method @externRoutineDeclaration.enterType # Handles also routine decla
   end foreach ;
 #--- Enter routine in routine map
   [!?ioSemanticContext.mRoutineMap insertKey !mRoutineName !routineSignature] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclaration.enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
-{
+:
   @typeMapIndex associatedListTypeIndex ;
   [@typeMapIndex makeRegularIndex !mAssociatedListTypeName !?ioSemanticContext.mTypeMap ?associatedListTypeIndex] ;
 #--- Enter type in type map
@@ -275,7 +275,7 @@ override method @listmapDeclaration.enterType # Handles also routine declaration
     !associatedListTypeIndex
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mListmapTypeName !t] ;
-}
+end method ;
 
 #---------------------------------------------------------------------------*
 

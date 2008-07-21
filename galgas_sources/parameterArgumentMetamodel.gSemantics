@@ -33,12 +33,12 @@ enum @formalArgumentPassingMode {
   constructor argumentInOut ;
   constructor argumentConstantIn ;
 }{
-  reader formalArgumentMessage {
+  reader formalArgumentMessage :
     argumentConstantIn -> "a constant input (??) formal argument" ;
     argumentIn -> "an input (?) formal argument" ;
     argumentOut -> "an output (!) formal argument" ;
     argumentInOut -> "an input/output (?!) argument" ;
-  }
+  end reader ;
 }
 
 #---------------------------------------------------------------------------*

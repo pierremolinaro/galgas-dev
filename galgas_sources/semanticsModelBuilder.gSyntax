@@ -621,7 +621,7 @@ nonterminal <enum_message_declaration> ?!@enumMessageList ioEnumMessageList ;
 rule <enum_message_declaration> ?!@enumMessageList ioEnumMessageList :
   $reader$ ;
   $identifier$ ?@lstring mEnumMessageName ;
-  ${$ ;
+  $:$ ;
   @enumMessageAssociationList mMessageAssociationList [emptyList] ;
   repeat
     $identifier$ ? @lstring mConstantName ;
@@ -631,7 +631,9 @@ rule <enum_message_declaration> ?!@enumMessageList ioEnumMessageList :
     mMessageAssociationList += !mConstantName !mMessage ;
   while
   end repeat ;
-  $}$ ;
+  $end$ ;
+  $reader$ ;
+  $;$ ;
   ioEnumMessageList +=
     !mEnumMessageName
     !mMessageAssociationList
@@ -943,10 +945,12 @@ rule <semantic_declaration>
   $identifier$ ? @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
-  ${$ ;
+  $:$ ;
   @semanticInstructionList mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
-  $}$ ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
   ioSemanticDeclarations.mOverridingCategoryMethodListMap +=
     ![mClassName string]
     !mMethodName
