@@ -562,7 +562,7 @@ analyzeGrammar (C_Compiler & inLexique,
     if (inLexique.mPerformGeneration) {
       HTMLfileName.deleteFile () ;
       if (verboseOptionOn) {
-        inLexique.ggs_printSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString ()) ;
+        inLexique.ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString ()) ;
       }
     }else{
       inLexique.ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString ()) ;
@@ -880,7 +880,7 @@ analyzeGrammar (C_Compiler & inLexique,
   if (outputHTMLfile) {
     if (inLexique.mPerformGeneration) {
       if (verboseOptionOn) {
-        inLexique.ggs_printSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
+        inLexique.ggs_printCreatedFileSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
       }
     }else{
       inLexique.ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
