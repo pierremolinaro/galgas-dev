@@ -56,7 +56,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
              "  public : enum enumeration {kNotBuilt" ;
-  GGS_enumConstantMap::cEnumerator constant (mConstantMap) ;
+  GGS_enumConstantMap::cEnumerator constant (mConstantMap, true) ;
   while (constant.hc ()) {
     inHfile << ", enum_" << constant._key (HERE) ;
     constant.next () ;
@@ -406,7 +406,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   const sint32 constantCount = mConstantMap.count () ;
   const sint32 squareConstantCount = constantCount * constantCount ;
   TC_UniqueArray <C_String> constantNameArray (constantCount COMMA_HERE) ;
-  GGS_enumConstantMap::cEnumerator constant (mConstantMap) ;
+  GGS_enumConstantMap::cEnumerator constant (mConstantMap, true) ;
   while (constant.hc ()) {
     constantNameArray.addObject (C_String ("enum_") + constant._key (HERE)) ;
     constant.next () ;
