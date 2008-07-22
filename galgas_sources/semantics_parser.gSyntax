@@ -5592,7 +5592,9 @@ label importSemantics
     ?signatureForGrammarComponent
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  if not [[ioSemanticContext mCategoryMethodMap] hasKey ![key string]] then
+    [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  end if ;
   $;$ ;
 end rule ;
 
@@ -5756,7 +5758,9 @@ label importSemantics
     ?signatureForGrammarComponent
   ;
   @lstring key [new ![className string] . ":" . [methodName string] ![methodName location]] ;
-  [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  if not [[ioSemanticContext mCategoryMethodMap] hasKey ![key string]] then
+    [!?ioSemanticContext.mCategoryMethodMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  end if ;
 #--- Instructions
   $:$ ;
   <semantic_instructions_list> parse ;
