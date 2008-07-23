@@ -3511,10 +3511,25 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "stringByStandardizingPath" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "absolutePathFromPath" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+  elsif [inReaderName string] == "stringByLeftPadding" then
     outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
+    outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
+  elsif [inReaderName string] == "stringByRightPadding" then
+    outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
+    outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
+  elsif [inReaderName string] == "stringByLeftAndRightPadding" then
+    outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
+    outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
+  elsif [inReaderName string] == "absolutePathFromPath" then
+    outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
   elsif [inReaderName string] == "stringByReplacingStringByString" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
