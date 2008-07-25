@@ -522,24 +522,30 @@ rule <factor> !@semanticExpression outExpression :
     $filewrapper$ ;
     @lstring filewrapperName ;
     $identifier$ ? filewrapperName ;
-    $.$ ;
     select
-      @lstring filePath ;
-      $literal_string$ ? filePath ;
-      outExpression := [@filewrapperInExpression new
+      outExpression := [@filewrapperObjectInstanciationInExpression new
         !filewrapperName
-        !filePath
       ] ;
     or
-      @lstring filewrapperTemplateName ;
-      $identifier$ ? filewrapperTemplateName ;
-      @outExpressionList expressionList ;
-      <output_expression_list> ? expressionList ;
-      outExpression := [@filewrapperTemplateInExpression new
-        !filewrapperName
-        !filewrapperTemplateName
-        !expressionList
-      ] ;
+      $.$ ;
+      select
+        @lstring filePath ;
+        $literal_string$ ? filePath ;
+        outExpression := [@filewrapperInExpression new
+          !filewrapperName
+          !filePath
+        ] ;
+      or
+        @lstring filewrapperTemplateName ;
+        $identifier$ ? filewrapperTemplateName ;
+        @outExpressionList expressionList ;
+        <output_expression_list> ? expressionList ;
+        outExpression := [@filewrapperTemplateInExpression new
+          !filewrapperName
+          !filewrapperTemplateName
+          !expressionList
+        ] ;
+      end select ;
     end select ;
   end select ;
   $]$ ;

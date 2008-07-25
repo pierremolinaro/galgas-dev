@@ -85,6 +85,11 @@ rule <semantics_component_start_symbol>
       $identifier$ ?* ;
       $in$ ;
       $literal_string$ ?* ;
+    or
+      $option$ ;
+      $identifier$ ?* ;
+      $in$ ;
+      $literal_string$ ?* ;
     end select ;
     $;$ ;
   while
@@ -917,10 +922,12 @@ rule <semantic_declaration>
   $identifier$ ? @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
-  ${$ ;
+  $:$ ;
   @semanticInstructionList mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
-  $}$ ;
+  $end$ ;
+  $method$ ;
+  $;$ ;
   ioSemanticDeclarations.mCategoryMethodListMap +=
     ![mClassName string]
     !mMethodName

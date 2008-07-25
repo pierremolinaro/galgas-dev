@@ -423,7 +423,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.writeCppHyphenLineComment () ;
   current.rewind () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
-  if (current.hc ()) {
+  if (! current.hc ()) {
     inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
@@ -450,7 +450,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.writeCppHyphenLineComment () ;
   current.rewind () ;
-  if (current.hc ()) {
+  if (! current.hc ()) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                  "appendForDescription (C_Compiler & /* _inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
@@ -1051,8 +1051,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "/* const */ " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
-                 "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return ((cElement *) mNextEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
+                 "  macroValidPointerThere (mCurrentEnumeratedObject) ;\n"
+                 "  return ((cElement *) mCurrentEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
                  "}\n\n" ;
     current.next () ;
   }
@@ -1837,8 +1837,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
-                 "  macroValidPointerThere (mNextEnumeratedObject) ;\n"
-                 "  return ((cElement *) mNextEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
+                 "  macroValidPointerThere (mCurrentEnumeratedObject) ;\n"
+                 "  return ((cElement *) mCurrentEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
                  "}\n\n" ;
     current.next () ;
   }

@@ -309,6 +309,12 @@ class @castInExpression extends @semanticExpression {
 
 #---------------------------------------------------------------------------*
 
+class @filewrapperObjectInstanciationInExpression extends @semanticExpression {
+  @lstring mFilewrapperName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @filewrapperInExpression extends @semanticExpression {
   @lstring mFilewrapperName ;
   @lstring mFilewrapperPath ;
