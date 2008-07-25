@@ -74,6 +74,20 @@ routine constructBuiltinTypeMap
   uint64Attribute += !uint64Index ![@lstring new !"mValue" !here] ;
   @lstring uint64list [new !"uint64list" !here] ;
   [!?outTypeMap insertKey !uint64list ![@listGalgasType new !uint64list !uint64Attribute]] ;
+#--- @luintlist type
+  @attributeList luintAttribute [emptyList] ;
+  @typeMapIndex luintIndex ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"luint" !here] !?outTypeMap ?luintIndex] ;
+  luintAttribute += !luintIndex ![@lstring new !"mValue" !here] ;
+  @lstring luintlist [new !"luintlist" !here] ;
+  [!?outTypeMap insertKey !luintlist ![@listGalgasType new !luintlist !luintAttribute]] ;
+#--- @uintlist type
+  @attributeList uintAttribute [emptyList] ;
+  @typeMapIndex uintIndex ;
+  [@typeMapIndex makeRegularIndex ![@lstring new !"uint" !here] !?outTypeMap ?uintIndex] ;
+  uintAttribute += !uintIndex ![@lstring new !"mValue" !here] ;
+  @lstring uintlist [new !"uintlist" !here] ;
+  [!?outTypeMap insertKey !uintlist ![@listGalgasType new !uintlist !uintAttribute]] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -147,7 +161,7 @@ end method ;
 override method @filewrapperDeclaration.enterType
   ?!@semanticContext unused ioSemanticContext
 :
-  message "@filewrapperDeclaration.enterType\n" ;
+  message "@filewrapperDeclaration.enterType [in semanticCompilation.gSemantics]\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

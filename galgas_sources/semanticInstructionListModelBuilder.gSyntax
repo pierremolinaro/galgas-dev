@@ -816,9 +816,14 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
     $label$ ;
     $identifier$ ?mLabelName ;
   end select ;
-  $in$ ;
-  @semanticExpression mSourceFileExpression ;
-  <expression> ? mSourceFileExpression ;
+  @bool sourceExpressionIsFile ;
+  select
+    $in$ ; sourceExpressionIsFile := true ;
+  or
+    $on$ ; sourceExpressionIsFile := false ;
+  end select ;
+  @semanticExpression mSourceExpression ;
+  <expression> ? mSourceExpression ;
   @actualParameterList mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
   @lstring mReturnedModelName ; # Empty string if no returned model
@@ -832,9 +837,39 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   outInstruction := [@grammarInstruction new
     !mGrammarComponentName
     !mLabelName
-    !mSourceFileExpression
+    !mSourceExpression
+    !sourceExpressionIsFile
     !mActualParameterList
     !mReturnedModelName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S W I T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $switch$ ;
+  @semanticExpression switchExpression ;
+  <expression> ? switchExpression ;
+  @switchBranches switchBranches [emptyList] ;
+  repeat
+    $when$ ;
+    $identifier$ ? @lstring constantName ;
+    $:$ ;
+    @semanticInstructionList instructions ;
+    <semantic_instruction_list> ? instructions ;
+    switchBranches += !constantName !instructions ;
+  while
+  end repeat ;
+  $end$ ;
+  $switch$ ;
+  $;$ ;
+  outInstruction := [@switchInstruction new
+    !switchExpression
+    !switchBranches
   ] ;
 end rule ;
 

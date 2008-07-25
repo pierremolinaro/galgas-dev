@@ -214,17 +214,18 @@ end rule ;
 
 rule <lexical_send_instruction> !@lexicalInstruction outInstruction :
   @lexicalSendSearchList lexicalSendSearchList [emptyList] ;
+  $search$ ;
   repeat
-    $search$ ;
     @lstring attributeName ;
     $identifier$ ? attributeName ;
     $in$ ;
     @lstring searchListName ;
     $identifier$ ? searchListName ;
     lexicalSendSearchList += !attributeName !searchListName ;
+    $default$ ;
   while
+    $search$ ;
   end repeat ;
-  $default$ ;
   @lexicalSendDefaultAction lexicalSendDefaultAction ;
   select
     @lstring defaultSentTerminal ;
