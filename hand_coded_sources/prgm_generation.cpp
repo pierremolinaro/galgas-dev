@@ -277,9 +277,10 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "                                                         false) ;\n"
                     "      " << inProgramComponentName << "_prologue (* _commonLexique, sourceFilesArray) ;\n"
                     "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
-                    "        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
-                    "        sint16 r = 0 ;\n" ;
-  generatedZone2.incIndentation (+8) ;
+                    "        try {\n"
+                    "          const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
+                    "          sint16 r = 0 ;\n" ;
+  generatedZone2.incIndentation (+10) ;
   uint32 grammarIndex = 0 ;
   GGS_ruleDescriptorForProgramList::cEnumerator currentRule (inRuleDescriptorForProgramList, true) ;
   while (currentRule.hc ()) {
@@ -333,13 +334,16 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
     currentRule.next () ;
     grammarIndex ++ ;
   }
-  generatedZone2.incIndentation (-8) ;
-  generatedZone2 << "        }else{\n"
-                    "          printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString ()) ;\n"
-                    "          r = 1 ;\n"
-                    "        }\n"
-                    "        if (r != 0) {\n"
-                    "          returnCode = r ;\n"
+  generatedZone2.incIndentation (-10) ;
+  generatedZone2 << "          }else{\n"
+                    "            printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString ()) ;\n"
+                    "            r = 1 ;\n"
+                    "          }\n"
+                    "          if (r != 0) {\n"
+                    "            returnCode = r ;\n"
+                    "          }\n"
+                    "        }catch (C_ScanOrParseOnlyException) { // Raised when scan only or parse only options are set\n"
+                    "          // Do nothing: accept silently exception\n"
                     "        }\n"
                     "      }\n"
                     "    //--- Error or warnings ?\n"

@@ -948,7 +948,10 @@ class @typeGalgas_string extends @AC_galgasType {
     ??@lstring inTypeMethodName
     !@L_EXsignature outTypeMethodSignature
   :
-    if [inTypeMethodName string] == "generateFile" then
+    if [inTypeMethodName string] == "deleteFile" then
+      outTypeMethodSignature := [@L_EXsignature emptyList] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inTypeMethodName string] == "generateFile" then
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
       outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
       outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
