@@ -157,6 +157,8 @@ rule <galgas_component>
     @stringlist extensionList [emptyList] ;
     extensionList += !"c" ;
     extensionList += !"cpp" ;
+    extensionList += !"m" ;
+    extensionList += !"mm" ;
     @stringlist actualHandCodedFileList := [handCodedFilesDir regularFilesWithExtensions !true !extensionList] ;
     foreach actualHandCodedFileList do
       externSourceFileList .= "SOURCES += " . [mValue lastPathComponent] . "\n" ;
