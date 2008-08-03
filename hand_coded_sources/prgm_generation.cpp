@@ -247,6 +247,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.writeCstringConstant (inVersionString) ;
   generatedZone2 << ",\n"
                     "      #endif\n"
+                    "      argv [1],\n"
                     "      100,\n"
                     "      100) ;\n"
                     "  //--- Build galgas io object\n"

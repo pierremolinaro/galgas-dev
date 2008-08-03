@@ -47,7 +47,7 @@ static C_builtin_CLI_Options gGenericOptions (false) ;
 static C_galgas_CLI_Options gGalgasOptions ;
 static galgas_cli_options gOption0 ;
 static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, & gGalgasOptions, & gOption0, NULL) ;
-static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, "", 100, 100) ;
+static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, "", "", 100, 100) ;
 static C_galgas_io * gIOParametersPtr = NULL ;
 static galgas_scanner * gScannerPtr = NULL ;
 static NSMutableArray * gColorArray ;

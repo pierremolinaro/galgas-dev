@@ -151,6 +151,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       #else
         "version GALGAS_BETA_VERSION",
       #endif
+      argv [1],
       100,
       100) ;
   //--- Build galgas io object

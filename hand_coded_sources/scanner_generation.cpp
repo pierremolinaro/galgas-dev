@@ -1615,7 +1615,7 @@ routine_generate_scanner (C_Compiler & inLexique,
                           COMMA_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
   //--- Get version string
-    const C_String GALGASversionString = inLexique.getCompilerVersion () ;
+    const C_String GALGASversionString = inLexique.compilerVersionString () ;
   //--- Create GALGAS_OUTPUT directory
     const C_String GALGAS_OUTPUT_directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent ("GALGAS_OUTPUT") ;
     const bool ok = GALGAS_OUTPUT_directory.makeDirectoryIfDoesNotExists () ;

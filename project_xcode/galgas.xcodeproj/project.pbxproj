@@ -3817,7 +3817,6 @@
 		CFD7F6A80E30DD5900F67727 /* include_listmapDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_listmapDeclaration.h; sourceTree = "<group>"; };
 		CFD7F6A90E30DD5900F67727 /* include_listmapGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_listmapGalgasType.h; sourceTree = "<group>"; };
 		CFD7F6AB0E30DD5900F67727 /* include_typeCppThisInCategoryName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCppThisInCategoryName.h; sourceTree = "<group>"; };
-		CFD818C60D8D7CBC00DEAD27 /* InfoI386 copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InfoI386 copy.plist"; sourceTree = "<group>"; };
 		CFD8D4D20B2DAF820049B27F /* include_typeLexicalTagInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalTagInstruction.h; sourceTree = "<group>"; };
 		CFD8D4F60B2DB38A0049B27F /* include_typeLexicalRewindAndSendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalRewindAndSendInstruction.h; sourceTree = "<group>"; };
 		CFD9E63B0AE7F07300A9D72A /* include_C_switch_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_switch_instruction.h; sourceTree = "<group>"; };
@@ -4100,7 +4099,6 @@
 				CFEDF5160C2D17F00038713A /* InfoI386.plist */,
 				CFEDB1A809E434C700701490 /* InfoPPC.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
-				CFD818C60D8D7CBC00DEAD27 /* InfoI386 copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
