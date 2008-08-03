@@ -33,7 +33,11 @@ filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_temp
  "mke"
 } {
 #--- Project
-  template fileListTemplate "/file_list_template.mke" ?@string GALGAS_SOURCE_LIST ?@string EXTERN_SOURCE_LIST ;
+  template fileListTemplate "/file_list_template.mke"
+    ?@string GALGAS_SOURCE_LIST
+    ?@string HAND_CODED_SOURCE_LIST
+    ?@string EXTERN_SOURCE_LIST
+  ;
 }
 
 #------------------------------------------------------------------------------*
@@ -110,7 +114,18 @@ rule <galgas_component>
   $project$ ;
   @string galgasSourceList := "" ;
   @stringset galgasSourceSet [emptySet] ;
+  @stringset externSourceSet [emptySet] ;
+  @string externSourceList := "" ;
   repeat
+  while
+    $extern$ ;
+    $literal_string$ ?@lstring inExternSourceName ;
+    if [externSourceSet hasKey ![inExternSourceName string]] then
+      error inExternSourceName: "the '" . inExternSourceName . "' is already declared as extern" ;
+    end if ;
+    externSourceSet += ![inExternSourceName string] ;
+    externSourceList .= "SOURCES += " . [inExternSourceName string] . "\n" ;
+    $;$ ;
   while
     $compile$ ;
     $literal_string$ ?@lstring fileName ;
@@ -146,7 +161,7 @@ rule <galgas_component>
     end foreach ;
   end if ;
 #--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
-  @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate !galgasSourceList !externSourceFileList] ;
+  @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate !galgasSourceList !externSourceFileList !externSourceList] ;
   @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath] ;
 #---- Convert old files
@@ -242,6 +257,10 @@ label importLexique
   $project$ ;
   repeat
   while
+    $extern$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  while
     $compile$ ;
     $literal_string$ ?* ;
     $;$ ;
@@ -255,6 +274,10 @@ label importSyntax
 :
   $project$ ;
   repeat
+  while
+    $extern$ ;
+    $literal_string$ ?* ;
+    $;$ ;
   while
     $compile$ ;
     $literal_string$ ?* ;
@@ -271,6 +294,10 @@ label importSemantics
   $project$ ;
   repeat
   while
+    $extern$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  while
     $compile$ ;
     $literal_string$ ?* ;
     $;$ ;
@@ -286,6 +313,10 @@ label importGrammarForSemantics
   $project$ ;
   repeat
   while
+    $extern$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  while
     $compile$ ;
     $literal_string$ ?* ;
     $;$ ;
@@ -298,6 +329,10 @@ label importOptions
 :
   $project$ ;
   repeat
+  while
+    $extern$ ;
+    $literal_string$ ?* ;
+    $;$ ;
   while
     $compile$ ;
     $literal_string$ ?* ;
