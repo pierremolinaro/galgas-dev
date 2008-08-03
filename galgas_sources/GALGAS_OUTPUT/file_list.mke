@@ -138,4 +138,7 @@ SOURCES += galgas_LL1_grammar.cpp
 SOURCES += galgas_LL1_prgm.cpp
 
 
+#--- Extern files ---------------------
+
+
 #---------------------------------------------------------------*
