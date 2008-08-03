@@ -951,6 +951,12 @@ class @typeGalgas_string extends @AC_galgasType {
     if [inTypeMethodName string] == "deleteFile" then
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
       outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inTypeMethodName string] == "removeEmptyDirectory" then
+      outTypeMethodSignature := [@L_EXsignature emptyList] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inTypeMethodName string] == "removeDirectoryRecursively" then
+      outTypeMethodSignature := [@L_EXsignature emptyList] ;
+      outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inTypeMethodName string] == "generateFile" then
       outTypeMethodSignature := [@L_EXsignature emptyList] ;
       outTypeMethodSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
@@ -3555,6 +3561,10 @@ routine handleStringReaderCall
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
+  elsif [inReaderName string] == "hiddenFiles" then
+    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+    build_stringlist_type  ?outReturnedType ;
   elsif [inReaderName string] == "directories" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
@@ -3562,8 +3572,8 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "regularFilesWithExtensions" then
     build_stringlist_type  ?outReturnedType ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
   elsif [inReaderName string] == "system" then
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_sint new] ;

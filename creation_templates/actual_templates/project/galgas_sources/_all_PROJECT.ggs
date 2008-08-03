@@ -1,8 +1,10 @@
-compile "%PROJECT_NAME%_lexique.ggs" ;
-compile "%PROJECT_NAME%_options.ggs" ;
-compile "%PROJECT_NAME%_semantics.ggs" ;
-compile "%PROJECT_NAME%_syntax.ggs" ;
-compile "%PROJECT_NAME%_grammar.ggs" ;
-compile "%PROJECT_NAME%_cocoa.ggs" ;
-compile "%PROJECT_NAME%_program.ggs" ;
+project
+  compile "%PROJECT_NAME%_lexique.ggs" ;
+  compile "%PROJECT_NAME%_options.ggs" ;
+  compile "%PROJECT_NAME%_semantics.ggs" ;
+  compile "%PROJECT_NAME%_syntax.ggs" ;
+  compile "%PROJECT_NAME%_grammar.ggs" ;
+  compile "%PROJECT_NAME%_program.ggs" ;
+end project ;
 
+compile "%PROJECT_NAME%_cocoa.ggs" ;
