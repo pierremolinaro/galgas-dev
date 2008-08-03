@@ -34,6 +34,7 @@ filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_temp
 } {
 #--- Project
   template fileListTemplate "/file_list_template.mke"
+    ?@string HAND_CODED_SOURCES_SUB_DIRS
     ?@string GALGAS_SOURCE_LIST
     ?@string HAND_CODED_SOURCE_LIST
     ?@string EXTERN_SOURCE_LIST
@@ -151,17 +152,33 @@ rule <galgas_component>
 #---- Explore 'hand_coded_sources' directory
   @string handCodedFilesDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/hand_coded_sources" ;
   @string externSourceFileList := "" ;
+  @stringset handCodedSourcesSubPathSet [emptySet] ;
   if [handCodedFilesDir directoryExists] then
     @stringlist extensionList [emptyList] ;
     extensionList += !"c" ;
     extensionList += !"cpp" ;
-    @stringlist actualHandCodedFileList := [handCodedFilesDir regularFilesWithExtensions !false !extensionList] ;
+    @stringlist actualHandCodedFileList := [handCodedFilesDir regularFilesWithExtensions !true !extensionList] ;
     foreach actualHandCodedFileList do
-      externSourceFileList .= "SOURCES += " . mValue . "\n" ;
+      externSourceFileList .= "SOURCES += " . [mValue lastPathComponent] . "\n" ;
+      @string path := [mValue stringByDeletingLastPathComponent] ;
+      if [path length] == 0 then
+        handCodedSourcesSubPathSet += !"" ;
+      else
+        handCodedSourcesSubPathSet += !"/" . path ;
+      end if ;
     end foreach ;
   end if ;
 #--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
-  @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate !galgasSourceList !externSourceFileList !externSourceList] ;
+  @string handCodedSubPathesString := "" ;
+  foreach handCodedSourcesSubPathSet do
+    handCodedSubPathesString .= "SOURCES_DIR += ../hand_coded_sources" . key . "\n" ;
+  end foreach ;
+  @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
+    !handCodedSubPathesString
+    !galgasSourceList
+    !externSourceFileList
+    !externSourceList
+  ] ;
   @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath] ;
 #---- Convert old files
