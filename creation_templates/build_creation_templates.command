@@ -8,8 +8,6 @@ sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/PROJECT.xcodeproj/
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/Info.plist > ${DIR}/actual_templates/project/project_xcode/Info.plist &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/English.lproj/InfoPlist.strings > ${DIR}/actual_templates/project/project_xcode/English.lproj/InfoPlist.strings &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/main.m > ${DIR}/actual_templates/project/project_xcode/main.m &&
-rm -f ${DIR}/actual_templates/project/common_files_for_make/* &&
-sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/common_files_for_make/makefile.mke > ${DIR}/actual_templates/project/common_files_for_make/makefile.mke &&
 rm -f ${DIR}/actual_templates/project/galgas_sources/* &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/build.bat > ${DIR}/actual_templates/project/galgas_sources/build.bat.txt &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/_all_PROJECT.ggs > ${DIR}/actual_templates/project/galgas_sources/_all_PROJECT.ggs &&
@@ -77,6 +75,4 @@ sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_x86linux_on_macosx/make
 #------------------------------------------------------------------------- MDA Project
 rm -f ${DIR}/actual_templates/mda-project/project_xcode/* &&
 sed "s/MDA_PROJECT/%PROJECT_NAME%/g" ${DIR}/MDA_PROJECT/project_xcode/MDA_PROJECT.xcodeproj/project.pbxproj > ${DIR}/actual_templates/mda-project/project_xcode/project.pbxproj &&
-rm -f ${DIR}/actual_templates/mda-project/common_files_for_make/* &&
-sed "s/MDA_PROJECT/%PROJECT_NAME%/g" ${DIR}/MDA_PROJECT/common_files_for_make/makefile.mke > ${DIR}/actual_templates/mda-project/common_files_for_make/makefile.mke &&
 echo "---------------- SUCCES --------------------------"

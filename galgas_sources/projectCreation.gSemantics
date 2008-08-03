@@ -28,7 +28,6 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
  "command", "bat", "m", "rtf", "strings"
 } {
 #--- Project
-  template commonMakefileProject "/common_files_for_make/makefile.mke" ?@string PROJECT_NAME ;
   template build_bat "/galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
   template all_ggs "/galgas_sources/_all_PROJECT.ggs" ?@string PROJECT_NAME ;
   template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.ggs" ?@string PROJECT_NAME ;
@@ -56,7 +55,6 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
   template xcodeProject "/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
 #--- MDA Project
 #  template xcodeProject "/mda-project/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
-#  template commonMakefileProject "/mda-project/common_files_for_make/makefile.mke" ?@string PROJECT_NAME ;
 }
 
 
@@ -64,9 +62,6 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
 
 routine performProjectCreation ??@string inProjectName :
   @string common_files_for_make_DIR := inProjectName ."/common_files_for_make" ;
-#-- common_files_for_make
-  [common_files_for_make_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.commonMakefileProject !inProjectName] writeToFile !common_files_for_make_DIR ."/makefile.mke"] ;
 #--- galgas_sources
   @string galgas_sources_DIR := inProjectName ."/galgas_sources" ;
   [galgas_sources_DIR makeDirectory] ;

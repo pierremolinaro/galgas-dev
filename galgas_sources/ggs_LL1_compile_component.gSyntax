@@ -25,6 +25,19 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
+#          File List Template                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_template" {
+ "mke"
+} {
+#--- Project
+  template fileListTemplate "/file_list_template.mke" ?@string GALGAS_SOURCE_LIST ?@string EXTERN_SOURCE_LIST ;
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
 #          Production rules declaration                                        *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -79,6 +92,221 @@ nonterminal <parse_option_component_for_importing>
   ?!@M_optionComponents ioOptionsComponentsMap
 label parse
 ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Project component                                                   *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <galgas_component>
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $project$ ;
+  @string galgasSourceList := "" ;
+  @stringset galgasSourceSet [emptySet] ;
+  repeat
+  while
+    $compile$ ;
+    $literal_string$ ?@lstring fileName ;
+    if [galgasSourceSet hasKey ![fileName string]] then
+      error fileName: "the '" . fileName . "' is already declared as compiled" ;
+    end if ;
+    galgasSourceSet += ![fileName string] ;
+    if [fileName pathExtension] != "gGui" then
+      galgasSourceList .= "SOURCES += " . [[fileName string] stringByDeletingPathExtension] . ".cpp\n" ;
+    end if ;
+    $;$ ;
+    if [option .verbose_output] then
+      message "------ Compile file '" . [fileName string] . "'\n" ;
+    end if ;
+    grammar galgas_LL1_grammar label compileFile in fileName ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
+  if [option .verbose_output] then
+    message "------ Project\n" ;
+  end if ;
+#---- Explore 'hand_coded_sources' directory
+  @string handCodedFilesDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/hand_coded_sources" ;
+  @string externSourceFileList := "" ;
+  if [handCodedFilesDir directoryExists] then
+    @stringlist extensionList [emptyList] ;
+    extensionList += !"c" ;
+    extensionList += !"cpp" ;
+    @stringlist actualHandCodedFileList := [handCodedFilesDir regularFilesWithExtensions !false !extensionList] ;
+    foreach actualHandCodedFileList do
+      externSourceFileList .= "SOURCES += " . mValue . "\n" ;
+    end foreach ;
+  end if ;
+#--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
+  @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate !galgasSourceList !externSourceFileList] ;
+  @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
+  [newFileListContents writeToFileWhenDifferentContents !fileListPath] ;
+#---- Convert old files
+  @string oldCommonFile := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/common_files_for_make/makefile.mke" ;
+  if [oldCommonFile fileExists] & ([@uint errorCount] == 0) then
+    message "**** Converting old-style makefile ****\n" ;
+    @string projectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+    @stringlist projectDirectories := [projectDir directories !false] ;
+    @bool ok := true ;
+    foreach projectDirectories do
+      if (mValue != "common_files_for_make") & (mValue != "makefile_macosx_universal") then
+        @string fullDirPath := projectDir . "/" . mValue . "/" ;
+      #--- makefile
+        @string makefilePath := fullDirPath . "makefile" ;
+        if [makefilePath fileExists] then
+          @stringlist c := [[@string stringWithContentsOfFile !makefilePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+          if [c length] == 2 then
+            message "  ok: '" . makefilePath . "' can be converted\n" ;
+          else
+            message "  error: '" . makefilePath . "' cannot be converted\n" ;
+            ok := false ;
+          end if ;
+        end if ;
+      #--- makefile64
+        @string makefile64Path := fullDirPath . "makefile64" ;
+        if [makefile64Path fileExists] then
+          @stringlist c := [[@string stringWithContentsOfFile ! makefile64Path] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+          if [c length] == 2 then
+            message "  ok: '" . makefile64Path . "' can be converted\n" ;
+          else
+            message "  error: '" . makefile64Path . "' cannot be converted\n" ;
+            ok := false ;
+          end if ;
+        end if ;
+      #--- makefile.mke
+        @string makefileMkePath := fullDirPath . "makefile.mke" ;
+        if [makefileMkePath fileExists] then
+          @stringlist c := [[@string stringWithContentsOfFile ! makefileMkePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+          if [c length] == 2 then
+            message "  ok: '" . makefileMkePath . "' can be converted\n" ;
+          else
+            message "  error: '" . makefileMkePath . "' cannot be converted\n" ;
+            ok := false ;
+          end if ;
+        end if ;
+      end if ;
+    end foreach ;
+    if ok then
+      message "Perform conversion...\n" ;
+      @string projectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+      @stringlist projectDirectories := [projectDir directories !false] ;
+      foreach projectDirectories do
+        if (mValue != "common_files_for_make") & (mValue != "makefile_macosx_universal") then
+          @string fullDirPath := projectDir . "/" . mValue . "/" ;
+        #--- makefile
+          @string makefilePath := fullDirPath . "makefile" ;
+          if [makefilePath fileExists] then
+            message "  converting '" . makefilePath . "'...\n" ;
+            @stringlist c := [[@string stringWithContentsOfFile !makefilePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
+            [newContents writeToFile ! makefilePath] ;
+          end if ;
+        #--- makefile64
+          @string makefile64Path := fullDirPath . "makefile64" ;
+          if [makefile64Path fileExists] then
+            message "  converting '" . makefile64Path . "'...\n" ;
+            @stringlist c := [[@string stringWithContentsOfFile ! makefile64Path] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
+            [newContents writeToFile ! makefile64Path] ;
+          end if ;
+        #--- makefile.mke
+          @string makefileMkePath := fullDirPath . "makefile.mke" ;
+          if [makefileMkePath fileExists] then
+            message "  converting '" . makefileMkePath . "'...\n" ;
+            @stringlist c := [[@string stringWithContentsOfFile ! makefileMkePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
+            [newContents writeToFile ! makefileMkePath] ;
+          end if ;
+        end if ;
+      end foreach ;
+    #--- Delete old makefile
+      @string oldDir := [oldCommonFile stringByDeletingLastPathComponent] ;
+      message "  Removing directory '" . oldDir . "' and its contents...\n" ;
+      [@string removeDirectoryRecursively !oldDir] ;
+      message "**** Conversion done with success *****\n" ;
+    else
+      message "****** No conversion performed ********\n" ;
+    end if ;
+  end if ;
+label importLexique
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+:
+  $project$ ;
+  repeat
+  while
+    $compile$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
+label importSyntax
+  ?!@M_syntaxComponents unused ioSyntaxComponentsMap
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $project$ ;
+  repeat
+  while
+    $compile$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
+label importSemantics
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
+  ?!@EXsemanticContext unused ioSemanticContext
+  ?!@stringset unused ioImportedSemanticsComponentNameSet
+:
+  $project$ ;
+  repeat
+  while
+    $compile$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
+label importGrammarForSemantics
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@EXsemanticContext unused ioSemanticContext
+:
+  $project$ ;
+  repeat
+  while
+    $compile$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
+label importOptions
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+:
+  $project$ ;
+  repeat
+  while
+    $compile$ ;
+    $literal_string$ ?* ;
+    $;$ ;
+  end repeat ;
+  $end$ ;
+  $project$ ;
+  $;$ ;
+end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
