@@ -15,7 +15,6 @@ endif
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
 SOURCES_DIR += ../hand_coded_sources
-SOURCES_DIR += ../hand_coded_sources/cocoa
 
 
 #---------------------------------------------------------------*
@@ -52,7 +51,6 @@ SOURCES += cVocabulary.cpp
 SOURCES += call_instructions.cpp
 SOURCES += categoryMethods.cpp
 SOURCES += class_generation.cpp
-SOURCES += GGSUpdateCocoaGalgas.m
 SOURCES += cocoa_generation.cpp
 SOURCES += domain_generation.cpp
 SOURCES += empty_strings_computations.cpp
