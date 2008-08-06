@@ -121,7 +121,7 @@ map @typeTableTablesDeMotsReserves {
 #                        Liste de conditions lexicales             *
 #------------------------------------------------------------------*
 
-abstract class @typeConditionLexicale {
+abstract class @typeConditionLexicale [generatedInSeparateFile] {
 }
 
 class @typeConditionChaine extends @typeConditionLexicale {
@@ -150,7 +150,7 @@ list @typeListeConditionsLexicales {
 #                           Liste des instructions                 *
 #------------------------------------------------------------------*
 
-abstract class @typeInstructionLexicale {
+abstract class @typeInstructionLexicale [generatedInSeparateFile] {
 }
 
 list @tListeInstructionsLexicales {
@@ -166,7 +166,7 @@ list @typeListeTestsEtInstructions {
 #            Arguments d'un appel de routines externes             *
 #------------------------------------------------------------------*
 
-abstract class @typeArgumentRoutineExterne {
+abstract class @typeArgumentRoutineExterne [generatedInSeparateFile] {
 }
 
 list @typeListeArgumentsRoutExterne {
@@ -206,7 +206,7 @@ list @typeListeMessagesErreur {
 #                   definition de l'emission                       *
 #------------------------------------------------------------------*
 
-abstract class @typeEmissionParDefaut {
+abstract class @typeEmissionParDefaut [generatedInSeparateFile] {
 }
 
 class @typeEmissionTerminalParDefaut extends @typeEmissionParDefaut {

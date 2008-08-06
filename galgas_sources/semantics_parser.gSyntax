@@ -184,6 +184,7 @@ nonterminal <parent_class>
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@lstring outSuperClassName
   !@string outSuperClassMessage
+  !@bool outHasGeneratedInSeparateFileSetting
 label importSemantics
   ?!@ModelMap ioModelMap
   !@stringset outSuperClasses
@@ -195,6 +196,7 @@ label importSemantics
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@bool outHasGeneratedInSeparateFileSetting
 label parse
 ;
 
@@ -1229,6 +1231,7 @@ rule <parent_class>
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@lstring outSuperClassName
   !@string outSuperClassMessage
+  !@bool outHasGeneratedInSeparateFileSetting
 :
   listeTousAttributsSemantiques := [@typeListeAttributsSemantiques emptyList] ;
   tableDesClassesAncetres := [@typeSuperClassesMap emptyMap] ;
@@ -1237,6 +1240,7 @@ rule <parent_class>
   tableAttributs := [@typeSemanticAttributesMap emptyMap] ;
   outSuperClassName := [@lstring new !"" !here] ;
   outSuperClassMessage := "" ;
+  outHasGeneratedInSeparateFileSetting := false ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
   !@stringset outSuperClasses
@@ -1248,6 +1252,7 @@ label importSemantics
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@bool outHasGeneratedInSeparateFileSetting
 :
   listeTousAttributsSemantiques := [@typeListeAttributsSemantiques emptyList] ;
   tableDesClassesAncetres := [@typeSuperClassesMap emptyMap] ;
@@ -1258,6 +1263,7 @@ label importSemantics
   outMessageMap := [@classMessageMap emptyMap] ;
   outSuperClasses := [@stringset emptySet] ;
   outAttributeList := [@typeListModel emptyList] ;
+  outHasGeneratedInSeparateFileSetting := false ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1271,6 +1277,7 @@ rule <parent_class>
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
   !@lstring outSuperClassName
   !@string outSuperClassMessage
+  !@bool outHasGeneratedInSeparateFileSetting
 :
 #--- Parse super class name
   $extends$ ;
@@ -1287,6 +1294,7 @@ rule <parent_class>
   tableMessagesAbstraits := [classType mMessagesMap] ;
   tableAttributs := [classType mNonExternAttributesMap] ;
   outSuperClassMessage := [classType mClassMessage] ;
+  outHasGeneratedInSeparateFileSetting := [classType mHasGeneratedInSeparateFileSetting] ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
   [!?tableDesClassesAncetres insertKey ! outSuperClassName] ;
 label importSemantics
@@ -1300,6 +1308,7 @@ label importSemantics
   !@typeTableMethodes tableDesMethodes
   !@typeSuperClassesMap tableDesClassesAncetres
   !@typeClassInheritedMessagesMap tableMessagesAbstraits
+  !@bool outHasGeneratedInSeparateFileSetting
 :
 #--- Parse super class name
   @lstring superClassName ;
@@ -1316,6 +1325,7 @@ label importSemantics
   tableDesClassesAncetres := [classType mAncestorClassesMap] ;
   tableMessagesAbstraits := [classType mMessagesMap] ;
   tableAttributs := [classType mNonExternAttributesMap] ;
+  outHasGeneratedInSeparateFileSetting := [classType mHasGeneratedInSeparateFileSetting] ;
 #--- Le Parse super class name est la derniere inseree en fin de la liste des ancetres 
 #--- The direct super class is last inserted one 
   [!?tableDesClassesAncetres insertKey ! superClassName] ;
@@ -1504,6 +1514,7 @@ rule <class_declaration>
     @typeClassInheritedMessagesMap inheritedMessageMap ;
     @typeSemanticAttributesMap tableAttributs ;
     @string superClassMessage ;
+    @bool hasGeneratedInSeparateFileSetting ;
     <parent_class>
       !?ioComponentSemanticsEntitiesMap
       ?tableAttributs
@@ -1513,7 +1524,21 @@ rule <class_declaration>
       ?inheritedMessageMap
       ?*
       ?superClassMessage
+      ?hasGeneratedInSeparateFileSetting
     ;
+    select
+    or
+      $[$ ;
+      $identifier$ ? @lstring optionString ;
+      if [optionString string] != "generatedInSeparateFile" then
+        error optionString:"only the \"generatedInSeparateFile\" pragma is allowed here" ;
+      end if ;
+      hasGeneratedInSeparateFileSetting := true ;
+      if [tableDesClassesAncetres count] > 0 then
+        error optionString:"the \"generatedInSeparateFile\" pragma is allowed only for a base class" ;
+      end if ;
+      $]$ ;
+    end select ;
     ${$ ;
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
@@ -1622,20 +1647,23 @@ rule <class_declaration>
       !messageMapForHeirs
       !tableAttributs
       !inIsAbstract
-      !classMessage] ;
+      !classMessage
+      !hasGeneratedInSeparateFileSetting
+    ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
   #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
     @typeEntityToGenerate def := [@C_classToImplement new 
-       !abstractClassName
-       !inIsAbstract
-       !listeTousAttributsSemantiques
-       !tableDesMethodes
-       !tableMethodesAimplementer
-       !listeAttributsSemantiquesCourants
-       !tableDesClassesAncetres
-       !tableMessagesClasseConcrete
-       !classMessage
+      !abstractClassName
+      !inIsAbstract
+      !listeTousAttributsSemantiques
+      !tableDesMethodes
+      !tableMethodesAimplementer
+      !listeAttributsSemantiquesCourants
+      !tableDesClassesAncetres
+      !tableMessagesClasseConcrete
+      !classMessage
+      !hasGeneratedInSeparateFileSetting
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -1671,6 +1699,7 @@ label importSemantics
     @stringset superClasses ;
     @typeListModel attributeList ;
     @classMessageMap messageMap ;
+    @bool hasGeneratedInSeparateFileSetting := false ;
     <parent_class> importSemantics
       !?ioModelMap
       ?superClasses
@@ -1682,7 +1711,21 @@ label importSemantics
       ?ancestorClassMethodsMap
       ?tableDesClassesAncetres
       ?inheritedMessageMap
+      ?hasGeneratedInSeparateFileSetting
     ;
+    select
+    or
+      $[$ ;
+      $identifier$ ? @lstring optionString ;
+      if [optionString string] != "generatedInSeparateFile" then
+        error optionString:"only the \"generatedInSeparateFile\" pragma is allowed here" ;
+      end if ;
+      hasGeneratedInSeparateFileSetting := true ;
+      if [tableDesClassesAncetres count] > 0 then
+        error optionString:"the \"generatedInSeparateFile\" pragma is allowed only for a base class" ;
+      end if ;
+      $]$ ;
+    end select ;
     ${$ ;
   #--- Attributs de la classe
     @typeListeAttributsSemantiques listeAttributsSemantiquesCourants ;
@@ -1780,14 +1823,16 @@ label importSemantics
   end foreach ;
   #--- Inserer dans la map des classes utilisables
     @AC_galgasType c := [@typeGalgasClassType new 
-                                             !abstractClassName
-                                             !tableDesMethodes
-                                             !listeTousAttributsSemantiques
-                                             !tableDesClassesAncetres
-                                             !messageMapForHeirs
-                                             !tableAttributs
-                                             !inIsAbstract
-                                             !classMessage] ;
+      !abstractClassName
+      !tableDesMethodes
+      !listeTousAttributsSemantiques
+      !tableDesClassesAncetres
+      !messageMapForHeirs
+      !tableAttributs
+      !inIsAbstract
+      !classMessage
+      !hasGeneratedInSeparateFileSetting
+    ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
     $}$ ;
@@ -1872,7 +1917,8 @@ rule <parse_method>
            !messageMapForHeirs
            !tableAttributsHerites
            !inClassIsAbstract
-           !inClassMessage] ;
+           !inClassMessage
+           !false] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppThisName new !here]] ;
 #--- Insert the predefined "super" variable
   typeDefinition := [@typeGalgasClassType new 
@@ -1883,7 +1929,8 @@ rule <parse_method>
            !messageMapForHeirs
            !tableAttributsHerites
            !inClassIsAbstract
-        !inClassMessage
+           !inClassMessage
+           !false
   ] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"super" !here] !typeDefinition ![@typeCppInheritedName new !here]] ;
 #--- Parse formal arguments

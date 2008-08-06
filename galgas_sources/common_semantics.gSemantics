@@ -62,7 +62,7 @@ enum @EXformalArgumentPassingMode {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeInstruction {
+abstract class @typeInstruction [generatedInSeparateFile] {
 }
 
 #---------------------------------------------------------------------------*
@@ -427,7 +427,7 @@ enum @localConstantBuildStyleEnum {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_galgasType {
+abstract class @AC_galgasType [generatedInSeparateFile] {
 #--- Get type name
   abstract method getTypeName !@string outTypeName ;
 
@@ -551,7 +551,7 @@ abstract class @AC_galgasType {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeCplusPlusName {
+abstract class @typeCplusPlusName [generatedInSeparateFile] {
   @location mVariableLocation ;
 }
 
@@ -1956,7 +1956,7 @@ map @M_nonterminalSymbolAlts {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_semanticsEntity {
+abstract class @AC_semanticsEntity [generatedInSeparateFile] {
   message  "any entity";
   message messageTypeEntite  "any entity";
 }
@@ -1993,7 +1993,7 @@ map @M_semanticsEntitiesForUse  {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_typeForGrammarComponent {
+abstract class @AC_typeForGrammarComponent [generatedInSeparateFile] {
   message typeForGrammarComponentMessage  "any type";
 }
 
@@ -2037,7 +2037,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_instruction_ForGrammar {
+abstract class @AC_instruction_ForGrammar [generatedInSeparateFile] {
   @location mStartLocation ;
 }
 
@@ -2232,7 +2232,7 @@ list @insertOrSearchMethodList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeDefEntiteUtilisable {
+abstract class @typeDefEntiteUtilisable [generatedInSeparateFile] {
   message messageTypeEntite "any type" ;
 }
 
@@ -2996,6 +2996,9 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- message
   @string mClassMessage ;
+
+#--- Generate in Separate file ?
+  @bool mHasGeneratedInSeparateFileSetting ;
 
 #--- Handle method call : return method signature
   override
@@ -4361,7 +4364,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-abstract class @templateInstruction {
+abstract class @templateInstruction [generatedInSeparateFile] {
 }
 
 #---------------------------------------------------------------------------*

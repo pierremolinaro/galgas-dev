@@ -36,7 +36,7 @@ list @typeCplusPlusNameList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeExpression {
+abstract class @typeExpression [generatedInSeparateFile] {
 }
  
 #---------------------------------------------------------------------------*
@@ -1107,7 +1107,7 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
 #                                                                      *
 #----------------------------------------------------------------------*
 
-abstract class @AC_elseOrDefaultForCastInstruction {
+abstract class @AC_elseOrDefaultForCastInstruction [generatedInSeparateFile] {
 }
 
 #----------------------------------------------------------------------*
@@ -1193,7 +1193,7 @@ map @typeTableNomRoutinesDeclarees {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeEntityToGenerate {
+abstract class @typeEntityToGenerate [generatedInSeparateFile] {
 }
 
 #---------------------------------------------------------------------------*
@@ -1305,6 +1305,9 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #--- Table des messages
   @string mClassMessage ;
+
+#--- Generate in Separate file ?
+  @bool mHasGeneratedInSeparateFileSetting ;
 }
 
 #---------------------------------------------------------------------------*
