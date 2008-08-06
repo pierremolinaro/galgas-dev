@@ -347,18 +347,32 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
  
-//--- Generate file
-  inLexique.generateFile ("//",
-                          C_String ("include_") + aNomClasse + ".h",
-                          "\n\n", // User Zone 1
-                          generatedZone2,
-                          "\n\n", // User Zone 2
-                          generatedZone3) ;
+//--- Generate class declaration
+  const C_String separateFileName = C_String ("include_") + aNomClasse + ".h" ;
+  if (mHasGeneratedInSeparateFileSetting.boolValue ()) {
+    generatedZone3.writeCppHyphenLineComment () ;
+    inLexique.generateFile ("//",
+                            separateFileName,
+                            "\n\n", // User Zone 1
+                            generatedZone2,
+                            "\n\n", // User Zone 2
+                            generatedZone3) ;
 
-  inHfile.writeCppHyphenLineComment () ;
-  inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
+    inHfile.writeCppHyphenLineComment () ;
+    inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
+  }else{
+    inHfile << generatedZone2 << generatedZone3 ;
+    const C_String startPath = inLexique.ioParametersPtr ()->mFileGenerationStartDir ;
+    TC_UniqueArray <C_String> directoriesToExclude ;
+    const C_String fullPathName = startPath.findFileInDirectory (separateFileName, directoriesToExclude) ;
+    if (fullPathName.length () > 0) { // A file has been found
+      C_String message ;
+      message << "the file '" << fullPathName << "' has became useless: you can delete it" ;
+      inLexique.onTheFlySemanticWarning (message COMMA_HERE) ;
+      fullPathName.deleteFile () ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------*
