@@ -370,7 +370,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       C_String message ;
       message << "the file '" << fullPathName << "' has became useless: you can delete it" ;
       inLexique.onTheFlySemanticWarning (message COMMA_HERE) ;
-      fullPathName.deleteFile () ;
+//      fullPathName.deleteFile () ;
     }
   }
 }
