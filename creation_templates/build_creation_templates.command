@@ -71,7 +71,7 @@ sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_unix/makefile64 > ${DIR
 rm -f ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/* &&
 cp ${DIR}/PROJECT/makefile_x86linux_on_macosx/build.command ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/build.command &&
 cp ${DIR}/PROJECT/makefile_x86linux_on_macosx/clean.command ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/clean.command &&
-sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_x86linux_on_macosx/makefile > ${DIR}/actual_templates/project/makefile_msys_on_win32/makefile &&
+sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_x86linux_on_macosx/makefile > ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/makefile &&
 #------------------------------------------------------------------------- MDA Project
 rm -f ${DIR}/actual_templates/mda-project/project_xcode/* &&
 sed "s/MDA_PROJECT/%PROJECT_NAME%/g" ${DIR}/MDA_PROJECT/project_xcode/MDA_PROJECT.xcodeproj/project.pbxproj > ${DIR}/actual_templates/mda-project/project_xcode/project.pbxproj &&

@@ -50,7 +50,7 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
   template makefile_msys_on_win32_makefile "/makefile_msys_on_win32/makefile.mke" ?@string PROJECT_NAME ;
   template makefile_unix_makefile "/makefile_unix/makefile" ?@string PROJECT_NAME ;
   template makefile_unix_makefile64 "/makefile_unix/makefile64" ?@string PROJECT_NAME ;
-  template makefile_x86linux_on_macosx_makefile "/makefile_unix/makefile" ?@string PROJECT_NAME ;
+  template makefile_x86linux_on_macosx_makefile "/makefile_x86linux_on_macosx/makefile" ?@string PROJECT_NAME ;
   template info_plist "/project_xcode/Info.plist" ?@string PROJECT_NAME ;
   template xcodeProject "/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
 #--- MDA Project
