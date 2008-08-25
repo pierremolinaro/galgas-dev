@@ -1,8 +1,10 @@
-compile "LL1_expression_lexique.ggs" ;
-compile "LL1_expression_options.ggs" ;
-compile "LL1_expression_semantics.ggs" ;
-compile "LL1_expression_syntax.ggs" ;
-compile "LL1_expression_grammar.ggs" ;
+project
+  compile "LL1_expression_lexique.ggs" ;
+  compile "LL1_expression_options.ggs" ;
+  compile "LL1_expression_semantics.ggs" ;
+  compile "LL1_expression_syntax.ggs" ;
+  compile "LL1_expression_grammar.ggs" ;
+  compile "LL1_expression_program.ggs" ;
+end project ;
 compile "LL1_expression_cocoa.ggs" ;
-compile "LL1_expression_program.ggs" ;
 

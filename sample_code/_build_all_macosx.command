@@ -1,6 +1,7 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
+LIBPM_PATH_ENV_VAR="$DIR/../../libpm" && export LIBPM_PATH_ENV_VAR &&
 #----------------- class_sample_language
 galgas -v --Werror ${DIR}/class_sample_language/galgas_sources/_all_class_sample_language.ggs &&
 cd ${DIR}/class_sample_language/makefile_macosx && make --warn-undefined-variables all &&
