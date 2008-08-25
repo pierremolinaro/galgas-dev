@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-# MAKEFILE for building "testsuite" 32-bits command line tools for Mac OS X   *
+# MAKEFILE for building "testsuite" 32-bits command line tools for Mac OS X *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := testsuite
-EXECUTABLE_DEBUG := testsuite_debug
+EXECUTABLE := testsuite.exe
+EXECUTABLE_DEBUG := testsuite_debug.exe
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -24,19 +24,11 @@ DEBUG_OBJECTS_DIR := debug_objects
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                  Install directory (for "install" goal)                   *
+#                       Linker Options for Win32                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-INSTALL_DIR := /usr/local/bin
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#                       Linker Options for Mac OS X                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-PLATFORM_LINKER_OPTIONS :=
+PLATFORM_LINKER_OPTIONS := -lcomdlg32
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -44,15 +36,15 @@ PLATFORM_LINKER_OPTIONS :=
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include ../common_files_for_make/makefile.mke
+include ../galgas_sources/GALGAS_OUTPUT/file_list.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#                      Include gcc tools for MAC OS X                       *
+#                      Include gcc tools for Win32 on MAC OS X              *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIB_PM_PATH)/included_makefiles/macosx_gcc_tools_32.mke
+include $(LIB_PM_PATH)/included_makefiles/mingw_on_macosx_gcc_tools_32.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *

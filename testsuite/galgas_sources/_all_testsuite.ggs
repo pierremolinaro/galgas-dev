@@ -1,10 +1,11 @@
-compile "testsuite_lexique.ggs" ;
-compile "testsuite_syntax.ggs" ;
-compile "testsuite_grammar.ggs" ;
-compile "testsuite_program.ggs" ;
-
-compile "testsuite_foreach_instruction.ggs" ;
-compile "testsuite_list.ggs" ;
-compile "testsuite_struct.ggs" ;
-compile "testsuite_listmap.ggs" ;
-compile "testsuite_map.ggs" ;
+project
+  compile "testsuite_lexique.ggs" ;
+  compile "testsuite_syntax.ggs" ;
+  compile "testsuite_grammar.ggs" ;
+  compile "testsuite_program.ggs" ;
+  compile "testsuite_foreach_instruction.ggs" ;
+  compile "testsuite_list.ggs" ;
+  compile "testsuite_struct.ggs" ;
+  compile "testsuite_listmap.ggs" ;
+  compile "testsuite_map.ggs" ;
+end project ;
