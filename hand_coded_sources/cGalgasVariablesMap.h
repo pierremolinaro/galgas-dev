@@ -158,9 +158,7 @@ template <typename INFO> class cGalgasVariablesMap {
   public : cElement * _mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
   private : sint32 mListLength ;
-  public : inline sint32 count (void) const {
-    return mListLength ;
-  }
+  public : sint32 count (void) const ;
 
 //--- Handle copy
   public : cGalgasVariablesMap (const cGalgasVariablesMap <INFO> &) ;
@@ -180,7 +178,7 @@ template <typename INFO> class cGalgasVariablesMap {
                                    COMMA_LOCATION_ARGS) const ;
 
 //--- This kind of map is always built
-  public : inline bool _isBuilt (void) const { return true ; }
+  public : bool _isBuilt (void) const ;
 
 //--- Insertion Methods
   public : sint32 insertEntityAttributeLocalVariable (C_Compiler & inLexique,

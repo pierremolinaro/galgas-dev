@@ -261,4 +261,18 @@ void cTableMethodesAimplementer <INFO>::internalRecursiveInsert (const INFO & in
 
 //---------------------------------------------------------------------------*
 
+template <typename INFO>
+bool cTableMethodesAimplementer <INFO>::_isBuilt (void) const {
+  return mReferenceCountPtr != NULL ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cTableMethodesAimplementer <INFO>::count (void) const {
+  return mListLength ;
+}
+
+//---------------------------------------------------------------------------*
+
 #endif

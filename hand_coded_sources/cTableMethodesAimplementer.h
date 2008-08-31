@@ -80,9 +80,7 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cElementTableMethodesAimplementer <INFO> * mFirstItem ;
   public : cElementTableMethodesAimplementer <INFO> * mLastItem ;
   private : sint32 mListLength ;
-  public : inline sint32 count (void) const {
-    return mListLength ;
-  }
+  public : sint32 count (void) const ;
   public : sint32 * mReferenceCountPtr ;
 
   public : cTableMethodesAimplementer (void) ; // Default Constructor
@@ -92,9 +90,7 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
   public : cTableMethodesAimplementer <INFO> & operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 
-  public : inline virtual bool _isBuilt (void) const {
-    return mReferenceCountPtr != NULL ;
-  }
+  public : bool _isBuilt (void) const ;
   public : void build (void) ;
   public : void _drop (void) ;
   protected : void insulateMap (void) ;
