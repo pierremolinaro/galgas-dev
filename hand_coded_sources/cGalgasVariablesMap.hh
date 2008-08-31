@@ -1034,4 +1034,18 @@ epilogue_repeatPart (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
+template <typename INFO>
+bool cGalgasVariablesMap <INFO>::_isBuilt (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename INFO>
+sint32 cGalgasVariablesMap <INFO>::count (void) const {
+  return mListLength ;
+}
+
+//---------------------------------------------------------------------------*
+
 #endif
