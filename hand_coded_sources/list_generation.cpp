@@ -43,7 +43,7 @@ void cPtr_C_listTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
+  inHfile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
   inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_list::cListElement {\n"
 //--- Attributes
@@ -108,7 +108,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_listTypeToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
 //----------------------- List class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("list '@") + aNomListe + "'") ;
+  inHfile.appendCppTitleComment (C_String ("list '@") + aNomListe + "'") ;
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
@@ -388,7 +388,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 //------------- Implementation de l'element de liste -----------------
-  inCppFile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
@@ -420,7 +420,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Element comparison
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   current.rewind () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
   if (! current.hc ()) {
@@ -448,7 +448,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   current.rewind () ;
   if (! current.hc ()) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
@@ -476,7 +476,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 
 // ------------- List Implementation -----------------
-  inCppFile.writeCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -511,7 +511,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "COMMA_THERE)) ;\n" 
                "  _internalAppendItem (nouvelElement) ;\n" 
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 
 //--- Engendrer la methode _internalPrependValues
@@ -543,7 +543,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "COMMA_THERE)) ;\n" 
                "  _internalPrependItem (nouvelElement) ;\n" 
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -588,7 +588,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Direct element access
-/*  inCppFile.writeCppHyphenLineComment () ;
+/*  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << "::cEnumerator GGS_" << aNomListe << "::\n"
                "operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const {\n"
                "  MF_AssertThere (inIndex >= 0, \"inIndex (%ld) < 0\", inIndex, 0) ;\n"
@@ -596,7 +596,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return (cElement *) objectAtIndexOrNULL (inIndex) ;\n"
                "}\n\n" ;*/
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  GGS_" << aNomListe << " result = * this ;\n"
@@ -604,7 +604,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
                
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
                "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
@@ -643,7 +643,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate 'prepend' method
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -684,7 +684,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "COMMA_HERE) ;\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer la methode _insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -711,7 +711,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
@@ -720,7 +720,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  result._alloc () ;\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement constructor 'emptyList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
@@ -754,7 +754,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ") ;\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement 'subListWithRange' reader
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -786,7 +786,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "reader_subListWithRange (C_Compiler & _inLexique,\n"
@@ -805,7 +805,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "reader_subListFromIndex (C_Compiler & _inLexique,\n"
@@ -822,7 +822,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
@@ -831,7 +831,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                    const sint32 inIndentation) const {\n"
                "  return _description (_inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'first'
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -873,7 +873,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 
 //--- Implement method 'last'
@@ -916,7 +916,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'popFirst'
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -959,7 +959,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'popLast'
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1006,7 +1006,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Direct read access
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomListe << "::\n"
                  "reader_" << current._mAttributeName (HERE) << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
@@ -1027,7 +1027,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Direct write access
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomListe << "::\n"
                  "modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
                  "                              const " ;
@@ -1047,7 +1047,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "/* const */ " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
@@ -1071,7 +1071,7 @@ void cPtr_C_sortedListTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
+  inHfile.appendCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
   inHfile << "class elementOf_GGS_" << aNomListe << " : public AC_galgas_sortedlist::cSortedListElement {\n"
 //--- Attributes
@@ -1137,7 +1137,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_sortedListTypeToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
 //----------------------- List class declaration ----------------  
-  inHfile.writeCppTitleComment (C_String ("sorted list '@") + aNomListe + "'") ;
+  inHfile.appendCppTitleComment (C_String ("sorted list '@") + aNomListe + "'") ;
 
   inHfile << "class elementOf_GGS_" << aNomListe << " ;\n"
              "\n"
@@ -1349,7 +1349,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 //------------- Implementation de l'element de liste -----------------
-  inCppFile.writeCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 
 //--- Engendrer le constructeur de l'element de liste
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
@@ -1381,7 +1381,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Element comparison
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n"
                "isEqualToObject (const cSortedListElement * inOperand) const {\n"
                "  bool equal = inOperand == this ;\n"
@@ -1404,7 +1404,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return equal ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "sint32 elementOf_GGS_" << aNomListe << "::\n"
                "compareForSorting (const cSortedListElement * inOperand) const {\n"
                "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
@@ -1428,7 +1428,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                "appendForDescription (C_Compiler & _inLexique,\n"
                "                      C_String & ioString,\n"
@@ -1447,34 +1447,34 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "}\n\n" ;
 
 // ------------- List Implementation -----------------
-  inCppFile.writeCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("List '@") + aNomListe + "'") ;
 
 //--- Generate default constructor
   inCppFile << "GGS_" << aNomListe
             << "::GGS_" << aNomListe
             << " (void): AC_galgas_sortedlist () { // Default Constructor\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer le constructeur de recopie
   inCppFile << "GGS_" << aNomListe << "::\n"
                "GGS_" << aNomListe
             << " (const GGS_" << aNomListe << " & inSource): AC_galgas_sortedlist (inSource) {\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
                "_operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
                "_operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer la methode _internalAppendValues
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1503,7 +1503,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ")) ;\n" 
                "  _internalAppendItem (nouvelElement) ;\n" 
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Generate _addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1536,7 +1536,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
                "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  GGS_" << aNomListe << " result = * this ;\n"
@@ -1544,7 +1544,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
                
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
                "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
@@ -1583,7 +1583,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Engendrer la methode _insulateList
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1607,7 +1607,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement constructor 'emptySortedList'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
@@ -1616,7 +1616,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  result._alloc () ;\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement constructor 'sortedListWithValue'
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
@@ -1650,7 +1650,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ") ;\n"
                "  return result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
@@ -1659,7 +1659,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                    const sint32 inIndentation) const {\n"
                "  return _description (_inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'smallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1701,7 +1701,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 
 //--- Implement method 'greatest'
@@ -1744,7 +1744,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'popSmallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1787,7 +1787,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "  }\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement modifier 'popGreatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
@@ -1833,7 +1833,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "/* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"

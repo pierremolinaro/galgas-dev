@@ -35,7 +35,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_typeExternTypeToGenerate::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & inLexique) const {
-  inHfile.writeCppTitleComment (C_String ("Extern type 'GGS_") + mGalgasName + "'") ;
+  inHfile.appendCppTitleComment (C_String ("Extern type 'GGS_") + mGalgasName + "'") ;
   inHfile << "#include \"GGS_" << mGalgasName << ".h\"\n\n" ;
 //--- Generate extern type declaration
   C_String generatedZone2 ;

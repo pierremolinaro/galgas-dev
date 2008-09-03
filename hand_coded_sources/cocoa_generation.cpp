@@ -46,7 +46,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#import <Cocoa/Cocoa.h>\n\n"             
                     "#import \"F_CocoaWrapperForGalgas.h\"\n"
                     "#import \"C_sourceTextForCocoa.h\"\n"
@@ -72,7 +72,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "\n" ;
 //--- Global static variables
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  generatedZone3.writeCppTitleComment ("Global static variables") ;
+  generatedZone3.appendCppTitleComment ("Global static variables") ;
   sint32 index = 0 ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
@@ -101,7 +101,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
 
 //--- Datas for PopUp list
   if (inTerminalSymbolCount > 0) {
-    generatedZone3.writeCppTitleComment ("P O P U P    L I S T    D A T A") ;
+    generatedZone3.appendCppTitleComment ("P O P U P    L I S T    D A T A") ;
     C_String mainArray ;
     mainArray << "static const uint16 * kPopUpListData [" << (inTerminalSymbolCount + 1) << "] = {\n"
                  "  NULL" ;
@@ -128,14 +128,14 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
       }else{
         mainArray << "kPopUpListData_" << i ;
         generatedZone3 << ", 0} ;\n\n" ;
-        generatedZone3.writeCppHyphenLineComment () ;
+        generatedZone3.appendCppHyphenLineComment () ;
       }
     }
     mainArray << "} ;\n\n" ;
     generatedZone3 << mainArray ;
   }
 //--- NIB and main class
-  generatedZone3.writeCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
+  generatedZone3.appendCppTitleComment ("N I B S   A N D   T H E I R   M A I N   C L A S S E S") ;
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
                     "  return [NSArray arrayWithObjects:\n" ;
   currentNib.rewind () ;
@@ -151,15 +151,15 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "}\n\n" ;
 
 //--- Block Comment
-  generatedZone3.writeCppTitleComment ("B L O C K    C O M M E N T") ;
+  generatedZone3.appendCppTitleComment ("B L O C K    C O M M E N T") ;
   generatedZone3 << "NSString * blockComment (void) {\n"
                     "  return @" ;
-  generatedZone3.writeCstringConstant (inBlockComment) ;
+  generatedZone3.appendCLiteralStringConstant (inBlockComment) ;
   generatedZone3 << " ;\n"
                     "}\n\n" ;
 
 //--- Bool options routines             
-  generatedZone3.writeCppTitleComment ("B O O L   O P T I O N S   R O U T I N E S") ;
+  generatedZone3.appendCppTitleComment ("B O O L   O P T I O N S   R O U T I N E S") ;
   generatedZone3 << "sint32 getBoolOptionsCount (void) {\n"
              "  return gCommandLineOptions.getBoolOptionsCount () ;\n"
              "}\n"
@@ -186,7 +186,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
              "\n" ;
 
 //--- unsigned integer options routines             
-  generatedZone3.writeCppTitleComment ("U N S I G N E D   I N T E G E R   O P T I O N S   R O U T I N E S") ;
+  generatedZone3.appendCppTitleComment ("U N S I G N E D   I N T E G E R   O P T I O N S   R O U T I N E S") ;
   generatedZone3 << "\n"
              "sint32 getUIntOptionsCount (void) {\n"
              "  return gCommandLineOptions.getUintOptionsCount () ;\n"
@@ -218,7 +218,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
              "\n" ;
 
 //--- unsigned integer options routines             
-  generatedZone3.writeCppTitleComment ("S T R I N G   O P T I O N S   R O U T I N E S") ;
+  generatedZone3.appendCppTitleComment ("S T R I N G   O P T I O N S   R O U T I N E S") ;
   generatedZone3 << "\n"
              "sint32 getStringOptionsCount (void) {\n"
              "  return gCommandLineOptions.getStringOptionsCount () ;\n"
@@ -246,20 +246,20 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
              "\n" ;
 
 //--- Lexique interface           
-  generatedZone3.writeCppTitleComment ("Lexique interface") ;
+  generatedZone3.appendCppTitleComment ("Lexique interface") ;
   generatedZone3 << "\n"
                     "sint32 getStylesCount (void) {\n"
                     "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "const char * getStyleName (const sint32 inIndex) {\n"
                     "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "const char * getStyleIdentifier (const sint32 inIndex) {\n"
                     "  return " << inLexiqueComponentName << "::getStyleIdentifier (inIndex) ;\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "void\n"
                     "scanThenGetStyledRangeArray (NSString * inSourceString,\n"
                     "                             const char * inSourceFileName,\n"
@@ -296,7 +296,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "                                            outPopUpEntries) ;\n"
                     "  macroDetachPointer (sourceTextPtr, C_sourceTextForCocoa) ;\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "void\n"
                     "initializeTextColors (NSString * inGGS_indexed_color,\n"
                     "                      NSString * inGGS_named_color) {\n"
@@ -327,15 +327,15 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "    }\n"
                     "  }\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "NSColor * getColor (const sint32 inIndex) {\n"
                     "  return [gColorArray objectAtIndex: inIndex] ;\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 <<  "void changeColor (const sint32 inIndex, NSColor * inNewColor) {\n"
                      "  [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;\n"
                     "}\n\n" ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
   inLexique.generateFile ("//",

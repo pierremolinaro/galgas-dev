@@ -265,7 +265,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
 //--- Print in BNF file
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p></p>") ;
-    inHTMLfile->writeCppTitleComment ("Computing the FOLLOW sets", "title") ;
+    inHTMLfile->appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
   }
 //--- Compute FOLLOW (with BDD)
   sint32 iterationsCount = 0 ;

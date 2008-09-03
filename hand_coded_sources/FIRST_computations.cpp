@@ -263,7 +263,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
 //--- Print in BNF file
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
-    inHTMLfile->writeCppTitleComment ("FIRST set", "title") ;
+    inHTMLfile->appendCppTitleComment ("FIRST set", "title") ;
   }
 
 //--- Compute FIRST sets

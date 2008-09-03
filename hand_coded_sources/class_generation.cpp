@@ -38,7 +38,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
   while (current != NULL) {
     macroValidPointer (current) ;
     if (! current->champEstAbstraite) {
-      inCppFile.writeCppHyphenLineComment () ;
+      inCppFile.appendCppHyphenLineComment () ;
       inCppFile << "void cPtr_" << inClassName
                 << "::\n"
                    "method_" << current->mKey << " (C_Compiler &" ;
@@ -130,7 +130,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_classToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inHfile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inHfile.appendCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
 //--- Super class name (empty if no super class)
   const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)
@@ -240,7 +240,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Engendrer la fin de la declaration de la classe
   inHfile << "} ;\n\n" ;
   
-  inHfile.writeCppHyphenLineComment () ;
+  inHfile.appendCppHyphenLineComment () ;
   if (superClassName.length () == 0) {
     inHfile << "extern C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " ;\n\n" ;
   }else{
@@ -254,7 +254,7 @@ void cPtr_C_classToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & inLexique) const {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
-  generatedZone2.writeCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
+  generatedZone2.appendCppTitleComment (C_String ("abstract class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Super class name (empty if no super class)
   const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)
@@ -351,7 +351,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Generate class declaration
   const C_String separateFileName = C_String ("include_") + aNomClasse + ".h" ;
   if (mHasGeneratedInSeparateFileSetting.boolValue ()) {
-    generatedZone3.writeCppHyphenLineComment () ;
+    generatedZone3.appendCppHyphenLineComment () ;
     inLexique.generateFile ("//",
                             separateFileName,
                             "\n\n", // User Zone 1
@@ -359,7 +359,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                             "\n\n", // User Zone 2
                             generatedZone3) ;
 
-    inHfile.writeCppHyphenLineComment () ;
+    inHfile.appendCppHyphenLineComment () ;
     inHfile << "#include \"include_" << aNomClasse << ".h\"\n\n" ;
   }else{
     inHfile << generatedZone2 << generatedZone3 ;
@@ -404,7 +404,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   const C_String & inTargetFileName,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {
-  inCppFile.writeCppTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
 
 //--- Super class name (empty if no super class)
   const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)
@@ -471,7 +471,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Engendrer la declaration de la surcharge de l'operateur ()
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse << "::\n"
                "  operator () (LOCATION_ARGS) const {\n"
@@ -483,7 +483,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "#endif\n\n" ;
 
   if (! mIsAbstract.boolValue ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "bool cPtr_" << aNomClasse << "::\n"
                  "isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {\n" ;
     current = aListeTousAttributsNonExternes.firstObject () ;
@@ -518,7 +518,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                       inGenerateDebug) ;
 
 //--- Method for 'description' reader
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "void cPtr_" << aNomClasse << "::\n"
                "appendForDescription (C_Compiler & "
@@ -550,39 +550,39 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   GGS_typeClassMessagesMap::cElement * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                  "static_string_message_" << messageCourant->mKey
               << " (void) {\n"
                  "  return " ;
-    inCppFile.writeCstringConstant (messageCourant->mInfo.mMessage) ;
+    inCppFile.appendCLiteralStringConstant (messageCourant->mInfo.mMessage) ;
     inCppFile << " ;\n"
                  "}\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                  "message_" << messageCourant->mKey << " (void) const {\n"
                  "  return " ;
-    inCppFile.writeCstringConstant (messageCourant->mInfo.mMessage) ;
+    inCppFile.appendCLiteralStringConstant (messageCourant->mInfo.mMessage) ;
     inCppFile << " ;\n"
                  "} ;\n\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
 
-  inCppFile.writeCppTitleComment ("Class message") ;
+  inCppFile.appendCppTitleComment ("Class message") ;
   inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                "_message (void) const {\n"
                "  return " ;
-  inCppFile.writeCstringConstant (mClassMessage) ;
+  inCppFile.appendCLiteralStringConstant (mClassMessage) ;
   inCppFile << " ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                "_static_message (void) {\n"
                "  return " ;
-  inCppFile.writeCstringConstant (mClassMessage) ;
+  inCppFile.appendCLiteralStringConstant (mClassMessage) ;
   inCppFile << " ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "C_galgas_class_inspector _gInspectorFor_" << aNomClasse
             << " (& typeid (cPtr_" << aNomClasse << "), " ;
   if (superClassName.length () == 0) {
@@ -591,30 +591,30 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "& typeid (cPtr_" << superClassName << ")" ;
   }
   inCppFile << ", " ;
-  inCppFile.writeCstringConstant (mClassMessage) ;
+  inCppFile.appendCLiteralStringConstant (mClassMessage) ;
   inCppFile << ") ;\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "AC_galgasClassRunTimeInformation * cPtr_" << aNomClasse << "::galgasRTTI (void) const {\n"
                "  return & gClassInfoFor__" << aNomClasse << " ;\n"
                "}\n\n" ;
 
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inCppFile.writeCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
 
 //--- Pointer assignment constructor
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) {\n"
                "  macroAssignPointer (mPointer, inPointer) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- Object assignment constructor
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) {\n"
                "  macroAssignPointer (mPointer, & inObject) ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
 //--- _castFrom method
   inCppFile << "//--- _castFrom class method (implements cast expression)\n"
@@ -642,16 +642,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  return _result ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   if (! mIsAbstract.boolValue ()) {
     if (NULL == aListeTousAttributsNonExternes.firstObject ()) {
       inCppFile << "static cPtr_" << aNomClasse << " * gSingleton_" << aNomClasse << " = NULL ;\n\n" ;
-      inCppFile.writeCppHyphenLineComment () ;
+      inCppFile.appendCppHyphenLineComment () ;
       inCppFile << "static void cleanUp_" << aNomClasse << " (void) {\n"
                    "  macroDetachPointer (gSingleton_" << aNomClasse << ", cPtr_" << aNomClasse << ") ;\n"
                    "}\n\n" ;
-      inCppFile.writeCppHyphenLineComment () ;
+      inCppFile.appendCppHyphenLineComment () ;
     }
     inCppFile << "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::\n"
                  "constructor_new (C_Compiler & /* inLexique */" ;
@@ -697,7 +697,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "  return result ;\n"
                  "}\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
   }
   
 //--- Generate declaration of message readers
@@ -717,7 +717,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     messageCourant = messageCourant->nextObject () ;
   }
 
@@ -740,7 +740,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     current = current->nextObject () ;
   }
 
@@ -750,7 +750,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   if (superClassName.length () == 0) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "AC_galgasClassRunTimeInformation * GGS_" << aNomClasse << "::_galgasObjectRunTimeInfo (void) const {\n"
                  "  AC_galgasClassRunTimeInformation * result = NULL ;\n"
                  "  if (mPointer != NULL) {\n"
@@ -760,7 +760,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
   }
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   if (superClassName.length () == 0) {
     inCppFile << "C_galgasRootClassRunTimeInformation gClassInfoFor__" << aNomClasse << " (\"" << aNomClasse << "\") ;\n\n" ;
   }else{

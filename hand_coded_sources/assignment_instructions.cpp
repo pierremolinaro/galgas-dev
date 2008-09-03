@@ -205,7 +205,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         }else{
           ioCppFile << "\n" ;
         }
-        ioCppFile.writeCstringConstant (currentString._mValue (HERE)) ;
+        ioCppFile.appendCLiteralStringConstant (currentString._mValue (HERE)) ;
         currentString.next () ;
       }
       ioPreviousWasLiteralString = true ;

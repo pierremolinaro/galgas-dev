@@ -46,7 +46,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_categoryMethodToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
-    inHfile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
+    inHfile.appendCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
     inHfile << "typedef void (*typeCategoryMethod__" << mClassName << "__" << mMethodName << ") "
                " (C_Compiler & _inLexique"
             << ",\n                                "
@@ -61,12 +61,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "\n                                "
                "COMMA_LOCATION_ARGS) ;\n\n" ;
-    inHfile.writeCppHyphenLineComment () ;
+    inHfile.appendCppHyphenLineComment () ;
     inHfile << "void\n"
                "enterCategoryMethod__" << mClassName << "__" << mMethodName
             << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                "                     const sint32 inClassID) ;\n\n" ;
-    inHfile.writeCppHyphenLineComment () ;
+    inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryMethod__" << mClassName << "__" << mMethodName
             << " (AC_galgasClassRunTimeInformation * inClassPtr) ;\n\n" ;
@@ -113,7 +113,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const bool inGenerateDebug) const {
 //--- Generate method
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
-    inCppFile.writeCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
+    inCppFile.appendCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
     inCppFile << "static void\n"
                  "category_method__" << mClassName << "__" << mMethodName
               << " (C_Compiler &" ;
@@ -150,17 +150,17 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
 //--- Generate virtual table
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
-    inCppFile.writeCppTitleComment (C_String ("Virtual Table for category method '@") + mClassName + "." + mMethodName + "'") ;
+    inCppFile.appendCppTitleComment (C_String ("Virtual Table for category method '@") + mClassName + "." + mMethodName + "'") ;
     inCppFile << "static TC_UniqueArray <typeCategoryMethod__" << mClassName << "__" << mMethodName
               << "> gDispatchTableFor__" << mClassName << "__" << mMethodName << " ;\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void\n"
                  "enterCategoryMethod__" << mClassName << "__" << mMethodName
               << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
                  "                     const sint32 inClassID) {\n"
                  "  gDispatchTableFor__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
                  "}\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryMethod__" << mClassName << "__" << mMethodName
               << " (AC_galgasClassRunTimeInformation * inClassPtr) {\n"

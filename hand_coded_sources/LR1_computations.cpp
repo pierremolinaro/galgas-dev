@@ -1127,12 +1127,12 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
@@ -1144,7 +1144,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
 
 //--- Print non-terminal symbols --------------------------------------
-  generatedZone3.writeCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
+  generatedZone3.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
   generatedZone3 << "static const char * gNonTerminalNames ["
                  << inVocabulary.getNonTerminalSymbolsCount () << "] = {\n" ;
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
@@ -1155,7 +1155,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate SLR analyze action table --------------------------------------
-  generatedZone3.writeCppTitleComment ("L R ( 1 )    A N A L Y Z E R    A C T I O N    T A B L E") ;
+  generatedZone3.appendCppTitleComment ("L R ( 1 )    A N A L Y Z E R    A C T I O N    T A B L E") ;
   const sint32 rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
   const sint32 columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
@@ -1217,7 +1217,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   }
   generatedZone3 << "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
-  generatedZone3.writeCppTitleComment ("SLR states successors table") ;
+  generatedZone3.appendCppTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
   TC_UniqueArray <sint32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const sint32 transitionsCount = inTransitionList.length () ;
@@ -1275,7 +1275,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
   const sint32 productionsCount = inProductionRules.length () ;
-  generatedZone3.writeCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
+  generatedZone3.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
   generatedZone3 << "static const sint16 gProductionsTable ["
           << productionsCount
           << " * 2] = {\n" ;
@@ -1292,7 +1292,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 //--- Generate methods, one by non terminal ----------------------------------
   GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
   while (nonTerminal.hc ()) {
-    generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
+    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
     GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal.hc ()) {
       generatedZone3 << "void " ;
@@ -1339,9 +1339,9 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
       GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
       while (currentAltForNonTerminal.hc ()) {
-        generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
+        generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        generatedZone3.writeCppHyphenLineComment () ;
+        generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
@@ -1473,7 +1473,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   const sint32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   for (sint32 ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
-      generatedZone3.writeCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
+      generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) + "' non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
               << inLexiqueName << " & _inLexique) {\n"
@@ -1494,7 +1494,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     }
   }
 //--- End of C++ file
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
   inLexique.generateFile ("//",
@@ -1576,7 +1576,7 @@ LR1_computations (C_Compiler & inLexique,
 //--- Print in BNF file
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p></p>") ;
-    inHTMLfile->writeCppTitleComment ("Building LR(1) automaton", "title") ;
+    inHTMLfile->appendCppTitleComment ("Building LR(1) automaton", "title") ;
   }
 
 //--- Compute LR1 automaton
@@ -1626,7 +1626,7 @@ LR1_computations (C_Compiler & inLexique,
 //--- Print in BNF file
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p></p>") ;
-    inHTMLfile->writeCppTitleComment ("Checking LR(1) condition", "title") ;
+    inHTMLfile->appendCppTitleComment ("Checking LR(1) condition", "title") ;
   }
 
 //--- Build LR1 table... detect if grammar is not LR1

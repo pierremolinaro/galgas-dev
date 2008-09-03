@@ -36,7 +36,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_C_structToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
-  inHfile.writeCppTitleComment (C_String ("Declarations for '") + mStructName + "' struct") ;
+  inHfile.appendCppTitleComment (C_String ("Declarations for '") + mStructName + "' struct") ;
   inHfile << "class GGS_" << mStructName << " {\n"
              "//--- Default constructor\n"
              "  public : GGS_" << mStructName << " (void) ;\n\n"
@@ -123,7 +123,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
-  inCppFile.writeCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
   bool first = true ;
@@ -138,10 +138,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << " {\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mStructName << "::~GGS_" << mStructName << " (void) {\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mStructName << "::_drop (void) {\n" ;
   current.rewind () ;
   while (current.hc ()) {
@@ -149,7 +149,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile << "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "bool GGS_" << mStructName << "::_isBuilt (void) const {\n" ;
   current.rewind () ;
   inCppFile << "  return " ;
@@ -165,7 +165,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << " ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mStructName << "::\n"
                "_operator_isEqual (const GGS_" << mStructName << " & inOperand) const {\n" ;
   current.rewind () ;
@@ -185,7 +185,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << " ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mStructName << "::\n"
                "_operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const {\n"
                "  return " ;
@@ -205,7 +205,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << " ;\n"
                "}\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile <<"GGS_" << mStructName << " GGS_" << mStructName << "::\n"
               "constructor_new (" ;
   current.rewind () ;
@@ -232,7 +232,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  return result ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mStructName << "::\n"
                "reader_description (C_Compiler & _inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"

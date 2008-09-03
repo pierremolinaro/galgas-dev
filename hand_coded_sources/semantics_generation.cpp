@@ -145,7 +145,7 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile.writeCppTitleComment (C_String ("Routine '") + aNomRoutine + "'") ;
+  inHfile.appendCppTitleComment (C_String ("Routine '") + aNomRoutine + "'") ;
   inHfile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hc ()) {
@@ -185,7 +185,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
-  inCppFile.writeCppTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
   inCppFile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " _inLexique" ;
@@ -303,7 +303,7 @@ generate_header_file (C_Compiler & inLexique,
                  << "\n#include <string.h>\n\n" ;
 
 //--- Include declaration of predefined types
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
                     "#include \"galgas/GGS_lbool.h\"\n"
@@ -325,7 +325,7 @@ generate_header_file (C_Compiler & inLexique,
                     "#include \"galgas/AC_galgas_listmap.h\"\n"
                     "#include \"galgas/AC_galgas_list.h\"\n"
                     "#include \"galgas/AC_galgas_sortedlist.h\"\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
 
 //--- Generate lexique inclusion
   const C_String lexiqueName = inLexiqueName ;
@@ -335,7 +335,7 @@ generate_header_file (C_Compiler & inLexique,
 //--- Generate include imported semantics components
   GGS_stringset::cEnumerator fileEnumerator (inIncludesForHeaderFile, true) ;
   if (fileEnumerator. hc ()) {
-    generatedZone2.writeCppComment ("Include imported semantics") ;
+    generatedZone2.appendCppComment ("Include imported semantics") ;
     while (fileEnumerator. hc ()) {
       generatedZone2 << "#include \"" ;
       generatedZone2 << fileEnumerator._key (HERE) ;
@@ -348,7 +348,7 @@ generate_header_file (C_Compiler & inLexique,
   C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
 //--- Generate classes declarations
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
-  generatedZone3.writeCppTitleComment ("Class Predeclarations") ;
+  generatedZone3.appendCppTitleComment ("Class Predeclarations") ;
   while (element.hc ()) {
     element._mEntityToGenerate (HERE) (HERE)->generatePredeclarations (generatedZone3) ;
     element.next () ;
@@ -377,7 +377,7 @@ generate_header_file (C_Compiler & inLexique,
   }
   
 //--- Engendrer la fin du fichier
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
@@ -1541,18 +1541,18 @@ generate_cpp_file (C_Compiler & inLexique,
                    GGS_stringset & tableFichiersEnTetePourFichierCPP) {
 //--- Write file header
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include <typeinfo>\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"files/C_TextFileWrite.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
 
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
@@ -1564,7 +1564,7 @@ generate_cpp_file (C_Compiler & inLexique,
 //--- Engendrer les fichiers d'inclusion correspondant aux methodes externes
   GGS_stringset::cEnumerator includeEnumerator (tableFichiersEnTetePourFichierCPP, true) ;
   if (includeEnumerator.hc ()) {
-    generatedZone2.writeCppTitleComment ("Include directives generated by grammar includes") ;
+    generatedZone2.appendCppTitleComment ("Include directives generated by grammar includes") ;
   }
   while (includeEnumerator.hc ()) {
     generatedZone2 << "#include \"" << includeEnumerator._key (HERE) << "\"\n" ;
@@ -1601,18 +1601,18 @@ generate_cpp_file (C_Compiler & inLexique,
     element.next () ;
   }
   if ((prologueActions.length () > 0) || (epilogueActions.length () > 0)) {
-    generatedZone3.writeCppTitleComment ("Prologue and epilogue actions") ;
+    generatedZone3.appendCppTitleComment ("Prologue and epilogue actions") ;
     if (prologueActions.length () > 0) {
       generatedZone3 << "static void prologueRoutineFor_" << nomComposant << " (void) {\n"
                      << prologueActions
                      << "}\n\n" ;
-      generatedZone3.writeCppHyphenLineComment () ;
+      generatedZone3.appendCppHyphenLineComment () ;
     }
     if (epilogueActions.length () > 0) {
       generatedZone3 << "static void epilogueRoutineFor_" << nomComposant << " (void) {\n"
                      << epilogueActions
                      << "}\n\n" ;
-      generatedZone3.writeCppHyphenLineComment () ;
+      generatedZone3.appendCppHyphenLineComment () ;
     }
     generatedZone3 << "C_PrologueEpilogueAction prologueEpilogueObjectFor_" << nomComposant << " (" ;
     if (prologueActions.length () > 0) {
@@ -1631,7 +1631,7 @@ generate_cpp_file (C_Compiler & inLexique,
   }
 
 //--- Engendrer la fin du fichier
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
   inLexique.generateFile ("//",
