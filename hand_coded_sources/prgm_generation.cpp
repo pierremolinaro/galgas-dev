@@ -37,7 +37,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#ifndef INTERFACE_" << inProgramComponentName << "_DEFINED\n"
                     "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionsComponentsMap, true) ;
   while (currentOptionComponent.hc ()) {
     generatedZone2 << "#include \"" << currentOptionComponent._key (HERE) << ".h\"\n" ;
@@ -50,7 +50,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
 
   generatedZone2 << "\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
 
 //--- Command line options for this program
   generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
@@ -67,11 +67,11 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
     currentOptionComponent.next () ;
   }
   generatedZone2 << "} ;\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
 
 //--- Fin du fichier d'en tete
   C_String generatedZone3 ; generatedZone3.setCapacity (100) ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
@@ -100,7 +100,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/F_DisplayException.h\"\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"collections/TC_UniqueArray.h\"\n"
@@ -119,7 +119,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "#endif\n\n"
                     "#include <typeinfo>\n\n" ;
 
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   GGS_stringset::cEnumerator inclusionEnumerator (inInclusionsForImplementationFile, true) ;
   while (inclusionEnumerator.hc ()) {
     generatedZone2 << "#include \"" << inclusionEnumerator._key (HERE) << "\"\n" ;
@@ -127,7 +127,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   }
   generatedZone2 << "\n" ;
 
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
@@ -137,7 +137,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "#endif\n\n" ;
 
 //--------------------------------------- Get bool options count
-  generatedZone2.writeCppTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
+  generatedZone2.appendCppTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
   generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
                     "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) :\n"
                     "mBuiltinOptions (inAcceptsDebugOption),\n"
@@ -159,7 +159,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "}\n\n" ;
 
 //--- Prologue
-  generatedZone2.writeCppTitleComment ("P R O G R A M    P R O L O G U E") ;
+  generatedZone2.appendCppTitleComment ("P R O G R A M    P R O L O G U E") ;
   const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
   generatedZone2 << "static void\n"
                  << inProgramComponentName << "_prologue (C_Compiler & "
@@ -176,7 +176,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "}\n\n" ;
 
 //--- Epilogue
-  generatedZone2.writeCppTitleComment ("P R O G R A M    E P I L O G U E") ;
+  generatedZone2.appendCppTitleComment ("P R O G R A M    E P I L O G U E") ;
   const bool lexiqueIsUsedInEpilogue = isLexiqueFormalArgumentUsedForList (inEpilogueInstructionList, true) ;
   generatedZone2 << "static void\n"
                  << inProgramComponentName << "_epilogue (C_Compiler & "
@@ -193,7 +193,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "}\n\n" ;
 
 //--- Generate 'mainForLIBPM' routine
-  generatedZone2.writeCppTitleComment ("M A I N    F O R    L I B P M") ;
+  generatedZone2.appendCppTitleComment ("M A I N    F O R    L I B P M") ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
                     "  bool verboseOptionOn = true ;\n"
@@ -219,7 +219,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                  << "    const char * helpMessages [] = {" ;
   currentDescriptor.rewind () ;
   while (currentDescriptor.hc ()) {
-    generatedZone2.writeCstringConstant (currentDescriptor._mHelpMessage (HERE)) ;
+    generatedZone2.appendCLiteralStringConstant (currentDescriptor._mHelpMessage (HERE)) ;
     generatedZone2 << ", " ;
     currentDescriptor.next () ;
   }
@@ -229,7 +229,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    bool cocoaOutput = false ;\n"
                     "    F_Analyze_CLI_Options (argc, argv,\n"
                     "                           " ;
-  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << ",\n"
                     "                           options,\n"
                     "                           sourceFilesArray,\n"
@@ -240,11 +240,11 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      cocoaOutput,\n"
                     "      #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "        " ;
-  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << " \" [debug]\",\n"
                     "      #else\n"
                     "        " ;
-  generatedZone2.writeCstringConstant (inVersionString) ;
+  generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << ",\n"
                     "      #endif\n"
                     "      argv [1],\n"

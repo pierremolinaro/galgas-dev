@@ -857,7 +857,7 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << "identifier"
         << '$' ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_abstract:
       s << '$'
@@ -1305,7 +1305,7 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << '$' ;
     s << ' ' << _p->floatValue ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_unsigned_5Fliteral_5Finteger:
       s << '$'
@@ -1351,21 +1351,21 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << "type_name"
         << '$' ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_literal_5Fchar:
       s << '$'
         << "literal_char"
         << '$' ;
     s << ' ' ;
-    s.writeCcharConstant (_p->charValue) ;
+    s.appendCLiteralCharConstant (_p->charValue) ;
       break;
     case  galgas_scanner_1_terminal:
       s << '$'
         << "terminal"
         << '$' ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1__2A:
       s << '$'
@@ -1567,14 +1567,14 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << "non_terminal_symbol"
         << '$' ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_literal_5Fstring:
       s << '$'
         << "literal_string"
         << '$' ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_comment:
       s << '$'

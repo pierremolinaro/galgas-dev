@@ -256,7 +256,7 @@ useful_symbols_computations (C_Compiler & inLexique,
   }
 //--- Print in BNF file
   if (inHTMLfile != NULL) {
-    inHTMLfile->writeCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+    inHTMLfile->appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
   sint32 iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,

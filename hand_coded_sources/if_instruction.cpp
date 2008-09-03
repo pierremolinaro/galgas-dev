@@ -454,7 +454,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
     }else{
       ioCppFile << "\n  " ;
     }
-    ioCppFile.writeCstringConstant (currentString._mValue (HERE)) ;
+    ioCppFile.appendCLiteralStringConstant (currentString._mValue (HERE)) ;
     currentString.next () ;
   }
   ioCppFile << ")" ;
@@ -633,7 +633,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeLiteralCharExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_char (true, " ;
-  ioCppFile.writeCcharConstant (mLiteralChar.charValue ()) ;
+  ioCppFile.appendCLiteralCharConstant (mLiteralChar.charValue ()) ;
   ioCppFile << ')' ;
 }
 
@@ -1523,9 +1523,9 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_bool (true, _inLexique.boolOptionValueFromKeys (" ;
-  ioCppFile.writeCstringConstant (mOptionComponentName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
-  ioCppFile.writeCstringConstant (mOptionName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << mOptionName.lineNumber ()
               << ")))" ;
@@ -1563,9 +1563,9 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_uint (true, _inLexique.uintOptionValueFromKeys (" ;
-  ioCppFile.writeCstringConstant (mOptionComponentName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
-  ioCppFile.writeCstringConstant (mOptionName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << mOptionName.lineNumber ()
               << ")))" ;
@@ -1603,9 +1603,9 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_string (true, _inLexique.stringOptionValueFromKeys (" ;
-  ioCppFile.writeCstringConstant (mOptionComponentName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionComponentName) ;
   ioCppFile << ", " ;
-  ioCppFile.writeCstringConstant (mOptionName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << mOptionName.lineNumber ()
               << ")))" ;

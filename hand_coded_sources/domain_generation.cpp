@@ -40,7 +40,7 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 
 void cPtr_C_domainToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile.writeCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
+  inHfile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
   
   inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
@@ -116,7 +116,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   const C_String & /* inTargetFileName */,
                                   sint32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
-  inCppFile.writeCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
+  inCppFile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
 
 //--- Constructor
   inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void)" ;
@@ -139,12 +139,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Destructor
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mDomainName << "::~GGS_" << mDomainName << " (void) {\n"
                "}\n\n" ;
 
 //--- 'emptyDomain' constructor
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::\n"
                "constructor_emptyDomain (C_Compiler & /* inLexique */\n"
                "                         COMMA_UNUSED_LOCATION_ARGS) {\n"
@@ -156,7 +156,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Accessors
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
   while (currentAttribute.hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
             << currentAttribute._key (HERE).stringWithUpperCaseFirstLetter ()
@@ -176,7 +176,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Relation
   currentRelation.rewind () ;
   while (currentRelation.hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
               << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
@@ -217,7 +217,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentRelation.next () ;
   }
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mDomainName << "::\n"
                "updateRelationsAfterBitCountExtension (void) {\n" ;
   currentRelation.rewind () ;

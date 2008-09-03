@@ -415,17 +415,17 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                                const cPureBNFproductionsList & inPureBNFproductions) {
 //--- Generate header file inclusion --------------------------------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
                     "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
@@ -441,7 +441,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   TC_UniqueArray <sint16> firstProductionRuleIndex (500 COMMA_HERE) ;
   TC_UniqueArray <C_String> productionRulesTitle (500 COMMA_HERE) ;
 
-  generatedZone3.writeCppTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
+  generatedZone3.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    R U L E S") ;
   generatedZone3 << "#define TERMINAL(t)     ((t)+1)\n"
                     "#define NONTERMINAL(nt) ((-nt)-1)\n"
                     "#define END_PRODUCTION  (0)\n\n"
@@ -467,7 +467,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions names table
-  generatedZone3.writeCppTitleComment ("P R O D U C T I O N    N A M E S") ;
+  generatedZone3.appendCppTitleComment ("P R O D U C T I O N    N A M E S") ;
   generatedZone3 << "static const char * gProductionNames ["
                  << productionRulesIndex.count ()
                  << "] = {\n" ;
@@ -480,7 +480,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions indexes table
-  generatedZone3.writeCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
+  generatedZone3.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gProductionIndexes ["
                  << productionRulesIndex.count ()
                  << "] = {\n" ;
@@ -495,7 +495,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   productionRulesTitle.clear () ;
 
 //--- Generate decision tables indexes
-  generatedZone3.writeCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
+  generatedZone3.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gFirstProductionIndexes ["
           << ((sint32)(firstProductionRuleIndex.count () + 1))
           << "] = {\n" ;
@@ -510,7 +510,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   
 //--- Generate decision tables  
   TC_UniqueArray <sint16> productionDecisionIndex (500 COMMA_HERE) ;
-  generatedZone3.writeCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
+  generatedZone3.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
   generatedZone3 << "static const sint16 gDecision [] = {\n" ;
   sint16 decisionTableIndex = 0 ;
   nonTerminal.rewind () ;
@@ -530,7 +530,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
   generatedZone3 << "0} ;\n\n" ;
 
 //--- Generate decision tables indexes
-  generatedZone3.writeCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
+  generatedZone3.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
   generatedZone3 << "static const sint16 gDecisionIndexes ["
           << ((sint32)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
@@ -545,7 +545,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //--- Generate non terminal implementation ----------------------------
   nonTerminal.rewind () ;
   while (nonTerminal.hc ()) {
-    generatedZone3.writeCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
+    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal._mID (HERE) COMMA_HERE) >= 0 ;
     GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal.hc ()) {
@@ -576,7 +576,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
     if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
       currentAltForNonTerminal.rewind () ;
       while (currentAltForNonTerminal.hc ()) {
-        generatedZone3.writeCppTitleComment ("Grammar start symbol implementation") ;
+        generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
@@ -657,7 +657,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "  }\n" ;
         generatedZone3 << "}\n\n" ;
       //--- Define string parsing static method
-        generatedZone3.writeCppHyphenLineComment () ;
+        generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
@@ -712,7 +712,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //--- Implement non terminal from 'select' and 'repeat' instructions
   for (sint32 nt=inVocabulary.getTerminalSymbolsCount () ; nt<inVocabulary.getAllSymbolsCount () ; nt++) {
     if (inVocabulary.needToGenerateChoice (nt COMMA_HERE)) {
-      generatedZone3.writeCppTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
+      generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
               << " (" << inLexiqueName << " & _inLexique) {\n"
@@ -721,7 +721,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
     }
   }
 //--- Fin du fichier ---------------------------------
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
 
 //--- Generate file
   inLexique.generateFile ("//",
@@ -755,7 +755,7 @@ LL1_computations (C_Compiler & inLexique,
   }
 //--- Print in BNF file
   if (inHTMLfile != NULL) {
-    inHTMLfile->writeCppTitleComment ("Checking LL(1) condition", "title") ;
+    inHTMLfile->appendCppTitleComment ("Checking LL(1) condition", "title") ;
   }
 
 //--- Check LL(1) condition

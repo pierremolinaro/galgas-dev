@@ -439,11 +439,11 @@ writeDecoder (const C_String & inLexiqueName,
        << "\n" ;
     co.flush () ;
   }
-  inCppFile.writeCppTitleComment ("Decoder Tables") ;
+  inCppFile.appendCppTitleComment ("Decoder Tables") ;
   for (sint32 i=count ()-1 ; i>=0 ; i--) {
     this->operator () (i COMMA_HERE)->writeDecoderState (inLexiqueName, i, inCppFile) ;
   }
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "/* static */ const sint16 * gDecoderEntries [" << count () << "] = {\n" ;
   for (sint32 i=0 ; i<count () ; i++) {
     inCppFile << " kDecoder_" << i ;
@@ -455,9 +455,9 @@ writeDecoder (const C_String & inLexiqueName,
     }
   }
   inCppFile << "} ;\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "/* static */ const sint32 gDecoderSize = " << count () << " ;\n\n" ;
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 }
 
 //---------------------------------------------------------------------------*

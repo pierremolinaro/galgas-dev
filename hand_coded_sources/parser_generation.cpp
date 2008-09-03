@@ -177,7 +177,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                   const C_String & inTargetFileName,
                                   sint32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) const {
-  inCppFile.writeCppTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool first = true ;
@@ -186,7 +186,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (first) {
       first = false ;
     }else{
-      inCppFile.writeCppHyphenLineComment () ;
+      inCppFile.appendCppHyphenLineComment () ;
     }
     inCppFile << "void " ;
     inCppFile << inTargetFileName
@@ -229,7 +229,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\"" << currentAltForNonTerminal._key (HERE) << "\", " ;
       }
-      inCppFile.writeCstringConstant (mProductionTagName) ;
+      inCppFile.appendCLiteralStringConstant (mProductionTagName) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }
@@ -254,7 +254,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (first) {
       first = false ;
     }else{
-      inCppFile.writeCppHyphenLineComment () ;
+      inCppFile.appendCppHyphenLineComment () ;
     }
     inCppFile << "void " << inTargetFileName
               << "::\n"
@@ -282,7 +282,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\"" << firstLabelDef._key (HERE) << "\", " ;
       }
-      inCppFile.writeCstringConstant (mProductionTagName) ;
+      inCppFile.appendCLiteralStringConstant (mProductionTagName) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }
@@ -310,7 +310,7 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
                                                   const GGS_typeEntitiesToGenerateList & listeEntitesAengendrer,
                                                   AC_OutputStream & inHfile) {
 //---  declarer une classe si il existe des regles de production a implementer
-  inHfile.writeCppTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
+  inHfile.appendCppTitleComment (C_String ("Parser class ") + nomComposant + " declaration") ;
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;

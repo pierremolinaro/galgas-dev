@@ -29,7 +29,7 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_C_filewrapperTemplateToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
-  inHfile.writeCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
+  inHfile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   inHfile << "GGS_string\n"
              "_template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
@@ -80,7 +80,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
-  inCppFile.writeCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
+  inCppFile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   inCppFile << "GGS_string\n"
                "_template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
@@ -139,7 +139,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 void cPtr_templateInstructionString::
 generateTemplateInstruction (AC_OutputStream & inCppFile) const {
   inCppFile << "  _result << " ;
-  inCppFile.writeCstringConstant (mTemplateString, 240) ;
+  inCppFile.appendCLiteralStringConstant (mTemplateString, 240) ;
   inCppFile << " ;\n" ;
 }
 

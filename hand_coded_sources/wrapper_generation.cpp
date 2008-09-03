@@ -43,7 +43,7 @@ wrapperFileCount (const GGS_wrapperFileSortedList & inRegularFileSortedList,
 void cPtr_C_wrapperToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
-  inHfile.writeCppTitleComment (C_String ("Declarations for '") + mWrapperName + "' wrapper") ;
+  inHfile.appendCppTitleComment (C_String ("Declarations for '") + mWrapperName + "' wrapper") ;
   const sint32 n = wrapperFileCount (mRegularFileSortedList, mDirectorySortedList) ;
   for (sint32 i=0 ; i<n ; i++) {
     inHfile << "extern const char * gWrapperFileContent_"
@@ -106,7 +106,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     if (! ok) {
       printf ("*** error: cannot read file '%s' ***\n", f._mAbsoluteFilePath (HERE).string ().cString ()) ;
     }
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     wrapperFileIndexes.addObject (f._mWrapperFileIndex (HERE).uintValue ()) ;
     inCppFile << "//--- File '" << inWrapperDirectory << "/" << f._mRegularFileName (HERE) << "'\n\n"
                  "const char * gWrapperFileContent_"
@@ -150,7 +150,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     f.next () ;  
   }
 //--- Generate all File wrapper list
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- All files of '" << inWrapperDirectory << "' directory\n\n"
                "static const cRegularFileWrapper * gWrapperAllFiles_" << inWrapperName
             << "_" << inWrapperDirectoryIndex << " ["
@@ -164,7 +164,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   inCppFile << "  NULL\n"
                "} ;\n\n" ;
 //--- Generate all directory wrapper list
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- All sub-directories of '" << inWrapperDirectory << "' directory\n\n"
                "static const cDirectoryWrapper * gWrapperAllDirectories_" << inWrapperName
             << "_" << inWrapperDirectoryIndex << " [" << (subDirectories.count () + 1) << "] = {\n" ;
@@ -174,7 +174,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   inCppFile << "  NULL\n"
                "} ;\n\n" ;
 //--- Generate directory wrapper
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- Directory '" << inWrapperDirectory << "'\n\n"
                "const cDirectoryWrapper gWrapperDirectory_" << inWrapperDirectoryIndex << "_" << inWrapperName
             << " = {\n"
@@ -196,7 +196,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
-  inCppFile.writeCppTitleComment (C_String ("Implementation of wrapper '") + mWrapperName + "'") ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of wrapper '") + mWrapperName + "'") ;
   generateWrapperContents (inCppFile, mRegularFileSortedList, mDirectorySortedList, mWrapperName, "", 0) ;
 }  
 

@@ -51,7 +51,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     n >>= 1 ;
   }
   
-  inHfile.writeCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
+  inHfile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
   
   inHfile << "class GGS_" << mEnumTypeName << " {\n"
              "//--- Enumeration\n"
@@ -196,7 +196,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
-  inCppFile.writeCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
+  inCppFile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
   
   inCppFile << "bool GGS_" << mEnumTypeName
             << "::\n"
@@ -204,7 +204,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "  return mValue > kNotBuilt ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -213,7 +213,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "                   mValue == inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -222,7 +222,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "                   mValue != inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -231,7 +231,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "                   mValue <= inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -240,7 +240,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "                   mValue >= inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -249,7 +249,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                "                   mValue < inOperand.mValue) ;\n"
                "}\n\n" ;
 
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
@@ -261,7 +261,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 //--- Readers
   GGS_typeEnumMessageMap::cEnumerator m (mEnumMessageMap) ;
   while (m .hc ()) {
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
                  "reader_" << m._key (HERE) << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
@@ -269,7 +269,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     GGS_lstringlist::cEnumerator e (m._mMessageStringList (HERE), true) ;
     while (e.hc ()) {
       inCppFile << ",\n    " ;
-      inCppFile.writeCstringConstant (e._mValue (HERE)) ;
+      inCppFile.appendCLiteralStringConstant (e._mValue (HERE)) ;
       e.next () ;
     } 
     inCppFile << "\n  } ;\n"
@@ -287,7 +287,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
       lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition._mInstructionList (HERE), true) ;
       definition.next () ;
     }
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
                  "modifier_" << modifier._key (HERE) << " (C_Compiler &" ;
     if (lexiqueIsUsed) {
@@ -349,7 +349,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
       lexiqueIsUsed = isLexiqueFormalArgumentUsedForList (definition._mInstructionList (HERE), true) ;
       definition.next () ;
     }
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
                  "method_" << method._key (HERE) << " (C_Compiler &" ;
     if (lexiqueIsUsed) {
@@ -437,7 +437,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
       }
       definition.next () ;
     }
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "static const GGS_" << mEnumTypeName << "::enumeration kResultFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE)
               << " [" << squareConstantCount << "] = {" ;
@@ -453,7 +453,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
       }
     }
     inCppFile << "\n} ;\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "static const sint32 kErrorFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE)
               << " [" << squareConstantCount << "] = {" ;
@@ -468,7 +468,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
       }
     }
     inCppFile << "\n} ;\n\n" ;
-    inCppFile.writeCppHyphenLineComment () ;
+    inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::\n"
                  "operator_" << currentOperator._key (HERE)
               << " (C_Compiler & _inLexique,\n"
@@ -540,7 +540,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   }
 
 //---
-  inCppFile.writeCppHyphenLineComment () ;
+  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
                "reader_description (C_Compiler & /* _inLexique */\n"

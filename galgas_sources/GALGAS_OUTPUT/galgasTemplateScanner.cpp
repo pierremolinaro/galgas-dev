@@ -835,7 +835,7 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << "identifier"
         << '$' ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgasTemplateScanner_1_abstract:
       s << '$'
@@ -1258,7 +1258,7 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << '$' ;
     s << ' ' << _p->floatValue ;
     s << ' ' ;
-    s.writeCstringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger:
       s << '$'

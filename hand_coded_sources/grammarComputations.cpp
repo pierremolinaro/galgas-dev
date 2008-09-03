@@ -128,7 +128,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
                                C_HTML_FileWrite * inHTMLfile) {
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
-    inHTMLfile->writeCppTitleComment ("Step 2 : searching for identical productions", "title") ;
+    inHTMLfile->appendCppTitleComment ("Step 2 : searching for identical productions", "title") ;
   }
   bool ok = true ;
   for (sint32 i=0 ; i<productions.length () ; i++) {
@@ -182,7 +182,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                     "#define GRAMMAR_" << inTargetFileName << "_HAS_BEEN_DEFINED\n\n" ;
   
 //--- Engendrer les inclusions --------------------------------------------------------------
-  generatedZone2.writeCppHyphenLineComment () ;
+  generatedZone2.appendCppHyphenLineComment () ;
   GGS_L_syntaxComponents_ForGrammar::cEnumerator component (inSyntaxComponentsList, true) ;
   while (component.hc ()) {
     generatedZone2 << "#include \"" << component._mSyntaxComponentName (HERE) << ".h\"\n" ;
@@ -192,7 +192,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
 
 //--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "class " << inTargetFileName ;
   component.rewind () ;
 //--- Liens d'heritage
@@ -274,7 +274,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n" ;
 
 //--- End of file
-  generatedZone3.writeCppHyphenLineComment () ;
+  generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#endif\n" ;
 
 //--- Generate file
@@ -571,7 +571,7 @@ analyzeGrammar (C_Compiler & inLexique,
 
 //--- Print original grammar in BNF file
   if ((errorFlag == 0) && (grammarClass != kGrammarClassError) && (HTMLfile != NULL)) {
-    HTMLfile->writeCppTitleComment ("Original grammar", "title") ;
+    HTMLfile->appendCppTitleComment ("Original grammar", "title") ;
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE\n") ; fflush (stdout) ;
     #endif
@@ -603,7 +603,7 @@ analyzeGrammar (C_Compiler & inLexique,
   //--- Print in bnf file the pure BNF productions
     if (HTMLfile != NULL) {
       HTMLfile->outputRawData ("<p></p>") ;
-      HTMLfile->writeCppTitleComment ("  Pure BNF productions list", "title") ;
+      HTMLfile->appendCppTitleComment ("  Pure BNF productions list", "title") ;
       printPureBNFgrammarInBNFfile (*HTMLfile, vocabulary, pureBNFproductions) ;
     }
     if (verboseOptionOn) {
@@ -838,7 +838,7 @@ analyzeGrammar (C_Compiler & inLexique,
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
     if (HTMLfile != NULL) {
-      HTMLfile->writeCppTitleComment (s, "title") ;
+      HTMLfile->appendCppTitleComment (s, "title") ;
     }
     C_String errorMessage  ;
     if (HTMLfile != NULL) {
@@ -864,7 +864,7 @@ analyzeGrammar (C_Compiler & inLexique,
       i ++ ;
     }
     if (HTMLfile != NULL) {
-      HTMLfile->writeCppTitleComment (s, "title") ;
+      HTMLfile->appendCppTitleComment (s, "title") ;
     }
     C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
@@ -875,7 +875,7 @@ analyzeGrammar (C_Compiler & inLexique,
     }
     errorLocation.signalSemanticWarning (inLexique, warningMessage COMMA_HERE) ;
   }else if (HTMLfile != NULL) {
-    HTMLfile->writeCppTitleComment ("OK (no error, no warning)", "title") ;
+    HTMLfile->appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
   if (outputHTMLfile) {
     if (inLexique.mPerformGeneration) {
