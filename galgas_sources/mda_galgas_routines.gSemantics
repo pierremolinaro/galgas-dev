@@ -52,6 +52,7 @@ end routine ;
 
 routine performProjectGlobalCheckings
   ??@parsedComponentStruct inParsedComponentStruct
+  ??@location inEndOfSourceFile
 :
 #--- Build all declaration list
   @semanticDeclarationList semanticDeclarationList [emptyList] ;
@@ -60,7 +61,7 @@ routine performProjectGlobalCheckings
   end foreach ;
 #---- Build semantic context
   @semanticContext semanticContext ;
-  buildSemanticContext !semanticDeclarationList ?semanticContext ;
+  buildSemanticContext !semanticDeclarationList !inEndOfSourceFile ?semanticContext ;
 #--- Check that for every abstract category method, an overridden category method
 #    defined in an concrete subclass
   if [@uint errorCount] == 0 then
@@ -68,14 +69,29 @@ routine performProjectGlobalCheckings
     @categoryMethodListMap categoryMethodListMap [emptyMap] ;
     @overridingCategoryMethodListMap overridingCategoryMethodListMap [emptyMap];
     foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-#      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
+      abstractCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryMethodListMap] ;
+      overridingCategoryMethodListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryMethodListMap] ;
+    end foreach ;
+    @descendantClassListMap descendantClassListMap := [semanticContext mDescendantClassListMap] ;
+    foreach abstractCategoryMethodListMap do
+      @classIndexList descendantClasses := [descendantClassListMap listForKey !key] ;
+      foreach object do
+#        log mFormalParameterList ; Vérifier aussi que la classe n'est pas abstraite
+        foreach descendantClasses do
+          @lstring descendantClassName ; [mClassMapindex searchKey ?descendantClassName ?*] ;
+          @overridingCategoryMethodList overridingMethods := [overridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
+          @bool found := false ;
+          foreach overridingMethods while not found do
+            found := [mAbstractCategoryMethodName string] == [mOverridingCategoryMethodName string] ;
+          end foreach ;
+          if not found then
+            error here: "an abstract category method '" . mAbstractCategoryMethodName . "' is defined for class '@" . key
+            . "', but descendant class '@" . descendantClassName . "' does not implement this method" ; 
+          end if ;
+        end foreach ;
+      end foreach ;
     end foreach ;
   end if ;
-#  foreach [inParsedComponentStruct mDescendantClassListMap] do
-#
-#  end foreach ;
-##  @descendantClassListMap descendantClassListMap := [outSemanticContext mDescendantClassListMap] ;
-#  log descendantClassListMap ;
 end routine ;
 
 #---------------------------------------------------------------------------*

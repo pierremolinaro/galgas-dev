@@ -2,7 +2,7 @@
 #                                                                           *
 #  'project' LL(1) grammar                                                  *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -21,7 +21,9 @@ grammar projectLL1grammar "LL1" :
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax projectModelBuilder in "projectModelBuilder.gSyntax" ;
 
-  root <project_component_start_symbol> !@lstringlist outFileNameList
+  root <project_component_start_symbol>
+    !@lstringlist outFileNameList
+    !@location outEndOfSourceFile
   ; # LL1
 end grammar ;
 

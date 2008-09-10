@@ -857,11 +857,17 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   @switchBranches switchBranches [emptyList] ;
   repeat
     $when$ ;
-    $identifier$ ? @lstring constantName ;
+    @lstringlist constantNameList [emptyList] ;
+    repeat
+      $identifier$ ? @lstring constantName ;
+      constantNameList += !constantName ;
+    while
+      $,$ ;
+    end repeat ;
     $:$ ;
     @semanticInstructionList instructions ;
     <semantic_instruction_list> ? instructions ;
-    switchBranches += !constantName !instructions ;
+    switchBranches += !constantNameList !instructions ;
   while
   end repeat ;
   $end$ ;

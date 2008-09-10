@@ -16,6 +16,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
+  compile "mda_galgas_routines.gSemantics" ;
+  compile "mda_galgas_prgm.gProgram" ;
+
 project
 #--- Command Line Options
   compile "galgas_cli_options.gOption" ;
@@ -109,9 +113,5 @@ project
   compile "galgas_LL1_grammar.gGrammar" ;
   compile "galgas_LL1_prgm.gProgram" ;
 end project ;
-
-#--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
-  compile "mda_galgas_routines.gSemantics" ;
-  compile "mda_galgas_prgm.gProgram" ;
 
 #---------------------------------------------------------------------------*

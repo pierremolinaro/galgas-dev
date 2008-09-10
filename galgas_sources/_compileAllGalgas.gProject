@@ -1,4 +1,3 @@
-# ascii
 #---------------------------------------------------------------------------*
 #                                                                           *
 #  Compile all galgas sources                                               *
@@ -17,72 +16,74 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+project
 #--- Command Line Options
-compile "galgas_cli_options.gOption" ;
+  compile "galgas_cli_options.gOption" ;
 
 #--- Common Scanner
-compile "galgas_scanner.gLexique" ;
+  compile "galgas_scanner.gLexique" ;
 
 #--- Lexique Component
-compile "lexiqueSemantics.gSemantics" ;
-compile "lexiqueMetamodel.gSemantics" ;
-compile "lexiqueModelBuilder.gSyntax" ;
-compile "lexiqueLL1grammar.gGrammar" ;
-compile "lexiqueCompilation.gSemantics" ;
+  compile "lexiqueSemantics.gSemantics" ;
+  compile "lexiqueMetamodel.gSemantics" ;
+  compile "lexiqueModelBuilder.gSyntax" ;
+  compile "lexiqueLL1grammar.gGrammar" ;
+  compile "lexiqueCompilation.gSemantics" ;
 
 #--- Option Component
-compile "optionSemantics.gSemantics" ;
-compile "optionMetamodel.gSemantics" ;
-compile "optionModelBuilder.gSyntax" ;
-compile "optionLL1grammar.gGrammar" ;
-compile "optionCompilation.gSemantics" ;
+  compile "optionSemantics.gSemantics" ;
+  compile "optionMetamodel.gSemantics" ;
+  compile "optionModelBuilder.gSyntax" ;
+  compile "optionLL1grammar.gGrammar" ;
+  compile "optionCompilation.gSemantics" ;
 
 #--- Expression
-compile "expressionMetamodel.gSemantics" ;
-compile "expressionModelBuilder.gSyntax" ;
+  compile "expressionMetamodel.gSemantics" ;
+  compile "expressionModelBuilder.gSyntax" ;
 
 #--- Parameters and arguments
-compile "parameterArgumentMetamodel.gSemantics" ;
-compile "parameterArgumentBuilder.gSyntax" ;
+  compile "parameterArgumentMetamodel.gSemantics" ;
+  compile "parameterArgumentBuilder.gSyntax" ;
 
 #--- Instructions
-compile "instructionMetamodel.gSemantics" ;
-compile "semanticInstructionListModelBuilder.gSyntax" ;
+  compile "instructionMetamodel.gSemantics" ;
+  compile "semanticInstructionListModelBuilder.gSyntax" ;
 
 #--- Semantics Component
-compile "semanticsMetamodel.gSemantics" ;
-compile "semanticsModelBuilder.gSyntax" ;
-compile "semanticsSLRgrammar.gGrammar" ;
-compile "semanticsSemantics.gSemantics" ;
-compile "semanticsCompilation.gSemantics" ;
+  compile "semanticsMetamodel.gSemantics" ;
+  compile "semanticsModelBuilder.gSyntax" ;
+  compile "semanticsSLRgrammar.gGrammar" ;
+  compile "semanticsSemantics.gSemantics" ;
+  compile "semanticsCompilation.gSemantics" ;
 
 #--- Syntax Component
-compile "syntaxMetamodel.gSemantics" ;
-compile "syntaxModelBuilder.gSyntax" ;
-compile "syntaxSLRgrammar.gGrammar" ;
+  compile "syntaxMetamodel.gSemantics" ;
+  compile "syntaxModelBuilder.gSyntax" ;
+  compile "syntaxSLRgrammar.gGrammar" ;
 
 #--- Grammar component
-compile "grammarMetamodel.gSemantics" ;
-compile "grammarModelBuilder.gSyntax" ;
-compile "grammarLL1grammar.gGrammar" ;
-compile "guiCompilation.gSemantics" ;
+  compile "grammarMetamodel.gSemantics" ;
+  compile "grammarModelBuilder.gSyntax" ;
+  compile "grammarLL1grammar.gGrammar" ;
+  compile "guiCompilation.gSemantics" ;
 
 #--- GUI component
-compile "guiMetamodel.gSemantics" ;
-compile "guiModelBuilder.gSyntax" ;
-compile "guiLL1grammar.gGrammar" ;
+  compile "guiMetamodel.gSemantics" ;
+  compile "guiModelBuilder.gSyntax" ;
+  compile "guiLL1grammar.gGrammar" ;
 
 #--- Program component
-compile "programMetamodel.gSemantics" ;
-compile "programModelBuilder.gSyntax" ;
-compile "programSLRgrammar.gGrammar" ;
+  compile "programMetamodel.gSemantics" ;
+  compile "programModelBuilder.gSyntax" ;
+  compile "programSLRgrammar.gGrammar" ;
 
 #--- Project component
-compile "projectModelBuilder.gSyntax" ;
-compile "projectLL1grammar.gGrammar" ;
+  compile "projectModelBuilder.gSyntax" ;
+  compile "projectLL1grammar.gGrammar" ;
 
 #--- Temporary Program for PPC Cocoa GALGAS Only 
-compile "mda_galgas_routines.gSemantics" ;
-compile "mda_galgas_prgm.gProgram" ;
+  compile "mda_galgas_routines.gSemantics" ;
+  compile "mda_galgas_prgm.gProgram" ;
+end project ;
 
 #---------------------------------------------------------------------------*

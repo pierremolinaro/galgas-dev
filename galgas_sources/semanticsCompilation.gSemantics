@@ -295,11 +295,12 @@ end method ;
 
 routine buildSemanticContext
   ??@semanticDeclarationList inSemanticDeclarationList
+  ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
 #--- Builtin types
   @typeMap typeMap ;
-  constructBuiltinTypeMap ? typeMap ;
+  constructBuiltinTypeMap ?typeMap ;
 #--- Build initial semantic context
   outSemanticContext := [@semanticContext new
     !typeMap
@@ -318,13 +319,13 @@ routine buildSemanticContext
       foreach undefinedClasses do
         errorMessage .= "\n-  @" . mValue ;
       end foreach ;
-      error here : errorMessage ;
+      error inEndOfSourceFile : errorMessage ;
     elsif [undefinedClasses length] > 1 then
       @string errorMessage := "there are " . [[undefinedClasses length] string] . " undefined types:" ;
       foreach undefinedClasses do
         errorMessage .= "\n-  @" . mValue ;
       end foreach ;
-      error here : errorMessage ;
+      error inEndOfSourceFile : errorMessage ;
     end if ;
   end if ;
 #--- Check type cross references are correct
@@ -431,7 +432,7 @@ routine compileSemanticsComponent
   ;
 #---- Build semantic context
   @semanticContext semanticContext ;
-  buildSemanticContext !semanticDeclarationList ?semanticContext ;
+  buildSemanticContext !semanticDeclarationList ![semanticsComponentRoot mEndOfSourceFile] ?semanticContext ;
 end routine ;
 
 #---------------------------------------------------------------------------*
