@@ -50,6 +50,50 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine checkCategoryDefinitionForClass
+  ??@string inClassName
+  ??@abstractCategoryMethodList inAbstractCategoryMethodList
+  ??@descendantClassListMap inDescendantClassListMap
+  ??@overridingCategoryMethodListMap inOverridingCategoryMethodListMap
+  ??@location inEndOfSourceFile
+:
+  @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+  foreach inAbstractCategoryMethodList do
+#        log mFormalParameterList ; Vérifier aussi que la classe n'est pas abstraite
+    foreach descendantClasses do
+      @lstring descendantClassName ; @ACGalgasType t ; [mClassMapindex searchKey ?descendantClassName ?t] ;
+      @bool isAbstract ;
+      cast t :
+      when >= @classGalgasType classType do
+        isAbstract := [classType mIsAbstract] ;
+      else
+        error descendantClassName: "the '@" . descendantClassName . "' type should be a class" -> isAbstract ;
+      end cast ;
+      if isAbstract then
+        checkCategoryDefinitionForClass
+          ![descendantClassName string]
+          !inAbstractCategoryMethodList
+          !inDescendantClassListMap
+          !inOverridingCategoryMethodListMap
+          !inEndOfSourceFile
+        ;
+      else
+        @overridingCategoryMethodList overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
+        @bool found := false ;
+        foreach overridingMethods while not found do
+          found := [mAbstractCategoryMethodName string] == [mOverridingCategoryMethodName string] ;
+        end foreach ;
+        if not found then
+          error inEndOfSourceFile: "an abstract category method '" . mAbstractCategoryMethodName . "' is defined for class '@" . inClassName
+          . "', but descendant class '@" . descendantClassName . "' does not implement this method" ; 
+        end if ;
+      end if ;
+    end foreach ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine performProjectGlobalCheckings
   ??@parsedComponentStruct inParsedComponentStruct
   ??@location inEndOfSourceFile
@@ -74,22 +118,13 @@ routine performProjectGlobalCheckings
     end foreach ;
     @descendantClassListMap descendantClassListMap := [semanticContext mDescendantClassListMap] ;
     foreach abstractCategoryMethodListMap do
-      @classIndexList descendantClasses := [descendantClassListMap listForKey !key] ;
-      foreach object do
-#        log mFormalParameterList ; Vérifier aussi que la classe n'est pas abstraite
-        foreach descendantClasses do
-          @lstring descendantClassName ; [mClassMapindex searchKey ?descendantClassName ?*] ;
-          @overridingCategoryMethodList overridingMethods := [overridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
-          @bool found := false ;
-          foreach overridingMethods while not found do
-            found := [mAbstractCategoryMethodName string] == [mOverridingCategoryMethodName string] ;
-          end foreach ;
-          if not found then
-            error here: "an abstract category method '" . mAbstractCategoryMethodName . "' is defined for class '@" . key
-            . "', but descendant class '@" . descendantClassName . "' does not implement this method" ; 
-          end if ;
-        end foreach ;
-      end foreach ;
+      checkCategoryDefinitionForClass
+        !key
+        !object
+        !descendantClassListMap
+        !overridingCategoryMethodListMap
+        !here
+      ;
     end foreach ;
   end if ;
 end routine ;
