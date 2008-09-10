@@ -164,7 +164,8 @@ message "a GALGAS project source file"
   ;
 #--- Parse metamodel component
   @lstringlist fileList ;
-  grammar projectLL1grammar in inSourceFile ?fileList ;
+  @location endOfSourceFile ;
+  grammar projectLL1grammar in inSourceFile ?fileList ?endOfSourceFile ;
 #--- loop for compiling each file
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -197,7 +198,7 @@ message "a GALGAS project source file"
 #--- Perform global checkings
   if [@uint errorCount] == 0 then
     message "----- Perform global checkings\n" ;
-    performProjectGlobalCheckings !parsedComponentStruct ;
+    performProjectGlobalCheckings !parsedComponentStruct !endOfSourceFile ;
   end if ;
 }
 

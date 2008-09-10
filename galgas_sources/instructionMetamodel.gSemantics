@@ -417,7 +417,7 @@ class @grammarInstruction extends @semanticInstruction {
 #---------------------------------------------------------------------------*
 
 list @switchBranches {
-  @lstring mSwitchConstant ;
+  @lstringlist mSwitchConstantList ;
   @semanticInstructionList mInstructions ;
 }
 
@@ -447,8 +447,8 @@ class @typeMethodInstruction extends @semanticInstruction {
 #---------------------------------------------------------------------------*
 
 list @abstractCategoryMethodList {
-  @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
+  @lstring mAbstractCategoryMethodName ;
+  @formalParameterList mAbstractCategoryFormalParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -462,8 +462,8 @@ listmap @abstractCategoryMethodListMap (@abstractCategoryMethodList) ;
 #---------------------------------------------------------------------------*
 
 list @categoryMethodList {
-  @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
+  @lstring mCategoryMethodName ;
+  @formalParameterList mCategoryFormalParameterList ;
   @semanticInstructionList mRoutineInstructionList ;
 }
 
@@ -478,8 +478,8 @@ listmap @categoryMethodListMap (@categoryMethodList) ;
 #---------------------------------------------------------------------------*
 
 list @overridingCategoryMethodList {
-  @lstring mMethodName ;
-  @formalParameterList mFormalParameterList ;
+  @lstring mOverridingCategoryMethodName ;
+  @formalParameterList mOverridingCategoryFormalParameterList ;
   @semanticInstructionList mRoutineInstructionList ;
 }
 

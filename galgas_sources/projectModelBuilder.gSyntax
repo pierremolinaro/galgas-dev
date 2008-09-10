@@ -23,11 +23,18 @@ import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <project_component_start_symbol> !@lstringlist outFileNameList ;
+nonterminal <project_component_start_symbol>
+  !@lstringlist outFileNameList
+  !@location outEndOfSourceFile
+;
 
 #---------------------------------------------------------------------------*
 
-rule <project_component_start_symbol> !@lstringlist outFileNameList :
+rule <project_component_start_symbol>
+  !@lstringlist outFileNameList
+  !@location outEndOfSourceFile
+:
+  $project$ ;
   outFileNameList := [@lstringlist emptyList] ;
   repeat
   while
@@ -37,6 +44,10 @@ rule <project_component_start_symbol> !@lstringlist outFileNameList :
     outFileNameList += !fileName ;
     $;$ ;
   end repeat ;
+  $end$ ;
+  $project$ ;
+  outEndOfSourceFile := here ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
