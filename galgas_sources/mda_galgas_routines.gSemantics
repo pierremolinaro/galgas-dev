@@ -51,12 +51,11 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine checkCategoryDefinitionForClass
+  ??@string inClassNameForErrorSignaling
   ??@string inClassName
-  ??@string inAbstractCategoryMethodName
-  ??@formalParameterList inAbstractCategotyMethodFormalParameters
+  ??@lstring inAbstractCategoryMethodName
   ??@descendantClassListMap inDescendantClassListMap
   ??@overridingCategoryMethodListMap inOverridingCategoryMethodListMap
-  ??@location inEndOfSourceFile
 :
   @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
   foreach descendantClasses do
@@ -68,24 +67,24 @@ routine checkCategoryDefinitionForClass
     else
       error descendantClassName: "the '@" . descendantClassName . "' type should be a class" -> isAbstract ;
     end cast ;
-    if isAbstract then
-      checkCategoryDefinitionForClass
-        ![descendantClassName string]
-        !inAbstractCategoryMethodName
-        !inAbstractCategotyMethodFormalParameters
-        !inDescendantClassListMap
-        !inOverridingCategoryMethodListMap
-        !inEndOfSourceFile
-      ;
-    else
-      @overridingCategoryMethodList overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
-      @bool found := false ;
-      foreach overridingMethods while not found do
-        found := inAbstractCategoryMethodName == [mOverridingCategoryMethodName string] ;
-      end foreach ;
-      if not found then
-        error inEndOfSourceFile: "an abstract category method '" . inAbstractCategoryMethodName . "' is defined for class '@" . inClassName
-        . "', but descendant class '@" . descendantClassName . "' does not implement this method" ; 
+    @overridingCategoryMethodList overridingMethods := [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]] ;
+    @bool found := false ;
+    foreach overridingMethods while not found do
+      found := [inAbstractCategoryMethodName string] == [mOverridingCategoryMethodName string] ;
+    end foreach ;
+    if not found then
+      if isAbstract then
+        checkCategoryDefinitionForClass
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryMethodName
+          !inDescendantClassListMap
+          !inOverridingCategoryMethodListMap
+        ;
+      else
+        error inAbstractCategoryMethodName: "an abstract category method '" . inAbstractCategoryMethodName . "' is defined for abstract class '@"
+        . inClassNameForErrorSignaling
+        . "', but concrete descendant class '@" . descendantClassName . "' does not implement this method" ; 
       end if ;
     end if ;
   end foreach ;
@@ -120,11 +119,10 @@ routine performProjectGlobalCheckings
       foreach object do
         checkCategoryDefinitionForClass
           !key
-          ![mAbstractCategoryMethodName string]
-          !mAbstractCategoryFormalParameterList
+          !key
+          !mAbstractCategoryMethodName
           !descendantClassListMap
           !overridingCategoryMethodListMap
-          !here
         ;
       end foreach ;
     end foreach ;
