@@ -250,7 +250,7 @@ override method @classDeclaration.enterType
 #--- Handle methods
   @classMethodList methodList [emptyList] ;
 #--- Enter type in type map
-  @ACGalgasType t := [@classGalgasType new
+  @classGalgasType t := [@classGalgasType new
     !mIsAbstract
     !mClassTypeName
     !superClassIndex
@@ -258,6 +258,9 @@ override method @classDeclaration.enterType
     !methodList
   ] ;
   [!?ioSemanticContext.mTypeMap insertKey !mClassTypeName !t] ;
+#--- Temp
+#  @lstringlist ll := [t attributeList] ;
+#  message "CLASS '" . mClassTypeName . "' " ; log ll ; 
 end method ;
 
 #---------------------------------------------------------------------------*

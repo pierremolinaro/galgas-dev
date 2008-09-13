@@ -535,6 +535,25 @@ class @classGalgasType extends @ACGalgasType {
       . [classPath stringByReplacingStringByString !"." !" extends "] ;
     end if ;
   end method ;
+
+#  lazy @lstringlist attributeList
+#  :
+#    if [mSuperClassIndex isRegular] then
+#      @ACGalgasType t ;
+#      [mSuperClassIndex searchKey ?* ?t] ;
+#      cast t :
+#      when >= @classGalgasType kClassType do
+#        attributeList := [kClassType attributeList] ;
+#      else
+#        attributeList := [@lstringlist emptyList] ;
+#      end cast ;
+#    else
+#      attributeList := [@lstringlist emptyList] ;
+#    end if ;
+#    foreach mAttributeList do
+#      attributeList += !mAttributeName ;
+#    end foreach ;
+#  end lazy ;
 }
 
 #---------------------------------------------------------------------------*

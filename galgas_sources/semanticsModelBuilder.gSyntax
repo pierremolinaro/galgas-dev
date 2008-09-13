@@ -431,6 +431,34 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+nonterminal <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList ;
+
+#---------------------------------------------------------------------------*
+
+rule <lazy_attribute_declaration> ?!@lazyAttributeList ioLazyAttributeList :
+  $lazy$ ;
+  @attributeInCollectionList attributeTypeAndNameList [emptyList] ;
+  repeat
+    $type_name$ ?@lstring  attributeTypeName ;
+    $identifier$ ? @lstring attributeName ;
+    attributeTypeAndNameList += !attributeTypeName !attributeName ;
+  while
+  end repeat ;
+  $:$ ;
+  @semanticInstructionList mInstructionList ;
+  <semantic_instruction_list> ? mInstructionList ;
+  $end$ ;
+  $lazy$ ;
+  $;$ ;
+  ioLazyAttributeList +=
+    !here
+    !attributeTypeAndNameList
+    !mInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_declaration>
  ?!@semanticDeclarationStruct ioSemanticDeclarations
 :
@@ -458,6 +486,7 @@ rule <semantic_declaration>
   @overridenMethodDefinitionList mOverridenMethodList [emptyList] ;
   @methodDefinitionList mMethodList [emptyList] ;
   @classMessageDefinitionList mMessageList [emptyList] ;
+  @lazyAttributeList mLazyAttributeList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
@@ -469,6 +498,8 @@ rule <semantic_declaration>
     <class_method_declaration> !? mMethodList ;
   while
     <class_message_declaration> !? mMessageList ;
+  while
+    <lazy_attribute_declaration> !? mLazyAttributeList ;
   while
     $message$ ;
     if [mClassMessage length] > 0 then
@@ -492,6 +523,7 @@ rule <semantic_declaration>
     !mOverridenMethodList
     !mMethodList
     !mMessageList
+    !mLazyAttributeList
     !mClassMessage
   ] ;
 end rule ;

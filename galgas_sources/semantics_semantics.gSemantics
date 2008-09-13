@@ -1308,6 +1308,9 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #--- Generate in Separate file ?
   @bool mHasGeneratedInSeparateFileSetting ;
+
+#--- Once Reader map
+  @L_lazyAttributeList mLazyAttributeList ;
 }
 
 #---------------------------------------------------------------------------*
