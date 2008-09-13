@@ -118,6 +118,14 @@ list @classMessageDefinitionList {
 
 #---------------------------------------------------------------------------*
 
+list @lazyAttributeList {
+  @location mLocationMagicNumber ;
+  @attributeInCollectionList mAttributeList ;
+  @semanticInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @classDeclaration extends @semanticDeclaration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
@@ -127,6 +135,7 @@ class @classDeclaration extends @semanticDeclaration {
   @overridenMethodDefinitionList mOverridenMethodList ;
   @methodDefinitionList mMethodList ;
   @classMessageDefinitionList mMessageList ;
+  @lazyAttributeList mLazyAttributeList ;
   @string mClassMessage ;
 }
 

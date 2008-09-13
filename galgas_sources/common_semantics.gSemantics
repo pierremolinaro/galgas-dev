@@ -2975,6 +2975,14 @@ class @typeGalgasUndefinedClassType extends @AC_galgasType {
 
 #---------------------------------------------------------------------------*
 
+list @L_lazyAttributeList {
+  @location mLocationMagicNumber ;
+  @typeListeAttributsSemantiques mComputedAttributeTypeAndNameList ;
+  @typeInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- class reader map
   @typeTableMethodes mMethodMap ;
@@ -2999,6 +3007,9 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- Generate in Separate file ?
   @bool mHasGeneratedInSeparateFileSetting ;
+
+#--- Once Reader map
+  @L_lazyAttributeList mLazyAttributeList ;
 
 #--- Handle method call : return method signature
   override
@@ -4166,18 +4177,26 @@ routine handleReaderCall
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
       end if ;
+
     when >= @typeGalgasClassType t do
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
         @bool found := false ;
-        foreach [t mAttributeList] (@AC_galgasType kAttributType @lstring kNomAttribut) while not found do
-          outReturnedType := kAttributType ;
-          found := [inReaderName string] == [kNomAttribut string] ;
+        foreach [t mAttributeList] while not found do
+          outReturnedType := mAttributType ;
+          found := [inReaderName string] == [mAttributeName string] ;
+        end foreach ;
+      #--- Search for lazy attribute
+        foreach [t mLazyAttributeList] while not found do
+          foreach mComputedAttributeTypeAndNameList while not found do
+            outReturnedType := mAttributType ;
+            found := [inReaderName string] == [mAttributeName string] ;
+          end foreach ;
         end foreach ;
         if not found then
-          error inReaderName: "this reader is not defined (you can name as class reader class attributes and class messages)" ;
+          error inReaderName: "this reader is not defined (you can name as class reader class attributes, class messages and lazy attributes)" ;
         end if ;
       end if ;
     when >= @typeGalgasStructType t do

@@ -147,7 +147,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Default constructor
   inHfile << "//--- Default constructor\n"
-             "  public : inline GGS_" << aNomClasse << " (void) : " ;
+             "  public : inline GGS_" << aNomClasse << " (void) :\n  " ;
   if (superClassName.length () > 0) {
     inHfile << "GGS_" << superClassName ;
   }else{
@@ -222,6 +222,23 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "  public : GGS_string reader_" << messageCourant->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
+
+//--- Generate 'lazy' reader prototypes              
+  GGS_L_lazyAttributeList::cElement * currentLazyDeclaration = mLazyAttributeList.firstObject () ;
+  while (currentLazyDeclaration != NULL) {
+    macroValidPointer (currentLazyDeclaration) ;
+    GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
+    while (currentOnceAttribute != NULL) {
+      macroValidPointer (currentOnceAttribute) ;
+      inHfile << "//--- 'lazy' attribute reader\n"
+                "  public : " ;
+      currentOnceAttribute->mAttributType (HERE)->generateCppClassName (inHfile) ;
+      inHfile << " reader_" <<  currentOnceAttribute->mAttributeName << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+      currentOnceAttribute = currentOnceAttribute->nextObject () ;
+    }
+    currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
+  }
+
 //--- Engendrer la declaration de la surcharge de l'operateur ()
   inHfile << "//--- operator ()\n"
              "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
@@ -309,6 +326,27 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
     macroValidPointer (current) ;
     current->mAttributType(HERE)->generatePublicDeclaration (generatedZone3, current->mAttributeName) ;
     current = current->nextObject () ;
+  }
+
+//--- "once" reader
+  GGS_L_lazyAttributeList::cElement * currentLazyDeclaration = mLazyAttributeList.firstObject () ;
+  while (currentLazyDeclaration != NULL) {
+    macroValidPointer (currentLazyDeclaration) ;
+    generatedZone3 << "//--- 'once' declaration\n"
+                      "  private : mutable bool _mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed ;\n" ;
+    GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
+    while (currentOnceAttribute != NULL) {
+      macroValidPointer (currentOnceAttribute) ;
+      generatedZone3 << "  private : mutable " ;
+      currentOnceAttribute->mAttributType (HERE)->generateCppClassName (generatedZone3) ;
+      generatedZone3 << " " << currentOnceAttribute->mAttributeName << " ;\n"
+                        "  public : " ;
+      currentOnceAttribute->mAttributType (HERE)->generateCppClassName (generatedZone3) ;
+      generatedZone3 << " _" << currentOnceAttribute->mAttributeName << " (C_Compiler & _inLexique) const ;\n" ;
+      currentOnceAttribute = currentOnceAttribute->nextObject () ;
+    }
+    generatedZone3 << "  private : void computeOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << " (C_Compiler & _inLexique) const ;\n\n" ;
+    currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
   }
 
 //--- Pour chaque methode, engendrer sa declaration
@@ -467,6 +505,22 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     variableIndex ++ ;
     current = current->nextObject () ;
   }
+
+//--- "once" readers
+  GGS_L_lazyAttributeList::cElement * currentLazyDeclaration = mLazyAttributeList.firstObject () ;
+  while (currentLazyDeclaration != NULL) {
+    macroValidPointer (currentLazyDeclaration) ;
+    inCppFile << ",\n"
+                 "_mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed (false)" ;
+    GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
+    while (currentOnceAttribute != NULL) {
+      macroValidPointer (currentOnceAttribute) ;
+          inCppFile << ",\n"
+                    << currentOnceAttribute->mAttributeName << " ()" ;
+      currentOnceAttribute = currentOnceAttribute->nextObject () ;
+    }
+    currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
+  }
   inCppFile << " {\n"
                "}\n\n" ;
 
@@ -511,6 +565,55 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                    "  return equal ;\n" ;
     }
     inCppFile << "}\n\n" ;
+  }
+
+//--- Engender les attributs "once"
+  currentLazyDeclaration = mLazyAttributeList.firstObject () ;
+  while (currentLazyDeclaration != NULL) {
+    macroValidPointer (currentLazyDeclaration) ;
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void cPtr_" << aNomClasse << "::computeOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << " (C_Compiler & " ;
+  //--- L'argument lexique est-il utilise ?
+    const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (currentLazyDeclaration->mInstructionList, true) ;
+    if (! lexiqueUtilise) {
+      inCppFile << "/* " ;
+    }
+    inCppFile << "_inLexique" ;
+    if (! lexiqueUtilise) {
+      inCppFile << " */" ;
+    }
+    inCppFile << ") const {\n"
+                 "  _mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed = true ;\n" ;
+    GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
+    while (currentOnceAttribute != NULL) {
+      macroValidPointer (currentOnceAttribute) ;
+      inCppFile << "  " << currentOnceAttribute->mAttributeName << "._drop () ;\n" ;
+      currentOnceAttribute = currentOnceAttribute->nextObject () ;
+    }
+    sint32 prototypeIndex = 0 ; // Non used here
+    generateInstructionListForList (currentLazyDeclaration->mInstructionList, inCppFile,
+                                    inTargetFileName, prototypeIndex,
+                                    inGenerateDebug, true) ; 
+    inCppFile << "}\n\n" ;
+    currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
+  }
+  currentLazyDeclaration = mLazyAttributeList.firstObject () ;
+  while (currentLazyDeclaration != NULL) {
+    macroValidPointer (currentLazyDeclaration) ;
+    GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
+    while (currentOnceAttribute != NULL) {
+      macroValidPointer (currentOnceAttribute) ;
+      inCppFile.appendCppHyphenLineComment () ;
+      currentOnceAttribute->mAttributType (HERE)->generateCppClassName (inCppFile) ;
+      inCppFile << " cPtr_" << aNomClasse << "::_" <<  currentOnceAttribute->mAttributeName << " (C_Compiler & _inLexique) const {\n"
+                   "  if (! _mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed) {\n"
+                   "    computeOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << " (_inLexique) ;\n"
+                   "  }\n"
+                   "  return " <<  currentOnceAttribute->mAttributeName << " ;\n"
+                   "}\n\n" ;
+      currentOnceAttribute = currentOnceAttribute->nextObject () ;
+    }
+    currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
   }
 
 //--- Pour chaque methode non abstraite, engendrer son implementation
@@ -743,6 +846,35 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     current = current->nextObject () ;
   }
+
+//--- Generate 'lazy' reader methods              
+  currentLazyDeclaration = mLazyAttributeList.firstObject () ;
+  while (currentLazyDeclaration != NULL) {
+    macroValidPointer (currentLazyDeclaration) ;
+    GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
+    while (currentOnceAttribute != NULL) {
+      macroValidPointer (currentOnceAttribute) ;
+      currentOnceAttribute->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+      inCppFile << " GGS_" << aNomClasse << "::\n"
+                    "reader_" << currentOnceAttribute->mAttributeName
+                << " (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) const {\n"
+                   "  " ;
+      currentOnceAttribute->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+      inCppFile << "  result ;\n"
+                   "  if (mPointer != NULL) {\n"
+                   "    macroValidPointer (mPointer) ;\n"
+                   "    MF_Assert (dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer) != NULL,\n"
+                   "               \"dynamic cast error\", 0, 0) ;\n"
+                   "    result = ((cPtr_" << aNomClasse << " *) mPointer)->_" << currentOnceAttribute->mAttributeName << " (inLexique) ;\n"
+                   "  }\n"
+                   "  return result ;\n"
+                   "}\n\n" ;
+      inCppFile.appendCppHyphenLineComment () ;
+      currentOnceAttribute = currentOnceAttribute->nextObject () ;
+    }
+    currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
+  }
+
 
 //--- Generate 'description' reader implementation
   inCppFile << "const char * GGS_" << aNomClasse << "::actualTypeName (void) const {\n"

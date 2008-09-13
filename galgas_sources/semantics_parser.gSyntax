@@ -236,6 +236,7 @@ nonterminal <parse_method>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@string inClassMessage
   ??@EXsemanticContext inSemanticContext
+  ??@L_lazyAttributeList inLazyAttributeListToImplement
 label parse
 ;
 
@@ -254,6 +255,7 @@ nonterminal <overrided_method>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@string inClassMessage
   ??@EXsemanticContext inSemanticContext
+  ??@L_lazyAttributeList inLazyAttributeListToImplement
 label parse
 ;
 
@@ -272,6 +274,7 @@ nonterminal <non_abstract_method>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@string inClassMessage
   ??@EXsemanticContext inSemanticContext
+  ??@L_lazyAttributeList inLazyAttributeListToImplement
 label parse
 ;
 
@@ -1485,6 +1488,123 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+nonterminal  <once_reader>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributsHerites
+  ??@bool inClassIsAbstract
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableEnAvant tableEnAvant
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@string inClassMessage
+  ??@EXsemanticContext inSemanticContext
+  ?!@L_lazyAttributeList ioLazyAttributeList
+label parse
+;
+
+rule <once_reader>
+  ??@lstring inCurrentClassName
+  ??@typeTableMethodes inAncestorClassMethodsMap
+  ??@typeListeAttributsSemantiques listeTousAttributsSemantiques
+  ??@typeTableMethodes tableDesMethodes
+  ??@typeSuperClassesMap tableDesClassesAncetres
+  ??@typeClassInheritedMessagesMap messageMapForHeirs
+  ??@typeSemanticAttributesMap tableAttributsHerites
+  ??@bool inClassIsAbstract
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableEnAvant tableEnAvant
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@string inClassMessage
+  ??@EXsemanticContext inSemanticContext
+  ?!@L_lazyAttributeList ioLazyAttributeList
+:
+#--- Create local variable map
+  @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
+  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType) do
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![kKey location] ![kKey string]] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
+  end foreach ;
+#--- Header
+  $lazy$ ;
+  @typeListeAttributsSemantiques computedAttributeTypeAndNameList [emptyList] ;
+  repeat
+    $type_name$ ?@lstring  attributeTypeName ;
+    $identifier$ ? @lstring attributeName ;
+    @AC_semanticsEntity entite ;
+    [ioComponentSemanticsEntitiesMap searchKey !attributeTypeName ?entite] ;
+    @AC_galgasType t := [(cast entite if >= @typeEntiteType else error attributeTypeName) aDefType] ;
+    @typeCplusPlusName nomCpp := [@typeDirectName new ![attributeName location] ![attributeName string]] ;
+    [!?methodLocalVariablesMap insertOutArgument !attributeName !t !nomCpp] ;
+    computedAttributeTypeAndNameList += !t !attributeName ;
+  while
+  end repeat ;
+#--- Insert the predefined "self" variable
+  @L_lazyAttributeList lazyAttributeListForSelfAndSuper := ioLazyAttributeList ;
+  lazyAttributeListForSelfAndSuper +=
+    !here
+    !computedAttributeTypeAndNameList
+    ![@typeInstructionList emptyList]
+  ;
+  @AC_galgasType typeDefinition := [@typeGalgasClassType new 
+    !inCurrentClassName
+    !tableDesMethodes
+    !listeTousAttributsSemantiques
+    !tableDesClassesAncetres
+    !messageMapForHeirs
+    !tableAttributsHerites
+    !inClassIsAbstract
+    !inClassMessage
+    !false
+    !lazyAttributeListForSelfAndSuper
+  ] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppThisName new !here]] ;
+#--- Insert the predefined "super" variable
+  typeDefinition := [@typeGalgasClassType new 
+           !inCurrentClassName
+           !inAncestorClassMethodsMap
+           !listeTousAttributsSemantiques
+           !tableDesClassesAncetres
+           !messageMapForHeirs
+           !tableAttributsHerites
+           !inClassIsAbstract
+           !inClassMessage
+           !false
+     !lazyAttributeListForSelfAndSuper
+  ] ;
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"super" !here] !typeDefinition ![@typeCppInheritedName new !here]] ;
+#--- Add current class definition
+  @M_semanticsEntitiesForUse componentSemanticsEntitiesMap := ioComponentSemanticsEntitiesMap ;
+  @AC_semanticsEntity entite := [@typeEntiteType new ! typeDefinition] ;
+  [!?componentSemanticsEntitiesMap insertKey !inCurrentClassName !entite] ;
+#--- Parse reader instruction list
+  $:$ ;
+  @typeInstructionList instructionsList [emptyList] ;
+  <semantic_instructions_list>
+    !tableEnAvant
+    !componentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !?methodLocalVariablesMap
+    !?instructionsList
+    !inSemanticContext
+  ;
+#--- End
+  $end$ ;
+  $lazy$ ;
+  $;$ ;
+#--- Enter in implement list
+  ioLazyAttributeList +=
+    !here
+    !computedAttributeTypeAndNameList
+    !instructionsList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <class_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
@@ -1497,8 +1617,7 @@ rule <class_declaration>
 :
   $class$ ;
  #--- Abstract class name
-  @lstring abstractClassName ;
-  $type_name$ ? abstractClassName ;
+  $type_name$ ?@lstring  abstractClassName ;
   select
     if not ([tableEnAvant hasKey ![abstractClassName string]] |
           [ioComponentSemanticsEntitiesMap hasKey ![abstractClassName string]]) then
@@ -1556,6 +1675,7 @@ rule <class_declaration>
     @typeClassMessagesMap tableMessagesClasseConcrete [emptyMap] ;
     @typeClassInheritedMessagesMap messageMapForHeirs [emptyMap] ;
     @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
+    @L_lazyAttributeList onceReaderListToImplement [emptyList] ;
     @string classMessage := "" ;
     repeat
     while
@@ -1609,6 +1729,7 @@ rule <class_declaration>
         !inOptionsComponentsMapForUse
         !classMessage
         !ioSemanticContext
+        ! onceReaderListToImplement
       ;
      while
       <overrided_method>
@@ -1626,6 +1747,24 @@ rule <class_declaration>
         !inOptionsComponentsMapForUse
         !classMessage
         !ioSemanticContext
+        ! onceReaderListToImplement
+     ;
+    while
+      <once_reader>
+        !abstractClassName
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !inIsAbstract
+        !?ioComponentSemanticsEntitiesMap
+        !?tableEnAvant
+        !inOptionsComponentsMapForUse
+        !classMessage
+        !ioSemanticContext
+        !?onceReaderListToImplement
      ;
     end repeat ;
   #--- Check class message is defined if needed
@@ -1649,6 +1788,7 @@ rule <class_declaration>
       !inIsAbstract
       !classMessage
       !hasGeneratedInSeparateFileSetting
+      !onceReaderListToImplement
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
@@ -1664,6 +1804,7 @@ rule <class_declaration>
       !tableMessagesClasseConcrete
       !classMessage
       !hasGeneratedInSeparateFileSetting
+      !onceReaderListToImplement
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -1744,6 +1885,7 @@ label importSemantics
     @typeTableMethodes tableDesMethodes := ancestorClassMethodsMap ;
     @typeEntitiesToGenerateList listeEntitesAengendrer [emptyList] ;
     @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
+    @L_lazyAttributeList onceReaderListToImplement [emptyList] ;
     @string classMessage := "" ;
     repeat
     while
@@ -1796,6 +1938,7 @@ label importSemantics
         !optionsComponentsMapForUse
         !classMessage
         !ioSemanticContext
+        ! onceReaderListToImplement
       ;
      while
       <overrided_method>
@@ -1813,6 +1956,24 @@ label importSemantics
         !optionsComponentsMapForUse
         !classMessage
         !ioSemanticContext
+        ! onceReaderListToImplement
+     ;
+    while
+      <once_reader>
+        !abstractClassName
+        !ancestorClassMethodsMap
+        !listeTousAttributsSemantiques
+        !tableDesMethodes
+        !tableDesClassesAncetres
+        !messageMapForHeirs
+        !tableAttributs
+        !inIsAbstract
+        !?ioComponentSemanticsEntitiesMap
+        !?tableEnAvant
+        !optionsComponentsMapForUse
+        !classMessage
+        !ioSemanticContext
+        !?onceReaderListToImplement
      ;
     end repeat ;
   #--- Verify that all inherited messages are defined
@@ -1832,6 +1993,7 @@ label importSemantics
       !inIsAbstract
       !classMessage
       !hasGeneratedInSeparateFileSetting
+      !onceReaderListToImplement
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
@@ -1899,6 +2061,7 @@ rule <parse_method>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@string inClassMessage
   ??@EXsemanticContext inSemanticContext
+  ??@L_lazyAttributeList inLazyAttributeListToImplement
 :
 #--- Get reader name
   $identifier$ ? outMethodName ;
@@ -1918,7 +2081,9 @@ rule <parse_method>
            !tableAttributsHerites
            !inClassIsAbstract
            !inClassMessage
-           !false] ;
+           !false
+        !inLazyAttributeListToImplement
+  ] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !typeDefinition ![@typeCppThisName new !here]] ;
 #--- Insert the predefined "super" variable
   typeDefinition := [@typeGalgasClassType new 
@@ -1931,6 +2096,7 @@ rule <parse_method>
            !inClassIsAbstract
            !inClassMessage
            !false
+        !inLazyAttributeListToImplement
   ] ;
   [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"super" !here] !typeDefinition ![@typeCppInheritedName new !here]] ;
 #--- Parse formal arguments
@@ -1977,6 +2143,7 @@ rule <non_abstract_method>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@string inClassMessage
   ??@EXsemanticContext inSemanticContext
+  ??@L_lazyAttributeList inLazyAttributeListToImplement
 :
   $method$ ;
   @lstring methodName ;
@@ -2001,6 +2168,7 @@ rule <non_abstract_method>
     !inOptionsComponentsMapForUse
     !inClassMessage
     !inSemanticContext
+    !inLazyAttributeListToImplement
   ;
   [!?tableDesMethodes insertKey !methodName !methodSignature] ;
   [!?tableMethodesAimplementer insertNotAbstract !methodName !methodSignature !listeTypeEtNomsArguments !instructionsList] ;
@@ -2026,6 +2194,7 @@ rule <overrided_method>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@string inClassMessage
   ??@EXsemanticContext inSemanticContext
+  ??@L_lazyAttributeList inLazyAttributeListToImplement
 :
   $override$ ;
   $method$ ;
@@ -2051,6 +2220,7 @@ rule <overrided_method>
     !inOptionsComponentsMapForUse
     !inClassMessage
     !inSemanticContext
+    !inLazyAttributeListToImplement
   ;
 #--- Verify reader signature is compatible with overriden reader signature
   @L_EXsignature listeDeTypesMethodeOriginale ;
