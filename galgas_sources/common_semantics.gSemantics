@@ -3483,122 +3483,93 @@ routine handleStringReaderCall
   !@typeListeAttributsSemantiques outAccessorTypesList
   !@AC_galgasType outReturnedType
 :
+  outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
   if [inReaderName string] == "doesEnvironmentVariableExist" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "length" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "md5" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "uint" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "capacity" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "fileExists" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "directoryExists" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "characterAtIndex" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
     outReturnedType := [@typeGalgas_char new] ;
   elsif [inReaderName string] == "stringByRemovingCharacterAtIndex" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # First @string argument
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "pathExtension" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    outReturnedType := [@typeGalgas_string new] ;
+  elsif [inReaderName string] == "rightSubString" then
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "nativePathWithUnixPath" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "unixPathWithNativePath" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "lastPathComponent" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "stringByDeletingPathExtension" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "stringByCapitalizingFirstCharacter" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "firstCharacterOrNul" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_char new] ;
   elsif [inReaderName string] == "stringByDeletingLastPathComponent" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "stringByStandardizingPath" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "stringByLeftPadding" then
     outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
     outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
   elsif [inReaderName string] == "stringByRightPadding" then
     outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
     outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
   elsif [inReaderName string] == "stringByLeftAndRightPadding" then
     outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ; # @uint arg: padding size
     outAccessorTypesList += ![@typeGalgas_char new] ![@lstring new !"" !here] ; # @char arg: padding char
   elsif [inReaderName string] == "absolutePathFromPath" then
     outReturnedType := [@typeGalgas_string new] ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
   elsif [inReaderName string] == "stringByReplacingStringByString" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
   elsif [inReaderName string] == "uppercaseString" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "reversedString" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "escapedString" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "componentsSeparatedByString" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
   elsif [inReaderName string] == "regularFiles" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
   elsif [inReaderName string] == "hiddenFiles" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
   elsif [inReaderName string] == "directories" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
   elsif [inReaderName string] == "regularFilesWithExtensions" then
     build_stringlist_type  ?outReturnedType ;
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
   elsif [inReaderName string] == "system" then
-    outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     outReturnedType := [@typeGalgas_sint new] ;
   else
-    error inReaderName : "this reader is not defined"
-     -> outAccessorTypesList, outReturnedType ;
+    error inReaderName : "the '" . inReaderName . "' reader is not defined" -> outReturnedType ;
   end if ;
 end routine ;
 
