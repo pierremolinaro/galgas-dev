@@ -90,6 +90,7 @@ project
   compile "programSLRgrammar.gGrammar" ;
 
 #--- Project component
+  compile "XcodeProjectGeneration.gSemantics" ;
   compile "projectModelBuilder.gSyntax" ;
   compile "projectLL1grammar.gGrammar" ;
 

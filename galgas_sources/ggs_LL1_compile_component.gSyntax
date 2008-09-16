@@ -21,6 +21,8 @@ syntax ggs_LL1_compile_component :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
+
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
 #------------------------------------------------------------------------------*
@@ -271,12 +273,19 @@ rule <galgas_component>
     end if ;
   end if ;
 #--- Handle Xcode Project
-#  if [@uint errorCount] == 0 then
-#    @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
-#    @stringlist xcodeProjects := [XcodeProjectDir regularFilesWithExtensions !true ![@stringlist listWithValue !"pbxprojTXT"]] ;
-#    if [xcodeProjects length] == 1 then
-#      @string name ; [xcodeProjects first ?name] ;
-#      @string fullXcodePath := XcodeProjectDir . "/" . name ;
+  if [@uint errorCount] == 0 then
+    @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/Z" ; # . "/project_xcode" ;
+    #log XcodeProjectDir ;
+    @stringlist xcodeProjects := [XcodeProjectDir regularFilesWithExtensions !true ![@stringlist listWithValue !"pbxproj"]] ;
+    #log xcodeProjects ;
+    if [xcodeProjects length] == 1 then
+      @string name ; [xcodeProjects first ?name] ;
+      @string fullXcodePath := XcodeProjectDir . "/" . name ;
+      generateXcodeProject
+        ![[name stringByDeletingLastPathComponent] stringByDeletingPathExtension] # XCode project base name
+        !fullXcodePath ;
+    end if ;
+  end if ;
 #      log fullXcodePath ;
 #    #--- Build contents
 #      @string newContents := "// !$*UTF8*$!\n"
