@@ -1,0 +1,217 @@
+#---------------------------------------------------------------------------*
+
+semantics XcodeProjectGeneration :
+
+#---------------------------------------------------------------------------*
+
+routine computeKey ??@string inValue !@string outKey :
+  outKey := [[inValue md5] rightSubString !24] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+list @Xcode_groupList {
+  @string mTargetKey ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @Xcode_buildConfigurationList {
+  @string mTargetKey ;
+  @string mXCBuildConfigurationKey ;
+  @stringlist mSettings ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @Xcode_targetList {
+  @string mTargetKey ;
+  @string mTargetName ;
+  @string mTargetConfigurationKey ;
+  @string mProductInstallPath ;
+  @string mProductName ;
+  @string mProductTypeExtension ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @Xcode_rootObject {
+  @string mProjectName ;
+  @string mRootObjectKey ;
+  @Xcode_groupList mGroupList ;
+  @string mMainGroupKey ;
+  @Xcode_buildConfigurationList mBuildConfigurationList ;
+  @Xcode_targetList mTargetList ;
+  @string mProjectDefaultConfigurationKey ;
+
+  method build !@string ioString :
+#--- Header
+    ioString := "// !$*UTF8*$!\n"
+    . "{\n"
+    . "\tarchiveVersion = 1;\n"
+    . "\tclasses = {\n"
+    . "\t};\n"
+    . "\tobjectVersion = 42;\n"
+    . "\tobjects = {\n\n" ;
+#--- PBXGroup section
+    ioString .= "/* Begin PBXGroup section */\n" ;
+    foreach mGroupList do
+      ioString .= "\t\t" . mTargetKey . " = {\n"
+	   . "\t\t\tisa = PBXGroup;\n"
+	   . "\t\t\tchildren = (\n"
+	   . "\t\t\t);\n"
+	   . "\t\t\tsourceTree = \"<group>\";\n"
+	   . "\t\t};\n"
+       ;
+    end foreach ;
+    ioString .= "/* End PBXGroup section */\n\n" ;
+#--- PBXNativeTarget section
+    ioString .= "/* Begin PBXNativeTarget section */\n" ;
+    foreach mTargetList do
+      ioString .= "\t\t" . mTargetKey . " /* " . mTargetName . " */ {\n"
+	   . "\t\t\tisa = PBXNativeTarget;\n"
+	   . "\t\t\tbuildConfigurationList = " . mTargetConfigurationKey . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
+	   . "\t\t\tbuildPhases = (\n"
+	   . "\t\t\t);\n"
+	   . "\t\t\tbuildRules = (\n"
+	   . "\t\t\t);\n"
+	   . "\t\t\tdependencies = (\n"
+	   . "\t\t\t);\n"
+	   . "\t\t\tname = \"" . mTargetName . "\";\n"
+	   . "\t\t\tproductInstallPath = \"" . mProductInstallPath . "\";\n"
+	   . "\t\t\tproductName = \"" . mProductName . "\";\n"
+	   . "\t\t\tproductType = \"com.apple.product-type." . mProductTypeExtension . "\";\n"
+	   . "\t\t}\n"
+      ;
+    end foreach ;
+    ioString .= "/* End PBXNativeTarget section */\n" ;
+#--- PBXNativeTarget section
+    ioString .= "/* Begin PBXNativeTarget section */\n" ;
+    ioString .= "/* End PBXNativeTarget section */\n" ;
+#--- PBXProject section
+    ioString .= "/* Begin PBXProject section */\n"
+	 . "\t\t" . mRootObjectKey . " /* Project object */ = {\n"
+	 . "\t\t\tisa = PBXProject;\n"
+	 . "\t\t\tbuildConfigurationList = " . mProjectDefaultConfigurationKey . " /* Build configuration list for PBXProject \"" . mProjectName . "\" */;\n"
+	 . "\t\t\tcompatibilityVersion = \"Xcode 2.4\";\n"
+	 . "\t\t\thasScannedForEncodings = 1;\n"
+	 . "\t\t\tmainGroup = " . mMainGroupKey . ";\n"
+	 . "\t\t\tprojectDirPath = \"\";\n"
+	 . "\t\t\tprojectRoot = \"\";\n"
+	 . "\t\t\ttargets = (\n" ;
+    foreach mTargetList do
+      ioString .= "\t\t\t\t" . mTargetKey . " /* " . mTargetName . " */,\n" ;
+    end foreach ;
+	 ioString .= "\t\t\t);\n"
+	 . "\t\t};\n"
+	 . "/* End PBXProject section */\n\n" ;
+#--- XCBuildConfiguration section
+    ioString .= "/* Begin XCBuildConfiguration section */\n" ;
+    foreach mBuildConfigurationList do
+      ioString .= "\t\t" . mXCBuildConfigurationKey . " /* Default */ = {\n"
+      . "\t\t\tisa = XCBuildConfiguration;\n"
+      . "\t\t\tbuildSettings = {\n" ;
+      foreach mSettings do
+        ioString .= "\t\t\t\t" . mValue . "\n" ;
+      end foreach ;
+      ioString .=  "\t\t\t};\n"
+      . "\t\t\tname = Default;\n"
+      . "\t\t};\n" ;
+    end foreach ;
+    ioString .= "/* End XCBuildConfiguration section */\n\n" ;
+#--- XCConfigurationList section
+    ioString .= "/* Begin XCConfigurationList section */\n" ;
+    foreach mBuildConfigurationList do
+      ioString .= "\t\t" . mTargetKey . " /* Build configuration list */ = {\n"
+      . "\t\t\tisa = XCConfigurationList;\n"
+      . "\t\t\tbuildConfigurations = (\n"
+      . "\t\t\t\t" . mXCBuildConfigurationKey . " /* Default */,\n"
+      . "\t\t\t);\n"
+      . "\t\t\tdefaultConfigurationIsVisible = 0;\n"
+      . "\t\t\tdefaultConfigurationName = Default;\n"
+      . "\t\t};\n" ;
+    end foreach ;
+    ioString .= "/* End XCConfigurationList section */\n" ;
+#--- 
+    ioString .= "\t};\n"
+    . "\trootObject = " . mRootObjectKey . " /* Project object */ ;\n"
+    . "}\n" ;
+  end method ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine generateXcodeProject
+  ??@string inProjectName
+  ??@string in_pbxproj_filePath
+:
+  @Xcode_groupList groupList [emptyList] ;
+  @Xcode_buildConfigurationList buildConfigurationList [emptyList] ;
+  @Xcode_targetList targetList [emptyList] ;
+#--- Build group list
+  @string mainGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += !mainGroupKey ;
+#--- Define project default configuration
+  @stringlist projectDefaultSettings [emptyList] ;
+  projectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
+  projectDefaultSettings  += !"ARCHS = (ppc, i386,);" ;
+  projectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
+  projectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
+  projectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
+  projectDefaultSettings  += !"GCC_THREADSAFE_STATICS = NO;" ;
+  projectDefaultSettings  += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
+  projectDefaultSettings  += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
+  projectDefaultSettings  += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
+  projectDefaultSettings  += !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_PEDANTIC = NO;" ;
+  projectDefaultSettings  += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_SHADOW = NO;" ;
+  projectDefaultSettings  += !"GCC_WARN_SIGN_COMPARE = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNKNOWN_PRAGMAS = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNUSED_FUNCTION = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNUSED_LABEL = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
+  projectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
+  projectDefaultSettings  += !"HEADER_SEARCH_PATHS = (../galgas_sources/GALGAS_OUTPUT, ../hand_coded_sources, ../../libpm,);" ;
+  projectDefaultSettings  += !"PREBINDING = NO;" ;
+  projectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
+  @string projectDefaultConfigurationKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  buildConfigurationList += !projectDefaultConfigurationKey ![[[[@uint sequenceNumber] string] md5] rightSubString!24] ! projectDefaultSettings ;
+#--- Build project model
+  @Xcode_rootObject p [new
+    !inProjectName
+    ![["project" md5] rightSubString !24]
+    !groupList
+    !mainGroupKey
+    !buildConfigurationList
+    !targetList
+    !projectDefaultConfigurationKey
+  ] ;
+#--- Build string
+  @string fileNewContents ;
+  [p build ?fileNewContents] ;
+#--- 
+#  log in_pbxproj_filePath ;
+  [[in_pbxproj_filePath stringByDeletingLastPathComponent] makeDirectory] ;
+  [fileNewContents writeToFileWhenDifferentContents !in_pbxproj_filePath] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+

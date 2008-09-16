@@ -10,6 +10,30 @@
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CF01E42F0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */; };
+		CF01E4300E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */; };
+		CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF01E4320E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */; };
+		CF01E4330E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */; };
+		CF01E4340E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */; };
+		CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF01E4360E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */; };
+		CF01E4370E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */; };
+		CF01E4380E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */; };
+		CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF01E43A0E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */; };
+		CF01E43B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */; };
+		CF01E43C0E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */; };
+		CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF01E43E0E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */; };
+		CF01E43F0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */; };
+		CF01E4400E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */; };
+		CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF01E4420E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */; };
+		CF01E4430E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */; };
+		CF01E4440E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */; };
+		CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF01E4460E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */; };
 		CF0357DE0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF0357DF0B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
 		CF0357E40B10E52800D3B6D0 /* include_mapIndexProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */; };
@@ -3265,6 +3289,11 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC370486D014006FF6A4 /* cocoaGalgas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF01E42A0E80146E00D4FBF1 /* file_list.mke */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = file_list.mke; sourceTree = "<group>"; };
+		CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_grammarInstructionWithSourceFile.h; sourceTree = "<group>"; };
+		CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_treewalkingInstruction.h; sourceTree = "<group>"; };
+		CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XcodeProjectGeneration.cpp; sourceTree = "<group>"; };
+		CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeProjectGeneration.h; sourceTree = "<group>"; };
 		CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_mapIndexProperty.h; sourceTree = "<group>"; };
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
@@ -4725,6 +4754,11 @@
 		CFDC56A00C186F5F00DF8818 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				CF01E42A0E80146E00D4FBF1 /* file_list.mke */,
+				CF01E42B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h */,
+				CF01E42C0E80146E00D4FBF1 /* include_treewalkingInstruction.h */,
+				CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */,
+				CF01E42E0E80146E00D4FBF1 /* XcodeProjectGeneration.h */,
 				CFDC56A10C186FBB00DF8818 /* projectLL1grammar.cpp */,
 				CFDC56A20C186FBB00DF8818 /* projectLL1grammar.h */,
 				CFDC56A30C186FBB00DF8818 /* projectModelBuilder.cpp */,
@@ -5660,6 +5694,9 @@
 				CFFD8D0A0E6F0A8E00865B5E /* unicode_string_routines.h in Headers */,
 				CFFD8D370E6F0AE600865B5E /* AC_OutputUnicodeStream.h in Headers */,
 				CF06760A0E7EDE29008B9D1F /* md5.h in Headers */,
+				CF01E42F0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
+				CF01E4300E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
+				CF01E4320E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6039,6 +6076,9 @@
 				CFFD8D180E6F0A8E00865B5E /* unicode_character.h in Headers */,
 				CFFD8D1A0E6F0A8E00865B5E /* unicode_string_routines.h in Headers */,
 				CFFD8D3B0E6F0AE600865B5E /* AC_OutputUnicodeStream.h in Headers */,
+				CF01E4370E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
+				CF01E4380E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
+				CF01E43A0E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6403,6 +6443,9 @@
 				CFFD8D220E6F0A8E00865B5E /* unicode_string_routines.h in Headers */,
 				CFFD8D3D0E6F0AE600865B5E /* AC_OutputUnicodeStream.h in Headers */,
 				CF0676100E7EDE29008B9D1F /* md5.h in Headers */,
+				CF01E43B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
+				CF01E43C0E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
+				CF01E43E0E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6742,6 +6785,9 @@
 				CFFD8D120E6F0A8E00865B5E /* unicode_string_routines.h in Headers */,
 				CFFD8D390E6F0AE600865B5E /* AC_OutputUnicodeStream.h in Headers */,
 				CF06760C0E7EDE29008B9D1F /* md5.h in Headers */,
+				CF01E4330E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
+				CF01E4340E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
+				CF01E4360E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7110,6 +7156,9 @@
 				CFFD8D2A0E6F0A8E00865B5E /* unicode_string_routines.h in Headers */,
 				CFFD8D3F0E6F0AE600865B5E /* AC_OutputUnicodeStream.h in Headers */,
 				CF0676120E7EDE29008B9D1F /* md5.h in Headers */,
+				CF01E43F0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
+				CF01E4400E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
+				CF01E4420E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7474,6 +7523,9 @@
 				CFFD8D320E6F0A8E00865B5E /* unicode_string_routines.h in Headers */,
 				CFFD8D410E6F0AE600865B5E /* AC_OutputUnicodeStream.h in Headers */,
 				CF0676140E7EDE29008B9D1F /* md5.h in Headers */,
+				CF01E4430E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
+				CF01E4440E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
+				CF01E4460E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7951,6 +8003,7 @@
 				CFFD8D090E6F0A8E00865B5E /* unicode_string_routines.cpp in Sources */,
 				CFFD8D360E6F0AE600865B5E /* AC_OutputUnicodeStream.cpp in Sources */,
 				CF0676440E7EE037008B9D1F /* md5.cpp in Sources */,
+				CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8124,6 +8177,7 @@
 				CFFD8D190E6F0A8E00865B5E /* unicode_string_routines.cpp in Sources */,
 				CFFD8D3A0E6F0AE600865B5E /* AC_OutputUnicodeStream.cpp in Sources */,
 				CF0676460E7EE037008B9D1F /* md5.cpp in Sources */,
+				CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8297,6 +8351,7 @@
 				CFFD8D210E6F0A8E00865B5E /* unicode_string_routines.cpp in Sources */,
 				CFFD8D3C0E6F0AE600865B5E /* AC_OutputUnicodeStream.cpp in Sources */,
 				CF0676470E7EE037008B9D1F /* md5.cpp in Sources */,
+				CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8477,6 +8532,7 @@
 				CFFD8D110E6F0A8E00865B5E /* unicode_string_routines.cpp in Sources */,
 				CFFD8D380E6F0AE600865B5E /* AC_OutputUnicodeStream.cpp in Sources */,
 				CF0676450E7EE037008B9D1F /* md5.cpp in Sources */,
+				CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8650,6 +8706,7 @@
 				CFFD8D290E6F0A8E00865B5E /* unicode_string_routines.cpp in Sources */,
 				CFFD8D3E0E6F0AE600865B5E /* AC_OutputUnicodeStream.cpp in Sources */,
 				CF0676480E7EE037008B9D1F /* md5.cpp in Sources */,
+				CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8823,6 +8880,7 @@
 				CFFD8D310E6F0A8E00865B5E /* unicode_string_routines.cpp in Sources */,
 				CFFD8D400E6F0AE600865B5E /* AC_OutputUnicodeStream.cpp in Sources */,
 				CF0676490E7EE037008B9D1F /* md5.cpp in Sources */,
+				CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
