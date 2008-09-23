@@ -188,14 +188,50 @@ routine generateXcodeProject
   @string commandLineInterfaceSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
   groupList += ! commandLineInterfaceSubGroupKey !"Command Line Interface" ![@stringlist emptyList] ;
   libpmGroupChildrenList += ! commandLineInterfaceSubGroupKey ;
+# "Files" subgroup
+  @string filesSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! filesSubGroupKey !"Files" ![@stringlist emptyList] ;
+  libpmGroupChildrenList += ! filesSubGroupKey ;
+# "GALGAS" subgroup
+  @string GALGASSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! GALGASSubGroupKey !"GALGAS" ![@stringlist emptyList] ;
+  libpmGroupChildrenList += ! GALGASSubGroupKey ;
+# "Streams" subgroup
+  @string streamsSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! streamsSubGroupKey !"Streams" ![@stringlist emptyList] ;
+  libpmGroupChildrenList += ! streamsSubGroupKey ;
+# "Time" subgroup
+  @string timeSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! timeSubGroupKey !"Time" ![@stringlist emptyList] ;
+  libpmGroupChildrenList += ! timeSubGroupKey ;
 # "Tiny XML" subgroup
   @string tinyXMLSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
   groupList += ! tinyXMLSubGroupKey !"Tiny XML" ![@stringlist emptyList] ;
   libpmGroupChildrenList += ! tinyXMLSubGroupKey ;
-#---
+# "Unicode" subgroup
+  @string unicodeSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! unicodeSubGroupKey !"Unicode" ![@stringlist emptyList] ;
+  libpmGroupChildrenList += ! unicodeSubGroupKey ;
+# "Utilities" subgroup
+  @string utilitiesSubGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! utilitiesSubGroupKey !"Utilities" ![@stringlist emptyList] ;
+  libpmGroupChildrenList += ! utilitiesSubGroupKey ;
+#--- "LIBMP" Group
   @string libpmGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
   groupList += !libpmGroupKey !"LIBPM" !libpmGroupChildrenList ;
   mainGroupChildrenList += !libpmGroupKey ;
+#--- "Resources" Group
+  @string resourcesGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! resourcesGroupKey !"Resources" ![@stringlist emptyList] ;
+  mainGroupChildrenList += ! resourcesGroupKey ;
+#--- "Frameworks" Group
+  @string frameworksGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! frameworksGroupKey !"Frameworks" ![@stringlist emptyList] ;
+  mainGroupChildrenList += ! frameworksGroupKey ;
+#--- "Products" Group
+  @string productsGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  groupList += ! productsGroupKey !"Products" ![@stringlist emptyList] ;
+  mainGroupChildrenList += ! productsGroupKey ;
 #--- Main Group
   @string mainGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
   groupList += !mainGroupKey !"" !mainGroupChildrenList ;
