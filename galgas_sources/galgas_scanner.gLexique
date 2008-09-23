@@ -62,7 +62,6 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "else",
   "elsif",
   "end",
-  "entity",
   "enum",
   "error",
   "extends",

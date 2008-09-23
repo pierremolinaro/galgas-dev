@@ -3,14 +3,57 @@
 semantics XcodeProjectGeneration :
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    PBXFileReference                                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
-routine computeKey ??@string inValue !@string outKey :
-  outKey := [[inValue md5] rightSubString !24] ;
-end routine ;
+abstract class @Xcode_PBXFileReference_abstract {
+  lazy @string key :
+    key := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  end lazy ;
+
+  abstract method buildXcodeProject ?!@string ioString ;
+}
 
 #---------------------------------------------------------------------------*
 
-list @Xcode_groupList {
+class @Xcode_PBXFileReference_CompiledMachOExecutable extends @Xcode_PBXFileReference_abstract {
+  @string mFileName ;
+
+  override method buildXcodeProject ?!@string ioString :
+    ioString .= "\t\t" . [self key]
+    . " = {isa = PBXFileReference; explicitFileType = \"compiled.mach-o.executable\"; includeInIndex = 0; path = "
+    . mFileName . "; sourceTree = BUILT_PRODUCTS_DIR; };\n" ;
+  end method ;
+}
+
+#---------------------------------------------------------------------------*
+
+
+list @Xcode_PBXFileReference_list {
+  @Xcode_PBXFileReference_abstract mFileReference ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    PBXSourcesBuildPhase                                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @Xcode_PBXSourcesBuildPhase_list {
+  @string mTargetKey ;
+  @string mNameForComment ;
+  @stringlist mFileReferenceList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    PBXGroup                                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @Xcode_PBXGroup_list {
   @string mTargetKey ;
   @string mGroupName ;
   @stringlist mChildrenGroupList ;
@@ -18,7 +61,7 @@ list @Xcode_groupList {
 
 #---------------------------------------------------------------------------*
 
-list @Xcode_buildConfigurationList {
+list @Xcode_XCBuildConfiguration_list {
   @string mTargetKey ;
   @string mXCBuildConfigurationKey ;
   @stringlist mSettings ;
@@ -26,13 +69,15 @@ list @Xcode_buildConfigurationList {
 
 #---------------------------------------------------------------------------*
 
-list @Xcode_targetList {
+list @Xcode_PBXNativeTarget_list {
   @string mTargetKey ;
   @string mTargetName ;
   @string mTargetConfigurationKey ;
   @string mProductInstallPath ;
   @string mProductName ;
+  @string mProductReferenceKey ;
   @string mProductTypeExtension ;
+  @stringlist mBuildPhaseList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -40,11 +85,13 @@ list @Xcode_targetList {
 class @Xcode_rootObject {
   @string mProjectName ;
   @string mRootObjectKey ;
-  @Xcode_groupList mGroupList ;
+  @Xcode_PBXGroup_list mGroupList ;
   @string mMainGroupKey ;
-  @Xcode_buildConfigurationList mBuildConfigurationList ;
-  @Xcode_targetList mTargetList ;
+  @Xcode_XCBuildConfiguration_list mBuildConfigurationList ;
+  @Xcode_PBXNativeTarget_list mTargetList ;
   @string mProjectDefaultConfigurationKey ;
+  @Xcode_PBXFileReference_list mPBXFileReference_list ;
+  @Xcode_PBXSourcesBuildPhase_list mPBXSourcesBuildPhase_list ;
 
   method build !@string ioString :
 #--- Header
@@ -55,6 +102,12 @@ class @Xcode_rootObject {
     . "\t};\n"
     . "\tobjectVersion = 42;\n"
     . "\tobjects = {\n\n" ;
+#--- PBXFileReference section
+    ioString .= "/* Begin PBXFileReference section */\n" ;
+    foreach mPBXFileReference_list do
+      [mFileReference buildXcodeProject !?ioString] ;
+    end foreach ;
+    ioString .= "/* End PBXFileReference section */\n" ;
 #--- PBXGroup section
     ioString .= "/* Begin PBXGroup section */\n" ;
     foreach mGroupList do
@@ -78,8 +131,11 @@ class @Xcode_rootObject {
       ioString .= "\t\t" . mTargetKey . " /* " . mTargetName . " */ {\n"
       . "\t\t\tisa = PBXNativeTarget;\n"
       . "\t\t\tbuildConfigurationList = " . mTargetConfigurationKey . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
-      . "\t\t\tbuildPhases = (\n"
-      . "\t\t\t);\n"
+      . "\t\t\tbuildPhases = (\n" ;
+      foreach mBuildPhaseList do
+        ioString .= "\t\t\t\t" . mValue . ",\n" ;
+      end foreach ;
+      ioString .= "\t\t\t);\n"
       . "\t\t\tbuildRules = (\n"
       . "\t\t\t);\n"
       . "\t\t\tdependencies = (\n"
@@ -87,6 +143,7 @@ class @Xcode_rootObject {
       . "\t\t\tname = \"" . mTargetName . "\";\n"
       . "\t\t\tproductInstallPath = \"" . mProductInstallPath . "\";\n"
       . "\t\t\tproductName = \"" . mProductName . "\";\n"
+      . "\t\t\tproductReference = " . mProductReferenceKey . " ;\n"
       . "\t\t\tproductType = \"com.apple.product-type." . mProductTypeExtension . "\";\n"
       . "\t\t}\n"
       ;
@@ -109,6 +166,21 @@ class @Xcode_rootObject {
    ioString .= "\t\t\t);\n"
    . "\t\t};\n"
    . "/* End PBXProject section */\n\n" ;
+#--- PBXSourcesBuildPhase section
+    ioString .= "/* Begin PBXSourcesBuildPhase section */\n" ;
+    foreach mPBXSourcesBuildPhase_list do
+      ioString .= "\t\t" . mTargetKey . " /* " . mNameForComment . " */ = {\n"
+      . "\t\t\tisa = PBXSourcesBuildPhase;\n"
+      . "\t\t\tbuildActionMask = 2147483647;\n"
+      . "\t\t\tfiles = (\n" ;
+      foreach mFileReferenceList do
+        ioString .= "\t\t\t\t" . mValue . "\n" ;
+      end foreach ;
+      ioString .=  "\t\t\t);\n"
+      . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
+      . "\t\t};\n" ;
+    end foreach ;
+    ioString .= "/* End PBXSourcesBuildPhase section */\n" ;
 #--- XCBuildConfiguration section
     ioString .= "/* Begin XCBuildConfiguration section */\n" ;
     foreach mBuildConfigurationList do
@@ -149,11 +221,42 @@ routine generateXcodeProject
   ??@string inProjectName
   ??@string in_pbxproj_filePath
 :
-  @Xcode_groupList groupList [emptyList] ;
-  @Xcode_buildConfigurationList buildConfigurationList [emptyList] ;
-  @Xcode_targetList targetList [emptyList] ;
+  @Xcode_PBXGroup_list groupList [emptyList] ;
+  @Xcode_XCBuildConfiguration_list buildConfigurationList [emptyList] ;
+  @Xcode_PBXNativeTarget_list targetList [emptyList] ;
   @stringlist mainGroupChildrenList [emptyList] ;
-#----------------- Build group list
+  @stringlist productGroupChildrenList [emptyList] ;
+  @Xcode_PBXFileReference_list PBXFileReferenceList [emptyList] ;
+  @Xcode_PBXSourcesBuildPhase_list PBXSourcesBuildPhase_list [emptyList] ;
+#-------------------------------------------------- Build "tool" target
+  @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new !inProjectName] ;
+  PBXFileReferenceList += !toolFileReference ;
+  productGroupChildrenList += ![toolFileReference key] ;
+  @string compileSourcesReferenceKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  PBXSourcesBuildPhase_list +=
+    !compileSourcesReferenceKey
+    !"Sources"
+    ![@stringlist emptyList]
+  ;
+  @string toolTargetBuildConfigurationReferenceKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  @string toolTargetConfigurationKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  @string toolTargetListKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  buildConfigurationList +=
+    !toolTargetConfigurationKey
+    !toolTargetBuildConfigurationReferenceKey
+    ![@stringlist emptyList]
+  ;
+  targetList +=
+    !toolTargetListKey
+    !inProjectName
+    !toolTargetConfigurationKey
+    !"$(HOME)/bin"
+    !inProjectName
+    ![toolFileReference key]
+    !"tool"
+    ![@stringlist listWithValue !compileSourcesReferenceKey]
+  ;
+#-------------------------------------------------- Build group list
 #--- "Generated by GALGAS" Group
   @string generatedByGalgasGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
   groupList += !generatedByGalgasGroupKey !"Generated by GALGAS" ![@stringlist emptyList] ;
@@ -230,7 +333,7 @@ routine generateXcodeProject
   mainGroupChildrenList += ! frameworksGroupKey ;
 #--- "Products" Group
   @string productsGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  groupList += ! productsGroupKey !"Products" ![@stringlist emptyList] ;
+  groupList += ! productsGroupKey !"Products" !productGroupChildrenList ;
   mainGroupChildrenList += ! productsGroupKey ;
 #--- Main Group
   @string mainGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
@@ -285,6 +388,8 @@ routine generateXcodeProject
     !buildConfigurationList
     !targetList
     !projectDefaultConfigurationKey
+    !PBXFileReferenceList
+    !PBXSourcesBuildPhase_list
   ] ;
 #--- Build string
   @string fileNewContents ;
