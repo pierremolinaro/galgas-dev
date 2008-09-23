@@ -30,7 +30,6 @@ label $list$, $type_name$ ;
 label $sortedlist$, $type_name$ ;
 label $enum$, $type_name$ ;
 label $class$, $type_name$ ;
-label $entity$, $type_name$ ;
 label $nonterminal$, $non_terminal_symbol$ ;
 label $rule$, $non_terminal_symbol$ ;
 label $routine$, $identifier$ ;

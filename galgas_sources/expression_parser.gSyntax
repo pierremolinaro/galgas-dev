@@ -1577,7 +1577,7 @@ rule <factor>
     #--- Search reader for getting formal parameters list
       @typeListeAttributsSemantiques accessorsTypeList ;
       @string conversionMethod ;
-      handleReaderCall !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
+      handleReaderCall !ioEntitiesMap !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
     #--- Actual parameters
       @typeExpressionList expressionList ;
       <output_expression_list>

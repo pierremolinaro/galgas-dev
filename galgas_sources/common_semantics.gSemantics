@@ -3580,6 +3580,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine handleReaderCall
+  ??@M_semanticsEntitiesForUse ioEntitiesMap
   ??@AC_galgasType inReceiverType
   ??@lstring inReaderName
   !@typeListeAttributsSemantiques outAccessorTypesList
@@ -4169,6 +4170,20 @@ routine handleReaderCall
             found := [inReaderName string] == [mAttributeName string] ;
           end foreach ;
         end foreach ;
+      #--- Search for lazy attribute in super classes
+        foreach [t mAncestorClassesMap] while not found do
+          @AC_semanticsEntity entite ;
+          [ioEntitiesMap searchKey !key ?entite] ;
+          @AC_galgasType type := [(cast entite if >= @typeEntiteType else error key) aDefType] ;
+          @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error key) ;
+          foreach [classType mLazyAttributeList] while not found do
+            foreach mComputedAttributeTypeAndNameList while not found do
+              outReturnedType := mAttributType ;
+              found := [inReaderName string] == [mAttributeName string] ;
+            end foreach ;
+          end foreach ;
+        end foreach ;
+      #---
         if not found then
           error inReaderName: "this reader is not defined (you can name as class reader class attributes, class messages and lazy attributes)" ;
         end if ;
