@@ -30,8 +30,69 @@ class @Xcode_PBXFileReference_CompiledMachOExecutable extends @Xcode_PBXFileRefe
 
 #---------------------------------------------------------------------------*
 
+abstract class @Xcode_PBXFileReference_sourceFile extends @Xcode_PBXFileReference_abstract {
+  @string mFileName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_sourceFile {
+  override method buildXcodeProject ?!@string ioString :
+    ioString .= "\t\t" . [self key]
+    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "
+    . mFileName . "; sourceTree = \"<group>\"; };\n" ;
+  end method ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @Xcode_PBXFileReference_hSourceFile extends @Xcode_PBXFileReference_sourceFile {
+  override method buildXcodeProject ?!@string ioString :
+    ioString .= "\t\t" . [self key]
+    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "
+    . mFileName . "; sourceTree = \"<group>\"; };\n" ;
+  end method ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @Xcode_PBXFileReference_list {
   @Xcode_PBXFileReference_abstract mFileReference ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @Xcode_PBXFileReference_map {
+  @Xcode_PBXFileReference_sourceFile mFileReference ;
+
+  insert insertKey error message "the '@%K' reference has been already declared in %L" ;
+  search searchKey error message "the '@%K' reference is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    PBXBuildFile                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @Xcode_PBXBuildFile {
+  @Xcode_PBXFileReference_sourceFile mSourceFile ;
+
+  lazy @string key :
+    key := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+  end lazy ;
+
+  method buildXcodeProject ?!@string ioString :
+    ioString .= "\t\t" . [self key] . " /* " . [mSourceFile mFileName] . " */ "
+    . "= {isa = PBXBuildFile; fileRef = " . [mSourceFile key]
+    . " ; settings = {ATTRIBUTES = (); }; };\n" ;
+  end method ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @Xcode_PBXBuildFile_list {
+  @Xcode_PBXBuildFile mBuildFile ;
 }
 
 #---------------------------------------------------------------------------*
@@ -63,6 +124,7 @@ list @Xcode_PBXSourcesBuildPhase_list {
 
 class @Xcode_PBXGroup {
   @string mGroupName ;
+  @string mGroupPath ;
   @stringlist mChildrenGroupList ;
 
   lazy @string key :
@@ -133,6 +195,7 @@ class @Xcode_rootObject {
   @string mProjectDefaultConfigurationKey ;
   @Xcode_PBXFileReference_list mPBXFileReference_list ;
   @Xcode_PBXSourcesBuildPhase_list mPBXSourcesBuildPhase_list ;
+  @Xcode_PBXBuildFile_list mPBXBuildFile_list ;
 
   method build !@string ioString :
 #--- Header
@@ -143,6 +206,12 @@ class @Xcode_rootObject {
     . "\t};\n"
     . "\tobjectVersion = 42;\n"
     . "\tobjects = {\n\n" ;
+#--- PBXBuildFile section
+    ioString .= "/* Begin PBXBuildFile section */\n" ;
+    foreach mPBXBuildFile_list do
+      [mBuildFile buildXcodeProject !?ioString] ;
+    end foreach ;
+    ioString .= "/* End PBXBuildFile section */\n\n" ;
 #--- PBXFileReference section
     ioString .= "/* Begin PBXFileReference section */\n" ;
     foreach mPBXFileReference_list do
@@ -156,11 +225,14 @@ class @Xcode_rootObject {
      . "\t\t\tisa = PBXGroup;\n"
      . "\t\t\tchildren = (\n" ;
       foreach [mGroup mChildrenGroupList] do
-        ioString .= "\t\t\t\t" . mValue . ",\n" ;
+        ioString .= "\t\t\t\t" . mValue . " ,\n" ;
       end foreach ;
       ioString .= "\t\t\t);\n" ;
       if [mGroup mGroupName] != "" then
         ioString .= "\t\t\tname = \"" . [mGroup mGroupName] . "\";\n" ;
+      end if ;
+      if [mGroup mGroupPath] != "" then
+        ioString .= "\t\t\tpath = \"" . [mGroup mGroupPath] . "\";\n" ;
       end if ;
     ioString .= "\t\t\tsourceTree = \"<group>\";\n"
     . "\t\t};\n" ;
@@ -216,7 +288,7 @@ class @Xcode_rootObject {
       . "\t\t\tbuildActionMask = 2147483647;\n"
       . "\t\t\tfiles = (\n" ;
       foreach [mBuildPhase mFileReferenceList] do
-        ioString .= "\t\t\t\t" . mValue . "\n" ;
+        ioString .= "\t\t\t\t" . mValue . " ,\n" ;
       end foreach ;
       ioString .=  "\t\t\t);\n"
       . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
@@ -259,6 +331,85 @@ class @Xcode_rootObject {
 
 #---------------------------------------------------------------------------*
 
+routine buildGALGAS_LIBPM_cpp_sourceFiles_for_tool
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@Xcode_PBXFileReference_list ioReferenceList
+  ?!@stringlist ioFileListForGroup
+  ?!@Xcode_PBXBuildFile_list ioBuildFileList
+  !@stringlist outKeyListForBuildPhase
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"PM_C_Array" ;
+  fileList += !"PM_C_Dictionary" ;
+  fileList += !"PM_C_Object" ;
+  fileList += !"AC_galgas_listmap" ;
+  fileList += !"GGS_filewrapper" ;
+  fileList += !"AC_galgas_map" ;
+  fileList += !"AC_galgas_list" ;
+  fileList += !"AC_galgas_sortedlist" ;
+  fileList += !"GGS_stringset" ;
+  fileList += !"C_Lexique" ;
+  fileList += !"AC_galgas_mapindex" ;
+  fileList += !"AC_galgas_domain" ;
+  fileList += !"C_galgas_io" ;
+  fileList += !"GGS_binaryset" ;
+  fileList += !"predefined_types" ;
+  fileList += !"GGS_lsint64" ;
+  fileList += !"GGS_luint64" ;
+  fileList += !"GGS_sint64" ;
+  fileList += !"GGS_uint64" ;
+  fileList += !"C_galgas_CLI_Options" ;
+  fileList += !"C_GGS_Object" ;
+  fileList += !"GGS_double" ;
+  fileList += !"GGS_sint" ;
+  fileList += !"GGS_bool" ;
+  fileList += !"GGS_char" ;
+  fileList += !"GGS_string" ;
+  fileList += !"GGS_uint" ;
+  fileList += !"GGS_location" ;
+  fileList += !"GGS_ldouble" ;
+  fileList += !"GGS_lsint" ;
+  fileList += !"GGS_lbool" ;
+  fileList += !"GGS_lchar" ;
+  fileList += !"GGS_lstring" ;
+  fileList += !"GGS_luint" ;
+#---
+  outKeyListForBuildPhase := [@stringlist emptyList] ;
+  foreach fileList do
+  #--- Cpp file
+    @string fileName := mValue . ".cpp" ;
+    @lstring key [new !fileName !here] ;
+    @Xcode_PBXFileReference_sourceFile ref ;
+    if [ioFileReferenceMap hasKey !fileName] then
+      [ioFileReferenceMap searchKey !key ?ref] ;
+    else
+      ref := [@Xcode_PBXFileReference_cppSourceFile new !fileName] ;
+      [!?ioFileReferenceMap insertKey !key !ref] ;
+      ioReferenceList += !ref ;
+    end if ;
+    ioFileListForGroup += ![ref key] ;
+    @Xcode_PBXBuildFile build_file [new !ref] ;
+    ioBuildFileList += !build_file ;
+    outKeyListForBuildPhase += ![build_file key] ;
+  #--- h file
+    fileName := mValue . ".h" ;
+    key := [@lstring new !fileName !here] ;
+    if [ioFileReferenceMap hasKey !fileName] then
+      [ioFileReferenceMap searchKey !key ?ref] ;
+    else
+      ref := [@Xcode_PBXFileReference_hSourceFile new !fileName] ;
+      [!?ioFileReferenceMap insertKey !key !ref] ;
+      ioReferenceList += !ref ;
+    end if ;
+    ioFileListForGroup += ![ref key] ;
+#    build_file := [@Xcode_PBXBuildFile new !ref] ;
+#    ioBuildFileList += !build_file ;
+#    outKeyListForBuildPhase += ![build_file key] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine generateXcodeProject
   ??@string inProjectName
   ??@string in_pbxproj_filePath
@@ -270,18 +421,28 @@ routine generateXcodeProject
   @stringlist productGroupChildrenList [emptyList] ;
   @Xcode_PBXFileReference_list PBXFileReferenceList [emptyList] ;
   @Xcode_PBXSourcesBuildPhase_list PBXSourcesBuildPhase_list [emptyList] ;
+  @Xcode_PBXBuildFile_list PBXBuildFile_list [emptyList] ;
+  @stringlist fileListOf_LIBPM_GALGAS_group [emptyList] ;
+  @Xcode_PBXFileReference_map PBXFileReference_map [emptyMap] ;
 #-------------------------------------------------- Build "tool" target
+  @stringlist keyListForBuildPhase ;
+  buildGALGAS_LIBPM_cpp_sourceFiles_for_tool
+    !?PBXFileReference_map
+    !?PBXFileReferenceList
+    !?fileListOf_LIBPM_GALGAS_group
+    !?PBXBuildFile_list
+    ?keyListForBuildPhase
+  ;
   @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new !inProjectName] ;
   PBXFileReferenceList += !toolFileReference ;
   productGroupChildrenList += ![toolFileReference key] ;
   @Xcode_PBXSourcesBuildPhase compileSourcesForToolTargetBuildPhase [new
     !"Sources"
-    ![@stringlist emptyList]
+    !keyListForBuildPhase
   ] ;
   PBXSourcesBuildPhase_list += !compileSourcesForToolTargetBuildPhase ;
   @Xcode_XCBuildConfiguration toolTargetBuildConfiguration [new
-#    ![@stringlist listWithValue !"PRODUCT_NAME = \"" . inProjectName . "\";"]
-    ![@stringlist emptyList]
+    ![@stringlist listWithValue !"PRODUCT_NAME = \"" . inProjectName . "\";"]
   ] ;
   buildConfigurationList += !toolTargetBuildConfiguration ;
   targetList +=
@@ -296,85 +457,85 @@ routine generateXcodeProject
   ;
 #-------------------------------------------------- Build group list
 #--- "Generated by GALGAS" Group
-  @Xcode_PBXGroup generatedByGalgasGroup [new !"Generated by GALGAS" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup generatedByGalgasGroup [new !"Generated by GALGAS" !"../galgas_sources/GALGAS_OUTPUT" ![@stringlist emptyList]] ;
   groupList += !generatedByGalgasGroup ;
   mainGroupChildrenList += ![generatedByGalgasGroup key] ;
 #--- "Hand Coded Sources" Group
-  @Xcode_PBXGroup handCodedSourcesGroup [new !"Hand Coded Sources" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup handCodedSourcesGroup [new !"Hand Coded Sources" !"../hand_coded_sources" ![@stringlist emptyList]] ;
   groupList += !handCodedSourcesGroup ;
   mainGroupChildrenList += ![handCodedSourcesGroup key] ;
 #--- "LIBPM" Group
   @stringlist libpmGroupChildrenList [emptyList] ;
 # "Caches" subgroup
-  @Xcode_PBXGroup cachesSubGroup [new !"Caches" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup cachesSubGroup [new !"Caches" !"cache" ![@stringlist emptyList]] ;
   groupList += !cachesSubGroup ;
   libpmGroupChildrenList += ! [cachesSubGroup key] ;
 # "BDD" subgroup
-  @Xcode_PBXGroup bddSubGroup [new !"Binary Decision Diagrams" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup bddSubGroup [new !"Binary Decision Diagrams" !"bdd" ![@stringlist emptyList]] ;
   groupList += !bddSubGroup ;
   libpmGroupChildrenList += ![bddSubGroup key] ;
 # "Collections" subgroup
-  @Xcode_PBXGroup collectionSubGroup [new !"Collections" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup collectionSubGroup [new !"Collections" !"collections" ![@stringlist emptyList]] ;
   groupList += !collectionSubGroup ;
   libpmGroupChildrenList += ![collectionSubGroup key] ;
 # "Cocoa GALGAS" subgroup
-  @Xcode_PBXGroup cocoaGALGASSubGroup [new !"Cocoa GALGAS" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup cocoaGALGASSubGroup [new !"Cocoa GALGAS" !"cocoa_galgas" ![@stringlist emptyList]] ;
   groupList += !cocoaGALGASSubGroup ;
   libpmGroupChildrenList += ! [cocoaGALGASSubGroup key] ;
 # "Cocoa Utilities" subgroup
-  @Xcode_PBXGroup cocoaUtilitiesSubGroup [new !"Cocoa Utilities" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup cocoaUtilitiesSubGroup [new !"Cocoa Utilities" !"cocoa_utilities" ![@stringlist emptyList]] ;
   groupList += !cocoaUtilitiesSubGroup ;
   libpmGroupChildrenList += ! [cocoaUtilitiesSubGroup key] ;
 # "Command Line Interface" subgroup
-  @Xcode_PBXGroup commandLineInterfaceSubGroup [new !"Command Line Interface" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup commandLineInterfaceSubGroup [new !"Command Line Interface" !"command_line_interface" ![@stringlist emptyList]] ;
   groupList += !commandLineInterfaceSubGroup ;
   libpmGroupChildrenList += ! [commandLineInterfaceSubGroup key] ;
 # "Files" subgroup
-  @Xcode_PBXGroup filesSubGroup [new !"Files" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup filesSubGroup [new !"Files" !"files" ![@stringlist emptyList]] ;
   groupList += !filesSubGroup ;
   libpmGroupChildrenList += ! [filesSubGroup key] ;
 # "GALGAS" subgroup
-  @Xcode_PBXGroup GALGASSubGroup [new !"GALGAS" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup GALGASSubGroup [new !"GALGAS" !"galgas" !fileListOf_LIBPM_GALGAS_group] ;
   groupList += !GALGASSubGroup ;
   libpmGroupChildrenList += ! [GALGASSubGroup key] ;
 # "Streams" subgroup
-  @Xcode_PBXGroup streamsSubGroup [new !"Streams" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup streamsSubGroup [new !"Streams" !"streams" ![@stringlist emptyList]] ;
   groupList += !streamsSubGroup ;
   libpmGroupChildrenList += ! [streamsSubGroup key] ;
 # "Time" subgroup
-  @Xcode_PBXGroup timeSubGroup [new !"Time" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup timeSubGroup [new !"Time" !"time" ![@stringlist emptyList]] ;
   groupList += !timeSubGroup ;
   libpmGroupChildrenList += ! [timeSubGroup key] ;
 # "Tiny XML" subgroup
-  @Xcode_PBXGroup tinyXMLSubGroup [new !"Tiny XML" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup tinyXMLSubGroup [new !"Tiny XML" !"tiny_xml" ![@stringlist emptyList]] ;
   groupList += !tinyXMLSubGroup ;
   libpmGroupChildrenList += ! [tinyXMLSubGroup key] ;
 # "Unicode" subgroup
-  @Xcode_PBXGroup unicodeSubGroup [new !"Unicode" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup unicodeSubGroup [new !"Unicode" !"unicode" ![@stringlist emptyList]] ;
   groupList += !unicodeSubGroup ;
   libpmGroupChildrenList += ! [unicodeSubGroup key] ;
 # "Utilities" subgroup
-  @Xcode_PBXGroup utilitiesSubGroup [new !"Utilities" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup utilitiesSubGroup [new !"Utilities" !"utilities" ![@stringlist emptyList]] ;
   groupList += !utilitiesSubGroup ;
   libpmGroupChildrenList += ! [utilitiesSubGroup key] ;
 #--- "LIBMP" Group
-  @Xcode_PBXGroup libpmGroup [new !"LIBPM" !libpmGroupChildrenList] ;
+  @Xcode_PBXGroup libpmGroup [new !"LIBPM" !"../../libpm" !libpmGroupChildrenList] ;
   groupList += !libpmGroup ;
   mainGroupChildrenList += ![libpmGroup key] ;
 #--- "Resources" Group
-  @Xcode_PBXGroup resourcesGroup [new !"Resources" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup resourcesGroup [new !"Resources" !"" ![@stringlist emptyList]] ;
   groupList += !resourcesGroup ;
   mainGroupChildrenList += ! [resourcesGroup key] ;
 #--- "Frameworks" Group
-  @Xcode_PBXGroup frameworksGroup [new !"Frameworks" ![@stringlist emptyList]] ;
+  @Xcode_PBXGroup frameworksGroup [new !"Frameworks" !"" ![@stringlist emptyList]] ;
   groupList += !frameworksGroup ;
   mainGroupChildrenList += ! [frameworksGroup key] ;
 #--- "Products" Group
-  @Xcode_PBXGroup productsGroup [new !"Products" !productGroupChildrenList] ;
+  @Xcode_PBXGroup productsGroup [new !"Products" !"" !productGroupChildrenList] ;
   groupList += !productsGroup ;
   mainGroupChildrenList += ! [productsGroup key] ;
 #--- Main Group
-  @Xcode_PBXGroup mainGroup [new !"" !mainGroupChildrenList] ;
+  @Xcode_PBXGroup mainGroup [new !"" !"" !mainGroupChildrenList] ;
   groupList += !mainGroup ;
 #--- Define project default configuration
   @stringlist projectDefaultSettings [emptyList] ;
@@ -429,13 +590,20 @@ routine generateXcodeProject
     ![defaultProjectConfiguration key]
     !PBXFileReferenceList
     !PBXSourcesBuildPhase_list
+    !PBXBuildFile_list
   ] ;
 #--- Build string
   @string fileNewContents ;
   [p build ?fileNewContents] ;
 #--- 
 #  log in_pbxproj_filePath ;
-  [[in_pbxproj_filePath stringByDeletingLastPathComponent] makeDirectory] ;
+  @string dir := [in_pbxproj_filePath stringByDeletingLastPathComponent] ;
+  [dir makeDirectory] ;
+  @stringlist pbxuser_files := [dir regularFilesWithExtensions !false ![@stringlist listWithValue !"pbxuser"]] ;
+  foreach pbxuser_files do
+    @string fullPath := dir . "/" . mValue ;
+    [@string deleteFile !fullPath] ;
+  end foreach ;
   [fileNewContents writeToFileWhenDifferentContents !in_pbxproj_filePath] ;
 end routine ;
 
