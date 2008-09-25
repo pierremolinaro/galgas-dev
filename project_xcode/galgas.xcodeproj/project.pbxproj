@@ -2268,6 +2268,24 @@
 		CFE26D270C1327B90066ACB3 /* programSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */; };
 		CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
 		CFE26D290C1327B90066ACB3 /* programSLRgrammar.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */; };
+		CFE48D340E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */; };
+		CFE48D350E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */; };
+		CFE48D360E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */; };
+		CFE48D370E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */; };
+		CFE48D380E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */; };
+		CFE48D390E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */; };
+		CFE48D3A0E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */; };
+		CFE48D3B0E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */; };
+		CFE48D3C0E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */; };
+		CFE48D3D0E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */; };
+		CFE48D3E0E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */; };
+		CFE48D3F0E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */; };
+		CFE48D400E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */; };
+		CFE48D410E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */; };
+		CFE48D420E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */; };
+		CFE48D430E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */; };
+		CFE48D440E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */; };
+		CFE48D450E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE675BA0C0B035F007C1E98 /* AC_galgas_map.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA1415E060DB7CB00601791 /* AC_galgas_map.h */; };
@@ -3960,6 +3978,9 @@
 		CFE26CDA0C12FD100066ACB3 /* programModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programModelBuilder.h; sourceTree = "<group>"; };
 		CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programSLRgrammar.h; sourceTree = "<group>"; };
+		CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TC_prime_cache2.h; path = cache/TC_prime_cache2.h; sourceTree = "<group>"; };
+		CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TC_prime_cache3.h; path = cache/TC_prime_cache3.h; sourceTree = "<group>"; };
+		CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TC_prime_cache4.h; path = cache/TC_prime_cache4.h; sourceTree = "<group>"; };
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
 		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_DelegateForSyntaxColoring.mm; sourceTree = "<group>"; };
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
@@ -5296,6 +5317,9 @@
 		CFF538EE057A55F400854C83 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				CFE48D310E8C126C00C6FD39 /* TC_prime_cache2.h */,
+				CFE48D320E8C126C00C6FD39 /* TC_prime_cache3.h */,
+				CFE48D330E8C126C00C6FD39 /* TC_prime_cache4.h */,
 				CF825950085369E70077AEAF /* C_PrimeCache2.cpp */,
 				CF825951085369E70077AEAF /* C_PrimeCache2.h */,
 				CF825952085369E70077AEAF /* C_PrimeCache3.cpp */,
@@ -5697,6 +5721,9 @@
 				CF01E42F0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
 				CF01E4300E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
 				CF01E4320E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
+				CFE48D340E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */,
+				CFE48D350E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */,
+				CFE48D360E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6079,6 +6106,9 @@
 				CF01E4370E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
 				CF01E4380E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
 				CF01E43A0E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
+				CFE48D3A0E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */,
+				CFE48D3B0E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */,
+				CFE48D3C0E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6446,6 +6476,9 @@
 				CF01E43B0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
 				CF01E43C0E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
 				CF01E43E0E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
+				CFE48D3D0E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */,
+				CFE48D3E0E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */,
+				CFE48D3F0E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6788,6 +6821,9 @@
 				CF01E4330E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
 				CF01E4340E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
 				CF01E4360E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
+				CFE48D370E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */,
+				CFE48D380E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */,
+				CFE48D390E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7159,6 +7195,9 @@
 				CF01E43F0E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
 				CF01E4400E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
 				CF01E4420E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
+				CFE48D400E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */,
+				CFE48D410E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */,
+				CFE48D420E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7526,6 +7565,9 @@
 				CF01E4430E80146E00D4FBF1 /* include_grammarInstructionWithSourceFile.h in Headers */,
 				CF01E4440E80146E00D4FBF1 /* include_treewalkingInstruction.h in Headers */,
 				CF01E4460E80146E00D4FBF1 /* XcodeProjectGeneration.h in Headers */,
+				CFE48D430E8C126C00C6FD39 /* TC_prime_cache2.h in Headers */,
+				CFE48D440E8C126C00C6FD39 /* TC_prime_cache3.h in Headers */,
+				CFE48D450E8C126C00C6FD39 /* TC_prime_cache4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
