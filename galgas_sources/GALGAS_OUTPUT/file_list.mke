@@ -118,6 +118,7 @@ SOURCES += guiCompilation.cpp
 SOURCES += programMetamodel.cpp
 SOURCES += programModelBuilder.cpp
 SOURCES += programSLRgrammar.cpp
+SOURCES += baseForXcodeProjectGeneration.cpp
 SOURCES += XcodeProjectGeneration.cpp
 SOURCES += projectModelBuilder.cpp
 SOURCES += projectLL1grammar.cpp
