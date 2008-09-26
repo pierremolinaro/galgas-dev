@@ -850,7 +850,6 @@
 		CF397F8C0B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
 		CF397F910B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
 		CF397F920B2C9B87001F008D /* include_typeLexicalDropInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */; };
-		CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF3D5B9B0D9E976800BE06A6 /* include_C_filewrapperTemplateToImplement.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3D5B970D9E976800BE06A6 /* include_C_filewrapperTemplateToImplement.h */; };
 		CF3D5B9C0D9E976800BE06A6 /* include_templateInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3D5B980D9E976800BE06A6 /* include_templateInstruction.h */; };
 		CF3D5B9D0D9E976800BE06A6 /* include_templateInstructionConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3D5B990D9E976800BE06A6 /* include_templateInstructionConstant.h */; };
@@ -1276,7 +1275,6 @@
 		CF6DF18009E3F23700506859 /* C_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */; };
 		CF6DF18109E3F23700506859 /* C_Display_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */; };
 		CF6DF18309E3F23700506859 /* C_GGS_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8611C09C0ACF600F90D05 /* C_GGS_Object.cpp */; };
-		CF6DF18A09E3F23700506859 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CF6DF19F09E3F30400506859 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF6DF1A109E3F30400506859 /* galgas_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53806057A53A700854C83 /* galgas_start.cpp */; };
 		CF6DF1A309E3F30400506859 /* grammar_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9040E6057F270E007362F4 /* grammar_parser.cpp */; };
@@ -2652,7 +2650,6 @@
 		CFEDF3540C2D161F0038713A /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CFEDF3550C2D161F0038713A /* projectLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A10C186FBB00DF8818 /* projectLL1grammar.cpp */; };
 		CFEDF3560C2D161F0038713A /* projectModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A30C186FBB00DF8818 /* projectModelBuilder.cpp */; };
-		CFEDF35C0C2D161F0038713A /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3B8A9B058CD21900D682D2 /* libstdc++.a */; };
 		CFEDF3680C2D16610038713A /* include_typeAddOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD1939909FCFC0300920886 /* include_typeAddOperation.h */; };
 		CFEDF3690C2D16610038713A /* cGalgasVariablesMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3131509FD3B95006B55E7 /* cGalgasVariablesMap.h */; };
 		CFEDF36A0C2D16610038713A /* cGalgasVariablesMap.hh in Headers */ = {isa = PBXBuildFile; fileRef = CFA3131609FD3B95006B55E7 /* cGalgasVariablesMap.hh */; };
@@ -3460,7 +3457,6 @@
 		CF33792109EFA7DE00EC41F6 /* C_SourceTextForCoca.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCoca.mm; sourceTree = "<group>"; };
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
 		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
-		CF3B8A9B058CD21900D682D2 /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/gcc/darwin/3.3/libstdc++.a"; sourceTree = "<absolute>"; };
 		CF3D5B970D9E976800BE06A6 /* include_C_filewrapperTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_filewrapperTemplateToImplement.h; sourceTree = "<group>"; };
 		CF3D5B980D9E976800BE06A6 /* include_templateInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstruction.h; sourceTree = "<group>"; };
 		CF3D5B990D9E976800BE06A6 /* include_templateInstructionConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionConstant.h; sourceTree = "<group>"; };
@@ -4120,7 +4116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF3B8A9C058CD21900D682D2 /* libstdc++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4128,7 +4123,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6DF18A09E3F23700506859 /* libstdc++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4146,7 +4140,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFEDF35C0C2D161F0038713A /* libstdc++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4176,7 +4169,6 @@
 			isa = PBXGroup;
 			children = (
 				CF4398030ADFE1900085F47C /* WebKit.framework */,
-				CF3B8A9B058CD21900D682D2 /* libstdc++.a */,
 				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
 				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
 			);
