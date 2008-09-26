@@ -2,464 +2,505 @@
 
 semantics XcodeProjectGeneration :
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    PBXFileReference                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @Xcode_PBXFileReference_abstract {
-  lazy @string PBXFileReferenceKey :
-    PBXFileReferenceKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
-
-  abstract method buildXcodeProject ?!@string ioString ;
-}
+import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-class @Xcode_PBXFileReference_CompiledMachOExecutable extends @Xcode_PBXFileReference_abstract {
-  @string mFileName ;
-
-  override method buildXcodeProject ?!@string ioString :
-    ioString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; explicitFileType = \"compiled.mach-o.executable\"; includeInIndex = 0; path = "
-    . mFileName . "; sourceTree = BUILT_PRODUCTS_DIR; };\n" ;
-  end method ;
-}
-
-#---------------------------------------------------------------------------*
-
-abstract class @Xcode_PBXFileReference_sourceFile extends @Xcode_PBXFileReference_abstract {
-  @string mFileName ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_sourceFile {
-  override method buildXcodeProject ?!@string ioString :
-    ioString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "
-    . mFileName . "; sourceTree = \"<group>\"; };\n" ;
-  end method ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @Xcode_PBXFileReference_hSourceFile extends @Xcode_PBXFileReference_sourceFile {
-  override method buildXcodeProject ?!@string ioString :
-    ioString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "
-    . mFileName . "; sourceTree = \"<group>\"; };\n" ;
-  end method ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @Xcode_PBXFileReference_list {
-  @Xcode_PBXFileReference_abstract mFileReference ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @Xcode_PBXFileReference_map {
-  @Xcode_PBXFileReference_sourceFile mFileReference ;
-
-  insert insertKey error message "the '@%K' reference has been already declared in %L" ;
-  search searchKey error message "the '@%K' reference is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    PBXBuildFile                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @Xcode_PBXBuildFile {
-  @Xcode_PBXFileReference_sourceFile mSourceFile ;
-
-  lazy @string PBXBuildFileKey :
-    PBXBuildFileKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
-
-  method buildXcodeProject ?!@string ioString :
-    ioString .= "\t\t" . [self PBXBuildFileKey] . " /* " . [mSourceFile mFileName] . " */ "
-    . "= {isa = PBXBuildFile; fileRef = " . [mSourceFile PBXFileReferenceKey]
-    . " ; settings = {ATTRIBUTES = (); }; };\n" ;
-  end method ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @Xcode_PBXBuildFile_list {
-  @Xcode_PBXBuildFile mFile ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    PBXSourcesBuildPhase                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @Xcode_PBXSourcesBuildPhase {
-  @string mNameForComment ;
-  @Xcode_PBXBuildFile_list mFileReferenceList ;
-
-  lazy @string PBXSourcesBuildPhaseKey :
-    PBXSourcesBuildPhaseKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @Xcode_PBXSourcesBuildPhase_list {
-  @Xcode_PBXSourcesBuildPhase mBuildPhase ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    PBXGroup                                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @Xcode_PBXGroup {
-  @string mGroupName ;
-  @string mGroupPath ;
-  @stringlist mChildrenGroupList ;
-
-  lazy @string PBXGroupKey :
-    PBXGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @Xcode_PBXGroup_list {
-  @Xcode_PBXGroup mGroup ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    XCBuildConfiguration                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @Xcode_XCBuildConfiguration {
-  @stringlist mSettings ;
-
-  lazy @string configurationKey :
-    configurationKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
-
-  lazy @string XCBuildConfigurationKey :
-    XCBuildConfigurationKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-  end lazy ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @Xcode_XCBuildConfiguration_list {
-  @Xcode_XCBuildConfiguration mBuildConfig ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    PBXNativeTarget                                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @Xcode_PBXNativeTarget_list {
-  @string mTargetKey ;
-  @string mTargetName ;
-  @string mTargetConfigurationKey ;
-  @string mProductInstallPath ;
-  @string mProductName ;
-  @string mProductReferenceKey ;
-  @string mProductTypeExtension ;
-  @Xcode_PBXSourcesBuildPhase_list mBuildPhaseList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    Root Object                                                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @Xcode_rootObject {
-  @string mProjectName ;
-  @string mRootObjectKey ;
-  @Xcode_PBXGroup_list mGroupList ;
-  @string mMainGroupKey ;
-  @Xcode_XCBuildConfiguration_list mBuildConfigurationList ;
-  @Xcode_PBXNativeTarget_list mTargetList ;
-  @string mProjectDefaultConfigurationKey ;
-  @Xcode_PBXFileReference_list mPBXFileReference_list ;
-  @Xcode_PBXSourcesBuildPhase_list mPBXSourcesBuildPhase_list ;
-  @Xcode_PBXBuildFile_list mPBXBuildFile_list ;
-
-  method build !@string ioString :
-#--- Header
-    ioString := "// !$*UTF8*$!\n"
-    . "{\n"
-    . "\tarchiveVersion = 1;\n"
-    . "\tclasses = {\n"
-    . "\t};\n"
-    . "\tobjectVersion = 42;\n"
-    . "\tobjects = {\n\n" ;
-#--- PBXBuildFile section
-    ioString .= "/* Begin PBXBuildFile section */\n" ;
-    foreach mPBXBuildFile_list do
-      [mFile buildXcodeProject !?ioString] ;
-    end foreach ;
-    ioString .= "/* End PBXBuildFile section */\n\n" ;
-#--- PBXFileReference section
-    ioString .= "/* Begin PBXFileReference section */\n" ;
-    foreach mPBXFileReference_list do
-      [mFileReference buildXcodeProject !?ioString] ;
-    end foreach ;
-    ioString .= "/* End PBXFileReference section */\n" ;
-#--- PBXGroup section
-    ioString .= "/* Begin PBXGroup section */\n" ;
-    foreach mGroupList do
-      ioString .= "\t\t" . [mGroup PBXGroupKey] . " = {\n"
-     . "\t\t\tisa = PBXGroup;\n"
-     . "\t\t\tchildren = (\n" ;
-      foreach [mGroup mChildrenGroupList] do
-        ioString .= "\t\t\t\t" . mValue . " ,\n" ;
-      end foreach ;
-      ioString .= "\t\t\t);\n" ;
-      if [mGroup mGroupName] != "" then
-        ioString .= "\t\t\tname = \"" . [mGroup mGroupName] . "\";\n" ;
-      end if ;
-      if [mGroup mGroupPath] != "" then
-        ioString .= "\t\t\tpath = \"" . [mGroup mGroupPath] . "\";\n" ;
-      end if ;
-    ioString .= "\t\t\tsourceTree = \"<group>\";\n"
-    . "\t\t};\n" ;
-    end foreach ;
-    ioString .= "/* End PBXGroup section */\n\n" ;
-#--- PBXNativeTarget section
-    ioString .= "/* Begin PBXNativeTarget section */\n" ;
-    foreach mTargetList do
-      ioString .= "\t\t" . mTargetKey . " /* " . mTargetName . " */ = {\n"
-      . "\t\t\tisa = PBXNativeTarget;\n"
-      . "\t\t\tbuildConfigurationList = " . mTargetConfigurationKey . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
-      . "\t\t\tbuildPhases = (\n" ;
-      foreach mBuildPhaseList do
-        ioString .= "\t\t\t\t" . [mBuildPhase PBXSourcesBuildPhaseKey] . " ,\n" ;
-      end foreach ;
-      ioString .= "\t\t\t);\n"
-      . "\t\t\tbuildRules = (\n"
-      . "\t\t\t);\n"
-      . "\t\t\tdependencies = (\n"
-      . "\t\t\t);\n"
-      . "\t\t\tname = \"" . mTargetName . "\";\n"
-      . "\t\t\tproductInstallPath = \"" . mProductInstallPath . "\";\n"
-      . "\t\t\tproductName = \"" . mProductName . "\";\n"
-      . "\t\t\tproductReference = " . mProductReferenceKey . " ;\n"
-      . "\t\t\tproductType = \"com.apple.product-type." . mProductTypeExtension . "\";\n"
-      . "\t\t};\n"
-      ;
-    end foreach ;
-    ioString .= "/* End PBXNativeTarget section */\n" ;
-#--- PBXProject section
-    ioString .= "/* Begin PBXProject section */\n"
-   . "\t\t" . mRootObjectKey . " /* Project object */ = {\n"
-   . "\t\t\tisa = PBXProject;\n"
-   . "\t\t\tbuildConfigurationList = " . mProjectDefaultConfigurationKey . " /* Build configuration list for PBXProject \"" . mProjectName . "\" */;\n"
-   . "\t\t\tcompatibilityVersion = \"Xcode 2.4\";\n"
-   . "\t\t\thasScannedForEncodings = 1;\n"
-   . "\t\t\tmainGroup = " . mMainGroupKey . ";\n"
-   . "\t\t\tprojectDirPath = \"\";\n"
-   . "\t\t\tprojectRoot = \"\";\n"
-   . "\t\t\ttargets = (\n" ;
-    foreach mTargetList do
-      ioString .= "\t\t\t\t" . mTargetKey . " /* " . mTargetName . " */,\n" ;
-    end foreach ;
-   ioString .= "\t\t\t);\n"
-   . "\t\t};\n"
-   . "/* End PBXProject section */\n\n" ;
-#--- PBXSourcesBuildPhase section
-    ioString .= "/* Begin PBXSourcesBuildPhase section */\n" ;
-    foreach mPBXSourcesBuildPhase_list do
-      ioString .= "\t\t" . [mBuildPhase PBXSourcesBuildPhaseKey]
-      . " /* " . [mBuildPhase mNameForComment] . " */ = {\n"
-      . "\t\t\tisa = PBXSourcesBuildPhase;\n"
-      . "\t\t\tbuildActionMask = 2147483647;\n"
-      . "\t\t\tfiles = (\n" ;
-      foreach [mBuildPhase mFileReferenceList] do
-        ioString .= "\t\t\t\t" . [mFile PBXBuildFileKey] . " ,\n" ;
-      end foreach ;
-      ioString .=  "\t\t\t);\n"
-      . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
-      . "\t\t};\n" ;
-    end foreach ;
-    ioString .= "/* End PBXSourcesBuildPhase section */\n" ;
-#--- XCBuildConfiguration section
-    ioString .= "/* Begin XCBuildConfiguration section */\n" ;
-    foreach mBuildConfigurationList do
-      ioString .= "\t\t" . [mBuildConfig configurationKey] . " /* Default */ = {\n"
-      . "\t\t\tisa = XCBuildConfiguration;\n"
-      . "\t\t\tbuildSettings = {\n" ;
-      foreach [mBuildConfig mSettings] do
-        ioString .= "\t\t\t\t" . mValue . "\n" ;
-      end foreach ;
-      ioString .=  "\t\t\t};\n"
-      . "\t\t\tname = Default;\n"
-      . "\t\t};\n" ;
-    end foreach ;
-    ioString .= "/* End XCBuildConfiguration section */\n\n" ;
-#--- XCConfigurationList section
-    ioString .= "/* Begin XCConfigurationList section */\n" ;
-    foreach mBuildConfigurationList do
-      ioString .= "\t\t" . [mBuildConfig XCBuildConfigurationKey] . " /* Build configuration list */ = {\n"
-      . "\t\t\tisa = XCConfigurationList;\n"
-      . "\t\t\tbuildConfigurations = (\n"
-      . "\t\t\t\t" . [mBuildConfig configurationKey] . " /* Default */,\n"
-      . "\t\t\t);\n"
-      . "\t\t\tdefaultConfigurationIsVisible = 0;\n"
-      . "\t\t\tdefaultConfigurationName = Default;\n"
-      . "\t\t};\n" ;
-    end foreach ;
-    ioString .= "/* End XCConfigurationList section */\n" ;
-#--- 
-    ioString .= "\t};\n"
-    . "\trootObject = " . mRootObjectKey . " /* Project object */ ;\n"
-    . "}\n" ;
-  end method ;
-}
-
-#---------------------------------------------------------------------------*
-
-routine enter_sourceFiles_for_tool
-  ??@stringlist cpp_and_h_fileList
-  ??@stringlist cpp_fileList
-  ??@stringlist h_fileList
+routine build_LIBPM_BDD_group
   ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
   ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_BDD_Descriptor" ;
+  append_cpp_h_files !?fileList !"C_BDD_Set1" ;
+  append_cpp_h_files !?fileList !"C_BDD_Set2" ;
+  append_cpp_h_files !?fileList !"C_BDD_Set3" ;
+  append_cpp_h_files !?fileList !"C_BDD" ;
+  append_cpp_h_files !?fileList !"C_Display_BDD" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_BDD_source_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
   ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"C_BDD_Descriptor.cpp" ;
+  cpp_fileList += !"C_BDD_Set1.cpp" ;
+  cpp_fileList += !"C_BDD_Set2.cpp" ;
+  cpp_fileList += !"C_BDD_Set3.cpp" ;
+  cpp_fileList += !"C_BDD.cpp" ;
+  cpp_fileList += !"C_Display_BDD.cpp" ;
 #---
-  foreach cpp_and_h_fileList do
-  #--- Cpp file
-    @string fileName := mValue . ".cpp" ;
-    @lstring key [new !fileName !here] ;
-    @Xcode_PBXFileReference_sourceFile ref ;
-    if [ioFileReferenceMap hasKey !fileName] then
-      [ioFileReferenceMap searchKey !key ?ref] ;
-    else
-      ref := [@Xcode_PBXFileReference_cppSourceFile new !fileName] ;
-      [!?ioFileReferenceMap insertKey !key !ref] ;
-      ioReferenceList += !ref ;
-    end if ;
-    ioFileListForGroup += ![ref PBXFileReferenceKey] ;
-    @Xcode_PBXBuildFile build_file [new !ref] ;
-    ioAllBuildFileList += !build_file ;
-    ioBuildPhaseList   += !build_file ;
-  #--- h file
-    fileName := mValue . ".h" ;
-    key := [@lstring new !fileName !here] ;
-    if [ioFileReferenceMap hasKey !fileName] then
-      [ioFileReferenceMap searchKey !key ?ref] ;
-    else
-      ref := [@Xcode_PBXFileReference_hSourceFile new !fileName] ;
-      [!?ioFileReferenceMap insertKey !key !ref] ;
-      ioReferenceList += !ref ;
-    end if ;
-    ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine getGALGAS_source_file_list
+  !@stringlist out_cpp_and_h_fileList
+:
+  out_cpp_and_h_fileList := [@stringlist emptyList] ;
+  out_cpp_and_h_fileList += !"PM_C_Array" ;
+  out_cpp_and_h_fileList += !"PM_C_Dictionary" ;
+  out_cpp_and_h_fileList += !"PM_C_Object" ;
+  out_cpp_and_h_fileList += !"AC_galgas_listmap" ;
+  out_cpp_and_h_fileList += !"AC_galgas_map" ;
+  out_cpp_and_h_fileList += !"AC_galgas_list" ;
+  out_cpp_and_h_fileList += !"AC_galgas_sortedlist" ;
+  out_cpp_and_h_fileList += !"AC_galgas_mapindex" ;
+  out_cpp_and_h_fileList += !"AC_galgas_domain" ;
+  out_cpp_and_h_fileList += !"AC_galgas_class" ;
+  out_cpp_and_h_fileList += !"C_GGS_Object" ;
+  out_cpp_and_h_fileList += !"C_galgas_CLI_Options" ;
+  out_cpp_and_h_fileList += !"C_Lexique" ;
+  out_cpp_and_h_fileList += !"C_galgas_io" ;
+  out_cpp_and_h_fileList += !"predefined_types" ;
+  out_cpp_and_h_fileList += !"GGS_binaryset" ;
+  out_cpp_and_h_fileList += !"GGS_stringset" ;
+  out_cpp_and_h_fileList += !"GGS_filewrapper" ;
+  out_cpp_and_h_fileList += !"GGS_lsint64" ;
+  out_cpp_and_h_fileList += !"GGS_luint64" ;
+  out_cpp_and_h_fileList += !"GGS_sint64" ;
+  out_cpp_and_h_fileList += !"GGS_uint64" ;
+  out_cpp_and_h_fileList += !"GGS_double" ;
+  out_cpp_and_h_fileList += !"GGS_sint" ;
+  out_cpp_and_h_fileList += !"GGS_bool" ;
+  out_cpp_and_h_fileList += !"GGS_char" ;
+  out_cpp_and_h_fileList += !"GGS_string" ;
+  out_cpp_and_h_fileList += !"GGS_uint" ;
+  out_cpp_and_h_fileList += !"GGS_location" ;
+  out_cpp_and_h_fileList += !"GGS_ldouble" ;
+  out_cpp_and_h_fileList += !"GGS_lsint" ;
+  out_cpp_and_h_fileList += !"GGS_lbool" ;
+  out_cpp_and_h_fileList += !"GGS_lchar" ;
+  out_cpp_and_h_fileList += !"GGS_lstring" ;
+  out_cpp_and_h_fileList += !"GGS_luint" ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_GALGAS_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist cpp_and_h_fileList ;
+  getGALGAS_source_file_list ?cpp_and_h_fileList ;
+  @stringlist fileList [emptyList] ;
+  foreach cpp_and_h_fileList do 
+    append_cpp_h_files !?fileList !mValue ;
   end foreach ;
 #---
-  foreach cpp_fileList do
-  #--- Cpp file
-    @string fileName := mValue . ".cpp" ;
-    @lstring key [new !fileName !here] ;
-    @Xcode_PBXFileReference_sourceFile ref ;
-    if [ioFileReferenceMap hasKey !fileName] then
-      [ioFileReferenceMap searchKey !key ?ref] ;
-    else
-      ref := [@Xcode_PBXFileReference_cppSourceFile new !fileName] ;
-      [!?ioFileReferenceMap insertKey !key !ref] ;
-      ioReferenceList += !ref ;
-    end if ;
-    ioFileListForGroup += ![ref PBXFileReferenceKey] ;
-    @Xcode_PBXBuildFile build_file [new !ref] ;
-    ioAllBuildFileList += !build_file ;
-    ioBuildPhaseList   += !build_file ;
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_GALGAS_files_for_build_phase
+  ?@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_and_h_fileList ;
+  getGALGAS_source_file_list ?cpp_and_h_fileList ;
+  @stringlist fileList [emptyList] ;
+  foreach cpp_and_h_fileList do 
+    fileList += !mValue . ".cpp" ;
   end foreach ;
 #---
-  foreach h_fileList do
-  #--- h file
-    @string fileName := mValue . ".h" ;
-    @lstring key := [@lstring new !fileName !here] ;
-    @Xcode_PBXFileReference_sourceFile ref ;
-    if [ioFileReferenceMap hasKey !fileName] then
-      [ioFileReferenceMap searchKey !key ?ref] ;
-    else
-      ref := [@Xcode_PBXFileReference_hSourceFile new !fileName] ;
-      [!?ioFileReferenceMap insertKey !key !ref] ;
-      ioReferenceList += !ref ;
-    end if ;
-    ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  enter_source_files_for_build_phase
+   !fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_FILES_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_HTML_FileWrite" ;
+  append_cpp_h_files !?fileList !"C_TextFileWrite" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_FILES_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"C_HTML_FileWrite.cpp" ;
+  cpp_fileList += !"C_TextFileWrite.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_COMMAND_LINE_INTERFACE_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_builtin_CLI_Options" ;
+  append_cpp_h_files !?fileList !"AC_CLI_Options" ;
+  append_cpp_h_files !?fileList !"C_CLI_OptionGroup" ;
+  append_cpp_h_files !?fileList !"F_Analyze_CLI_Options" ;
+  fileList += !"F_main.cpp" ;
+  fileList += !"mainForLIBPM.h" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"C_builtin_CLI_Options.cpp" ;
+  cpp_fileList += !"AC_CLI_Options.cpp" ;
+  cpp_fileList += !"C_CLI_OptionGroup.cpp" ;
+  cpp_fileList += !"F_Analyze_CLI_Options.cpp" ;
+  cpp_fileList += !"F_main.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_COLLECTIONS_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"TC_AVL_TreeForCollision.h" ;
+  fileList += !"TC_Array.h" ;
+  fileList += !"TC_Array2.h" ;
+  fileList += !"TC_BlockBinaryTreeForCollision.h" ;
+  fileList += !"TC_Block_AVL_TreeForCollision.h" ;
+  fileList += !"TC_FixedSizeArray.h" ;
+  fileList += !"TC_HashMap.h" ;
+  fileList += !"TC_LinearListForCollision.h" ;
+  fileList += !"TC_UniqueArray.h" ;
+  fileList += !"TC_UniqueArray2.h" ;
+  fileList += !"TC_UniqueFixedSizeArray.h" ;
+  fileList += !"TF_AVL_Tree.h" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_CACHE_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_PrimeCache2" ;
+  append_cpp_h_files !?fileList !"C_PrimeCache3" ;
+  fileList += !"TC_prime_cache2.h" ;
+  fileList += !"TC_prime_cache3.h" ;
+  fileList += !"TC_prime_cache4.h" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_CACHE_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"C_PrimeCache2.cpp" ;
+  cpp_fileList += !"C_PrimeCache3.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_UNICODE_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_UnicodeString" ;
+  append_cpp_h_files !?fileList !"unicode_character" ;
+  append_cpp_h_files !?fileList !"unicode_string_routines" ;
+  fileList += !"cUnicodeData.h" ;
+  fileList += !"string_class_template.h" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_UNICODE_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"C_UnicodeString.cpp" ;
+  cpp_fileList += !"unicode_character.cpp" ;
+  cpp_fileList += !"unicode_string_routines.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_UTILITIES_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"md5" ;
+  append_cpp_h_files !?fileList !"C_Exception" ;
+  append_cpp_h_files !?fileList !"F_GetPrime" ;
+  append_cpp_h_files !?fileList !"C_String" ;
+  append_cpp_h_files !?fileList !"F_DisplayException" ;
+  append_cpp_h_files !?fileList !"MF_Assert" ;
+  append_cpp_h_files !?fileList !"MF_MemoryControl" ;
+  fileList += !"M_SourceLocation.h" ;
+  fileList += !"TF_inf.h" ;
+  fileList += !"TF_sup.h" ;
+  fileList += !"TF_Swap.h" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_UTILITIES_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"md5.cpp" ;
+  cpp_fileList += !"C_Exception.cpp" ;
+  cpp_fileList += !"C_String.cpp" ;
+  cpp_fileList += !"F_GetPrime.cpp" ;
+  cpp_fileList += !"F_DisplayException.cpp" ;
+  cpp_fileList += !"MF_Assert.cpp" ;
+  cpp_fileList += !"MF_MemoryControl.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_STREAMS_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"AC_OutputUnicodeStream" ;
+  append_cpp_h_files !?fileList !"C_ErrorOut" ;
+  append_cpp_h_files !?fileList !"AC_OutputStream" ;
+  append_cpp_h_files !?fileList !"C_ConsoleOut" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_STREAMS_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"AC_OutputUnicodeStream.cpp" ;
+  cpp_fileList += !"C_ErrorOut.cpp" ;
+  cpp_fileList += !"AC_OutputStream.cpp" ;
+  cpp_fileList += !"C_ConsoleOut.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_TIME_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_DateTime" ;
+  append_cpp_h_files !?fileList !"C_Timer" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_TIME_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"C_DateTime.cpp" ;
+  cpp_fileList += !"C_Timer.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_TINYXML_group
+  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"tinyxml" ;
+  fileList += !"tinystr.cpp" ;
+  fileList += !"tinyxmlerror.cpp" ;
+  fileList += !"tinyxmlparser.cpp" ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_TINYXML_files_for_build_phase
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  cpp_fileList += !"tinyxml.cpp" ;
+  cpp_fileList += !"tinystr.cpp" ;
+  cpp_fileList += !"tinyxmlerror.cpp" ;
+  cpp_fileList += !"tinyxmlparser.cpp" ;
+#---
+  enter_source_files_for_build_phase
+   !cpp_fileList
+   !inFileReferenceMap
+   !?ioAllBuildFileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_GENERATED_BY_GALGAS_files_for_build_phase
+  ??@stringset inComponentNameSet
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
+  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist cpp_fileList [emptyList] ;
+  foreach inComponentNameSet do
+    cpp_fileList += ![key stringByDeletingPathExtension] . ".cpp" ;
   end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_GALGAS_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"PM_C_Array" ;
-  cpp_and_h_fileList += !"PM_C_Dictionary" ;
-  cpp_and_h_fileList += !"PM_C_Object" ;
-  cpp_and_h_fileList += !"AC_galgas_listmap" ;
-  cpp_and_h_fileList += !"AC_galgas_map" ;
-  cpp_and_h_fileList += !"AC_galgas_list" ;
-  cpp_and_h_fileList += !"AC_galgas_sortedlist" ;
-  cpp_and_h_fileList += !"AC_galgas_mapindex" ;
-  cpp_and_h_fileList += !"AC_galgas_domain" ;
-  cpp_and_h_fileList += !"AC_galgas_class" ;
-  cpp_and_h_fileList += !"C_GGS_Object" ;
-  cpp_and_h_fileList += !"C_galgas_CLI_Options" ;
-  cpp_and_h_fileList += !"C_Lexique" ;
-  cpp_and_h_fileList += !"C_galgas_io" ;
-  cpp_and_h_fileList += !"predefined_types" ;
-  cpp_and_h_fileList += !"GGS_binaryset" ;
-  cpp_and_h_fileList += !"GGS_stringset" ;
-  cpp_and_h_fileList += !"GGS_filewrapper" ;
-  cpp_and_h_fileList += !"GGS_lsint64" ;
-  cpp_and_h_fileList += !"GGS_luint64" ;
-  cpp_and_h_fileList += !"GGS_sint64" ;
-  cpp_and_h_fileList += !"GGS_uint64" ;
-  cpp_and_h_fileList += !"GGS_double" ;
-  cpp_and_h_fileList += !"GGS_sint" ;
-  cpp_and_h_fileList += !"GGS_bool" ;
-  cpp_and_h_fileList += !"GGS_char" ;
-  cpp_and_h_fileList += !"GGS_string" ;
-  cpp_and_h_fileList += !"GGS_uint" ;
-  cpp_and_h_fileList += !"GGS_location" ;
-  cpp_and_h_fileList += !"GGS_ldouble" ;
-  cpp_and_h_fileList += !"GGS_lsint" ;
-  cpp_and_h_fileList += !"GGS_lbool" ;
-  cpp_and_h_fileList += !"GGS_lchar" ;
-  cpp_and_h_fileList += !"GGS_lstring" ;
-  cpp_and_h_fileList += !"GGS_luint" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
 #---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
+  enter_source_files_for_build_phase
    !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
+   !inFileReferenceMap
    !?ioAllBuildFileList
    !?ioBuildPhaseList
   ;
@@ -467,335 +508,39 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_FILES_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"C_HTML_FileWrite" ;
-  cpp_and_h_fileList += !"C_TextFileWrite" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_COMMAND_LINE_INTERFACE_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"C_builtin_CLI_Options" ;
-  cpp_and_h_fileList += !"AC_CLI_Options" ;
-  cpp_and_h_fileList += !"C_CLI_OptionGroup" ;
-  cpp_and_h_fileList += !"F_Analyze_CLI_Options" ;
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"F_main" ;
-  @stringlist h_fileList [emptyList] ;
-  h_fileList += !"mainForLIBPM" ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_COLLECTIONS_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-  h_fileList += !"TC_AVL_TreeForCollision" ;
-  h_fileList += !"TC_Array" ;
-  h_fileList += !"TC_Array2" ;
-  h_fileList += !"TC_BlockBinaryTreeForCollision" ;
-  h_fileList += !"TC_Block_AVL_TreeForCollision" ;
-  h_fileList += !"TC_FixedSizeArray" ;
-  h_fileList += !"TC_HashMap" ;
-  h_fileList += !"TC_LinearListForCollision" ;
-  h_fileList += !"TC_UniqueArray" ;
-  h_fileList += !"TC_UniqueArray2" ;
-  h_fileList += !"TC_UniqueFixedSizeArray" ;
-  h_fileList += !"TF_AVL_Tree" ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_CACHE_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"C_PrimeCache2" ;
-  cpp_and_h_fileList += !"C_PrimeCache3" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-  h_fileList += !"TC_prime_cache2" ;
-  h_fileList += !"TC_prime_cache3" ;
-  h_fileList += !"TC_prime_cache4" ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_BDD_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"C_BDD_Descriptor" ;
-  cpp_and_h_fileList += !"C_BDD_Set1" ;
-  cpp_and_h_fileList += !"C_BDD_Set2" ;
-  cpp_and_h_fileList += !"C_BDD_Set3" ;
-  cpp_and_h_fileList += !"C_BDD" ;
-  cpp_and_h_fileList += !"C_Display_BDD" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_UNICODE_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"C_UnicodeString" ;
-  cpp_and_h_fileList += !"unicode_character" ;
-  cpp_and_h_fileList += !"unicode_string_routines" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-  h_fileList += !"cUnicodeData" ;
-  h_fileList += !"string_class_template" ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_UTILITIES_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"md5" ;
-  cpp_and_h_fileList += !"C_Exception" ;
-  cpp_and_h_fileList += !"C_String" ;
-  cpp_and_h_fileList += !"F_GetPrime" ;
-  cpp_and_h_fileList += !"F_DisplayException" ;
-  cpp_and_h_fileList += !"MF_Assert" ;
-  cpp_and_h_fileList += !"MF_MemoryControl" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-  h_fileList += !"M_SourceLocation" ;
-  h_fileList += !"TF_inf" ;
-  h_fileList += !"TF_sup" ;
-  h_fileList += !"TF_Swap" ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_STREAMS_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"AC_OutputUnicodeStream" ;
-  cpp_and_h_fileList += !"C_ErrorOut" ;
-  cpp_and_h_fileList += !"AC_OutputStream" ;
-  cpp_and_h_fileList += !"C_ConsoleOut" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_TIME_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"C_DateTime" ;
-  cpp_and_h_fileList += !"C_Timer" ;
-  @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_TINYXML_sourceFiles_for_tool
-  ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
-  ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  cpp_and_h_fileList += !"tinyxml" ;
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"tinystr" ;
-  cpp_fileList += !"tinyxmlerror" ;
-  cpp_fileList += !"tinyxmlparser" ;
-  @stringlist h_fileList [emptyList] ;
-#---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_GENERATED_BY_GALGAS_sourceFiles_for_tool
+routine build_GENERATED_BY_GALGAS_group
   ??@stringset inComponentNameSet
   ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
   ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  foreach inComponentNameSet do
+    append_cpp_h_files !?fileList ![key stringByDeletingPathExtension] ;
+  end foreach ;
+#---
+  enter_files_in_group
+   !fileList
+   !?ioFileReferenceMap
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_HAND_CODED_source_files_for_build_phase
+  ??@stringset inExternSourceNameSet
+  ??@Xcode_PBXFileReference_map inFileReferenceMap
   ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  foreach inComponentNameSet do
-    cpp_and_h_fileList += ![key stringByDeletingPathExtension] ;
-  end foreach ;
   @stringlist cpp_fileList [emptyList] ;
-  @stringlist h_fileList [emptyList] ;
+  foreach inExternSourceNameSet do
+    cpp_fileList += !key ;
+  end foreach ;
 #---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
+  enter_source_files_for_build_phase
    !cpp_fileList
-   !h_fileList
-   !?ioFileReferenceMap
-   !?ioReferenceList
-   !?ioFileListForGroup
+   !inFileReferenceMap
    !?ioAllBuildFileList
    !?ioBuildPhaseList
   ;
@@ -803,30 +548,20 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_HAND_CODED_sourceFiles_for_tool
+routine build_HAND_CODED_SOURCES_group
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXFileReference_map ioFileReferenceMap
-  ?!@Xcode_PBXFileReference_list ioReferenceList
   ?!@stringlist ioFileListForGroup
-  ?!@Xcode_PBXBuildFile_list ioAllBuildFileList
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_and_h_fileList [emptyList] ;
-  @stringlist cpp_fileList [emptyList] ;
+  @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
-    cpp_fileList += ![key stringByDeletingPathExtension] ;
+    fileList += !key ;
   end foreach ;
-  @stringlist h_fileList [emptyList] ;
 #---
-  enter_sourceFiles_for_tool
-   !cpp_and_h_fileList
-   !cpp_fileList
-   !h_fileList
+  enter_files_in_group
+   !fileList
    !?ioFileReferenceMap
-   !?ioReferenceList
    !?ioFileListForGroup
-   !?ioAllBuildFileList
-   !?ioBuildPhaseList
   ;
 end routine ;
 
@@ -843,216 +578,327 @@ routine generateXcodeProject
   @Xcode_PBXNativeTarget_list targetList [emptyList] ;
   @stringlist mainGroupChildrenList [emptyList] ;
   @stringlist productGroupChildrenList [emptyList] ;
-  @Xcode_PBXFileReference_list PBXFileReferenceList [emptyList] ;
   @Xcode_PBXSourcesBuildPhase_list PBXSourcesBuildPhase_list [emptyList] ;
   @Xcode_PBXBuildFile_list PBXBuildFile_list [emptyList] ;
   @Xcode_PBXFileReference_map PBXFileReference_map [emptyMap] ;
+#-------------------------------------------------- Build source lists
+#---------- HAND CODED SOURCES
+  @stringlist fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
+  build_HAND_CODED_SOURCES_group
+    !inExternSourceNameSet
+    !?PBXFileReference_map
+    !?fileListOf_HAND_CODED_SOURCES_group
+  ;
+#---
+  @Xcode_PBXGroup handCodedSourcesGroup [new !"Hand Coded Sources" !"../hand_coded_sources" ! fileListOf_HAND_CODED_SOURCES_group] ;
+  groupList += !handCodedSourcesGroup ;
+  mainGroupChildrenList += ![handCodedSourcesGroup PBXGroupKey] ;
+#---------- GENERATED BY GALGAS
+  @stringlist fileListOf_GENERATED_BY_GALGAS_group [emptyList] ;
+  build_GENERATED_BY_GALGAS_group
+    !inComponentNameSet
+    !?PBXFileReference_map
+    !?fileListOf_GENERATED_BY_GALGAS_group
+  ;
+#---
+  @Xcode_PBXGroup generatedByGalgasGroup [new !"Generated by GALGAS" !"../galgas_sources/GALGAS_OUTPUT" !fileListOf_GENERATED_BY_GALGAS_group] ;
+  groupList += !generatedByGalgasGroup ;
+  mainGroupChildrenList += ![generatedByGalgasGroup PBXGroupKey] ;
+#---------- "LIBPM" Group
+  @stringlist libpmGroupChildrenList [emptyList] ;
+#---------- LIBPM / BDD
+  @stringlist fileListOf_LIBPM_BDD_group [emptyList] ;
+  build_LIBPM_BDD_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_BDD_group
+  ;
+#---
+  @Xcode_PBXGroup bddSubGroup [new !"Binary Decision Diagrams" !"bdd" !fileListOf_LIBPM_BDD_group] ;
+  groupList += !bddSubGroup ;
+  libpmGroupChildrenList += ![bddSubGroup PBXGroupKey] ;
+#---------- LIBPM / CACHES
+  @stringlist fileListOf_LIBPM_CACHE_group [emptyList] ;
+  build_LIBPM_CACHE_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_CACHE_group
+  ;
+#---
+  @Xcode_PBXGroup cachesSubGroup [new !"Caches" !"cache" !fileListOf_LIBPM_CACHE_group] ;
+  groupList += !cachesSubGroup ;
+  libpmGroupChildrenList += ! [cachesSubGroup PBXGroupKey] ;
+#---------- LIBPM / Cocoa GALGAS
+  @Xcode_PBXGroup cocoaGALGASSubGroup [new !"Cocoa GALGAS" !"cocoa_galgas" ![@stringlist emptyList]] ;
+  groupList += !cocoaGALGASSubGroup ;
+  libpmGroupChildrenList += ! [cocoaGALGASSubGroup PBXGroupKey] ;
+#---------- LIBPM / Cocoa Utilities
+  @Xcode_PBXGroup cocoaUtilitiesSubGroup [new !"Cocoa Utilities" !"cocoa_utilities" ![@stringlist emptyList]] ;
+  groupList += !cocoaUtilitiesSubGroup ;
+  libpmGroupChildrenList += ! [cocoaUtilitiesSubGroup PBXGroupKey] ;
+#---------- LIBPM / COLLECTIONS
+  @stringlist fileListOf_LIBPM_COLLECTIONS_group [emptyList] ;
+  build_LIBPM_COLLECTIONS_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_COLLECTIONS_group
+  ;
+#---
+  @Xcode_PBXGroup collectionSubGroup [new !"Collections" !"collections" !fileListOf_LIBPM_COLLECTIONS_group] ;
+  groupList += !collectionSubGroup ;
+  libpmGroupChildrenList += ![collectionSubGroup PBXGroupKey] ;
+#---------- LIBPM / COMMAND LINE INTERFACE
+  @stringlist fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group [emptyList] ;
+  build_LIBPM_COMMAND_LINE_INTERFACE_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group
+  ;
+#---
+  @Xcode_PBXGroup commandLineInterfaceSubGroup [new !"Command Line Interface" !"command_line_interface" !fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group] ;
+  groupList += !commandLineInterfaceSubGroup ;
+  libpmGroupChildrenList += ! [commandLineInterfaceSubGroup PBXGroupKey] ;
+#---------- LIBPM / FILES
+  @stringlist fileListOf_LIBPM_FILE_group [emptyList] ;
+  build_LIBPM_FILES_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_FILE_group
+  ;
+#---
+  @Xcode_PBXGroup filesSubGroup [new !"Files" !"files" !fileListOf_LIBPM_FILE_group] ;
+  groupList += !filesSubGroup ;
+  libpmGroupChildrenList += ! [filesSubGroup PBXGroupKey] ;
+#---------- LIBPM / GALGAS
+  @stringlist fileListOf_LIBPM_GALGAS_group [emptyList] ;
+  build_LIBPM_GALGAS_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_GALGAS_group
+  ;
+#---
+  @Xcode_PBXGroup GALGASSubGroup [new !"GALGAS" !"galgas" !fileListOf_LIBPM_GALGAS_group] ;
+  groupList += !GALGASSubGroup ;
+  libpmGroupChildrenList += ! [GALGASSubGroup PBXGroupKey] ;
+#---------- LIBPM / STREAMS
+  @stringlist fileListOf_LIBPM_STREAMS_group [emptyList] ;
+  build_LIBPM_STREAMS_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_STREAMS_group
+  ;
+#---
+  @Xcode_PBXGroup streamsSubGroup [new !"Streams" !"streams" ! fileListOf_LIBPM_STREAMS_group] ;
+  groupList += !streamsSubGroup ;
+  libpmGroupChildrenList += ! [streamsSubGroup PBXGroupKey] ;
+#---------- LIBPM / TIME
+  @stringlist fileListOf_LIBPM_TIME_group [emptyList] ;
+  build_LIBPM_TIME_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_TIME_group
+  ;
+#---
+  @Xcode_PBXGroup timeSubGroup [new !"Time" !"time" ! fileListOf_LIBPM_TIME_group] ;
+  groupList += !timeSubGroup ;
+  libpmGroupChildrenList += ! [timeSubGroup PBXGroupKey] ;
+#---------- LIBPM / TINY XML
+  @stringlist fileListOf_LIBPM_TINYXML_group [emptyList] ;
+  build_LIBPM_TINYXML_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_TINYXML_group
+  ;
+#---
+  @Xcode_PBXGroup tinyXMLSubGroup [new !"Tiny XML" !"tiny_xml" ! fileListOf_LIBPM_TINYXML_group] ;
+  groupList += !tinyXMLSubGroup ;
+  libpmGroupChildrenList += ! [tinyXMLSubGroup PBXGroupKey] ;
+#---------- LIBPM / UTILITIES
+  @stringlist fileListOf_LIBPM_UTILITIES_group [emptyList] ;
+  build_LIBPM_UTILITIES_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_UTILITIES_group
+  ;
+#---
+  @Xcode_PBXGroup utilitiesSubGroup [new !"Utilities" !"utilities" ! fileListOf_LIBPM_UTILITIES_group] ;
+  groupList += !utilitiesSubGroup ;
+  libpmGroupChildrenList += ! [utilitiesSubGroup PBXGroupKey] ;
+#---------- LIBPM / UNICODE
+  @stringlist fileListOf_LIBPM_UNICODE_group [emptyList] ;
+  build_LIBPM_UNICODE_group
+    !?PBXFileReference_map
+    !?fileListOf_LIBPM_UNICODE_group
+  ;
+#---
+  @Xcode_PBXGroup unicodeSubGroup [new !"Unicode" !"unicode" ! fileListOf_LIBPM_UNICODE_group] ;
+  groupList += !unicodeSubGroup ;
+  libpmGroupChildrenList += ! [unicodeSubGroup PBXGroupKey] ;
 #-------------------------------------------------- Build "tool" target
   @Xcode_PBXBuildFile_list keyListForBuildPhase [emptyList] ;
 # HAND CODED SOURCES
-  @stringlist fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
-  build_HAND_CODED_sourceFiles_for_tool
+  build_HAND_CODED_source_files_for_build_phase
     !inExternSourceNameSet
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_HAND_CODED_SOURCES_group
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # GENERATED BY GALGAS
-  @stringlist fileListOf_GENERATED_BY_GALGAS_group [emptyList] ;
-  build_GENERATED_BY_GALGAS_sourceFiles_for_tool
+  build_GENERATED_BY_GALGAS_files_for_build_phase
     !inComponentNameSet
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_GENERATED_BY_GALGAS_group
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / BDD
-  @stringlist fileListOf_LIBPM_BDD_group [emptyList] ;
-  build_LIBPM_BDD_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_BDD_group
+  build_LIBPM_BDD_source_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / CACHES
-  @stringlist fileListOf_LIBPM_CACHE_group [emptyList] ;
-  build_LIBPM_CACHE_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !?fileListOf_LIBPM_CACHE_group
-    !?PBXBuildFile_list
-    !?keyListForBuildPhase
-  ;
-# LIBPM / COLLECTIONS
-  @stringlist fileListOf_LIBPM_COLLECTIONS_group [emptyList] ;
-  build_LIBPM_COLLECTIONS_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_COLLECTIONS_group
-    !?PBXBuildFile_list
-    !?keyListForBuildPhase
-  ;
-# LIBPM / GALGAS
-  @stringlist fileListOf_LIBPM_GALGAS_group [emptyList] ;
-  build_LIBPM_GALGAS_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !?fileListOf_LIBPM_GALGAS_group
-    !?PBXBuildFile_list
-    !?keyListForBuildPhase
-  ;
-# LIBPM / FILES
-  @stringlist fileListOf_LIBPM_FILE_group [emptyList] ;
-  build_LIBPM_FILES_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !?fileListOf_LIBPM_FILE_group
+  build_LIBPM_CACHE_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / COMMAND LINE INTERFACE
-  @stringlist fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group [emptyList] ;
-  build_LIBPM_COMMAND_LINE_INTERFACE_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group
+  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForBuildPhase
+  ;
+# LIBPM / FILES
+  build_LIBPM_FILES_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForBuildPhase
+  ;
+# LIBPM / GALGAS
+  build_LIBPM_GALGAS_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / STREAMS
-  @stringlist fileListOf_LIBPM_STREAMS_group [emptyList] ;
-  build_LIBPM_STREAMS_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_STREAMS_group
+  build_LIBPM_STREAMS_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / TIME
-  @stringlist fileListOf_LIBPM_TIME_group [emptyList] ;
-  build_LIBPM_TIME_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_TIME_group
+  build_LIBPM_TIME_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / TINY XML
-  @stringlist fileListOf_LIBPM_TINYXML_group [emptyList] ;
-  build_LIBPM_TINYXML_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_TINYXML_group
+  build_LIBPM_TINYXML_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / UTILITIES
-  @stringlist fileListOf_LIBPM_UTILITIES_group [emptyList] ;
-  build_LIBPM_UTILITIES_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_UTILITIES_group
+  build_LIBPM_UTILITIES_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
 # LIBPM / UNICODE
-  @stringlist fileListOf_LIBPM_UNICODE_group [emptyList] ;
-  build_LIBPM_UNICODE_sourceFiles_for_tool
-    !?PBXFileReference_map
-    !?PBXFileReferenceList
-    !? fileListOf_LIBPM_UNICODE_group
+  build_LIBPM_UNICODE_files_for_build_phase
+    !PBXFileReference_map
     !?PBXBuildFile_list
     !?keyListForBuildPhase
   ;
-  @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new !inProjectName] ;
-  PBXFileReferenceList += !toolFileReference ;
-  productGroupChildrenList += ![toolFileReference PBXFileReferenceKey] ;
-  @Xcode_PBXSourcesBuildPhase compileSourcesForToolTargetBuildPhase [new
-    !"Sources"
+#---
+  add_target
+    !inProjectName
+    !inProjectName . " Tool"
     !keyListForBuildPhase
-  ] ;
-  PBXSourcesBuildPhase_list += !compileSourcesForToolTargetBuildPhase ;
-  @Xcode_XCBuildConfiguration toolTargetBuildConfiguration [new
-    ![@stringlist listWithValue !"PRODUCT_NAME = \"" . inProjectName . "\";"]
-  ] ;
-  buildConfigurationList += !toolTargetBuildConfiguration ;
-  targetList +=
-    ![[[[@uint sequenceNumber] string] md5] rightSubString!24]
-    !inProjectName
-    ![toolTargetBuildConfiguration XCBuildConfigurationKey]
-    !"$(HOME)/bin"
-    !inProjectName
-    ![toolFileReference PBXFileReferenceKey]
-    !"tool"
-    ![@Xcode_PBXSourcesBuildPhase_list listWithValue !compileSourcesForToolTargetBuildPhase]
+    !?productGroupChildrenList
+    !?PBXFileReference_map
+    !?PBXSourcesBuildPhase_list
+    !?buildConfigurationList
+    !?targetList
+  ;
+#-------------------------------------------------- Build "tool_debug" target
+  @Xcode_PBXBuildFile_list keyListForDebugBuildPhase [emptyList] ;
+# HAND CODED SOURCES
+  build_HAND_CODED_source_files_for_build_phase
+    !inExternSourceNameSet
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# GENERATED BY GALGAS
+  build_GENERATED_BY_GALGAS_files_for_build_phase
+    !inComponentNameSet
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / BDD
+  build_LIBPM_BDD_source_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / CACHES
+  build_LIBPM_CACHE_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / COMMAND LINE INTERFACE
+  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / FILES
+  build_LIBPM_FILES_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / GALGAS
+  build_LIBPM_GALGAS_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / STREAMS
+  build_LIBPM_STREAMS_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / TIME
+  build_LIBPM_TIME_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / TINY XML
+  build_LIBPM_TINYXML_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / UTILITIES
+  build_LIBPM_UTILITIES_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+# LIBPM / UNICODE
+  build_LIBPM_UNICODE_files_for_build_phase
+    !PBXFileReference_map
+    !?PBXBuildFile_list
+    !?keyListForDebugBuildPhase
+  ;
+#---
+  add_target
+    !inProjectName  . "_debug"
+    !inProjectName . " Tool Debug"
+    !keyListForDebugBuildPhase
+    !?productGroupChildrenList
+    !?PBXFileReference_map
+    !?PBXSourcesBuildPhase_list
+    !?buildConfigurationList
+    !?targetList
   ;
 #-------------------------------------------------- Build group list
-#--- "Generated by GALGAS" Group
-  @Xcode_PBXGroup generatedByGalgasGroup [new !"Generated by GALGAS" !"../galgas_sources/GALGAS_OUTPUT" !fileListOf_GENERATED_BY_GALGAS_group] ;
-  groupList += !generatedByGalgasGroup ;
-  mainGroupChildrenList += ![generatedByGalgasGroup PBXGroupKey] ;
-#--- "Hand Coded Sources" Group
-  @Xcode_PBXGroup handCodedSourcesGroup [new !"Hand Coded Sources" !"../hand_coded_sources" ! fileListOf_HAND_CODED_SOURCES_group] ;
-  groupList += !handCodedSourcesGroup ;
-  mainGroupChildrenList += ![handCodedSourcesGroup PBXGroupKey] ;
-#--- "LIBPM" Group
-  @stringlist libpmGroupChildrenList [emptyList] ;
-# "Caches" subgroup
-  @Xcode_PBXGroup cachesSubGroup [new !"Caches" !"cache" !fileListOf_LIBPM_CACHE_group] ;
-  groupList += !cachesSubGroup ;
-  libpmGroupChildrenList += ! [cachesSubGroup PBXGroupKey] ;
-# "BDD" subgroup
-  @Xcode_PBXGroup bddSubGroup [new !"Binary Decision Diagrams" !"bdd" !fileListOf_LIBPM_BDD_group] ;
-  groupList += !bddSubGroup ;
-  libpmGroupChildrenList += ![bddSubGroup PBXGroupKey] ;
-# "Collections" subgroup
-  @Xcode_PBXGroup collectionSubGroup [new !"Collections" !"collections" !fileListOf_LIBPM_COLLECTIONS_group] ;
-  groupList += !collectionSubGroup ;
-  libpmGroupChildrenList += ![collectionSubGroup PBXGroupKey] ;
-# "Cocoa GALGAS" subgroup
-  @Xcode_PBXGroup cocoaGALGASSubGroup [new !"Cocoa GALGAS" !"cocoa_galgas" ![@stringlist emptyList]] ;
-  groupList += !cocoaGALGASSubGroup ;
-  libpmGroupChildrenList += ! [cocoaGALGASSubGroup PBXGroupKey] ;
-# "Cocoa Utilities" subgroup
-  @Xcode_PBXGroup cocoaUtilitiesSubGroup [new !"Cocoa Utilities" !"cocoa_utilities" ![@stringlist emptyList]] ;
-  groupList += !cocoaUtilitiesSubGroup ;
-  libpmGroupChildrenList += ! [cocoaUtilitiesSubGroup PBXGroupKey] ;
-# "Command Line Interface" subgroup
-  @Xcode_PBXGroup commandLineInterfaceSubGroup [new !"Command Line Interface" !"command_line_interface" !fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group] ;
-  groupList += !commandLineInterfaceSubGroup ;
-  libpmGroupChildrenList += ! [commandLineInterfaceSubGroup PBXGroupKey] ;
-# "Files" subgroup
-  @Xcode_PBXGroup filesSubGroup [new !"Files" !"files" !fileListOf_LIBPM_FILE_group] ;
-  groupList += !filesSubGroup ;
-  libpmGroupChildrenList += ! [filesSubGroup PBXGroupKey] ;
-# "GALGAS" subgroup
-  @Xcode_PBXGroup GALGASSubGroup [new !"GALGAS" !"galgas" !fileListOf_LIBPM_GALGAS_group] ;
-  groupList += !GALGASSubGroup ;
-  libpmGroupChildrenList += ! [GALGASSubGroup PBXGroupKey] ;
-# "Streams" subgroup
-  @Xcode_PBXGroup streamsSubGroup [new !"Streams" !"streams" ! fileListOf_LIBPM_STREAMS_group] ;
-  groupList += !streamsSubGroup ;
-  libpmGroupChildrenList += ! [streamsSubGroup PBXGroupKey] ;
-# "Time" subgroup
-  @Xcode_PBXGroup timeSubGroup [new !"Time" !"time" ! fileListOf_LIBPM_TIME_group] ;
-  groupList += !timeSubGroup ;
-  libpmGroupChildrenList += ! [timeSubGroup PBXGroupKey] ;
-# "Tiny XML" subgroup
-  @Xcode_PBXGroup tinyXMLSubGroup [new !"Tiny XML" !"tiny_xml" ! fileListOf_LIBPM_TINYXML_group] ;
-  groupList += !tinyXMLSubGroup ;
-  libpmGroupChildrenList += ! [tinyXMLSubGroup PBXGroupKey] ;
-# "Unicode" subgroup
-  @Xcode_PBXGroup unicodeSubGroup [new !"Unicode" !"unicode" ! fileListOf_LIBPM_UNICODE_group] ;
-  groupList += !unicodeSubGroup ;
-  libpmGroupChildrenList += ! [unicodeSubGroup PBXGroupKey] ;
-# "Utilities" subgroup
-  @Xcode_PBXGroup utilitiesSubGroup [new !"Utilities" !"utilities" ! fileListOf_LIBPM_UTILITIES_group] ;
-  groupList += !utilitiesSubGroup ;
-  libpmGroupChildrenList += ! [utilitiesSubGroup PBXGroupKey] ;
 #--- "LIBMP" Group
   @Xcode_PBXGroup libpmGroup [new !"LIBPM" !"../../libpm" !libpmGroupChildrenList] ;
   groupList += !libpmGroup ;
@@ -1123,7 +969,7 @@ routine generateXcodeProject
     !buildConfigurationList
     !targetList
     ![defaultProjectConfiguration XCBuildConfigurationKey]
-    !PBXFileReferenceList
+    !PBXFileReference_map
     !PBXSourcesBuildPhase_list
     !PBXBuildFile_list
   ] ;
