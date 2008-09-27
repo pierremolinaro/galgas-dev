@@ -285,7 +285,8 @@ rule <galgas_component>
         !galgasSourceSet
         !externSourceSet
         ![[name stringByDeletingLastPathComponent] stringByDeletingPathExtension] # XCode project base name
-        !fullXcodePath ;
+        ![fullXcodePath stringByDeletingLastPathComponent] # Full Path ending with .xcodeproj 
+      ;
     end if ;
   end if ;
 label importLexique
