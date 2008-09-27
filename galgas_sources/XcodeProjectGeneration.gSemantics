@@ -27,21 +27,21 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_BDD_source_files_for_build_phase
+routine build_LIBPM_BDD_source_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"C_BDD_Descriptor.cpp" ;
-  cpp_fileList += !"C_BDD_Set1.cpp" ;
-  cpp_fileList += !"C_BDD_Set2.cpp" ;
-  cpp_fileList += !"C_BDD_Set3.cpp" ;
-  cpp_fileList += !"C_BDD.cpp" ;
-  cpp_fileList += !"C_Display_BDD.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"C_BDD_Descriptor.cpp" ;
+  fileList += !"C_BDD_Set1.cpp" ;
+  fileList += !"C_BDD_Set2.cpp" ;
+  fileList += !"C_BDD_Set3.cpp" ;
+  fileList += !"C_BDD.cpp" ;
+  fileList += !"C_Display_BDD.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -101,6 +101,8 @@ routine build_LIBPM_GALGAS_group
   foreach cpp_and_h_fileList do 
     append_cpp_h_files !?fileList !mValue ;
   end foreach ;
+  fileList += !"galgas_header.h" ;
+  fileList += !"PP_GalgasPrefix.pch" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -111,7 +113,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_GALGAS_files_for_build_phase
+routine build_LIBPM_GALGAS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -122,10 +124,101 @@ routine build_LIBPM_GALGAS_files_for_build_phase
     fileList += !mValue . ".cpp" ;
   end foreach ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_COCOA_GALGAS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  append_m_h_files !?fileList !"NSSplitViewExtensions" ;
+  append_mm_h_files !?fileList !"OC_GGS_BuildWindowController" ;
+  append_mm_h_files !?fileList !"OC_GGS_Document" ;
+  append_mm_h_files !?fileList !"OC_GGS_PreferencesController" ;
+  append_mm_h_files !?fileList !"OC_GGS_RulerView" ;
+  append_mm_h_files !?fileList !"OC_GGS_TextView" ;
+  append_mm_h_files !?fileList !"OC_GGS_DelegateForSyntaxColoring" ;
+  append_mm_h_files !?fileList !"OC_GGS_BuildResultTextView" ;
+  append_mm_h_files !?fileList !"C_SourceTextForCocoa" ;
+  fileList += !"I_Action.tiff" ;
+  fileList += !"I_SaveAs.tiff" ;
+  fileList += !"I_Stop.tiff" ;
+  fileList += !"I_Window.png" ;
+  fileList += !"F_CocoaWrapperForGalgas.h" ;
+  fileList += !"PP_CocoaGalgasPrefix.pch" ;
+#---
+  enter_files_in_group
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_COCOA_APP_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"main.m" ;
+  fileList += !"NSSplitViewExtensions.m" ;
+  fileList += !"OC_GGS_BuildWindowController.mm" ;
+  fileList += !"OC_GGS_Document.mm" ;
+  fileList += !"OC_GGS_PreferencesController.mm" ;
+  fileList += !"OC_GGS_RulerView.mm" ;
+  fileList += !"OC_GGS_TextView.mm" ;
+  fileList += !"OC_GGS_DelegateForSyntaxColoring.mm" ;
+  fileList += !"OC_GGS_BuildResultTextView.mm" ;
+  fileList += !"C_SourceTextForCocoa.mm" ;
+#--- LIBPM / Command line Interface
+  fileList += !"C_builtin_CLI_Options.cpp" ;
+  fileList += !"AC_CLI_Options.cpp" ;
+  fileList += !"C_CLI_OptionGroup.cpp" ;
+#--- LIBPM / Files
+  fileList += !"C_TextFileWrite.cpp" ;
+#--- LIBPM / GALGAS
+  fileList += !"C_Lexique.cpp" ;
+  fileList += !"C_galgas_io.cpp" ;
+  fileList += !"C_galgas_CLI_Options.cpp" ;
+  fileList += !"C_GGS_Object.cpp" ;
+#--- LIBPM / Streams
+  fileList += !"C_ErrorOut.cpp" ;
+  fileList += !"AC_OutputStream.cpp" ;
+  fileList += !"C_ConsoleOut.cpp" ;
+#--- LIBPM / Time
+  fileList += !"C_DateTime.cpp" ;
+#--- LIBPM / Utilities
+  fileList += !"C_Exception.cpp" ;
+  fileList += !"C_String.cpp" ;
+#---
+  enter_files_for_sources_build_phase
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_LIBPM_COCOA_UTILITIES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"main.m" ;
+#---
+  enter_files_in_group
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
   ;
 end routine ;
 
@@ -148,17 +241,17 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_FILES_files_for_build_phase
+routine build_LIBPM_FILES_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"C_HTML_FileWrite.cpp" ;
-  cpp_fileList += !"C_TextFileWrite.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"C_HTML_FileWrite.cpp" ;
+  fileList += !"C_TextFileWrite.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -186,20 +279,20 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_build_phase
+routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"C_builtin_CLI_Options.cpp" ;
-  cpp_fileList += !"AC_CLI_Options.cpp" ;
-  cpp_fileList += !"C_CLI_OptionGroup.cpp" ;
-  cpp_fileList += !"F_Analyze_CLI_Options.cpp" ;
-  cpp_fileList += !"F_main.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"C_builtin_CLI_Options.cpp" ;
+  fileList += !"AC_CLI_Options.cpp" ;
+  fileList += !"C_CLI_OptionGroup.cpp" ;
+  fileList += !"F_Analyze_CLI_Options.cpp" ;
+  fileList += !"F_main.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -254,17 +347,17 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_CACHE_files_for_build_phase
+routine build_LIBPM_CACHE_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"C_PrimeCache2.cpp" ;
-  cpp_fileList += !"C_PrimeCache3.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"C_PrimeCache2.cpp" ;
+  fileList += !"C_PrimeCache3.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -291,18 +384,18 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_UNICODE_files_for_build_phase
+routine build_LIBPM_UNICODE_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"C_UnicodeString.cpp" ;
-  cpp_fileList += !"unicode_character.cpp" ;
-  cpp_fileList += !"unicode_string_routines.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"C_UnicodeString.cpp" ;
+  fileList += !"unicode_character.cpp" ;
+  fileList += !"unicode_string_routines.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -335,22 +428,22 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_UTILITIES_files_for_build_phase
+routine build_LIBPM_UTILITIES_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"md5.cpp" ;
-  cpp_fileList += !"C_Exception.cpp" ;
-  cpp_fileList += !"C_String.cpp" ;
-  cpp_fileList += !"F_GetPrime.cpp" ;
-  cpp_fileList += !"F_DisplayException.cpp" ;
-  cpp_fileList += !"MF_Assert.cpp" ;
-  cpp_fileList += !"MF_MemoryControl.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"md5.cpp" ;
+  fileList += !"C_Exception.cpp" ;
+  fileList += !"C_String.cpp" ;
+  fileList += !"F_GetPrime.cpp" ;
+  fileList += !"F_DisplayException.cpp" ;
+  fileList += !"MF_Assert.cpp" ;
+  fileList += !"MF_MemoryControl.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -376,19 +469,19 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_STREAMS_files_for_build_phase
+routine build_LIBPM_STREAMS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"AC_OutputUnicodeStream.cpp" ;
-  cpp_fileList += !"C_ErrorOut.cpp" ;
-  cpp_fileList += !"AC_OutputStream.cpp" ;
-  cpp_fileList += !"C_ConsoleOut.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"AC_OutputUnicodeStream.cpp" ;
+  fileList += !"C_ErrorOut.cpp" ;
+  fileList += !"AC_OutputStream.cpp" ;
+  fileList += !"C_ConsoleOut.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -412,17 +505,17 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_TIME_files_for_build_phase
+routine build_LIBPM_TIME_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"C_DateTime.cpp" ;
-  cpp_fileList += !"C_Timer.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"C_DateTime.cpp" ;
+  fileList += !"C_Timer.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -448,38 +541,38 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_TINYXML_files_for_build_phase
+routine build_LIBPM_TINYXML_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
-  cpp_fileList += !"tinyxml.cpp" ;
-  cpp_fileList += !"tinystr.cpp" ;
-  cpp_fileList += !"tinyxmlerror.cpp" ;
-  cpp_fileList += !"tinyxmlparser.cpp" ;
+  @stringlist fileList [emptyList] ;
+  fileList += !"tinyxml.cpp" ;
+  fileList += !"tinystr.cpp" ;
+  fileList += !"tinyxmlerror.cpp" ;
+  fileList += !"tinyxmlparser.cpp" ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_GENERATED_BY_GALGAS_files_for_build_phase
+routine build_GENERATED_BY_GALGAS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inComponentNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
+  @stringlist fileList [emptyList] ;
   foreach inComponentNameSet do
-    cpp_fileList += ![key stringByDeletingPathExtension] . ".cpp" ;
+    fileList += ![key stringByDeletingPathExtension] . ".cpp" ;
   end foreach ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -505,19 +598,19 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_HAND_CODED_source_files_for_build_phase
+routine build_HAND_CODED_source_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist cpp_fileList [emptyList] ;
+  @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
-    cpp_fileList += !key ;
+    fileList += !key ;
   end foreach ;
 #---
-  enter_source_files_for_build_phase
+  enter_files_for_sources_build_phase
    !?ioXcodeProjectDescription
-   !cpp_fileList
+   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -543,18 +636,48 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine build_FRAMEWORKS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"AppKit.framework" ;
+  fileList += !"Cocoa.framework" ;
+#---
+  enter_files_in_group
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_FRAMEWORKS_for_frameworks_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"AppKit.framework" ;
+  fileList += !"Cocoa.framework" ;
+#---
+  enter_files_for_frameworks_build_phase
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine generateXcodeProject
   ??@stringset inComponentNameSet
   ??@stringset inExternSourceNameSet
   ??@string inProjectName
-  ??@string in_pbxproj_filePath
+  ??@string in_xcodeproj_filePath
 :
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
-
-  @Xcode_XCBuildConfiguration_list buildConfigurationList [emptyList] ;
-  @stringlist productGroupChildrenList [emptyList] ;
-  @Xcode_PBXSourcesBuildPhase_list PBXSourcesBuildPhase_list [emptyList] ;
 #-------------------------------------------------- Build source lists
 #---------- HAND CODED SOURCES
   @stringlist fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
@@ -615,19 +738,29 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / Cocoa GALGAS
+  @stringlist fileListOf_LIBPM_COCOA_GALGAS_group [emptyList] ;
+  build_LIBPM_COCOA_GALGAS_group
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_COCOA_GALGAS_group
+  ;
   enter_subgroup
     !?XcodeProjectDescription
     !"Cocoa GALGAS"
     !"cocoa_galgas"
-    ![@stringlist emptyList]
+    !fileListOf_LIBPM_COCOA_GALGAS_group
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / Cocoa Utilities
+  @stringlist fileListOf_LIBPM_COCOA_UTILITIES_group [emptyList] ;
+  build_LIBPM_COCOA_UTILITIES_group
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_COCOA_UTILITIES_group
+  ;
   enter_subgroup
     !?XcodeProjectDescription
     !"Cocoa Utilities"
     !"cocoa_utilities"
-    ![@stringlist emptyList]
+    !fileListOf_LIBPM_COCOA_UTILITIES_group
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / COLLECTIONS
@@ -771,159 +904,196 @@ routine generateXcodeProject
     ![@stringlist emptyList]
   ;
 #---------- "Frameworks" Group
+  @stringlist fileListOf_FRAMEWORKS_group [emptyList] ;
+  build_FRAMEWORKS_group
+    !?XcodeProjectDescription
+    !?fileListOf_FRAMEWORKS_group
+  ;
+#---
   enter_group
     !?XcodeProjectDescription
     !"Frameworks"
-    !""
-    ![@stringlist emptyList]
+    !"/System/Library/Frameworks"
+    !fileListOf_FRAMEWORKS_group
   ;
 #-------------------------------------------------- Build "tool" target
-  @Xcode_PBXBuildFile_list keyListForBuildPhase [emptyList] ;
+  @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfTool [emptyList] ;
 # HAND CODED SOURCES
-  build_HAND_CODED_source_files_for_build_phase
+  build_HAND_CODED_source_files_for_sources_build_phase
     !?XcodeProjectDescription
     !inExternSourceNameSet
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # GENERATED BY GALGAS
-  build_GENERATED_BY_GALGAS_files_for_build_phase
+  build_GENERATED_BY_GALGAS_files_for_sources_build_phase
     !?XcodeProjectDescription
     !inComponentNameSet
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / BDD
-  build_LIBPM_BDD_source_files_for_build_phase
+  build_LIBPM_BDD_source_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / CACHES
-  build_LIBPM_CACHE_files_for_build_phase
+  build_LIBPM_CACHE_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / COMMAND LINE INTERFACE
-  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_build_phase
+  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / FILES
-  build_LIBPM_FILES_files_for_build_phase
+  build_LIBPM_FILES_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / GALGAS
-  build_LIBPM_GALGAS_files_for_build_phase
+  build_LIBPM_GALGAS_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / STREAMS
-  build_LIBPM_STREAMS_files_for_build_phase
+  build_LIBPM_STREAMS_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / TIME
-  build_LIBPM_TIME_files_for_build_phase
+  build_LIBPM_TIME_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / TINY XML
-  build_LIBPM_TINYXML_files_for_build_phase
+  build_LIBPM_TINYXML_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / UTILITIES
-  build_LIBPM_UTILITIES_files_for_build_phase
+  build_LIBPM_UTILITIES_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / UNICODE
-  build_LIBPM_UNICODE_files_for_build_phase
+  build_LIBPM_UNICODE_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForBuildPhase
+    !?listForSourceBuildPhaseOfTool
   ;
+#--- Target settings
+  @stringlist toolTargetSettings [emptyList] ;
+  toolTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
 #---
-  add_target
+  add_tool_target
     !?XcodeProjectDescription
     !inProjectName
-    !inProjectName . " Tool"
-    !keyListForBuildPhase
-    !?productGroupChildrenList
-    !?PBXSourcesBuildPhase_list
-    !?buildConfigurationList
+    ![inProjectName stringByCapitalizingFirstCharacter] . " Tool"
+    !toolTargetSettings
+    !"../../libpm/galgas/PP_GalgasPrefix.pch"
+    !listForSourceBuildPhaseOfTool
   ;
 #-------------------------------------------------- Build "tool_debug" target
-  @Xcode_PBXBuildFile_list keyListForDebugBuildPhase [emptyList] ;
+  @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfDebugTool [emptyList] ;
 # HAND CODED SOURCES
-  build_HAND_CODED_source_files_for_build_phase
+  build_HAND_CODED_source_files_for_sources_build_phase
     !?XcodeProjectDescription
     !inExternSourceNameSet
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # GENERATED BY GALGAS
-  build_GENERATED_BY_GALGAS_files_for_build_phase
+  build_GENERATED_BY_GALGAS_files_for_sources_build_phase
     !?XcodeProjectDescription
     !inComponentNameSet
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / BDD
-  build_LIBPM_BDD_source_files_for_build_phase
+  build_LIBPM_BDD_source_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / CACHES
-  build_LIBPM_CACHE_files_for_build_phase
+  build_LIBPM_CACHE_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / COMMAND LINE INTERFACE
-  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_build_phase
+  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / FILES
-  build_LIBPM_FILES_files_for_build_phase
+  build_LIBPM_FILES_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / GALGAS
-  build_LIBPM_GALGAS_files_for_build_phase
+  build_LIBPM_GALGAS_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / STREAMS
-  build_LIBPM_STREAMS_files_for_build_phase
+  build_LIBPM_STREAMS_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / TIME
-  build_LIBPM_TIME_files_for_build_phase
+  build_LIBPM_TIME_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / TINY XML
-  build_LIBPM_TINYXML_files_for_build_phase
+  build_LIBPM_TINYXML_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / UTILITIES
-  build_LIBPM_UTILITIES_files_for_build_phase
+  build_LIBPM_UTILITIES_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / UNICODE
-  build_LIBPM_UNICODE_files_for_build_phase
+  build_LIBPM_UNICODE_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !?keyListForDebugBuildPhase
+    !?listForSourceBuildPhaseOfDebugTool
   ;
+#--- Target settings
+  @stringlist debugToolTargetSettings [emptyList] ;
+  debugToolTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 0;" ;
+  debugToolTargetSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;" ;
 #---
-  add_target
+  add_tool_target
     !?XcodeProjectDescription
-    !inProjectName  . "_debug"
-    !inProjectName . " Tool Debug"
-    !keyListForDebugBuildPhase
-    !?productGroupChildrenList
-    !?PBXSourcesBuildPhase_list
-    !?buildConfigurationList
+    !inProjectName . "_debug"
+    ![inProjectName stringByCapitalizingFirstCharacter] . " Tool Debug"
+    !debugToolTargetSettings
+    !"" # Precompiled header
+    !listForSourceBuildPhaseOfDebugTool
+  ;
+#-------------------------------------------------- Build "Cocoa Application" target
+#--- Sources Build Phase
+  @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfCocoaApp [emptyList] ;
+  build_COCOA_APP_files_for_sources_build_phase
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfCocoaApp
+  ;
+#--- Frameworks Build Phase
+  @Xcode_PBXBuildFile_list listForFrameworkBuildPhaseOfCocoaApp [emptyList] ;
+  build_FRAMEWORKS_for_frameworks_build_phase
+    !?XcodeProjectDescription
+    !?listForFrameworkBuildPhaseOfCocoaApp
+  ;
+#--- Target settings
+  @stringlist cocoaAppTargetSettings [emptyList] ;
+  cocoaAppTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
+#---
+  add_app_target
+    !?XcodeProjectDescription
+    !"Cocoa" . [inProjectName stringByCapitalizingFirstCharacter] . ".app"
+    ![inProjectName stringByCapitalizingFirstCharacter] . " Cocoa"
+    !cocoaAppTargetSettings
+    !"../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header
+    !listForSourceBuildPhaseOfCocoaApp
+    !listForFrameworkBuildPhaseOfCocoaApp
   ;
 #-------------------------------------------------- Define project default configuration
   @stringlist projectDefaultSettings [emptyList] ;
@@ -965,41 +1135,13 @@ routine generateXcodeProject
   projectDefaultSettings  += !"PREBINDING = NO;" ;
   projectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
 
-  @Xcode_XCBuildConfiguration defaultProjectConfiguration [new !projectDefaultSettings] ;
-  buildConfigurationList += !defaultProjectConfiguration ;
-#--- "Products" Group
-  enter_group
-    !?XcodeProjectDescription
-    !"Products"
-    !""
-    !productGroupChildrenList
-  ;
-#--- Main Group
-  @Xcode_PBXGroup mainGroup [new !"" !"" ![XcodeProjectDescription mMainGroupChildrenList]] ;
-  XcodeProjectDescription.mProjectGroupList += !mainGroup ;
-#--- Build project model
-  @Xcode_rootObject p [new
-    !inProjectName
-    ![["project" md5] rightSubString !24]
-    ![mainGroup PBXGroupKey]
-    !buildConfigurationList
-    ![defaultProjectConfiguration XCBuildConfigurationKey]
+#-------------------------------------------------- Build Project file
+  generateXCodeFile
     !XcodeProjectDescription
-    !PBXSourcesBuildPhase_list
-  ] ;
-#--- Build string
-  @string fileNewContents ;
-  [p build ?fileNewContents] ;
-#--- 
-#  log in_pbxproj_filePath ;
-  @string dir := [in_pbxproj_filePath stringByDeletingLastPathComponent] ;
-  [dir makeDirectory] ;
-  @stringlist pbxuser_files := [dir regularFilesWithExtensions !false ![@stringlist listWithValue !"pbxuser"]] ;
-  foreach pbxuser_files do
-    @string fullPath := dir . "/" . mValue ;
-    [@string deleteFile !fullPath] ;
-  end foreach ;
-  [fileNewContents writeToFileWhenDifferentContents !in_pbxproj_filePath] ;
+    !in_xcodeproj_filePath
+    !projectDefaultSettings
+    !inProjectName
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
