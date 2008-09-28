@@ -153,6 +153,19 @@ routine build_LIBPM_COCOA_GALGAS_group
   fileList += !"I_Window.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
+#--- Enter nib files
+  enter_nib_in_group
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"MainMenu.nib"
+   !?ioFileListForGroup
+  ;
+  enter_nib_in_group
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"OC_GGS_Document.nib"
+   !?ioFileListForGroup
+  ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -321,10 +334,24 @@ end routine ;
 
 routine build_PROJECT_RESOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@stringlist inIconFiles
   ?!@stringlist ioFileListForGroup
 :
-  @stringlist fileList [emptyList] ;
+  @stringlist fileList := inIconFiles ;
   fileList += !"Info.plist" ;
+#--- Enter nib files
+  enter_nib_in_group
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"Credits.rtf"
+   !?ioFileListForGroup
+  ;
+  enter_nib_in_group
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"InfoPlist.strings"
+   !?ioFileListForGroup
+  ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -648,15 +675,20 @@ end routine ;
 routine build_RESOURCES_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inProjectName
+  ??@stringlist inIconFiles
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist fileList [emptyList] ;
+  @stringlist fileList := inIconFiles ;
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_Action.tiff" ;
   fileList += !"I_SaveAs.tiff" ;
   fileList += !"I_Stop.tiff" ;
   fileList += !"I_Window.png" ;
+  fileList += !"MainMenu.nib" ;
+  fileList += !"OC_GGS_Document.nib" ;
+  fileList += !"InfoPlist.strings" ;
+  fileList += !"Credits.rtf" ;
 #---
   enter_files_for_frameworks_build_phase
    !?ioXcodeProjectDescription
@@ -751,6 +783,7 @@ routine generateXcodeProject
   ??@stringset inProgramSourceSet
   ??@string inProjectName
   ??@string in_xcodeproj_filePath
+  ??@stringlist inIconFiles
 :
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -982,6 +1015,7 @@ routine generateXcodeProject
  @stringlist fileListOf_PROJECT_RESOURCES_group [emptyList] ;
   build_PROJECT_RESOURCES_group
     !?XcodeProjectDescription
+    !inIconFiles
     !?fileListOf_PROJECT_RESOURCES_group
   ;
   enter_group
@@ -1183,6 +1217,7 @@ routine generateXcodeProject
   build_RESOURCES_for_resources_build_phase
     !?XcodeProjectDescription
     !inProjectName
+    !inIconFiles
     !?listForResourcesBuildPhaseOfCocoaApp
   ;
 #--- Direct Dependancies

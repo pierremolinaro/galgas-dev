@@ -320,9 +320,10 @@ rule <galgas_component>
     end if ;
   end if ;
 #--- Handle Xcode Project
-  if [@uint errorCount] == 0 then
-    @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/Z" ; # . "/project_xcode" ;
+  if ([@uint errorCount] == 0) & [option galgas_cli_options.generate_xcode_project] then
+    @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
     #log XcodeProjectDir ;
+    @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
     @stringlist xcodeProjects := [XcodeProjectDir regularFilesWithExtensions !true ![@stringlist listWithValue !"pbxproj"]] ;
     #log xcodeProjects ;
     if [xcodeProjects length] == 1 then
@@ -370,7 +371,8 @@ rule <galgas_component>
         !grammarSourceSet
         !programSourceSet
         ![[name stringByDeletingLastPathComponent] stringByDeletingPathExtension] # XCode project base name
-        ![fullXcodePath stringByDeletingLastPathComponent] # Full Path ending with .xcodeproj 
+        ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
+        !iconFiles
       ;
     end if ;
   end if ;
@@ -589,7 +591,7 @@ rule <galgas_component>
   @lstring fileName ;
   $literal_string$ ? fileName ;
   $;$ ;
-  if [option .verbose_output] then
+  if [option.verbose_output] then
     message "------ Compile file '" . [fileName string] . "'\n" ;
   end if ;
   grammar galgas_LL1_grammar label compileFile in fileName ;
