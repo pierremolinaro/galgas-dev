@@ -39,7 +39,6 @@ filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_temp
     ?@string HAND_CODED_SOURCES_SUB_DIRS
     ?@string GALGAS_SOURCE_LIST
     ?@string HAND_CODED_SOURCE_LIST
-    ?@string EXTERN_SOURCE_LIST
   ;
 }
 
@@ -101,6 +100,33 @@ label parse
 ;
 
 #------------------------------------------------------------------------------*
+
+listmap @targetFileListMap (@stringlist) ;
+
+#------------------------------------------------------------------------------*
+
+enum @sourceFileKind {
+  constructor externSourceFile ;
+  constructor lexiqueSourceFile ;
+  constructor guiSourceFile ;
+  constructor optionSourceFile ;
+  constructor syntaxSourceFile ;
+  constructor semanticsSourceFile ;
+  constructor grammarSourceFile ;
+  constructor programSourceFile ;
+}{
+}
+
+#------------------------------------------------------------------------------*
+
+map @sourceFileMap {
+  @string mFullPath ;
+  @sourceFileKind mSourceKind ;
+  insert insertKey error message "the '%K' source base name has been already declared in %L" ;
+  search searchKey error message "the '%K' source base name is not declared" ;
+}
+
+#------------------------------------------------------------------------------*
 #                                                                              *
 #          Project component                                                   *
 #                                                                              *
@@ -115,35 +141,60 @@ rule <galgas_component>
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $project$ ;
-  @string galgasSourceList := "" ;
-  @stringset galgasSourceSet [emptySet] ;
-  @stringset externSourceSet [emptySet] ;
-  @string externSourceList := "" ;
+  @sourceFileMap sourceFileMap [emptyMap] ;
+  @targetFileListMap targetFileListMap [emptyMap] ;
   repeat
   while
-    $extern$ ;
-    $literal_string$ ?@lstring inExternSourceName ;
-    if [externSourceSet hasKey ![inExternSourceName string]] then
-      error inExternSourceName: "the '" . inExternSourceName . "' is already declared as extern" ;
-    end if ;
-    externSourceSet += ![inExternSourceName string] ;
-    externSourceList .= "SOURCES += " . [inExternSourceName string] . "\n" ;
-    $;$ ;
-  while
-    $compile$ ;
+    @sourceFileKind sourceFileKind ;
+    select
+      $extern$ ;
+      sourceFileKind := [@sourceFileKind externSourceFile] ;
+    or
+      $gui$ ;
+      sourceFileKind := [@sourceFileKind guiSourceFile] ;
+    or
+      $lexique$ ;
+      sourceFileKind := [@sourceFileKind lexiqueSourceFile] ;
+    or
+      $option$ ;
+      sourceFileKind := [@sourceFileKind optionSourceFile] ;
+    or
+      $semantics$ ;
+      sourceFileKind := [@sourceFileKind semanticsSourceFile] ;
+    or
+      $syntax$ ;
+      sourceFileKind := [@sourceFileKind syntaxSourceFile] ;
+    or
+      $grammar$ ;
+      sourceFileKind := [@sourceFileKind grammarSourceFile] ;
+    or
+      $program$ ;
+      sourceFileKind := [@sourceFileKind programSourceFile] ;
+    end select ;
+  #--- Source name
     $literal_string$ ?@lstring fileName ;
-    if [galgasSourceSet hasKey ![fileName string]] then
-      error fileName: "the '" . fileName . "' is already declared as compiled" ;
-    end if ;
-    galgasSourceSet += ![fileName string] ;
-    if [fileName pathExtension] != "gGui" then
-      galgasSourceList .= "SOURCES += " . [[fileName string] stringByDeletingPathExtension] . ".cpp\n" ;
-    end if ;
-    $;$ ;
-    if [option .verbose_output] then
+    @string baseName := [[[fileName string] lastPathComponent] stringByDeletingPathExtension] ;
+  #--- Enter in source file map
+    [!?sourceFileMap insertKey ![@lstring new !baseName ![fileName location]] ![fileName string] !sourceFileKind] ;
+  #--- Targets
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ? @lstring targetName ;
+        targetFileListMap += ![targetName string] !baseName ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+    if [option.verbose_output] then
       message "------ Compile file '" . [fileName string] . "'\n" ;
     end if ;
-    grammar galgas_LL1_grammar label compileFile in fileName ;
+  #--- Compile file
+    if sourceFileKind != [@sourceFileKind externSourceFile] then
+      grammar galgas_LL1_grammar label compileFile in fileName ;
+    end if ;
+    $;$ ;
   end repeat ;
   $end$ ;
   $project$ ;
@@ -151,40 +202,36 @@ rule <galgas_component>
   if [option .verbose_output] then
     message "------ Project\n" ;
   end if ;
-#---- Explore 'hand_coded_sources' directory
-  @string handCodedFilesDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/hand_coded_sources" ;
-  @string externSourceFileList := "" ;
-  @stringset handCodedSourcesSubPathSet [emptySet] ;
-  if [handCodedFilesDir directoryExists] then
-    @stringlist extensionList [emptyList] ;
-    extensionList += !"c" ;
-    extensionList += !"cpp" ;
-    extensionList += !"m" ;
-    extensionList += !"mm" ;
-    @stringlist actualHandCodedFileList := [handCodedFilesDir regularFilesWithExtensions !true !extensionList] ;
-    foreach actualHandCodedFileList do
-      externSourceFileList .= "SOURCES += " . [mValue lastPathComponent] . "\n" ;
-      @string path := [mValue stringByDeletingLastPathComponent] ;
-      if [path length] == 0 then
-        handCodedSourcesSubPathSet += !"" ;
+#--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
+  @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
+  if [makefileFiles length] > 0 then
+    @string externSourceFileList := "" ;
+    @string galgasSourceList := "" ;
+    @string pathesString := "SOURCES_DIR += ../hand_coded_sources\n" ;
+    foreach makefileFiles do
+      @string fullPath ;
+      @sourceFileKind sourceKind ;
+      [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+      @string filePath := [fullPath stringByDeletingLastPathComponent] ;
+      if sourceKind == [@sourceFileKind externSourceFile] then
+        if [filePath firstCharacterOrNul] == '/' then
+          pathesString .= "SOURCES_DIR += " . filePath . "\n" ;
+        elsif filePath != "" then
+          pathesString .= "SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
+        end if ;
+        externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
       else
-        handCodedSourcesSubPathSet += !"/" . path ;
+        galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
       end if ;
     end foreach ;
+    @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
+      !pathesString
+      !galgasSourceList
+      !externSourceFileList
+    ] ;
+    @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
+    [newFileListContents writeToFileWhenDifferentContents !fileListPath] ;
   end if ;
-#--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
-  @string handCodedSubPathesString := "" ;
-  foreach handCodedSourcesSubPathSet do
-    handCodedSubPathesString .= "SOURCES_DIR += ../hand_coded_sources" . key . "\n" ;
-  end foreach ;
-  @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
-    !handCodedSubPathesString
-    !galgasSourceList
-    !externSourceFileList
-    !externSourceList
-  ] ;
-  @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
-  [newFileListContents writeToFileWhenDifferentContents !fileListPath] ;
 #---- Convert old files
   @string oldCommonFile := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/common_files_for_make/makefile.mke" ;
   if [oldCommonFile fileExists] & ([@uint errorCount] == 0) then
@@ -281,9 +328,47 @@ rule <galgas_component>
     if [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
       @string fullXcodePath := XcodeProjectDir . "/" . name ;
+      @stringset externSourceSet [emptySet] ;
+      @stringset guiSourceSet [emptySet] ;
+      @stringset scannerSourceSet [emptySet] ;
+      @stringset optionSourceSet [emptySet] ;
+      @stringset semanticsSourceSet [emptySet] ;
+      @stringset syntaxSourceSet [emptySet] ;
+      @stringset grammarSourceSet [emptySet] ;
+      @stringset programSourceSet [emptySet] ;
+      @stringlist xcodeFiles := [targetFileListMap listForKey !"xcode"] ;
+      foreach xcodeFiles do
+        @string fullPath ;
+        @sourceFileKind sourceKind ;
+        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+        switch sourceKind 
+        when externSourceFile :
+          externSourceSet += !mValue . ".cpp" ;
+        when lexiqueSourceFile :
+          scannerSourceSet += !mValue ;
+        when guiSourceFile :
+          guiSourceSet += !mValue ;
+        when optionSourceFile :
+          optionSourceSet += !mValue ;
+        when syntaxSourceFile :
+          syntaxSourceSet += !mValue ;
+        when semanticsSourceFile :
+          semanticsSourceSet += !mValue ;
+        when grammarSourceFile :
+          grammarSourceSet += !mValue ;
+        when programSourceFile :
+          programSourceSet += !mValue ;
+        end switch ;
+      end foreach ;
       generateXcodeProject
-        !galgasSourceSet
         !externSourceSet
+        !guiSourceSet
+        !scannerSourceSet
+        !optionSourceSet
+        !semanticsSourceSet
+        !syntaxSourceSet
+        !grammarSourceSet
+        !programSourceSet
         ![[name stringByDeletingLastPathComponent] stringByDeletingPathExtension] # XCode project base name
         ![fullXcodePath stringByDeletingLastPathComponent] # Full Path ending with .xcodeproj 
       ;
@@ -295,12 +380,33 @@ label importLexique
   $project$ ;
   repeat
   while
-    $extern$ ;
+    select
+      $extern$ ;
+    or
+      $gui$ ;
+    or
+      $lexique$ ;
+    or
+      $option$ ;
+    or
+      $semantics$ ;
+    or
+      $syntax$ ;
+    or
+      $grammar$ ;
+    or
+      $program$ ;
+    end select ;
     $literal_string$ ?* ;
-    $;$ ;
-  while
-    $compile$ ;
-    $literal_string$ ?* ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -313,12 +419,33 @@ label importSyntax
   $project$ ;
   repeat
   while
-    $extern$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  while
-    $compile$ ;
-    $literal_string$ ?* ;
+    select
+      $extern$ ;
+    or
+      $gui$ ;
+    or
+      $lexique$ ;
+    or
+      $option$ ;
+    or
+      $semantics$ ;
+    or
+      $syntax$ ;
+    or
+      $grammar$ ;
+    or
+      $program$ ;
+    end select ;
+    $literal_string$ ? * ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -332,12 +459,33 @@ label importSemantics
   $project$ ;
   repeat
   while
-    $extern$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  while
-    $compile$ ;
-    $literal_string$ ?* ;
+    select
+      $extern$ ;
+    or
+      $gui$ ;
+    or
+      $lexique$ ;
+    or
+      $option$ ;
+    or
+      $semantics$ ;
+    or
+      $syntax$ ;
+    or
+      $grammar$ ;
+    or
+      $program$ ;
+    end select ;
+    $literal_string$ ? * ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -351,12 +499,33 @@ label importGrammarForSemantics
   $project$ ;
   repeat
   while
-    $extern$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  while
-    $compile$ ;
-    $literal_string$ ?* ;
+    select
+      $extern$ ;
+    or
+      $gui$ ;
+    or
+      $lexique$ ;
+    or
+      $option$ ;
+    or
+      $semantics$ ;
+    or
+      $syntax$ ;
+    or
+      $grammar$ ;
+    or
+      $program$ ;
+    end select ;
+    $literal_string$ ? * ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -368,12 +537,33 @@ label importOptions
   $project$ ;
   repeat
   while
-    $extern$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  while
-    $compile$ ;
-    $literal_string$ ?* ;
+    select
+      $extern$ ;
+    or
+      $gui$ ;
+    or
+      $lexique$ ;
+    or
+      $option$ ;
+    or
+      $semantics$ ;
+    or
+      $syntax$ ;
+    or
+      $grammar$ ;
+    or
+      $program$ ;
+    end select ;
+    $literal_string$ ? * ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
     $;$ ;
   end repeat ;
   $end$ ;

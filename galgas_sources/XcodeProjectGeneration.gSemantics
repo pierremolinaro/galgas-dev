@@ -163,51 +163,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_COCOA_APP_files_for_sources_build_phase
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist fileList [emptyList] ;
-  fileList += !"main.m" ;
-  fileList += !"NSSplitViewExtensions.m" ;
-  fileList += !"OC_GGS_BuildWindowController.mm" ;
-  fileList += !"OC_GGS_Document.mm" ;
-  fileList += !"OC_GGS_PreferencesController.mm" ;
-  fileList += !"OC_GGS_RulerView.mm" ;
-  fileList += !"OC_GGS_TextView.mm" ;
-  fileList += !"OC_GGS_DelegateForSyntaxColoring.mm" ;
-  fileList += !"OC_GGS_BuildResultTextView.mm" ;
-  fileList += !"C_SourceTextForCocoa.mm" ;
-#--- LIBPM / Command line Interface
-  fileList += !"C_builtin_CLI_Options.cpp" ;
-  fileList += !"AC_CLI_Options.cpp" ;
-  fileList += !"C_CLI_OptionGroup.cpp" ;
-#--- LIBPM / Files
-  fileList += !"C_TextFileWrite.cpp" ;
-#--- LIBPM / GALGAS
-  fileList += !"C_Lexique.cpp" ;
-  fileList += !"C_galgas_io.cpp" ;
-  fileList += !"C_galgas_CLI_Options.cpp" ;
-  fileList += !"C_GGS_Object.cpp" ;
-#--- LIBPM / Streams
-  fileList += !"C_ErrorOut.cpp" ;
-  fileList += !"AC_OutputStream.cpp" ;
-  fileList += !"C_ConsoleOut.cpp" ;
-#--- LIBPM / Time
-  fileList += !"C_DateTime.cpp" ;
-#--- LIBPM / Utilities
-  fileList += !"C_Exception.cpp" ;
-  fileList += !"C_String.cpp" ;
-#---
-  enter_files_for_sources_build_phase
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine build_LIBPM_COCOA_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@stringlist ioFileListForGroup
@@ -359,6 +314,22 @@ routine build_LIBPM_CACHE_files_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_PROJECT_RESOURCES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@stringlist ioFileListForGroup
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"Info.plist" ;
+#---
+  enter_files_in_group
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
   ;
 end routine ;
 
@@ -567,7 +538,7 @@ routine build_GENERATED_BY_GALGAS_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   foreach inComponentNameSet do
-    fileList += ![key stringByDeletingPathExtension] . ".cpp" ;
+    fileList += !key . ".cpp" ;
   end foreach ;
 #---
   enter_files_for_sources_build_phase
@@ -582,11 +553,15 @@ end routine ;
 routine build_GENERATED_BY_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inComponentNameSet
+  ??@stringset inGUISourceNameSet
   ?!@stringlist ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   foreach inComponentNameSet do
-    append_cpp_h_files !?fileList ![key stringByDeletingPathExtension] ;
+    append_cpp_h_files !?fileList !key ;
+  end foreach ;
+  foreach inGUISourceNameSet do
+    fileList += !key . ".mm" ;
   end foreach ;
 #---
   enter_files_in_group
@@ -670,9 +645,110 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine build_RESOURCES_for_resources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@string inProjectName
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !inProjectName ;
+  fileList += !inProjectName . "_debug" ;
+  fileList += !"I_Action.tiff" ;
+  fileList += !"I_SaveAs.tiff" ;
+  fileList += !"I_Stop.tiff" ;
+  fileList += !"I_Window.png" ;
+#---
+  enter_files_for_frameworks_build_phase
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_COCOA_APP_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@stringset inGUISourceNameSet
+  ??@stringset inScannerSourceNameSet
+  ??@stringset inOptionSourceNameSet
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist fileList [emptyList] ;
+  fileList += !"main.m" ;
+  fileList += !"NSSplitViewExtensions.m" ;
+  fileList += !"OC_GGS_BuildWindowController.mm" ;
+  fileList += !"OC_GGS_Document.mm" ;
+  fileList += !"OC_GGS_PreferencesController.mm" ;
+  fileList += !"OC_GGS_RulerView.mm" ;
+  fileList += !"OC_GGS_TextView.mm" ;
+  fileList += !"OC_GGS_DelegateForSyntaxColoring.mm" ;
+  fileList += !"OC_GGS_BuildResultTextView.mm" ;
+  fileList += !"C_SourceTextForCocoa.mm" ;
+#--- LIBPM / Command line Interface
+  fileList += !"C_builtin_CLI_Options.cpp" ;
+  fileList += !"AC_CLI_Options.cpp" ;
+  fileList += !"C_CLI_OptionGroup.cpp" ;
+#--- LIBPM / Files
+  fileList += !"C_TextFileWrite.cpp" ;
+#--- LIBPM / GALGAS
+  fileList += !"C_Lexique.cpp" ;
+  fileList += !"C_galgas_io.cpp" ;
+  fileList += !"C_galgas_CLI_Options.cpp" ;
+  fileList += !"C_GGS_Object.cpp" ;
+  fileList += !"AC_galgas_list.cpp" ;
+  fileList += !"GGS_string.cpp" ;
+  fileList += !"GGS_lstring.cpp" ;
+  fileList += !"GGS_uint.cpp" ;
+  fileList += !"GGS_uint64.cpp" ;
+  fileList += !"GGS_luint.cpp" ;
+  fileList += !"GGS_location.cpp" ;
+  fileList += !"GGS_bool.cpp" ;
+  fileList += !"predefined_types.cpp" ;
+#--- LIBPM / Streams
+  fileList += !"C_ErrorOut.cpp" ;
+  fileList += !"AC_OutputStream.cpp" ;
+  fileList += !"AC_OutputUnicodeStream.cpp" ;
+  fileList += !"C_ConsoleOut.cpp" ;
+#--- LIBPM / Time
+  fileList += !"C_DateTime.cpp" ;
+#--- LIBPM / Unicode
+  fileList += !"C_UnicodeString.cpp" ;
+  fileList += !"unicode_character.cpp" ;
+  fileList += !"unicode_string_routines.cpp" ;
+#--- LIBPM / Utilities
+  fileList += !"C_Exception.cpp" ;
+  fileList += !"C_String.cpp" ;
+  fileList += !"md5.cpp" ;
+#--- Generated by GALGAS
+  foreach inGUISourceNameSet do
+    fileList += !key . ".mm" ;
+  end foreach ;
+  foreach inScannerSourceNameSet do
+    fileList += !key . ".cpp" ;
+  end foreach ;
+  foreach inOptionSourceNameSet do
+    fileList += !key . ".cpp" ;
+  end foreach ;
+#---
+  enter_files_for_sources_build_phase
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine generateXcodeProject
-  ??@stringset inComponentNameSet
   ??@stringset inExternSourceNameSet
+  ??@stringset inGUISourceNameSet
+  ??@stringset inScannerSourceNameSet
+  ??@stringset inOptionSourceNameSet
+  ??@stringset inSemanticsSourceSet
+  ??@stringset inSyntaxSourceSet
+  ??@stringset inGrammarSourceSet
+  ??@stringset inProgramSourceSet
   ??@string inProjectName
   ??@string in_xcodeproj_filePath
 :
@@ -694,10 +770,16 @@ routine generateXcodeProject
     !fileListOf_HAND_CODED_SOURCES_group
   ;
 #---------- GENERATED BY GALGAS
+  @stringset componentNameSet := inScannerSourceNameSet
+    | inOptionSourceNameSet | inSemanticsSourceSet 
+    | inSyntaxSourceSet | inGrammarSourceSet
+    | inProgramSourceSet
+  ;
   @stringlist fileListOf_GENERATED_BY_GALGAS_group [emptyList] ;
   build_GENERATED_BY_GALGAS_group
     !?XcodeProjectDescription
-    !inComponentNameSet
+    !componentNameSet
+    !inGUISourceNameSet
     !?fileListOf_GENERATED_BY_GALGAS_group
   ;
 #---
@@ -896,12 +978,17 @@ routine generateXcodeProject
     !"../../libpm"
     !libpmGroupChildrenList
   ;
-#---------- "Resources" Group
+#---------- "Project Resources" Group
+ @stringlist fileListOf_PROJECT_RESOURCES_group [emptyList] ;
+  build_PROJECT_RESOURCES_group
+    !?XcodeProjectDescription
+    !?fileListOf_PROJECT_RESOURCES_group
+  ;
   enter_group
     !?XcodeProjectDescription
-    !"Resources"
+    !"Project Resources"
     !""
-    ![@stringlist emptyList]
+    !fileListOf_PROJECT_RESOURCES_group
   ;
 #---------- "Frameworks" Group
   @stringlist fileListOf_FRAMEWORKS_group [emptyList] ;
@@ -927,7 +1014,7 @@ routine generateXcodeProject
 # GENERATED BY GALGAS
   build_GENERATED_BY_GALGAS_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !inComponentNameSet
+    !componentNameSet
     !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / BDD
@@ -984,6 +1071,7 @@ routine generateXcodeProject
   @stringlist toolTargetSettings [emptyList] ;
   toolTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
 #---
+  @string toolTargetKey ;
   add_tool_target
     !?XcodeProjectDescription
     !inProjectName
@@ -991,6 +1079,8 @@ routine generateXcodeProject
     !toolTargetSettings
     !"../../libpm/galgas/PP_GalgasPrefix.pch"
     !listForSourceBuildPhaseOfTool
+    ![@stringlist emptyList] # No Dependency
+    ?toolTargetKey
   ;
 #-------------------------------------------------- Build "tool_debug" target
   @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfDebugTool [emptyList] ;
@@ -1003,7 +1093,7 @@ routine generateXcodeProject
 # GENERATED BY GALGAS
   build_GENERATED_BY_GALGAS_files_for_sources_build_phase
     !?XcodeProjectDescription
-    !inComponentNameSet
+    !componentNameSet
     !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / BDD
@@ -1061,6 +1151,7 @@ routine generateXcodeProject
   debugToolTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 0;" ;
   debugToolTargetSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;" ;
 #---
+  @string toolDebugTargetKey ;
   add_tool_target
     !?XcodeProjectDescription
     !inProjectName . "_debug"
@@ -1068,32 +1159,52 @@ routine generateXcodeProject
     !debugToolTargetSettings
     !"" # Precompiled header
     !listForSourceBuildPhaseOfDebugTool
+    ![@stringlist emptyList] # No Dependency
+    ?toolDebugTargetKey
   ;
 #-------------------------------------------------- Build "Cocoa Application" target
 #--- Sources Build Phase
   @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfCocoaApp [emptyList] ;
   build_COCOA_APP_files_for_sources_build_phase
     !?XcodeProjectDescription
+    !inGUISourceNameSet
+    !inScannerSourceNameSet
+    !inOptionSourceNameSet
     !?listForSourceBuildPhaseOfCocoaApp
   ;
 #--- Frameworks Build Phase
-  @Xcode_PBXBuildFile_list listForFrameworkBuildPhaseOfCocoaApp [emptyList] ;
+  @Xcode_PBXBuildFile_list listForFrameworksBuildPhaseOfCocoaApp [emptyList] ;
   build_FRAMEWORKS_for_frameworks_build_phase
     !?XcodeProjectDescription
-    !?listForFrameworkBuildPhaseOfCocoaApp
+    !?listForFrameworksBuildPhaseOfCocoaApp
   ;
+#--- Resource Build Phase
+  @Xcode_PBXBuildFile_list listForResourcesBuildPhaseOfCocoaApp [emptyList] ;
+  build_RESOURCES_for_resources_build_phase
+    !?XcodeProjectDescription
+    !inProjectName
+    !?listForResourcesBuildPhaseOfCocoaApp
+  ;
+#--- Direct Dependancies
+  @stringlist directDependencyList [emptyList] ;
+  directDependencyList += !toolTargetKey ;
+  directDependencyList += !toolDebugTargetKey ;
 #--- Target settings
   @stringlist cocoaAppTargetSettings [emptyList] ;
   cocoaAppTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
 #---
   add_app_target
     !?XcodeProjectDescription
-    !"Cocoa" . [inProjectName stringByCapitalizingFirstCharacter] . ".app"
+    !"Cocoa" . [inProjectName stringByCapitalizingFirstCharacter]
     ![inProjectName stringByCapitalizingFirstCharacter] . " Cocoa"
     !cocoaAppTargetSettings
-    !"../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header
+    !"../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header (empty string if none)
+    !"Info.plist" # Info.plist file (empty string if none)
     !listForSourceBuildPhaseOfCocoaApp
-    !listForFrameworkBuildPhaseOfCocoaApp
+    !listForFrameworksBuildPhaseOfCocoaApp
+    !listForResourcesBuildPhaseOfCocoaApp
+    !directDependencyList
+    ?*
   ;
 #-------------------------------------------------- Define project default configuration
   @stringlist projectDefaultSettings [emptyList] ;

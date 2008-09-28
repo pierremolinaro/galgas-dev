@@ -39,39 +39,39 @@ SOURCES :=
 include $(LIB_PM_PATH)/galgas/galgas_sources_for_makefile.mke
 
 #--- Hand-coded files ---------------------
-SOURCES += FIRST_computations.cpp
-SOURCES += FOLLOW_computations.cpp
-SOURCES += LL1_computations.cpp
-SOURCES += LR1_computations.cpp
-SOURCES += SLR_computations.cpp
 SOURCES += assignment_instructions.cpp
 SOURCES += buildPureBNFgrammar.cpp
-SOURCES += cDecisionTableElement.cpp
-SOURCES += cVocabulary.cpp
 SOURCES += call_instructions.cpp
 SOURCES += categoryMethods.cpp
+SOURCES += cDecisionTableElement.cpp
 SOURCES += class_generation.cpp
 SOURCES += cocoa_generation.cpp
+SOURCES += cVocabulary.cpp
 SOURCES += domain_generation.cpp
 SOURCES += empty_strings_computations.cpp
 SOURCES += enum_generation.cpp
 SOURCES += extern_type_generation.cpp
 SOURCES += filewrapper_template_generation.cpp
+SOURCES += FIRST_computations.cpp
 SOURCES += follow_by_empty_computation.cpp
+SOURCES += FOLLOW_computations.cpp
 SOURCES += foreach_instructions.cpp
 SOURCES += grammarComputations.cpp
 SOURCES += if_instruction.cpp
 SOURCES += list_generation.cpp
+SOURCES += LL1_computations.cpp
+SOURCES += LR1_computations.cpp
 SOURCES += map_generation.cpp
 SOURCES += option_component_generation.cpp
 SOURCES += parser_generation.cpp
 SOURCES += parser_instructions.cpp
 SOURCES += prgm_generation.cpp
 SOURCES += printOriginalGrammar.cpp
-SOURCES += scannerDecoderGeneration.cpp
 SOURCES += scanner_generation.cpp
+SOURCES += scannerDecoderGeneration.cpp
 SOURCES += semantics_generation.cpp
 SOURCES += semantics_instructions.cpp
+SOURCES += SLR_computations.cpp
 SOURCES += struct_generation.cpp
 SOURCES += useful_symbols_computations.cpp
 SOURCES += wrapper_generation.cpp
@@ -139,9 +139,6 @@ SOURCES += ggs_LL1_compile_component.cpp
 SOURCES += galgas_start.cpp
 SOURCES += galgas_LL1_grammar.cpp
 SOURCES += galgas_LL1_prgm.cpp
-
-
-#--- Extern files ---------------------
 
 
 #---------------------------------------------------------------*
