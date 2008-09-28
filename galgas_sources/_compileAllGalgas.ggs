@@ -22,98 +22,136 @@
 
 project
 #--- Command Line Options
-  compile "galgas_cli_options.gOption" ;
+  option "galgas_cli_options.gOption" : makefile ;
 
 #--- Common Scanner
-  compile "galgas_scanner.gLexique" ;
+  lexique "galgas_scanner.gLexique" : makefile ;
 
 #--- Project Creation
-  compile "projectCreation.gSemantics" ;
+  semantics "projectCreation.gSemantics" : makefile ;
 
 #--- Template
-  compile "galgasTemplateScanner.gLexique" ;
-  compile "galgasTemplateParser.gSyntax" ;
-  compile "galgasTemplateGrammar.gGrammar" ;
+  lexique "galgasTemplateScanner.gLexique" : makefile ;
+  syntax "galgasTemplateParser.gSyntax" : makefile ;
+  grammar "galgasTemplateGrammar.gGrammar" : makefile ;
 
 #--- Lexique Component
-  compile "lexiqueMetamodel.gSemantics" ;
-  compile "lexiqueSemantics.gSemantics" ;
-  compile "lexiqueModelBuilder.gSyntax" ;
-  compile "lexiqueLL1grammar.gGrammar" ;
-  compile "lexiqueCompilation.gSemantics" ;
+  semantics "lexiqueMetamodel.gSemantics" : makefile ;
+  semantics "lexiqueSemantics.gSemantics" : makefile ;
+  syntax "lexiqueModelBuilder.gSyntax" : makefile ;
+  grammar "lexiqueLL1grammar.gGrammar" : makefile ;
+  semantics "lexiqueCompilation.gSemantics" : makefile ;
 
 #--- Option Component
-  compile "optionSemantics.gSemantics" ;
-  compile "optionMetamodel.gSemantics" ;
-  compile "optionModelBuilder.gSyntax" ;
-  compile "optionLL1grammar.gGrammar" ;
-  compile "optionCompilation.gSemantics" ;
+  semantics "optionSemantics.gSemantics" : makefile ;
+  semantics "optionMetamodel.gSemantics" : makefile ;
+  syntax "optionModelBuilder.gSyntax" : makefile ;
+  grammar "optionLL1grammar.gGrammar" : makefile ;
+  semantics "optionCompilation.gSemantics" : makefile ;
 
 #--- Expression
-  compile "expressionMetamodel.gSemantics" ;
-  compile "expressionModelBuilder.gSyntax" ;
+  semantics "expressionMetamodel.gSemantics" : makefile ;
+  syntax "expressionModelBuilder.gSyntax" : makefile ;
 
 #--- Parameters and arguments
-  compile "parameterArgumentMetamodel.gSemantics" ;
-  compile "parameterArgumentBuilder.gSyntax" ;
+  semantics "parameterArgumentMetamodel.gSemantics" : makefile ;
+  syntax "parameterArgumentBuilder.gSyntax" : makefile ;
 
 #--- Instructions
-  compile "instructionMetamodel.gSemantics" ;
-  compile "semanticInstructionListModelBuilder.gSyntax" ;
+  semantics "instructionMetamodel.gSemantics" : makefile ;
+  syntax "semanticInstructionListModelBuilder.gSyntax" : makefile ;
 
 #--- Semantics Component
-  compile "semanticsMetamodel.gSemantics" ;
-  compile "semanticsModelBuilder.gSyntax" ;
-  compile "semanticsSLRgrammar.gGrammar" ;
-  compile "semanticsSemantics.gSemantics" ;
-  compile "semanticsCompilation.gSemantics" ;
+  semantics "semanticsMetamodel.gSemantics" : makefile ;
+  syntax "semanticsModelBuilder.gSyntax" : makefile ;
+  grammar "semanticsSLRgrammar.gGrammar" : makefile ;
+  semantics "semanticsSemantics.gSemantics" : makefile ;
+  semantics "semanticsCompilation.gSemantics" : makefile ;
 
 #--- Syntax Component
-  compile "syntaxMetamodel.gSemantics" ;
-  compile "syntaxModelBuilder.gSyntax" ;
-  compile "syntaxSLRgrammar.gGrammar" ;
+  semantics "syntaxMetamodel.gSemantics" : makefile ;
+  syntax "syntaxModelBuilder.gSyntax" : makefile ;
+  grammar "syntaxSLRgrammar.gGrammar" : makefile ;
 
 #--- Grammar component
-  compile "grammarMetamodel.gSemantics" ;
-  compile "grammarModelBuilder.gSyntax" ;
-  compile "grammarLL1grammar.gGrammar" ;
+  semantics "grammarMetamodel.gSemantics" : makefile ;
+  syntax "grammarModelBuilder.gSyntax" : makefile ;
+  grammar "grammarLL1grammar.gGrammar" : makefile ;
 
 #--- GUI component
-  compile "guiMetamodel.gSemantics" ;
-  compile "guiModelBuilder.gSyntax" ;
-  compile "guiLL1grammar.gGrammar" ;
-  compile "guiCompilation.gSemantics" ;
+  semantics "guiMetamodel.gSemantics" : makefile ;
+  syntax "guiModelBuilder.gSyntax" : makefile ;
+  grammar "guiLL1grammar.gGrammar" : makefile ;
+  semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- Program component
-  compile "programMetamodel.gSemantics" ;
-  compile "programModelBuilder.gSyntax" ;
-  compile "programSLRgrammar.gGrammar" ;
+  semantics "programMetamodel.gSemantics" : makefile ;
+  syntax "programModelBuilder.gSyntax" : makefile ;
+  grammar "programSLRgrammar.gGrammar" : makefile ;
 
 #--- Project component
-  compile "baseForXcodeProjectGeneration.gSemantics" ;
-  compile "XcodeProjectGeneration.gSemantics" ;
-  compile "projectModelBuilder.gSyntax" ;
-  compile "projectLL1grammar.gGrammar" ;
+  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "XcodeProjectGeneration.gSemantics" : makefile ;
+  syntax "projectModelBuilder.gSyntax" : makefile ;
+  grammar "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Old style components
-  compile "common_semantics.gSemantics" ;
-  compile "semantics_semantics.gSemantics" ;
-  compile "semantics_parser.gSyntax" ;
-  compile "domain_parser.gSyntax" ;
-  compile "parser_semantics.gSemantics" ;
-  compile "parser_parser.gSyntax" ;
-  compile "scanner_semantics.gSemantics" ;
-  compile "cocoa_parser.gSyntax" ;
-  compile "cocoaGalgas.gGui" ;
-  compile "cli_options_parser.gSyntax" ;
-  compile "grammar_parser.gSyntax" ;
-  compile "scanner_parser.gSyntax" ;
-  compile "expression_parser.gSyntax" ;
-  compile "program_parser.gSyntax" ;
-  compile "ggs_LL1_compile_component.gSyntax" ;
-  compile "galgas_start.gSyntax" ;
-  compile "galgas_LL1_grammar.gGrammar" ;
-  compile "galgas_LL1_prgm.gProgram" ;
+  semantics "common_semantics.gSemantics" : makefile ;
+  semantics "semantics_semantics.gSemantics" : makefile ;
+  syntax "semantics_parser.gSyntax" : makefile ;
+  syntax "domain_parser.gSyntax" : makefile ;
+  semantics "parser_semantics.gSemantics" : makefile ;
+  syntax "parser_parser.gSyntax" : makefile ;
+  semantics "scanner_semantics.gSemantics" : makefile ;
+  syntax "cocoa_parser.gSyntax" : makefile ;
+  gui "cocoaGalgas.gGui" ;
+  syntax "cli_options_parser.gSyntax" : makefile ;
+  syntax "grammar_parser.gSyntax" : makefile ;
+  syntax "scanner_parser.gSyntax" : makefile ;
+  syntax "expression_parser.gSyntax" : makefile ;
+  syntax "program_parser.gSyntax" : makefile ;
+  syntax "ggs_LL1_compile_component.gSyntax" : makefile ;
+  syntax "galgas_start.gSyntax" : makefile ;
+  grammar "galgas_LL1_grammar.gGrammar" : makefile ;
+  program "galgas_LL1_prgm.gProgram" : makefile ;
+
+#--- Hand coded sources
+  extern "assignment_instructions.cpp" : makefile ;
+  extern "buildPureBNFgrammar.cpp" : makefile ;
+  extern "call_instructions.cpp" : makefile ;
+  extern "categoryMethods.cpp" : makefile ;
+  extern "cDecisionTableElement.cpp" : makefile ;
+  extern "class_generation.cpp" : makefile ;
+  extern "cocoa_generation.cpp" : makefile ;
+  extern "cVocabulary.cpp" : makefile ;
+  extern "domain_generation.cpp" : makefile ;
+  extern "empty_strings_computations.cpp" : makefile ;
+  extern "enum_generation.cpp" : makefile ;
+  extern "extern_type_generation.cpp" : makefile ;
+  extern "filewrapper_template_generation.cpp" : makefile ;
+  extern "FIRST_computations.cpp" : makefile ;
+  extern "follow_by_empty_computation.cpp" : makefile ;
+  extern "FOLLOW_computations.cpp" : makefile ;
+  extern "foreach_instructions.cpp" : makefile ;
+  extern "grammarComputations.cpp" : makefile ;
+  extern "if_instruction.cpp" : makefile ;
+  extern "list_generation.cpp" : makefile ;
+  extern "LL1_computations.cpp" : makefile ;
+  extern "LR1_computations.cpp" : makefile ;
+  extern "map_generation.cpp" : makefile ;
+  extern "option_component_generation.cpp" : makefile ;
+  extern "parser_generation.cpp" : makefile ;
+  extern "parser_instructions.cpp" : makefile ;
+  extern "prgm_generation.cpp" : makefile ;
+  extern "printOriginalGrammar.cpp" : makefile ;
+  extern "scanner_generation.cpp" : makefile ;
+  extern "scannerDecoderGeneration.cpp" : makefile ;
+  extern "semantics_generation.cpp" : makefile ;
+  extern "semantics_instructions.cpp" : makefile ;
+  extern "SLR_computations.cpp" : makefile ;
+  extern "struct_generation.cpp" : makefile ;
+  extern "useful_symbols_computations.cpp" : makefile ;
+  extern "wrapper_generation.cpp" : makefile ;
 end project ;
 
 #---------------------------------------------------------------------------*
