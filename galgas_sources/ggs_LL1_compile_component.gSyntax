@@ -349,7 +349,8 @@ rule <galgas_component>
         [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
         switch sourceKind 
         when externSourceFile :
-          externSourceSet += !mValue . ".cpp" ;
+#          externSourceSet += !mValue . ".cpp" ;
+          externSourceSet += !fullPath ;
         when lexiqueSourceFile :
           scannerSourceSet += !mValue ;
         when guiSourceFile :
