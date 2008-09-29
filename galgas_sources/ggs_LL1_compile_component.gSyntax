@@ -207,7 +207,8 @@ rule <galgas_component>
   if [makefileFiles length] > 0 then
     @string externSourceFileList := "" ;
     @string galgasSourceList := "" ;
-    @string pathesString := "SOURCES_DIR += ../hand_coded_sources\n" ;
+    @stringset pathSet [emptySet] ;
+    pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
     foreach makefileFiles do
       @string fullPath ;
       @sourceFileKind sourceKind ;
@@ -215,14 +216,18 @@ rule <galgas_component>
       @string filePath := [fullPath stringByDeletingLastPathComponent] ;
       if sourceKind == [@sourceFileKind externSourceFile] then
         if [filePath firstCharacterOrNul] == '/' then
-          pathesString .= "SOURCES_DIR += " . filePath . "\n" ;
+          pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
         elsif filePath != "" then
-          pathesString .= "SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
+          pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
         end if ;
         externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
       else
         galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
       end if ;
+    end foreach ;
+    @string pathesString := "" ;
+    foreach pathSet do
+      pathesString .= key ;
     end foreach ;
     @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
       !pathesString
