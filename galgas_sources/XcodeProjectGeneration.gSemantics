@@ -736,6 +736,10 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"GGS_luint.cpp" ;
   fileList += !"GGS_location.cpp" ;
   fileList += !"GGS_bool.cpp" ;
+  fileList += !"GGS_double.cpp" ;
+  fileList += !"GGS_ldouble.cpp" ;
+  fileList += !"GGS_char.cpp" ;
+  fileList += !"GGS_lchar.cpp" ;
   fileList += !"predefined_types.cpp" ;
 #--- LIBPM / Streams
   fileList += !"C_ErrorOut.cpp" ;
@@ -1242,6 +1246,14 @@ routine generateXcodeProject
     ?*
   ;
 #-------------------------------------------------- Define project default configuration
+  @stringset pathSet [emptySet] ;
+  foreach inExternSourceNameSet do
+    pathSet += !"../hand_coded_sources/" . [key stringByDeletingLastPathComponent] ;
+  end foreach ;
+  @string pathString := "../galgas_sources/GALGAS_OUTPUT, ../../libpm," ;
+  foreach pathSet do
+    pathString .= key . ", " ;
+  end foreach ;
   @stringlist projectDefaultSettings [emptyList] ;
   projectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
   projectDefaultSettings  += !"ARCHS = (ppc, i386,);" ;
@@ -1277,7 +1289,7 @@ routine generateXcodeProject
   projectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
   projectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
   projectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
-  projectDefaultSettings  += !"HEADER_SEARCH_PATHS = (../galgas_sources/GALGAS_OUTPUT, ../hand_coded_sources, ../../libpm,);" ;
+  projectDefaultSettings  += !"HEADER_SEARCH_PATHS = (" . pathString . ");" ;
   projectDefaultSettings  += !"PREBINDING = NO;" ;
   projectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
 

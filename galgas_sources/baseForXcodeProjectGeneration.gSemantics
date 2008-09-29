@@ -60,7 +60,8 @@ class @Xcode_PBXFileReference_Application extends @Xcode_productFileReference {
 class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "
+    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
