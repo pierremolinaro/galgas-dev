@@ -3547,6 +3547,8 @@ routine handleStringReaderCall
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # Second @string argument
+  elsif [inReaderName string] == "lowercaseString" then
+    outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "uppercaseString" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "reversedString" then

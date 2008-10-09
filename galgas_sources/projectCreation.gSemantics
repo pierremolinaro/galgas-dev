@@ -143,7 +143,6 @@ routine performProjectCreation ??@string inProjectName :
   [projectxcode_DIR ."/" .inProjectName .".xcodeproj" makeDirectory] ;
   [[filewrapper projectCreationFileWrapper.xcodeProject !inProjectName] writeToFile !projectxcode_DIR ."/" .inProjectName  .".xcodeproj/project.pbxproj"] ;
   [[filewrapper projectCreationFileWrapper.info_plist !inProjectName] writeToFile !projectxcode_DIR ."/Info.plist"] ;
-  [[filewrapper projectCreationFileWrapper."/project_xcode/main.m"] writeToFile !projectxcode_DIR ."/main.m"] ;
   [projectxcode_DIR ."/English.lproj" makeDirectory] ;
   [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/Credits.rtf"] writeToFile !projectxcode_DIR ."/English.lproj/Credits.rtf"] ;
   [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/InfoPlist.strings"] writeToFile !projectxcode_DIR ."/English.lproj/InfoPlist.strings"] ;
