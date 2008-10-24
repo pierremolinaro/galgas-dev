@@ -100,6 +100,7 @@ galgas_LL1_prgm_epilogue (C_Compiler & /* _inLexique */,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+
 int mainForLIBPM  (const int argc, const char * argv []) {
   bool verboseOptionOn = true ;
   sint16 returnCode = 0 ; // No error
