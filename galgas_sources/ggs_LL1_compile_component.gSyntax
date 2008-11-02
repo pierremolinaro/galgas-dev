@@ -183,6 +183,9 @@ rule <galgas_component>
       repeat
         $identifier$ ? @lstring targetName ;
         targetFileListMap += ![targetName string] !baseName ;
+        if ([targetName string] != "makefile") & ([targetName string] != "xcode") then
+          error targetName: "the traget name should be \"makefile\" or \"xcode\"" ;
+        end if ;
       while
         $,$ ;
       end repeat ;
@@ -329,7 +332,7 @@ rule <galgas_component>
     @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
     #log XcodeProjectDir ;
     @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
-    @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !true ![@stringlist listWithValue !"xcodeproj"]] ;
+    @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !false ![@stringlist listWithValue !"xcodeproj"]] ;
     #log xcodeProjects ;
     if [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
