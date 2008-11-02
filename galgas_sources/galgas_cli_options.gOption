@@ -17,10 +17,10 @@
 #---------------------------------------------------------------------------*
 
 option galgas_cli_options :
-  @bool warnsShadows         : 'S', "shadow" -> "Warn on declarations that shadow a previously declared object" ;
-  @bool outputHTMLgrammarFile: 'H', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
-  @bool generate_debug       : 'g', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols" ;
-  @bool generate_xcode_project : '\0', "xcode" -> "Generate Xcode project" ;
+  @bool warnsShadows         : '\0', "shadow" -> "Warn on declarations that shadow a previously declared object" ;
+  @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
+  @bool generate_debug       : '\0', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols" ;
+  @bool generate_xcode_project : '\0', "xcode" -> "Updates an existing Xcode project" ;
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
 #  @string create_mda_project : '\0', "create-mda-project" -> "Create a new GALGAS Project, MDA style" ;
 #  @string libpm              : '\0', "libpm" -> "Define libpm location on project creation (by default, location is ./libpm)" ;
