@@ -4,7 +4,7 @@ project
   semantics "SLR_expression_semantics.ggs" : makefile, xcode ;
   syntax "SLR_expression_syntax.ggs" : makefile, xcode ;
   grammar "SLR_expression_grammar.ggs" : makefile, xcode ;
-  gui "SLR_expression_cocoa.ggs" : makefile, xcode ;
+  gui "SLR_expression_cocoa.ggs" : xcode ;
   program "SLR_expression_program.ggs" : makefile, xcode ;
 end project ;
 
