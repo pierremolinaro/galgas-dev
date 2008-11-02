@@ -52,7 +52,6 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
   template makefile_unix_makefile64 "/makefile_unix/makefile64" ?@string PROJECT_NAME ;
   template makefile_x86linux_on_macosx_makefile "/makefile_x86linux_on_macosx/makefile" ?@string PROJECT_NAME ;
   template info_plist "/project_xcode/Info.plist" ?@string PROJECT_NAME ;
-  template xcodeProject "/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
 #--- MDA Project
 #  template xcodeProject "/mda-project/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
 }
@@ -141,7 +140,6 @@ routine performProjectCreation ??@string inProjectName :
 #--- project XCode
   @string projectxcode_DIR := inProjectName ."/project_xcode" ;
   [projectxcode_DIR ."/" .inProjectName .".xcodeproj" makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.xcodeProject !inProjectName] writeToFile !projectxcode_DIR ."/" .inProjectName  .".xcodeproj/project.pbxproj"] ;
   [[filewrapper projectCreationFileWrapper.info_plist !inProjectName] writeToFile !projectxcode_DIR ."/Info.plist"] ;
   [projectxcode_DIR ."/English.lproj" makeDirectory] ;
   [[filewrapper projectCreationFileWrapper."/project_xcode/English.lproj/Credits.rtf"] writeToFile !projectxcode_DIR ."/English.lproj/Credits.rtf"] ;

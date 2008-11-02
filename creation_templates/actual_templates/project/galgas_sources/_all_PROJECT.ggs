@@ -1,10 +1,9 @@
 project
-  compile "%PROJECT_NAME%_lexique.ggs" ;
-  compile "%PROJECT_NAME%_options.ggs" ;
-  compile "%PROJECT_NAME%_semantics.ggs" ;
-  compile "%PROJECT_NAME%_syntax.ggs" ;
-  compile "%PROJECT_NAME%_grammar.ggs" ;
-  compile "%PROJECT_NAME%_program.ggs" ;
+  lexique "%PROJECT_NAME%_lexique.ggs" : makefile, xcode ;
+  option "%PROJECT_NAME%_options.ggs" : makefile, xcode ;
+  semantics "%PROJECT_NAME%_semantics.ggs" : makefile, xcode ;
+  syntax "%PROJECT_NAME%_syntax.ggs" : makefile, xcode ;
+  grammar "%PROJECT_NAME%_grammar.ggs" : makefile, xcode ;
+  gui "%PROJECT_NAME%_cocoa.ggs" : xcode ;
+  program "%PROJECT_NAME%_program.ggs" : makefile, xcode ;
 end project ;
-
-compile "%PROJECT_NAME%_cocoa.ggs" ;
