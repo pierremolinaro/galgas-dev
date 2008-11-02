@@ -3567,6 +3567,10 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "directories" then
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
     build_stringlist_type  ?outReturnedType ;
+  elsif [inReaderName string] == "directoriesWithExtensions" then
+    build_stringlist_type  ?outReturnedType ;
+    outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
   elsif [inReaderName string] == "regularFilesWithExtensions" then
     build_stringlist_type  ?outReturnedType ;
     outAccessorTypesList += ![@typeGalgas_bool new] ![@lstring new !"" !here] ;

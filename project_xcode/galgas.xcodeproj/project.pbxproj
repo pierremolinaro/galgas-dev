@@ -497,48 +497,6 @@
 		CF825AED08536F5D0077AEAF /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CF825AEE08536F610077AEAF /* AC_OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */; };
 		CF825AEF08536F6A0077AEAF /* C_ConsoleOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A2E08536B150077AEAF /* C_ConsoleOut.cpp */; };
-		CF8D3EEF0EB1F518008EF946 /* DDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EEE0EB1F518008EF946 /* DDD.cpp */; };
-		CF8D3EF00EB1F518008EF946 /* DDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EEE0EB1F518008EF946 /* DDD.cpp */; };
-		CF8D3EF10EB1F518008EF946 /* DDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EEE0EB1F518008EF946 /* DDD.cpp */; };
-		CF8D3EF20EB1F518008EF946 /* DDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EEE0EB1F518008EF946 /* DDD.cpp */; };
-		CF8D3EF30EB1F518008EF946 /* DDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EEE0EB1F518008EF946 /* DDD.cpp */; };
-		CF8D3EF40EB1F518008EF946 /* DDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EEE0EB1F518008EF946 /* DDD.cpp */; };
-		CF8D3F080EB1F552008EF946 /* DED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EF90EB1F552008EF946 /* DED.cpp */; };
-		CF8D3F090EB1F552008EF946 /* Hom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFC0EB1F552008EF946 /* Hom.cpp */; };
-		CF8D3F0A0EB1F552008EF946 /* IntDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */; };
-		CF8D3F0B0EB1F552008EF946 /* SDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F010EB1F552008EF946 /* SDD.cpp */; };
-		CF8D3F0C0EB1F552008EF946 /* SDED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F030EB1F552008EF946 /* SDED.cpp */; };
-		CF8D3F0D0EB1F552008EF946 /* SHom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F050EB1F552008EF946 /* SHom.cpp */; };
-		CF8D3F0E0EB1F552008EF946 /* DED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EF90EB1F552008EF946 /* DED.cpp */; };
-		CF8D3F0F0EB1F552008EF946 /* Hom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFC0EB1F552008EF946 /* Hom.cpp */; };
-		CF8D3F100EB1F552008EF946 /* IntDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */; };
-		CF8D3F110EB1F552008EF946 /* SDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F010EB1F552008EF946 /* SDD.cpp */; };
-		CF8D3F120EB1F552008EF946 /* SDED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F030EB1F552008EF946 /* SDED.cpp */; };
-		CF8D3F130EB1F552008EF946 /* SHom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F050EB1F552008EF946 /* SHom.cpp */; };
-		CF8D3F140EB1F552008EF946 /* DED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EF90EB1F552008EF946 /* DED.cpp */; };
-		CF8D3F150EB1F552008EF946 /* Hom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFC0EB1F552008EF946 /* Hom.cpp */; };
-		CF8D3F160EB1F552008EF946 /* IntDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */; };
-		CF8D3F170EB1F552008EF946 /* SDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F010EB1F552008EF946 /* SDD.cpp */; };
-		CF8D3F180EB1F552008EF946 /* SDED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F030EB1F552008EF946 /* SDED.cpp */; };
-		CF8D3F190EB1F552008EF946 /* SHom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F050EB1F552008EF946 /* SHom.cpp */; };
-		CF8D3F1A0EB1F552008EF946 /* DED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EF90EB1F552008EF946 /* DED.cpp */; };
-		CF8D3F1B0EB1F552008EF946 /* Hom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFC0EB1F552008EF946 /* Hom.cpp */; };
-		CF8D3F1C0EB1F552008EF946 /* IntDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */; };
-		CF8D3F1D0EB1F552008EF946 /* SDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F010EB1F552008EF946 /* SDD.cpp */; };
-		CF8D3F1E0EB1F552008EF946 /* SDED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F030EB1F552008EF946 /* SDED.cpp */; };
-		CF8D3F1F0EB1F552008EF946 /* SHom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F050EB1F552008EF946 /* SHom.cpp */; };
-		CF8D3F200EB1F552008EF946 /* DED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EF90EB1F552008EF946 /* DED.cpp */; };
-		CF8D3F210EB1F552008EF946 /* Hom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFC0EB1F552008EF946 /* Hom.cpp */; };
-		CF8D3F220EB1F552008EF946 /* IntDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */; };
-		CF8D3F230EB1F552008EF946 /* SDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F010EB1F552008EF946 /* SDD.cpp */; };
-		CF8D3F240EB1F552008EF946 /* SDED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F030EB1F552008EF946 /* SDED.cpp */; };
-		CF8D3F250EB1F552008EF946 /* SHom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F050EB1F552008EF946 /* SHom.cpp */; };
-		CF8D3F260EB1F552008EF946 /* DED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EF90EB1F552008EF946 /* DED.cpp */; };
-		CF8D3F270EB1F552008EF946 /* Hom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFC0EB1F552008EF946 /* Hom.cpp */; };
-		CF8D3F280EB1F552008EF946 /* IntDataSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */; };
-		CF8D3F290EB1F552008EF946 /* SDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F010EB1F552008EF946 /* SDD.cpp */; };
-		CF8D3F2A0EB1F552008EF946 /* SDED.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F030EB1F552008EF946 /* SDED.cpp */; };
-		CF8D3F2B0EB1F552008EF946 /* SHom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8D3F050EB1F552008EF946 /* SHom.cpp */; };
 		CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF8D519B0E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
@@ -1519,25 +1477,6 @@
 		CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSInt64Expression.h; sourceTree = "<group>"; };
 		CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUInt64Expression.h; sourceTree = "<group>"; };
 		CF89D55B0A359BEA0042BDEC /* include_UInt64Model.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_UInt64Model.h; sourceTree = "<group>"; };
-		CF8D3EEE0EB1F518008EF946 /* DDD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DDD.cpp; sourceTree = "<group>"; };
-		CF8D3EF60EB1F552008EF946 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
-		CF8D3EF70EB1F552008EF946 /* DataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSet.h; sourceTree = "<group>"; };
-		CF8D3EF80EB1F552008EF946 /* DDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDD.h; sourceTree = "<group>"; };
-		CF8D3EF90EB1F552008EF946 /* DED.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DED.cpp; sourceTree = "<group>"; };
-		CF8D3EFA0EB1F552008EF946 /* DED.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DED.h; sourceTree = "<group>"; };
-		CF8D3EFB0EB1F552008EF946 /* hashfunc.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hashfunc.hh; sourceTree = "<group>"; };
-		CF8D3EFC0EB1F552008EF946 /* Hom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hom.cpp; sourceTree = "<group>"; };
-		CF8D3EFD0EB1F552008EF946 /* Hom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hom.h; sourceTree = "<group>"; };
-		CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntDataSet.cpp; sourceTree = "<group>"; };
-		CF8D3EFF0EB1F552008EF946 /* IntDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntDataSet.h; sourceTree = "<group>"; };
-		CF8D3F000EB1F552008EF946 /* MemoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryManager.h; sourceTree = "<group>"; };
-		CF8D3F010EB1F552008EF946 /* SDD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDD.cpp; sourceTree = "<group>"; };
-		CF8D3F020EB1F552008EF946 /* SDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDD.h; sourceTree = "<group>"; };
-		CF8D3F030EB1F552008EF946 /* SDED.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDED.cpp; sourceTree = "<group>"; };
-		CF8D3F040EB1F552008EF946 /* SDED.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDED.h; sourceTree = "<group>"; };
-		CF8D3F050EB1F552008EF946 /* SHom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SHom.cpp; sourceTree = "<group>"; };
-		CF8D3F060EB1F552008EF946 /* SHom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHom.h; sourceTree = "<group>"; };
-		CF8D3F070EB1F552008EF946 /* UniqueTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniqueTable.h; sourceTree = "<group>"; };
 		CF8D51940E46334400CFF259 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
 		CF8D86E20A2C73BF009115FE /* include_typeXorOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeXorOperation.h; sourceTree = "<group>"; };
@@ -2148,33 +2087,6 @@
 				CFEEB5D20DFAA15200EDAF05 /* mda_galgas_routines.h */,
 			);
 			name = "MDA LL1 GALGAS";
-			sourceTree = "<group>";
-		};
-		CF8D3EED0EB1F413008EF946 /* DDD */ = {
-			isa = PBXGroup;
-			children = (
-				CF8D3EF60EB1F552008EF946 /* Cache.h */,
-				CF8D3EF70EB1F552008EF946 /* DataSet.h */,
-				CF8D3EF80EB1F552008EF946 /* DDD.h */,
-				CF8D3EF90EB1F552008EF946 /* DED.cpp */,
-				CF8D3EFA0EB1F552008EF946 /* DED.h */,
-				CF8D3EFB0EB1F552008EF946 /* hashfunc.hh */,
-				CF8D3EFC0EB1F552008EF946 /* Hom.cpp */,
-				CF8D3EFD0EB1F552008EF946 /* Hom.h */,
-				CF8D3EFE0EB1F552008EF946 /* IntDataSet.cpp */,
-				CF8D3EFF0EB1F552008EF946 /* IntDataSet.h */,
-				CF8D3F000EB1F552008EF946 /* MemoryManager.h */,
-				CF8D3F010EB1F552008EF946 /* SDD.cpp */,
-				CF8D3F020EB1F552008EF946 /* SDD.h */,
-				CF8D3F030EB1F552008EF946 /* SDED.cpp */,
-				CF8D3F040EB1F552008EF946 /* SDED.h */,
-				CF8D3F050EB1F552008EF946 /* SHom.cpp */,
-				CF8D3F060EB1F552008EF946 /* SHom.h */,
-				CF8D3F070EB1F552008EF946 /* UniqueTable.h */,
-				CF8D3EEE0EB1F518008EF946 /* DDD.cpp */,
-			);
-			name = DDD;
-			path = ddd;
 			sourceTree = "<group>";
 		};
 		CF8E30210D9EE01900EF3764 /* Project Creation */ = {
@@ -3051,7 +2963,6 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
-				CF8D3EED0EB1F413008EF946 /* DDD */,
 				CFB9E4850DF28AC500885084 /* collections */,
 				CFEAAD980DA3C6080039B209 /* tiny_xml */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
@@ -3707,13 +3618,6 @@
 				CF0676440E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE70E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
-				CF8D3EF30EB1F518008EF946 /* DDD.cpp in Sources */,
-				CF8D3F200EB1F552008EF946 /* DED.cpp in Sources */,
-				CF8D3F210EB1F552008EF946 /* Hom.cpp in Sources */,
-				CF8D3F220EB1F552008EF946 /* IntDataSet.cpp in Sources */,
-				CF8D3F230EB1F552008EF946 /* SDD.cpp in Sources */,
-				CF8D3F240EB1F552008EF946 /* SDED.cpp in Sources */,
-				CF8D3F250EB1F552008EF946 /* SHom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3889,13 +3793,6 @@
 				CF0676460E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
-				CF8D3EF00EB1F518008EF946 /* DDD.cpp in Sources */,
-				CF8D3F0E0EB1F552008EF946 /* DED.cpp in Sources */,
-				CF8D3F0F0EB1F552008EF946 /* Hom.cpp in Sources */,
-				CF8D3F100EB1F552008EF946 /* IntDataSet.cpp in Sources */,
-				CF8D3F110EB1F552008EF946 /* SDD.cpp in Sources */,
-				CF8D3F120EB1F552008EF946 /* SDED.cpp in Sources */,
-				CF8D3F130EB1F552008EF946 /* SHom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4071,13 +3968,6 @@
 				CF0676470E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EED0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
-				CF8D3EF20EB1F518008EF946 /* DDD.cpp in Sources */,
-				CF8D3F1A0EB1F552008EF946 /* DED.cpp in Sources */,
-				CF8D3F1B0EB1F552008EF946 /* Hom.cpp in Sources */,
-				CF8D3F1C0EB1F552008EF946 /* IntDataSet.cpp in Sources */,
-				CF8D3F1D0EB1F552008EF946 /* SDD.cpp in Sources */,
-				CF8D3F1E0EB1F552008EF946 /* SDED.cpp in Sources */,
-				CF8D3F1F0EB1F552008EF946 /* SHom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4258,13 +4148,6 @@
 				CF0676450E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE90E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
-				CF8D3EF40EB1F518008EF946 /* DDD.cpp in Sources */,
-				CF8D3F260EB1F552008EF946 /* DED.cpp in Sources */,
-				CF8D3F270EB1F552008EF946 /* Hom.cpp in Sources */,
-				CF8D3F280EB1F552008EF946 /* IntDataSet.cpp in Sources */,
-				CF8D3F290EB1F552008EF946 /* SDD.cpp in Sources */,
-				CF8D3F2A0EB1F552008EF946 /* SDED.cpp in Sources */,
-				CF8D3F2B0EB1F552008EF946 /* SHom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4440,13 +4323,6 @@
 				CF0676480E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEF0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
-				CF8D3EF10EB1F518008EF946 /* DDD.cpp in Sources */,
-				CF8D3F140EB1F552008EF946 /* DED.cpp in Sources */,
-				CF8D3F150EB1F552008EF946 /* Hom.cpp in Sources */,
-				CF8D3F160EB1F552008EF946 /* IntDataSet.cpp in Sources */,
-				CF8D3F170EB1F552008EF946 /* SDD.cpp in Sources */,
-				CF8D3F180EB1F552008EF946 /* SDED.cpp in Sources */,
-				CF8D3F190EB1F552008EF946 /* SHom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4622,13 +4498,6 @@
 				CF0676490E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EF10E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
-				CF8D3EEF0EB1F518008EF946 /* DDD.cpp in Sources */,
-				CF8D3F080EB1F552008EF946 /* DED.cpp in Sources */,
-				CF8D3F090EB1F552008EF946 /* Hom.cpp in Sources */,
-				CF8D3F0A0EB1F552008EF946 /* IntDataSet.cpp in Sources */,
-				CF8D3F0B0EB1F552008EF946 /* SDD.cpp in Sources */,
-				CF8D3F0C0EB1F552008EF946 /* SDED.cpp in Sources */,
-				CF8D3F0D0EB1F552008EF946 /* SHom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4878,6 +4747,8 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
 				PRODUCT_NAME = galgasI386;
 			};
 			name = Default;
@@ -4888,6 +4759,8 @@
 				ARCHS = i386;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";

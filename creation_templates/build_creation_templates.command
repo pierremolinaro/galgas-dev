@@ -4,7 +4,6 @@ DIR=`dirname $0` &&
 #---------------------------------------------------------------------------- Project
 rm -f ${DIR}/actual_templates/project/project_xcode/English.lproj/* &&
 cp ${DIR}/PROJECT/project_xcode/English.lproj/Credits.rtf ${DIR}/actual_templates/project/project_xcode/English.lproj/Credits.rtf &&
-sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/PROJECT.xcodeproj/project.pbxproj > ${DIR}/actual_templates/project/project_xcode/project.pbxproj &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/Info.plist > ${DIR}/actual_templates/project/project_xcode/Info.plist &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/English.lproj/InfoPlist.strings > ${DIR}/actual_templates/project/project_xcode/English.lproj/InfoPlist.strings &&
 rm -f ${DIR}/actual_templates/project/galgas_sources/* &&

@@ -329,11 +329,11 @@ rule <galgas_component>
     @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
     #log XcodeProjectDir ;
     @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
-    @stringlist xcodeProjects := [XcodeProjectDir regularFilesWithExtensions !true ![@stringlist listWithValue !"pbxproj"]] ;
+    @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !true ![@stringlist listWithValue !"xcodeproj"]] ;
     #log xcodeProjects ;
     if [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
-      @string fullXcodePath := XcodeProjectDir . "/" . name ;
+      @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
       @stringset externSourceSet [emptySet] ;
       @stringset guiSourceSet [emptySet] ;
       @stringset scannerSourceSet [emptySet] ;
@@ -349,7 +349,6 @@ rule <galgas_component>
         [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
         switch sourceKind 
         when externSourceFile :
-#          externSourceSet += !mValue . ".cpp" ;
           externSourceSet += !fullPath ;
         when lexiqueSourceFile :
           scannerSourceSet += !mValue ;
@@ -376,7 +375,7 @@ rule <galgas_component>
         !syntaxSourceSet
         !grammarSourceSet
         !programSourceSet
-        ![[name stringByDeletingLastPathComponent] stringByDeletingPathExtension] # XCode project base name
+        ![name stringByDeletingPathExtension] # XCode project base name
         ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
         !iconFiles
       ;
