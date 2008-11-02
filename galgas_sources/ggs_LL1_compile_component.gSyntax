@@ -184,13 +184,13 @@ rule <galgas_component>
         $identifier$ ? @lstring targetName ;
         targetFileListMap += ![targetName string] !baseName ;
         if ([targetName string] != "makefile") & ([targetName string] != "xcode") then
-          error targetName: "the traget name should be \"makefile\" or \"xcode\"" ;
+          error targetName: "the target name should be \"makefile\" or \"xcode\"" ;
         end if ;
       while
         $,$ ;
       end repeat ;
     end select ;
-    if [option.verbose_output] then
+    if [option.verbose_output] & (sourceFileKind != [@sourceFileKind externSourceFile]) then
       message "------ Compile file '" . [fileName string] . "'\n" ;
     end if ;
   #--- Compile file
@@ -334,7 +334,11 @@ rule <galgas_component>
     @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
     @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !false ![@stringlist listWithValue !"xcodeproj"]] ;
     #log xcodeProjects ;
-    if [xcodeProjects length] == 1 then
+    if [xcodeProjects length] == 0 then
+      message "****** Cannot update Xcode project, no project found in '" . XcodeProjectDir . "' directory. ********\n" ;
+    elsif [xcodeProjects length] > 1 then
+      message "****** Cannot update Xcode project, more than one project exist in '" . XcodeProjectDir . "' directory. ********\n" ;
+    elsif [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
       @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
       @stringset externSourceSet [emptySet] ;
