@@ -1,0 +1,27 @@
+program xcode_project_generation_program "version 1.0.0":
+
+#--- Import clauses
+import semantics generateEmptyProject in "generateEmptyProject.ggs" ;
+import semantics xcode_project_generation_semantics in "xcode_project_generation_semantics.ggs" ;
+import grammar xcode_project_generation_grammar in "xcode_project_generation_grammar.ggs" ;
+
+#--- Prologue routine
+before {
+#--- Generate Empty Project
+  generateEmptyXcodeProject !"./emptyProject.xcodeproj" ;
+}
+
+#--- 'when' clauses
+when . "xcode_project_generation"
+message "a source text file with the .xcode_project_generation extension"
+??@lstring inSourceFile {
+  grammar xcode_project_generation_grammar in inSourceFile ;
+}
+
+#--- Epilogue routine
+after {
+}
+
+#---
+
+end program ;
