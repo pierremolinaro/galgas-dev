@@ -1,0 +1,6 @@
+semantics xcode_project_generation_semantics :
+  import option xcode_project_generation_options in "xcode_project_generation_options.ggs" ;
+
+# ADD YOUR CODE HERE
+
+end semantics ;

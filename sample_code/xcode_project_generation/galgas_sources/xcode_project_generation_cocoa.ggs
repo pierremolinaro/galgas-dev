@@ -1,0 +1,3 @@
+gui xcode_project_generation_cocoa "cocoa" :
+import grammar xcode_project_generation_grammar in "xcode_project_generation_grammar.ggs" ;
+end gui ;
