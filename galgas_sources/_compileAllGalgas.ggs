@@ -16,11 +16,12 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
-  compile "mda_galgas_routines.gSemantics" ;
-  compile "mda_galgas_prgm.gProgram" ;
 
 project
+#--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
+  semantics "mda_galgas_routines.gSemantics" ;
+  program "mda_galgas_prgm.gProgram" ;
+
 #--- Command Line Options
   option "galgas_cli_options.gOption" : makefile ;
 
