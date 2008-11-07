@@ -2,6 +2,7 @@ project
 #--- XCode Project Generation
   semantics "baseForXcodeProjectGeneration.ggs" : makefile, xcode ;
   semantics "generateEmptyProject.ggs" : makefile, xcode ;
+  semantics "generateProjectWithGroupsAndFiles.ggs" : makefile, xcode ;
 #---
   lexique "xcode_project_generation_lexique.ggs" : makefile, xcode ;
   option "xcode_project_generation_options.ggs" : makefile, xcode ;

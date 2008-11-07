@@ -13,46 +13,14 @@ routine generateEmptyXcodeProject
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
 #-------------------------------------------------- Define project default configuration
-  @string pathString := "../galgas_sources/GALGAS_OUTPUT, ../../libpm" ;
-  @stringlist projectDefaultSettings [emptyList] ;
-  projectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  projectDefaultSettings  += !"ARCHS = (ppc, i386,);" ;
-  projectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
-  projectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
-  projectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
-  projectDefaultSettings  += !"GCC_THREADSAFE_STATICS = NO;" ;
-  projectDefaultSettings  += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
-  projectDefaultSettings  += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
-  projectDefaultSettings  += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
-  projectDefaultSettings  += !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_PEDANTIC = NO;" ;
-  projectDefaultSettings  += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_SHADOW = NO;" ;
-  projectDefaultSettings  += !"GCC_WARN_SIGN_COMPARE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNKNOWN_PRAGMAS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_FUNCTION = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_LABEL = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
-  projectDefaultSettings  += !"HEADER_SEARCH_PATHS = (" . pathString . ");" ;
-  projectDefaultSettings  += !"PREBINDING = NO;" ;
-  projectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
-
+  @stringlist pathes [emptyList] ;
+  pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
+  pathes += !"../../libpm" ;
+  @stringlist projectDefaultSettings ;
+  enterProjectDefaultSettings
+    !pathes
+    ?projectDefaultSettings
+  ;
 #-------------------------------------------------- Build Project file
   generateXCodeFile
     !XcodeProjectDescription
