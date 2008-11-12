@@ -1,0 +1,60 @@
+#---------------------------------------------------------------------------*
+
+semantics generateProjectWithGroupsAndFiles :
+
+import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.ggs" ;
+
+#---------------------------------------------------------------------------*
+
+routine generateProjectWithGroupsAndFiles
+  ??@string in_xcodeproj_filePath
+:
+#-------------------------------------------------- Create XCode project descriptor object
+  @XcodeProjectDescription XcodeProjectDescription ;
+  initXcodeProjectDescription ?XcodeProjectDescription ;
+#-------------------------------------------------- Adding an empty group
+  enter_group
+    !?XcodeProjectDescription
+    !"Empty Group" # The group name, as it appears in Project Window
+    !"." # Group Path (relative to project file)
+    ![@stringlist emptyList] # No sub-group, no file
+  ;
+#-------------------------------------------------- Adding a group with subgroup and files
+  @stringlist groupContents [emptyList] ;
+  enter_file_in_group !?XcodeProjectDescription !"azerty/toto.cpp" !?groupContents ;
+  @stringlist subGroupContents [emptyList] ;
+  enter_file_in_group !?XcodeProjectDescription !"qwerty/foo.cpp" !?subGroupContents ;
+  enter_subgroup
+    !?XcodeProjectDescription
+    !"A Sub Group" # The sub-group name, as it appears in Project Window
+    !"qsd" # Sub group Path (absolute, or relative to super group)
+    !subGroupContents
+    !?groupContents
+  ;
+  enter_group
+    !?XcodeProjectDescription
+    !"A Group" # The group name, as it appears in Project Window
+    !"." # Group Path (absolute, or relative to project file)
+    !groupContents # No sub-group, no file
+  ;
+#-------------------------------------------------- Define project default configuration
+  @stringlist pathes [emptyList] ;
+  pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
+  pathes += !"../../libpm" ;
+  @stringlist projectDefaultSettings ;
+  enterProjectDefaultSettings
+    !pathes
+    ?projectDefaultSettings
+  ;
+#-------------------------------------------------- Build Project file
+  generateXCodeFile
+    !XcodeProjectDescription
+    !in_xcodeproj_filePath
+    !projectDefaultSettings
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+
