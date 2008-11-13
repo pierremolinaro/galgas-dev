@@ -9,8 +9,8 @@ import grammar xcode_project_generation_grammar in "xcode_project_generation_gra
 #--- Prologue routine
 before {
 #--- Generate Empty Project
-  generateEmptyXcodeProject !"./emptyProject.xcodeproj" ;
-  generateProjectWithGroupsAndFiles !"./projectWithGroupsAndFiles.xcodeproj" ;
+  generateEmptyXcodeProject ;
+  generateProjectWithGroupsAndFiles ;
 }
 
 #--- 'when' clauses
