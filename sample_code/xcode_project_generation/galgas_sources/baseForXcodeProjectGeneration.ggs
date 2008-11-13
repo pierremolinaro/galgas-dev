@@ -856,12 +856,11 @@ routine enterProjectDefaultSettings
 #-------------------------------------------------- Define project default configuration
   @string pathString := "" ;
   foreach inHeaderSearchPathList
-  do pathString .= mValue ;
-  between pathString .= ", " ;
+  do pathString .= "\t\t\t\t\t" . mValue . ",\n" ;
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  outProjectDefaultSettings  += !"ARCHS = (ppc, i386,);" ;
+  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\tppc,\n\t\t\t\t\ti386,\n\t\t\t\t);" ;
   outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
   outProjectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
   outProjectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
@@ -894,7 +893,7 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
   outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
   outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
-  outProjectDefaultSettings  += !"HEADER_SEARCH_PATHS = (" . pathString . ");" ;
+  outProjectDefaultSettings  += !"HEADER_SEARCH_PATHS = (\n" . pathString . "\t\t\t\t);" ;
   outProjectDefaultSettings  += !"PREBINDING = NO;" ;
   outProjectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
 end routine ;
@@ -918,27 +917,31 @@ routine buildXcodeProjectString
   . "\tobjectVersion = 42;\n"
   . "\tobjects = {\n\n" ;
 #--- PBXBuildFile section
-  outString .= "/* Begin PBXBuildFile section */\n" ;
-  foreach [inXcodeProjectDescription mAllBuildFileList] do
-    [mFile buildXcodeProject !?outString] ;
+  foreach [inXcodeProjectDescription mAllBuildFileList]
+  before outString .= "/* Begin PBXBuildFile section */\n" ;
+  do [mFile buildXcodeProject !?outString] ;
+  after outString .= "/* End PBXBuildFile section */\n\n" ;
   end foreach ;
-  outString .= "/* End PBXBuildFile section */\n\n" ;
 #--- PBXFileReference section
-  outString .= "/* Begin PBXFileReference section */\n" ;
-  foreach [inXcodeProjectDescription mFileReferenceMap] do
-    [mFileReference buildXcodeProject !?outString] ;
+  foreach [inXcodeProjectDescription mFileReferenceMap]
+  before outString .= "/* Begin PBXFileReference section */\n" ;
+  do [mFileReference buildXcodeProject !?outString] ;
+  after outString .= "/* End PBXFileReference section */\n" ;
   end foreach ;
-  outString .= "/* End PBXFileReference section */\n" ;
 #--- PBXFrameworksBuildPhase section
-  outString .= "/* Begin PBXFrameworksBuildPhase section */\n" ;
-  foreach [inXcodeProjectDescription mPBXFrameworksBuildPhase_list] do
-    [mBuildPhase buildXcodeProject !?outString] ;
+  foreach [inXcodeProjectDescription mPBXFrameworksBuildPhase_list]
+  before outString .= "/* Begin PBXFrameworksBuildPhase section */\n" ;
+  do [mBuildPhase buildXcodeProject !?outString] ;
+  after outString .= "/* End PBXFrameworksBuildPhase section */\n" ;
   end foreach ;
-  outString .= "/* End PBXFrameworksBuildPhase section */\n" ;
 #--- PBXGroup section
   outString .= "/* Begin PBXGroup section */\n" ;
   foreach [inXcodeProjectDescription mProjectGroupList] do
-    outString .= "\t\t" . [mGroup PBXGroupKey] . " = {\n"
+    outString .= "\t\t" . [mGroup PBXGroupKey] ;
+    if [mGroup mGroupName] != "" then
+      outString .= " /* " . [mGroup mGroupName] . " */" ;
+    end if ;
+    outString .= " = {\n"
     . "\t\t\tisa = PBXGroup;\n"
     . "\t\t\tchildren = (\n" ;
     foreach [mGroup mChildrenGroupList] do
@@ -946,7 +949,11 @@ routine buildXcodeProjectString
     end foreach ;
     outString .= "\t\t\t);\n" ;
     if [mGroup mGroupName] != "" then
-      outString .= "\t\t\tname = \"" . [mGroup mGroupName] . "\";\n" ;
+      if [[[mGroup mGroupName] componentsSeparatedByString !" "] length] > 1 then
+        outString .= "\t\t\tname = \"" . [mGroup mGroupName] . "\";\n" ;
+      else
+        outString .= "\t\t\tname = " . [mGroup mGroupName] . ";\n" ;
+      end if ;
     end if ;
     if [mGroup mGroupPath] != "" then
       outString .= "\t\t\tpath = \"" . [mGroup mGroupPath] . "\";\n" ;
@@ -956,8 +963,9 @@ routine buildXcodeProjectString
   end foreach ;
   outString .= "/* End PBXGroup section */\n\n" ;
 #--- PBXNativeTarget section
-  outString .= "/* Begin PBXNativeTarget section */\n" ;
-  foreach [inXcodeProjectDescription mTargetList] do
+  foreach [inXcodeProjectDescription mTargetList]
+  before outString .= "/* Begin PBXNativeTarget section */\n" ;
+  do
     outString .= "\t\t" . mTargetKey . " /* " . mTargetName . " */ = {\n"
     . "\t\t\tisa = PBXNativeTarget;\n"
     . "\t\t\tbuildConfigurationList = " . [mTargetConfiguration XCBuildConfigurationKey] . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
@@ -981,8 +989,8 @@ routine buildXcodeProjectString
     . "\t\t\tproductType = \"com.apple.product-type." . productExtension . "\";\n"
     . "\t\t};\n"
     ;
+  after outString .= "/* End PBXNativeTarget section */\n" ;
   end foreach ;
-  outString .= "/* End PBXNativeTarget section */\n" ;
 #--- PBXProject section
   outString .= "/* Begin PBXProject section */\n"
   . "\t\t" . rootObjectKey . " /* Project object */ = {\n"
@@ -1002,8 +1010,9 @@ routine buildXcodeProjectString
   . "\t\t};\n"
   . "/* End PBXProject section */\n\n" ;
 #--- PBXResourcesBuildPhase section
-  outString .= "/* Begin PBXResourcesBuildPhase section */\n" ;
-  foreach [inXcodeProjectDescription mPBXResourcesBuildPhase_list] do
+  foreach [inXcodeProjectDescription mPBXResourcesBuildPhase_list]
+  before outString .= "/* Begin PBXResourcesBuildPhase section */\n" ;
+  do
     outString .= "\t\t" . [mBuildPhase PBXResourcesBuildPhaseKey]
     . " /* " . [mBuildPhase mNameForComment] . " */ = {\n"
     . "\t\t\tisa = PBXResourcesBuildPhase;\n"
@@ -1015,11 +1024,12 @@ routine buildXcodeProjectString
     outString .=  "\t\t\t);\n"
     . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXResourcesBuildPhase section */\n" ;
   end foreach ;
-  outString .= "/* End PBXResourcesBuildPhase section */\n" ;
 #--- PBXSourcesBuildPhase section
-  outString .= "/* Begin PBXSourcesBuildPhase section */\n" ;
-  foreach [inXcodeProjectDescription mPBXSourcesBuildPhase_list] do
+  foreach [inXcodeProjectDescription mPBXSourcesBuildPhase_list]
+  before outString .= "/* Begin PBXSourcesBuildPhase section */\n" ;
+  do
     outString .= "\t\t" . [mBuildPhase PBXSourcesBuildPhaseKey]
     . " /* " . [mBuildPhase mNameForComment] . " */ = {\n"
     . "\t\t\tisa = PBXSourcesBuildPhase;\n"
@@ -1031,24 +1041,26 @@ routine buildXcodeProjectString
     outString .=  "\t\t\t);\n"
     . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXSourcesBuildPhase section */\n" ;
   end foreach ;
-  outString .= "/* End PBXSourcesBuildPhase section */\n" ;
 #--- PBXTargetDependency section
-  outString .= "/* Begin PBXTargetDependency section */\n" ;
-  foreach [inXcodeProjectDescription mDependencyList] do
+  foreach [inXcodeProjectDescription mDependencyList]
+  before outString .= "/* Begin PBXTargetDependency section */\n" ;
+  do
     outString .= "\t\t" . [mDependency PBXTargetDependencyKey]
     . " /* PBXTargetDependency */ = {\n"
     . "\t\t\tisa = PBXTargetDependency;\n"
     . "\t\t\ttarget = " . [mDependency mDependencyTarget] . " ;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXTargetDependency section */\n" ;
   end foreach ;
-  outString .= "/* End PBXTargetDependency section */\n" ;
 #--- PBXVariantGroup section
   @string mPBXVariantKey ;
   @string mPBXFileReferenceKey ;
   @string mName ;
-  outString .= "/* Begin PBXVariantGroup section */\n" ;
-  foreach [inXcodeProjectDescription mPBXVariantGroup_list] do
+  foreach [inXcodeProjectDescription mPBXVariantGroup_list]
+  before outString .= "/* Begin PBXVariantGroup section */\n" ;
+  do
     outString .= "\t\t" . mPBXVariantKey
     . " /* " . mName . " */ = {\n"
     . "\t\t\tisa = PBXVariantGroup;\n"
@@ -1058,11 +1070,12 @@ routine buildXcodeProjectString
     . "\t\t\tname = " . mName . ";\n"
     . "\t\t\tsourceTree = \"<group>\";\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXVariantGroup section */\n" ;
   end foreach ;
-  outString .= "/* End PBXVariantGroup section */\n" ;
 #--- XCBuildConfiguration section
-  outString .= "/* Begin XCBuildConfiguration section */\n" ;
-  foreach [inXcodeProjectDescription mBuildConfigurationList] do
+  foreach [inXcodeProjectDescription mBuildConfigurationList]
+  before outString .= "/* Begin XCBuildConfiguration section */\n" ;
+  do
     outString .= "\t\t" . [mBuildConfig configurationKey] . " /* Default */ = {\n"
     . "\t\t\tisa = XCBuildConfiguration;\n"
     . "\t\t\tbuildSettings = {\n" ;
@@ -1072,11 +1085,12 @@ routine buildXcodeProjectString
     outString .=  "\t\t\t};\n"
     . "\t\t\tname = Default;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End XCBuildConfiguration section */\n\n" ;
   end foreach ;
-  outString .= "/* End XCBuildConfiguration section */\n\n" ;
 #--- XCConfigurationList section
-  outString .= "/* Begin XCConfigurationList section */\n" ;
-  foreach [inXcodeProjectDescription mBuildConfigurationList] do
+  foreach [inXcodeProjectDescription mBuildConfigurationList]
+  before outString .= "/* Begin XCConfigurationList section */\n" ;
+  do
     outString .= "\t\t" . [mBuildConfig XCBuildConfigurationKey] . " /* Build configuration list */ = {\n"
     . "\t\t\tisa = XCConfigurationList;\n"
     . "\t\t\tbuildConfigurations = (\n"
@@ -1085,11 +1099,11 @@ routine buildXcodeProjectString
     . "\t\t\tdefaultConfigurationIsVisible = 0;\n"
     . "\t\t\tdefaultConfigurationName = Default;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End XCConfigurationList section */\n" ;
   end foreach ;
-  outString .= "/* End XCConfigurationList section */\n" ;
 #--- 
   outString .= "\t};\n"
-  . "\trootObject = " . rootObjectKey . " /* Project object */ ;\n"
+  . "\trootObject = " . rootObjectKey . " /* Project object */;\n"
   . "}\n" ;
 end routine ;
 

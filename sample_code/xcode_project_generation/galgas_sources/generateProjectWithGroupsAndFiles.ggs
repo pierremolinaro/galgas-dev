@@ -6,9 +6,7 @@ import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration
 
 #---------------------------------------------------------------------------*
 
-routine generateProjectWithGroupsAndFiles
-  ??@string in_xcodeproj_filePath
-:
+routine generateProjectWithGroupsAndFiles :
 #-------------------------------------------------- Create XCode project descriptor object
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -49,7 +47,7 @@ routine generateProjectWithGroupsAndFiles
 #-------------------------------------------------- Build Project file
   generateXCodeFile
     !XcodeProjectDescription
-    !in_xcodeproj_filePath
+    !"./projectWithGroupsAndFiles.xcodeproj"
     !projectDefaultSettings
   ;
 end routine ;

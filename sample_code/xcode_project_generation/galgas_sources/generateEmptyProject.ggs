@@ -6,9 +6,7 @@ import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration
 
 #---------------------------------------------------------------------------*
 
-routine generateEmptyXcodeProject
-  ??@string in_xcodeproj_filePath
-:
+routine generateEmptyXcodeProject :
 #-------------------------------------------------- Create XCode project descriptor object
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -24,7 +22,7 @@ routine generateEmptyXcodeProject
 #-------------------------------------------------- Build Project file
   generateXCodeFile
     !XcodeProjectDescription
-    !in_xcodeproj_filePath
+    !"./emptyProject.xcodeproj"
     !projectDefaultSettings
   ;
 end routine ;
