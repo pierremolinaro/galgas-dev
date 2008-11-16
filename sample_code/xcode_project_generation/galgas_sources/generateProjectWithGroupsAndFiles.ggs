@@ -15,12 +15,12 @@ routine generateProjectWithGroupsAndFiles :
     !?XcodeProjectDescription
     !"Empty Group" # The group name, as it appears in Project Window
     !"." # Group Path (relative to project file)
-    ![@stringlist emptyList] # No sub-group, no file
+    ![@XcodeObjectReferenceList emptyList] # No sub-group, no file
   ;
 #-------------------------------------------------- Adding a group with subgroup and files
-  @stringlist groupContents [emptyList] ;
+  @XcodeObjectReferenceList groupContents [emptyList] ;
   enter_file_in_group !?XcodeProjectDescription !"azerty/toto.cpp" !?groupContents ;
-  @stringlist subGroupContents [emptyList] ;
+  @XcodeObjectReferenceList subGroupContents [emptyList] ;
   enter_file_in_group !?XcodeProjectDescription !"qwerty/foo.cpp" !?subGroupContents ;
   enter_subgroup
     !?XcodeProjectDescription

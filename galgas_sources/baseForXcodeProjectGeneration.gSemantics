@@ -1063,14 +1063,17 @@ routine generateXCodeFile
   if [@uint errorCount] == 0 then
   #--- Create .xcodeproj directory (if does not exist)
     [in_xcodeproj_filePath makeDirectory] ;
-  #--- Delete all XXX.pbxuser files in this directory
-    @stringlist pbxuser_files := [in_xcodeproj_filePath regularFilesWithExtensions !false ![@stringlist listWithValue !"pbxuser"]] ;
-    foreach pbxuser_files do
-      @string fullPath := in_xcodeproj_filePath . "/" . mValue ;
-      [@string deleteFile !fullPath] ;
-    end foreach ;
   #--- Update (or create) Xcode project file
-    [fileNewContents writeToFileWhenDifferentContents !in_xcodeproj_filePath . "/project.pbxproj"] ;
+    @bool written ;
+    [fileNewContents writeToFileWhenDifferentContents !in_xcodeproj_filePath . "/project.pbxproj" ?written] ;
+  #--- Delete all XXX.pbxuser files in this directory
+    if written then
+      @stringlist pbxuser_files := [in_xcodeproj_filePath regularFilesWithExtensions !false ![@stringlist listWithValue !"pbxuser"]] ;
+      foreach pbxuser_files do
+        @string fullPath := in_xcodeproj_filePath . "/" . mValue ;
+        [@string deleteFile !fullPath] ;
+      end foreach ;
+    end if ;
   end if ;
 end routine ;
 
