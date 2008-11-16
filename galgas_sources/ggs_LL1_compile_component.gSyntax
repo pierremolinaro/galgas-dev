@@ -238,7 +238,7 @@ rule <galgas_component>
       !externSourceFileList
     ] ;
     @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
-    [newFileListContents writeToFileWhenDifferentContents !fileListPath] ;
+    [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
   end if ;
 #---- Convert old files
   @string oldCommonFile := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/common_files_for_make/makefile.mke" ;

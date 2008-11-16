@@ -858,6 +858,7 @@ class @typeGalgas_string extends @AC_galgasType {
     elsif [inReaderName string] == "writeToFileWhenDifferentContents" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
+      outReaderSignature += ![@typeGalgas_bool new] ![@EXformalArgumentPassingMode argumentOut] ;
    elsif [inReaderName string] == "writeToExecutableFile" then
       outReaderSignature := [@L_EXsignature emptyList] ;
       outReaderSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;
