@@ -3513,6 +3513,10 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "leftSubString" then
     outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
     outReturnedType := [@typeGalgas_string new] ;
+  elsif [inReaderName string] == "subString" then
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+    outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+    outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "nativePathWithUnixPath" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "unixPathWithNativePath" then
