@@ -4,6 +4,17 @@ semantics baseForXcodeProjectGeneration :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    XcodeObjectReferenceList                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @XcodeObjectReferenceList {
+  @string mRefString ;
+  @string mComment ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    PBXFileReference                                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -60,7 +71,7 @@ class @Xcode_PBXFileReference_Application extends @Xcode_productFileReference {
 class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "
     . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
@@ -71,7 +82,8 @@ class @Xcode_PBXFileReference_cppSourceFile extends @Xcode_PBXFileReference_abst
 class @Xcode_PBXFileReference_hSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -81,7 +93,8 @@ class @Xcode_PBXFileReference_hSourceFile extends @Xcode_PBXFileReference_abstra
 class @Xcode_PBXFileReference_pchSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pch; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pch; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -91,7 +104,8 @@ class @Xcode_PBXFileReference_pchSourceFile extends @Xcode_PBXFileReference_abst
 class @Xcode_PBXFileReference_mSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -101,7 +115,8 @@ class @Xcode_PBXFileReference_mSourceFile extends @Xcode_PBXFileReference_abstra
 class @Xcode_PBXFileReference_mmSourceFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -111,7 +126,8 @@ class @Xcode_PBXFileReference_mmSourceFile extends @Xcode_PBXFileReference_abstr
 class @Xcode_PBXFileReference_tiffFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -121,7 +137,8 @@ class @Xcode_PBXFileReference_tiffFile extends @Xcode_PBXFileReference_abstract 
 class @Xcode_PBXFileReference_pngFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; lastKnownFileType = image.png; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -131,7 +148,8 @@ class @Xcode_PBXFileReference_pngFile extends @Xcode_PBXFileReference_abstract  
 class @Xcode_PBXFileReference_plistFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -141,7 +159,8 @@ class @Xcode_PBXFileReference_plistFile extends @Xcode_PBXFileReference_abstract
 class @Xcode_PBXFileReference_frameworkFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -151,7 +170,8 @@ class @Xcode_PBXFileReference_frameworkFile extends @Xcode_PBXFileReference_abst
 class @Xcode_PBXFileReference_icnsFile extends @Xcode_PBXFileReference_abstract  {
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFileName . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -162,8 +182,8 @@ class @Xcode_PBXFileReference_nibFile extends @Xcode_PBXFileReference_abstract  
   @string mFilePath ;
   override method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . [self PBXFileReferenceKey]
-    . " = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = "
-    . mFileName  . "; path = "
+    . " /* " . [mFileName lastPathComponent] . " */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = "
+    . [mFileName lastPathComponent] . "; path = "
     . mFilePath . "; sourceTree = \"<group>\"; };\n" ;
   end method ;
 }
@@ -289,7 +309,7 @@ list @Xcode_PBXFrameworksBuildPhase_list {
 class @Xcode_PBXGroup {
   @string mGroupName ;
   @string mGroupPath ;
-  @stringlist mChildrenGroupList ;
+  @XcodeObjectReferenceList mChildrenGroupList ;
 
   lazy @string PBXGroupKey :
     PBXGroupKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
@@ -384,10 +404,10 @@ list @Xcode_PBXVariantGroup_list {
 struct @XcodeProjectDescription {
   @Xcode_PBXFileReference_map mFileReferenceMap ;
   @Xcode_PBXBuildFile_list mAllBuildFileList ;
-  @stringlist mMainGroupChildrenList ;
+  @XcodeObjectReferenceList mMainGroupChildrenList ;
   @Xcode_PBXGroup_list mProjectGroupList ;
   @Xcode_PBXNativeTarget_list mTargetList ;
-  @stringlist mProductGroupChildrenList ;
+  @XcodeObjectReferenceList mProductGroupChildrenList ;
   @Xcode_XCBuildConfiguration_list mBuildConfigurationList ;
   @Xcode_PBXSourcesBuildPhase_list mPBXSourcesBuildPhase_list ;
   @Xcode_PBXFrameworksBuildPhase_list mPBXFrameworksBuildPhase_list ;
@@ -402,10 +422,10 @@ routine initXcodeProjectDescription !@XcodeProjectDescription outDescription :
   outDescription := [@XcodeProjectDescription new
     ![@Xcode_PBXFileReference_map emptyMap]
     ![@Xcode_PBXBuildFile_list emptyList]
-    ![@stringlist emptyList]
+    ![@XcodeObjectReferenceList  emptyList]
     ![@Xcode_PBXGroup_list emptyList]
     ![@Xcode_PBXNativeTarget_list emptyList]
-    ![@stringlist emptyList]
+    ![@XcodeObjectReferenceList emptyList]
     ![@Xcode_XCBuildConfiguration_list emptyList]
     ![@Xcode_PBXSourcesBuildPhase_list emptyList]
     ![@Xcode_PBXFrameworksBuildPhase_list emptyList]
@@ -425,7 +445,7 @@ routine enter_group
   ?!@XcodeProjectDescription ioDescription
   ??@string inGroupName
   ??@string inGroupPath
-  ??@stringlist inGroupContentsKeyList
+  ??@XcodeObjectReferenceList inGroupContentsKeyList
 :
   @Xcode_PBXGroup group [new
     !inGroupName
@@ -433,7 +453,7 @@ routine enter_group
     !inGroupContentsKeyList
   ] ;
   ioDescription.mProjectGroupList += !group ;
-  ioDescription.mMainGroupChildrenList += ![group PBXGroupKey] ;
+  ioDescription.mMainGroupChildrenList += ![group PBXGroupKey] !inGroupName ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -446,8 +466,8 @@ routine enter_subgroup
   ?!@XcodeProjectDescription ioDescription
   ??@string inSubGroupName
   ??@string inSubGroupPath
-  ??@stringlist inSubGroupContentsKeyList
-  ?!@stringlist ioSuperGroupContentsKeyList
+  ??@XcodeObjectReferenceList inSubGroupContentsKeyList
+  ?!@XcodeObjectReferenceList ioSuperGroupContentsKeyList
 :
   @Xcode_PBXGroup group [new
     !inSubGroupName
@@ -455,7 +475,7 @@ routine enter_subgroup
     !inSubGroupContentsKeyList
   ] ;
   ioDescription.mProjectGroupList += !group ;
-  ioSuperGroupContentsKeyList += ![group PBXGroupKey] ;
+  ioSuperGroupContentsKeyList += ![group PBXGroupKey] !inSubGroupName ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -476,7 +496,7 @@ end routine ;
 
 routine append_mm_h_files ?!@stringlist ioList ?@string inBaseName :
   ioList += !inBaseName . ".mm" ;
-  ioList += !inBaseName . ".h" ;
+  ioList += !inBaseName . ".h"  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -484,12 +504,12 @@ end routine ;
 routine enter_cpp_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_cppSourceFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -497,12 +517,12 @@ end routine ;
 routine enter_h_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_hSourceFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -510,12 +530,12 @@ end routine ;
 routine enter_pch_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_pchSourceFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -523,12 +543,12 @@ end routine ;
 routine enter_m_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_mSourceFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -536,12 +556,12 @@ end routine ;
 routine enter_mm_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_mmSourceFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -549,12 +569,12 @@ end routine ;
 routine enter_tiff_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_tiffFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -562,12 +582,12 @@ end routine ;
 routine enter_png_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_pngFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -575,12 +595,12 @@ end routine ;
 routine enter_plist_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_plistFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -588,12 +608,12 @@ end routine ;
 routine enter_framework_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_frameworkFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -601,12 +621,45 @@ end routine ;
 routine enter_icns_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @lstring key [new !inCppFile !here] ;
   @Xcode_PBXFileReference_icnsFile ref [new !inCppFile] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !key !ref] ;
-  ioFileListForGroup += ![ref PBXFileReferenceKey] ;
+  ioFileListForGroup += ![ref PBXFileReferenceKey] !inCppFile ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enter_file_in_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@string inFileName
+  ?!@XcodeObjectReferenceList ioFileListForGroup
+:
+  @string extension := [inFileName pathExtension] ;
+  if extension == "cpp" then
+    enter_cpp_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "h" then
+    enter_h_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "pch" then
+    enter_pch_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "m" then
+    enter_m_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "mm" then
+    enter_mm_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "tiff" then
+    enter_tiff_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "png" then
+    enter_png_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "plist" then
+    enter_plist_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "framework" then
+    enter_framework_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "icns" then
+    enter_icns_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  else
+    error here : "cannot enter '" . inFileName . "' file : unknown extension" ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -614,33 +667,10 @@ end routine ;
 routine enter_files_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringlist inFileList
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   foreach inFileList do
-    @string extension := [mValue pathExtension] ;
-    if extension == "cpp" then
-      enter_cpp_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "h" then
-      enter_h_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "pch" then
-      enter_pch_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "m" then
-      enter_m_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "mm" then
-      enter_mm_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "tiff" then
-      enter_tiff_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "png" then
-      enter_png_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "plist" then
-      enter_plist_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "framework" then
-      enter_framework_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    elsif extension == "icns" then
-      enter_icns_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
-    else
-      error here : "cannot enter '" . mValue . "' file : unknown extension" ;
-    end if ;
+    enter_file_in_group !?ioXcodeProjectDescription !mValue !?ioFileListForGroup ;
   end foreach ;
 end routine ;
 
@@ -650,7 +680,7 @@ routine enter_nib_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string in_lproj_dir
   ??@string in_nib_fileName
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @Xcode_PBXFileReference_nibFile ref [new 
     ![in_lproj_dir stringByDeletingPathExtension]
@@ -664,7 +694,7 @@ routine enter_nib_in_group
     ![ref PBXFileReferenceKey]
     !in_nib_fileName
   ;
-  ioFileListForGroup += !PBXVariantGroupKey ;
+  ioFileListForGroup += !PBXVariantGroupKey !in_nib_fileName ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -734,7 +764,7 @@ routine add_tool_target
   @lstring projectNameKey [new !inProductFileName !here] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 
-  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] ;
+  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
   @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
     !"Sources"
     !inSourcesToCompileKeyList
@@ -781,7 +811,7 @@ routine add_app_target
   @lstring projectNameKey [new !inProductFileName !here] ;
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 #--- Enter Product Application in "Products" Group
-  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] ;
+  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
 #--- Define Resources Build Phase
   @Xcode_PBXResourcesBuildPhase resourcesBuildPhase [new
     !"Resources"
@@ -839,6 +869,57 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine enterProjectDefaultSettings
+  ??@stringlist inHeaderSearchPathList
+  !@stringlist outProjectDefaultSettings
+:
+#-------------------------------------------------- Define project default configuration
+  @string pathString := "" ;
+  foreach inHeaderSearchPathList
+  do pathString .= "\t\t\t\t\t" . mValue . ",\n" ;
+  end foreach ;
+  outProjectDefaultSettings := [@stringlist emptyList] ;
+  outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
+  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\tppc,\n\t\t\t\t\ti386,\n\t\t\t\t);" ;
+  outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
+  outProjectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
+  outProjectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
+  outProjectDefaultSettings  += !"GCC_THREADSAFE_STATICS = NO;" ;
+  outProjectDefaultSettings  += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_PEDANTIC = NO;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_SHADOW = NO;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_SIGN_COMPARE = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNKNOWN_PRAGMAS = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_FUNCTION = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_LABEL = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
+  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
+  outProjectDefaultSettings  += !"HEADER_SEARCH_PATHS = (\n" . pathString . "\t\t\t\t);" ;
+  outProjectDefaultSettings  += !"PREBINDING = NO;" ;
+  outProjectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine buildXcodeProjectString
   ??@XcodeProjectDescription inXcodeProjectDescription
   ??@string inProjectName
@@ -856,35 +937,43 @@ routine buildXcodeProjectString
   . "\tobjectVersion = 42;\n"
   . "\tobjects = {\n\n" ;
 #--- PBXBuildFile section
-  outString .= "/* Begin PBXBuildFile section */\n" ;
-  foreach [inXcodeProjectDescription mAllBuildFileList] do
-    [mFile buildXcodeProject !?outString] ;
+  foreach [inXcodeProjectDescription mAllBuildFileList]
+  before outString .= "/* Begin PBXBuildFile section */\n" ;
+  do [mFile buildXcodeProject !?outString] ;
+  after outString .= "/* End PBXBuildFile section */\n\n" ;
   end foreach ;
-  outString .= "/* End PBXBuildFile section */\n\n" ;
 #--- PBXFileReference section
-  outString .= "/* Begin PBXFileReference section */\n" ;
-  foreach [inXcodeProjectDescription mFileReferenceMap] do
-    [mFileReference buildXcodeProject !?outString] ;
+  foreach [inXcodeProjectDescription mFileReferenceMap]
+  before outString .= "/* Begin PBXFileReference section */\n" ;
+  do [mFileReference buildXcodeProject !?outString] ;
+  after outString .= "/* End PBXFileReference section */\n" ;
   end foreach ;
-  outString .= "/* End PBXFileReference section */\n" ;
 #--- PBXFrameworksBuildPhase section
-  outString .= "/* Begin PBXFrameworksBuildPhase section */\n" ;
-  foreach [inXcodeProjectDescription mPBXFrameworksBuildPhase_list] do
-    [mBuildPhase buildXcodeProject !?outString] ;
+  foreach [inXcodeProjectDescription mPBXFrameworksBuildPhase_list]
+  before outString .= "/* Begin PBXFrameworksBuildPhase section */\n" ;
+  do [mBuildPhase buildXcodeProject !?outString] ;
+  after outString .= "/* End PBXFrameworksBuildPhase section */\n" ;
   end foreach ;
-  outString .= "/* End PBXFrameworksBuildPhase section */\n" ;
 #--- PBXGroup section
   outString .= "/* Begin PBXGroup section */\n" ;
   foreach [inXcodeProjectDescription mProjectGroupList] do
-    outString .= "\t\t" . [mGroup PBXGroupKey] . " = {\n"
+    outString .= "\t\t" . [mGroup PBXGroupKey] ;
+    if [mGroup mGroupName] != "" then
+      outString .= " /* " . [mGroup mGroupName] . " */" ;
+    end if ;
+    outString .= " = {\n"
     . "\t\t\tisa = PBXGroup;\n"
     . "\t\t\tchildren = (\n" ;
     foreach [mGroup mChildrenGroupList] do
-      outString .= "\t\t\t\t" . mValue . " ,\n" ;
+      outString .= "\t\t\t\t" . mRefString . " /* " . mComment . " */,\n" ;
     end foreach ;
     outString .= "\t\t\t);\n" ;
     if [mGroup mGroupName] != "" then
-      outString .= "\t\t\tname = \"" . [mGroup mGroupName] . "\";\n" ;
+      if [[[mGroup mGroupName] componentsSeparatedByString !" "] length] > 1 then
+        outString .= "\t\t\tname = \"" . [mGroup mGroupName] . "\";\n" ;
+      else
+        outString .= "\t\t\tname = " . [mGroup mGroupName] . ";\n" ;
+      end if ;
     end if ;
     if [mGroup mGroupPath] != "" then
       outString .= "\t\t\tpath = \"" . [mGroup mGroupPath] . "\";\n" ;
@@ -894,8 +983,9 @@ routine buildXcodeProjectString
   end foreach ;
   outString .= "/* End PBXGroup section */\n\n" ;
 #--- PBXNativeTarget section
-  outString .= "/* Begin PBXNativeTarget section */\n" ;
-  foreach [inXcodeProjectDescription mTargetList] do
+  foreach [inXcodeProjectDescription mTargetList]
+  before outString .= "/* Begin PBXNativeTarget section */\n" ;
+  do
     outString .= "\t\t" . mTargetKey . " /* " . mTargetName . " */ = {\n"
     . "\t\t\tisa = PBXNativeTarget;\n"
     . "\t\t\tbuildConfigurationList = " . [mTargetConfiguration XCBuildConfigurationKey] . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
@@ -919,8 +1009,8 @@ routine buildXcodeProjectString
     . "\t\t\tproductType = \"com.apple.product-type." . productExtension . "\";\n"
     . "\t\t};\n"
     ;
+  after outString .= "/* End PBXNativeTarget section */\n" ;
   end foreach ;
-  outString .= "/* End PBXNativeTarget section */\n" ;
 #--- PBXProject section
   outString .= "/* Begin PBXProject section */\n"
   . "\t\t" . rootObjectKey . " /* Project object */ = {\n"
@@ -940,8 +1030,9 @@ routine buildXcodeProjectString
   . "\t\t};\n"
   . "/* End PBXProject section */\n\n" ;
 #--- PBXResourcesBuildPhase section
-  outString .= "/* Begin PBXResourcesBuildPhase section */\n" ;
-  foreach [inXcodeProjectDescription mPBXResourcesBuildPhase_list] do
+  foreach [inXcodeProjectDescription mPBXResourcesBuildPhase_list]
+  before outString .= "/* Begin PBXResourcesBuildPhase section */\n" ;
+  do
     outString .= "\t\t" . [mBuildPhase PBXResourcesBuildPhaseKey]
     . " /* " . [mBuildPhase mNameForComment] . " */ = {\n"
     . "\t\t\tisa = PBXResourcesBuildPhase;\n"
@@ -953,11 +1044,12 @@ routine buildXcodeProjectString
     outString .=  "\t\t\t);\n"
     . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXResourcesBuildPhase section */\n" ;
   end foreach ;
-  outString .= "/* End PBXResourcesBuildPhase section */\n" ;
 #--- PBXSourcesBuildPhase section
-  outString .= "/* Begin PBXSourcesBuildPhase section */\n" ;
-  foreach [inXcodeProjectDescription mPBXSourcesBuildPhase_list] do
+  foreach [inXcodeProjectDescription mPBXSourcesBuildPhase_list]
+  before outString .= "/* Begin PBXSourcesBuildPhase section */\n" ;
+  do
     outString .= "\t\t" . [mBuildPhase PBXSourcesBuildPhaseKey]
     . " /* " . [mBuildPhase mNameForComment] . " */ = {\n"
     . "\t\t\tisa = PBXSourcesBuildPhase;\n"
@@ -969,24 +1061,26 @@ routine buildXcodeProjectString
     outString .=  "\t\t\t);\n"
     . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXSourcesBuildPhase section */\n" ;
   end foreach ;
-  outString .= "/* End PBXSourcesBuildPhase section */\n" ;
 #--- PBXTargetDependency section
-  outString .= "/* Begin PBXTargetDependency section */\n" ;
-  foreach [inXcodeProjectDescription mDependencyList] do
+  foreach [inXcodeProjectDescription mDependencyList]
+  before outString .= "/* Begin PBXTargetDependency section */\n" ;
+  do
     outString .= "\t\t" . [mDependency PBXTargetDependencyKey]
     . " /* PBXTargetDependency */ = {\n"
     . "\t\t\tisa = PBXTargetDependency;\n"
     . "\t\t\ttarget = " . [mDependency mDependencyTarget] . " ;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXTargetDependency section */\n" ;
   end foreach ;
-  outString .= "/* End PBXTargetDependency section */\n" ;
 #--- PBXVariantGroup section
   @string mPBXVariantKey ;
   @string mPBXFileReferenceKey ;
   @string mName ;
-  outString .= "/* Begin PBXVariantGroup section */\n" ;
-  foreach [inXcodeProjectDescription mPBXVariantGroup_list] do
+  foreach [inXcodeProjectDescription mPBXVariantGroup_list]
+  before outString .= "/* Begin PBXVariantGroup section */\n" ;
+  do
     outString .= "\t\t" . mPBXVariantKey
     . " /* " . mName . " */ = {\n"
     . "\t\t\tisa = PBXVariantGroup;\n"
@@ -996,11 +1090,12 @@ routine buildXcodeProjectString
     . "\t\t\tname = " . mName . ";\n"
     . "\t\t\tsourceTree = \"<group>\";\n"
     . "\t\t};\n" ;
+  after outString .= "/* End PBXVariantGroup section */\n" ;
   end foreach ;
-  outString .= "/* End PBXVariantGroup section */\n" ;
 #--- XCBuildConfiguration section
-  outString .= "/* Begin XCBuildConfiguration section */\n" ;
-  foreach [inXcodeProjectDescription mBuildConfigurationList] do
+  foreach [inXcodeProjectDescription mBuildConfigurationList]
+  before outString .= "/* Begin XCBuildConfiguration section */\n" ;
+  do
     outString .= "\t\t" . [mBuildConfig configurationKey] . " /* Default */ = {\n"
     . "\t\t\tisa = XCBuildConfiguration;\n"
     . "\t\t\tbuildSettings = {\n" ;
@@ -1010,12 +1105,14 @@ routine buildXcodeProjectString
     outString .=  "\t\t\t};\n"
     . "\t\t\tname = Default;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End XCBuildConfiguration section */\n\n" ;
   end foreach ;
-  outString .= "/* End XCBuildConfiguration section */\n\n" ;
 #--- XCConfigurationList section
-  outString .= "/* Begin XCConfigurationList section */\n" ;
-  foreach [inXcodeProjectDescription mBuildConfigurationList] do
-    outString .= "\t\t" . [mBuildConfig XCBuildConfigurationKey] . " /* Build configuration list */ = {\n"
+  foreach [inXcodeProjectDescription mBuildConfigurationList]
+  before outString .= "/* Begin XCConfigurationList section */\n" ;
+  do
+    outString .= "\t\t" . [mBuildConfig XCBuildConfigurationKey] . " /* Build configuration list for PBXProject \""
+    . inProjectName . "\" */ = {\n"
     . "\t\t\tisa = XCConfigurationList;\n"
     . "\t\t\tbuildConfigurations = (\n"
     . "\t\t\t\t" . [mBuildConfig configurationKey] . " /* Default */,\n"
@@ -1023,11 +1120,11 @@ routine buildXcodeProjectString
     . "\t\t\tdefaultConfigurationIsVisible = 0;\n"
     . "\t\t\tdefaultConfigurationName = Default;\n"
     . "\t\t};\n" ;
+  after outString .= "/* End XCConfigurationList section */\n" ;
   end foreach ;
-  outString .= "/* End XCConfigurationList section */\n" ;
 #--- 
   outString .= "\t};\n"
-  . "\trootObject = " . rootObjectKey . " /* Project object */ ;\n"
+  . "\trootObject = " . rootObjectKey . " /* Project object */;\n"
   . "}\n" ;
 end routine ;
 
@@ -1037,8 +1134,9 @@ routine generateXCodeFile
   ?@XcodeProjectDescription inXcodeProjectDescription
   ??@string in_xcodeproj_filePath
   ??@stringlist inProjectDefaultSettings
-  ??@string inProjectName
 :
+  @string projectName := [[in_xcodeproj_filePath lastPathComponent] stringByDeletingPathExtension] ;
+
   @Xcode_XCBuildConfiguration defaultProjectConfiguration [new !inProjectDefaultSettings] ;
   inXcodeProjectDescription.mBuildConfigurationList += !defaultProjectConfiguration ;
 #--- "Products" Group
@@ -1055,7 +1153,7 @@ routine generateXCodeFile
   @string fileNewContents ;
   buildXcodeProjectString
     !inXcodeProjectDescription
-    !inProjectName
+    !projectName
     ![mainGroup PBXGroupKey]
     ![defaultProjectConfiguration XCBuildConfigurationKey]
     ?fileNewContents

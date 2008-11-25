@@ -8,7 +8,7 @@ import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration
 
 routine build_LIBPM_BDD_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_BDD_Descriptor" ;
@@ -93,7 +93,7 @@ end routine ;
 
 routine build_LIBPM_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist cpp_and_h_fileList ;
   getGALGAS_source_file_list ?cpp_and_h_fileList ;
@@ -135,7 +135,7 @@ end routine ;
 
 routine build_LIBPM_COCOA_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_m_h_files !?fileList !"NSSplitViewExtensions" ;
@@ -178,7 +178,7 @@ end routine ;
 
 routine build_LIBPM_COCOA_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   fileList += !"main.m" ;
@@ -194,7 +194,7 @@ end routine ;
 
 routine build_LIBPM_FILES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_HTML_FileWrite" ;
@@ -228,7 +228,7 @@ end routine ;
 
 routine build_LIBPM_COMMAND_LINE_INTERFACE_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_builtin_CLI_Options" ;
@@ -269,7 +269,7 @@ end routine ;
 
 routine build_LIBPM_COLLECTIONS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   fileList += !"TC_AVL_TreeForCollision.h" ;
@@ -296,7 +296,7 @@ end routine ;
 
 routine build_LIBPM_CACHE_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_PrimeCache2" ;
@@ -335,7 +335,7 @@ end routine ;
 routine build_PROJECT_RESOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringlist inIconFiles
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList := inIconFiles ;
   fileList += !"Info.plist" ;
@@ -364,7 +364,7 @@ end routine ;
 
 routine build_LIBPM_UNICODE_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_UnicodeString" ;
@@ -402,7 +402,7 @@ end routine ;
 
 routine build_LIBPM_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"md5" ;
@@ -450,7 +450,7 @@ end routine ;
 
 routine build_LIBPM_STREAMS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"AC_OutputUnicodeStream" ;
@@ -488,7 +488,7 @@ end routine ;
 
 routine build_LIBPM_TIME_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_DateTime" ;
@@ -522,7 +522,7 @@ end routine ;
 
 routine build_LIBPM_TINYXML_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"tinyxml" ;
@@ -581,7 +581,7 @@ routine build_GENERATED_BY_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inComponentNameSet
   ??@stringset inGUISourceNameSet
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   foreach inComponentNameSet do
@@ -622,7 +622,7 @@ end routine ;
 routine build_HAND_CODED_SOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
@@ -640,7 +640,7 @@ end routine ;
 
 routine build_FRAMEWORKS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@stringlist ioFileListForGroup
+  ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
   fileList += !"AppKit.framework" ;
@@ -731,11 +731,17 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"AC_galgas_list.cpp" ;
   fileList += !"GGS_string.cpp" ;
   fileList += !"GGS_lstring.cpp" ;
+  fileList += !"GGS_location.cpp" ;
   fileList += !"GGS_uint.cpp" ;
   fileList += !"GGS_uint64.cpp" ;
   fileList += !"GGS_luint.cpp" ;
-  fileList += !"GGS_location.cpp" ;
+  fileList += !"GGS_luint64.cpp" ;
+  fileList += !"GGS_sint.cpp" ;
+  fileList += !"GGS_sint64.cpp" ;
+  fileList += !"GGS_lsint.cpp" ;
+  fileList += !"GGS_lsint64.cpp" ;
   fileList += !"GGS_bool.cpp" ;
+  fileList += !"GGS_lbool.cpp" ;
   fileList += !"GGS_double.cpp" ;
   fileList += !"GGS_ldouble.cpp" ;
   fileList += !"GGS_char.cpp" ;
@@ -794,7 +800,7 @@ routine generateXcodeProject
 #-------------------------------------------------- Build source lists
 #---------- HAND CODED SOURCES
   if [inExternSourceNameSet count] > 0 then
-    @stringlist fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
+    @XcodeObjectReferenceList fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
     build_HAND_CODED_SOURCES_group
       !?XcodeProjectDescription
       !inExternSourceNameSet
@@ -814,7 +820,7 @@ routine generateXcodeProject
     | inSyntaxSourceSet | inGrammarSourceSet
     | inProgramSourceSet
   ;
-  @stringlist fileListOf_GENERATED_BY_GALGAS_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_GENERATED_BY_GALGAS_group [emptyList] ;
   build_GENERATED_BY_GALGAS_group
     !?XcodeProjectDescription
     !componentNameSet
@@ -829,9 +835,9 @@ routine generateXcodeProject
     !fileListOf_GENERATED_BY_GALGAS_group
   ;
 #---------- "LIBPM" sub group list
-  @stringlist libpmGroupChildrenList [emptyList] ;
+  @XcodeObjectReferenceList libpmGroupChildrenList [emptyList] ;
 #---------- LIBPM / BDD
-  @stringlist fileListOf_LIBPM_BDD_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_BDD_group [emptyList] ;
   build_LIBPM_BDD_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_BDD_group
@@ -845,7 +851,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / CACHES
-  @stringlist fileListOf_LIBPM_CACHE_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_CACHE_group [emptyList] ;
   build_LIBPM_CACHE_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_CACHE_group
@@ -859,7 +865,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / Cocoa GALGAS
-  @stringlist fileListOf_LIBPM_COCOA_GALGAS_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_COCOA_GALGAS_group [emptyList] ;
   build_LIBPM_COCOA_GALGAS_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_COCOA_GALGAS_group
@@ -872,7 +878,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / Cocoa Utilities
-  @stringlist fileListOf_LIBPM_COCOA_UTILITIES_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_COCOA_UTILITIES_group [emptyList] ;
   build_LIBPM_COCOA_UTILITIES_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_COCOA_UTILITIES_group
@@ -885,7 +891,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / COLLECTIONS
-  @stringlist fileListOf_LIBPM_COLLECTIONS_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_COLLECTIONS_group [emptyList] ;
   build_LIBPM_COLLECTIONS_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_COLLECTIONS_group
@@ -899,7 +905,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / COMMAND LINE INTERFACE
-  @stringlist fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group [emptyList] ;
   build_LIBPM_COMMAND_LINE_INTERFACE_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group
@@ -913,7 +919,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / FILES
-  @stringlist fileListOf_LIBPM_FILE_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_FILE_group [emptyList] ;
   build_LIBPM_FILES_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_FILE_group
@@ -927,7 +933,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / GALGAS
-  @stringlist fileListOf_LIBPM_GALGAS_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_group [emptyList] ;
   build_LIBPM_GALGAS_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_GALGAS_group
@@ -941,7 +947,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / STREAMS
-  @stringlist fileListOf_LIBPM_STREAMS_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_STREAMS_group [emptyList] ;
   build_LIBPM_STREAMS_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_STREAMS_group
@@ -955,7 +961,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / TIME
-  @stringlist fileListOf_LIBPM_TIME_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_TIME_group [emptyList] ;
   build_LIBPM_TIME_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_TIME_group
@@ -969,7 +975,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / TINY XML
-  @stringlist fileListOf_LIBPM_TINYXML_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_TINYXML_group [emptyList] ;
   build_LIBPM_TINYXML_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_TINYXML_group
@@ -983,7 +989,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / UTILITIES
-  @stringlist fileListOf_LIBPM_UTILITIES_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_UTILITIES_group [emptyList] ;
   build_LIBPM_UTILITIES_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_UTILITIES_group
@@ -997,7 +1003,7 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / UNICODE
-  @stringlist fileListOf_LIBPM_UNICODE_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_LIBPM_UNICODE_group [emptyList] ;
   build_LIBPM_UNICODE_group
     !?XcodeProjectDescription
     !?fileListOf_LIBPM_UNICODE_group
@@ -1018,7 +1024,7 @@ routine generateXcodeProject
     !libpmGroupChildrenList
   ;
 #---------- "Project Resources" Group
- @stringlist fileListOf_PROJECT_RESOURCES_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_PROJECT_RESOURCES_group [emptyList] ;
   build_PROJECT_RESOURCES_group
     !?XcodeProjectDescription
     !inIconFiles
@@ -1031,7 +1037,7 @@ routine generateXcodeProject
     !fileListOf_PROJECT_RESOURCES_group
   ;
 #---------- "Frameworks" Group
-  @stringlist fileListOf_FRAMEWORKS_group [emptyList] ;
+  @XcodeObjectReferenceList fileListOf_FRAMEWORKS_group [emptyList] ;
   build_FRAMEWORKS_group
     !?XcodeProjectDescription
     !?fileListOf_FRAMEWORKS_group
@@ -1248,59 +1254,20 @@ routine generateXcodeProject
     ?*
   ;
 #-------------------------------------------------- Define project default configuration
-  @stringset pathSet [emptySet] ;
-  foreach inExternSourceNameSet do
-    pathSet += !"../hand_coded_sources/" . [key stringByDeletingLastPathComponent] ;
-  end foreach ;
-  @string pathString := "../galgas_sources/GALGAS_OUTPUT, ../../libpm," ;
-  foreach pathSet do
-    pathString .= key . ", " ;
-  end foreach ;
-  @stringlist projectDefaultSettings [emptyList] ;
-  projectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  projectDefaultSettings  += !"ARCHS = (ppc, i386,);" ;
-  projectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
-  projectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
-  projectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
-  projectDefaultSettings  += !"GCC_THREADSAFE_STATICS = NO;" ;
-  projectDefaultSettings  += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
-  projectDefaultSettings  += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
-  projectDefaultSettings  += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
-  projectDefaultSettings  += !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_PEDANTIC = NO;" ;
-  projectDefaultSettings  += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_SHADOW = NO;" ;
-  projectDefaultSettings  += !"GCC_WARN_SIGN_COMPARE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNKNOWN_PRAGMAS = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_FUNCTION = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_LABEL = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
-  projectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
-  projectDefaultSettings  += !"HEADER_SEARCH_PATHS = (" . pathString . ");" ;
-  projectDefaultSettings  += !"PREBINDING = NO;" ;
-  projectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;" ;
+  @stringlist pathes [emptyList] ;
+  pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
+  pathes += !"../../libpm" ;
+  @stringlist projectDefaultSettings ;
+  enterProjectDefaultSettings
+    !pathes
+    ?projectDefaultSettings
+  ;
 
 #-------------------------------------------------- Build Project file
   generateXCodeFile
     !XcodeProjectDescription
     !in_xcodeproj_filePath
     !projectDefaultSettings
-    !inProjectName
   ;
 end routine ;
 
