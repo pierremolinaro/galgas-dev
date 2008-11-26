@@ -102,6 +102,56 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+void cPtr_typeFunctionCall::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "routine_" << mFunctionName << " (_inLexique" ;
+  GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
+  while (enumerator.hc ()) {
+    ioCppFile << ", " ;
+    enumerator._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+    enumerator.next () ;
+  }
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << mFunctionName.lineNumber ()
+            << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFunctionCall::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
+  while (enumerator.hc () && ! isUsed) {
+    isUsed = enumerator._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    enumerator.next () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFunctionCall::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  bool isUsed = false ;
+  GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
+  while (enumerator.hc () && ! isUsed) {
+    isUsed = enumerator._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    enumerator.next () ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFunctionCall::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 void cPtr_typeTestComplement::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;

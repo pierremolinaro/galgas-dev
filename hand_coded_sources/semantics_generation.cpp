@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -146,7 +146,14 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Routine '") + aNomRoutine + "'") ;
-  inHfile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
+  if (aListeTypeEtNomsArgumentsRetour.count () == 0) {
+    inHfile << "void" ;
+  }else{
+    GGS_typeListeTypesEtNomsArgMethode::cElement * first = aListeTypeEtNomsArgumentsRetour.firstObject () ;
+    macroValidPointer (first) ;
+    first->mType (HERE)->generateCppClassName (inHfile) ;
+  }
+  inHfile << " routine_" << aNomRoutine << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hc ()) {
     inHfile << ",\n                                " ;
@@ -186,7 +193,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
-  inCppFile << "void routine_" << aNomRoutine << " (C_Compiler &" ;
+    if (aListeTypeEtNomsArgumentsRetour.count () == 0) {
+    inCppFile << "void" ;
+  }else{
+    GGS_typeListeTypesEtNomsArgMethode::cElement * first = aListeTypeEtNomsArgumentsRetour.firstObject () ;
+    macroValidPointer (first) ;
+    first->mType (HERE)->generateCppClassName (inCppFile) ;
+  }
+  inCppFile << " routine_" << aNomRoutine << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " _inLexique" ;
   }
@@ -209,6 +223,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  #ifdef DEBUG_TRACE_ENABLED\n"
                "    printf (\"ENTER routine_" << aNomRoutine << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                "  #endif\n" ;
+//--- Déclarer la variable locale utilisée comme résultat
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator varResult (aListeTypeEtNomsArgumentsRetour, true) ;
+  while (varResult.hc ()) {
+    inCppFile << "  " ;
+    varResult._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
+    inCppFile << " " ;
+    varResult._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
+    inCppFile << " ;\n" ;  
+    varResult.next () ;
+  }
 //--- Engendrer la liste d'instructions
   generateInstructionListForList (mInstructionList, inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
@@ -216,8 +240,17 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Fin de la fonction
   inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
                "    printf (\"LEAVE routine_" << aNomRoutine << "\\n\") ;\n"
-               "  #endif\n"
-               "}\n\n" ;
+               "  #endif\n" ;
+//--- Engendrer l'instruction return
+  varResult.rewind () ;
+  while (varResult.hc ()) {
+    inCppFile << "  return " ;
+    varResult._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
+    inCppFile << " ;\n" ;  
+    varResult.next () ;
+  }
+//---
+  inCppFile << "}\n\n" ;
 }
 
 //---------------------------------------------------------------------------*

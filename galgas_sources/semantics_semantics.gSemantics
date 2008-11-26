@@ -493,6 +493,15 @@ class @typeStringOption extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   F U N C T I O N    C A L L                                              *
+#---------------------------------------------------------------------------*
+
+class @typeFunctionCall extends @typeExpression {
+  @lstring mFunctionName ;
+  @typeExpressionList mExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   S I M P L E    V A R I A B L E                                          *
 #---------------------------------------------------------------------------*
 
@@ -1216,6 +1225,7 @@ class @typeExternTypeToGenerate extends @typeEntityToGenerate {
 class @typeRoutineAengendrer extends @typeEntityToGenerate {
   @lstring aNomRoutine ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArgumentsRetour ;
   @typeInstructionList mInstructionList ;
 }
 
@@ -1349,6 +1359,8 @@ class @C_domainToImplement extends @typeEntityToGenerate {
 
 class @typeEntiteActionExterne extends @AC_semanticsEntity {
   @L_EXsignature aSignature ;
+  @L_EXsignature mReturnedType ; # Empty list for routine, one element for function
+
   message "an external extern routine" ;
   message messageTypeEntite "an external extern routine" ;
 }
@@ -1358,6 +1370,7 @@ class @typeEntiteActionExterne extends @AC_semanticsEntity {
 class @typeActionExterneAengendrer extends @typeEntityToGenerate {
   @lstring aNomAction ;
   @L_EXsignature aSignature ;
+  @L_EXsignature mReturnedType ; # Empty list for routine, one element for function
 }
 
 #---------------------------------------------------------------------------*

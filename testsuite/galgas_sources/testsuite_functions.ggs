@@ -1,0 +1,16 @@
+semantics testsuite_functions :
+
+routine functionTest
+  ?@uint inArg1
+  ??@uint inArg2
+-> @uint outResult 
+:
+  outResult := inArg1 + inArg2 ;
+end routine ;
+
+routine testsuite_functions :
+  @uint r := [functionTest !2 !3] ;
+  log r ;
+end routine ;
+
+end semantics ;
