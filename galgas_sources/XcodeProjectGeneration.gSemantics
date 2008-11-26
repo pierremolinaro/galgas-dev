@@ -600,14 +600,39 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_HAND_CODED_source_files_for_sources_build_phase
+routine build_HAND_CODED_source_files_for_sources_tool_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
-    fileList += !key ;
+    @string extension := [key pathExtension] ;
+    if (extension == "cpp") | (extension == "c") then
+      fileList += !key ;
+    end if ;
+  end foreach ;
+#---
+  enter_files_for_sources_build_phase
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@stringset inExternSourceNameSet
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @stringlist fileList [emptyList] ;
+  foreach inExternSourceNameSet do
+    @string extension := [key pathExtension] ;
+    if (extension != "cpp") & (extension != "c") then
+      fileList += !key ;
+    end if ;
   end foreach ;
 #---
   enter_files_for_sources_build_phase
@@ -1052,7 +1077,7 @@ routine generateXcodeProject
 #-------------------------------------------------- Build "tool" target
   @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfTool [emptyList] ;
 # HAND CODED SOURCES
-  build_HAND_CODED_source_files_for_sources_build_phase
+  build_HAND_CODED_source_files_for_sources_tool_build_phase
     !?XcodeProjectDescription
     !inExternSourceNameSet
     !?listForSourceBuildPhaseOfTool
@@ -1131,7 +1156,7 @@ routine generateXcodeProject
 #-------------------------------------------------- Build "tool_debug" target
   @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfDebugTool [emptyList] ;
 # HAND CODED SOURCES
-  build_HAND_CODED_source_files_for_sources_build_phase
+  build_HAND_CODED_source_files_for_sources_tool_build_phase
     !?XcodeProjectDescription
     !inExternSourceNameSet
     !?listForSourceBuildPhaseOfDebugTool
@@ -1230,6 +1255,12 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !inProjectName
     !inIconFiles
+    !?listForResourcesBuildPhaseOfCocoaApp
+  ;
+# HAND CODED SOURCES (only resources to copy)
+  build_HAND_CODED_source_files_for_sources_cocoa_build_phase
+    !?XcodeProjectDescription
+    !inExternSourceNameSet
     !?listForResourcesBuildPhaseOfCocoaApp
   ;
 #--- Direct Dependancies
