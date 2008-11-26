@@ -69,3 +69,13 @@ routine_testsuite_hand_coded (C_Compiler & inLexique
 }
 
 //---------------------------------------------------------------------------*
+
+GGS_uint
+function_externTestFunction (C_Compiler & _inLexique,
+                             GGS_uint inArg1,
+                             const GGS_uint inArg2
+                             COMMA_LOCATION_ARGS) {
+  return inArg1._add_operation (_inLexique, inArg2 COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------*

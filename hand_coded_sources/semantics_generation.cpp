@@ -145,15 +145,8 @@ generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 
 void cPtr_typeRoutineAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
-  inHfile.appendCppTitleComment (C_String ("Routine '") + aNomRoutine + "'") ;
-  if (aListeTypeEtNomsArgumentsRetour.count () == 0) {
-    inHfile << "void" ;
-  }else{
-    GGS_typeListeTypesEtNomsArgMethode::cElement * first = aListeTypeEtNomsArgumentsRetour.firstObject () ;
-    macroValidPointer (first) ;
-    first->mType (HERE)->generateCppClassName (inHfile) ;
-  }
-  inHfile << " routine_" << aNomRoutine << " (C_Compiler &" ;
+  inHfile.appendCppTitleComment (C_String ("Routine '") + mRoutineName + "'") ;
+  inHfile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hc ()) {
     inHfile << ",\n                                " ;
@@ -192,15 +185,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
-  inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + aNomRoutine + '"') ;
-    if (aListeTypeEtNomsArgumentsRetour.count () == 0) {
-    inCppFile << "void" ;
-  }else{
-    GGS_typeListeTypesEtNomsArgMethode::cElement * first = aListeTypeEtNomsArgumentsRetour.firstObject () ;
-    macroValidPointer (first) ;
-    first->mType (HERE)->generateCppClassName (inCppFile) ;
-  }
-  inCppFile << " routine_" << aNomRoutine << " (C_Compiler &" ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + mRoutineName + '"') ;
+  inCppFile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " _inLexique" ;
   }
@@ -221,34 +207,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  #ifdef DEBUG_TRACE_ENABLED\n"
-               "    printf (\"ENTER routine_" << aNomRoutine << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+               "    printf (\"ENTER routine_" << mRoutineName << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                "  #endif\n" ;
-//--- Déclarer la variable locale utilisée comme résultat
-  GGS_typeListeTypesEtNomsArgMethode::cEnumerator varResult (aListeTypeEtNomsArgumentsRetour, true) ;
-  while (varResult.hc ()) {
-    inCppFile << "  " ;
-    varResult._mType (HERE) (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " " ;
-    varResult._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
-    inCppFile << " ;\n" ;  
-    varResult.next () ;
-  }
 //--- Engendrer la liste d'instructions
   generateInstructionListForList (mInstructionList, inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, true) ;
 //--- Fin de la fonction
   inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-               "    printf (\"LEAVE routine_" << aNomRoutine << "\\n\") ;\n"
+               "    printf (\"LEAVE routine_" << mRoutineName << "\\n\") ;\n"
                "  #endif\n" ;
-//--- Engendrer l'instruction return
-  varResult.rewind () ;
-  while (varResult.hc ()) {
-    inCppFile << "  return " ;
-    varResult._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
-    inCppFile << " ;\n" ;  
-    varResult.next () ;
-  }
 //---
   inCppFile << "}\n\n" ;
 }
@@ -262,20 +230,131 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer::
+void cPtr_typeFonctionAengendrer::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
                          C_Compiler & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer::
+void cPtr_typeFonctionAengendrer::
 generatePredeclarations (AC_OutputStream & /* inHfile */) const {
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer::
+void cPtr_typeFonctionAengendrer::
+generateHdeclarations (AC_OutputStream & inHfile) const {
+  inHfile.appendCppTitleComment (C_String ("Function '") + mFunctionName + "'") ;
+  mReturnedType (HERE)->generateCppClassName (inHfile) ;
+  inHfile << " routine_" << mFunctionName << " (C_Compiler &" ;
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+  while (currentArgument.hc ()) {
+    inHfile << ",\n                                " ;
+    generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+    currentArgument.next () ;
+  }
+  inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFonctionAengendrer::isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionAengendrer::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionAengendrer::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inTargetFileName */,
+                               sint32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionAengendrer::
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & inCppFile,
+                                const C_String & inTargetFileName,
+                                sint32 & ioPrototypeIndex,
+                                const bool inGenerateDebug) const {
+  inCppFile.appendCppTitleComment (C_String ("Implementation of function \"") + mFunctionName + '"') ;
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
+  if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
+    inCppFile << " _inLexique" ;
+  }
+  GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+  while (currentArgument.hc ()) {
+    inCppFile << ",\n                                " ;
+    generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
+    const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
+    inCppFile << ' ' ;
+    if (! variableUtilisee) {
+      inCppFile << "/* " ;
+    }
+    currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
+    if (! variableUtilisee) {
+      inCppFile << " */" ;
+    }
+    currentArgument.next () ;
+  }
+  inCppFile << " COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  #ifdef DEBUG_TRACE_ENABLED\n"
+               "    printf (\"ENTER function_" << mFunctionName << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
+               "  #endif\n" ;
+//--- Déclarer la variable locale utilisée comme résultat
+  mReturnedType (HERE)->generateCppClassName (inCppFile) ;
+  inCppFile << " " ;
+  mReturnedVar (HERE)->generateCplusPlusName (inCppFile) ;
+  inCppFile << " ;\n" ;  
+//--- Engendrer la liste d'instructions
+  generateInstructionListForList (mInstructionList, inCppFile,
+                                  inTargetFileName, ioPrototypeIndex,
+                                  inGenerateDebug, true) ;
+//--- Fin de la fonction
+  inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
+               "    printf (\"LEAVE function_" << mFunctionName << "\\n\") ;\n"
+               "  #endif\n" ;
+//--- Engendrer l'instruction return
+  inCppFile << "  return " ;
+  mReturnedVar (HERE)->generateCplusPlusName (inCppFile) ;
+  inCppFile << " ;\n" ;  
+//---
+  inCppFile << "}\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeRoutineExterneAengendrer::
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         C_Compiler & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeRoutineExterneAengendrer::
+generatePredeclarations (AC_OutputStream & /* inHfile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeRoutineExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "void routine_" << aNomAction << " (C_Compiler &" ;
   GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
@@ -289,20 +368,20 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeActionExterneAengendrer::isCppClassNeeded (void) const {
+bool cPtr_typeRoutineExterneAengendrer::isCppClassNeeded (void) const {
   return false ;
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer::
+void cPtr_typeRoutineExterneAengendrer::
 enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
                              AC_OutputStream & /* inEpilogueActions */) const {
 }
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer::
+void cPtr_typeRoutineExterneAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName */,
                                sint32 & /* ioPrototypeIndex */) const {
@@ -310,7 +389,74 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeActionExterneAengendrer::
+void cPtr_typeRoutineExterneAengendrer::
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & /* inCppFile */,
+                                  const C_String & /* inTargetFileName */,
+                                  sint32 & /* ioPrototypeIndex */,
+                                  const bool /* inGenerateDebug */) const {
+}
+
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionExterneAengendrer::
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         C_Compiler & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionExterneAengendrer::
+generatePredeclarations (AC_OutputStream & /* inHfile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionExterneAengendrer::
+generateHdeclarations (AC_OutputStream & inHfile) const {
+  mReturnedType (HERE)->generateCppClassName (inHfile) ;
+  inHfile << " function_" << aNomAction << " (C_Compiler &" ;
+  GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
+  while (currentArgument.hc ()) {
+    inHfile << ",\n                                " ;
+    generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+    currentArgument.next () ;
+  }
+  inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeFonctionExterneAengendrer::isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionExterneAengendrer::
+enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionExterneAengendrer::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
+                               const C_String & /* inTargetFileName */,
+                               sint32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeFonctionExterneAengendrer::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,

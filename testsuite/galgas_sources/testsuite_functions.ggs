@@ -1,15 +1,24 @@
 semantics testsuite_functions :
 
-routine functionTest
+function functionTest
   ?@uint inArg1
   ??@uint inArg2
 -> @uint outResult 
 :
   outResult := inArg1 + inArg2 ;
-end routine ;
+end function ;
+
+extern function externTestFunction
+  ?@uint inArg1
+  ??@uint inArg2
+-> @uint outResult 
+;
 
 routine testsuite_functions :
+  message "*************************************** begin of function test\n" ;
   @uint r := [functionTest !2 !3] ;
+  log r ;
+  r := [externTestFunction !2 !3] ;
   log r ;
 end routine ;
 

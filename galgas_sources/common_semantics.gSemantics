@@ -3085,10 +3085,19 @@ class @typeEntiteType extends @AC_semanticsEntity {
 
 class @typeEntiteRoutine extends @AC_semanticsEntity {
   @L_EXsignature aListeArgumentsFormels ;
-  @L_EXsignature mReturnedType ; # Empty list for routine, one element for function
 
   message "a routine" ;
   message messageTypeEntite "a routine" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeEntiteFonction extends @AC_semanticsEntity {
+  @L_EXsignature aListeArgumentsFormels ;
+  @AC_galgasType mReturnedType ;
+
+  message "a function" ;
+  message messageTypeEntite "a function" ;
 }
 
 #---------------------------------------------------------------------------*
