@@ -1191,6 +1191,12 @@
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
+		CF33992D0EDDC2A900F0330E /* include_typeEntiteFonction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonction.h; sourceTree = "<group>"; };
+		CF33992E0EDDC2A900F0330E /* include_typeEntiteFonctionExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonctionExterne.h; sourceTree = "<group>"; };
+		CF33992F0EDDC2A900F0330E /* include_typeEntiteRoutineExterne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutineExterne.h; sourceTree = "<group>"; };
+		CF3399300EDDC2A900F0330E /* include_typeFonctionAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionAengendrer.h; sourceTree = "<group>"; };
+		CF3399310EDDC2A900F0330E /* include_typeFonctionExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionExterneAengendrer.h; sourceTree = "<group>"; };
+		CF3399320EDDC2A900F0330E /* include_typeRoutineExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineExterneAengendrer.h; sourceTree = "<group>"; };
 		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
 		CF3D5B970D9E976800BE06A6 /* include_C_filewrapperTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_filewrapperTemplateToImplement.h; sourceTree = "<group>"; };
 		CF3D5B980D9E976800BE06A6 /* include_templateInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstruction.h; sourceTree = "<group>"; };
@@ -1464,7 +1470,6 @@
 		CFD214AD0913BE2E0011F11E /* include_T_repeatInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_repeatInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
 		CFD214AE0913BE2E0011F11E /* include_T_selectInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_selectInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
 		CFD214AF0913BE2E0011F11E /* include_T_terminalInstruction_forGrammarComponent.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_T_terminalInstruction_forGrammarComponent.h; sourceTree = "<group>"; };
-		CFD214B10913BE2E0011F11E /* include_typeActionExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeActionExterneAengendrer.h; sourceTree = "<group>"; };
 		CFD214B20913BE2E0011F11E /* include_typeAndOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAndOperation.h; sourceTree = "<group>"; };
 		CFD214B30913BE2E0011F11E /* include_typeAppendInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeAppendInstruction.h; sourceTree = "<group>"; };
 		CFD214B50913BE2E0011F11E /* include_typeArgumentAttribut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeArgumentAttribut.h; sourceTree = "<group>"; };
@@ -1491,7 +1496,6 @@
 		CFD214CD0913BE2E0011F11E /* include_typeEmissionErreurParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionErreurParDefaut.h; sourceTree = "<group>"; };
 		CFD214CE0913BE2E0011F11E /* include_typeEmissionParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionParDefaut.h; sourceTree = "<group>"; };
 		CFD214CF0913BE2E0011F11E /* include_typeEmissionTerminalParDefaut.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEmissionTerminalParDefaut.h; sourceTree = "<group>"; };
-		CFD214D00913BE2E0011F11E /* include_typeEntiteActionExterne.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteActionExterne.h; sourceTree = "<group>"; };
 		CFD214D30913BE2E0011F11E /* include_typeEntiteRoutine.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteRoutine.h; sourceTree = "<group>"; };
 		CFD214D40913BE2E0011F11E /* include_typeEntiteType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteType.h; sourceTree = "<group>"; };
 		CFD214D50913BE2E0011F11E /* include_typeEntityToGenerate.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeEntityToGenerate.h; sourceTree = "<group>"; };
@@ -1981,6 +1985,12 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF33992D0EDDC2A900F0330E /* include_typeEntiteFonction.h */,
+				CF33992E0EDDC2A900F0330E /* include_typeEntiteFonctionExterne.h */,
+				CF33992F0EDDC2A900F0330E /* include_typeEntiteRoutineExterne.h */,
+				CF3399300EDDC2A900F0330E /* include_typeFonctionAengendrer.h */,
+				CF3399310EDDC2A900F0330E /* include_typeFonctionExterneAengendrer.h */,
+				CF3399320EDDC2A900F0330E /* include_typeRoutineExterneAengendrer.h */,
 				CF99B7590EDDA1F900E3A281 /* include_typeFunctionCall.h */,
 				CFD7F6AB0E30DD5900F67727 /* include_typeCppThisInCategoryName.h */,
 				CFD7F6A00E30DD2400F67727 /* include_callInstruction.h */,
@@ -2081,7 +2091,6 @@
 				CFD214AD0913BE2E0011F11E /* include_T_repeatInstruction_forGrammarComponent.h */,
 				CFD214AE0913BE2E0011F11E /* include_T_selectInstruction_forGrammarComponent.h */,
 				CFD214AF0913BE2E0011F11E /* include_T_terminalInstruction_forGrammarComponent.h */,
-				CFD214B10913BE2E0011F11E /* include_typeActionExterneAengendrer.h */,
 				CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */,
 				CFD214B20913BE2E0011F11E /* include_typeAndOperation.h */,
 				CFD214B30913BE2E0011F11E /* include_typeAppendInstruction.h */,
@@ -2109,7 +2118,6 @@
 				CFD214CD0913BE2E0011F11E /* include_typeEmissionErreurParDefaut.h */,
 				CFD214CE0913BE2E0011F11E /* include_typeEmissionParDefaut.h */,
 				CFD214CF0913BE2E0011F11E /* include_typeEmissionTerminalParDefaut.h */,
-				CFD214D00913BE2E0011F11E /* include_typeEntiteActionExterne.h */,
 				CFD214D30913BE2E0011F11E /* include_typeEntiteRoutine.h */,
 				CFD214D40913BE2E0011F11E /* include_typeEntiteType.h */,
 				CFD214D50913BE2E0011F11E /* include_typeEntityToGenerate.h */,

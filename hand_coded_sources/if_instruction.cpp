@@ -104,7 +104,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeFunctionCall::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "routine_" << mFunctionName << " (_inLexique" ;
+  ioCppFile << "function_" << mFunctionName << " (_inLexique" ;
   GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
   while (enumerator.hc ()) {
     ioCppFile << ", " ;

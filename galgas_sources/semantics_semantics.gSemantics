@@ -1154,7 +1154,7 @@ class @typeStructuredCastInstruction extends @typeInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#       Routine or extern extern routine call instruction                           *
+#       Routine or extern routine call instruction                          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1223,9 +1223,18 @@ class @typeExternTypeToGenerate extends @typeEntityToGenerate {
 #---------------------------------------------------------------------------*
 
 class @typeRoutineAengendrer extends @typeEntityToGenerate {
-  @lstring aNomRoutine ;
+  @lstring mRoutineName ;
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
-  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArgumentsRetour ;
+  @typeInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeFonctionAengendrer extends @typeEntityToGenerate {
+  @lstring mFunctionName ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
+  @AC_galgasType mReturnedType ;
+  @typeCplusPlusName mReturnedVar ;
   @typeInstructionList mInstructionList ;
 }
 
@@ -1357,20 +1366,36 @@ class @C_domainToImplement extends @typeEntityToGenerate {
 
 #---------------------------------------------------------------------------*
 
-class @typeEntiteActionExterne extends @AC_semanticsEntity {
+class @typeEntiteRoutineExterne extends @AC_semanticsEntity {
   @L_EXsignature aSignature ;
-  @L_EXsignature mReturnedType ; # Empty list for routine, one element for function
 
-  message "an external extern routine" ;
-  message messageTypeEntite "an external extern routine" ;
+  message "an extern routine" ;
+  message messageTypeEntite "an extern routine" ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @typeActionExterneAengendrer extends @typeEntityToGenerate {
+class @typeEntiteFonctionExterne extends @AC_semanticsEntity {
+  @L_EXsignature aSignature ;
+  @AC_galgasType mReturnedType ;
+
+  message "an extern function" ;
+  message messageTypeEntite "an extern function" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeRoutineExterneAengendrer extends @typeEntityToGenerate {
   @lstring aNomAction ;
   @L_EXsignature aSignature ;
-  @L_EXsignature mReturnedType ; # Empty list for routine, one element for function
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeFonctionExterneAengendrer extends @typeEntityToGenerate {
+  @lstring aNomAction ;
+  @L_EXsignature aSignature ;
+  @AC_galgasType mReturnedType ;
 }
 
 #---------------------------------------------------------------------------*

@@ -1515,28 +1515,24 @@ rule <factor>
     $identifier$ ?@lstring functionName ;
   #--- Search for function name
     @L_EXsignature signatureRoutine ;
-    @L_EXsignature returnedTypes ;
     @AC_semanticsEntity entite ;
     [inEntitiesMap searchKey !functionName ?entite] ;
     @bool isExternActionCall ;
     cast entite:
-    when >= @typeEntiteRoutine r do
+    when >= @typeEntiteFonction r do
       signatureRoutine := [r aListeArgumentsFormels] ;
-      returnedTypes := [r mReturnedType] ;
+      outResultType := [r mReturnedType] ;
       isExternActionCall := false ;
-    when >= @typeEntiteActionExterne ae do
+    when >= @typeEntiteFonctionExterne ae do
       signatureRoutine := [ae aSignature] ;
-      returnedTypes := [ae mReturnedType] ;
+      outResultType := [ae mReturnedType] ;
       isExternActionCall := true ;
     else
       error functionName :
        "'" . [functionName string] . "' should name a function or an extern function"
-       -> signatureRoutine, isExternActionCall, returnedTypes
+       -> signatureRoutine, isExternActionCall, outResultType
       ;
     end cast ;
-    if [returnedTypes length] == 0 then
-      error functionName : "the '" . functionName . "' routine is not a function" ;
-    end if ;
   #--- Actual arguments
     @typeExpressionList expressionList ;
     @typeListeAttributsSemantiques listeAttributsSemantiques [emptyList] ;
@@ -1552,7 +1548,6 @@ rule <factor>
       !?ioVariablesMap
     ;
     outExpression := [@typeFunctionCall new !functionName !expressionList] ;
-    [returnedTypes first ?outResultType ?*] ;
   or
   #--- File wrapper
     $filewrapper$ ;

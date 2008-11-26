@@ -202,3 +202,6 @@ LOGGING m: <map @aMap 1 object
 |-key 0:<@lstring:'g' at '':1:1>
 |-value 0:<@uint:56>
 >
+*************************************** begin of function test
+LOGGING r: <@uint:5>
+LOGGING r: <@uint:5>
