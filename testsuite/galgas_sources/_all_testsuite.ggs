@@ -1,11 +1,15 @@
 project
-  compile "testsuite_lexique.ggs" ;
-  compile "testsuite_syntax.ggs" ;
-  compile "testsuite_grammar.ggs" ;
-  compile "testsuite_program.ggs" ;
-  compile "testsuite_foreach_instruction.ggs" ;
-  compile "testsuite_list.ggs" ;
-  compile "testsuite_struct.ggs" ;
-  compile "testsuite_listmap.ggs" ;
-  compile "testsuite_map.ggs" ;
+  lexique "testsuite_lexique.ggs" : makefile ;
+  syntax "testsuite_syntax.ggs" : makefile ;
+  grammar "testsuite_grammar.ggs" : makefile ;
+  semantics "testsuite_foreach_instruction.ggs" : makefile ;
+  semantics "testsuite_list.ggs" : makefile ;
+  semantics "testsuite_struct.ggs" : makefile ;
+  semantics "testsuite_listmap.ggs" : makefile ;
+  semantics "testsuite_map.ggs" : makefile ;
+  semantics "testsuite_functions.ggs" : makefile ;
+
+  program "testsuite_program.ggs" : makefile ;
+
+  extern "testsuite_hand_coded.cpp" : makefile ;
 end project ;

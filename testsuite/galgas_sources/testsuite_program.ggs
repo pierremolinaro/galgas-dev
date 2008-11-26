@@ -6,6 +6,7 @@ import semantics testsuite_list in "testsuite_list.ggs" ;
 import semantics testsuite_struct in "testsuite_struct.ggs" ;
 import semantics testsuite_listmap in "testsuite_listmap.ggs" ;
 import semantics testsuite_map in "testsuite_map.ggs" ;
+import semantics testsuite_functions in "testsuite_functions.ggs" ;
 
 import grammar testsuite_grammar in "testsuite_grammar.ggs" ;
 
@@ -17,6 +18,7 @@ before {
   testsuite_struct ;
   testsuite_listmap ;
   testsuite_map ;
+  testsuite_functions ;
 }
 
 #--- 'when' clauses

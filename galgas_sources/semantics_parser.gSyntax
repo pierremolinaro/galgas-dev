@@ -1108,33 +1108,75 @@ rule <semantics_declaration>
   $identifier$ ? routineName ;
 #---- Formal arguments -----------------------------------------
   @L_EXsignature listeDeTypes ;
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeVariablesMap localVariableMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
-    !?tableArgumentsMethode
+    !?localVariableMap
     ?listeTypeEtNomsArguments
     !?tableEnAvant
-    ?signatureForGrammarComponent
+    ?*
   ;
+#---- Function return value -----------------------------------------
+  @L_EXsignature returnedTypes [emptyList] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArgumentsRetour [emptyList] ;
+  select
+  or
+    $->$ ;
+  #--- Check all arguments are input or const input
+    foreach listeTypeEtNomsArguments do
+      if mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentOut] then
+        error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
+      elsif mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentInOut] then
+        error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
+      end if ;
+    end foreach ;
+  #--- Parse result
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !tableEnAvant
+      ?galgasTypeName
+    ;
+    returnedTypes += !type_semantique !passingMode ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+    @bool modeIn := false ;
+    listeTypeEtNomsArgumentsRetour += !type_semantique !passingMode !natureNom !modeIn !nomArgument ;
+    [!?localVariableMap insertOutArgument !nomArgument !type_semantique !natureNom] ;
+  end select ;
 #--- Inserer dans la map des routines utilisables, -------------------------
 #    or verifier la coherence de la signature
  if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
     @AC_semanticsEntity entite ;
-    [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
-    @L_EXsignature listeDeTypesPrecedenteDeclaration :=
-      [(cast entite if == @typeEntiteRoutine else error routineName) aListeArgumentsFormels] ;
+    [ioComponentSemanticsEntitiesMap searchKey !routineName ?entite] ;
+#    @L_EXsignature listeDeTypesPrecedenteDeclaration :=
+#      [(cast entite if == @typeEntiteRoutine else error routineName) aListeArgumentsFormels] ;
+#    verifierCompatibiliteSignatures
+#      !listeDeTypesPrecedenteDeclaration
+#      !listeDeTypes
+#      !here
+#     ;
+    @typeEntiteRoutine precedenteDeclaration := (cast entite if == @typeEntiteRoutine else error routineName) ;
     verifierCompatibiliteSignatures
-      !listeDeTypesPrecedenteDeclaration
+      ![precedenteDeclaration aListeArgumentsFormels]
       !listeDeTypes
       !here
      ;
+    verifierCompatibiliteSignatures
+      ![precedenteDeclaration mReturnedType]
+      !returnedTypes
+      !here
+     ;
   else
-    [!?tableNomRoutinesDeclarees insertKey ! routineName] ;
-    @AC_semanticsEntity entite := [@typeEntiteRoutine new !listeDeTypes] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey ! routineName !entite] ;
+    [!?tableNomRoutinesDeclarees insertKey !routineName] ;
+    @AC_semanticsEntity entite := [@typeEntiteRoutine new !listeDeTypes !returnedTypes] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !routineName !entite] ;
   end if ;
   select
 #---- Declaration anticipee de la routine (prototype) -------------------------
@@ -1148,7 +1190,7 @@ rule <semantics_declaration>
       !tableEnAvant
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
-      !?tableArgumentsMethode
+      !?localVariableMap
       !?ioInstructionList
       !ioSemanticContext
     ;
@@ -1156,11 +1198,14 @@ rule <semantics_declaration>
     $routine$ ;
     $;$ ;
   #--- Inserer la routine dans la map des routines a implementer
-    @typeEntityToGenerate ea := [@typeRoutineAengendrer new ! routineName
-                                                              !listeTypeEtNomsArguments
-                                                              !ioInstructionList] ;
+    @typeEntityToGenerate ea := [@typeRoutineAengendrer new
+      !routineName
+      !listeTypeEtNomsArguments
+      !listeTypeEtNomsArgumentsRetour
+      !ioInstructionList
+    ] ;
     listeEntitesAengendrer += !ea ;
-    [!?tableRoutinesAimplementer insertKey ! routineName] ;
+    [!?tableRoutinesAimplementer insertKey !routineName] ;
   end select ;
 label importSemantics
   ?!@ModelMap unused ioModelMap
@@ -1177,34 +1222,76 @@ label importSemantics
   $identifier$ ? routineName ;
 #---- Arguments formels de la routine -----------------------------------------
   @L_EXsignature listeDeTypes ;
-  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeVariablesMap localVariableMap [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
   @L_signature signature ;
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
-    !?tableArgumentsMethode
+    !?localVariableMap
     ?listeTypeEtNomsArguments
     !?tableEnAvant
-    ? signature
+    ?signature
   ;
-  [!?ioExternActionMap insertKey !routineName !signature !false] ;
+#---- Function return value -----------------------------------------
+  @L_EXsignature returnedTypes [emptyList] ;
+  select
+  or
+   $->$ ;
+#   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArgumentsRetour [emptyList] ;
+#    <formal_arguments_list>
+#      !ioComponentSemanticsEntitiesMap
+#      ?returnedTypes
+#      !?localVariableMap
+#      ?listeTypeEtNomsArgumentsRetour
+#      !?tableEnAvant
+#      ?*
+#    ;
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !tableEnAvant
+      ?galgasTypeName
+    ;
+    returnedTypes += !type_semantique !passingMode ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+#    @bool modeIn := false ;
+#    listeTypeEtNomsArgumentsRetour += !type_semantique !passingMode !natureNom !modeIn ;
+    [!?localVariableMap insertOutArgument !nomArgument !type_semantique !natureNom] ;
+  end select ;
 #--- Inserer dans la map des routines utilisables, -------------------------
+  [!?ioExternActionMap insertKey !routineName !signature !false] ;
 #    or verifier la coherence de la signature
  if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
-    @L_EXsignature listeDeTypesPrecedenteDeclaration :=
-      [(cast entite if == @typeEntiteRoutine else error routineName) aListeArgumentsFormels] ;
+#    @L_EXsignature listeDeTypesPrecedenteDeclaration :=
+#      [(cast entite if == @typeEntiteRoutine else error routineName) aListeArgumentsFormels] ;
+#    verifierCompatibiliteSignatures
+#      !listeDeTypesPrecedenteDeclaration
+#      !listeDeTypes
+#      !here
+#     ;
+    @typeEntiteRoutine precedenteDeclaration := (cast entite if == @typeEntiteRoutine else error routineName) ;
     verifierCompatibiliteSignatures
-      !listeDeTypesPrecedenteDeclaration
+      ![precedenteDeclaration aListeArgumentsFormels]
       !listeDeTypes
       !here
-    ;
+     ;
+    verifierCompatibiliteSignatures
+      ![precedenteDeclaration mReturnedType]
+      !returnedTypes
+      !here
+     ;
   else
     [!?tableNomRoutinesDeclarees insertKey ! routineName] ;
-    @AC_semanticsEntity entite := [@typeEntiteRoutine new !listeDeTypes] ;
-    [!?ioComponentSemanticsEntitiesMap insertKey ! routineName !entite] ;
+    @AC_semanticsEntity entite := [@typeEntiteRoutine new !listeDeTypes !returnedTypes] ;
+    [!?ioComponentSemanticsEntitiesMap insertKey !routineName !entite] ;
   end if ;
   select
 #---- Declaration anticipee de la routine (prototype) -------------------------
@@ -2273,12 +2360,12 @@ rule <formal_arguments_list>
       $unused$ ;
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn !nomArgument ;
       [!?tableArgumentsMethode insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
     or
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn !nomArgument ;
       [!?tableArgumentsMethode insertConstInArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
   while
@@ -2299,13 +2386,13 @@ rule <formal_arguments_list>
       @lstring nomArgument ;
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true !nomArgument ;
       [!?tableArgumentsMethode insertUnusedInArgument !nomArgument !type_semantique !natureNom] ;
     or
       @lstring nomArgument ;
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !true !nomArgument ;
       [!?tableArgumentsMethode insertInArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
   while
@@ -2326,12 +2413,12 @@ rule <formal_arguments_list>
       $unused$ ;
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false !nomArgument ;
       [!?tableArgumentsMethode insertUnusedInOutArgument !nomArgument !type_semantique !natureNom] ;
     or
       $identifier$ ? nomArgument ;
       @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false ;
+      listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !false !nomArgument ;
       [!?tableArgumentsMethode insertInOutArgument !nomArgument !type_semantique !natureNom] ;
     end select ;
   while
@@ -2351,7 +2438,7 @@ rule <formal_arguments_list>
     $identifier$ ? nomArgument ;
     @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
     @bool modeIn := false ;
-    listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn ;
+    listeTypeEtNomsArguments += !type_semantique !passingMode !natureNom !modeIn !nomArgument ;
     [!?tableArgumentsMethode insertOutArgument !nomArgument !type_semantique !natureNom] ;
   end repeat ;
 label importGrammarForSemantics
@@ -3538,7 +3625,7 @@ rule <instruction_beginning_with_identifier>
     isExternActionCall := true ;
   else
     error nomVarDest :
-     "'" . [nomVarDest string] . "' should name a routine or an extern extern routine"
+     "'" . [nomVarDest string] . "' should name a routine or an extern routine"
      -> signatureRoutine, isExternActionCall
     ;
   end cast ;
@@ -6613,7 +6700,7 @@ rule <semantics_declaration>
       @lstring parameterName ;
       $identifier$ ? parameterName ;
       @typeCplusPlusName cppName := [@typeAutomaticName new ![parameterName location] ![parameterName string]] ;
-      templateArgumentTypesList += !type_semantique ![@EXformalArgumentPassingMode argumentConstantIn] !cppName !true ;
+      templateArgumentTypesList += !type_semantique ![@EXformalArgumentPassingMode argumentConstantIn] !cppName !true !parameterName ;
       if parameterIsUsed then
         [!?templateVariableMap insertConstInArgument !parameterName !type_semantique !cppName] ;
       else
@@ -7168,18 +7255,47 @@ rule <semantics_declaration_begining_by_extern>
   @L_EXsignature listeDeTypes ;
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
   @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
-  @L_signature signatureForGrammarComponent ; # Not used here
   <formal_arguments_list>
     !ioComponentSemanticsEntitiesMap
     ?listeDeTypes
     !?tableArgumentsMethode
     ?listeTypeEtNomsArguments
     !?tableEnAvant
-    ?signatureForGrammarComponent
+    ?*
   ;
-  @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes] ;
+#---- Function return value -----------------------------------------
+  @L_EXsignature returnedTypes [emptyList] ;
+  select
+  or
+    $->$ ;
+  #--- Check all arguments are input or const input
+    foreach listeTypeEtNomsArguments do
+      if mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentOut] then
+        error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
+      elsif mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentInOut] then
+        error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
+      end if ;
+    end foreach ;
+  #--- Parse result
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !tableEnAvant
+      ?galgasTypeName
+    ;
+    returnedTypes += !type_semantique !passingMode ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+    [!?tableArgumentsMethode insertOutArgument !nomArgument !type_semantique !natureNom] ;
+  end select ;
+
+  @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes !returnedTypes] ;
   [!?ioComponentSemanticsEntitiesMap insertKey !nomAction !entite] ;
-  @typeEntityToGenerate ea := [@typeActionExterneAengendrer new !nomAction !listeDeTypes] ;
+  @typeEntityToGenerate ea := [@typeActionExterneAengendrer new !nomAction !listeDeTypes !returnedTypes] ;
   listeEntitesAengendrer += !ea ;
   $;$ ;    
 label importSemantics
@@ -7205,7 +7321,37 @@ label importSemantics
     !?tableEnAvant
     ?signature
   ;
-  @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes] ;
+#---- Function return value -----------------------------------------
+  @L_EXsignature returnedTypes [emptyList] ;
+  select
+  or
+    $->$ ;
+  #--- Check all arguments are input or const input
+    foreach listeTypeEtNomsArguments do
+      if mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentOut] then
+        error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
+      elsif mFormalArgumentPassingMode == [@EXformalArgumentPassingMode argumentInOut] then
+        error mParameterName:"for a function only input parameters (?) and constant input parameters (??) can be used." ;
+      end if ;
+    end foreach ;
+  #--- Parse result
+    @EXformalArgumentPassingMode passingMode := [@EXformalArgumentPassingMode argumentOut] ;
+    @AC_galgasType type_semantique ;
+    @lstring galgasTypeName ;
+    <formal_argument_type>
+      !ioComponentSemanticsEntitiesMap
+      ?type_semantique
+      !tableEnAvant
+      ?galgasTypeName
+    ;
+    returnedTypes += !type_semantique !passingMode ;
+    @lstring nomArgument ;
+    $identifier$ ? nomArgument ;
+    @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
+    [!?tableArgumentsMethode insertOutArgument !nomArgument !type_semantique !natureNom] ;
+  end select ;
+
+  @AC_semanticsEntity entite := [@typeEntiteActionExterne new !listeDeTypes !returnedTypes] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ! actionName !entite] ;
   [!?ioExternActionMap insertKey !actionName !signature !true] ;
   $;$ ;    
@@ -7281,13 +7427,13 @@ rule <semantics_declaration>
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
       or
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
       end select ;
       signature += !type_semantique !argumentConstantIn ;
@@ -7364,13 +7510,13 @@ rule <semantics_declaration>
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
       or
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
       end select ;
       signature += !type_semantique !argumentConstantIn ;
@@ -7441,13 +7587,13 @@ rule <semantics_declaration>
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
       or
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
       end select ;
       signature += !type_semantique !argumentConstantIn ;
@@ -7610,13 +7756,13 @@ label importSemantics
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertUnusedConstInArgument !nomArgument !type_semantique !natureNom] ;
       or
         @lstring nomArgument ;
         $identifier$ ? nomArgument ;
         @typeCplusPlusName natureNom := [@typeAutomaticName new ![nomArgument location] ![nomArgument string]] ;
-        argumentList += !type_semantique !argumentConstantIn !natureNom !true ;
+        argumentList += !type_semantique !argumentConstantIn !natureNom !true !nomArgument ;
         [!?localVariableMap insertConstInArgument !nomArgument !type_semantique !natureNom] ;
       end select ;
       signature += !type_semantique !argumentConstantIn ;

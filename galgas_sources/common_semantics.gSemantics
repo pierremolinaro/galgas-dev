@@ -634,6 +634,7 @@ list @typeListeTypesEtNomsArgMethode {
   @EXformalArgumentPassingMode mFormalArgumentPassingMode ;
   @typeCplusPlusName mCppName ;
   @bool mModeIn ;
+  @lstring mParameterName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -3084,6 +3085,7 @@ class @typeEntiteType extends @AC_semanticsEntity {
 
 class @typeEntiteRoutine extends @AC_semanticsEntity {
   @L_EXsignature aListeArgumentsFormels ;
+  @L_EXsignature mReturnedType ; # Empty list for routine, one element for function
 
   message "a routine" ;
   message messageTypeEntite "a routine" ;
