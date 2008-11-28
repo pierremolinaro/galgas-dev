@@ -2,6 +2,7 @@
 
 semantics XcodeProjectGeneration :
 
+import "baseForXcodeProjectGeneration.gSemantics" ;
 import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*

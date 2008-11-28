@@ -16,14 +16,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-
 project
-  semantics "common_semantics.gSemantics" : makefile ;
-  semantics "semantics_semantics.gSemantics" : makefile ;
-  syntax "expression_parser.gSyntax" : makefile ;
-  syntax "semantics_parser.gSyntax" : makefile ;
 #--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
-  semantics "mda_galgas_routines.gSemantics" ;
   program "mda_galgas_prgm.gProgram" ;
 
 #--- Command Line Options
@@ -95,12 +89,18 @@ project
   grammar "programSLRgrammar.gGrammar" : makefile ;
 
 #--- Project component
+  semantics "projectMetamodel.gSemantics" : makefile ;
+  semantics "mda_galgas_routines.gSemantics" ;
   semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
   semantics "XcodeProjectGeneration.gSemantics" : makefile ;
   syntax "projectModelBuilder.gSyntax" : makefile ;
   grammar "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Old style components
+  semantics "common_semantics.gSemantics" : makefile ;
+  semantics "semantics_semantics.gSemantics" : makefile ;
+  syntax "expression_parser.gSyntax" : makefile ;
+  syntax "semantics_parser.gSyntax" : makefile ;
   syntax "domain_parser.gSyntax" : makefile ;
   semantics "parser_semantics.gSemantics" : makefile ;
   syntax "parser_parser.gSyntax" : makefile ;

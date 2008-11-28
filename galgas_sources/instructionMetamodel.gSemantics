@@ -72,6 +72,29 @@ class @routineDeclaration extends @externRoutineDeclaration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externFunctionDeclaration extends @semanticDeclaration {
+  @lstring mFunctionName ;
+  @formalParameterList mFormalParameterList ;
+  @lstring mResultTypeName ;
+  @lstring mResultVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @functionDeclaration extends @externFunctionDeclaration {
+  @semanticInstructionList mFunctionInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*

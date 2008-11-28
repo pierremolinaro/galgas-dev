@@ -22,7 +22,7 @@ grammar projectLL1grammar "LL1" :
   import syntax projectModelBuilder in "projectModelBuilder.gSyntax" ;
 
   root <project_component_start_symbol>
-    !@lstringlist outFileNameList
+    !@projectSourceList outProjectSourceList
     !@location outEndOfSourceFile
   ; # LL1
 end grammar ;

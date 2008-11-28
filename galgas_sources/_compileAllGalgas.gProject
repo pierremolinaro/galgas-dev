@@ -18,72 +18,76 @@
 
 project
 #--- Command Line Options
-  compile "galgas_cli_options.gOption" ;
+  option "galgas_cli_options.gOption" : makefile ;
 
 #--- Common Scanner
-  compile "galgas_scanner.gLexique" ;
+  lexique "galgas_scanner.gLexique" : makefile ;
 
 #--- Lexique Component
-  compile "lexiqueSemantics.gSemantics" ;
-  compile "lexiqueMetamodel.gSemantics" ;
-  compile "lexiqueModelBuilder.gSyntax" ;
-  compile "lexiqueLL1grammar.gGrammar" ;
-  compile "lexiqueCompilation.gSemantics" ;
+  semantics "lexiqueSemantics.gSemantics" : makefile ;
+  semantics "lexiqueMetamodel.gSemantics" : makefile ;
+  syntax "lexiqueModelBuilder.gSyntax" : makefile ;
+  grammar "lexiqueLL1grammar.gGrammar" : makefile ;
+  semantics "lexiqueCompilation.gSemantics" : makefile ;
 
 #--- Option Component
-  compile "optionSemantics.gSemantics" ;
-  compile "optionMetamodel.gSemantics" ;
-  compile "optionModelBuilder.gSyntax" ;
-  compile "optionLL1grammar.gGrammar" ;
-  compile "optionCompilation.gSemantics" ;
+  semantics "optionSemantics.gSemantics" : makefile ;
+  semantics "optionMetamodel.gSemantics" : makefile ;
+  syntax "optionModelBuilder.gSyntax" : makefile ;
+  grammar "optionLL1grammar.gGrammar" : makefile ;
+  semantics "optionCompilation.gSemantics" : makefile ;
 
 #--- Expression
-  compile "expressionMetamodel.gSemantics" ;
-  compile "expressionModelBuilder.gSyntax" ;
+  semantics "expressionMetamodel.gSemantics" : makefile ;
+  syntax "expressionModelBuilder.gSyntax" : makefile ;
 
 #--- Parameters and arguments
-  compile "parameterArgumentMetamodel.gSemantics" ;
-  compile "parameterArgumentBuilder.gSyntax" ;
+  semantics "parameterArgumentMetamodel.gSemantics" : makefile ;
+  syntax "parameterArgumentBuilder.gSyntax" : makefile ;
 
 #--- Instructions
-  compile "instructionMetamodel.gSemantics" ;
-  compile "semanticInstructionListModelBuilder.gSyntax" ;
+  semantics "instructionMetamodel.gSemantics" : makefile ;
+  syntax "semanticInstructionListModelBuilder.gSyntax" : makefile ;
 
 #--- Semantics Component
-  compile "semanticsMetamodel.gSemantics" ;
-  compile "semanticsModelBuilder.gSyntax" ;
-  compile "semanticsSLRgrammar.gGrammar" ;
-  compile "semanticsSemantics.gSemantics" ;
-  compile "semanticsCompilation.gSemantics" ;
+  semantics "semanticsMetamodel.gSemantics" : makefile ;
+  syntax "semanticsModelBuilder.gSyntax" : makefile ;
+  grammar "semanticsSLRgrammar.gGrammar" : makefile ;
+  semantics "semanticsSemantics.gSemantics" : makefile ;
+  semantics "semanticsCompilation.gSemantics" : makefile ;
 
 #--- Syntax Component
-  compile "syntaxMetamodel.gSemantics" ;
-  compile "syntaxModelBuilder.gSyntax" ;
-  compile "syntaxSLRgrammar.gGrammar" ;
+  semantics "syntaxMetamodel.gSemantics" : makefile ;
+  syntax "syntaxModelBuilder.gSyntax" : makefile ;
+  grammar "syntaxSLRgrammar.gGrammar" : makefile ;
 
 #--- Grammar component
-  compile "grammarMetamodel.gSemantics" ;
-  compile "grammarModelBuilder.gSyntax" ;
-  compile "grammarLL1grammar.gGrammar" ;
-  compile "guiCompilation.gSemantics" ;
+  semantics "grammarMetamodel.gSemantics" : makefile ;
+  syntax "grammarModelBuilder.gSyntax" : makefile ;
+  grammar "grammarLL1grammar.gGrammar" : makefile ;
+  semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- GUI component
-  compile "guiMetamodel.gSemantics" ;
-  compile "guiModelBuilder.gSyntax" ;
-  compile "guiLL1grammar.gGrammar" ;
+  semantics "guiMetamodel.gSemantics" : makefile ;
+  syntax "guiModelBuilder.gSyntax" : makefile ;
+  grammar "guiLL1grammar.gGrammar" : makefile ;
 
 #--- Program component
-  compile "programMetamodel.gSemantics" ;
-  compile "programModelBuilder.gSyntax" ;
-  compile "programSLRgrammar.gGrammar" ;
+  semantics "programMetamodel.gSemantics" : makefile ;
+  syntax "programModelBuilder.gSyntax" : makefile ;
+  grammar "programSLRgrammar.gGrammar" : makefile ;
 
 #--- Project component
-  compile "projectModelBuilder.gSyntax" ;
-  compile "projectLL1grammar.gGrammar" ;
+#  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile : makefile ;
+#  semantics "XcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "XcodeProjectGeneration.gSemantics" : makefile ;
+  syntax "projectModelBuilder.gSyntax" : makefile ;
+  grammar "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Temporary Program for PPC Cocoa GALGAS Only 
-  compile "mda_galgas_routines.gSemantics" ;
-  compile "mda_galgas_prgm.gProgram" ;
+  semantics "mda_galgas_routines.gSemantics" : makefile ;
+  program "mda_galgas_prgm.gProgram" : makefile ;
 end project ;
 
 #---------------------------------------------------------------------------*

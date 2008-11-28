@@ -170,6 +170,12 @@
 		CF59F0650D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
 		CF5E74F607B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
 		CF5E74F807B00EA600858338 /* common_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5E74F407B00EA600858338 /* common_semantics.cpp */; };
+		CF63AD250EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
+		CF63AD260EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
+		CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
+		CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
+		CF63AD290EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
+		CF63AD2A0EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF6511570C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF65115B0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
 		CF65116F0C16F14D002D7BD4 /* semanticsSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */; };
@@ -1251,6 +1257,8 @@
 		CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrapper_generation.cpp; sourceTree = "<group>"; };
 		CF5E74F407B00EA600858338 /* common_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = common_semantics.cpp; sourceTree = "<group>"; };
 		CF5E74F507B00EA600858338 /* common_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = common_semantics.h; sourceTree = "<group>"; };
+		CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectMetamodel.cpp; sourceTree = "<group>"; };
+		CF63AD240EE04C0A00220E75 /* projectMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectMetamodel.h; sourceTree = "<group>"; };
 		CF6511530C16F14D002D7BD4 /* semanticsSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSemantics.cpp; sourceTree = "<group>"; };
 		CF6511540C16F14D002D7BD4 /* semanticsSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSemantics.h; sourceTree = "<group>"; };
 		CF6511760C16F162002D7BD4 /* include_binaryGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_binaryGalgasType.h; sourceTree = "<group>"; };
@@ -2221,6 +2229,8 @@
 		CFDC56A00C186F5F00DF8818 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */,
+				CF63AD240EE04C0A00220E75 /* projectMetamodel.h */,
 				CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */,
 				CFB76EE60E8D7DA300F826A9 /* baseForXcodeProjectGeneration.h */,
 				CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */,
@@ -3252,6 +3262,7 @@
 				CF0676440E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE70E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
+				CF63AD250EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3427,6 +3438,7 @@
 				CF0676460E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
+				CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3602,6 +3614,7 @@
 				CF0676470E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EED0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
+				CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3782,6 +3795,7 @@
 				CF0676450E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE90E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
+				CF63AD260EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3957,6 +3971,7 @@
 				CF0676480E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEF0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
+				CF63AD290EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4132,6 +4147,7 @@
 				CF0676490E7EE037008B9D1F /* md5.cpp in Sources */,
 				CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EF10E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
+				CF63AD2A0EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

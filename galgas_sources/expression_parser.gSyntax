@@ -1492,12 +1492,11 @@ end rule ;
 #                                                                              *
 #                         F A C T O R                                          *
 #   description          :   [expression description]                          *
-#   function call        :   [function_name !... ]                             *
 #   reader call          :   [expression reader !... ]                         *
-#   constructor call     :   [@class method !... ]                             *
+#   constructor call     :   [@class constructor !... ]                        *
 #   option value         :   [option option_component_name.option_name]        *
 #   filewrapper          :   [filewrapper filewrapper_name."path"]             *
-#   filewrapper template :   [filewrapper fw.tpte !...]                        *
+#   filewrapper template :   [filewrapper fw.template !...]                    *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1511,44 +1510,6 @@ rule <factor>
 :
   $[$ ;
   select
-  #--- Function call
-    $identifier$ ?@lstring functionName ;
-  #--- Search for function name
-    @L_EXsignature signatureRoutine ;
-    @AC_semanticsEntity entite ;
-    [inEntitiesMap searchKey !functionName ?entite] ;
-    @bool isExternActionCall ;
-    cast entite:
-    when >= @typeEntiteFonction r do
-      signatureRoutine := [r aListeArgumentsFormels] ;
-      outResultType := [r mReturnedType] ;
-      isExternActionCall := false ;
-    when >= @typeEntiteFonctionExterne ae do
-      signatureRoutine := [ae aSignature] ;
-      outResultType := [ae mReturnedType] ;
-      isExternActionCall := true ;
-    else
-      error functionName :
-       "'" . [functionName string] . "' should name a function or an extern function"
-       -> signatureRoutine, isExternActionCall, outResultType
-      ;
-    end cast ;
-  #--- Actual arguments
-    @typeExpressionList expressionList ;
-    @typeListeAttributsSemantiques listeAttributsSemantiques [emptyList] ;
-    foreach signatureRoutine do
-      listeAttributsSemantiques += !mType ![@lstring new !"" !here] ;
-    end foreach ;
-    <output_expression_list>
-      ?expressionList
-      !listeAttributsSemantiques
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-    ;
-    outExpression := [@typeFunctionCall new !functionName !expressionList] ;
-  or
   #--- File wrapper
     $filewrapper$ ;
   #--- Get filewrapper name
@@ -1694,6 +1655,62 @@ rule <factor>
     end select ;
   end select ;
   $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#   function call        :   function_name (!... )                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+#--- Function call
+  $identifier$ ?@lstring functionName ;
+#--- Search for function name
+  @L_EXsignature signatureRoutine ;
+  @AC_semanticsEntity entite ;
+  [inEntitiesMap searchKey !functionName ?entite] ;
+  @bool isExternActionCall ;
+  cast entite:
+  when >= @typeEntiteFonction r do
+    signatureRoutine := [r aListeArgumentsFormels] ;
+    outResultType := [r mReturnedType] ;
+    isExternActionCall := false ;
+  when >= @typeEntiteFonctionExterne ae do
+    signatureRoutine := [ae aSignature] ;
+    outResultType := [ae mReturnedType] ;
+    isExternActionCall := true ;
+  else
+    error functionName :
+     "'" . [functionName string] . "' should name a function or an extern function"
+     -> signatureRoutine, isExternActionCall, outResultType
+    ;
+  end cast ;
+#--- Actual arguments
+  @typeExpressionList expressionList ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques [emptyList] ;
+  foreach signatureRoutine do
+    listeAttributsSemantiques += !mType ![@lstring new !"" !here] ;
+  end foreach ;
+  $($ ;
+  <output_expression_list>
+    ?expressionList
+    !listeAttributsSemantiques
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+  ;
+  $)$ ;
+  outExpression := [@typeFunctionCall new !functionName !expressionList] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
