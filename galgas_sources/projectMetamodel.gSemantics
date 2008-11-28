@@ -1,0 +1,30 @@
+#---------------------------------------------------------------------------*
+
+semantics projectMetamodel :
+
+#------------------------------------------------------------------------------*
+
+enum @sourceFileKind {
+  constructor externSourceFile ;
+  constructor lexiqueSourceFile ;
+  constructor guiSourceFile ;
+  constructor optionSourceFile ;
+  constructor syntaxSourceFile ;
+  constructor semanticsSourceFile ;
+  constructor grammarSourceFile ;
+  constructor programSourceFile ;
+}{
+}
+
+#------------------------------------------------------------------------------*
+
+list @projectSourceList {
+  @sourceFileKind mSourceKind ;
+  @lstring mFilePath ;
+  @lstringlist mTargetList ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+

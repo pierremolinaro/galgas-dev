@@ -278,6 +278,25 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @externFunctionDeclaration.enterType # Handles also function declaration
+  ?!@semanticContext ioSemanticContext
+:
+#--- Build signature
+  @signature functionSignature [emptyList] ;
+  foreach mFormalParameterList do
+    @typeMapIndex parameterTypeIndex ;
+    [@typeMapIndex makeRegularIndex !mFormalParameterTypeName !?ioSemanticContext.mTypeMap ?parameterTypeIndex] ;
+    functionSignature += !parameterTypeIndex !mFormalParameterName !mFormalParameterPassingMode ;
+  end foreach ;
+#--- Result type
+  @typeMapIndex resultTypeIndex ;
+  [@typeMapIndex makeRegularIndex !mResultTypeName !?ioSemanticContext.mTypeMap ?resultTypeIndex] ;
+#--- Enter function in routine map
+  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !functionSignature !resultTypeIndex] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listmapDeclaration.enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
 :
@@ -305,6 +324,7 @@ routine buildSemanticContext
   outSemanticContext := [@semanticContext new
     !typeMap
     ![@routineMap emptyMap]
+    ![@functionMap emptyMap]
     ![@descendantClassListMap emptyMap]
   ] ;
 #--- Loop throught all declarations

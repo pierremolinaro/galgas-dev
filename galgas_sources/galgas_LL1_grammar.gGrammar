@@ -30,6 +30,7 @@ grammar galgas_LL1_grammar "LR1" :
   import syntax expression_parser in "expression_parser.gSyntax" ;
   import syntax parser_parser in "parser_parser.gSyntax"  ;
   import syntax semantics_parser in "semantics_parser.gSyntax" ;
+
   root <galgas_start_symbol>
     ?!@M_lexiqueComponents ioLexiqueMapForUse
     ?!@M_semanticsComponents ioSemanticsComponentsMap

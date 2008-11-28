@@ -247,7 +247,7 @@ void cPtr_typeFonctionAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Function '") + mFunctionName + "'") ;
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
-  inHfile << " routine_" << mFunctionName << " (C_Compiler &" ;
+  inHfile << " function_" << mFunctionName << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hc ()) {
     inHfile << ",\n                                " ;
@@ -312,6 +312,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    printf (\"ENTER function_" << mFunctionName << " at %s:%d\\n\", __FILE__, __LINE__) ;\n"
                "  #endif\n" ;
 //--- Déclarer la variable locale utilisée comme résultat
+  inCppFile << "  " ;
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
   inCppFile << " " ;
   mReturnedVar (HERE)->generateCplusPlusName (inCppFile) ;

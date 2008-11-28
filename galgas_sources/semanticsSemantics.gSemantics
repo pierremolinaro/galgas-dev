@@ -674,6 +674,19 @@ map @routineMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  F U N C T I O N   M A P                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @functionMap {
+  @signature mFunctionSignature ;
+  @typeMapIndex mResultTypeIndex ;
+  insert insertKey error message "the '@%K' function has been already declared in %L" ;
+  search searchKey error message "the '@%K' function is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    D E S C E N D A N T    C L A S S    L I S T M A P                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -695,6 +708,7 @@ listmap @descendantClassListMap (@classIndexList) ;
 struct @semanticContext {
   @typeMap mTypeMap ;
   @routineMap mRoutineMap ;
+  @functionMap mFunctionMap ;
   @descendantClassListMap mDescendantClassListMap ;
 }
 

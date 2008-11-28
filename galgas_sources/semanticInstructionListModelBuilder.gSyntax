@@ -110,15 +110,70 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $function$ ;
+  $identifier$ ? @lstring mRoutineName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $->$ ;
+  $type_name$ ?@lstring resultTypeName ;
+  $identifier$ ?@lstring resultVariableName ;
+  $:$ ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  $function$ ;
+  $;$ ;
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@functionDeclaration new
+    !mRoutineName
+    !mFormalParameterList
+    !resultTypeName
+    !resultVariableName
+    !mRoutineInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $extern$ ;
+  $function$ ;
+  $identifier$ ? @lstring mActionName ;
+  @formalParameterList mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $->$ ;
+  $type_name$ ?@lstring resultTypeName ;
+  $identifier$ ?@lstring resultVariableName ;
+  $;$ ;
+  ioSemanticDeclarations.mSemanticDeclarationList += ![@externFunctionDeclaration new
+    !mActionName
+    !mFormalParameterList
+    !resultTypeName
+    !resultVariableName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction> !@semanticInstruction outInstruction :
-  @lstring typeName ;
-  $type_name$ ? typeName ;
-  @lstring variableName ;
-  $identifier$ ? variableName ;
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
   select
     outInstruction := [@localVariableDeclaration new !typeName !variableName] ;
   or

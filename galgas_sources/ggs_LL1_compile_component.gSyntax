@@ -31,11 +31,11 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_template" {
+filewrapper EXfileListTemplateFileWrapper in "../creation_templates/file_list_template" {
  "mke"
 } {
 #--- Project
-  template fileListTemplate "/file_list_template.mke"
+  template EXfileListTemplate "/file_list_template.mke"
     ?@string HAND_CODED_SOURCES_SUB_DIRS
     ?@string GALGAS_SOURCE_LIST
     ?@string HAND_CODED_SOURCE_LIST
@@ -101,11 +101,11 @@ label parse
 
 #------------------------------------------------------------------------------*
 
-listmap @targetFileListMap (@stringlist) ;
+listmap @EXtargetFileListMap (@stringlist) ;
 
 #------------------------------------------------------------------------------*
 
-enum @sourceFileKind {
+enum @EXsourceFileKind {
   constructor externSourceFile ;
   constructor lexiqueSourceFile ;
   constructor guiSourceFile ;
@@ -119,9 +119,9 @@ enum @sourceFileKind {
 
 #------------------------------------------------------------------------------*
 
-map @sourceFileMap {
+map @EXsourceFileMap {
   @string mFullPath ;
-  @sourceFileKind mSourceKind ;
+  @EXsourceFileKind mSourceKind ;
   insert insertKey error message "the '%K' source base name has been already declared in %L" ;
   search searchKey error message "the '%K' source base name is not declared" ;
 }
@@ -141,35 +141,35 @@ rule <galgas_component>
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $project$ ;
-  @sourceFileMap sourceFileMap [emptyMap] ;
-  @targetFileListMap targetFileListMap [emptyMap] ;
+  @EXsourceFileMap sourceFileMap [emptyMap] ;
+  @EXtargetFileListMap targetFileListMap [emptyMap] ;
   repeat
   while
-    @sourceFileKind sourceFileKind ;
+    @EXsourceFileKind sourceFileKind ;
     select
       $extern$ ;
-      sourceFileKind := [@sourceFileKind externSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind externSourceFile] ;
     or
       $gui$ ;
-      sourceFileKind := [@sourceFileKind guiSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind guiSourceFile] ;
     or
       $lexique$ ;
-      sourceFileKind := [@sourceFileKind lexiqueSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind lexiqueSourceFile] ;
     or
       $option$ ;
-      sourceFileKind := [@sourceFileKind optionSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind optionSourceFile] ;
     or
       $semantics$ ;
-      sourceFileKind := [@sourceFileKind semanticsSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind semanticsSourceFile] ;
     or
       $syntax$ ;
-      sourceFileKind := [@sourceFileKind syntaxSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind syntaxSourceFile] ;
     or
       $grammar$ ;
-      sourceFileKind := [@sourceFileKind grammarSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind grammarSourceFile] ;
     or
       $program$ ;
-      sourceFileKind := [@sourceFileKind programSourceFile] ;
+      sourceFileKind := [@EXsourceFileKind programSourceFile] ;
     end select ;
   #--- Source name
     $literal_string$ ?@lstring fileName ;
@@ -190,11 +190,11 @@ rule <galgas_component>
         $,$ ;
       end repeat ;
     end select ;
-    if [option.verbose_output] & (sourceFileKind != [@sourceFileKind externSourceFile]) then
+    if [option.verbose_output] & (sourceFileKind != [@EXsourceFileKind externSourceFile]) then
       message "------ Compile file '" . [fileName string] . "'\n" ;
     end if ;
   #--- Compile file
-    if sourceFileKind != [@sourceFileKind externSourceFile] then
+    if sourceFileKind != [@EXsourceFileKind externSourceFile] then
       grammar galgas_LL1_grammar label compileFile in fileName ;
     end if ;
     $;$ ;
@@ -214,10 +214,10 @@ rule <galgas_component>
     pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
     foreach makefileFiles do
       @string fullPath ;
-      @sourceFileKind sourceKind ;
+      @EXsourceFileKind sourceKind ;
       [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
       @string filePath := [fullPath stringByDeletingLastPathComponent] ;
-      if sourceKind == [@sourceFileKind externSourceFile] then
+      if sourceKind == [@EXsourceFileKind externSourceFile] then
         if [filePath firstCharacterOrNul] == '/' then
           pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
         elsif filePath != "" then
@@ -232,7 +232,7 @@ rule <galgas_component>
     foreach pathSet do
       pathesString .= key ;
     end foreach ;
-    @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
+    @string newFileListContents := [filewrapper EXfileListTemplateFileWrapper.EXfileListTemplate
       !pathesString
       !galgasSourceList
       !externSourceFileList
@@ -328,7 +328,8 @@ rule <galgas_component>
     end if ;
   end if ;
 #--- Handle Xcode Project
-  if ([@uint errorCount] == 0) & [option galgas_cli_options.generate_xcode_project] then
+  @stringlist xcodeFiles := [targetFileListMap listForKey !"xcode"] ;
+  if ([@uint errorCount] == 0) & ([xcodeFiles length] > 0) then
     @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
     #log XcodeProjectDir ;
     @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
@@ -349,43 +350,55 @@ rule <galgas_component>
       @stringset syntaxSourceSet [emptySet] ;
       @stringset grammarSourceSet [emptySet] ;
       @stringset programSourceSet [emptySet] ;
-      @stringlist xcodeFiles := [targetFileListMap listForKey !"xcode"] ;
+    #--- Build intermediate list
+      @string intermediateString := "# Intermediate file for Xcode Project\n" ;
       foreach xcodeFiles do
-        @string fullPath ;
-        @sourceFileKind sourceKind ;
-        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-        switch sourceKind 
-        when externSourceFile :
-          externSourceSet += !fullPath ;
-        when lexiqueSourceFile :
-          scannerSourceSet += !mValue ;
-        when guiSourceFile :
-          guiSourceSet += !mValue ;
-        when optionSourceFile :
-          optionSourceSet += !mValue ;
-        when syntaxSourceFile :
-          syntaxSourceSet += !mValue ;
-        when semanticsSourceFile :
-          semanticsSourceSet += !mValue ;
-        when grammarSourceFile :
-          grammarSourceSet += !mValue ;
-        when programSourceFile :
-          programSourceSet += !mValue ;
-        end switch ;
+        intermediateString .= mValue . "\n" ;
       end foreach ;
-      generateXcodeProject
-        !externSourceSet
-        !guiSourceSet
-        !scannerSourceSet
-        !optionSourceSet
-        !semanticsSourceSet
-        !syntaxSourceSet
-        !grammarSourceSet
-        !programSourceSet
-        ![name stringByDeletingPathExtension] # XCode project base name
-        ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
-        !iconFiles
-      ;
+    #--- Update intermediate file
+      @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
+      @bool written ;
+      [intermediateString writeToFileWhenDifferentContents !intermediateFilePath ?written] ;
+    #--- If intermediate file did change, update Xcode project
+      if written then
+        foreach xcodeFiles do
+          @string fullPath ;
+          @EXsourceFileKind sourceKind ;
+          [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+          switch sourceKind 
+          when externSourceFile :
+            externSourceSet += !fullPath ;
+          when lexiqueSourceFile :
+            scannerSourceSet += !mValue ;
+          when guiSourceFile :
+            guiSourceSet += !mValue ;
+          when optionSourceFile :
+            optionSourceSet += !mValue ;
+          when syntaxSourceFile :
+            syntaxSourceSet += !mValue ;
+          when semanticsSourceFile :
+            semanticsSourceSet += !mValue ;
+          when grammarSourceFile :
+            grammarSourceSet += !mValue ;
+          when programSourceFile :
+            programSourceSet += !mValue ;
+          end switch ;
+        end foreach ;
+      #--- Build intermediate
+        generateXcodeProject
+          !externSourceSet
+          !guiSourceSet
+          !scannerSourceSet
+          !optionSourceSet
+          !semanticsSourceSet
+          !syntaxSourceSet
+          !grammarSourceSet
+          !programSourceSet
+          ![name stringByDeletingPathExtension] # XCode project base name
+          ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
+          !iconFiles
+        ;
+      end if ;
     end if ;
   end if ;
 label importLexique

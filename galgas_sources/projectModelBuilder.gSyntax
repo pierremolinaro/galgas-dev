@@ -20,29 +20,70 @@
 syntax projectModelBuilder :
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
+import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 nonterminal <project_component_start_symbol>
-  !@lstringlist outFileNameList
+  !@projectSourceList outProjectSourceList
   !@location outEndOfSourceFile
 ;
 
 #---------------------------------------------------------------------------*
 
 rule <project_component_start_symbol>
-  !@lstringlist outFileNameList
+  !@projectSourceList outProjectSourceList
   !@location outEndOfSourceFile
 :
   $project$ ;
-  outFileNameList := [@lstringlist emptyList] ;
+  outProjectSourceList := [@projectSourceList emptyList] ;
   repeat
   while
-    $compile$ ;
-    @lstring fileName ;
-    $literal_string$ ? fileName ;
-    outFileNameList += !fileName ;
+    @sourceFileKind sourceFileKind ;
+    select
+      $extern$ ;
+      sourceFileKind := [@sourceFileKind externSourceFile] ;
+    or
+      $gui$ ;
+      sourceFileKind := [@sourceFileKind guiSourceFile] ;
+    or
+      $lexique$ ;
+      sourceFileKind := [@sourceFileKind lexiqueSourceFile] ;
+    or
+      $option$ ;
+      sourceFileKind := [@sourceFileKind optionSourceFile] ;
+    or
+      $semantics$ ;
+      sourceFileKind := [@sourceFileKind semanticsSourceFile] ;
+    or
+      $syntax$ ;
+      sourceFileKind := [@sourceFileKind syntaxSourceFile] ;
+    or
+      $grammar$ ;
+      sourceFileKind := [@sourceFileKind grammarSourceFile] ;
+    or
+      $program$ ;
+      sourceFileKind := [@sourceFileKind programSourceFile] ;
+    end select ;
+    $literal_string$ ?@lstring filePath ;
+  #--- Targets
+    @lstringlist targetList [emptyList] ;
+    select
+    or
+      $:$ ;
+      repeat
+        $identifier$ ? @lstring targetName ;
+        targetList += !targetName ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
     $;$ ;
+    outProjectSourceList +=
+      !sourceFileKind
+      !filePath
+      !targetList
+    ;
   end repeat ;
   $end$ ;
   $project$ ;

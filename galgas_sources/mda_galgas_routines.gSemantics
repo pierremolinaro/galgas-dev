@@ -19,6 +19,7 @@
 
 semantics mda_galgas_routines :
   import "semanticsCompilation.gSemantics" ;
+  import "projectMetamodel.gSemantics" ;
   import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
   import semantics optionSemantics in "optionSemantics.gSemantics" ;
   import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
@@ -30,6 +31,7 @@ semantics mda_galgas_routines :
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics programMetamodel in "programMetamodel.gSemantics" ;
   import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
+  import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
@@ -40,13 +42,14 @@ semantics mda_galgas_routines :
 
 #---------------------------------------------------------------------------*
 
-routine getOutputDirectory
+function outputDirectory
   ??@lstring inSourceFile
-  !@string outOuputDirectory
+->
+  @string outOuputDirectory
 :
   outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
   outOuputDirectory .= "/GALGAS_OUTPUT_TEMP" ;
-end routine ;
+end function ;
 
 #---------------------------------------------------------------------------*
 
@@ -128,6 +131,36 @@ routine performProjectGlobalCheckings
     end foreach ;
   end if ;
 end routine ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   PROJECT                                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+listmap @targetFileListMap (@stringlist) ;
+
+#------------------------------------------------------------------------------*
+
+map @sourceFileMap {
+  @string mFullPath ;
+  @sourceFileKind mSourceKind ;
+  insert insertKey error message "the '%K' source base name has been already declared in %L" ;
+  search searchKey error message "the '%K' source base name is not declared" ;
+}
+
+#------------------------------------------------------------------------------*
+
+filewrapper fileListTemplateFileWrapper in "../creation_templates/file_list_template" {
+ "mke"
+} {
+#--- Project
+  template fileListTemplate "/file_list_template.mke"
+    ?@string HAND_CODED_SOURCES_SUB_DIRS
+    ?@string GALGAS_SOURCE_LIST
+    ?@string HAND_CODED_SOURCE_LIST
+  ;
+}
 
 #---------------------------------------------------------------------------*
 

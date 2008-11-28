@@ -32,7 +32,7 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics guiCompilation in "guiCompilation.gSemantics" ;
   import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
-  import semantics programMetamodel in "programMetamodel.gSemantics" ;
+  import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
@@ -80,9 +80,7 @@ message "a '.ggs' GALGAS source file"
 when . "gOption"
 message "a GALGAS option source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileOptionComponent !inSourceFile !outputDirectory ;
+  compileOptionComponent !inSourceFile !outputDirectory (!inSourceFile) ;
 }
 
 #---------------------------------------------------------------------------*
@@ -90,9 +88,7 @@ message "a GALGAS option source file"
 when . "gLexique"
 message "a GALGAS lexique source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileLexiqueComponent !inSourceFile !outputDirectory ;
+  compileLexiqueComponent !inSourceFile !outputDirectory (!inSourceFile) ;
 }
 
 #---------------------------------------------------------------------------*
@@ -101,11 +97,10 @@ when . "gSemantics"
 message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
   @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
   ] ;
-  compileSemanticsComponent !inSourceFile !outputDirectory !?parsedComponentStruct;
+  compileSemanticsComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -113,8 +108,6 @@ message "a GALGAS semantics source file"
 when . "gSyntax"
 message "a GALGAS syntax source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
   @syntaxComponentRoot syntaxComponentRoot ;
   grammar syntaxSLRgrammar in inSourceFile ? syntaxComponentRoot ;
 }
@@ -124,8 +117,6 @@ message "a GALGAS syntax source file"
 when . "gGrammar"
 message "a GALGAS grammar source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
   @grammarComponentRoot grammarComponentRoot ;
   grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
 }
@@ -135,9 +126,7 @@ message "a GALGAS grammar source file"
 when . "gGui"
 message "a GALGAS GUI source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
-  compileGuiComponent !inSourceFile !outputDirectory ;
+  compileGuiComponent !inSourceFile !outputDirectory (!inSourceFile) ;
 }
 
 #---------------------------------------------------------------------------*
@@ -145,60 +134,213 @@ message "a GALGAS GUI source file"
 when . "gProgram"
 message "a GALGAS program source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
-  getOutputDirectory !inSourceFile ?outputDirectory ;
   @programComponentRoot programComponentRoot ;
   grammar programSLRgrammar in inSourceFile ? programComponentRoot ;
 }
 
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Project                                                             *
+#                                                                              *
 #---------------------------------------------------------------------------*
 
 when . "gProject"
 message "a GALGAS project source file"
 ??@lstring inSourceFile {
-#--- Define output directory
-  @string outputDirectory ;
-  getOutputDirectory
-    !inSourceFile
-    ?outputDirectory
-  ;
+  @string outputDirectory := outputDirectory (!inSourceFile) ;
 #--- Parse metamodel component
-  @lstringlist fileList ;
+  @projectSourceList projectSourceList ;
   @location endOfSourceFile ;
-  grammar projectLL1grammar in inSourceFile ?fileList ?endOfSourceFile ;
-#--- loop for compiling each file
+  grammar projectLL1grammar in inSourceFile ?projectSourceList ?endOfSourceFile ;
+#--- Check target names, file base name uniqueness, and build target file list
+  @sourceFileMap sourceFileMap [emptyMap] ;
+  @targetFileListMap targetFileListMap [emptyMap] ;
+  foreach projectSourceList do
+    @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
+    [!?sourceFileMap insertKey ![@lstring new !baseName ![mFilePath location]] ![mFilePath string] !mSourceKind] ;
+    foreach mTargetList do
+      if ([mValue string] != "makefile") & ([mValue string] != "xcode") then
+        error mValue: "the target name should be \"makefile\" or \"xcode\"" ;
+      else
+        targetFileListMap += ![mValue string] !baseName ;
+      end if ;
+    end foreach ;
+  end foreach ;
+#--- Parset Component struct
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
   ] ;
-  foreach fileList (@lstring kFile) do
-    message "----- Compiling '" . kFile . "'\n" ;
-    @string extension := [kFile pathExtension] ;
+#--- Parse galgas sources
+  foreach projectSourceList do
+    @string extension := [mFilePath pathExtension] ;
     @lstring fullFilePath [new
-      ![inSourceFile stringByDeletingLastPathComponent] . "/" . [kFile string]
-      ![kFile location]
+      ![inSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
+      ![mFilePath location]
     ] ;
-    if extension == "gSemantics" then
-      compileSemanticsComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
-    elsif extension == "gLexique" then
-      compileLexiqueComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gSyntax" then
-#      compileSyntaxComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gOption" then
-      compileOptionComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gGrammar" then
-#      compileGrammarComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gProgram" then
-#      compileProgramComponent !fullFilePath !outputDirectory ;
-    elsif extension == "gGui" then
-      compileGuiComponent !fullFilePath !outputDirectory ;
-    else
-      error kFile:"unhandled extension" ;
+    if mSourceKind != [@sourceFileKind externSourceFile] then
+      message "----- Compiling '" . mFilePath . "'\n" ;
     end if ;
+    switch mSourceKind
+    when externSourceFile :
+    when guiSourceFile :
+      if extension == "gGui" then
+        compileGuiComponent !fullFilePath !outputDirectory ;
+      else
+        error mFilePath:"extension of a gui component should be '.gGui'." ;
+      end if ;
+    when lexiqueSourceFile :
+      if extension == "gLexique" then
+        compileLexiqueComponent !fullFilePath !outputDirectory ;
+      else
+        error mFilePath:"extension of a lexique component should be '.gLexique'." ;
+      end if ;
+    when optionSourceFile :
+      if extension == "gOption" then
+        compileOptionComponent !fullFilePath !outputDirectory ;
+      else
+        error mFilePath:"extension of an option component should be '.gOption'." ;
+      end if ;
+    when semanticsSourceFile :
+      if extension == "gSemantics" then
+        compileSemanticsComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
+      else
+        error mFilePath:"extension of a semantics component should be '.gSemantics'." ;
+      end if ;
+    when syntaxSourceFile :
+      if extension == "gSyntax" then
+#        compileSyntaxComponent !fullFilePath !outputDirectory ;
+      else
+        error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
+      end if ;
+    when grammarSourceFile :
+      if extension == "gGrammar" then
+#        compileGrammarComponent !fullFilePath !outputDirectory ;
+      else
+        error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
+      end if ;
+    when programSourceFile :
+      if extension == "gProgram" then
+#       compileProgramComponent !fullFilePath !outputDirectory ;
+      else
+        error mFilePath:"extension of a program component should be '.gProgram'." ;
+      end if ;
+    end switch ;
   end foreach ;
 #--- Perform global checkings
   if [@uint errorCount] == 0 then
     message "----- Perform global checkings\n" ;
     performProjectGlobalCheckings !parsedComponentStruct !endOfSourceFile ;
+  end if ;
+#--- Update file list for makefile
+  if [@uint errorCount] == 0 then
+    @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
+    if [makefileFiles length] > 0 then
+      @string externSourceFileList := "" ;
+      @string galgasSourceList := "" ;
+      @stringset pathSet [emptySet] ;
+      pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
+      foreach makefileFiles do
+        @string fullPath ;
+        @sourceFileKind sourceKind ;
+        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+        @string filePath := [fullPath stringByDeletingLastPathComponent] ;
+        if sourceKind == [@sourceFileKind externSourceFile] then
+          if [filePath firstCharacterOrNul] == '/' then
+            pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
+          elsif filePath != "" then
+            pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
+          end if ;
+          externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
+        else
+          galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
+        end if ;
+      end foreach ;
+      @string pathesString := "" ;
+      foreach pathSet do
+        pathesString .= key ;
+      end foreach ;
+      @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
+        !pathesString
+        !galgasSourceList
+        !externSourceFileList
+      ] ;
+      @string fileListPath := outputDirectory . "/file_list.mke" ;
+      [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+    end if ;
+  end if ;
+#--- Update Xcode project
+  @stringlist xcodeFiles := [targetFileListMap listForKey !"xcode"] ;
+  if ([@uint errorCount] == 0) & ([xcodeFiles length] > 0) then
+    @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
+    #log XcodeProjectDir ;
+    @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
+    @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !false ![@stringlist listWithValue !"xcodeproj"]] ;
+    #log xcodeProjects ;
+    if [xcodeProjects length] == 0 then
+      message "****** Cannot update Xcode project, no project found in '" . XcodeProjectDir . "' directory. ********\n" ;
+    elsif [xcodeProjects length] > 1 then
+      message "****** Cannot update Xcode project, more than one project exist in '" . XcodeProjectDir . "' directory. ********\n" ;
+    elsif [xcodeProjects length] == 1 then
+      @string name ; [xcodeProjects first ?name] ;
+      @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
+      @stringset externSourceSet [emptySet] ;
+      @stringset guiSourceSet [emptySet] ;
+      @stringset scannerSourceSet [emptySet] ;
+      @stringset optionSourceSet [emptySet] ;
+      @stringset semanticsSourceSet [emptySet] ;
+      @stringset syntaxSourceSet [emptySet] ;
+      @stringset grammarSourceSet [emptySet] ;
+      @stringset programSourceSet [emptySet] ;
+    #--- Build intermediate list
+      @string intermediateString := "# Intermediate file for Xcode Project\n" ;
+      foreach xcodeFiles do
+        intermediateString .= mValue . "\n" ;
+      end foreach ;
+    #--- Update intermediate file
+      @string intermediateFilePath := [inSourceFile string] . "/file_list_for_xcode_project.txt" ;
+      @bool written ;
+      [intermediateString writeToFileWhenDifferentContents !intermediateFilePath ?written] ;
+    #--- If intermediate file did change, update Xcode project
+      if written then
+        foreach xcodeFiles do
+          @string fullPath ;
+          @sourceFileKind sourceKind ;
+          [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+          switch sourceKind 
+          when externSourceFile :
+            externSourceSet += !fullPath ;
+          when lexiqueSourceFile :
+            scannerSourceSet += !mValue ;
+          when guiSourceFile :
+            guiSourceSet += !mValue ;
+          when optionSourceFile :
+            optionSourceSet += !mValue ;
+          when syntaxSourceFile :
+            syntaxSourceSet += !mValue ;
+          when semanticsSourceFile :
+            semanticsSourceSet += !mValue ;
+          when grammarSourceFile :
+            grammarSourceSet += !mValue ;
+          when programSourceFile :
+            programSourceSet += !mValue ;
+          end switch ;
+        end foreach ;
+      #--- Build intermediate
+        generateXcodeProject
+          !externSourceSet
+          !guiSourceSet
+          !scannerSourceSet
+          !optionSourceSet
+          !semanticsSourceSet
+          !syntaxSourceSet
+          !grammarSourceSet
+          !programSourceSet
+          ![name stringByDeletingPathExtension] # XCode project base name
+          ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
+          !iconFiles
+        ;
+      end if ;
+    end if ;
   end if ;
 }
 

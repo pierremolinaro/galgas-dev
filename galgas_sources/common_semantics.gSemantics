@@ -2101,7 +2101,7 @@ list @L_productionRules_ForGrammarComponent {
 map @M_nonTerminalSymbolsForGrammar {
   @M_nonterminalSymbolAltsForGrammar mNonterminalSymbolParametersMap ;
 
-  insert insertKey error message "the '<%K>' non terminal symbol has already been declared" ;
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared in %L" ;
   search searchKey, searchKeyGetID error message "the '<%K>' non terminal symbol is not declared" ;
 }
 
@@ -2109,7 +2109,7 @@ map @M_nonTerminalSymbolsForGrammar {
 
 map @M_unusedNonTerminalSymbolsForGrammar {
   @luint mSymbolIndex ;
-  insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused" ;
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -3458,7 +3458,7 @@ map @M_regularFiles {
 
 map @filewrapperTemplateMap {
   @typeListeAttributsSemantiques mFormalAttributeList ;
-  insert insertKey error message "the '%K' template is already declared" ;
+  insert insertKey error message "the '%K' template is already declared in %L" ;
   search searchKey error message "the '%K' template is not declared" ;
 }
 

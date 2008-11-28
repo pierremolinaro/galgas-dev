@@ -6997,7 +6997,6 @@ label importSemantics
     $identifier$ ?templateName ;
     @lstring templatePath ;
     $literal_string$ ?templatePath ;
-    @typeListeAttributsSemantiques templateArgumentTypesList [emptyList] ;
     @typeListeAttributsSemantiques formalAttributeList [emptyList] ;
     repeat
     while
@@ -7015,11 +7014,9 @@ label importSemantics
       or
         $unused$ ;
       end select ;
-      @lstring parameterName ;
-      $identifier$ ? parameterName ;
-      templateArgumentTypesList += !type_semantique !parameterName ;
-      [!?templateMap insertKey !templateName !formalAttributeList] ;
+      $identifier$ ? * ;
     end repeat ;
+    [!?templateMap insertKey !templateName !formalAttributeList] ;
     $;$ ;
   end repeat ;
 #--- Enter in wrapper map
