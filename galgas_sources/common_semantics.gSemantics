@@ -4123,9 +4123,12 @@ routine handleReaderCall
     when >= @typeGalgasMapType do
       if [inReaderName string] == "hasKey" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        @AC_galgasType keyType := [@typeGalgas_string new] ;
-        outAccessorTypesList += !keyType ![@lstring new !"" !here] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
         outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "locationForKey" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;
+        outReturnedType := [@typeGalgas_location new] ;
       elsif [inReaderName string] == "count" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
