@@ -88,6 +88,7 @@ extern routine generateCocoaComponent
   ??@lstring nomPRGMprincipal
   ??@lstring inGUIkindName
   ??@lstringlist inNIBandClassList
+  ??@textMacroList inTextMacroList
   ??@string inBlockComment
   ??@lstring inLexiqueClassName
   ??@M_optionComponents inOptionsComponents
@@ -207,6 +208,7 @@ rule <galgas_component>
 #--- Assignment list
   @lstringlist nibAndClassList [emptyList] ;
   @labelForPopUpList labelForPopUpList [emptyList] ;
+  @textMacroList textMacroList [emptyList] ;
   @string blockComment := "" ; # Means undefined
   repeat
   while
@@ -231,24 +233,38 @@ rule <galgas_component>
     ;
     $;$ ;
   while
-    @lstring targetName ;
-    $identifier$ ? targetName ;
+    $identifier$ ?@lstring  settingName ;
+    @lstring entryName ;
+    select
+      entryName := [@lstring new !"" !here] ;
+    or
+      $literal_string$ ? entryName ;
+    end select ;
     $:$ ;
-    @lstring sourceExpression ;
-    $literal_string$ ? sourceExpression ;
+    @lstring sourceExpression [new !"" !here] ;
+    repeat
+      $literal_string$ ?@lstring s ;
+      sourceExpression := [@lstring new ![sourceExpression string] . [s string] ![s location]] ;
+    while
+    end repeat ;
     if [sourceExpression string] == "" then
       error sourceExpression: "this string should not be empty" ;
     end if ;
-    if [targetName string] == "nibAndMainClass" then
+    if [settingName string] == "nibAndMainClass" then
       nibAndClassList += !sourceExpression ;
-    elsif [targetName string] == "blockComment" then
+    elsif [settingName string] == "textMacro" then
+      if [entryName string] == "" then
+        error entryName: "this string should not be empty" ;
+      end if ;
+      textMacroList += !entryName !sourceExpression ;
+    elsif [settingName string] == "blockComment" then
       if blockComment != "" then
-        error targetName: "this key is already defined" ;
+        error settingName: "this key is already defined" ;
       else
         blockComment := [sourceExpression string] ;
       end if ;
     else
-      error targetName: "unkown key" ;
+      error settingName: "unkown key" ;
     end if ;
     $;$ ;
   end repeat ;
@@ -257,6 +273,7 @@ rule <galgas_component>
     !guiComponentName
     !guiKindName
     !nibAndClassList
+    !textMacroList
     !blockComment
     !lexiqueClassName
     !optionsComponentsMap
@@ -296,8 +313,15 @@ label importLexique
     $;$ ;
   while
     $identifier$ ? * ;
+    select
+    or
+      $literal_string$ ? * ;
+    end select ;
     $:$ ;
-    $literal_string$ ? * ;
+    repeat
+      $literal_string$ ? * ;
+    while
+    end repeat ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -334,8 +358,15 @@ label importSyntax
     $;$ ;
   while
     $identifier$ ? * ;
+    select
+    or
+      $literal_string$ ? * ;
+    end select ;
     $:$ ;
-    $literal_string$ ? * ;
+    repeat
+      $literal_string$ ? * ;
+    while
+    end repeat ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -373,8 +404,15 @@ label importSemantics
     $;$ ;
   while
     $identifier$ ? * ;
+    select
+    or
+      $literal_string$ ? * ;
+    end select ;
     $:$ ;
-    $literal_string$ ? * ;
+    repeat
+      $literal_string$ ? * ;
+    while
+    end repeat ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -411,8 +449,15 @@ label importGrammarForSemantics
     $;$ ;
   while
     $identifier$ ? * ;
+    select
+    or
+      $literal_string$ ? * ;
+    end select ;
     $:$ ;
-    $literal_string$ ? * ;
+    repeat
+      $literal_string$ ? * ;
+    while
+    end repeat ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -448,8 +493,15 @@ label importOptions
     $;$ ;
   while
     $identifier$ ? * ;
+    select
+    or
+      $literal_string$ ? * ;
+    end select ;
     $:$ ;
-    $literal_string$ ? * ;
+    repeat
+      $literal_string$ ? * ;
+    while
+    end repeat ;
     $;$ ;
   end repeat ;
   $end$ ;

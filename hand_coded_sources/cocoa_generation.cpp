@@ -35,6 +35,7 @@ static void
 generate_mm_file_for_cocoa (C_Compiler & inLexique,
                             const C_String & inCocoaComponentName,
                             const GGS_lstringlist & inNibAndClassList,
+                            const GGS_textMacroList & inTextMacroList,
                             const GGS_string & inBlockComment,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap,
@@ -98,7 +99,36 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "static C_galgas_io * gIOParametersPtr = NULL ;\n"
                     "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
                     "static NSMutableArray * gColorArray ;\n\n" ;
-
+//--- Macros list
+  generatedZone3.appendCppTitleComment ("T E X T    M A C R O S") ;
+  generatedZone3 << "static uint32 kTextMacroCount = " << inTextMacroList.count () << " ;\n\n" ;
+  GGS_textMacroList::cEnumerator currentMacro (inTextMacroList, true) ;
+  generatedZone3 << "static const char * kTextMacroTitle [" << (inTextMacroList.count () + 1) << "] = {\n  " ;
+  while (currentMacro.hc ()) {
+    generatedZone3.appendCLiteralStringConstant (currentMacro._mKey (HERE)) ;
+    generatedZone3 << ",\n  " ;
+    currentMacro.next () ;
+  }
+  generatedZone3 << "NULL\n"
+                    "} ;\n\n" ;
+  generatedZone3 << "static const char * kTextMacroContent [" << (inTextMacroList.count () + 1) << "] = {\n  " ;
+  currentMacro.rewind () ;
+  while (currentMacro.hc ()) {
+    generatedZone3.appendCLiteralStringConstant (currentMacro._mContents (HERE)) ;
+    generatedZone3 << ",\n  " ;
+    currentMacro.next () ;
+  }
+  generatedZone3 << "NULL\n"
+                    "} ;\n\n" ;
+  generatedZone3 << "uint32 getTextMacroCount (void) {\n"
+                    "  return kTextMacroCount ;\n"
+                    "}\n\n" ;
+  generatedZone3 << "const char * getTextMacroTitleAtIndex (const uint32 inIndex) {\n"
+                    "  return kTextMacroTitle [inIndex] ;\n"
+                    "}\n\n" ;
+  generatedZone3 << "const char * getTextMacroContentAtIndex (const uint32 inIndex) {\n"
+                    "  return kTextMacroContent [inIndex] ;\n"
+                    "}\n\n" ;
 //--- Datas for PopUp list
   if (inTerminalSymbolCount > 0) {
     generatedZone3.appendCppTitleComment ("P O P U P    L I S T    D A T A") ;
@@ -353,6 +383,7 @@ routine_generateCocoaComponent (C_Compiler & inLexique,
                                 const GGS_lstring inGUIcomponentName,
                                 const GGS_lstring inGUIkindName,
                                 const GGS_lstringlist inNibAndClassList,
+                                const GGS_textMacroList inTextMacroList,
                                 const GGS_string inBlockComment,
                                 const GGS_lstring inLexiqueComponentName,
                                 const GGS_M_optionComponents inOptionComponentsMap,
@@ -363,6 +394,7 @@ routine_generateCocoaComponent (C_Compiler & inLexique,
     generate_mm_file_for_cocoa (inLexique,
                                 inGUIcomponentName,
                                 inNibAndClassList,
+                                inTextMacroList,
                                 inBlockComment,
                                 inLexiqueComponentName,
                                 inOptionComponentsMap,
