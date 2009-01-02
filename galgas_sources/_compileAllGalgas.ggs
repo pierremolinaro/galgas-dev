@@ -99,22 +99,22 @@ project
 #--- Old style components
   semantics "common_semantics.gSemantics" : makefile ;
   semantics "semantics_semantics.gSemantics" : makefile ;
-  syntax "expression_parser.gSyntax" : makefile ;
-  syntax "semantics_parser.gSyntax" : makefile ;
-  syntax "domain_parser.gSyntax" : makefile ;
+  syntax    "expression_parser.gSyntax" : makefile ;
+  syntax    "semantics_parser.gSyntax" : makefile ;
+  syntax    "domain_parser.gSyntax" : makefile ;
   semantics "parser_semantics.gSemantics" : makefile ;
-  syntax "parser_parser.gSyntax" : makefile ;
+  syntax    "parser_parser.gSyntax" : makefile ;
   semantics "scanner_semantics.gSemantics" : makefile ;
-  syntax "cocoa_parser.gSyntax" : makefile ;
-  gui "cocoaGalgas.gGui" ;
-  syntax "cli_options_parser.gSyntax" : makefile ;
-  syntax "grammar_parser.gSyntax" : makefile ;
-  syntax "scanner_parser.gSyntax" : makefile ;
-  syntax "program_parser.gSyntax" : makefile ;
-  syntax "ggs_LL1_compile_component.gSyntax" : makefile ;
-  syntax "galgas_start.gSyntax" : makefile ;
-  grammar "galgas_LL1_grammar.gGrammar" : makefile ;
-  program "galgas_LL1_prgm.gProgram" : makefile ;
+  syntax    "cocoa_parser.gSyntax" : makefile ;
+  gui       "cocoaGalgas.gGui" ;
+  syntax    "cli_options_parser.gSyntax" : makefile ;
+  syntax    "grammar_parser.gSyntax" : makefile ;
+  syntax    "scanner_parser.gSyntax" : makefile ;
+  syntax    "program_parser.gSyntax" : makefile ;
+  syntax    "ggs_LL1_compile_component.gSyntax" : makefile ;
+  syntax    "galgas_start.gSyntax" : makefile ;
+  grammar   "galgas_LL1_grammar.gGrammar" : makefile ;
+  program   "galgas_LL1_prgm.gProgram" : makefile ;
 
 #--- Hand coded sources
   extern "assignment_instructions.cpp" : makefile ;

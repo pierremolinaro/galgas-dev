@@ -34,6 +34,63 @@ label $nonterminal$, $non_terminal_symbol$ ;
 label $rule$, $non_terminal_symbol$ ;
 label $routine$, $identifier$ ;
 
+textMacro "Class" :
+  "class @aClassName : extends @superClassNane {\n"
+  "  @aType mAnAttribute ;\n"
+  "  override method myMethod !@string outResult :\n"
+  "    outResult := \"a string\" ;\n"
+  "  end method ;\n"
+  "}\n"
+;
+
+textMacro "Enum" :
+  "enum @aType {\n"
+  "  constructor constant1 ;\n"
+  "  constructor constant2 ;\n"
+  "}{\n"
+  "  reader actualArgumentMessage :\n"
+  "    constant1 -> \"message for constant1\" ;\n"
+  "    constant2 -> \"message for constant2\" ;\n"
+  "  end reader ;\n"
+  "}\n"
+;
+
+textMacro "List" :
+  "list @type {\n"
+  "  @aType mAnAttribute ;\n"
+  "}\n"
+;
+
+textMacro "List Map" :
+  "list @type {\n"
+  "  @aType mAnAttribute ;\n"
+  "}\n"
+  "listmap @myListMap (@aList) ;\n"
+;
+
+textMacro "Map" :
+  "map @type {\n"
+  "  @aType mAnAttribute ;\n"
+  "  insert insertKey error message \"the '%K' key is already declared in %L\" ;\n"
+  "  search searchKey error message \"there is no '%K' key\" ;\n"
+  "}\n"
+;
+
+textMacro "Sorted List" :
+  "sortedlist @type {\n"
+  "  @string mFirstAttribute ;\n"
+  "  @bool mSecondAttribute ;\n"
+  "}{\n"
+  "mFirstAttribute >, mSecondAttribute <\n"
+  "}\n"
+;
+
+textMacro "Struct" :
+  "struct @type {\n"
+  "  @aType mAnAttribute ;\n"
+  "}\n"
+;
+
 end gui ;
 
 #--------------------------------------------------------------------------------*
