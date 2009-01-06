@@ -496,7 +496,7 @@ end routine ;
 
 routine append_mm_h_files ?!@stringlist ioList ?@string inBaseName :
   ioList += !inBaseName . ".mm" ;
-  ioList += !inBaseName . ".h"  ;
+  ioList += !inBaseName . ".h" ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -699,18 +699,32 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enter_files_for_sources_build_phase
+routine enter_file_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@string in_fileName
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
+:
+  @lstring key [new !in_fileName !here] ;
+  @Xcode_PBXFileReference_abstract ref ;
+  [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref] ;
+  @Xcode_PBXBuildFile build_file [new !ref] ;
+  ioXcodeProjectDescription.mAllBuildFileList += !build_file ;
+  ioBuildPhaseList += !build_file ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enter_file_list_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringlist in_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   foreach in_fileList do
-    @lstring key [new !mValue !here] ;
-    @Xcode_PBXFileReference_abstract ref ;
-    [[ioXcodeProjectDescription mFileReferenceMap] searchKey !key ?ref] ;
-    @Xcode_PBXBuildFile build_file [new !ref] ;
-    ioXcodeProjectDescription.mAllBuildFileList += !build_file ;
-    ioBuildPhaseList += !build_file ;
+    enter_file_for_sources_build_phase
+      !?ioXcodeProjectDescription
+      !mValue
+      !?ioBuildPhaseList
+    ;
   end foreach ;
 end routine ;
 

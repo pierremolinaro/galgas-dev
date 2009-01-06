@@ -30,71 +30,71 @@ project
   semantics "projectCreation.gSemantics" : makefile ;
 
 #--- Template
-  lexique "galgasTemplateScanner.gLexique" : makefile ;
-  syntax "galgasTemplateParser.gSyntax" : makefile ;
-  grammar "galgasTemplateGrammar.gGrammar" : makefile ;
+  lexique   "galgasTemplateScanner.gLexique" : makefile ;
+  syntax    "galgasTemplateParser.gSyntax" : makefile ;
+  grammar   "galgasTemplateGrammar.gGrammar" : makefile ;
 
 #--- Lexique Component
   semantics "lexiqueMetamodel.gSemantics" : makefile ;
   semantics "lexiqueSemantics.gSemantics" : makefile ;
-  syntax "lexiqueModelBuilder.gSyntax" : makefile ;
-  grammar "lexiqueLL1grammar.gGrammar" : makefile ;
+  syntax    "lexiqueModelBuilder.gSyntax" : makefile ;
+  grammar   "lexiqueLL1grammar.gGrammar" : makefile ;
   semantics "lexiqueCompilation.gSemantics" : makefile ;
 
 #--- Option Component
   semantics "optionSemantics.gSemantics" : makefile ;
   semantics "optionMetamodel.gSemantics" : makefile ;
-  syntax "optionModelBuilder.gSyntax" : makefile ;
-  grammar "optionLL1grammar.gGrammar" : makefile ;
+  syntax    "optionModelBuilder.gSyntax" : makefile ;
+  grammar   "optionLL1grammar.gGrammar" : makefile ;
   semantics "optionCompilation.gSemantics" : makefile ;
 
 #--- Expression
   semantics "expressionMetamodel.gSemantics" : makefile ;
-  syntax "expressionModelBuilder.gSyntax" : makefile ;
+  syntax    "expressionModelBuilder.gSyntax" : makefile ;
 
 #--- Parameters and arguments
   semantics "parameterArgumentMetamodel.gSemantics" : makefile ;
-  syntax "parameterArgumentBuilder.gSyntax" : makefile ;
+  syntax    "parameterArgumentBuilder.gSyntax" : makefile ;
 
 #--- Instructions
   semantics "instructionMetamodel.gSemantics" : makefile ;
-  syntax "semanticInstructionListModelBuilder.gSyntax" : makefile ;
+  syntax    "semanticInstructionListModelBuilder.gSyntax" : makefile ;
 
 #--- Semantics Component
   semantics "semanticsMetamodel.gSemantics" : makefile ;
-  syntax "semanticsModelBuilder.gSyntax" : makefile ;
-  grammar "semanticsSLRgrammar.gGrammar" : makefile ;
+  syntax    "semanticsModelBuilder.gSyntax" : makefile ;
+  grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
   semantics "semanticsSemantics.gSemantics" : makefile ;
   semantics "semanticsCompilation.gSemantics" : makefile ;
 
 #--- Syntax Component
   semantics "syntaxMetamodel.gSemantics" : makefile ;
-  syntax "syntaxModelBuilder.gSyntax" : makefile ;
-  grammar "syntaxSLRgrammar.gGrammar" : makefile ;
+  syntax    "syntaxModelBuilder.gSyntax" : makefile ;
+  grammar   "syntaxSLRgrammar.gGrammar" : makefile ;
 
 #--- Grammar component
   semantics "grammarMetamodel.gSemantics" : makefile ;
-  syntax "grammarModelBuilder.gSyntax" : makefile ;
-  grammar "grammarLL1grammar.gGrammar" : makefile ;
+  syntax    "grammarModelBuilder.gSyntax" : makefile ;
+  grammar   "grammarLL1grammar.gGrammar" : makefile ;
 
 #--- GUI component
   semantics "guiMetamodel.gSemantics" : makefile ;
-  syntax "guiModelBuilder.gSyntax" : makefile ;
-  grammar "guiLL1grammar.gGrammar" : makefile ;
+  syntax    "guiModelBuilder.gSyntax" : makefile ;
+  grammar   "guiLL1grammar.gGrammar" : makefile ;
   semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- Program component
   semantics "programMetamodel.gSemantics" : makefile ;
-  syntax "programModelBuilder.gSyntax" : makefile ;
-  grammar "programSLRgrammar.gGrammar" : makefile ;
+  syntax    "programModelBuilder.gSyntax" : makefile ;
+  grammar   "programSLRgrammar.gGrammar" : makefile ;
 
 #--- Project component
   semantics "projectMetamodel.gSemantics" : makefile ;
   semantics "mda_galgas_routines.gSemantics" ;
   semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
   semantics "XcodeProjectGeneration.gSemantics" : makefile ;
-  syntax "projectModelBuilder.gSyntax" : makefile ;
-  grammar "projectLL1grammar.gGrammar" : makefile ;
+  syntax    "projectModelBuilder.gSyntax" : makefile ;
+  grammar   "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Old style components
   semantics "common_semantics.gSemantics" : makefile ;

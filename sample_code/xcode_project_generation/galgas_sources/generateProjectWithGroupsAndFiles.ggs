@@ -22,6 +22,7 @@ routine generateProjectWithGroupsAndFiles :
   enter_file_in_group !?XcodeProjectDescription !"azerty/toto.cpp" !?groupContents ;
   @XcodeObjectReferenceList subGroupContents [emptyList] ;
   enter_file_in_group !?XcodeProjectDescription !"qwerty/foo.cpp" !?subGroupContents ;
+  enter_nib_in_group !?XcodeProjectDescription !"English.lproj" !"MainMenu.nib" !?groupContents ;
   enter_subgroup
     !?XcodeProjectDescription
     !"A Sub Group" # The sub-group name, as it appears in Project Window

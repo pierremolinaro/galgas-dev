@@ -3,13 +3,14 @@ project
   semantics "baseForXcodeProjectGeneration.ggs" : makefile, xcode ;
   semantics "generateEmptyProject.ggs" : makefile, xcode ;
   semantics "generateProjectWithGroupsAndFiles.ggs" : makefile, xcode ;
+  semantics "generateCommandLineToolTarget.ggs" : makefile, xcode ;
 #---
-  lexique "xcode_project_generation_lexique.ggs" : makefile, xcode ;
-  option "xcode_project_generation_options.ggs" : makefile, xcode ;
+  lexique   "xcode_project_generation_lexique.ggs" : makefile, xcode ;
+  option    "xcode_project_generation_options.ggs" : makefile, xcode ;
   semantics "xcode_project_generation_semantics.ggs" : makefile, xcode ;
-  syntax "xcode_project_generation_syntax.ggs" : makefile, xcode ;
-  grammar "xcode_project_generation_grammar.ggs" : makefile, xcode ;
-  gui "xcode_project_generation_cocoa.ggs" : xcode ;
-  program "xcode_project_generation_program.ggs" : makefile, xcode ;
-  extern "xcode_project_generation_computations.cpp" : makefile, xcode ;
+  syntax    "xcode_project_generation_syntax.ggs" : makefile, xcode ;
+  grammar   "xcode_project_generation_grammar.ggs" : makefile, xcode ;
+  gui       "xcode_project_generation_cocoa.ggs" : xcode ;
+  program   "xcode_project_generation_program.ggs" : makefile, xcode ;
+  extern    "xcode_project_generation_computations.cpp" : makefile, xcode ;
 end project ;

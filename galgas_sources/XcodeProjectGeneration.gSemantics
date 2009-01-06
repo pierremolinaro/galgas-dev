@@ -40,7 +40,7 @@ routine build_LIBPM_BDD_source_files_for_sources_build_phase
   fileList += !"C_BDD.cpp" ;
   fileList += !"C_Display_BDD.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -125,7 +125,7 @@ routine build_LIBPM_GALGAS_files_for_sources_build_phase
     fileList += !mValue . ".cpp" ;
   end foreach ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -218,7 +218,7 @@ routine build_LIBPM_FILES_files_for_sources_build_phase
   fileList += !"C_HTML_FileWrite.cpp" ;
   fileList += !"C_TextFileWrite.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -259,7 +259,7 @@ routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   fileList += !"F_Analyze_CLI_Options.cpp" ;
   fileList += !"F_main.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -324,7 +324,7 @@ routine build_LIBPM_CACHE_files_for_sources_build_phase
   fileList += !"C_PrimeCache2.cpp" ;
   fileList += !"C_PrimeCache3.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -392,7 +392,7 @@ routine build_LIBPM_UNICODE_files_for_sources_build_phase
   fileList += !"unicode_character.cpp" ;
   fileList += !"unicode_string_routines.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -440,7 +440,7 @@ routine build_LIBPM_UTILITIES_files_for_sources_build_phase
   fileList += !"MF_Assert.cpp" ;
   fileList += !"MF_MemoryControl.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -478,7 +478,7 @@ routine build_LIBPM_STREAMS_files_for_sources_build_phase
   fileList += !"AC_OutputStream.cpp" ;
   fileList += !"C_ConsoleOut.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -512,7 +512,7 @@ routine build_LIBPM_TIME_files_for_sources_build_phase
   fileList += !"C_DateTime.cpp" ;
   fileList += !"C_Timer.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -550,7 +550,7 @@ routine build_LIBPM_TINYXML_files_for_sources_build_phase
   fileList += !"tinyxmlerror.cpp" ;
   fileList += !"tinyxmlparser.cpp" ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -569,7 +569,7 @@ routine build_GENERATED_BY_GALGAS_files_for_sources_build_phase
     fileList += !key . ".cpp" ;
   end foreach ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -614,7 +614,7 @@ routine build_HAND_CODED_source_files_for_sources_tool_build_phase
     end if ;
   end foreach ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -636,7 +636,7 @@ routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
     end if ;
   end foreach ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
@@ -799,7 +799,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
     fileList += !key . ".cpp" ;
   end foreach ;
 #---
-  enter_files_for_sources_build_phase
+  enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !fileList
    !?ioBuildPhaseList
