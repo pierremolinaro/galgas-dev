@@ -34,7 +34,7 @@ label $nonterminal$, $non_terminal_symbol$ ;
 label $rule$, $non_terminal_symbol$ ;
 label $routine$, $identifier$ ;
 
-textMacro "Class" :
+textMacro "Types/Class" :
   "class @aClassName : extends @superClassNane {\n"
   "  @aType mAnAttribute ;\n"
   "  override method myMethod !@string outResult :\n"
@@ -43,7 +43,7 @@ textMacro "Class" :
   "}\n"
 ;
 
-textMacro "Enum" :
+textMacro "Types/Enum" :
   "enum @aType {\n"
   "  constructor constant1 ;\n"
   "  constructor constant2 ;\n"
@@ -55,20 +55,20 @@ textMacro "Enum" :
   "}\n"
 ;
 
-textMacro "List" :
+textMacro "Types/List" :
   "list @type {\n"
   "  @aType mAnAttribute ;\n"
   "}\n"
 ;
 
-textMacro "List Map" :
+textMacro "Types/List Map" :
   "list @type {\n"
   "  @aType mAnAttribute ;\n"
   "}\n"
   "listmap @myListMap (@aList) ;\n"
 ;
 
-textMacro "Map" :
+textMacro "Types/Map" :
   "map @type {\n"
   "  @aType mAnAttribute ;\n"
   "  insert insertKey error message \"the '%K' key is already declared in %L\" ;\n"
@@ -76,7 +76,7 @@ textMacro "Map" :
   "}\n"
 ;
 
-textMacro "Sorted List" :
+textMacro "Types/Sorted List" :
   "sortedlist @type {\n"
   "  @string mFirstAttribute ;\n"
   "  @bool mSecondAttribute ;\n"
@@ -85,7 +85,7 @@ textMacro "Sorted List" :
   "}\n"
 ;
 
-textMacro "Struct" :
+textMacro "Types/Struct" :
   "struct @type {\n"
   "  @aType mAnAttribute ;\n"
   "}\n"
