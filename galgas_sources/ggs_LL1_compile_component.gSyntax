@@ -328,6 +328,7 @@ rule <galgas_component>
     end if ;
   end if ;
 #--- Handle Xcode Project
+  if not [option galgas_cli_options.doNotGenerateXcodeProject] then
   @stringlist xcodeFiles := [targetFileListMap listForKey !"xcode"] ;
   if ([@uint errorCount] == 0) & ([xcodeFiles length] > 0) then
     @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
@@ -400,6 +401,7 @@ rule <galgas_component>
         ;
       end if ;
     end if ;
+  end if ;
   end if ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse

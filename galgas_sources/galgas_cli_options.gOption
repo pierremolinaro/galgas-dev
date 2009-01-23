@@ -17,6 +17,7 @@
 #---------------------------------------------------------------------------*
 
 option galgas_cli_options :
+  @bool doNotGenerateXcodeProject : '\0', "do-not-generate-xcode-project" -> "Prevent Generation of the corresponding Xcode project" ;
   @bool warnsShadows         : '\0', "shadow" -> "Warn on declarations that shadow a previously declared object" ;
   @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
   @bool generate_debug       : '\0', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols" ;
