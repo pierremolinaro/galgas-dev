@@ -7603,6 +7603,7 @@ nt_program_component_start_symbol_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void programSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
+                                const GGS_string & inDependancyFilePath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring _inFileName,
                                 GGS_programComponentRoot & parameter_1
@@ -7612,7 +7613,7 @@ void programSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
     : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;
   if (sourceFileName.fileExists ()) {
     galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (& _inCompiler, inDependancyFilePath, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
     if (scanner_->sourceText () != NULL) {
       scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;
       const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,
@@ -7648,7 +7649,7 @@ void programSLRgrammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
                                 GGS_programComponentRoot & parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
   galgas_scanner * scanner_ = NULL ;
-  macroMyNew (scanner_, galgas_scanner (_inCompiler.ioParametersPtr (), _inSourceString, "Error when parsing dynamic string" COMMA_HERE)) ;
+  macroMyNew (scanner_, galgas_scanner (& _inCompiler, _inCompiler.ioParametersPtr (), _inSourceString, "Error when parsing dynamic string" COMMA_HERE)) ;
   if (scanner_->sourceText () != NULL) {
     scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;
     const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,

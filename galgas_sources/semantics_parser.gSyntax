@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS semantics component parser definition                             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -408,6 +408,7 @@ nonterminal <parse_parameters_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@bool outHasInputParameter
 label parse
 ;
 
@@ -823,7 +824,7 @@ routine parse_semantics_component_for_importing
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
-  grammar galgas_LL1_grammar label importSemantics in inFileName
+  grammar galgas_LL1_grammar label importSemantics in inFileName ([inFileName string] . ".dep")
     !?ioSemanticsMapForUse
     !?ioSemanticContext
     !?ioImportedSemanticsComponentNameSet
@@ -3228,6 +3229,7 @@ rule <actual_parameters_list>
     !inOptionsComponentsMapForUse
     !inSemanticContext
     !ioComponentSemanticsEntitiesMap
+    ?*
   ;
 #--- Verifier la correction des arguments effectifs
   verifierCompatibiliteArgEffectifsSignature
@@ -3251,10 +3253,12 @@ rule <parse_parameters_list>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  !@bool outHasInputParameter
 :
   outExpressionList := [@typeExpressionList emptyList] ;
   listeTypesParametresEffectifs := [@L_actualParametersSignature emptyList] ;
   @stringset exclusiveVariables [emptySet] ;
+  outHasInputParameter := false ;
   repeat
   while
     $!$ ;
@@ -3302,6 +3306,7 @@ rule <parse_parameters_list>
       else
          exclusiveVariables += ![nomArgument string] ;
       end if ;
+      outHasInputParameter := true ;
     end select ;
   while
     $!?$ ;
@@ -4479,6 +4484,9 @@ rule <semantic_instruction>
 #--- Parse file name
   @bool sourceIsFile ;
   @typeExpression sourceExpression ;
+  @typeExpression depFileExpression ;
+  @bool hasDependancyFile := false ;
+  @location dependancyFileDefinitionLocation := here ;
   select
     $in$ ;
     sourceIsFile := true ;
@@ -4492,6 +4500,24 @@ rule <semantic_instruction>
       ?sourceExpressionType
     ;
     @typeGalgas_lstring gs := (cast sourceExpressionType if >= @typeGalgas_lstring else error here) ;
+    select
+      depFileExpression := [@typeLiteralStringExpression new ![@stringlist listWithValue !""]] ;
+    or
+      $($ ;
+      @AC_galgasType depFileExpressionType ;
+      <expression>
+        !ioComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !inSemanticContext
+        !?ioVariablesMap
+        ?depFileExpression
+        ?depFileExpressionType
+      ;
+      dependancyFileDefinitionLocation := here ;
+      @typeGalgas_string gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
+      $)$ ;
+      hasDependancyFile := true ;
+    end select ;
   or
     $on$ ;
     sourceIsFile := false ;
@@ -4505,10 +4531,12 @@ rule <semantic_instruction>
       ?sourceExpressionType
     ;
     @typeGalgas_string gs := (cast sourceExpressionType if >= @typeGalgas_string else error here) ;
+    depFileExpression := [@typeLiteralStringExpression new ![@stringlist listWithValue !""]] ;
   end select ;
 #--- Analyse des arguments effectifs
   @typeExpressionList expressionsList ;
   @L_actualParametersSignature listeTypesParametresEffectifs ;
+  @bool hasInputParameter ;
   <parse_parameters_list>
     ?listeTypesParametresEffectifs
     ?expressionsList
@@ -4516,7 +4544,12 @@ rule <semantic_instruction>
     !inOptionsComponentsMapForUse
     !inSemanticContext
     !ioComponentSemanticsEntitiesMap
+    ?hasInputParameter
   ;
+#--- Check if there is dependancy file, there is no input parameter
+  if (hasDependancyFile & hasInputParameter) then
+    error dependancyFileDefinitionLocation:"a dependancy file reference requires there is no input parameter" ;
+  end if ;
 #--- Look for grammar
   @AC_semanticsEntity e  ;
   [ioComponentSemanticsEntitiesMap searchKey !grammarName ?e] ;
@@ -4556,6 +4589,7 @@ rule <semantic_instruction>
     !altName
     !lexiqueClassName
     !sentStringName
+    !depFileExpression
   ] ;
   ioInstructionList += !instruction ;
   $;$ ;

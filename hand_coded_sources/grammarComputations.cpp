@@ -229,6 +229,8 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                           "void _performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
+                          "const GGS_string & _inDependancyString"
+                          ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring inFileName" ;

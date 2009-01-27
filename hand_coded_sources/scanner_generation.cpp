@@ -1204,10 +1204,13 @@ generate_scanner_header_file (C_Compiler & inLexique,
   generatedZone2.appendCppTitleComment ("Lexical scanner class") ;
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n"
                     "//--- Constructors\n"
-                    "  public : " << inLexiqueName << " (C_galgas_io * inParametersPtr,\n"
+                    "  public : " << inLexiqueName << " (C_Compiler * inCallerCompiler,\n"
+                    "                       const GGS_string & inDependancyFilePath,\n"
+                    "                       C_galgas_io * inParametersPtr,\n"
                     "                       const C_String & inSourceFileName\n"
                     "                       COMMA_LOCATION_ARGS) ;\n\n"
-                    "  public : " << inLexiqueName << " (C_galgas_io * inParametersPtr,\n"
+                    "  public : " << inLexiqueName << " (C_Compiler * inCallerCompiler,\n"
+                    "                       C_galgas_io * inParametersPtr,\n"
                     "                       const C_String & inSourceString,\n"
                     "                       const C_String & inStringForError\n"
                     "                       COMMA_LOCATION_ARGS) ;\n\n"
@@ -1397,10 +1400,12 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
-                 << " (C_galgas_io * inParametersPtr,\n"
+                 << " (C_Compiler * inCallerCompiler,\n"
+                    "                const GGS_string & inDependancyFilePath,\n"
+                    "                C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceFileName\n"
                     "                COMMA_LOCATION_ARGS) :\n"
-                    "C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE)" ;
+                    "C_Lexique (inCallerCompiler, inDependancyFilePath, inParametersPtr, inSourceFileName COMMA_THERE)" ;
   if (inIsTemplate) {
     generatedZone2 << ",\n"
                       "_mMatchedTemplateDelimiterIndex (-1)" ;
@@ -1409,11 +1414,12 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "}\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
-                 << " (C_galgas_io * inParametersPtr,\n"
+                 << " (C_Compiler * inCallerCompiler,\n"
+                    "                C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceString,\n"
                     "                const C_String & inStringForError\n"
                     "                COMMA_LOCATION_ARGS) :\n"
-                    "C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE)" ;
+                    "C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE)" ;
   if (inIsTemplate) {
     generatedZone2 << ",\n"
                       "_mMatchedTemplateDelimiterIndex (-1)" ;

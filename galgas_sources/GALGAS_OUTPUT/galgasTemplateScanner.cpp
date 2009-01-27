@@ -86,21 +86,24 @@ floatValue () {
 //---------------------------------------------------------------------------*
 
 galgasTemplateScanner::
-galgasTemplateScanner (C_galgas_io * inParametersPtr,
+galgasTemplateScanner (C_Compiler * inCallerCompiler,
+                const GGS_string & inDependancyFilePath,
+                C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inParametersPtr, inSourceFileName COMMA_THERE),
+C_Lexique (inCallerCompiler, inDependancyFilePath, inParametersPtr, inSourceFileName COMMA_THERE),
 _mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //---------------------------------------------------------------------------*
 
 galgasTemplateScanner::
-galgasTemplateScanner (C_galgas_io * inParametersPtr,
+galgasTemplateScanner (C_Compiler * inCallerCompiler,
+                C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inParametersPtr, inSourceString, inStringForError COMMA_THERE),
+C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE),
 _mMatchedTemplateDelimiterIndex (-1) {
 }
 

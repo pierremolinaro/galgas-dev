@@ -566,6 +566,7 @@ void routine_parseSemanticComponent (C_Compiler & _inLexique,
     }
   }else{
     semanticsSLRgrammar::_performSourceFileParsing_ (_inLexique,
+                                    "",
                                     NULL,
                                     var_cas_inSourceFile,
                                     var_cas_outSemanticsComponentRoot

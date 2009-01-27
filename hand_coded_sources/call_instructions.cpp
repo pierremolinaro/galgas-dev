@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate call instructions                                               *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -378,6 +378,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
               << mAltSymbol
               << " (_inLexique"
                  ",\n                                " ;
+    if (mSourceIsFile.boolValue ()) {
+      mDependancyFileExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << ",\n                                " ;
+    }
     if (dynamic_cast <cPtr_typeNullName *> (mSentStringName (HERE)) != NULL) {
       ioCppFile << "NULL" ;
     }else{

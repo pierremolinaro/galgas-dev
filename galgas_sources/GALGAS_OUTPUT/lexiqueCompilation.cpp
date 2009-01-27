@@ -63,7 +63,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
   #endif
   GGS_lexiqueComponentRoot  var_cas_lexiqueComponentRoot ;
   lexiqueLL1grammar::_performSourceFileParsing_ (_inLexique,
-                                  NULL,
+                                  "", NULL,
                                   var_cas_inSourceFile,
                                   var_cas_lexiqueComponentRoot
                                   COMMA_SOURCE_FILE_AT_LINE (33)) ;

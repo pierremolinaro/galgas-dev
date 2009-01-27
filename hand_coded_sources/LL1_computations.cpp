@@ -2,7 +2,7 @@
 //                                                                           *
 //  Routines for checking LL(1) condition                                    *
 //                                                                           *
-//  Copyright (C) 1994, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1994, ..., 2009 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -583,6 +583,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
+                          "const GGS_string & _inDependancyString"
+                          ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring _inFileName" ;
@@ -602,7 +604,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler, _inDependancyString, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "      const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
@@ -678,7 +680,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler, _inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                   gFirstProductionIndexes, gDecision, gDecisionIndexes, "

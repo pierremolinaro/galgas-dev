@@ -165,6 +165,7 @@ pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (_inLexique, param
 //---------------------------------------------------------------------------*
 
 void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
+                                const GGS_string & inDependancyFilePath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring _inFileName,
                                 GGS_typeVariablesMap & parameter_1,
@@ -176,7 +177,7 @@ void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler
     : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;
   if (sourceFileName.fileExists ()) {
     galgasTemplateScanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgasTemplateScanner (_inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
+    macroMyNew (scanner_, galgasTemplateScanner (& _inCompiler, inDependancyFilePath, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
     if (scanner_->sourceText () != NULL) {
       scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;
       const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
@@ -213,7 +214,7 @@ void galgasTemplateGrammar::_performSourceStringParsing_ (C_Compiler & _inCompil
                                 GGS_templateInstructionList & parameter_3
                                 COMMA_UNUSED_LOCATION_ARGS) {
   galgasTemplateScanner * scanner_ = NULL ;
-  macroMyNew (scanner_, galgasTemplateScanner (_inCompiler.ioParametersPtr (), _inSourceString, "Error when parsing dynamic string" COMMA_HERE)) ;
+  macroMyNew (scanner_, galgasTemplateScanner (& _inCompiler, _inCompiler.ioParametersPtr (), _inSourceString, "Error when parsing dynamic string" COMMA_HERE)) ;
   scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;
   const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, 8) ;
