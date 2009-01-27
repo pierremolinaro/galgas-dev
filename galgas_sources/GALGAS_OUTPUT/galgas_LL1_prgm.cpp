@@ -186,7 +186,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             GGS_EXsemanticContext var_cas_semanticContext ;
             var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
             galgas_LL1_grammar::_performSourceFileParsing_ (_inLexique,
-                                            NULL,
+                                            "", NULL,
                                             var_cas_inSourceFile,
                                             var_cas_lexiqueMapForUse,
                                             var_cas_semanticsComponentsMap,

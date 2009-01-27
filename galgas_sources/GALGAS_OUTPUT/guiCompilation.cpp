@@ -62,7 +62,7 @@ void routine_compileGuiComponent (C_Compiler & _inLexique,
   #endif
   GGS_guiComponentRoot  var_cas_guiComponentRoot ;
   guiLL1grammar::_performSourceFileParsing_ (_inLexique,
-                                  NULL,
+                                  "", NULL,
                                   var_cas_inSourceFile,
                                   var_cas_guiComponentRoot
                                   COMMA_SOURCE_FILE_AT_LINE (31)) ;

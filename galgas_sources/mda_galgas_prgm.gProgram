@@ -65,7 +65,7 @@ message "a '.ggs' GALGAS source file"
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
   ] ;
-  grammar galgas_LL1_grammar in inSourceFile
+  grammar galgas_LL1_grammar in inSourceFile ([inSourceFile string] . ".dep")
     !?lexiqueMapForUse
     !?semanticsComponentsMap
     !?syntaxComponentsMap

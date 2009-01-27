@@ -105,6 +105,7 @@ class semanticsSLRgrammar : public expressionModelBuilder,
   public : virtual void nt_semantics_component_start_symbol_ (galgas_scanner &,
                                 GGS_semanticsComponentRoot &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
+                                const GGS_string & inDependancyFilePath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_semanticsComponentRoot &

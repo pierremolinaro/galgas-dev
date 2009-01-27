@@ -725,7 +725,7 @@ void routine_compileOptionComponent (C_Compiler & _inLexique,
   #endif
   GGS_optionComponentRoot  var_cas_optionComponentRoot ;
   optionLL1grammar::_performSourceFileParsing_ (_inLexique,
-                                  NULL,
+                                  "", NULL,
                                   var_cas_inSourceFile,
                                   var_cas_optionComponentRoot
                                   COMMA_SOURCE_FILE_AT_LINE (479)) ;
