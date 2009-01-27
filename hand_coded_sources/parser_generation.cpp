@@ -150,7 +150,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     inHfile << ") ;\n\n" ;
     generateSelectAndRepeatPrototypesForList (currentAltForNonTerminal._mAllInstructionsList (HERE),
                                               inHfile,
-                                              mLexiqueClassName,
+                                              mLexiqueClassName.string (),
                                               inTargetFileName,
                                               ioPrototypeIndex,
                                               prototypesForSelectedAndRepeatNotDeclared) ;
@@ -229,7 +229,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\"" << currentAltForNonTerminal._key (HERE) << "\", " ;
       }
-      inCppFile.appendCLiteralStringConstant (mProductionTagName) ;
+      inCppFile.appendCLiteralStringConstant (mProductionTagName.string ()) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }
@@ -282,7 +282,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\"" << firstLabelDef._key (HERE) << "\", " ;
       }
-      inCppFile.appendCLiteralStringConstant (mProductionTagName) ;
+      inCppFile.appendCLiteralStringConstant (mProductionTagName.string ()) ;
       inCppFile << ") ;\n"
                    "  #endif\n" ;
     }

@@ -1368,7 +1368,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler, _inDependancyString, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inDependancyString, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->sourceText () != NULL) {\n"
                           "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "      const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
@@ -1442,7 +1442,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  macroMyNew (scanner_, " << inLexiqueName << " (_inCompiler, _inCompiler.ioParametersPtr (), _inSourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "  macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
                           "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                    gActionTableIndex, gSuccessorTable,\n"

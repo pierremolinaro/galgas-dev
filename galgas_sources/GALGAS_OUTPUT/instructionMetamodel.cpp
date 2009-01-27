@@ -11178,7 +11178,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_abstractCategoryMethodList result ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey) ; 
+    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; 
     if (nodePtr == NULL) {
       result = GGS_abstractCategoryMethodList::constructor_emptyList () ;
     }else{
@@ -11831,7 +11831,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_categoryMethodList result ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey) ; 
+    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; 
     if (nodePtr == NULL) {
       result = GGS_categoryMethodList::constructor_emptyList () ;
     }else{
@@ -12484,7 +12484,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_overridingCategoryMethodList result ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey) ; 
+    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; 
     if (nodePtr == NULL) {
       result = GGS_overridingCategoryMethodList::constructor_emptyList () ;
     }else{

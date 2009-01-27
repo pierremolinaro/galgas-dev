@@ -1462,7 +1462,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     generateTerminalSymbolCppName (currentTerminal._key (HERE), constanteCname) ;
     generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal._key (HERE) << "$' :\n"
                       "static const char * " << constanteCname << " = " ;
-    generatedZone2.appendCLiteralStringConstant (currentTerminal._mErrorMessage (HERE)) ;
+    generatedZone2.appendCLiteralStringConstant (currentTerminal._mErrorMessage (HERE).string ()) ;
     generatedZone2 << " ;\n\n" ;
     errorMessageList << ",\n       gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), errorMessageList) ;
@@ -1505,7 +1505,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                      "  const char * kStylesArray [" << (inStylesList.count () + 1) << "] = {" ;
   GGS_styleList::cEnumerator style (inStylesList, true) ;
   while (style.hc ()) {
-    generatedZone2.appendCLiteralStringConstant (style._mTitle (HERE)) ;
+    generatedZone2.appendCLiteralStringConstant (style._mTitle (HERE).string ()) ;
     generatedZone2 << ", " ;
     style.next () ;
   }
@@ -1517,7 +1517,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                      "  const char * kStylesArray [" << (inStylesList.count () + 1) << "] = {" ;
   style.rewind () ;
   while (style.hc ()) {
-    generatedZone2.appendCLiteralStringConstant (style._mStyleName (HERE)) ;
+    generatedZone2.appendCLiteralStringConstant (style._mStyleName (HERE).string ()) ;
     generatedZone2 << ", " ;
     style.next () ;
   }

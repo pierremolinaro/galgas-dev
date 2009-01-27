@@ -139,7 +139,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 void cPtr_templateInstructionString::
 generateTemplateInstruction (AC_OutputStream & inCppFile) const {
   inCppFile << "  _result << " ;
-  inCppFile.appendCLiteralStringConstant (mTemplateString, 240) ;
+  inCppFile.appendCLiteralStringConstant (mTemplateString.string (), 240) ;
   inCppFile << " ;\n" ;
 }
 

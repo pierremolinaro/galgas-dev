@@ -108,7 +108,7 @@ reader_hasKey (C_Compiler & /* inLexique */,
     cElement * current = _mRoot ;
     while ((current != NULL) && ! found) {
       macroValidPointer (current) ;
-      const sint32 comparaison = current->mKey.compareStringByLength (inKey) ;
+      const sint32 comparaison = current->mKey.string ().compareStringByLength (inKey.string ()) ;
       if (comparaison > 0) {
         current = current->mInfPtr ;
       }else if (comparaison < 0) {

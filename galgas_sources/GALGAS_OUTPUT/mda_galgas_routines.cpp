@@ -66,7 +66,7 @@ GGS_string function_outputDirectory (C_Compiler & _inLexique,
   #endif
   GGS_string var_cas_outOuputDirectory ;
   var_cas_outOuputDirectory = var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (50)) ;
-  var_cas_outOuputDirectory.writeString ("/GALGAS_OUTPUT_TEMP") ;
+  var_cas_outOuputDirectory.appendCstring ("/GALGAS_OUTPUT_TEMP") ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE function_outputDirectory\n") ;
   #endif
@@ -317,7 +317,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringlist result ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey) ; 
+    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; 
     if (nodePtr == NULL) {
       result = GGS_stringlist::constructor_emptyList () ;
     }else{
@@ -543,7 +543,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -574,7 +574,7 @@ modifier_setMFullPathForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -596,7 +596,7 @@ modifier_setMSourceKindForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {

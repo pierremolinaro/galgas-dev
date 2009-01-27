@@ -787,11 +787,11 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (44))) ;
-  var_cas_outString.writeString (" = {isa = PBXFileReference; explicitFileType = \"compiled.mach-o.executable\"; includeInIndex = 0; path = ") ;
+  var_cas_outString.appendCstring (" = {isa = PBXFileReference; explicitFileType = \"compiled.mach-o.executable\"; includeInIndex = 0; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = BUILT_PRODUCTS_DIR; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = BUILT_PRODUCTS_DIR; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -949,11 +949,11 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_Application::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (59))) ;
-  var_cas_outString.writeString (" = {isa = PBXFileReference; explicitFileType = \"compiled.wrapper.application\"; includeInIndex = 0; path = ") ;
+  var_cas_outString.appendCstring (" = {isa = PBXFileReference; explicitFileType = \"compiled.wrapper.application\"; includeInIndex = 0; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = BUILT_PRODUCTS_DIR; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = BUILT_PRODUCTS_DIR; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1111,15 +1111,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_cppSourceFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (73))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (74))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (75))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1269,15 +1269,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_hSourceFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (84))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (85))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (86))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1427,15 +1427,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_pchSourceFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (95))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (96))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pch; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pch; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (97))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1585,15 +1585,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_mSourceFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (106))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (107))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.obj; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (108))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1743,15 +1743,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_mmSourceFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (117))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (118))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (119))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1901,15 +1901,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_tiffFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (128))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (129))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (130))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2059,15 +2059,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_pngFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (139))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (140))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (141))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2217,15 +2217,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_plistFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (150))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (151))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (152))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2375,15 +2375,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_frameworkFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (161))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (162))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (163))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2533,15 +2533,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_icnsFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (172))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (173))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (174))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFileName) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2694,15 +2694,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_Xcode_PBXFileReference_nibFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (184))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (185))) ;
-  var_cas_outString.writeString (" */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ") ;
+  var_cas_outString.appendCstring (" */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ") ;
   var_cas_outString._dotAssign_operation (mFileName.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (186))) ;
-  var_cas_outString.writeString ("; path = ") ;
+  var_cas_outString.appendCstring ("; path = ") ;
   var_cas_outString._dotAssign_operation (mFilePath) ;
-  var_cas_outString.writeString ("; sourceTree = \"<group>\"; };\n") ;
+  var_cas_outString.appendCstring ("; sourceTree = \"<group>\"; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2982,7 +2982,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -3011,7 +3011,7 @@ modifier_setMFileReferenceForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -3183,14 +3183,14 @@ GGS_string cPtr_Xcode_PBXBuildFile::reader_PBXBuildFileKey (C_Compiler & _inLexi
 void cPtr_Xcode_PBXBuildFile::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXBuildFileKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (214))) ;
-  var_cas_outString.writeString (" /* ") ;
+  var_cas_outString.appendCstring (" /* ") ;
   var_cas_outString._dotAssign_operation (mSourceFile.reader_mFileName (_inLexique COMMA_SOURCE_FILE_AT_LINE (214))) ;
-  var_cas_outString.writeString (" */ "
+  var_cas_outString.appendCstring (" */ "
   "= {isa = PBXBuildFile; fileRef = ") ;
   var_cas_outString._dotAssign_operation (mSourceFile.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (215))) ;
-  var_cas_outString.writeString (" ; settings = {ATTRIBUTES = (); }; };\n") ;
+  var_cas_outString.appendCstring (" ; settings = {ATTRIBUTES = (); }; };\n") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4873,9 +4873,9 @@ GGS_string cPtr_Xcode_PBXFrameworksBuildPhase::reader_PBXFrameworksBuildPhaseKey
 void cPtr_Xcode_PBXFrameworksBuildPhase::
 method_buildXcodeProject (C_Compiler & _inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outString.writeString ("\t\t") ;
+  var_cas_outString.appendCstring ("\t\t") ;
   var_cas_outString._dotAssign_operation ((*this) /* self */.reader_PBXFrameworksBuildPhaseKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (283))) ;
-  var_cas_outString.writeString (" /* Frameworks */ = {\n"
+  var_cas_outString.appendCstring (" /* Frameworks */ = {\n"
   "\t\t\tisa = PBXFrameworksBuildPhase;\n"
   "\t\t\tbuildActionMask = 2147483647;\n"
   "\t\t\tfiles = (\n") ;
@@ -4884,14 +4884,14 @@ method_buildXcodeProject (C_Compiler & _inLexique,
     const GGS_Xcode_PBXBuildFile_list::cElement * operand_12502 = NULL ;
     while (((operand_12502 = enumerator_12502.nextObject ()))) {
       macroValidPointer (operand_12502) ;
-      var_cas_outString.writeString ("\t\t\t\t") ;
+      var_cas_outString.appendCstring ("\t\t\t\t") ;
       var_cas_outString._dotAssign_operation (operand_12502->mFile.reader_PBXBuildFileKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (288))) ;
-      var_cas_outString.writeString (" /* ") ;
+      var_cas_outString.appendCstring (" /* ") ;
       var_cas_outString._dotAssign_operation (operand_12502->mFile.reader_mSourceFile (_inLexique COMMA_SOURCE_FILE_AT_LINE (289)).reader_mFileName (_inLexique COMMA_SOURCE_FILE_AT_LINE (289))) ;
-      var_cas_outString.writeString (" */,\n") ;
+      var_cas_outString.appendCstring (" */,\n") ;
     }
   }
-  var_cas_outString.writeString ("\t\t\t);\n"
+  var_cas_outString.appendCstring ("\t\t\t);\n"
   "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
   "\t\t};\n") ;
 }
@@ -9298,9 +9298,9 @@ void routine_enterProjectDefaultSettings (C_Compiler &,
     const GGS_stringlist::cElement * operand_36313 = NULL ;
     while (((operand_36313 = enumerator_36313.nextObject ()))) {
       macroValidPointer (operand_36313) ;
-      var_cas_pathString.writeString ("\t\t\t\t\t") ;
+      var_cas_pathString.appendCstring ("\t\t\t\t\t") ;
       var_cas_pathString._dotAssign_operation (operand_36313->mValue) ;
-      var_cas_pathString.writeString (",\n") ;
+      var_cas_pathString.appendCstring (",\n") ;
     }
   }
   var_cas_outProjectDefaultSettings = GGS_stringlist ::constructor_emptyList () ;
@@ -9372,7 +9372,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
     GGS_Xcode_PBXBuildFile_list::cEnumerator enumerator_39775 (var_cas_inXcodeProjectDescription.reader_mAllBuildFileList (_inLexique COMMA_SOURCE_FILE_AT_LINE (954)), true) ;
     const GGS_Xcode_PBXBuildFile_list::cElement * operand_39775 = enumerator_39775.nextObject () ;
     if ((operand_39775 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXBuildFile section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXBuildFile section */\n") ;
       bool _foreach_loop_39775 ;
       do{
         macroValidPointer (operand_39775) ;
@@ -9385,7 +9385,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_39775) {
         }
       }while (_foreach_loop_39775) ;
-      var_cas_outString.writeString ("/* End PBXBuildFile section */\n"
+      var_cas_outString.appendCstring ("/* End PBXBuildFile section */\n"
         "\n") ;
     }
   }
@@ -9393,7 +9393,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
     GGS_Xcode_PBXFileReference_map::cEnumerator enumerator_40043 (var_cas_inXcodeProjectDescription.reader_mFileReferenceMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (960)), true) ;
     const GGS_Xcode_PBXFileReference_map::cElement * operand_40043 = enumerator_40043.nextObject () ;
     if ((operand_40043 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXFileReference section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXFileReference section */\n") ;
       bool _foreach_loop_40043 ;
       do{
         macroValidPointer (operand_40043) ;
@@ -9406,14 +9406,14 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_40043) {
         }
       }while (_foreach_loop_40043) ;
-      var_cas_outString.writeString ("/* End PBXFileReference section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXFileReference section */\n") ;
     }
   }
   {
     GGS_Xcode_PBXFrameworksBuildPhase_list::cEnumerator enumerator_40333 (var_cas_inXcodeProjectDescription.reader_mPBXFrameworksBuildPhase_list (_inLexique COMMA_SOURCE_FILE_AT_LINE (966)), true) ;
     const GGS_Xcode_PBXFrameworksBuildPhase_list::cElement * operand_40333 = enumerator_40333.nextObject () ;
     if ((operand_40333 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXFrameworksBuildPhase section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXFrameworksBuildPhase section */\n") ;
       bool _foreach_loop_40333 ;
       do{
         macroValidPointer (operand_40333) ;
@@ -9426,23 +9426,23 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_40333) {
         }
       }while (_foreach_loop_40333) ;
-      var_cas_outString.writeString ("/* End PBXFrameworksBuildPhase section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXFrameworksBuildPhase section */\n") ;
     }
   }
-  var_cas_outString.writeString ("/* Begin PBXGroup section */\n") ;
+  var_cas_outString.appendCstring ("/* Begin PBXGroup section */\n") ;
   {
     GGS_Xcode_PBXGroup_list::cEnumerator enumerator_40681 (var_cas_inXcodeProjectDescription.reader_mProjectGroupList (_inLexique COMMA_SOURCE_FILE_AT_LINE (973)), true) ;
     const GGS_Xcode_PBXGroup_list::cElement * operand_40681 = NULL ;
     while (((operand_40681 = enumerator_40681.nextObject ()))) {
       macroValidPointer (operand_40681) ;
-      var_cas_outString.writeString ("\t\t") ;
+      var_cas_outString.appendCstring ("\t\t") ;
       var_cas_outString._dotAssign_operation (operand_40681->mGroup.reader_PBXGroupKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (974))) ;
       if (((operand_40681->mGroup.reader_mGroupName (_inLexique COMMA_SOURCE_FILE_AT_LINE (975)))._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
-        var_cas_outString.writeString (" /* ") ;
+        var_cas_outString.appendCstring (" /* ") ;
         var_cas_outString._dotAssign_operation (operand_40681->mGroup.reader_mGroupName (_inLexique COMMA_SOURCE_FILE_AT_LINE (976))) ;
-        var_cas_outString.writeString (" */") ;
+        var_cas_outString.appendCstring (" */") ;
       }
-      var_cas_outString.writeString (" = {\n"
+      var_cas_outString.appendCstring (" = {\n"
       "\t\t\tisa = PBXGroup;\n"
       "\t\t\tchildren = (\n") ;
       {
@@ -9450,64 +9450,64 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         const GGS_XcodeObjectReferenceList::cElement * operand_40989 = NULL ;
         while (((operand_40989 = enumerator_40989.nextObject ()))) {
           macroValidPointer (operand_40989) ;
-          var_cas_outString.writeString ("\t\t\t\t") ;
+          var_cas_outString.appendCstring ("\t\t\t\t") ;
           var_cas_outString._dotAssign_operation (operand_40989->mRefString) ;
-          var_cas_outString.writeString (" /* ") ;
+          var_cas_outString.appendCstring (" /* ") ;
           var_cas_outString._dotAssign_operation (operand_40989->mComment) ;
-          var_cas_outString.writeString (" */,\n") ;
+          var_cas_outString.appendCstring (" */,\n") ;
         }
       }
-      var_cas_outString.writeString ("\t\t\t);\n") ;
+      var_cas_outString.appendCstring ("\t\t\t);\n") ;
       if (((operand_40681->mGroup.reader_mGroupName (_inLexique COMMA_SOURCE_FILE_AT_LINE (985)))._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
         if (((operand_40681->mGroup.reader_mGroupName (_inLexique COMMA_SOURCE_FILE_AT_LINE (986)).reader_componentsSeparatedByString (_inLexique, GGS_string (true, " ") COMMA_SOURCE_FILE_AT_LINE (986)).reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (986)))._operator_strictSup (GGS_uint (true, 1U))).isBuiltAndTrue ()) {
-          var_cas_outString.writeString ("\t\t\tname = \"") ;
+          var_cas_outString.appendCstring ("\t\t\tname = \"") ;
           var_cas_outString._dotAssign_operation (operand_40681->mGroup.reader_mGroupName (_inLexique COMMA_SOURCE_FILE_AT_LINE (987))) ;
-          var_cas_outString.writeString ("\";\n") ;
+          var_cas_outString.appendCstring ("\";\n") ;
         }else{
-          var_cas_outString.writeString ("\t\t\tname = ") ;
+          var_cas_outString.appendCstring ("\t\t\tname = ") ;
           var_cas_outString._dotAssign_operation (operand_40681->mGroup.reader_mGroupName (_inLexique COMMA_SOURCE_FILE_AT_LINE (989))) ;
-          var_cas_outString.writeString (";\n") ;
+          var_cas_outString.appendCstring (";\n") ;
         }
       }
       if (((operand_40681->mGroup.reader_mGroupPath (_inLexique COMMA_SOURCE_FILE_AT_LINE (992)))._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
-        var_cas_outString.writeString ("\t\t\tpath = \"") ;
+        var_cas_outString.appendCstring ("\t\t\tpath = \"") ;
         var_cas_outString._dotAssign_operation (operand_40681->mGroup.reader_mGroupPath (_inLexique COMMA_SOURCE_FILE_AT_LINE (993))) ;
-        var_cas_outString.writeString ("\";\n") ;
+        var_cas_outString.appendCstring ("\";\n") ;
       }
-      var_cas_outString.writeString ("\t\t\tsourceTree = \"<group>\";\n"
+      var_cas_outString.appendCstring ("\t\t\tsourceTree = \"<group>\";\n"
       "\t\t};\n") ;
     }
   }
-  var_cas_outString.writeString ("/* End PBXGroup section */\n"
+  var_cas_outString.appendCstring ("/* End PBXGroup section */\n"
     "\n") ;
   {
     GGS_Xcode_PBXNativeTarget_list::cEnumerator enumerator_41746 (var_cas_inXcodeProjectDescription.reader_mTargetList (_inLexique COMMA_SOURCE_FILE_AT_LINE (1000)), true) ;
     const GGS_Xcode_PBXNativeTarget_list::cElement * operand_41746 = enumerator_41746.nextObject () ;
     if ((operand_41746 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXNativeTarget section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXNativeTarget section */\n") ;
       bool _foreach_loop_41746 ;
       do{
         macroValidPointer (operand_41746) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_41746->mTargetKey) ;
-        var_cas_outString.writeString (" /* ") ;
+        var_cas_outString.appendCstring (" /* ") ;
         var_cas_outString._dotAssign_operation (operand_41746->mTargetName) ;
-        var_cas_outString.writeString (" */ = {\n"
+        var_cas_outString.appendCstring (" */ = {\n"
         "\t\t\tisa = PBXNativeTarget;\n"
         "\t\t\tbuildConfigurationList = ") ;
         var_cas_outString._dotAssign_operation (operand_41746->mTargetConfiguration.reader_XCBuildConfigurationKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1005))) ;
-        var_cas_outString.writeString (" /* Build configuration list for PBXNativeTarget \"") ;
+        var_cas_outString.appendCstring (" /* Build configuration list for PBXNativeTarget \"") ;
         var_cas_outString._dotAssign_operation (operand_41746->mTargetName) ;
-        var_cas_outString.writeString ("\" */;\n"
+        var_cas_outString.appendCstring ("\" */;\n"
         "\t\t\tbuildPhases = (\n") ;
         {
           GGS_stringlist::cEnumerator enumerator_42203 (operand_41746->mBuildPhaseKeyList, true) ;
           const GGS_stringlist::cElement * operand_42203 = NULL ;
           while (((operand_42203 = enumerator_42203.nextObject ()))) {
             macroValidPointer (operand_42203) ;
-            var_cas_outString.writeString ("\t\t\t\t") ;
+            var_cas_outString.appendCstring ("\t\t\t\t") ;
             var_cas_outString._dotAssign_operation (operand_42203->mValue) ;
-            var_cas_outString.writeString (" ,\n") ;
+            var_cas_outString.appendCstring (" ,\n") ;
           }
         }
         GGS_string var_cas_productExtension ;
@@ -9515,7 +9515,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_temp_42332._isBuilt ()) {
           _temp_42332 (HERE)->method_productExtension (_inLexique, var_cas_productExtension COMMA_SOURCE_FILE_AT_LINE (1010)) ;
         }
-        var_cas_outString.writeString ("\t\t\t);\n"
+        var_cas_outString.appendCstring ("\t\t\t);\n"
         "\t\t\tbuildRules = (\n"
         "\t\t\t);\n"
         "\t\t\tdependencies = (\n") ;
@@ -9524,51 +9524,51 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
           const GGS_stringlist::cElement * operand_42500 = NULL ;
           while (((operand_42500 = enumerator_42500.nextObject ()))) {
             macroValidPointer (operand_42500) ;
-            var_cas_outString.writeString ("\t\t\t\t") ;
+            var_cas_outString.appendCstring ("\t\t\t\t") ;
             var_cas_outString._dotAssign_operation (operand_42500->mValue) ;
-            var_cas_outString.writeString (" /*  */,\n") ;
+            var_cas_outString.appendCstring (" /*  */,\n") ;
           }
         }
-        var_cas_outString.writeString ("\t\t\t);\n"
+        var_cas_outString.appendCstring ("\t\t\t);\n"
         "\t\t\tname = \"") ;
         var_cas_outString._dotAssign_operation (operand_41746->mTargetName) ;
-        var_cas_outString.writeString ("\";\n"
+        var_cas_outString.appendCstring ("\";\n"
         "\t\t\tproductInstallPath = \"") ;
         var_cas_outString._dotAssign_operation (operand_41746->mProductInstallPath) ;
-        var_cas_outString.writeString ("\";\n"
+        var_cas_outString.appendCstring ("\";\n"
         "\t\t\tproductName = \"") ;
         var_cas_outString._dotAssign_operation (operand_41746->mProductName) ;
-        var_cas_outString.writeString ("\";\n"
+        var_cas_outString.appendCstring ("\";\n"
         "\t\t\tproductReference = ") ;
         var_cas_outString._dotAssign_operation (operand_41746->mProduct.reader_PBXFileReferenceKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1022))) ;
-        var_cas_outString.writeString (" ;\n"
+        var_cas_outString.appendCstring (" ;\n"
         "\t\t\tproductType = \"com.apple.product-type.") ;
         var_cas_outString._dotAssign_operation (var_cas_productExtension) ;
-        var_cas_outString.writeString ("\";\n"
+        var_cas_outString.appendCstring ("\";\n"
         "\t\t};\n") ;
         operand_41746 = enumerator_41746.nextObject () ;
         _foreach_loop_41746 = ((operand_41746 != NULL)) ;
         if (_foreach_loop_41746) {
         }
       }while (_foreach_loop_41746) ;
-      var_cas_outString.writeString ("/* End PBXNativeTarget section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXNativeTarget section */\n") ;
     }
   }
-  var_cas_outString.writeString ("/* Begin PBXProject section */\n"
+  var_cas_outString.appendCstring ("/* Begin PBXProject section */\n"
   "\t\t") ;
   var_cas_outString._dotAssign_operation (var_cas_rootObjectKey) ;
-  var_cas_outString.writeString (" /* Project object */ = {\n"
+  var_cas_outString.appendCstring (" /* Project object */ = {\n"
   "\t\t\tisa = PBXProject;\n"
   "\t\t\tbuildConfigurationList = ") ;
   var_cas_outString._dotAssign_operation (var_cas_inProjectDefaultConfigurationKey) ;
-  var_cas_outString.writeString (" /* Build configuration list for PBXProject \"") ;
+  var_cas_outString.appendCstring (" /* Build configuration list for PBXProject \"") ;
   var_cas_outString._dotAssign_operation (var_cas_inProjectName) ;
-  var_cas_outString.writeString ("\" */;\n"
+  var_cas_outString.appendCstring ("\" */;\n"
   "\t\t\tcompatibilityVersion = \"Xcode 2.4\";\n"
   "\t\t\thasScannedForEncodings = 1;\n"
   "\t\t\tmainGroup = ") ;
   var_cas_outString._dotAssign_operation (var_cas_inMainGroupKey) ;
-  var_cas_outString.writeString (";\n"
+  var_cas_outString.appendCstring (";\n"
   "\t\t\tprojectDirPath = \"\";\n"
   "\t\t\tprojectRoot = \"\";\n"
   "\t\t\ttargets = (\n") ;
@@ -9577,14 +9577,14 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
     const GGS_Xcode_PBXNativeTarget_list::cElement * operand_43615 = NULL ;
     while (((operand_43615 = enumerator_43615.nextObject ()))) {
       macroValidPointer (operand_43615) ;
-      var_cas_outString.writeString ("\t\t\t\t") ;
+      var_cas_outString.appendCstring ("\t\t\t\t") ;
       var_cas_outString._dotAssign_operation (operand_43615->mTargetKey) ;
-      var_cas_outString.writeString (" /* ") ;
+      var_cas_outString.appendCstring (" /* ") ;
       var_cas_outString._dotAssign_operation (operand_43615->mTargetName) ;
-      var_cas_outString.writeString (" */,\n") ;
+      var_cas_outString.appendCstring (" */,\n") ;
     }
   }
-  var_cas_outString.writeString ("\t\t\t);\n"
+  var_cas_outString.appendCstring ("\t\t\t);\n"
   "\t\t};\n"
   "/* End PBXProject section */\n"
     "\n") ;
@@ -9592,15 +9592,15 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
     GGS_Xcode_PBXResourcesBuildPhase_list::cEnumerator enumerator_43881 (var_cas_inXcodeProjectDescription.reader_mPBXResourcesBuildPhase_list (_inLexique COMMA_SOURCE_FILE_AT_LINE (1047)), true) ;
     const GGS_Xcode_PBXResourcesBuildPhase_list::cElement * operand_43881 = enumerator_43881.nextObject () ;
     if ((operand_43881 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXResourcesBuildPhase section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXResourcesBuildPhase section */\n") ;
       bool _foreach_loop_43881 ;
       do{
         macroValidPointer (operand_43881) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_43881->mBuildPhase.reader_PBXResourcesBuildPhaseKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1050))) ;
-        var_cas_outString.writeString (" /* ") ;
+        var_cas_outString.appendCstring (" /* ") ;
         var_cas_outString._dotAssign_operation (operand_43881->mBuildPhase.reader_mNameForComment (_inLexique COMMA_SOURCE_FILE_AT_LINE (1051))) ;
-        var_cas_outString.writeString (" */ = {\n"
+        var_cas_outString.appendCstring (" */ = {\n"
         "\t\t\tisa = PBXResourcesBuildPhase;\n"
         "\t\t\tbuildActionMask = 2147483647;\n"
         "\t\t\tfiles = (\n") ;
@@ -9609,12 +9609,12 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
           const GGS_Xcode_PBXBuildFile_list::cElement * operand_44271 = NULL ;
           while (((operand_44271 = enumerator_44271.nextObject ()))) {
             macroValidPointer (operand_44271) ;
-            var_cas_outString.writeString ("\t\t\t\t") ;
+            var_cas_outString.appendCstring ("\t\t\t\t") ;
             var_cas_outString._dotAssign_operation (operand_44271->mFile.reader_PBXBuildFileKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1056))) ;
-            var_cas_outString.writeString (" ,\n") ;
+            var_cas_outString.appendCstring (" ,\n") ;
           }
         }
-        var_cas_outString.writeString ("\t\t\t);\n"
+        var_cas_outString.appendCstring ("\t\t\t);\n"
         "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
         "\t\t};\n") ;
         operand_43881 = enumerator_43881.nextObject () ;
@@ -9622,22 +9622,22 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_43881) {
         }
       }while (_foreach_loop_43881) ;
-      var_cas_outString.writeString ("/* End PBXResourcesBuildPhase section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXResourcesBuildPhase section */\n") ;
     }
   }
   {
     GGS_Xcode_PBXSourcesBuildPhase_list::cEnumerator enumerator_44626 (var_cas_inXcodeProjectDescription.reader_mPBXSourcesBuildPhase_list (_inLexique COMMA_SOURCE_FILE_AT_LINE (1064)), true) ;
     const GGS_Xcode_PBXSourcesBuildPhase_list::cElement * operand_44626 = enumerator_44626.nextObject () ;
     if ((operand_44626 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXSourcesBuildPhase section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXSourcesBuildPhase section */\n") ;
       bool _foreach_loop_44626 ;
       do{
         macroValidPointer (operand_44626) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_44626->mBuildPhase.reader_PBXSourcesBuildPhaseKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1067))) ;
-        var_cas_outString.writeString (" /* ") ;
+        var_cas_outString.appendCstring (" /* ") ;
         var_cas_outString._dotAssign_operation (operand_44626->mBuildPhase.reader_mNameForComment (_inLexique COMMA_SOURCE_FILE_AT_LINE (1068))) ;
-        var_cas_outString.writeString (" */ = {\n"
+        var_cas_outString.appendCstring (" */ = {\n"
         "\t\t\tisa = PBXSourcesBuildPhase;\n"
         "\t\t\tbuildActionMask = 2147483647;\n"
         "\t\t\tfiles = (\n") ;
@@ -9646,12 +9646,12 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
           const GGS_Xcode_PBXBuildFile_list::cElement * operand_45008 = NULL ;
           while (((operand_45008 = enumerator_45008.nextObject ()))) {
             macroValidPointer (operand_45008) ;
-            var_cas_outString.writeString ("\t\t\t\t") ;
+            var_cas_outString.appendCstring ("\t\t\t\t") ;
             var_cas_outString._dotAssign_operation (operand_45008->mFile.reader_PBXBuildFileKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1073))) ;
-            var_cas_outString.writeString (" ,\n") ;
+            var_cas_outString.appendCstring (" ,\n") ;
           }
         }
-        var_cas_outString.writeString ("\t\t\t);\n"
+        var_cas_outString.appendCstring ("\t\t\t);\n"
         "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
         "\t\t};\n") ;
         operand_44626 = enumerator_44626.nextObject () ;
@@ -9659,31 +9659,31 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_44626) {
         }
       }while (_foreach_loop_44626) ;
-      var_cas_outString.writeString ("/* End PBXSourcesBuildPhase section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXSourcesBuildPhase section */\n") ;
     }
   }
   {
     GGS_Xcode_targetDependencyDescription_list::cEnumerator enumerator_45360 (var_cas_inXcodeProjectDescription.reader_mDependencyList (_inLexique COMMA_SOURCE_FILE_AT_LINE (1081)), true) ;
     const GGS_Xcode_targetDependencyDescription_list::cElement * operand_45360 = enumerator_45360.nextObject () ;
     if ((operand_45360 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXTargetDependency section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXTargetDependency section */\n") ;
       bool _foreach_loop_45360 ;
       do{
         macroValidPointer (operand_45360) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_45360->mDependency.reader_PBXTargetDependencyKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1084))) ;
-        var_cas_outString.writeString (" /* PBXTargetDependency */ = {\n"
+        var_cas_outString.appendCstring (" /* PBXTargetDependency */ = {\n"
         "\t\t\tisa = PBXTargetDependency;\n"
         "\t\t\ttarget = ") ;
         var_cas_outString._dotAssign_operation (operand_45360->mDependency.reader_mDependencyTarget (_inLexique COMMA_SOURCE_FILE_AT_LINE (1087))) ;
-        var_cas_outString.writeString (" ;\n"
+        var_cas_outString.appendCstring (" ;\n"
         "\t\t};\n") ;
         operand_45360 = enumerator_45360.nextObject () ;
         _foreach_loop_45360 = ((operand_45360 != NULL)) ;
         if (_foreach_loop_45360) {
         }
       }while (_foreach_loop_45360) ;
-      var_cas_outString.writeString ("/* End PBXTargetDependency section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXTargetDependency section */\n") ;
     }
   }
   GGS_string var_cas_mPBXVariantKey ;
@@ -9693,24 +9693,24 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
     GGS_Xcode_PBXVariantGroup_list::cEnumerator enumerator_45908 (var_cas_inXcodeProjectDescription.reader_mPBXVariantGroup_list (_inLexique COMMA_SOURCE_FILE_AT_LINE (1095)), true) ;
     const GGS_Xcode_PBXVariantGroup_list::cElement * operand_45908 = enumerator_45908.nextObject () ;
     if ((operand_45908 != NULL)) {
-      var_cas_outString.writeString ("/* Begin PBXVariantGroup section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin PBXVariantGroup section */\n") ;
       bool _foreach_loop_45908 ;
       do{
         macroValidPointer (operand_45908) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_45908->mPBXVariantKey) ;
-        var_cas_outString.writeString (" /* ") ;
+        var_cas_outString.appendCstring (" /* ") ;
         var_cas_outString._dotAssign_operation (operand_45908->mName) ;
-        var_cas_outString.writeString (" */ = {\n"
+        var_cas_outString.appendCstring (" */ = {\n"
         "\t\t\tisa = PBXVariantGroup;\n"
         "\t\t\tchildren = (\n"
         "\t\t\t\t") ;
         var_cas_outString._dotAssign_operation (operand_45908->mPBXFileReferenceKey) ;
-        var_cas_outString.writeString (" ,\n"
+        var_cas_outString.appendCstring (" ,\n"
         "\t\t\t);\n"
         "\t\t\tname = ") ;
         var_cas_outString._dotAssign_operation (operand_45908->mName) ;
-        var_cas_outString.writeString (";\n"
+        var_cas_outString.appendCstring (";\n"
         "\t\t\tsourceTree = \"<group>\";\n"
         "\t\t};\n") ;
         operand_45908 = enumerator_45908.nextObject () ;
@@ -9718,20 +9718,20 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_45908) {
         }
       }while (_foreach_loop_45908) ;
-      var_cas_outString.writeString ("/* End PBXVariantGroup section */\n") ;
+      var_cas_outString.appendCstring ("/* End PBXVariantGroup section */\n") ;
     }
   }
   {
     GGS_Xcode_XCBuildConfiguration_list::cEnumerator enumerator_46459 (var_cas_inXcodeProjectDescription.reader_mBuildConfigurationList (_inLexique COMMA_SOURCE_FILE_AT_LINE (1110)), true) ;
     const GGS_Xcode_XCBuildConfiguration_list::cElement * operand_46459 = enumerator_46459.nextObject () ;
     if ((operand_46459 != NULL)) {
-      var_cas_outString.writeString ("/* Begin XCBuildConfiguration section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin XCBuildConfiguration section */\n") ;
       bool _foreach_loop_46459 ;
       do{
         macroValidPointer (operand_46459) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_46459->mBuildConfig.reader_configurationKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1113))) ;
-        var_cas_outString.writeString (" /* Default */ = {\n"
+        var_cas_outString.appendCstring (" /* Default */ = {\n"
         "\t\t\tisa = XCBuildConfiguration;\n"
         "\t\t\tbuildSettings = {\n") ;
         {
@@ -9739,12 +9739,12 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
           const GGS_stringlist::cElement * operand_46760 = NULL ;
           while (((operand_46760 = enumerator_46760.nextObject ()))) {
             macroValidPointer (operand_46760) ;
-            var_cas_outString.writeString ("\t\t\t\t") ;
+            var_cas_outString.appendCstring ("\t\t\t\t") ;
             var_cas_outString._dotAssign_operation (operand_46760->mValue) ;
-            var_cas_outString.writeString ("\n") ;
+            var_cas_outString.appendCstring ("\n") ;
           }
         }
-        var_cas_outString.writeString ("\t\t\t};\n"
+        var_cas_outString.appendCstring ("\t\t\t};\n"
         "\t\t\tname = Default;\n"
         "\t\t};\n") ;
         operand_46459 = enumerator_46459.nextObject () ;
@@ -9752,7 +9752,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_46459) {
         }
       }while (_foreach_loop_46459) ;
-      var_cas_outString.writeString ("/* End XCBuildConfiguration section */\n"
+      var_cas_outString.appendCstring ("/* End XCBuildConfiguration section */\n"
         "\n") ;
     }
   }
@@ -9760,20 +9760,20 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
     GGS_Xcode_XCBuildConfiguration_list::cEnumerator enumerator_47063 (var_cas_inXcodeProjectDescription.reader_mBuildConfigurationList (_inLexique COMMA_SOURCE_FILE_AT_LINE (1125)), true) ;
     const GGS_Xcode_XCBuildConfiguration_list::cElement * operand_47063 = enumerator_47063.nextObject () ;
     if ((operand_47063 != NULL)) {
-      var_cas_outString.writeString ("/* Begin XCConfigurationList section */\n") ;
+      var_cas_outString.appendCstring ("/* Begin XCConfigurationList section */\n") ;
       bool _foreach_loop_47063 ;
       do{
         macroValidPointer (operand_47063) ;
-        var_cas_outString.writeString ("\t\t") ;
+        var_cas_outString.appendCstring ("\t\t") ;
         var_cas_outString._dotAssign_operation (operand_47063->mBuildConfig.reader_XCBuildConfigurationKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1128))) ;
-        var_cas_outString.writeString (" /* Build configuration list for PBXProject \"") ;
+        var_cas_outString.appendCstring (" /* Build configuration list for PBXProject \"") ;
         var_cas_outString._dotAssign_operation (var_cas_inProjectName) ;
-        var_cas_outString.writeString ("\" */ = {\n"
+        var_cas_outString.appendCstring ("\" */ = {\n"
         "\t\t\tisa = XCConfigurationList;\n"
         "\t\t\tbuildConfigurations = (\n"
         "\t\t\t\t") ;
         var_cas_outString._dotAssign_operation (operand_47063->mBuildConfig.reader_configurationKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1132))) ;
-        var_cas_outString.writeString (" /* Default */,\n"
+        var_cas_outString.appendCstring (" /* Default */,\n"
         "\t\t\t);\n"
         "\t\t\tdefaultConfigurationIsVisible = 0;\n"
         "\t\t\tdefaultConfigurationName = Default;\n"
@@ -9783,13 +9783,13 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         if (_foreach_loop_47063) {
         }
       }while (_foreach_loop_47063) ;
-      var_cas_outString.writeString ("/* End XCConfigurationList section */\n") ;
+      var_cas_outString.appendCstring ("/* End XCConfigurationList section */\n") ;
     }
   }
-  var_cas_outString.writeString ("\t};\n"
+  var_cas_outString.appendCstring ("\t};\n"
   "\trootObject = ") ;
   var_cas_outString._dotAssign_operation (var_cas_rootObjectKey) ;
-  var_cas_outString.writeString (" /* Project object */;\n"
+  var_cas_outString.appendCstring (" /* Project object */;\n"
   "}\n") ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_buildXcodeProjectString\n") ;

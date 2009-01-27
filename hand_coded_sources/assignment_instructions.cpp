@@ -196,7 +196,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
       if (ioPreviousWasLiteralString) {
         first = false ;
       }else{
-        ioCppFile << inTargetVariableCppName << ".writeString (" ;
+        ioCppFile << inTargetVariableCppName << ".appendCstring (" ;
       }
       GGS_stringlist::cEnumerator currentString (p2->mLiteralStringList, true) ;
       while (currentString.hc ()) {
@@ -205,7 +205,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         }else{
           ioCppFile << "\n" ;
         }
-        ioCppFile.appendCLiteralStringConstant (currentString._mValue (HERE)) ;
+        ioCppFile.appendCLiteralStringConstant (currentString._mValue (HERE).string ()) ;
         currentString.next () ;
       }
       ioPreviousWasLiteralString = true ;
@@ -258,7 +258,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       structAttribute.next () ;
     }
     const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
-    if (mSourceExpressionConverter.length () > 0) {
+    if (mSourceExpressionConverter.string ().length () > 0) {
       ioCppFile << targetVariableCppName
                 << "._dotAssign_operation (" ;
       mSourceExpression (HERE)->generateExpression (ioCppFile) ;

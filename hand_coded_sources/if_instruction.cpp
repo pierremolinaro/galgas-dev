@@ -504,7 +504,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
     }else{
       ioCppFile << "\n  " ;
     }
-    ioCppFile.appendCLiteralStringConstant (currentString._mValue (HERE)) ;
+    ioCppFile.appendCLiteralStringConstant (currentString._mValue (HERE).string ()) ;
     currentString.next () ;
   }
   ioCppFile << ")" ;
@@ -1365,7 +1365,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  if (mConversionMethod.length () > 0) {
+  if (mConversionMethod.string ().length () > 0) {
     ioCppFile << "." << mConversionMethod << " ()" ;
   }
   ioCppFile << ".reader_" << mReaderName << " (_inLexique" ;
@@ -1573,7 +1573,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_bool (true, _inLexique.boolOptionValueFromKeys (" ;
-  ioCppFile.appendCLiteralStringConstant (mOptionComponentName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
@@ -1613,7 +1613,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_uint (true, _inLexique.uintOptionValueFromKeys (" ;
-  ioCppFile.appendCLiteralStringConstant (mOptionComponentName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
@@ -1653,7 +1653,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_string (true, _inLexique.stringOptionValueFromKeys (" ;
-  ioCppFile.appendCLiteralStringConstant (mOptionComponentName) ;
+  ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
