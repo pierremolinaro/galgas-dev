@@ -92,7 +92,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
                              d._mRegularFileSortedList (HERE),
                              d._mDirectorySortedList (HERE),
                              inWrapperName,
-                             d._mDirectoryName (HERE),
+                             d._mDirectoryName (HERE).string (),
                              d._mWrapperDirectoryIndex (HERE).uintValue ()) ;
     subDirectories.addObject (d._mWrapperDirectoryIndex (HERE).uintValue ()) ;
     d.next () ;  
@@ -102,7 +102,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   GGS_wrapperFileSortedList::cEnumerator f (inRegularFileSortedList, true) ;
   while (f.hc ()) {
     TC_UniqueArray <unsigned char> binaryData ;
-    const bool ok = f._mAbsoluteFilePath (HERE).binaryDataWithContentOfFile (binaryData) ;
+    const bool ok = f._mAbsoluteFilePath (HERE).string ().binaryDataWithContentOfFile (binaryData) ;
     if (! ok) {
       printf ("*** error: cannot read file '%s' ***\n", f._mAbsoluteFilePath (HERE).string ().cString ()) ;
     }
@@ -142,7 +142,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
               << '_' << inWrapperName
               << " = {\n"
               << "  \"" << f._mRegularFileName (HERE) << "\",\n"
-              << "  \"" << f._mRegularFileName (HERE).pathExtension () << "\",\n"
+              << "  \"" << f._mRegularFileName (HERE).string ().pathExtension () << "\",\n"
                  "  gWrapperFileContent_"
               << f._mWrapperFileIndex (HERE).uintValue ()
               << '_' << inWrapperName << "\n"

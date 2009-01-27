@@ -4703,7 +4703,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -4732,7 +4732,7 @@ modifier_setMHasConstructorForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -4993,7 +4993,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -5222,7 +5222,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -5659,7 +5659,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -5688,7 +5688,7 @@ modifier_setMFormalInputArgumentListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -5953,7 +5953,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -5982,7 +5982,7 @@ modifier_setMReaderFormalArgumentListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -6247,7 +6247,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -6276,7 +6276,7 @@ modifier_setMModifierFormalArgumentListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -6739,7 +6739,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -7216,7 +7216,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -7245,7 +7245,7 @@ modifier_setMTypeForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -7519,7 +7519,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -7550,7 +7550,7 @@ modifier_setMSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -7572,7 +7572,7 @@ modifier_setMIsExternForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -10519,7 +10519,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -12087,7 +12087,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -12118,7 +12118,7 @@ modifier_setMCategoryMethodKindForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -12140,7 +12140,7 @@ modifier_setAListeArgumentsFormelsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -12850,7 +12850,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -12881,7 +12881,7 @@ modifier_setMAccessorSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -12903,7 +12903,7 @@ modifier_setMReturnedTypeForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -18071,7 +18071,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -18100,7 +18100,7 @@ modifier_setAListeTypesParametresForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -18560,7 +18560,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -18589,7 +18589,7 @@ modifier_setAListeDesAttributsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -19181,7 +19181,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -19210,7 +19210,7 @@ modifier_setAListeDesAttributsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -19490,7 +19490,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -19519,7 +19519,7 @@ modifier_setMTerminalSymbolMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -19784,7 +19784,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -19813,7 +19813,7 @@ modifier_setMTypeForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -20078,7 +20078,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -20107,7 +20107,7 @@ modifier_setMFormalParametersListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -20736,7 +20736,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -20765,7 +20765,7 @@ modifier_setADefEntiteForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -21187,7 +21187,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -21216,7 +21216,7 @@ modifier_setMTypeForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -22010,7 +22010,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -22039,7 +22039,7 @@ modifier_setMStartSymbolParametersMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -22304,7 +22304,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -22333,7 +22333,7 @@ modifier_setMFormalParametersListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -23073,7 +23073,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -23102,7 +23102,7 @@ modifier_setMNonterminalSymbolParametersMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -23382,7 +23382,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -23411,7 +23411,7 @@ modifier_setMSymbolIndexForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -23680,7 +23680,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -23713,7 +23713,7 @@ modifier_setMNonterminalSymbolsMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -23735,7 +23735,7 @@ modifier_setMProductionRulesListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -23757,7 +23757,7 @@ modifier_setMLexiqueComponentNameForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -25569,7 +25569,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -25829,7 +25829,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -25858,7 +25858,7 @@ modifier_setMAttributTypeForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -27994,7 +27994,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -28023,7 +28023,7 @@ modifier_setMFormalParametersListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -28269,7 +28269,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -29282,7 +29282,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -29313,7 +29313,7 @@ modifier_setASignatureDebutForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -29335,7 +29335,7 @@ modifier_setASignatureFinForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -29805,7 +29805,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -29834,7 +29834,7 @@ modifier_setMMethodSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -30099,7 +30099,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -30128,7 +30128,7 @@ modifier_setMMethodSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -30920,7 +30920,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -30949,7 +30949,7 @@ modifier_setMRetrieveErrorMessageForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -33225,7 +33225,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -33254,7 +33254,7 @@ modifier_setMMessageStringListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -34012,7 +34012,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -34045,7 +34045,7 @@ modifier_setMActionDefinitionListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -34067,7 +34067,7 @@ modifier_setMSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -34089,7 +34089,7 @@ modifier_setMArgumentTypeAndNameListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -34801,7 +34801,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -34834,7 +34834,7 @@ modifier_setMActionDefinitionListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -34856,7 +34856,7 @@ modifier_setMSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -34878,7 +34878,7 @@ modifier_setMArgumentTypeAndNameListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -35920,7 +35920,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -35953,7 +35953,7 @@ modifier_setMActionDefinitionListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -35975,7 +35975,7 @@ modifier_setMSignatureForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -35997,7 +35997,7 @@ modifier_setMArgumentTypeAndNameListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -36906,7 +36906,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -36941,7 +36941,7 @@ modifier_setMOptionCharForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -36963,7 +36963,7 @@ modifier_setMOptionStringForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -36985,7 +36985,7 @@ modifier_setMCommentForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37007,7 +37007,7 @@ modifier_setMDefaultValueForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37320,7 +37320,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -37353,7 +37353,7 @@ modifier_setMBoolOptionsMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37375,7 +37375,7 @@ modifier_setMUintOptionsMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37397,7 +37397,7 @@ modifier_setMStringOptionsMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37700,7 +37700,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -37733,7 +37733,7 @@ modifier_setMNonterminalSymbolParametersMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37755,7 +37755,7 @@ modifier_setMLexiqueNameForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -37777,7 +37777,7 @@ modifier_setMOptionsMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38116,7 +38116,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -38157,7 +38157,7 @@ modifier_setMModelMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38179,7 +38179,7 @@ modifier_setMActionMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38201,7 +38201,7 @@ modifier_setMImportedSemanticsComponentsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38223,7 +38223,7 @@ modifier_setMImportedMetamodelComponentsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38245,7 +38245,7 @@ modifier_setMImportedOptionsComponentsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38267,7 +38267,7 @@ modifier_setMOptionsComponentsForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38289,7 +38289,7 @@ modifier_setMSemanticsEntitiesMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38623,7 +38623,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -38654,7 +38654,7 @@ modifier_setMWrapperDirectoryIndexForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38676,7 +38676,7 @@ modifier_setMWrapperFileIndexForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -38951,7 +38951,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -38980,7 +38980,7 @@ modifier_setMFormalAttributeListForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -39254,7 +39254,7 @@ _searchElement (C_Compiler & inLexique,
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
   if (_isBuilt () && inKey._isBuilt ()) {
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
     if (node == NULL) {
@@ -39285,7 +39285,7 @@ modifier_setMRegularFileMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {
@@ -39307,7 +39307,7 @@ modifier_setMTemplateMapForKey (C_Compiler & inLexique,
                         COMMA_LOCATION_ARGS) {
   if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
     insulateMap () ;
-    AC_galgas_map_element * p = internal_search (inKey) ;
+    AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     cElement * node = (cElement *) p ;
     if (node == NULL) {

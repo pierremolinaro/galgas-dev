@@ -285,7 +285,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  GGS_" << mListTypename << " result ;\n"
                "  if (_isBuilt () && inKey._isBuilt ()) {\n"
-               "    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey) ; \n"
+               "    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; \n"
                "    if (nodePtr == NULL) {\n"
                "      result = GGS_" << mListTypename << "::constructor_emptyList () ;\n"
                "    }else{\n"
@@ -1120,7 +1120,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "               COMMA_LOCATION_ARGS) const {\n"
                "  cElement * node = NULL  ;\n"
                "  if (_isBuilt () && inKey._isBuilt ()) {\n"
-               "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
+               "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (cElement *) p ;\n"
                "    if (node == NULL) {\n"
@@ -1162,7 +1162,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                        COMMA_LOCATION_ARGS) {\n"
                "  if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {\n"
                "    insulateMap () ;\n"
-               "    AC_galgas_map_element * p = internal_search (inKey) ;\n"
+               "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    cElement * node = (cElement *) p ;\n"
                "    if (node == NULL) {\n"
@@ -1202,7 +1202,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " COMMA_LOCATION_ARGS) const {\n" ;
     inCppFile << "  _searchElement (inLexique,\n"
                  "                  " ;
-    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << ",\n"
                  "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
@@ -1242,7 +1242,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " COMMA_LOCATION_ARGS) {\n"
                  "  _removeElement (_inLexique,\n"
                  "                  " ;
-    inCppFile.appendCLiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << ",\n"
                  "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
@@ -1280,11 +1280,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
-    if (currentInsertMethod._mShadowErrorMessage (HERE).length () > 0) {
+    if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inCppFile << "  const bool _shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
                    "  if (_shadowExists) {\n"
                    "    emitMapSemanticErrorMessage (_inLexique, inKey, " ;
-      inCppFile.appendCLiteralStringConstant (currentInsertMethod._mShadowErrorMessage (HERE)) ;
+      inCppFile.appendCLiteralStringConstant (currentInsertMethod._mShadowErrorMessage (HERE).string ()) ;
       inCppFile << " COMMA_THERE) ;\n" ;
       if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
         inCppFile << "    outIndex._drop () ;\n" ;
@@ -1295,7 +1295,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "  _insertElement (_inLexique,\n"
                  "                 " ;
-    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << ",\n"
                  "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
@@ -1307,7 +1307,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "                 NULL\n" ;
     }
     inCppFile << "                 COMMA_THERE) ;\n" ;
-    if (currentInsertMethod._mShadowErrorMessage (HERE).length () > 0) {
+    if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inCppFile.incIndentation (-2) ;
       inCppFile << "  }\n" ;
     }
@@ -1613,7 +1613,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   //--- Inserer les messages d'erreur
     inCppFile << "  GGS_" << aNomTable << "::cElement * info = "
               << currentSearchMethod._mMethodName (HERE) << " (inLexique, inKey, inKey, " ;
-    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << " COMMA_THERE) ;\n"
                  "  if (info == NULL) {\n" ;
     current.rewind () ;
@@ -1651,7 +1651,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
     inCppFile << "  GGS_" << aNomTable << "::cElement * info = "
               << currentSearchMethod._mMethodName (HERE) << " (inLexique, inKey, inKey, " ;
-    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << " COMMA_THERE) ;\n"
                  "  if (info == NULL) {\n" ;
     current.rewind () ;
@@ -1703,7 +1703,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << "  " << currentInsertMethod._mMethodName (HERE) << " (_inLexique, info, inKey, inKey, " ;
-    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << " COMMA_THERE) ;\n"
               << "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
@@ -1731,7 +1731,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << "  const sint32 attributeIndex = " << currentInsertMethod._mMethodName (HERE) << " (_inLexique, info, inKey, inKey, " ;
-    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE)) ;
+    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << " COMMA_THERE) ;\n"
               << "  outIndex = GGS_luint (GGS_uint (attributeIndex >= 0, (uint32) attributeIndex), inKey) ;\n"
               << "}\n\n" ;

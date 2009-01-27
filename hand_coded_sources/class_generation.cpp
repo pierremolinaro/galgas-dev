@@ -675,14 +675,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                "_message (void) const {\n"
                "  return " ;
-  inCppFile.appendCLiteralStringConstant (mClassMessage) ;
+  inCppFile.appendCLiteralStringConstant (mClassMessage.string ()) ;
   inCppFile << " ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "const char * cPtr_" << aNomClasse << "::\n"
                "_static_message (void) {\n"
                "  return " ;
-  inCppFile.appendCLiteralStringConstant (mClassMessage) ;
+  inCppFile.appendCLiteralStringConstant (mClassMessage.string ()) ;
   inCppFile << " ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
@@ -694,7 +694,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "& typeid (cPtr_" << superClassName << ")" ;
   }
   inCppFile << ", " ;
-  inCppFile.appendCLiteralStringConstant (mClassMessage) ;
+  inCppFile.appendCLiteralStringConstant (mClassMessage.string ()) ;
   inCppFile << ") ;\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;

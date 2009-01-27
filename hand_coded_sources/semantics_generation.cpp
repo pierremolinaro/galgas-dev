@@ -508,7 +508,7 @@ generate_header_file (C_Compiler & inLexique,
   generatedZone2.appendCppHyphenLineComment () ;
 
 //--- Generate lexique inclusion
-  const C_String lexiqueName = inLexiqueName ;
+  const C_String lexiqueName = inLexiqueName.string () ;
   generatedZone2 << "#include \""
         << ((lexiqueName.length () == 0) ? C_String ("galgas/C_Lexique") : lexiqueName)
         << ".h\"\n\n" ;

@@ -1414,7 +1414,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  sint32 result = "
               << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
               << sortAttribute._mSortAttribute (HERE)
-              << ".compare (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
+              << ".string ().compare (operand->" << sortAttribute._mSortAttribute (HERE) << ".string ()) ;\n" ;
     sortAttribute.next () ;
     while (sortAttribute.hc ()) {
       inCppFile << "  if (result == 0) {\n"

@@ -184,7 +184,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.appendCppTitleComment ("B L O C K    C O M M E N T") ;
   generatedZone3 << "NSString * blockComment (void) {\n"
                     "  return @" ;
-  generatedZone3.appendCLiteralStringConstant (inBlockComment) ;
+  generatedZone3.appendCLiteralStringConstant (inBlockComment.string ()) ;
   generatedZone3 << " ;\n"
                     "}\n\n" ;
 
@@ -304,7 +304,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "                             TC_UniqueArray <C_popupEntry> & outPopUpEntries) {\n"
                     "  if (gScannerPtr == NULL) {\n"
                     "    macroMyNew (gIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
-                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (gIOParametersPtr, \"\" COMMA_HERE)) ;\n"
+                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (NULL, C_String (\"\"), gIOParametersPtr, \"\" COMMA_HERE)) ;\n"
                     "  }\n"
                     "  AC_sourceText * sourceTextPtr = NULL ;\n"
                     "  macroMyNew (sourceTextPtr,\n"
