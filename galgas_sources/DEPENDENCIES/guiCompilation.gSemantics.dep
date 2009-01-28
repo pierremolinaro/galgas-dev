@@ -1,0 +1,5 @@
+0::
+guiMetamodel.gSemantics
+guiLL1grammar.gGrammar::
+GALGAS_OUTPUT/guiCompilation.h
+GALGAS_OUTPUT/guiCompilation.cpp

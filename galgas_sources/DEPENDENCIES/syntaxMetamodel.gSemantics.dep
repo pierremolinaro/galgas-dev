@@ -1,0 +1,6 @@
+0::
+expressionMetamodel.gSemantics
+parameterArgumentMetamodel.gSemantics
+instructionMetamodel.gSemantics::
+GALGAS_OUTPUT/syntaxMetamodel.h
+GALGAS_OUTPUT/syntaxMetamodel.cpp

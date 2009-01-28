@@ -1,0 +1,8 @@
+0::
+galgas_scanner.gLexique
+expressionMetamodel.gSemantics
+parameterArgumentMetamodel.gSemantics
+instructionMetamodel.gSemantics
+semanticsMetamodel.gSemantics::
+GALGAS_OUTPUT/semanticsModelBuilder.h
+GALGAS_OUTPUT/semanticsModelBuilder.cpp

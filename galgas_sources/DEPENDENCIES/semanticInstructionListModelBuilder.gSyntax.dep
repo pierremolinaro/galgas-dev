@@ -1,0 +1,7 @@
+0::
+galgas_scanner.gLexique
+expressionMetamodel.gSemantics
+parameterArgumentMetamodel.gSemantics
+instructionMetamodel.gSemantics::
+GALGAS_OUTPUT/semanticInstructionListModelBuilder.h
+GALGAS_OUTPUT/semanticInstructionListModelBuilder.cpp
