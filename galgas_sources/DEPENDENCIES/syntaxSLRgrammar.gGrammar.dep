@@ -1,0 +1,12 @@
+0::
+galgas_scanner.gLexique
+syntaxModelBuilder.gSyntax
+expressionMetamodel.gSemantics
+instructionMetamodel.gSemantics
+parameterArgumentMetamodel.gSemantics
+syntaxMetamodel.gSemantics
+expressionModelBuilder.gSyntax
+parameterArgumentBuilder.gSyntax
+semanticInstructionListModelBuilder.gSyntax::
+GALGAS_OUTPUT/syntaxSLRgrammar.cpp
+GALGAS_OUTPUT/syntaxSLRgrammar.h

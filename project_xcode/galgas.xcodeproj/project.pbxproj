@@ -666,6 +666,7 @@
 		CFDD30AD0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
 		CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFE0343D0F30E480008F2D92 /* C_DateTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A4808536B350077AEAF /* C_DateTime.cpp */; };
 		CFE1544D0C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
 		CFE1544F0C106A8200A1D904 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
 		CFE154510C106A8200A1D904 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
@@ -3692,6 +3693,7 @@
 				CF33653C0F2F85310003B7D9 /* GGS_bool.cpp in Sources */,
 				CF33653D0F2F85330003B7D9 /* GGS_string.cpp in Sources */,
 				CF33653F0F2F85480003B7D9 /* C_TextFileWrite.cpp in Sources */,
+				CFE0343D0F30E480008F2D92 /* C_DateTime.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

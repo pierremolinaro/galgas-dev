@@ -1,0 +1,9 @@
+0::
+semanticsMetamodel.gSemantics
+parameterArgumentMetamodel.gSemantics
+expressionMetamodel.gSemantics
+instructionMetamodel.gSemantics
+semanticsSemantics.gSemantics
+semanticsSLRgrammar.gGrammar::
+GALGAS_OUTPUT/semanticsCompilation.h
+GALGAS_OUTPUT/semanticsCompilation.cpp

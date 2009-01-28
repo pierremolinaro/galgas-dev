@@ -1,0 +1,10 @@
+0::
+galgas_scanner.gLexique
+grammarModelBuilder.gSyntax
+grammarMetamodel.gSemantics
+semanticsMetamodel.gSemantics
+parameterArgumentMetamodel.gSemantics
+expressionMetamodel.gSemantics
+instructionMetamodel.gSemantics::
+GALGAS_OUTPUT/grammarLL1grammar.cpp
+GALGAS_OUTPUT/grammarLL1grammar.h

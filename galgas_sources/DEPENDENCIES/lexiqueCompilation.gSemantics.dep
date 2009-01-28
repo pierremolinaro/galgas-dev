@@ -1,0 +1,6 @@
+0::
+lexiqueMetamodel.gSemantics
+lexiqueSemantics.gSemantics
+lexiqueLL1grammar.gGrammar::
+GALGAS_OUTPUT/lexiqueCompilation.h
+GALGAS_OUTPUT/lexiqueCompilation.cpp

@@ -1,0 +1,5 @@
+0::
+galgas_scanner.gLexique
+optionMetamodel.gSemantics::
+GALGAS_OUTPUT/optionModelBuilder.h
+GALGAS_OUTPUT/optionModelBuilder.cpp

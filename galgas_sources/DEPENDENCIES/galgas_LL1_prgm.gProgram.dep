@@ -1,0 +1,8 @@
+0::
+projectCreation.gSemantics
+semantics_semantics.gSemantics
+common_semantics.gSemantics
+galgas_LL1_grammar.gGrammar
+galgas_cli_options.gOption::
+GALGAS_OUTPUT/galgas_LL1_prgm.h
+GALGAS_OUTPUT/galgas_LL1_prgm.cpp
