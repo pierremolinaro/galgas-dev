@@ -55,11 +55,11 @@ floatValue () {
 
 galgas_scanner::
 galgas_scanner (C_Compiler * inCallerCompiler,
-                const GGS_string & inDependancyFilePath,
+                const GGS_string & inDependancyFileExtension,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependancyFilePath, inParametersPtr, inSourceFileName COMMA_THERE) {
+C_Lexique (inCallerCompiler, inDependancyFileExtension, inParametersPtr, inSourceFileName COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*

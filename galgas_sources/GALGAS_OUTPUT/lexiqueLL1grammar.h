@@ -56,7 +56,7 @@ class lexiqueLL1grammar : public lexiqueModelBuilder {
   public : virtual void nt_lexique_component_start_symbol_ (galgas_scanner &,
                                 GGS_lexiqueComponentRoot &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyString,
+                                const GGS_string & _inDependancyExtension,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_lexiqueComponentRoot &

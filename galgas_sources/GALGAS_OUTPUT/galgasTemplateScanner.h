@@ -57,7 +57,7 @@ class cTokenFor_galgasTemplateScanner : public cToken {
 class galgasTemplateScanner : public C_Lexique {
 //--- Constructors
   public : galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                       const GGS_string & inDependancyFilePath,
+                       const GGS_string & inDependancyFileExtension,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;

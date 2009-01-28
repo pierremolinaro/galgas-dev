@@ -824,7 +824,7 @@ routine parse_semantics_component_for_importing
   ?!@EXsemanticContext ioSemanticContext
   ?!@stringset ioImportedSemanticsComponentNameSet
 :
-  grammar galgas_LL1_grammar label importSemantics in inFileName ([inFileName string] . ".dep")
+  grammar galgas_LL1_grammar label importSemantics in inFileName
     !?ioSemanticsMapForUse
     !?ioSemanticContext
     !?ioImportedSemanticsComponentNameSet
@@ -4515,6 +4515,7 @@ rule <semantic_instruction>
       ;
       dependancyFileDefinitionLocation := here ;
       @typeGalgas_string gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
+      warning here:"dep" ;
       $)$ ;
       hasDependancyFile := true ;
     end select ;
