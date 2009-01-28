@@ -3573,6 +3573,9 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "absolutePathFromPath" then
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
+  elsif [inReaderName string] == "relativePathFromPath" then
+    outReturnedType := [@typeGalgas_string new] ;
+    outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # @string argument
   elsif [inReaderName string] == "stringByReplacingStringByString" then
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ; # First @string argument

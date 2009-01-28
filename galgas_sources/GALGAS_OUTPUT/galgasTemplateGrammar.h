@@ -31,7 +31,7 @@ class galgasTemplateGrammar : public galgasTemplateParser {
                                 const GGS_M_semanticsEntitiesForUse,
                                 GGS_templateInstructionList &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyString,
+                                const GGS_string & _inDependancyExtension,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_typeVariablesMap &,

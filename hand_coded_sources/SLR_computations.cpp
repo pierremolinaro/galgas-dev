@@ -872,7 +872,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
-                          "const GGS_string & _inDependancyString"
+                          "const GGS_string & _inDependancyExtension"
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
@@ -893,15 +893,16 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inDependancyString, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
-                          "    if (scanner_->sourceText () != NULL) {\n"
-                          "      scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
-        generatedZone3 << "      const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
-                          "                                                        gActionTableIndex, gSuccessorTable,\n"
-                          "                                                        gProductionsTable) ;\n"
-                          "      if (ok && ! scanner_->mParseOnlyFlag) {\n"
-                          "        " << inTargetFileName << " _grammar ;\n"
-                          "        " ;
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inDependancyExtension, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    if (scanner_->needsCompiling ()) {\n"
+                          "      if (scanner_->sourceText () != NULL) {\n"
+                          "        scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
+        generatedZone3 << "        const bool ok = scanner_->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                          "                                                          gActionTableIndex, gSuccessorTable,\n"
+                          "                                                          gProductionsTable) ;\n"
+                          "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
+                          "          " << inTargetFileName << " _grammar ;\n"
+                          "          " ;
         generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
         parametre.rewind () ;
@@ -912,14 +913,14 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
-                          "        if (_inSentStringPtr != NULL) {\n"
-                          "          _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
-                          "        }\n"
-                          "      }\n" ;
-        generatedZone3 << "    }else{\n"
-                          "      C_String message ;\n"
-                          "      message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
-                          "      _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
+                          "          if (_inSentStringPtr != NULL) {\n"
+                          "            _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "          }\n"
+                          "        }\n" ;
+        generatedZone3 << "      }else{\n"
+                          "        C_String message ;\n"
+                          "        message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
+                          "        _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hc ()) {
@@ -929,7 +930,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre.next () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << "    }\n"
+        generatedZone3 << "      }\n"
+                          "    }\n"
                           "    macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
@@ -944,8 +946,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           parametre.next () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << "  }\n" ;
-        generatedZone3 << "}\n\n" ;
+        generatedZone3 << "  }\n"
+                          "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void " ;
