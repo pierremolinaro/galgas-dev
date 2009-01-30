@@ -1414,14 +1414,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  sint32 result = "
               << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
               << sortAttribute._mSortAttribute (HERE)
-              << ".string ().compare (operand->" << sortAttribute._mSortAttribute (HERE) << ".string ()) ;\n" ;
+              << ".compareForSortedList (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
     sortAttribute.next () ;
     while (sortAttribute.hc ()) {
       inCppFile << "  if (result == 0) {\n"
                    "    result = "
                 << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
                 << sortAttribute._mSortAttribute (HERE)
-                << ".compare (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n"
+                << ".compareForSortedList (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n"
                 << "  }\n" ;
       sortAttribute.next() ;
     }
