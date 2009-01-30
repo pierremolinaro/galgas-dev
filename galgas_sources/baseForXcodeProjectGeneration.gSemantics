@@ -890,7 +890,7 @@ routine enterProjectDefaultSettings
 #-------------------------------------------------- Define project default configuration
   @string pathString := "" ;
   foreach inHeaderSearchPathList
-  do pathString .= "\t\t\t\t\t" . mValue . ",\n" ;
+  do pathString .= "\t\t\t\t\t\"" . mValue . "\",\n" ;
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;

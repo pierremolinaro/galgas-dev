@@ -1289,7 +1289,7 @@ routine generateXcodeProject
   @stringlist pathes [emptyList] ;
   pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
   pathes += !"../../libpm" ;
-  pathes += !"../hand_coded_sources" ;
+  pathes += !"../hand_coded_sources/**" ;
   @stringlist projectDefaultSettings ;
   enterProjectDefaultSettings
     !pathes
