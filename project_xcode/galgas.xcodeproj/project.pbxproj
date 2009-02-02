@@ -208,6 +208,8 @@
 		CF69B2840A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
+		CF6BED810F379B1200A794A1 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
+		CF6BED830F379B1F00A794A1 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF6DF12609E3F23700506859 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CF6DF12909E3F23700506859 /* galgas_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53806057A53A700854C83 /* galgas_start.cpp */; };
 		CF6DF12B09E3F23700506859 /* grammar_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9040E6057F270E007362F4 /* grammar_parser.cpp */; };
@@ -3157,6 +3159,8 @@
 				CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFE1672F0E8E6E1B00AFDAFC /* C_SourceTextForCocoa.mm in Sources */,
 				CFE167830E8E7A2B00AFDAFC /* main.m in Sources */,
+				CF6BED810F379B1200A794A1 /* GGS_string.cpp in Sources */,
+				CF6BED830F379B1F00A794A1 /* GGS_bool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

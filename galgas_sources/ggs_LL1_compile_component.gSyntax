@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS compile component definition (call the LL(1) grammar)             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -183,8 +183,10 @@ rule <galgas_component>
       repeat
         $identifier$ ? @lstring targetName ;
         targetFileListMap += ![targetName string] !baseName ;
-        if ([targetName string] != "makefile") & ([targetName string] != "xcode") then
-          error targetName: "the target name should be \"makefile\" or \"xcode\"" ;
+        if [targetName string] == "xcode" then
+          error targetName: "the target \"xcode\" name is obsolete: use \"xcode_tool\" and/or \"xcode_app\"" ;
+        elsif ([targetName string] != "makefile") & ([targetName string] != "xcode_tool") & ([targetName string] != "xcode_app") then
+          error targetName: "the target name should be \"makefile\", \"xcode_tool\" or \"xcode_app\"" ;
         end if ;
       while
         $,$ ;
@@ -241,96 +243,97 @@ rule <galgas_component>
     [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
   end if ;
 #---- Convert old files
-  @string oldCommonFile := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/common_files_for_make/makefile.mke" ;
-  if [oldCommonFile fileExists] & ([@uint errorCount] == 0) then
-    message "**** Converting old-style makefile ****\n" ;
-    @string projectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
-    @stringlist projectDirectories := [projectDir directories !false] ;
-    @bool ok := true ;
-    foreach projectDirectories do
-      if (mValue != "common_files_for_make") & (mValue != "makefile_macosx_universal") then
-        @string fullDirPath := projectDir . "/" . mValue . "/" ;
+#  @string oldCommonFile := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/common_files_for_make/makefile.mke" ;
+#  if [oldCommonFile fileExists] & ([@uint errorCount] == 0) then
+#    message "**** Converting old-style makefile ****\n" ;
+#    @string projectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+#    @stringlist projectDirectories := [projectDir directories !false] ;
+#    @bool ok := true ;
+#    foreach projectDirectories do
+#      if (mValue != "common_files_for_make") & (mValue != "makefile_macosx_universal") then
+#        @string fullDirPath := projectDir . "/" . mValue . "/" ;
       #--- makefile
-        @string makefilePath := fullDirPath . "makefile" ;
-        if [makefilePath fileExists] then
-          @stringlist c := [[@string stringWithContentsOfFile !makefilePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
-          if [c length] == 2 then
-            message "  ok: '" . makefilePath . "' can be converted\n" ;
-          else
-            message "  error: '" . makefilePath . "' cannot be converted\n" ;
-            ok := false ;
-          end if ;
-        end if ;
+#        @string makefilePath := fullDirPath . "makefile" ;
+#        if [makefilePath fileExists] then
+#          @stringlist c := [[@string stringWithContentsOfFile !makefilePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+#          if [c length] == 2 then
+#            message "  ok: '" . makefilePath . "' can be converted\n" ;
+#          else
+#            message "  error: '" . makefilePath . "' cannot be converted\n" ;
+#            ok := false ;
+#          end if ;
+#        end if ;
       #--- makefile64
-        @string makefile64Path := fullDirPath . "makefile64" ;
-        if [makefile64Path fileExists] then
-          @stringlist c := [[@string stringWithContentsOfFile ! makefile64Path] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
-          if [c length] == 2 then
-            message "  ok: '" . makefile64Path . "' can be converted\n" ;
-          else
-            message "  error: '" . makefile64Path . "' cannot be converted\n" ;
-            ok := false ;
-          end if ;
-        end if ;
+#        @string makefile64Path := fullDirPath . "makefile64" ;
+#        if [makefile64Path fileExists] then
+#          @stringlist c := [[@string stringWithContentsOfFile ! makefile64Path] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+#          if [c length] == 2 then
+#            message "  ok: '" . makefile64Path . "' can be converted\n" ;
+#          else
+#            message "  error: '" . makefile64Path . "' cannot be converted\n" ;
+#            ok := false ;
+#          end if ;
+#        end if ;
       #--- makefile.mke
-        @string makefileMkePath := fullDirPath . "makefile.mke" ;
-        if [makefileMkePath fileExists] then
-          @stringlist c := [[@string stringWithContentsOfFile ! makefileMkePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
-          if [c length] == 2 then
-            message "  ok: '" . makefileMkePath . "' can be converted\n" ;
-          else
-            message "  error: '" . makefileMkePath . "' cannot be converted\n" ;
-            ok := false ;
-          end if ;
-        end if ;
-      end if ;
-    end foreach ;
-    if ok then
-      message "Perform conversion...\n" ;
-      @string projectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
-      @stringlist projectDirectories := [projectDir directories !false] ;
-      foreach projectDirectories do
-        if (mValue != "common_files_for_make") & (mValue != "makefile_macosx_universal") then
-          @string fullDirPath := projectDir . "/" . mValue . "/" ;
-        #--- makefile
-          @string makefilePath := fullDirPath . "makefile" ;
-          if [makefilePath fileExists] then
-            message "  converting '" . makefilePath . "'...\n" ;
-            @stringlist c := [[@string stringWithContentsOfFile !makefilePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
-            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
-            [newContents writeToFile ! makefilePath] ;
-          end if ;
-        #--- makefile64
-          @string makefile64Path := fullDirPath . "makefile64" ;
-          if [makefile64Path fileExists] then
-            message "  converting '" . makefile64Path . "'...\n" ;
-            @stringlist c := [[@string stringWithContentsOfFile ! makefile64Path] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
-            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
-            [newContents writeToFile ! makefile64Path] ;
-          end if ;
-        #--- makefile.mke
-          @string makefileMkePath := fullDirPath . "makefile.mke" ;
-          if [makefileMkePath fileExists] then
-            message "  converting '" . makefileMkePath . "'...\n" ;
-            @stringlist c := [[@string stringWithContentsOfFile ! makefileMkePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
-            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
-            [newContents writeToFile ! makefileMkePath] ;
-          end if ;
-        end if ;
-      end foreach ;
-    #--- Delete old makefile
-      @string oldDir := [oldCommonFile stringByDeletingLastPathComponent] ;
-      message "  Removing directory '" . oldDir . "' and its contents...\n" ;
-      [@string removeDirectoryRecursively !oldDir] ;
-      message "**** Conversion done with success *****\n" ;
-    else
-      message "****** No conversion performed ********\n" ;
-    end if ;
-  end if ;
+#        @string makefileMkePath := fullDirPath . "makefile.mke" ;
+#        if [makefileMkePath fileExists] then
+#          @stringlist c := [[@string stringWithContentsOfFile ! makefileMkePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+#          if [c length] == 2 then
+#            message "  ok: '" . makefileMkePath . "' can be converted\n" ;
+#          else
+#            message "  error: '" . makefileMkePath . "' cannot be converted\n" ;
+#            ok := false ;
+#          end if ;
+#        end if ;
+#      end if ;
+#    end foreach ;
+#    if ok then
+#      message "Perform conversion...\n" ;
+#      @string projectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+#      @stringlist projectDirectories := [projectDir directories !false] ;
+#      foreach projectDirectories do
+#        if (mValue != "common_files_for_make") & (mValue != "makefile_macosx_universal") then
+#          @string fullDirPath := projectDir . "/" . mValue . "/" ;
+#        #--- makefile
+#          @string makefilePath := fullDirPath . "makefile" ;
+#          if [makefilePath fileExists] then
+#            message "  converting '" . makefilePath . "'...\n" ;
+#            @stringlist c := [[@string stringWithContentsOfFile !makefilePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+#            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
+#            [newContents writeToFile ! makefilePath] ;
+#          end if ;
+#        #--- makefile64
+#          @string makefile64Path := fullDirPath . "makefile64" ;
+#          if [makefile64Path fileExists] then
+#            message "  converting '" . makefile64Path . "'...\n" ;
+#            @stringlist c := [[@string stringWithContentsOfFile ! makefile64Path] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+#            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
+#            [newContents writeToFile ! makefile64Path] ;
+#          end if ;
+#        #--- makefile.mke
+#          @string makefileMkePath := fullDirPath . "makefile.mke" ;
+#          if [makefileMkePath fileExists] then
+#            message "  converting '" . makefileMkePath . "'...\n" ;
+#            @stringlist c := [[@string stringWithContentsOfFile ! makefileMkePath] componentsSeparatedByString !"include ../common_files_for_make/makefile.mke"] ;
+#            @string newContents := [@string componentsJoinedByString !c !"include ../galgas_sources/GALGAS_OUTPUT/file_list.mke"] ;
+#            [newContents writeToFile ! makefileMkePath] ;
+#          end if ;
+#        end if ;
+#      end foreach ;
+#    #--- Delete old makefile
+#      @string oldDir := [oldCommonFile stringByDeletingLastPathComponent] ;
+#      message "  Removing directory '" . oldDir . "' and its contents...\n" ;
+#      [@string removeDirectoryRecursively !oldDir] ;
+#      message "**** Conversion done with success *****\n" ;
+#    else
+#      message "****** No conversion performed ********\n" ;
+#    end if ;
+#  end if ;
 #--- Handle Xcode Project
   if not [option galgas_cli_options.doNotGenerateXcodeProject] then
-  @stringlist xcodeFiles := [targetFileListMap listForKey !"xcode"] ;
-  if ([@uint errorCount] == 0) & ([xcodeFiles length] > 0) then
+  @stringlist xcode_tool_files := [targetFileListMap listForKey !"xcode_tool"] ;
+  @stringlist xcode_app_files := [targetFileListMap listForKey !"xcode_app"] ;
+  if ([@uint errorCount] == 0) & ([xcode_tool_files length] > 0) & ([xcode_app_files length] > 0) then
     @string XcodeProjectDir := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
     #log XcodeProjectDir ;
     @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
@@ -343,58 +346,101 @@ rule <galgas_component>
     elsif [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
       @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
-      @stringset externSourceSet [emptySet] ;
-      @stringset guiSourceSet [emptySet] ;
-      @stringset scannerSourceSet [emptySet] ;
-      @stringset optionSourceSet [emptySet] ;
-      @stringset semanticsSourceSet [emptySet] ;
-      @stringset syntaxSourceSet [emptySet] ;
-      @stringset grammarSourceSet [emptySet] ;
-      @stringset programSourceSet [emptySet] ;
     #--- Build intermediate list
       @string intermediateString := "# Intermediate file for Xcode Project\n" ;
-      foreach xcodeFiles do
+      foreach xcode_tool_files do
+        intermediateString .= mValue . "\n" ;
+      end foreach ;
+      intermediateString .= "::\n" ;
+      foreach xcode_app_files do
         intermediateString .= mValue . "\n" ;
       end foreach ;
     #--- Update intermediate file
-      @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
+      @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/DEPENDENCIES/file_list_for_xcode_project.txt" ;
       @bool written ;
       [intermediateString writeToFileWhenDifferentContents !intermediateFilePath ?written] ;
     #--- If intermediate file did change, update Xcode project
       if written then
-        foreach xcodeFiles do
+        @stringset externSourceSet_tool [emptySet] ;
+        @stringset guiSourceSet_tool [emptySet] ;
+        @stringset scannerSourceSet_tool [emptySet] ;
+        @stringset optionSourceSet_tool [emptySet] ;
+        @stringset semanticsSourceSet_tool [emptySet] ;
+        @stringset syntaxSourceSet_tool [emptySet] ;
+        @stringset grammarSourceSet_tool [emptySet] ;
+        @stringset programSourceSet_tool [emptySet] ;
+        foreach xcode_tool_files do
           @string fullPath ;
           @EXsourceFileKind sourceKind ;
           [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
           switch sourceKind 
           when externSourceFile :
-            externSourceSet += !fullPath ;
+            externSourceSet_tool += !fullPath ;
           when lexiqueSourceFile :
-            scannerSourceSet += !mValue ;
+            scannerSourceSet_tool += !mValue ;
           when guiSourceFile :
-            guiSourceSet += !mValue ;
+            guiSourceSet_tool += !mValue ;
           when optionSourceFile :
-            optionSourceSet += !mValue ;
+            optionSourceSet_tool += !mValue ;
           when syntaxSourceFile :
-            syntaxSourceSet += !mValue ;
+            syntaxSourceSet_tool += !mValue ;
           when semanticsSourceFile :
-            semanticsSourceSet += !mValue ;
+            semanticsSourceSet_tool += !mValue ;
           when grammarSourceFile :
-            grammarSourceSet += !mValue ;
+            grammarSourceSet_tool += !mValue ;
           when programSourceFile :
-            programSourceSet += !mValue ;
+            programSourceSet_tool += !mValue ;
+          end switch ;
+        end foreach ;
+        @stringset externSourceSet_app [emptySet] ;
+        @stringset guiSourceSet_app [emptySet] ;
+        @stringset scannerSourceSet_app [emptySet] ;
+        @stringset optionSourceSet_app [emptySet] ;
+        @stringset semanticsSourceSet_app [emptySet] ;
+        @stringset syntaxSourceSet_app [emptySet] ;
+        @stringset grammarSourceSet_app [emptySet] ;
+        @stringset programSourceSet_app [emptySet] ;
+        foreach xcode_app_files do
+          @string fullPath ;
+          @EXsourceFileKind sourceKind ;
+          [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+          switch sourceKind 
+          when externSourceFile :
+            externSourceSet_app += !fullPath ;
+          when lexiqueSourceFile :
+            scannerSourceSet_app += !mValue ;
+          when guiSourceFile :
+            guiSourceSet_app += !mValue ;
+          when optionSourceFile :
+            optionSourceSet_app += !mValue ;
+          when syntaxSourceFile :
+            syntaxSourceSet_app += !mValue ;
+          when semanticsSourceFile :
+            semanticsSourceSet_app += !mValue ;
+          when grammarSourceFile :
+            grammarSourceSet_app += !mValue ;
+          when programSourceFile :
+            programSourceSet_app += !mValue ;
           end switch ;
         end foreach ;
       #--- Build intermediate
         generateXcodeProject
-          !externSourceSet
-          !guiSourceSet
-          !scannerSourceSet
-          !optionSourceSet
-          !semanticsSourceSet
-          !syntaxSourceSet
-          !grammarSourceSet
-          !programSourceSet
+          !externSourceSet_tool
+          !guiSourceSet_tool
+          !scannerSourceSet_tool
+          !optionSourceSet_tool
+          !semanticsSourceSet_tool
+          !syntaxSourceSet_tool
+          !grammarSourceSet_tool
+          !programSourceSet_tool
+          !externSourceSet_app
+          !guiSourceSet_app
+          !scannerSourceSet_app
+          !optionSourceSet_app
+          !semanticsSourceSet_app
+          !syntaxSourceSet_app
+          !grammarSourceSet_app
+          !programSourceSet_app
           ![name stringByDeletingPathExtension] # XCode project base name
           ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
           !iconFiles

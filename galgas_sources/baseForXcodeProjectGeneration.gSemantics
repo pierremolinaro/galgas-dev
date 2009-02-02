@@ -771,6 +771,7 @@ routine add_tool_target
   ?@stringlist inTargetSettings
   ??@string inPrecompiledHeaderPath
   ??@Xcode_PBXBuildFile_list inSourcesToCompileKeyList
+  ??@Xcode_PBXBuildFile_list inFrameworkKeyList
   ??@stringlist inDirectDependencyList
   !@string outTargetKey
 :
@@ -779,10 +780,20 @@ routine add_tool_target
   [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 
   ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
+#--- Source Build Phase
   @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
     !"Sources"
     !inSourcesToCompileKeyList
   ] ;
+  @stringlist buildPhases [listWithValue ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey]] ;
+#--- Define Frameworks Build Phase
+  @Xcode_PBXFrameworksBuildPhase frameworksBuildPhase [new
+    !"Frameworks"
+    !inFrameworkKeyList
+  ] ;
+  ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
+  buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
+
   ioXcodeProjectDescription.mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
   if inPrecompiledHeaderPath != "" then
     inTargetSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
@@ -799,7 +810,7 @@ routine add_tool_target
     !"$(HOME)/bin"
     !inProductFileName
     !toolFileReference
-    ![@stringlist listWithValue ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey]]
+    !buildPhases
     !inDirectDependencyList
   ;
 end routine ;
