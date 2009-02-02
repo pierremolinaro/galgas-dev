@@ -577,7 +577,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << "_inLexique.printMessage (C_String (\"LOGGING "
               << mGalgasVariableName << ": \") + " ;
     mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile  << ".reader_description (_inLexique COMMA_HERE) + \"\\n\""
+    ioCppFile  << ".reader_description (_inLexique COMMA_HERE).string () + \"\\n\""
                  " COMMA_SOURCE_FILE_AT_LINE ("
               << mGalgasVariableName.lineNumber ()
               << ")) ;\n" ;

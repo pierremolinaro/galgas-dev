@@ -4193,6 +4193,9 @@ routine handleReaderCall
       elsif [inReaderName string] == "count" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inReaderName string] == "stringList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        build_stringlist_type ? outReturnedType ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
