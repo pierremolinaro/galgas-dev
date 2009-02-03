@@ -1,11 +1,11 @@
 project
-  lexique "dangling_else_solution_lexique.ggs" : makefile, xcode ;
-  option "dangling_else_solution_options.ggs" : makefile, xcode ;
-  semantics "dangling_else_solution_semantics.ggs" : makefile, xcode ;
-  syntax "dangling_else_solution_syntax.ggs" : makefile, xcode ;
-  grammar "dangling_else_solution_grammar.ggs" : makefile, xcode ;
-  gui "dangling_else_solution_cocoa.ggs" : xcode ;
-  program "dangling_else_solution_program.ggs" : makefile, xcode ;
+  lexique "dangling_else_solution_lexique.ggs" : makefile, xcode_tool, xcode_app ;
+  option "dangling_else_solution_options.ggs" : makefile, xcode_tool, xcode_app ;
+  semantics "dangling_else_solution_semantics.ggs" : makefile, xcode_tool ;
+  syntax "dangling_else_solution_syntax.ggs" : makefile, xcode_tool ;
+  grammar "dangling_else_solution_grammar.ggs" : makefile, xcode_tool ;
+  gui "dangling_else_solution_cocoa.ggs" : xcode_tool, xcode_app ;
+  program "dangling_else_solution_program.ggs" : makefile, xcode_tool ;
 end project ;
 
 

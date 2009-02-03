@@ -1,11 +1,11 @@
 project
-  lexique "LR1_grammar_lexique.ggs" : makefile, xcode ;
-  option "LR1_grammar_options.ggs" : makefile, xcode ;
-  semantics "LR1_grammar_semantics.ggs" : makefile, xcode ;
-  syntax "LR1_grammar_syntax.ggs" : makefile, xcode ;
-  grammar "LR1_grammar_grammar.ggs" : makefile, xcode ;
-  gui "LR1_grammar_cocoa.ggs" : xcode ;
-  program "LR1_grammar_program.ggs" : makefile, xcode ;
+  lexique "LR1_grammar_lexique.ggs" : makefile, xcode_tool, xcode_app ;
+  option "LR1_grammar_options.ggs" : makefile, xcode_tool, xcode_app ;
+  semantics "LR1_grammar_semantics.ggs" : makefile, xcode_tool ;
+  syntax "LR1_grammar_syntax.ggs" : makefile, xcode_tool ;
+  grammar "LR1_grammar_grammar.ggs" : makefile, xcode_tool ;
+  gui "LR1_grammar_cocoa.ggs" : xcode_tool, xcode_app ;
+  program "LR1_grammar_program.ggs" : makefile, xcode_tool ;
 end project ;
 
 

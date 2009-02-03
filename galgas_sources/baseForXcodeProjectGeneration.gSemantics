@@ -764,6 +764,62 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+#routine add_shell_script_target
+#  ?!@XcodeProjectDescription ioXcodeProjectDescription
+##  ??@string inProductFileName
+#  ??@string inTargetName
+#  ?@stringlist inTargetSettings
+#  ??@string inShell
+#  ??@string inScript
+#  ??@stringlist inInputFileList
+#  ??@stringlist inOutputFileList
+#  ??@stringlist inDirectDependencyList
+#  !@string outTargetKey
+#:
+#  @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new !inProductFileName] ;
+#  @lstring projectNameKey [new !inProductFileName !here] ;
+#  [!?ioXcodeProjectDescription.mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
+#
+#  ioXcodeProjectDescription.mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
+##--- Source Build Phase
+#  @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
+#    !"Sources"
+#    !inSourcesToCompileKeyList
+#  ] ;
+#  @stringlist buildPhases [listWithValue ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey]] ;
+##--- Define Frameworks Build Phase
+#  if [inFrameworkKeyList length] > 0 then
+#    @Xcode_PBXFrameworksBuildPhase frameworksBuildPhase [new
+#      !"Frameworks"
+#      !inFrameworkKeyList
+#    ] ;
+#    ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
+#    buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
+#  end if ;
+#
+#  ioXcodeProjectDescription.mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
+#  if inPrecompiledHeaderPath != "" then
+#    inTargetSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
+#    inTargetSettings  += !"GCC_PREFIX_HEADER = \"" . inPrecompiledHeaderPath . "\";" ;
+#  end if ;
+#  inTargetSettings += !"PRODUCT_NAME = \"" . inProductFileName . "\";" ;
+#  @Xcode_XCBuildConfiguration toolTargetBuildConfiguration [new !inTargetSettings] ;
+#  ioXcodeProjectDescription.mBuildConfigurationList += !toolTargetBuildConfiguration ;
+#  outTargetKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
+#  ioXcodeProjectDescription.mTargetList +=
+#    !outTargetKey
+#    !inTargetName
+#    !toolTargetBuildConfiguration
+#    !"$(HOME)/bin"
+#    !inProductFileName
+#    !toolFileReference
+#    !buildPhases
+#    !inDirectDependencyList
+#  ;
+#end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine add_tool_target
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inProductFileName
@@ -787,12 +843,14 @@ routine add_tool_target
   ] ;
   @stringlist buildPhases [listWithValue ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey]] ;
 #--- Define Frameworks Build Phase
-  @Xcode_PBXFrameworksBuildPhase frameworksBuildPhase [new
-    !"Frameworks"
-    !inFrameworkKeyList
-  ] ;
-  ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
-  buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
+  if [inFrameworkKeyList length] > 0 then
+    @Xcode_PBXFrameworksBuildPhase frameworksBuildPhase [new
+      !"Frameworks"
+      !inFrameworkKeyList
+    ] ;
+    ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
+    buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
+  end if ;
 
   ioXcodeProjectDescription.mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
   if inPrecompiledHeaderPath != "" then
