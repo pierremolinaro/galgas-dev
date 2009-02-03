@@ -1,10 +1,10 @@
 project
-  lexique "LL1_expression_lexique.ggs" : makefile, xcode ;
-  option "LL1_expression_options.ggs" : makefile, xcode ;
-  semantics "LL1_expression_semantics.ggs" : makefile, xcode ;
-  syntax "LL1_expression_syntax.ggs" : makefile, xcode ;
-  grammar "LL1_expression_grammar.ggs" : makefile, xcode ;
-  gui "LL1_expression_cocoa.ggs" : xcode ;
-  program "LL1_expression_program.ggs" : makefile, xcode ;
+  lexique "LL1_expression_lexique.ggs" : makefile, xcode_tool, xcode_app ;
+  option "LL1_expression_options.ggs" : makefile, xcode_tool, xcode_app ;
+  semantics "LL1_expression_semantics.ggs" : makefile, xcode_tool ;
+  syntax "LL1_expression_syntax.ggs" : makefile, xcode_tool ;
+  grammar "LL1_expression_grammar.ggs" : makefile, xcode_tool ;
+  gui "LL1_expression_cocoa.ggs" : xcode_tool, xcode_app ;
+  program "LL1_expression_program.ggs" : makefile, xcode_tool ;
 end project ;
 

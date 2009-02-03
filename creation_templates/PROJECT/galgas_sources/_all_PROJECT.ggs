@@ -1,10 +1,10 @@
 project
-  lexique "PROJECT_lexique.ggs" : makefile, xcode ;
-  option "PROJECT_options.ggs" : makefile, xcode ;
-  semantics "PROJECT_semantics.ggs" : makefile, xcode ;
-  syntax "PROJECT_syntax.ggs" : makefile, xcode ;
-  grammar "PROJECT_grammar.ggs" : makefile, xcode ;
-  gui "PROJECT_cocoa.ggs" : xcode ;
-  program "PROJECT_program.ggs" : makefile, xcode ;
-  extern "PROJECT_computations.cpp" : makefile, xcode ;
+  lexique "PROJECT_lexique.ggs" : makefile, xcode_tool, xcode_app ;
+  option "PROJECT_options.ggs" : makefile, xcode_tool, xcode_app ;
+  semantics "PROJECT_semantics.ggs" : makefile, xcode_tool ;
+  syntax "PROJECT_syntax.ggs" : makefile, xcode_tool ;
+  grammar "PROJECT_grammar.ggs" : makefile, xcode_tool ;
+  gui "PROJECT_cocoa.ggs" : xcode_tool, xcode_app ;
+  program "PROJECT_program.ggs" : makefile, xcode_tool ;
+  extern "PROJECT_computations.cpp" : makefile, xcode_tool ;
 end project ;
