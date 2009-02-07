@@ -1,6 +1,6 @@
 0::
 ../creation_templates/actual_templates/project/galgas_sources/build.bat.txt
-../creation_templates/actual_templates/project/galgas_sources/_all_PROJECT.ggs
+../creation_templates/actual_templates/project/galgas_sources/all_PROJECT.ggs
 ../creation_templates/actual_templates/project/galgas_sources/PROJECT_cocoa.ggs
 ../creation_templates/actual_templates/project/galgas_sources/PROJECT_grammar.ggs
 ../creation_templates/actual_templates/project/galgas_sources/PROJECT_lexique.ggs

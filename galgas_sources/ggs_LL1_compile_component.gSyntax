@@ -141,6 +141,12 @@ rule <galgas_component>
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $project$ ;
+  $identifier$ ? @lstring sourceFileName ;
+  @string s := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+  if s != [sourceFileName string] then
+    error sourceFileName : "the project name ('" . sourceFileName . "') should be the file base name '" . s . "'" ;
+  end if ;
+  $:$ ;
   @EXsourceFileMap sourceFileMap [emptyMap] ;
   @EXtargetFileListMap targetFileListMap [emptyMap] ;
   repeat
@@ -453,6 +459,8 @@ label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :
   $project$ ;
+  $identifier$ ? * ;
+  $:$ ;
   repeat
   while
     select
@@ -492,6 +500,8 @@ label importSyntax
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $project$ ;
+  $identifier$ ? * ;
+  $:$ ;
   repeat
   while
     select
@@ -532,6 +542,8 @@ label importSemantics
   ?!@stringset unused ioImportedSemanticsComponentNameSet
 :
   $project$ ;
+  $identifier$ ? * ;
+  $:$ ;
   repeat
   while
     select
@@ -572,6 +584,8 @@ label importGrammarForSemantics
   ?!@EXsemanticContext unused ioSemanticContext
 :
   $project$ ;
+  $identifier$ ? * ;
+  $:$ ;
   repeat
   while
     select
@@ -610,6 +624,8 @@ label importOptions
   ?!@M_optionComponents unused ioOptionsComponentsMap
 :
   $project$ ;
+  $identifier$ ? * ;
+  $:$ ;
   repeat
   while
     select
