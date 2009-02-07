@@ -29,7 +29,7 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
 } {
 #--- Project
   template build_bat "/galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
-  template all_ggs "/galgas_sources/_all_PROJECT.ggs" ?@string PROJECT_NAME ;
+  template all_ggs "/galgas_sources/all_PROJECT.ggs" ?@string PROJECT_NAME ;
   template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.ggs" ?@string PROJECT_NAME ;
   template PROJECT_grammar "/galgas_sources/PROJECT_grammar.ggs" ?@string PROJECT_NAME ;
   template PROJECT_lexique "/galgas_sources/PROJECT_lexique.ggs" ?@string PROJECT_NAME ;
@@ -65,7 +65,7 @@ routine performProjectCreation ??@string inProjectName :
 #--- galgas_sources
   @string galgas_sources_DIR := inProjectName ."/galgas_sources" ;
   [galgas_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.all_ggs !inProjectName] writeToFile !galgas_sources_DIR ."/_all_" .inProjectName .".ggs"] ;
+  [[filewrapper projectCreationFileWrapper.all_ggs !inProjectName] writeToFile !galgas_sources_DIR ."/all_" .inProjectName .".ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_cocoa.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_grammar !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_grammar.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_lexique !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_lexique.ggs"] ;

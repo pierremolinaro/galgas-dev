@@ -8,7 +8,7 @@ sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/Info.plist > ${DIR
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/project_xcode/English.lproj/InfoPlist.strings > ${DIR}/actual_templates/project/project_xcode/English.lproj/InfoPlist.strings &&
 rm -f ${DIR}/actual_templates/project/galgas_sources/* &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/build.bat > ${DIR}/actual_templates/project/galgas_sources/build.bat.txt &&
-sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/_all_PROJECT.ggs > ${DIR}/actual_templates/project/galgas_sources/_all_PROJECT.ggs &&
+sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/all_PROJECT.ggs > ${DIR}/actual_templates/project/galgas_sources/all_PROJECT.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_cocoa.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_cocoa.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_grammar.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_grammar.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_lexique.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_lexique.ggs &&

@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-project
+project all_galgas :
 #--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
   program "mda_galgas_prgm.gProgram" ;
 

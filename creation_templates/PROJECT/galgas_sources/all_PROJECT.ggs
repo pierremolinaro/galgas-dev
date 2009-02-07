@@ -1,4 +1,4 @@
-project
+project all_PROJECT :
   lexique "PROJECT_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "PROJECT_options.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "PROJECT_semantics.ggs" : makefile, xcode_tool ;
