@@ -1205,7 +1205,8 @@ generate_scanner_header_file (C_Compiler & inLexique,
   generatedZone2 << "class " << inLexiqueName << " : public C_Lexique {\n"
                     "//--- Constructors\n"
                     "  public : " << inLexiqueName << " (C_Compiler * inCallerCompiler,\n"
-                    "                       const GGS_string & inDependancyFileExtension,\n"
+                    "                       const C_String & inDependencyFileExtension,\n"
+                    "                       const C_String & inDependencyFilePath,\n"
                     "                       C_galgas_io * inParametersPtr,\n"
                     "                       const C_String & inSourceFileName\n"
                     "                       COMMA_LOCATION_ARGS) ;\n\n"
@@ -1401,11 +1402,12 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << inLexiqueName << "::\n" << inLexiqueName
                  << " (C_Compiler * inCallerCompiler,\n"
-                    "                const GGS_string & inDependancyFileExtension,\n"
+                    "                const C_String & inDependencyFileExtension,\n"
+                    "                const C_String & inDependencyFilePath,\n"
                     "                C_galgas_io * inParametersPtr,\n"
                     "                const C_String & inSourceFileName\n"
                     "                COMMA_LOCATION_ARGS) :\n"
-                    "C_Lexique (inCallerCompiler, inDependancyFileExtension, inParametersPtr, inSourceFileName COMMA_THERE)" ;
+                    "C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE)" ;
   if (inIsTemplate) {
     generatedZone2 << ",\n"
                       "_mMatchedTemplateDelimiterIndex (-1)" ;

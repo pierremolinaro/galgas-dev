@@ -30,7 +30,8 @@ class projectLL1grammar : public projectModelBuilder {
                                 GGS_projectSourceList &,
                                 GGS_location &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyExtension,
+                                const C_String & _inDependancyExtension,
+                                const C_String & _inDependancyPath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_projectSourceList &,

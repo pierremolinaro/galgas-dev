@@ -29,7 +29,8 @@ class grammarLL1grammar : public grammarModelBuilder {
   public : virtual void nt_grammar_component_start_symbol_ (galgas_scanner &,
                                 GGS_grammarComponentRoot &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyExtension,
+                                const C_String & _inDependancyExtension,
+                                const C_String & _inDependancyPath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_grammarComponentRoot &

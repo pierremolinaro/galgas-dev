@@ -4485,6 +4485,7 @@ rule <semantic_instruction>
   @bool sourceIsFile ;
   @typeExpression sourceExpression ;
   @typeExpression depFileExpression ;
+  @typeExpression depFilePath ;
   @bool hasDependancyFile := false ;
   @location dependancyFileDefinitionLocation := here ;
   select
@@ -4502,8 +4503,9 @@ rule <semantic_instruction>
     @typeGalgas_lstring gs := (cast sourceExpressionType if >= @typeGalgas_lstring else error here) ;
     select
       depFileExpression := [@typeLiteralStringExpression new ![@stringlist listWithValue !""]] ;
+      depFilePath := [@typeLiteralStringExpression new ![@stringlist listWithValue !""]] ;
     or
-      $($ ;
+      $dependency$ ;
       @AC_galgasType depFileExpressionType ;
       <expression>
         !ioComponentSemanticsEntitiesMap
@@ -4515,8 +4517,17 @@ rule <semantic_instruction>
       ;
       dependancyFileDefinitionLocation := here ;
       @typeGalgas_string gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
+      $in$ ;
+      <expression>
+        !ioComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !inSemanticContext
+        !?ioVariablesMap
+        ?depFilePath
+        ?depFileExpressionType
+      ;
+      gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
       warning here:"dep" ;
-      $)$ ;
       hasDependancyFile := true ;
     end select ;
   or
@@ -4533,6 +4544,7 @@ rule <semantic_instruction>
     ;
     @typeGalgas_string gs := (cast sourceExpressionType if >= @typeGalgas_string else error here) ;
     depFileExpression := [@typeLiteralStringExpression new ![@stringlist listWithValue !""]] ;
+    depFilePath := [@typeLiteralStringExpression new ![@stringlist listWithValue !""]] ;
   end select ;
 #--- Analyse des arguments effectifs
   @typeExpressionList expressionsList ;
@@ -4591,6 +4603,7 @@ rule <semantic_instruction>
     !lexiqueClassName
     !sentStringName
     !depFileExpression
+    !depFilePath
   ] ;
   ioInstructionList += !instruction ;
   $;$ ;

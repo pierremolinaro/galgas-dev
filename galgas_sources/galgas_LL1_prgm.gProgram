@@ -49,7 +49,7 @@ message "a '.ggs' GALGAS source file"
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
   ] ;
-  grammar galgas_LL1_grammar in inSourceFile ("dep")
+  grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "GALGAS_OUTPUT/DEPENDENCIES"
     !?lexiqueMapForUse
     !?semanticsComponentsMap
     !?syntaxComponentsMap

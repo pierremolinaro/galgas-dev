@@ -203,7 +203,7 @@ rule <galgas_component>
     end if ;
   #--- Compile file
     if sourceFileKind != [@EXsourceFileKind externSourceFile] then
-      grammar galgas_LL1_grammar label compileFile in fileName ("dep") ;
+      grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "GALGAS_OUTPUT/DEPENDENCIES" ;
     end if ;
     $;$ ;
   end repeat ;
@@ -683,7 +683,7 @@ rule <galgas_component>
   if [option.verbose_output] then
     message "------ Compile file '" . [fileName string] . "'\n" ;
   end if ;
-  grammar galgas_LL1_grammar label compileFile in fileName ("dep") ;
+  grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "GALGAS_OUTPUT/DEPENDENCIES" ;
 label importLexique
   ?!@M_lexiqueComponents unused ioLexiqueMapForUse
 :

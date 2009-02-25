@@ -965,7 +965,8 @@ class @C_grammarInstruction extends @typeInstruction {
   @lstring mAltSymbol ;
   @lstring mLexiqueClassName ;
   @typeCplusPlusName mSentStringName ;
-  @typeExpression mDependancyFileExpression ;
+  @typeExpression mDependencyFileExtension ;
+  @typeExpression mDependancyFilePath ;
 }
 
 #---------------------------------------------------------------------------*

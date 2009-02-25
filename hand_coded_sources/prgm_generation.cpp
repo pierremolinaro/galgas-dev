@@ -255,7 +255,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
                     "  //--- Common lexique object\n"
                     "    C_Compiler * _commonLexique = NULL ;\n"
-                    "    macroMyNew (_commonLexique, C_Compiler (NULL, \"\", galgasIOptr COMMA_HERE)) ;\n"
+                    "    macroMyNew (_commonLexique, C_Compiler (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
                     "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
