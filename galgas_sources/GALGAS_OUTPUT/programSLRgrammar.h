@@ -75,7 +75,8 @@ class programSLRgrammar : public expressionModelBuilder,
   public : virtual void nt_program_component_start_symbol_ (galgas_scanner &,
                                 GGS_programComponentRoot &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyExtension,
+                                const C_String & _inDependancyExtension,
+                                const C_String & _inDependancyPath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_programComponentRoot &

@@ -50,7 +50,8 @@ class syntaxSLRgrammar : public syntaxModelBuilder,
   public : virtual void nt_syntax_component_start_symbol_ (galgas_scanner &,
                                 GGS_syntaxComponentRoot &) ;
   public : static void _performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyExtension,
+                                const C_String & _inDependancyExtension,
+                                const C_String & _inDependancyPath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring inFileName,
                                 GGS_syntaxComponentRoot &

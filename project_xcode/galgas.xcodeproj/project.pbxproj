@@ -4331,7 +4331,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				INSTALL_PATH = "$(HOME)/bin";
-				OTHER_LDFLAGS = "-s";
 				PRODUCT_NAME = galgas;
 				ZERO_LINK = NO;
 			};
@@ -4350,10 +4349,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebug;
-				SECTORDER_FLAGS = "";
 			};
 			name = Default;
 		};
@@ -4378,10 +4375,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = cocoaGalgas;
-				SECTORDER_FLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
@@ -4430,6 +4424,7 @@
 					"../../libpm/**",
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_GENERATE_MAP_FILE = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
@@ -4458,10 +4453,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugI386;
-				SECTORDER_FLAGS = "";
 			};
 			name = Default;
 		};
@@ -4483,10 +4476,7 @@
 				INFOPLIST_FILE = InfoI386.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = cocoaGalgasI386;
-				SECTORDER_FLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
@@ -4509,7 +4499,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				INSTALL_PATH = "$(HOME)/bin";
-				OTHER_LDFLAGS = "-s";
 				PRODUCT_NAME = galgasPPC;
 			};
 			name = Default;
@@ -4524,10 +4513,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugPPC;
-				SECTORDER_FLAGS = "";
 			};
 			name = Default;
 		};
@@ -4549,10 +4536,7 @@
 				INFOPLIST_FILE = InfoPPC.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
-				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = cocoaGalgasPPC;
-				SECTORDER_FLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;

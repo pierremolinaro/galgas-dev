@@ -189,7 +189,8 @@ pr_option_component_start_symbol_optionModelBuilder_30_36_ (_inLexique, paramete
 //---------------------------------------------------------------------------*
 
 void optionLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyExtension,
+                                const C_String & _inDependancyExtension,
+                                const C_String & _inDependancyPath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring _inFileName,
                                 GGS_optionComponentRoot & parameter_1
@@ -199,7 +200,7 @@ void optionLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
     : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;
   if (sourceFileName.fileExists ()) {
     galgas_scanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgas_scanner (& _inCompiler, _inDependancyExtension, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
+    macroMyNew (scanner_, galgas_scanner (& _inCompiler, _inDependancyExtension, _inDependancyPath, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
     if (scanner_->needsCompiling ()) {
       if (scanner_->sourceText () != NULL) {
         scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;

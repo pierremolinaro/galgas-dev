@@ -165,7 +165,8 @@ pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (_inLexique, param
 //---------------------------------------------------------------------------*
 
 void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
-                                const GGS_string & _inDependancyExtension,
+                                const C_String & _inDependancyExtension,
+                                const C_String & _inDependancyPath,
                                 GGS_string * _inSentStringPtr,
                                 const GGS_lstring _inFileName,
                                 GGS_typeVariablesMap & parameter_1,
@@ -177,7 +178,7 @@ void galgasTemplateGrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler
     : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;
   if (sourceFileName.fileExists ()) {
     galgasTemplateScanner * scanner_ = NULL ;
-    macroMyNew (scanner_, galgasTemplateScanner (& _inCompiler, _inDependancyExtension, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
+    macroMyNew (scanner_, galgasTemplateScanner (& _inCompiler, _inDependancyExtension, _inDependancyPath, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;
     if (scanner_->needsCompiling ()) {
       if (scanner_->sourceText () != NULL) {
         scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;

@@ -583,7 +583,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
                           ",\n                                "
-                          "const GGS_string & _inDependancyExtension"
+                          "const C_String & _inDependancyExtension"
+                          ",\n                                "
+                          "const C_String & _inDependancyPath"
                           ",\n                                "
                           "GGS_string * _inSentStringPtr"
                           ",\n                                "
@@ -604,7 +606,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inDependancyExtension, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inDependancyExtension, _inDependancyPath, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->needsCompiling ()) {\n"
                           "      if (scanner_->sourceText () != NULL) {\n"
                           "        scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;

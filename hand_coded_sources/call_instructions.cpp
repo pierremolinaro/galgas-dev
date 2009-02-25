@@ -373,14 +373,23 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
+    if (mSourceIsFile.boolValue ()) {
+      ioCppFile << "const GGS_string _depExtension = " ;
+      mDependencyFileExtension (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << " ;\n"
+                   "const GGS_string _depPath = " ;
+      mDependancyFilePath (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << " ;\n"
+                   "if (_depExtension._isBuilt () && _depPath._isBuilt ()) {\n  " ;
+    }
     ioCppFile << mGrammarName << "::"
               << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
               << mAltSymbol
               << " (_inLexique"
                  ",\n                                " ;
     if (mSourceIsFile.boolValue ()) {
-      mDependancyFileExpression (HERE)->generateExpression (ioCppFile) ;
-      ioCppFile << ",\n                                " ;
+      ioCppFile << "_depExtension.string (),\n                                "
+                   "_depPath.string (),\n                                " ;
     }
     if (dynamic_cast <cPtr_typeNullName *> (mSentStringName (HERE)) != NULL) {
       ioCppFile << "NULL" ;
@@ -400,6 +409,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "COMMA_SOURCE_FILE_AT_LINE ("
               << mGrammarName.lineNumber ()
               << ")) ;\n" ; 
+    if (mSourceIsFile.boolValue ()) {
+      ioCppFile << "}\n" ;
+    }
   }
 }
 
