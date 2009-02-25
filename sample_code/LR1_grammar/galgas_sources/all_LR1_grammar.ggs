@@ -1,4 +1,4 @@
-project
+project all_LR1_grammar:
   lexique "LR1_grammar_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "LR1_grammar_options.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "LR1_grammar_semantics.ggs" : makefile, xcode_tool ;
