@@ -1,4 +1,4 @@
-project
+project all_class_sample_language:
   lexique "class_sample_language_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "class_sample_language_options.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "class_sample_language_semantics.ggs" : makefile, xcode_tool ;

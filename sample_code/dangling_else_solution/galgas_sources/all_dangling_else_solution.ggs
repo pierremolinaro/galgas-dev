@@ -1,4 +1,4 @@
-project
+project all_dangling_else_solution:
   lexique "dangling_else_solution_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "dangling_else_solution_options.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "dangling_else_solution_semantics.ggs" : makefile, xcode_tool ;

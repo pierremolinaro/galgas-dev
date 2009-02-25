@@ -1,4 +1,4 @@
-project
+project all_SLR_expression:
   lexique "SLR_expression_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "SLR_expression_options.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "SLR_expression_semantics.ggs" : makefile, xcode_tool ;

@@ -1,4 +1,4 @@
-project
+project all_LL1_expression:
   lexique "LL1_expression_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "LL1_expression_options.ggs" : makefile, xcode_tool, xcode_app ;
   semantics "LL1_expression_semantics.ggs" : makefile, xcode_tool ;
