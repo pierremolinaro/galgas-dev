@@ -854,8 +854,8 @@ routine generateXcodeProject
 #---------- HAND CODED SOURCES
   @XcodeObjectReferenceList fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
   @stringset fileSet := inExternSourceNameSet_tool | inExternSourceNameSet_app ;
-#  fileSet -= !"AppKit.framework" ;
-#  fileSet -= !"Cocoa.framework" ;
+  fileSet -= !"AppKit.framework" ;
+  fileSet -= !"Cocoa.framework" ;
   build_HAND_CODED_SOURCES_group
     !?XcodeProjectDescription
     !fileSet
