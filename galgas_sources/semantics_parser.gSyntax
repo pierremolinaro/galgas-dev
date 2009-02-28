@@ -4527,7 +4527,7 @@ rule <semantic_instruction>
         ?depFileExpressionType
       ;
       gs := (cast depFileExpressionType if >= @typeGalgas_string else error here) ;
-      warning here:"dep" ;
+#      warning here:"dep" ;
       hasDependancyFile := true ;
     end select ;
   or

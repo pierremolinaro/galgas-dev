@@ -60,7 +60,7 @@ rm -f ${DIR}/actual_templates/project/makefile_msys_on_win32/* &&
 cp ${DIR}/PROJECT/makefile_msys_on_win32/build.bat ${DIR}/actual_templates/project/makefile_msys_on_win32/build.bat &&
 cp ${DIR}/PROJECT/makefile_msys_on_win32/clean.bat ${DIR}/actual_templates/project/makefile_msys_on_win32/clean.bat &&
 cp ${DIR}/PROJECT/makefile_msys_on_win32/install.bat ${DIR}/actual_templates/project/makefile_msys_on_win32/install.bat &&
-sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_msys_on_win32/makefile.mke > ${DIR}/actual_templates/project/makefile_msys_on_win32/makefile.mke &&
+sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_msys_on_win32/makefile > ${DIR}/actual_templates/project/makefile_msys_on_win32/makefile &&
 #--- Makefile makefile_unix
 rm -f ${DIR}/actual_templates/project/makefile_unix/* &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_unix/makefile > ${DIR}/actual_templates/project/makefile_unix/makefile &&

@@ -47,7 +47,7 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
   template makefile_macosx_universal_makefile "/makefile_macosx_universal/makefile" ?@string PROJECT_NAME ;
   template makefile_macosx_universal_makefile64 "/makefile_macosx_universal/makefile64" ?@string PROJECT_NAME ;
   template makefile_mingw_on_macosx_makefile "/makefile_mingw_on_macosx/makefile" ?@string PROJECT_NAME ;
-  template makefile_msys_on_win32_makefile "/makefile_msys_on_win32/makefile.mke" ?@string PROJECT_NAME ;
+  template makefile_msys_on_win32_makefile "/makefile_msys_on_win32/makefile" ?@string PROJECT_NAME ;
   template makefile_unix_makefile "/makefile_unix/makefile" ?@string PROJECT_NAME ;
   template makefile_unix_makefile64 "/makefile_unix/makefile64" ?@string PROJECT_NAME ;
   template makefile_x86linux_on_macosx_makefile "/makefile_x86linux_on_macosx/makefile" ?@string PROJECT_NAME ;
@@ -126,7 +126,7 @@ routine performProjectCreation ??@string inProjectName :
   [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/build.bat"] writeToFile !makefile_mingw_on_win32_DIR ."/build.bat"] ;
   [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/clean.bat"] writeToFile !makefile_mingw_on_win32_DIR ."/clean.bat"] ;
   [[filewrapper projectCreationFileWrapper."/makefile_msys_on_win32/install.bat"] writeToFile !makefile_mingw_on_win32_DIR ."/install.bat"] ;
-  [[filewrapper projectCreationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFile !makefile_mingw_on_win32_DIR ."/makefile.mke"] ;
+  [[filewrapper projectCreationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFile !makefile_mingw_on_win32_DIR ."/makefile"] ;
 #--- makefile_unix
   @string makefile_unix_DIR := inProjectName ."/makefile_unix" ;
   [makefile_unix_DIR makeDirectory] ;

@@ -105,7 +105,7 @@ class cLR1_items_AVL_tree {
   public : const c_LR1_item mLR1item ;
   public : sint32 mBalance ;
 
-  private : cLR1_items_AVL_tree (const c_LR1_item & inLR1item) ;
+  protected : cLR1_items_AVL_tree (const c_LR1_item & inLR1item) ;
 
   public : virtual ~cLR1_items_AVL_tree (void) ;
 
@@ -790,7 +790,7 @@ class cLR1_items_sets_AVL_tree {
   private : const sint32 mInfoIndex ;
   public : sint32 mBalance ;
 
-  private : cLR1_items_sets_AVL_tree (const sint32 inInfo) ;
+  protected : cLR1_items_sets_AVL_tree (const sint32 inInfo) ;
 
   public : virtual ~cLR1_items_sets_AVL_tree (void) ;
 
