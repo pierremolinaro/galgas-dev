@@ -52,7 +52,7 @@ galgas_scanner.gLexique
 ../creation_templates/actual_templates/project/makefile_macosx_universal/makefile
 ../creation_templates/actual_templates/project/makefile_macosx_universal/makefile64
 ../creation_templates/actual_templates/project/makefile_mingw_on_macosx/makefile
-../creation_templates/actual_templates/project/makefile_msys_on_win32/makefile.mke
+../creation_templates/actual_templates/project/makefile_msys_on_win32/makefile
 ../creation_templates/actual_templates/project/makefile_unix/makefile
 ../creation_templates/actual_templates/project/makefile_unix/makefile64
 ../creation_templates/actual_templates/project/makefile_x86linux_on_macosx/makefile
