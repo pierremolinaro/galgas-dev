@@ -346,7 +346,7 @@ rule <galgas_component>
     @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !false ![@stringlist listWithValue !"xcodeproj"]] ;
     #log xcodeProjects ;
     if [xcodeProjects length] == 0 then
-      message "****** Cannot update Xcode project, no project found in '" . XcodeProjectDir . "' directory. ********\n" ;
+#      message "****** Cannot update Xcode project, no project found in '" . XcodeProjectDir . "' directory. ********\n" ;
     elsif [xcodeProjects length] > 1 then
       message "****** Cannot update Xcode project, more than one project exist in '" . XcodeProjectDir . "' directory. ********\n" ;
     elsif [xcodeProjects length] == 1 then
