@@ -30,6 +30,15 @@
 		CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF041D050F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D060F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D070F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D080F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D090F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D0A0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D0B0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D0C0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
+		CF041D0D0F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
 		CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF04216C0B0B51AA00BB53E5 /* Security.framework */; };
 		CF0676440E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
@@ -1179,6 +1188,8 @@
 		CF0357DD0B10E52800D3B6D0 /* include_mapIndexProperty.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_mapIndexProperty.h; sourceTree = "<group>"; };
 		CF03D56909CC2EAB00C93ED0 /* include_typeGalgas_singleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_singleEntity.h; sourceTree = "<group>"; };
 		CF03D57C09CC32D400C93ED0 /* include_typeGalgas_multipleEntity.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_multipleEntity.h; sourceTree = "<group>"; };
+		CF041D030F6157720001CEEB /* C_Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Compiler.cpp; sourceTree = "<group>"; };
+		CF041D040F6157720001CEEB /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
@@ -2722,6 +2733,8 @@
 				CF96D6B40B1DA4740067E271 /* AC_galgas_sortedlist.h */,
 				CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */,
 				CFD7D4900910C6AD00B72461 /* GGS_stringset.h */,
+				CF041D030F6157720001CEEB /* C_Compiler.cpp */,
+				CF041D040F6157720001CEEB /* C_Compiler.h */,
 				CF8259F608536AC20077AEAF /* C_Lexique.cpp */,
 				CF8259F708536AC20077AEAF /* C_Lexique.h */,
 				CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */,
@@ -3161,6 +3174,7 @@
 				CFE167830E8E7A2B00AFDAFC /* main.m in Sources */,
 				CF6BED810F379B1200A794A1 /* GGS_string.cpp in Sources */,
 				CF6BED830F379B1F00A794A1 /* GGS_bool.cpp in Sources */,
+				CF041D050F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3305,6 +3319,7 @@
 				CF01E4310E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE70E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD250EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
+				CF041D060F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3481,6 +3496,7 @@
 				CF01E4390E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
+				CF041D090F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3657,6 +3673,7 @@
 				CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EED0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
+				CF041D0A0F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3698,6 +3715,7 @@
 				CF33653D0F2F85330003B7D9 /* GGS_string.cpp in Sources */,
 				CF33653F0F2F85480003B7D9 /* C_TextFileWrite.cpp in Sources */,
 				CFE0343D0F30E480008F2D92 /* C_DateTime.cpp in Sources */,
+				CF041D080F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3842,6 +3860,7 @@
 				CF01E4350E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EE90E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD260EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
+				CF041D070F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4018,6 +4037,7 @@
 				CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EEF0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD290EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
+				CF041D0C0F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4194,6 +4214,7 @@
 				CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */,
 				CFB76EF10E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */,
 				CF63AD2A0EE04C0B00220E75 /* projectMetamodel.cpp in Sources */,
+				CF041D0D0F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4235,6 +4256,7 @@
 				CFE167850E8E7A2B00AFDAFC /* main.m in Sources */,
 				CFE5996C0F2F3F690086D65E /* GGS_bool.cpp in Sources */,
 				CFE5996E0F2F3F7A0086D65E /* GGS_string.cpp in Sources */,
+				CF041D0B0F6157720001CEEB /* C_Compiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
