@@ -771,6 +771,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"C_TextFileWrite.cpp" ;
 #--- LIBPM / GALGAS
   fileList += !"C_Lexique.cpp" ;
+  fileList += !"C_Compiler.cpp" ;
   fileList += !"C_galgas_io.cpp" ;
   fileList += !"C_galgas_CLI_Options.cpp" ;
   fileList += !"C_GGS_Object.cpp" ;
