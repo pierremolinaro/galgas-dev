@@ -361,6 +361,12 @@ rule <galgas_component>
       foreach xcode_app_files do
         intermediateString .= mValue . "\n" ;
       end foreach ;
+      @stringlist cpp_and_h_fileList ;
+      getGALGAS_source_file_list ? cpp_and_h_fileList ;
+      intermediateString .= "::\n" ;
+      foreach cpp_and_h_fileList do
+        intermediateString .= mValue . "\n" ;
+      end foreach ;
     #--- Update intermediate file
       @bool written := false ;
       @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
@@ -369,7 +375,7 @@ rule <galgas_component>
       else
         [@string deleteFileIfExists !intermediateFilePath] ;
       end if ;
-    #--- If intermediate file did change, update Xcode project
+    #--- If intermediate file has been written, or if Xcode project file does not exist, build Xcode project
       if written | not [fullXcodePath fileExists] then
         @stringset externSourceSet_tool [emptySet] ;
         @stringset guiSourceSet_tool [emptySet] ;

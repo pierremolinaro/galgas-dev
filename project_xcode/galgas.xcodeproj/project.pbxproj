@@ -6,20 +6,6 @@
 	objectVersion = 42;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		CFA18CDC0F2A16A300F8200B /* GALGAS PPC Compile */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = CFA18CDE0F2A16C200F8200B /* Build configuration list for PBXAggregateTarget "GALGAS PPC Compile" */;
-			buildPhases = (
-				CFA18CDB0F2A16A300F8200B /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = "GALGAS PPC Compile";
-			productName = "GALGAS Compile";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
@@ -3051,7 +3037,6 @@
 				CFEDF4BF0C2D16840038713A /* GALGAS Cocoa (PPC) */,
 				CFEDF2040C2D161F0038713A /* GALGAS tool LL1 (PPC) */,
 				CFEDF3650C2D16610038713A /* GALGAS tool LL1 debug (PPC) */,
-				CFA18CDC0F2A16A300F8200B /* GALGAS PPC Compile */,
 			);
 		};
 /* End PBXProject section */
@@ -3117,23 +3102,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CFA18CDB0F2A16A300F8200B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "build/Default/galgasPPC ../galgas_sources/_compileAllGalgas.ggs -v --do-not-generate-xcode-project";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D15AC300486D014006FF6A4 /* Sources */ = {
@@ -4503,13 +4471,6 @@
 			};
 			name = Default;
 		};
-		CFA18CDD0F2A16A400F8200B /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "GALGAS Compile";
-			};
-			name = Default;
-		};
 		CFEDF3600C2D161F0038713A /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4618,14 +4579,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF6DF25409E3F3A700506859 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		CFA18CDE0F2A16C200F8200B /* Build configuration list for PBXAggregateTarget "GALGAS PPC Compile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CFA18CDD0F2A16A400F8200B /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
