@@ -362,11 +362,15 @@ rule <galgas_component>
         intermediateString .= mValue . "\n" ;
       end foreach ;
     #--- Update intermediate file
+      @bool written := false ;
       @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
-      @bool written ;
-      [intermediateString writeToFileWhenDifferentContents !intermediateFilePath ?written] ;
+      if [@uint errorCount] == 0 then
+        [intermediateString writeToFileWhenDifferentContents !intermediateFilePath ?written] ;
+      else
+        [@string deleteFileIfExists !intermediateFilePath] ;
+      end if ;
     #--- If intermediate file did change, update Xcode project
-      if written then
+      if written | not [fullXcodePath fileExists] then
         @stringset externSourceSet_tool [emptySet] ;
         @stringset guiSourceSet_tool [emptySet] ;
         @stringset scannerSourceSet_tool [emptySet] ;
