@@ -131,9 +131,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       #else
         "version GALGAS_BETA_VERSION",
       #endif
-      argv [1],
-      10000,
-      10000) ;
+      argv [1]) ;
   //--- Build galgas io object
     C_galgas_io * galgasIOptr = NULL ;
     macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;
