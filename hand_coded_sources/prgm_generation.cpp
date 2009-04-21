@@ -247,9 +247,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << ",\n"
                     "      #endif\n"
-                    "      argv [1],\n"
-                    "      10000,\n"
-                    "      10000) ;\n"
+                    "      argv [1]) ;\n"
                     "  //--- Build galgas io object\n"
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
                     "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
