@@ -1,0 +1,24 @@
+semantics xml_types :
+
+enum @xmlNodeType {
+  element, text, comment ;
+}{
+}
+
+map @xmlAttributeMap {
+  @lstring value ;  insert insertKey error message "the '%K' attribute has been already declared" ;  search searchKey error message "the '%K' attribute is not declared" ;}
+
+list @xmlNodeList ;
+
+class @xmlNode {
+  @xmlNodeType type ;
+  @string name ;
+  @xmlAttributeMap attributeMap ;
+  @xmlNodeList nodeList ;
+}
+
+list @xmlNodeList {
+  @xmlNode node ;
+}
+
+end semantics ;

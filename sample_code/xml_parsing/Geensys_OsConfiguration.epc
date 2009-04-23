@@ -1,0 +1,2333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/2.1.2">
+  <TOP-LEVEL-PACKAGES>
+    <AR-PACKAGE UUID="DCE:a21e7546-c55c-4463-9d6f-4ef398c66058">
+      <SHORT-NAME>ARRoot</SHORT-NAME>
+      <LONG-NAME>
+        <L-4 L="FR">ARRoot</L-4>
+      </LONG-NAME>
+      <!-- This is a comment.-->
+      <ELEMENTS>
+        <MODULE-CONFIGURATION UUID="DCE:26161b71-7d69-4220-8a19-0eb326b032d6">
+          <SHORT-NAME>Os_Configuration</SHORT-NAME>
+          <LONG-NAME>
+            <L-4 L="FR">Os_Desc_preconfigured</L-4>
+          </LONG-NAME>
+          <DEFINITION-REF DEST="MODULE-DEF">/ARRoot/Os</DEFINITION-REF>
+          <MODULE-DESCRIPTION-REF DEST="BSW-MODULE-DESCRIPTION">/ARRoot/Os_Desc</MODULE-DESCRIPTION-REF>
+          <CONTAINERS>
+            <CONTAINER UUID="DCE:06e08c68-7c92-4e68-bb8a-e9f1540c1a5c">
+              <SHORT-NAME>OsAppMode</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsAppMode</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsAppMode</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsAppMode/OsAppModeId</DEFINITION-REF>
+                  <VALUE>0</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:99f70365-93e1-46b2-a232-68100d175132">
+              <SHORT-NAME>OsOS</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsOS</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsOS</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsOS/OsScalabilityClass</DEFINITION-REF>
+                  <VALUE>SC2</VALUE>
+                </ENUMERATION-VALUE>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsOS/OsStatus</DEFINITION-REF>
+                  <VALUE>STANDARD</VALUE>
+                </ENUMERATION-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsStackMonitoring</DEFINITION-REF>
+                  <VALUE>true</VALUE>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsUseGetServiceId</DEFINITION-REF>
+                  <VALUE>true</VALUE>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsUseParameterAccess</DEFINITION-REF>
+                  <VALUE>true</VALUE>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsUseResScheduler</DEFINITION-REF>
+                  <VALUE>true</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsOS/OsTimingProtectionGptChannelRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Gpt_ConfigurationStub/GptChannelConfigSet/GptChannelConfiguration1</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:63beeee7-7a79-41b7-a375-9a6d81519018">
+                  <SHORT-NAME>OsHooks</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsHooks</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsOS/OsHooks</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsHooks/OsErrorHook</DEFINITION-REF>
+                      <VALUE>true</VALUE>
+                    </BOOLEAN-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsHooks/OsPostTaskHook</DEFINITION-REF>
+                      <VALUE>true</VALUE>
+                    </BOOLEAN-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsHooks/OsPreTaskHook</DEFINITION-REF>
+                      <VALUE>true</VALUE>
+                    </BOOLEAN-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsHooks/OsProtectionHook</DEFINITION-REF>
+                      <VALUE>true</VALUE>
+                    </BOOLEAN-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsHooks/OsShutdownHook</DEFINITION-REF>
+                      <VALUE>true</VALUE>
+                    </BOOLEAN-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsOS/OsHooks/OsStartupHook</DEFINITION-REF>
+                      <VALUE>true</VALUE>
+                    </BOOLEAN-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:067e7445-d03e-4335-af13-1eb9363a48f3">
+              <SHORT-NAME>OsCounterBaseTick</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>65535</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:307a8ac9-56c1-4721-80cc-bc971426e7a7">
+                  <SHORT-NAME>OsDriver</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsDriver</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter/OsDriver</DEFINITION-REF>
+                  <PARAMETER-VALUES/>
+                  <REFERENCE-VALUES>
+                    <REFERENCE-VALUE>
+                      <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsCounter/OsDriver/OsGptChannelRef</DEFINITION-REF>
+                      <VALUE-REF DEST="CONTAINER">/ARRoot/Gpt_ConfigurationStub/GptChannelConfigSet/GptChannelConfiguration</VALUE-REF>
+                    </REFERENCE-VALUE>
+                  </REFERENCE-VALUES>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:30f38f86-e600-40b2-8444-b97878c42241">
+              <SHORT-NAME>TaskInit</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>4</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>300</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:cbffffa2-5681-44a5-99e0-3cebd7d6c15f">
+                  <SHORT-NAME>OsTaskAutostart</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsTaskAutostart</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask/OsTaskAutostart</DEFINITION-REF>
+                  <PARAMETER-VALUES/>
+                  <REFERENCE-VALUES>
+                    <REFERENCE-VALUE>
+                      <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskAutostart/OsTaskAppModeRef</DEFINITION-REF>
+                      <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/OsAppMode</VALUE-REF>
+                    </REFERENCE-VALUE>
+                  </REFERENCE-VALUES>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:7141afa3-6a1f-4481-a089-91dd1d50bd7b">
+              <SHORT-NAME>Gpt_ItChannel0</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65402</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:fa063b8f-d96f-408f-9a15-73d037e587a4">
+              <SHORT-NAME>Gpt_ItChannel1</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65400</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:217ed88f-db9a-4fb2-b070-c251b2b996e9">
+              <SHORT-NAME>Gpt_Isr2Channel2</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_2</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65398</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:79cf7a41-0fb4-49ef-b672-0d308a587755">
+              <SHORT-NAME>Gpt_ItChannel3</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65396</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:e3123924-f989-42ef-9e29-caca8ab96174">
+              <SHORT-NAME>Gpt_ItChannel4</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65374</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:e442363d-00bc-45bd-bfc2-a7cc7cf544fb">
+              <SHORT-NAME>Gpt_ItChannel5</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65372</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:dc8ebd3d-4c65-46ce-bd4f-645bce877cb7">
+              <SHORT-NAME>Gpt_ItChannel6</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65370</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:da7f4c8b-1d43-4cb2-8f58-062d2ff8b0a0">
+              <SHORT-NAME>Gpt_ItChannel7</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsIsr</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsIsr</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrCategory</DEFINITION-REF>
+                  <VALUE>CATEGORY_1</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrPriority</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsIsr/OsIsrVectorAddress</DEFINITION-REF>
+                  <VALUE>65368</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:e2ebf613-bcf9-4773-b0e4-a75c67171980">
+              <SHORT-NAME>cnt0</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>65535</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:f46d70aa-8c69-4800-8f74-5c8b59129fe9">
+              <SHORT-NAME>Hcnt0</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>65535</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:4e881273-4ca7-47ec-a176-07930bef6ad6">
+              <SHORT-NAME>Scnt0</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>65535</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:b7637260-15af-4148-b38c-a75199e01fd4">
+              <SHORT-NAME>Task_08_01_01_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:32259144-22c9-4a64-8d5a-e5415a127c25">
+              <SHORT-NAME>Task_08_01_01_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:83cc52e7-ce9d-4dc6-b6b2-9927fbf2cd41">
+              <SHORT-NAME>Task_08_01_01_c</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:a6e0c98c-8d82-436b-b36c-16ba3d5f891c">
+              <SHORT-NAME>Task_08_01_01_d</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:d13fab0f-3859-4301-97ae-1900a1ca5dcc">
+              <SHORT-NAME>Task_08_01_01_e</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:03e7e630-4ee5-414f-a723-889d8a4b57f0">
+              <SHORT-NAME>sched_table_08_01_01</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>false</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:7b1e8013-c21d-46e9-982b-88f83f951417">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>0</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:06df7e25-6264-4b3a-a2c5-4ce398cb5f8c">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_01_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:47418080-7409-4356-a9c8-5ba62da4ee6f">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>10</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:2d1ebf6e-bd12-4df8-9a4a-f2284081d495">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_01_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:8b564e5d-fab4-4c9b-b954-86771d095d0f">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint2</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>20</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:a30d4dc3-ba0c-4d2b-b1c7-f98ccb5b14dd">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_01_c</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:993de8f7-f900-4fd9-868d-e49366160684">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint3</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>30</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:aad71d0a-8214-48df-bec0-6fdab0e1c727">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_01_d</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:75d08f30-a69d-4c55-bac5-0ef36f435f13">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint4</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>40</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:7e76a229-b941-4c03-9aa4-7d8c3da52c47">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_01_e</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:1cd5ef91-9ca6-43dd-8df8-bb712d8faeb4">
+              <SHORT-NAME>Task_08_01_02_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>10</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:42cc0e7b-0810-422c-b54a-f4842c8dc7a0">
+              <SHORT-NAME>Task_08_01_02_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>15</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:f93834e0-ca0c-4484-b528-f97cf69e8cfd">
+              <SHORT-NAME>event_08_01_02</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsEvent</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsEvent</DEFINITION-REF>
+              <PARAMETER-VALUES/>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:0b17304e-8e05-43ee-a50d-05e25e43832c">
+              <SHORT-NAME>sched_table_08_01_02</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>false</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:75af3c18-beaa-4afd-9a45-c1f77fcd4f55">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>0</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:50e3d71d-0e61-470b-b349-a05ca58ae86a">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_02_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:7a54bb2a-12f9-49b1-9c02-bacd898041bd">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>20</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:796a61cf-63e7-422a-a47f-3c604062f73f">
+                      <SHORT-NAME>OsScheduleTableEventSetting</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableEventSetting</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableEventSetting</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableEventSetting/OsScheduleTableSetEventRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                        </REFERENCE-VALUE>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableEventSetting/OsScheduleTableSetEventTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_02_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:41aec99d-74d6-443f-8830-9ce637c461af">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint2</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>10</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:1481aa2a-a0ee-4943-80e7-d285cdbebac6">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_02_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:0f70e6ea-d50e-4cb0-abda-9ca33d1044b6">
+              <SHORT-NAME>Task_08_01_03_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>10</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:74e2c2af-5ff1-4552-834b-151069e34651">
+              <SHORT-NAME>Task_08_01_03_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>10</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:947b9400-f21c-46b4-be74-e28dd798c3ca">
+              <SHORT-NAME>Task_08_01_03_c</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>10</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:413548cc-db01-4220-9ee1-c854d76e7007">
+              <SHORT-NAME>sched_table_08_01_03</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>true</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:21860fc5-f2ab-4b72-8e15-b5f9b6b6cc14">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>10</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:e1daed0d-2df5-4e26-bfea-977e250c52b2">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_03_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:3c547c24-facb-4ea7-b6c1-590818c082a9">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>20</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:f8dd9927-69a8-430a-beb5-1e1867d49b1f">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_03_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:effb1656-e613-4b4e-8bd6-7a1cd8b08160">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint2</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>30</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:4cc9e368-5d85-45e0-a36b-56fa8e56c8fd">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_01_03_c</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:0c67541f-c074-4101-9d96-8528ab79cff8">
+              <SHORT-NAME>Task_08_02_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:61593afc-1df8-4952-85ec-63cbba871d79">
+              <SHORT-NAME>Task_08_02_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:f9559713-90b3-4b90-9e73-9b32362cadcb">
+              <SHORT-NAME>sched_table_08_02</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>false</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:533fe78f-40e7-4323-be84-82f38a6edd14">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>2</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:1cf48880-d3fd-4772-babd-f63a6beb2b18">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_02_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:dde1290e-1d37-4be3-94a5-bd13ac2a8aa2">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>5</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:51698476-a954-4d91-aa5d-a4e7a884d643">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_02_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:39a0fb0e-4402-467b-bb2d-5a6389b2671c">
+              <SHORT-NAME>CounterSoft_08_02</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>8</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:fc6ae0a2-7f2f-4527-bb56-a87086aa8490">
+              <SHORT-NAME>Task_08_03_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:66ad47d6-9e5a-459a-b0fe-302b6e020847">
+              <SHORT-NAME>Task_08_03_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:4fc57539-935c-429d-bd55-308f193dc330">
+              <SHORT-NAME>sched_table_08_03_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>false</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:619d74d4-7597-4cdf-9a73-40043b54ad17">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>2</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:2a4de621-ef22-48f9-a289-71f247d21f5e">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_03_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:a430f07d-097d-478d-9315-31b0cc95c87f">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>5</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:a7119f11-7e25-48ae-aef2-806066a60c8b">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_03_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:f7f0e5dd-c1fa-4bab-841f-fc7d0d89d955">
+              <SHORT-NAME>sched_table_08_03_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>false</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:7370b617-ef5b-4f02-a08a-dfe2628b9241">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>1</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:f7a8770a-9794-4cdc-8aed-297d3362ff61">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_03_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:c7d412d7-7929-4dd9-b411-a7aaac845d25">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>3</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:8aa2a703-c58c-4fab-8d5d-05afea314ad1">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_03_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:9c18d7fb-f8b6-481f-8946-16ff45f3f05a">
+              <SHORT-NAME>CounterSoft_08_03</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>50</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:d865aaec-8e36-4c50-932a-f3fdb07f5ab6">
+              <SHORT-NAME>Task_08_04_a</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:83989d9b-30fc-42c9-b1df-83c2f19c4611">
+              <SHORT-NAME>Task_08_04_b</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:509cce61-e73a-4ad7-9d2f-c788cb4be713">
+              <SHORT-NAME>Task_08_04_c</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:4defdd0a-c5ce-446f-a331-cc12bd488eda">
+              <SHORT-NAME>Task_08_04_d</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsTask</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsTask</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskSchedule</DEFINITION-REF>
+                  <VALUE>FULL</VALUE>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskActivation</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskPriority</DEFINITION-REF>
+                  <VALUE>5</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsTask/OsTaskStackSize</DEFINITION-REF>
+                  <VALUE>100</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsTask/OsTaskEventRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/event_08_01_02</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:297fadd8-73fc-4b9e-b2de-d0e909e49b90">
+              <SHORT-NAME>sched_table_08_04</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsScheduleTable</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableRepeating</DEFINITION-REF>
+                  <VALUE>false</VALUE>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES>
+                <REFERENCE-VALUE>
+                  <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableCounterRef</DEFINITION-REF>
+                  <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/cnt0</VALUE-REF>
+                </REFERENCE-VALUE>
+              </REFERENCE-VALUES>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:97703adf-7418-4486-b7bf-37ddc8507b4e">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>3</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:d4c9160c-8bd8-493d-8c80-2556731a62e7">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_04_a</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                    <CONTAINER UUID="DCE:da15fdff-880d-4cca-bf51-133c677db6f4">
+                      <SHORT-NAME>OsScheduleTblAdjustableExpPoint</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTblAdjustableExpPoint</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint</DEFINITION-REF>
+                      <PARAMETER-VALUES>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxAdvance</DEFINITION-REF>
+                          <VALUE>1</VALUE>
+                        </INTEGER-VALUE>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxRetard</DEFINITION-REF>
+                          <VALUE>1</VALUE>
+                        </INTEGER-VALUE>
+                      </PARAMETER-VALUES>
+                      <REFERENCE-VALUES/>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:32956df6-61ab-40b0-bd4b-a505292cc6b6">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>7</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:be9d6359-3cbc-4502-b44c-1e7c28549577">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_04_b</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                    <CONTAINER UUID="DCE:33bbcb7c-885c-4bcd-a675-360ca22bf46d">
+                      <SHORT-NAME>OsScheduleTblAdjustableExpPoint</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTblAdjustableExpPoint</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint</DEFINITION-REF>
+                      <PARAMETER-VALUES>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxAdvance</DEFINITION-REF>
+                          <VALUE>2</VALUE>
+                        </INTEGER-VALUE>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxRetard</DEFINITION-REF>
+                          <VALUE>1</VALUE>
+                        </INTEGER-VALUE>
+                      </PARAMETER-VALUES>
+                      <REFERENCE-VALUES/>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:20625df8-b2ed-4732-8622-a9b6d2476305">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint2</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>11</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:3bda23e9-5a7f-45c9-8258-93773d57277c">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_04_c</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                    <CONTAINER UUID="DCE:961943f4-cfb6-4973-a9fa-2d36b07748f2">
+                      <SHORT-NAME>OsScheduleTblAdjustableExpPoint</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTblAdjustableExpPoint</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint</DEFINITION-REF>
+                      <PARAMETER-VALUES>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxAdvance</DEFINITION-REF>
+                          <VALUE>2</VALUE>
+                        </INTEGER-VALUE>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxRetard</DEFINITION-REF>
+                          <VALUE>1</VALUE>
+                        </INTEGER-VALUE>
+                      </PARAMETER-VALUES>
+                      <REFERENCE-VALUES/>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:41476541-e1de-4230-8dc9-b1de48f2e859">
+                  <SHORT-NAME>OsScheduleTableExpiryPoint3</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableExpiryPoint</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblExpPointOffset</DEFINITION-REF>
+                      <VALUE>13</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:ec9434b1-1b68-429b-9720-efa356dd1988">
+                      <SHORT-NAME>OsScheduleTableTaskActivation</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTableTaskActivation</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation</DEFINITION-REF>
+                      <PARAMETER-VALUES/>
+                      <REFERENCE-VALUES>
+                        <REFERENCE-VALUE>
+                          <DEFINITION-REF DEST="REFERENCE-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTableTaskActivation/OsScheduleTableActivateTaskRef</DEFINITION-REF>
+                          <VALUE-REF DEST="CONTAINER">/ARRoot/Os_Configuration/Task_08_04_d</VALUE-REF>
+                        </REFERENCE-VALUE>
+                      </REFERENCE-VALUES>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                    <CONTAINER UUID="DCE:618297d8-6522-422a-bd2d-bb99e309c013">
+                      <SHORT-NAME>OsScheduleTblAdjustableExpPoint</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">OsScheduleTblAdjustableExpPoint</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint</DEFINITION-REF>
+                      <PARAMETER-VALUES>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxAdvance</DEFINITION-REF>
+                          <VALUE>1</VALUE>
+                        </INTEGER-VALUE>
+                        <INTEGER-VALUE>
+                          <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableExpiryPoint/OsScheduleTblAdjustableExpPoint/OsScheduleTableMaxRetard</DEFINITION-REF>
+                          <VALUE>1</VALUE>
+                        </INTEGER-VALUE>
+                      </PARAMETER-VALUES>
+                      <REFERENCE-VALUES/>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:8f066771-10c8-4177-a342-f81ac4e77318">
+                  <SHORT-NAME>OsScheduleTableSync</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">OsScheduleTableSync</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableSync</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <ENUMERATION-VALUE>
+                      <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableSync/OsScheduleTblSyncStrategy</DEFINITION-REF>
+                      <VALUE>EXPLICIT</VALUE>
+                    </ENUMERATION-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsScheduleTable/OsScheduleTableSync/OsScheduleTblExplicitPrecision</DEFINITION-REF>
+                      <VALUE>0</VALUE>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:f053e916-1cb3-46b9-8226-bc3624de44d1">
+              <SHORT-NAME>CounterSoft_08_04</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">OsCounter</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Os/OsCounter</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterType</DEFINITION-REF>
+                  <VALUE>HARDWARE</VALUE>
+                </ENUMERATION-VALUE>
+                <FLOAT-VALUE>
+                  <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Os/OsCounter/OsSecondsPerTick</DEFINITION-REF>
+                  <VALUE>0.0010</VALUE>
+                </FLOAT-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMaxAllowedValue</DEFINITION-REF>
+                  <VALUE>50</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterMinCycle</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Os/OsCounter/OsCounterTicksPerBase</DEFINITION-REF>
+                  <VALUE>1</VALUE>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+          </CONTAINERS>
+        </MODULE-CONFIGURATION>
+        <MODULE-CONFIGURATION UUID="DCE:3dd6c3c5-527c-4440-919b-bbe71c278df5">
+          <SHORT-NAME>Gpt_ConfigurationStub</SHORT-NAME>
+          <LONG-NAME>
+            <L-4 L="FR"/>
+          </LONG-NAME>
+          <DEFINITION-REF DEST="MODULE-DEF">/ARRoot/Gpt</DEFINITION-REF>
+          <MODULE-DESCRIPTION-REF DEST="BSW-MODULE-DESCRIPTION">/ARRoot/Gpt_Desc</MODULE-DESCRIPTION-REF>
+          <CONTAINERS>
+            <CONTAINER UUID="DCE:59770455-d6f7-4308-85bc-4ddc5adcbd26">
+              <SHORT-NAME>GptChannelConfigSet</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">GptChannelConfigSet</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptChannelConfigSet</DEFINITION-REF>
+              <PARAMETER-VALUES/>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:9cc6b2b8-d7ad-451f-a13d-a265a0e7f3f1">
+                  <SHORT-NAME>GptChannelConfiguration</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">GptChannelConfiguration</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <ENUMERATION-VALUE>
+                      <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelMode</DEFINITION-REF>
+                    </ENUMERATION-VALUE>
+                    <FUNCTION-NAME-VALUE>
+                      <DEFINITION-REF DEST="FUNCTION-NAME-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptNotification</DEFINITION-REF>
+                    </FUNCTION-NAME-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelClkSrc</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelId</DEFINITION-REF>
+                      <VALUE>0</VALUE>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelPrescale</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptEnableWakeup</DEFINITION-REF>
+                    </BOOLEAN-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:7a2e210d-5d53-402f-b304-66064c61f406">
+                  <SHORT-NAME>GptChannelConfiguration1</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">GptChannelConfiguration</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <ENUMERATION-VALUE>
+                      <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelMode</DEFINITION-REF>
+                    </ENUMERATION-VALUE>
+                    <FUNCTION-NAME-VALUE>
+                      <DEFINITION-REF DEST="FUNCTION-NAME-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptNotification</DEFINITION-REF>
+                    </FUNCTION-NAME-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelClkSrc</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelId</DEFINITION-REF>
+                      <VALUE>1</VALUE>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelPrescale</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptEnableWakeup</DEFINITION-REF>
+                    </BOOLEAN-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:f7adf650-cec6-42ee-b70f-96393dfc013c">
+                  <SHORT-NAME>GptChannelConfiguration2</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">GptChannelConfiguration</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <ENUMERATION-VALUE>
+                      <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelMode</DEFINITION-REF>
+                    </ENUMERATION-VALUE>
+                    <FUNCTION-NAME-VALUE>
+                      <DEFINITION-REF DEST="FUNCTION-NAME-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptNotification</DEFINITION-REF>
+                    </FUNCTION-NAME-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelClkSrc</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelId</DEFINITION-REF>
+                      <VALUE>2</VALUE>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelPrescale</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptEnableWakeup</DEFINITION-REF>
+                    </BOOLEAN-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:4b816d32-e816-45cb-a588-df1bf2d7316f">
+                  <SHORT-NAME>GptChannelConfiguration3</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">GptChannelConfiguration</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <ENUMERATION-VALUE>
+                      <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelMode</DEFINITION-REF>
+                    </ENUMERATION-VALUE>
+                    <FUNCTION-NAME-VALUE>
+                      <DEFINITION-REF DEST="FUNCTION-NAME-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptNotification</DEFINITION-REF>
+                    </FUNCTION-NAME-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelClkSrc</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelId</DEFINITION-REF>
+                      <VALUE>3</VALUE>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptChannelPrescale</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <BOOLEAN-VALUE>
+                      <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptChannelConfigSet/GptChannelConfiguration/GptEnableWakeup</DEFINITION-REF>
+                    </BOOLEAN-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:993dc5f8-e431-48fe-ae06-72147d6e0ba3">
+              <SHORT-NAME>GptConfigurationOfOptApiServices</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">GptConfigurationOfOptApiServices</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices/GptDeinitApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices/GptEnableDisableNotificationApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices/GptTimeElapsedApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices/GptTimeRemainingApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices/GptVersionInfoApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptConfigurationOfOptApiServices/GptWakeupFunctionalityApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:7268c6f3-a7fb-458f-83f9-aac545bf3df4">
+              <SHORT-NAME>GptDriverConfiguration</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">GptDriverConfiguration</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Gpt/GptDriverConfiguration</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptDriverConfiguration/GptDevErrorDetect</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Gpt/GptDriverConfiguration/GptReportWakeupSource</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+          </CONTAINERS>
+        </MODULE-CONFIGURATION>
+        <MODULE-CONFIGURATION UUID="DCE:f414c50a-e7da-4680-b0d2-ff8cacecf0bd">
+          <SHORT-NAME>Mcu_Configuration</SHORT-NAME>
+          <LONG-NAME>
+            <L-4 L="FR"/>
+          </LONG-NAME>
+          <DEFINITION-REF DEST="MODULE-DEF">/ARRoot/Mcu</DEFINITION-REF>
+          <MODULE-DESCRIPTION-REF DEST="BSW-MODULE-DESCRIPTION">/ARRoot/Mcu_Desc</MODULE-DESCRIPTION-REF>
+          <CONTAINERS>
+            <CONTAINER UUID="DCE:cbe3405e-8c7a-4bad-9cdd-1092038b33a8">
+              <SHORT-NAME>McuGeneralConfiguration</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">McuGeneralConfiguration</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Mcu/McuGeneralConfiguration</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Mcu/McuGeneralConfiguration/McuDevErrorDetect</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Mcu/McuGeneralConfiguration/McuPerformResetApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+                <BOOLEAN-VALUE>
+                  <DEFINITION-REF DEST="BOOLEAN-PARAM-DEF">/ARRoot/Mcu/McuGeneralConfiguration/McuVersionInfoApi</DEFINITION-REF>
+                </BOOLEAN-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS/>
+            </CONTAINER>
+            <CONTAINER UUID="DCE:8bec7dfc-9a03-4298-a388-fccfad1f5de4">
+              <SHORT-NAME>McuModuleConfiguration</SHORT-NAME>
+              <LONG-NAME>
+                <L-4 L="FR">McuModuleConfiguration</L-4>
+              </LONG-NAME>
+              <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Mcu/McuModuleConfiguration</DEFINITION-REF>
+              <PARAMETER-VALUES>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="DERIVED-INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuNumberOfMcuModes</DEFINITION-REF>
+                </INTEGER-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="DERIVED-INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuRamSectors</DEFINITION-REF>
+                </INTEGER-VALUE>
+                <ENUMERATION-VALUE>
+                  <DEFINITION-REF DEST="ENUMERATION-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuClockSrcFailureNotification</DEFINITION-REF>
+                </ENUMERATION-VALUE>
+                <INTEGER-VALUE>
+                  <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuResetSetting</DEFINITION-REF>
+                </INTEGER-VALUE>
+              </PARAMETER-VALUES>
+              <REFERENCE-VALUES/>
+              <SUB-CONTAINERS>
+                <CONTAINER UUID="DCE:bde2dbc7-69cf-4bf2-a91d-3d088466ad02">
+                  <SHORT-NAME>McuClockSettingConfig</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">McuClockSettingConfig</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuClockSettingConfig</DEFINITION-REF>
+                  <PARAMETER-VALUES/>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS>
+                    <CONTAINER UUID="DCE:7ae895cb-59e2-40ef-98e1-35dcd6209253">
+                      <SHORT-NAME>McuClockReferencePoint</SHORT-NAME>
+                      <LONG-NAME>
+                        <L-4 L="FR">McuClockReferencePoint</L-4>
+                      </LONG-NAME>
+                      <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint</DEFINITION-REF>
+                      <PARAMETER-VALUES>
+                        <FLOAT-VALUE>
+                          <DEFINITION-REF DEST="FLOAT-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePoint/McuClockReferencePointFrequency</DEFINITION-REF>
+                          <VALUE>8000000.0</VALUE>
+                        </FLOAT-VALUE>
+                      </PARAMETER-VALUES>
+                      <REFERENCE-VALUES/>
+                      <SUB-CONTAINERS/>
+                    </CONTAINER>
+                  </SUB-CONTAINERS>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:5bfaf188-e0de-4469-84d5-78fabe7e4442">
+                  <SHORT-NAME>McuModeSettingConf</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">McuModeSettingConf</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuModeSettingConf</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuModeSettingConf/McuMode</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+                <CONTAINER UUID="DCE:888ab6eb-ea7a-40d4-8259-4234fca03805">
+                  <SHORT-NAME>McuRamSectorSettingConf</SHORT-NAME>
+                  <LONG-NAME>
+                    <L-4 L="FR">McuRamSectorSettingConf</L-4>
+                  </LONG-NAME>
+                  <DEFINITION-REF DEST="PARAM-CONF-CONTAINER-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuRamSectorSettingConf</DEFINITION-REF>
+                  <PARAMETER-VALUES>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuRamSectorSettingConf/McuRamDefaultValue</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuRamSectorSettingConf/McuRamSectionBaseAddress</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                    <INTEGER-VALUE>
+                      <DEFINITION-REF DEST="INTEGER-PARAM-DEF">/ARRoot/Mcu/McuModuleConfiguration/McuRamSectorSettingConf/McuRamSectionSize</DEFINITION-REF>
+                    </INTEGER-VALUE>
+                  </PARAMETER-VALUES>
+                  <REFERENCE-VALUES/>
+                  <SUB-CONTAINERS/>
+                </CONTAINER>
+              </SUB-CONTAINERS>
+            </CONTAINER>
+          </CONTAINERS>
+        </MODULE-CONFIGURATION>
+      </ELEMENTS>
+      <SUB-PACKAGES/>
+    </AR-PACKAGE>
+  </TOP-LEVEL-PACKAGES>
+</AUTOSAR>
+<!-- This is an other comment.-->
+<AUTOSAR xmlns="added by PM">
+</AUTOSAR>

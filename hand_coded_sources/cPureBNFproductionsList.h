@@ -25,7 +25,7 @@
 
 #include "collections/TC_FIFO.h"
 #include "bdd/C_BDD_Set1.h"
-#include "utilities/C_String.h"
+#include "strings/C_String.h"
 #include "utilities/TF_Swap.h"
 
 //---------------------------------------------------------------------------*

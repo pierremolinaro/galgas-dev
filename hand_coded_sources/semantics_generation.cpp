@@ -498,6 +498,7 @@ generate_header_file (C_Compiler & inLexique,
                     "#include \"galgas/GGS_binaryset.h\"\n"
                     "#include \"galgas/GGS_filewrapper.h\"\n"
                     "#include \"galgas/predefined_types.h\"\n"
+                    "#include \"galgas/xml_types.h\"\n"
                     "#include \"galgas/AC_galgas_class.h\"\n"
                     "#include \"galgas/AC_galgas_domain.h\"\n"
                     "#include \"galgas/AC_galgas_mapindex.h\"\n"

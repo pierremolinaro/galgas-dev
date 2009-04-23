@@ -284,106 +284,94 @@ message "a GALGAS project source file"
     elsif [xcodeProjects length] == 1 then
       @string name ; [xcodeProjects first ?name] ;
       @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
-    #--- Build intermediate list
-      @string intermediateString := "# Intermediate file for Xcode Project\n" ;
-      foreach xcode_tool_files do
-        intermediateString .= mValue . "\n" ;
-      end foreach ;
-      intermediateString .= "::\n" ;
-      foreach xcode_app_files do
-        intermediateString .= mValue . "\n" ;
-      end foreach ;
     #--- Update intermediate file
       @string intermediateFilePath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/DEPENDENCIES/file_list_for_xcode_project.txt" ;
-      @bool written ;
-      [intermediateString writeToFileWhenDifferentContents !intermediateFilePath ?written] ;
-    #--- If intermediate file did change, update Xcode project
-      if written then
-        @stringset externSourceSet_tool [emptySet] ;
-        @stringset guiSourceSet_tool [emptySet] ;
-        @stringset scannerSourceSet_tool [emptySet] ;
-        @stringset optionSourceSet_tool [emptySet] ;
-        @stringset semanticsSourceSet_tool [emptySet] ;
-        @stringset syntaxSourceSet_tool [emptySet] ;
-        @stringset grammarSourceSet_tool [emptySet] ;
-        @stringset programSourceSet_tool [emptySet] ;
-        foreach xcode_tool_files do
-          @string fullPath ;
-          @sourceFileKind sourceKind ;
-          [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-          switch sourceKind 
-          when externSourceFile :
-            externSourceSet_tool += !fullPath ;
-          when lexiqueSourceFile :
-            scannerSourceSet_tool += !mValue ;
-          when guiSourceFile :
-            guiSourceSet_tool += !mValue ;
-          when optionSourceFile :
-            optionSourceSet_tool += !mValue ;
-          when syntaxSourceFile :
-            syntaxSourceSet_tool += !mValue ;
-          when semanticsSourceFile :
-            semanticsSourceSet_tool += !mValue ;
-          when grammarSourceFile :
-            grammarSourceSet_tool += !mValue ;
-          when programSourceFile :
-            programSourceSet_tool += !mValue ;
-          end switch ;
-        end foreach ;
-        @stringset externSourceSet_app [emptySet] ;
-        @stringset guiSourceSet_app [emptySet] ;
-        @stringset scannerSourceSet_app [emptySet] ;
-        @stringset optionSourceSet_app [emptySet] ;
-        @stringset semanticsSourceSet_app [emptySet] ;
-        @stringset syntaxSourceSet_app [emptySet] ;
-        @stringset grammarSourceSet_app [emptySet] ;
-        @stringset programSourceSet_app [emptySet] ;
-        foreach xcode_app_files do
-          @string fullPath ;
-          @sourceFileKind sourceKind ;
-          [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-          switch sourceKind 
-          when externSourceFile :
-            externSourceSet_app += !fullPath ;
-          when lexiqueSourceFile :
-            scannerSourceSet_app += !mValue ;
-          when guiSourceFile :
-            guiSourceSet_app += !mValue ;
-          when optionSourceFile :
-            optionSourceSet_app += !mValue ;
-          when syntaxSourceFile :
-            syntaxSourceSet_app += !mValue ;
-          when semanticsSourceFile :
-            semanticsSourceSet_app += !mValue ;
-          when grammarSourceFile :
-            grammarSourceSet_app += !mValue ;
-          when programSourceFile :
-            programSourceSet_app += !mValue ;
-          end switch ;
-        end foreach ;
-      #--- Build intermediate
-        generateXcodeProject
-          !externSourceSet_tool
-          !guiSourceSet_tool
-          !scannerSourceSet_tool
-          !optionSourceSet_tool
-          !semanticsSourceSet_tool
-          !syntaxSourceSet_tool
-          !grammarSourceSet_tool
-          !programSourceSet_tool
-          !externSourceSet_app
-          !guiSourceSet_app
-          !scannerSourceSet_app
-          !optionSourceSet_app
-          !semanticsSourceSet_app
-          !syntaxSourceSet_app
-          !grammarSourceSet_app
-          !programSourceSet_app
-          ![name stringByDeletingPathExtension] # XCode project base name
-          ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
-          !iconFiles
-        ;
-      end if ;
+    #--- Update Xcode project
+      @stringset externSourceSet_tool [emptySet] ;
+      @stringset guiSourceSet_tool [emptySet] ;
+      @stringset scannerSourceSet_tool [emptySet] ;
+      @stringset optionSourceSet_tool [emptySet] ;
+      @stringset semanticsSourceSet_tool [emptySet] ;
+      @stringset syntaxSourceSet_tool [emptySet] ;
+      @stringset grammarSourceSet_tool [emptySet] ;
+      @stringset programSourceSet_tool [emptySet] ;
+      foreach xcode_tool_files do
+        @string fullPath ;
+        @sourceFileKind sourceKind ;
+        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+        switch sourceKind 
+        when externSourceFile :
+          externSourceSet_tool += !fullPath ;
+        when lexiqueSourceFile :
+          scannerSourceSet_tool += !mValue ;
+        when guiSourceFile :
+          guiSourceSet_tool += !mValue ;
+        when optionSourceFile :
+          optionSourceSet_tool += !mValue ;
+        when syntaxSourceFile :
+          syntaxSourceSet_tool += !mValue ;
+        when semanticsSourceFile :
+          semanticsSourceSet_tool += !mValue ;
+        when grammarSourceFile :
+          grammarSourceSet_tool += !mValue ;
+        when programSourceFile :
+          programSourceSet_tool += !mValue ;
+        end switch ;
+      end foreach ;
+      @stringset externSourceSet_app [emptySet] ;
+      @stringset guiSourceSet_app [emptySet] ;
+      @stringset scannerSourceSet_app [emptySet] ;
+      @stringset optionSourceSet_app [emptySet] ;
+      @stringset semanticsSourceSet_app [emptySet] ;
+      @stringset syntaxSourceSet_app [emptySet] ;
+      @stringset grammarSourceSet_app [emptySet] ;
+      @stringset programSourceSet_app [emptySet] ;
+      foreach xcode_app_files do
+        @string fullPath ;
+        @sourceFileKind sourceKind ;
+        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+        switch sourceKind 
+        when externSourceFile :
+          externSourceSet_app += !fullPath ;
+        when lexiqueSourceFile :
+          scannerSourceSet_app += !mValue ;
+        when guiSourceFile :
+          guiSourceSet_app += !mValue ;
+        when optionSourceFile :
+          optionSourceSet_app += !mValue ;
+        when syntaxSourceFile :
+          syntaxSourceSet_app += !mValue ;
+        when semanticsSourceFile :
+          semanticsSourceSet_app += !mValue ;
+        when grammarSourceFile :
+          grammarSourceSet_app += !mValue ;
+        when programSourceFile :
+          programSourceSet_app += !mValue ;
+        end switch ;
+      end foreach ;
+    #--- Build intermediate
+      generateXcodeProject
+        !externSourceSet_tool
+        !guiSourceSet_tool
+        !scannerSourceSet_tool
+        !optionSourceSet_tool
+        !semanticsSourceSet_tool
+        !syntaxSourceSet_tool
+        !grammarSourceSet_tool
+        !programSourceSet_tool
+        !externSourceSet_app
+        !guiSourceSet_app
+        !scannerSourceSet_app
+        !optionSourceSet_app
+        !semanticsSourceSet_app
+        !syntaxSourceSet_app
+        !grammarSourceSet_app
+        !programSourceSet_app
+        ![name stringByDeletingPathExtension] # XCode project base name
+        ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
+        !iconFiles
+        !intermediateFilePath
+      ;
     end if ;
   end if ;
 }

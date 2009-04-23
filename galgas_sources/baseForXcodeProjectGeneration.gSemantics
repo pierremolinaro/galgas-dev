@@ -1217,6 +1217,7 @@ routine generateXCodeFile
   ?@XcodeProjectDescription inXcodeProjectDescription
   ??@string in_xcodeproj_filePath
   ??@stringlist inProjectDefaultSettings
+  ??@string inReferenceFilePath
 :
   @string projectName := [[in_xcodeproj_filePath lastPathComponent] stringByDeletingPathExtension] ;
 
@@ -1246,7 +1247,10 @@ routine generateXCodeFile
     [in_xcodeproj_filePath makeDirectory] ;
   #--- Update (or create) Xcode project file
     @bool written ;
-    [fileNewContents writeToFileWhenDifferentContents !in_xcodeproj_filePath . "/project.pbxproj" ?written] ;
+    [fileNewContents writeToFileWhenDifferentContents !inReferenceFilePath ?written] ;
+    if written then
+      [fileNewContents writeToFileWhenDifferentContents !in_xcodeproj_filePath . "/project.pbxproj" ?*] ;
+    end if ;
   #--- Delete all XXX.pbxuser files in this directory
     if written then
       @stringlist pbxuser_files := [in_xcodeproj_filePath regularFilesWithExtensions !false ![@stringlist listWithValue !"pbxuser"]] ;
