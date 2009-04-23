@@ -1,0 +1,3 @@
+gui xml_parsing_cocoa "cocoa" :
+import grammar xml_parsing_grammar in "xml_parsing_grammar.ggs" ;
+end gui ;

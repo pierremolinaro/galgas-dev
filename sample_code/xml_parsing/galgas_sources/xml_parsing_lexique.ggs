@@ -1,0 +1,6 @@
+lexique xml_parsing_lexique :
+
+rule '\x01'->'\xFF' :
+end rule ;
+
+end lexique ;

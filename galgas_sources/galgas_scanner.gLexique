@@ -130,9 +130,8 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "unused",
   "warning",
   "when",              
-  "while" ;
-#  "xmlmapping",
-#  "xmlparse" ;
+  "while",
+  "xmlparse" ;
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat
