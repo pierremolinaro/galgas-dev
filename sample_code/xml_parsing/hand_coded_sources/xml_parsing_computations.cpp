@@ -31,13 +31,13 @@ static void handleNode (const TiXmlNode * inNode, const sint32 inIndendation) {
         }
       }
       printf ("}\n") ;  
-      const TiXmlNode * child = element->FirstChild ()	;
+      const TiXmlNode * child = element->FirstChild ()  ;
       while (NULL != child) {
         handleNode (child, inIndendation + 1) ;
         child = child->NextSibling () ;
       }
     } break ;
-  case TiXmlNode::DOCUMENT : printf ("!!!!!!!!!!!!!\n") ; exit (0) ;
+  case TiXmlNode::DOCUMENT : printf ("\n") ; exit (0) ;
     break ;
     break ;
   case TiXmlNode::DECLARATION:
@@ -68,13 +68,17 @@ void routine_temporaryParseXML (C_Compiler & /* inCompiler */,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inSourceFileName._isBuilt ()) {
     TiXmlDocument doc (inSourceFileName.cString ()) ;
-    doc.LoadFile () ;
-    const TiXmlNode * node = doc.FirstChild () ;
-    while (NULL != node) {
-      handleNode (node, 0) ;
-      node = node->NextSibling () ;
+    const bool ok = doc.LoadFile () ;
+    if (ok) {
+      const TiXmlNode * node = doc.FirstChild () ;
+      while (NULL != node) {
+        handleNode (node, 0) ;
+        node = node->NextSibling () ;
+      }
+      printf ("***********\n") ;
+    }else{
+      printf ("XML error %d\n", doc.ErrorId ()) ;
     }
-    printf ("***********\n") ;
   }
 }
 

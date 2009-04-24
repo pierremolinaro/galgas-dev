@@ -12,8 +12,8 @@ before {
 when . "epc"
 message "an XML text file with the .epc extension"
 ??@lstring inSourceFile {
-#  @xmlNode rootNode ;
-#  xmlparse in inSourceFile ?rootNode ;
+#  @xmlNodeList rootNodes ;
+#  xmlparse in inSourceFile ?rootNodes ;
   temporaryParseXML ! inSourceFile ;
 }
 
