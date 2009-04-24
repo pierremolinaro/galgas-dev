@@ -69,7 +69,7 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"C_Lexique" ;
   out_cpp_and_h_fileList += !"C_galgas_io" ;
   out_cpp_and_h_fileList += !"predefined_types" ;
-  out_cpp_and_h_fileList += !"xml_types" ;
+#  out_cpp_and_h_fileList += !"xml_types" ;
   out_cpp_and_h_fileList += !"GGS_binaryset" ;
   out_cpp_and_h_fileList += !"GGS_stringset" ;
   out_cpp_and_h_fileList += !"GGS_filewrapper" ;

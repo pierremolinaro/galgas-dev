@@ -1,7 +1,10 @@
 semantics xml_parsing_semantics :
   import option xml_parsing_options in "xml_parsing_options.ggs" ;
+  import semantics xml_type in "xml_type.ggs" ;
 
-# ADD YOUR CODE HERE
-extern routine temporaryParseXML ??@lstring inFileName ;
+extern routine temporaryParseXML
+  ??@lstring inFileName
+  !@xmlNodeList outRootNodeList
+;
 
 end semantics ;
