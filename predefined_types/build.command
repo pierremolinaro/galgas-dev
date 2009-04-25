@@ -2,9 +2,6 @@
 #set -x
 cd `dirname $0` &&
 #--- Compile 
-galgas -v --Werror xml_types.ggs &&
-cp GALGAS_OUTPUT/xml_types.cpp xml_types.cpp &&
-cp GALGAS_OUTPUT/xml_types.h xml_types.h &&
 galgas -v --Werror predefined_types.ggs &&
 #--- Use sed for renaming header file
 sed "s/UINT64LIST/uint64list/g" GALGAS_OUTPUT/predefined_types.h > GALGAS_OUTPUT/temp &&
@@ -22,7 +19,7 @@ sed "s/STRINGLIST/stringlist/g" GALGAS_OUTPUT/temp2 > predefined_types.cpp &&
 rm GALGAS_OUTPUT/temp &&
 rm GALGAS_OUTPUT/temp2 &&
 #--- Copy files (only if needed)
-for f in xml_types.cpp xml_types.h predefined_types.cpp predefined_types.h ; do
+for f in predefined_types.cpp predefined_types.h ; do
   if [ ! -e ../../libpm/galgas/${f} ]; then
     echo COPY ${f}
     cp ${f} ../../libpm/galgas/${f}
