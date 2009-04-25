@@ -20,8 +20,12 @@
    <p><strong>GALGAS ChangeLog</strong></p>
    <p>1.8.3</p>
    <ul>
+    <li>New feature: <a href="http://galgas.rts-software.org/doku.php?id=parsing_xml">parsing XML files</a>;</li>
     <li>New @location reader: <a href="http://galgas.rts-software.org/doku.php?id=location_type#line">line</a>, that returns the line number of the location defined by receiver’s value;</li>
     <li>New @location reader: <a href="http://galgas.rts-software.org/doku.php?id=location_type#column">column</a>, that returns the column number of the location defined by receiver’s value;</li>
+    <li>New @location reader: <a href="http://galgas.rts-software.org/doku.php?id=location_type#locationindex">locationIndex</a>, that returns the absolute position from the beginning of the source of the location defined by receiver’s value;</li>
+    <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#isdecimalunsignednumber">isDecimalUnsignedNumber</a>, that checks if the receiver’s value represents a decimal number (that is it contains only decimal digits, and the converted value is lower or equal to 2<sup>32</sup>-1);</li>
+    <li>New @string reader: <a href="http://galgas.rts-software.org/doku.php?id=string_type#decimalunsignednumber">decimalUnsignedNumber</a>, that returns the decimal number represented by the receiver's value (or raises a run-time error if the receiver's value does not represent a valid number);</li>
    </ul>
    <p>1.8.2</p>
    <ul>

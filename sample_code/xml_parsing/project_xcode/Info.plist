@@ -29,10 +29,10 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>epc</string>
+				<string>xml_file</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>epc Source</string>
+			<string>xml_file Source</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>TEXT</string>

@@ -1,7 +1,6 @@
 syntax xml_parsing_syntax :
 import lexique xml_parsing_lexique in "xml_parsing_lexique.ggs" ;
 import option xml_parsing_options in "xml_parsing_options.ggs" ;
-import semantics xml_parsing_semantics in "xml_parsing_semantics.ggs" ;
 
 # ADD YOUR CODE HERE
 

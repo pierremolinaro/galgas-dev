@@ -3,7 +3,7 @@
 semantics XcodeProjectGeneration :
 
 import "baseForXcodeProjectGeneration.gSemantics" ;
-import semantics baseForXcodeProjectGeneration in "baseForXcodeProjectGeneration.gSemantics" ;
+import semantics baseForXcodeProjectGeneration in "../../libpm/galgas_components/baseForXcodeProjectGeneration.ggs" ;
 
 #---------------------------------------------------------------------------*
 
