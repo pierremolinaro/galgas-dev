@@ -22,4 +22,8 @@ cd ${DIR}/LL1_expression/project_xcode && rm -fr build
 cd ${DIR}/LR1_grammar/makefile_macosx && make clean --warn-undefined-variables &&
 rm -fr ${DIR}/LR1_grammar/galgas_sources/GALGAS_OUTPUT &&
 cd ${DIR}/LR1_grammar/project_xcode && rm -fr build
+#----------------- XML Parsing
+cd ${DIR}/xml_parsing/makefile_macosx && make clean --warn-undefined-variables &&
+rm -fr ${DIR}/xml_parsing/galgas_sources/GALGAS_OUTPUT &&
+cd ${DIR}/xml_parsing/project_xcode && rm -fr build
 echo "------------ SUCCESS ----------------------------"
