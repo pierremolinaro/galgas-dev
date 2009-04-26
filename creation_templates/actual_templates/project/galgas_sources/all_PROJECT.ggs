@@ -6,5 +6,5 @@ project all_%PROJECT_NAME% :
   grammar "%PROJECT_NAME%_grammar.ggs" : makefile, xcode_tool ;
   gui "%PROJECT_NAME%_cocoa.ggs" : xcode_tool, xcode_app ;
   program "%PROJECT_NAME%_program.ggs" : makefile, xcode_tool ;
-  extern "%PROJECT_NAME%_computations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/%PROJECT_NAME%_computations.cpp" : makefile, xcode_tool ;
 end project ;

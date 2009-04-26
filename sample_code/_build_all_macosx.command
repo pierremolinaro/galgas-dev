@@ -17,4 +17,7 @@ cd ${DIR}/LL1_expression/makefile_macosx && make --warn-undefined-variables all 
 #----------------- LR1_grammar
 galgas -v --Werror ${DIR}/LR1_grammar/galgas_sources/all_LR1_grammar.ggs &&
 cd ${DIR}/LR1_grammar/makefile_macosx && make --warn-undefined-variables all &&
+#----------------- XML Parsing
+galgas -v --Werror ${DIR}/xml_parsing/galgas_sources/all_xml_parsing.ggs &&
+cd ${DIR}/xml_parsing/makefile_macosx && make --warn-undefined-variables all &&
 echo "------------ SUCCESS ----------------------------"
