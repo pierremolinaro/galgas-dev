@@ -1,6 +1,0 @@
-0::
-optionMetamodel.gSemantics
-optionSemantics.gSemantics
-optionLL1grammar.gGrammar::
-GALGAS_OUTPUT/optionCompilation.h
-GALGAS_OUTPUT/optionCompilation.cpp

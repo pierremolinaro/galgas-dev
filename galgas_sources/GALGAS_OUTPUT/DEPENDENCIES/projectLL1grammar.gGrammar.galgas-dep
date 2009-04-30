@@ -1,6 +1,0 @@
-0::
-galgas_scanner.gLexique
-projectModelBuilder.gSyntax
-projectMetamodel.gSemantics::
-GALGAS_OUTPUT/projectLL1grammar.cpp
-GALGAS_OUTPUT/projectLL1grammar.h

@@ -100,34 +100,15 @@ rule <galgas_component>
     $->$ ;
     @lstring optionComment ;
     $literal_string$ ? optionComment ;
-    @string defaultValue ;
-    select
-      defaultValue := "0" ;
-      if [typeName string] == "bool" then
-        defaultValue := "false" ;
-      elsif [typeName string] == "uint" then
-        warning here : "No default value for this option, 0 will be used" ;
-      end if ;
-    or
-      $default$ ;
-      if [typeName string] == "bool" then
-        error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
-      elsif [typeName string] == "string" then
-        error here : "'default' construct is not allowed for a @string option (allways false by default)" ;
-      end if ;
-      @luint v ;
-      $unsigned_literal_integer$ ? v ;
-      defaultValue := [[v uint] string] ;
-    end select ;
     $;$ ;
     if [optionNameSet hasKey ![optionName string]] then
       error optionName : "the '" . [optionName string] . "' command line option has been already declared" ;
     elsif [typeName string] == "bool" then
-      [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment] ;
     elsif [typeName string] == "uint" then
-      [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment] ;
     elsif [typeName string] == "string" then
-      [!?stringOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      [!?stringOptionsMap insertKey !optionName !optionChar !optionString !optionComment] ;
     else
       error typeName : "only @bool, @uint or @string types can be used here" ;
     end if ;
@@ -156,11 +137,6 @@ label importLexique
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
-    select
-    or
-      $default$ ;
-      $unsigned_literal_integer$ ? * ;
-    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -183,11 +159,6 @@ label importSyntax
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
-    select
-    or
-      $default$ ;
-      $unsigned_literal_integer$ ? * ;
-    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -211,11 +182,6 @@ label importSemantics
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
-    select
-    or
-      $default$ ;
-      $unsigned_literal_integer$ ? * ;
-    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -239,11 +205,6 @@ label importGrammarForSemantics
     $literal_string$ ? * ;
     $->$ ;
     $literal_string$ ? * ;
-    select
-    or
-      $default$ ;
-      $unsigned_literal_integer$ ? * ;
-    end select ;
     $;$ ;
   end repeat ;
   $end$ ;
@@ -277,32 +238,15 @@ label importOptions
     $->$ ;
     @lstring optionComment ;
     $literal_string$ ? optionComment ;
-    @string defaultValue ;
-    select
-      defaultValue := "0" ;
-      if [typeName string] == "bool" then
-        defaultValue := "false" ;
-      elsif [typeName string] == "uint" then
-        warning here : "No default value for this option, 0 will be used" ;
-      end if ;
-    or
-      $default$ ;
-      if [typeName string] == "bool" then
-        error here : "'default' construct is not allowed for a @bool option (allways false by default)" ;
-      end if ;
-      @luint v ;
-      $unsigned_literal_integer$ ? v ;
-      defaultValue := [[v uint] string] ;
-    end select ;
     $;$ ;
     if [optionNameSet hasKey ![optionName string]] then
       error optionName : "the '" . [optionName string] . "' command line option has been already declared" ;
     elsif [typeName string] == "bool" then
-      [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      [!?boolOptionsMap insertKey !optionName !optionChar !optionString !optionComment] ;
     elsif [typeName string] == "uint" then
-      [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      [!?uintOptionsMap insertKey !optionName !optionChar !optionString !optionComment] ;
     elsif [typeName string] == "string" then
-      [!?stringOptionsMap insertKey !optionName !optionChar !optionString !optionComment !defaultValue] ;
+      [!?stringOptionsMap insertKey !optionName !optionChar !optionString !optionComment] ;
     else
       error typeName : "only @bool, @uint or @string types can be used here" ;
     end if ;

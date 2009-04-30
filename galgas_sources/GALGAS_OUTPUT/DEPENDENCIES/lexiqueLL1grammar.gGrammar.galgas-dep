@@ -1,6 +1,0 @@
-0::
-galgas_scanner.gLexique
-lexiqueModelBuilder.gSyntax
-lexiqueMetamodel.gSemantics::
-GALGAS_OUTPUT/lexiqueLL1grammar.cpp
-GALGAS_OUTPUT/lexiqueLL1grammar.h

@@ -1,7 +1,0 @@
-0::
-semanticsMetamodel.gSemantics
-parameterArgumentMetamodel.gSemantics
-expressionMetamodel.gSemantics
-instructionMetamodel.gSemantics::
-GALGAS_OUTPUT/grammarMetamodel.h
-GALGAS_OUTPUT/grammarMetamodel.cpp

@@ -764,6 +764,34 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    R E M O V E    I N S T R U C T I O N      - =                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  @lstring mReceiverName ;
+  $identifier$ ? mReceiverName ;
+  @lstringlist mStructAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ? @lstring attributeName ;
+    mStructAttributeList += !attributeName ;
+  end repeat ;
+  $-=$ ;
+  $!$ ;
+  @semanticExpression mExpression ;
+  <expression> ? mExpression ;
+  $;$ ;
+  outInstruction := [@removeInstruction new
+    !mReceiverName
+    !mStructAttributeList
+    !mExpression
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    A P P E N D    I N S T R U C T I O N    . =                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
