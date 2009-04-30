@@ -1,7 +1,0 @@
-0::
-galgas_scanner.gLexique
-galgas_cli_options.gOption
-semantics_semantics.gSemantics
-common_semantics.gSemantics::
-GALGAS_OUTPUT/galgas_start.h
-GALGAS_OUTPUT/galgas_start.cpp

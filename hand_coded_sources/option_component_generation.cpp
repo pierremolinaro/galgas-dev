@@ -154,7 +154,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
   GGS_M_cli_options::cEnumerator currentBoolOption (inBoolOptionsMap, true) ;
   sint32 index = 0 ;
   while (currentBoolOption.hc ()) {
-    generatedZone3 << "  mBoolOptionValues [" << index << "] = " << currentBoolOption._mDefaultValue (HERE) << " ;\n" ;
+    generatedZone3 << "  mBoolOptionValues [" << index << "] = false ;\n" ;
     index ++ ;
     currentBoolOption.next () ;
   }
@@ -162,7 +162,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
   GGS_M_cli_options::cEnumerator currentUintOption (inUintOptionsMap, true) ;
   index = 0 ;
   while (currentUintOption. hc ()) {
-    generatedZone3 << "  mUintOptionValues [" << index << "] = " << currentUintOption._mDefaultValue (HERE) << " ;\n" ;
+    generatedZone3 << "  mUintOptionValues [" << index << "] = 0 ;\n" ;
     index ++ ;
     currentUintOption.next () ;
   }
@@ -289,7 +289,7 @@ generate_option_cpp_file (C_Compiler & inLexique,
              "  static const uint32 kDefaultValues [" << (inUintOptionsMap.count () + 1) << "] = {\n" ;
   currentUintOption.rewind () ;
   while (currentUintOption.hc ()) {
-    generatedZone3 << "  " << currentUintOption._mDefaultValue (HERE) << ",\n" ;
+    generatedZone3 << "  0,\n" ;
     currentUintOption.next () ;
   }          
   generatedZone3 << "  0} ;\n"

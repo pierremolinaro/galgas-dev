@@ -1,7 +1,0 @@
-0::
-galgasTemplateScanner.gLexique
-galgasTemplateParser.gSyntax
-semantics_semantics.gSemantics
-common_semantics.gSemantics::
-GALGAS_OUTPUT/galgasTemplateGrammar.cpp
-GALGAS_OUTPUT/galgasTemplateGrammar.h

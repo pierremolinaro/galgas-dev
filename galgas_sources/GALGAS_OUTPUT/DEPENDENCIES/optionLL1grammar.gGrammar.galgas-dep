@@ -1,6 +1,0 @@
-0::
-galgas_scanner.gLexique
-optionModelBuilder.gSyntax
-optionMetamodel.gSemantics::
-GALGAS_OUTPUT/optionLL1grammar.cpp
-GALGAS_OUTPUT/optionLL1grammar.h

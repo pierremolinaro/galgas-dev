@@ -78,9 +78,7 @@ project
   grammar "programSLRgrammar.gGrammar" : makefile ;
 
 #--- Project component
-#  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile : makefile ;
-#  semantics "XcodeProjectGeneration.gSemantics" : makefile ;
-  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "../../libpm/galgas_components/baseForXcodeProjectGeneration.gSemantics" : makefile ;
   semantics "XcodeProjectGeneration.gSemantics" : makefile ;
   syntax "projectModelBuilder.gSyntax" : makefile ;
   grammar "projectLL1grammar.gGrammar" : makefile ;

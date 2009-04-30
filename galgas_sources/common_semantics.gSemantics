@@ -3393,7 +3393,6 @@ map @M_cli_options {
   @lchar mOptionChar ;
   @lstring mOptionString ;
   @lstring mComment ;
-  @string mDefaultValue ;
   insert insertKey error message "the '%K' command line option has been already declared in %L" ;
   search searchKey error message "the '%K' command line option is not declared" ;
 }

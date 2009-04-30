@@ -367,6 +367,18 @@ class @addInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    R E M O V E    I N S T R U C T I O N      - =                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @removeInstruction extends @semanticInstruction {
+  @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpression mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    I N C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
 #---------------------------------------------------------------------------*

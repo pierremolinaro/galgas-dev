@@ -1,6 +1,0 @@
-0::
-galgas_scanner.gLexique
-semantics_semantics.gSemantics
-common_semantics.gSemantics::
-GALGAS_OUTPUT/domain_parser.h
-GALGAS_OUTPUT/domain_parser.cpp
