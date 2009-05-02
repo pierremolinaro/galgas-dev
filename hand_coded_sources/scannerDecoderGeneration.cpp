@@ -217,6 +217,25 @@ generateDecoderFromInstruction (C_Lexique & /* inLexique */,
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeInstructionExitLoop::
+generateDecoderFromInstruction (C_Lexique & /* inLexique */,
+                                cDecoderTargetState & /* ioCurrentState */,
+                                cDecoderController & /* ioDecoderController */) {
+/*  if (ioCurrentState <= 0) {
+    ioCurrentState = ioDecoderController.newState () ;
+  }else{
+    if (ioDecoderController (ioCurrentState - 1 COMMA_HERE)->mTerminal.length () == 0) {
+      ioDecoderController (ioCurrentState - 1 COMMA_HERE)->mTerminal = mTerminal ;
+    }else {
+      mTerminal.signalSemanticWarning (inLexique,
+        "this terminal symbol has been already defined"
+        COMMA_HERE) ;
+    }
+  }*/
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeLexicalDropInstruction::
 generateDecoderFromInstruction (C_Lexique & /* inLexique */,
                                 cDecoderTargetState & /* ioCurrentState */,

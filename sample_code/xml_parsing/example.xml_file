@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This - is a comment.-->
+<TAG1 field="this is a field">
+  text1
+  <TAG2 f1="this is the f1 field" f2="this is the f2 field">
+    the     second
+    text
+    <!-- Second comment: &amp;, &lt;, &gt;, &quot;, &apos;.-->
+    text3
+  </TAG2>
+  <TAG3 f3="this is the f3 field"/>
+</TAG1>
+<TAG4 f4="this is the f4 field"/>

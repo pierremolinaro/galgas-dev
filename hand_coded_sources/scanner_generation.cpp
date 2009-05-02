@@ -353,6 +353,8 @@ routine_buildLexicalRulesFromList (C_Compiler & ioLexique,
 static void
 generate_scanning_method (AC_OutputStream & inCppFile,
                           const bool inIsTemplate,
+                          const GGS_templateDelimiterMap & inTemplateDelimiterMap,
+                          const GGS_templateReplacementMap & inTemplateReplacementMap,
                           const C_String & inLexiqueName,
                           const GGS_typeLexicalAttributesMap & table_attributs,
                           const GGS_typeListeTestsEtInstructions & programme_principal) {
@@ -368,9 +370,12 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile << "_token._mTokenCode = -1 ;\n"
                "while ((_token._mTokenCode < 0) && (mCurrentChar != '\\0')) {\n" ;
   if (inIsTemplate) {
-    inCppFile << "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n"
-                 "    const bool foundEndDelimitor = testForInputString (_gTemplateEndStrings [_mMatchedTemplateDelimiterIndex],\n"
-                 "                                                       (sint32) strlen (_gTemplateEndStrings [_mMatchedTemplateDelimiterIndex])) ;\n"
+    inCppFile << "  if ((_mMatchedTemplateDelimiterIndex >= 0)\n"
+                 "   && (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength > 0)\n"
+                 "   && (mCurrentChar != '\\0')) {\n"
+                 "    const bool foundEndDelimitor = testForInputString (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndString,\n"
+                 "                                                       kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength,\n"
+                 "                                                       true) ;\n"
                  "    if (foundEndDelimitor) {\n"
                  "      _mMatchedTemplateDelimiterIndex = -1 ;\n"
                  "    }\n"
@@ -378,12 +383,12 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "  while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
                  "    sint32 _replacementIndex = 0 ;\n"
                  "    while (_replacementIndex >= 0) {\n"
-                 "     _replacementIndex = findTemplateDelimiterIndex (_gTemplateReplacementKeyStrings) ;\n"
+                 "     _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, " << inTemplateReplacementMap.count () << ") ;\n"
                  "       if (_replacementIndex >= 0) {\n"
-                 "         _token._mTemplateStringBeforeToken << _gTemplateReplacementStrings [_replacementIndex] ;\n"
+                 "         _token._mTemplateStringBeforeToken << kTemplateReplacementArray [_replacementIndex].mEndString ;\n"
                  "      }\n"
                  "    }\n"
-                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (_gTemplateStartStrings) ;\n"
+                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, " << inTemplateDelimiterMap.count () << ") ;\n"
                  "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
                  "      _token._mTemplateStringBeforeToken << mCurrentChar ;\n"
                  "      advance () ;\n"
@@ -414,7 +419,10 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "}\n" ;
   inCppFile.incIndentation (-2) ;
   if (inIsTemplate) {
-    inCppFile << "}\n" ;
+    inCppFile << "}\n"
+                 "if (kEndOfScriptInTemplateArray [_token._mTokenCode]) {\n"
+                 "  _mMatchedTemplateDelimiterIndex = -1 ;\n"
+                 "}\n" ;
     inCppFile.incIndentation (-2) ;
   }
   inCppFile << "}\n"
@@ -586,6 +594,23 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   inCppFile.incIndentation (-2) ;
   inCppFile << "}while (loop_) ;\n"
                "loop_ = true ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionExitLoop::
+instruction__uses_loop_variable (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeInstructionExitLoop::
+generate_scanner_instruction (const C_String & /* inLexiqueName */,
+                              const bool /* inGenerateEnterToken */,
+                              AC_OutputStream & inCppFile) const {
+  inCppFile << "loop_ = false ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -810,7 +835,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputString (" ;
   inCppFile.appendCLiteralStringConstant (attributChaine) ;
   inCppFile << ", " << attributChaine.length ()
-            << ")" ;
+            << ", true)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1332,51 +1357,50 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //--------------------------------------- Template delimiters
   if (inIsTemplate) {
     generatedZone2.appendCppTitleComment ("Template Delimiters") ;
-    generatedZone2 << "static const char * _gTemplateStartStrings [" << (inTemplateDelimiterMap.count () + 1) << "] = {\n" ;
+    generatedZone2 << "static const templateStruct kTemplateDefinitionArray [" << inTemplateDelimiterMap.count () << "] = {\n" ;
     GGS_templateDelimiterMap::cEnumerator currentDelimiter (inTemplateDelimiterMap) ;
     while (currentDelimiter.hc ()) {
-      generatedZone2 << "  " ;
+      generatedZone2 << "  {" ;
       generatedZone2.appendCLiteralStringConstant (currentDelimiter._key (HERE)) ;
-      generatedZone2 << ",\n" ;
+      generatedZone2 << ", " << currentDelimiter._key (HERE).length () << ", " ;
+      generatedZone2.appendCLiteralStringConstant (currentDelimiter._mEndString (HERE)) ;
+      generatedZone2 << ", " << currentDelimiter._mEndString (HERE).length () << ", "
+                     << (currentDelimiter._mPreservesStartDelimiter (HERE).boolValue () ? "false" : "true")
+                     << "},\n" ;
       currentDelimiter.next() ;
     }
-    generatedZone2 << "  NULL\n"
-                      "} ;\n\n"
-                      "static const char * _gTemplateEndStrings [" << (inTemplateDelimiterMap.count () + 1) << "] = {\n" ;
-    currentDelimiter.rewind () ;
-    while (currentDelimiter.hc ()) {
-      generatedZone2 << "  " ;
-      generatedZone2.appendCLiteralStringConstant (currentDelimiter._mEndString (HERE)) ;
-      generatedZone2 << ",\n" ;
-      currentDelimiter.next () ;
-    }
-    generatedZone2 << "  NULL\n"
-                      "} ;\n\n" ;
+    generatedZone2 << "} ;\n\n" ;
   }
 
 //--------------------------------------- Template replacement
   if (inIsTemplate) {
     generatedZone2.appendCppTitleComment ("Template Replacements") ;
-    generatedZone2 << "static const char * _gTemplateReplacementKeyStrings [" << (inTemplateReplacementMap.count () + 1) << "] = {\n" ;
+    generatedZone2 << "static const templateStruct kTemplateReplacementArray [" << inTemplateReplacementMap.count () << "] = {\n" ;
     GGS_templateReplacementMap::cEnumerator currentReplacement (inTemplateReplacementMap) ;
     while (currentReplacement.hc ()) {
-      generatedZone2 << "  " ;
+      generatedZone2 << "  {" ;
       generatedZone2.appendCLiteralStringConstant (currentReplacement._key (HERE)) ;
-      generatedZone2 << ",\n" ;
-      currentReplacement.next () ;
-    }
-    generatedZone2 << "  NULL\n"
-                      "} ;\n\n"
-                      "static const char * _gTemplateReplacementStrings [" << (inTemplateReplacementMap.count () + 1) << "] = {\n" ;
-    currentReplacement.rewind () ;
-    while (currentReplacement.hc ()) {
-      generatedZone2 << "  " ;
+      generatedZone2 << ", " << currentReplacement._key (HERE).length () << ", " ;
       generatedZone2.appendCLiteralStringConstant (currentReplacement._mReplacedString (HERE)) ;
-      generatedZone2 << ",\n" ;
+      generatedZone2 << ", " << currentReplacement._mReplacedString (HERE).length () << ", true},\n" ;
       currentReplacement.next () ;
     }
-    generatedZone2 << "  NULL\n"
-                      "} ;\n\n" ;
+    generatedZone2 << "} ;\n\n" ;
+  }
+
+//--------------------------------------- End of template mark
+  if (inIsTemplate) {
+    generatedZone2.appendCppTitleComment ("Terminal Symbols as end of script in template mark") ;
+    generatedZone2 << "static const bool kEndOfScriptInTemplateArray [" << (table_des_terminaux.count () + 1)
+                   << "] = {\n"
+                   << "  false, // End of source\n" ;
+    GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux) ;
+    while (currentTerminal.hc ()) {
+      generatedZone2 << "  " << (currentTerminal._mIsEndOfTemplateMark (HERE).boolValue () ? "true" : "false")
+                     << ", // $" << currentTerminal._key (HERE) << "$\n" ;
+      currentTerminal.next () ;
+    }
+    generatedZone2 << "} ;\n\n" ;
   }
 
 //--------------------------------------- Constructors
@@ -1490,6 +1514,8 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //---------------------------------------- Generate parsing method
   generate_scanning_method (generatedZone2,
                             inIsTemplate,
+                            inTemplateDelimiterMap,
+                            inTemplateReplacementMap,
                             inLexiqueName,
                             table_attributs,
                             programme_principal) ;

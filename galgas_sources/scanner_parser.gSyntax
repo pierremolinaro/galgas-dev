@@ -77,6 +77,7 @@ nonterminal <attribute_or_terminal_symbol_declaration>
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ?!@lexicalTypeMap inLexicalTypeMap
   ??@M_styles ioStylesMap
+  ??@bool inIsTemplate
 label parse
 ;
 
@@ -87,6 +88,7 @@ nonterminal <key_words_list_declaration>
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ??@M_styles ioStylesMap
   ?!@tokensInListMap ioTokensInListMap
+  ??@bool inIsTemplate
 label parse
 ;
 
@@ -296,7 +298,7 @@ rule <galgas_component>
   while
     <replace_declaration>
       !isTemplate
-      !? templateReplacementMap
+      !?templateReplacementMap
     ;
   while
     <attribute_or_terminal_symbol_declaration>
@@ -305,6 +307,7 @@ rule <galgas_component>
       !?terminalSymbolsMapForUse
       !?lexicalTypeMap
       !stylesMap
+      !isTemplate
     ;
   while
     <key_words_list_declaration>
@@ -314,6 +317,7 @@ rule <galgas_component>
       !?terminalSymbolsMapForUse
       !stylesMap
       !?tokensInListMap
+      !isTemplate
     ;
   while
     <lexical_error_message_declaration>
@@ -402,6 +406,7 @@ label importLexique
       !?terminalSymbolsMapForUse
       !?lexicalTypeMap
       !stylesMap
+      !true # For not raising error messages
     ;
   while
     <key_words_list_declaration>
@@ -411,6 +416,7 @@ label importLexique
       !?terminalSymbolsMapForUse
       !stylesMap
       !?tokensInListMap
+      !true # For not raising error messages
     ;
   while
     <lexical_error_message_declaration> parse ;
@@ -592,11 +598,23 @@ rule <template_declaration>
   end if ;
   @lstring startString ;
   $literal_string$ ? startString ;
+  @bool preservesStartDelimiter ;
+  select
+    $[$ ;
+    $identifier$ ? @lstring name ;
+    if [name string] != "preserved" then
+      error name: "only the 'preserved' tag is allowed here" ;
+    end if ;
+    $]$ ;
+    preservesStartDelimiter := true ;
+  or
+    preservesStartDelimiter := false ;
+  end select ;
   $...$ ;
   @lstring endString ;
   $literal_string$ ? endString ;
   $;$ ;
-  [!? ioTemplateDelimiterMap insertKey !startString !endString] ;
+  [!?ioTemplateDelimiterMap insertKey !startString !preservesStartDelimiter !endString] ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -631,6 +649,7 @@ rule <attribute_or_terminal_symbol_declaration>
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ?!@lexicalTypeMap inLexicalTypeMap
   ??@M_styles ioStylesMap
+  ??@bool inIsTemplate
 :
   select
   #--- semantics attribut
@@ -671,7 +690,22 @@ rule <attribute_or_terminal_symbol_declaration>
     @luint styleIndex ;
     [ioStylesMap searchKeyGetID !styleName ?styleIndex] ;
     @string errorMessageString := [errorMessage string] ;
-    [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !attributeList !styleIndex] ;
+   #--- Template End Mark
+    @bool isTemplateEndMark ;
+    select
+     isTemplateEndMark := false ;
+    or
+      $[$ ;
+      if not inIsTemplate then
+        error here: "for using this construct, the lexique should have been declared as a template lexique" ;       end if ;
+      $identifier$ ? @lstring mark ;
+      if [mark string] != "templateEndMark" then
+        error mark: "only 'templateEndMark' is allowed here" ;
+      end if ;
+      $]$ ;
+      isTemplateEndMark := true ;
+    end select ;
+    [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !attributeList !styleIndex !isTemplateEndMark] ;
   end select ;
   $;$ ;
 end rule ;
@@ -687,6 +721,7 @@ rule <key_words_list_declaration>
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
   ??@M_styles ioStylesMap
   ?!@tokensInListMap ioTokensInListMap
+  ??@bool inIsTemplate
 :
   $list$ ;
   @typeTableMotsReserves entriesMap [emptyMap] ;
@@ -733,6 +768,22 @@ rule <key_words_list_declaration>
     or
       terminalSymbolName := listEntry ;
     end select ;
+  #--- Template End Mark
+   @bool isTemplateEndMark ;
+   select
+    isTemplateEndMark := false ;
+   or
+     $[$ ;
+     if not inIsTemplate then
+       error here: "for using this construct, the lexique should have been declared as a template lexique" ;
+     end if ;
+     $identifier$ ? @lstring mark ;
+     if [mark string] != "templateEndMark" then
+       error mark: "only 'templateEndMark' is allowed here" ;
+     end if ;
+     $]$ ;
+     isTemplateEndMark := true ;
+   end select ;
   #--- Build decoder tables
     [!?ioTokensInListMap insertKey !listEntry !terminalSymbolName] ;
   #--- Build error message
@@ -743,6 +794,7 @@ rule <key_words_list_declaration>
       !specificErrorMessageString
       !attributeList
       !styleIndex
+      !isTemplateEndMark
     ] ;
     [!?ioTerminalSymbolsMapForUse insertKey !terminalSymbolName !attributeList] ;
   #--- Insert entry in the entries map
@@ -782,13 +834,18 @@ rule <while_branches_list>
   ?!@stringset ioUsedErrorMessageSet
 :
   liste_tests_et_instructions := [@typeListeTestsEtInstructions emptyList] ;
-  $while$ ;
   repeat
-    @typeListeConditionsLexicales lcl ;
-    @tListeInstructionsLexicales li ;
     select
+      $until$ ;
+      $literal_string$ ? @lstring s ;
+      liste_tests_et_instructions +=
+        ![@typeListeConditionsLexicales listWithValue ![@typeConditionChaine new !s]]
+        ![@tListeInstructionsLexicales  listWithValue ![@typeInstructionExitLoop new]]
+      ;
+    or
+      $while$ ;
       $~$ ;
-      lcl := [@typeListeConditionsLexicales emptyList] ;
+      @typeListeConditionsLexicales lcl [emptyList] ;
       @lstringlist stringList [emptyList] ;
       repeat
         @lstring ch ;
@@ -805,6 +862,7 @@ rule <while_branches_list>
       ioUsedErrorMessageSet += ![errorMessageName string] ;
       lcl += ![@typeConditionNonChaine new !stringList !errorMessageIndex] ;
       $:$ ;
+      @tListeInstructionsLexicales li ;
       <lexical_instructions_list>
         ?li
         !?table_des_terminaux
@@ -815,9 +873,13 @@ rule <while_branches_list>
         ![@tagMap emptyMap]
         !false
       ;
+      liste_tests_et_instructions += !lcl !li ;
     or
+      @typeListeConditionsLexicales lcl [emptyList] ;
+      $while$ ;
       <lexical_test_expression> ? lcl ;
       $:$ ;
+      @tListeInstructionsLexicales li ;
       <lexical_instructions_list>
         ?li
         !?table_des_terminaux
@@ -827,11 +889,10 @@ rule <while_branches_list>
         !?ioUsedErrorMessageSet
         ![@tagMap emptyMap]
         !false
-    ;
+      ;
+      liste_tests_et_instructions += !lcl !li ;
     end select ;
-    liste_tests_et_instructions += !lcl !li ;
   while
-    $while$ ;
   end repeat ;
 end rule ;
 
@@ -1034,7 +1095,7 @@ rule <lexical_instructions_list>
     $send$ ;
     @lstring nomTerminal ;
     $terminal$ ?nomTerminal ;
-    [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+    [table_des_terminaux searchKey !nomTerminal ?* ?* ?* ?*] ;
     li += ![@typeLexicalRewindAndSendInstruction new !tagIdentifier !nomTerminal] ;
     $;$ ;
   while
@@ -1045,7 +1106,7 @@ rule <lexical_instructions_list>
     @lstring nomTerminal ;
     $terminal$ ?nomTerminal ;
     $;$ ;
-    [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+    [table_des_terminaux searchKey !nomTerminal ?* ?* ?* ?*] ;
     li += ![@typeLexicalDropInstruction new !nomTerminal] ;
   while
     $send$ ;
@@ -1261,7 +1322,7 @@ rule <lexical_send_instruction>
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
-  [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+  [table_des_terminaux searchKey !nomTerminal ?* ?* ?* ?*] ;
   instruction := [@typeInstructionEmettreSimple new !nomTerminal] ;
 end rule ;
 
@@ -1312,7 +1373,7 @@ rule <lexical_send_or_error>
 :
   @lstring nomTerminal ;
   $terminal$ ?nomTerminal ;
-  [table_des_terminaux searchKey !nomTerminal ?* ?* ?*] ;
+  [table_des_terminaux searchKey !nomTerminal ?* ?* ?* ?*] ;
   emissionParDefaut := [@typeEmissionTerminalParDefaut new !nomTerminal] ;
 end rule ;
 
