@@ -2,6 +2,7 @@ program xml_parsing_program "version 1.0.0":
 
 #--- Import clauses
 import semantics xml_types in "../../../../libpm/galgas_components/xml_types.ggs" ;
+import grammar xml_parsing_grammar in "xml_parsing_grammar.ggs" ;
 
 #--- Prologue routine
 before {
@@ -19,6 +20,12 @@ message "an XML text file with the .xml_file extension"
     !false # Condense White spaces
     !true # Print during parsing
   ;
+#  grammar xml_parsing_grammar in inSourceFile
+#    ?rootNodes
+#    !true # Include comments
+#    !false # Condense White spaces
+#    !true # Print during parsing
+#  ;
   log rootNodes ;
   logXMLNodes !rootNodes ;
 }

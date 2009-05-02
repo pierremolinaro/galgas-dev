@@ -887,6 +887,7 @@ class @typeGalgas_string extends @AC_galgasType {
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "retrieveAndResetTemplateString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      warning inClassMethodName:"obsolete in GALGAS 1.8.3: now use retrieveAndResetTemplateString constructor for @lstring type" ;
     elsif [inClassMethodName string] == "stringWithCurrentDirectory" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "stringWithSequenceOfCharacters" then
@@ -1304,6 +1305,8 @@ class @typeGalgas_lstring extends @C_galgasPrimitiveType {
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
       outAccessorTypesList += ![@typeGalgas_location new] ![@lstring new !""! here] ;
+    elsif [inClassMethodName string] == "retrieveAndResetTemplateString" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     else
       error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList ;
     end if ;
@@ -3513,6 +3516,8 @@ routine handleStringReaderCall
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "length" then
     outReturnedType := [@typeGalgas_uint new] ;
+  elsif [inReaderName string] == "stringByTrimmingWhiteSpaces" then
+    outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "md5" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "uint" then

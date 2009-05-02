@@ -38,9 +38,9 @@ nonterminal <template_instruction>
 routine enterTemplateString
   ?!@templateInstructionList outResultingInstructionList
 :
-  @string s := [@string retrieveAndResetTemplateString]  ;
+  @lstring s := [@lstring retrieveAndResetTemplateString]  ;
   if [s length] > 0 then
-    outResultingInstructionList += ![@templateInstructionString new !s] ;
+    outResultingInstructionList += ![@templateInstructionString new ![s string]] ;
   end if ;
 end routine ;
 

@@ -1,6 +1,124 @@
-lexique xml_parsing_lexique :
+template lexique xml_parsing_lexique :
 
-rule '\x01'->'\xFF' :
+template "<" [preserved] ... "" ;
+
+style delimitersStyle -> "Delimiter:" ;
+style nameStyle -> "Name:" ;
+style attributeValue -> "Attribute value:" ;
+style commentStyle -> "Comment:" ;
+style textStyle -> "Text:" ;
+
+@lstring tokenString ;
+
+#-------------------------- comment  --------------------
+
+$comment$ ! tokenString error message "a comment" style commentStyle [templateEndMark] ;
+
+message incorrectCommentError : "incorrect XML comment" ;
+
+rule "<!--" :
+  repeat
+  while "&amp;" :
+    enterCharacterIntoString (tokenString, '&') ;
+  while "&lt;" :
+    enterCharacterIntoString (tokenString, '<') ;
+  while "&gt;" :
+    enterCharacterIntoString (tokenString, '>') ;
+  while "&quot;" :
+    enterCharacterIntoString (tokenString, '"') ;
+  while "&apos;" :
+    enterCharacterIntoString (tokenString, ''') ;
+  while '\x1' -> ',' | '.' -> '\xFF' :
+    enterCharacterIntoString (tokenString, *) ;
+  until "-->"
+  while '-' :
+    enterCharacterIntoString (tokenString, '-') ;
+  while '\x0' :
+    error incorrectCommentError ;
+  end repeat ;
+  send $comment$ ;
 end rule ;
+
+# ----------------------------- Delimiters ---------------------------------------
+list xmlDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
+  "<",
+  "<?",
+  ">" [templateEndMark],
+  "?>" [templateEndMark],
+  "/>" [templateEndMark],
+  "</",
+  "=" ;
+
+rule list xmlDelimitorsList ;
+
+#-------------------------- name  --------------------
+
+$name$ ! tokenString error message "a name" style nameStyle ;
+
+rule 'a'->'z' | 'A'->'Z' :
+  repeat
+    enterCharacterIntoString (tokenString, *) ;
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end repeat ;
+  send $name$ ;
+end rule ;
+
+#-------------------------- Attribute value  --------------------
+
+$value$ ! tokenString error message "an attribute value" style attributeValue ;
+
+message incorrectAttributeEnd : "attribute value should be enclosed between apostrophes (') or quotation marks (\")" ;
+
+rule '"' :
+  repeat
+  while "&amp;" :
+    enterCharacterIntoString (tokenString, '&') ;
+  while "&lt;" :
+    enterCharacterIntoString (tokenString, '<') ;
+  while "&gt;" :
+    enterCharacterIntoString (tokenString, '>') ;
+  while "&quot;" :
+    enterCharacterIntoString (tokenString, '"') ;
+  while "&apos;" :
+    enterCharacterIntoString (tokenString, ''') ;
+  while ' ' | '!' | '#'-> '\xFF' :
+    enterCharacterIntoString (tokenString, *) ;
+  end repeat ;
+  select
+  when '"' :
+    send $value$ ;
+  default
+    error incorrectAttributeEnd ;
+  end select ;
+end rule ;
+
+rule ''' :
+  repeat
+  while "&amp;" :
+    enterCharacterIntoString (tokenString, '&') ;
+  while "&lt;" :
+    enterCharacterIntoString (tokenString, '<') ;
+  while "&gt;" :
+    enterCharacterIntoString (tokenString, '>') ;
+  while "&quot;" :
+    enterCharacterIntoString (tokenString, '"') ;
+  while "&apos;" :
+    enterCharacterIntoString (tokenString, ''') ;
+  while ' ' -> '&' | '('-> '\xFF' :
+    enterCharacterIntoString (tokenString, *) ;
+  end repeat ;
+  select
+  when ''' :
+    send $value$ ;
+  default
+    error incorrectAttributeEnd ;
+  end select ;
+end rule ;
+
+# --------------------- separators -----------------------------------------
+rule '\x1' -> ' ' :
+end rule ;
+
+#----------------------------------------------------------------------------*
 
 end lexique ;
