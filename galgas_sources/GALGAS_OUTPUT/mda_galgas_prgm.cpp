@@ -697,18 +697,18 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_string var_cas_filePath ;
                     var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (246)) ;
                     if (((var_cas_sourceKind)._operator_isEqual (GGS_sourceFileKind::constructor_externSourceFile (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
-                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (248)))._operator_isEqual (GGS_char (true, '/'))).isBuiltAndTrue ()) {
+                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (248)))._operator_isEqual (GGS_char (true, UNICODE_NEW ('/')))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += "))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
                       }else if (((var_cas_filePath)._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += ../hand_coded_sources/"))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
                       }
-                      var_cas_externSourceFileList.appendCstring ("SOURCES += ") ;
+                      var_cas_externSourceFileList.appendCString ("SOURCES += ") ;
                       var_cas_externSourceFileList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (253))) ;
-                      var_cas_externSourceFileList.appendCstring ("\n") ;
+                      var_cas_externSourceFileList.appendCString ("\n") ;
                     }else{
-                      var_cas_galgasSourceList.appendCstring ("SOURCES += ") ;
+                      var_cas_galgasSourceList.appendCString ("SOURCES += ") ;
                       var_cas_galgasSourceList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (255)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (255))) ;
-                      var_cas_galgasSourceList.appendCstring (".cpp\n") ;
+                      var_cas_galgasSourceList.appendCString (".cpp\n") ;
                     }
                   }
                 }
@@ -937,7 +937,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else{
-            printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString ()) ;
+            printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
             r = 1 ;
           }
           if (r != 0) {
@@ -985,9 +985,11 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;
       const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;
       co << getCreatedDynamicObjectsTotalCount ()
-         << " C++ objects have been created ("
-         << megaBytes << "." << widthWithZeroFill (3) << fraction
-         << " MB).\n" ;
+         << " C++ objects have been created (" ;
+      co.appendUnsigned64 (megaBytes) ;
+      co << "." ;
+      co.appendUnsignedWithZeroFill ((uint32) fraction, 3) ;
+      co << " MB).\n" ;
       deactivateMemoryControl () ;
       if ((getAllocationBalance () != 0) && (returnCode == 0)) {
         display_pointers () ;

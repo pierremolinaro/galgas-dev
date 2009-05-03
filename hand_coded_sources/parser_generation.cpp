@@ -67,7 +67,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
                              sint32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::cEnumerator currentAltForNonTerminal (mNonterminalSymbolParametersMap, true) ;
   while (currentAltForNonTerminal.hc ()) {
-    inHfile << "  protected : virtual void nt_" << aNomNonTerminal << '_' << currentAltForNonTerminal._key (HERE)
+    inHfile << "  protected : virtual void nt_" << aNomNonTerminal << "_" << currentAltForNonTerminal._key (HERE)
             << " (" << mLexiqueClassName << " &" ;
     GGS_L_EXsignature::cEnumerator currentArgument (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
     while (currentArgument.hc ()) {
@@ -136,10 +136,10 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     inHfile << "  protected : " ;
     inHfile << "void " ;
     inHfile << "pr_" << aNomProduction 
-            << '_' << inTargetFileName
-            << '_' << aNomProduction.lineNumber ()
-            << '_' << aNomProduction.columnNumber ()
-            << '_' << currentAltForNonTerminal._key (HERE) << " ("
+            << "_" << inTargetFileName
+            << "_" << aNomProduction.lineNumber ()
+            << "_" << aNomProduction.columnNumber ()
+            << "_" << currentAltForNonTerminal._key (HERE) << " ("
             << mLexiqueClassName << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
     while (currentArgument.hc ()) {
@@ -161,9 +161,9 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
   const bool hasParseLabel = mHasParseLabel.boolValue () ;
   if (hasParseLabel) {
     inHfile << "  protected : void pr_" << aNomProduction 
-            << '_' << inTargetFileName
-            << '_' << aNomProduction.lineNumber ()
-            << '_' << aNomProduction.columnNumber ()
+            << "_" << inTargetFileName
+            << "_" << aNomProduction.lineNumber ()
+            << "_" << aNomProduction.columnNumber ()
             << "_parse ("
             << mLexiqueClassName << " & _inLexique) ;\n\n" ;
   }
@@ -193,9 +193,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
-              << '_' << aNomProduction.lineNumber ()
-              << '_' << aNomProduction.columnNumber ()
-              << '_' << currentAltForNonTerminal._key (HERE) << " ("
+              << "_" << aNomProduction.lineNumber ()
+              << "_" << aNomProduction.columnNumber ()
+              << "_" << currentAltForNonTerminal._key (HERE) << " ("
               << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), true) ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
@@ -260,8 +260,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
-              << '_' << aNomProduction.lineNumber ()
-              << '_' << aNomProduction.columnNumber ()
+              << "_" << aNomProduction.lineNumber ()
+              << "_" << aNomProduction.columnNumber ()
               << "_parse ("
               << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef._mAllInstructionsList (HERE), false) ;

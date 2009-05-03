@@ -66,7 +66,7 @@ GGS_string function_outputDirectory (C_Compiler & _inLexique,
   #endif
   GGS_string var_cas_outOuputDirectory ;
   var_cas_outOuputDirectory = var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (50)) ;
-  var_cas_outOuputDirectory.appendCstring ("/GALGAS_OUTPUT_TEMP") ;
+  var_cas_outOuputDirectory.appendCString ("/GALGAS_OUTPUT_TEMP") ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE function_outputDirectory\n") ;
   #endif

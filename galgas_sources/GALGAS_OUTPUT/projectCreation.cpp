@@ -2689,7 +2689,7 @@ void routine_projectCreation (C_Compiler & _inLexique,
           _variant_14209._decrement_operation (_inLexique COMMA_HERE) ;
           GGS_char var_cas_c ;
           var_cas_c = var_cas_inProjectName.reader_characterAtIndex (_inLexique, var_cas_index COMMA_SOURCE_FILE_AT_LINE (164)) ;
-          var_cas_ok = (var_cas_c.reader_isalnum (_inLexique COMMA_SOURCE_FILE_AT_LINE (165)))._operator_or ((var_cas_c)._operator_isEqual (GGS_char (true, '_'))) ;
+          var_cas_ok = (var_cas_c.reader_isalnum (_inLexique COMMA_SOURCE_FILE_AT_LINE (165)))._operator_or ((var_cas_c)._operator_isEqual (GGS_char (true, UNICODE_NEW ('_')))) ;
           var_cas_index._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE (166)) ;
         }
       }

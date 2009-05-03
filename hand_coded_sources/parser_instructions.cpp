@@ -248,7 +248,7 @@ generateInstruction (AC_OutputStream & inCppFile,
               << ((! argument .hc ()) ? "" : "(\" ?\") ")
               << ";\n" ;
     while (argument.hc ()) {
-      inCppFile << "    message_ << ' ' << _inLexique._attributeValue_" << argument._aNomAttributSource (HERE) << " () ;\n" ;
+      inCppFile << "    message_ << \" \" << _inLexique._attributeValue_" << argument._aNomAttributSource (HERE) << " () ;\n" ;
       argument.next () ;
     }
     inCppFile << "    _inLexique.didParseTerminal (\"$" << aNomTerminal << "$\", message_) ;\n"
@@ -314,8 +314,8 @@ generateInstruction (AC_OutputStream & inCppFile,
                        sint32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
-  inCppFile << "nt_" << mNonterminalName << '_'
-            << (inGenerateSemanticInstructions ? mAltName.cString () : "parse")
+  inCppFile << "nt_" << mNonterminalName << "_"
+            << (inGenerateSemanticInstructions ? mAltName.string () : C_String ("parse"))
             << " (_inLexique" ;
   if (inGenerateSemanticInstructions) {
     GGS_typeExpressionList::cEnumerator argument (mParametersExpressionList, true) ;
@@ -381,7 +381,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
     inHfile << "  protected : virtual sint16 select_" << inTargetFileName
-             << '_' << ioPrototypeIndex
+             << "_" << ioPrototypeIndex
              << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
   ioPrototypeIndex ++ ;
@@ -406,7 +406,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   inCppFile << "switch (select_" << inTargetFileName
-           << '_' << ioPrototypeIndex
+           << "_" << ioPrototypeIndex
            << " (_inLexique)) {\n" ;
   ioPrototypeIndex ++ ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
@@ -478,7 +478,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
     inHfile << "  protected : virtual sint16 select_repeat_" << inTargetFileName
-            << '_' << ioPrototypeIndex
+            << "_" << ioPrototypeIndex
             << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
   ioPrototypeIndex ++ ;
@@ -512,7 +512,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
   inCppFile << "switch (select_repeat_" << inTargetFileName
-           << '_' << prototypeIndex
+           << "_" << prototypeIndex
            << " (_inLexique)) {\n" ;
   currentBranch.next () ;
   sint16 numeroBranche = 1 ;

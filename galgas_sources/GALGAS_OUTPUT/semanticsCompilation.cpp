@@ -502,7 +502,7 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
         const GGS_stringlist::cElement * operand_14898 = NULL ;
         while (((operand_14898 = enumerator_14898.nextObject ()))) {
           macroValidPointer (operand_14898) ;
-          var_cas_errorMessage.appendCstring ("\n"
+          var_cas_errorMessage.appendCString ("\n"
             "-  @") ;
           var_cas_errorMessage._dotAssign_operation (operand_14898->mValue) ;
         }
@@ -516,7 +516,7 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
         const GGS_stringlist::cElement * operand_15192 = NULL ;
         while (((operand_15192 = enumerator_15192.nextObject ()))) {
           macroValidPointer (operand_15192) ;
-          var_cas_errorMessage.appendCstring ("\n"
+          var_cas_errorMessage.appendCString ("\n"
             "-  @") ;
           var_cas_errorMessage._dotAssign_operation (operand_15192->mValue) ;
         }

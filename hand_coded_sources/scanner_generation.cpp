@@ -130,8 +130,7 @@ static sint32 compareEntries (const cTableEntry & inEntry1,
                               const cTableEntry & inEntry2) {
   sint32 result = inEntry1.mEntryStringLength - inEntry2.mEntryStringLength ;
   if (result == 0) {
-    result = ::strcmp (inEntry1.mEntryString.cString (),
-                       inEntry2.mEntryString.cString ()) ;
+    result = inEntry1.mEntryString.compare (inEntry2.mEntryString) ;
   }
   return result ;
 }
@@ -168,7 +167,7 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
     inCppFile << ", " << entriesArray (i COMMA_HERE).mEntryStringLength
              << ", " << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (entriesArray (i COMMA_HERE).mTokenCode, inCppFile) ;
-    inCppFile << ")" << ((i == (entriesCount - 1)) ? "" : ",") << '\n' ;
+    inCppFile << ")" << ((i == (entriesCount - 1)) ? "" : ",") << "\n" ;
   }
 }
 
@@ -245,11 +244,11 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
     inCppFile << "    case  " << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), inCppFile) ;
     inCppFile << ":\n"
-                 "      s << '$'\n"
+                 "      s << \"$\"\n"
                  "        << " ;
     inCppFile.appendCLiteralStringConstant (currentTerminal._key (HERE)) ;
     inCppFile << "\n"   
-                 "        << '$' ;\n" ;
+                 "        << \"$\" ;\n" ;
     GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (currentTerminal._attributListeDesAttributs (HERE), true) ;
     while (currentAttribute.hc ()) {
       currentAttribute._mAttributType (HERE) (HERE)->generateAttributeGetLexicalValue (currentAttribute._mAttributeName (HERE), inCppFile) ;
@@ -368,11 +367,11 @@ generate_scanning_method (AC_OutputStream & inCppFile,
     inCppFile << "bool loop_ = true ;\n" ;
   }
   inCppFile << "_token._mTokenCode = -1 ;\n"
-               "while ((_token._mTokenCode < 0) && (mCurrentChar != '\\0')) {\n" ;
+               "while ((_token._mTokenCode < 0) && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n" ;
   if (inIsTemplate) {
     inCppFile << "  if ((_mMatchedTemplateDelimiterIndex >= 0)\n"
                  "   && (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength > 0)\n"
-                 "   && (mCurrentChar != '\\0')) {\n"
+                 "   && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n"
                  "    const bool foundEndDelimitor = testForInputString (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndString,\n"
                  "                                                       kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength,\n"
                  "                                                       true) ;\n"
@@ -380,7 +379,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "      _mMatchedTemplateDelimiterIndex = -1 ;\n"
                  "    }\n"
                  "  }\n"
-                 "  while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
+                 "  while ((_mMatchedTemplateDelimiterIndex < 0) && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n"
                  "    sint32 _replacementIndex = 0 ;\n"
                  "    while (_replacementIndex >= 0) {\n"
                  "     _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, " << inTemplateReplacementMap.count () << ") ;\n"
@@ -390,11 +389,11 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "    }\n"
                  "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, " << inTemplateDelimiterMap.count () << ") ;\n"
                  "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
-                 "      _token._mTemplateStringBeforeToken << mCurrentChar ;\n"
+                 "      _token._mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar) ;\n"
                  "      advance () ;\n"
                  "    }\n"
                  "  }\n"
-                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\\0')) {\n" ;
+                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n" ;
     inCppFile.incIndentation (+2) ;
   }
   generateAttributeInitialization (table_attributs, inCppFile) ;
@@ -407,7 +406,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar ('\\0')) { // End of source text ? \n"
+  inCppFile << "if (testForInputChar (UNICODE_NEW ('\\0'))) { // End of source text ? \n"
                "  _token._mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
                "}else{ // Unknown input character\n"
                "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -426,7 +425,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
     inCppFile.incIndentation (-2) ;
   }
   inCppFile << "}\n"
-               "if ((mCurrentChar == '\\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {\n"
+               "if ((UNICODE_ACCESS (mCurrentChar) == '\\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {\n"
                "  _token._mTokenCode = 0 ;\n"
                "  _enterToken (_token) ;\n"
                "}\n"
@@ -465,7 +464,7 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar ('\\0')) { // End of source text ? \n"
+  inCppFile << "if (testForInputChar (UNICODE_NEW ('\\0'))) { // End of source text ? \n"
               "  _token._mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
               "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -512,7 +511,9 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentCaractere::
 generateExternArgument (AC_OutputStream & inCppFile) const {
+  inCppFile << "UNICODE_NEW (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
+  inCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -526,7 +527,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentEntier::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << attributValeur.uintValue () ;
+  inCppFile.appendUnsigned (attributValeur.uintValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -558,7 +559,8 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
 //--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
   GGS_typeListeMessagesErreur::cEnumerator courant (attributListeMessageErreur, true) ;
   while (courant.hc ()) {
-    inCppFile << ", gErrorMessage_" << courant._mErrorMessageIndex (HERE).uintValue () ;
+    inCppFile << ", gErrorMessage_" ;
+    inCppFile.appendUnsigned (courant._mErrorMessageIndex (HERE).uintValue ()) ;
     courant.next () ;
   }
 //--- End of instruction
@@ -799,7 +801,9 @@ generateDefaultToken (const C_String & inLexiqueName,
 void cPtr_typeEmissionErreurParDefaut::
 generateDefaultToken (const C_String &,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" ;
+  inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
+  inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -816,16 +820,18 @@ void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
                               const bool /*inGenerateEnterToken */,
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" << mErrorMessageIndex.uintValue () << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  inCppFile << "lexicalError (gErrorMessage_" ;
+  inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
+  inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConditionCaractere::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputChar (" ;
+  inCppFile << "testForInputChar (UNICODE_NEW (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
-  inCppFile << ")" ;
+  inCppFile << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -846,9 +852,11 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
     inCppFile << "notTestForInputString (" ;
     GGS_lstringlist::cEnumerator chaine (mStrings, true) ;
     inCppFile.appendCLiteralStringConstant (chaine._mValue (HERE)) ;
-    inCppFile << ", " << chaine._mValue (HERE).length ()
-              << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
-              << " COMMA_LINE_AND_SOURCE_FILE)" ;
+    inCppFile << ", " ;
+    inCppFile.appendUnsigned (chaine._mValue (HERE).length ()) ;
+    inCppFile << ", gErrorMessage_" ;
+    inCppFile.appendUnsigned (mEndOfFileErrorMessageIndex.uintValue ()) ;
+    inCppFile << " COMMA_LINE_AND_SOURCE_FILE)" ;
   }else{
     inCppFile << "(" ;
     GGS_lstringlist::cEnumerator chaine (mStrings, true) ;
@@ -861,9 +869,11 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
       }
       inCppFile << "notTestForInputString (" ;
       inCppFile.appendCLiteralStringConstant (chaine._mValue (HERE)) ;
-      inCppFile << ", " << chaine._mValue (HERE).length ()
-                << ", gErrorMessage_" << mEndOfFileErrorMessageIndex.uintValue ()
-                << " COMMA_LINE_AND_SOURCE_FILE)" ;
+      inCppFile << ", " ;
+      inCppFile.appendUnsigned (chaine._mValue (HERE).length ()) ;
+      inCppFile << ", gErrorMessage_" ;
+      inCppFile.appendUnsigned (mEndOfFileErrorMessageIndex.uintValue ()) ;
+      inCppFile << " COMMA_LINE_AND_SOURCE_FILE)" ;
       chaine.next () ;
     }
     inCppFile << ")" ;
@@ -874,11 +884,11 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionIntervalle::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputChar (" ;
+  inCppFile << "testForInputChar (UNICODE_NEW (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneInf.charValue ()) ;
-  inCppFile << ", " ;
+  inCppFile << "), UNICODE_NEW (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneSup.charValue ()) ;
-  inCppFile << ")" ;
+  inCppFile << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -900,7 +910,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  _token." << nom << " = '\\0' ;\n" ;
+  inCppFile << "  _token." << nom << " = UNICODE_NEW ('\\0') ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -975,7 +985,7 @@ lexicalAttributeCppType (void) const {
 
 C_String cPtr_typeGalgas_lchar::
 lexicalAttributeCppType (void) const {
-  return "char" ;
+  return "utf32" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1040,7 +1050,7 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeDeclaration (const GGS_lstring & nom,
                               AC_OutputStream & inHfile) const {
-  inHfile << "  public : char " << nom
+  inHfile << "  public : utf32 " << nom
           << " ; // user defined attribute\n" ;
 }
 
@@ -1109,7 +1119,7 @@ generateAttributeDeclaration (const GGS_lstring & nom,
 void cPtr_typeGalgas_lstring::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' ;\n" ;
+  inCppFile << "    s << \" \" ;\n" ;
   inCppFile << "    s.appendCLiteralStringConstant (_p->" << inAttributeName << ") ;\n" ; 
 }
 
@@ -1118,7 +1128,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lchar::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' ;\n" ;
+  inCppFile << "    s << \" \" ;\n" ;
   inCppFile << "    s.appendCLiteralCharConstant (_p->" << inAttributeName << ") ;\n" ;
 }
 
@@ -1127,7 +1137,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lbool::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << (_p->" << inAttributeName << " ? \"true\" : \"false\") ;\n" ;
+  inCppFile << "      s << \" \" << (_p->" << inAttributeName << " ? \"true\" : \"false\") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1135,7 +1145,8 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_luint::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
+  inCppFile << "      s << \" \" ;\n" ;
+  inCppFile << "      s.appendUnsigned (_p->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1143,7 +1154,8 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_luint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
+  inCppFile << "      s << \" \" ;\n" ;
+  inCppFile << "      s.appendUnsigned64 (_p->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1151,7 +1163,8 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lsint::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
+  inCppFile << "      s << \" \" ;\n" ;
+  inCppFile << "      s.appendSigned (_p->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1159,7 +1172,8 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lsint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
+  inCppFile << "      s << \" \" ;\n" ;
+  inCppFile << "      s.appendSigned64 (_p->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1167,7 +1181,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_ldouble::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "    s << ' ' << _p->" << inAttributeName << " ;\n" ;
+  inCppFile << "      s << \" \" << _p->" << inAttributeName << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1347,7 +1361,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"" << inLexiqueName << ".h\"\n\n"
                     "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), lineNumber ()\n"
+                    "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()\n"
                     "  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE\n"
                     "#else\n"
                     "  #define LINE_AND_SOURCE_FILE\n"
@@ -1559,9 +1573,9 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
   currentTerminal.rewind () ;
   while (currentTerminal.hc ()) {
-    generatedZone2 << ",\n    "
-                   << currentTerminal._mStyleIndex (HERE).uintValue ()
-                   << " /* "
+    generatedZone2 << ",\n    " ;
+    generatedZone2.appendUnsigned (currentTerminal._mStyleIndex (HERE).uintValue ()) ;
+    generatedZone2 << " /* "
                    << inLexiqueName
                    << "_1_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), generatedZone2) ;
@@ -1675,7 +1689,7 @@ routine_generate_scanner (C_Compiler & inLexique,
     }else{
       C_String errorMessage ;
       errorMessage << "cannot create directory " << GALGAS_OUTPUT_directory ;
-      inLexique.printFileErrorMessage (inLexique.sourceFileName (), errorMessage.cString () COMMA_THERE) ;
+      inLexique.printFileErrorMessage (inLexique.sourceFileName (), errorMessage COMMA_THERE) ;
     }
   }
 }

@@ -55,7 +55,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
-      inHfile << ' ' ;
+      inHfile << " " ;
       currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inHfile) ;
       currentArgument.next () ;
     }
@@ -127,7 +127,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
       const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
-      inCppFile << ' ' ;
+      inCppFile << " " ;
       if (! variableUtilisee) {
         inCppFile << "/* " ;
       }

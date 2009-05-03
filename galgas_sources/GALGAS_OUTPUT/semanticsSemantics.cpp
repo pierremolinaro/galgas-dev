@@ -6458,7 +6458,7 @@ method_checkTypeCrossReferences (C_Compiler & _inLexique,
         }
         var_cas_circularityError = var_cas_superClassSet.reader_hasKey (_inLexique, var_cas_superClassName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (514)) COMMA_SOURCE_FILE_AT_LINE (514)) ;
         var_cas_superClassSet._addAssign_operation (var_cas_superClassName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (515))) ;
-        var_cas_classPath.appendCstring (".") ;
+        var_cas_classPath.appendCString (".") ;
         var_cas_classPath._dotAssign_operation (var_cas_superClassName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (516))) ;
         GGS_typeMapIndex  var_cas_superSuperClassIndex ;
         { const GGS_ACGalgasType _var_26599 = var_cas_t ; // CAST instruction

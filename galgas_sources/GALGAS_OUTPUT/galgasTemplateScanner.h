@@ -41,7 +41,7 @@ class cTokenFor_galgasTemplateScanner : public cToken {
   public : sint32 sint32value ; // user defined attribute
   public : uint64 uint64value ; // user defined attribute
   public : sint64 sint64value ; // user defined attribute
-  public : char charValue ; // user defined attribute
+  public : utf32 charValue ; // user defined attribute
   public : C_String tokenString ; // user defined attribute
   public : double floatValue ; // user defined attribute
 
@@ -246,7 +246,7 @@ class galgasTemplateScanner : public C_Lexique {
   public : void _assignFromAttribute_sint64value (GGS_lsint64 & outValue) const ;
   public : sint64 _attributeValue_sint64value (void) const ;
   public : void _assignFromAttribute_charValue (GGS_lchar & outValue) const ;
-  public : char _attributeValue_charValue (void) const ;
+  public : utf32 _attributeValue_charValue (void) const ;
   public : void _assignFromAttribute_tokenString (GGS_lstring & outValue) const ;
   public : C_String _attributeValue_tokenString (void) const ;
   public : void _assignFromAttribute_floatValue (GGS_ldouble & outValue) const ;

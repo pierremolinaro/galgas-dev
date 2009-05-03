@@ -27,7 +27,7 @@
 #include "galgasTemplateScanner.h"
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), lineNumber ()
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
 #else
   #define LINE_AND_SOURCE_FILE
@@ -965,673 +965,677 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
       s << "$$" ;
       break ;
     case  galgasTemplateScanner_1_identifier:
-      s << '$'
+      s << "$"
         << "identifier"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgasTemplateScanner_1_abstract:
-      s << '$'
+      s << "$"
         << "abstract"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_block:
-      s << '$'
+      s << "$"
         << "block"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_call:
-      s << '$'
+      s << "$"
         << "call"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_cast:
-      s << '$'
+      s << "$"
         << "cast"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_class:
-      s << '$'
+      s << "$"
         << "class"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_compile:
-      s << '$'
+      s << "$"
         << "compile"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_const:
-      s << '$'
+      s << "$"
         << "const"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_constructor:
-      s << '$'
+      s << "$"
         << "constructor"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_default:
-      s << '$'
+      s << "$"
         << "default"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_description:
-      s << '$'
+      s << "$"
         << "description"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_do:
-      s << '$'
+      s << "$"
         << "do"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_domain:
-      s << '$'
+      s << "$"
         << "domain"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_drop:
-      s << '$'
+      s << "$"
         << "drop"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_else:
-      s << '$'
+      s << "$"
         << "else"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_elsif:
-      s << '$'
+      s << "$"
         << "elsif"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_end:
-      s << '$'
+      s << "$"
         << "end"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_entity:
-      s << '$'
+      s << "$"
         << "entity"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_enum:
-      s << '$'
+      s << "$"
         << "enum"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_error:
-      s << '$'
+      s << "$"
         << "error"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_extends:
-      s << '$'
+      s << "$"
         << "extends"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_extern:
-      s << '$'
+      s << "$"
         << "extern"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_extract:
-      s << '$'
+      s << "$"
         << "extract"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_false:
-      s << '$'
+      s << "$"
         << "false"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_filewrapper:
-      s << '$'
+      s << "$"
         << "filewrapper"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_foreach:
-      s << '$'
+      s << "$"
         << "foreach"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_grammar:
-      s << '$'
+      s << "$"
         << "grammar"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_gui:
-      s << '$'
+      s << "$"
         << "gui"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_here:
-      s << '$'
+      s << "$"
         << "here"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_if:
-      s << '$'
+      s << "$"
         << "if"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_import:
-      s << '$'
+      s << "$"
         << "import"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_import_5F_5F:
-      s << '$'
+      s << "$"
         << "import__"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_in:
-      s << '$'
+      s << "$"
         << "in"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_insert:
-      s << '$'
+      s << "$"
         << "insert"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_label:
-      s << '$'
+      s << "$"
         << "label"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_lexique:
-      s << '$'
+      s << "$"
         << "lexique"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_list:
-      s << '$'
+      s << "$"
         << "list"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_log:
-      s << '$'
+      s << "$"
         << "log"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_loop:
-      s << '$'
+      s << "$"
         << "loop"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_map:
-      s << '$'
+      s << "$"
         << "map"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_mapindex:
-      s << '$'
+      s << "$"
         << "mapindex"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_match:
-      s << '$'
+      s << "$"
         << "match"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_message:
-      s << '$'
+      s << "$"
         << "message"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_metamodel:
-      s << '$'
+      s << "$"
         << "metamodel"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_method:
-      s << '$'
+      s << "$"
         << "method"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_mod:
-      s << '$'
+      s << "$"
         << "mod"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_modifier:
-      s << '$'
+      s << "$"
         << "modifier"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_nonterminal:
-      s << '$'
+      s << "$"
         << "nonterminal"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_not:
-      s << '$'
+      s << "$"
         << "not"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_on:
-      s << '$'
+      s << "$"
         << "on"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_once:
-      s << '$'
+      s << "$"
         << "once"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_operator:
-      s << '$'
+      s << "$"
         << "operator"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_option:
-      s << '$'
+      s << "$"
         << "option"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_or:
-      s << '$'
+      s << "$"
         << "or"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_override:
-      s << '$'
+      s << "$"
         << "override"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_parse:
-      s << '$'
+      s << "$"
         << "parse"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_program:
-      s << '$'
+      s << "$"
         << "program"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_reader:
-      s << '$'
+      s << "$"
         << "reader"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_remove:
-      s << '$'
+      s << "$"
         << "remove"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_repeat:
-      s << '$'
+      s << "$"
         << "repeat"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_rewind:
-      s << '$'
+      s << "$"
         << "rewind"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_root:
-      s << '$'
+      s << "$"
         << "root"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_routine:
-      s << '$'
+      s << "$"
         << "routine"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_rule:
-      s << '$'
+      s << "$"
         << "rule"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_search:
-      s << '$'
+      s << "$"
         << "search"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_select:
-      s << '$'
+      s << "$"
         << "select"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_self:
-      s << '$'
+      s << "$"
         << "self"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_semantics:
-      s << '$'
+      s << "$"
         << "semantics"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_send:
-      s << '$'
+      s << "$"
         << "send"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_sortedlist:
-      s << '$'
+      s << "$"
         << "sortedlist"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_state:
-      s << '$'
+      s << "$"
         << "state"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_struct:
-      s << '$'
+      s << "$"
         << "struct"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_style:
-      s << '$'
+      s << "$"
         << "style"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_switch:
-      s << '$'
+      s << "$"
         << "switch"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_syntax:
-      s << '$'
+      s << "$"
         << "syntax"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_tag:
-      s << '$'
+      s << "$"
         << "tag"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_template:
-      s << '$'
+      s << "$"
         << "template"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_then:
-      s << '$'
+      s << "$"
         << "then"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_treewalking:
-      s << '$'
+      s << "$"
         << "treewalking"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_true:
-      s << '$'
+      s << "$"
         << "true"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_unused:
-      s << '$'
+      s << "$"
         << "unused"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_warning:
-      s << '$'
+      s << "$"
         << "warning"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_when:
-      s << '$'
+      s << "$"
         << "when"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_while:
-      s << '$'
+      s << "$"
         << "while"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_literal_5Fdouble:
-      s << '$'
+      s << "$"
         << "literal_double"
-        << '$' ;
-    s << ' ' << _p->floatValue ;
-    s << ' ' ;
+        << "$" ;
+      s << " " ;
+      s.appendDouble (_p->floatValue) ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger:
-      s << '$'
+      s << "$"
         << "unsigned_literal_integer"
-        << '$' ;
-    s << ' ' << _p->uint32value ;
+        << "$" ;
+      s << " " ;
+      s.appendUnsigned (_p->uint32value) ;
       break;
     case  galgasTemplateScanner_1_signed_5Fliteral_5Finteger:
-      s << '$'
+      s << "$"
         << "signed_literal_integer"
-        << '$' ;
-    s << ' ' << _p->sint32value ;
+        << "$" ;
+      s << " " << _p->sint32value ;
       break;
     case  galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger64:
-      s << '$'
+      s << "$"
         << "unsigned_literal_integer64"
-        << '$' ;
-    s << ' ' << _p->uint64value ;
+        << "$" ;
+      s << " " ;
+      s.appendUnsigned64 (_p->uint64value) ;
       break;
     case  galgasTemplateScanner_1_signed_5Fliteral_5Finteger64:
-      s << '$'
+      s << "$"
         << "signed_literal_integer64"
-        << '$' ;
-    s << ' ' << _p->sint64value ;
+        << "$" ;
+      s << " " ;
+      s.appendSigned64 (_p->sint64value) ;
       break;
     case  galgasTemplateScanner_1__2E:
-      s << '$'
+      s << "$"
         << "."
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2E_3D:
-      s << '$'
+      s << "$"
         << ".="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2E_2E_2E:
-      s << '$'
+      s << "$"
         << "..."
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2A:
-      s << '$'
+      s << "$"
         << "*"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__7C:
-      s << '$'
+      s << "$"
         << "|"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2C:
-      s << '$'
+      s << "$"
         << ","
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2B:
-      s << '$'
+      s << "$"
         << "+"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2D_2D:
-      s << '$'
+      s << "$"
         << "--"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3A_3A:
-      s << '$'
+      s << "$"
         << "::"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3E:
-      s << '$'
+      s << "$"
         << ">"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3B:
-      s << '$'
+      s << "$"
         << ";"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3A:
-      s << '$'
+      s << "$"
         << ":"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2D:
-      s << '$'
+      s << "$"
         << "-"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__28:
-      s << '$'
+      s << "$"
         << "("
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__29:
-      s << '$'
+      s << "$"
         << ")"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2D_3E:
-      s << '$'
+      s << "$"
         << "->"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3F:
-      s << '$'
+      s << "$"
         << "\?"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3D_3D:
-      s << '$'
+      s << "$"
         << "=="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3F_3F:
-      s << '$'
+      s << "$"
         << "\?\?"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__21:
-      s << '$'
+      s << "$"
         << "!"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3A_3D:
-      s << '$'
+      s << "$"
         << ":="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2B_2B:
-      s << '$'
+      s << "$"
         << "++"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__5B:
-      s << '$'
+      s << "$"
         << "["
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__5D:
-      s << '$'
+      s << "$"
         << "]"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2B_3D:
-      s << '$'
+      s << "$"
         << "+="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3F_21:
-      s << '$'
+      s << "$"
         << "\?!"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__21_3F:
-      s << '$'
+      s << "$"
         << "!\?"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2F:
-      s << '$'
+      s << "$"
         << "/"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__21_3D:
-      s << '$'
+      s << "$"
         << "!="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3E_3D:
-      s << '$'
+      s << "$"
         << ">="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__26:
-      s << '$'
+      s << "$"
         << "&"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__7B:
-      s << '$'
+      s << "$"
         << "{"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__7D:
-      s << '$'
+      s << "$"
         << "}"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2B_3E:
-      s << '$'
+      s << "$"
         << "+>"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__2D_3D:
-      s << '$'
+      s << "$"
         << "-="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__5E:
-      s << '$'
+      s << "$"
         << "^"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3E_3E:
-      s << '$'
+      s << "$"
         << ">>"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__7E:
-      s << '$'
+      s << "$"
         << "~"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3C_2D:
-      s << '$'
+      s << "$"
         << "<-"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3C:
-      s << '$'
+      s << "$"
         << "<"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3C_3D:
-      s << '$'
+      s << "$"
         << "<="
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1__3C_3C:
-      s << '$'
+      s << "$"
         << "<<"
-        << '$' ;
+        << "$" ;
       break;
     case  galgasTemplateScanner_1_comment:
-      s << '$'
+      s << "$"
         << "comment"
-        << '$' ;
+        << "$" ;
       break;
     default:
       break ;
@@ -1651,10 +1655,10 @@ parseLexicalToken (void) {
   cTokenFor_galgasTemplateScanner _token ;
   bool loop_ = true ;
   _token._mTokenCode = -1 ;
-  while ((_token._mTokenCode < 0) && (mCurrentChar != '\0')) {
+  while ((_token._mTokenCode < 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
     if ((_mMatchedTemplateDelimiterIndex >= 0)
      && (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
-     && (mCurrentChar != '\0')) {
+     && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
       const bool foundEndDelimitor = testForInputString (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndString,
                                                          kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength,
                                                          true) ;
@@ -1662,7 +1666,7 @@ parseLexicalToken (void) {
         _mMatchedTemplateDelimiterIndex = -1 ;
       }
     }
-    while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
+    while ((_mMatchedTemplateDelimiterIndex < 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
       sint32 _replacementIndex = 0 ;
       while (_replacementIndex >= 0) {
        _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 1) ;
@@ -1672,30 +1676,30 @@ parseLexicalToken (void) {
       }
       _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, 1) ;
       if (_mMatchedTemplateDelimiterIndex < 0) {
-        _token._mTemplateStringBeforeToken << mCurrentChar ;
+        _token._mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar) ;
         advance () ;
       }
     }
-    if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\0')) {
+    if ((_mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
       _token.identifierString.clear () ;
       _token.uint32value = 0 ;
       _token.sint32value = 0 ;
       _token.uint64value = 0 ;
       _token.sint64value = 0 ;
-      _token.charValue = '\0' ;
+      _token.charValue = UNICODE_NEW ('\0') ;
       _token.tokenString.clear () ;
       _token.floatValue = 0.0 ;
       _mTokenFirstLocation = _mCurrentLocation ;
       try{
-        if (testForInputChar ('a', 'z') ||
-            testForInputChar ('A', 'Z')) {
+        if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+            testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.identifierString, scanner_action_toLower (previousChar ())) ;
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('a', 'z') ||
-                testForInputChar ('A', 'Z') ||
-                testForInputChar ('_') ||
-                testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+                testForInputChar (UNICODE_NEW ('_')) ||
+                testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             }else{
               loop_ = false ;
             }
@@ -1706,19 +1710,19 @@ parseLexicalToken (void) {
             _token._mTokenCode = galgasTemplateScanner_1_identifier ;
           }
           _enterToken (_token) ;
-        }else if (testForInputChar ('0', '9')) {
+        }else if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar ('S') ||
-              testForInputChar ('s')) {
+          if (testForInputChar (UNICODE_NEW ('S')) ||
+              testForInputChar (UNICODE_NEW ('s'))) {
             scanner_action_convertDecimalStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
             _token._mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger ;
             _enterToken (_token) ;
@@ -1726,16 +1730,16 @@ parseLexicalToken (void) {
             scanner_action_convertDecimalStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
             _token._mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger64 ;
             _enterToken (_token) ;
-          }else if (testForInputChar ('L')) {
+          }else if (testForInputChar (UNICODE_NEW ('L'))) {
             scanner_action_convertDecimalStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
             _token._mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger64 ;
             _enterToken (_token) ;
-          }else if (testForInputChar ('.')) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+          }else if (testForInputChar (UNICODE_NEW ('.'))) {
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
             do {
-              if (testForInputChar ('0', '9')) {
+              if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
                 scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-              }else if (testForInputChar ('_')) {
+              }else if (testForInputChar (UNICODE_NEW ('_'))) {
               }else{
                 loop_ = false ;
               }
@@ -1749,15 +1753,15 @@ parseLexicalToken (void) {
             _token._mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger ;
             _enterToken (_token) ;
           }
-        }else if (testForInputChar ('.')) {
-          if (testForInputChar ('0', '9')) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '0') ;
-            scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+        }else if (testForInputChar (UNICODE_NEW ('.'))) {
+          if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('0')) ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
             do {
-              if (testForInputChar ('0', '9')) {
+              if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
                 scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-              }else if (testForInputChar ('_')) {
+              }else if (testForInputChar (UNICODE_NEW ('_'))) {
               }else{
                 loop_ = false ;
               }
@@ -1886,30 +1890,30 @@ parseLexicalToken (void) {
         }else if (testForInputString ("~", 1, true)) {
           _token._mTokenCode = galgasTemplateScanner_1__7E ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('<')) {
-          if (testForInputChar ('=')) {
+        }else if (testForInputChar (UNICODE_NEW ('<'))) {
+          if (testForInputChar (UNICODE_NEW ('='))) {
             _token._mTokenCode = galgasTemplateScanner_1__3C_3D ;
             _enterToken (_token) ;
-          }else if (testForInputChar ('<')) {
+          }else if (testForInputChar (UNICODE_NEW ('<'))) {
             _token._mTokenCode = galgasTemplateScanner_1__3C_3C ;
             _enterToken (_token) ;
           }else{
             _token._mTokenCode = galgasTemplateScanner_1__3C ;
             _enterToken (_token) ;
           }
-        }else if (testForInputChar ('#')) {
+        }else if (testForInputChar (UNICODE_NEW ('#'))) {
           do {
-            if (testForInputChar ('\x1', '\t') ||
-                testForInputChar ('\v') ||
-                testForInputChar ('\f') ||
-                testForInputChar ('\xE', '\xFF')) {
+            if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW ('\t')) ||
+                testForInputChar (UNICODE_NEW ('\v')) ||
+                testForInputChar (UNICODE_NEW ('\f')) ||
+                testForInputChar (UNICODE_NEW ('\xE'), UNICODE_NEW ('\xFF'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-        }else if (testForInputChar ('\x1', ' ')) {
-        }else if (testForInputChar ('\0')) { // End of source text ? 
+        }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (' '))) {
+        }else if (testForInputChar (UNICODE_NEW ('\0'))) { // End of source text ? 
           _token._mTokenCode = galgasTemplateScanner_1_ ; // Empty string code
         }else{ // Unknown input character
           unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -1923,7 +1927,7 @@ parseLexicalToken (void) {
       _mMatchedTemplateDelimiterIndex = -1 ;
     }
   }
-  if ((mCurrentChar == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
+  if ((UNICODE_ACCESS (mCurrentChar) == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
     _token._mTokenCode = 0 ;
     _enterToken (_token) ;
   }
@@ -1947,20 +1951,20 @@ parseLexicalTokenForLexicalColoring (void) {
     _token.sint32value = 0 ;
     _token.uint64value = 0 ;
     _token.sint64value = 0 ;
-    _token.charValue = '\0' ;
+    _token.charValue = UNICODE_NEW ('\0') ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
     _mTokenFirstLocation = _mCurrentLocation ;
     try{
-      if (testForInputChar ('a', 'z') ||
-          testForInputChar ('A', 'Z')) {
+      if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+          testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
         do {
           scanner_action_enterCharacterIntoString (_token.identifierString, scanner_action_toLower (previousChar ())) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          if (testForInputChar ('a', 'z') ||
-              testForInputChar ('A', 'Z') ||
-              testForInputChar ('_') ||
-              testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+              testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+              testForInputChar (UNICODE_NEW ('_')) ||
+              testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
           }else{
             loop_ = false ;
           }
@@ -1970,33 +1974,33 @@ parseLexicalTokenForLexicalColoring (void) {
         if (_token._mTokenCode == -1) {
           _token._mTokenCode = galgasTemplateScanner_1_identifier ;
         }
-      }else if (testForInputChar ('0', '9')) {
+      }else if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
         scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
         do {
-          if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('_')) {
+          }else if (testForInputChar (UNICODE_NEW ('_'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('S') ||
-            testForInputChar ('s')) {
+        if (testForInputChar (UNICODE_NEW ('S')) ||
+            testForInputChar (UNICODE_NEW ('s'))) {
           scanner_action_convertDecimalStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger ;
         }else if (testForInputString ("LS", 2, true)) {
           scanner_action_convertDecimalStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar ('L')) {
+        }else if (testForInputChar (UNICODE_NEW ('L'))) {
           scanner_action_convertDecimalStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar ('.')) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+        }else if (testForInputChar (UNICODE_NEW ('.'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
@@ -2008,15 +2012,15 @@ parseLexicalTokenForLexicalColoring (void) {
           scanner_action_convertDecimalStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger ;
         }
-      }else if (testForInputChar ('.')) {
-        if (testForInputChar ('0', '9')) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, '0') ;
-          scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+      }else if (testForInputChar (UNICODE_NEW ('.'))) {
+        if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('0')) ;
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
@@ -2105,28 +2109,28 @@ parseLexicalTokenForLexicalColoring (void) {
         _token._mTokenCode = galgasTemplateScanner_1__5E ;
       }else if (testForInputString ("~", 1, true)) {
         _token._mTokenCode = galgasTemplateScanner_1__7E ;
-      }else if (testForInputChar ('<')) {
-        if (testForInputChar ('=')) {
+      }else if (testForInputChar (UNICODE_NEW ('<'))) {
+        if (testForInputChar (UNICODE_NEW ('='))) {
           _token._mTokenCode = galgasTemplateScanner_1__3C_3D ;
-        }else if (testForInputChar ('<')) {
+        }else if (testForInputChar (UNICODE_NEW ('<'))) {
           _token._mTokenCode = galgasTemplateScanner_1__3C_3C ;
         }else{
           _token._mTokenCode = galgasTemplateScanner_1__3C ;
         }
-      }else if (testForInputChar ('#')) {
+      }else if (testForInputChar (UNICODE_NEW ('#'))) {
         do {
-          if (testForInputChar ('\x1', '\t') ||
-              testForInputChar ('\v') ||
-              testForInputChar ('\f') ||
-              testForInputChar ('\xE', '\xFF')) {
+          if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW ('\t')) ||
+              testForInputChar (UNICODE_NEW ('\v')) ||
+              testForInputChar (UNICODE_NEW ('\f')) ||
+              testForInputChar (UNICODE_NEW ('\xE'), UNICODE_NEW ('\xFF'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
         _token._mTokenCode = galgasTemplateScanner_1_comment ;
-      }else if (testForInputChar ('\x1', ' ')) {
-      }else if (testForInputChar ('\0')) { // End of source text ? 
+      }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (' '))) {
+      }else if (testForInputChar (UNICODE_NEW ('\0'))) { // End of source text ? 
         _token._mTokenCode = galgasTemplateScanner_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -2415,7 +2419,7 @@ _assignFromAttribute_charValue (GGS_lchar & outValue) const {
 
 //---------------------------------------------------------------------------*
 
-char galgasTemplateScanner::
+utf32 galgasTemplateScanner::
 _attributeValue_charValue (void) const {
   cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
   return _p->charValue ;

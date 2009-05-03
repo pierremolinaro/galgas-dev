@@ -120,11 +120,11 @@ pr_element_list_xml_parsing_syntax_65_19_ (xml_parsing_lexique & _inLexique,
               GGS_string var_cas_s ;
               var_cas_s = ((((var_cas_inIndendation)._operator_concat (GGS_string (true, "TEXT ")))._operator_concat (GGS_string (true, "'")))._operator_concat (var_cas_ls))._operator_concat (GGS_string (true, "' ")) ;
               var_cas_s._dotAssign_operation (var_cas_ls.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (92)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (92)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (92))) ;
-              var_cas_s.appendCstring (":") ;
+              var_cas_s.appendCString (":") ;
               var_cas_s._dotAssign_operation (var_cas_ls.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (93)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (93)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (93))) ;
-              var_cas_s.appendCstring (":") ;
+              var_cas_s.appendCString (":") ;
               var_cas_s._dotAssign_operation (var_cas_ls.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (94)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (94)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (94))) ;
-              var_cas_s.appendCstring ("\n") ;
+              var_cas_s.appendCString ("\n") ;
               _inLexique.printMessage (var_cas_s COMMA_SOURCE_FILE_AT_LINE (95)) ;
             }
           }
@@ -169,11 +169,11 @@ pr_element_xml_parsing_syntax_110_14_ (xml_parsing_lexique & _inLexique,
     GGS_string var_cas_s ;
     var_cas_s = (((((var_cas_inIndendation)._operator_concat (GGS_string (true, "COMMENT ")))._operator_concat (var_cas_discartedMessage))._operator_concat (GGS_string (true, "'")))._operator_concat (var_cas_commentString))._operator_concat (GGS_string (true, "' ")) ;
     var_cas_s._dotAssign_operation (var_cas_commentString.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (135)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (135)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (135))) ;
-    var_cas_s.appendCstring (":") ;
+    var_cas_s.appendCString (":") ;
     var_cas_s._dotAssign_operation (var_cas_commentString.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (136)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (136)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (136))) ;
-    var_cas_s.appendCstring (":") ;
+    var_cas_s.appendCString (":") ;
     var_cas_s._dotAssign_operation (var_cas_commentString.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (137)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (137)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (137))) ;
-    var_cas_s.appendCstring ("\n") ;
+    var_cas_s.appendCString ("\n") ;
     _inLexique.printMessage (var_cas_s COMMA_SOURCE_FILE_AT_LINE (138)) ;
   }
 }
@@ -219,15 +219,15 @@ pr_element_xml_parsing_syntax_144_14_ (xml_parsing_lexique & _inLexique,
   if ((var_cas_inPrintDuringParsing).isBuiltAndTrue ()) {
     GGS_string var_cas_s ;
     var_cas_s = var_cas_inIndendation ;
-    var_cas_s.appendCstring ("ELEMENT '") ;
+    var_cas_s.appendCString ("ELEMENT '") ;
     var_cas_s._dotAssign_operation (var_cas_name) ;
-    var_cas_s.appendCstring ("' ") ;
+    var_cas_s.appendCString ("' ") ;
     var_cas_s._dotAssign_operation (var_cas_name.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (165)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (165)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (165))) ;
-    var_cas_s.appendCstring (":") ;
+    var_cas_s.appendCString (":") ;
     var_cas_s._dotAssign_operation (var_cas_name.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (166)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (166)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (166))) ;
-    var_cas_s.appendCstring (":") ;
+    var_cas_s.appendCString (":") ;
     var_cas_s._dotAssign_operation (var_cas_name.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (167)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (167)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (167))) ;
-    var_cas_s.appendCstring (" {") ;
+    var_cas_s.appendCString (" {") ;
     {
       GGS_xmlAttributeMap::cEnumerator enumerator_4650 (var_cas_attributeMap, true) ;
       const GGS_xmlAttributeMap::cElement * operand_4650 = enumerator_4650.nextObject () ;
@@ -235,31 +235,31 @@ pr_element_xml_parsing_syntax_144_14_ (xml_parsing_lexique & _inLexique,
         bool _foreach_loop_4650 ;
         do{
           macroValidPointer (operand_4650) ;
-          var_cas_s.appendCstring ("'") ;
+          var_cas_s.appendCString ("'") ;
           var_cas_s._dotAssign_operation (operand_4650->mKey) ;
-          var_cas_s.appendCstring ("' ") ;
+          var_cas_s.appendCString ("' ") ;
           var_cas_s._dotAssign_operation (operand_4650->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (170)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (170)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (170))) ;
-          var_cas_s.appendCstring (":") ;
+          var_cas_s.appendCString (":") ;
           var_cas_s._dotAssign_operation (operand_4650->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (171)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (171)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (171))) ;
-          var_cas_s.appendCstring (":") ;
+          var_cas_s.appendCString (":") ;
           var_cas_s._dotAssign_operation (operand_4650->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (172)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (172)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (172))) ;
-          var_cas_s.appendCstring (" -> '") ;
+          var_cas_s.appendCString (" -> '") ;
           var_cas_s._dotAssign_operation (operand_4650->mInfo.value) ;
-          var_cas_s.appendCstring ("' ") ;
+          var_cas_s.appendCString ("' ") ;
           var_cas_s._dotAssign_operation (operand_4650->mInfo.value.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (174)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (174)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (174))) ;
-          var_cas_s.appendCstring (":") ;
+          var_cas_s.appendCString (":") ;
           var_cas_s._dotAssign_operation (operand_4650->mInfo.value.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (175)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (175)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (175))) ;
-          var_cas_s.appendCstring (":") ;
+          var_cas_s.appendCString (":") ;
           var_cas_s._dotAssign_operation (operand_4650->mInfo.value.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (176)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (176)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (176))) ;
           operand_4650 = enumerator_4650.nextObject () ;
           _foreach_loop_4650 = ((operand_4650 != NULL)) ;
           if (_foreach_loop_4650) {
-            var_cas_s.appendCstring (", ") ;
+            var_cas_s.appendCString (", ") ;
           }
         }while (_foreach_loop_4650) ;
       }
     }
-    var_cas_s.appendCstring ("}\n") ;
+    var_cas_s.appendCString ("}\n") ;
     _inLexique.printMessage (var_cas_s COMMA_SOURCE_FILE_AT_LINE (180)) ;
   }
   GGS_xmlNodeList  var_cas_nodeList ;

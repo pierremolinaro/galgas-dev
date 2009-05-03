@@ -335,7 +335,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   }
   generatedZone2.incIndentation (-10) ;
   generatedZone2 << "          }else{\n"
-                    "            printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString ()) ;\n"
+                    "            printf (\"*** Error: unhandled extension for file '%s' ***\\n\", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;\n"
                     "            r = 1 ;\n"
                     "          }\n"
                     "          if (r != 0) {\n"
@@ -383,9 +383,11 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;\n"
                     "      const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;\n"
                     "      co << getCreatedDynamicObjectsTotalCount ()\n"
-                    "         << \" C++ objects have been created (\"\n"
-                    "         << megaBytes << \".\" << widthWithZeroFill (3) << fraction\n"
-                    "         << \" MB).\\n\" ;\n"
+                    "         << \" C++ objects have been created (\" ;\n"
+                    "      co.appendUnsigned64 (megaBytes) ;\n"
+                    "      co << \".\" ;\n"
+                    "      co.appendUnsignedWithZeroFill (fraction, 3) ;\n"
+                    "      co << \" MB).\\n\" ;\n"
                     "      deactivateMemoryControl () ;\n"
                     "      if ((getAllocationBalance () != 0) && (returnCode == 0)) {\n"
                     "        display_pointers () ;\n"
@@ -441,7 +443,7 @@ routine_fixFileGenerationStartDirectory (C_Compiler & inLexique,
   if (! ok) {
     C_String errorMessage ;
     errorMessage << "cannot create directory '" << inLexique.ioParametersPtr ()->mFileGenerationStartDir << "'" ;
-    inLexique.ioParametersPtr ()->printFileErrorMessage (inSourceFile, errorMessage.cString () COMMA_THERE) ;
+    inLexique.ioParametersPtr ()->printFileErrorMessage (inSourceFile, errorMessage COMMA_THERE) ;
   }
 }
 

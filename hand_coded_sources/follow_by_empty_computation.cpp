@@ -93,7 +93,8 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
     if (n == 1) {
       *inHTMLfile << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
     }else{
-      *inHTMLfile << n << " nonterminal symbols (including the start symbol) can be followed by the empty string.\n" ;
+      inHTMLfile->appendUnsigned (n) ;
+       inHTMLfile->appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
     inHTMLfile->outputRawData ("</p>") ;
     TC_UniqueArray <bool> array ;
@@ -110,7 +111,8 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
     inHTMLfile->outputRawData ("</table>") ;
   }
   if (inVerboseOptionOn) {
-    co << n << ".\n" ;
+    co.appendUnsigned (n) ;
+    co << ".\n" ;
     co.flush () ;
   }
 }

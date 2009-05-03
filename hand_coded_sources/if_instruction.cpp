@@ -34,9 +34,9 @@ generateExpression (AC_OutputStream & ioCppFile) const {
             << (mCheckForKindOfClass.boolValue () ? "true" : "false")
             << ", " ;
   mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mCastTypeName.lineNumber ()
-            << "))" ;
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE (" ;
+  ioCppFile.appendSigned (mCastTypeName.lineNumber ()) ;
+  ioCppFile << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -577,7 +577,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralSInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_sint64 (true, " << mLiteralInt.sint64Value () << "LL)" ;
+  ioCppFile << "GGS_sint64 (true, " ;
+  ioCppFile.appendSigned64 (mLiteralInt.sint64Value ()) ;
+  ioCppFile << "LL)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -612,7 +614,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_uint (true, " << mLiteralInt.uintValue () << "U)" ;
+  ioCppFile.appendCString ("GGS_uint (true, ") ;
+  ioCppFile.appendUnsigned (mLiteralInt.uintValue ()) ;
+  ioCppFile.appendCString ("U)") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -647,7 +651,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_uint64 (true, " << mLiteralInt.uint64Value () << "LLU)" ;
+  ioCppFile.appendCString ("GGS_uint64 (true, ") ;
+  ioCppFile.appendUnsigned64 (mLiteralInt.uint64Value ()) ;
+  ioCppFile.appendCString ("U)") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -682,9 +688,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralCharExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_char (true, " ;
+  ioCppFile << "GGS_char (true, UNICODE_NEW (" ;
   ioCppFile.appendCLiteralCharConstant (mLiteralChar.charValue ()) ;
-  ioCppFile << ')' ;
+  ioCppFile << "))" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -719,9 +725,9 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralDoubleExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_double (true, "
-            << mLiteralDouble.doubleValue ()
-            << ')' ;
+  ioCppFile << "GGS_double (true, " ;
+  ioCppFile.appendDouble (mLiteralDouble.doubleValue ()) ;
+   ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1535,9 +1541,9 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeTextTableCall::generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << '.' << aNomMethodeTest << " (" ;
+  ioCppFile << "." << aNomMethodeTest << " (" ;
   aNomCppClef (HERE)->generateCplusPlusName (ioCppFile) ;
-  ioCppFile << ')' ;
+  ioCppFile << ")" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1693,8 +1699,11 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 void cPtr_typeFileWrapperWithStaticPath::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_string (gWrapperFileContent_" << mFileIndex.uintValue ()
-            << "_" << mFileWrapperName << ")" ;
+  ioCppFile.appendCString ("GGS_string (gWrapperFileContent_") ;
+  ioCppFile.appendUnsigned (mFileIndex.uintValue ()) ;
+  ioCppFile.appendCString ("_") ;
+  ioCppFile.appendString (mFileWrapperName) ;
+  ioCppFile.appendCString (")") ;
 }
 
 //---------------------------------------------------------------------------*

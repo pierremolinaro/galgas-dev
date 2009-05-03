@@ -118,7 +118,7 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
   C_String nt  ;
   nt << inPrefix
      << inClassName
-     << '_'
+     << "_"
      << inOrderInSourceFile ;
   mStringsArray.addObject (nt) ;
   mGenerateChoiceArray.addObject (inGenerateChoice) ;
@@ -144,9 +144,9 @@ void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
                                const sint32 inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
-    inHTMLfile << '$' << mStringsArray (inSymbolIndex COMMA_THERE) << '$' ;
+    inHTMLfile << "$" << mStringsArray (inSymbolIndex COMMA_THERE) << "$" ;
   }else{
-    inHTMLfile << '<' << mStringsArray (inSymbolIndex COMMA_THERE) << '>' ;
+    inHTMLfile << "<" << mStringsArray (inSymbolIndex COMMA_THERE) << ">" ;
   }
 }
 
