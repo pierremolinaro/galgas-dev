@@ -40,10 +40,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
   //--- 'condition' variable
     C_String conditionVariable ;
-    conditionVariable << "_condition_" << mLocation.location () ;
+    conditionVariable << "_condition_" ;
+    conditionVariable.appendSigned (mLocation.location ()) ;
   //--- 'variant' variable
     C_String variantVariable ;
-    variantVariable << "_variant_" << mLocation.location () ;
+    variantVariable << "_variant_" ;
+    variantVariable.appendSigned (mLocation.location ()) ;
   //--- Loop header : compute variant initial value
     ioCppFile << "GGS_uint " << variantVariable << " = " ;
     mVariantExpression (HERE)->generateExpression (ioCppFile) ;
@@ -60,9 +62,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
   //--- Evaluate variant and condition
     ioCppFile << "  if (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
                  "    if (" << variantVariable << ".uintValue () == 0) {\n"
-                 "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
-              << mLocation.lineNumber ()
-              << ")) ;\n"
+                 "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE (" ;
+    ioCppFile.appendSigned (mLocation.lineNumber ()) ;
+    ioCppFile << ")) ;\n"
                  "      " << conditionVariable << " = GGS_bool (true, false) ;\n"
                  "    }else{\n" 
                  "      " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
@@ -129,32 +131,44 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
   GGS_foreachEnumerationList::cEnumerator enumeratedVariable (mForeachEnumerationList, true) ;
   while (enumeratedVariable.hc ()) {
     ioCppFile << "GGS_" << enumeratedVariable._mCppTypeName (HERE)
-              << "::cEnumerator enumerator_" << enumeratedVariable._mLocationOffset (HERE).location ()
-              << " (" ;
+              << "::cEnumerator enumerator_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " (" ;
     enumeratedVariable._mSourceExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ", " << (enumeratedVariable._mAscending (HERE).boolValue () ? "true" : "false")
               << ") ;\n" ;
     if (! enumeratedVariable._mNewStyle (HERE).boolValue ()) {
       ioCppFile << "const GGS_" << enumeratedVariable._mCppTypeName (HERE)
-                << "::cElement * operand_" << enumeratedVariable._mLocationOffset (HERE).location ()
-                << " = NULL ;\n" ;
+                << "::cElement * operand_" ;
+     ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+     ioCppFile << " = NULL ;\n" ;
     }
     enumeratedVariable.next () ;
   }
   enumeratedVariable.rewind () ;
   if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-    ioCppFile <<  "while (enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".hc ()" ;
+    ioCppFile <<  "while (enumerator_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << ".hc ()" ;
   }else{
-    ioCppFile << "while (((operand_" <<enumeratedVariable._mLocationOffset (HERE).location ()
-              << " = enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".nextObject ()))" ;
+    ioCppFile << "while (((operand_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " = enumerator_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << ".nextObject ()))" ;
   }
   enumeratedVariable.next () ;
   while (enumeratedVariable.hc ()) {
     if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile <<  "\n    && enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".hc ()" ;
+      ioCppFile <<  "\n    && enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ".hc ()" ;
     }else{
-      ioCppFile <<  "\n    && ((operand_" <<enumeratedVariable._mLocationOffset (HERE).location ()
-                << " = enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".nextObject ()))" ;
+      ioCppFile <<  "\n    && ((operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " = enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ".nextObject ()))" ;
     }
     enumeratedVariable.next () ;
    }
@@ -168,7 +182,9 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
   enumeratedVariable.rewind () ;
   while (enumeratedVariable.hc ()) {
     if (! enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile << "  macroValidPointer (operand_" << enumeratedVariable._mLocationOffset (HERE).location () << ") ;\n" ;
+      ioCppFile << "  macroValidPointer (operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ") ;\n" ;
     }
     enumeratedVariable.next () ;
   }
@@ -182,7 +198,9 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
   enumeratedVariable.rewind () ;
   while (enumeratedVariable.hc ()) {
     if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile << "  enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".next () ;\n" ;
+      ioCppFile << "  enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ".next () ;\n" ;
     }
     enumeratedVariable.next () ;
   }
@@ -204,8 +222,9 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   GGS_foreachEnumerationList::cEnumerator enumeratedVariable (mForeachEnumerationList, true) ;
   while (enumeratedVariable.hc ()) {
     ioCppFile << "GGS_" << enumeratedVariable._mCppTypeName (HERE)
-              << "::cEnumerator enumerator_" << enumeratedVariable._mLocationOffset (HERE).location ()
-              << " (" ;
+              << "::cEnumerator enumerator_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " (" ;
     enumeratedVariable._mSourceExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ", " << (enumeratedVariable._mAscending (HERE).boolValue () ? "true" : "false")
               << ") ;\n" ;
@@ -216,8 +235,11 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   while (enumeratedVariable.hc ()) {
     if (! enumeratedVariable._mNewStyle (HERE).boolValue ()) {
       ioCppFile << "const GGS_" << enumeratedVariable._mCppTypeName (HERE)
-                << "::cElement * operand_" << enumeratedVariable._mLocationOffset (HERE).location ()
-                << " = enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".nextObject () ;\n" ;
+                << "::cElement * operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " = enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ".nextObject () ;\n" ;
     }
     enumeratedVariable.next () ;
   }
@@ -225,16 +247,24 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
 	enumeratedVariable.rewind () ;
 	const sint32 locationForLoopVar = enumeratedVariable._mLocationOffset (HERE).location () ;
   if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-    ioCppFile << "if (enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << " .hc ()" ;
+    ioCppFile << "if (enumerator_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " .hc ()" ;
   }else{
-    ioCppFile << "if ((operand_" << enumeratedVariable._mLocationOffset (HERE).location () << " != NULL)" ;
+    ioCppFile << "if ((operand_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " != NULL)" ;
   }
   enumeratedVariable.next () ;
   while (enumeratedVariable.hc ()) {
     if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile << " && enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << " .hc ()" ;
+      ioCppFile << " && enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " .hc ()" ;
     }else{
-      ioCppFile << " && (operand_" << enumeratedVariable._mLocationOffset (HERE).location () << " != NULL)" ;
+      ioCppFile << " && (operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " != NULL)" ;
     }
     enumeratedVariable.next () ;
   }
@@ -252,14 +282,18 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   }
 //--- Generate before instructions
   generateInstructionListForList (mBeforeInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
-  ioCppFile << "  bool _foreach_loop_" << locationForLoopVar << " ;\n"
+  ioCppFile << "  bool _foreach_loop_" ;
+  ioCppFile.appendSigned (locationForLoopVar) ;
+  ioCppFile << " ;\n"
 	             "  do{\n" ;
   ioCppFile.incIndentation (+2) ;
 //--- Check pointers
   enumeratedVariable.rewind () ;
   while (enumeratedVariable.hc ()) {
     if (! enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile << "  macroValidPointer (operand_" << enumeratedVariable._mLocationOffset (HERE).location () << ") ;\n" ;
+      ioCppFile << "  macroValidPointer (operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ") ;\n" ;
     }
     enumeratedVariable.next () ;
   }
@@ -275,26 +309,43 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   enumeratedVariable.rewind () ;
   while (enumeratedVariable.hc ()) {
     if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile <<  "  enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".next () ;\n" ;
+      ioCppFile <<  "  enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ".next () ;\n" ;
     }else{
-      ioCppFile <<  "  operand_" <<enumeratedVariable._mLocationOffset (HERE).location ()
-                << " = enumerator_" << enumeratedVariable._mLocationOffset (HERE).location () << ".nextObject () ;\n" ;
+      ioCppFile <<  "  operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " = enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << ".nextObject () ;\n" ;
     }
     enumeratedVariable.next () ;
    }
 //--- Evaluate loop condition
   enumeratedVariable.rewind () ;
   if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-    ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = (enumerator_" <<enumeratedVariable._mLocationOffset (HERE).location () << " .hc ()" ;
+    ioCppFile <<  "  _foreach_loop_" ;
+    ioCppFile.appendSigned (locationForLoopVar) ;
+    ioCppFile << " = (enumerator_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " .hc ()" ;
   }else{
-    ioCppFile <<  "  _foreach_loop_" << locationForLoopVar << " = ((operand_" <<enumeratedVariable._mLocationOffset (HERE).location () << " != NULL)" ;
+    ioCppFile <<  "  _foreach_loop_" ;
+    ioCppFile.appendSigned (locationForLoopVar) ;
+    ioCppFile << " = ((operand_" ;
+    ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+    ioCppFile << " != NULL)" ;
   }
   enumeratedVariable.next () ;
   while (enumeratedVariable.hc ()) {
     if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
-      ioCppFile <<  "\n    && enumerator_" <<enumeratedVariable._mLocationOffset (HERE).location () << " .hc ()" ;
+      ioCppFile <<  "\n    && enumerator_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " .hc ()" ;
     }else{
-      ioCppFile <<  "\n    && (operand_" <<enumeratedVariable._mLocationOffset (HERE).location () << " != NULL)" ;
+      ioCppFile <<  "\n    && (operand_" ;
+      ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
+      ioCppFile << " != NULL)" ;
     }
     enumeratedVariable.next () ;
 	}
@@ -305,14 +356,18 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   }
 	ioCppFile << ") ;\n" ;
 //--- Between instructions
-  ioCppFile << "  if (_foreach_loop_" << locationForLoopVar << ") {\n" ;
+  ioCppFile << "  if (_foreach_loop_" ;
+  ioCppFile.appendSigned (locationForLoopVar);
+  ioCppFile << ") {\n" ;
   ioCppFile.incIndentation (+2) ;
   generateInstructionListForList (mBetweenInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
   ioCppFile.incIndentation (-2) ;
   ioCppFile << "  }\n" ;
 //--- End if loop
   ioCppFile.incIndentation (-2) ;
-	ioCppFile << "  }while (_foreach_loop_" << locationForLoopVar << ") ;\n" ;
+	ioCppFile << "  }while (_foreach_loop_" ;
+  ioCppFile.appendSigned (locationForLoopVar) ;
+  ioCppFile << ") ;\n" ;
 //--- After instructions
   generateInstructionListForList (mAfterInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
   ioCppFile << "}\n" ;

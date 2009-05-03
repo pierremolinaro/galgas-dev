@@ -68,7 +68,7 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_BDD_Set1 & inNonterminalSy
     for (sint32 i=0 ; i<nonTerminalArray.count () ; i++) {
       if (nonTerminalArray (i COMMA_HERE)) {
         inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-        inHTMLfile << index ;
+        inHTMLfile.appendSigned (index) ;
         index ++ ;
         inHTMLfile.outputRawData ("</td><td><code>") ;
         inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
@@ -141,9 +141,9 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
   const uint32 t = inVocabularyDerivingToEmpty_BDD.getValuesCount () ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
-    *inHTMLfile << "Nonterminal symbols deriving indirectly in empty string : calculus in "
-                << inIterationsCount
-                << " iterations.\n" ;
+    *inHTMLfile << "Nonterminal symbols deriving indirectly in empty string : calculus in " ;
+    inHTMLfile->appendSigned (inIterationsCount) ;
+    *inHTMLfile << " iterations.\n" ;
     inHTMLfile->outputRawData ("</p>") ;
     const C_BDD_Set1 newNonterminal = inVocabularyDerivingToEmpty_BDD & ~ inNonTerminalHavingEmptyDerivation ;
     const uint32 n = newNonterminal.getValuesCount () ;
