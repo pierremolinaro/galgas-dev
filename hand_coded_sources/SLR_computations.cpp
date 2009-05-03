@@ -213,7 +213,7 @@ display (const cPureBNFproductionsList & inProductionRules,
       if (j == location) {
         inHTMLfile << " ." ;      
       }
-      inHTMLfile << ' ' ;
+      inHTMLfile << " " ;
       inVocabulary.printInFile (inHTMLfile, p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
     }
     if (location == p.aDerivation.count ()) {
@@ -701,13 +701,13 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
   sint32 startIndex = 0 ;
   for (sint32 i=0 ; i<rowsCount ; i++) {
     startIndexArray.addObject (startIndex) ;
-    generatedZone3 <<"\n// State S" << i << " (index = " << startIndex << ')' ;
+    generatedZone3 <<"\n// State S" << i << " (index = " << startIndex << ")" ;
     for (sint32 j=0 ; j<columnsCount ; j++) {
       const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
       const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
       if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
-        generatedZone3 << '\n' ;
+        generatedZone3 << "\n" ;
         if (first) {
           first = false ;
           generatedZone3 << "  " ;
@@ -718,9 +718,9 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generateTerminalSymbolCppName (inVocabulary.getSymbol (j COMMA_HERE), generatedZone3) ;
         generatedZone3 << ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
-          generatedZone3 << "REDUCE (" << parameter << ')' ;
+          generatedZone3 << "REDUCE (" << parameter << ")" ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
-          generatedZone3 << "SHIFT (" << parameter << ')' ;
+          generatedZone3 << "SHIFT (" << parameter << ")" ;
         }else{ // Accept action
           generatedZone3 << "ACCEPT" ;
         }
@@ -733,7 +733,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                     "static const uint32 gActionTableIndex [" << rowsCount << "] = {" ;
   first = true ;
   for (sint32 i=0 ; i<rowsCount ; i++) {
-    generatedZone3 << '\n' ;
+    generatedZone3 << "\n" ;
     if (first) {
       first = false ;
       generatedZone3 << "  " ;
@@ -824,7 +824,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       generatedZone3 << "void " ;
       generatedZone3 << inTargetFileName
                      << "::\n"
-                     << "nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+                     << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " & _inLexique" ;
       const sint32 pureBNFleftNonterminalIndex = (sint32) nonTerminal._mID (HERE) ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -905,7 +905,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "          " << inTargetFileName << " _grammar ;\n"
                           "          " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -981,7 +981,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "    if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "      " << inTargetFileName << " _grammar ;\n"
                           "      " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1020,7 +1020,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       const sint32 last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (sint32 j=first ; j<=last ; j++) {
-        generatedZone3 << ' ' << inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+        generatedZone3 << " " << inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
       }
       generatedZone3 << "\n"
                  "  return (sint16) (_inLexique.nextProductionIndex () - "

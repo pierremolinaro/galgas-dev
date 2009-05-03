@@ -1012,15 +1012,15 @@ void routine_internal_logXMLNodes (C_Compiler & _inLexique,
       switch (operand_984->node.reader_type (_inLexique COMMA_SOURCE_FILE_AT_LINE (46)).enumValue ()) {
       case GGS_xmlNodeType::enum_element:
         {
-        var_cas_ioString.appendCstring ("ELEMENT '") ;
+        var_cas_ioString.appendCString ("ELEMENT '") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (48))) ;
-        var_cas_ioString.appendCstring ("' ") ;
+        var_cas_ioString.appendCString ("' ") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (49)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (49)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (49)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (49))) ;
-        var_cas_ioString.appendCstring (":") ;
+        var_cas_ioString.appendCString (":") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (50)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (50)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (50)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (50))) ;
-        var_cas_ioString.appendCstring (":") ;
+        var_cas_ioString.appendCString (":") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (51)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (51)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (51)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (51))) ;
-        var_cas_ioString.appendCstring (" {") ;
+        var_cas_ioString.appendCString (" {") ;
         {
           GGS_xmlAttributeMap::cEnumerator enumerator_1342 (operand_984->node.reader_attributeMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (52)), true) ;
           const GGS_xmlAttributeMap::cElement * operand_1342 = enumerator_1342.nextObject () ;
@@ -1028,58 +1028,58 @@ void routine_internal_logXMLNodes (C_Compiler & _inLexique,
             bool _foreach_loop_1342 ;
             do{
               macroValidPointer (operand_1342) ;
-              var_cas_ioString.appendCstring ("'") ;
+              var_cas_ioString.appendCString ("'") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mKey) ;
-              var_cas_ioString.appendCstring ("' ") ;
+              var_cas_ioString.appendCString ("' ") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (54)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (54)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (54))) ;
-              var_cas_ioString.appendCstring (":") ;
+              var_cas_ioString.appendCString (":") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (55)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (55)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (55))) ;
-              var_cas_ioString.appendCstring (":") ;
+              var_cas_ioString.appendCString (":") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (56)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (56)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (56))) ;
-              var_cas_ioString.appendCstring (" -> '") ;
+              var_cas_ioString.appendCString (" -> '") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mInfo.value) ;
-              var_cas_ioString.appendCstring ("' ") ;
+              var_cas_ioString.appendCString ("' ") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mInfo.value.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (58)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (58)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (58))) ;
-              var_cas_ioString.appendCstring (":") ;
+              var_cas_ioString.appendCString (":") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mInfo.value.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (59)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (59)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (59))) ;
-              var_cas_ioString.appendCstring (":") ;
+              var_cas_ioString.appendCString (":") ;
               var_cas_ioString._dotAssign_operation (operand_1342->mInfo.value.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (60)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (60)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (60))) ;
               operand_1342 = enumerator_1342.nextObject () ;
               _foreach_loop_1342 = ((operand_1342 != NULL)) ;
               if (_foreach_loop_1342) {
-                var_cas_ioString.appendCstring (", ") ;
+                var_cas_ioString.appendCString (", ") ;
               }
             }while (_foreach_loop_1342) ;
           }
         }
-        var_cas_ioString.appendCstring ("}\n") ;
+        var_cas_ioString.appendCString ("}\n") ;
         ::routine_internal_logXMLNodes (_inLexique,  operand_984->node.reader_nodeList (_inLexique COMMA_SOURCE_FILE_AT_LINE (64)),  (var_cas_inIndentationString)._operator_concat (GGS_string (true, " ")),  var_cas_ioString COMMA_SOURCE_FILE_AT_LINE (64)) ;
         }
         break ;
       case GGS_xmlNodeType::enum_text:
         {
-        var_cas_ioString.appendCstring ("TEXT '") ;
+        var_cas_ioString.appendCString ("TEXT '") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (66))) ;
-        var_cas_ioString.appendCstring ("' ") ;
+        var_cas_ioString.appendCString ("' ") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (67)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (67)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (67)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (67))) ;
-        var_cas_ioString.appendCstring (":") ;
+        var_cas_ioString.appendCString (":") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (68)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (68)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (68)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (68))) ;
-        var_cas_ioString.appendCstring (":") ;
+        var_cas_ioString.appendCString (":") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (69)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (69)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (69)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (69))) ;
-        var_cas_ioString.appendCstring ("\n") ;
+        var_cas_ioString.appendCString ("\n") ;
         }
         break ;
       case GGS_xmlNodeType::enum_comment:
         {
-        var_cas_ioString.appendCstring ("COMMENT '") ;
+        var_cas_ioString.appendCString ("COMMENT '") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (71))) ;
-        var_cas_ioString.appendCstring ("' ") ;
+        var_cas_ioString.appendCString ("' ") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (72)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (72)).reader_line (_inLexique COMMA_SOURCE_FILE_AT_LINE (72)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (72))) ;
-        var_cas_ioString.appendCstring (":") ;
+        var_cas_ioString.appendCString (":") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (73)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (73)).reader_column (_inLexique COMMA_SOURCE_FILE_AT_LINE (73)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (73))) ;
-        var_cas_ioString.appendCstring (":") ;
+        var_cas_ioString.appendCString (":") ;
         var_cas_ioString._dotAssign_operation (operand_984->node.reader_name (_inLexique COMMA_SOURCE_FILE_AT_LINE (74)).reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (74)).reader_locationIndex (_inLexique COMMA_SOURCE_FILE_AT_LINE (74)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (74))) ;
-        var_cas_ioString.appendCstring ("\n") ;
+        var_cas_ioString.appendCString ("\n") ;
         }
         break ;
       case GGS_xmlNodeType::kNotBuilt:

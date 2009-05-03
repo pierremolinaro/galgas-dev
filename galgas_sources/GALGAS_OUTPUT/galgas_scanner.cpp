@@ -27,7 +27,7 @@
 #include "galgas_scanner.h"
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), lineNumber ()
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
 #else
   #define LINE_AND_SOURCE_FILE
@@ -857,733 +857,737 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
       s << "$$" ;
       break ;
     case  galgas_scanner_1_identifier:
-      s << '$'
+      s << "$"
         << "identifier"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_abstract:
-      s << '$'
+      s << "$"
         << "abstract"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_after:
-      s << '$'
+      s << "$"
         << "after"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_before:
-      s << '$'
+      s << "$"
         << "before"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_between:
-      s << '$'
+      s << "$"
         << "between"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_block:
-      s << '$'
+      s << "$"
         << "block"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_cast:
-      s << '$'
+      s << "$"
         << "cast"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_class:
-      s << '$'
+      s << "$"
         << "class"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_compile:
-      s << '$'
+      s << "$"
         << "compile"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_const:
-      s << '$'
+      s << "$"
         << "const"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_constructor:
-      s << '$'
+      s << "$"
         << "constructor"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_default:
-      s << '$'
+      s << "$"
         << "default"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_description:
-      s << '$'
+      s << "$"
         << "description"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_dependency:
-      s << '$'
+      s << "$"
         << "dependency"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_do:
-      s << '$'
+      s << "$"
         << "do"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_domain:
-      s << '$'
+      s << "$"
         << "domain"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_drop:
-      s << '$'
+      s << "$"
         << "drop"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_else:
-      s << '$'
+      s << "$"
         << "else"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_elsif:
-      s << '$'
+      s << "$"
         << "elsif"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_end:
-      s << '$'
+      s << "$"
         << "end"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_enum:
-      s << '$'
+      s << "$"
         << "enum"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_error:
-      s << '$'
+      s << "$"
         << "error"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_extends:
-      s << '$'
+      s << "$"
         << "extends"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_extern:
-      s << '$'
+      s << "$"
         << "extern"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_extract:
-      s << '$'
+      s << "$"
         << "extract"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_false:
-      s << '$'
+      s << "$"
         << "false"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_filewrapper:
-      s << '$'
+      s << "$"
         << "filewrapper"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_foreach:
-      s << '$'
+      s << "$"
         << "foreach"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_function:
-      s << '$'
+      s << "$"
         << "function"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_grammar:
-      s << '$'
+      s << "$"
         << "grammar"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_gui:
-      s << '$'
+      s << "$"
         << "gui"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_here:
-      s << '$'
+      s << "$"
         << "here"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_if:
-      s << '$'
+      s << "$"
         << "if"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_import:
-      s << '$'
+      s << "$"
         << "import"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_import_5F_5F:
-      s << '$'
+      s << "$"
         << "import__"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_in:
-      s << '$'
+      s << "$"
         << "in"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_insert:
-      s << '$'
+      s << "$"
         << "insert"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_label:
-      s << '$'
+      s << "$"
         << "label"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_lazy:
-      s << '$'
+      s << "$"
         << "lazy"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_lexique:
-      s << '$'
+      s << "$"
         << "lexique"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_list:
-      s << '$'
+      s << "$"
         << "list"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_listmap:
-      s << '$'
+      s << "$"
         << "listmap"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_log:
-      s << '$'
+      s << "$"
         << "log"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_loop:
-      s << '$'
+      s << "$"
         << "loop"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_map:
-      s << '$'
+      s << "$"
         << "map"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_mapindex:
-      s << '$'
+      s << "$"
         << "mapindex"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_match:
-      s << '$'
+      s << "$"
         << "match"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_message:
-      s << '$'
+      s << "$"
         << "message"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_method:
-      s << '$'
+      s << "$"
         << "method"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_mod:
-      s << '$'
+      s << "$"
         << "mod"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_modifier:
-      s << '$'
+      s << "$"
         << "modifier"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_nonterminal:
-      s << '$'
+      s << "$"
         << "nonterminal"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_not:
-      s << '$'
+      s << "$"
         << "not"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_on:
-      s << '$'
+      s << "$"
         << "on"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_operator:
-      s << '$'
+      s << "$"
         << "operator"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_option:
-      s << '$'
+      s << "$"
         << "option"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_or:
-      s << '$'
+      s << "$"
         << "or"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_override:
-      s << '$'
+      s << "$"
         << "override"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_parse:
-      s << '$'
+      s << "$"
         << "parse"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_project:
-      s << '$'
+      s << "$"
         << "project"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_program:
-      s << '$'
+      s << "$"
         << "program"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_reader:
-      s << '$'
+      s << "$"
         << "reader"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_remove:
-      s << '$'
+      s << "$"
         << "remove"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_replace:
-      s << '$'
+      s << "$"
         << "replace"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_repeat:
-      s << '$'
+      s << "$"
         << "repeat"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_rewind:
-      s << '$'
+      s << "$"
         << "rewind"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_root:
-      s << '$'
+      s << "$"
         << "root"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_routine:
-      s << '$'
+      s << "$"
         << "routine"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_rule:
-      s << '$'
+      s << "$"
         << "rule"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_search:
-      s << '$'
+      s << "$"
         << "search"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_select:
-      s << '$'
+      s << "$"
         << "select"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_self:
-      s << '$'
+      s << "$"
         << "self"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_semantics:
-      s << '$'
+      s << "$"
         << "semantics"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_send:
-      s << '$'
+      s << "$"
         << "send"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_sortedlist:
-      s << '$'
+      s << "$"
         << "sortedlist"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_state:
-      s << '$'
+      s << "$"
         << "state"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_struct:
-      s << '$'
+      s << "$"
         << "struct"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_style:
-      s << '$'
+      s << "$"
         << "style"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_switch:
-      s << '$'
+      s << "$"
         << "switch"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_syntax:
-      s << '$'
+      s << "$"
         << "syntax"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_tag:
-      s << '$'
+      s << "$"
         << "tag"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_template:
-      s << '$'
+      s << "$"
         << "template"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_then:
-      s << '$'
+      s << "$"
         << "then"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_true:
-      s << '$'
+      s << "$"
         << "true"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_until:
-      s << '$'
+      s << "$"
         << "until"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_unused:
-      s << '$'
+      s << "$"
         << "unused"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_warning:
-      s << '$'
+      s << "$"
         << "warning"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_when:
-      s << '$'
+      s << "$"
         << "when"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_while:
-      s << '$'
+      s << "$"
         << "while"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_literal_5Fdouble:
-      s << '$'
+      s << "$"
         << "literal_double"
-        << '$' ;
-    s << ' ' << _p->floatValue ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
+    s.appendDouble (_p->floatValue) ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_unsigned_5Fliteral_5Finteger:
-      s << '$'
+      s << "$"
         << "unsigned_literal_integer"
-        << '$' ;
-    s << ' ' << _p->uint32value ;
+        << "$" ;
+      s << " " ;
+      s.appendUnsigned (_p->uint32value) ;
       break;
     case  galgas_scanner_1_signed_5Fliteral_5Finteger:
-      s << '$'
+      s << "$"
         << "signed_literal_integer"
-        << '$' ;
-    s << ' ' << _p->sint32value ;
+        << "$" ;
+    s << " " << _p->sint32value ;
       break;
     case  galgas_scanner_1_unsigned_5Fliteral_5Finteger64:
-      s << '$'
+      s << "$"
         << "unsigned_literal_integer64"
-        << '$' ;
-    s << ' ' << _p->uint64value ;
+        << "$" ;
+      s << " " ;
+      s.appendUnsigned64 (_p->uint64value) ;
       break;
     case  galgas_scanner_1_signed_5Fliteral_5Finteger64:
-      s << '$'
+      s << "$"
         << "signed_literal_integer64"
-        << '$' ;
-    s << ' ' << _p->sint64value ;
+        << "$" ;
+      s << " " ;
+      s.appendSigned64 (_p->sint64value) ;
       break;
     case  galgas_scanner_1__2E:
-      s << '$'
+      s << "$"
         << "."
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2E_3D:
-      s << '$'
+      s << "$"
         << ".="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2E_2E_2E:
-      s << '$'
+      s << "$"
         << "..."
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_type_5Fname:
-      s << '$'
+      s << "$"
         << "type_name"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_literal_5Fchar:
-      s << '$'
+      s << "$"
         << "literal_char"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralCharConstant (_p->charValue) ;
       break;
     case  galgas_scanner_1_terminal:
-      s << '$'
+      s << "$"
         << "terminal"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1__2A:
-      s << '$'
+      s << "$"
         << "*"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__7C:
-      s << '$'
+      s << "$"
         << "|"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2C:
-      s << '$'
+      s << "$"
         << ","
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2B:
-      s << '$'
+      s << "$"
         << "+"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2D_2D:
-      s << '$'
+      s << "$"
         << "--"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3A_3A:
-      s << '$'
+      s << "$"
         << "::"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3E:
-      s << '$'
+      s << "$"
         << ">"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3B:
-      s << '$'
+      s << "$"
         << ";"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3A:
-      s << '$'
+      s << "$"
         << ":"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2D:
-      s << '$'
+      s << "$"
         << "-"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__28:
-      s << '$'
+      s << "$"
         << "("
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__29:
-      s << '$'
+      s << "$"
         << ")"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2D_3E:
-      s << '$'
+      s << "$"
         << "->"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3F:
-      s << '$'
+      s << "$"
         << "\?"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3D_3D:
-      s << '$'
+      s << "$"
         << "=="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3F_3F:
-      s << '$'
+      s << "$"
         << "\?\?"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__21:
-      s << '$'
+      s << "$"
         << "!"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3A_3D:
-      s << '$'
+      s << "$"
         << ":="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2B_2B:
-      s << '$'
+      s << "$"
         << "++"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__5B:
-      s << '$'
+      s << "$"
         << "["
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__5D:
-      s << '$'
+      s << "$"
         << "]"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2B_3D:
-      s << '$'
+      s << "$"
         << "+="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3F_21:
-      s << '$'
+      s << "$"
         << "\?!"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__21_3F:
-      s << '$'
+      s << "$"
         << "!\?"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2F:
-      s << '$'
+      s << "$"
         << "/"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__21_3D:
-      s << '$'
+      s << "$"
         << "!="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3E_3D:
-      s << '$'
+      s << "$"
         << ">="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__26:
-      s << '$'
+      s << "$"
         << "&"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__7B:
-      s << '$'
+      s << "$"
         << "{"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__7D:
-      s << '$'
+      s << "$"
         << "}"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__2D_3D:
-      s << '$'
+      s << "$"
         << "-="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__5E:
-      s << '$'
+      s << "$"
         << "^"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3E_3E:
-      s << '$'
+      s << "$"
         << ">>"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__7E:
-      s << '$'
+      s << "$"
         << "~"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3C_2D:
-      s << '$'
+      s << "$"
         << "<-"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3C:
-      s << '$'
+      s << "$"
         << "<"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3C_2D_3E:
-      s << '$'
+      s << "$"
         << "<->"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3C_3D:
-      s << '$'
+      s << "$"
         << "<="
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1__3C_3C:
-      s << '$'
+      s << "$"
         << "<<"
-        << '$' ;
+        << "$" ;
       break;
     case  galgas_scanner_1_non_5Fterminal_5Fsymbol:
-      s << '$'
+      s << "$"
         << "non_terminal_symbol"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_literal_5Fstring:
-      s << '$'
+      s << "$"
         << "literal_string"
-        << '$' ;
-    s << ' ' ;
+        << "$" ;
+    s << " " ;
     s.appendCLiteralStringConstant (_p->tokenString) ;
       break;
     case  galgas_scanner_1_comment:
-      s << '$'
+      s << "$"
         << "comment"
-        << '$' ;
+        << "$" ;
       break;
     default:
       break ;
@@ -1603,26 +1607,26 @@ parseLexicalToken (void) {
   cTokenFor_galgas_scanner _token ;
   bool loop_ = true ;
   _token._mTokenCode = -1 ;
-  while ((_token._mTokenCode < 0) && (mCurrentChar != '\0')) {
+  while ((_token._mTokenCode < 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
     _token.identifierString.clear () ;
     _token.uint32value = 0 ;
     _token.sint32value = 0 ;
     _token.uint64value = 0 ;
     _token.sint64value = 0 ;
-    _token.charValue = '\0' ;
+    _token.charValue = UNICODE_NEW ('\0') ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
     _mTokenFirstLocation = _mCurrentLocation ;
     try{
-      if (testForInputChar ('a', 'z') ||
-          testForInputChar ('A', 'Z')) {
+      if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+          testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
         do {
           scanner_action_enterCharacterIntoString (_token.identifierString, scanner_action_toLower (previousChar ())) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          if (testForInputChar ('a', 'z') ||
-              testForInputChar ('A', 'Z') ||
-              testForInputChar ('_') ||
-              testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+              testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+              testForInputChar (UNICODE_NEW ('_')) ||
+              testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
           }else{
             loop_ = false ;
           }
@@ -1635,13 +1639,13 @@ parseLexicalToken (void) {
         _enterToken (_token) ;
       }else if (testForInputString ("0x", 2, true)) {
         do {
-          if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('a', 'f')) {
+          }else if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('f'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('A', 'F')) {
+          }else if (testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('F'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('_')) {
+          }else if (testForInputChar (UNICODE_NEW ('_'))) {
           }else{
             loop_ = false ;
           }
@@ -1651,12 +1655,12 @@ parseLexicalToken (void) {
           scanner_action_convertHexStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('S') ||
-            testForInputChar ('s')) {
+        }else if (testForInputChar (UNICODE_NEW ('S')) ||
+            testForInputChar (UNICODE_NEW ('s'))) {
           scanner_action_convertHexStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('L')) {
+        }else if (testForInputChar (UNICODE_NEW ('L'))) {
           scanner_action_convertHexStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
@@ -1665,19 +1669,19 @@ parseLexicalToken (void) {
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
           _enterToken (_token) ;
         }
-      }else if (testForInputChar ('0', '9')) {
+      }else if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
         scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
         do {
-          if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('_')) {
+          }else if (testForInputChar (UNICODE_NEW ('_'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('S') ||
-            testForInputChar ('s')) {
+        if (testForInputChar (UNICODE_NEW ('S')) ||
+            testForInputChar (UNICODE_NEW ('s'))) {
           scanner_action_convertDecimalStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
           _enterToken (_token) ;
@@ -1685,16 +1689,16 @@ parseLexicalToken (void) {
           scanner_action_convertDecimalStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('L')) {
+        }else if (testForInputChar (UNICODE_NEW ('L'))) {
           scanner_action_convertDecimalStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('.')) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+        }else if (testForInputChar (UNICODE_NEW ('.'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
@@ -1708,15 +1712,15 @@ parseLexicalToken (void) {
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
           _enterToken (_token) ;
         }
-      }else if (testForInputChar ('.')) {
-        if (testForInputChar ('0', '9')) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, '0') ;
-          scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+      }else if (testForInputChar (UNICODE_NEW ('.'))) {
+        if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('0')) ;
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
@@ -1737,16 +1741,16 @@ parseLexicalToken (void) {
             _enterToken (_token) ;
           }
         }
-      }else if (testForInputChar ('@')) {
-        if (testForInputChar ('a', 'z') ||
-            testForInputChar ('A', 'Z') ||
-            testForInputChar ('_')) {
+      }else if (testForInputChar (UNICODE_NEW ('@'))) {
+        if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+            testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+            testForInputChar (UNICODE_NEW ('_'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('a', 'z') ||
-                testForInputChar ('A', 'Z') ||
-                testForInputChar ('_') ||
-                testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+                testForInputChar (UNICODE_NEW ('_')) ||
+                testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             }else{
               loop_ = false ;
             }
@@ -1757,34 +1761,34 @@ parseLexicalToken (void) {
         }
         _token._mTokenCode = galgas_scanner_1_type_5Fname ;
         _enterToken (_token) ;
-      }else if (testForInputChar ('\'')) {
-        if (testForInputChar ('\\')) {
-          if (testForInputChar ('f')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\f') ;
-          }else if (testForInputChar ('n')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\n') ;
-          }else if (testForInputChar ('r')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\r') ;
-          }else if (testForInputChar ('t')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\t') ;
-          }else if (testForInputChar ('v')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\v') ;
-          }else if (testForInputChar ('\\')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\\') ;
-          }else if (testForInputChar ('0')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\0') ;
-          }else if (testForInputChar ('\'')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\'') ;
-          }else if (testForInputChar ('x') ||
-              testForInputChar ('X')) {
-            if (testForInputChar ('0', '9') ||
-                testForInputChar ('a', 'f') ||
-                testForInputChar ('A', 'F')) {
+      }else if (testForInputChar (UNICODE_NEW ('\''))) {
+        if (testForInputChar (UNICODE_NEW ('\\' ))) {
+          if (testForInputChar (UNICODE_NEW ('f'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\f')) ;
+          }else if (testForInputChar (UNICODE_NEW ('n'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\n')) ;
+          }else if (testForInputChar (UNICODE_NEW ('r'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\r')) ;
+          }else if (testForInputChar (UNICODE_NEW ('t'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\t')) ;
+          }else if (testForInputChar (UNICODE_NEW ('v'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\v')) ;
+          }else if (testForInputChar (UNICODE_NEW ('\\'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\\')) ;
+          }else if (testForInputChar (UNICODE_NEW ('0'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\0')) ;
+          }else if (testForInputChar (UNICODE_NEW ('\''))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\'')) ;
+          }else if (testForInputChar (UNICODE_NEW ('x')) ||
+              testForInputChar (UNICODE_NEW ('X'))) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9')) ||
+                testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('f')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('F'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputChar ('0', '9') ||
-                    testForInputChar ('a', 'f') ||
-                    testForInputChar ('A', 'F')) {
+                if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9')) ||
+                    testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('f')) ||
+                    testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('F'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -1796,24 +1800,24 @@ parseLexicalToken (void) {
           }else{
             lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputChar (' ', '\xFF')) {
+        }else if (testForInputChar (UNICODE_NEW (' '), UNICODE_NEW ('\xFF'))) {
           scanner_action_enterCharacterIntoCharacter (_token.charValue, previousChar ()) ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar ('\'')) {
+        if (testForInputChar (UNICODE_NEW ('\''))) {
           _token._mTokenCode = galgas_scanner_1_literal_5Fchar ;
           _enterToken (_token) ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar ('$')) {
-        if (testForInputChar ('!', '#') ||
-            testForInputChar ('%', '~')) {
+      }else if (testForInputChar (UNICODE_NEW ('$'))) {
+        if (testForInputChar (UNICODE_NEW ('!'), UNICODE_NEW ('#')) ||
+            testForInputChar (UNICODE_NEW ('%'), UNICODE_NEW ('~'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('!', '#') ||
-                testForInputChar ('%', '~')) {
+            if (testForInputChar (UNICODE_NEW ('!'), UNICODE_NEW ('#')) ||
+                testForInputChar (UNICODE_NEW ('%'), UNICODE_NEW ('~'))) {
             }else{
               loop_ = false ;
             }
@@ -1822,7 +1826,7 @@ parseLexicalToken (void) {
         }else{
           lexicalError (gErrorMessage_6 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar ('$')) {
+        if (testForInputChar (UNICODE_NEW ('$'))) {
         }else{
           lexicalError (gErrorMessage_7 COMMA_LINE_AND_SOURCE_FILE) ;
         }
@@ -1933,31 +1937,31 @@ parseLexicalToken (void) {
       }else if (testForInputString ("~", 1, true)) {
         _token._mTokenCode = galgas_scanner_1__7E ;
         _enterToken (_token) ;
-      }else if (testForInputChar ('<')) {
+      }else if (testForInputChar (UNICODE_NEW ('<'))) {
         const C_LocationInSource _locationForTag_onlyInfDelimiter = _mCurrentLocation ;
-        if (testForInputChar ('=')) {
+        if (testForInputChar (UNICODE_NEW ('='))) {
           _token._mTokenCode = galgas_scanner_1__3C_3D ;
           _enterToken (_token) ;
         }else if (testForInputString ("->", 2, true)) {
           _token._mTokenCode = galgas_scanner_1__3C_2D_3E ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('<')) {
+        }else if (testForInputChar (UNICODE_NEW ('<'))) {
           _token._mTokenCode = galgas_scanner_1__3C_3C ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('a', 'z') ||
-            testForInputChar ('A', 'Z')) {
+        }else if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+            testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('a', 'z') ||
-                testForInputChar ('A', 'Z') ||
-                testForInputChar ('0', '9') ||
-                testForInputChar ('_')) {
+            if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+                testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9')) ||
+                testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar ('>')) {
+          if (testForInputChar (UNICODE_NEW ('>'))) {
             _token._mTokenCode = galgas_scanner_1_non_5Fterminal_5Fsymbol ;
             _enterToken (_token) ;
           }else{
@@ -1969,31 +1973,31 @@ parseLexicalToken (void) {
           _token._mTokenCode = galgas_scanner_1__3C ;
           _enterToken (_token) ;
         }
-      }else if (testForInputChar ('\"')) {
+      }else if (testForInputChar (UNICODE_NEW ('\"'))) {
         do {
-          if (testForInputChar ('\\')) {
-            if (testForInputChar ('f')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\f') ;
-            }else if (testForInputChar ('n')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\n') ;
-            }else if (testForInputChar ('r')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\r') ;
-            }else if (testForInputChar ('t')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\t') ;
-            }else if (testForInputChar ('v')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\v') ;
-            }else if (testForInputChar ('\\')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\\') ;
-            }else if (testForInputChar ('0')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\0') ;
-            }else if (testForInputChar ('\"')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
-            }else if (testForInputChar ('\'')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-            }else if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('\\'))) {
+            if (testForInputChar (UNICODE_NEW ('f'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\f')) ;
+            }else if (testForInputChar (UNICODE_NEW ('n'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\n')) ;
+            }else if (testForInputChar (UNICODE_NEW ('r'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\r')) ;
+            }else if (testForInputChar (UNICODE_NEW ('t'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\t')) ;
+            }else if (testForInputChar (UNICODE_NEW ('v'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\v')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\\'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\\')) ;
+            }else if (testForInputChar (UNICODE_NEW ('0'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\0')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\"'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\''))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+            }else if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputChar ('0', '9')) {
+                if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -2003,34 +2007,34 @@ parseLexicalToken (void) {
             }else{
               lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
-          }else if (testForInputChar (' ') ||
-              testForInputChar ('!') ||
-              testForInputChar ('#', '\xFF')) {
+          }else if (testForInputChar (UNICODE_NEW (' ')) ||
+              testForInputChar (UNICODE_NEW ('!')) ||
+              testForInputChar (UNICODE_NEW ('#'), UNICODE_NEW ('\xFF'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('\"')) {
+        if (testForInputChar (UNICODE_NEW ('\"'))) {
           _token._mTokenCode = galgas_scanner_1_literal_5Fstring ;
           _enterToken (_token) ;
         }else{
           lexicalError (gErrorMessage_8 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar ('#')) {
+      }else if (testForInputChar (UNICODE_NEW ('#'))) {
         do {
-          if (testForInputChar ('\x1', '\t') ||
-              testForInputChar ('\v') ||
-              testForInputChar ('\f') ||
-              testForInputChar ('\xE', '\xFF')) {
+          if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW ('\t')) ||
+              testForInputChar (UNICODE_NEW ('\v')) ||
+              testForInputChar (UNICODE_NEW ('\f')) ||
+              testForInputChar (UNICODE_NEW ('\xE'), UNICODE_NEW ('\xFF'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-      }else if (testForInputChar ('\x1', ' ')) {
-      }else if (testForInputChar ('\0')) { // End of source text ? 
+      }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (' '))) {
+      }else if (testForInputChar (UNICODE_NEW ('\0'))) { // End of source text ? 
         _token._mTokenCode = galgas_scanner_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -2040,7 +2044,7 @@ parseLexicalToken (void) {
       advance () ; // ... go throught unknown character
     }
   }
-  if ((mCurrentChar == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
+  if ((UNICODE_ACCESS (mCurrentChar) == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
     _token._mTokenCode = 0 ;
     _enterToken (_token) ;
   }
@@ -2064,20 +2068,20 @@ parseLexicalTokenForLexicalColoring (void) {
     _token.sint32value = 0 ;
     _token.uint64value = 0 ;
     _token.sint64value = 0 ;
-    _token.charValue = '\0' ;
+    _token.charValue = UNICODE_NEW ('\0') ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
     _mTokenFirstLocation = _mCurrentLocation ;
     try{
-      if (testForInputChar ('a', 'z') ||
-          testForInputChar ('A', 'Z')) {
+      if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+          testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
         do {
           scanner_action_enterCharacterIntoString (_token.identifierString, scanner_action_toLower (previousChar ())) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          if (testForInputChar ('a', 'z') ||
-              testForInputChar ('A', 'Z') ||
-              testForInputChar ('_') ||
-              testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+              testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+              testForInputChar (UNICODE_NEW ('_')) ||
+              testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
           }else{
             loop_ = false ;
           }
@@ -2089,13 +2093,13 @@ parseLexicalTokenForLexicalColoring (void) {
         }
       }else if (testForInputString ("0x", 2, true)) {
         do {
-          if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('a', 'f')) {
+          }else if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('f'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('A', 'F')) {
+          }else if (testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('F'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('_')) {
+          }else if (testForInputChar (UNICODE_NEW ('_'))) {
           }else{
             loop_ = false ;
           }
@@ -2104,44 +2108,44 @@ parseLexicalTokenForLexicalColoring (void) {
         if (testForInputString ("LS", 2, true)) {
           scanner_action_convertHexStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar ('S') ||
-            testForInputChar ('s')) {
+        }else if (testForInputChar (UNICODE_NEW ('S')) ||
+            testForInputChar (UNICODE_NEW ('s'))) {
           scanner_action_convertHexStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
-        }else if (testForInputChar ('L')) {
+        }else if (testForInputChar (UNICODE_NEW ('L'))) {
           scanner_action_convertHexStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
         }else{
           scanner_action_convertHexStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
         }
-      }else if (testForInputChar ('0', '9')) {
+      }else if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
         scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
         do {
-          if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar ('_')) {
+          }else if (testForInputChar (UNICODE_NEW ('_'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('S') ||
-            testForInputChar ('s')) {
+        if (testForInputChar (UNICODE_NEW ('S')) ||
+            testForInputChar (UNICODE_NEW ('s'))) {
           scanner_action_convertDecimalStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
         }else if (testForInputString ("LS", 2, true)) {
           scanner_action_convertDecimalStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar ('L')) {
+        }else if (testForInputChar (UNICODE_NEW ('L'))) {
           scanner_action_convertDecimalStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar ('.')) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+        }else if (testForInputChar (UNICODE_NEW ('.'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
@@ -2153,15 +2157,15 @@ parseLexicalTokenForLexicalColoring (void) {
           scanner_action_convertDecimalStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
           _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
         }
-      }else if (testForInputChar ('.')) {
-        if (testForInputChar ('0', '9')) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, '0') ;
-          scanner_action_enterCharacterIntoString (_token.tokenString, '.') ;
+      }else if (testForInputChar (UNICODE_NEW ('.'))) {
+        if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('0')) ;
+          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('.')) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           do {
-            if (testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar ('_')) {
+            }else if (testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
@@ -2178,16 +2182,16 @@ parseLexicalTokenForLexicalColoring (void) {
             _token._mTokenCode = galgas_scanner_1__2E ;
           }
         }
-      }else if (testForInputChar ('@')) {
-        if (testForInputChar ('a', 'z') ||
-            testForInputChar ('A', 'Z') ||
-            testForInputChar ('_')) {
+      }else if (testForInputChar (UNICODE_NEW ('@'))) {
+        if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+            testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+            testForInputChar (UNICODE_NEW ('_'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('a', 'z') ||
-                testForInputChar ('A', 'Z') ||
-                testForInputChar ('_') ||
-                testForInputChar ('0', '9')) {
+            if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+                testForInputChar (UNICODE_NEW ('_')) ||
+                testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             }else{
               loop_ = false ;
             }
@@ -2197,34 +2201,34 @@ parseLexicalTokenForLexicalColoring (void) {
           lexicalError (gErrorMessage_3 COMMA_LINE_AND_SOURCE_FILE) ;
         }
         _token._mTokenCode = galgas_scanner_1_type_5Fname ;
-      }else if (testForInputChar ('\'')) {
-        if (testForInputChar ('\\')) {
-          if (testForInputChar ('f')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\f') ;
-          }else if (testForInputChar ('n')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\n') ;
-          }else if (testForInputChar ('r')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\r') ;
-          }else if (testForInputChar ('t')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\t') ;
-          }else if (testForInputChar ('v')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\v') ;
-          }else if (testForInputChar ('\\')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\\') ;
-          }else if (testForInputChar ('0')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\0') ;
-          }else if (testForInputChar ('\'')) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, '\'') ;
-          }else if (testForInputChar ('x') ||
-              testForInputChar ('X')) {
-            if (testForInputChar ('0', '9') ||
-                testForInputChar ('a', 'f') ||
-                testForInputChar ('A', 'F')) {
+      }else if (testForInputChar (UNICODE_NEW ('\''))) {
+        if (testForInputChar (UNICODE_NEW ('\\'))) {
+          if (testForInputChar (UNICODE_NEW ('f'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\f')) ;
+          }else if (testForInputChar (UNICODE_NEW ('n'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\n')) ;
+          }else if (testForInputChar (UNICODE_NEW ('r'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\r')) ;
+          }else if (testForInputChar (UNICODE_NEW ('t'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\t')) ;
+          }else if (testForInputChar (UNICODE_NEW ('v'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\v')) ;
+          }else if (testForInputChar (UNICODE_NEW ('\\'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\\')) ;
+          }else if (testForInputChar (UNICODE_NEW ('0'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\0')) ;
+          }else if (testForInputChar (UNICODE_NEW ('\''))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE_NEW ('\'')) ;
+          }else if (testForInputChar (UNICODE_NEW ('x')) ||
+              testForInputChar (UNICODE_NEW ('X'))) {
+            if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9')) ||
+                testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('f')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('F'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputChar ('0', '9') ||
-                    testForInputChar ('a', 'f') ||
-                    testForInputChar ('A', 'F')) {
+                if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9')) ||
+                    testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('f')) ||
+                    testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('F'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -2236,23 +2240,23 @@ parseLexicalTokenForLexicalColoring (void) {
           }else{
             lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputChar (' ', '\xFF')) {
+        }else if (testForInputChar (UNICODE_NEW (' '), UNICODE_NEW ('\xFF'))) {
           scanner_action_enterCharacterIntoCharacter (_token.charValue, previousChar ()) ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar ('\'')) {
+        if (testForInputChar (UNICODE_NEW ('\''))) {
           _token._mTokenCode = galgas_scanner_1_literal_5Fchar ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar ('$')) {
-        if (testForInputChar ('!', '#') ||
-            testForInputChar ('%', '~')) {
+      }else if (testForInputChar (UNICODE_NEW ('$'))) {
+        if (testForInputChar (UNICODE_NEW ('!'), UNICODE_NEW ('#')) ||
+            testForInputChar (UNICODE_NEW ('%'), UNICODE_NEW ('~'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('!', '#') ||
-                testForInputChar ('%', '~')) {
+            if (testForInputChar (UNICODE_NEW ('!'), UNICODE_NEW ('#')) ||
+                testForInputChar (UNICODE_NEW ('%'), UNICODE_NEW ('~'))) {
             }else{
               loop_ = false ;
             }
@@ -2261,7 +2265,7 @@ parseLexicalTokenForLexicalColoring (void) {
         }else{
           lexicalError (gErrorMessage_6 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar ('$')) {
+        if (testForInputChar (UNICODE_NEW ('$'))) {
         }else{
           lexicalError (gErrorMessage_7 COMMA_LINE_AND_SOURCE_FILE) ;
         }
@@ -2336,28 +2340,28 @@ parseLexicalTokenForLexicalColoring (void) {
         _token._mTokenCode = galgas_scanner_1__5E ;
       }else if (testForInputString ("~", 1, true)) {
         _token._mTokenCode = galgas_scanner_1__7E ;
-      }else if (testForInputChar ('<')) {
+      }else if (testForInputChar (UNICODE_NEW ('<'))) {
         const C_LocationInSource _locationForTag_onlyInfDelimiter = _mCurrentLocation ;
-        if (testForInputChar ('=')) {
+        if (testForInputChar (UNICODE_NEW ('='))) {
           _token._mTokenCode = galgas_scanner_1__3C_3D ;
         }else if (testForInputString ("->", 2, true)) {
           _token._mTokenCode = galgas_scanner_1__3C_2D_3E ;
-        }else if (testForInputChar ('<')) {
+        }else if (testForInputChar (UNICODE_NEW ('<'))) {
           _token._mTokenCode = galgas_scanner_1__3C_3C ;
-        }else if (testForInputChar ('a', 'z') ||
-            testForInputChar ('A', 'Z')) {
+        }else if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+            testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('a', 'z') ||
-                testForInputChar ('A', 'Z') ||
-                testForInputChar ('0', '9') ||
-                testForInputChar ('_')) {
+            if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+                testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+                testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9')) ||
+                testForInputChar (UNICODE_NEW ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar ('>')) {
+          if (testForInputChar (UNICODE_NEW ('>'))) {
             _token._mTokenCode = galgas_scanner_1_non_5Fterminal_5Fsymbol ;
           }else{
             _mCurrentLocation = _locationForTag_onlyInfDelimiter ;
@@ -2366,31 +2370,31 @@ parseLexicalTokenForLexicalColoring (void) {
         }else{
           _token._mTokenCode = galgas_scanner_1__3C ;
         }
-      }else if (testForInputChar ('\"')) {
+      }else if (testForInputChar (UNICODE_NEW ('\"'))) {
         do {
-          if (testForInputChar ('\\')) {
-            if (testForInputChar ('f')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\f') ;
-            }else if (testForInputChar ('n')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\n') ;
-            }else if (testForInputChar ('r')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\r') ;
-            }else if (testForInputChar ('t')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\t') ;
-            }else if (testForInputChar ('v')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\v') ;
-            }else if (testForInputChar ('\\')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\\') ;
-            }else if (testForInputChar ('0')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\0') ;
-            }else if (testForInputChar ('\"')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
-            }else if (testForInputChar ('\'')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-            }else if (testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('\\'))) {
+            if (testForInputChar (UNICODE_NEW ('f'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\f')) ;
+            }else if (testForInputChar (UNICODE_NEW ('n'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\n')) ;
+            }else if (testForInputChar (UNICODE_NEW ('r'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\r')) ;
+            }else if (testForInputChar (UNICODE_NEW ('t'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\t')) ;
+            }else if (testForInputChar (UNICODE_NEW ('v'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\v')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\\'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\\')) ;
+            }else if (testForInputChar (UNICODE_NEW ('0'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\0')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\"'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\''))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+            }else if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputChar ('0', '9')) {
+                if (testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -2400,34 +2404,34 @@ parseLexicalTokenForLexicalColoring (void) {
             }else{
               lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
-          }else if (testForInputChar (' ') ||
-              testForInputChar ('!') ||
-              testForInputChar ('#', '\xFF')) {
+          }else if (testForInputChar (UNICODE_NEW (' ')) ||
+              testForInputChar (UNICODE_NEW ('!')) ||
+              testForInputChar (UNICODE_NEW ('#'), UNICODE_NEW ('\xFF'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('\"')) {
+        if (testForInputChar (UNICODE_NEW ('\"'))) {
           _token._mTokenCode = galgas_scanner_1_literal_5Fstring ;
         }else{
           lexicalError (gErrorMessage_8 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar ('#')) {
+      }else if (testForInputChar (UNICODE_NEW ('#'))) {
         do {
-          if (testForInputChar ('\x1', '\t') ||
-              testForInputChar ('\v') ||
-              testForInputChar ('\f') ||
-              testForInputChar ('\xE', '\xFF')) {
+          if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW ('\t')) ||
+              testForInputChar (UNICODE_NEW ('\v')) ||
+              testForInputChar (UNICODE_NEW ('\f')) ||
+              testForInputChar (UNICODE_NEW ('\xE'), UNICODE_NEW ('\xFF'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
         _token._mTokenCode = galgas_scanner_1_comment ;
-      }else if (testForInputChar ('\x1', ' ')) {
-      }else if (testForInputChar ('\0')) { // End of source text ? 
+      }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (' '))) {
+      }else if (testForInputChar (UNICODE_NEW ('\0'))) { // End of source text ? 
         _token._mTokenCode = galgas_scanner_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -2726,7 +2730,7 @@ _assignFromAttribute_charValue (GGS_lchar & outValue) const {
 
 //---------------------------------------------------------------------------*
 
-char galgas_scanner::
+utf32 galgas_scanner::
 _attributeValue_charValue (void) const {
   cTokenFor_galgas_scanner * _p = (cTokenFor_galgas_scanner *) mCurrentTokenPtr ;
   return _p->charValue ;

@@ -899,12 +899,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  ioString << \"\\n\" ;\n"
                "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-               "  ioString << \"|-key \" << inElementIndex << \":\" << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+               "  ioString << \"|-key \" ;\n"
+               "  ioString.appendSigned (inElementIndex) ;\n"
+               "  ioString << \":\" << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   while (current.hc ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
-                 "  ioString << \"|-value \" << inElementIndex << \":\" << mInfo." << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+                 "  ioString << \"|-value \" ;\n"
+                 "  ioString.appendSigned (inElementIndex) ;\n"
+                 "  ioString << \":\" << mInfo." << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
     current.next () ;
   }
   inCppFile << "}\n\n" ;

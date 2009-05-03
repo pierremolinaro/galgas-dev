@@ -102,9 +102,9 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
       }else{
         GGS_string var_cas_m ;
         var_cas_m = GGS_string (true, "") ;
-        var_cas_m.appendCstring ("the @") ;
+        var_cas_m.appendCString ("the @") ;
         var_cas_m._dotAssign_operation (operand_2868->mTypeName) ;
-        var_cas_m.appendCstring (" type is not a valid lexical attribute type; are allowed:") ;
+        var_cas_m.appendCString (" type is not a valid lexical attribute type; are allowed:") ;
         GGS_bool var_cas_firstLoop ;
         var_cas_firstLoop = GGS_bool (true, true) ;
         {
@@ -112,12 +112,12 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
           if (enumerator_3250 .hc ()) {
             bool _foreach_loop_3250 ;
             do{
-              var_cas_m.appendCstring (" @") ;
+              var_cas_m.appendCString (" @") ;
               var_cas_m._dotAssign_operation (enumerator_3250._key (HERE)) ;
               enumerator_3250.next () ;
               _foreach_loop_3250 = (enumerator_3250 .hc ()) ;
               if (_foreach_loop_3250) {
-                var_cas_m.appendCstring (",") ;
+                var_cas_m.appendCString (",") ;
               }
             }while (_foreach_loop_3250) ;
           }

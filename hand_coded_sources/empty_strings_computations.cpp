@@ -55,7 +55,8 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_BDD_Set1 & inNonterminalSy
   inNonterminalSymbolsHavingEmptyDerivation.getArray (nonTerminalArray) ;
   const uint32 n = inNonterminalSymbolsHavingEmptyDerivation.getValuesCount () ;
   inHTMLfile.outputRawData ("<p><a name=\"empty_strings\"></a>") ;
-  inHTMLfile << n << " nonterminal symbols have a empty production :\n" ;
+  inHTMLfile.appendUnsigned (n) ;
+  inHTMLfile << " nonterminal symbols have a empty production :\n" ;
   inHTMLfile.outputRawData ("</p>") ;
   bool exists = false ;
   for (sint32 i=0 ; (i<nonTerminalArray.count ()) && ! exists ; i++) {
@@ -152,7 +153,8 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
       inHTMLfile->outputRawData ("</p>") ;
     }else{
       inHTMLfile->outputRawData ("<p>") ;
-      *inHTMLfile << n << " nonterminal symbol(s) in addition to those deriving directly to the empty string :\n" ;
+      inHTMLfile->appendUnsigned (n) ;
+      inHTMLfile->appendCString (" nonterminal symbol(s) in addition to those deriving directly to the empty string :\n") ;
       inHTMLfile->outputRawData ("</p>") ;
       TC_UniqueArray <bool> nonTerminalArray ;
       newNonterminal.getArray (nonTerminalArray) ;
@@ -172,7 +174,8 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
     }
   }
   if (inVerboseOptionOn) {
-    co << t << ".\n" ;
+    co.appendUnsigned (t) ;
+    co << ".\n" ;
     co.flush () ;
   }
 }

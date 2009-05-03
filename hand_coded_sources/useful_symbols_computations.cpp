@@ -81,12 +81,12 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   if (! outUsefulSymbols.isEqualToBDD (ex_outUsefulSymbols.bdd ())) {
     printf ("\n********* USEFUL SYMBOLS ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
-    printf ("initialValue '%s'\n", initialValue.queryStringValue (HERE).cString ()) ;
-    printf ("accessibility '%s'\n", accessibility.queryStringValue (HERE).cString ()) ;
-    printf ("outUsefulSymbols '%s'\n", outUsefulSymbols.queryStringValue (HERE).cString ()) ;
-    printf ("ex_initialValue '%s'\n", ex_initialValue.bdd ().queryStringValue (HERE).cString ()) ;
-    printf ("ex_accessibility '%s'\n", ex_accessibility.bdd ().queryStringValue (HERE).cString ()) ;
-    printf ("ex_outUsefulSymbols '%s'\n", ex_outUsefulSymbols.bdd ().queryStringValue (HERE).cString ()) ;
+    printf ("initialValue '%s'\n", initialValue.queryStringValue (HERE).cString (HERE)) ;
+    printf ("accessibility '%s'\n", accessibility.queryStringValue (HERE).cString (HERE)) ;
+    printf ("outUsefulSymbols '%s'\n", outUsefulSymbols.queryStringValue (HERE).cString (HERE)) ;
+    printf ("ex_initialValue '%s'\n", ex_initialValue.bdd ().queryStringValue (HERE).cString (HERE)) ;
+    printf ("ex_accessibility '%s'\n", ex_accessibility.bdd ().queryStringValue (HERE).cString (HERE)) ;
+    printf ("ex_outUsefulSymbols '%s'\n", ex_outUsefulSymbols.bdd ().queryStringValue (HERE).cString (HERE)) ;
   }
 }
 
@@ -160,9 +160,9 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   }else{
     if (inHTMLfile != NULL) {
       inHTMLfile->outputRawData ("<span class=\"warning\">") ;
-      *inHTMLfile << "The vocabulary has "
-                  << userUselessSymbolCount
-                  << " useless symbol(s) : \n" ;
+      *inHTMLfile << "The vocabulary has " ;
+      inHTMLfile->appendUnsigned (userUselessSymbolCount) ;
+      *inHTMLfile << " useless symbol(s) : \n" ;
       TC_UniqueArray <bool> array ;
       ex_unusefulSymbols.getArray (array) ;
       inHTMLfile->outputRawData ("<code>") ;
@@ -189,7 +189,9 @@ displayUnusefulSymbols (C_Compiler & inLexique,
     if (userUselessSymbolCount == 1) {
       warningMessage << "there is 1 useless symbol, not declared as unused: " ;
     }else{
-      warningMessage << "there are " << userUselessSymbolCount << " useless symbols, not declared as unused: " ;
+      warningMessage << "there are " ;
+      warningMessage.appendUnsigned (userUselessSymbolCount) ;
+      warningMessage << " useless symbols, not declared as unused: " ;
     }
     bool first = true ;
     for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
@@ -217,7 +219,9 @@ displayUnusefulSymbols (C_Compiler & inLexique,
     if (declaredUnusedAndActuallyUsedCount == 1) {
       warningMessage << "there is 1 useful symbol declared as unused: " ;
     }else{
-      warningMessage << "there are " << declaredUnusedAndActuallyUsedCount << " useful symbols declared as unused: " ;
+      warningMessage << "there are " ;
+      warningMessage.appendUnsigned (declaredUnusedAndActuallyUsedCount) ;
+      warningMessage << " useful symbols declared as unused: " ;
     }
     bool first = true ;
     for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {

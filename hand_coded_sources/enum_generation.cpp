@@ -94,7 +94,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m.next () ;
   }
-  inHfile << '\n' ;
+  inHfile << "\n" ;
 
 //--- Modifiers
   inHfile << "//--- Modifiers\n" ;
@@ -111,7 +111,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "COMMA_LOCATION_ARGS) ;\n" ;
     modifier.next () ;
   }
-  inHfile << '\n' ;
+  inHfile << "\n" ;
 
 //--- Methods
   inHfile << "//--- Methods\n" ;
@@ -128,7 +128,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "COMMA_LOCATION_ARGS) const ;\n" ;
     method.next () ;
   }
-  inHfile << '\n' ;
+  inHfile << "\n" ;
 
 
 //--- Operators
@@ -148,7 +148,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "COMMA_LOCATION_ARGS) const ;\n" ;
     currentOperator.next () ;
   }
-  inHfile << '\n' ;
+  inHfile << "\n" ;
 
 //--- 
   inHfile << "//--- 'description' reader\n"
@@ -303,7 +303,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
         variableIsUsed = formalArgumentIsUsedForList (definition._mInstructionList (HERE), currentArgument._mCppName (HERE), true) ;
         definition.next () ;
       }
-      inCppFile << ' ' ;
+      inCppFile << " " ;
       if (! variableIsUsed) {
         inCppFile << "/* " ;
       }
@@ -365,7 +365,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
         variableIsUsed = formalArgumentIsUsedForList (definition._mInstructionList (HERE), currentArgument._mCppName (HERE), true) ;
         definition.next () ;
       }
-      inCppFile << ' ' ;
+      inCppFile << " " ;
       if (! variableIsUsed) {
         inCppFile << "/* " ;
       }
@@ -483,7 +483,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
         variableIsUsed = formalArgumentIsUsedForList (definition._mInstructionList (HERE), currentArgument._mCppName (HERE), true) ;
         definition.next () ;
       }
-      inCppFile << ' ' ;
+      inCppFile << " " ;
       if (! variableIsUsed) {
         inCppFile << "/* " ;
       }

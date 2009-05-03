@@ -65,8 +65,8 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   if (! directFIRST.isEqualToBDD (ex_directFIRST.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
-    printf ("directFIRST '%s'\n", directFIRST.queryStringValue (HERE).cString ()) ;
-    printf ("ex_directFIRST '%s'\n", ex_directFIRST.bdd ().queryStringValue (HERE).cString ()) ;
+    printf ("directFIRST '%s'\n", directFIRST.queryStringValue (HERE).cString (HERE)) ;
+    printf ("ex_directFIRST '%s'\n", ex_directFIRST.bdd ().queryStringValue (HERE).cString (HERE)) ;
   }
 
 
@@ -117,8 +117,8 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   const C_BDD nt_x_empty = inVocabularyDerivingInEmptyString.bdd () & emptyStringTerminalSymbolIndex ;
   if (! nt_x_empty.isEqualToBDD (ex_nt_x_empty.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    printf ("nt_x_empty   : %s\n", nt_x_empty.queryStringValue (HERE).cString ()) ;
-    printf ("ex_nt_x_empty: %s\n", ex_nt_x_empty.bdd ().queryStringValue (HERE).cString ()) ;
+    printf ("nt_x_empty   : %s\n", nt_x_empty.queryStringValue (HERE).cString (HERE)) ;
+    printf ("ex_nt_x_empty: %s\n", ex_nt_x_empty.bdd ().queryStringValue (HERE).cString (HERE)) ;
   }
 
 //--- FIRST union nt symbols deriring in empty string
@@ -159,7 +159,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
       inHTMLfile->outputRawData ("</code></td><td><code>") ;
       const sint32 length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (sint32 e=0 ; e<length ; e++) {
-        *inHTMLfile << ' ' ;
+        *inHTMLfile << " " ;
         inVocabulary.printInFile (*inHTMLfile, outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile->outputRawData ("</code></td></tr>") ;
@@ -220,7 +220,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
       inHTMLfile->outputRawData ("<code>") ;
       for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
         if (errorArray (symbol COMMA_HERE)) {
-          *inHTMLfile << ' ' ;
+          *inHTMLfile << " " ;
           inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
         }
       }

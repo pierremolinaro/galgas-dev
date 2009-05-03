@@ -48,7 +48,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   for (sint32 i=0 ; i<n ; i++) {
     inHfile << "extern const char * gWrapperFileContent_"
             << i
-            << '_' << mWrapperName
+            << "_" << mWrapperName
             << " ;\n" ;
   }
   inHfile << "extern const cDirectoryWrapper gWrapperDirectory_0_" << mWrapperName << " ;\n\n" ;
@@ -104,15 +104,17 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     TC_UniqueArray <unsigned char> binaryData ;
     const bool ok = f._mAbsoluteFilePath (HERE).string ().binaryDataWithContentOfFile (binaryData) ;
     if (! ok) {
-      printf ("*** error: cannot read file '%s' ***\n", f._mAbsoluteFilePath (HERE).string ().cString ()) ;
+      printf ("*** error: cannot read file '%s' ***\n", f._mAbsoluteFilePath (HERE).string ().cString (HERE)) ;
     }
     inCppFile.appendCppHyphenLineComment () ;
     wrapperFileIndexes.addObject (f._mWrapperFileIndex (HERE).uintValue ()) ;
     inCppFile << "//--- File '" << inWrapperDirectory << "/" << f._mRegularFileName (HERE) << "'\n\n"
-                 "const char * gWrapperFileContent_"
-              << f._mWrapperFileIndex (HERE).uintValue ()
-              << '_' << inWrapperName
-              << " = // " << (binaryData.count () + 1) << " bytes\n" ;
+                 "const char * gWrapperFileContent_" ;
+    inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
+    inCppFile << "_" << inWrapperName
+              << " = // " ;
+    inCppFile.appendUnsigned (binaryData.count () + 1) ;
+    inCppFile << " bytes\n" ;
     bool header = false ;
     for (sint32 i=0 ; i<binaryData.count () ; i++) {
       if (! header) {
@@ -130,22 +132,24 @@ generateWrapperContents (AC_OutputStream & inCppFile,
       }else if ((c >= ' ') && (c <= 0x7E)) {
         inCppFile << ((char) c) ;
       }else{
-        inCppFile << "\\x" << uintInHexWithoutPrefix (c) << "\"\"" ;
+        char s [12] ;
+        sprintf (s, "%X", c) ;
+        inCppFile << "\\x" << s << "\"\"" ;
       }
     }
     if (header) {
       inCppFile << "\"\n" ;
     }
     inCppFile << ";\n\n"
-                 "static const cRegularFileWrapper gWrapperFile_"
-              << f._mWrapperFileIndex (HERE).uintValue ()
-              << '_' << inWrapperName
+                 "static const cRegularFileWrapper gWrapperFile_" ;
+    inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
+    inCppFile << "_" << inWrapperName
               << " = {\n"
               << "  \"" << f._mRegularFileName (HERE) << "\",\n"
               << "  \"" << f._mRegularFileName (HERE).string ().pathExtension () << "\",\n"
-                 "  gWrapperFileContent_"
-              << f._mWrapperFileIndex (HERE).uintValue ()
-              << '_' << inWrapperName << "\n"
+                 "  gWrapperFileContent_" ;
+    inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
+    inCppFile << "_" << inWrapperName << "\n"
                  "} ;\n\n" ;
     f.next () ;  
   }
@@ -153,12 +157,15 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- All files of '" << inWrapperDirectory << "' directory\n\n"
                "static const cRegularFileWrapper * gWrapperAllFiles_" << inWrapperName
-            << "_" << inWrapperDirectoryIndex << " ["
-            << (wrapperFileIndexes.count () + 1) << "] = {\n" ;
+            << "_" ;
+  inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
+  inCppFile << " [" ;
+  inCppFile.appendUnsigned (wrapperFileIndexes.count () + 1) ;
+  inCppFile << "] = {\n" ;
   for (sint32 i=0 ; i<wrapperFileIndexes.count () ; i++) {
-    inCppFile << "  & gWrapperFile_"
-              << wrapperFileIndexes (i COMMA_HERE)
-              << '_' << inWrapperName
+    inCppFile << "  & gWrapperFile_" ;
+    inCppFile.appendUnsigned (wrapperFileIndexes (i COMMA_HERE)) ;
+    inCppFile << "_" << inWrapperName
               << ",\n" ;
   }
   inCppFile << "  NULL\n"
@@ -167,24 +174,40 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- All sub-directories of '" << inWrapperDirectory << "' directory\n\n"
                "static const cDirectoryWrapper * gWrapperAllDirectories_" << inWrapperName
-            << "_" << inWrapperDirectoryIndex << " [" << (subDirectories.count () + 1) << "] = {\n" ;
+            << "_" ;
+  inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
+  inCppFile << " [" ;
+  inCppFile.appendUnsigned (subDirectories.count () + 1) ; 
+  inCppFile << "] = {\n" ;
   for (sint32 i=0 ; i<subDirectories.count () ; i++) {
-    inCppFile << "  & gWrapperDirectory_" << subDirectories (i COMMA_HERE) << "_" << inWrapperName << ",\n" ;
+    inCppFile << "  & gWrapperDirectory_" ;
+    inCppFile.appendUnsigned (subDirectories (i COMMA_HERE)) ;
+    inCppFile << "_" << inWrapperName << ",\n" ;
   }
   inCppFile << "  NULL\n"
                "} ;\n\n" ;
 //--- Generate directory wrapper
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "//--- Directory '" << inWrapperDirectory << "'\n\n"
-               "const cDirectoryWrapper gWrapperDirectory_" << inWrapperDirectoryIndex << "_" << inWrapperName
+               "const cDirectoryWrapper gWrapperDirectory_" ;
+  inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
+  inCppFile << "_" << inWrapperName
             << " = {\n"
                "  \"" << inWrapperDirectory << "\",\n"
-            << "  " << inRegularFileSortedList.count () << ",\n"
+            << "  " ;
+  inCppFile.appendUnsigned (inRegularFileSortedList.count ()) ;
+  inCppFile << ",\n"
                "  " << "gWrapperAllFiles_" << inWrapperName
-            << "_" << inWrapperDirectoryIndex << ",\n"
-               "  " << subDirectories.count () << ",\n"
+            << "_" ;
+  inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
+  inCppFile << ",\n"
+               "  " ;
+  inCppFile.appendUnsigned (subDirectories.count ()) ;
+  inCppFile << ",\n"
                "  " << "gWrapperAllDirectories_" << inWrapperName
-            << "_" << inWrapperDirectoryIndex << "\n"
+            << "_" ;
+  inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
+  inCppFile << "\n"
                "} ;\n\n" ;
 }
 

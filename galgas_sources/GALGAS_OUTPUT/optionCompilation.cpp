@@ -65,12 +65,12 @@ void routine_optionHeaderGeneration (C_Compiler & _inLexique,
   #endif
   GGS_string var_cas_generatedUserZone2 ;
   var_cas_generatedUserZone2 = GGS_string (true, "") ;
-  var_cas_generatedUserZone2.appendCstring ("#ifndef ") ;
+  var_cas_generatedUserZone2.appendCString ("#ifndef ") ;
   var_cas_generatedUserZone2._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone2.appendCstring ("_0_DEFINED\n"
+  var_cas_generatedUserZone2.appendCString ("_0_DEFINED\n"
   "#define ") ;
   var_cas_generatedUserZone2._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone2.appendCstring ("_0_DEFINED\n"
+  var_cas_generatedUserZone2.appendCString ("_0_DEFINED\n"
   "#include \"command_line_interface/AC_CLI_Options.h\"\n"
     "\n") ;
   var_cas_generatedUserZone2._dotAssign_operation (GGS_string::constructor_CppLineComment (_inLexique COMMA_HERE)) ;
@@ -78,13 +78,13 @@ void routine_optionHeaderGeneration (C_Compiler & _inLexique,
   var_cas_generatedUserZone3 = GGS_string (true, "") ;
   var_cas_generatedUserZone3.modifier_setCapacity (_inLexique, GGS_uint (true, 5000U) COMMA_SOURCE_FILE_AT_LINE (45)) ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "Command Line Options definitions class") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("class ") ;
+  var_cas_generatedUserZone3.appendCString ("class ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring (" : public AC_CLI_Options {\n"
+  var_cas_generatedUserZone3.appendCString (" : public AC_CLI_Options {\n"
   "//--- Constructor\n"
   "  public : ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring (" (void) ;\n"
+  var_cas_generatedUserZone3.appendCString (" (void) ;\n"
   "\n"
   "//--- Boolean Command Line Interface Options\n"
   "  public : virtual sint32 getBoolOptionsCount (void) const ;\n"
@@ -162,18 +162,18 @@ void routine_optionHeaderGeneration (C_Compiler & _inLexique,
   "//--- Private arraies : current options values\n"
   "  private : bool mBoolOptionValues [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (106))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (106)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (106))) ;
-  var_cas_generatedUserZone3.appendCstring ("] ;\n"
+  var_cas_generatedUserZone3.appendCString ("] ;\n"
   "  private : uint32 mUintOptionValues [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (107))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (107)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (107))) ;
-  var_cas_generatedUserZone3.appendCstring ("] ;\n"
+  var_cas_generatedUserZone3.appendCString ("] ;\n"
   "  private : C_String mStringOptionValues [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (108))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (108)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (108))) ;
-  var_cas_generatedUserZone3.appendCstring ("] ;\n"
+  var_cas_generatedUserZone3.appendCString ("] ;\n"
   "  private : TC_UniqueArray <C_String> mStringValue ;\n"
   "} ;\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppLineComment (_inLexique COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("#endif\n") ;
+  var_cas_generatedUserZone3.appendCString ("#endif\n") ;
   GGS_string::class_method_generateFile (_inLexique, var_cas_inStartDirectory, (var_cas_inOptionComponentName)._operator_concat (GGS_string (true, ".h")), GGS_string (true, "//"), GGS_string (true, "\n"
     "\n"), var_cas_generatedUserZone2, GGS_string (true, "\n"
     "\n"), var_cas_generatedUserZone3 COMMA_SOURCE_FILE_AT_LINE (117)) ;
@@ -199,7 +199,7 @@ void routine_optionImplementationGeneration (C_Compiler & _inLexique,
   #endif
   GGS_string var_cas_generatedUserZone2 ;
   var_cas_generatedUserZone2 = GGS_string::constructor_CppLineComment (_inLexique COMMA_HERE) ;
-  var_cas_generatedUserZone2.appendCstring ("#include \"version_libpm.h\"\n"
+  var_cas_generatedUserZone2.appendCString ("#include \"version_libpm.h\"\n"
   "#if LIBPM_VERSION != THE_LIBPM_VERSION\n"
   "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
   "#endif\n"
@@ -208,16 +208,16 @@ void routine_optionImplementationGeneration (C_Compiler & _inLexique,
     "\n"
   "#include \"") ;
   var_cas_generatedUserZone2._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone2.appendCstring (".h\"\n"
+  var_cas_generatedUserZone2.appendCString (".h\"\n"
     "\n") ;
   GGS_string var_cas_generatedUserZone3 ;
   var_cas_generatedUserZone3 = GGS_string (true, "") ;
   var_cas_generatedUserZone3.modifier_setCapacity (_inLexique, GGS_uint (true, 5000U) COMMA_SOURCE_FILE_AT_LINE (149)) ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "C O N S T R U C T O R") COMMA_HERE)) ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::") ;
+  var_cas_generatedUserZone3.appendCString ("::") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring (" (void)\n"
+  var_cas_generatedUserZone3.appendCString (" (void)\n"
   ":mStringValue (1 COMMA_HERE) {\n") ;
   GGS_uint  var_cas_index ;
   var_cas_index = GGS_uint (true, 0U) ;
@@ -226,160 +226,160 @@ void routine_optionImplementationGeneration (C_Compiler & _inLexique,
     const GGS_commandLineOptionMap::cElement * operand_7082 = NULL ;
     while (((operand_7082 = enumerator_7082.nextObject ()))) {
       macroValidPointer (operand_7082) ;
-      var_cas_generatedUserZone3.appendCstring ("  mBoolOptionValues [") ;
+      var_cas_generatedUserZone3.appendCString ("  mBoolOptionValues [") ;
       var_cas_generatedUserZone3._dotAssign_operation (var_cas_index.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (156))) ;
-      var_cas_generatedUserZone3.appendCstring ("] = false ;\n") ;
+      var_cas_generatedUserZone3.appendCString ("] = false ;\n") ;
       var_cas_index._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE (157)) ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("  mBoolOptionValues [") ;
+  var_cas_generatedUserZone3.appendCString ("  mBoolOptionValues [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_index.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (159))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = false ; // Extra unused entry\n") ;
+  var_cas_generatedUserZone3.appendCString ("] = false ; // Extra unused entry\n") ;
   var_cas_index = GGS_uint (true, 0U) ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_7356 (var_cas_inUIntOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_7356 = NULL ;
     while (((operand_7356 = enumerator_7356.nextObject ()))) {
       macroValidPointer (operand_7356) ;
-      var_cas_generatedUserZone3.appendCstring ("  mUintOptionValues [") ;
+      var_cas_generatedUserZone3.appendCString ("  mUintOptionValues [") ;
       var_cas_generatedUserZone3._dotAssign_operation (var_cas_index.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (162))) ;
-      var_cas_generatedUserZone3.appendCstring ("] = 0 ;\n") ;
+      var_cas_generatedUserZone3.appendCString ("] = 0 ;\n") ;
       var_cas_index._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE (163)) ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("  mUintOptionValues [") ;
+  var_cas_generatedUserZone3.appendCString ("  mUintOptionValues [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_index.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (165))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = 0 ; // Extra unused entry\n"
+  var_cas_generatedUserZone3.appendCString ("] = 0 ; // Extra unused entry\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    B O O L    O P T I O N S    C O U N T") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("sint32 ") ;
+  var_cas_generatedUserZone3.appendCString ("sint32 ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getBoolOptionsCount (void) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getBoolOptionsCount (void) const {\n"
   "  return ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (171)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (171))) ;
-  var_cas_generatedUserZone3.appendCstring (" ;\n"
+  var_cas_generatedUserZone3.appendCString (" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    B O O L    O P T I O N    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("bool ") ;
+  var_cas_generatedUserZone3.appendCString ("bool ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getBoolOptionValue (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getBoolOptionValue (const sint32 inIndex) const {\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (178)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (178))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? mBoolOptionValues [inIndex] : false ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? mBoolOptionValues [inIndex] : false ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "S E T    B O O L    O P T I O N    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("void ") ;
+  var_cas_generatedUserZone3.appendCString ("void ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::setBoolOptionValue (const sint32 inIndex, const bool inValue) {\n"
+  var_cas_generatedUserZone3.appendCString ("::setBoolOptionValue (const sint32 inIndex, const bool inValue) {\n"
   "  if ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (185)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (185))) ;
-  var_cas_generatedUserZone3.appendCstring (")) {\n"
+  var_cas_generatedUserZone3.appendCString (")) {\n"
   "    mBoolOptionValues [inIndex] = inValue ;\n"
   "  }\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    B O O L    O P T I O N    C H A R A C T E R") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("char ") ;
+  var_cas_generatedUserZone3.appendCString ("char ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getBoolOptionChar (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getBoolOptionChar (const sint32 inIndex) const {\n"
   "  const char kCharArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (194))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (194)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (194))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_9125 (var_cas_inBoolOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_9125 = NULL ;
     while (((operand_9125 = enumerator_9125.nextObject ()))) {
       macroValidPointer (operand_9125) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppChar (_inLexique, operand_9125->mInfo.mOptionChar.reader_char (_inLexique COMMA_SOURCE_FILE_AT_LINE (196)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (", ") ;
+      var_cas_generatedUserZone3.appendCString (", ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("'\\0'} ;\n"
+  var_cas_generatedUserZone3.appendCString ("'\\0'} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (199)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (199))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kCharArray [inIndex] : '\\0' ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kCharArray [inIndex] : '\\0' ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    B O O L    O P T I O N    S T R I N G") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("const char * ") ;
+  var_cas_generatedUserZone3.appendCString ("const char * ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getBoolOptionString (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getBoolOptionString (const sint32 inIndex) const {\n"
   "  const char * kStringArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (206))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (206)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (206))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_9799 (var_cas_inBoolOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_9799 = NULL ;
     while (((operand_9799 = enumerator_9799.nextObject ()))) {
       macroValidPointer (operand_9799) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_9799->mInfo.mOptionString.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (208)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (212)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (212))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kStringArray [inIndex] : \"\" ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kStringArray [inIndex] : \"\" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    B O O L    O P T I O N    D E S C R I P T I O N") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("const char * ") ;
+  var_cas_generatedUserZone3.appendCString ("const char * ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getBoolOptionDescription (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getBoolOptionDescription (const sint32 inIndex) const {\n"
   "  const char * kDescriptionArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (219))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (219)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (219))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_10520 (var_cas_inBoolOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_10520 = NULL ;
     while (((operand_10520 = enumerator_10520.nextObject ()))) {
       macroValidPointer (operand_10520) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_10520->mInfo.mComment.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (221)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (225)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (225))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kDescriptionArray [inIndex] : \"\" ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kDescriptionArray [inIndex] : \"\" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    B O O L    O P T I O N    V A L U E    F R O M    K E Y S") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("bool ") ;
+  var_cas_generatedUserZone3.appendCString ("bool ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "boolOptionValueFromKeys (const char * inModuleName,\n"
   "                         const char * inOptionName,\n"
   "                         bool * outFound) const {\n"
   "  const char * kKeyArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (234))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (234)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (234))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_11365 (var_cas_inBoolOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_11365 = NULL ;
     while (((operand_11365 = enumerator_11365.nextObject ()))) {
       macroValidPointer (operand_11365) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_11365->mKey.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (236)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  bool result = false ;\n"
   "  bool found = strcmp (inModuleName, \"") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("\") == 0 ;\n"
+  var_cas_generatedUserZone3.appendCString ("\") == 0 ;\n"
   "  if (found) {\n"
   "    found = false ;\n"
   "    sint32 index = 0 ;\n"
   "    while ((index < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inBoolOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (245)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (245))) ;
-  var_cas_generatedUserZone3.appendCstring (") && ! found) {\n"
+  var_cas_generatedUserZone3.appendCString (") && ! found) {\n"
   "      found = strcmp (inOptionName, kKeyArray [index]) == 0 ;\n"
   "      if (found) {\n"
   "        result = mBoolOptionValues [index] ;\n"
@@ -394,154 +394,154 @@ void routine_optionImplementationGeneration (C_Compiler & _inLexique,
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    U I N T    O P T I O N S    C O U N T") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("sint32 ") ;
+  var_cas_generatedUserZone3.appendCString ("sint32 ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getUintOptionsCount (void) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getUintOptionsCount (void) const {\n"
   "  return ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (262)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (262))) ;
-  var_cas_generatedUserZone3.appendCstring (" ;\n"
+  var_cas_generatedUserZone3.appendCString (" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    U I N T    O P T I O N    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("uint32 ") ;
+  var_cas_generatedUserZone3.appendCString ("uint32 ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getUintOptionValue (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getUintOptionValue (const sint32 inIndex) const {\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (269)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (269))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? mUintOptionValues [inIndex] : 0 ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? mUintOptionValues [inIndex] : 0 ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    U I N T    O P T I O N    D E F A U L T    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("uint32 ") ;
+  var_cas_generatedUserZone3.appendCString ("uint32 ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getUintOptionDefaultValue (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getUintOptionDefaultValue (const sint32 inIndex) const {\n"
   "  static const uint32 kDefaultValues [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (276))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (276)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (276))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {\n") ;
+  var_cas_generatedUserZone3.appendCString ("] = {\n") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_13275 (var_cas_inUIntOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_13275 = NULL ;
     while (((operand_13275 = enumerator_13275.nextObject ()))) {
       macroValidPointer (operand_13275) ;
-      var_cas_generatedUserZone3.appendCstring ("  0,\n") ;
+      var_cas_generatedUserZone3.appendCString ("  0,\n") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("  0} ;\n"
+  var_cas_generatedUserZone3.appendCString ("  0} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (281)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (281))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kDefaultValues [inIndex] : 0 ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kDefaultValues [inIndex] : 0 ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "S E T    U I N T    O P T I O N    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("void ") ;
+  var_cas_generatedUserZone3.appendCString ("void ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::setUintOptionValue (const sint32 inIndex, const uint32 inValue) {\n"
+  var_cas_generatedUserZone3.appendCString ("::setUintOptionValue (const sint32 inIndex, const uint32 inValue) {\n"
   "  if ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (288)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (288))) ;
-  var_cas_generatedUserZone3.appendCstring (")) {\n"
+  var_cas_generatedUserZone3.appendCString (")) {\n"
   "    mUintOptionValues [inIndex] = inValue ;\n"
   "  }\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    U I N T    O P T I O N    C H A R A C T E R") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("char ") ;
+  var_cas_generatedUserZone3.appendCString ("char ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getUintOptionChar (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getUintOptionChar (const sint32 inIndex) const {\n"
   "  static const char kCharArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (297))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (297)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (297))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_14327 (var_cas_inUIntOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_14327 = NULL ;
     while (((operand_14327 = enumerator_14327.nextObject ()))) {
       macroValidPointer (operand_14327) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppChar (_inLexique, operand_14327->mInfo.mOptionChar.reader_char (_inLexique COMMA_SOURCE_FILE_AT_LINE (299)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (", ") ;
+      var_cas_generatedUserZone3.appendCString (", ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("'\\0'} ;\n"
+  var_cas_generatedUserZone3.appendCString ("'\\0'} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (303)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (303))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kCharArray [inIndex] : '\\0' ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kCharArray [inIndex] : '\\0' ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    U I N T    O P T I O N    S T R I N G") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("const char * ") ;
+  var_cas_generatedUserZone3.appendCString ("const char * ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getUintOptionString (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getUintOptionString (const sint32 inIndex) const {\n"
   "  static const char * kStringArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (310))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (310)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (310))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_15012 (var_cas_inUIntOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_15012 = NULL ;
     while (((operand_15012 = enumerator_15012.nextObject ()))) {
       macroValidPointer (operand_15012) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_15012->mInfo.mOptionString.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (312)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (316)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (316))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kStringArray [inIndex] : \"\" ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kStringArray [inIndex] : \"\" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T   U I N T    O P T I O N    D E S C R I P T I O N") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("const char * ") ;
+  var_cas_generatedUserZone3.appendCString ("const char * ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::getUintOptionDescription (const sint32 inIndex) const {\n"
+  var_cas_generatedUserZone3.appendCString ("::getUintOptionDescription (const sint32 inIndex) const {\n"
   "  static const char * kDescriptionArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (323))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (323)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (323))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_15736 (var_cas_inUIntOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_15736 = NULL ;
     while (((operand_15736 = enumerator_15736.nextObject ()))) {
       macroValidPointer (operand_15736) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_15736->mInfo.mComment.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (325)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (329)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (329))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kDescriptionArray [inIndex] : \"\" ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kDescriptionArray [inIndex] : \"\" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    U I N T    O P T I O N    V A L U E    F R O M    K E Y S") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("uint32 ") ;
+  var_cas_generatedUserZone3.appendCString ("uint32 ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "uintOptionValueFromKeys (const char * inModuleName,\n"
   "                         const char * inOptionName,\n"
   "                         bool * outFound) const {\n"
   "  static const char * kKeyArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (338))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (338)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (338))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_16587 (var_cas_inUIntOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_16587 = NULL ;
     while (((operand_16587 = enumerator_16587.nextObject ()))) {
       macroValidPointer (operand_16587) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_16587->mKey.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (340)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  uint32 result = 0 ;\n"
   "  bool found = strcmp (inModuleName, \"") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("\") == 0 ;\n"
+  var_cas_generatedUserZone3.appendCString ("\") == 0 ;\n"
   "  if (found) {\n"
   "    found = false ;\n"
   "    sint32 index = 0 ;\n"
   "    while ((index < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inUIntOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (349)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (349))) ;
-  var_cas_generatedUserZone3.appendCstring (") && ! found) {\n"
+  var_cas_generatedUserZone3.appendCString (") && ! found) {\n"
   "      found = strcmp (inOptionName, kKeyArray [index]) == 0 ;\n"
   "      if (found) {\n"
   "        result = mUintOptionValues [index] ;\n"
@@ -556,139 +556,139 @@ void routine_optionImplementationGeneration (C_Compiler & _inLexique,
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    S T R I N G    O P T I O N S    C O U N T") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("sint32 ") ;
+  var_cas_generatedUserZone3.appendCString ("sint32 ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "getStringOptionsCount (void) const {\n"
   "  return ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (367)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (367))) ;
-  var_cas_generatedUserZone3.appendCstring (" ;\n"
+  var_cas_generatedUserZone3.appendCString (" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    S T R I N G    O P T I O N S    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("C_String ") ;
+  var_cas_generatedUserZone3.appendCString ("C_String ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "getStringOptionValue (const sint32 inIndex) const {\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (374)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (374))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? mStringOptionValues [inIndex] : C_String () ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? mStringOptionValues [inIndex] : C_String () ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "S E T    S T R I N G    O P T I O N S    V A L U E") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("void ") ;
+  var_cas_generatedUserZone3.appendCString ("void ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "setStringOptionValue (const sint32 inIndex, const C_String & inValue) {\n"
   "  if ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (381)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (381))) ;
-  var_cas_generatedUserZone3.appendCstring (")) {\n"
+  var_cas_generatedUserZone3.appendCString (")) {\n"
   "     mStringOptionValues [inIndex] = inValue ;\n"
   "  }\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    S T R I N G    O P T I O N    C H A R") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("char ") ;
+  var_cas_generatedUserZone3.appendCString ("char ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "getStringOptionChar (const sint32 inIndex) const {\n"
   "  static const char kCharArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (391))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (391)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (391))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_18987 (var_cas_inStringOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_18987 = NULL ;
     while (((operand_18987 = enumerator_18987.nextObject ()))) {
       macroValidPointer (operand_18987) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppChar (_inLexique, operand_18987->mInfo.mOptionChar.reader_char (_inLexique COMMA_SOURCE_FILE_AT_LINE (393)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (", ") ;
+      var_cas_generatedUserZone3.appendCString (", ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("'\\0'} ;\n"
+  var_cas_generatedUserZone3.appendCString ("'\\0'} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (397)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (397))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kCharArray [inIndex] : '\\0' ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kCharArray [inIndex] : '\\0' ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    S T R I N G    O P T I O N    S T R I N G") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("const char * ") ;
+  var_cas_generatedUserZone3.appendCString ("const char * ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "getStringOptionString (const sint32 inIndex) const {\n"
   "  static const char * kStringArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (404))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (404)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (404))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_19694 (var_cas_inStringOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_19694 = NULL ;
     while (((operand_19694 = enumerator_19694.nextObject ()))) {
       macroValidPointer (operand_19694) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_19694->mInfo.mOptionString.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (406)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (410)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (410))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kStringArray [inIndex] : \"\" ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kStringArray [inIndex] : \"\" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    S T R I N G    O P T I O N    D E S C R I P T I O N") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("const char * ") ;
+  var_cas_generatedUserZone3.appendCString ("const char * ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "getStringOptionDescription (const sint32 inIndex) const {\n"
   "  static const char * kDescriptionArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (417))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (417)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (417))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_20441 (var_cas_inStringOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_20441 = NULL ;
     while (((operand_20441 = enumerator_20441.nextObject ()))) {
       macroValidPointer (operand_20441) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_20441->mInfo.mComment.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (419)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  return ((inIndex >= 0) && (inIndex < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (423)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (423))) ;
-  var_cas_generatedUserZone3.appendCstring (")) \? kDescriptionArray [inIndex] : \"\" ;\n"
+  var_cas_generatedUserZone3.appendCString (")) \? kDescriptionArray [inIndex] : \"\" ;\n"
   "}\n"
     "\n") ;
   var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppTitleComment (_inLexique, GGS_string (true, "G E T    S T R I N G    O P T I O N    V A L U E   F R O M   K E Y S") COMMA_HERE)) ;
-  var_cas_generatedUserZone3.appendCstring ("C_String ") ;
+  var_cas_generatedUserZone3.appendCString ("C_String ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("::\n"
+  var_cas_generatedUserZone3.appendCString ("::\n"
   "stringOptionValueFromKeys (const char * inModuleName,\n"
   "                           const char * inOptionName,\n"
   "                           bool * outFound) const {\n"
   "  static const char * kKeyArray [") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (432))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (432)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (432))) ;
-  var_cas_generatedUserZone3.appendCstring ("] = {") ;
+  var_cas_generatedUserZone3.appendCString ("] = {") ;
   {
     GGS_commandLineOptionMap::cEnumerator enumerator_21312 (var_cas_inStringOptionMap, true) ;
     const GGS_commandLineOptionMap::cElement * operand_21312 = NULL ;
     while (((operand_21312 = enumerator_21312.nextObject ()))) {
       macroValidPointer (operand_21312) ;
       var_cas_generatedUserZone3._dotAssign_operation (GGS_string::constructor_CppString (_inLexique, operand_21312->mKey.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (434)) COMMA_HERE)) ;
-      var_cas_generatedUserZone3.appendCstring (",\n"
+      var_cas_generatedUserZone3.appendCString (",\n"
         "    ") ;
     }
   }
-  var_cas_generatedUserZone3.appendCstring ("\"\"} ;\n"
+  var_cas_generatedUserZone3.appendCString ("\"\"} ;\n"
   "  C_String result ;\n"
   "  bool found = strcmp (inModuleName, \"") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inOptionComponentName) ;
-  var_cas_generatedUserZone3.appendCstring ("\") == 0 ;\n"
+  var_cas_generatedUserZone3.appendCString ("\") == 0 ;\n"
   "  if (found) {\n"
   "    found = false ;\n"
   "    sint32 index = 0 ;\n"
   "    while ((index < ") ;
   var_cas_generatedUserZone3._dotAssign_operation (var_cas_inStringOptionMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (443)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (443))) ;
-  var_cas_generatedUserZone3.appendCstring (") && ! found) {\n"
+  var_cas_generatedUserZone3.appendCString (") && ! found) {\n"
   "      found = strcmp (inOptionName, kKeyArray [index]) == 0 ;\n"
   "      if (found) {\n"
   "        result = mStringOptionValues [index] ;\n"

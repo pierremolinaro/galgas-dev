@@ -48,14 +48,15 @@ generateDecoderForInstructionList (C_Lexique & inLexique,
 
 void generateTerminalSymbolCppName (const C_String & inValue,
                                     AC_OutputStream & ioString) {
-  static const char tab [17] = "0123456789ABCDEF" ;
   const sint32 length = inValue.length () ;
   for (sint32 i=0 ; i<length ; i++) {
-    const char c = inValue (i COMMA_HERE) ;
-    if (isalnum (c)) {
-      ioString << c ;
+    const utf32 c = inValue (i COMMA_HERE) ;
+    if (isalnum (UNICODE_ACCESS (c))) {
+      ioString.appendUnicodeCharacter (c) ;
     }else{
-      ioString << '_' << tab [c / 16] << tab [c % 16] ;
+      char s [10] ;
+      sprintf (s, "%X", UNICODE_ACCESS (c)) ;
+      ioString << "_" << s ;
     }
   }
 }
@@ -357,7 +358,7 @@ generateDecoderFromCondition (C_Lexique & inLexique,
                               const sint32 inTargetStateNumber,
                               cDecoderController & ioDecoderController) {
 //--- Get character
-  const uint32 c = attributCaractere.charValue () & 0xFFUL ;
+  const uint32 c = UNICODE_ACCESS (attributCaractere.charValue ()) ;
 //--- Allocate 
   if (ioCurrentState->mTransitions [c].mNextState < 0) { // Default or error
     ioDecoderController.newState (ioCurrentState->mTransitions [c]) ;
@@ -467,7 +468,7 @@ writeDecoder (const C_String & inLexiqueName,
   for (sint32 i=0 ; i<count () ; i++) {
     inCppFile << " kDecoder_" << i ;
     if (i < (count () - 1)) {
-      inCppFile << ',' ;
+      inCppFile << "," ;
     }
     if ((i % 5) == 4) {
       inCppFile << "\n" ;
@@ -499,10 +500,10 @@ scannerDecoderGeneration (C_Lexique & inLexique,
   while (currentEntry.hc ()) {
     C_String key = currentEntry._key (HERE) ;
     const sint32 keyLength = key.length () ;
-    const uint32 c0 = key (0 COMMA_HERE) & 0xFFUL ;
+    const uint32 c0 = UNICODE_ACCESS (key (0 COMMA_HERE)) ;
     cDecoderTargetState * currentTargetStatePtr = & (decoderController (0 COMMA_HERE)->mTransitions [c0]) ;
     for (sint32 i=1 ; i<keyLength ; i++) {
-      const uint32 c = key (i COMMA_HERE) & 0xFFUL ;
+      const uint32 c = UNICODE_ACCESS (key (i COMMA_HERE)) ;
       if (currentTargetStatePtr->mNextState <= 0) {
         decoderController.newState (* currentTargetStatePtr) ;
         currentTargetStatePtr = & (decoderController (currentTargetStatePtr->mNextState COMMA_HERE)->mTransitions [c]) ;

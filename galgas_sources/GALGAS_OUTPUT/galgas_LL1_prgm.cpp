@@ -230,7 +230,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else{
-            printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString ()) ;
+            printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
             r = 1 ;
           }
           if (r != 0) {
@@ -278,9 +278,11 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;
       const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;
       co << getCreatedDynamicObjectsTotalCount ()
-         << " C++ objects have been created ("
-         << megaBytes << "." << widthWithZeroFill (3) << fraction
-         << " MB).\n" ;
+         << " C++ objects have been created (" ;
+      co.appendUnsigned64 (megaBytes) ;
+      co << "." ;
+      co.appendUnsignedWithZeroFill (fraction, 3) ;
+      co << " MB).\n" ;
       deactivateMemoryControl () ;
       if ((getAllocationBalance () != 0) && (returnCode == 0)) {
         display_pointers () ;

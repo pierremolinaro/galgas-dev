@@ -64,7 +64,7 @@ void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
   for (sint32 i=nombreVariables - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
-  mFichierBNF << ' ' ;
+  mFichierBNF << " " ;
   mVocabulary.printInFile (mFichierBNF, element COMMA_HERE) ;
 }
 
@@ -144,7 +144,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
               if (array (symbol COMMA_HERE)) {
                 inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
-                *inHTMLfile << ' ' ;
+                *inHTMLfile << " " ;
               }
             }
             inHTMLfile->outputRawData ("</code></td></tr>") ;
@@ -171,7 +171,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           }
         }
         if (inHTMLfile != NULL) {
-          *inHTMLfile << '\n' ;
+          *inHTMLfile << "\n" ;
         }
       }
     }
@@ -248,7 +248,7 @@ void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
   }
   aIndice ++ ;
   if (aIndice == 2) {
-    mFichierBNF << '\n' ;
+    mFichierBNF << "\n" ;
     aIndice = 0 ;
   }
   mFichierBNF << aNomClasseLexique << "::" << aNomClasseLexique << "_1_" ;
@@ -316,7 +316,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                 <<  ioProductionIndex
                 << " : "
                 << title 
-                << '\n' ;
+                << "\n" ;
       ioProductionRulesTitle.addObjectUsingSwap (title) ;
       const sint32 derivationLength = p.aDerivation.count () ;
       for (sint32 item=0 ; item<=derivationLength ; item++) {
@@ -367,7 +367,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
             <<  ioDecisionTableIndex
             << " : <"
             << inVocabulary.getSymbol (inNonterminalIndex + inVocabulary.getTerminalSymbolsCount () COMMA_HERE)
-            << '>' ;
+            << ">" ;
   const sint32 firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) { // At least one production
     const sint32 lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
@@ -376,7 +376,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                    "  -1,\n" ;
       ioDecisionTableIndex ++ ;
     }else{ // Several productions : generate decision table
-      inCppFile << '\n' ;
+      inCppFile << "\n" ;
       for (sint32 j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <bool> array ;
@@ -391,7 +391,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         }
         inCppFile << "-1, // Choice "
                   << ((sint32)(j - firstProduction + 1))
-                  << '\n' ;
+                  << "\n" ;
         ioDecisionTableIndex += (sint16) p.aPremierDeProduction.getValuesCount () ;
         ioDecisionTableIndex ++ ;
       }
@@ -489,7 +489,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
             << ((p == (productionsCount-1)) ? "" : ",")
             << " // index " << p
             << " : " << productionRulesTitle (p COMMA_HERE)
-            << '\n' ;
+            << "\n" ;
   }
   generatedZone3 << "} ;\n\n" ;
   productionRulesTitle.clear () ;
@@ -552,7 +552,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       generatedZone3 << "void " ;
       generatedZone3 << inTargetFileName
                      << "::\n"
-                     << "nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+                     << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " & " << (existeProduction ? "_inLexique" : "") ;
       GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       sint16 numeroParametre = 1 ;
@@ -617,7 +617,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "          " << inTargetFileName << " _grammar ;\n"
                           "          " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -693,7 +693,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "  if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "    " << inTargetFileName << " _grammar ;\n"
                           "    " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+        generatedZone3 << "_grammar.nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;

@@ -138,11 +138,11 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray
                  const sint32 inIterationsCount) {
 //--- Print messages
   inHTMLfile.outputRawData ("<p>") ;
-  inHTMLfile << "Calculus completed in "
-             << inIterationsCount
-             << " iterations, "
-             << inValuesCount
-             << " values ;\n"
+  inHTMLfile << "Calculus completed in " ;
+  inHTMLfile.appendUnsigned (inIterationsCount) ;
+  inHTMLfile << " iterations, " ;
+  inHTMLfile.appendUnsigned (inValuesCount) ;
+  inHTMLfile << " values ;\n"
                 "'$$' means the nonterminal symbol can be followed by empty string (see step 6) ;\n\n"
                 "the followings of terminal symbols are given for information.\n";
   inHTMLfile.outputRawData ("</p>") ;
@@ -158,7 +158,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray
       TC_UniqueArray <sint32> & s = inFOLLOWarray (i COMMA_HERE) ;
       const sint32 n = s.count () ;
       for (sint32 j=0 ; j<n ; j++) {
-        inHTMLfile << ' ' ;
+        inHTMLfile << " " ;
         inVocabulary.printInFile (inHTMLfile, s (j COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile.outputRawData ("</code></td></tr>") ;
@@ -219,9 +219,9 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
       inHTMLfile->outputRawData ("</span></p>") ;
     }else{
       inHTMLfile->outputRawData ("<p><span class=\"error\">") ;
-      *inHTMLfile << "Error : "
-                  << n
-                  << " nonterminal symbol"
+      *inHTMLfile << "Error : " ;
+      inHTMLfile->appendUnsigned (n) ;
+      *inHTMLfile << " nonterminal symbol"
                   << ((n > 1) ? "s have" : " has")
                   << " an empty FOLLOW :\n" ;
       inHTMLfile->outputRawData ("</span></p>") ;

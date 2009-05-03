@@ -980,18 +980,18 @@ pr_galgas_component_ggs_LL1_compile_component_135_23_ (galgas_scanner & _inLexiq
         GGS_string var_cas_filePath ;
         var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (227)) ;
         if (((var_cas_sourceKind)._operator_isEqual (GGS_EXsourceFileKind::constructor_externSourceFile (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
-          if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (229)))._operator_isEqual (GGS_char (true, '/'))).isBuiltAndTrue ()) {
+          if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (229)))._operator_isEqual (GGS_char (true, UNICODE_NEW ('/')))).isBuiltAndTrue ()) {
             var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += "))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
           }else if (((var_cas_filePath)._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
             var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += ../hand_coded_sources/"))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
           }
-          var_cas_externSourceFileList.appendCstring ("SOURCES += ") ;
+          var_cas_externSourceFileList.appendCString ("SOURCES += ") ;
           var_cas_externSourceFileList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (234))) ;
-          var_cas_externSourceFileList.appendCstring ("\n") ;
+          var_cas_externSourceFileList.appendCString ("\n") ;
         }else{
-          var_cas_galgasSourceList.appendCstring ("SOURCES += ") ;
+          var_cas_galgasSourceList.appendCString ("SOURCES += ") ;
           var_cas_galgasSourceList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (236)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (236))) ;
-          var_cas_galgasSourceList.appendCstring (".cpp\n") ;
+          var_cas_galgasSourceList.appendCString (".cpp\n") ;
         }
       }
     }

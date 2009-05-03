@@ -166,7 +166,7 @@ pr_galgas_component_program_parser_103_23_ (galgas_scanner & _inLexique,
                 _variant_8445._decrement_operation (_inLexique COMMA_HERE) ;
                 GGS_char var_cas_c ;
                 var_cas_c = var_cas_sourceExtension.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (214)).reader_characterAtIndex (_inLexique, var_cas_index COMMA_SOURCE_FILE_AT_LINE (214)) ;
-                var_cas_ok = (((((var_cas_c)._operator_supOrEqual (GGS_char (true, 'a')))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, 'z'))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, 'A')))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, 'Z')))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, '0')))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, '9')))))._operator_or ((var_cas_c)._operator_isEqual (GGS_char (true, '_'))) ;
+                var_cas_ok = (((((var_cas_c)._operator_supOrEqual (GGS_char (true, UNICODE_NEW ('a'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, UNICODE_NEW ('z')))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, UNICODE_NEW ('A'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, UNICODE_NEW ('Z'))))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, UNICODE_NEW ('0'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, UNICODE_NEW ('9'))))))._operator_or ((var_cas_c)._operator_isEqual (GGS_char (true, UNICODE_NEW ('_')))) ;
                 var_cas_index._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE (216)) ;
               }
             }

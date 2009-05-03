@@ -36,16 +36,16 @@ routine_check_KL_escapeCharacters (C_Compiler & inLexique,
                                    COMMA_LOCATION_ARGS) {
   if (inString._isBuilt ()) {
     bool gotPercent = false ;
-    const char * cString = inString.cString () ;
-    while ((*cString) != '\0') {
+    const utf32 * cString = inString.utf32String (HERE) ;
+    while (UNICODE_ACCESS (*cString) != '\0') {
       if (gotPercent) {
-        if (((*cString) != 'K') && ((*cString) != 'L') && ((*cString) != '%')) {
+        if ((UNICODE_ACCESS (*cString) != 'K') && (UNICODE_ACCESS (*cString) != 'L') && (UNICODE_ACCESS (*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K, %L and %% sequences are defined" ;
-          inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
+          inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
         }
         gotPercent = false ;
-      }else if ((*cString) == '%') {
+      }else if (UNICODE_ACCESS (*cString) == '%') {
         gotPercent = true ;
       }
       cString ++ ; 
@@ -53,7 +53,7 @@ routine_check_KL_escapeCharacters (C_Compiler & inLexique,
     if (gotPercent) {
       C_String errorMessage ;
       errorMessage << "string ends with a single %: only %K, %L and %% sequences are defined" ;
-      inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
+      inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
     }
   }
 }
@@ -66,16 +66,16 @@ routine_check_K_escapeCharacters (C_Compiler & inLexique,
                                   COMMA_LOCATION_ARGS) {
   if (inString._isBuilt ()) {
     bool gotPercent = false ;
-    const char * cString = inString.cString () ;
-    while ((*cString) != '\0') {
+    const utf32 * cString = inString.utf32String (HERE) ;
+    while (UNICODE_ACCESS (*cString) != '\0') {
       if (gotPercent) {
-        if (((*cString) != 'K') && ((*cString) != '%')) {
+        if ((UNICODE_ACCESS (*cString) != 'K') && (UNICODE_ACCESS (*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K and %% sequences are defined" ;
-          inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
+          inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
         }
         gotPercent = false ;
-      }else if ((*cString) == '%') {
+      }else if (UNICODE_ACCESS (*cString) == '%') {
         gotPercent = true ;
       }
       cString ++ ; 
@@ -83,7 +83,7 @@ routine_check_K_escapeCharacters (C_Compiler & inLexique,
     if (gotPercent) {
       C_String errorMessage ;
       errorMessage << "string ends with a single %: only %K and %% sequences are defined" ;
-      inString.semanticError (inLexique, errorMessage.cString () COMMA_THERE) ;
+      inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
     }
   }
 }
@@ -99,9 +99,9 @@ routine_buildFileNameWithPath (C_Compiler &,
                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String s ;
   if (inPath.length () > 0) {
-    s << inPath << '/' ;
+    s << inPath << "/" ;
   }
-  s << inCppClassName << '.' << inExtension ;
+  s << inCppClassName << "." << inExtension ;
   outFileNameWithPath = GGS_lstring (GGS_string (true, s), inCppClassName) ;
 }
 
@@ -195,7 +195,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
     const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
-    inCppFile << ' ' ;
+    inCppFile << " " ;
     if (! variableUtilisee) {
       inCppFile << "/* " ;
     }
@@ -297,7 +297,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
     const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
-    inCppFile << ' ' ;
+    inCppFile << " " ;
     if (! variableUtilisee) {
       inCppFile << "/* " ;
     }
@@ -522,7 +522,7 @@ generate_header_file (C_Compiler & inLexique,
       generatedZone2 << ".h\"\n" ;
       fileEnumerator.next () ;
     }
-    generatedZone2 << '\n' ;
+    generatedZone2 << "\n" ;
   }
 
   C_String generatedZone3 ; generatedZone3.setCapacity (200000) ;
@@ -533,7 +533,7 @@ generate_header_file (C_Compiler & inLexique,
     element._mEntityToGenerate (HERE) (HERE)->generatePredeclarations (generatedZone3) ;
     element.next () ;
   }
-  generatedZone3 << '\n' ;
+  generatedZone3 << "\n" ;
   element.rewind () ;
   while (element.hc ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateHdeclarations (generatedZone3) ;
@@ -613,7 +613,8 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeLocationAutomaticName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "automatic_var_" << mSequenceNumber.uintValue () ;
+  inFile << "automatic_var_" ;
+  inFile.appendUnsigned (mSequenceNumber.uintValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -701,7 +702,8 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 
 void cPtr_typeLocationAutomaticName::
 generateVariableAddress (AC_OutputStream & inFile) const {
-  inFile << "& automatic_var_" << mSequenceNumber.uintValue () ;
+  inFile << "& automatic_var_" ;
+  inFile.appendUnsigned (mSequenceNumber.uintValue ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -806,7 +808,7 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
   switch (inFormalArgumentPassingMode.enumValue ()) {
   case GGS_EXformalArgumentPassingMode::enum_argumentIn :
     inTypePtr->generateCppClassName (inFile) ;
-    inFile << ' ' ;
+    inFile << " " ;
     break ;
   case GGS_EXformalArgumentPassingMode::enum_argumentOut :
     inTypePtr->generateCppClassName (inFile) ;
@@ -819,7 +821,7 @@ generateFormalArgumentFromType (const cPtr_AC_galgasType * inTypePtr,
   case GGS_EXformalArgumentPassingMode::enum_argumentConstantIn :
     inFile << "const " ;
     inTypePtr->generateCppClassName (inFile) ;
-    inFile << ' ' ;
+    inFile << " " ;
     break ;
   case GGS_EXformalArgumentPassingMode::kNotBuilt :
     break ;
@@ -840,9 +842,9 @@ generateFormalParameter (AC_OutputStream & inFile,
                            const bool engendrerReference) {
   generateCppClassName (inFile) ;
   if (engendrerReference) {
-    inFile << '&' ;
+    inFile << "&" ;
   }
-  inFile << ' ' ;
+  inFile << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -852,7 +854,7 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
                            const GGS_lstring & nomAttribut) {
   inHfile << "  public : " ;
   generateCppClassName (inHfile) ;
-  inHfile << ' ' << nomAttribut << " ;\n" ;
+  inHfile << " " << nomAttribut << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1418,7 +1420,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasListType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mListTypeName << ' ' ;
+  inFile << "GGS_" << mListTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1446,7 +1448,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasSortedListType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mListTypeName << ' ' ;
+  inFile << "GGS_" << mListTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1474,7 +1476,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasUndefinedListType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mListTypeName << ' ' ;
+  inFile << "GGS_" << mListTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1502,7 +1504,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasUndefinedSortedListType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mListTypeName << ' ' ;
+  inFile << "GGS_" << mListTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1530,7 +1532,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasMapType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mMapTypeName << ' ' ;
+  inFile << "GGS_" << mMapTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1558,7 +1560,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasUndefinedMapType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mMapTypeName << ' ' ;
+  inFile << "GGS_" << mMapTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1586,7 +1588,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasClassType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_"  << mClassTypeName << ' ' ;
+  inFile << "GGS_"  << mClassTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1614,7 +1616,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasUndefinedClassType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mClassTypeName << ' ' ;
+  inFile << "GGS_" << mClassTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1642,7 +1644,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasUndefinedMapindexType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_" << mMapindexTypeName << ' ' ;
+  inFile << "GGS_" << mMapindexTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1670,7 +1672,7 @@ generateAttributeInitialization (const GGS_lstring & /* inName */,
 
 void cPtr_typeGalgasMapindexType::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_"  << mMapindexTypeName << ' ' ;
+  inFile << "GGS_"  << mMapindexTypeName << " " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1750,7 +1752,7 @@ generate_cpp_file (C_Compiler & inLexique,
     generatedZone2 << "#include \"" << includeEnumerator._key (HERE) << "\"\n" ;
     includeEnumerator.next () ;
   }
-  generatedZone2 << '\n' ;
+  generatedZone2 << "\n" ;
 
 //--- Generate debug ?
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;

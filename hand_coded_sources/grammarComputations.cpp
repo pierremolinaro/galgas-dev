@@ -96,12 +96,12 @@ engendrerAppelProduction (const sint16 nombreDeParametres,
                           AC_OutputStream & fichierCPP) const {
   fichierCPP << "pr_"
              << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
-             << '_'
-             << mSourceFileName << '_' << aLigneDefinition
-             << '_' << aColonneDefinition << '_' << inAltName
+             << "_"
+             << mSourceFileName << "_" << aLigneDefinition
+             << "_" << aColonneDefinition << "_" << inAltName
              << " (_inLexique" ;
   for (sint16 i=1 ; i<nombreDeParametres ; i++) {
-    fichierCPP << ',' ;
+    fichierCPP << "," ;
     if ((i % 5) == 4) {
       fichierCPP << "\n                 " ;
      }
@@ -188,7 +188,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
     generatedZone2 << "#include \"" << component._mSyntaxComponentName (HERE) << ".h\"\n" ;
     component.next () ;
   }
-  generatedZone2 << '\n' ;
+  generatedZone2 << "\n" ;
 
 //--- Engendrer la classe de l'analyseur syntaxique ------------------------------------------
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
@@ -215,7 +215,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
     while (currentAltForNonTerminal.hc ()) {
       generatedZone3 << "  public : virtual " ;
       generatedZone3 << "void " ;
-      generatedZone3 << "nt_" << nonTerminal._key (HERE) << '_' << currentAltForNonTerminal._key (HERE)
+      generatedZone3 << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " &" ;
       GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       while (parametre.hc ()) {
@@ -535,7 +535,7 @@ analyzeGrammar (C_Compiler & inLexique,
 //--- Create output HTML file (if file is the empty string, no file is created)
   C_String directory = inLexique.sourceFileName ().stringByDeletingLastPathComponent () ;
   if (directory.length () > 0) {
-    directory << '/' ;
+    directory << "/" ;
   }
   const C_String HTMLfileName = directory + inTargetFileName + ".html" ;
   C_HTML_FileWrite  * HTMLfile = NULL ;
@@ -566,10 +566,10 @@ analyzeGrammar (C_Compiler & inLexique,
     if (inLexique.mPerformGeneration) {
       HTMLfileName.deleteFile () ;
       if (verboseOptionOn) {
-        inLexique.ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString ()) ;
+        inLexique.ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE)) ;
       }
     }else{
-      inLexique.ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString ()) ;
+      inLexique.ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE)) ;
     }
   }
 
@@ -862,7 +862,7 @@ analyzeGrammar (C_Compiler & inLexique,
     sint32 i = 1 ;
     while (warningFlag != 0) {
       if ((warningFlag & 1) != 0) {
-        s << ' ' << i ;
+        s << " " << i ;
       }
       warningFlag >>= 1 ;
       i ++ ;
@@ -884,10 +884,10 @@ analyzeGrammar (C_Compiler & inLexique,
   if (outputHTMLfile) {
     if (inLexique.mPerformGeneration) {
       if (verboseOptionOn) {
-        inLexique.ggs_printCreatedFileSuccess ((C_String ("Written '") + HTMLfileName + "'.\n").cString ()) ;
+        inLexique.ggs_printCreatedFileSuccess (C_String ("Written '") + HTMLfileName + "'.\n") ;
       }
     }else{
-      inLexique.ggs_printWarning ((C_String ("Need to write '") + HTMLfileName + "'.\n").cString ()) ;
+      inLexique.ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
     }
   }
   macroMyDelete (HTMLfile, C_HTML_FileWrite) ;

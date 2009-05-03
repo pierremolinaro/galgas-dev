@@ -91,7 +91,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
   //--- Generate declaration
     mVariableType (HERE)->generateCppClassName (ioCppFile) ;
-    ioCppFile << ' ' ;
+    ioCppFile << " " ;
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " ;\n" ;
   //--- Generate assignment
@@ -196,7 +196,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
       if (ioPreviousWasLiteralString) {
         first = false ;
       }else{
-        ioCppFile << inTargetVariableCppName << ".appendCstring (" ;
+        ioCppFile << inTargetVariableCppName << ".appendCString (" ;
       }
       GGS_stringlist::cEnumerator currentString (p2->mLiteralStringList, true) ;
       while (currentString.hc ()) {

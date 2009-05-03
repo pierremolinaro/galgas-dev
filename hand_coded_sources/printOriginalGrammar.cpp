@@ -97,7 +97,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 void cPtr_T_nonterminalInstruction_forGrammarComponent::
 printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_nonterminal\">") ;
-  inHTMLfile << '<' << mNonterminalSymbolName << ">; " ;
+  inHTMLfile << "<" << mNonterminalSymbolName << ">; " ;
   inHTMLfile.outputRawData ("</span>") ;
 }
 
@@ -106,7 +106,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 void cPtr_T_terminalInstruction_forGrammarComponent::
 printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_terminal\">") ;
-  inHTMLfile << '$' << mTerminalSymbolName << "$; " ;
+  inHTMLfile << "$" << mTerminalSymbolName << "$; " ;
   inHTMLfile.outputRawData ("</span>") ;
 }
 
