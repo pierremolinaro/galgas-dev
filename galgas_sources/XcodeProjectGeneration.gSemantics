@@ -522,44 +522,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine build_LIBPM_TINYXML_group
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@XcodeObjectReferenceList ioFileListForGroup
-:
-  @stringlist fileList [emptyList] ;
-  append_cpp_h_files !?fileList !"tinyxml" ;
-  fileList += !"tinystr.cpp" ;
-  fileList += !"tinyxmlerror.cpp" ;
-  fileList += !"tinyxmlparser.cpp" ;
-#---
-  enter_files_in_group
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioFileListForGroup
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_TINYXML_files_for_sources_build_phase
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist fileList [emptyList] ;
-  fileList += !"tinyxml.cpp" ;
-  fileList += !"tinystr.cpp" ;
-  fileList += !"tinyxmlerror.cpp" ;
-  fileList += !"tinyxmlparser.cpp" ;
-#---
-  enter_file_list_for_sources_build_phase
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine build_GENERATED_BY_GALGAS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inComponentNameSet
@@ -1036,20 +998,6 @@ routine generateXcodeProject
     !fileListOf_LIBPM_TIME_group
     !?libpmGroupChildrenList
   ;
-#---------- LIBPM / TINY XML
-  @XcodeObjectReferenceList fileListOf_LIBPM_TINYXML_group [emptyList] ;
-  build_LIBPM_TINYXML_group
-    !?XcodeProjectDescription
-    !?fileListOf_LIBPM_TINYXML_group
-  ;
-#---
-  enter_subgroup
-    !?XcodeProjectDescription
-    !"Tiny XML"
-    !"tiny_xml"
-    !fileListOf_LIBPM_TINYXML_group
-    !?libpmGroupChildrenList
-  ;
 #---------- LIBPM / UTILITIES
   @XcodeObjectReferenceList fileListOf_LIBPM_UTILITIES_group [emptyList] ;
   build_LIBPM_UTILITIES_group
@@ -1162,11 +1110,6 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfTool
   ;
-# LIBPM / TINY XML
-  build_LIBPM_TINYXML_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfTool
-  ;
 # LIBPM / UTILITIES
   build_LIBPM_UTILITIES_files_for_sources_build_phase
     !?XcodeProjectDescription
@@ -1246,11 +1189,6 @@ routine generateXcodeProject
   ;
 # LIBPM / TIME
   build_LIBPM_TIME_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfDebugTool
-  ;
-# LIBPM / TINY XML
-  build_LIBPM_TINYXML_files_for_sources_build_phase
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfDebugTool
   ;

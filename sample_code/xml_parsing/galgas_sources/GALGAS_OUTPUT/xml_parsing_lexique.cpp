@@ -25,9 +25,10 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "xml_parsing_lexique.h"
+#include "strings/unicode_character.h"
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (), lineNumber ()
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
 #else
   #define LINE_AND_SOURCE_FILE
@@ -291,10 +292,10 @@ parseLexicalToken (void) {
   cTokenFor_xml_parsing_lexique _token ;
   bool loop_ = true ;
   _token._mTokenCode = -1 ;
-  while ((_token._mTokenCode < 0) && (mCurrentChar != '\0')) {
+  while ((_token._mTokenCode < 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
     if ((_mMatchedTemplateDelimiterIndex >= 0)
      && (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
-     && (mCurrentChar != '\0')) {
+     && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
       const bool foundEndDelimitor = testForInputString (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndString,
                                                          kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength,
                                                          true) ;
@@ -302,7 +303,7 @@ parseLexicalToken (void) {
         _mMatchedTemplateDelimiterIndex = -1 ;
       }
     }
-    while ((_mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
+    while ((_mMatchedTemplateDelimiterIndex < 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
       sint32 _replacementIndex = 0 ;
       while (_replacementIndex >= 0) {
        _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 0) ;
@@ -312,34 +313,34 @@ parseLexicalToken (void) {
       }
       _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, 1) ;
       if (_mMatchedTemplateDelimiterIndex < 0) {
-        _token._mTemplateStringBeforeToken << mCurrentChar ;
+        _token._mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar) ;
         advance () ;
       }
     }
-    if ((_mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\0')) {
+    if ((_mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_ACCESS (mCurrentChar) != '\0')) {
       _token.tokenString.clear () ;
       _mTokenFirstLocation = _mCurrentLocation ;
       try{
         if (testForInputString ("<!--", 4, true)) {
           do {
             if (testForInputString ("&amp;", 5, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '&') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('&')) ;
             }else if (testForInputString ("&lt;", 4, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '<') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('<')) ;
             }else if (testForInputString ("&gt;", 4, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '>') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('>')) ;
             }else if (testForInputString ("&quot;", 6, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
             }else if (testForInputString ("&apos;", 6, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-            }else if (testForInputChar ('\x1', ',') ||
-                testForInputChar ('.', '\xFF')) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (',')) ||
+                testForInputChar (UNICODE_NEW ('.'), UNICODE_NEW ('\xFF'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
             }else if (testForInputString ("-->", 3, true)) {
               loop_ = false ;
-            }else if (testForInputChar ('-')) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '-') ;
-            }else if (testForInputChar ('\0')) {
+            }else if (testForInputChar (UNICODE_NEW ('-'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('-')) ;
+            }else if (testForInputChar (UNICODE_NEW ('\0'))) {
               lexicalError (gErrorMessage_0 COMMA_LINE_AND_SOURCE_FILE) ;
             }else{
               loop_ = false ;
@@ -369,14 +370,12 @@ parseLexicalToken (void) {
         }else if (testForInputString ("=", 1, true)) {
           _token._mTokenCode = xml_parsing_lexique_1__3D ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('a', 'z') ||
-            testForInputChar ('A', 'Z')) {
+        }else if (testForCharWithFunction (unicodeIsLetter)) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputChar ('a', 'z') ||
-                testForInputChar ('A', 'Z') ||
-                testForInputChar ('_') ||
-                testForInputChar ('0', '9')) {
+            if (testForCharWithFunction (unicodeIsLetter) ||
+                testForInputChar (UNICODE_NEW ('_')) ||
+                testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
             }else{
               loop_ = false ;
             }
@@ -384,61 +383,61 @@ parseLexicalToken (void) {
           loop_ = true ;
           _token._mTokenCode = xml_parsing_lexique_1_name ;
           _enterToken (_token) ;
-        }else if (testForInputChar ('\"')) {
+        }else if (testForInputChar (UNICODE_NEW ('\"'))) {
           do {
             if (testForInputString ("&amp;", 5, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '&') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('&')) ;
             }else if (testForInputString ("&lt;", 4, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '<') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('<')) ;
             }else if (testForInputString ("&gt;", 4, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '>') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('>')) ;
             }else if (testForInputString ("&quot;", 6, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
             }else if (testForInputString ("&apos;", 6, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-            }else if (testForInputChar (' ') ||
-                testForInputChar ('!') ||
-                testForInputChar ('#', '\xFF')) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+            }else if (testForInputChar (UNICODE_NEW (' ')) ||
+                testForInputChar (UNICODE_NEW ('!')) ||
+                testForInputChar (UNICODE_NEW ('#'), UNICODE_NEW ('\xFF'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar ('\"')) {
+          if (testForInputChar (UNICODE_NEW ('\"'))) {
             _token._mTokenCode = xml_parsing_lexique_1_value ;
             _enterToken (_token) ;
           }else{
             lexicalError (gErrorMessage_1 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputChar ('\'')) {
+        }else if (testForInputChar (UNICODE_NEW ('\''))) {
           do {
             if (testForInputString ("&amp;", 5, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '&') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('&')) ;
             }else if (testForInputString ("&lt;", 4, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '<') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('<')) ;
             }else if (testForInputString ("&gt;", 4, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '>') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('>')) ;
             }else if (testForInputString ("&quot;", 6, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
             }else if (testForInputString ("&apos;", 6, true)) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-            }else if (testForInputChar (' ', '&') ||
-                testForInputChar ('(', '\xFF')) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+            }else if (testForInputChar (UNICODE_NEW (' '), UNICODE_NEW ('&')) ||
+                testForInputChar (UNICODE_NEW ('('), UNICODE_NEW ('\xFF'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar ('\'')) {
+          if (testForInputChar (UNICODE_NEW ('\''))) {
             _token._mTokenCode = xml_parsing_lexique_1_value ;
             _enterToken (_token) ;
           }else{
             lexicalError (gErrorMessage_1 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputChar ('\x1', ' ')) {
-        }else if (testForInputChar ('\0')) { // End of source text ? 
+        }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (' '))) {
+        }else if (testForInputChar (UNICODE_NEW ('\0'))) { // End of source text ? 
           _token._mTokenCode = xml_parsing_lexique_1_ ; // Empty string code
         }else{ // Unknown input character
           unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -452,7 +451,7 @@ parseLexicalToken (void) {
       _mMatchedTemplateDelimiterIndex = -1 ;
     }
   }
-  if ((mCurrentChar == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
+  if ((UNICODE_ACCESS (mCurrentChar) == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
     _token._mTokenCode = 0 ;
     _enterToken (_token) ;
   }
@@ -477,23 +476,23 @@ parseLexicalTokenForLexicalColoring (void) {
       if (testForInputString ("<!--", 4, true)) {
         do {
           if (testForInputString ("&amp;", 5, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '&') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('&')) ;
           }else if (testForInputString ("&lt;", 4, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '<') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('<')) ;
           }else if (testForInputString ("&gt;", 4, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '>') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('>')) ;
           }else if (testForInputString ("&quot;", 6, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
           }else if (testForInputString ("&apos;", 6, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-          }else if (testForInputChar ('\x1', ',') ||
-              testForInputChar ('.', '\xFF')) {
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+          }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (',')) ||
+              testForInputChar (UNICODE_NEW ('.'), UNICODE_NEW ('\xFF'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else if (testForInputString ("-->", 3, true)) {
             loop_ = false ;
-          }else if (testForInputChar ('-')) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '-') ;
-          }else if (testForInputChar ('\0')) {
+          }else if (testForInputChar (UNICODE_NEW ('-'))) {
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('-')) ;
+          }else if (testForInputChar (UNICODE_NEW ('\0'))) {
             lexicalError (gErrorMessage_0 COMMA_LINE_AND_SOURCE_FILE) ;
           }else{
             loop_ = false ;
@@ -515,73 +514,73 @@ parseLexicalTokenForLexicalColoring (void) {
         _token._mTokenCode = xml_parsing_lexique_1__3E ;
       }else if (testForInputString ("=", 1, true)) {
         _token._mTokenCode = xml_parsing_lexique_1__3D ;
-      }else if (testForInputChar ('a', 'z') ||
-          testForInputChar ('A', 'Z')) {
+      }else if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+          testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z'))) {
         do {
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          if (testForInputChar ('a', 'z') ||
-              testForInputChar ('A', 'Z') ||
-              testForInputChar ('_') ||
-              testForInputChar ('0', '9')) {
+          if (testForInputChar (UNICODE_NEW ('a'), UNICODE_NEW ('z')) ||
+              testForInputChar (UNICODE_NEW ('A'), UNICODE_NEW ('Z')) ||
+              testForInputChar (UNICODE_NEW ('_')) ||
+              testForInputChar (UNICODE_NEW ('0'), UNICODE_NEW ('9'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
         _token._mTokenCode = xml_parsing_lexique_1_name ;
-      }else if (testForInputChar ('\"')) {
+      }else if (testForInputChar (UNICODE_NEW ('\"'))) {
         do {
           if (testForInputString ("&amp;", 5, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '&') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('&')) ;
           }else if (testForInputString ("&lt;", 4, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '<') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('<')) ;
           }else if (testForInputString ("&gt;", 4, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '>') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('>')) ;
           }else if (testForInputString ("&quot;", 6, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
           }else if (testForInputString ("&apos;", 6, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-          }else if (testForInputChar (' ') ||
-              testForInputChar ('!') ||
-              testForInputChar ('#', '\xFF')) {
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+          }else if (testForInputChar (UNICODE_NEW (' ')) ||
+              testForInputChar (UNICODE_NEW ('!')) ||
+              testForInputChar (UNICODE_NEW ('#'), UNICODE_NEW ('\xFF'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('\"')) {
+        if (testForInputChar (UNICODE_NEW ('\"'))) {
           _token._mTokenCode = xml_parsing_lexique_1_value ;
         }else{
           lexicalError (gErrorMessage_1 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar ('\'')) {
+      }else if (testForInputChar (UNICODE_NEW ('\''))) {
         do {
           if (testForInputString ("&amp;", 5, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '&') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('&')) ;
           }else if (testForInputString ("&lt;", 4, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '<') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('<')) ;
           }else if (testForInputString ("&gt;", 4, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '>') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('>')) ;
           }else if (testForInputString ("&quot;", 6, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '\"') ;
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\"')) ;
           }else if (testForInputString ("&apos;", 6, true)) {
-            scanner_action_enterCharacterIntoString (_token.tokenString, '\'') ;
-          }else if (testForInputChar (' ', '&') ||
-              testForInputChar ('(', '\xFF')) {
+            scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE_NEW ('\'')) ;
+          }else if (testForInputChar (UNICODE_NEW (' '), UNICODE_NEW ('&')) ||
+              testForInputChar (UNICODE_NEW ('('), UNICODE_NEW ('\xFF'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar ('\'')) {
+        if (testForInputChar (UNICODE_NEW ('\''))) {
           _token._mTokenCode = xml_parsing_lexique_1_value ;
         }else{
           lexicalError (gErrorMessage_1 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar ('\x1', ' ')) {
-      }else if (testForInputChar ('\0')) { // End of source text ? 
+      }else if (testForInputChar (UNICODE_NEW ('\x1'), UNICODE_NEW (' '))) {
+      }else if (testForInputChar (UNICODE_NEW ('\0'))) { // End of source text ? 
         _token._mTokenCode = xml_parsing_lexique_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;

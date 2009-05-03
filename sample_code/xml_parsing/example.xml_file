@@ -6,8 +6,10 @@
     the     second
     text
     <!-- Second comment: &amp;, &lt;, &gt;, &quot;, &apos;.-->
-    text3
+    text3 &amp;, &lt;, &gt;, &quot;, &apos;
   </TAG2>
   <TAG3 f3="this is the f3 field"/>
 </TAG1>
-<TAG4 f4="this is the f4 field"/>
+<TAG4 f4="this is the f4 field">
+  tag4 text
+</TAG4>

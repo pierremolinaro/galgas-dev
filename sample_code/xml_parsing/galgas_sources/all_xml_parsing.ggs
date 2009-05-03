@@ -1,6 +1,5 @@
 project all_xml_parsing :
   semantics "../../libpm/galgas_components/xml_types.ggs" : makefile, xcode_tool ;
-  extern "../../libpm/galgas_components/xml_parsing.cpp" : makefile, xcode_tool ;
 
   lexique "xml_parsing_lexique.ggs" : makefile, xcode_tool, xcode_app ;
   option "xml_parsing_options.ggs" : makefile, xcode_tool, xcode_app ;
