@@ -1181,7 +1181,8 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_ldouble::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "      s << \" \" << _p->" << inAttributeName << " ;\n" ;
+  inCppFile << "      s << \" \" ;\n" ;
+  inCppFile << "      s.appendDouble (_p->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*

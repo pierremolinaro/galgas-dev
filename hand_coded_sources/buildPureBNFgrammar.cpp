@@ -400,9 +400,9 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
                               const cPureBNFproductionsList & inProductions) {
   const sint32 productionsCount = inProductions.length () ;
   inHTMLfile.outputRawData ("<p><a name=\"pure_bnf\"></a>") ;
-  inHTMLfile << "Listing of the "
-             << productionsCount
-             << " BNF production"
+  inHTMLfile << "Listing of the " ;
+  inHTMLfile.appendSigned (productionsCount) ;
+  inHTMLfile << " BNF production"
              << ((productionsCount > 1) ? "s" : "")
              << " :" ;
   inHTMLfile.outputRawData ("</p>\n<table class=\"result\">") ;
@@ -410,9 +410,9 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
     const cProduction & p = inProductions (i COMMA_HERE) ;
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile.outputRawData ("<a name=\"pure_bnf_") ;
-    inHTMLfile << i ;
+    inHTMLfile.appendSigned (i) ;
     inHTMLfile.outputRawData ("\">") ;
-    inHTMLfile << i ;
+    inHTMLfile.appendSigned (i) ;
     inHTMLfile.outputRawData ("</a></td><td class=\"result_line\">") ;
     inHTMLfile << "rule " ;
     inHTMLfile.outputRawData ("<code>") ;
@@ -427,8 +427,8 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
                  << p.mSourceFileName
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
-      inHTMLfile << "line "
-                 << p.aLigneDefinition ;
+      inHTMLfile << "line " ;
+      inHTMLfile.appendSigned (p.aLigneDefinition) ;
     }
     inHTMLfile.outputRawData ("</td><td><code>") ;
     for (sint32 d=0 ; d<p.aDerivation.count () ; d++) {
@@ -447,7 +447,7 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
   inHTMLfile.outputRawData ("</td></tr>\n") ;
   for (sint32 s=0 ; s<inVocabulary.getAllSymbolsCount () ; s++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-    inHTMLfile << s ;
+    inHTMLfile.appendSigned (s) ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
     inVocabulary.printInFile (inHTMLfile, s COMMA_HERE) ;
     inHTMLfile.outputRawData ("</code></td></tr>\n") ;

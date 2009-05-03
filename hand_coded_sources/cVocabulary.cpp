@@ -118,8 +118,8 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
   C_String nt  ;
   nt << inPrefix
      << inClassName
-     << "_"
-     << inOrderInSourceFile ;
+     << "_" ;
+  nt.appendSigned (inOrderInSourceFile) ;
   mStringsArray.addObject (nt) ;
   mGenerateChoiceArray.addObject (inGenerateChoice) ;
 }

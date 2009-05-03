@@ -386,7 +386,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "         << \" C++ objects have been created (\" ;\n"
                     "      co.appendUnsigned64 (megaBytes) ;\n"
                     "      co << \".\" ;\n"
-                    "      co.appendUnsignedWithZeroFill (fraction, 3) ;\n"
+                    "      co.appendUnsignedWithZeroFill ((uint32) fraction, 3) ;\n"
                     "      co << \" MB).\\n\" ;\n"
                     "      deactivateMemoryControl () ;\n"
                     "      if ((getAllocationBalance () != 0) && (returnCode == 0)) {\n"
