@@ -711,24 +711,6 @@
 		CFE5996E0F2F3F7A0086D65E /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
-		CFEAADA10DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
-		CFEAADA30DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
-		CFEAADA40DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADA70DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
-		CFEAADA90DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
-		CFEAADAA0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADAD0DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
-		CFEAADAF0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
-		CFEAADB00DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADB30DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
-		CFEAADB50DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
-		CFEAADB60DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADB90DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
-		CFEAADBB0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
-		CFEAADBC0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
-		CFEAADBF0DA3C6080039B209 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */; };
-		CFEAADC10DA3C6080039B209 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */; };
-		CFEAADC20DA3C6080039B209 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */; };
 		CFEDF2BC0C2D161F0038713A /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CFEDF2BD0C2D161F0038713A /* galgas_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53806057A53A700854C83 /* galgas_start.cpp */; };
 		CFEDF2BE0C2D161F0038713A /* grammar_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9040E6057F270E007362F4 /* grammar_parser.cpp */; };
@@ -1103,12 +1085,6 @@
 		CFFE924F0B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE924C0B7CCAFF009BCBF5 /* domain_generation.cpp */; };
 		CFFE92510B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE924C0B7CCAFF009BCBF5 /* domain_generation.cpp */; };
 		CFFE92520B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE924C0B7CCAFF009BCBF5 /* domain_generation.cpp */; };
-		CFFFBFA20DAE79C300399F30 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBFA10DAE79C300399F30 /* tinystr.cpp */; };
-		CFFFBFA30DAE79C300399F30 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBFA10DAE79C300399F30 /* tinystr.cpp */; };
-		CFFFBFA40DAE79C300399F30 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBFA10DAE79C300399F30 /* tinystr.cpp */; };
-		CFFFBFA50DAE79C300399F30 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBFA10DAE79C300399F30 /* tinystr.cpp */; };
-		CFFFBFA60DAE79C300399F30 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBFA10DAE79C300399F30 /* tinystr.cpp */; };
-		CFFFBFA70DAE79C300399F30 /* tinystr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFFBFA10DAE79C300399F30 /* tinystr.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1668,10 +1644,6 @@
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
 		CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperObjectInstanciation.h; sourceTree = "<group>"; };
 		CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_filewrapper.h; sourceTree = "<group>"; };
-		CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
-		CFEAAD9C0DA3C6080039B209 /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
-		CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
-		CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
 		CFEDF3610C2D161F0038713A /* galgasPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEDF4BD0C2D16610038713A /* galgasDebugPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1774,7 +1746,6 @@
 		CFFE92260B7CCA1B009BCBF5 /* include_C_domainToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_domainToImplement.h; sourceTree = "<group>"; };
 		CFFE92270B7CCA1B009BCBF5 /* include_typeGalgasDomainType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasDomainType.h; sourceTree = "<group>"; };
 		CFFE924C0B7CCAFF009BCBF5 /* domain_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = domain_generation.cpp; sourceTree = "<group>"; };
-		CFFFBFA10DAE79C300399F30 /* tinystr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinystr.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2293,18 +2264,6 @@
 			name = "Parameters & Arguments";
 			sourceTree = "<group>";
 		};
-		CFEAAD980DA3C6080039B209 /* tiny_xml */ = {
-			isa = PBXGroup;
-			children = (
-				CFFFBFA10DAE79C300399F30 /* tinystr.cpp */,
-				CFEAAD9B0DA3C6080039B209 /* tinyxml.cpp */,
-				CFEAAD9C0DA3C6080039B209 /* tinyxml.h */,
-				CFEAAD9D0DA3C6080039B209 /* tinyxmlerror.cpp */,
-				CFEAAD9E0DA3C6080039B209 /* tinyxmlparser.cpp */,
-			);
-			path = tiny_xml;
-			sourceTree = "<group>";
-		};
 		CFEE57810BFB59E900B99D47 /* Expressions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2634,7 +2593,6 @@
 			isa = PBXGroup;
 			children = (
 				CFB9E4850DF28AC500885084 /* collections */,
-				CFEAAD980DA3C6080039B209 /* tiny_xml */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
 				CFF538F7057A560F00854C83 /* BDD */,
 				CFF538EE057A55F400854C83 /* Cache */,
@@ -3258,10 +3216,6 @@
 				CFCB12610D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BC80D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30240D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADA10DA3C6080039B209 /* tinyxml.cpp in Sources */,
-				CFEAADA30DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
-				CFEAADA40DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
-				CFFFBFA20DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CF3F51CE0DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A50E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF2945850E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
@@ -3428,10 +3382,6 @@
 				CFCB12970D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BD10D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E302E0D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADAD0DA3C6080039B209 /* tinyxml.cpp in Sources */,
-				CFEAADAF0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
-				CFEAADB00DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
-				CFFFBFA30DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5D30DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5D50DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CFA5C5D00DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
@@ -3603,10 +3553,6 @@
 				CFCB12850D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BCE0D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30280D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADB30DA3C6080039B209 /* tinyxml.cpp in Sources */,
-				CFEAADB50DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
-				CFEAADB60DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
-				CFFFBFA50DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5D70DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5D90DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CFA5C5D20DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
@@ -3795,10 +3741,6 @@
 				CFCB12670D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BC90D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADA70DA3C6080039B209 /* tinyxml.cpp in Sources */,
-				CFEAADA90DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
-				CFEAADAA0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
-				CFFFBFA40DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CF3F51D30DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
 				CF4521A70E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF29458F0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
@@ -3965,10 +3907,6 @@
 				CFCB128B0D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BCF0D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E302A0D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADB90DA3C6080039B209 /* tinyxml.cpp in Sources */,
-				CFEAADBB0DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
-				CFEAADBC0DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
-				CFFFBFA60DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5DB0DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5DD0DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CFA5C5D40DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
@@ -4140,10 +4078,6 @@
 				CFCB12910D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF3D5BD00D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E302C0D9EE03700EF3764 /* projectCreation.cpp in Sources */,
-				CFEAADBF0DA3C6080039B209 /* tinyxml.cpp in Sources */,
-				CFEAADC10DA3C6080039B209 /* tinyxmlerror.cpp in Sources */,
-				CFEAADC20DA3C6080039B209 /* tinyxmlparser.cpp in Sources */,
-				CFFFBFA70DAE79C300399F30 /* tinystr.cpp in Sources */,
 				CFEEB5DF0DFAA15200EDAF05 /* mda_galgas_prgm.cpp in Sources */,
 				CFEEB5E10DFAA15200EDAF05 /* mda_galgas_routines.cpp in Sources */,
 				CFA5C5D60DFBEF3500DD782E /* optionCompilation.cpp in Sources */,
