@@ -426,7 +426,8 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    const C_String varName = C_String ("_var_") + C_String (mCastInstructionLocation.location ()) ;
+    C_String varName ("_var_") ;
+    varName.appendUnsigned (mCastInstructionLocation.location ()) ;
     ioCppFile << "{ const GGS_" << mSourceExpressionTypeName
               << " " << varName << " = " ;
     mSourceExpression (HERE)->generateExpression (ioCppFile) ;

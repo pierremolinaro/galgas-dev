@@ -836,13 +836,6 @@ rule <while_branches_list>
   liste_tests_et_instructions := [@typeListeTestsEtInstructions emptyList] ;
   repeat
     select
-      $until$ ;
-      $literal_string$ ? @lstring s ;
-      liste_tests_et_instructions +=
-        ![@typeListeConditionsLexicales listWithValue ![@typeConditionChaine new !s]]
-        ![@tListeInstructionsLexicales  listWithValue ![@typeInstructionExitLoop new]]
-      ;
-    or
       $while$ ;
       $~$ ;
       @typeListeConditionsLexicales lcl [emptyList] ;
@@ -899,7 +892,7 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <lexical_test_expression>
- !@typeListeConditionsLexicales liste_test
+  !@typeListeConditionsLexicales liste_test
 :
   liste_test := [@typeListeConditionsLexicales emptyList] ;
   repeat
@@ -909,6 +902,29 @@ rule <lexical_test_expression>
   while
     $|$ ;
   end repeat ;
+end rule ;
+
+#-------------------------------------------------------------------*
+
+rule <lexical_test_term>
+  !@typeConditionLexicale tt
+:
+  $identifier$ ? @lstring unicodeCharSetName ;
+  tt := [@typeUnicodeCharSet new !unicodeCharSetName] ;
+#--- Test charset
+  @stringset availableCharSet [emptySet] ;
+  availableCharSet += !"isUnicodeLetter" ;
+  availableCharSet += !"isUnicodeMark" ;
+  availableCharSet += !"isUnicodeNumber" ;
+  availableCharSet += !"isUnicodeDecimalDigit" ;
+  availableCharSet += !"isUnicodeASCIIHexDigit" ;
+  availableCharSet += !"isUnicodeSeparator" ;
+  availableCharSet += !"isUnicodeCommand" ;
+  availableCharSet += !"isUnicodePunctuation" ;
+  availableCharSet += !"isUnicodeSymbol" ;
+  if not [availableCharSet hasKey ![unicodeCharSetName string]] then
+    error unicodeCharSetName:"unknown Unicode character set" ;
+  end if ;
 end rule ;
 
 #-------------------------------------------------------------------*

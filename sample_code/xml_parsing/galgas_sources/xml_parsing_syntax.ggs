@@ -35,7 +35,7 @@ rule <start_symbol>
   ??@bool inDoNotCondenseWhiteSpaces
   ??@bool inPrintDuringParsing
 :
-  @string s := [@string retrieveAndResetTemplateString] ;
+  @lstring s := [@lstring retrieveAndResetTemplateString] ;
   if [s length] > 0 then
     error here: "No character is allowed before XML header" ;
   end if ;#--- XML header
@@ -191,6 +191,30 @@ rule <element>
       !inPrintDuringParsing
       !inIndendation . " "
     ;
+    @lstring s := [@lstring retrieveAndResetTemplateString] ;
+    @string trimmedString := [s stringByTrimmingWhiteSpaces] ;
+    if [trimmedString length] > 0 then
+      @lstring ls ;
+      if inDoNotCondenseWhiteSpaces then
+        ls := s ;
+      else
+        ls := [@lstring new !trimmedString ![s location]] ;
+      end if ;
+      @xmlNode node [new
+        ![@xmlNodeType text]
+        !ls
+        ![@xmlAttributeMap emptyMap]
+        ![@xmlNodeList emptyList]
+      ] ;
+      nodeList += !node ;
+      if inPrintDuringParsing then
+        @string s := inIndendation . "TEXT " . "'" . ls . "' " ;
+        s .= [[[ls location] line] string] ;
+        s .= ":" . [[[ls location] column] string] ;
+        s .= ":" . [[[ls location] locationIndex] string] . "\n" ;
+        message s ;
+      end if ;
+    end if ;
     $</$ ;
     $name$ ? @lstring closingName ;
     if [closingName string] != [name string] then
@@ -198,7 +222,6 @@ rule <element>
     end if ;
     $>$ ;
   end select ;
-
   @xmlNode node [new
     ![@xmlNodeType element]
     !name
@@ -206,6 +229,7 @@ rule <element>
     !nodeList
   ] ;
   ioNodes += !node ;
+
 end rule ;
 
 #----------------------------------------------------------------------------*

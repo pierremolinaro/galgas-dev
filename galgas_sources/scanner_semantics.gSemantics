@@ -126,6 +126,10 @@ map @typeTableTablesDeMotsReserves {
 abstract class @typeConditionLexicale [generatedInSeparateFile] {
 }
 
+class @typeUnicodeCharSet extends @typeConditionLexicale {
+  @lstring mUnicodeCharSetName ;
+}
+
 class @typeConditionChaine extends @typeConditionLexicale {
   @lstring attributChaine ;
 }
@@ -227,9 +231,6 @@ list @typeListeRecherche {
 #------------------------------------------------------------------*
 #                           Instructions                           *
 #------------------------------------------------------------------*
-
-class @typeInstructionExitLoop extends @typeInstructionLexicale {
-}
 
 class @typeInstructionActionExterne extends @typeInstructionLexicale {
   @lstring attributNomRoutineExterne ;
