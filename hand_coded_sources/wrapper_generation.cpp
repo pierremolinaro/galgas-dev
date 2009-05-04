@@ -10,6 +10,7 @@
 
 #include "semantics_semantics.h"
 #include "utilities/MF_MemoryControl.h"
+#include "strings/unicode_character.h"
 
 //---------------------------------------------------------------------------*
 
@@ -130,11 +131,17 @@ generateWrapperContents (AC_OutputStream & inCppFile,
       }else if (c == '\\') {
         inCppFile << "\\\\" ;
       }else if ((c >= ' ') && (c <= 0x7E)) {
-        inCppFile << ((char) c) ;
+        inCppFile.appendUnicodeCharacter (UNICODE_NEW (c)) ;
       }else{
-        char s [12] ;
-        sprintf (s, "%X", c) ;
-        inCppFile << "\\x" << s << "\"\"" ;
+        char buffer [12] ;
+        const sint32 n = UTF8StringFromUTF32Character (UNICODE_NEW (c), buffer) ;
+        for (sint32 i=0 ; i<n ; i++) {
+          inCppFile.appendCString ("\\x") ;
+          char s [4] ;
+          sprintf (s, "%02X", buffer [i]) ;
+          inCppFile.appendCString (s) ;
+          inCppFile.appendCString ("\"\"") ;
+        }
       }
     }
     if (header) {
