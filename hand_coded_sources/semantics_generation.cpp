@@ -185,7 +185,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
-  inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + mRoutineName + '"') ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + mRoutineName + "\"") ;
   inCppFile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
     inCppFile << " _inLexique" ;
@@ -286,7 +286,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 const C_String & inTargetFileName,
                                 sint32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
-  inCppFile.appendCppTitleComment (C_String ("Implementation of function \"") + mFunctionName + '"') ;
+  inCppFile.appendCppTitleComment (C_String ("Implementation of function \"") + mFunctionName + "\"") ;
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
   inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {

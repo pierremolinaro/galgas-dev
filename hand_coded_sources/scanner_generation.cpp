@@ -601,23 +601,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionExitLoop::
-instruction__uses_loop_variable (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeInstructionExitLoop::
-generate_scanner_instruction (const C_String & /* inLexiqueName */,
-                              const bool /* inGenerateEnterToken */,
-                              AC_OutputStream & inCppFile) const {
-  inCppFile << "loop_ = false ;\n" ;
-}
-
-//---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
 bool cPtr_typeInstructionSiLexical::
 instruction__uses_loop_variable (void) const {
   return false ;
@@ -827,6 +810,15 @@ generate_scanner_instruction (const C_String &, // inLexiqueName
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeUnicodeCharSet::
+generateLexicalCondition (AC_OutputStream & inCppFile) {
+  inCppFile << "testForCharWithFunction (" ;
+  inCppFile.appendString (mUnicodeCharSetName.string ()) ;
+  inCppFile << ")" ;
+}
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeConditionCaractere::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputChar (UNICODE_NEW (" ;
@@ -884,7 +876,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionIntervalle::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputChar (UNICODE_NEW (" ;
+  inCppFile << "testForInputCharRange (UNICODE_NEW (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneInf.charValue ()) ;
   inCppFile << "), UNICODE_NEW (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneSup.charValue ()) ;
@@ -1361,6 +1353,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                     "#include <string.h>\n\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"" << inLexiqueName << ".h\"\n\n"
+                    "#include \"strings/unicode_character.h\"\n"
                     "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()\n"
                     "  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE\n"

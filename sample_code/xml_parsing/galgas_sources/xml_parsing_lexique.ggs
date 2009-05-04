@@ -2,6 +2,12 @@ template lexique xml_parsing_lexique :
 
 template "<" [preserved] ... "" ;
 
+replace "&amp;" -> "&" ;
+replace "&lt;" -> "<" ;
+replace "&gt;" -> ">" ;
+replace "&quot;" -> "\"" ;
+replace "&apos;" -> "'" ;
+
 style delimitersStyle -> "Delimiter:" ;
 style nameStyle -> "Name:" ;
 style attributeValue -> "Attribute value:" ;
@@ -30,11 +36,8 @@ rule "<!--" :
     enterCharacterIntoString (tokenString, ''') ;
   while '\x1' -> ',' | '.' -> '\xFF' :
     enterCharacterIntoString (tokenString, *) ;
-  until "-->"
-  while '-' :
+  while ~ "-->" error incorrectCommentError :
     enterCharacterIntoString (tokenString, '-') ;
-  while '\x0' :
-    error incorrectCommentError ;
   end repeat ;
   send $comment$ ;
 end rule ;
@@ -55,10 +58,10 @@ rule list xmlDelimitorsList ;
 
 $name$ ! tokenString error message "a name" style nameStyle ;
 
-rule 'a'->'z' | 'A'->'Z' :
+rule isUnicodeLetter :
   repeat
     enterCharacterIntoString (tokenString, *) ;
-  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  while isUnicodeLetter | '0'->'9' :
   end repeat ;
   send $name$ ;
 end rule ;
@@ -81,15 +84,10 @@ rule '"' :
     enterCharacterIntoString (tokenString, '"') ;
   while "&apos;" :
     enterCharacterIntoString (tokenString, ''') ;
-  while ' ' | '!' | '#'-> '\xFF' :
+  while ~ "\"" error incorrectAttributeEnd :
     enterCharacterIntoString (tokenString, *) ;
   end repeat ;
-  select
-  when '"' :
-    send $value$ ;
-  default
-    error incorrectAttributeEnd ;
-  end select ;
+  send $value$ ;
 end rule ;
 
 rule ''' :
@@ -104,15 +102,9 @@ rule ''' :
     enterCharacterIntoString (tokenString, '"') ;
   while "&apos;" :
     enterCharacterIntoString (tokenString, ''') ;
-  while ' ' -> '&' | '('-> '\xFF' :
+  while ~ "'" error incorrectAttributeEnd :
     enterCharacterIntoString (tokenString, *) ;
   end repeat ;
-  select
-  when ''' :
-    send $value$ ;
-  default
-    error incorrectAttributeEnd ;
-  end select ;
 end rule ;
 
 # --------------------- separators -----------------------------------------
