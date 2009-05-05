@@ -1,5 +1,5 @@
 option xml_parsing_options :
 
-# ADD YOUR CODE HERE
+@bool dumpUnicode : '\0', "dump-unicode" -> "List all unicode character properties" ;
 
 end option ;
