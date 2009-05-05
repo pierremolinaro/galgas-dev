@@ -51,11 +51,11 @@ void generateTerminalSymbolCppName (const C_String & inValue,
   const sint32 length = inValue.length () ;
   for (sint32 i=0 ; i<length ; i++) {
     const utf32 c = inValue (i COMMA_HERE) ;
-    if (isalnum (UNICODE_ACCESS (c))) {
+    if (isalnum (UNICODE_VALUE (c))) {
       ioString.appendUnicodeCharacter (c COMMA_HERE) ;
     }else{
       char s [10] ;
-      sprintf (s, "%X", UNICODE_ACCESS (c)) ;
+      sprintf (s, "%X", UNICODE_VALUE (c)) ;
       ioString << "_" << s ;
     }
   }
@@ -339,7 +339,7 @@ generateDecoderFromCondition (C_Lexique & inLexique,
                               const sint32 inTargetStateNumber,
                               cDecoderController & ioDecoderController) {
 //--- Get character
-  const uint32 c = UNICODE_ACCESS (attributCaractere.charValue ()) ;
+  const uint32 c = UNICODE_VALUE (attributCaractere.charValue ()) ;
 //--- Allocate 
   if (ioCurrentState->mTransitions [c].mNextState < 0) { // Default or error
     ioDecoderController.newState (ioCurrentState->mTransitions [c]) ;
@@ -481,10 +481,10 @@ scannerDecoderGeneration (C_Lexique & inLexique,
   while (currentEntry.hc ()) {
     C_String key = currentEntry._key (HERE) ;
     const sint32 keyLength = key.length () ;
-    const uint32 c0 = UNICODE_ACCESS (key (0 COMMA_HERE)) ;
+    const uint32 c0 = UNICODE_VALUE (key (0 COMMA_HERE)) ;
     cDecoderTargetState * currentTargetStatePtr = & (decoderController (0 COMMA_HERE)->mTransitions [c0]) ;
     for (sint32 i=1 ; i<keyLength ; i++) {
-      const uint32 c = UNICODE_ACCESS (key (i COMMA_HERE)) ;
+      const uint32 c = UNICODE_VALUE (key (i COMMA_HERE)) ;
       if (currentTargetStatePtr->mNextState <= 0) {
         decoderController.newState (* currentTargetStatePtr) ;
         currentTargetStatePtr = & (decoderController (currentTargetStatePtr->mNextState COMMA_HERE)->mTransitions [c]) ;

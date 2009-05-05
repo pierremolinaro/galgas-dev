@@ -367,19 +367,19 @@ generate_scanning_method (AC_OutputStream & inCppFile,
     inCppFile << "bool loop_ = true ;\n" ;
   }
   inCppFile << "_token._mTokenCode = -1 ;\n"
-               "while ((_token._mTokenCode < 0) && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n" ;
+               "while ((_token._mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n" ;
   if (inIsTemplate) {
     inCppFile << "  if ((_mMatchedTemplateDelimiterIndex >= 0)\n"
                  "   && (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength > 0)\n"
-                 "   && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n"
-                 "    const bool foundEndDelimitor = testForInputString (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndString,\n"
-                 "                                                       kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength,\n"
-                 "                                                       true) ;\n"
+                 "   && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n"
+                 "    const bool foundEndDelimitor = testForInputUTF32String (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndString,\n"
+                 "                                                            kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength,\n"
+                 "                                                            true) ;\n"
                  "    if (foundEndDelimitor) {\n"
                  "      _mMatchedTemplateDelimiterIndex = -1 ;\n"
                  "    }\n"
                  "  }\n"
-                 "  while ((_mMatchedTemplateDelimiterIndex < 0) && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n"
+                 "  while ((_mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n"
                  "    sint32 _replacementIndex = 0 ;\n"
                  "    while (_replacementIndex >= 0) {\n"
                  "     _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, " << inTemplateReplacementMap.count () << ") ;\n"
@@ -393,7 +393,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "      advance () ;\n"
                  "    }\n"
                  "  }\n"
-                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_ACCESS (mCurrentChar) != '\\0')) {\n" ;
+                 "  if ((_mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n" ;
     inCppFile.incIndentation (+2) ;
   }
   generateAttributeInitialization (table_attributs, inCppFile) ;
@@ -406,7 +406,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar (UNICODE_NEW ('\\0'))) { // End of source text ? \n"
+  inCppFile << "if (testForInputChar (UNICODE ('\\0'))) { // End of source text ? \n"
                "  _token._mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
                "}else{ // Unknown input character\n"
                "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -425,7 +425,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
     inCppFile.incIndentation (-2) ;
   }
   inCppFile << "}\n"
-               "if ((UNICODE_ACCESS (mCurrentChar) == '\\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {\n"
+               "if ((UNICODE_VALUE (mCurrentChar) == '\\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {\n"
                "  _token._mTokenCode = 0 ;\n"
                "  _enterToken (_token) ;\n"
                "}\n"
@@ -464,7 +464,7 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar (UNICODE_NEW ('\\0'))) { // End of source text ? \n"
+  inCppFile << "if (testForInputChar (UNICODE ('\\0'))) { // End of source text ? \n"
               "  _token._mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
               "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -511,7 +511,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentCaractere::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << "UNICODE_NEW (" ;
+  inCppFile << "UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
   inCppFile << ")" ;
 }
@@ -821,7 +821,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionCaractere::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputChar (UNICODE_NEW (" ;
+  inCppFile << "testForInputChar (UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
   inCppFile << "))" ;
 }
@@ -876,9 +876,9 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionIntervalle::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputCharRange (UNICODE_NEW (" ;
+  inCppFile << "testForInputCharRange (UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneInf.charValue ()) ;
-  inCppFile << "), UNICODE_NEW (" ;
+  inCppFile << "), UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneSup.charValue ()) ;
   inCppFile << "))" ;
 }
@@ -902,7 +902,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  _token." << nom << " = UNICODE_NEW ('\\0') ;\n" ;
+  inCppFile << "  _token." << nom << " = UNICODE ('\\0') ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1365,17 +1365,34 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //--------------------------------------- Template delimiters
   if (inIsTemplate) {
     generatedZone2.appendCppTitleComment ("Template Delimiters") ;
-    generatedZone2 << "static const templateStruct kTemplateDefinitionArray [" << inTemplateDelimiterMap.count () << "] = {\n" ;
     GGS_templateDelimiterMap::cEnumerator currentDelimiter (inTemplateDelimiterMap) ;
+    sint32 idx = 0 ;
     while (currentDelimiter.hc ()) {
-      generatedZone2 << "  {" ;
-      generatedZone2.appendCLiteralStringConstant (currentDelimiter._key (HERE)) ;
-      generatedZone2 << ", " << currentDelimiter._key (HERE).length () << ", " ;
-      generatedZone2.appendCLiteralStringConstant (currentDelimiter._mEndString (HERE)) ;
-      generatedZone2 << ", " << currentDelimiter._mEndString (HERE).length () << ", "
-                     << (currentDelimiter._mPreservesStartDelimiter (HERE).boolValue () ? "false" : "true")
+      generatedZone2 << "static const utf32 kTemplateDefinitionArray_" << idx << "_startString [] = " ;
+      generatedZone2.appendUTF32LiteralStringConstant (currentDelimiter._key (HERE)) ;
+      generatedZone2 << " ;\n\n" ;
+      if (currentDelimiter._mEndString (HERE).length () > 0) {
+        generatedZone2 << "static const utf32 kTemplateDefinitionArray_" << idx << "_endString [] = " ;
+        generatedZone2.appendUTF32LiteralStringConstant (currentDelimiter._mEndString (HERE)) ;
+        generatedZone2 << " ;\n\n" ;
+      }
+      currentDelimiter.next() ;
+      idx ++ ;
+    }
+    generatedZone2 << "static const templateStruct kTemplateDefinitionArray [" << inTemplateDelimiterMap.count () << "] = {\n" ;
+    currentDelimiter.rewind () ;
+    idx = 0 ;
+    while (currentDelimiter.hc ()) {
+      generatedZone2 << "  {kTemplateDefinitionArray_" << idx << "_startString, " << currentDelimiter._key (HERE).length () << ", " ;
+      if (currentDelimiter._mEndString (HERE).length () > 0) {
+        generatedZone2 << "kTemplateDefinitionArray_" << idx << "_endString, " << currentDelimiter._mEndString (HERE).length () ;
+      }else{
+        generatedZone2 << "NULL, 0" ;
+      }
+      generatedZone2 << ", " << (currentDelimiter._mPreservesStartDelimiter (HERE).boolValue () ? "false" : "true")
                      << "},\n" ;
       currentDelimiter.next() ;
+      idx ++ ;
     }
     generatedZone2 << "} ;\n\n" ;
   }
@@ -1383,15 +1400,26 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //--------------------------------------- Template replacement
   if (inIsTemplate) {
     generatedZone2.appendCppTitleComment ("Template Replacements") ;
-    generatedZone2 << "static const templateStruct kTemplateReplacementArray [" << inTemplateReplacementMap.count () << "] = {\n" ;
     GGS_templateReplacementMap::cEnumerator currentReplacement (inTemplateReplacementMap) ;
+    sint32 idx = 0 ;
     while (currentReplacement.hc ()) {
-      generatedZone2 << "  {" ;
-      generatedZone2.appendCLiteralStringConstant (currentReplacement._key (HERE)) ;
-      generatedZone2 << ", " << currentReplacement._key (HERE).length () << ", " ;
-      generatedZone2.appendCLiteralStringConstant (currentReplacement._mReplacedString (HERE)) ;
-      generatedZone2 << ", " << currentReplacement._mReplacedString (HERE).length () << ", true},\n" ;
+      generatedZone2 << "static const utf32 kTemplateReplacementArray_" << idx << "_startString [] = " ;
+      generatedZone2.appendUTF32LiteralStringConstant (currentReplacement._key (HERE)) ;
+      generatedZone2 << " ;\n\n" ;
+      generatedZone2 << "static const utf32 kTemplateReplacementArray_" << idx << "_endString [] = " ;
+      generatedZone2.appendUTF32LiteralStringConstant (currentReplacement._mReplacedString (HERE)) ;
+      generatedZone2 << " ;\n\n" ;
       currentReplacement.next () ;
+      idx ++ ;
+    }
+    generatedZone2 << "static const templateStruct kTemplateReplacementArray [" << inTemplateReplacementMap.count () << "] = {\n" ;
+    currentReplacement.rewind () ;
+    idx = 0 ;
+    while (currentReplacement.hc ()) {
+      generatedZone2 << "  {kTemplateReplacementArray_" << idx << "_startString, " << currentReplacement._key (HERE).length ()
+                     << ", kTemplateReplacementArray_" << idx << "_endString, " << currentReplacement._mReplacedString (HERE).length () << ", true},\n" ;
+      currentReplacement.next () ;
+      idx ++ ;
     }
     generatedZone2 << "} ;\n\n" ;
   }
@@ -1495,21 +1523,26 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     constanteCname << "gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), constanteCname) ;
     generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal._key (HERE) << "$' :\n"
-                      "static const char * " << constanteCname << " = " ;
-    generatedZone2.appendCLiteralStringConstant (currentTerminal._mErrorMessage (HERE).string ()) ;
+                      "static const utf32 " << constanteCname << " [] = " ;
+    generatedZone2.appendUTF32LiteralStringConstant (currentTerminal._mErrorMessage (HERE).string ()) ;
     generatedZone2 << " ;\n\n" ;
     errorMessageList << ",\n       gSyntaxErrorMessage_" ;
     generateTerminalSymbolCppName (currentTerminal._key (HERE), errorMessageList) ;
     currentTerminal.next () ;
   }
 
+  generatedZone2 << "//--- Syntax error message for 'end of source' :\n"
+                    "static const utf32 kEndOfSourceLexicalErrorMessage [] = " ;
+  generatedZone2.appendUTF32LiteralStringConstant ("end of source") ;
+  generatedZone2 << " ;\n\n" ;
+
   generatedZone2.appendCppTitleComment ("appendTerminalMessageToSyntaxErrorMessage") ;
   generatedZone2 << "void " << inLexiqueName << "::\n"
                  << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
                  << "                                           C_String & outSyntaxErrorMessage) {\n" ;
   const sint32 n = table_des_terminaux.count () + 1 ;
-  generatedZone2 << "  static const char * syntaxErrorMessageArray [" << n << "] = {"
-                    "\"end of source\"" << errorMessageList << "} ;\n"
+  generatedZone2 << "  static const utf32 * syntaxErrorMessageArray [" << n << "] = {"
+                    "kEndOfSourceLexicalErrorMessage" << errorMessageList << "} ;\n"
                     "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
                     "}\n\n" ;
 

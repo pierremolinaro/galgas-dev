@@ -37,15 +37,15 @@ routine_check_KL_escapeCharacters (C_Compiler & inLexique,
   if (inString._isBuilt ()) {
     bool gotPercent = false ;
     const utf32 * cString = inString.utf32String (HERE) ;
-    while (UNICODE_ACCESS (*cString) != '\0') {
+    while (UNICODE_VALUE (*cString) != '\0') {
       if (gotPercent) {
-        if ((UNICODE_ACCESS (*cString) != 'K') && (UNICODE_ACCESS (*cString) != 'L') && (UNICODE_ACCESS (*cString) != '%')) {
+        if ((UNICODE_VALUE (*cString) != 'K') && (UNICODE_VALUE (*cString) != 'L') && (UNICODE_VALUE (*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K, %L and %% sequences are defined" ;
           inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
         }
         gotPercent = false ;
-      }else if (UNICODE_ACCESS (*cString) == '%') {
+      }else if (UNICODE_VALUE (*cString) == '%') {
         gotPercent = true ;
       }
       cString ++ ; 
@@ -67,15 +67,15 @@ routine_check_K_escapeCharacters (C_Compiler & inLexique,
   if (inString._isBuilt ()) {
     bool gotPercent = false ;
     const utf32 * cString = inString.utf32String (HERE) ;
-    while (UNICODE_ACCESS (*cString) != '\0') {
+    while (UNICODE_VALUE (*cString) != '\0') {
       if (gotPercent) {
-        if ((UNICODE_ACCESS (*cString) != 'K') && (UNICODE_ACCESS (*cString) != '%')) {
+        if ((UNICODE_VALUE (*cString) != 'K') && (UNICODE_VALUE (*cString) != '%')) {
           C_String errorMessage ;
           errorMessage << "unknown escape sequence: only %K and %% sequences are defined" ;
           inString.semanticError (inLexique, errorMessage COMMA_THERE) ;
         }
         gotPercent = false ;
-      }else if (UNICODE_ACCESS (*cString) == '%') {
+      }else if (UNICODE_VALUE (*cString) == '%') {
         gotPercent = true ;
       }
       cString ++ ; 
