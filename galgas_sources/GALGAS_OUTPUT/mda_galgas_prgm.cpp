@@ -697,7 +697,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_string var_cas_filePath ;
                     var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (246)) ;
                     if (((var_cas_sourceKind)._operator_isEqual (GGS_sourceFileKind::constructor_externSourceFile (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
-                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (248)))._operator_isEqual (GGS_char (true, UNICODE_NEW ('/')))).isBuiltAndTrue ()) {
+                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (248)))._operator_isEqual (GGS_char (true, UNICODE ('/')))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += "))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
                       }else if (((var_cas_filePath)._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += ../hand_coded_sources/"))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;

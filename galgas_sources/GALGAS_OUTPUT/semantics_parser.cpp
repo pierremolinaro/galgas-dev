@@ -8135,7 +8135,7 @@ pr_semantics_declaration_semantics_parser_6856_28_ (galgas_scanner & _inLexique,
   GGS_M_regularFiles  var_cas_regularFileMap ;
   var_cas_regularFileMap = GGS_M_regularFiles ::constructor_emptyMap (_inLexique COMMA_HERE) ;
   GGS_string var_cas_absoluteSourcePath ;
-  if (((var_cas_sourcePath.ggs_string ().reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (6884)))._operator_isEqual (GGS_char (true, UNICODE_NEW ('/')))).isBuiltAndTrue ()) {
+  if (((var_cas_sourcePath.ggs_string ().reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (6884)))._operator_isEqual (GGS_char (true, UNICODE ('/')))).isBuiltAndTrue ()) {
     var_cas_absoluteSourcePath = var_cas_sourcePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (6885)) ;
   }else{
     var_cas_absoluteSourcePath = ((GGS_string::constructor_stringWithSourceFilePath (_inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (6887)))._operator_concat (GGS_string (true, "/")))._operator_concat (var_cas_sourcePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (6887))) ;
@@ -8286,7 +8286,7 @@ pr_semantics_declaration_semantics_parser_6856_28_importSemantics (galgas_scanne
   var_cas_regularFileMap = GGS_M_regularFiles ::constructor_emptyMap (_inLexique COMMA_HERE) ;
   if (((var_cas_ioSemanticContext.reader_mFilewrappers (_inLexique COMMA_SOURCE_FILE_AT_LINE (7010)).reader_hasKey (_inLexique, var_cas_wrapperName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (7010)) COMMA_SOURCE_FILE_AT_LINE (7010)))._operator_not ()).isBuiltAndTrue ()) {
     GGS_string var_cas_absoluteSourcePath ;
-    if (((var_cas_sourcePath.ggs_string ().reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (7013)))._operator_isEqual (GGS_char (true, UNICODE_NEW ('/')))).isBuiltAndTrue ()) {
+    if (((var_cas_sourcePath.ggs_string ().reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (7013)))._operator_isEqual (GGS_char (true, UNICODE ('/')))).isBuiltAndTrue ()) {
       var_cas_absoluteSourcePath = var_cas_sourcePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (7014)) ;
     }else{
       var_cas_absoluteSourcePath = ((GGS_string::constructor_stringWithSourceFilePath (_inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (7016)))._operator_concat (GGS_string (true, "/")))._operator_concat (var_cas_sourcePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (7016))) ;

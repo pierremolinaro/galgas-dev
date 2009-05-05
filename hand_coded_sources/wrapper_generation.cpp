@@ -131,10 +131,10 @@ generateWrapperContents (AC_OutputStream & inCppFile,
       }else if (c == '\\') {
         inCppFile << "\\\\" ;
       }else if ((c >= ' ') && (c <= 0x7E)) {
-        inCppFile.appendUnicodeCharacter (UNICODE_NEW (c) COMMA_HERE) ;
+        inCppFile.appendUnicodeCharacter (UNICODE (c) COMMA_HERE) ;
       }else{
         char buffer [12] ;
-        const sint32 n = UTF8StringFromUTF32Character (UNICODE_NEW (c), buffer) ;
+        const sint32 n = UTF8StringFromUTF32Character (UNICODE (c), buffer) ;
         for (sint32 i=0 ; i<n ; i++) {
           inCppFile.appendCString ("\\x") ;
           inCppFile.appendUnsignedInHex2 (buffer [i]) ;

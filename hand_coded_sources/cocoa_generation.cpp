@@ -93,12 +93,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "static const char gBoolOptionChar [kBoolOptionCount] = {\n" ;
   for (sint32 i=0 ; i<genericOptions.getBoolOptionsCount () ; i++) {
     generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (UNICODE_NEW (genericOptions.getBoolOptionChar (i))) ;
+    generatedZone3.appendCLiteralCharConstant (UNICODE (genericOptions.getBoolOptionChar (i))) ;
     generatedZone3 << ",\n" ;
   }
   for (sint32 i=0 ; i<galgasOptions.getBoolOptionsCount () ; i++) {
     generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (UNICODE_NEW (galgasOptions.getBoolOptionChar (i))) ;
+    generatedZone3.appendCLiteralCharConstant (UNICODE (galgasOptions.getBoolOptionChar (i))) ;
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
@@ -205,12 +205,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "static const char gUIntOptionChar [kUIntOptionCount] = {\n" ;
   for (sint32 i=0 ; i<genericOptions.getUintOptionsCount () ; i++) {
     generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (UNICODE_NEW (genericOptions.getUintOptionChar (i))) ;
+    generatedZone3.appendCLiteralCharConstant (UNICODE (genericOptions.getUintOptionChar (i))) ;
     generatedZone3 << ",\n" ;
   }
   for (sint32 i=0 ; i<galgasOptions.getUintOptionsCount () ; i++) {
     generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (UNICODE_NEW (galgasOptions.getUintOptionChar (i))) ;
+    generatedZone3.appendCLiteralCharConstant (UNICODE (galgasOptions.getUintOptionChar (i))) ;
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
@@ -323,12 +323,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "static const char gStringOptionChar [kStringOptionCount] = {\n" ;
   for (sint32 i=0 ; i<genericOptions.getStringOptionsCount () ; i++) {
     generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (UNICODE_NEW (genericOptions.getStringOptionChar (i))) ;
+    generatedZone3.appendCLiteralCharConstant (UNICODE (genericOptions.getStringOptionChar (i))) ;
     generatedZone3 << ",\n" ;
   }
   for (sint32 i=0 ; i<galgasOptions.getStringOptionsCount () ; i++) {
     generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (UNICODE_NEW (galgasOptions.getStringOptionChar (i))) ;
+    generatedZone3.appendCLiteralCharConstant (UNICODE (galgasOptions.getStringOptionChar (i))) ;
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
