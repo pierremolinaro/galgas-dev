@@ -1,0 +1,18 @@
+semantics xml_parsing_semantics :
+
+#------------------------------------------------------------*
+
+routine listUnicodeCharacterProperties :
+  message "---- Unassigned Unicode Characters\n" ;
+  @uint unicodeValue := 0 ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+  
+    unicodeValue ++ ;
+  end loop ;
+
+end routine ;
+
+#------------------------------------------------------------*
+
+end semantics ;
