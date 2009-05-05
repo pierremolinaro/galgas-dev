@@ -13,13 +13,6 @@ when . "xml_file"
 message "an XML text file with the .xml_file extension"
 ??@lstring inSourceFile {
   @xmlNodeList rootNodes ;
-#  parseXMLFile
-#    !inSourceFile
-#    ?rootNodes
-#    !true # Include comments
-#    !false # Condense White spaces
-#    !true # Print during parsing
-#  ;
   grammar xml_parsing_grammar in inSourceFile
     ?rootNodes
     !true # Include comments

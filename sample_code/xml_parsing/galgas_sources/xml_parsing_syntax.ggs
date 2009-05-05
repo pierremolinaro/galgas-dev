@@ -61,6 +61,40 @@ end rule ;
 
 #----------------------------------------------------------------------------*
 
+routine addText
+  ?!@xmlNodeList ioNodes
+  ??@bool inDoNotCondenseWhiteSpaces
+  ??@bool inPrintDuringParsing
+  ??@string inIndendation
+:
+  @lstring s := [@lstring retrieveAndResetTemplateString] ;
+  @string trimmedString := [s stringByTrimmingWhiteSpaces] ;
+  if [trimmedString length] > 0 then
+    @lstring ls ;
+    if inDoNotCondenseWhiteSpaces then
+      ls := s ;
+    else
+      ls := [@lstring new !trimmedString ![s location]] ;
+    end if ;
+    @xmlNode node [new
+      ![@xmlNodeType text]
+      !ls
+      ![@xmlAttributeMap emptyMap]
+      ![@xmlNodeList emptyList]
+    ] ;
+    ioNodes += !node ;
+    if inPrintDuringParsing then
+      @string s := inIndendation . "TEXT " . "'" . ls . "' " ;
+      s .= [[[ls location] line] string] ;
+      s .= ":" . [[[ls location] column] string] ;
+      s .= ":" . [[[ls location] locationIndex] string] . "\n" ;
+      message s ;
+    end if ;
+  end if ;
+end routine ;
+
+#----------------------------------------------------------------------------*
+
 rule <element_list>
   ?!@xmlNodeList ioNodes
   ??@bool inIncludeComments
@@ -70,30 +104,12 @@ rule <element_list>
 :
   repeat
   while
-    @lstring s := [@lstring retrieveAndResetTemplateString] ;
-    @string trimmedString := [s stringByTrimmingWhiteSpaces] ;
-    if [trimmedString length] > 0 then
-      @lstring ls ;
-      if inDoNotCondenseWhiteSpaces then
-        ls := s ;
-      else
-        ls := [@lstring new !trimmedString ![s location]] ;
-      end if ;
-      @xmlNode node [new
-        ![@xmlNodeType text]
-        !ls
-        ![@xmlAttributeMap emptyMap]
-        ![@xmlNodeList emptyList]
-      ] ;
-      ioNodes += !node ;
-      if inPrintDuringParsing then
-        @string s := inIndendation . "TEXT " . "'" . ls . "' " ;
-        s .= [[[ls location] line] string] ;
-        s .= ":" . [[[ls location] column] string] ;
-        s .= ":" . [[[ls location] locationIndex] string] . "\n" ;
-        message s ;
-      end if ;
-    end if ;
+    addText
+      !?ioNodes
+      !inDoNotCondenseWhiteSpaces
+      !inPrintDuringParsing
+      !inIndendation
+    ;
     <element>
       !? ioNodes
       !inIncludeComments
@@ -191,30 +207,12 @@ rule <element>
       !inPrintDuringParsing
       !inIndendation . " "
     ;
-    @lstring s := [@lstring retrieveAndResetTemplateString] ;
-    @string trimmedString := [s stringByTrimmingWhiteSpaces] ;
-    if [trimmedString length] > 0 then
-      @lstring ls ;
-      if inDoNotCondenseWhiteSpaces then
-        ls := s ;
-      else
-        ls := [@lstring new !trimmedString ![s location]] ;
-      end if ;
-      @xmlNode node [new
-        ![@xmlNodeType text]
-        !ls
-        ![@xmlAttributeMap emptyMap]
-        ![@xmlNodeList emptyList]
-      ] ;
-      nodeList += !node ;
-      if inPrintDuringParsing then
-        @string s := inIndendation . "TEXT " . "'" . ls . "' " ;
-        s .= [[[ls location] line] string] ;
-        s .= ":" . [[[ls location] column] string] ;
-        s .= ":" . [[[ls location] locationIndex] string] . "\n" ;
-        message s ;
-      end if ;
-    end if ;
+    addText
+      !?nodeList
+      !inDoNotCondenseWhiteSpaces
+      !inPrintDuringParsing
+      !inIndendation
+    ;
     $</$ ;
     $name$ ? @lstring closingName ;
     if [closingName string] != [name string] then

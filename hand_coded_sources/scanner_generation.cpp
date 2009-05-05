@@ -140,6 +140,7 @@ static sint32 compareEntries (const cTableEntry & inEntry1,
 static void
 generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
                              AC_OutputStream & inCppFile,
+                             const C_String & inTableName,
                              const C_String & inLexiqueName) {
 //--- Create entries array
   const sint32 entriesCount = inMap.count () ;
@@ -160,15 +161,28 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
 //     * by ::strcmp order
   entriesArray.sortArrayUsingFunction (compareEntries) ;
 
-//--- Write entries
   for (sint32 i=0 ; i<entriesCount ; i++) {
-    inCppFile << "  C_lexique_table_entry (" ;
-    inCppFile.appendCLiteralStringConstant (entriesArray (i COMMA_HERE).mEntryString) ;
-    inCppFile << ", " << entriesArray (i COMMA_HERE).mEntryStringLength
-             << ", " << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (entriesArray (i COMMA_HERE).mTokenCode, inCppFile) ;
-    inCppFile << ")" << ((i == (entriesCount - 1)) ? "" : ",") << "\n" ;
+    inCppFile << "static const utf32 kEntry_" ;
+    inCppFile.appendSigned (i) ;
+    inCppFile << "_forTable_" << inTableName << " [] = " ;
+    inCppFile.appendUTF32LiteralStringConstant (entriesArray (i COMMA_HERE).mEntryString) ;
+    inCppFile << "; \n\n" ;
   }
+//--- Write entries
+  inCppFile << "static const C_unicode_lexique_table_entry "
+            << "ktable_for_"
+            << inTableName
+            << " [ktable_size_" << inTableName << "] = {\n" ; 
+  for (sint32 i=0 ; i<entriesCount ; i++) {
+    inCppFile << "  {kEntry_" ;
+    inCppFile.appendSigned (i) ;
+    inCppFile << "_forTable_" << inTableName ;
+    inCppFile << ", " << entriesArray (i COMMA_HERE).mEntryStringLength
+             << ", " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
+    generateTerminalSymbolCppName (entriesArray (i COMMA_HERE).mTokenCode, inCppFile) ;
+    inCppFile << "}" << ((i == (entriesCount - 1)) ? "" : ",") << "\n" ;
+  }
+  inCppFile << "} ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -180,29 +194,18 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
                                     AC_OutputStream & inCppFile) {
   inCppFile.appendCppTitleComment (C_String ("Key words table '") + nomTable + "'") ;
 // ---------------------------- Table size
-  inCppFile << "const sint16 "
-            << inLexiqueName
-            << "::"
-            << inLexiqueName
-            << "_table_size_"
+  inCppFile << "static const sint32 "
+            << "ktable_size_"
             << nomTable
             << " = " << inMap.count () << " ;\n\n" ; 
 // ---------------------------- Generate table
-  inCppFile << "const C_lexique_table_entry "
-            << inLexiqueName
-            << "::"
-            << inLexiqueName
-            << "_table_for_"
-            << nomTable
-            << " [" << inMap.count () << "] = {\n" ; 
-  generateKeyWordTableEntries (inMap, inCppFile, inLexiqueName) ;
-  inCppFile << "} ;\n\n" ;
+  generateKeyWordTableEntries (inMap, inCppFile, nomTable, inLexiqueName) ;
 // ---------------------------- Statique search method
-  inCppFile << "sint16 " << inLexiqueName << "::search_into_" << nomTable
+  inCppFile << "sint32 " << inLexiqueName << "::search_into_" << nomTable
             << " (const C_String & inSearchedString) {\n"
                "  return searchInList (inSearchedString, "
-            << inLexiqueName << "_table_for_" << nomTable << ", "
-            << inLexiqueName << "_table_size_" << nomTable << ") ;\n"
+            << "ktable_for_" << nomTable << ", "
+            << "ktable_size_" << nomTable << ") ;\n"
                "}\n\n" ;
 }
 
@@ -267,37 +270,34 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
 
 //---------------------------------------------------------------------------*
 
-static void generateKeyWordTableDeclaration (const GGS_typeTableMotsReserves & inMap,
-                                             const C_String & inLexiqueName,
-                                             const C_String & nomTable,
+static void generateKeyWordTableDeclaration (const C_String & nomTable,
                                              AC_OutputStream & inHfile) {
   inHfile << "//--- Key words table '" << nomTable << "'\n" ;
 // ---------------------------- Table size constant
-  inHfile << "  public : static const sint16 "
+/*  inHfile << "  public : static const sint32 "
            << inLexiqueName
            << "_table_size_"
            << nomTable
            << " ;\n" ; 
 // ---------------------------- Table static const definition
-  inHfile << "  private : static const C_lexique_table_entry "
+  inHfile << "  private : static const C_unicode_lexique_table_entry "
            << inLexiqueName
            << "_table_for_"
            << nomTable
-           << " [" << inMap.count () << "] ;\n" ;
+           << " [" << inMap.count () << "] ;\n" ;*/
 
 // ---------------------------- Statique search method
-  inHfile << "  public : static sint16 search_into_" << nomTable
+  inHfile << "  public : static sint32 search_into_" << nomTable
           << " (const C_String & inSearchedString) ;\n\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 static void generateTerminalSymbolsTableDeclaration (const GGS_typeTableTablesDeMotsReserves & inMap,
-                                                     const C_String & inLexiqueName,
                                                      AC_OutputStream & inHfile) {
   GGS_typeTableTablesDeMotsReserves::cEnumerator currentMap (inMap) ;
   while (currentMap.hc ()) {
-    generateKeyWordTableDeclaration (currentMap._attributSimpleTable (HERE), inLexiqueName, currentMap._key (HERE), inHfile) ;
+    generateKeyWordTableDeclaration (currentMap._key (HERE), inHfile) ;
     currentMap.next () ;
   }
 }
@@ -389,7 +389,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "    }\n"
                  "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, " << inTemplateDelimiterMap.count () << ") ;\n"
                  "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
-                 "      _token._mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar) ;\n"
+                 "      _token._mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;\n"
                  "      advance () ;\n"
                  "    }\n"
                  "  }\n"
@@ -419,7 +419,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   inCppFile.incIndentation (-2) ;
   if (inIsTemplate) {
     inCppFile << "}\n"
-                 "if (kEndOfScriptInTemplateArray [_token._mTokenCode]) {\n"
+                 "if ((_token._mTokenCode > 0) && kEndOfScriptInTemplateArray [_token._mTokenCode - 1]) {\n"
                  "  _mMatchedTemplateDelimiterIndex = -1 ;\n"
                  "}\n" ;
     inCppFile.incIndentation (-2) ;
@@ -1271,7 +1271,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
     currentTerminal.next () ;
   }
   generatedZone3 << "} ;\n\n" ;
-  generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, inLexiqueName, generatedZone3) ;
+  generateTerminalSymbolsTableDeclaration (table_tables_mots_reserves, generatedZone3) ;
   generatedZone3 << "  protected : virtual bool parseLexicalToken (void) ;\n"
                     "  protected : virtual sint16 parseLexicalTokenForLexicalColoring (void) ;\n"
                     "  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,\n"
@@ -1399,9 +1399,9 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //--------------------------------------- End of template mark
   if (inIsTemplate) {
     generatedZone2.appendCppTitleComment ("Terminal Symbols as end of script in template mark") ;
-    generatedZone2 << "static const bool kEndOfScriptInTemplateArray [" << (table_des_terminaux.count () + 1)
-                   << "] = {\n"
-                   << "  false, // End of source\n" ;
+    generatedZone2 << "static const bool kEndOfScriptInTemplateArray [" ;
+    generatedZone2.appendSigned (table_des_terminaux.count ()) ;
+    generatedZone2 << "] = {\n" ;
     GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux) ;
     while (currentTerminal.hc ()) {
       generatedZone2 << "  " << (currentTerminal._mIsEndOfTemplateMark (HERE).boolValue () ? "true" : "false")
@@ -1474,8 +1474,8 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
         generatedZone2 << "//--- Message " << messageNumber << " (not used)\n"
                           "// " ;      
       }
-      generatedZone2 << "static const char * gErrorMessage_" << messageNumber << " = " ;
-      generatedZone2.appendCLiteralStringConstant (currentMessage._mErrorMessage (HERE)) ;
+      generatedZone2 << "static const utf32 gErrorMessage_" << messageNumber << " [] = " ;
+      generatedZone2.appendUTF32LiteralStringConstant (currentMessage._mErrorMessage (HERE)) ;
       generatedZone2 << " ;\n" ;
       currentMessage.next() ;
       messageNumber ++ ;

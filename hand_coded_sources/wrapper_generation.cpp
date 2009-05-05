@@ -131,7 +131,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
       }else if (c == '\\') {
         inCppFile << "\\\\" ;
       }else if ((c >= ' ') && (c <= 0x7E)) {
-        inCppFile.appendUnicodeCharacter (UNICODE_NEW (c)) ;
+        inCppFile.appendUnicodeCharacter (UNICODE_NEW (c) COMMA_HERE) ;
       }else{
         char buffer [12] ;
         const sint32 n = UTF8StringFromUTF32Character (UNICODE_NEW (c), buffer) ;
