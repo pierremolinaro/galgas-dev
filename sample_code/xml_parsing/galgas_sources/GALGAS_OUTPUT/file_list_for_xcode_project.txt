@@ -787,7 +787,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4F3240AD5B9B413AA7346A1E = {
+		669D7A23DE0EF88D2F7129E7 = {
 			isa = PBXGroup;
 			children = (
 				95D565EF66E7DFF9F98764DA /* Hand Coded Sources */,
@@ -858,10 +858,10 @@
 /* Begin PBXProject section */
 		6BBF9AC94A7E459509A20ED0 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 669D7A23DE0EF88D2F7129E7 /* Build configuration list for PBXProject "xml_parsing" */;
+			buildConfigurationList = 4F3240AD5B9B413AA7346A1E /* Build configuration list for PBXProject "xml_parsing" */;
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
-			mainGroup = 4F3240AD5B9B413AA7346A1E;
+			mainGroup = 669D7A23DE0EF88D2F7129E7;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1263,7 +1263,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		669D7A23DE0EF88D2F7129E7 /* Build configuration list for PBXProject "xml_parsing" */ = {
+		4F3240AD5B9B413AA7346A1E /* Build configuration list for PBXProject "xml_parsing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				62E40C570A322F1B0B659098 /* Default */,
