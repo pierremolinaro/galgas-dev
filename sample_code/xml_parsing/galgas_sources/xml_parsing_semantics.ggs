@@ -5,14 +5,149 @@ semantics xml_parsing_semantics :
 routine listUnicodeCharacterProperties :
   message "---- Unassigned Unicode Characters\n" ;
   @uint unicodeValue := 0 ;
+  @uint matchedValue := 0 ;
+  @bool found := false ;
   loop 0x10000 - unicodeValue :
   while unicodeValue < 0x10000 do
-    if not [unicodeValue isUnicodeValueAssigned] then
-      message "Unicode '\\U" . [unicodeValue hexString] . "' not assigned.\n" ;
+    if [unicodeValue isUnicodeValueAssigned] then
+      if found then
+        message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+        found := false ;
+      end if ;
+    elsif not found then
+      matchedValue := unicodeValue ;
+      found := true ;
+    end if ;
+    unicodeValue ++ ;
+  end loop ;
+  if found then
+    message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+    found := false ;
+  end if ;
+
+  message "---- Unicode Letters\n" ;
+  unicodeValue := 0 ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      @char c [unicodeCharacterWithUnsigned! unicodeValue] ;
+      if [c isUnicodeLetter] then
+        message "  '" . [c string] . "' (" . [unicodeValue hexString] . ")\n" ;
+      end if ;
     end if ;
     unicodeValue ++ ;
   end loop ;
 
+  message "---- Unicode Numbers\n" ;
+  unicodeValue := 0 ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      @char c [unicodeCharacterWithUnsigned! unicodeValue] ;
+      if [c isUnicodeNumber] then
+        message "  '" . [c string] . "' (" . [unicodeValue hexString] . ")\n" ;
+      end if ;
+    end if ;
+    unicodeValue ++ ;
+  end loop ;
+  message "---- Unicode Separators\n" ;
+  unicodeValue := 0 ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      @char c [unicodeCharacterWithUnsigned! unicodeValue] ;
+      if [c isUnicodeSeparator] then
+        message "  '" . [c string] . "' (" . [unicodeValue hexString] . ")\n" ;
+      end if ;
+    end if ;
+    unicodeValue ++ ;
+  end loop ;
+
+  message "---- Unicode Punctuation\n" ;
+  unicodeValue := 0 ;
+  matchedValue := 0 ;
+  found := false ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      @char c [unicodeCharacterWithUnsigned! unicodeValue] ;
+      if [c isUnicodePunctuation] then
+        if not found then
+          matchedValue := unicodeValue ;
+          found := true ;
+        end if ;
+      elsif found then
+        message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+        found := false ;
+      end if ;
+    elsif found then
+      message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+      found := false ;
+    end if ;
+    unicodeValue ++ ;
+  end loop ;
+  if found then
+    message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+    found := false ;
+  end if ;
+
+  message "---- Unicode Command\n" ;
+  unicodeValue := 0 ;
+  matchedValue := 0 ;
+  found := false ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      @char c [unicodeCharacterWithUnsigned! unicodeValue] ;
+      if [c isUnicodeCommand] then
+        if not found then
+          matchedValue := unicodeValue ;
+          found := true ;
+        end if ;
+      elsif found then
+        message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+        found := false ;
+      end if ;
+    elsif found then
+      message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+      found := false ;
+    end if ;
+    unicodeValue ++ ;
+  end loop ;
+  if found then
+    message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+    found := false ;
+  end if ;
+
+  message "---- Unicode Mark\n" ;
+  unicodeValue := 0 ;
+  matchedValue := 0 ;
+  found := false ;
+  loop 0x10000 - unicodeValue :
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      @char c [unicodeCharacterWithUnsigned! unicodeValue] ;
+      if [c isUnicodeMark] then
+        if not found then
+          matchedValue := unicodeValue ;
+          found := true ;
+        end if ;
+      elsif found then
+        message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+        found := false ;
+      end if ;
+    elsif found then
+      message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+      found := false ;
+    end if ;
+    unicodeValue ++ ;
+  end loop ;
+  if found then
+    message "  - [" . [matchedValue hexString] . ", " . [unicodeValue - 1 hexString] . "]\n" ;
+    found := false ;
+  end if ;
+
+  message "---- Done.\n" ;
 end routine ;
 
 #------------------------------------------------------------*
