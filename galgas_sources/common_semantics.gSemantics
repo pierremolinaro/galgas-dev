@@ -822,6 +822,24 @@ class @typeGalgas_char extends @AC_galgasType {
   method acceptToBeSortKeyInSortedListDefinition ??@lstring unused inErrorLocation :
   end method ;
 
+#--- Class accepts constructor 'max'
+  override method handleConstructorCall
+    ??@lstring inClassMethodName
+    !@typeListeAttributsSemantiques outAccessorTypesList
+    !@bool outHasLexiqueAndLocationArguments
+  :
+    if ([inClassMethodName string] == "replacementCharacter") then
+      outHasLexiqueAndLocationArguments := false ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "unicodeCharacterWithUnsigned" then
+      outHasLexiqueAndLocationArguments := true ;
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !""! here] ;
+    else
+      error inClassMethodName : "This constructor is not defined" -> outAccessorTypesList, outHasLexiqueAndLocationArguments ;
+    end if ;
+  end method ;
+
 #--- Error message
   message "a '@char' type" ;
   message messageGalgasType "a '@char' type" ;
@@ -3882,6 +3900,9 @@ routine handleReaderCall
       elsif [inReaderName string] == "hexString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "isUnicodeValueAssigned" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -3914,6 +3935,39 @@ routine handleReaderCall
       elsif [inReaderName string] == "isxdigit" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "uintValue" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_uint new] ;
+      elsif [inReaderName string] == "isUnicodeLetter" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isUnicodeMark" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isUnicodeNumber" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isUnicodeSeparator" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isUnicodeCommand" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isUnicodePunctuation" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "isUnicodeSymbol" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_bool new] ;
+      elsif [inReaderName string] == "unicodeName" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "unicodeToLower" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_char new] ;
+      elsif [inReaderName string] == "unicodeToUpper" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_char new] ;
       else
         error inReaderName : "this reader is not defined"
          -> outAccessorTypesList, outReturnedType ;
@@ -3989,10 +4043,6 @@ routine handleReaderCall
       if [inReaderName string] == "char" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_char new] ;
-      elsif [inReaderName string] == "value" then
-        warning inReaderName:"in GALGAS 1.4.1 and later, the 'value' reader of @lchar type  is deprecated; use 'char' instead" ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_char new] ;
       elsif [inReaderName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
@@ -4007,10 +4057,6 @@ routine handleReaderCall
       if [inReaderName string] == "bool" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_bool new] ;
-      elsif [inReaderName string] == "value" then
-        warning inReaderName:"in GALGAS 1.4.1 and later, the 'value' reader of @lbool type  is deprecated; use 'bool' instead" ;
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_bool new] ;
       elsif [inReaderName string] == "location" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_location new] ;
@@ -4020,10 +4066,6 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgas_luint do
       if [inReaderName string] == "uint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_uint new] ;
-      elsif [inReaderName string] == "value" then
-        warning inReaderName:"in GALGAS 1.4.1 and later, the 'value' of @luint type  reader is deprecated; use 'uint' instead" ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_uint new] ;
       elsif [inReaderName string] == "location" then
@@ -4052,10 +4094,6 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgas_lsint do
       if [inReaderName string] == "sint" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_sint new] ;
-      elsif [inReaderName string] == "value" then
-        warning inReaderName:"in GALGAS 1.4.1 and later, the 'value' reader of @lsint type  is deprecated; use 'sint' instead" ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_sint new] ;
       elsif [inReaderName string] == "string" then
@@ -4090,10 +4128,6 @@ routine handleReaderCall
       end if ;
     when >= @typeGalgas_ldouble do
       if [inReaderName string] == "double" then
-        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-        outReturnedType := [@typeGalgas_double new] ;
-      elsif [inReaderName string] == "value" then
-        warning inReaderName:"in GALGAS 1.4.1 and later, the 'value' reader of @ldouble type  is deprecated; use 'double' instead" ;
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_double new] ;
       elsif [inReaderName string] == "string" then

@@ -7,7 +7,9 @@ routine listUnicodeCharacterProperties :
   @uint unicodeValue := 0 ;
   loop 0x10000 - unicodeValue :
   while unicodeValue < 0x10000 do
-  
+    if not [unicodeValue isUnicodeValueAssigned] then
+      message "Unicode '\\U" . [unicodeValue hexString] . "' not assigned.\n" ;
+    end if ;
     unicodeValue ++ ;
   end loop ;
 
