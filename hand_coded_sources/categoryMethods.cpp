@@ -121,7 +121,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << " _inLexique" ;
     }
     inCppFile << ",\n                                "
-                 "const cPtr_" << mClassName << " * operand_" << mMagicNumber.location () ;
+                 "const cPtr_" << mClassName << " * operand_" << cStringWithSigned (mMagicNumber.location ()) ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
     while (currentArgument.hc ()) {
       inCppFile << ",\n                                " ;
@@ -139,7 +139,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "\n                                "
                  "COMMA_UNUSED_LOCATION_ARGS) {\n"
-                 "  if (operand_" << mMagicNumber.location () << " != NULL) {\n" ;
+                 "  if (operand_" << cStringWithSigned (mMagicNumber.location ()) << " != NULL) {\n" ;
     inCppFile.incIndentation (+2) ;
     generateInstructionListForList (mInstructionList, inCppFile,
                                     inTargetFileName, ioPrototypeIndex,

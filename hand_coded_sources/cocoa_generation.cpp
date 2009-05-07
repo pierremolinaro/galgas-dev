@@ -88,7 +88,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     currentOptionComponent.next () ;
   }
 
-  generatedZone3 << "static const unsigned kBoolOptionCount = " << boolOptionCount << " ;\n\n" ;
+  generatedZone3 << "static const unsigned kBoolOptionCount = " << cStringWithSigned (boolOptionCount) << " ;\n\n" ;
 
   generatedZone3 << "static const char gBoolOptionChar [kBoolOptionCount] = {\n" ;
   for (sint32 i=0 ; i<genericOptions.getBoolOptionsCount () ; i++) {
@@ -200,7 +200,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     currentOptionComponent.next () ;
   }
 
-  generatedZone3 << "static const unsigned kUIntOptionCount = " << uintOptionCount << " ;\n\n" ;
+  generatedZone3 << "static const unsigned kUIntOptionCount = " << cStringWithSigned (uintOptionCount) << " ;\n\n" ;
 
   generatedZone3 << "static const char gUIntOptionChar [kUIntOptionCount] = {\n" ;
   for (sint32 i=0 ; i<genericOptions.getUintOptionsCount () ; i++) {
@@ -318,7 +318,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     currentOptionComponent.next () ;
   }
 
-  generatedZone3 << "static const unsigned kStringOptionCount = " << stringOptionCount << " ;\n\n" ;
+  generatedZone3 << "static const unsigned kStringOptionCount = " << cStringWithSigned (stringOptionCount) << " ;\n\n" ;
  
   generatedZone3 << "static const char gStringOptionChar [kStringOptionCount] = {\n" ;
   for (sint32 i=0 ; i<genericOptions.getStringOptionsCount () ; i++) {
@@ -431,7 +431,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                  << "static C_galgas_CLI_Options gGalgasOptions ;\n" ;
   currentOptionComponent.rewind () ;
   while (currentOptionComponent.hc ()) {
-    generatedZone3 << "static " << currentOptionComponent._key (HERE) << " gOption" << index << " ;\n" ;
+    generatedZone3 << "static " << currentOptionComponent._key (HERE) << " gOption" << cStringWithSigned (index) << " ;\n" ;
     currentOptionComponent.next () ;
     index ++ ;
   }
@@ -439,7 +439,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   index = 0 ;
   currentOptionComponent.rewind () ;
   while (currentOptionComponent.hc ()) {
-    generatedZone3 << "& gOption" << index << ", " ;
+    generatedZone3 << "& gOption" << cStringWithSigned (index) << ", " ;
     currentOptionComponent.next () ;
     index ++ ;
   }
@@ -452,9 +452,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Text Macros\n\n" ;
   generatedZone3.appendCppTitleComment ("T E X T    M A C R O S") ;
-  generatedZone3 << "static uint32 kTextMacroCount = " << inTextMacroList.count () << " ;\n\n" ;
+  generatedZone3 << "static uint32 kTextMacroCount = " << cStringWithSigned (inTextMacroList.count ()) << " ;\n\n" ;
   GGS_textMacroList::cEnumerator currentMacro (inTextMacroList, true) ;
-  generatedZone3 << "static const char * kTextMacroTitle [" << (inTextMacroList.count () + 1) << "] = {\n  " ;
+  generatedZone3 << "static const char * kTextMacroTitle [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
   while (currentMacro.hc ()) {
     generatedZone3.appendCLiteralStringConstant (currentMacro._mKey (HERE)) ;
     generatedZone3 << ",\n  " ;
@@ -462,7 +462,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   }
   generatedZone3 << "NULL\n"
                     "} ;\n\n" ;
-  generatedZone3 << "static const char * kTextMacroContent [" << (inTextMacroList.count () + 1) << "] = {\n  " ;
+  generatedZone3 << "static const char * kTextMacroContent [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
   currentMacro.rewind () ;
   while (currentMacro.hc ()) {
     generatedZone3.appendCLiteralStringConstant (currentMacro._mContents (HERE)) ;
@@ -484,7 +484,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   if (inTerminalSymbolCount > 0) {
     generatedZone3.appendCppTitleComment ("P O P U P    L I S T    D A T A") ;
     C_String mainArray ;
-    mainArray << "static const uint16 * kPopUpListData [" << (inTerminalSymbolCount + 1) << "] = {\n"
+    mainArray << "static const uint16 * kPopUpListData [" << cStringWithSigned (inTerminalSymbolCount + 1) << "] = {\n"
                  "  NULL" ;
     for (sint32 i=0 ; i<inTerminalSymbolCount ; i++) {
       mainArray << ",\n  " ;
@@ -496,7 +496,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
           const uint32 terminalID2 = currentMark._mTerminal2ID (HERE).uintValue () ;
           if (first) {
             first = false ;
-            generatedZone3 << "static uint16 kPopUpListData_" << i << " [] = {" ;
+            generatedZone3 << "static uint16 kPopUpListData_" << cStringWithSigned (i) << " [] = {" ;
           }else{
             generatedZone3 << ", " ;
           }
@@ -507,7 +507,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
       if (first) {
         mainArray << "NULL" ;
       }else{
-        mainArray << "kPopUpListData_" << i ;
+        mainArray << "kPopUpListData_" << cStringWithSigned (i) ;
         generatedZone3 << ", 0} ;\n\n" ;
         generatedZone3.appendCppHyphenLineComment () ;
       }

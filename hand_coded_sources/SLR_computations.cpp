@@ -552,7 +552,7 @@ display (const cPureBNFproductionsList & inProductionRules,
          C_HTML_FileWrite & inHTMLfile) {
   for (sint32 i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-    inHTMLfile << "S" << i ;
+    inHTMLfile << "S" << cStringWithSigned (i) ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
     m_LR0_items_sets_array (i COMMA_HERE).display (inProductionRules, inVocabulary, inHTMLfile) ;
     inHTMLfile.outputRawData ("</code></td></tr>") ;
@@ -674,11 +674,11 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
 //--- Print non-terminal symbols --------------------------------------
   generatedZone3.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
   generatedZone3 << "static const char * gNonTerminalNames ["
-                 << inVocabulary.getNonTerminalSymbolsCount () << "] = {\n" ;
+                 << cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) << "] = {\n" ;
   for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     generatedZone3 << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
                    << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
-                   << "// Index " << (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
+                   << "// Index " << cStringWithSigned (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
   }
   generatedZone3 << "} ;\n\n" ;
 
@@ -701,7 +701,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
   sint32 startIndex = 0 ;
   for (sint32 i=0 ; i<rowsCount ; i++) {
     startIndexArray.addObject (startIndex) ;
-    generatedZone3 <<"\n// State S" << i << " (index = " << startIndex << ")" ;
+    generatedZone3 <<"\n// State S" << cStringWithSigned (i) << " (index = " << cStringWithSigned (startIndex) << ")" ;
     for (sint32 j=0 ; j<columnsCount ; j++) {
       const sint32 parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
       const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
@@ -718,9 +718,9 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generateTerminalSymbolCppName (inVocabulary.getSymbol (j COMMA_HERE), generatedZone3) ;
         generatedZone3 << ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
-          generatedZone3 << "REDUCE (" << parameter << ")" ;
+          generatedZone3 << "REDUCE (" << cStringWithSigned (parameter) << ")" ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
-          generatedZone3 << "SHIFT (" << parameter << ")" ;
+          generatedZone3 << "SHIFT (" << cStringWithSigned (parameter) << ")" ;
         }else{ // Accept action
           generatedZone3 << "ACCEPT" ;
         }
@@ -730,7 +730,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     startIndex ++ ;
   }
   generatedZone3 << "} ;\n\n"
-                    "static const uint32 gActionTableIndex [" << rowsCount << "] = {" ;
+                    "static const uint32 gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
   first = true ;
   for (sint32 i=0 ; i<rowsCount ; i++) {
     generatedZone3 << "\n" ;
@@ -740,7 +740,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     }else{
       generatedZone3 << ", " ;
     }
-    generatedZone3 << startIndexArray (i COMMA_HERE) << "  // S" << i ;
+    generatedZone3 << cStringWithSigned (startIndexArray (i COMMA_HERE)) << "  // S" << cStringWithSigned (i) ;
   }
   generatedZone3 << "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
@@ -769,18 +769,18 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << ", -1} ;\n\n" ;
         }
         generatedZone3 << "static const sint16 gSuccessorTable"
-                << sourceState << " ["
-                << ((sint32)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
+                << cStringWithSigned (sourceState) << " ["
+                << cStringWithSigned ((sint32)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
                 << "] = {" ;
         currentSourceState = sourceState ;
       }
-      generatedZone3 << nonterminal << ", " << inTransitionList (t COMMA_HERE).mTargetState ;
+      generatedZone3 << cStringWithSigned (nonterminal) << ", " << cStringWithSigned (inTransitionList (t COMMA_HERE).mTargetState) ;
     }
   }
   generatedZone3 << ", -1} ;\n\n" ;
 //--- Write global state successor table
   generatedZone3 << "static const sint16 * gSuccessorTable ["
-          << rowsCount
+          << cStringWithSigned (rowsCount)
           << "] = {\n" ;
   sint32 itemInSameLineCount = 0 ;
   for (sint32 r=0 ; r<rowsCount ; r++) {
@@ -793,7 +793,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
     if (stateSuccessorsCount (r COMMA_HERE) == 0) {
       generatedZone3 << "NULL" ;
     }else{
-      generatedZone3 << "gSuccessorTable" << r ;
+      generatedZone3 << "gSuccessorTable" << cStringWithSigned (r) ;
     }
   }
   generatedZone3 << "} ;\n\n" ;
@@ -803,15 +803,15 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
   const sint32 productionsCount = inProductionRules.length () ;
   generatedZone3.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
   generatedZone3 << "static const sint16 gProductionsTable ["
-          << productionsCount
+          << cStringWithSigned (productionsCount)
           << " * 2] = {\n" ;
   for (sint32 p=0 ; p<productionsCount ; p++) {
     if (p > 0) {
       generatedZone3 << ",\n  " ;
     }
-    generatedZone3 << (inProductionRules (p COMMA_HERE).aNumeroNonTerminalGauche - columnsCount)
+    generatedZone3 << cStringWithSigned (inProductionRules (p COMMA_HERE).aNumeroNonTerminalGauche - columnsCount)
             << ", "
-            << inProductionRules (p COMMA_HERE).aDerivation.count () ;
+            << cStringWithSigned (inProductionRules (p COMMA_HERE).aDerivation.count ()) ;
   }
   generatedZone3 << "} ;\n\n" ;
 
@@ -834,7 +834,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << ",\n                                " ;
         generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
         if (first >= 0) {
-          generatedZone3 << " parameter_" << numeroParametre ;
+          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
         }
         parametre.next () ;
         numeroParametre ++ ;
@@ -847,7 +847,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         for (sint32 j=first ; j<=last ; j++) {
           const sint32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          generatedZone3 << "  case " << ip << " :\n    " ;
+          generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal._key (HERE),
@@ -884,7 +884,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
-          generatedZone3 << " parameter_" << numeroParametre ;
+          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -910,7 +910,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hc ()) {
-          generatedZone3 << ", parameter_" << numeroParametre ;
+          generatedZone3 << ", parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -927,7 +927,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hc ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
-            generatedZone3 << "      parameter_" << numeroParametre << "._drop () ;\n" ;
+            generatedZone3 << "      parameter_" << cStringWithSigned (numeroParametre) << "._drop () ;\n" ;
           }
           parametre.next () ;
           numeroParametre ++ ;
@@ -943,7 +943,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hc ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
-            generatedZone3 << "    parameter_" << numeroParametre << "._drop () ;\n" ;
+            generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << "._drop () ;\n" ;
           }
           parametre.next () ;
           numeroParametre ++ ;
@@ -965,7 +965,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
-          generatedZone3 << " parameter_" << numeroParametre ;
+          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -986,7 +986,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hc ()) {
-          generatedZone3 << ", parameter_" << numeroParametre ;
+          generatedZone3 << ", parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -1020,11 +1020,11 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       const sint32 last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (sint32 j=first ; j<=last ; j++) {
-        generatedZone3 << " " << inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+        generatedZone3 << " " << cStringWithSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
       generatedZone3 << "\n"
                  "  return (sint16) (_inLexique.nextProductionIndex () - "
-              << ((sint32)(first - 1))
+              << cStringWithSigned ((sint32)(first - 1))
               << ") ;\n"
                  "}\n\n" ;
     }
@@ -1110,8 +1110,8 @@ SLR_computations (C_Compiler & inLexique,
                           LR0_items_sets_collection,
                           transitionList) ;
   if (inVerboseOptionOn) {
-    co << LR0_items_sets_collection.getStatesCount () << " states, "
-       << transitionList.length () << " transitions.\n" ;
+    co << cStringWithSigned (LR0_items_sets_collection.getStatesCount ()) << " states, "
+       << cStringWithSigned (transitionList.length ()) << " transitions.\n" ;
     co.flush () ;
   }
 //--- Display automaton states
@@ -1130,11 +1130,11 @@ SLR_computations (C_Compiler & inLexique,
     inHTMLfile->outputRawData ("</td></tr>") ;
     for (sint32 i=0 ; i<transitionList.length () ; i++) {
       inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      *inHTMLfile << "  S" << transitionList (i COMMA_HERE).mSourceState
+      *inHTMLfile << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
                   << " |- " ;
       inVocabulary.printInFile (*inHTMLfile, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
       *inHTMLfile << " -> S"
-                  << transitionList (i COMMA_HERE).mTargetState ;
+                  << cStringWithSigned (transitionList (i COMMA_HERE).mTargetState) ;
       inHTMLfile->outputRawData ("</code></td></tr>") ;
     }
     inHTMLfile->outputRawData ("</table><p></p>") ;
@@ -1169,9 +1169,9 @@ SLR_computations (C_Compiler & inLexique,
       const sint32 terminal = transitionList (index COMMA_HERE).mAction ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        *inHTMLfile << "Action [S" << sourceState << ", " ;
+        *inHTMLfile << "Action [S" << cStringWithSigned (sourceState) << ", " ;
         inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
-        *inHTMLfile << "] : shift, goto S" << targetState ;
+        *inHTMLfile << "] : shift, goto S" << cStringWithSigned (targetState) ;
         inHTMLfile->outputRawData ("</code></td></tr>") ;
       }
       SLRdecisionTable (sourceState, terminal COMMA_HERE) = cDecisionTableElement::shiftDecision (targetState) ;
@@ -1192,7 +1192,7 @@ SLR_computations (C_Compiler & inLexique,
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         *inHTMLfile << "Action [S"
-                    << state
+                    << cStringWithSigned (state)
                     << ", " ;
         inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
         *inHTMLfile << "] : accept" ;
@@ -1220,7 +1220,7 @@ SLR_computations (C_Compiler & inLexique,
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           *inHTMLfile << "Action [S"
-                      << state
+                      << cStringWithSigned (state)
                       << ", " ;
           inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
           *inHTMLfile << "] : reduce by " ;
@@ -1250,11 +1250,11 @@ SLR_computations (C_Compiler & inLexique,
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         *inHTMLfile << "Successor [S"
-                    << transitionList (t COMMA_HERE).mSourceState
+                    << cStringWithSigned (transitionList (t COMMA_HERE).mSourceState)
                     << ", " ;
         inVocabulary.printInFile (*inHTMLfile, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
         *inHTMLfile << "] = S"
-                    << transitionList (t COMMA_HERE).mTargetState ;
+                    << cStringWithSigned (transitionList (t COMMA_HERE).mTargetState) ;
         inHTMLfile->outputRawData ("</code></td></tr>") ;
       }
     }
@@ -1271,14 +1271,14 @@ SLR_computations (C_Compiler & inLexique,
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("</table><p>") ;
     *inHTMLfile << "LR0 automaton has "
-                << LR0_items_sets_collection.getStatesCount ()
+                << cStringWithSigned (LR0_items_sets_collection.getStatesCount ())
                 << " states and "
-                << transitionList.length ()
+                << cStringWithSigned (transitionList.length ())
                 << " transitions.\n\n"
                    "Analyze table has "
-                << shiftActions << " shift actions, "
-                << reduceActions << " reduce actions, and "
-                << successorEntries << " state successor entries." ;
+                << cStringWithSigned (shiftActions) << " shift actions, "
+                << cStringWithSigned (reduceActions) << " reduce actions, and "
+                << cStringWithSigned (successorEntries) << " state successor entries." ;
     inHTMLfile->outputRawData ("</p><p>") ;
     if (conflictCount == 0) {
       inHTMLfile->outputRawData ("<span class=\"success\">") ;
@@ -1286,7 +1286,7 @@ SLR_computations (C_Compiler & inLexique,
       inHTMLfile->outputRawData ("</span>") ;
     }else{
       inHTMLfile->outputRawData ("<span class=\"error\">") ;
-      *inHTMLfile << conflictCount
+      *inHTMLfile << cStringWithSigned (conflictCount)
                   << " conflict"
                   << ((conflictCount > 1) ? "s" : "")
                   << " : grammar is not SLR (1)." ;

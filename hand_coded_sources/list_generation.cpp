@@ -129,7 +129,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -175,7 +175,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                              " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -190,7 +190,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                             " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -205,7 +205,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                                " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -220,7 +220,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -240,7 +240,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -262,7 +262,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << ",\n                                "
                "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -278,7 +278,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -293,7 +293,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -401,7 +401,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -412,7 +412,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   while (current.hc ()) {
     inCppFile << ",\n"
-              << current._mAttributeName (HERE) << " (argument_" << numeroVariable << ")" ;
+              << current._mAttributeName (HERE) << " (argument_" << cStringWithSigned (numeroVariable) << ")" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -489,7 +489,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -503,7 +503,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -523,7 +523,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -535,7 +535,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -556,7 +556,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -565,7 +565,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
-    inCppFile << "&& argument_" << numeroVariable << ".isBuilt ()" ;
+    inCppFile << "&& argument_" << cStringWithSigned (numeroVariable) << ".isBuilt ()" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -578,7 +578,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -621,7 +621,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << "          " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " p_" << numeroVariable << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << " p_" << cStringWithSigned (numeroVariable) << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -632,7 +632,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "p_" << numeroVariable ;
+    inCppFile << "p_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -654,7 +654,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n                     "
                  "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -663,7 +663,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (isBuilt ()" ;
   numeroVariable = 0 ;
   while (current.hc ()) {
-    inCppFile << " && argument_" << numeroVariable << ".isBuilt ()" ;
+    inCppFile << " && argument_" << cStringWithSigned (numeroVariable) << ".isBuilt ()" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -676,7 +676,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -733,7 +733,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -747,7 +747,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -841,7 +841,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n              " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -858,7 +858,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -866,7 +866,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -884,7 +884,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n             " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -901,7 +901,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -909,7 +909,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -926,7 +926,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -943,7 +943,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -953,7 +953,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -969,7 +969,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n                " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -986,7 +986,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -996,7 +996,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1166,7 +1166,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1196,7 +1196,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                              " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1211,7 +1211,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                             " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1226,7 +1226,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                                " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1241,7 +1241,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << ",\n                                 " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "_out_" << numeroVariable ;
+    inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1262,7 +1262,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1283,7 +1283,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     inHfile << "const " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "argument_" << numeroVariable ;
+    inHfile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1360,7 +1360,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1373,7 +1373,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile << ",\n" ;
     }
-    inCppFile << current._mAttributeName (HERE) << " (argument_" << numeroVariable << ")" ;
+    inCppFile << current._mAttributeName (HERE) << " (argument_" << cStringWithSigned (numeroVariable) << ")" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1485,7 +1485,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1496,7 +1496,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1516,7 +1516,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1528,7 +1528,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1561,7 +1561,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << "          " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
-    inCppFile << " p_" << numeroVariable << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << " p_" << cStringWithSigned (numeroVariable) << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1572,7 +1572,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "p_" << numeroVariable ;
+    inCppFile << "p_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1629,7 +1629,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1643,7 +1643,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "argument_" << numeroVariable ;
+    inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1669,7 +1669,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1686,7 +1686,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1694,7 +1694,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1712,7 +1712,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n             " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1729,7 +1729,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1737,7 +1737,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1754,7 +1754,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1771,7 +1771,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1781,7 +1781,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1797,7 +1797,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << ",\n                " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "_out_" << numeroVariable ;
+    inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1814,7 +1814,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1824,7 +1824,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << numeroVariable << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }

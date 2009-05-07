@@ -186,7 +186,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       inHfile << ",\n                                "
                  "const " ;
       current->mAttributType(HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << "argument_" << variableIndex ;
+      inHfile << "argument_" << cStringWithSigned (variableIndex) ;
       current = current->nextObject () ;
       variableIndex ++ ;
     }
@@ -336,7 +336,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   while (currentLazyDeclaration != NULL) {
     macroValidPointer (currentLazyDeclaration) ;
     generatedZone3 << "//--- 'lazy' declaration\n"
-                      "  private : mutable bool _mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed ;\n" ;
+                      "  private : mutable bool _mOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << "isComputed ;\n" ;
     GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
     while (currentOnceAttribute != NULL) {
       macroValidPointer (currentOnceAttribute) ;
@@ -348,7 +348,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << " reader_" << currentOnceAttribute->mAttributeName << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
       currentOnceAttribute = currentOnceAttribute->nextObject () ;
     }
-    generatedZone3 << "  private : void computeOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << " (C_Compiler & _inLexique) const ;\n\n" ;
+    generatedZone3 << "  private : void computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (C_Compiler & _inLexique) const ;\n\n" ;
     currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
   }
 
@@ -464,7 +464,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << "const " ;
     current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "argument_" << variableIndex ;
+    inCppFile << "argument_" << cStringWithSigned (variableIndex) ;
     current = current->nextObject () ;
     variableIndex ++ ;
   }
@@ -490,7 +490,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (variableIndex > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "argument_" << variableIndex ;
+    inCppFile << "argument_" << cStringWithSigned (variableIndex) ;
     macroValidPointer (current) ;
     current = current->nextObject () ;
     variableIndex ++ ;
@@ -504,7 +504,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current != NULL) {
     inCppFile << ",\n" ;
     macroValidPointer (current) ;
-    inCppFile << current->mAttributeName << " (argument_" << variableIndex << ")" ;
+    inCppFile << current->mAttributeName << " (argument_" << cStringWithSigned (variableIndex) << ")" ;
     variableIndex ++ ;
     current = current->nextObject () ;
   }
@@ -514,7 +514,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (currentLazyDeclaration != NULL) {
     macroValidPointer (currentLazyDeclaration) ;
     inCppFile << ",\n"
-                 "_mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed (false)" ;
+                 "_mOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << "isComputed (false)" ;
     GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
     while (currentOnceAttribute != NULL) {
       macroValidPointer (currentOnceAttribute) ;
@@ -575,7 +575,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (currentLazyDeclaration != NULL) {
     macroValidPointer (currentLazyDeclaration) ;
     inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "void cPtr_" << aNomClasse << "::computeOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << " (C_Compiler & " ;
+    inCppFile << "void cPtr_" << aNomClasse << "::computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (C_Compiler & " ;
   //--- L'argument lexique est-il utilise ?
     const bool lexiqueUtilise = isLexiqueFormalArgumentUsedForList (currentLazyDeclaration->mInstructionList, true) ;
     if (! lexiqueUtilise) {
@@ -586,7 +586,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << " */" ;
     }
     inCppFile << ") const {\n"
-                 "  _mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed = true ;\n" ;
+                 "  _mOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << "isComputed = true ;\n" ;
     GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
     while (currentOnceAttribute != NULL) {
       macroValidPointer (currentOnceAttribute) ;
@@ -609,8 +609,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.appendCppHyphenLineComment () ;
       currentOnceAttribute->mAttributType (HERE)->generateCppClassName (inCppFile) ;
       inCppFile << " cPtr_" << aNomClasse << "::reader_" <<  currentOnceAttribute->mAttributeName << " (C_Compiler & _inLexique COMMA_UNUSED_LOCATION_ARGS) const {\n"
-                   "  if (! _mOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << "isComputed) {\n"
-                   "    computeOnce" << currentLazyDeclaration->mLocationMagicNumber.location () << " (_inLexique) ;\n"
+                   "  if (! _mOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << "isComputed) {\n"
+                   "    computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (_inLexique) ;\n"
                    "  }\n"
                    "  return " <<  currentOnceAttribute->mAttributeName << " ;\n"
                    "}\n\n" ;
@@ -768,7 +768,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << ",\n"
                    "                 const " ;
       current->mAttributType(HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "argument_" << variableIndex ;
+      inCppFile << "argument_" << cStringWithSigned (variableIndex) ;
       current = current->nextObject () ;
       variableIndex ++ ;
     }
@@ -790,7 +790,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
         if (variableIndex > 0) {
           inCppFile << ",\n                                " ;
         }
-        inCppFile << "argument_" << variableIndex ;
+        inCppFile << "argument_" << cStringWithSigned (variableIndex) ;
         current = current->nextObject () ;
         variableIndex ++ ;
       }

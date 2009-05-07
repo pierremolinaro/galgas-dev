@@ -177,7 +177,7 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
     inCppFile << "  {kEntry_" ;
     inCppFile.appendSigned (i) ;
     inCppFile << "_forTable_" << inTableName ;
-    inCppFile << ", " << entriesArray (i COMMA_HERE).mEntryStringLength
+    inCppFile << ", " << cStringWithSigned (entriesArray (i COMMA_HERE).mEntryStringLength)
              << ", " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (entriesArray (i COMMA_HERE).mTokenCode, inCppFile) ;
     inCppFile << "}" << ((i == (entriesCount - 1)) ? "" : ",") << "\n" ;
@@ -197,7 +197,7 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
   inCppFile << "static const sint32 "
             << "ktable_size_"
             << nomTable
-            << " = " << inMap.count () << " ;\n\n" ; 
+            << " = " << cStringWithSigned (inMap.count ()) << " ;\n\n" ; 
 // ---------------------------- Generate table
   generateKeyWordTableEntries (inMap, inCppFile, nomTable, inLexiqueName) ;
 // ---------------------------- Statique search method
@@ -382,12 +382,12 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "  while ((_mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n"
                  "    sint32 _replacementIndex = 0 ;\n"
                  "    while (_replacementIndex >= 0) {\n"
-                 "     _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, " << inTemplateReplacementMap.count () << ") ;\n"
+                 "     _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, " << cStringWithSigned (inTemplateReplacementMap.count ()) << ") ;\n"
                  "       if (_replacementIndex >= 0) {\n"
                  "         _token.mTemplateStringBeforeToken << kTemplateReplacementArray [_replacementIndex].mEndString ;\n"
                  "      }\n"
                  "    }\n"
-                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, " << inTemplateDelimiterMap.count () << ") ;\n"
+                 "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, " << cStringWithSigned (inTemplateDelimiterMap.count ()) << ") ;\n"
                  "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
                  "      _token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;\n"
                  "      advance () ;\n"
@@ -832,7 +832,7 @@ void cPtr_typeConditionChaine::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
   inCppFile << "testForInputString (" ;
   inCppFile.appendCLiteralStringConstant (attributChaine) ;
-  inCppFile << ", " << attributChaine.length ()
+  inCppFile << ", " << cStringWithSigned (attributChaine.length ())
             << ", true)" ;
 }
 
@@ -1293,7 +1293,7 @@ generate_scanner_header_file (C_Compiler & inLexique,
 
   generatedZone3 << "//--- Get terminal count\n"
                     "  public : virtual sint16 terminalVocabularyCount (void) const { return "
-                 << table_des_terminaux.count ()
+                 << cStringWithSigned (table_des_terminaux.count ())
                  << " ; }\n"
 //--- Get token string (for debugging) 
                     "//--- Get Token String\n"
@@ -1368,24 +1368,24 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     GGS_templateDelimiterMap::cEnumerator currentDelimiter (inTemplateDelimiterMap) ;
     sint32 idx = 0 ;
     while (currentDelimiter.hc ()) {
-      generatedZone2 << "static const utf32 kTemplateDefinitionArray_" << idx << "_startString [] = " ;
+      generatedZone2 << "static const utf32 kTemplateDefinitionArray_" << cStringWithSigned (idx) << "_startString [] = " ;
       generatedZone2.appendUTF32LiteralStringConstant (currentDelimiter._key (HERE)) ;
       generatedZone2 << " ;\n\n" ;
       if (currentDelimiter._mEndString (HERE).length () > 0) {
-        generatedZone2 << "static const utf32 kTemplateDefinitionArray_" << idx << "_endString [] = " ;
+        generatedZone2 << "static const utf32 kTemplateDefinitionArray_" << cStringWithSigned (idx) << "_endString [] = " ;
         generatedZone2.appendUTF32LiteralStringConstant (currentDelimiter._mEndString (HERE)) ;
         generatedZone2 << " ;\n\n" ;
       }
       currentDelimiter.next() ;
       idx ++ ;
     }
-    generatedZone2 << "static const templateStruct kTemplateDefinitionArray [" << inTemplateDelimiterMap.count () << "] = {\n" ;
+    generatedZone2 << "static const templateStruct kTemplateDefinitionArray [" << cStringWithSigned (inTemplateDelimiterMap.count ()) << "] = {\n" ;
     currentDelimiter.rewind () ;
     idx = 0 ;
     while (currentDelimiter.hc ()) {
-      generatedZone2 << "  {kTemplateDefinitionArray_" << idx << "_startString, " << currentDelimiter._key (HERE).length () << ", " ;
+      generatedZone2 << "  {kTemplateDefinitionArray_" << cStringWithSigned (idx) << "_startString, " << cStringWithSigned (currentDelimiter._key (HERE).length ()) << ", " ;
       if (currentDelimiter._mEndString (HERE).length () > 0) {
-        generatedZone2 << "kTemplateDefinitionArray_" << idx << "_endString, " << currentDelimiter._mEndString (HERE).length () ;
+        generatedZone2 << "kTemplateDefinitionArray_" << cStringWithSigned (idx) << "_endString, " << cStringWithSigned (currentDelimiter._mEndString (HERE).length ()) ;
       }else{
         generatedZone2 << "NULL, 0" ;
       }
@@ -1403,21 +1403,21 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     GGS_templateReplacementMap::cEnumerator currentReplacement (inTemplateReplacementMap) ;
     sint32 idx = 0 ;
     while (currentReplacement.hc ()) {
-      generatedZone2 << "static const utf32 kTemplateReplacementArray_" << idx << "_startString [] = " ;
+      generatedZone2 << "static const utf32 kTemplateReplacementArray_" << cStringWithSigned (idx) << "_startString [] = " ;
       generatedZone2.appendUTF32LiteralStringConstant (currentReplacement._key (HERE)) ;
       generatedZone2 << " ;\n\n" ;
-      generatedZone2 << "static const utf32 kTemplateReplacementArray_" << idx << "_endString [] = " ;
+      generatedZone2 << "static const utf32 kTemplateReplacementArray_" << cStringWithSigned (idx) << "_endString [] = " ;
       generatedZone2.appendUTF32LiteralStringConstant (currentReplacement._mReplacedString (HERE)) ;
       generatedZone2 << " ;\n\n" ;
       currentReplacement.next () ;
       idx ++ ;
     }
-    generatedZone2 << "static const templateStruct kTemplateReplacementArray [" << inTemplateReplacementMap.count () << "] = {\n" ;
+    generatedZone2 << "static const templateStruct kTemplateReplacementArray [" << cStringWithSigned (inTemplateReplacementMap.count ()) << "] = {\n" ;
     currentReplacement.rewind () ;
     idx = 0 ;
     while (currentReplacement.hc ()) {
-      generatedZone2 << "  {kTemplateReplacementArray_" << idx << "_startString, " << currentReplacement._key (HERE).length ()
-                     << ", kTemplateReplacementArray_" << idx << "_endString, " << currentReplacement._mReplacedString (HERE).length () << ", true},\n" ;
+      generatedZone2 << "  {kTemplateReplacementArray_" << cStringWithSigned (idx) << "_startString, " << cStringWithSigned (currentReplacement._key (HERE).length ())
+                     << ", kTemplateReplacementArray_" << cStringWithSigned (idx) << "_endString, " << cStringWithSigned (currentReplacement._mReplacedString (HERE).length ()) << ", true},\n" ;
       currentReplacement.next () ;
       idx ++ ;
     }
@@ -1497,12 +1497,12 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     while (currentMessage.hc ()) {
       const bool used = inUsedErrorMessageSet._hasKey (currentMessage._key (HERE)) ;
       if (used) {
-        generatedZone2 << "//--- Message " << messageNumber << "\n" ;
+        generatedZone2 << "//--- Message " << cStringWithSigned (messageNumber) << "\n" ;
       }else{
-        generatedZone2 << "//--- Message " << messageNumber << " (not used)\n"
+        generatedZone2 << "//--- Message " << cStringWithSigned (messageNumber) << " (not used)\n"
                           "// " ;      
       }
-      generatedZone2 << "static const utf32 gErrorMessage_" << messageNumber << " [] = " ;
+      generatedZone2 << "static const utf32 gErrorMessage_" << cStringWithSigned (messageNumber) << " [] = " ;
       generatedZone2.appendUTF32LiteralStringConstant (currentMessage._mErrorMessage (HERE)) ;
       generatedZone2 << " ;\n" ;
       currentMessage.next() ;
@@ -1541,7 +1541,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                  << "appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,\n"
                  << "                                           C_String & outSyntaxErrorMessage) {\n" ;
   const sint32 n = table_des_terminaux.count () + 1 ;
-  generatedZone2 << "  static const utf32 * syntaxErrorMessageArray [" << n << "] = {"
+  generatedZone2 << "  static const utf32 * syntaxErrorMessageArray [" << cStringWithSigned (n) << "] = {"
                     "kEndOfSourceLexicalErrorMessage" << errorMessageList << "} ;\n"
                     "  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;\n"
                     "}\n\n" ;
@@ -1567,11 +1567,11 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 //---------------------------------------- Generate styles definition 
   generatedZone2.appendCppTitleComment ("Styles definition") ;
   generatedZone2 <<  "sint32 " << inLexiqueName << "::getStylesCount (void) {\n"
-                     "  return " <<  inStylesList.count () << " ;\n"
+                     "  return " << cStringWithSigned (inStylesList.count ()) << " ;\n"
                      "}\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleName (const sint32 inIndex) {\n"
-                     "  const char * kStylesArray [" << (inStylesList.count () + 1) << "] = {" ;
+                     "  const char * kStylesArray [" << cStringWithSigned (inStylesList.count () + 1) << "] = {" ;
   GGS_styleList::cEnumerator style (inStylesList, true) ;
   while (style.hc ()) {
     generatedZone2.appendCLiteralStringConstant (style._mTitle (HERE).string ()) ;
@@ -1579,11 +1579,11 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     style.next () ;
   }
   generatedZone2 << "NULL} ;\n"
-                    "  return (inIndex < " <<  inStylesList.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
+                    "  return (inIndex < " << cStringWithSigned (inStylesList.count ()) << ") ? kStylesArray [inIndex] : NULL ;\n"
                     "} ;\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 <<  "const char * " << inLexiqueName << "::getStyleIdentifier (const sint32 inIndex) {\n"
-                     "  const char * kStylesArray [" << (inStylesList.count () + 1) << "] = {" ;
+                     "  const char * kStylesArray [" << cStringWithSigned (inStylesList.count () + 1) << "] = {" ;
   style.rewind () ;
   while (style.hc ()) {
     generatedZone2.appendCLiteralStringConstant (style._mStyleName (HERE).string ()) ;
@@ -1591,12 +1591,12 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     style.next () ;
   }
   generatedZone2 << "NULL} ;\n"
-                    "  return (inIndex < " <<  inStylesList.count () << ") ? kStylesArray [inIndex] : NULL ;\n"
+                    "  return (inIndex < " << cStringWithSigned (inStylesList.count ()) << ") ? kStylesArray [inIndex] : NULL ;\n"
                     "} ;\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "uint8 " << inLexiqueName << "::\n"
                     "terminalStyleIndex (const sint32 inTerminal) {\n"
-                    "  static const uint8 kTerminalSymbolStyles [" << (table_des_terminaux.count () + 1) << "] = {0" ;
+                    "  static const uint8 kTerminalSymbolStyles [" << cStringWithSigned (table_des_terminaux.count () + 1) << "] = {0" ;
 
   currentTerminal.rewind () ;
   while (currentTerminal.hc ()) {

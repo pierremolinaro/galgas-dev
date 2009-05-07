@@ -71,7 +71,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Internal constructor\n"
              "  private : inline GGS_" << mEnumTypeName << " (const enumeration inValue) : mValue (inValue) {}\n\n"
              "//--- Bit count for bdd\n"
-             "  public : static inline uint16 bitCount (void) { return " << bitCount << " ; }\n\n"
+             "  public : static inline uint16 bitCount (void) { return " << cStringWithSigned (bitCount) << " ; }\n\n"
              "//--- Is built ?\n"
              "  public : bool isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
@@ -265,7 +265,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
                  "reader_" << m._key (HERE) << " (C_Compiler & /* _inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
-                 "  const char * kMessages [" << (m._mMessageStringList (HERE).count () + 1) << "] = {\"\"" ;
+                 "  const char * kMessages [" << cStringWithSigned (m._mMessageStringList (HERE).count () + 1) << "] = {\"\"" ;
     GGS_lstringlist::cEnumerator e (m._mMessageStringList (HERE), true) ;
     while (e.hc ()) {
       inCppFile << ",\n    " ;
@@ -440,7 +440,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "static const GGS_" << mEnumTypeName << "::enumeration kResultFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE)
-              << " [" << squareConstantCount << "] = {" ;
+              << " [" << cStringWithSigned (squareConstantCount) << "] = {" ;
     for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
       for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
         const sint32 kIndex = leftOp * constantCount + rightOp ;
@@ -456,11 +456,11 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "static const sint32 kErrorFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE)
-              << " [" << squareConstantCount << "] = {" ;
+              << " [" << cStringWithSigned (squareConstantCount) << "] = {" ;
     for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
       for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
         const sint32 kIndex = leftOp * constantCount + rightOp ;
-        inCppFile << "\n  " << errorArray (kIndex COMMA_HERE) ;
+        inCppFile << "\n  " << cStringWithSigned (errorArray (kIndex COMMA_HERE)) ;
         if (kIndex < (squareConstantCount-1)) {
           inCppFile << "," ;
         }
@@ -500,7 +500,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                  "  #endif\n"
                  "  enumeration result = kNotBuilt ;\n"
                  "  if ((mValue > 0) && (inOperand.mValue > 0)) {\n"
-                 "    const sint32 kIndex = (mValue - 1) * " << mConstantMap.count () << " + inOperand.mValue - 1 ;\n"
+                 "    const sint32 kIndex = (mValue - 1) * " << cStringWithSigned (mConstantMap.count ()) << " + inOperand.mValue - 1 ;\n"
                  "    result = kResultFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE) << " [kIndex] ;\n"
                  "    const sint32 error = kErrorFor" << mEnumTypeName
@@ -511,7 +511,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     errorMessageIndex = 1 ;
     while (definition. hc ()) {
       if (definition._mInstructionList (HERE).count () > 0) {
-        inCppFile << "      case " << errorMessageIndex << ":\n" ;
+        inCppFile << "      case " << cStringWithSigned (errorMessageIndex) << ":\n" ;
         errorMessageIndex ++ ;
         inCppFile.incIndentation (6) ;
         generateInstructionListForList (definition._mInstructionList (HERE),

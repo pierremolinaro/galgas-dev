@@ -48,7 +48,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   const sint32 n = wrapperFileCount (mRegularFileSortedList, mDirectorySortedList) ;
   for (sint32 i=0 ; i<n ; i++) {
     inHfile << "extern const char * gWrapperFileContent_"
-            << i
+            << cStringWithSigned (i)
             << "_" << mWrapperName
             << " ;\n" ;
   }

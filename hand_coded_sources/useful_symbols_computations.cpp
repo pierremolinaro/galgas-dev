@@ -114,7 +114,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
     *inHTMLfile << "Calculus completed in "
-                << inIterationCount
+                << cStringWithSigned (inIterationCount)
                 << " iterations.\n" ;
     inHTMLfile->outputRawData ("</p>") ;
   }

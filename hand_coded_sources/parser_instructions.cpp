@@ -381,7 +381,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
     inHfile << "  protected : virtual sint16 select_" << inTargetFileName
-             << "_" << ioPrototypeIndex
+             << "_" << cStringWithSigned (ioPrototypeIndex)
              << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
   ioPrototypeIndex ++ ;
@@ -406,14 +406,14 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   inCppFile << "switch (select_" << inTargetFileName
-           << "_" << ioPrototypeIndex
+           << "_" << cStringWithSigned (ioPrototypeIndex)
            << " (_inLexique)) {\n" ;
   ioPrototypeIndex ++ ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
   sint16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
   while (currentBranch.hc ()) {
-    inCppFile << "case " << numeroBranche << " : {\n" ;
+    inCppFile << "case " << cStringWithSigned (numeroBranche) << " : {\n" ;
     generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -478,7 +478,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
     inHfile << "  protected : virtual sint16 select_repeat_" << inTargetFileName
-            << "_" << ioPrototypeIndex
+            << "_" << cStringWithSigned (ioPrototypeIndex)
             << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
   ioPrototypeIndex ++ ;
@@ -504,21 +504,21 @@ generateInstruction (AC_OutputStream & inCppFile,
                      const bool inGenerateSemanticInstructions) const {
   const sint32 prototypeIndex = ioPrototypeIndex ;
   ioPrototypeIndex ++ ;
-  inCppFile << "{ bool syntaxRepeat_" << prototypeIndex << " = true ;\n"
-               "  while (syntaxRepeat_" << prototypeIndex << ") {\n" ;
+  inCppFile << "{ bool syntaxRepeat_" << cStringWithSigned (prototypeIndex) << " = true ;\n"
+               "  while (syntaxRepeat_" << cStringWithSigned (prototypeIndex) << ") {\n" ;
   inCppFile.incIndentation (+4) ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (aListesBranchesRepeter, true) ;
   generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
   inCppFile << "switch (select_repeat_" << inTargetFileName
-           << "_" << prototypeIndex
+           << "_" << cStringWithSigned (prototypeIndex)
            << " (_inLexique)) {\n" ;
   currentBranch.next () ;
   sint16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
   while (currentBranch.hc ()) {
-    inCppFile << "case " << ((sint32) (numeroBranche + 1)) << " : {\n" ;
+    inCppFile << "case " << cStringWithSigned ((sint32) (numeroBranche + 1)) << " : {\n" ;
     generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -528,7 +528,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   }
   inCppFile.incIndentation (-2) ;
   inCppFile << "  default :\n"
-               "    syntaxRepeat_" << prototypeIndex << " = false ;\n"
+               "    syntaxRepeat_" << cStringWithSigned (prototypeIndex) << " = false ;\n"
                "    break ;\n"
                "}\n" ;
   inCppFile.incIndentation (-4) ;
@@ -621,7 +621,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   const sint32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
   inCppFile << "//--- First branch of parse/rewind instruction\n"
-            << "  const C_parsingContext context_" << v << " = _inLexique.parsingContext () ;\n" ;
+            << "  const C_parsingContext context_" << cStringWithSigned (v) << " = _inLexique.parsingContext () ;\n" ;
   generateInstructionListForList (p._mInstructionList (HERE), inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -629,7 +629,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   p.next () ;
   while (p.hc ()) {
     inCppFile << "//--- Branch of parse/rewind instruction\n"
-              << "  _inLexique.setParsingContext (context_" << v << ") ;\n" ;
+              << "  _inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
     generateInstructionListForList (p._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, tempPrototypeIndex,
@@ -832,17 +832,17 @@ generateInstruction (AC_OutputStream & inCppFile,
   if (inGenerateSemanticInstructions) {
   //--- 'condition' variable
     C_String conditionVariable ;
-    conditionVariable << "_condition_" << mEndOfInstructionLocation.location () ;
+    conditionVariable << "_condition_" << cStringWithSigned (mEndOfInstructionLocation.location ()) ;
   //--- 'variant' variable
     C_String variantVariable ;
-    variantVariable << "_variant_" << mEndOfInstructionLocation.location () ;
+    variantVariable << "_variant_" << cStringWithSigned (mEndOfInstructionLocation.location ()) ;
   //--- Loop header : compute variant initial value
     inCppFile << "GGS_uint " << variantVariable << " = " ;
     mVariantExpression (HERE)->generateExpression (inCppFile) ;
     inCppFile << " ;\n" ;
   //--- First pass on instruction list (parse only)
     const sint32 v = mEndOfInstructionLocation.location () ; // For making 'context_xxx' variable unique
-    inCppFile << "const C_parsingContext context_" << v << " = _inLexique.parsingContext () ;\n" ;
+    inCppFile << "const C_parsingContext context_" << cStringWithSigned (v) << " = _inLexique.parsingContext () ;\n" ;
     const sint32 prototypeIndex = ioPrototypeIndex ;
     inCppFile.incIndentation (-2) ;
     generateInstructionListForList (mInstructionList, inCppFile,
@@ -857,10 +857,10 @@ generateInstruction (AC_OutputStream & inCppFile,
     inCppFile << " ;\n" 
                  "}\n"
                  "while (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
-                 "  _inLexique.setParsingContext (context_" << v << ") ;\n"
+                 "  _inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n"
                  "  if (" << variantVariable << ".uintValue () == 0) {\n"
                  "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
-              << mEndOfInstructionLocation.lineNumber ()
+              << cStringWithSigned (mEndOfInstructionLocation.lineNumber ())
               << ")) ;\n"
                  "    " << conditionVariable << " = GGS_bool (true, false) ;\n"
                  "  }else{\n" 

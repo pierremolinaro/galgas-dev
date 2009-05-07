@@ -163,7 +163,7 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
       for (sint32 i=0 ; i<nonTerminalArray.count () ; i++) {
         if (nonTerminalArray (i COMMA_HERE)) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-          *inHTMLfile << index ;
+          *inHTMLfile << cStringWithSigned (index) ;
           index ++ ;
           inHTMLfile->outputRawData ("</td><td><code>") ;
           inVocabulary.printInFile (*inHTMLfile, i COMMA_HERE) ;

@@ -165,7 +165,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "      " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".signalExtractError (_inLexique, message1_, message2_ COMMA_SOURCE_FILE_AT_LINE ("
-              << aNomMessage.lineNumber () << ")) ;\n"
+              << cStringWithSigned (aNomMessage.lineNumber ()) << ")) ;\n"
                  "    }\n"
                  "  }else{\n" ;
     ioCppFile.incIndentation (4) ;
@@ -249,13 +249,13 @@ generateInstruction (AC_OutputStream & ioCppFile,
         ioCppFile.incIndentation (+2) ;
       }
       ioCppFile << "cPtr_" << p._mClassName (HERE) << " * operand_"
-                << p._mResultVarID (HERE).location ()
+                << cStringWithSigned (p._mResultVarID (HERE).location ())
                 << " = dynamic_cast <cPtr_" << p._mClassName (HERE) << " *> (" ;
       mVariableName (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << ".getPtr ()) ;\n"
-                   "if (operand_" << p._mResultVarID (HERE).location () << " != NULL) {\n"
+                   "if (operand_" << cStringWithSigned (p._mResultVarID (HERE).location ()) << " != NULL) {\n"
                    "  macroValidPointer (operand_"
-                << p._mResultVarID (HERE).location ()
+                << cStringWithSigned (p._mResultVarID (HERE).location ())
                 << ") ; \n" ;
       generateInstructionListForList (p._mInstructionList (HERE), ioCppFile,
                                       inTargetFileName, ioPrototypeIndex,
@@ -371,7 +371,7 @@ generateInstructions (AC_OutputStream & inCppFile,
                       sint32 & /* ioPrototypeIndex */,
                       const bool /* inGenerateDebug */) const {
   inCppFile << "const castBranchDescriptorType _castBranchDescriptor ["
-            << inBranchList.count () << "] = {\n" ;
+            << cStringWithSigned (inBranchList.count ()) << "] = {\n" ;
   GGS_typeStructuredCastBranchList::cEnumerator p (inBranchList, true) ;
   bool first = true ;
   while (p.hc ()) {
@@ -388,9 +388,9 @@ generateInstructions (AC_OutputStream & inCppFile,
                "} ;\n" ;
   mErrorLocationExpression (HERE)->generateExpression (inCppFile) ;
   inCppFile << "._castDefaultErrorMessage (_inLexique, _castBranchDescriptor, "
-            << inBranchList.count ()
+            << cStringWithSigned (inBranchList.count ())
             << ", & typeid (* (" << inTemporaryVarName << ".getPtr ())) COMMA_SOURCE_FILE_AT_LINE ("
-            << mLocation.lineNumber ()
+            << cStringWithSigned (mLocation.lineNumber ())
             << ")) ;\n" ;
 }
 
@@ -580,7 +580,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile  << ".reader_description (_inLexique COMMA_HERE).string () + \"\\n\""
                  " COMMA_SOURCE_FILE_AT_LINE ("
-              << mGalgasVariableName.lineNumber ()
+              << cStringWithSigned (mGalgasVariableName.lineNumber ())
               << ")) ;\n" ;
   }
 }
@@ -627,7 +627,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mLocation.lineNumber ()
+              << cStringWithSigned (mLocation.lineNumber ())
               << ")) ;\n" ;
     GGS_varToDropList::cEnumerator currentVarToDrop (mVarToDropList, true) ;
     while (currentVarToDrop.hc ()) {
@@ -694,7 +694,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mLocation.lineNumber ()
+              << cStringWithSigned (mLocation.lineNumber ())
               << ")) ;\n" ;
   }
 }
@@ -742,7 +742,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << "_inLexique.printMessage (" ;
     mMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.lineNumber ()
+              << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }
 }
@@ -792,12 +792,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ".isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
     if (! mOperand1_isEnumeration.boolValue ()) {
-      ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << aIndicatif1.location () << " = " ;
+      ioCppFile << "cPtr_" << aNomTypeBase1 << " * ptr_" << cStringWithSigned (aIndicatif1.location ()) << " = " ;
       aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE) ;\n" ;
     }
     if (! mOperand2_isEnumeration.boolValue ()) {
-      ioCppFile << "cPtr_" << aNomTypeBase2 << " * ptr_" << aIndicatif2.location () << " = " ;
+      ioCppFile << "cPtr_" << aNomTypeBase2 << " * ptr_" << cStringWithSigned (aIndicatif2.location ()) << " = " ;
       aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE) ;\n" ;
     }
@@ -806,31 +806,31 @@ generateInstruction (AC_OutputStream & ioCppFile,
     while (casCourant.hc ()) {
       if (! mOperand1_isEnumeration.boolValue ()) {
         ioCppFile << "cPtr_" << casCourant._mCase1_name (HERE)
-                  << " * operand_" << aIndicatif1.location ()
+                  << " * operand_" << cStringWithSigned (aIndicatif1.location ())
                   << " = dynamic_cast <"
                      "cPtr_" << casCourant._mCase1_name (HERE)
-                  << " *> (ptr_" << aIndicatif1.location () << ") ;\n" ;
+                  << " *> (ptr_" << cStringWithSigned (aIndicatif1.location ()) << ") ;\n" ;
       }
       if (! mOperand2_isEnumeration.boolValue ()) {
         ioCppFile << "cPtr_" << casCourant._mCase2_name (HERE)
-                  << " * operand_" << aIndicatif2.location ()
+                  << " * operand_" << cStringWithSigned (aIndicatif2.location ())
                   << " = dynamic_cast <"
                      "cPtr_" << casCourant._mCase2_name (HERE)
-                  << " *> (ptr_" << aIndicatif2.location () << ") ;\n" ;
+                  << " *> (ptr_" << cStringWithSigned (aIndicatif2.location ()) << ") ;\n" ;
       }
       ioCppFile << "if ((" ;
       if (mOperand1_isEnumeration.boolValue ()) {
         aNomCppVariable1 (HERE)->generateCplusPlusName (ioCppFile) ;
         ioCppFile << ".enumValue () == GGS_" << aNomTypeBase1 << "::enum_" << casCourant._mCase1_name (HERE) ;
       }else{
-        ioCppFile <<  "operand_" << aIndicatif1.location () << " != NULL" ;
+        ioCppFile <<  "operand_" << cStringWithSigned (aIndicatif1.location ()) << " != NULL" ;
       }
       ioCppFile <<   ") && (" ;
       if (mOperand2_isEnumeration.boolValue ()) {
         aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
         ioCppFile << ".enumValue () == GGS_" << aNomTypeBase2 << "::enum_" << casCourant._mCase2_name (HERE) ;
       }else{
-        ioCppFile << "operand_" << aIndicatif2.location () << " != NULL" ;
+        ioCppFile << "operand_" << cStringWithSigned (aIndicatif2.location ()) << " != NULL" ;
       }
       ioCppFile << ")) {\n" ;
       generateInstructionListForList (casCourant._mInstructionList (HERE), ioCppFile,
@@ -914,7 +914,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       structAttribute.next () ;
     }
     ioCppFile << "._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.lineNumber ()
+              << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }
 }
@@ -964,7 +964,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       structAttribute.next () ;
     }
     ioCppFile << "._decrement_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
-              << mInstructionLocation.lineNumber ()
+              << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }
 }
@@ -1172,7 +1172,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       current.next () ;
     }
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << aNomMethodeBloc.lineNumber ()
+              << cStringWithSigned (aNomMethodeBloc.lineNumber ())
               << ")) ;\n" ;
   }
 }
@@ -1236,7 +1236,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       current.next () ;
     }
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << aNomMethodeBloc.lineNumber ()
+              << cStringWithSigned (aNomMethodeBloc.lineNumber ())
               << ")) ;\n" ;
   }
 }
