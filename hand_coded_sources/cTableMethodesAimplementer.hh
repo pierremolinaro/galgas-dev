@@ -187,7 +187,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Compiler & inLexique
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
@@ -210,7 +210,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Compiler & inLexi
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) {
   sint32 numeroElement = -1 ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
@@ -262,7 +262,7 @@ void cTableMethodesAimplementer <INFO>::internalRecursiveInsert (const INFO & in
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-bool cTableMethodesAimplementer <INFO>::_isBuilt (void) const {
+bool cTableMethodesAimplementer <INFO>::isBuilt (void) const {
   return mReferenceCountPtr != NULL ;
 }
 

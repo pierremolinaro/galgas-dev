@@ -188,7 +188,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
             const GGS_location _here (_inLexique) ;
             const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
-            if (var_cas_inSourceFile._isBuilt ()) {
+            if (var_cas_inSourceFile.isBuilt ()) {
               ::routine_fixFileGenerationStartDirectory (_inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (57)) ;
             }
             GGS_M_lexiqueComponents  var_cas_lexiqueMapForUse ;
@@ -205,7 +205,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
             const GGS_string _depExtension = GGS_string (true, "galgas-dep") ;
             const GGS_string _depPath = GGS_string (true, "DEPENDENCIES") ;
-            if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+            if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
               galgas_LL1_grammar::_performSourceFileParsing_ (_inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
@@ -368,7 +368,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             GGS_syntaxComponentRoot  var_cas_syntaxComponentRoot ;
             const GGS_string _depExtension = GGS_string (true, "") ;
             const GGS_string _depPath = GGS_string (true, "") ;
-            if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+            if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
               syntaxSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
@@ -415,7 +415,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             GGS_grammarComponentRoot  var_cas_grammarComponentRoot ;
             const GGS_string _depExtension = GGS_string (true, "") ;
             const GGS_string _depPath = GGS_string (true, "") ;
-            if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+            if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
               grammarLL1grammar::_performSourceFileParsing_ (_inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
@@ -498,7 +498,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             GGS_programComponentRoot  var_cas_programComponentRoot ;
             const GGS_string _depExtension = GGS_string (true, "") ;
             const GGS_string _depPath = GGS_string (true, "") ;
-            if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+            if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
               programSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
@@ -548,7 +548,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             GGS_location  var_cas_endOfSourceFile ;
             const GGS_string _depExtension = GGS_string (true, "") ;
             const GGS_string _depPath = GGS_string (true, "") ;
-            if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+            if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
               projectLL1grammar::_performSourceFileParsing_ (_inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
@@ -691,13 +691,13 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_string var_cas_fullPath ;
                     GGS_sourceFileKind var_cas_sourceKind ;
                     const GGS_sourceFileMap  _temp_10562 = var_cas_sourceFileMap ;
-                    if (_temp_10562._isBuilt ()) {
+                    if (_temp_10562.isBuilt ()) {
                       _temp_10562 (HERE)->method_searchKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, operand_10462->mValue, GGS_location (_inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (245)) ;
                     }
                     GGS_string var_cas_filePath ;
                     var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (246)) ;
                     if (((var_cas_sourceKind)._operator_isEqual (GGS_sourceFileKind::constructor_externSourceFile (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
-                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (248)))._operator_isEqual (GGS_char (true, UNICODE ('/')))).isBuiltAndTrue ()) {
+                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (248)))._operator_isEqual (GGS_char (true, TO_UNICODE ('/')))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += "))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
                       }else if (((var_cas_filePath)._operator_isNotEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string (true, "SOURCES_DIR += ../hand_coded_sources/"))._operator_concat (var_cas_filePath))._operator_concat (GGS_string (true, "\n"))) ;
@@ -727,7 +727,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 var_cas_fileListPath = (var_cas_outputDirectory)._operator_concat (GGS_string (true, "/file_list.mke")) ;
                 GGS_bool automatic_var_0 ;
                 const GGS_string _temp_11692 = var_cas_newFileListContents ;
-                if (_temp_11692._isBuilt ()) {
+                if (_temp_11692.isBuilt ()) {
                   _temp_11692 (HERE)->method_writeToFileWhenDifferentContents (_inLexique, var_cas_fileListPath, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (268)) ;
                 }
               }
@@ -750,7 +750,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }else if (((var_cas_xcodeProjects.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (284)))._operator_isEqual (GGS_uint (true, 1U))).isBuiltAndTrue ()) {
                 GGS_string var_cas_name ;
                 const GGS_stringlist  _temp_12837 = var_cas_xcodeProjects ;
-                if (_temp_12837._isBuilt ()) {
+                if (_temp_12837.isBuilt ()) {
                   _temp_12837 (HERE)->method_first (_inLexique, var_cas_name COMMA_SOURCE_FILE_AT_LINE (285)) ;
                 }
                 GGS_string var_cas_fullXcodePath ;
@@ -781,7 +781,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_string var_cas_fullPath ;
                     GGS_sourceFileKind var_cas_sourceKind ;
                     const GGS_sourceFileMap  _temp_13696 = var_cas_sourceFileMap ;
-                    if (_temp_13696._isBuilt ()) {
+                    if (_temp_13696.isBuilt ()) {
                       _temp_13696 (HERE)->method_searchKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, operand_13596->mValue, GGS_location (_inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (301)) ;
                     }
                     switch (var_cas_sourceKind.enumValue ()) {
@@ -854,7 +854,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_string var_cas_fullPath ;
                     GGS_sourceFileKind var_cas_sourceKind ;
                     const GGS_sourceFileMap  _temp_14968 = var_cas_sourceFileMap ;
-                    if (_temp_14968._isBuilt ()) {
+                    if (_temp_14968.isBuilt ()) {
                       _temp_14968 (HERE)->method_searchKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, operand_14868->mValue, GGS_location (_inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (332)) ;
                     }
                     switch (var_cas_sourceKind.enumValue ()) {

@@ -146,7 +146,7 @@ _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionList & argument_3) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()&& argument_2._isBuilt ()&& argument_3._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1,
@@ -169,7 +169,7 @@ _operator_concat (const GGS_programRuleList & inOperand) const {
 
 void GGS_programRuleList::
 _dotAssign_operation (const GGS_programRuleList inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -199,7 +199,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_2,
                      const GGS_semanticInstructionList & argument_3
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1,
@@ -279,7 +279,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_programRuleList result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -298,7 +298,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_programRuleList result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -328,7 +328,7 @@ method_first (C_Compiler & _inLexique,
               GGS_semanticInstructionList & _out_3
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -357,7 +357,7 @@ method_last (C_Compiler & _inLexique,
              GGS_semanticInstructionList & _out_3
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -386,7 +386,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_semanticInstructionList & _out_3
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -417,7 +417,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_semanticInstructionList & _out_3
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -443,7 +443,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_lstring  GGS_programRuleList::
 reader_mSourceFileExtensionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mSourceFileExtension ;
@@ -457,7 +457,7 @@ reader_mSourceFileExtensionAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 GGS_lstring  GGS_programRuleList::
 reader_mSourceFileHelpAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mSourceFileHelp ;
@@ -471,7 +471,7 @@ reader_mSourceFileHelpAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex 
 GGS_lstring  GGS_programRuleList::
 reader_mSourceFileVariableNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mSourceFileVariableName ;
@@ -485,7 +485,7 @@ reader_mSourceFileVariableNameAtIndex (C_Compiler & inLexique, const GGS_uint & 
 GGS_semanticInstructionList  GGS_programRuleList::
 reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionList  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mInstructionList ;
@@ -501,7 +501,7 @@ modifier_setMSourceFileExtensionAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mSourceFileExtension = inObject ;
@@ -516,7 +516,7 @@ modifier_setMSourceFileHelpAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mSourceFileHelp = inObject ;
@@ -531,7 +531,7 @@ modifier_setMSourceFileVariableNameAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mSourceFileVariableName = inObject ;
@@ -546,7 +546,7 @@ modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
                               const GGS_semanticInstructionList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mInstructionList = inObject ;

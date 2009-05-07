@@ -103,19 +103,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  C_String _result ;\n" ;
   current.rewind () ;
   if (current.hc ()) {
-    inCppFile << "  const bool _isBuilt = " ;
+    inCppFile << "  const bool isBuilt = " ;
     sint32 numeroVariable = 0 ;
     while (current.hc ()) {
       if (numeroVariable != 0) {
         inCppFile << "\n    && " ;
       }
       current._mCppName (HERE)(HERE)->generateCplusPlusName (inCppFile) ;
-      inCppFile << "._isBuilt ()" ;
+      inCppFile << ".isBuilt ()" ;
       current.next () ;
       numeroVariable ++ ;
     }
     inCppFile << " ;\n"
-                 "  if (_isBuilt) {\n" ;
+                 "  if (isBuilt) {\n" ;
     inCppFile.incIndentation (+2) ;
   }
   GGS_templateInstructionList::cEnumerator currentInstruction (mTemplateInstructionList, true) ;
@@ -126,7 +126,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   if (current.hc ()) {
     inCppFile << "}\n"
-                 "return GGS_string (_isBuilt, _result) ;\n" ;
+                 "return GGS_string (isBuilt, _result) ;\n" ;
     inCppFile.incIndentation (-2) ;
   }else{
     inCppFile << "  return GGS_string (true, _result) ;\n" ;

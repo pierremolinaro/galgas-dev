@@ -106,7 +106,7 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & _inLexique,
                 _inLexique._assignFromAttribute_tokenString (var_cas_attributeName) ;
                 _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                 const GGS_domainAttributeMap  _temp_5122 = var_cas_attributeMap ;
-                if (_temp_5122._isBuilt ()) {
+                if (_temp_5122.isBuilt ()) {
                   _temp_5122 (HERE)->method_searchKey (_inLexique, var_cas_attributeName COMMA_SOURCE_FILE_AT_LINE (109)) ;
                 }
                 var_cas_domains._addAssign_operation (var_cas_attributeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (110))) ;

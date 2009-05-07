@@ -155,7 +155,7 @@ class GGS_EXsourceFileKind {
   public : static inline uint16 bitCount (void) { return 4 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_EXsourceFileKind  constructor_externSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {

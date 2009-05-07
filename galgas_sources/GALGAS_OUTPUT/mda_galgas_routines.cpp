@@ -98,7 +98,7 @@ void routine_checkCategoryDefinitionForClass (C_Compiler & _inLexique,
       GGS_lstring  var_cas_descendantClassName ;
       GGS_ACGalgasType  var_cas_t ;
       const GGS_typeMapIndex  _temp_3665 = operand_3583->mClassMapindex ;
-      if (_temp_3665._isBuilt ()) {
+      if (_temp_3665.isBuilt ()) {
         _temp_3665 (HERE)->method_searchKey (_inLexique, var_cas_descendantClassName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (65)) ;
       }
       GGS_bool var_cas_isAbstract ;
@@ -265,7 +265,7 @@ _operator_concat (const GGS_targetFileListMap & inOperand) const {
 
 void GGS_targetFileListMap::
 _dotAssign_operation (const GGS_targetFileListMap inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count (HERE) == 0) {
       * this = inOperand ;
     }else if (inOperand.count (HERE) > 0) {
@@ -295,7 +295,7 @@ _dotAssign_operation (const GGS_targetFileListMap inOperand) {
 void GGS_targetFileListMap::
 _addAssign_operation (const GGS_string & inKey,
                       const GGS_string& inAttribute0) {
-  if (_isBuilt () && inKey._isBuilt () && inAttribute0._isBuilt ()) {
+  if (isBuilt () && inKey.isBuilt () && inAttribute0.isBuilt ()) {
     bool wasInserted = false ;
     cPtrDictionaryNode * nodePtr = _findOrAddNodeForKey (inKey, wasInserted) ;
     MF_Assert (nodePtr != NULL, "NULL pointer (was inserted %d)", wasInserted, 0) ;
@@ -316,7 +316,7 @@ reader_listForKey (C_Compiler & /* inLexique */,
                    const GGS_string & inKey
                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringlist result ;
-  if (_isBuilt () && inKey._isBuilt ()) {
+  if (isBuilt () && inKey.isBuilt ()) {
     cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; 
     if (nodePtr == NULL) {
       result = GGS_stringlist::constructor_emptyList () ;
@@ -345,7 +345,7 @@ reader_keyList (C_Compiler & /* inLexique */
                 COMMA_UNUSED_LOCATION_ARGS) const {
 
   GGS_stringlist result ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     result = GGS_stringlist::constructor_emptyList () ;
     cPtrDictionary * dictPtr = macroPtr (*this, cPtrDictionary)  ;
     cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;
@@ -486,14 +486,14 @@ enterIndex (const GGS_lstring & inKey,
 
 GGS_bool GGS_sourceFileMap::
 _operator_isEqual (const GGS_sourceFileMap & inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;
+  return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileMap::
 _operator_isNotEqual (const GGS_sourceFileMap & inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;
+  return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -518,10 +518,10 @@ _insertElement (C_Compiler & inLexique,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
   sint32 elementID = - 1 ;
-  if (_isBuilt ()
-   && inParameter0._isBuilt ()
-   && inParameter1._isBuilt ()
-   && inKey._isBuilt ()) {
+  if (isBuilt ()
+   && inParameter0.isBuilt ()
+   && inParameter1.isBuilt ()
+   && inKey.isBuilt ()) {
     insulateMap () ;
     e_sourceFileMap info  ;
     info.mFullPath = inParameter0 ;
@@ -548,7 +548,7 @@ _searchElement (C_Compiler & inLexique,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
-  if (_isBuilt () && inKey._isBuilt ()) {
+  if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
@@ -578,7 +578,7 @@ modifier_setMFullPathForKey (C_Compiler & inLexique,
                         const GGS_string& inValue,
                         const GGS_string & inKey
                         COMMA_LOCATION_ARGS) {
-  if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
+  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {
     insulateMap () ;
     AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
@@ -600,7 +600,7 @@ modifier_setMSourceKindForKey (C_Compiler & inLexique,
                         const GGS_sourceFileKind& inValue,
                         const GGS_string & inKey
                         COMMA_LOCATION_ARGS) {
-  if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
+  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {
     insulateMap () ;
     AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
@@ -691,7 +691,7 @@ reader_description (C_Compiler & _inLexique
                     const sint32 inIndentation) const {
   C_String s ;
   s << "<map @sourceFileMap " ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
@@ -828,10 +828,10 @@ _template_filewrapper_fileListTemplateFileWrapper_fileListTemplate (const GGS_st
                                 const GGS_string& var_cas_GALGAS_SOURCE_LIST,
                                 const GGS_string& var_cas_HAND_CODED_SOURCE_LIST) {
   C_String _result ;
-  const bool _isBuilt = var_cas_HAND_CODED_SOURCES_SUB_DIRS._isBuilt ()
-    && var_cas_GALGAS_SOURCE_LIST._isBuilt ()
-    && var_cas_HAND_CODED_SOURCE_LIST._isBuilt () ;
-  if (_isBuilt) {
+  const bool isBuilt = var_cas_HAND_CODED_SOURCES_SUB_DIRS.isBuilt ()
+    && var_cas_GALGAS_SOURCE_LIST.isBuilt ()
+    && var_cas_HAND_CODED_SOURCE_LIST.isBuilt () ;
+  if (isBuilt) {
     _result << "#---------------------------------------------------------------*\n"
     "\n"
     "#--- Lib PM directory\n"
@@ -882,7 +882,7 @@ _template_filewrapper_fileListTemplateFileWrapper_fileListTemplate (const GGS_st
     "\n"
     "#---------------------------------------------------------------*\n" ;
   }
-  return GGS_string (_isBuilt, _result) ;
+  return GGS_string (isBuilt, _result) ;
 }
 
 //---------------------------------------------------------------------------*

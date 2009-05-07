@@ -155,7 +155,7 @@ pr_galgas_component_program_parser_103_23_ (galgas_scanner & _inLexique,
           GGS_bool var_cas_ok ;
           var_cas_ok = GGS_bool (true, true) ;
           GGS_uint _variant_8445 = var_cas_sourceExtension.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (212)).reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (212))._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (212)) ;
-          GGS_bool _condition_8445 (_variant_8445._isBuilt (), true) ;
+          GGS_bool _condition_8445 (_variant_8445.isBuilt (), true) ;
           while (_condition_8445.isBuiltAndTrue ()) {
             _condition_8445 = ((var_cas_index)._operator_strictInf (var_cas_sourceExtension.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (213)).reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (213))))._operator_and (var_cas_ok) ;
             if (_condition_8445.isBuiltAndTrue ()) {
@@ -166,7 +166,7 @@ pr_galgas_component_program_parser_103_23_ (galgas_scanner & _inLexique,
                 _variant_8445._decrement_operation (_inLexique COMMA_HERE) ;
                 GGS_char var_cas_c ;
                 var_cas_c = var_cas_sourceExtension.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (214)).reader_characterAtIndex (_inLexique, var_cas_index COMMA_SOURCE_FILE_AT_LINE (214)) ;
-                var_cas_ok = (((((var_cas_c)._operator_supOrEqual (GGS_char (true, UNICODE ('a'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, UNICODE ('z')))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, UNICODE ('A'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, UNICODE ('Z'))))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, UNICODE ('0'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, UNICODE ('9'))))))._operator_or ((var_cas_c)._operator_isEqual (GGS_char (true, UNICODE ('_')))) ;
+                var_cas_ok = (((((var_cas_c)._operator_supOrEqual (GGS_char (true, TO_UNICODE ('a'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, TO_UNICODE ('z')))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, TO_UNICODE ('A'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, TO_UNICODE ('Z'))))))._operator_or (((var_cas_c)._operator_supOrEqual (GGS_char (true, TO_UNICODE ('0'))))._operator_and ((var_cas_c)._operator_infOrEqual (GGS_char (true, TO_UNICODE ('9'))))))._operator_or ((var_cas_c)._operator_isEqual (GGS_char (true, TO_UNICODE ('_')))) ;
                 var_cas_index._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE (216)) ;
               }
             }
@@ -232,13 +232,13 @@ pr_galgas_component_program_parser_103_23_ (galgas_scanner & _inLexique,
   var_cas_epilogueTableEnAvant = GGS_typeTableEnAvant ::constructor_emptyMap (_inLexique COMMA_HERE) ;
   nt_semantic_instructions_list_ (_inLexique, var_cas_epilogueTableEnAvant, var_cas_componentEntitiesMap, var_cas_optionsComponentsMap, var_cas_variablesMap, var_cas_epilogueInstructionList, var_cas_ioSemanticContext) ;
   _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D) COMMA_HERE) ;
-  if (var_cas_nomPRGMprincipal._isBuilt () &&
-      var_cas_versionString._isBuilt () &&
-      var_cas_prologueInstructionList._isBuilt () &&
-      var_cas_epilogueInstructionList._isBuilt () &&
-      var_cas_ruleDescriptorForProgramList._isBuilt () &&
-      var_cas_optionsComponentsMap._isBuilt () &&
-      var_cas_inclusionsForImplementationFile._isBuilt ()) {
+  if (var_cas_nomPRGMprincipal.isBuilt () &&
+      var_cas_versionString.isBuilt () &&
+      var_cas_prologueInstructionList.isBuilt () &&
+      var_cas_epilogueInstructionList.isBuilt () &&
+      var_cas_ruleDescriptorForProgramList.isBuilt () &&
+      var_cas_optionsComponentsMap.isBuilt () &&
+      var_cas_inclusionsForImplementationFile.isBuilt ()) {
     ::routine_generatePRGM (_inLexique,  var_cas_nomPRGMprincipal,  var_cas_versionString,  var_cas_prologueInstructionList,  var_cas_epilogueInstructionList,  var_cas_ruleDescriptorForProgramList,  var_cas_optionsComponentsMap,  var_cas_inclusionsForImplementationFile COMMA_SOURCE_FILE_AT_LINE (286)) ;
   }
   _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;

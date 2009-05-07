@@ -120,10 +120,10 @@ pr_galgas_component_cli_options_parser_63_23_ (galgas_scanner & _inLexique,
   _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
   _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   var_cas_ioOptionsComponentsMap.modifier_insertKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (121)) ;
-  if (var_cas_optionComponentName._isBuilt () &&
-      var_cas_boolOptionsMap._isBuilt () &&
-      var_cas_uintOptionsMap._isBuilt () &&
-      var_cas_stringOptionsMap._isBuilt ()) {
+  if (var_cas_optionComponentName.isBuilt () &&
+      var_cas_boolOptionsMap.isBuilt () &&
+      var_cas_uintOptionsMap.isBuilt () &&
+      var_cas_stringOptionsMap.isBuilt ()) {
     ::routine_generate_option_component (_inLexique,  var_cas_optionComponentName,  var_cas_boolOptionsMap,  var_cas_uintOptionsMap,  var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (123)) ;
   }
 }

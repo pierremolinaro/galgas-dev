@@ -168,7 +168,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
             const GGS_location _here (_inLexique) ;
             const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
-            if (var_cas_inSourceFile._isBuilt ()) {
+            if (var_cas_inSourceFile.isBuilt ()) {
               ::routine_fixFileGenerationStartDirectory (_inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (41)) ;
             }
             GGS_M_lexiqueComponents  var_cas_lexiqueMapForUse ;
@@ -185,7 +185,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
             const GGS_string _depExtension = GGS_string (true, "galgas-dep") ;
             const GGS_string _depPath = GGS_string (true, "DEPENDENCIES") ;
-            if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+            if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
               galgas_LL1_grammar::_performSourceFileParsing_ (_inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),

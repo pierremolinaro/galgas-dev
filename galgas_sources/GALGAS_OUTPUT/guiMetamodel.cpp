@@ -122,7 +122,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 void GGS_guiAttributeList::
 _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1
@@ -143,7 +143,7 @@ _operator_concat (const GGS_guiAttributeList & inOperand) const {
 
 void GGS_guiAttributeList::
 _dotAssign_operation (const GGS_guiAttributeList inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -169,7 +169,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1
@@ -243,7 +243,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_guiAttributeList result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -262,7 +262,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_guiAttributeList result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -290,7 +290,7 @@ method_first (C_Compiler & _inLexique,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -313,7 +313,7 @@ method_last (C_Compiler & _inLexique,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -336,7 +336,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -361,7 +361,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -383,7 +383,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_lstring  GGS_guiAttributeList::
 reader_mKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mKey ;
@@ -397,7 +397,7 @@ reader_mKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCAT
 GGS_lstring  GGS_guiAttributeList::
 reader_mValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mValue ;
@@ -413,7 +413,7 @@ modifier_setMKeyAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mKey = inObject ;
@@ -428,7 +428,7 @@ modifier_setMValueAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mValue = inObject ;
@@ -531,7 +531,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 void GGS_guiLabelList::
 _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1
@@ -552,7 +552,7 @@ _operator_concat (const GGS_guiLabelList & inOperand) const {
 
 void GGS_guiLabelList::
 _dotAssign_operation (const GGS_guiLabelList inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -578,7 +578,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1
@@ -652,7 +652,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_guiLabelList result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -671,7 +671,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_guiLabelList result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -699,7 +699,7 @@ method_first (C_Compiler & _inLexique,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -722,7 +722,7 @@ method_last (C_Compiler & _inLexique,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -745,7 +745,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -770,7 +770,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -792,7 +792,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_lstring  GGS_guiLabelList::
 reader_mAttribute1AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mAttribute1 ;
@@ -806,7 +806,7 @@ reader_mAttribute1AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 GGS_lstring  GGS_guiLabelList::
 reader_mAttribute2AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mAttribute2 ;
@@ -822,7 +822,7 @@ modifier_setMAttribute1AtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mAttribute1 = inObject ;
@@ -837,7 +837,7 @@ modifier_setMAttribute2AtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mAttribute2 = inObject ;

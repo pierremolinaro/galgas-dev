@@ -130,7 +130,10 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_C_classToImplement::
 generateHdeclarations (AC_OutputStream & inHfile) const {
 //------------- declarer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
-  inHfile.appendCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
+  C_String title = "GALGAS class 'GGS_" ;
+  title.appendString (aNomClasse) ;
+  title.appendCString ("'") ;
+  inHfile.appendCppTitleComment (title) ;
 
 //--- Super class name (empty if no super class)
   const C_String superClassName = (mAncestorClassesMap.firstObject () == NULL)

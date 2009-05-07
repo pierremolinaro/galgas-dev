@@ -149,7 +149,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "const " << staticClassName << " " << var << " = " ;
       mExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << " ;\n"
-                   "if (" << var << "._isBuilt ()) {\n"
+                   "if (" << var << ".isBuilt ()) {\n"
                    "  typeCategoryMethod__" << mCategoryMethodClassBaseName
                 << "__" << mMethodName << " _method = findCategoryMethod__"
                 << mCategoryMethodClassBaseName << "__" << mMethodName
@@ -174,7 +174,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << " " << var << " = " ;
       mExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << " ;\n"
-                   "if (" << var << "._isBuilt ()) {\n"
+                   "if (" << var << ".isBuilt ()) {\n"
                    "  " << var << " (HERE)->method_"
                 << mMethodName << " (_inLexique"  ;
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
@@ -380,7 +380,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                    "const GGS_string _depPath = " ;
       mDependancyFilePath (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << " ;\n"
-                   "if (_depExtension._isBuilt () && _depPath._isBuilt ()) {\n  " ;
+                   "if (_depExtension.isBuilt () && _depPath.isBuilt ()) {\n  " ;
     }
     ioCppFile << mGrammarName << "::"
               << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
@@ -521,7 +521,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
             ioCppFile << " &&\n    " ;
           }
           argCourant._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
-          ioCppFile << "._isBuilt ()" ;
+          ioCppFile << ".isBuilt ()" ;
           nombreArgumentsTestes ++ ;
         }
         typeArgumentCourant.next () ;

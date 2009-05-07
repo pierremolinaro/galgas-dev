@@ -64,7 +64,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
   GGS_lexiqueComponentRoot  var_cas_lexiqueComponentRoot ;
   const GGS_string _depExtension = GGS_string (true, "") ;
   const GGS_string _depPath = GGS_string (true, "") ;
-  if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+  if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
     lexiqueLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   _depExtension.string (),
                                   _depPath.string (),
@@ -142,7 +142,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
           macroValidPointer (operand_3623) ;
           GGS_string var_cas_attributeTypeName ;
           const GGS_lexicalAttributeMap  _temp_3723 = var_cas_lexicalAttributeMap ;
-          if (_temp_3723._isBuilt ()) {
+          if (_temp_3723.isBuilt ()) {
             _temp_3723 (HERE)->method_searchKey (_inLexique, operand_3623->mValue, var_cas_attributeTypeName COMMA_SOURCE_FILE_AT_LINE (76)) ;
           }
           var_cas_argumentTypeList._addAssign_operation (var_cas_attributeTypeName) ;
@@ -165,7 +165,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
           macroValidPointer (operand_4041) ;
           GGS_string var_cas_attributeTypeName ;
           const GGS_lexicalAttributeMap  _temp_4141 = var_cas_lexicalAttributeMap ;
-          if (_temp_4141._isBuilt ()) {
+          if (_temp_4141.isBuilt ()) {
             _temp_4141 (HERE)->method_searchKey (_inLexique, operand_4041->mValue, var_cas_attributeTypeName COMMA_SOURCE_FILE_AT_LINE (85)) ;
           }
           var_cas_argumentTypeList._addAssign_operation (var_cas_attributeTypeName) ;

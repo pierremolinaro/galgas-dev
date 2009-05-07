@@ -115,7 +115,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
       }
     }
     const GGS_M_grammarComponents  _temp_6657 = var_cas_ioGrammarComponentsMap ;
-    if (_temp_6657._isBuilt ()) {
+    if (_temp_6657.isBuilt ()) {
       _temp_6657 (HERE)->method_searchKey (_inLexique, var_cas_grammarKey, var_cas_nonterminalSymbolParametersMap, var_cas_lexiqueClassName, var_cas_optionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (170)) ;
     }
   }else if (((var_cas_grammarName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (176)))._operator_isEqual (GGS_string (true, ""))).isBuiltAndTrue ()) {
@@ -125,7 +125,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
     var_cas_optionsComponentsMap._drop () ;
   }else{
     const GGS_M_grammarComponents  _temp_7124 = var_cas_ioGrammarComponentsMap ;
-    if (_temp_7124._isBuilt ()) {
+    if (_temp_7124.isBuilt ()) {
       _temp_7124 (HERE)->method_searchKey (_inLexique, var_cas_grammarName, var_cas_nonterminalSymbolParametersMap, var_cas_lexiqueClassName, var_cas_optionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (181)) ;
     }
   }
@@ -133,7 +133,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
   var_cas_altName = GGS_lstring ::constructor_new (_inLexique, GGS_string (true, ""), GGS_location (_inLexique) COMMA_HERE) ;
   GGS_L_signature  automatic_var_0 ;
   const GGS_M_nonterminalSymbolAltsForGrammar  _temp_7345 = var_cas_nonterminalSymbolParametersMap ;
-  if (_temp_7345._isBuilt ()) {
+  if (_temp_7345.isBuilt ()) {
     _temp_7345 (HERE)->method_searchKey (_inLexique, var_cas_altName, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (189)) ;
   }
   GGS_M_terminalSymbolsMapForUse  var_cas_terminalSymbolMap ;
@@ -151,7 +151,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
       _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
       nt_parse_lexique_for_importing_ (_inLexique, var_cas_lexiqueFileName, var_cas_ioLexiqueMapForUse) ;
       const GGS_M_lexiqueComponents  _temp_7798 = var_cas_ioLexiqueMapForUse ;
-      if (_temp_7798._isBuilt ()) {
+      if (_temp_7798.isBuilt ()) {
         _temp_7798 (HERE)->method_searchKey (_inLexique, var_cas_lexiqueClassName, var_cas_terminalSymbolMap COMMA_SOURCE_FILE_AT_LINE (205)) ;
       }
       var_cas_lexiqueImported = GGS_bool (true, true) ;
@@ -181,7 +181,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
           GGS_luint  var_cas_terminal1ID ;
           GGS_typeListeAttributsSemantiques  automatic_var_1 ;
           const GGS_M_terminalSymbolsMapForUse  _temp_8376 = var_cas_terminalSymbolMap ;
-          if (_temp_8376._isBuilt ()) {
+          if (_temp_8376.isBuilt ()) {
             _temp_8376 (HERE)->method_searchKeyGetID (_inLexique, var_cas_terminal1, var_cas_terminal1ID, automatic_var_1 COMMA_SOURCE_FILE_AT_LINE (222)) ;
           }
           _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
@@ -191,7 +191,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
           GGS_luint  var_cas_terminal2ID ;
           GGS_typeListeAttributsSemantiques  automatic_var_2 ;
           const GGS_M_terminalSymbolsMapForUse  _temp_8534 = var_cas_terminalSymbolMap ;
-          if (_temp_8534._isBuilt ()) {
+          if (_temp_8534.isBuilt ()) {
             _temp_8534 (HERE)->method_searchKeyGetID (_inLexique, var_cas_terminal2, var_cas_terminal2ID, automatic_var_2 COMMA_SOURCE_FILE_AT_LINE (227)) ;
           }
           var_cas_labelForPopUpList._addAssign_operation (var_cas_terminal1, var_cas_terminal1ID.reader_uint (_inLexique COMMA_SOURCE_FILE_AT_LINE (230)), var_cas_terminal2, var_cas_terminal2ID.reader_uint (_inLexique COMMA_SOURCE_FILE_AT_LINE (232))) ;
@@ -258,15 +258,15 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & _inLexique,
       }
     }
   }
-  if (var_cas_guiComponentName._isBuilt () &&
-      var_cas_guiKindName._isBuilt () &&
-      var_cas_nibAndClassList._isBuilt () &&
-      var_cas_textMacroList._isBuilt () &&
-      var_cas_blockComment._isBuilt () &&
-      var_cas_lexiqueClassName._isBuilt () &&
-      var_cas_optionsComponentsMap._isBuilt () &&
-      var_cas_labelForPopUpList._isBuilt () &&
-      var_cas_terminalSymbolMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (281))._isBuilt ()) {
+  if (var_cas_guiComponentName.isBuilt () &&
+      var_cas_guiKindName.isBuilt () &&
+      var_cas_nibAndClassList.isBuilt () &&
+      var_cas_textMacroList.isBuilt () &&
+      var_cas_blockComment.isBuilt () &&
+      var_cas_lexiqueClassName.isBuilt () &&
+      var_cas_optionsComponentsMap.isBuilt () &&
+      var_cas_labelForPopUpList.isBuilt () &&
+      var_cas_terminalSymbolMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (281)).isBuilt ()) {
     ::routine_generateCocoaComponent (_inLexique,  var_cas_guiComponentName,  var_cas_guiKindName,  var_cas_nibAndClassList,  var_cas_textMacroList,  var_cas_blockComment,  var_cas_lexiqueClassName,  var_cas_optionsComponentsMap,  var_cas_labelForPopUpList,  var_cas_terminalSymbolMap.reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (281)) COMMA_SOURCE_FILE_AT_LINE (272)) ;
   }
   _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;

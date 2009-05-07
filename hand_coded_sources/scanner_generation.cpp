@@ -238,7 +238,7 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
                "  if (_p == NULL) {\n"
                "    s << \"$$\" ;\n"
                "  }else{\n"
-               "    switch (_p->_mTokenCode) {\n"
+               "    switch (_p->mTokenCode) {\n"
                "    case  " << inLexiqueName << "_1_:\n"
                "      s << \"$$\" ;\n"
                "      break ;\n" ;
@@ -366,8 +366,8 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   if (instructions_list_uses_loop_variable (programme_principal)) {
     inCppFile << "bool loop_ = true ;\n" ;
   }
-  inCppFile << "_token._mTokenCode = -1 ;\n"
-               "while ((_token._mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n" ;
+  inCppFile << "_token.mTokenCode = -1 ;\n"
+               "while ((_token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n" ;
   if (inIsTemplate) {
     inCppFile << "  if ((_mMatchedTemplateDelimiterIndex >= 0)\n"
                  "   && (kTemplateDefinitionArray [_mMatchedTemplateDelimiterIndex].mEndStringLength > 0)\n"
@@ -384,12 +384,12 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                  "    while (_replacementIndex >= 0) {\n"
                  "     _replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, " << inTemplateReplacementMap.count () << ") ;\n"
                  "       if (_replacementIndex >= 0) {\n"
-                 "         _token._mTemplateStringBeforeToken << kTemplateReplacementArray [_replacementIndex].mEndString ;\n"
+                 "         _token.mTemplateStringBeforeToken << kTemplateReplacementArray [_replacementIndex].mEndString ;\n"
                  "      }\n"
                  "    }\n"
                  "    _mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, " << inTemplateDelimiterMap.count () << ") ;\n"
                  "    if (_mMatchedTemplateDelimiterIndex < 0) {\n"
-                 "      _token._mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;\n"
+                 "      _token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;\n"
                  "      advance () ;\n"
                  "    }\n"
                  "  }\n"
@@ -398,7 +398,7 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   }
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
-  inCppFile << "_mTokenFirstLocation = _mCurrentLocation ;\n"
+  inCppFile << "mTokenFirstLocation = mCurrentLocation ;\n"
                "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
@@ -406,30 +406,30 @@ generate_scanning_method (AC_OutputStream & inCppFile,
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar (UNICODE ('\\0'))) { // End of source text ? \n"
-               "  _token._mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
+  inCppFile << "if (testForInputChar (TO_UNICODE ('\\0'))) { // End of source text ? \n"
+               "  _token.mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
                "}else{ // Unknown input character\n"
                "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
                "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
-               "  _token._mTokenCode = -1 ; // No token\n"
+               "  _token.mTokenCode = -1 ; // No token\n"
                "  advance () ; // ... go throught unknown character\n"
                "}\n" ;
   inCppFile.incIndentation (-2) ;
   if (inIsTemplate) {
     inCppFile << "}\n"
-                 "if ((_token._mTokenCode > 0) && kEndOfScriptInTemplateArray [_token._mTokenCode - 1]) {\n"
+                 "if ((_token.mTokenCode > 0) && kEndOfScriptInTemplateArray [_token.mTokenCode - 1]) {\n"
                  "  _mMatchedTemplateDelimiterIndex = -1 ;\n"
                  "}\n" ;
     inCppFile.incIndentation (-2) ;
   }
   inCppFile << "}\n"
-               "if ((UNICODE_VALUE (mCurrentChar) == '\\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {\n"
-               "  _token._mTokenCode = 0 ;\n"
+               "if ((UNICODE_VALUE (mCurrentChar) == '\\0') && (_token.mTemplateStringBeforeToken.length () > 0)) {\n"
+               "  _token.mTokenCode = 0 ;\n"
                "  _enterToken (_token) ;\n"
                "}\n"
-               "return _token._mTokenCode > 0 ;\n" ;
+               "return _token.mTokenCode > 0 ;\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n\n" ;  
 }
@@ -452,11 +452,11 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
      inCppFile << "  bool loop_ = true ;\n" ;
    }
   inCppFile.incIndentation (+2) ;
-  inCppFile << "_token._mTokenCode = -1 ;\n"
-               "while (_token._mTokenCode < 0) {\n" ;
+  inCppFile << "_token.mTokenCode = -1 ;\n"
+               "while (_token.mTokenCode < 0) {\n" ;
   generateAttributeInitialization (table_attributs, inCppFile) ;
   inCppFile.incIndentation (+2) ;
-  inCppFile << "_mTokenFirstLocation = _mCurrentLocation ;\n"
+  inCppFile << "mTokenFirstLocation = mCurrentLocation ;\n"
                "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
@@ -464,21 +464,21 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar (UNICODE ('\\0'))) { // End of source text ? \n"
-              "  _token._mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
+  inCppFile << "if (testForInputChar (TO_UNICODE ('\\0'))) { // End of source text ? \n"
+              "  _token.mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
               "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
               "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}catch (const C_lexicalErrorException &) {\n"
-             "  _token._mTokenCode = -1 ; // No token\n"
+             "  _token.mTokenCode = -1 ; // No token\n"
              "  advance () ; // ... go throught unknown character\n"
              "  throw ;\n"
              "}\n" ;
   inCppFile.incIndentation (-2) ;
   inCppFile << "}\n" ;
   inCppFile.incIndentation (-2) ;
-  inCppFile << "  return _token._mTokenCode ;\n"
+  inCppFile << "  return _token.mTokenCode ;\n"
                "}\n\n" ;  
 }
 
@@ -511,7 +511,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentCaractere::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << "UNICODE (" ;
+  inCppFile << "TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
   inCppFile << ")" ;
 }
@@ -643,7 +643,7 @@ void cPtr_typeLexicalTagInstruction::
 generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "const C_LocationInSource _locationForTag_" << mLexicalTagName << " = _mCurrentLocation ;\n" ;
+  inCppFile << "const C_LocationInSource _locationForTag_" << mLexicalTagName << " = mCurrentLocation ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -677,8 +677,8 @@ void cPtr_typeLexicalRewindAndSendInstruction::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "_mCurrentLocation = _locationForTag_" << mLexicalTagName << " ;\n"
-               "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+  inCppFile << "mCurrentLocation = _locationForTag_" << mLexicalTagName << " ;\n"
+               "_token.mTokenCode = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (mTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
   if (inGenerateEnterToken) {
@@ -700,7 +700,7 @@ void cPtr_typeInstructionEmettreSimple::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
-  inCppFile << "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+  inCppFile << "_token.mTokenCode = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (mTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
   if (inGenerateEnterToken) {
@@ -723,7 +723,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile) const {
   if (! inGenerateEnterToken) {
-    inCppFile << "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+    inCppFile << "_token.mTokenCode = " << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (mTerminal, inCppFile) ;
     inCppFile << " ;\n" ;
   }
@@ -747,10 +747,10 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   bool first = true ;
   while (courant. hc ()) {
     if (! first) {
-      inCppFile << "if (_token._mTokenCode == -1) {\n" ;
+      inCppFile << "if (_token.mTokenCode == -1) {\n" ;
       inCppFile.incIndentation (+2) ;
     }
-    inCppFile << "_token._mTokenCode = search_into_" << courant._attributNomTable (HERE) << " (_token."
+    inCppFile << "_token.mTokenCode = search_into_" << courant._attributNomTable (HERE) << " (_token."
               << courant._attributNomAttribut (HERE) << ") ;\n" ;
     if (! first) {
       inCppFile.incIndentation (-2) ;
@@ -759,7 +759,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
     first = false ;
     courant.next () ;
   }
-  inCppFile << "if (_token._mTokenCode == -1) {\n" ;
+  inCppFile << "if (_token.mTokenCode == -1) {\n" ;
   inCppFile.incIndentation (+2) ;
   attributEmissionParDefaut(HERE)->generateDefaultToken (inLexiqueName, inCppFile) ;
   inCppFile.incIndentation (-2) ;
@@ -774,7 +774,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 void cPtr_typeEmissionTerminalParDefaut::
 generateDefaultToken (const C_String & inLexiqueName,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "_token._mTokenCode = " << inLexiqueName << "_1_" ;
+  inCppFile << "_token.mTokenCode = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (attributNomTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
 }
@@ -821,7 +821,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionCaractere::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputChar (UNICODE (" ;
+  inCppFile << "testForInputChar (TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
   inCppFile << "))" ;
 }
@@ -876,9 +876,9 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 
 void cPtr_typeConditionIntervalle::
 generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputCharRange (UNICODE (" ;
+  inCppFile << "testForInputCharRange (TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneInf.charValue ()) ;
-  inCppFile << "), UNICODE (" ;
+  inCppFile << "), TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneSup.charValue ()) ;
   inCppFile << "))" ;
 }
@@ -902,7 +902,7 @@ generateAttributeInitialization (const GGS_lstring & nom,
 void cPtr_typeGalgas_lchar::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  _token." << nom << " = UNICODE ('\\0') ;\n" ;
+  inCppFile << "  _token." << nom << " = TO_UNICODE ('\\0') ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1617,16 +1617,16 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   generatedZone2 << "void " << inLexiqueName << "::_enterToken (const cTokenFor_" << inLexiqueName << " & inToken) {\n"
                     "  cTokenFor_" << inLexiqueName << " * _p = NULL ;\n"
                     "  macroMyNew (_p, cTokenFor_" << inLexiqueName << " ()) ;\n"
-                    "  _p->_mTokenCode = inToken._mTokenCode ;\n"
-                    "  _p->_mFirstLocation = _mTokenFirstLocation ;\n"
-                    "  _p->_mLastLocation  = _mTokenLastLocation ;\n"
-                    "  _p->_mTemplateStringBeforeToken  = inToken._mTemplateStringBeforeToken ;\n" ;
+                    "  _p->mTokenCode = inToken.mTokenCode ;\n"
+                    "  _p->mFirstLocation = mTokenFirstLocation ;\n"
+                    "  _p->mLastLocation  = mTokenLastLocation ;\n"
+                    "  _p->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;\n" ;
   currentAttribute.rewind () ;
   while (currentAttribute.hc ()) {
     generatedZone2 << "  _p->" << currentAttribute._key (HERE) << " = inToken." << currentAttribute._key (HERE) << " ;\n" ;
     currentAttribute.next () ;
   }
-  generatedZone2 << "  _enterTokenFromPointer (_p) ;\n"
+  generatedZone2 << "  enterTokenFromPointer (_p) ;\n"
                     "}\n\n" ;
 
 //--- Get lexical attribute value

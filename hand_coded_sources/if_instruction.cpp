@@ -688,7 +688,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralCharExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_char (true, UNICODE (" ;
+  ioCppFile << "GGS_char (true, TO_UNICODE (" ;
   ioCppFile.appendCLiteralCharConstant (mLiteralChar.charValue ()) ;
   ioCppFile << "))" ;
 }

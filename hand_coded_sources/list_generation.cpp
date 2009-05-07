@@ -561,11 +561,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (_isBuilt ()" ;
+               "  if (isBuilt ()" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
-    inCppFile << "&& argument_" << numeroVariable << "._isBuilt ()" ;
+    inCppFile << "&& argument_" << numeroVariable << ".isBuilt ()" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -607,7 +607,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
-               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
+               "  if (isBuilt () && inOperand.isBuilt ()) {\n"
                "    if (count () == 0) {\n"
                "      * this = inOperand ;\n"
                "    }else{\n"
@@ -660,10 +660,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                     "
                "COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  if (_isBuilt ()" ;
+               "  if (isBuilt ()" ;
   numeroVariable = 0 ;
   while (current.hc ()) {
-    inCppFile << " && argument_" << numeroVariable << "._isBuilt ()" ;
+    inCppFile << " && argument_" << numeroVariable << ".isBuilt ()" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -794,7 +794,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                         const GGS_uint & inCount\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {\n"
+               "  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {\n"
                "    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;\n"
                "    const sint32 rangeCount = (sint32) inCount.uintValue () ;\n"
                "    if ((firstIndex + rangeCount) > count ()) {\n"
@@ -812,7 +812,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                         const GGS_uint & inIndex\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
+               "  if (isBuilt () && inIndex.isBuilt ()) {\n"
                "    const sint32 startIndex = (sint32) inIndex.uintValue () ;\n"
                "    if (startIndex > count ()) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'subListFromIndex' method invoked with start index greater than list object count\" COMMA_THERE) ;\n"
@@ -848,7 +848,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n              "
                "COMMA_LOCATION_ARGS) const {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -891,7 +891,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'last' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -933,7 +933,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popFirst' modifier invoked on an empty list\" COMMA_THERE) ;\n"
@@ -976,7 +976,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popLast' modifier invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1013,7 +1013,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " result ;\n"
-                 "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
+                 "  if (isBuilt () && inIndex.isBuilt ()) {\n"
                  "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
                  "    if (object != NULL) {\n"
                  "      result = object->" << current._mAttributeName (HERE) << " ;\n"
@@ -1035,7 +1035,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " & inObject,\n"
                  "                              const GGS_uint & inIndex\n"
                  "                              COMMA_LOCATION_ARGS) const {\n"
-                 "  if (_isBuilt () && inIndex._isBuilt ()) {\n"
+                 "  if (isBuilt () && inIndex.isBuilt ()) {\n"
                  "    cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;\n"
                  "    if (object != NULL) {\n"
                  "      object->" << current._mAttributeName (HERE) << " = inObject ;\n"
@@ -1466,13 +1466,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
                "_operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToList (inOperand)) ;\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
                "_operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToList (inOperand)) ;\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
@@ -1521,7 +1521,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     numeroVariable ++ ;
   }
   inCppFile << ") {\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _insulateList () ;\n"
                "    _internalAppendValues (" ;
   current.rewind () ;
@@ -1547,7 +1547,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
-               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
+               "  if (isBuilt () && inOperand.isBuilt ()) {\n"
                "    if (count () == 0) {\n"
                "      *this = inOperand ;\n"
                "    }else{\n"
@@ -1676,7 +1676,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) const {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1719,7 +1719,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'greatest' method invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1761,7 +1761,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = firstObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popSmallest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
@@ -1804,7 +1804,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
                "  cElement * _p = NULL ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    _p = lastObject () ;\n"
                "    if (_p == NULL) {\n"
                "      _inLexique.onTheFlyRunTimeError (\"'popGreatest' modifier invoked on an empty list\" COMMA_THERE) ;\n"

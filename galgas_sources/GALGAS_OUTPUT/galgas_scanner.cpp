@@ -83,278 +83,278 @@ C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError C
 
 //--- Message 0
 static const utf32 gErrorMessage_0 [] = {
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('o'),
-  UNICODE (' '),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('g'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 } ;
 //--- Message 1
 static const utf32 gErrorMessage_1 [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('v'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('f'),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('v'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 //--- Message 2
 static const utf32 gErrorMessage_2 [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 //--- Message 3
 static const utf32 gErrorMessage_3 [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE (' '),
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('y'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE (','),
-  UNICODE (' '),
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('t'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('h'),
-  UNICODE ('o'),
-  UNICODE ('u'),
-  UNICODE ('l'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('f'),
-  UNICODE ('o'),
-  UNICODE ('l'),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('w'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('@'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (','),
+  TO_UNICODE (' '),
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('w'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('@'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 //--- Message 4
 static const utf32 gErrorMessage_4 [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 //--- Message 5
 static const utf32 gErrorMessage_5 [] = {
-  UNICODE ('A'),
-  UNICODE ('S'),
-  UNICODE ('C'),
-  UNICODE ('I'),
-  UNICODE ('I'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('>'),
-  UNICODE (' '),
-  UNICODE ('2'),
-  UNICODE ('5'),
-  UNICODE ('5'),
-  UNICODE (0)
+  TO_UNICODE ('A'),
+  TO_UNICODE ('S'),
+  TO_UNICODE ('C'),
+  TO_UNICODE ('I'),
+  TO_UNICODE ('I'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('>'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('2'),
+  TO_UNICODE ('5'),
+  TO_UNICODE ('5'),
+  TO_UNICODE (0)
 } ;
 //--- Message 6
 static const utf32 gErrorMessage_6 [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 } ;
 //--- Message 7
 static const utf32 gErrorMessage_7 [] = {
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('o'),
-  UNICODE ('e'),
-  UNICODE ('s'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('w'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('$'),
-  UNICODE ('\''),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('s'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('$'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (0)
 } ;
 //--- Message 8
 static const utf32 gErrorMessage_8 [] = {
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('g'),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('o'),
-  UNICODE ('e'),
-  UNICODE ('s'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('w'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('\"'),
-  UNICODE ('\''),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('s'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('\"'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (0)
 } ;
 
 //---------------------------------------------------------------------------*
@@ -365,3462 +365,3462 @@ static const utf32 gErrorMessage_8 [] = {
 
 //--- Syntax error message for terminal '$identifier$' :
 static const utf32 gSyntaxErrorMessage_identifier [] = {
-  UNICODE ('a'),
-  UNICODE ('n'),
-  UNICODE (' '),
-  UNICODE ('i'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE ('i'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$abstract$' :
 static const utf32 gSyntaxErrorMessage_abstract [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('a'),
-  UNICODE ('b'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$after$' :
 static const utf32 gSyntaxErrorMessage_after [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('a'),
-  UNICODE ('f'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$before$' :
 static const utf32 gSyntaxErrorMessage_before [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('f'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$between$' :
 static const utf32 gSyntaxErrorMessage_between [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('t'),
-  UNICODE ('w'),
-  UNICODE ('e'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$block$' :
 static const utf32 gSyntaxErrorMessage_block [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('b'),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('c'),
-  UNICODE ('k'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$cast$' :
 static const utf32 gSyntaxErrorMessage_cast [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('c'),
-  UNICODE ('a'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$class$' :
 static const utf32 gSyntaxErrorMessage_class [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('c'),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('s'),
-  UNICODE ('s'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$compile$' :
 static const utf32 gSyntaxErrorMessage_compile [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('i'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$const$' :
 static const utf32 gSyntaxErrorMessage_const [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$constructor$' :
 static const utf32 gSyntaxErrorMessage_constructor [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$default$' :
 static const utf32 gSyntaxErrorMessage_default [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('f'),
-  UNICODE ('a'),
-  UNICODE ('u'),
-  UNICODE ('l'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$description$' :
 static const utf32 gSyntaxErrorMessage_description [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('s'),
-  UNICODE ('c'),
-  UNICODE ('r'),
-  UNICODE ('i'),
-  UNICODE ('p'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$dependency$' :
 static const utf32 gSyntaxErrorMessage_dependency [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('c'),
-  UNICODE ('y'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$do$' :
 static const utf32 gSyntaxErrorMessage_do [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('d'),
-  UNICODE ('o'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$domain$' :
 static const utf32 gSyntaxErrorMessage_domain [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('d'),
-  UNICODE ('o'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$drop$' :
 static const utf32 gSyntaxErrorMessage_drop [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('d'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$else$' :
 static const utf32 gSyntaxErrorMessage_else [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$elsif$' :
 static const utf32 gSyntaxErrorMessage_elsif [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('s'),
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$end$' :
 static const utf32 gSyntaxErrorMessage_end [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$enum$' :
 static const utf32 gSyntaxErrorMessage_enum [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$error$' :
 static const utf32 gSyntaxErrorMessage_error [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$extends$' :
 static const utf32 gSyntaxErrorMessage_extends [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('s'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$extern$' :
 static const utf32 gSyntaxErrorMessage_extern [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$extract$' :
 static const utf32 gSyntaxErrorMessage_extract [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$false$' :
 static const utf32 gSyntaxErrorMessage_false [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('f'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$filewrapper$' :
 static const utf32 gSyntaxErrorMessage_filewrapper [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('f'),
-  UNICODE ('i'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('w'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$foreach$' :
 static const utf32 gSyntaxErrorMessage_foreach [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('f'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$function$' :
 static const utf32 gSyntaxErrorMessage_function [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('f'),
-  UNICODE ('u'),
-  UNICODE ('n'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$grammar$' :
 static const utf32 gSyntaxErrorMessage_grammar [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('g'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('m'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$gui$' :
 static const utf32 gSyntaxErrorMessage_gui [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('g'),
-  UNICODE ('u'),
-  UNICODE ('i'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$here$' :
 static const utf32 gSyntaxErrorMessage_here [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$if$' :
 static const utf32 gSyntaxErrorMessage_if [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$import$' :
 static const utf32 gSyntaxErrorMessage_import [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$import__$' :
 static const utf32 gSyntaxErrorMessage_import_5F_5F [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE ('_'),
-  UNICODE ('_'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('_'),
+  TO_UNICODE ('_'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$in$' :
 static const utf32 gSyntaxErrorMessage_in [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$insert$' :
 static const utf32 gSyntaxErrorMessage_insert [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$label$' :
 static const utf32 gSyntaxErrorMessage_label [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$lazy$' :
 static const utf32 gSyntaxErrorMessage_lazy [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('z'),
-  UNICODE ('y'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('z'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$lexique$' :
 static const utf32 gSyntaxErrorMessage_lexique [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('i'),
-  UNICODE ('q'),
-  UNICODE ('u'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('q'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$list$' :
 static const utf32 gSyntaxErrorMessage_list [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$listmap$' :
 static const utf32 gSyntaxErrorMessage_listmap [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$log$' :
 static const utf32 gSyntaxErrorMessage_log [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('g'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$loop$' :
 static const utf32 gSyntaxErrorMessage_loop [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$map$' :
 static const utf32 gSyntaxErrorMessage_map [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$mapindex$' :
 static const utf32 gSyntaxErrorMessage_mapindex [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$match$' :
 static const utf32 gSyntaxErrorMessage_match [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$message$' :
 static const utf32 gSyntaxErrorMessage_message [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE ('s'),
-  UNICODE ('s'),
-  UNICODE ('a'),
-  UNICODE ('g'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$method$' :
 static const utf32 gSyntaxErrorMessage_method [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$mod$' :
 static const utf32 gSyntaxErrorMessage_mod [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$modifier$' :
 static const utf32 gSyntaxErrorMessage_modifier [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('m'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE ('i'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$nonterminal$' :
 static const utf32 gSyntaxErrorMessage_nonterminal [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$not$' :
 static const utf32 gSyntaxErrorMessage_not [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$on$' :
 static const utf32 gSyntaxErrorMessage_on [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$operator$' :
 static const utf32 gSyntaxErrorMessage_operator [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$option$' :
 static const utf32 gSyntaxErrorMessage_option [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$or$' :
 static const utf32 gSyntaxErrorMessage_or [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$override$' :
 static const utf32 gSyntaxErrorMessage_override [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('o'),
-  UNICODE ('v'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('i'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('v'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$parse$' :
 static const utf32 gSyntaxErrorMessage_parse [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('p'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$project$' :
 static const utf32 gSyntaxErrorMessage_project [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('p'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('j'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('j'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$program$' :
 static const utf32 gSyntaxErrorMessage_program [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('p'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('g'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('m'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$reader$' :
 static const utf32 gSyntaxErrorMessage_reader [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$remove$' :
 static const utf32 gSyntaxErrorMessage_remove [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('m'),
-  UNICODE ('o'),
-  UNICODE ('v'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('v'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$replace$' :
 static const utf32 gSyntaxErrorMessage_replace [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('p'),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$repeat$' :
 static const utf32 gSyntaxErrorMessage_repeat [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$rewind$' :
 static const utf32 gSyntaxErrorMessage_rewind [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('w'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$root$' :
 static const utf32 gSyntaxErrorMessage_root [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('o'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$routine$' :
 static const utf32 gSyntaxErrorMessage_routine [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('u'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$rule$' :
 static const utf32 gSyntaxErrorMessage_rule [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$search$' :
 static const utf32 gSyntaxErrorMessage_search [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$select$' :
 static const utf32 gSyntaxErrorMessage_select [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$self$' :
 static const utf32 gSyntaxErrorMessage_self [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('f'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$semantics$' :
 static const utf32 gSyntaxErrorMessage_semantics [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('c'),
-  UNICODE ('s'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$send$' :
 static const utf32 gSyntaxErrorMessage_send [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$sortedlist$' :
 static const utf32 gSyntaxErrorMessage_sortedlist [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$state$' :
 static const utf32 gSyntaxErrorMessage_state [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$struct$' :
 static const utf32 gSyntaxErrorMessage_struct [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$style$' :
 static const utf32 gSyntaxErrorMessage_style [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('y'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$switch$' :
 static const utf32 gSyntaxErrorMessage_switch [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('w'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$syntax$' :
 static const utf32 gSyntaxErrorMessage_syntax [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('s'),
-  UNICODE ('y'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('x'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$tag$' :
 static const utf32 gSyntaxErrorMessage_tag [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('g'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$template$' :
 static const utf32 gSyntaxErrorMessage_template [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$then$' :
 static const utf32 gSyntaxErrorMessage_then [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$true$' :
 static const utf32 gSyntaxErrorMessage_true [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$unused$' :
 static const utf32 gSyntaxErrorMessage_unused [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('u'),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$warning$' :
 static const utf32 gSyntaxErrorMessage_warning [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('w'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('n'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('g'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$when$' :
 static const utf32 gSyntaxErrorMessage_when [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('w'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$while$' :
 static const utf32 gSyntaxErrorMessage_while [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('w'),
-  UNICODE ('h'),
-  UNICODE ('i'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('k'),
-  UNICODE ('e'),
-  UNICODE ('y'),
-  UNICODE ('w'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$literal_double$' :
 static const utf32 gSyntaxErrorMessage_literal_5Fdouble [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('f'),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$unsigned_literal_integer$' :
 static const utf32 gSyntaxErrorMessage_unsigned_5Fliteral_5Finteger [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('3'),
-  UNICODE ('2'),
-  UNICODE ('-'),
-  UNICODE ('b'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('u'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('i'),
-  UNICODE ('g'),
-  UNICODE ('n'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('3'),
+  TO_UNICODE ('2'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$signed_literal_integer$' :
 static const utf32 gSyntaxErrorMessage_signed_5Fliteral_5Finteger [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('3'),
-  UNICODE ('2'),
-  UNICODE ('-'),
-  UNICODE ('b'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('i'),
-  UNICODE ('g'),
-  UNICODE ('n'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('3'),
+  TO_UNICODE ('2'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$unsigned_literal_integer64$' :
 static const utf32 gSyntaxErrorMessage_unsigned_5Fliteral_5Finteger64 [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('6'),
-  UNICODE ('4'),
-  UNICODE ('-'),
-  UNICODE ('b'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('u'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('i'),
-  UNICODE ('g'),
-  UNICODE ('n'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('6'),
+  TO_UNICODE ('4'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$signed_literal_integer64$' :
 static const utf32 gSyntaxErrorMessage_signed_5Fliteral_5Finteger64 [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('6'),
-  UNICODE ('4'),
-  UNICODE ('-'),
-  UNICODE ('b'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('i'),
-  UNICODE ('g'),
-  UNICODE ('n'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('6'),
+  TO_UNICODE ('4'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$.$' :
 static const utf32 gSyntaxErrorMessage__2E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('.'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$.=$' :
 static const utf32 gSyntaxErrorMessage__2E_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('.'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$...$' :
 static const utf32 gSyntaxErrorMessage__2E_2E_2E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$type_name$' :
 static const utf32 gSyntaxErrorMessage_type_5Fname [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('y'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('('),
-  UNICODE ('@'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE (')'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('('),
+  TO_UNICODE ('@'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE (')'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$literal_char$' :
 static const utf32 gSyntaxErrorMessage_literal_5Fchar [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$terminal$' :
 static const utf32 gSyntaxErrorMessage_terminal [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('y'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('o'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('('),
-  UNICODE ('$'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('$'),
-  UNICODE (')'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('('),
+  TO_UNICODE ('$'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('$'),
+  TO_UNICODE (')'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$*$' :
 static const utf32 gSyntaxErrorMessage__2A [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('*'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('*'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$|$' :
 static const utf32 gSyntaxErrorMessage__7C [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('|'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('|'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$,$' :
 static const utf32 gSyntaxErrorMessage__2C [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (','),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (','),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$+$' :
 static const utf32 gSyntaxErrorMessage__2B [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('+'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$--$' :
 static const utf32 gSyntaxErrorMessage__2D_2D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('-'),
-  UNICODE ('-'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$::$' :
 static const utf32 gSyntaxErrorMessage__3A_3A [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (':'),
-  UNICODE (':'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (':'),
+  TO_UNICODE (':'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$>$' :
 static const utf32 gSyntaxErrorMessage__3E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('>'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('>'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$;$' :
 static const utf32 gSyntaxErrorMessage__3B [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (';'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (';'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$:$' :
 static const utf32 gSyntaxErrorMessage__3A [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (':'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (':'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$-$' :
 static const utf32 gSyntaxErrorMessage__2D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('-'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$($' :
 static const utf32 gSyntaxErrorMessage__28 [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('('),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('('),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$)$' :
 static const utf32 gSyntaxErrorMessage__29 [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (')'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (')'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$->$' :
 static const utf32 gSyntaxErrorMessage__2D_3E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('-'),
-  UNICODE ('>'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('>'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$?$' :
 static const utf32 gSyntaxErrorMessage__3F [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('\?'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$==$' :
 static const utf32 gSyntaxErrorMessage__3D_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('='),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('='),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$??$' :
 static const utf32 gSyntaxErrorMessage__3F_3F [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('\?'),
-  UNICODE ('\?'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$!$' :
 static const utf32 gSyntaxErrorMessage__21 [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('!'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('!'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$:=$' :
 static const utf32 gSyntaxErrorMessage__3A_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (':'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (':'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$++$' :
 static const utf32 gSyntaxErrorMessage__2B_2B [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('+'),
-  UNICODE ('+'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$[$' :
 static const utf32 gSyntaxErrorMessage__5B [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('['),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('['),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$]$' :
 static const utf32 gSyntaxErrorMessage__5D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE (']'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE (']'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$+=$' :
 static const utf32 gSyntaxErrorMessage__2B_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('+'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('+'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$?!$' :
 static const utf32 gSyntaxErrorMessage__3F_21 [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('\?'),
-  UNICODE ('!'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('!'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$!?$' :
 static const utf32 gSyntaxErrorMessage__21_3F [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('!'),
-  UNICODE ('\?'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('!'),
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$/$' :
 static const utf32 gSyntaxErrorMessage__2F [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('/'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('/'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$!=$' :
 static const utf32 gSyntaxErrorMessage__21_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('!'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('!'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$>=$' :
 static const utf32 gSyntaxErrorMessage__3E_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('>'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('>'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$&$' :
 static const utf32 gSyntaxErrorMessage__26 [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('&'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('&'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '${$' :
 static const utf32 gSyntaxErrorMessage__7B [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('{'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('{'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$}$' :
 static const utf32 gSyntaxErrorMessage__7D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('}'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('}'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$-=$' :
 static const utf32 gSyntaxErrorMessage__2D_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('-'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$^$' :
 static const utf32 gSyntaxErrorMessage__5E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('^'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('^'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$>>$' :
 static const utf32 gSyntaxErrorMessage__3E_3E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('>'),
-  UNICODE ('>'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('>'),
+  TO_UNICODE ('>'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$~$' :
 static const utf32 gSyntaxErrorMessage__7E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('~'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('~'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$<-$' :
 static const utf32 gSyntaxErrorMessage__3C_2D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('<'),
-  UNICODE ('-'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$<$' :
 static const utf32 gSyntaxErrorMessage__3C [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('<'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$<->$' :
 static const utf32 gSyntaxErrorMessage__3C_2D_3E [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('<'),
-  UNICODE ('-'),
-  UNICODE ('>'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('-'),
+  TO_UNICODE ('>'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$<=$' :
 static const utf32 gSyntaxErrorMessage__3C_3D [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('<'),
-  UNICODE ('='),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('='),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$<<$' :
 static const utf32 gSyntaxErrorMessage__3C_3C [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE (' '),
-  UNICODE ('\''),
-  UNICODE ('<'),
-  UNICODE ('<'),
-  UNICODE ('\''),
-  UNICODE (' '),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$non_terminal_symbol$' :
 static const utf32 gSyntaxErrorMessage_non_5Fterminal_5Fsymbol [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE (' '),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('y'),
-  UNICODE ('m'),
-  UNICODE ('b'),
-  UNICODE ('o'),
-  UNICODE ('l'),
-  UNICODE (' '),
-  UNICODE ('<'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('>'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('<'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('>'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$literal_string$' :
 static const utf32 gSyntaxErrorMessage_literal_5Fstring [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('g'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE (' '),
-  UNICODE ('\"'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('.'),
-  UNICODE ('\"'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\"'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('.'),
+  TO_UNICODE ('\"'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for terminal '$comment$' :
 static const utf32 gSyntaxErrorMessage_comment [] = {
-  UNICODE ('a'),
-  UNICODE (' '),
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('m'),
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 } ;
 
 //--- Syntax error message for 'end of source' :
 static const utf32 kEndOfSourceLexicalErrorMessage [] = {
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE (' '),
-  UNICODE ('o'),
-  UNICODE ('f'),
-  UNICODE (' '),
-  UNICODE ('s'),
-  UNICODE ('o'),
-  UNICODE ('u'),
-  UNICODE ('r'),
-  UNICODE ('c'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('f'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 } ;
 
 //---------------------------------------------------------------------------*
@@ -3986,851 +3986,851 @@ appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,
 static const sint32 ktable_size_galgasKeyWordList = 87 ;
 
 static const utf32 kEntry_0_forTable_galgasKeyWordList [] = {
-  UNICODE ('d'),
-  UNICODE ('o'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('o'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_1_forTable_galgasKeyWordList [] = {
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_2_forTable_galgasKeyWordList [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_3_forTable_galgasKeyWordList [] = {
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_4_forTable_galgasKeyWordList [] = {
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_5_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_6_forTable_galgasKeyWordList [] = {
-  UNICODE ('g'),
-  UNICODE ('u'),
-  UNICODE ('i'),
-  UNICODE (0)
+  TO_UNICODE ('g'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('i'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_7_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('g'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_8_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_9_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_10_forTable_galgasKeyWordList [] = {
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_11_forTable_galgasKeyWordList [] = {
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('g'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_12_forTable_galgasKeyWordList [] = {
-  UNICODE ('c'),
-  UNICODE ('a'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('c'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_13_forTable_galgasKeyWordList [] = {
-  UNICODE ('d'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_14_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_15_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('m'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('m'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_16_forTable_galgasKeyWordList [] = {
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_17_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('z'),
-  UNICODE ('y'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('z'),
+  TO_UNICODE ('y'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_18_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_19_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_20_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('o'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_21_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_22_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('f'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('f'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_23_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_24_forTable_galgasKeyWordList [] = {
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_25_forTable_galgasKeyWordList [] = {
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_26_forTable_galgasKeyWordList [] = {
-  UNICODE ('w'),
-  UNICODE ('h'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('w'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_27_forTable_galgasKeyWordList [] = {
-  UNICODE ('a'),
-  UNICODE ('f'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_28_forTable_galgasKeyWordList [] = {
-  UNICODE ('b'),
-  UNICODE ('l'),
-  UNICODE ('o'),
-  UNICODE ('c'),
-  UNICODE ('k'),
-  UNICODE (0)
+  TO_UNICODE ('b'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('k'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_29_forTable_galgasKeyWordList [] = {
-  UNICODE ('c'),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('s'),
-  UNICODE ('s'),
-  UNICODE (0)
+  TO_UNICODE ('c'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('s'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_30_forTable_galgasKeyWordList [] = {
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_31_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('s'),
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_32_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_33_forTable_galgasKeyWordList [] = {
-  UNICODE ('f'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('f'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_34_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_35_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_36_forTable_galgasKeyWordList [] = {
-  UNICODE ('p'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('p'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_37_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_38_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('y'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_39_forTable_galgasKeyWordList [] = {
-  UNICODE ('w'),
-  UNICODE ('h'),
-  UNICODE ('i'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('w'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_40_forTable_galgasKeyWordList [] = {
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('f'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_41_forTable_galgasKeyWordList [] = {
-  UNICODE ('d'),
-  UNICODE ('o'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_42_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_43_forTable_galgasKeyWordList [] = {
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_44_forTable_galgasKeyWordList [] = {
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_45_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE ('t'),
-  UNICODE ('h'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_46_forTable_galgasKeyWordList [] = {
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_47_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_48_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('m'),
-  UNICODE ('o'),
-  UNICODE ('v'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('v'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_49_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_50_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('w'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_51_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_52_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_53_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_54_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('w'),
-  UNICODE ('i'),
-  UNICODE ('t'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_55_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('y'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('a'),
-  UNICODE ('x'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('x'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_56_forTable_galgasKeyWordList [] = {
-  UNICODE ('u'),
-  UNICODE ('n'),
-  UNICODE ('u'),
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE (0)
+  TO_UNICODE ('u'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_57_forTable_galgasKeyWordList [] = {
-  UNICODE ('b'),
-  UNICODE ('e'),
-  UNICODE ('t'),
-  UNICODE ('w'),
-  UNICODE ('e'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('b'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_58_forTable_galgasKeyWordList [] = {
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('i'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_59_forTable_galgasKeyWordList [] = {
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('f'),
-  UNICODE ('a'),
-  UNICODE ('u'),
-  UNICODE ('l'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_60_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('s'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('s'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_61_forTable_galgasKeyWordList [] = {
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_62_forTable_galgasKeyWordList [] = {
-  UNICODE ('f'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('h'),
-  UNICODE (0)
+  TO_UNICODE ('f'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_63_forTable_galgasKeyWordList [] = {
-  UNICODE ('g'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('m'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('g'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_64_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE ('i'),
-  UNICODE ('q'),
-  UNICODE ('u'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('q'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_65_forTable_galgasKeyWordList [] = {
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE (0)
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_66_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('e'),
-  UNICODE ('s'),
-  UNICODE ('s'),
-  UNICODE ('a'),
-  UNICODE ('g'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_67_forTable_galgasKeyWordList [] = {
-  UNICODE ('p'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('g'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('m'),
-  UNICODE (0)
+  TO_UNICODE ('p'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('g'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('m'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_68_forTable_galgasKeyWordList [] = {
-  UNICODE ('p'),
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('j'),
-  UNICODE ('e'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('p'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('j'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_69_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('e'),
-  UNICODE ('p'),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_70_forTable_galgasKeyWordList [] = {
-  UNICODE ('r'),
-  UNICODE ('o'),
-  UNICODE ('u'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('r'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_71_forTable_galgasKeyWordList [] = {
-  UNICODE ('w'),
-  UNICODE ('a'),
-  UNICODE ('r'),
-  UNICODE ('n'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('g'),
-  UNICODE (0)
+  TO_UNICODE ('w'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('g'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_72_forTable_galgasKeyWordList [] = {
-  UNICODE ('a'),
-  UNICODE ('b'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('a'),
+  TO_UNICODE ('b'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_73_forTable_galgasKeyWordList [] = {
-  UNICODE ('f'),
-  UNICODE ('u'),
-  UNICODE ('n'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('f'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_74_forTable_galgasKeyWordList [] = {
-  UNICODE ('i'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE ('_'),
-  UNICODE ('_'),
-  UNICODE (0)
+  TO_UNICODE ('i'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('_'),
+  TO_UNICODE ('_'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_75_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('x'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_76_forTable_galgasKeyWordList [] = {
-  UNICODE ('m'),
-  UNICODE ('o'),
-  UNICODE ('d'),
-  UNICODE ('i'),
-  UNICODE ('f'),
-  UNICODE ('i'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('m'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_77_forTable_galgasKeyWordList [] = {
-  UNICODE ('o'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('o'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_78_forTable_galgasKeyWordList [] = {
-  UNICODE ('o'),
-  UNICODE ('v'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('r'),
-  UNICODE ('i'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('o'),
+  TO_UNICODE ('v'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_79_forTable_galgasKeyWordList [] = {
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('m'),
-  UNICODE ('p'),
-  UNICODE ('l'),
-  UNICODE ('a'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE (0)
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_80_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('e'),
-  UNICODE ('m'),
-  UNICODE ('a'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('c'),
-  UNICODE ('s'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('s'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_81_forTable_galgasKeyWordList [] = {
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('n'),
-  UNICODE ('c'),
-  UNICODE ('y'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('y'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_82_forTable_galgasKeyWordList [] = {
-  UNICODE ('s'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('d'),
-  UNICODE ('l'),
-  UNICODE ('i'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE (0)
+  TO_UNICODE ('s'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_83_forTable_galgasKeyWordList [] = {
-  UNICODE ('c'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('s'),
-  UNICODE ('t'),
-  UNICODE ('r'),
-  UNICODE ('u'),
-  UNICODE ('c'),
-  UNICODE ('t'),
-  UNICODE ('o'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('c'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('u'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_84_forTable_galgasKeyWordList [] = {
-  UNICODE ('d'),
-  UNICODE ('e'),
-  UNICODE ('s'),
-  UNICODE ('c'),
-  UNICODE ('r'),
-  UNICODE ('i'),
-  UNICODE ('p'),
-  UNICODE ('t'),
-  UNICODE ('i'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE (0)
+  TO_UNICODE ('d'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_85_forTable_galgasKeyWordList [] = {
-  UNICODE ('f'),
-  UNICODE ('i'),
-  UNICODE ('l'),
-  UNICODE ('e'),
-  UNICODE ('w'),
-  UNICODE ('r'),
-  UNICODE ('a'),
-  UNICODE ('p'),
-  UNICODE ('p'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE (0)
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('p'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_86_forTable_galgasKeyWordList [] = {
-  UNICODE ('n'),
-  UNICODE ('o'),
-  UNICODE ('n'),
-  UNICODE ('t'),
-  UNICODE ('e'),
-  UNICODE ('r'),
-  UNICODE ('m'),
-  UNICODE ('i'),
-  UNICODE ('n'),
-  UNICODE ('a'),
-  UNICODE ('l'),
-  UNICODE (0)
+  TO_UNICODE ('n'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('l'),
+  TO_UNICODE (0)
 }; 
 
 static const C_unicode_lexique_table_entry ktable_for_galgasKeyWordList [ktable_size_galgasKeyWordList] = {
@@ -4936,193 +4936,193 @@ sint32 galgas_scanner::search_into_galgasKeyWordList (const C_String & inSearche
 static const sint32 ktable_size_galgasDelimitorsList = 35 ;
 
 static const utf32 kEntry_0_forTable_galgasDelimitorsList [] = {
-  UNICODE ('!'),
-  UNICODE (0)
+  TO_UNICODE ('!'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_1_forTable_galgasDelimitorsList [] = {
-  UNICODE ('&'),
-  UNICODE (0)
+  TO_UNICODE ('&'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_2_forTable_galgasDelimitorsList [] = {
-  UNICODE ('('),
-  UNICODE (0)
+  TO_UNICODE ('('),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_3_forTable_galgasDelimitorsList [] = {
-  UNICODE (')'),
-  UNICODE (0)
+  TO_UNICODE (')'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_4_forTable_galgasDelimitorsList [] = {
-  UNICODE ('*'),
-  UNICODE (0)
+  TO_UNICODE ('*'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_5_forTable_galgasDelimitorsList [] = {
-  UNICODE ('+'),
-  UNICODE (0)
+  TO_UNICODE ('+'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_6_forTable_galgasDelimitorsList [] = {
-  UNICODE (','),
-  UNICODE (0)
+  TO_UNICODE (','),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_7_forTable_galgasDelimitorsList [] = {
-  UNICODE ('-'),
-  UNICODE (0)
+  TO_UNICODE ('-'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_8_forTable_galgasDelimitorsList [] = {
-  UNICODE ('/'),
-  UNICODE (0)
+  TO_UNICODE ('/'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_9_forTable_galgasDelimitorsList [] = {
-  UNICODE (':'),
-  UNICODE (0)
+  TO_UNICODE (':'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_10_forTable_galgasDelimitorsList [] = {
-  UNICODE (';'),
-  UNICODE (0)
+  TO_UNICODE (';'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_11_forTable_galgasDelimitorsList [] = {
-  UNICODE ('>'),
-  UNICODE (0)
+  TO_UNICODE ('>'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_12_forTable_galgasDelimitorsList [] = {
-  UNICODE ('\?'),
-  UNICODE (0)
+  TO_UNICODE ('\?'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_13_forTable_galgasDelimitorsList [] = {
-  UNICODE ('['),
-  UNICODE (0)
+  TO_UNICODE ('['),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_14_forTable_galgasDelimitorsList [] = {
-  UNICODE (']'),
-  UNICODE (0)
+  TO_UNICODE (']'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_15_forTable_galgasDelimitorsList [] = {
-  UNICODE ('^'),
-  UNICODE (0)
+  TO_UNICODE ('^'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_16_forTable_galgasDelimitorsList [] = {
-  UNICODE ('{'),
-  UNICODE (0)
+  TO_UNICODE ('{'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_17_forTable_galgasDelimitorsList [] = {
-  UNICODE ('|'),
-  UNICODE (0)
+  TO_UNICODE ('|'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_18_forTable_galgasDelimitorsList [] = {
-  UNICODE ('}'),
-  UNICODE (0)
+  TO_UNICODE ('}'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_19_forTable_galgasDelimitorsList [] = {
-  UNICODE ('~'),
-  UNICODE (0)
+  TO_UNICODE ('~'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_20_forTable_galgasDelimitorsList [] = {
-  UNICODE ('!'),
-  UNICODE ('='),
-  UNICODE (0)
+  TO_UNICODE ('!'),
+  TO_UNICODE ('='),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_21_forTable_galgasDelimitorsList [] = {
-  UNICODE ('!'),
-  UNICODE ('\?'),
-  UNICODE (0)
+  TO_UNICODE ('!'),
+  TO_UNICODE ('\?'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_22_forTable_galgasDelimitorsList [] = {
-  UNICODE ('+'),
-  UNICODE ('+'),
-  UNICODE (0)
+  TO_UNICODE ('+'),
+  TO_UNICODE ('+'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_23_forTable_galgasDelimitorsList [] = {
-  UNICODE ('+'),
-  UNICODE ('='),
-  UNICODE (0)
+  TO_UNICODE ('+'),
+  TO_UNICODE ('='),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_24_forTable_galgasDelimitorsList [] = {
-  UNICODE ('-'),
-  UNICODE ('-'),
-  UNICODE (0)
+  TO_UNICODE ('-'),
+  TO_UNICODE ('-'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_25_forTable_galgasDelimitorsList [] = {
-  UNICODE ('-'),
-  UNICODE ('='),
-  UNICODE (0)
+  TO_UNICODE ('-'),
+  TO_UNICODE ('='),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_26_forTable_galgasDelimitorsList [] = {
-  UNICODE ('-'),
-  UNICODE ('>'),
-  UNICODE (0)
+  TO_UNICODE ('-'),
+  TO_UNICODE ('>'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_27_forTable_galgasDelimitorsList [] = {
-  UNICODE (':'),
-  UNICODE (':'),
-  UNICODE (0)
+  TO_UNICODE (':'),
+  TO_UNICODE (':'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_28_forTable_galgasDelimitorsList [] = {
-  UNICODE (':'),
-  UNICODE ('='),
-  UNICODE (0)
+  TO_UNICODE (':'),
+  TO_UNICODE ('='),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_29_forTable_galgasDelimitorsList [] = {
-  UNICODE ('<'),
-  UNICODE ('-'),
-  UNICODE (0)
+  TO_UNICODE ('<'),
+  TO_UNICODE ('-'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_30_forTable_galgasDelimitorsList [] = {
-  UNICODE ('='),
-  UNICODE ('='),
-  UNICODE (0)
+  TO_UNICODE ('='),
+  TO_UNICODE ('='),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_31_forTable_galgasDelimitorsList [] = {
-  UNICODE ('>'),
-  UNICODE ('='),
-  UNICODE (0)
+  TO_UNICODE ('>'),
+  TO_UNICODE ('='),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_32_forTable_galgasDelimitorsList [] = {
-  UNICODE ('>'),
-  UNICODE ('>'),
-  UNICODE (0)
+  TO_UNICODE ('>'),
+  TO_UNICODE ('>'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_33_forTable_galgasDelimitorsList [] = {
-  UNICODE ('\?'),
-  UNICODE ('!'),
-  UNICODE (0)
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('!'),
+  TO_UNICODE (0)
 }; 
 
 static const utf32 kEntry_34_forTable_galgasDelimitorsList [] = {
-  UNICODE ('\?'),
-  UNICODE ('\?'),
-  UNICODE (0)
+  TO_UNICODE ('\?'),
+  TO_UNICODE ('\?'),
+  TO_UNICODE (0)
 }; 
 
 static const C_unicode_lexique_table_entry ktable_for_galgasDelimitorsList [ktable_size_galgasDelimitorsList] = {
@@ -5180,7 +5180,7 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
   if (_p == NULL) {
     s << "$$" ;
   }else{
-    switch (_p->_mTokenCode) {
+    switch (_p->mTokenCode) {
     case  galgas_scanner_1_:
       s << "$$" ;
       break ;
@@ -5930,46 +5930,46 @@ bool galgas_scanner::
 parseLexicalToken (void) {
   cTokenFor_galgas_scanner _token ;
   bool loop_ = true ;
-  _token._mTokenCode = -1 ;
-  while ((_token._mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+  _token.mTokenCode = -1 ;
+  while ((_token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
     _token.identifierString.clear () ;
     _token.uint32value = 0 ;
     _token.sint32value = 0 ;
     _token.uint64value = 0 ;
     _token.sint64value = 0 ;
-    _token.charValue = UNICODE ('\0') ;
+    _token.charValue = TO_UNICODE ('\0') ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
-    _mTokenFirstLocation = _mCurrentLocation ;
+    mTokenFirstLocation = mCurrentLocation ;
     try{
-      if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-          testForInputCharRange (UNICODE ('A'), UNICODE ('Z'))) {
+      if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+          testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
         do {
           scanner_action_enterCharacterIntoString (_token.identifierString, scanner_action_toLower (previousChar ())) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-              testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-              testForInputChar (UNICODE ('_')) ||
-              testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+              testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+              testForInputChar (TO_UNICODE ('_')) ||
+              testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        _token._mTokenCode = search_into_galgasKeyWordList (_token.identifierString) ;
-        if (_token._mTokenCode == -1) {
-          _token._mTokenCode = galgas_scanner_1_identifier ;
+        _token.mTokenCode = search_into_galgasKeyWordList (_token.identifierString) ;
+        if (_token.mTokenCode == -1) {
+          _token.mTokenCode = galgas_scanner_1_identifier ;
         }
         _enterToken (_token) ;
       }else if (testForInputString ("0x", 2, true)) {
         do {
-          if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputCharRange (UNICODE ('a'), UNICODE ('f'))) {
+          }else if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('f'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputCharRange (UNICODE ('A'), UNICODE ('F'))) {
+          }else if (testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar (UNICODE ('_'))) {
+          }else if (testForInputChar (TO_UNICODE ('_'))) {
           }else{
             loop_ = false ;
           }
@@ -5977,104 +5977,104 @@ parseLexicalToken (void) {
         loop_ = true ;
         if (testForInputString ("LS", 2, true)) {
           scanner_action_convertHexStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
-        }else if (testForInputChar (UNICODE ('S')) ||
-            testForInputChar (UNICODE ('s'))) {
+        }else if (testForInputChar (TO_UNICODE ('S')) ||
+            testForInputChar (TO_UNICODE ('s'))) {
           scanner_action_convertHexStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
           _enterToken (_token) ;
-        }else if (testForInputChar (UNICODE ('L'))) {
+        }else if (testForInputChar (TO_UNICODE ('L'))) {
           scanner_action_convertHexStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
         }else{
           scanner_action_convertHexStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
           _enterToken (_token) ;
         }
-      }else if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+      }else if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
         scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
         do {
-          if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar (UNICODE ('_'))) {
+          }else if (testForInputChar (TO_UNICODE ('_'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar (UNICODE ('S')) ||
-            testForInputChar (UNICODE ('s'))) {
+        if (testForInputChar (TO_UNICODE ('S')) ||
+            testForInputChar (TO_UNICODE ('s'))) {
           scanner_action_convertDecimalStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
           _enterToken (_token) ;
         }else if (testForInputString ("LS", 2, true)) {
           scanner_action_convertDecimalStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
-        }else if (testForInputChar (UNICODE ('L'))) {
+        }else if (testForInputChar (TO_UNICODE ('L'))) {
           scanner_action_convertDecimalStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
           _enterToken (_token) ;
-        }else if (testForInputChar (UNICODE ('.'))) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('.')) ;
+        }else if (testForInputChar (TO_UNICODE ('.'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('.')) ;
           do {
-            if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+            if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar (UNICODE ('_'))) {
+            }else if (testForInputChar (TO_UNICODE ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
           scanner_action_convertStringToDouble (_token.tokenString, _token.floatValue, gErrorMessage_1) ;
-          _token._mTokenCode = galgas_scanner_1_literal_5Fdouble ;
+          _token.mTokenCode = galgas_scanner_1_literal_5Fdouble ;
           _enterToken (_token) ;
         }else{
           scanner_action_convertDecimalStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
           _enterToken (_token) ;
         }
-      }else if (testForInputChar (UNICODE ('.'))) {
-        if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('0')) ;
-          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('.')) ;
+      }else if (testForInputChar (TO_UNICODE ('.'))) {
+        if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('0')) ;
+          scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('.')) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           do {
-            if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+            if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar (UNICODE ('_'))) {
+            }else if (testForInputChar (TO_UNICODE ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
           scanner_action_convertStringToDouble (_token.tokenString, _token.floatValue, gErrorMessage_1) ;
-          _token._mTokenCode = galgas_scanner_1_literal_5Fdouble ;
+          _token.mTokenCode = galgas_scanner_1_literal_5Fdouble ;
           _enterToken (_token) ;
         }else{
           if (testForInputString ("..", 2, true)) {
-            _token._mTokenCode = galgas_scanner_1__2E_2E_2E ;
+            _token.mTokenCode = galgas_scanner_1__2E_2E_2E ;
             _enterToken (_token) ;
           }else if (testForInputString ("=", 1, true)) {
-            _token._mTokenCode = galgas_scanner_1__2E_3D ;
+            _token.mTokenCode = galgas_scanner_1__2E_3D ;
             _enterToken (_token) ;
           }else{
-            _token._mTokenCode = galgas_scanner_1__2E ;
+            _token.mTokenCode = galgas_scanner_1__2E ;
             _enterToken (_token) ;
           }
         }
-      }else if (testForInputChar (UNICODE ('@'))) {
-        if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-            testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-            testForInputChar (UNICODE ('_'))) {
+      }else if (testForInputChar (TO_UNICODE ('@'))) {
+        if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+            testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+            testForInputChar (TO_UNICODE ('_'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-                testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-                testForInputChar (UNICODE ('_')) ||
-                testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+            if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+                testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+                testForInputChar (TO_UNICODE ('_')) ||
+                testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             }else{
               loop_ = false ;
             }
@@ -6083,36 +6083,36 @@ parseLexicalToken (void) {
         }else{
           lexicalError (gErrorMessage_3 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        _token._mTokenCode = galgas_scanner_1_type_5Fname ;
+        _token.mTokenCode = galgas_scanner_1_type_5Fname ;
         _enterToken (_token) ;
-      }else if (testForInputChar (UNICODE ('\''))) {
-        if (testForInputChar (UNICODE ('\\'))) {
-          if (testForInputChar (UNICODE ('f'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\f')) ;
-          }else if (testForInputChar (UNICODE ('n'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\n')) ;
-          }else if (testForInputChar (UNICODE ('r'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\r')) ;
-          }else if (testForInputChar (UNICODE ('t'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\t')) ;
-          }else if (testForInputChar (UNICODE ('v'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\v')) ;
-          }else if (testForInputChar (UNICODE ('\\'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\\')) ;
-          }else if (testForInputChar (UNICODE ('0'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\0')) ;
-          }else if (testForInputChar (UNICODE ('\''))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\'')) ;
-          }else if (testForInputChar (UNICODE ('x')) ||
-              testForInputChar (UNICODE ('X'))) {
-            if (testForInputCharRange (UNICODE ('0'), UNICODE ('9')) ||
-                testForInputCharRange (UNICODE ('a'), UNICODE ('f')) ||
-                testForInputCharRange (UNICODE ('A'), UNICODE ('F'))) {
+      }else if (testForInputChar (TO_UNICODE ('\''))) {
+        if (testForInputChar (TO_UNICODE ('\\'))) {
+          if (testForInputChar (TO_UNICODE ('f'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\f')) ;
+          }else if (testForInputChar (TO_UNICODE ('n'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\n')) ;
+          }else if (testForInputChar (TO_UNICODE ('r'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\r')) ;
+          }else if (testForInputChar (TO_UNICODE ('t'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\t')) ;
+          }else if (testForInputChar (TO_UNICODE ('v'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\v')) ;
+          }else if (testForInputChar (TO_UNICODE ('\\'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\\')) ;
+          }else if (testForInputChar (TO_UNICODE ('0'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\0')) ;
+          }else if (testForInputChar (TO_UNICODE ('\''))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\'')) ;
+          }else if (testForInputChar (TO_UNICODE ('x')) ||
+              testForInputChar (TO_UNICODE ('X'))) {
+            if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) ||
+                testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) ||
+                testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputCharRange (UNICODE ('0'), UNICODE ('9')) ||
-                    testForInputCharRange (UNICODE ('a'), UNICODE ('f')) ||
-                    testForInputCharRange (UNICODE ('A'), UNICODE ('F'))) {
+                if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) ||
+                    testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) ||
+                    testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -6124,24 +6124,24 @@ parseLexicalToken (void) {
           }else{
             lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputCharRange (UNICODE (' '), UNICODE (255))) {
+        }else if (testForInputCharRange (TO_UNICODE (' '), TO_UNICODE (255))) {
           scanner_action_enterCharacterIntoCharacter (_token.charValue, previousChar ()) ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar (UNICODE ('\''))) {
-          _token._mTokenCode = galgas_scanner_1_literal_5Fchar ;
+        if (testForInputChar (TO_UNICODE ('\''))) {
+          _token.mTokenCode = galgas_scanner_1_literal_5Fchar ;
           _enterToken (_token) ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar (UNICODE ('$'))) {
-        if (testForInputCharRange (UNICODE ('!'), UNICODE ('#')) ||
-            testForInputCharRange (UNICODE ('%'), UNICODE ('~'))) {
+      }else if (testForInputChar (TO_UNICODE ('$'))) {
+        if (testForInputCharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) ||
+            testForInputCharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputCharRange (UNICODE ('!'), UNICODE ('#')) ||
-                testForInputCharRange (UNICODE ('%'), UNICODE ('~'))) {
+            if (testForInputCharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) ||
+                testForInputCharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
             }else{
               loop_ = false ;
             }
@@ -6150,178 +6150,178 @@ parseLexicalToken (void) {
         }else{
           lexicalError (gErrorMessage_6 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar (UNICODE ('$'))) {
+        if (testForInputChar (TO_UNICODE ('$'))) {
         }else{
           lexicalError (gErrorMessage_7 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        _token._mTokenCode = galgas_scanner_1_terminal ;
+        _token.mTokenCode = galgas_scanner_1_terminal ;
         _enterToken (_token) ;
       }else if (testForInputString ("--", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D_2D ;
+        _token.mTokenCode = galgas_scanner_1__2D_2D ;
         _enterToken (_token) ;
       }else if (testForInputString ("::", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3A_3A ;
+        _token.mTokenCode = galgas_scanner_1__3A_3A ;
         _enterToken (_token) ;
       }else if (testForInputString ("->", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D_3E ;
+        _token.mTokenCode = galgas_scanner_1__2D_3E ;
         _enterToken (_token) ;
       }else if (testForInputString ("==", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3D_3D ;
+        _token.mTokenCode = galgas_scanner_1__3D_3D ;
         _enterToken (_token) ;
       }else if (testForInputString ("\?\?", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3F_3F ;
+        _token.mTokenCode = galgas_scanner_1__3F_3F ;
         _enterToken (_token) ;
       }else if (testForInputString (":=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3A_3D ;
+        _token.mTokenCode = galgas_scanner_1__3A_3D ;
         _enterToken (_token) ;
       }else if (testForInputString ("++", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2B_2B ;
+        _token.mTokenCode = galgas_scanner_1__2B_2B ;
         _enterToken (_token) ;
       }else if (testForInputString ("+=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2B_3D ;
+        _token.mTokenCode = galgas_scanner_1__2B_3D ;
         _enterToken (_token) ;
       }else if (testForInputString ("\?!", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3F_21 ;
+        _token.mTokenCode = galgas_scanner_1__3F_21 ;
         _enterToken (_token) ;
       }else if (testForInputString ("!\?", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__21_3F ;
+        _token.mTokenCode = galgas_scanner_1__21_3F ;
         _enterToken (_token) ;
       }else if (testForInputString ("!=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__21_3D ;
+        _token.mTokenCode = galgas_scanner_1__21_3D ;
         _enterToken (_token) ;
       }else if (testForInputString (">=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3E_3D ;
+        _token.mTokenCode = galgas_scanner_1__3E_3D ;
         _enterToken (_token) ;
       }else if (testForInputString ("-=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D_3D ;
+        _token.mTokenCode = galgas_scanner_1__2D_3D ;
         _enterToken (_token) ;
       }else if (testForInputString (">>", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3E_3E ;
+        _token.mTokenCode = galgas_scanner_1__3E_3E ;
         _enterToken (_token) ;
       }else if (testForInputString ("<-", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3C_2D ;
+        _token.mTokenCode = galgas_scanner_1__3C_2D ;
         _enterToken (_token) ;
       }else if (testForInputString ("*", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2A ;
+        _token.mTokenCode = galgas_scanner_1__2A ;
         _enterToken (_token) ;
       }else if (testForInputString ("|", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7C ;
+        _token.mTokenCode = galgas_scanner_1__7C ;
         _enterToken (_token) ;
       }else if (testForInputString (",", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2C ;
+        _token.mTokenCode = galgas_scanner_1__2C ;
         _enterToken (_token) ;
       }else if (testForInputString ("+", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2B ;
+        _token.mTokenCode = galgas_scanner_1__2B ;
         _enterToken (_token) ;
       }else if (testForInputString (">", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3E ;
+        _token.mTokenCode = galgas_scanner_1__3E ;
         _enterToken (_token) ;
       }else if (testForInputString (";", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3B ;
+        _token.mTokenCode = galgas_scanner_1__3B ;
         _enterToken (_token) ;
       }else if (testForInputString (":", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3A ;
+        _token.mTokenCode = galgas_scanner_1__3A ;
         _enterToken (_token) ;
       }else if (testForInputString ("-", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D ;
+        _token.mTokenCode = galgas_scanner_1__2D ;
         _enterToken (_token) ;
       }else if (testForInputString ("(", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__28 ;
+        _token.mTokenCode = galgas_scanner_1__28 ;
         _enterToken (_token) ;
       }else if (testForInputString (")", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__29 ;
+        _token.mTokenCode = galgas_scanner_1__29 ;
         _enterToken (_token) ;
       }else if (testForInputString ("\?", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3F ;
+        _token.mTokenCode = galgas_scanner_1__3F ;
         _enterToken (_token) ;
       }else if (testForInputString ("!", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__21 ;
+        _token.mTokenCode = galgas_scanner_1__21 ;
         _enterToken (_token) ;
       }else if (testForInputString ("[", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__5B ;
+        _token.mTokenCode = galgas_scanner_1__5B ;
         _enterToken (_token) ;
       }else if (testForInputString ("]", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__5D ;
+        _token.mTokenCode = galgas_scanner_1__5D ;
         _enterToken (_token) ;
       }else if (testForInputString ("/", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2F ;
+        _token.mTokenCode = galgas_scanner_1__2F ;
         _enterToken (_token) ;
       }else if (testForInputString ("&", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__26 ;
+        _token.mTokenCode = galgas_scanner_1__26 ;
         _enterToken (_token) ;
       }else if (testForInputString ("{", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7B ;
+        _token.mTokenCode = galgas_scanner_1__7B ;
         _enterToken (_token) ;
       }else if (testForInputString ("}", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7D ;
+        _token.mTokenCode = galgas_scanner_1__7D ;
         _enterToken (_token) ;
       }else if (testForInputString ("^", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__5E ;
+        _token.mTokenCode = galgas_scanner_1__5E ;
         _enterToken (_token) ;
       }else if (testForInputString ("~", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7E ;
+        _token.mTokenCode = galgas_scanner_1__7E ;
         _enterToken (_token) ;
-      }else if (testForInputChar (UNICODE ('<'))) {
-        const C_LocationInSource _locationForTag_onlyInfDelimiter = _mCurrentLocation ;
-        if (testForInputChar (UNICODE ('='))) {
-          _token._mTokenCode = galgas_scanner_1__3C_3D ;
+      }else if (testForInputChar (TO_UNICODE ('<'))) {
+        const C_LocationInSource _locationForTag_onlyInfDelimiter = mCurrentLocation ;
+        if (testForInputChar (TO_UNICODE ('='))) {
+          _token.mTokenCode = galgas_scanner_1__3C_3D ;
           _enterToken (_token) ;
         }else if (testForInputString ("->", 2, true)) {
-          _token._mTokenCode = galgas_scanner_1__3C_2D_3E ;
+          _token.mTokenCode = galgas_scanner_1__3C_2D_3E ;
           _enterToken (_token) ;
-        }else if (testForInputChar (UNICODE ('<'))) {
-          _token._mTokenCode = galgas_scanner_1__3C_3C ;
+        }else if (testForInputChar (TO_UNICODE ('<'))) {
+          _token.mTokenCode = galgas_scanner_1__3C_3C ;
           _enterToken (_token) ;
-        }else if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-            testForInputCharRange (UNICODE ('A'), UNICODE ('Z'))) {
+        }else if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+            testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-                testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-                testForInputCharRange (UNICODE ('0'), UNICODE ('9')) ||
-                testForInputChar (UNICODE ('_'))) {
+            if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+                testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+                testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) ||
+                testForInputChar (TO_UNICODE ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar (UNICODE ('>'))) {
-            _token._mTokenCode = galgas_scanner_1_non_5Fterminal_5Fsymbol ;
+          if (testForInputChar (TO_UNICODE ('>'))) {
+            _token.mTokenCode = galgas_scanner_1_non_5Fterminal_5Fsymbol ;
             _enterToken (_token) ;
           }else{
-            _mCurrentLocation = _locationForTag_onlyInfDelimiter ;
-            _token._mTokenCode = galgas_scanner_1__3C ;
+            mCurrentLocation = _locationForTag_onlyInfDelimiter ;
+            _token.mTokenCode = galgas_scanner_1__3C ;
             _enterToken (_token) ;
           }
         }else{
-          _token._mTokenCode = galgas_scanner_1__3C ;
+          _token.mTokenCode = galgas_scanner_1__3C ;
           _enterToken (_token) ;
         }
-      }else if (testForInputChar (UNICODE ('\"'))) {
+      }else if (testForInputChar (TO_UNICODE ('\"'))) {
         do {
-          if (testForInputChar (UNICODE ('\\'))) {
-            if (testForInputChar (UNICODE ('f'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\f')) ;
-            }else if (testForInputChar (UNICODE ('n'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\n')) ;
-            }else if (testForInputChar (UNICODE ('r'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\r')) ;
-            }else if (testForInputChar (UNICODE ('t'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\t')) ;
-            }else if (testForInputChar (UNICODE ('v'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\v')) ;
-            }else if (testForInputChar (UNICODE ('\\'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\\')) ;
-            }else if (testForInputChar (UNICODE ('0'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\0')) ;
-            }else if (testForInputChar (UNICODE ('\"'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\"')) ;
-            }else if (testForInputChar (UNICODE ('\''))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\'')) ;
-            }else if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputChar (TO_UNICODE ('\\'))) {
+            if (testForInputChar (TO_UNICODE ('f'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\f')) ;
+            }else if (testForInputChar (TO_UNICODE ('n'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\n')) ;
+            }else if (testForInputChar (TO_UNICODE ('r'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\r')) ;
+            }else if (testForInputChar (TO_UNICODE ('t'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\t')) ;
+            }else if (testForInputChar (TO_UNICODE ('v'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\v')) ;
+            }else if (testForInputChar (TO_UNICODE ('\\'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\\')) ;
+            }else if (testForInputChar (TO_UNICODE ('0'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\0')) ;
+            }else if (testForInputChar (TO_UNICODE ('\"'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\"')) ;
+            }else if (testForInputChar (TO_UNICODE ('\''))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\'')) ;
+            }else if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+                if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -6331,48 +6331,48 @@ parseLexicalToken (void) {
             }else{
               lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
-          }else if (testForInputChar (UNICODE (' ')) ||
-              testForInputChar (UNICODE ('!')) ||
-              testForInputCharRange (UNICODE ('#'), UNICODE (255))) {
+          }else if (testForInputChar (TO_UNICODE (' ')) ||
+              testForInputChar (TO_UNICODE ('!')) ||
+              testForInputCharRange (TO_UNICODE ('#'), TO_UNICODE (255))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar (UNICODE ('\"'))) {
-          _token._mTokenCode = galgas_scanner_1_literal_5Fstring ;
+        if (testForInputChar (TO_UNICODE ('\"'))) {
+          _token.mTokenCode = galgas_scanner_1_literal_5Fstring ;
           _enterToken (_token) ;
         }else{
           lexicalError (gErrorMessage_8 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar (UNICODE ('#'))) {
+      }else if (testForInputChar (TO_UNICODE ('#'))) {
         do {
-          if (testForInputCharRange (UNICODE (1), UNICODE ('\t')) ||
-              testForInputChar (UNICODE ('\v')) ||
-              testForInputChar (UNICODE ('\f')) ||
-              testForInputCharRange (UNICODE (14), UNICODE (255))) {
+          if (testForInputCharRange (TO_UNICODE (1), TO_UNICODE ('\t')) ||
+              testForInputChar (TO_UNICODE ('\v')) ||
+              testForInputChar (TO_UNICODE ('\f')) ||
+              testForInputCharRange (TO_UNICODE (14), TO_UNICODE (255))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-      }else if (testForInputCharRange (UNICODE (1), UNICODE (' '))) {
-      }else if (testForInputChar (UNICODE ('\0'))) { // End of source text ? 
-        _token._mTokenCode = galgas_scanner_1_ ; // Empty string code
+      }else if (testForInputCharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
+      }else if (testForInputChar (TO_UNICODE ('\0'))) { // End of source text ? 
+        _token.mTokenCode = galgas_scanner_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
       }
     }catch (const C_lexicalErrorException &) {
-      _token._mTokenCode = -1 ; // No token
+      _token.mTokenCode = -1 ; // No token
       advance () ; // ... go throught unknown character
     }
   }
-  if ((UNICODE_VALUE (mCurrentChar) == '\0') && (_token._mTemplateStringBeforeToken.length () > 0)) {
-    _token._mTokenCode = 0 ;
+  if ((UNICODE_VALUE (mCurrentChar) == '\0') && (_token.mTemplateStringBeforeToken.length () > 0)) {
+    _token.mTokenCode = 0 ;
     _enterToken (_token) ;
   }
-  return _token._mTokenCode > 0 ;
+  return _token.mTokenCode > 0 ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6385,45 +6385,45 @@ sint16 galgas_scanner::
 parseLexicalTokenForLexicalColoring (void) {
   cTokenFor_galgas_scanner _token ;
   bool loop_ = true ;
-  _token._mTokenCode = -1 ;
-  while (_token._mTokenCode < 0) {
+  _token.mTokenCode = -1 ;
+  while (_token.mTokenCode < 0) {
     _token.identifierString.clear () ;
     _token.uint32value = 0 ;
     _token.sint32value = 0 ;
     _token.uint64value = 0 ;
     _token.sint64value = 0 ;
-    _token.charValue = UNICODE ('\0') ;
+    _token.charValue = TO_UNICODE ('\0') ;
     _token.tokenString.clear () ;
     _token.floatValue = 0.0 ;
-    _mTokenFirstLocation = _mCurrentLocation ;
+    mTokenFirstLocation = mCurrentLocation ;
     try{
-      if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-          testForInputCharRange (UNICODE ('A'), UNICODE ('Z'))) {
+      if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+          testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
         do {
           scanner_action_enterCharacterIntoString (_token.identifierString, scanner_action_toLower (previousChar ())) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-              testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-              testForInputChar (UNICODE ('_')) ||
-              testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+              testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+              testForInputChar (TO_UNICODE ('_')) ||
+              testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        _token._mTokenCode = search_into_galgasKeyWordList (_token.identifierString) ;
-        if (_token._mTokenCode == -1) {
-          _token._mTokenCode = galgas_scanner_1_identifier ;
+        _token.mTokenCode = search_into_galgasKeyWordList (_token.identifierString) ;
+        if (_token.mTokenCode == -1) {
+          _token.mTokenCode = galgas_scanner_1_identifier ;
         }
       }else if (testForInputString ("0x", 2, true)) {
         do {
-          if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputCharRange (UNICODE ('a'), UNICODE ('f'))) {
+          }else if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('f'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputCharRange (UNICODE ('A'), UNICODE ('F'))) {
+          }else if (testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar (UNICODE ('_'))) {
+          }else if (testForInputChar (TO_UNICODE ('_'))) {
           }else{
             loop_ = false ;
           }
@@ -6431,91 +6431,91 @@ parseLexicalTokenForLexicalColoring (void) {
         loop_ = true ;
         if (testForInputString ("LS", 2, true)) {
           scanner_action_convertHexStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar (UNICODE ('S')) ||
-            testForInputChar (UNICODE ('s'))) {
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
+        }else if (testForInputChar (TO_UNICODE ('S')) ||
+            testForInputChar (TO_UNICODE ('s'))) {
           scanner_action_convertHexStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
-        }else if (testForInputChar (UNICODE ('L'))) {
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
+        }else if (testForInputChar (TO_UNICODE ('L'))) {
           scanner_action_convertHexStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
         }else{
           scanner_action_convertHexStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
         }
-      }else if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+      }else if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
         scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
         do {
-          if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-          }else if (testForInputChar (UNICODE ('_'))) {
+          }else if (testForInputChar (TO_UNICODE ('_'))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar (UNICODE ('S')) ||
-            testForInputChar (UNICODE ('s'))) {
+        if (testForInputChar (TO_UNICODE ('S')) ||
+            testForInputChar (TO_UNICODE ('s'))) {
           scanner_action_convertDecimalStringIntoSInt (_token.tokenString, _token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger ;
         }else if (testForInputString ("LS", 2, true)) {
           scanner_action_convertDecimalStringIntoSInt64 (_token.tokenString, _token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar (UNICODE ('L'))) {
+          _token.mTokenCode = galgas_scanner_1_signed_5Fliteral_5Finteger64 ;
+        }else if (testForInputChar (TO_UNICODE ('L'))) {
           scanner_action_convertDecimalStringIntoUInt64 (_token.tokenString, _token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
-        }else if (testForInputChar (UNICODE ('.'))) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('.')) ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger64 ;
+        }else if (testForInputChar (TO_UNICODE ('.'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('.')) ;
           do {
-            if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+            if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar (UNICODE ('_'))) {
+            }else if (testForInputChar (TO_UNICODE ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
           scanner_action_convertStringToDouble (_token.tokenString, _token.floatValue, gErrorMessage_1) ;
-          _token._mTokenCode = galgas_scanner_1_literal_5Fdouble ;
+          _token.mTokenCode = galgas_scanner_1_literal_5Fdouble ;
         }else{
           scanner_action_convertDecimalStringIntoUInt (_token.tokenString, _token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
-          _token._mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
+          _token.mTokenCode = galgas_scanner_1_unsigned_5Fliteral_5Finteger ;
         }
-      }else if (testForInputChar (UNICODE ('.'))) {
-        if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
-          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('0')) ;
-          scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('.')) ;
+      }else if (testForInputChar (TO_UNICODE ('.'))) {
+        if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('0')) ;
+          scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('.')) ;
           scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           do {
-            if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+            if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
               scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            }else if (testForInputChar (UNICODE ('_'))) {
+            }else if (testForInputChar (TO_UNICODE ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
           scanner_action_convertStringToDouble (_token.tokenString, _token.floatValue, gErrorMessage_1) ;
-          _token._mTokenCode = galgas_scanner_1_literal_5Fdouble ;
+          _token.mTokenCode = galgas_scanner_1_literal_5Fdouble ;
         }else{
           if (testForInputString ("..", 2, true)) {
-            _token._mTokenCode = galgas_scanner_1__2E_2E_2E ;
+            _token.mTokenCode = galgas_scanner_1__2E_2E_2E ;
           }else if (testForInputString ("=", 1, true)) {
-            _token._mTokenCode = galgas_scanner_1__2E_3D ;
+            _token.mTokenCode = galgas_scanner_1__2E_3D ;
           }else{
-            _token._mTokenCode = galgas_scanner_1__2E ;
+            _token.mTokenCode = galgas_scanner_1__2E ;
           }
         }
-      }else if (testForInputChar (UNICODE ('@'))) {
-        if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-            testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-            testForInputChar (UNICODE ('_'))) {
+      }else if (testForInputChar (TO_UNICODE ('@'))) {
+        if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+            testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+            testForInputChar (TO_UNICODE ('_'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-                testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-                testForInputChar (UNICODE ('_')) ||
-                testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+            if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+                testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+                testForInputChar (TO_UNICODE ('_')) ||
+                testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             }else{
               loop_ = false ;
             }
@@ -6524,35 +6524,35 @@ parseLexicalTokenForLexicalColoring (void) {
         }else{
           lexicalError (gErrorMessage_3 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        _token._mTokenCode = galgas_scanner_1_type_5Fname ;
-      }else if (testForInputChar (UNICODE ('\''))) {
-        if (testForInputChar (UNICODE ('\\'))) {
-          if (testForInputChar (UNICODE ('f'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\f')) ;
-          }else if (testForInputChar (UNICODE ('n'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\n')) ;
-          }else if (testForInputChar (UNICODE ('r'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\r')) ;
-          }else if (testForInputChar (UNICODE ('t'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\t')) ;
-          }else if (testForInputChar (UNICODE ('v'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\v')) ;
-          }else if (testForInputChar (UNICODE ('\\'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\\')) ;
-          }else if (testForInputChar (UNICODE ('0'))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\0')) ;
-          }else if (testForInputChar (UNICODE ('\''))) {
-            scanner_action_enterCharacterIntoCharacter (_token.charValue, UNICODE ('\'')) ;
-          }else if (testForInputChar (UNICODE ('x')) ||
-              testForInputChar (UNICODE ('X'))) {
-            if (testForInputCharRange (UNICODE ('0'), UNICODE ('9')) ||
-                testForInputCharRange (UNICODE ('a'), UNICODE ('f')) ||
-                testForInputCharRange (UNICODE ('A'), UNICODE ('F'))) {
+        _token.mTokenCode = galgas_scanner_1_type_5Fname ;
+      }else if (testForInputChar (TO_UNICODE ('\''))) {
+        if (testForInputChar (TO_UNICODE ('\\'))) {
+          if (testForInputChar (TO_UNICODE ('f'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\f')) ;
+          }else if (testForInputChar (TO_UNICODE ('n'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\n')) ;
+          }else if (testForInputChar (TO_UNICODE ('r'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\r')) ;
+          }else if (testForInputChar (TO_UNICODE ('t'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\t')) ;
+          }else if (testForInputChar (TO_UNICODE ('v'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\v')) ;
+          }else if (testForInputChar (TO_UNICODE ('\\'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\\')) ;
+          }else if (testForInputChar (TO_UNICODE ('0'))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\0')) ;
+          }else if (testForInputChar (TO_UNICODE ('\''))) {
+            scanner_action_enterCharacterIntoCharacter (_token.charValue, TO_UNICODE ('\'')) ;
+          }else if (testForInputChar (TO_UNICODE ('x')) ||
+              testForInputChar (TO_UNICODE ('X'))) {
+            if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) ||
+                testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) ||
+                testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputCharRange (UNICODE ('0'), UNICODE ('9')) ||
-                    testForInputCharRange (UNICODE ('a'), UNICODE ('f')) ||
-                    testForInputCharRange (UNICODE ('A'), UNICODE ('F'))) {
+                if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) ||
+                    testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) ||
+                    testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -6564,23 +6564,23 @@ parseLexicalTokenForLexicalColoring (void) {
           }else{
             lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
           }
-        }else if (testForInputCharRange (UNICODE (' '), UNICODE (255))) {
+        }else if (testForInputCharRange (TO_UNICODE (' '), TO_UNICODE (255))) {
           scanner_action_enterCharacterIntoCharacter (_token.charValue, previousChar ()) ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar (UNICODE ('\''))) {
-          _token._mTokenCode = galgas_scanner_1_literal_5Fchar ;
+        if (testForInputChar (TO_UNICODE ('\''))) {
+          _token.mTokenCode = galgas_scanner_1_literal_5Fchar ;
         }else{
           lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar (UNICODE ('$'))) {
-        if (testForInputCharRange (UNICODE ('!'), UNICODE ('#')) ||
-            testForInputCharRange (UNICODE ('%'), UNICODE ('~'))) {
+      }else if (testForInputChar (TO_UNICODE ('$'))) {
+        if (testForInputCharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) ||
+            testForInputCharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputCharRange (UNICODE ('!'), UNICODE ('#')) ||
-                testForInputCharRange (UNICODE ('%'), UNICODE ('~'))) {
+            if (testForInputCharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) ||
+                testForInputCharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
             }else{
               loop_ = false ;
             }
@@ -6589,136 +6589,136 @@ parseLexicalTokenForLexicalColoring (void) {
         }else{
           lexicalError (gErrorMessage_6 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        if (testForInputChar (UNICODE ('$'))) {
+        if (testForInputChar (TO_UNICODE ('$'))) {
         }else{
           lexicalError (gErrorMessage_7 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-        _token._mTokenCode = galgas_scanner_1_terminal ;
+        _token.mTokenCode = galgas_scanner_1_terminal ;
       }else if (testForInputString ("--", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D_2D ;
+        _token.mTokenCode = galgas_scanner_1__2D_2D ;
       }else if (testForInputString ("::", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3A_3A ;
+        _token.mTokenCode = galgas_scanner_1__3A_3A ;
       }else if (testForInputString ("->", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D_3E ;
+        _token.mTokenCode = galgas_scanner_1__2D_3E ;
       }else if (testForInputString ("==", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3D_3D ;
+        _token.mTokenCode = galgas_scanner_1__3D_3D ;
       }else if (testForInputString ("\?\?", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3F_3F ;
+        _token.mTokenCode = galgas_scanner_1__3F_3F ;
       }else if (testForInputString (":=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3A_3D ;
+        _token.mTokenCode = galgas_scanner_1__3A_3D ;
       }else if (testForInputString ("++", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2B_2B ;
+        _token.mTokenCode = galgas_scanner_1__2B_2B ;
       }else if (testForInputString ("+=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2B_3D ;
+        _token.mTokenCode = galgas_scanner_1__2B_3D ;
       }else if (testForInputString ("\?!", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3F_21 ;
+        _token.mTokenCode = galgas_scanner_1__3F_21 ;
       }else if (testForInputString ("!\?", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__21_3F ;
+        _token.mTokenCode = galgas_scanner_1__21_3F ;
       }else if (testForInputString ("!=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__21_3D ;
+        _token.mTokenCode = galgas_scanner_1__21_3D ;
       }else if (testForInputString (">=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3E_3D ;
+        _token.mTokenCode = galgas_scanner_1__3E_3D ;
       }else if (testForInputString ("-=", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D_3D ;
+        _token.mTokenCode = galgas_scanner_1__2D_3D ;
       }else if (testForInputString (">>", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3E_3E ;
+        _token.mTokenCode = galgas_scanner_1__3E_3E ;
       }else if (testForInputString ("<-", 2, true)) {
-        _token._mTokenCode = galgas_scanner_1__3C_2D ;
+        _token.mTokenCode = galgas_scanner_1__3C_2D ;
       }else if (testForInputString ("*", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2A ;
+        _token.mTokenCode = galgas_scanner_1__2A ;
       }else if (testForInputString ("|", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7C ;
+        _token.mTokenCode = galgas_scanner_1__7C ;
       }else if (testForInputString (",", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2C ;
+        _token.mTokenCode = galgas_scanner_1__2C ;
       }else if (testForInputString ("+", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2B ;
+        _token.mTokenCode = galgas_scanner_1__2B ;
       }else if (testForInputString (">", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3E ;
+        _token.mTokenCode = galgas_scanner_1__3E ;
       }else if (testForInputString (";", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3B ;
+        _token.mTokenCode = galgas_scanner_1__3B ;
       }else if (testForInputString (":", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3A ;
+        _token.mTokenCode = galgas_scanner_1__3A ;
       }else if (testForInputString ("-", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2D ;
+        _token.mTokenCode = galgas_scanner_1__2D ;
       }else if (testForInputString ("(", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__28 ;
+        _token.mTokenCode = galgas_scanner_1__28 ;
       }else if (testForInputString (")", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__29 ;
+        _token.mTokenCode = galgas_scanner_1__29 ;
       }else if (testForInputString ("\?", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__3F ;
+        _token.mTokenCode = galgas_scanner_1__3F ;
       }else if (testForInputString ("!", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__21 ;
+        _token.mTokenCode = galgas_scanner_1__21 ;
       }else if (testForInputString ("[", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__5B ;
+        _token.mTokenCode = galgas_scanner_1__5B ;
       }else if (testForInputString ("]", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__5D ;
+        _token.mTokenCode = galgas_scanner_1__5D ;
       }else if (testForInputString ("/", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__2F ;
+        _token.mTokenCode = galgas_scanner_1__2F ;
       }else if (testForInputString ("&", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__26 ;
+        _token.mTokenCode = galgas_scanner_1__26 ;
       }else if (testForInputString ("{", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7B ;
+        _token.mTokenCode = galgas_scanner_1__7B ;
       }else if (testForInputString ("}", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7D ;
+        _token.mTokenCode = galgas_scanner_1__7D ;
       }else if (testForInputString ("^", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__5E ;
+        _token.mTokenCode = galgas_scanner_1__5E ;
       }else if (testForInputString ("~", 1, true)) {
-        _token._mTokenCode = galgas_scanner_1__7E ;
-      }else if (testForInputChar (UNICODE ('<'))) {
-        const C_LocationInSource _locationForTag_onlyInfDelimiter = _mCurrentLocation ;
-        if (testForInputChar (UNICODE ('='))) {
-          _token._mTokenCode = galgas_scanner_1__3C_3D ;
+        _token.mTokenCode = galgas_scanner_1__7E ;
+      }else if (testForInputChar (TO_UNICODE ('<'))) {
+        const C_LocationInSource _locationForTag_onlyInfDelimiter = mCurrentLocation ;
+        if (testForInputChar (TO_UNICODE ('='))) {
+          _token.mTokenCode = galgas_scanner_1__3C_3D ;
         }else if (testForInputString ("->", 2, true)) {
-          _token._mTokenCode = galgas_scanner_1__3C_2D_3E ;
-        }else if (testForInputChar (UNICODE ('<'))) {
-          _token._mTokenCode = galgas_scanner_1__3C_3C ;
-        }else if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-            testForInputCharRange (UNICODE ('A'), UNICODE ('Z'))) {
+          _token.mTokenCode = galgas_scanner_1__3C_2D_3E ;
+        }else if (testForInputChar (TO_UNICODE ('<'))) {
+          _token.mTokenCode = galgas_scanner_1__3C_3C ;
+        }else if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+            testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
           do {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
-            if (testForInputCharRange (UNICODE ('a'), UNICODE ('z')) ||
-                testForInputCharRange (UNICODE ('A'), UNICODE ('Z')) ||
-                testForInputCharRange (UNICODE ('0'), UNICODE ('9')) ||
-                testForInputChar (UNICODE ('_'))) {
+            if (testForInputCharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
+                testForInputCharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
+                testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) ||
+                testForInputChar (TO_UNICODE ('_'))) {
             }else{
               loop_ = false ;
             }
           }while (loop_) ;
           loop_ = true ;
-          if (testForInputChar (UNICODE ('>'))) {
-            _token._mTokenCode = galgas_scanner_1_non_5Fterminal_5Fsymbol ;
+          if (testForInputChar (TO_UNICODE ('>'))) {
+            _token.mTokenCode = galgas_scanner_1_non_5Fterminal_5Fsymbol ;
           }else{
-            _mCurrentLocation = _locationForTag_onlyInfDelimiter ;
-            _token._mTokenCode = galgas_scanner_1__3C ;
+            mCurrentLocation = _locationForTag_onlyInfDelimiter ;
+            _token.mTokenCode = galgas_scanner_1__3C ;
           }
         }else{
-          _token._mTokenCode = galgas_scanner_1__3C ;
+          _token.mTokenCode = galgas_scanner_1__3C ;
         }
-      }else if (testForInputChar (UNICODE ('\"'))) {
+      }else if (testForInputChar (TO_UNICODE ('\"'))) {
         do {
-          if (testForInputChar (UNICODE ('\\'))) {
-            if (testForInputChar (UNICODE ('f'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\f')) ;
-            }else if (testForInputChar (UNICODE ('n'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\n')) ;
-            }else if (testForInputChar (UNICODE ('r'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\r')) ;
-            }else if (testForInputChar (UNICODE ('t'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\t')) ;
-            }else if (testForInputChar (UNICODE ('v'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\v')) ;
-            }else if (testForInputChar (UNICODE ('\\'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\\')) ;
-            }else if (testForInputChar (UNICODE ('0'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\0')) ;
-            }else if (testForInputChar (UNICODE ('\"'))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\"')) ;
-            }else if (testForInputChar (UNICODE ('\''))) {
-              scanner_action_enterCharacterIntoString (_token.tokenString, UNICODE ('\'')) ;
-            }else if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+          if (testForInputChar (TO_UNICODE ('\\'))) {
+            if (testForInputChar (TO_UNICODE ('f'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\f')) ;
+            }else if (testForInputChar (TO_UNICODE ('n'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\n')) ;
+            }else if (testForInputChar (TO_UNICODE ('r'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\r')) ;
+            }else if (testForInputChar (TO_UNICODE ('t'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\t')) ;
+            }else if (testForInputChar (TO_UNICODE ('v'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\v')) ;
+            }else if (testForInputChar (TO_UNICODE ('\\'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\\')) ;
+            }else if (testForInputChar (TO_UNICODE ('0'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\0')) ;
+            }else if (testForInputChar (TO_UNICODE ('\"'))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\"')) ;
+            }else if (testForInputChar (TO_UNICODE ('\''))) {
+              scanner_action_enterCharacterIntoString (_token.tokenString, TO_UNICODE ('\'')) ;
+            }else if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
               do {
                 scanner_action_enterHexDigitIntoASCIIcharacter (_token.charValue, previousChar (), gErrorMessage_5, gErrorMessage_2) ;
-                if (testForInputCharRange (UNICODE ('0'), UNICODE ('9'))) {
+                if (testForInputCharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
                 }else{
                   loop_ = false ;
                 }
@@ -6728,45 +6728,45 @@ parseLexicalTokenForLexicalColoring (void) {
             }else{
               lexicalError (gErrorMessage_4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
-          }else if (testForInputChar (UNICODE (' ')) ||
-              testForInputChar (UNICODE ('!')) ||
-              testForInputCharRange (UNICODE ('#'), UNICODE (255))) {
+          }else if (testForInputChar (TO_UNICODE (' ')) ||
+              testForInputChar (TO_UNICODE ('!')) ||
+              testForInputCharRange (TO_UNICODE ('#'), TO_UNICODE (255))) {
             scanner_action_enterCharacterIntoString (_token.tokenString, previousChar ()) ;
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        if (testForInputChar (UNICODE ('\"'))) {
-          _token._mTokenCode = galgas_scanner_1_literal_5Fstring ;
+        if (testForInputChar (TO_UNICODE ('\"'))) {
+          _token.mTokenCode = galgas_scanner_1_literal_5Fstring ;
         }else{
           lexicalError (gErrorMessage_8 COMMA_LINE_AND_SOURCE_FILE) ;
         }
-      }else if (testForInputChar (UNICODE ('#'))) {
+      }else if (testForInputChar (TO_UNICODE ('#'))) {
         do {
-          if (testForInputCharRange (UNICODE (1), UNICODE ('\t')) ||
-              testForInputChar (UNICODE ('\v')) ||
-              testForInputChar (UNICODE ('\f')) ||
-              testForInputCharRange (UNICODE (14), UNICODE (255))) {
+          if (testForInputCharRange (TO_UNICODE (1), TO_UNICODE ('\t')) ||
+              testForInputChar (TO_UNICODE ('\v')) ||
+              testForInputChar (TO_UNICODE ('\f')) ||
+              testForInputCharRange (TO_UNICODE (14), TO_UNICODE (255))) {
           }else{
             loop_ = false ;
           }
         }while (loop_) ;
         loop_ = true ;
-        _token._mTokenCode = galgas_scanner_1_comment ;
-      }else if (testForInputCharRange (UNICODE (1), UNICODE (' '))) {
-      }else if (testForInputChar (UNICODE ('\0'))) { // End of source text ? 
-        _token._mTokenCode = galgas_scanner_1_ ; // Empty string code
+        _token.mTokenCode = galgas_scanner_1_comment ;
+      }else if (testForInputCharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
+      }else if (testForInputChar (TO_UNICODE ('\0'))) { // End of source text ? 
+        _token.mTokenCode = galgas_scanner_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
       }
     }catch (const C_lexicalErrorException &) {
-      _token._mTokenCode = -1 ; // No token
+      _token.mTokenCode = -1 ; // No token
       advance () ; // ... go throught unknown character
       throw ;
     }
   }
-  return _token._mTokenCode ;
+  return _token.mTokenCode ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6948,10 +6948,10 @@ terminalStyleIndex (const sint32 inTerminal) {
 void galgas_scanner::_enterToken (const cTokenFor_galgas_scanner & inToken) {
   cTokenFor_galgas_scanner * _p = NULL ;
   macroMyNew (_p, cTokenFor_galgas_scanner ()) ;
-  _p->_mTokenCode = inToken._mTokenCode ;
-  _p->_mFirstLocation = _mTokenFirstLocation ;
-  _p->_mLastLocation  = _mTokenLastLocation ;
-  _p->_mTemplateStringBeforeToken  = inToken._mTemplateStringBeforeToken ;
+  _p->mTokenCode = inToken.mTokenCode ;
+  _p->mFirstLocation = mTokenFirstLocation ;
+  _p->mLastLocation  = mTokenLastLocation ;
+  _p->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;
   _p->identifierString = inToken.identifierString ;
   _p->uint32value = inToken.uint32value ;
   _p->sint32value = inToken.sint32value ;
@@ -6960,7 +6960,7 @@ void galgas_scanner::_enterToken (const cTokenFor_galgas_scanner & inToken) {
   _p->charValue = inToken.charValue ;
   _p->tokenString = inToken.tokenString ;
   _p->floatValue = inToken.floatValue ;
-  _enterTokenFromPointer (_p) ;
+  enterTokenFromPointer (_p) ;
 }
 
 //---------------------------------------------------------------------------*

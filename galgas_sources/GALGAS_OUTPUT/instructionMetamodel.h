@@ -6359,8 +6359,8 @@ class GGS_semanticDeclarationStruct {
 //--- Handle 'drop' instruction
   public : void _drop (void) ;
 
-//--- Method '_isBuilt'
-  public : bool _isBuilt (void) const ;
+//--- Method 'isBuilt'
+  public : bool isBuilt (void) const ;
 
 //--- Support for method call handling in GALGAS
   public : inline const GGS_semanticDeclarationStruct * operator () (UNUSED_LOCATION_ARGS) const { return this ; }

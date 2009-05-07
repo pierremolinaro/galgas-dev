@@ -851,7 +851,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     inCppFile.incIndentation (+2) ;
   //--- Condition variable
     inCppFile << "GGS_bool " << conditionVariable << " ;\n"
-              << "if (" << variantVariable << "._isBuilt ()) {\n"
+              << "if (" << variantVariable << ".isBuilt ()) {\n"
               << "  " << conditionVariable << " = " ;
     mWhileExpression (HERE)->generateExpression (inCppFile) ;
     inCppFile << " ;\n" 

@@ -44,8 +44,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : virtual ~GGS_" << mStructName << " (void) ;\n\n"
              "//--- Handle 'drop' instruction\n"
              "  public : void _drop (void) ;\n\n"
-             "//--- Method '_isBuilt'\n"
-             "  public : bool _isBuilt (void) const ;\n\n"
+             "//--- Method 'isBuilt'\n"
+             "  public : bool isBuilt (void) const ;\n\n"
              "//--- Support for method call handling in GALGAS\n"
              "  public : inline const GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "  public : inline GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n\n"
@@ -150,7 +150,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "bool GGS_" << mStructName << "::_isBuilt (void) const {\n" ;
+  inCppFile << "bool GGS_" << mStructName << "::isBuilt (void) const {\n" ;
   current.rewind () ;
   inCppFile << "  return " ;
   first = true ;
@@ -160,7 +160,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile << "\n    && " ;
     }
-    inCppFile << current._mAttributeName (HERE) << "._isBuilt ()" ;
+    inCppFile << current._mAttributeName (HERE) << ".isBuilt ()" ;
     current.next() ;
   }
   inCppFile << " ;\n"
@@ -239,7 +239,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                    const sint32 inIndentation) const {\n"
                "  C_String _s ;\n"
                "  _s << \"<struct @" << mStructName << "\" ;\n"
-               "  if (_isBuilt ()) {\n" ;
+               "  if (isBuilt ()) {\n" ;
   current.rewind () ;
   while (current.hc ()) {
     inCppFile << "    _s << \"\\n\" ;\n"
