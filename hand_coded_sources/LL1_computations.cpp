@@ -115,9 +115,9 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const sint32 numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
           if (inHTMLfile != NULL) {
             inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
-            *inHTMLfile << numeroProduction ;
+            *inHTMLfile << cStringWithSigned (numeroProduction) ;
             inHTMLfile->outputRawData ("\">") ;
-            *inHTMLfile << numeroProduction ;
+            *inHTMLfile << cStringWithSigned (numeroProduction) ;
             inHTMLfile->outputRawData ("</a></td><td><code>") ;
           }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
@@ -161,9 +161,9 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
               if (inHTMLfile != NULL) {
                 inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
                 *inHTMLfile << "***** Conflict between the productions "
-                            << numeroProductionJ
+                            << cStringWithSigned (numeroProductionJ)
                             << " and "
-                            << numeroProductionK
+                            << cStringWithSigned (numeroProductionK)
                             << " *****" ;
                 inHTMLfile->outputRawData ("</span></td></tr>\n") ;
               }
@@ -196,7 +196,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     }else{
       inHTMLfile->outputRawData ("<span class=\"error\">") ;
       *inHTMLfile << "The grammar is not  LL (1) : "
-                  << nombreDeConflits
+                  << cStringWithSigned (nombreDeConflits)
                   << " conflict"
                   << ((nombreDeConflits > 1) ? "s" : "")
                   << "." ;
@@ -274,7 +274,7 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
       fichierCPP << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
       for (sint32 j=first ; j<=derniere ; j++) {
-        fichierCPP << "  case " << ((sint32)(j - first + 1)) << " :\n  " ;
+        fichierCPP << "  case " << cStringWithSigned ((sint32)(j - first + 1)) << " :\n  " ;
         const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
         inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
         fichierCPP << "    break ;\n" ;
@@ -311,9 +311,9 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
       title << ", in file '" 
             << p.mSourceFileName
             << ".ggs', line "
-            << p.aLigneDefinition ;
+            << cStringWithSigned (p.aLigneDefinition) ;
       inCppFile << "// At index "
-                <<  ioProductionIndex
+                << cStringWithSigned (ioProductionIndex)
                 << " : "
                 << title 
                 << "\n" ;
@@ -338,7 +338,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                       << "$\n" ;
           }else{
             inCppFile << "NONTERMINAL ("
-                      << ((sint32) (v - inVocabulary.getTerminalSymbolsCount ()))
+                      << cStringWithSigned ((sint32) (v - inVocabulary.getTerminalSymbolsCount ()))
                       << ") // <"
                       << inVocabulary.getSymbol (v COMMA_HERE) 
                       << ">\n" ;        
@@ -364,7 +364,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                     AC_OutputStream & inCppFile) {
   ioProductionDecisionTableIndex.addObject (ioDecisionTableIndex) ;
   inCppFile << "// At index "
-            <<  ioDecisionTableIndex
+            << cStringWithSigned (ioDecisionTableIndex)
             << " : <"
             << inVocabulary.getSymbol (inNonterminalIndex + inVocabulary.getTerminalSymbolsCount () COMMA_HERE)
             << ">" ;
@@ -390,7 +390,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
           }
         }
         inCppFile << "-1, // Choice "
-                  << ((sint32)(j - firstProduction + 1))
+                  << cStringWithSigned ((sint32)(j - firstProduction + 1))
                   << "\n" ;
         ioDecisionTableIndex += (sint16) p.aPremierDeProduction.getValuesCount () ;
         ioDecisionTableIndex ++ ;
@@ -469,25 +469,25 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //--- Generate productions names table
   generatedZone3.appendCppTitleComment ("P R O D U C T I O N    N A M E S") ;
   generatedZone3 << "static const char * gProductionNames ["
-                 << productionRulesIndex.count ()
+                 << cStringWithSigned (productionRulesIndex.count ())
                  << "] = {\n" ;
   for (sint32 p=0 ; p<productionRulesIndex.count () ; p++) {
     generatedZone3 << " \"" << productionRulesTitle (p COMMA_HERE)
                    << "\""
                    << ((p == (productionsCount-1)) ? "" : ",")
-                   << " // at index " << p << "\n" ;
+                   << " // at index " << cStringWithSigned (p) << "\n" ;
   }
   generatedZone3 << "} ;\n\n" ;
 
 //--- Generate productions indexes table
   generatedZone3.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gProductionIndexes ["
-                 << productionRulesIndex.count ()
+                 << cStringWithSigned (productionRulesIndex.count ())
                  << "] = {\n" ;
   for (sint32 p=0 ; p<productionRulesIndex.count () ; p++) {
-    generatedZone3 << productionRulesIndex (p COMMA_HERE)
+    generatedZone3 << cStringWithSigned (productionRulesIndex (p COMMA_HERE))
             << ((p == (productionsCount-1)) ? "" : ",")
-            << " // index " << p
+            << " // index " << cStringWithSigned (p)
             << " : " << productionRulesTitle (p COMMA_HERE)
             << "\n" ;
   }
@@ -497,11 +497,11 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //--- Generate decision tables indexes
   generatedZone3.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
   generatedZone3 << "static const sint16 gFirstProductionIndexes ["
-          << ((sint32)(firstProductionRuleIndex.count () + 1))
+          << cStringWithSigned ((sint32)(firstProductionRuleIndex.count () + 1))
           << "] = {\n" ;
   { for (sint32 i=0 ; i<firstProductionRuleIndex.count () ; i++) {
-      generatedZone3 << firstProductionRuleIndex (i COMMA_HERE)
-              << ", // at " << i <<  " : <"
+      generatedZone3 << cStringWithSigned (firstProductionRuleIndex (i COMMA_HERE))
+              << ", // at " << cStringWithSigned (i) <<  " : <"
               << inVocabulary.getSymbol ((i + inVocabulary.getTerminalSymbolsCount ()) COMMA_HERE)
               << ">\n" ;
     }
@@ -532,11 +532,11 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //--- Generate decision tables indexes
   generatedZone3.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
   generatedZone3 << "static const sint16 gDecisionIndexes ["
-          << ((sint32)(productionDecisionIndex.count () + 1))
+          << cStringWithSigned ((sint32)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
   for (sint32 i=0 ; i<productionDecisionIndex.count () ; i++) {
-  generatedZone3 << productionDecisionIndex (i COMMA_HERE)
-                << ", // at " << i << " : <"
+  generatedZone3 << cStringWithSigned (productionDecisionIndex (i COMMA_HERE))
+                << ", // at " << cStringWithSigned (i) << " : <"
                 << inVocabulary.getSymbol ((i + inVocabulary.getTerminalSymbolsCount ()) COMMA_HERE)
                 << ">\n" ;
   }
@@ -560,7 +560,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << ",\n                                " ;
         generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
         if (existeProduction) {
-          generatedZone3 << " parameter_" << numeroParametre ;
+          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
         }
         parametre.next () ;
         numeroParametre ++ ;
@@ -595,7 +595,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
-          generatedZone3 << " parameter_" << numeroParametre ;
+          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -612,7 +612,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "        scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "        const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                         gFirstProductionIndexes, gDecision, gDecisionIndexes, "
-                       << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
+                       << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "        if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "          " << inTargetFileName << " _grammar ;\n"
@@ -622,7 +622,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hc ()) {
-          generatedZone3 << ", parameter_" << numeroParametre ;
+          generatedZone3 << ", parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -639,7 +639,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hc ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
-            generatedZone3 << "        parameter_" << numeroParametre << "._drop () ;\n" ;
+            generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << "._drop () ;\n" ;
           }
           parametre.next () ;
           numeroParametre ++ ;
@@ -655,7 +655,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hc ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
-            generatedZone3 << "    parameter_" << numeroParametre << "._drop () ;\n" ;
+            generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << "._drop () ;\n" ;
           }
           parametre.next () ;
           numeroParametre ++ ;
@@ -677,7 +677,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         while (parametre.hc ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
-          generatedZone3 << " parameter_" << numeroParametre ;
+          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }
@@ -688,7 +688,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                   gFirstProductionIndexes, gDecision, gDecisionIndexes, "
-                       << productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE)
+                       << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "  if (ok && ! scanner_->mParseOnlyFlag) {\n"
                           "    " << inTargetFileName << " _grammar ;\n"
@@ -698,7 +698,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hc ()) {
-          generatedZone3 << ", parameter_" << numeroParametre ;
+          generatedZone3 << ", parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
         }

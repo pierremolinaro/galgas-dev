@@ -146,9 +146,9 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
     *inHTMLfile << "Calculus completed in "
-                << inIterationsCount
+                << cStringWithSigned (inIterationsCount)
                 << " iterations, "
-                << m
+                << cStringWithSigned (m)
                 << " values ;\n"
                    "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
     inHTMLfile->outputRawData ("</p>") ;
@@ -206,7 +206,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
     }else{
       inHTMLfile->outputRawData ("<span class=\"error\">") ;
       *inHTMLfile << "Error : "
-                  << ntInErrorCount
+                  << cStringWithSigned (ntInErrorCount)
                   << " nonterminal symbol"
                   << ((ntInErrorCount>1) ? " has" : "s have")
                   << " an empty FIRST :" ;

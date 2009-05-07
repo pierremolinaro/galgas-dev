@@ -79,7 +79,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << ",\n"
                "                        const " ;
     currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "inAttribute" << attributeIndex ;
+    inHfile << "inAttribute" << cStringWithSigned (attributeIndex) ;
     attributeIndex ++ ;
     currentAttribute.next () ;
   }
@@ -240,7 +240,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n"
                  "                      const " ;
     currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "inAttribute" << attributeIndex ;
+    inCppFile << "inAttribute" << cStringWithSigned (attributeIndex) ;
     attributeIndex ++ ;
     currentAttribute.next () ;
   }
@@ -249,7 +249,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   currentAttribute.rewind () ;
   attributeIndex = 0 ;
   while (currentAttribute.hc ()) {
-    inCppFile << " && inAttribute" << attributeIndex << ".isBuilt ()" ;
+    inCppFile << " && inAttribute" << cStringWithSigned (attributeIndex) << ".isBuilt ()" ;
     attributeIndex ++ ;
     currentAttribute.next () ;
   }
@@ -270,7 +270,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (attributeIndex > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "inAttribute" << attributeIndex ;
+    inCppFile << "inAttribute" << cStringWithSigned (attributeIndex) ;
     attributeIndex ++ ;
     currentAttribute.next () ;
   }
@@ -409,7 +409,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       inHfile << ",\n"
                  "                     " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << "outAttribute" << attributeIndex ;
+      inHfile << "outAttribute" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
@@ -523,7 +523,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << ",\n"
                    "                   " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "outAttribute" << attributeIndex ;
+      inCppFile << "outAttribute" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
@@ -547,7 +547,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentAttribute.rewind () ;
     attributeIndex = 1 ;
     while (currentAttribute.hc ()) {
-      inCppFile << "      outAttribute" << attributeIndex
+      inCppFile << "      outAttribute" << cStringWithSigned (attributeIndex)
                 << " = p->mInfo." << currentAttribute._mAttributeName (HERE)
                 << " ;\n" ;
       attributeIndex ++ ;
@@ -563,7 +563,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  if (shouldDropArguments) {\n"
                  "    outKey._drop () ;\n" ;
     for (sint32 i=1 ; i<=mMapAttributesList.count () ; i++) {
-      inCppFile << "    outAttribute" << i << "._drop () ;\n" ;
+      inCppFile << "    outAttribute" << cStringWithSigned (i) << "._drop () ;\n" ;
     }
     inCppFile << "  }\n"
                  "}\n\n" ;
@@ -691,7 +691,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (currentAttribute.hc ()) {
       inHfile << ",\n                                " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << "outParameter" << attributeIndex ;
+      inHfile << "outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
@@ -714,7 +714,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (currentAttribute.hc ()) {
       inHfile << ",\n                                const " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << " inParameter" << attributeIndex ;
+      inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
@@ -737,7 +737,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (current.hc ()) {
       inHfile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, false) ;
-      inHfile << " & outParameter" << attributeIndex ;
+      inHfile << " & outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -755,7 +755,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (current.hc ()) {
       inHfile << "                                   " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << "outParameter" << attributeIndex << ",\n" ;
+      inHfile << "outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -772,7 +772,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << "                                   const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
-    inHfile << "& inParameter" << attributeIndex << ",\n" ;
+    inHfile << "& inParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -788,7 +788,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hc ()) {
     inHfile << "                                   " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
-    inHfile << "& outParameter" << attributeIndex << ",\n" ;
+    inHfile << "& outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -1018,7 +1018,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << "                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "outParameter" << attributeIndex << ",\n" ;
+      inCppFile << "outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1035,7 +1035,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "      outParameter" << attributeIndex << "._drop () ;\n" ;
+      inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << "._drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1045,7 +1045,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "      outParameter" << attributeIndex << " = _p->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
+      inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << " = _p->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1069,7 +1069,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << "                const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "inParameter" << attributeIndex << ",\n" ;
+    inCppFile << "inParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -1080,7 +1080,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   attributeIndex = 0 ;
   while (current.hc ()) {
-    inCppFile << "   && inParameter" << attributeIndex << ".isBuilt ()\n" ;
+    inCppFile << "   && inParameter" << cStringWithSigned (attributeIndex) << ".isBuilt ()\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -1090,7 +1090,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   attributeIndex = 0 ;
   while (current.hc ()) {
-    inCppFile << "    info." << current._mAttributeName (HERE) << " = inParameter" << attributeIndex << " ;\n" ;
+    inCppFile << "    info." << current._mAttributeName (HERE) << " = inParameter" << cStringWithSigned (attributeIndex) << " ;\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -1116,7 +1116,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hc ()) {
     inCppFile << "               " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
-    inCppFile << " & outParameter" << attributeIndex << ",\n" ;
+    inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -1133,7 +1133,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (node == NULL) {\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "    outParameter" << i << "._drop () ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (i) << "._drop () ;\n" ;
     }
     inCppFile << "    if (outIndex != NULL) {\n"
                  "      outIndex->_drop () ;\n"
@@ -1142,7 +1142,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   attributeIndex = 0 ;
   while (current.hc ()) {
-    inCppFile << "    outParameter" << attributeIndex << " = node->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << " = node->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
@@ -1199,7 +1199,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " & outParameter" << attributeIndex ;
+      inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1210,7 +1210,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n"
                  "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "                  outParameter" << i << ",\n" ;
+      inCppFile << "                  outParameter" << cStringWithSigned (i) << ",\n" ;
     }
     if (currentSearchMethod._mIsGetIndexMethod (HERE).boolValue ()) {
       inCppFile << "                  & outIndex\n" ;
@@ -1239,7 +1239,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "outParameter" << attributeIndex ;
+      inCppFile << "outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1250,7 +1250,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n"
                  "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "                  outParameter" << i << ",\n" ;
+      inCppFile << "                  outParameter" << cStringWithSigned (i) << ",\n" ;
     }
     if (currentRemoveMethod._mIsGetIndexMethod (HERE).boolValue ()) {
       inCppFile << "                  & outIndex\n" ;
@@ -1279,7 +1279,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << "inParameter" << attributeIndex ;
+      inCppFile << "inParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1303,7 +1303,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n"
                  "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "                 inParameter" << i << ",\n" ;
+      inCppFile << "                 inParameter" << cStringWithSigned (i) << ",\n" ;
     }
     if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
       inCppFile << "                 & outIndex\n" ;
@@ -1464,7 +1464,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (current.hc ()) {
       inHfile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, false) ;
-      inHfile << " & outParameter" << attributeIndex ;
+      inHfile << " & outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1479,7 +1479,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (current.hc ()) {
       inHfile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, false) ;
-      inHfile << " & outParameter" << attributeIndex ;
+      inHfile << " & outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1500,7 +1500,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (current.hc ()) {
       inHfile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << " inParameter" << attributeIndex ;
+      inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1515,7 +1515,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     while (current.hc ()) {
       inHfile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-      inHfile << " inParameter" << attributeIndex ;
+      inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1610,7 +1610,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " & outParameter" << attributeIndex ;
+      inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1624,7 +1624,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "    outParameter" << attributeIndex << "._drop () ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << "._drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1632,7 +1632,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << " = info->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1649,7 +1649,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
-      inCppFile << " & outParameter" << attributeIndex ;
+      inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1662,7 +1662,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "    outParameter" << attributeIndex << "._drop () ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << "._drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1671,7 +1671,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "    outParameter" << attributeIndex << " = info->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << " = info->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1694,7 +1694,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << " inParameter" << attributeIndex ;
+      inCppFile << " inParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1703,7 +1703,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     sint32 numeroVariable = 0 ;
     while (current.hc ()) {
-      inCppFile << "  info." << current._mAttributeName (HERE) << " = inParameter" << numeroVariable << " ;\n" ;
+      inCppFile << "  info." << current._mAttributeName (HERE) << " = inParameter" << cStringWithSigned (numeroVariable) << " ;\n" ;
       numeroVariable ++ ;
       current.next () ;
     }
@@ -1722,7 +1722,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     while (current.hc ()) {
       inCppFile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-      inCppFile << " inParameter" << attributeIndex ;
+      inCppFile << " inParameter" << cStringWithSigned (attributeIndex) ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1731,7 +1731,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     numeroVariable = 0 ;
     while (current.hc ()) {
-      inCppFile << "  info." << current._mAttributeName (HERE) << " = inParameter" << numeroVariable << " ;\n" ;
+      inCppFile << "  info." << current._mAttributeName (HERE) << " = inParameter" << cStringWithSigned (numeroVariable) << " ;\n" ;
       numeroVariable ++ ;
       current.next () ;
     }

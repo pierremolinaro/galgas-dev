@@ -112,7 +112,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
     enumerator.next () ;
   }
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mFunctionName.lineNumber ()
+            << cStringWithSigned (mFunctionName.lineNumber ())
             << "))" ;
 }
 
@@ -542,7 +542,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralSIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_sint (true, " << mLiteralInt.sintValue () << "L)" ;
+  ioCppFile << "GGS_sint (true, " << cStringWithSigned (mLiteralInt.sintValue ()) << "L)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1084,7 +1084,7 @@ void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) con
   ioCppFile << "._add_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOperatorLocation.lineNumber ()
+              << cStringWithSigned (mOperatorLocation.lineNumber ())
               << "))" ;
 }
 
@@ -1125,7 +1125,7 @@ void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) con
   ioCppFile << "._substract_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOperatorLocation.lineNumber ()
+              << cStringWithSigned (mOperatorLocation.lineNumber ())
               << "))" ;
 }
 
@@ -1166,7 +1166,7 @@ void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile
   ioCppFile << "._multiply_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOperatorLocation.lineNumber ()
+              << cStringWithSigned (mOperatorLocation.lineNumber ())
               << "))" ;
 }
 
@@ -1207,7 +1207,7 @@ void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) 
   ioCppFile << "._divide_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOperatorLocation.lineNumber ()
+              << cStringWithSigned (mOperatorLocation.lineNumber ())
               << "))" ;
 }
 
@@ -1248,7 +1248,7 @@ void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) 
   ioCppFile << "._modulo_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber ()
+            << cStringWithSigned (mOperatorLocation.lineNumber ())
             << "))" ;
 }
 
@@ -1290,7 +1290,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "._left_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber ()
+            << cStringWithSigned (mOperatorLocation.lineNumber ())
             << "))" ;
 }
 
@@ -1332,7 +1332,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "._right_shift_operation (_inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber ()
+            << cStringWithSigned (mOperatorLocation.lineNumber ())
             << "))" ;
 }
 
@@ -1382,7 +1382,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
     e.next () ;
   }
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << mReaderName.lineNumber ()
+            << cStringWithSigned (mReaderName.lineNumber ())
             << "))" ;
 }
 
@@ -1432,7 +1432,7 @@ void cPtr_typeDescriptionInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".reader_description (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
-            << mOperatorLocation.lineNumber ()
+            << cStringWithSigned (mOperatorLocation.lineNumber ())
             << "))" ;
 }
 
@@ -1583,7 +1583,7 @@ void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOptionName.lineNumber ()
+              << cStringWithSigned (mOptionName.lineNumber ())
               << ")))" ;
 }
 
@@ -1623,7 +1623,7 @@ void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOptionName.lineNumber ()
+              << cStringWithSigned (mOptionName.lineNumber ())
               << ")))" ;
 }
 
@@ -1663,7 +1663,7 @@ void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) con
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << mOptionName.lineNumber ()
+              << cStringWithSigned (mOptionName.lineNumber ())
               << ")))" ;
 }
 

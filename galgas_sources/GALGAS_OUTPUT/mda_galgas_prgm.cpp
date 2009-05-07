@@ -230,7 +230,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -242,7 +242,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -266,7 +266,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -278,7 +278,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -302,7 +302,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -314,7 +314,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -341,7 +341,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -353,7 +353,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -388,7 +388,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -400,7 +400,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -435,7 +435,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -447,7 +447,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -471,7 +471,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -483,7 +483,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -518,7 +518,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -530,7 +530,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -917,7 +917,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 returnCode = 1 ; // Error code
                 break ;
               default :
-                co << _commonLexique->totalErrorCount () << " errors, " ;
+                co << cStringWithSigned (_commonLexique->totalErrorCount ()) << " errors, " ;
                 returnCode = 1 ; // Error code
                 break ;
               }
@@ -929,7 +929,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 co << "1 warning" ;
                 break ;
               default :
-                co << _commonLexique->totalWarningCount () << " warnings" ;
+                co << cStringWithSigned (_commonLexique->totalWarningCount ()) << " warnings" ;
                 break ;
               }
               if (verboseOptionOn || ((_commonLexique->totalErrorCount () + _commonLexique->totalWarningCount ()) > 0)) {
@@ -984,7 +984,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       const uint64 oneMegaByte = 1 << 20 ;
       const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;
       const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;
-      co << getCreatedDynamicObjectsTotalCount ()
+      co << cStringWithSigned (getCreatedDynamicObjectsTotalCount ())
          << " C++ objects have been created (" ;
       co.appendUnsigned64 (megaBytes) ;
       co << "." ;

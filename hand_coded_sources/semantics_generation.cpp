@@ -643,10 +643,10 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 void cPtr_typeOperandName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
-    inFile << "enumerator_" << mVariableLocation.location ()
+    inFile << "enumerator_" << cStringWithSigned (mVariableLocation.location ())
            << "._" << mName << " (HERE)" ;
   }else{
-    inFile << "operand_" << mVariableLocation.location () << "->"
+    inFile << "operand_" << cStringWithSigned (mVariableLocation.location ()) << "->"
            << (mFieldKind.boolValue () ? "mInfo." : "")
            << mName ;
   }
@@ -657,9 +657,9 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 void cPtr_typeKeyName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
-    inFile << "enumerator_" << mVariableLocation.location () << "._key (HERE)" ;
+    inFile << "enumerator_" << cStringWithSigned (mVariableLocation.location ()) << "._key (HERE)" ;
   }else{
-    inFile << "operand_" << mVariableLocation.location () << "->mKey" ;
+    inFile << "operand_" << cStringWithSigned (mVariableLocation.location ()) << "->mKey" ;
   }
 }
 
@@ -732,10 +732,10 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 void cPtr_typeOperandName::
 generateVariableAddress (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
-    inFile << "(& enumerator_" << mVariableLocation.location () << "._"
+    inFile << "(& enumerator_" << cStringWithSigned (mVariableLocation.location ()) << "._"
            << mName << " (HERE))" ;
   }else{
-    inFile << "& operand_" << mVariableLocation.location () << "->"
+    inFile << "& operand_" << cStringWithSigned (mVariableLocation.location ()) << "->"
            << (mFieldKind.boolValue () ? "mInfo." : "")
            << mName ;
   }
@@ -746,9 +746,9 @@ generateVariableAddress (AC_OutputStream & inFile) const {
 void cPtr_typeKeyName::
 generateVariableAddress (AC_OutputStream & inFile) const {
   if (mIteratorNewStyle.boolValue ()) {
-    inFile << "( &enumerator_" << mVariableLocation.location () << "._key (HERE))" ;
+    inFile << "( &enumerator_" << cStringWithSigned (mVariableLocation.location ()) << "._key (HERE))" ;
   }else{
-    inFile << "& operand_" << mVariableLocation.location () << "->mKey" ;
+    inFile << "& operand_" << cStringWithSigned (mVariableLocation.location ()) << "->mKey" ;
   }
 }
 

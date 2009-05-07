@@ -97,15 +97,15 @@ engendrerAppelProduction (const sint16 nombreDeParametres,
   fichierCPP << "pr_"
              << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE)
              << "_"
-             << mSourceFileName << "_" << aLigneDefinition
-             << "_" << aColonneDefinition << "_" << inAltName
+             << mSourceFileName << "_" << cStringWithSigned (aLigneDefinition)
+             << "_" << cStringWithSigned (aColonneDefinition) << "_" << inAltName
              << " (_inLexique" ;
-  for (sint16 i=1 ; i<nombreDeParametres ; i++) {
+  for (sint32 i=1 ; i<nombreDeParametres ; i++) {
     fichierCPP << "," ;
     if ((i % 5) == 4) {
       fichierCPP << "\n                 " ;
      }
-     fichierCPP << " parameter_" << i ;
+     fichierCPP << " parameter_" << cStringWithSigned (i) ;
   }
   fichierCPP << ") ;\n" ;
 }
@@ -145,7 +145,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
       if (identiques) {
         ok = false ;
         if (inHTMLfile != NULL) {
-          *inHTMLfile << "  Error : productions " << i << " and " << j << " are identical.\n" ;
+          *inHTMLfile << "  Error : productions " << cStringWithSigned (i) << " and " << cStringWithSigned (j) << " are identical.\n" ;
         }
       }
     }
@@ -611,7 +611,7 @@ analyzeGrammar (C_Compiler & inLexique,
       printPureBNFgrammarInBNFfile (*HTMLfile, vocabulary, pureBNFproductions) ;
     }
     if (verboseOptionOn) {
-      co << pureBNFproductions.length () << " productions.\n" ;
+      co << cStringWithSigned (pureBNFproductions.length ()) << " productions.\n" ;
       co.flush () ;
     }
   }
@@ -649,23 +649,23 @@ analyzeGrammar (C_Compiler & inLexique,
   //--- Enregistrer les caracteristiques de la grammaire
     *HTMLfile << "For information :\n" ;
     HTMLfile->outputRawData ("<ul><li>") ;
-    *HTMLfile << ((sint32)(vocabulary.getTerminalSymbolsCount () - 1))
+    *HTMLfile << cStringWithSigned ((sint32)(vocabulary.getTerminalSymbolsCount () - 1))
               << " terminal symbols, numbered from 0 to "
-             << ((sint32)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
+              << cStringWithSigned ((sint32)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
     HTMLfile->outputRawData ("</li>\n<li>") ;
     *HTMLfile << " the 'empty string' symbol '$$' is numbered "
-              << vocabulary.getEmptyStringTerminalSymbolIndex () << " ;" ;
+              << cStringWithSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) << " ;" ;
     HTMLfile->outputRawData ("</li>\n<li>") ;
-    *HTMLfile << vocabulary.getNonTerminalSymbolsCount ()
+    *HTMLfile << cStringWithSigned (vocabulary.getNonTerminalSymbolsCount ())
               << " nonterminal symbols in the pure BNF grammar, numbered from "
-              << vocabulary.getTerminalSymbolsCount ()
+              << cStringWithSigned (vocabulary.getTerminalSymbolsCount ())
               << " to "
-              << ((sint32)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
+              << cStringWithSigned ((sint32)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
     HTMLfile->outputRawData ("</li>\n<li>") ;
     *HTMLfile << "whole vocabulary : "
-              << vocabulary.getAllSymbolsCount ()
+              << cStringWithSigned (vocabulary.getAllSymbolsCount ())
               << " elements, "
-              << vocabularyDescriptor.getBDDbitsSize ()
+              << cStringWithSigned (vocabularyDescriptor.getBDDbitsSize ())
               << " bits for BDDs." ;
     HTMLfile->outputRawData ("</li>\n</ul>\n") ;
   }
@@ -840,7 +840,7 @@ analyzeGrammar (C_Compiler & inLexique,
 //--- END -------------------------------------------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
-    C_String s ; s << "ENDING ON ERROR, STEP" << ((uint16) errorFlag) ;
+    C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((uint16) errorFlag) ;
     if (HTMLfile != NULL) {
       HTMLfile->appendCppTitleComment (s, "title") ;
     }
@@ -862,7 +862,7 @@ analyzeGrammar (C_Compiler & inLexique,
     sint32 i = 1 ;
     while (warningFlag != 0) {
       if ((warningFlag & 1) != 0) {
-        s << " " << i ;
+        s << " " << cStringWithSigned (i) ;
       }
       warningFlag >>= 1 ;
       i ++ ;

@@ -87,7 +87,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
     *inHTMLfile << "Calculus completed in "
-                << inIterationsCount
+                << cStringWithSigned (inIterationsCount)
                 << " iterations.\n" ;
     inHTMLfile->outputRawData ("</p><p>") ;
     if (n == 1) {

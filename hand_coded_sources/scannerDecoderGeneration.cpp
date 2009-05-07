@@ -372,7 +372,7 @@ writeDecoderState (const C_String & inLexiqueName,
     }
   }
   if (firstNotNull == 256) {
-    inCppFile << "const sint16 kDecoder_" << inIndex << " [2] = {\n" ;
+    inCppFile << "const sint16 kDecoder_" << cStringWithSigned (inIndex) << " [2] = {\n" ;
     if (mDefaultResponse < 0) {
       inCppFile << "  -1, // Default response : lexical error\n" ;
     }else{
@@ -391,7 +391,7 @@ writeDecoderState (const C_String & inLexiqueName,
       }
     }
     const sint32 tabSize = lastNotNull - firstNotNull + 4 ;
-    inCppFile << "static const sint16 kDecoder_" << inIndex << " [" << tabSize << "] = {\n" ;
+    inCppFile << "static const sint16 kDecoder_" << cStringWithSigned (inIndex) << " [" << cStringWithSigned (tabSize) << "] = {\n" ;
     if (mDefaultResponse < 0) {
       inCppFile << "  -1, // Default response: lexical error\n" ;
     }else{
@@ -399,8 +399,8 @@ writeDecoderState (const C_String & inLexiqueName,
       generateTerminalSymbolCppName (mDefaultTerminal, inCppFile) ;
       inCppFile << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
     }
-    inCppFile << "  " << firstNotNull << ", // First entry\n"
-                 "  " << (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
+    inCppFile << "  " << cStringWithSigned (firstNotNull) << ", // First entry\n"
+                 "  " << cStringWithSigned (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
     for (sint32 i=firstNotNull ; i<=lastNotNull ; i++) {
       if (mTransitions [i].mNextState == -2) {
         inCppFile << "  -2"
@@ -409,9 +409,9 @@ writeDecoderState (const C_String & inLexiqueName,
         inCppFile << "  -1"
                   << ((i<lastNotNull) ? "," : "") << " // Default response" ;
       }else if (mTransitions [i].mNextState > 0) {
-        inCppFile << "  " << (- mTransitions [i].mNextState - 2)
-                  << ", // GOTO state " << mTransitions [i].mNextState
-                  << " (kDecoder_" << mTransitions [i].mNextState << ")"
+        inCppFile << "  " << cStringWithSigned (- mTransitions [i].mNextState - 2)
+                  << ", // GOTO state " << cStringWithSigned (mTransitions [i].mNextState)
+                  << " (kDecoder_" << cStringWithSigned (mTransitions [i].mNextState) << ")"
                   << ((i<lastNotNull) ? "," : "") ;
       }else{
         inCppFile << "  " <<  inLexiqueName << "::" << inLexiqueName << "_1_" ;
@@ -420,9 +420,9 @@ writeDecoderState (const C_String & inLexiqueName,
       }
       inCppFile << " for character " ;
       if (::isgraph (i)) {
-        inCppFile << "'" << ((char) i) << "' " ;
+        inCppFile << "'" << cStringWithCharacter ((char) i) << "' " ;
       }
-      inCppFile << "code " << i << "\n" ;
+      inCppFile << "code " << cStringWithSigned (i) << "\n" ;
     }
     inCppFile << "} ;\n\n" ;
   }
@@ -435,7 +435,7 @@ writeDecoder (const C_String & inLexiqueName,
               C_String & inCppFile,
               const bool inPrintStateCount) const {
   if (inPrintStateCount) {
-    co << "  Scanner decoder: " << count () << " state"
+    co << "  Scanner decoder: " << cStringWithSigned (count ()) << " state"
        << ((count () > 1) ? "s" : "") 
        << "\n" ;
     co.flush () ;
@@ -445,9 +445,9 @@ writeDecoder (const C_String & inLexiqueName,
     this->operator () (i COMMA_HERE)->writeDecoderState (inLexiqueName, i, inCppFile) ;
   }
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "/* static */ const sint16 * gDecoderEntries [" << count () << "] = {\n" ;
+  inCppFile << "/* static */ const sint16 * gDecoderEntries [" << cStringWithSigned (count ()) << "] = {\n" ;
   for (sint32 i=0 ; i<count () ; i++) {
-    inCppFile << " kDecoder_" << i ;
+    inCppFile << " kDecoder_" << cStringWithSigned (i) ;
     if (i < (count () - 1)) {
       inCppFile << "," ;
     }
@@ -457,7 +457,7 @@ writeDecoder (const C_String & inLexiqueName,
   }
   inCppFile << "} ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "/* static */ const sint32 gDecoderSize = " << count () << " ;\n\n" ;
+  inCppFile << "/* static */ const sint32 gDecoderSize = " << cStringWithSigned (count ()) << " ;\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 }
 

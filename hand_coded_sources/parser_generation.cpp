@@ -137,8 +137,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
     inHfile << "void " ;
     inHfile << "pr_" << aNomProduction 
             << "_" << inTargetFileName
-            << "_" << aNomProduction.lineNumber ()
-            << "_" << aNomProduction.columnNumber ()
+            << "_" << cStringWithSigned (aNomProduction.lineNumber ())
+            << "_" << cStringWithSigned (aNomProduction.columnNumber ())
             << "_" << currentAltForNonTerminal._key (HERE) << " ("
             << mLexiqueClassName << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
@@ -162,8 +162,8 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
   if (hasParseLabel) {
     inHfile << "  protected : void pr_" << aNomProduction 
             << "_" << inTargetFileName
-            << "_" << aNomProduction.lineNumber ()
-            << "_" << aNomProduction.columnNumber ()
+            << "_" << cStringWithSigned (aNomProduction.lineNumber ())
+            << "_" << cStringWithSigned (aNomProduction.columnNumber ())
             << "_parse ("
             << mLexiqueClassName << " & _inLexique) ;\n\n" ;
   }
@@ -193,8 +193,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
-              << "_" << aNomProduction.lineNumber ()
-              << "_" << aNomProduction.columnNumber ()
+              << "_" << cStringWithSigned (aNomProduction.lineNumber ())
+              << "_" << cStringWithSigned (aNomProduction.columnNumber ())
               << "_" << currentAltForNonTerminal._key (HERE) << " ("
               << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), true) ;
@@ -260,8 +260,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << "::\n"
                  "pr_"
               << aNomProduction << "_" << inTargetFileName
-              << "_" << aNomProduction.lineNumber ()
-              << "_" << aNomProduction.columnNumber ()
+              << "_" << cStringWithSigned (aNomProduction.lineNumber ())
+              << "_" << cStringWithSigned (aNomProduction.columnNumber ())
               << "_parse ("
               << mLexiqueClassName << " & " ;
     const bool lexiqueFormalArgumentUsed = isLexiqueFormalArgumentUsedForList (firstLabelDef._mAllInstructionsList (HERE), false) ;
