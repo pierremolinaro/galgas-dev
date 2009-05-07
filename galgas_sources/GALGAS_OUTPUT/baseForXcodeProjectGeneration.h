@@ -4485,8 +4485,8 @@ class GGS_XcodeProjectDescription {
 //--- Handle 'drop' instruction
   public : void _drop (void) ;
 
-//--- Method '_isBuilt'
-  public : bool _isBuilt (void) const ;
+//--- Method 'isBuilt'
+  public : bool isBuilt (void) const ;
 
 //--- Support for method call handling in GALGAS
   public : inline const GGS_XcodeProjectDescription * operator () (UNUSED_LOCATION_ARGS) const { return this ; }

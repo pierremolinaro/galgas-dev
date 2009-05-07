@@ -122,7 +122,7 @@ _internalPrependValues (const GGS_string& argument_0,
 void GGS_XcodeObjectReferenceList::
 _addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1
@@ -143,7 +143,7 @@ _operator_concat (const GGS_XcodeObjectReferenceList & inOperand) const {
 
 void GGS_XcodeObjectReferenceList::
 _dotAssign_operation (const GGS_XcodeObjectReferenceList inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -169,7 +169,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_string& argument_0,
                      const GGS_string& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1
@@ -243,7 +243,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_XcodeObjectReferenceList result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -262,7 +262,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_XcodeObjectReferenceList result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -290,7 +290,7 @@ method_first (C_Compiler & _inLexique,
               GGS_string& _out_1
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -313,7 +313,7 @@ method_last (C_Compiler & _inLexique,
              GGS_string& _out_1
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -336,7 +336,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_string& _out_1
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -361,7 +361,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_string& _out_1
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -383,7 +383,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_string GGS_XcodeObjectReferenceList::
 reader_mRefStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mRefString ;
@@ -397,7 +397,7 @@ reader_mRefStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 GGS_string GGS_XcodeObjectReferenceList::
 reader_mCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mComment ;
@@ -413,7 +413,7 @@ modifier_setMRefStringAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mRefString = inObject ;
@@ -428,7 +428,7 @@ modifier_setMCommentAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mComment = inObject ;
@@ -2927,14 +2927,14 @@ enterIndex (const GGS_lstring & inKey,
 
 GGS_bool GGS_Xcode_PBXFileReference_map::
 _operator_isEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;
+  return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_Xcode_PBXFileReference_map::
 _operator_isNotEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;
+  return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2958,9 +2958,9 @@ _insertElement (C_Compiler & inLexique,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
   sint32 elementID = - 1 ;
-  if (_isBuilt ()
-   && inParameter0._isBuilt ()
-   && inKey._isBuilt ()) {
+  if (isBuilt ()
+   && inParameter0.isBuilt ()
+   && inKey.isBuilt ()) {
     insulateMap () ;
     e_Xcode_PBXFileReference_map info  ;
     info.mFileReference = inParameter0 ;
@@ -2985,7 +2985,7 @@ _searchElement (C_Compiler & inLexique,
                GGS_luint * outIndex
                COMMA_LOCATION_ARGS) const {
   cElement * node = NULL  ;
-  if (_isBuilt () && inKey._isBuilt ()) {
+  if (isBuilt () && inKey.isBuilt ()) {
     AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
     node = (cElement *) p ;
@@ -3013,7 +3013,7 @@ modifier_setMFileReferenceForKey (C_Compiler & inLexique,
                         const GGS_Xcode_PBXFileReference_abstract & inValue,
                         const GGS_string & inKey
                         COMMA_LOCATION_ARGS) {
-  if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {
+  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {
     insulateMap () ;
     AC_galgas_map_element * p = internal_search (inKey.string ()) ;
     MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), "Dynamic cast error", 0, 0) ;
@@ -3100,7 +3100,7 @@ reader_description (C_Compiler & _inLexique
                     const sint32 inIndentation) const {
   C_String s ;
   s << "<map @Xcode_PBXFileReference_map " ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
@@ -3411,7 +3411,7 @@ _internalPrependValues (const GGS_Xcode_PBXBuildFile & argument_0
 
 void GGS_Xcode_PBXBuildFile_list::
 _addAssign_operation (const GGS_Xcode_PBXBuildFile & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -3431,7 +3431,7 @@ _operator_concat (const GGS_Xcode_PBXBuildFile_list & inOperand) const {
 
 void GGS_Xcode_PBXBuildFile_list::
 _dotAssign_operation (const GGS_Xcode_PBXBuildFile_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -3455,7 +3455,7 @@ void GGS_Xcode_PBXBuildFile_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXBuildFile & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -3526,7 +3526,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -3545,7 +3545,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -3572,7 +3572,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_PBXBuildFile & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -3592,7 +3592,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_PBXBuildFile & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -3612,7 +3612,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_PBXBuildFile & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -3634,7 +3634,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_PBXBuildFile & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -3654,7 +3654,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_PBXBuildFile  GGS_Xcode_PBXBuildFile_list::
 reader_mFileAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mFile ;
@@ -3670,7 +3670,7 @@ modifier_setMFileAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_PBXBuildFile  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mFile = inObject ;
@@ -3975,7 +3975,7 @@ _internalPrependValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
 _addAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -3995,7 +3995,7 @@ _operator_concat (const GGS_Xcode_PBXSourcesBuildPhase_list & inOperand) const {
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
 _dotAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -4019,7 +4019,7 @@ void GGS_Xcode_PBXSourcesBuildPhase_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -4090,7 +4090,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -4109,7 +4109,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -4136,7 +4136,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_PBXSourcesBuildPhase & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -4156,7 +4156,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_PBXSourcesBuildPhase & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -4176,7 +4176,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_PBXSourcesBuildPhase & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -4198,7 +4198,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_PBXSourcesBuildPhase & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -4218,7 +4218,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_PBXSourcesBuildPhase  GGS_Xcode_PBXSourcesBuildPhase_list::
 reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mBuildPhase ;
@@ -4234,7 +4234,7 @@ modifier_setMBuildPhaseAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_PBXSourcesBuildPhase  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mBuildPhase = inObject ;
@@ -4539,7 +4539,7 @@ _internalPrependValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
 _addAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -4559,7 +4559,7 @@ _operator_concat (const GGS_Xcode_PBXResourcesBuildPhase_list & inOperand) const
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
 _dotAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -4583,7 +4583,7 @@ void GGS_Xcode_PBXResourcesBuildPhase_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -4654,7 +4654,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -4673,7 +4673,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -4700,7 +4700,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_PBXResourcesBuildPhase & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -4720,7 +4720,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_PBXResourcesBuildPhase & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -4740,7 +4740,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_PBXResourcesBuildPhase & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -4762,7 +4762,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_PBXResourcesBuildPhase & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -4782,7 +4782,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_PBXResourcesBuildPhase  GGS_Xcode_PBXResourcesBuildPhase_list::
 reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mBuildPhase ;
@@ -4798,7 +4798,7 @@ modifier_setMBuildPhaseAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_PBXResourcesBuildPhase  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mBuildPhase = inObject ;
@@ -5131,7 +5131,7 @@ _internalPrependValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
 _addAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -5151,7 +5151,7 @@ _operator_concat (const GGS_Xcode_PBXFrameworksBuildPhase_list & inOperand) cons
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
 _dotAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -5175,7 +5175,7 @@ void GGS_Xcode_PBXFrameworksBuildPhase_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -5246,7 +5246,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -5265,7 +5265,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -5292,7 +5292,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_PBXFrameworksBuildPhase & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -5312,7 +5312,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_PBXFrameworksBuildPhase & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -5332,7 +5332,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_PBXFrameworksBuildPhase & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -5354,7 +5354,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_PBXFrameworksBuildPhase & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -5374,7 +5374,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_PBXFrameworksBuildPhase  GGS_Xcode_PBXFrameworksBuildPhase_list::
 reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mBuildPhase ;
@@ -5390,7 +5390,7 @@ modifier_setMBuildPhaseAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_PBXFrameworksBuildPhase  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mBuildPhase = inObject ;
@@ -5715,7 +5715,7 @@ _internalPrependValues (const GGS_Xcode_PBXGroup & argument_0
 
 void GGS_Xcode_PBXGroup_list::
 _addAssign_operation (const GGS_Xcode_PBXGroup & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -5735,7 +5735,7 @@ _operator_concat (const GGS_Xcode_PBXGroup_list & inOperand) const {
 
 void GGS_Xcode_PBXGroup_list::
 _dotAssign_operation (const GGS_Xcode_PBXGroup_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -5759,7 +5759,7 @@ void GGS_Xcode_PBXGroup_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_PBXGroup & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -5830,7 +5830,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -5849,7 +5849,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -5876,7 +5876,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_PBXGroup & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -5896,7 +5896,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_PBXGroup & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -5916,7 +5916,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_PBXGroup & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -5938,7 +5938,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_PBXGroup & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -5958,7 +5958,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_PBXGroup  GGS_Xcode_PBXGroup_list::
 reader_mGroupAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mGroup ;
@@ -5974,7 +5974,7 @@ modifier_setMGroupAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_PBXGroup  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mGroup = inObject ;
@@ -6292,7 +6292,7 @@ _internalPrependValues (const GGS_Xcode_XCBuildConfiguration & argument_0
 
 void GGS_Xcode_XCBuildConfiguration_list::
 _addAssign_operation (const GGS_Xcode_XCBuildConfiguration & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -6312,7 +6312,7 @@ _operator_concat (const GGS_Xcode_XCBuildConfiguration_list & inOperand) const {
 
 void GGS_Xcode_XCBuildConfiguration_list::
 _dotAssign_operation (const GGS_Xcode_XCBuildConfiguration_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -6336,7 +6336,7 @@ void GGS_Xcode_XCBuildConfiguration_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_XCBuildConfiguration & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -6407,7 +6407,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -6426,7 +6426,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -6453,7 +6453,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_XCBuildConfiguration & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -6473,7 +6473,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_XCBuildConfiguration & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -6493,7 +6493,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_XCBuildConfiguration & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -6515,7 +6515,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_XCBuildConfiguration & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -6535,7 +6535,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_XCBuildConfiguration  GGS_Xcode_XCBuildConfiguration_list::
 reader_mBuildConfigAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mBuildConfig ;
@@ -6551,7 +6551,7 @@ modifier_setMBuildConfigAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_XCBuildConfiguration  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mBuildConfig = inObject ;
@@ -6719,7 +6719,7 @@ _addAssign_operation (const GGS_string& argument_0,
                                 const GGS_Xcode_productFileReference & argument_5,
                                 const GGS_stringlist & argument_6,
                                 const GGS_stringlist & argument_7) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()&& argument_2._isBuilt ()&& argument_3._isBuilt ()&& argument_4._isBuilt ()&& argument_5._isBuilt ()&& argument_6._isBuilt ()&& argument_7._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()&& argument_3.isBuilt ()&& argument_4.isBuilt ()&& argument_5.isBuilt ()&& argument_6.isBuilt ()&& argument_7.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1,
@@ -6746,7 +6746,7 @@ _operator_concat (const GGS_Xcode_PBXNativeTarget_list & inOperand) const {
 
 void GGS_Xcode_PBXNativeTarget_list::
 _dotAssign_operation (const GGS_Xcode_PBXNativeTarget_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -6784,7 +6784,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_stringlist & argument_6,
                      const GGS_stringlist & argument_7
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1,
@@ -6876,7 +6876,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXNativeTarget_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -6895,7 +6895,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXNativeTarget_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -6929,7 +6929,7 @@ method_first (C_Compiler & _inLexique,
               GGS_stringlist & _out_7
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -6970,7 +6970,7 @@ method_last (C_Compiler & _inLexique,
              GGS_stringlist & _out_7
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -7011,7 +7011,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_stringlist & _out_7
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -7054,7 +7054,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_stringlist & _out_7
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -7088,7 +7088,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_string GGS_Xcode_PBXNativeTarget_list::
 reader_mTargetKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mTargetKey ;
@@ -7102,7 +7102,7 @@ reader_mTargetKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 GGS_string GGS_Xcode_PBXNativeTarget_list::
 reader_mTargetNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mTargetName ;
@@ -7116,7 +7116,7 @@ reader_mTargetNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 GGS_Xcode_XCBuildConfiguration  GGS_Xcode_PBXNativeTarget_list::
 reader_mTargetConfigurationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mTargetConfiguration ;
@@ -7130,7 +7130,7 @@ reader_mTargetConfigurationAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 GGS_string GGS_Xcode_PBXNativeTarget_list::
 reader_mProductInstallPathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mProductInstallPath ;
@@ -7144,7 +7144,7 @@ reader_mProductInstallPathAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 GGS_string GGS_Xcode_PBXNativeTarget_list::
 reader_mProductNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mProductName ;
@@ -7158,7 +7158,7 @@ reader_mProductNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 GGS_Xcode_productFileReference  GGS_Xcode_PBXNativeTarget_list::
 reader_mProductAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_productFileReference  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mProduct ;
@@ -7172,7 +7172,7 @@ reader_mProductAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_L
 GGS_stringlist  GGS_Xcode_PBXNativeTarget_list::
 reader_mBuildPhaseKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_stringlist  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mBuildPhaseKeyList ;
@@ -7186,7 +7186,7 @@ reader_mBuildPhaseKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 GGS_stringlist  GGS_Xcode_PBXNativeTarget_list::
 reader_mDependencyKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_stringlist  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mDependencyKeyList ;
@@ -7202,7 +7202,7 @@ modifier_setMTargetKeyAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mTargetKey = inObject ;
@@ -7217,7 +7217,7 @@ modifier_setMTargetNameAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mTargetName = inObject ;
@@ -7232,7 +7232,7 @@ modifier_setMTargetConfigurationAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_XCBuildConfiguration  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mTargetConfiguration = inObject ;
@@ -7247,7 +7247,7 @@ modifier_setMProductInstallPathAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mProductInstallPath = inObject ;
@@ -7262,7 +7262,7 @@ modifier_setMProductNameAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mProductName = inObject ;
@@ -7277,7 +7277,7 @@ modifier_setMProductAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_productFileReference  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mProduct = inObject ;
@@ -7292,7 +7292,7 @@ modifier_setMBuildPhaseKeyListAtIndex (C_Compiler & inLexique,
                               const GGS_stringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mBuildPhaseKeyList = inObject ;
@@ -7307,7 +7307,7 @@ modifier_setMDependencyKeyListAtIndex (C_Compiler & inLexique,
                               const GGS_stringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mDependencyKeyList = inObject ;
@@ -7641,7 +7641,7 @@ _internalPrependValues (const GGS_Xcode_targetDependencyDescription & argument_0
 
 void GGS_Xcode_targetDependencyDescription_list::
 _addAssign_operation (const GGS_Xcode_targetDependencyDescription & argument_0) {
-  if (_isBuilt ()&& argument_0._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
                                 COMMA_HERE) ;
@@ -7661,7 +7661,7 @@ _operator_concat (const GGS_Xcode_targetDependencyDescription_list & inOperand) 
 
 void GGS_Xcode_targetDependencyDescription_list::
 _dotAssign_operation (const GGS_Xcode_targetDependencyDescription_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -7685,7 +7685,7 @@ void GGS_Xcode_targetDependencyDescription_list::
 modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_Xcode_targetDependencyDescription & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0
                                 COMMA_HERE) ;
@@ -7756,7 +7756,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -7775,7 +7775,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -7802,7 +7802,7 @@ method_first (C_Compiler & _inLexique,
               GGS_Xcode_targetDependencyDescription & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -7822,7 +7822,7 @@ method_last (C_Compiler & _inLexique,
              GGS_Xcode_targetDependencyDescription & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -7842,7 +7842,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_Xcode_targetDependencyDescription & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -7864,7 +7864,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_Xcode_targetDependencyDescription & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -7884,7 +7884,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_Xcode_targetDependencyDescription  GGS_Xcode_targetDependencyDescription_list::
 reader_mDependencyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mDependency ;
@@ -7900,7 +7900,7 @@ modifier_setMDependencyAtIndex (C_Compiler & inLexique,
                               const GGS_Xcode_targetDependencyDescription  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mDependency = inObject ;
@@ -8008,7 +8008,7 @@ void GGS_Xcode_PBXVariantGroup_list::
 _addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()&& argument_2._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1,
@@ -8030,7 +8030,7 @@ _operator_concat (const GGS_Xcode_PBXVariantGroup_list & inOperand) const {
 
 void GGS_Xcode_PBXVariantGroup_list::
 _dotAssign_operation (const GGS_Xcode_PBXVariantGroup_list inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -8058,7 +8058,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_string& argument_1,
                      const GGS_string& argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1,
@@ -8135,7 +8135,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXVariantGroup_list result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -8154,7 +8154,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXVariantGroup_list result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -8183,7 +8183,7 @@ method_first (C_Compiler & _inLexique,
               GGS_string& _out_2
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -8209,7 +8209,7 @@ method_last (C_Compiler & _inLexique,
              GGS_string& _out_2
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -8235,7 +8235,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_string& _out_2
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -8263,7 +8263,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_string& _out_2
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -8287,7 +8287,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_string GGS_Xcode_PBXVariantGroup_list::
 reader_mPBXVariantKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mPBXVariantKey ;
@@ -8301,7 +8301,7 @@ reader_mPBXVariantKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex C
 GGS_string GGS_Xcode_PBXVariantGroup_list::
 reader_mPBXFileReferenceKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mPBXFileReferenceKey ;
@@ -8315,7 +8315,7 @@ reader_mPBXFileReferenceKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 GGS_string GGS_Xcode_PBXVariantGroup_list::
 reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mName ;
@@ -8331,7 +8331,7 @@ modifier_setMPBXVariantKeyAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mPBXVariantKey = inObject ;
@@ -8346,7 +8346,7 @@ modifier_setMPBXFileReferenceKeyAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mPBXFileReferenceKey = inObject ;
@@ -8361,7 +8361,7 @@ modifier_setMNameAtIndex (C_Compiler & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mName = inObject ;
@@ -8435,19 +8435,19 @@ void GGS_XcodeProjectDescription::_drop (void) {
 
 //---------------------------------------------------------------------------*
 
-bool GGS_XcodeProjectDescription::_isBuilt (void) const {
-  return mFileReferenceMap._isBuilt ()
-    && mAllBuildFileList._isBuilt ()
-    && mMainGroupChildrenList._isBuilt ()
-    && mProjectGroupList._isBuilt ()
-    && mTargetList._isBuilt ()
-    && mProductGroupChildrenList._isBuilt ()
-    && mBuildConfigurationList._isBuilt ()
-    && mPBXSourcesBuildPhase_list._isBuilt ()
-    && mPBXFrameworksBuildPhase_list._isBuilt ()
-    && mPBXResourcesBuildPhase_list._isBuilt ()
-    && mDependencyList._isBuilt ()
-    && mPBXVariantGroup_list._isBuilt () ;
+bool GGS_XcodeProjectDescription::isBuilt (void) const {
+  return mFileReferenceMap.isBuilt ()
+    && mAllBuildFileList.isBuilt ()
+    && mMainGroupChildrenList.isBuilt ()
+    && mProjectGroupList.isBuilt ()
+    && mTargetList.isBuilt ()
+    && mProductGroupChildrenList.isBuilt ()
+    && mBuildConfigurationList.isBuilt ()
+    && mPBXSourcesBuildPhase_list.isBuilt ()
+    && mPBXFrameworksBuildPhase_list.isBuilt ()
+    && mPBXResourcesBuildPhase_list.isBuilt ()
+    && mDependencyList.isBuilt ()
+    && mPBXVariantGroup_list.isBuilt () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8525,7 +8525,7 @@ reader_description (C_Compiler & _inLexique
                     const sint32 inIndentation) const {
   C_String _s ;
   _s << "<struct @XcodeProjectDescription" ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _s << "\n" ;
     _s.writeStringMultiple ("| ", inIndentation + 1) ;
     _s << "mFileReferenceMap " ;
@@ -9058,7 +9058,7 @@ void routine_enter_file_for_sources_build_phase (C_Compiler & _inLexique,
   var_cas_key = GGS_lstring ::constructor_new (_inLexique, var_cas_in_fileName, GGS_location (_inLexique) COMMA_HERE) ;
   GGS_Xcode_PBXFileReference_abstract  var_cas_ref ;
   const GGS_Xcode_PBXFileReference_map  _temp_28990 = var_cas_ioXcodeProjectDescription.reader_mFileReferenceMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (709)) ;
-  if (_temp_28990._isBuilt ()) {
+  if (_temp_28990.isBuilt ()) {
     _temp_28990 (HERE)->method_searchKey (_inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (709)) ;
   }
   GGS_Xcode_PBXBuildFile  var_cas_build_file ;
@@ -9118,7 +9118,7 @@ void routine_enter_files_for_resources_build_phase (C_Compiler & _inLexique,
       var_cas_key = GGS_lstring ::constructor_new (_inLexique, operand_29873->mValue, GGS_location (_inLexique) COMMA_HERE) ;
       GGS_Xcode_PBXFileReference_abstract  var_cas_ref ;
       const GGS_Xcode_PBXFileReference_map  _temp_30019 = var_cas_ioXcodeProjectDescription.reader_mFileReferenceMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (741)) ;
-      if (_temp_30019._isBuilt ()) {
+      if (_temp_30019.isBuilt ()) {
         _temp_30019 (HERE)->method_searchKey (_inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (741)) ;
       }
       GGS_Xcode_PBXBuildFile  var_cas_build_file ;
@@ -9154,7 +9154,7 @@ void routine_enter_files_for_frameworks_build_phase (C_Compiler & _inLexique,
       var_cas_key = GGS_lstring ::constructor_new (_inLexique, operand_30513->mValue, GGS_location (_inLexique) COMMA_HERE) ;
       GGS_Xcode_PBXFileReference_abstract  var_cas_ref ;
       const GGS_Xcode_PBXFileReference_map  _temp_30659 = var_cas_ioXcodeProjectDescription.reader_mFileReferenceMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (758)) ;
-      if (_temp_30659._isBuilt ()) {
+      if (_temp_30659.isBuilt ()) {
         _temp_30659 (HERE)->method_searchKey (_inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (758)) ;
       }
       GGS_Xcode_PBXBuildFile  var_cas_build_file ;
@@ -9391,7 +9391,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
       do{
         macroValidPointer (operand_42538) ;
         const GGS_Xcode_PBXBuildFile  _temp_42673 = operand_42538->mFile ;
-        if (_temp_42673._isBuilt ()) {
+        if (_temp_42673.isBuilt ()) {
           _temp_42673 (HERE)->method_buildXcodeProject (_inLexique, var_cas_outString COMMA_SOURCE_FILE_AT_LINE (1025)) ;
         }
         operand_42538 = enumerator_42538.nextObject () ;
@@ -9412,7 +9412,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
       do{
         macroValidPointer (operand_42806) ;
         const GGS_Xcode_PBXFileReference_abstract  _temp_42954 = operand_42806->mInfo.mFileReference ;
-        if (_temp_42954._isBuilt ()) {
+        if (_temp_42954.isBuilt ()) {
           _temp_42954 (HERE)->method_buildXcodeProject (_inLexique, var_cas_outString COMMA_SOURCE_FILE_AT_LINE (1031)) ;
         }
         operand_42806 = enumerator_42806.nextObject () ;
@@ -9432,7 +9432,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
       do{
         macroValidPointer (operand_43096) ;
         const GGS_Xcode_PBXFrameworksBuildPhase  _temp_43260 = operand_43096->mBuildPhase ;
-        if (_temp_43260._isBuilt ()) {
+        if (_temp_43260.isBuilt ()) {
           _temp_43260 (HERE)->method_buildXcodeProject (_inLexique, var_cas_outString COMMA_SOURCE_FILE_AT_LINE (1037)) ;
         }
         operand_43096 = enumerator_43096.nextObject () ;
@@ -9526,7 +9526,7 @@ void routine_buildXcodeProjectString (C_Compiler & _inLexique,
         }
         GGS_string var_cas_productExtension ;
         const GGS_Xcode_productFileReference  _temp_45095 = operand_44509->mProduct ;
-        if (_temp_45095._isBuilt ()) {
+        if (_temp_45095.isBuilt ()) {
           _temp_45095 (HERE)->method_productExtension (_inLexique, var_cas_productExtension COMMA_SOURCE_FILE_AT_LINE (1079)) ;
         }
         var_cas_outString.appendCString ("\t\t\t);\n"
@@ -9837,18 +9837,18 @@ void routine_generateXCodeFile (C_Compiler & _inLexique,
   ::routine_buildXcodeProjectString (_inLexique,  var_cas_inXcodeProjectDescription,  var_cas_projectName,  var_cas_mainGroup.reader_PBXGroupKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1241)),  var_cas_defaultProjectConfiguration.reader_XCBuildConfigurationKey (_inLexique COMMA_SOURCE_FILE_AT_LINE (1242)),  var_cas_fileNewContents COMMA_SOURCE_FILE_AT_LINE (1238)) ;
   if (((GGS_uint ::constructor_errorCount (_inLexique COMMA_HERE))._operator_isEqual (GGS_uint (true, 0U))).isBuiltAndTrue ()) {
     const GGS_string _temp_51860 = var_cas_in_xcodeproj_filePath ;
-    if (_temp_51860._isBuilt ()) {
+    if (_temp_51860.isBuilt ()) {
       _temp_51860 (HERE)->method_makeDirectory (_inLexique COMMA_SOURCE_FILE_AT_LINE (1247)) ;
     }
     GGS_bool var_cas_written ;
     const GGS_string _temp_51982 = var_cas_fileNewContents ;
-    if (_temp_51982._isBuilt ()) {
+    if (_temp_51982.isBuilt ()) {
       _temp_51982 (HERE)->method_writeToFileWhenDifferentContents (_inLexique, var_cas_inReferenceFilePath, var_cas_written COMMA_SOURCE_FILE_AT_LINE (1250)) ;
     }
     if ((var_cas_written).isBuiltAndTrue ()) {
       GGS_bool automatic_var_0 ;
       const GGS_string _temp_52091 = var_cas_fileNewContents ;
-      if (_temp_52091._isBuilt ()) {
+      if (_temp_52091.isBuilt ()) {
         _temp_52091 (HERE)->method_writeToFileWhenDifferentContents (_inLexique, (var_cas_in_xcodeproj_filePath)._operator_concat (GGS_string (true, "/project.pbxproj")), automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (1252)) ;
       }
     }

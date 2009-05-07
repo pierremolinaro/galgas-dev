@@ -331,7 +331,7 @@ class GGS_EXactualParametersPassingMode {
   public : static inline uint16 bitCount (void) { return 2 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_EXactualParametersPassingMode  constructor_parameterIn (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -396,7 +396,7 @@ class GGS_EXformalArgumentPassingMode {
   public : static inline uint16 bitCount (void) { return 3 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_EXformalArgumentPassingMode  constructor_argumentConstantIn (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -3031,7 +3031,7 @@ class GGS_localConstantBuildStyleEnum {
   public : static inline uint16 bitCount (void) { return 2 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_localConstantBuildStyleEnum  constructor_firstIsKeyOtherMapStyle (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -4414,7 +4414,7 @@ class GGS_categoryMethodKind {
   public : static inline uint16 bitCount (void) { return 2 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_categoryMethodKind  constructor_abstractMethod (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
@@ -16531,8 +16531,8 @@ class GGS_EXsemanticContext {
 //--- Handle 'drop' instruction
   public : void _drop (void) ;
 
-//--- Method '_isBuilt'
-  public : bool _isBuilt (void) const ;
+//--- Method 'isBuilt'
+  public : bool isBuilt (void) const ;
 
 //--- Support for method call handling in GALGAS
   public : inline const GGS_EXsemanticContext * operator () (UNUSED_LOCATION_ARGS) const { return this ; }

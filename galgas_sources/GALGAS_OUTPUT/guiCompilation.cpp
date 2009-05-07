@@ -63,7 +63,7 @@ void routine_compileGuiComponent (C_Compiler & _inLexique,
   GGS_guiComponentRoot  var_cas_guiComponentRoot ;
   const GGS_string _depExtension = GGS_string (true, "") ;
   const GGS_string _depPath = GGS_string (true, "") ;
-  if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+  if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
     guiLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   _depExtension.string (),
                                   _depPath.string (),

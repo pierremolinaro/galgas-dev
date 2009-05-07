@@ -483,7 +483,7 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
     while (((operand_14515 = enumerator_14515.nextObject ()))) {
       macroValidPointer (operand_14515) ;
       const GGS_semanticDeclaration  _temp_14554 = operand_14515->mSemanticDeclaration ;
-      if (_temp_14554._isBuilt ()) {
+      if (_temp_14554.isBuilt ()) {
         typeCategoryMethod__semanticDeclaration__enterType _method = findCategoryMethod__semanticDeclaration__enterType (_temp_14554._galgasObjectRunTimeInfo ()) ;
         if (_method != NULL) {
           _method (_inLexique, _temp_14554 (HERE), var_cas_outSemanticContext COMMA_SOURCE_FILE_AT_LINE (332)) ;
@@ -531,7 +531,7 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
       while (((operand_15564 = enumerator_15564.nextObject ()))) {
         macroValidPointer (operand_15564) ;
         const GGS_ACGalgasType  _temp_15633 = operand_15564->mInfo.mType ;
-        if (_temp_15633._isBuilt ()) {
+        if (_temp_15633.isBuilt ()) {
           _temp_15633 (HERE)->method_checkTypeCrossReferences (_inLexique, var_cas_outSemanticContext.reader_mTypeMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (357)).reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (357)) COMMA_SOURCE_FILE_AT_LINE (357)) ;
         }
       }
@@ -561,13 +561,13 @@ void routine_parseSemanticComponent (C_Compiler & _inLexique,
   var_cas_basenameKey = GGS_lstring ::constructor_new (_inLexique, var_cas_basename, GGS_location (_inLexique) COMMA_HERE) ;
   if ((var_cas_ioParsedComponentStruct.reader_mParsedSemanticsComponentMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (375)).reader_hasKey (_inLexique, var_cas_basename COMMA_SOURCE_FILE_AT_LINE (375))).isBuiltAndTrue ()) {
     const GGS_parsedSemanticsComponentMap  _temp_16564 = var_cas_ioParsedComponentStruct.reader_mParsedSemanticsComponentMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (376)) ;
-    if (_temp_16564._isBuilt ()) {
+    if (_temp_16564.isBuilt ()) {
       _temp_16564 (HERE)->method_searchKey (_inLexique, var_cas_basenameKey, var_cas_outSemanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (376)) ;
     }
   }else{
     const GGS_string _depExtension = GGS_string (true, "") ;
     const GGS_string _depPath = GGS_string (true, "") ;
-    if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+    if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
       semanticsSLRgrammar::_performSourceFileParsing_ (_inLexique,
                                     _depExtension.string (),
                                     _depPath.string (),

@@ -100,7 +100,7 @@ class GGS_formalArgumentPassingMode {
   public : static inline uint16 bitCount (void) { return 3 ; }
 
 //--- Is built ?
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
 
 //--- Construction from GALGAS constructor
   public : static inline GGS_formalArgumentPassingMode  constructor_argumentConstantIn (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {

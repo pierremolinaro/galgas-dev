@@ -54,7 +54,7 @@ void routine_matchAndOperator (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_matchAndOperator at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_5304 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_5328 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_binaryset * operand_5304 = dynamic_cast <cPtr_typeGalgas_binaryset *> (ptr_5304) ;
@@ -120,7 +120,7 @@ void routine_matchOrOperator (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_matchOrOperator at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_6825 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_6849 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_binaryset * operand_6825 = dynamic_cast <cPtr_typeGalgas_binaryset *> (ptr_6825) ;
@@ -186,7 +186,7 @@ void routine_matchXorOperator (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_matchXorOperator at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_8347 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_8371 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_binaryset * operand_8347 = dynamic_cast <cPtr_typeGalgas_binaryset *> (ptr_8347) ;
@@ -246,7 +246,7 @@ void routine_matchConcatOperator (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_matchConcatOperator at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_9766 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_9790 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_string * operand_9766 = dynamic_cast <cPtr_typeGalgas_string *> (ptr_9766) ;
@@ -355,7 +355,7 @@ void routine_comparison_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_comparison_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_13245 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_13269 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_binaryset * operand_13245 = dynamic_cast <cPtr_typeGalgas_binaryset *> (ptr_13245) ;
@@ -509,7 +509,7 @@ void routine_magnitude_comparison_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_magnitude_comparison_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_16615 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_16639 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_stringset * operand_16615 = dynamic_cast <cPtr_typeGalgas_stringset *> (ptr_16615) ;
@@ -585,7 +585,7 @@ void routine_left_shift_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_left_shift_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_18273 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_18297 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_binaryset * operand_18273 = dynamic_cast <cPtr_typeGalgas_binaryset *> (ptr_18273) ;
@@ -639,7 +639,7 @@ void routine_right_shift_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_right_shift_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_19279 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_19303 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_binaryset * operand_19279 = dynamic_cast <cPtr_typeGalgas_binaryset *> (ptr_19279) ;
@@ -693,7 +693,7 @@ void routine_addition_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_addition_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_20594 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_20618 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_uint * operand_20594 = dynamic_cast <cPtr_typeGalgas_uint *> (ptr_20594) ;
@@ -741,7 +741,7 @@ void routine_substraction_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_substraction_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_21819 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_21843 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_uint * operand_21819 = dynamic_cast <cPtr_typeGalgas_uint *> (ptr_21819) ;
@@ -795,7 +795,7 @@ void routine_multiply_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_multiply_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_23150 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_23174 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_uint * operand_23150 = dynamic_cast <cPtr_typeGalgas_uint *> (ptr_23150) ;
@@ -843,7 +843,7 @@ void routine_divide_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_divide_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_24375 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_24399 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_uint * operand_24375 = dynamic_cast <cPtr_typeGalgas_uint *> (ptr_24375) ;
@@ -891,7 +891,7 @@ void routine_modulo_types_check (C_Compiler & _inLexique,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_modulo_types_check at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  if (var_cas_inLeftExpressionType._isBuilt () && var_cas_inRightExpressionType._isBuilt ()) {
+  if (var_cas_inLeftExpressionType.isBuilt () && var_cas_inRightExpressionType.isBuilt ()) {
     cPtr_AC_galgasType * ptr_25594 = var_cas_inLeftExpressionType (HERE) ;
     cPtr_AC_galgasType * ptr_25618 = var_cas_inRightExpressionType (HERE) ;
     cPtr_typeGalgas_uint * operand_25594 = dynamic_cast <cPtr_typeGalgas_uint *> (ptr_25594) ;
@@ -1618,7 +1618,7 @@ pr_factor_expression_parser_1139_13_ (galgas_scanner & _inLexique,
       _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
       GGS_AC_semanticsEntity  var_cas_entite ;
       const GGS_M_semanticsEntitiesForUse  _temp_45954 = var_cas_inEntitiesMap ;
-      if (_temp_45954._isBuilt ()) {
+      if (_temp_45954.isBuilt ()) {
         _temp_45954 (HERE)->method_searchKey (_inLexique, var_cas_castedTypeName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (1185)) ;
       }
       var_cas_outResultType = GGS_typeEntiteType::_castFrom (_inLexique, var_cas_entite.getPtr (), true, var_cas_castedTypeName COMMA_SOURCE_FILE_AT_LINE (1186)).reader_aDefType (_inLexique COMMA_SOURCE_FILE_AT_LINE (1186)) ;
@@ -1646,7 +1646,7 @@ pr_factor_expression_parser_1139_13_ (galgas_scanner & _inLexique,
       GGS_AC_galgasType  var_cas_errorLocationExpressionType ;
       nt_expression_ (_inLexique, var_cas_inEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_inSemanticContext, var_cas_ioVariablesMap, var_cas_errorLocationExpression, var_cas_errorLocationExpressionType) ;
       const GGS_AC_galgasType  _temp_47722 = var_cas_errorLocationExpressionType ;
-      if (_temp_47722._isBuilt ()) {
+      if (_temp_47722.isBuilt ()) {
         _temp_47722 (HERE)->method_checkAbilityToBeSilentlyConvertedToLocation (_inLexique COMMA_SOURCE_FILE_AT_LINE (1217)) ;
       }
       var_cas_outExpression = GGS_typeCastInExpression ::constructor_new (_inLexique, var_cas_castedExpression, var_cas_checkForKindOfClass, var_cas_castedTypeName, var_cas_errorLocationExpression COMMA_HERE) ;
@@ -2078,7 +2078,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & _inLexique,
       GGS_M_regularFiles  var_cas_regularFileMap ;
       GGS_filewrapperTemplateMap  var_cas_templateMap ;
       const GGS_M_filewrappers  _temp_60191 = var_cas_inSemanticContext.reader_mFilewrappers (_inLexique COMMA_SOURCE_FILE_AT_LINE (1519)) ;
-      if (_temp_60191._isBuilt ()) {
+      if (_temp_60191.isBuilt ()) {
         _temp_60191 (HERE)->method_searchKey (_inLexique, var_cas_filewrapperName, var_cas_regularFileMap, var_cas_templateMap COMMA_SOURCE_FILE_AT_LINE (1519)) ;
       }
       switch (select_expression_parser_10 (_inLexique)) {
@@ -2095,7 +2095,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & _inLexique,
               _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeListeAttributsSemantiques  var_cas_formalAttributeList ;
               const GGS_filewrapperTemplateMap  _temp_60623 = var_cas_templateMap ;
-              if (_temp_60623._isBuilt ()) {
+              if (_temp_60623.isBuilt ()) {
                 _temp_60623 (HERE)->method_searchKey (_inLexique, var_cas_templateName, var_cas_formalAttributeList COMMA_SOURCE_FILE_AT_LINE (1531)) ;
               }
               GGS_typeExpressionList  var_cas_expressionList ;
@@ -2110,7 +2110,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & _inLexique,
               GGS_uint  var_cas_wrapperFileIndex ;
               GGS_uint  automatic_var_1 ;
               const GGS_M_regularFiles  _temp_61295 = var_cas_regularFileMap ;
-              if (_temp_61295._isBuilt ()) {
+              if (_temp_61295.isBuilt ()) {
                 _temp_61295 (HERE)->method_searchKey (_inLexique, var_cas_path, automatic_var_1, var_cas_wrapperFileIndex COMMA_SOURCE_FILE_AT_LINE (1551)) ;
               }
               var_cas_outExpression = GGS_typeFileWrapperWithStaticPath ::constructor_new (_inLexique, var_cas_filewrapperName, var_cas_wrapperFileIndex COMMA_HERE) ;
@@ -2158,14 +2158,14 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & _inLexique,
       _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
       GGS_AC_semanticsEntity  var_cas_e ;
       const GGS_M_semanticsEntitiesForUse  _temp_62977 = var_cas_inEntitiesMap ;
-      if (_temp_62977._isBuilt ()) {
+      if (_temp_62977.isBuilt ()) {
         _temp_62977 (HERE)->method_searchKey (_inLexique, var_cas_className, var_cas_e COMMA_SOURCE_FILE_AT_LINE (1600)) ;
       }
       var_cas_outResultType = GGS_typeEntiteType::_castFrom (_inLexique, var_cas_e.getPtr (), true, var_cas_className COMMA_SOURCE_FILE_AT_LINE (1601)).reader_aDefType (_inLexique COMMA_SOURCE_FILE_AT_LINE (1601)) ;
       GGS_typeListeAttributsSemantiques  var_cas_listeAttributsSemantiques ;
       GGS_bool var_cas_hasLexiqueAndLocationArguments ;
       const GGS_AC_galgasType  _temp_63227 = var_cas_outResultType ;
-      if (_temp_63227._isBuilt ()) {
+      if (_temp_63227.isBuilt ()) {
         _temp_63227 (HERE)->method_handleConstructorCall (_inLexique, var_cas_mClassMethodName, var_cas_listeAttributsSemantiques, var_cas_hasLexiqueAndLocationArguments COMMA_SOURCE_FILE_AT_LINE (1604)) ;
       }
       GGS_typeExpressionList  var_cas_expressionList ;
@@ -2194,7 +2194,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & _inLexique,
           GGS_M_cli_options  var_cas_uintOptionsMap ;
           GGS_M_cli_options  var_cas_stringOptionsMap ;
           const GGS_M_optionComponents  _temp_64392 = var_cas_inOptionsComponentsMapForUse ;
-          if (_temp_64392._isBuilt ()) {
+          if (_temp_64392.isBuilt ()) {
             _temp_64392 (HERE)->method_searchKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (1638)) ;
           }
           _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E) COMMA_HERE) ;
@@ -2317,7 +2317,7 @@ pr_factor_expression_parser_1667_13_ (galgas_scanner & _inLexique,
   GGS_L_EXsignature  var_cas_signatureRoutine ;
   GGS_AC_semanticsEntity  var_cas_entite ;
   const GGS_M_semanticsEntitiesForUse  _temp_66334 = var_cas_inEntitiesMap ;
-  if (_temp_66334._isBuilt ()) {
+  if (_temp_66334.isBuilt ()) {
     _temp_66334 (HERE)->method_searchKey (_inLexique, var_cas_functionName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (1680)) ;
   }
   GGS_bool var_cas_isExternActionCall ;
@@ -2546,7 +2546,7 @@ pr_parse_effective_input_parameters_list_expression_parser_1807_44_ (galgas_scan
               GGS_uint  var_cas_jokerCount ;
               var_cas_jokerCount = var_cas_jokerCountWithLocation.reader_uint (_inLexique COMMA_SOURCE_FILE_AT_LINE (1834)) ;
               GGS_uint _variant_72337 = var_cas_jokerCount._add_operation (_inLexique, GGS_uint (true, 1U) COMMA_SOURCE_FILE_AT_LINE (1835)) ;
-              GGS_bool _condition_72337 (_variant_72337._isBuilt (), true) ;
+              GGS_bool _condition_72337 (_variant_72337.isBuilt (), true) ;
               while (_condition_72337.isBuiltAndTrue ()) {
                 _condition_72337 = (var_cas_jokerCount)._operator_strictSup (GGS_uint (true, 0U)) ;
                 if (_condition_72337.isBuiltAndTrue ()) {

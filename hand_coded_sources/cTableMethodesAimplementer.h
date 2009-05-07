@@ -90,7 +90,7 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> &) ; // Copy constructor
   public : cTableMethodesAimplementer <INFO> & operator = (const cTableMethodesAimplementer <INFO> &) ; // Assignment operator
 
-  public : bool _isBuilt (void) const ;
+  public : bool isBuilt (void) const ;
   public : void build (void) ;
   public : void _drop (void) ;
   protected : void insulateMap (void) ;

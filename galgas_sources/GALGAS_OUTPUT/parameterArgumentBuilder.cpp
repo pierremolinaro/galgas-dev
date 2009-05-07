@@ -135,7 +135,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (galgas_scanner & _inLe
                 var_cas_count.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "the count value should be > 0") COMMA_SOURCE_FILE_AT_LINE (104)) ;
               }else{
                 GGS_uint _variant_4946 = var_cas_n ;
-                GGS_bool _condition_4946 (_variant_4946._isBuilt (), true) ;
+                GGS_bool _condition_4946 (_variant_4946.isBuilt (), true) ;
                 while (_condition_4946.isBuiltAndTrue ()) {
                   _condition_4946 = (var_cas_n)._operator_strictSup (GGS_uint (true, 0U)) ;
                   if (_condition_4946.isBuiltAndTrue ()) {

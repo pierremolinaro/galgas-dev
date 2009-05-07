@@ -73,7 +73,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Bit count for bdd\n"
              "  public : static inline uint16 bitCount (void) { return " << bitCount << " ; }\n\n"
              "//--- Is built ?\n"
-             "  public : bool _isBuilt (void) const ;\n\n"
+             "  public : bool isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
   constant.rewind () ;
   while (constant.hc ()) {
@@ -200,7 +200,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   
   inCppFile << "bool GGS_" << mEnumTypeName
             << "::\n"
-               "_isBuilt (void) const {\n"
+               "isBuilt (void) const {\n"
                "  return mValue > kNotBuilt ;\n"
                "}\n\n" ;
 
@@ -209,7 +209,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "_operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue == inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -218,7 +218,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "_operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue != inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -227,7 +227,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "_operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue <= inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -236,7 +236,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "_operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue >= inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -245,7 +245,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "_operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue < inOperand.mValue) ;\n"
                "}\n\n" ;
 
@@ -254,7 +254,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
                "_operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue > inOperand.mValue) ;\n"
                "}\n\n" ;
 

@@ -205,7 +205,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mListmapTypeName << "::\n"
                "_dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) {\n"
-               "  if (_isBuilt () && inOperand._isBuilt ()) {\n"
+               "  if (isBuilt () && inOperand.isBuilt ()) {\n"
                "    if (count (HERE) == 0) {\n"
                "      * this = inOperand ;\n"
                "    }else if (inOperand.count (HERE) > 0) {\n"
@@ -245,11 +245,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentAttribute.next () ;
   }
   inCppFile << ") {\n"
-               "  if (_isBuilt () && inKey._isBuilt ()" ;
+               "  if (isBuilt () && inKey.isBuilt ()" ;
   currentAttribute.rewind () ;
   attributeIndex = 0 ;
   while (currentAttribute.hc ()) {
-    inCppFile << " && inAttribute" << attributeIndex << "._isBuilt ()" ;
+    inCppFile << " && inAttribute" << attributeIndex << ".isBuilt ()" ;
     attributeIndex ++ ;
     currentAttribute.next () ;
   }
@@ -284,7 +284,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                   const GGS_string & inKey\n"
                "                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  GGS_" << mListTypename << " result ;\n"
-               "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+               "  if (isBuilt () && inKey.isBuilt ()) {\n"
                "    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; \n"
                "    if (nodePtr == NULL) {\n"
                "      result = GGS_" << mListTypename << "::constructor_emptyList () ;\n"
@@ -311,7 +311,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "reader_keyList (C_Compiler & /* inLexique */\n"
                "                COMMA_UNUSED_LOCATION_ARGS) const {\n\n"
                "  GGS_stringlist result ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    result = GGS_stringlist::constructor_emptyList () ;\n"
                "    cPtrDictionary * dictPtr = macroPtr (*this, cPtrDictionary)  ;\n"
                "    cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;\n"
@@ -461,14 +461,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
                "_operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   (mState == inOperand.mState)) ;\n"
                "}\n\n" ;
               
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
                "_operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (),\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   (mState != inOperand.mState)) ;\n"
                "}\n\n" ;
               
@@ -986,13 +986,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
                "_operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), isEqualToMap (inOperand)) ;\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
                "_operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
-               "  return GGS_bool (_isBuilt () && inOperand._isBuilt (), ! isEqualToMap (inOperand)) ;\n"
+               "  return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
 //--- 'internalInsertForDuplication' method
@@ -1026,7 +1026,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                COMMA_LOCATION_ARGS) {\n"
                  "  AC_galgas_map_element * removedElement = NULL ;\n"
                  "  sint32 elementID = - 1 ;\n"
-                 "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+                 "  if (isBuilt () && inKey.isBuilt ()) {\n"
                  "    insulateMap () ;\n"
                  "    bool unused ;\n"
                  "    _internalRemove (mSharedMapRoot->_mRoot, inKey, removedElement, unused) ;\n"
@@ -1076,15 +1076,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "                GGS_luint * outIndex\n"
                "                COMMA_LOCATION_ARGS) {\n"
                "  sint32 elementID = - 1 ;\n"
-               "  if (_isBuilt ()\n" ;
+               "  if (isBuilt ()\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
   while (current.hc ()) {
-    inCppFile << "   && inParameter" << attributeIndex << "._isBuilt ()\n" ;
+    inCppFile << "   && inParameter" << attributeIndex << ".isBuilt ()\n" ;
     attributeIndex ++ ;
     current.next () ;
   }
-  inCppFile<<  "   && inKey._isBuilt ()) {\n"
+  inCppFile<<  "   && inKey.isBuilt ()) {\n"
                "    insulateMap () ;\n"
                "    e_" << mMapTypeName << " info  ;\n" ;
   current.rewind () ;
@@ -1123,7 +1123,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "               GGS_luint * outIndex\n"
                "               COMMA_LOCATION_ARGS) const {\n"
                "  cElement * node = NULL  ;\n"
-               "  if (_isBuilt () && inKey._isBuilt ()) {\n"
+               "  if (isBuilt () && inKey.isBuilt ()) {\n"
                "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (cElement *) p ;\n"
@@ -1164,7 +1164,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "inValue,\n"
                "                        const GGS_string & inKey\n"
                "                        COMMA_LOCATION_ARGS) {\n"
-               "  if (_isBuilt () && inValue._isBuilt () && inKey._isBuilt ()) {\n"
+               "  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {\n"
                "    insulateMap () ;\n"
                "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
@@ -1363,7 +1363,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << mMapTypeName << " \" ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    s.appendSigned (count ()) ;\n"
                "    s << \" object\" << ((count () > 1) ? \"s \" : \" \") ;\n"
                "    cElement * p = firstObject () ;\n"
@@ -1751,7 +1751,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<map @" << aNomTable << " \" ;\n"
-               "  if (_isBuilt ()) {\n"
+               "  if (isBuilt ()) {\n"
                "    s.appendSigned (count ()) ;\n"
                "    s << \" object\" << ((count () > 1) ? \"s\" : \"\") ;\n"
                "  }else{\n"

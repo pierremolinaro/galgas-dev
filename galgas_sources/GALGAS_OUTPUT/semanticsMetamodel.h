@@ -4627,8 +4627,8 @@ class GGS_parsedComponentStruct {
 //--- Handle 'drop' instruction
   public : void _drop (void) ;
 
-//--- Method '_isBuilt'
-  public : bool _isBuilt (void) const ;
+//--- Method 'isBuilt'
+  public : bool isBuilt (void) const ;
 
 //--- Support for method call handling in GALGAS
   public : inline const GGS_parsedComponentStruct * operator () (UNUSED_LOCATION_ARGS) const { return this ; }

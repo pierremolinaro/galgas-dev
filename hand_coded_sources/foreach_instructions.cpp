@@ -51,7 +51,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mVariantExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n"
                  "GGS_bool " << conditionVariable << " (" << variantVariable
-              << "._isBuilt (), true) ;\n"
+              << ".isBuilt (), true) ;\n"
                  "while (" << conditionVariable << ".isBuiltAndTrue ()) {\n" ;
   //--- First instruction list
     generateInstructionListForList (mInstructionList1, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 

@@ -347,7 +347,7 @@ fixInfos (cInfo & inInfo,
   GGS_M_nonterminalSymbolAltsForGrammar unusedParameter ;
   inInfo.mNonterminalSymbolsMapForGrammar.method_searchKeyGetID (inLexique, mNonterminalSymbolName,
                                             index, unusedParameter COMMA_HERE) ;
-  if (! index._isBuilt ()) {
+  if (! index.isBuilt ()) {
     ioOk = false ;
   }
   mNonterminalSymbolIndex.mValue = index.uintValue () ;
@@ -362,7 +362,7 @@ fixInfos (cInfo & inInfo,
   GGS_luint index ;
   GGS_typeListeAttributsSemantiques unusedArg ;
   inInfo.mTerminalSymbolMap.method_searchKeyGetID (inLexique, mTerminalSymbolName, index, unusedArg COMMA_HERE) ;
-  if (! index._isBuilt ()) {
+  if (! index.isBuilt ()) {
     ioOk = false ;
   }
   mTerminalSymbolIndex.mValue = index.uintValue () ;

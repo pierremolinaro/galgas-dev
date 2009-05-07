@@ -726,7 +726,7 @@ void routine_compileOptionComponent (C_Compiler & _inLexique,
   GGS_optionComponentRoot  var_cas_optionComponentRoot ;
   const GGS_string _depExtension = GGS_string (true, "") ;
   const GGS_string _depPath = GGS_string (true, "") ;
-  if (_depExtension._isBuilt () && _depPath._isBuilt ()) {
+  if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
     optionLL1grammar::_performSourceFileParsing_ (_inLexique,
                                   _depExtension.string (),
                                   _depPath.string (),

@@ -48,7 +48,7 @@
 //---------------------------------------------------------------------------*
 
 bool GGS_sourceFileKind::
-_isBuilt (void) const {
+isBuilt (void) const {
   return mValue > kNotBuilt ;
 }
 
@@ -56,7 +56,7 @@ _isBuilt (void) const {
 
 GGS_bool GGS_sourceFileKind::
 _operator_isEqual (const GGS_sourceFileKind inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue == inOperand.mValue) ;
 }
 
@@ -64,7 +64,7 @@ _operator_isEqual (const GGS_sourceFileKind inOperand) const {
 
 GGS_bool GGS_sourceFileKind::
 _operator_isNotEqual (const GGS_sourceFileKind inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue != inOperand.mValue) ;
 }
 
@@ -72,7 +72,7 @@ _operator_isNotEqual (const GGS_sourceFileKind inOperand) const {
 
 GGS_bool GGS_sourceFileKind::
 _operator_infOrEqual (const GGS_sourceFileKind inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue <= inOperand.mValue) ;
 }
 
@@ -80,7 +80,7 @@ _operator_infOrEqual (const GGS_sourceFileKind inOperand) const {
 
 GGS_bool GGS_sourceFileKind::
 _operator_supOrEqual (const GGS_sourceFileKind inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue >= inOperand.mValue) ;
 }
 
@@ -88,7 +88,7 @@ _operator_supOrEqual (const GGS_sourceFileKind inOperand) const {
 
 GGS_bool GGS_sourceFileKind::
 _operator_strictInf (const GGS_sourceFileKind inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue < inOperand.mValue) ;
 }
 
@@ -96,7 +96,7 @@ _operator_strictInf (const GGS_sourceFileKind inOperand) const {
 
 GGS_bool GGS_sourceFileKind::
 _operator_strictSup (const GGS_sourceFileKind inOperand) const {
-  return GGS_bool (_isBuilt () && inOperand._isBuilt (),
+  return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue > inOperand.mValue) ;
 }
 
@@ -233,7 +233,7 @@ void GGS_projectSourceList::
 _addAssign_operation (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
-  if (_isBuilt ()&& argument_0._isBuilt ()&& argument_1._isBuilt ()&& argument_2._isBuilt ()) {
+  if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0,
                                 argument_1,
@@ -255,7 +255,7 @@ _operator_concat (const GGS_projectSourceList & inOperand) const {
 
 void GGS_projectSourceList::
 _dotAssign_operation (const GGS_projectSourceList inOperand) {
-  if (_isBuilt () && inOperand._isBuilt ()) {
+  if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
     }else{
@@ -283,7 +283,7 @@ modifier_prependValue (C_Compiler & /* inLexique */,
                      const GGS_lstring & argument_1,
                      const GGS_lstringlist & argument_2
                      COMMA_UNUSED_LOCATION_ARGS) {
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _insulateList () ;
     _internalPrependValues (argument_0,
                                 argument_1,
@@ -360,7 +360,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
   GGS_projectSourceList result ;
-  if (_isBuilt () && inFirstIndex._isBuilt () && inCount._isBuilt ()) {
+  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
@@ -379,7 +379,7 @@ reader_subListFromIndex (C_Compiler & _inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_projectSourceList result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
@@ -408,7 +408,7 @@ method_first (C_Compiler & _inLexique,
               GGS_lstringlist & _out_2
               COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
@@ -434,7 +434,7 @@ method_last (C_Compiler & _inLexique,
              GGS_lstringlist & _out_2
              COMMA_LOCATION_ARGS) const {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
@@ -460,7 +460,7 @@ modifier_popFirst (C_Compiler & _inLexique,
                  GGS_lstringlist & _out_2
                  COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = firstObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
@@ -488,7 +488,7 @@ modifier_popLast (C_Compiler & _inLexique,
                 GGS_lstringlist & _out_2
                 COMMA_LOCATION_ARGS) {
   cElement * _p = NULL ;
-  if (_isBuilt ()) {
+  if (isBuilt ()) {
     _p = lastObject () ;
     if (_p == NULL) {
       _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
@@ -512,7 +512,7 @@ modifier_popLast (C_Compiler & _inLexique,
 GGS_sourceFileKind GGS_projectSourceList::
 reader_mSourceKindAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_sourceFileKind result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mSourceKind ;
@@ -526,7 +526,7 @@ reader_mSourceKindAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 GGS_lstring  GGS_projectSourceList::
 reader_mFilePathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mFilePath ;
@@ -540,7 +540,7 @@ reader_mFilePathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_
 GGS_lstringlist  GGS_projectSourceList::
 reader_mTargetListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstringlist  result ;
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       result = object->mTargetList ;
@@ -556,7 +556,7 @@ modifier_setMSourceKindAtIndex (C_Compiler & inLexique,
                               const GGS_sourceFileKind & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mSourceKind = inObject ;
@@ -571,7 +571,7 @@ modifier_setMFilePathAtIndex (C_Compiler & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mFilePath = inObject ;
@@ -586,7 +586,7 @@ modifier_setMTargetListAtIndex (C_Compiler & inLexique,
                               const GGS_lstringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
-  if (_isBuilt () && inIndex._isBuilt ()) {
+  if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
     if (object != NULL) {
       object->mTargetList = inObject ;

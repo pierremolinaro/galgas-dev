@@ -303,7 +303,7 @@ pr_foreach_enumerated_object_semanticInstructionListModelBuilder_252_32_ (galgas
                 var_cas_count.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this value should be > 0") COMMA_SOURCE_FILE_AT_LINE (274)) ;
               }
               GGS_uint _variant_11645 = var_cas_n ;
-              GGS_bool _condition_11645 (_variant_11645._isBuilt (), true) ;
+              GGS_bool _condition_11645 (_variant_11645.isBuilt (), true) ;
               while (_condition_11645.isBuiltAndTrue ()) {
                 _condition_11645 = (var_cas_n)._operator_strictSup (GGS_uint (true, 0U)) ;
                 if (_condition_11645.isBuiltAndTrue ()) {
@@ -692,7 +692,7 @@ pr_match_entry_semanticInstructionListModelBuilder_539_18_ (galgas_scanner & _in
             var_cas_count.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string (true, "this value should be > 0") COMMA_SOURCE_FILE_AT_LINE (554)) ;
           }
           GGS_uint _variant_20780 = var_cas_n ;
-          GGS_bool _condition_20780 (_variant_20780._isBuilt (), true) ;
+          GGS_bool _condition_20780 (_variant_20780.isBuilt (), true) ;
           while (_condition_20780.isBuiltAndTrue ()) {
             _condition_20780 = (var_cas_n)._operator_strictSup (GGS_uint (true, 0U)) ;
             if (_condition_20780.isBuiltAndTrue ()) {
