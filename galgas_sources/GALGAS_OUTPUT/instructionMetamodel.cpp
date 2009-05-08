@@ -523,7 +523,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -543,7 +543,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstruction ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -565,7 +565,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -587,7 +587,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -993,7 +993,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mSemanticDeclaration ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -1013,7 +1013,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mSemanticDeclaration ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -1035,7 +1035,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -1057,7 +1057,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -3490,7 +3490,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mElement ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -3510,7 +3510,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mElement ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -3532,7 +3532,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -3554,7 +3554,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -3873,9 +3873,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mElementList ;
     _out_2 = _p->mEndsWithEllipsis ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -3899,9 +3899,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mElementList ;
     _out_2 = _p->mEndsWithEllipsis ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -3927,9 +3927,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -3955,9 +3955,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -4605,8 +4605,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mIFexpression ;
     _out_1 = _p->mIFinstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -4628,8 +4628,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mIFexpression ;
     _out_1 = _p->mIFinstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -4653,8 +4653,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -4678,8 +4678,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -6263,7 +6263,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mEntry ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -6283,7 +6283,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mEntry ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -6305,7 +6305,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -6327,7 +6327,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -6980,8 +6980,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mMatchEntryList ;
     _out_1 = _p->mMatchBranchInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -7003,8 +7003,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mMatchEntryList ;
     _out_1 = _p->mMatchBranchInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -7028,8 +7028,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -7053,8 +7053,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -7646,11 +7646,11 @@ method_first (C_Compiler & _inLexique,
     _out_3 = _p->mConstantVarNameIsUnused ;
     _out_4 = _p->mCastBranchInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -7678,11 +7678,11 @@ method_last (C_Compiler & _inLexique,
     _out_3 = _p->mConstantVarNameIsUnused ;
     _out_4 = _p->mCastBranchInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -7712,11 +7712,11 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -7746,11 +7746,11 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -10327,8 +10327,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mSwitchConstantList ;
     _out_1 = _p->mInstructions ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -10350,8 +10350,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mSwitchConstantList ;
     _out_1 = _p->mInstructions ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -10375,8 +10375,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -10400,8 +10400,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -11110,8 +11110,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mAbstractCategoryMethodName ;
     _out_1 = _p->mAbstractCategoryFormalParameterList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -11133,8 +11133,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mAbstractCategoryMethodName ;
     _out_1 = _p->mAbstractCategoryFormalParameterList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -11158,8 +11158,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -11183,8 +11183,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -11716,9 +11716,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mCategoryFormalParameterList ;
     _out_2 = _p->mRoutineInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -11742,9 +11742,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mCategoryFormalParameterList ;
     _out_2 = _p->mRoutineInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -11770,9 +11770,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -11798,9 +11798,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -12369,9 +12369,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mOverridingCategoryFormalParameterList ;
     _out_2 = _p->mRoutineInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -12395,9 +12395,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mOverridingCategoryFormalParameterList ;
     _out_2 = _p->mRoutineInstructionList ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -12423,9 +12423,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -12451,9 +12451,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -12763,11 +12763,11 @@ GGS_semanticDeclarationStruct::~GGS_semanticDeclarationStruct (void) {
 
 //---------------------------------------------------------------------------*
 
-void GGS_semanticDeclarationStruct::_drop (void) {
-  mSemanticDeclarationList._drop () ;
-  mAbstractCategoryMethodListMap._drop () ;
-  mCategoryMethodListMap._drop () ;
-  mOverridingCategoryMethodListMap._drop () ;
+void GGS_semanticDeclarationStruct::drop (void) {
+  mSemanticDeclarationList.drop () ;
+  mAbstractCategoryMethodListMap.drop () ;
+  mCategoryMethodListMap.drop () ;
+  mOverridingCategoryMethodListMap.drop () ;
 }
 
 //---------------------------------------------------------------------------*

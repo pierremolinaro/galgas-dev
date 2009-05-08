@@ -639,7 +639,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hc ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
-            generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << "._drop () ;\n" ;
+            generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.next () ;
           numeroParametre ++ ;
@@ -655,7 +655,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hc ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
-            generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << "._drop () ;\n" ;
+            generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.next () ;
           numeroParametre ++ ;

@@ -43,7 +43,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Virtual destructor\n"
              "  public : virtual ~GGS_" << mStructName << " (void) ;\n\n"
              "//--- Handle 'drop' instruction\n"
-             "  public : void _drop (void) ;\n\n"
+             "  public : void drop (void) ;\n\n"
              "//--- Method 'isBuilt'\n"
              "  public : bool isBuilt (void) const ;\n\n"
              "//--- Support for method call handling in GALGAS\n"
@@ -142,10 +142,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << mStructName << "::~GGS_" << mStructName << " (void) {\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << mStructName << "::_drop (void) {\n" ;
+  inCppFile << "void GGS_" << mStructName << "::drop (void) {\n" ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "  " << current._mAttributeName (HERE) << "._drop () ;\n" ;
+    inCppFile << "  " << current._mAttributeName (HERE) << ".drop () ;\n" ;
     current.next () ;
   }
   inCppFile << "}\n\n" ;

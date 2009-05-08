@@ -84,7 +84,7 @@ mReferenceCountPtr (NULL) {
 
 template <typename INFO>
 cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
-  _drop () ;
+  drop () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -106,7 +106,7 @@ template <typename INFO>
 cTableMethodesAimplementer <INFO> & cTableMethodesAimplementer <INFO>::
 operator = (const cTableMethodesAimplementer <INFO> & source) {
   if (this != & source) {
-    _drop () ;
+    drop () ;
     _mRoot = source._mRoot ;
     mFirstItem = source.mFirstItem ;
     mLastItem = source.mLastItem ;
@@ -122,7 +122,7 @@ operator = (const cTableMethodesAimplementer <INFO> & source) {
 
 //---------------------------------------------------------------------------*
 
-template <typename INFO> void cTableMethodesAimplementer <INFO>::_drop (void) {
+template <typename INFO> void cTableMethodesAimplementer <INFO>::drop (void) {
   mFirstItem = (cElement *) NULL ;
   mLastItem = (cElement *) NULL ;
   mListLength = 0 ;
@@ -147,7 +147,7 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::_drop (void) {
 
 template <typename INFO>
 void cTableMethodesAimplementer <INFO>::build (void) {
-  _drop () ;
+  drop () ;
   macroMyNew (mReferenceCountPtr, sint32 (1)) ;
 }
 

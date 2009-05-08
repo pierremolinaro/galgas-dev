@@ -27,7 +27,8 @@ class cPtr_typeInstructionRepetitionLexicale : public cPtr_typeInstructionLexica
   public : virtual void
   generate_scanner_instruction (const C_String & inLexiqueName,
                                 const bool inGenerateEnterToken,
-                                AC_OutputStream & inCppFile) const ;
+                                AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const ;
 
   public : virtual void
   generateDecoderFromInstruction (C_Lexique & inLexique,

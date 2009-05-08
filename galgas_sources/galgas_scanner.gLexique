@@ -270,6 +270,18 @@ message incorrectCharConstant : "incorrect literal character" ;
 
 message ASCIIcodeTooLargeError : "ASCII code > 255" ;
 
+message obsoleteCharConstruction : "\\x.. is obsolete: now, use \\u.... or \\U........" ;
+
+message invalideUnicodeDefinition4 : "\\u should be followed by exactly four hexadecimal digits" ;
+
+message invalideUnicodeDefinition8 : "\\U should be followed by exactly eight hexadecimal digits" ;
+
+message unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point" ;
+
+message incorrectHTMLescapeSequence : "Invalid HTML sequence, should be '&...;'" ;
+
+message unknownHTMLescapeSequence : "Invalid &...; HTML sequence" ;
+
 rule '\'' :
   select
   when '\\' :
@@ -290,7 +302,84 @@ rule '\'' :
       enterCharacterIntoCharacter (charValue, '\0') ;
     when '\'' :
       enterCharacterIntoCharacter (charValue, '\'') ;
+    when 'u' :
+      select
+      when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        select
+        when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          select
+          when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+           enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+            select
+            when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+              convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
+            default
+              error invalideUnicodeDefinition4 ;
+            end select ;
+          default
+            error invalideUnicodeDefinition4 ;
+          end select ;
+        default
+          error invalideUnicodeDefinition4 ;
+        end select ;
+      default
+        error invalideUnicodeDefinition4 ;
+      end select ;
+    when 'U' :
+      select
+      when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        select
+        when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          select
+          when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+            enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+            select
+            when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+              select
+              when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                select
+                when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                  enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                  select
+                  when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                   enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                    select
+                    when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                      enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                      convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
+                    default
+                      error invalideUnicodeDefinition8 ;
+                    end select ;
+                  default
+                    error invalideUnicodeDefinition8 ;
+                  end select ;
+                default
+                  error invalideUnicodeDefinition8 ;
+                end select ;
+              default
+                error invalideUnicodeDefinition8 ;
+              end select ;
+            default
+              error invalideUnicodeDefinition8 ;
+            end select ;
+          default
+            error invalideUnicodeDefinition8 ;
+          end select ;
+        default
+          error invalideUnicodeDefinition8 ;
+        end select ;
+      default
+        error invalideUnicodeDefinition8 ;
+      end select ;
     when 'x' | 'X' :
+      warning obsoleteCharConstruction ;
       select
       when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
         repeat
@@ -300,10 +389,16 @@ rule '\'' :
       default
         error incorrectCharConstant ;
       end select ;
+    when '&' :
+      repeat
+      while ~ ";" error incorrectHTMLescapeSequence :
+        enterCharacterIntoString (tokenString, *) ;
+      end repeat ;
+      convertHTMSequenceToUnicodeCharacter (tokenString, charValue) error unknownHTMLescapeSequence ;
     default
       error incorrectCharConstant ;
     end select ;
-  when ' ' -> '\xFF' :
+  when ' ' -> '\uFFFD' :
      enterCharacterIntoCharacter (charValue, *) ;
   default
     error incorrectCharConstant ;
@@ -392,6 +487,8 @@ $literal_string$ ! tokenString error message "a character string constant \"...\
 
 message incorrectStringEnd : "string does not end with '\"'" ;
 
+message obsoleteStringConstruction : "\\ followed by digits is obsolete: now, use \\u.... or \\U........" ;
+
 rule '"' :
   repeat
   while '\\' :
@@ -408,22 +505,106 @@ rule '"' :
       enterCharacterIntoString (tokenString, '\v') ;
     when '\\' :
       enterCharacterIntoString (tokenString, '\\') ;
-    when '0' :
-      enterCharacterIntoString (tokenString, '\0') ;
     when '"' :
       enterCharacterIntoString (tokenString, '"') ;
     when '\'' :
       enterCharacterIntoString (tokenString, '\'') ;
+    when '&' :
+      repeat
+      while ~ ";" error incorrectHTMLescapeSequence :
+        enterCharacterIntoString (identifierString, *) ;
+      end repeat ;
+      convertHTMSequenceToUnicodeCharacter (identifierString, charValue) error unknownHTMLescapeSequence ;
+      enterCharacterIntoString (tokenString, charValue) ;
     when '0' -> '9' :
+      warning obsoleteStringConstruction ;
       repeat
         enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
       while '0' -> '9' :
       end repeat ;
       enterCharacterIntoString (tokenString, charValue) ;
+    when 'u' :
+      select
+      when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        select
+        when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          select
+          when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+           enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+            select
+            when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+              convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
+              enterCharacterIntoString (tokenString, charValue) ;
+            default
+              error invalideUnicodeDefinition4 ;
+            end select ;
+          default
+            error invalideUnicodeDefinition4 ;
+          end select ;
+        default
+          error invalideUnicodeDefinition4 ;
+        end select ;
+      default
+        error invalideUnicodeDefinition4 ;
+      end select ;
+    when 'U' :
+      select
+      when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        select
+        when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          select
+          when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+            enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+            select
+            when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+              select
+              when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                select
+                when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                  enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                  select
+                  when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                   enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                    select
+                    when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                      enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                      convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
+                      enterCharacterIntoString (tokenString, charValue) ;
+                    default
+                      error invalideUnicodeDefinition8 ;
+                    end select ;
+                  default
+                    error invalideUnicodeDefinition8 ;
+                  end select ;
+                default
+                  error invalideUnicodeDefinition8 ;
+                end select ;
+              default
+                error invalideUnicodeDefinition8 ;
+              end select ;
+            default
+              error invalideUnicodeDefinition8 ;
+            end select ;
+          default
+            error invalideUnicodeDefinition8 ;
+          end select ;
+        default
+          error invalideUnicodeDefinition8 ;
+        end select ;
+      default
+        error invalideUnicodeDefinition8 ;
+      end select ;
     default
       error incorrectCharConstant ;
     end select ;
-   while ' ' | '!' | '#'-> '\xFF' :
+   while ' ' | '!' | '#'-> '\uFFFD' :
     enterCharacterIntoString (tokenString, *) ;
   end repeat ;
   select
@@ -438,13 +619,13 @@ end rule ;
 $comment$ error message "a comment" style commentStyle ;
 rule '#' :
   repeat
-  while '\x1' -> '\x9' | '\xB' | '\xC' | '\xE' -> '\xFF' :
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
   end repeat ;
   drop $comment$ ;
 end rule ;
 
 # --------------------- separators -----------------------------------------
-rule '\x1' -> ' ' :
+rule '\u0001' -> ' ' :
 end rule ;
 
 end lexique ;

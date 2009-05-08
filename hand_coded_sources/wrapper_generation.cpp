@@ -137,7 +137,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
         const sint32 n = UTF8StringFromUTF32Character (TO_UNICODE (c), buffer) ;
         for (sint32 i=0 ; i<n ; i++) {
           inCppFile.appendCString ("\\x") ;
-          inCppFile.appendUnsignedInHex2 (buffer [i]) ;
+          inCppFile.appendUnsignedHex2 (buffer [i]) ;
           inCppFile.appendCString ("\"\"") ;
         }
       }

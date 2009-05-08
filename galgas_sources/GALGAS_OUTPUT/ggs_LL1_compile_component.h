@@ -197,7 +197,7 @@ class GGS_EXsourceFileKind {
                                           const sint32 inIndentation = 0) const ;
 
 //--- Drop operation
-  public : inline void _drop (void) { mValue = kNotBuilt ; }
+  public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
   public : GGS_bool _operator_isEqual (const GGS_EXsourceFileKind inOperand) const ;

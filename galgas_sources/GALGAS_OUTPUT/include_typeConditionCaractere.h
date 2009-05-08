@@ -22,7 +22,8 @@ class cPtr_typeConditionCaractere : public cPtr_typeConditionLexicale {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateLexicalCondition (AC_OutputStream & inCppFile) ;
+  generateLexicalCondition (AC_OutputStream & inCppFile,
+                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) ;
 
   public : virtual void
   generateDecoderFromCondition (C_Lexique & inLexique,

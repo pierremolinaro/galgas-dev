@@ -156,7 +156,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
-             "  public : inline void _drop (void) { mValue = kNotBuilt ; }\n\n"
+             "  public : inline void drop (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
              "  public : GGS_bool _operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
              "  public : GGS_bool _operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"

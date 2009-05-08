@@ -4625,7 +4625,7 @@ class GGS_parsedComponentStruct {
   public : virtual ~GGS_parsedComponentStruct (void) ;
 
 //--- Handle 'drop' instruction
-  public : void _drop (void) ;
+  public : void drop (void) ;
 
 //--- Method 'isBuilt'
   public : bool isBuilt (void) const ;
