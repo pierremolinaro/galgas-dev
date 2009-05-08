@@ -441,10 +441,10 @@ method_first (C_Compiler & _inLexique,
     _out_2 = _p->mFormalParameterName ;
     _out_3 = _p->mIsUnused ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
   }
 }
 
@@ -470,10 +470,10 @@ method_last (C_Compiler & _inLexique,
     _out_2 = _p->mFormalParameterName ;
     _out_3 = _p->mIsUnused ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
   }
 }
 
@@ -501,10 +501,10 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
   }
 }
 
@@ -532,10 +532,10 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
   }
 }
 
@@ -962,9 +962,9 @@ method_first (C_Compiler & _inLexique,
     _out_1 = _p->mFormalParameterName ;
     _out_2 = _p->mIsUnused ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -988,9 +988,9 @@ method_last (C_Compiler & _inLexique,
     _out_1 = _p->mFormalParameterName ;
     _out_2 = _p->mIsUnused ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -1016,9 +1016,9 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -1044,9 +1044,9 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
   }
 }
 
@@ -2182,7 +2182,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mActualParameter ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -2202,7 +2202,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mActualParameter ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -2224,7 +2224,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -2246,7 +2246,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -2545,8 +2545,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mActualParameterTypeName ;
     _out_1 = _p->mActualParameterName ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -2568,8 +2568,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mActualParameterTypeName ;
     _out_1 = _p->mActualParameterName ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -2593,8 +2593,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -2618,8 +2618,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 

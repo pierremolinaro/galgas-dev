@@ -208,9 +208,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop () ;
+    outParameter0.drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop () ;
+      outIndex->drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mTypeName ;
@@ -507,9 +507,9 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop () ;
+    outParameter0.drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop () ;
+      outIndex->drop () ;
      }
   }else{
     outParameter0 = node->mInfo.mArgumentTypeList ;

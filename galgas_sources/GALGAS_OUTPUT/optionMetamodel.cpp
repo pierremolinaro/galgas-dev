@@ -360,11 +360,11 @@ method_first (C_Compiler & _inLexique,
     _out_3 = _p->mOptionInvocationString ;
     _out_4 = _p->mOptionComment ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -392,11 +392,11 @@ method_last (C_Compiler & _inLexique,
     _out_3 = _p->mOptionInvocationString ;
     _out_4 = _p->mOptionComment ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -426,11 +426,11 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 
@@ -460,11 +460,11 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
-    _out_2._drop () ;
-    _out_3._drop () ;
-    _out_4._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
+    _out_2.drop () ;
+    _out_3.drop () ;
+    _out_4.drop () ;
   }
 }
 

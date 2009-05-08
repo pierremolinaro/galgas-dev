@@ -866,7 +866,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -909,7 +909,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -953,7 +953,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -996,7 +996,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1694,7 +1694,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1737,7 +1737,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1781,7 +1781,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1824,7 +1824,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << "._drop () ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }

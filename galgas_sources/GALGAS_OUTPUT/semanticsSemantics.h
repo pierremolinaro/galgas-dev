@@ -203,7 +203,7 @@ class GGS_variableStateAutomaton {
                                           const sint32 inIndentation = 0) const ;
 
 //--- Drop operation
-  public : inline void _drop (void) { mValue = kNotBuilt ; }
+  public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
   public : GGS_bool _operator_isEqual (const GGS_variableStateAutomaton inOperand) const ;
@@ -4802,7 +4802,7 @@ class GGS_semanticContext {
   public : virtual ~GGS_semanticContext (void) ;
 
 //--- Handle 'drop' instruction
-  public : void _drop (void) ;
+  public : void drop (void) ;
 
 //--- Method 'isBuilt'
   public : bool isBuilt (void) const ;

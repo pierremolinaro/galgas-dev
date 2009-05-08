@@ -22,9 +22,12 @@ class cPtr_typeLexicalTagInstruction : public cPtr_typeInstructionLexicale {
 //--- START OF USER ZONE 2
 
 public : virtual bool instruction__uses_loop_variable (void) const ;
-public : virtual void generate_scanner_instruction (const C_String & inLexiqueName,
-                                                    const bool inGenerateEnterToken,
-                                                    AC_OutputStream & inCppFile) const ;
+
+public : virtual void
+generate_scanner_instruction (const C_String & inLexiqueName,
+                              const bool inGenerateEnterToken,
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const ;
 
 //--- END OF USER ZONE 2
 

@@ -590,7 +590,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     GGS_typeListeAttributsSemantiques::cElement * currentOnceAttribute = currentLazyDeclaration->mComputedAttributeTypeAndNameList.firstObject () ;
     while (currentOnceAttribute != NULL) {
       macroValidPointer (currentOnceAttribute) ;
-      inCppFile << "  " << currentOnceAttribute->mAttributeName << "._drop () ;\n" ;
+      inCppFile << "  " << currentOnceAttribute->mAttributeName << ".drop () ;\n" ;
       currentOnceAttribute = currentOnceAttribute->nextObject () ;
     }
     sint32 prototypeIndex = 0 ; // Non used here

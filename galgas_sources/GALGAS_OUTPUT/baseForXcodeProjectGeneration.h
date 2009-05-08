@@ -4483,7 +4483,7 @@ class GGS_XcodeProjectDescription {
   public : virtual ~GGS_XcodeProjectDescription (void) ;
 
 //--- Handle 'drop' instruction
-  public : void _drop (void) ;
+  public : void drop (void) ;
 
 //--- Method 'isBuilt'
   public : bool isBuilt (void) const ;

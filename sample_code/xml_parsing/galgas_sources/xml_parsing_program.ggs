@@ -29,6 +29,10 @@ message "an XML text file with the .xml_file extension"
 
 #--- Epilogue routine
 after {
+#  message "'" . ['\&Aacute;' string] . "'\n" ;
+#  message "'" . ['ж' string] . "'\n" ;
+#  message "Генерал Дуракин\n" ;
+#  message "\&Agrave;" . " mettre en \&oelig;uvre !\n" ;
 }
 
 #---

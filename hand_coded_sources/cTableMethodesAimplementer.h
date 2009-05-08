@@ -92,7 +92,7 @@ template <typename INFO> class cTableMethodesAimplementer {
 
   public : bool isBuilt (void) const ;
   public : void build (void) ;
-  public : void _drop (void) ;
+  public : void drop (void) ;
   protected : void insulateMap (void) ;
 
   public : sint32 insertAbstract (C_Compiler & inLexique,

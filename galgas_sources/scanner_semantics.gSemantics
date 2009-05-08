@@ -277,6 +277,10 @@ class @typeInstructionErreurLexicale extends @typeInstructionLexicale {
   @luint mErrorMessageIndex ;
 }
 
+class @typeInstructionLexicalWarning extends @typeInstructionLexicale {
+  @luint mErrorMessageIndex ;
+}
+
 #------------------------------------------------------------------*
 
 routine appendToLexicalInstructionList

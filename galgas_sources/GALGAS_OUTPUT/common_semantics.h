@@ -359,7 +359,7 @@ class GGS_EXactualParametersPassingMode {
                                           const sint32 inIndentation = 0) const ;
 
 //--- Drop operation
-  public : inline void _drop (void) { mValue = kNotBuilt ; }
+  public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
   public : GGS_bool _operator_isEqual (const GGS_EXactualParametersPassingMode inOperand) const ;
@@ -427,7 +427,7 @@ class GGS_EXformalArgumentPassingMode {
                                           const sint32 inIndentation = 0) const ;
 
 //--- Drop operation
-  public : inline void _drop (void) { mValue = kNotBuilt ; }
+  public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
   public : GGS_bool _operator_isEqual (const GGS_EXformalArgumentPassingMode inOperand) const ;
@@ -3058,7 +3058,7 @@ class GGS_localConstantBuildStyleEnum {
                                           const sint32 inIndentation = 0) const ;
 
 //--- Drop operation
-  public : inline void _drop (void) { mValue = kNotBuilt ; }
+  public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
   public : GGS_bool _operator_isEqual (const GGS_localConstantBuildStyleEnum inOperand) const ;
@@ -4441,7 +4441,7 @@ class GGS_categoryMethodKind {
                                           const sint32 inIndentation = 0) const ;
 
 //--- Drop operation
-  public : inline void _drop (void) { mValue = kNotBuilt ; }
+  public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
   public : GGS_bool _operator_isEqual (const GGS_categoryMethodKind inOperand) const ;
@@ -16529,7 +16529,7 @@ class GGS_EXsemanticContext {
   public : virtual ~GGS_EXsemanticContext (void) ;
 
 //--- Handle 'drop' instruction
-  public : void _drop (void) ;
+  public : void drop (void) ;
 
 //--- Method 'isBuilt'
   public : bool isBuilt (void) const ;

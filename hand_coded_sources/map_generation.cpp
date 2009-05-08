@@ -506,7 +506,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  outIndex.mKey = inKey ;\n"
                "  ioMap.enterIndex (inKey, outIndex.mIndex) ;\n"
                "  if (outIndex.mIndex.retrieve () == NULL) {\n"
-               "    outIndex._drop () ;\n"
+               "    outIndex.drop () ;\n"
                "  }\n"
                "}\n\n" ;
 
@@ -561,9 +561,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    break ;\n"
                  "  }\n"
                  "  if (shouldDropArguments) {\n"
-                 "    outKey._drop () ;\n" ;
+                 "    outKey.drop () ;\n" ;
     for (sint32 i=1 ; i<=mMapAttributesList.count () ; i++) {
-      inCppFile << "    outAttribute" << cStringWithSigned (i) << "._drop () ;\n" ;
+      inCppFile << "    outAttribute" << cStringWithSigned (i) << ".drop () ;\n" ;
     }
     inCppFile << "  }\n"
                  "}\n\n" ;
@@ -1035,7 +1035,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << "._drop () ;\n" ;
+      inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << ".drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1133,10 +1133,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "  if (node == NULL) {\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
-      inCppFile << "    outParameter" << cStringWithSigned (i) << "._drop () ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (i) << ".drop () ;\n" ;
     }
     inCppFile << "    if (outIndex != NULL) {\n"
-                 "      outIndex->_drop () ;\n"
+                 "      outIndex->drop () ;\n"
                  "     }\n"
                  "  }else{\n" ;
   current.rewind () ;
@@ -1291,7 +1291,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.appendCLiteralStringConstant (currentInsertMethod._mShadowErrorMessage (HERE).string ()) ;
       inCppFile << " COMMA_THERE) ;\n" ;
       if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
-        inCppFile << "    outIndex._drop () ;\n" ;
+        inCppFile << "    outIndex.drop () ;\n" ;
       }
       inCppFile << "  }else{\n" ;
       inCppFile.incIndentation (2) ;
@@ -1624,7 +1624,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << "._drop () ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << ".drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1662,11 +1662,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << "._drop () ;\n" ;
+      inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << ".drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
-    inCppFile << "    outIndex._drop () ;\n"
+    inCppFile << "    outIndex.drop () ;\n"
                  "  }else{\n" ;
     current.rewind () ;
     attributeIndex = 0 ;

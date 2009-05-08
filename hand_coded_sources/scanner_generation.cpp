@@ -60,10 +60,11 @@ static void
 generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inList,
                                     const C_String & inLexiqueName,
                                     const bool inGenerateEnterToken,
-                                    AC_OutputStream & inCppFile) {
+                                    AC_OutputStream & inCppFile,
+                                    TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) {
   GGS_tListeInstructionsLexicales::cEnumerator courant (inList, true) ;
   while (courant.hc ()) {
-    courant._attributInstruction (HERE)(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile) ;
+    courant._attributInstruction (HERE)(HERE)->generate_scanner_instruction (inLexiqueName, inGenerateEnterToken, inCppFile, ioUnicodeStringToGenerate) ;
     courant.next () ;
   }
 }
@@ -75,7 +76,8 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
                      const C_String & inLexiqueName,
                      AC_OutputStream & inCppFile,
                      const bool inGenerateEnterToken,
-                     bool & outNonEmptyList) {
+                     bool & outNonEmptyList,
+                     TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) {
   outNonEmptyList = inList.count () > 0 ;
   GGS_typeListeTestsEtInstructions::cEnumerator courant (inList, true) ;
   bool first = true ;
@@ -94,12 +96,14 @@ generateScannerCode (const GGS_typeListeTestsEtInstructions & inList,
       }else{
         inCppFile << " ||\n    " ;
       }
-      cond._attributCondition(HERE) (HERE)->generateLexicalCondition (inCppFile) ;
+      cond._attributCondition(HERE) (HERE)->generateLexicalCondition (inCppFile, ioUnicodeStringToGenerate) ;
       cond.next () ;
     }
     inCppFile << ") {\n" ;
     inCppFile.incIndentation (+2) ;
-    generate_scanner_instructions_list (courant._attributListeInstructions (HERE), inLexiqueName, inGenerateEnterToken, inCppFile) ;
+    generate_scanner_instructions_list (courant._attributListeInstructions (HERE),
+                                        inLexiqueName, inGenerateEnterToken, inCppFile,
+                                        ioUnicodeStringToGenerate) ;
     inCppFile.incIndentation (-2) ;
     courant.next () ;
   }
@@ -356,7 +360,8 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                           const GGS_templateReplacementMap & inTemplateReplacementMap,
                           const C_String & inLexiqueName,
                           const GGS_typeLexicalAttributesMap & table_attributs,
-                          const GGS_typeListeTestsEtInstructions & programme_principal) {
+                          const GGS_typeListeTestsEtInstructions & programme_principal,
+                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) {
 
   inCppFile.appendCppTitleComment ("parseLexicalToken") ;
   inCppFile << "bool " << inLexiqueName << "::\n"
@@ -402,11 +407,11 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
-  generateScannerCode (programme_principal, inLexiqueName, inCppFile, true, nonEmptyList) ;
+  generateScannerCode (programme_principal, inLexiqueName, inCppFile, true, nonEmptyList, ioUnicodeStringToGenerate) ;
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar (TO_UNICODE ('\\0'))) { // End of source text ? \n"
+  inCppFile << "if (testForInputUTF32Char (TO_UNICODE ('\\0'))) { // End of source text ? \n"
                "  _token.mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
                "}else{ // Unknown input character\n"
                "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -440,7 +445,8 @@ static void
 generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
                                           const C_String & inLexiqueName,
                                           const GGS_typeLexicalAttributesMap & table_attributs,
-                                          const GGS_typeListeTestsEtInstructions & programme_principal) {
+                                          const GGS_typeListeTestsEtInstructions & programme_principal,
+                                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) {
 
   inCppFile.appendCppTitleComment ("parseLexicalTokenForLexicalColoring") ;
   inCppFile << "sint16 "
@@ -460,11 +466,11 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
                "try{\n" ;
   inCppFile.incIndentation (+2) ;
   bool nonEmptyList ;
-  generateScannerCode (programme_principal, inLexiqueName, inCppFile, false, nonEmptyList) ;
+  generateScannerCode (programme_principal, inLexiqueName, inCppFile, false, nonEmptyList, ioUnicodeStringToGenerate) ;
   if (nonEmptyList) {
     inCppFile << "}else " ;
   }
-  inCppFile << "if (testForInputChar (TO_UNICODE ('\\0'))) { // End of source text ? \n"
+  inCppFile << "if (testForInputUTF32Char (TO_UNICODE ('\\0'))) { // End of source text ? \n"
               "  _token.mTokenCode = " << inLexiqueName << "_1_ ; // Empty string code\n"
               "}else{ // Unknown input character\n"
               "  unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n"
@@ -552,7 +558,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionActionExterne::
 generate_scanner_instruction (const C_String &, //inLexiqueName
                               const bool /*inGenerateEnterToken */,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "scanner_action_" << attributNomRoutineExterne << " (" ;
 //--- Engendrer la liste des arguments (au moins 1)
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
@@ -580,12 +587,13 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionRepetitionLexicale::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const {
   inCppFile << "do {\n" ;
   inCppFile.incIndentation (+2) ;
-  generate_scanner_instructions_list (attributListeInstructionsDebut, inLexiqueName, inGenerateEnterToken, inCppFile) ;
+  generate_scanner_instructions_list (attributListeInstructionsDebut, inLexiqueName, inGenerateEnterToken, inCppFile, ioUnicodeStringToGenerate) ;
   bool nonEmptyList = true ;
-  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList) ;
+  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList, ioUnicodeStringToGenerate) ;
   if (nonEmptyList) {
     inCppFile << "}else{\n"
                  "  loop_ = false ;\n"
@@ -611,22 +619,25 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionSiLexical::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const {
   bool nonEmptyList = true ;
-  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList) ;
+  generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList, ioUnicodeStringToGenerate) ;
   if (nonEmptyList) {
     if (attributBrancheSinon.count () > 0) {
       inCppFile << "}else{\n" ;
       inCppFile.incIndentation (+2) ;
-      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
+      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile,
+                                          ioUnicodeStringToGenerate) ;
       inCppFile.incIndentation (-2) ;
     }
     inCppFile << "}\n" ;
   }else if (attributBrancheSinon.count () > 0) {
-      inCppFile.incIndentation (+2) ;
-      generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile) ;
-      inCppFile.incIndentation (-2) ;
-    }
+    inCppFile.incIndentation (+2) ;
+    generate_scanner_instructions_list (attributBrancheSinon, inLexiqueName, inGenerateEnterToken, inCppFile,
+                                        ioUnicodeStringToGenerate) ;
+    inCppFile.incIndentation (-2) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -642,7 +653,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeLexicalTagInstruction::
 generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "const C_LocationInSource _locationForTag_" << mLexicalTagName << " = mCurrentLocation ;\n" ;
 }
 
@@ -659,7 +671,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeLexicalLogInstruction::
 generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "lexicalLog (LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
@@ -676,7 +689,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeLexicalRewindAndSendInstruction::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "mCurrentLocation = _locationForTag_" << mLexicalTagName << " ;\n"
                "_token.mTokenCode = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (mTerminal, inCppFile) ;
@@ -699,7 +713,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionEmettreSimple::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "_token.mTokenCode = " << inLexiqueName << "_1_" ;
   generateTerminalSymbolCppName (mTerminal, inCppFile) ;
   inCppFile << " ;\n" ;
@@ -721,7 +736,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeLexicalDropInstruction::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   if (! inGenerateEnterToken) {
     inCppFile << "_token.mTokenCode = " << inLexiqueName << "_1_" ;
     generateTerminalSymbolCppName (mTerminal, inCppFile) ;
@@ -742,7 +758,8 @@ instruction__uses_loop_variable (void) const {
 void cPtr_typeInstructionEmettre::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
-                              AC_OutputStream & inCppFile) const {
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   GGS_typeListeRecherche::cEnumerator courant (attributListeRecherches, true) ;
   bool first = true ;
   while (courant. hc ()) {
@@ -801,17 +818,40 @@ instruction__uses_loop_variable (void) const {
 
 void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
-                              const bool /*inGenerateEnterToken */,
-                              AC_OutputStream & inCppFile) const {
+                              const bool /* inGenerateEnterToken */,
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "lexicalError (gErrorMessage_" ;
   inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
   inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeInstructionLexicalWarning::
+instruction__uses_loop_variable (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeInstructionLexicalWarning::
+generate_scanner_instruction (const C_String &, // inLexiqueName
+                              const bool /* inGenerateEnterToken */,
+                              AC_OutputStream & inCppFile,
+                              TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
+  inCppFile << "lexicalWarning (gErrorMessage_" ;
+  inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
+  inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
 
 void cPtr_typeUnicodeCharSet::
-generateLexicalCondition (AC_OutputStream & inCppFile) {
+generateLexicalCondition (AC_OutputStream & inCppFile,
+                          TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) {
   inCppFile << "testForCharWithFunction (" ;
   inCppFile.appendString (mUnicodeCharSetName.string ()) ;
   inCppFile << ")" ;
@@ -820,8 +860,9 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConditionCaractere::
-generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputChar (TO_UNICODE (" ;
+generateLexicalCondition (AC_OutputStream & inCppFile,
+                          TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) {
+  inCppFile << "testForInputUTF32Char (TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributCaractere.charValue ()) ;
   inCppFile << "))" ;
 }
@@ -829,21 +870,23 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConditionChaine::
-generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputString (" ;
-  inCppFile.appendCLiteralStringConstant (attributChaine) ;
-  inCppFile << ", " << cStringWithSigned (attributChaine.length ())
+generateLexicalCondition (AC_OutputStream & inCppFile,
+                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) {
+  ioUnicodeStringToGenerate.addObjectInOrderedArray (attributChaine) ;
+  inCppFile << "testForInputUTF32String (kUnicodeString_" << attributChaine.identifierRepresentation ()
+            << ", " << cStringWithSigned (attributChaine.length ())
             << ", true)" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConditionNonChaine::
-generateLexicalCondition (AC_OutputStream & inCppFile) {
+generateLexicalCondition (AC_OutputStream & inCppFile,
+                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) {
   if (mStrings.count () == 1) {
-    inCppFile << "notTestForInputString (" ;
     GGS_lstringlist::cEnumerator chaine (mStrings, true) ;
-    inCppFile.appendCLiteralStringConstant (chaine._mValue (HERE)) ;
+    inCppFile << "notTestForInputUTF32String (kUnicodeString_" << chaine._mValue (HERE).identifierRepresentation () ;
+    ioUnicodeStringToGenerate.addObjectInOrderedArray (chaine._mValue (HERE)) ;
     inCppFile << ", " ;
     inCppFile.appendUnsigned (chaine._mValue (HERE).length ()) ;
     inCppFile << ", gErrorMessage_" ;
@@ -859,8 +902,8 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
       }else{
         inCppFile << " && " ;
       }
-      inCppFile << "notTestForInputString (" ;
-      inCppFile.appendCLiteralStringConstant (chaine._mValue (HERE)) ;
+    inCppFile << "notTestForInputUTF32String (kUnicodeString_" << chaine._mValue (HERE).identifierRepresentation () ;
+      ioUnicodeStringToGenerate.addObjectInOrderedArray (chaine._mValue (HERE)) ;
       inCppFile << ", " ;
       inCppFile.appendUnsigned (chaine._mValue (HERE).length ()) ;
       inCppFile << ", gErrorMessage_" ;
@@ -875,8 +918,9 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeConditionIntervalle::
-generateLexicalCondition (AC_OutputStream & inCppFile) {
-  inCppFile << "testForInputCharRange (TO_UNICODE (" ;
+generateLexicalCondition (AC_OutputStream & inCppFile,
+                          TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) {
+  inCppFile << "testForInputUTF32CharRange (TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneInf.charValue ()) ;
   inCppFile << "), TO_UNICODE (" ;
   inCppFile.appendCLiteralCharConstant (attributBorneSup.charValue ()) ;
@@ -894,7 +938,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile) {
 void cPtr_typeGalgas_lstring::
 generateAttributeInitialization (const GGS_lstring & nom,
                                  AC_OutputStream & inCppFile) const {
-  inCppFile << "  _token." << nom << ".clear () ;\n" ;
+  inCppFile << "  _token." << nom << ".setLengthToZero () ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1553,17 +1597,40 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   generateGetTokenStringMethod (table_des_terminaux, inLexiqueName, generatedZone2) ;
 
 //---------------------------------------- Generate parsing method
-  generate_scanning_method (generatedZone2,
+  C_String scanningMethodString ;
+  TC_UniqueArray <C_String> unicodeStringToGenerate ;
+  generate_scanning_method (scanningMethodString,
                             inIsTemplate,
                             inTemplateDelimiterMap,
                             inTemplateReplacementMap,
                             inLexiqueName,
                             table_attributs,
-                            programme_principal) ;
-  generateScanningMethodForLexicalColoring (generatedZone2,
+                            programme_principal,
+                            unicodeStringToGenerate) ;
+//---------------------------------------- Generate parsing method for syntax coloring
+  generateScanningMethodForLexicalColoring (scanningMethodString,
                                             inLexiqueName,
                                             table_attributs,
-                                            programme_principal) ;
+                                            programme_principal,
+                                            unicodeStringToGenerate) ;
+//---------------------------------------- Write Unicode strings
+  if (unicodeStringToGenerate.count () > 0) {
+    generatedZone2.appendCppTitleComment ("U N I C O D E    S T R I N G S") ;
+    for (sint32 i=0 ; i<unicodeStringToGenerate.count () ; i++) {
+      generatedZone2 << "//--- Unicode string for '" << unicodeStringToGenerate (i COMMA_HERE) << "'\n"
+                     << "static const utf32 kUnicodeString_" << unicodeStringToGenerate (i COMMA_HERE).identifierRepresentation () << " [] = " ;
+      generatedZone2.appendUTF32LiteralStringConstant (unicodeStringToGenerate (i COMMA_HERE)) ;
+      generatedZone2 << " ; \n\n" ;
+    }
+/*    for (sint32 i=1 ; i<unicodeStringToGenerate.count () ; i++) {
+      const sint32 r = unicodeStringToGenerate (i - 1 COMMA_HERE).compare (unicodeStringToGenerate (i COMMA_HERE)) ;
+      if (r >= 0) {
+        generatedZone2 << "// Ordering error for index " << cStringWithSigned (i) << "\n" ;
+      }
+    }*/
+  }
+//---------------------------------------- Write parsing methods
+  generatedZone2 << scanningMethodString ;
 //---------------------------------------- Generate styles definition 
   generatedZone2.appendCppTitleComment ("Styles definition") ;
   generatedZone2 <<  "sint32 " << inLexiqueName << "::getStylesCount (void) {\n"

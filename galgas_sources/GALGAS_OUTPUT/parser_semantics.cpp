@@ -790,7 +790,7 @@ method_first (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstructionList ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -810,7 +810,7 @@ method_last (C_Compiler & _inLexique,
   if (_p != NULL) {
     _out_0 = _p->mInstructionList ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -832,7 +832,7 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -854,7 +854,7 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
+    _out_0.drop () ;
   }
 }
 
@@ -1507,8 +1507,8 @@ method_first (C_Compiler & _inLexique,
     _out_0 = _p->mSignature ;
     _out_1 = _p->mErrorLocation ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -1530,8 +1530,8 @@ method_last (C_Compiler & _inLexique,
     _out_0 = _p->mSignature ;
     _out_1 = _p->mErrorLocation ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -1555,8 +1555,8 @@ modifier_popFirst (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -1580,8 +1580,8 @@ modifier_popLast (C_Compiler & _inLexique,
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
-    _out_0._drop () ;
-    _out_1._drop () ;
+    _out_0.drop () ;
+    _out_1.drop () ;
   }
 }
 
@@ -2625,12 +2625,12 @@ _searchElement (C_Compiler & inLexique,
     }
   }
   if (node == NULL) {
-    outParameter0._drop () ;
-    outParameter1._drop () ;
-    outParameter2._drop () ;
-    outParameter3._drop () ;
+    outParameter0.drop () ;
+    outParameter1.drop () ;
+    outParameter2.drop () ;
+    outParameter3.drop () ;
     if (outIndex != NULL) {
-      outIndex->_drop () ;
+      outIndex->drop () ;
      }
   }else{
     outParameter0 = node->mInfo.aListeDeTypesEffectifs ;

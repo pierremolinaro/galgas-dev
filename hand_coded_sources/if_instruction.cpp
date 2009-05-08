@@ -495,7 +495,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralStringExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_string (true, " ;
+  ioCppFile << "GGS_string (" ;
   GGS_stringlist::cEnumerator currentString (mLiteralStringList, true) ;
   bool first = true ;
   while (currentString.hc ()) {
@@ -688,7 +688,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralCharExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_char (true, TO_UNICODE (" ;
+  ioCppFile << "GGS_char (TO_UNICODE (" ;
   ioCppFile.appendCLiteralCharConstant (mLiteralChar.charValue ()) ;
   ioCppFile << "))" ;
 }

@@ -34,7 +34,7 @@ rule "<!--" :
     enterCharacterIntoString (tokenString, '"') ;
   while "&apos;" :
     enterCharacterIntoString (tokenString, ''') ;
-  while '\x1' -> ',' | '.' -> '\xFF' :
+  while '\u0001' -> ',' | '.' -> '\U0010FFFF' :
     enterCharacterIntoString (tokenString, *) ;
   while ~ "-->" error incorrectCommentError :
     enterCharacterIntoString (tokenString, '-') ;
@@ -109,7 +109,7 @@ rule ''' :
 end rule ;
 
 # --------------------- separators -----------------------------------------
-rule '\x1' -> ' ' :
+rule '\u0001' -> ' ' :
 end rule ;
 
 #----------------------------------------------------------------------------*
