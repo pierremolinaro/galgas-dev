@@ -391,7 +391,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeTrueBool::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_bool (true, true)" ;
+  ioCppFile << "GGS_bool (true)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -425,7 +425,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeFalseBool::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_bool (true, false)" ;
+  ioCppFile << "GGS_bool (false)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -542,7 +542,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralSIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_sint (true, " << cStringWithSigned (mLiteralInt.sintValue ()) << "L)" ;
+  ioCppFile << "GGS_sint (" << cStringWithSigned (mLiteralInt.sintValue ()) << "L)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -577,7 +577,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralSInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_sint64 (true, " ;
+  ioCppFile << "GGS_sint64 (" ;
   ioCppFile.appendSigned64 (mLiteralInt.sint64Value ()) ;
   ioCppFile << "LL)" ;
 }
@@ -614,7 +614,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUIntExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile.appendCString ("GGS_uint (true, ") ;
+  ioCppFile.appendCString ("GGS_uint (") ;
   ioCppFile.appendUnsigned (mLiteralInt.uintValue ()) ;
   ioCppFile.appendCString ("U)") ;
 }
@@ -651,7 +651,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralUInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile.appendCString ("GGS_uint64 (true, ") ;
+  ioCppFile.appendCString ("GGS_uint64 (") ;
   ioCppFile.appendUnsigned64 (mLiteralInt.uint64Value ()) ;
   ioCppFile.appendCString ("U)") ;
 }
@@ -725,7 +725,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeLiteralDoubleExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_double (true, " ;
+  ioCppFile << "GGS_double (" ;
   ioCppFile.appendDouble (mLiteralDouble.doubleValue ()) ;
    ioCppFile << ")" ;
 }
@@ -1578,7 +1578,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_bool (true, _inLexique.boolOptionValueFromKeys (" ;
+  ioCppFile << "GGS_bool (_inLexique.boolOptionValueFromKeys (" ;
   ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
@@ -1618,7 +1618,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_uint (true, _inLexique.uintOptionValueFromKeys (" ;
+  ioCppFile << "GGS_uint (_inLexique.uintOptionValueFromKeys (" ;
   ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;

@@ -51,7 +51,7 @@ void generateTerminalSymbolCppName (const C_String & inValue,
   const sint32 length = inValue.length () ;
   for (sint32 i=0 ; i<length ; i++) {
     const utf32 c = inValue (i COMMA_HERE) ;
-    if (isalnum (UNICODE_VALUE (c))) {
+    if (isalnum ((int) UNICODE_VALUE (c))) {
       ioString.appendUnicodeCharacter (c COMMA_HERE) ;
     }else{
       char s [10] ;

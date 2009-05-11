@@ -423,7 +423,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark ------------------------\n\n" ;
   generatedZone3.appendCppTitleComment ("Global static variables") ;
-  sint32 index = 0 ;
+/*  sint32 index = 0 ;
   const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
                  << (generateDebug ? "true" : "false")
@@ -443,8 +443,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     currentOptionComponent.next () ;
     index ++ ;
   }
-  generatedZone3 << "NULL) ;\n"
-                    "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", \"\") ;\n"
+  generatedZone3 << "NULL) ;\n" ; */
+  generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions ;\n" ;
+  generatedZone3 << "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", \"\") ;\n"
                     "static C_galgas_io * gIOParametersPtr = NULL ;\n"
                     "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
                     "static NSMutableArray * gColorArray ;\n\n" ;

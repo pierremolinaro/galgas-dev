@@ -65,7 +65,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                  "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE (" ;
     ioCppFile.appendSigned (mLocation.lineNumber ()) ;
     ioCppFile << ")) ;\n"
-                 "      " << conditionVariable << " = GGS_bool (true, false) ;\n"
+                 "      " << conditionVariable << " = GGS_bool (false) ;\n"
                  "    }else{\n" 
                  "      " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
   //--- Second instruction list

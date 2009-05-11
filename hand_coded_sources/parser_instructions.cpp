@@ -862,7 +862,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mEndOfInstructionLocation.lineNumber ())
               << ")) ;\n"
-                 "    " << conditionVariable << " = GGS_bool (true, false) ;\n"
+                 "    " << conditionVariable << " = GGS_bool (false) ;\n"
                  "  }else{\n" 
                  "    " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
