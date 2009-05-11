@@ -205,7 +205,7 @@ generateKeyWordTableImplementation (const GGS_typeTableMotsReserves & inMap,
 // ---------------------------- Generate table
   generateKeyWordTableEntries (inMap, inCppFile, nomTable, inLexiqueName) ;
 // ---------------------------- Statique search method
-  inCppFile << "sint32 " << inLexiqueName << "::search_into_" << nomTable
+  inCppFile << "sint16 " << inLexiqueName << "::search_into_" << nomTable
             << " (const C_String & inSearchedString) {\n"
                "  return searchInList (inSearchedString, "
             << "ktable_for_" << nomTable << ", "
@@ -291,7 +291,7 @@ static void generateKeyWordTableDeclaration (const C_String & nomTable,
            << " [" << inMap.count () << "] ;\n" ;*/
 
 // ---------------------------- Statique search method
-  inHfile << "  public : static sint32 search_into_" << nomTable
+  inHfile << "  public : static sint16 search_into_" << nomTable
           << " (const C_String & inSearchedString) ;\n\n" ;
 }
 
@@ -888,7 +888,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile,
     inCppFile << "notTestForInputUTF32String (kUnicodeString_" << chaine._mValue (HERE).identifierRepresentation () ;
     ioUnicodeStringToGenerate.addObjectInOrderedArray (chaine._mValue (HERE)) ;
     inCppFile << ", " ;
-    inCppFile.appendUnsigned (chaine._mValue (HERE).length ()) ;
+    inCppFile.appendSigned (chaine._mValue (HERE).length ()) ;
     inCppFile << ", gErrorMessage_" ;
     inCppFile.appendUnsigned (mEndOfFileErrorMessageIndex.uintValue ()) ;
     inCppFile << " COMMA_LINE_AND_SOURCE_FILE)" ;
@@ -905,7 +905,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile,
     inCppFile << "notTestForInputUTF32String (kUnicodeString_" << chaine._mValue (HERE).identifierRepresentation () ;
       ioUnicodeStringToGenerate.addObjectInOrderedArray (chaine._mValue (HERE)) ;
       inCppFile << ", " ;
-      inCppFile.appendUnsigned (chaine._mValue (HERE).length ()) ;
+      inCppFile.appendSigned (chaine._mValue (HERE).length ()) ;
       inCppFile << ", gErrorMessage_" ;
       inCppFile.appendUnsigned (mEndOfFileErrorMessageIndex.uintValue ()) ;
       inCppFile << " COMMA_LINE_AND_SOURCE_FILE)" ;

@@ -703,8 +703,8 @@ class GGS_typeVariablesMap : public cGalgasVariablesMap <e_typeVariablesMap> {
   public : inline GGS_typeVariablesMap * operator () (UNUSED_LOCATION_ARGS) { return this ; }
   public : inline const GGS_typeVariablesMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true, true) ; }
-  public : GGS_bool _operator_isNotEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true, true) ; }
+  public : GGS_bool _operator_isEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true) ; }
+  public : GGS_bool _operator_isNotEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true) ; }
 //--- Handle 'emptyMap' constructor
   public : static GGS_typeVariablesMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
 //--- 'searchForReadOnlyAccess' search method
@@ -1344,8 +1344,8 @@ class GGS_typeTableMethodesAimplementer : public cTableMethodesAimplementer <e_t
   public : inline GGS_typeTableMethodesAimplementer * operator () (UNUSED_LOCATION_ARGS) { return this ; }
   public : inline const GGS_typeTableMethodesAimplementer * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true, true) ; }
-  public : GGS_bool _operator_isNotEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true, true) ; }
+  public : GGS_bool _operator_isEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true) ; }
+  public : GGS_bool _operator_isNotEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true) ; }
 //--- Handle 'emptyMap' constructor
   public : static GGS_typeTableMethodesAimplementer constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
 //---

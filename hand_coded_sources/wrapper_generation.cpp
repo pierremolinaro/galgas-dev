@@ -114,7 +114,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;
     inCppFile << "_" << inWrapperName
               << " = // " ;
-    inCppFile.appendUnsigned (binaryData.count () + 1) ;
+    inCppFile.appendSigned (binaryData.count () + 1) ;
     inCppFile << " bytes\n" ;
     bool header = false ;
     for (sint32 i=0 ; i<binaryData.count () ; i++) {
@@ -165,7 +165,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
             << "_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << " [" ;
-  inCppFile.appendUnsigned (wrapperFileIndexes.count () + 1) ;
+  inCppFile.appendSigned (wrapperFileIndexes.count () + 1) ;
   inCppFile << "] = {\n" ;
   for (sint32 i=0 ; i<wrapperFileIndexes.count () ; i++) {
     inCppFile << "  & gWrapperFile_" ;
@@ -182,7 +182,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
             << "_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << " [" ;
-  inCppFile.appendUnsigned (subDirectories.count () + 1) ; 
+  inCppFile.appendSigned (subDirectories.count () + 1) ; 
   inCppFile << "] = {\n" ;
   for (sint32 i=0 ; i<subDirectories.count () ; i++) {
     inCppFile << "  & gWrapperDirectory_" ;
@@ -200,14 +200,14 @@ generateWrapperContents (AC_OutputStream & inCppFile,
             << " = {\n"
                "  \"" << inWrapperDirectory << "\",\n"
             << "  " ;
-  inCppFile.appendUnsigned (inRegularFileSortedList.count ()) ;
+  inCppFile.appendSigned (inRegularFileSortedList.count ()) ;
   inCppFile << ",\n"
                "  " << "gWrapperAllFiles_" << inWrapperName
             << "_" ;
   inCppFile.appendUnsigned (inWrapperDirectoryIndex) ;
   inCppFile << ",\n"
                "  " ;
-  inCppFile.appendUnsigned (subDirectories.count ()) ;
+  inCppFile.appendSigned (subDirectories.count ()) ;
   inCppFile << ",\n"
                "  " << "gWrapperAllDirectories_" << inWrapperName
             << "_" ;

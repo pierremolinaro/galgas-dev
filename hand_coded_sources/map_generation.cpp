@@ -1446,8 +1446,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true, true) ; }\n"
+             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true) ; }\n"
+             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true) ; }\n"
              "//--- Handle 'emptyMap' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 

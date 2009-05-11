@@ -139,7 +139,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <sint32> > & inFOLLOWarray
 //--- Print messages
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "Calculus completed in " ;
-  inHTMLfile.appendUnsigned (inIterationsCount) ;
+  inHTMLfile.appendSigned (inIterationsCount) ;
   inHTMLfile << " iterations, " ;
   inHTMLfile.appendUnsigned (inValuesCount) ;
   inHTMLfile << " values ;\n"
