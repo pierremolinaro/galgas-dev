@@ -258,7 +258,7 @@ class galgas_scanner : public C_Lexique {
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 //--- Enter Token
-  protected : void _enterToken (const cTokenFor_galgas_scanner & inToken) ;
+  protected : void enterToken (const cTokenFor_galgas_scanner & inToken) ;
 //--- Style Definition
   public : static sint32 getStylesCount (void) ;
   public : static const char * getStyleName (const sint32 inIndex) ;
