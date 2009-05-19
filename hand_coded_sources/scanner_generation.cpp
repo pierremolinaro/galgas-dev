@@ -1423,7 +1423,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
       currentDelimiter.next() ;
       idx ++ ;
     }
-    generatedZone2 << "static const templateStruct kTemplateDefinitionArray [" << cStringWithSigned (inTemplateDelimiterMap.count ()) << "] = {\n" ;
+    generatedZone2 << "static const templateDelimiterStruct kTemplateDefinitionArray [" << cStringWithSigned (inTemplateDelimiterMap.count ()) << "] = {\n" ;
     currentDelimiter.rewind () ;
     idx = 0 ;
     while (currentDelimiter.hc ()) {
@@ -1456,7 +1456,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
       currentReplacement.next () ;
       idx ++ ;
     }
-    generatedZone2 << "static const templateStruct kTemplateReplacementArray [" << cStringWithSigned (inTemplateReplacementMap.count ()) << "] = {\n" ;
+    generatedZone2 << "static const templateDelimiterStruct kTemplateReplacementArray [" << cStringWithSigned (inTemplateReplacementMap.count ()) << "] = {\n" ;
     currentReplacement.rewind () ;
     idx = 0 ;
     while (currentReplacement.hc ()) {

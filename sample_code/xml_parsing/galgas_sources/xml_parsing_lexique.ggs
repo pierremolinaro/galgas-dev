@@ -7,6 +7,7 @@ replace "&lt;" -> "<" ;
 replace "&gt;" -> ">" ;
 replace "&quot;" -> "\"" ;
 replace "&apos;" -> "'" ;
+replace "&#" ... ";" : codePointToUnicode ;
 
 style delimitersStyle -> "Delimiter:" ;
 style nameStyle -> "Name:" ;
