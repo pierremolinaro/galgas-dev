@@ -30,8 +30,9 @@ map @templateDelimiterMap {
 
 #------------------------------------------------------------------*
 
-map @templateReplacementMap {
-  @lstring mReplacedString ; # Start string is the key
+map @templateReplacementMap { # Start string is the key
+  @lstring mReplacedString ; 
+  @lstring mReplacementFunction ;
   insert insertKey error message "the template replacement string '%K' is already declared in %L" ;
   search searchKey error message "the template replacement string '%K' is not declared" ;
 }

@@ -630,13 +630,19 @@ rule <replace_declaration>
   if not inIsTemplate then
     error here: "the lexique should be declared as template lexique" ;
   end if ;
-  @lstring startString ;
-  $literal_string$ ? startString ;
-  $->$ ;
-  @lstring endString ;
-  $literal_string$ ? endString ;
+  $literal_string$ ? @lstring startString ;
+  select
+    $...$ ;
+    $literal_string$ ? @lstring endString ;
+    $:$ ;
+    $identifier$ ? @lstring replacementFunction ;
+    [!?ioTemplateReplacementMap insertKey !startString !endString !replacementFunction] ;
+  or
+    $->$ ;
+    $literal_string$ ? @lstring endString ;
+    [!?ioTemplateReplacementMap insertKey !startString !endString ![@lstring new !"" !here]] ;
+  end select ;
   $;$ ;
-  [!?ioTemplateReplacementMap insertKey !startString !endString] ;
 end rule ;
 
 #-------------------------------------------------------------------*
