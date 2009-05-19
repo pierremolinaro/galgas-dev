@@ -77,7 +77,7 @@ class galgasTemplateScanner : public C_Lexique {
   #endif
 
 //--- Scanner mode
-  private : sint32 _mMatchedTemplateDelimiterIndex ;
+  private : sint32 mMatchedTemplateDelimiterIndex ;
 
 //--- START OF USER ZONE 2
 
@@ -252,7 +252,7 @@ class galgasTemplateScanner : public C_Lexique {
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 //--- Enter Token
-  protected : void _enterToken (const cTokenFor_galgasTemplateScanner & inToken) ;
+  protected : void enterToken (const cTokenFor_galgasTemplateScanner & inToken) ;
 //--- Style Definition
   public : static sint32 getStylesCount (void) ;
   public : static const char * getStyleName (const sint32 inIndex) ;
