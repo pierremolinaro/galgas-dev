@@ -150,8 +150,9 @@ message "a GALGAS project source file"
   @string outputDirectory := outputDirectory (!inSourceFile) ;
 #--- Parse metamodel component
   @projectSourceList projectSourceList ;
+  @lstring projectName ;
   @location endOfSourceFile ;
-  grammar projectLL1grammar in inSourceFile ?projectSourceList ?endOfSourceFile ;
+  grammar projectLL1grammar in inSourceFile ?projectSourceList ?projectName ?endOfSourceFile ;
 #--- Check target names, file base name uniqueness, and build target file list
   @sourceFileMap sourceFileMap [emptyMap] ;
   @targetFileListMap targetFileListMap [emptyMap] ;

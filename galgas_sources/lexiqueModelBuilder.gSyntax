@@ -132,24 +132,44 @@ rule <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList :
   $template$ ;
   @lstring startString ;
   $literal_string$ ? startString ;
+  @lstringlist optionList [emptyList] ;
+  select
+  or
+    $[$ ;
+    repeat
+      $identifier$ ? @lstring optionName ;
+      optionList += !optionName ;
+    while
+      $,$ ;
+    end repeat ;
+    $]$ ;
+  end select ;
   $...$ ;
   @lstring endString ;
   $literal_string$ ? endString ;
   $;$ ;
-  ioTemplateDelimitorList += !startString !endString ;
+  ioTemplateDelimitorList += !startString !optionList !endString ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
 rule <template_replacement> ?!@templateReplacementList ioTemplateReplacement :
   $replace$ ;
-  @lstring matchString ;
-  $literal_string$ ? matchString ;
-  $->$ ;
+  $literal_string$ ?@lstring  matchString ;
   @lstring replacementString ;
-  $literal_string$ ? replacementString ;
+  @lstring replacementFunction ;
+  select
+    $...$ ;
+    $literal_string$ ?replacementString ;
+    $:$ ;
+    $identifier$ ?replacementFunction ;
+  or
+    $->$ ;
+    $literal_string$ ?replacementString ;
+    replacementFunction := [@lstring new !"" !here] ;
+  end select ;
   $;$ ;
-  ioTemplateReplacement += !matchString !replacementString ;
+  ioTemplateReplacement += !matchString !replacementString !replacementFunction ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -408,6 +428,15 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
+  $warning$ ;
+  $identifier$ ? @lstring warningMessageName ;
+  $;$ ;
+  ioInstructionList += ![@lexicalWarningInstruction new !warningMessageName] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   $drop$ ;
   @lstring terminalName ;
   $terminal$ ? terminalName ;
@@ -502,6 +531,13 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+rule <lexical_factor> !@lexicalExpression outExpression :
+  $identifier$ ?@lstring characterSet ;
+  outExpression := [@lexicalCharacterSetMatch new !characterSet] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <lexical_list_declaration> ?!@lexicalListDeclarationList ioLexicalListDeclarationList :
   @lstring name ;
   $list$ ;
@@ -539,16 +575,27 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList :
-  @lstring entrySpelling ;
+  $literal_string$ ?@lstring entrySpelling ;
+  @lstringlist optionList [emptyList] ;
+  select
+  or
+    $[$ ;
+    repeat
+      $identifier$ ? @lstring optionName ;
+      optionList += !optionName ;
+    while
+      $,$ ;
+    end repeat ;
+    $]$ ;
+  end select ;
   @lstring terminalSpelling ;
-  $literal_string$ ? entrySpelling ;
   select
     $->$ ;
     $literal_string$ ? terminalSpelling ;
   or
     terminalSpelling := entrySpelling ;
   end select ;
-  ioLexicalListEntryList += !entrySpelling !terminalSpelling ;
+  ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -586,8 +633,20 @@ rule <terminal_declaration> ?!@terminalDeclarationList ioTerminalDeclarationList
   or
     theStyle := [@lstring new !"" !here] ;
   end select ;
+  @lstringlist optionList [emptyList] ;
+  select
+  or
+    $[$ ;
+    repeat
+      $identifier$ ? @lstring optionName ;
+      optionList += !optionName ;
+    while
+      $,$ ;
+    end repeat ;
+    $]$ ;
+  end select ;
   $;$ ;
-  ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle ;
+  ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
