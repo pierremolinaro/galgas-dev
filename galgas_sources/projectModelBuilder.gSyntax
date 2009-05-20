@@ -26,6 +26,7 @@ import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
 
 nonterminal <project_component_start_symbol>
   !@projectSourceList outProjectSourceList
+  !@lstring outProjectName
   !@location outEndOfSourceFile
 ;
 
@@ -33,9 +34,12 @@ nonterminal <project_component_start_symbol>
 
 rule <project_component_start_symbol>
   !@projectSourceList outProjectSourceList
+  !@lstring outProjectName
   !@location outEndOfSourceFile
 :
   $project$ ;
+  $identifier$ ? outProjectName ;
+  $:$ ;
   outProjectSourceList := [@projectSourceList emptyList] ;
   repeat
   while

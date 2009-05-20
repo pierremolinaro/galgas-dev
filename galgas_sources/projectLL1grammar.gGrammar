@@ -23,6 +23,7 @@ grammar projectLL1grammar "LL1" :
 
   root <project_component_start_symbol>
     !@projectSourceList outProjectSourceList
+    !@lstring outProjectName
     !@location outEndOfSourceFile
   ; # LL1
 end grammar ;

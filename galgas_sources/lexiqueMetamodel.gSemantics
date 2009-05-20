@@ -23,6 +23,7 @@ semantics lexiqueMetamodel :
 
 list @templateDelimitorList {
   @lstring mStartString ;
+  @lstringlist mOptionList ;
   @lstring mEndString ;
 }
 
@@ -31,6 +32,7 @@ list @templateDelimitorList {
 list @templateReplacementList {
   @lstring mMatchString ;
   @lstring mReplacementString ;
+  @lstring mReplacementFunction ;
 }
 
 #---------------------------------------------------------------------------*
@@ -67,6 +69,7 @@ list @terminalDeclarationList {
   @lstringlist mSentAttributeList ;
   @lstring mErrorMessage ;
   @lstring mStyle ; # Empty string if no style
+  @lstringlist mOptionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -74,6 +77,7 @@ list @terminalDeclarationList {
 list @lexicalListEntryList {
   @lstring mEntrySpelling ;
   @lstring mTerminalSpelling ;
+  @lstringlist mOptionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -107,6 +111,12 @@ list @lexicalExplicitRuleList {
 class @lexicalOrExpression extends @lexicalExpression {
   @lexicalExpression mLeftOperand ;
   @lexicalExpression mRightOperand ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCharacterSetMatch extends @lexicalExpression {
+  @lstring mCharacterSetName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -277,6 +287,12 @@ class @lexicalDropInstruction extends @lexicalInstruction {
 
 class @lexicalErrorInstruction extends @lexicalInstruction {
   @lstring mErrorMessageName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalWarningInstruction extends @lexicalInstruction {
+  @lstring mWarningMessageName ;
 }
 
 #---------------------------------------------------------------------------*
