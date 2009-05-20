@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-project
+project all_galgas :
 #--- Command Line Options
   option "galgas_cli_options.gOption" : makefile ;
 
