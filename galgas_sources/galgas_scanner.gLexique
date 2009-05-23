@@ -104,6 +104,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "parse",
   "project",
   "program",
+  "property",
   "reader",
   "remove",
   "replace",

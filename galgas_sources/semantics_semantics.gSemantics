@@ -36,7 +36,7 @@ list @typeCplusPlusNameList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeExpression [generatedInSeparateFile] {
+abstract class @typeExpression property generatedInSeparateFile {
 }
  
 #---------------------------------------------------------------------------*
@@ -1118,7 +1118,7 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
 #                                                                      *
 #----------------------------------------------------------------------*
 
-abstract class @AC_elseOrDefaultForCastInstruction [generatedInSeparateFile] {
+abstract class @AC_elseOrDefaultForCastInstruction property generatedInSeparateFile {
 }
 
 #----------------------------------------------------------------------*
@@ -1204,7 +1204,7 @@ map @typeTableNomRoutinesDeclarees {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeEntityToGenerate [generatedInSeparateFile] {
+abstract class @typeEntityToGenerate property generatedInSeparateFile {
 }
 
 #---------------------------------------------------------------------------*
@@ -1332,6 +1332,9 @@ class @C_classToImplement extends @typeEntityToGenerate {
 
 #--- Once Reader map
   @L_lazyAttributeList mLazyAttributeList ;
+
+#--- Liste des attributs semantiques not externes definis dans cette classe
+  @typeListeAttributsSemantiques mSetAttributeMofifierToImplementList ;
 }
 
 #---------------------------------------------------------------------------*

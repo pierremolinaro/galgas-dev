@@ -280,8 +280,6 @@ label parse
 
 nonterminal <abstract_method>
   ??@bool inIsAbstract
-  ?!@typeListeAttributsSemantiques listeAttributsSemantiquesCourants
-  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableMethodes tableDesMethodes
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
@@ -1717,7 +1715,7 @@ rule <lazy_reader>
 :
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
-  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType) do
+  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType ...) do
     @typeCplusPlusName nomCpp := [@typeDirectName new ![kKey location] ![kKey string]] ;
     [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
   end foreach ;
@@ -1840,7 +1838,7 @@ rule <class_declaration>
     ;
     select
     or
-      $[$ ;
+      $property$ ;
       $identifier$ ? @lstring optionString ;
       if [optionString string] != "generatedInSeparateFile" then
         error optionString:"only the \"generatedInSeparateFile\" pragma is allowed here" ;
@@ -1849,7 +1847,6 @@ rule <class_declaration>
       if [tableDesClassesAncetres count] > 0 then
         error optionString:"the \"generatedInSeparateFile\" pragma is allowed only for a base class" ;
       end if ;
-      $]$ ;
     end select ;
     ${$ ;
   #--- Attributs de la classe
@@ -1899,8 +1896,6 @@ rule <class_declaration>
     while
       <abstract_method>
         !inIsAbstract
-        !?listeAttributsSemantiquesCourants
-        !?listeEntitesAengendrer
         !?ioComponentSemanticsEntitiesMap
         !?tableDesMethodes
         !?tableMethodesAimplementer
@@ -1922,7 +1917,7 @@ rule <class_declaration>
         !inOptionsComponentsMapForUse
         !classMessage
         !ioSemanticContext
-        ! onceReaderListToImplement
+        !onceReaderListToImplement
       ;
      while
       <overrided_method>
@@ -1940,7 +1935,7 @@ rule <class_declaration>
         !inOptionsComponentsMapForUse
         !classMessage
         !ioSemanticContext
-        ! onceReaderListToImplement
+        !onceReaderListToImplement
      ;
     while
       <lazy_reader>
@@ -1985,6 +1980,18 @@ rule <class_declaration>
     ] ;
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
+  #--- Modifiers
+    @typeListeAttributsSemantiques setAttributeMofifierToImplementList [emptyList] ;
+    foreach listeAttributsSemantiquesCourants do
+      @bool isSettable ;
+      [tableAttributs searchKey !mAttributeName ?* ?isSettable] ;
+      if isSettable then
+        setAttributeMofifierToImplementList +=
+          !mAttributType
+          !mAttributeName
+        ;
+      end if ;
+    end foreach ;
   #--- Inserer dans la map des classes definies dans ce fichier (a implementer)
     @typeEntityToGenerate def := [@C_classToImplement new 
       !abstractClassName
@@ -1998,6 +2005,7 @@ rule <class_declaration>
       !classMessage
       !hasGeneratedInSeparateFileSetting
       !onceReaderListToImplement
+      !setAttributeMofifierToImplementList
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -2049,7 +2057,7 @@ label importSemantics
     ;
     select
     or
-      $[$ ;
+      $property$ ;
       $identifier$ ? @lstring optionString ;
       if [optionString string] != "generatedInSeparateFile" then
         error optionString:"only the \"generatedInSeparateFile\" pragma is allowed here" ;
@@ -2058,7 +2066,6 @@ label importSemantics
       if [tableDesClassesAncetres count] > 0 then
         error optionString:"the \"generatedInSeparateFile\" pragma is allowed only for a base class" ;
       end if ;
-      $]$ ;
     end select ;
     ${$ ;
   #--- Attributs de la classe
@@ -2109,8 +2116,6 @@ label importSemantics
     while
       <abstract_method>
         !inIsAbstract
-        !?listeAttributsSemantiquesCourants
-        !?listeEntitesAengendrer
         !?ioComponentSemanticsEntitiesMap
         !?tableDesMethodes
         !?tableMethodesAimplementer
@@ -2202,8 +2207,6 @@ end rule ;
 
 rule <abstract_method>
   ??@bool inIsAbstract
-  ?!@typeListeAttributsSemantiques unused listeAttributsSemantiquesCourants
-  ?!@typeEntitiesToGenerateList unused listeEntitesAengendrer
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeTableMethodes tableDesMethodes
   ?!@typeTableMethodesAimplementer tableMethodesAimplementer
@@ -2260,7 +2263,7 @@ rule <parse_method>
   $identifier$ ? outMethodName ;
 #--- Create local variable map
   @typeVariablesMap methodLocalVariablesMap [emptyMap]  ;
-  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType) do
+  foreach tableAttributsHerites (@lstring kKey @AC_galgasType kType ...) do
     @typeCplusPlusName nomCpp := [@typeDirectName new ![kKey location] ![kKey string]] ;
     [!?methodLocalVariablesMap insertUsedConstInArgument !kKey !kType !nomCpp] ;
   end foreach ;
@@ -6505,7 +6508,7 @@ rule <semantics_declaration>
         error sortAttribute: "this attribute is already used in sort list" ;
       else
         @AC_galgasType definitionType ;
-        [tableAttributs searchKey !sortAttribute ?definitionType] ;
+        [tableAttributs searchKey !sortAttribute ?definitionType ?*] ;
         [definitionType acceptToBeSortKeyInSortedListDefinition !sortAttribute] ;
         usedSortedAttributes += ![sortAttribute string] ;
       end if ;
@@ -6625,7 +6628,20 @@ rule <attributes_definition_list>
   #--- Formal argument
     @lstring attributeName ;
     $identifier$ ? attributeName ;
-    [!?tableAttributs insertKey ! attributeName !definitionType] ;
+  #--- Options
+    @bool isSettable ;
+    select
+      isSettable := false ;
+    or
+      $property$ ;
+      $identifier$ ? @lstring directiveName ;
+      if [directiveName string] == "set" then
+        isSettable := true ;
+      else
+        error directiveName:"only 'set' directive name is allowed here" -> isSettable ;
+      end if ;
+    end select ;
+    [!?tableAttributs insertKey !attributeName !definitionType !isSettable] ;
     listeTousAttributsSemantiques += !definitionType ! attributeName ;
     listeAttributsSemantiquesCourants += !definitionType ! attributeName ;
     outAttributeListModel += !typeName ;

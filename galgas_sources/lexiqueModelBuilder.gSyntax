@@ -2,7 +2,7 @@
 #                                                                           *
 #  'option' component parser, as model builder                              *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -135,14 +135,13 @@ rule <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList :
   @lstringlist optionList [emptyList] ;
   select
   or
-    $[$ ;
+    $property$ ;
     repeat
       $identifier$ ? @lstring optionName ;
       optionList += !optionName ;
     while
       $,$ ;
     end repeat ;
-    $]$ ;
   end select ;
   $...$ ;
   @lstring endString ;
@@ -579,14 +578,9 @@ rule <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList :
   @lstringlist optionList [emptyList] ;
   select
   or
-    $[$ ;
-    repeat
-      $identifier$ ? @lstring optionName ;
-      optionList += !optionName ;
-    while
-      $,$ ;
-    end repeat ;
-    $]$ ;
+    $property$ ;
+    $identifier$ ? @lstring optionName ;
+    optionList += !optionName ;
   end select ;
   @lstring terminalSpelling ;
   select
@@ -636,14 +630,13 @@ rule <terminal_declaration> ?!@terminalDeclarationList ioTerminalDeclarationList
   @lstringlist optionList [emptyList] ;
   select
   or
-    $[$ ;
+    $property$ ;
     repeat
       $identifier$ ? @lstring optionName ;
       optionList += !optionName ;
     while
       $,$ ;
     end repeat ;
-    $]$ ;
   end select ;
   $;$ ;
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;

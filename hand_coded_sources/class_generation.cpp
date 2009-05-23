@@ -217,6 +217,20 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << "\n" ;
 
+//--- Modifiers ('set...')
+  inHfile << "//--- Modifiers\n" ;
+  current = mSetAttributeMofifierToImplementList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inHfile << "  public : void" ;
+    inHfile << " modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter ()
+            << " (C_Compiler & inLexique, const " ;
+    current->mAttributType(HERE)->generateCppClassName (inHfile) ;
+    inHfile  << " & inValue COMMA_LOCATION_ARGS) ;\n" ;
+    current = current->nextObject () ;
+  }
+  inHfile << "\n" ;
+
 //--- Generate 'message' reader prototypes              
   GGS_typeClassMessagesMap::cElement * messageCourant = mMessagesMap.firstObject () ;
   while (messageCourant != NULL) {
@@ -386,6 +400,12 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "//--- Galgas RTTI\n"
                     "  public : virtual AC_galgasClassRunTimeInformation * galgasRTTI (void) const ;\n" ;
 
+//--- Generate 'makeClone' method
+  if ((aListeTousAttributsNonExternes.firstObject () != NULL) && ! mIsAbstract.boolValue ()) {
+    generatedZone3 << "\n"
+                      "//--- Make clone\n"
+                      "  public : virtual cPtr__AC_galgas_class * makeClone (void) const ;\n" ;
+  }
 //--- End of Class Declaration
   generatedZone3 << "} ;\n\n" ;
  
@@ -692,18 +712,41 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "C_galgas_class_inspector _gInspectorFor_" << aNomClasse
             << " (& typeid (cPtr_" << aNomClasse << "), " ;
   if (superClassName.length () == 0) {
-    inCppFile << "NULL\n" ;
+    inCppFile << "NULL" ;
   }else{
     inCppFile << "& typeid (cPtr_" << superClassName << ")" ;
   }
   inCppFile << ", " ;
   inCppFile.appendCLiteralStringConstant (mClassMessage.string ()) ;
-  inCppFile << ") ;\n" ;
+  inCppFile << ") ;\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "AC_galgasClassRunTimeInformation * cPtr_" << aNomClasse << "::galgasRTTI (void) const {\n"
                "  return & gClassInfoFor__" << aNomClasse << " ;\n"
                "}\n\n" ;
+
+//--- Generate 'makeClone' method
+  current = aListeTousAttributsNonExternes.firstObject () ;
+  if ((current != NULL) && ! mIsAbstract.boolValue ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "cPtr__AC_galgas_class * cPtr_" << aNomClasse << "::makeClone (void) const {\n"
+                 "  cPtr__AC_galgas_class * result = NULL ;\n"
+                 "  macroMyNew (result, cPtr_" << aNomClasse << " (" ;
+    bool first = true ;
+    while (current != NULL) {
+      macroValidPointer (current) ;
+      if (first) {
+        first = false ;
+      }else{
+        inCppFile << ", " ;
+      }
+      inCppFile << current->mAttributeName ;
+      current = current->nextObject () ;
+    }
+    inCppFile << " COMMA_HERE)) ;\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+  }
 
 //------------- Implementer la classe contenant un champ pointeur vers un objet heritier de la classe abstraite
   inCppFile.appendCppTitleComment (C_String ("GALGAS class 'GGS_") + aNomClasse + "'") ;
@@ -846,6 +889,29 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    current = current->nextObject () ;
+  }
+
+//--- Generate modifiers ('set...')
+  current = mSetAttributeMofifierToImplementList.firstObject () ;
+  while (current != NULL) {
+    macroValidPointer (current) ;
+    inCppFile << "void GGS_" << aNomClasse << "::\n" ;
+    inCppFile << "modifier_set" << current->mAttributeName.stringWithUpperCaseFirstLetter ()
+            << " (C_Compiler & /* inLexique */, const " ;
+    current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
+    inCppFile  << "& inValue COMMA_UNUSED_LOCATION_ARGS) {\n"
+                  "  if ((mPointer != NULL) && inValue.isBuilt ()) {\n"
+                  "    macroValidPointer (mPointer) ;\n"
+                  "    if (mPointer->retainCount () > 1) {\n"
+                  "      cPtr_" << aNomClasse << " * clone = dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer->makeClone ()) ;\n"
+                  "      macroAssignPointer (mPointer, clone) ;\n"
+                  "      macroDetachPointer (clone, cPtr_" << aNomClasse << ") ;\n"
+                  "    }\n"
+                  "    ((cPtr_" << aNomClasse << " *) mPointer)->" << current->mAttributeName << " = inValue ;\n"
+                  "  }\n"
+                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
     current = current->nextObject () ;
   }
