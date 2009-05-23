@@ -2,7 +2,7 @@
 #                                                                           *
 #  Common semantics definitions                                             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -62,7 +62,7 @@ enum @EXformalArgumentPassingMode {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeInstruction [generatedInSeparateFile] {
+abstract class @typeInstruction property generatedInSeparateFile {
 }
 
 #---------------------------------------------------------------------------*
@@ -427,7 +427,7 @@ enum @localConstantBuildStyleEnum {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_galgasType [generatedInSeparateFile] {
+abstract class @AC_galgasType property generatedInSeparateFile {
 #--- Get type name
   abstract method getTypeName !@string outTypeName ;
 
@@ -551,7 +551,7 @@ abstract class @AC_galgasType [generatedInSeparateFile] {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeCplusPlusName [generatedInSeparateFile] {
+abstract class @typeCplusPlusName property generatedInSeparateFile {
   @location mVariableLocation ;
 }
 
@@ -1982,7 +1982,7 @@ map @M_nonterminalSymbolAlts {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_semanticsEntity [generatedInSeparateFile] {
+abstract class @AC_semanticsEntity property generatedInSeparateFile {
   message  "any entity";
   message messageTypeEntite  "any entity";
 }
@@ -2019,7 +2019,7 @@ map @M_semanticsEntitiesForUse  {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_typeForGrammarComponent [generatedInSeparateFile] {
+abstract class @AC_typeForGrammarComponent property generatedInSeparateFile {
   message typeForGrammarComponentMessage  "any type";
 }
 
@@ -2063,7 +2063,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_instruction_ForGrammar [generatedInSeparateFile] {
+abstract class @AC_instruction_ForGrammar property generatedInSeparateFile {
   @location mStartLocation ;
 }
 
@@ -2235,6 +2235,7 @@ map @typeClassInheritedMessagesMap {
 
 map @typeSemanticAttributesMap {
   @AC_galgasType mAttributType ;
+  @bool mIsSettable ;
   insert insertKey error message "an attribut named '%K' is already declared in %L" ;
   search searchKey error message "there is no attribut named '%K'" ;
 }
@@ -2258,7 +2259,7 @@ list @insertOrSearchMethodList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeDefEntiteUtilisable [generatedInSeparateFile] {
+abstract class @typeDefEntiteUtilisable property generatedInSeparateFile {
   message messageTypeEntite "any type" ;
 }
 
@@ -3036,6 +3037,32 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 
 #--- Once Reader map
   @L_lazyAttributeList mLazyAttributeList ;
+
+#--- Handle modifier call
+  override
+  method handleModifierCall
+    ??@lstring inModifierName
+    !@L_EXsignature outModifierSignature
+  :
+    @bool found := false ;
+    outModifierSignature := [@L_EXsignature emptyList] ;
+    foreach mNonExternAttributesMap while not found do
+      @string testedModifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] ;
+      if [inModifierName string] == testedModifierName then
+        found := true ;
+        if mIsSettable then
+          outModifierSignature += !mAttributType ![@EXformalArgumentPassingMode argumentIn] ;
+        else
+          error inModifierName:"This modifier corresponds to the '" . key . "' attribute that is not declared as settable" ;
+          warning key:"attribute declaration pointed out by previous error" ;
+        end if ;
+      end if ;
+    end foreach ;
+    if not found then
+    error inModifierName : "variables of this type do not support modifier call" ;
+    end if ;
+  end method ;
+
 
 #--- Handle method call : return method signature
   override
@@ -4467,7 +4494,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-abstract class @templateInstruction [generatedInSeparateFile] {
+abstract class @templateInstruction property generatedInSeparateFile {
 }
 
 #---------------------------------------------------------------------------*

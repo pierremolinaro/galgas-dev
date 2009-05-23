@@ -600,12 +600,11 @@ rule <template_declaration>
   $literal_string$ ? startString ;
   @bool preservesStartDelimiter ;
   select
-    $[$ ;
+    $property$ ;
     $identifier$ ? @lstring name ;
     if [name string] != "preserved" then
       error name: "only the 'preserved' tag is allowed here" ;
     end if ;
-    $]$ ;
     preservesStartDelimiter := true ;
   or
     preservesStartDelimiter := false ;
@@ -701,14 +700,13 @@ rule <attribute_or_terminal_symbol_declaration>
     select
      isTemplateEndMark := false ;
     or
-      $[$ ;
+      $property$ ;
       if not inIsTemplate then
         error here: "for using this construct, the lexique should have been declared as a template lexique" ;       end if ;
       $identifier$ ? @lstring mark ;
       if [mark string] != "templateEndMark" then
         error mark: "only 'templateEndMark' is allowed here" ;
       end if ;
-      $]$ ;
       isTemplateEndMark := true ;
     end select ;
     [!?table_des_terminaux insertKey !nomTerminal !errorMessageString !attributeList !styleIndex !isTemplateEndMark] ;
@@ -779,7 +777,7 @@ rule <key_words_list_declaration>
    select
     isTemplateEndMark := false ;
    or
-     $[$ ;
+     $property$ ;
      if not inIsTemplate then
        error here: "for using this construct, the lexique should have been declared as a template lexique" ;
      end if ;
@@ -787,7 +785,6 @@ rule <key_words_list_declaration>
      if [mark string] != "templateEndMark" then
        error mark: "only 'templateEndMark' is allowed here" ;
      end if ;
-     $]$ ;
      isTemplateEndMark := true ;
    end select ;
   #--- Build decoder tables
