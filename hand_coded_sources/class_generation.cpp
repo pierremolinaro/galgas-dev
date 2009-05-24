@@ -206,7 +206,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Implicitly declared Readers
              "//--- Readers\n" ;
-  GGS_typeListeAttributsSemantiques::cElement * current = aListeAttributsCourants.firstObject () ;
+  GGS_typeListeAttributsSemantiques::cElement * current = mGetterAttributeReaderToImplementList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : " ;
@@ -219,7 +219,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Modifiers ('set...')
   inHfile << "//--- Modifiers\n" ;
-  current = mSetAttributeMofifierToImplementList.firstObject () ;
+  current = mSetterAttributeModifierToImplementList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inHfile << "  public : void" ;
@@ -871,7 +871,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
 
 //--- For every attribute, generate a reader
-  current = aListeAttributsCourants.firstObject () ;
+  current = mGetterAttributeReaderToImplementList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     current->mAttributType(HERE)->generateCppClassName (inCppFile) ;
@@ -894,7 +894,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
 
 //--- Generate modifiers ('set...')
-  current = mSetAttributeMofifierToImplementList.firstObject () ;
+  current = mSetterAttributeModifierToImplementList.firstObject () ;
   while (current != NULL) {
     macroValidPointer (current) ;
     inCppFile << "void GGS_" << aNomClasse << "::\n" ;

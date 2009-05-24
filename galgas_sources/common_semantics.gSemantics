@@ -62,7 +62,7 @@ enum @EXformalArgumentPassingMode {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeInstruction property generatedInSeparateFile {
+abstract class @typeInstruction feature generatedInSeparateFile {
 }
 
 #---------------------------------------------------------------------------*
@@ -274,7 +274,7 @@ class @LocationModel extends @TypeModel {
 #---------------------------------------------------------------------------*
 
 class @ListModel extends @TypeModel {
-  @typeListModel mAttributeList ;
+  @typeListModel mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -284,7 +284,7 @@ class @ListModel extends @TypeModel {
 #---------------------------------------------------------------------------*
 
 class @MapModel extends @TypeModel {
-  @typeListModel mAttributeList ;
+  @typeListModel mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -315,8 +315,8 @@ map @enumMessageMap {
 #---------------------------------------------------------------------------*
 
 class @EnumModel extends @TypeModel {
-  @enumConstantMap mEnumConstantesMap ; #--- Enumeration constants map
-  @enumMessageMap mMessagesMap ; #--- Messages map
+  @enumConstantMap mEnumConstantesMap feature nogetter ; #--- Enumeration constants map
+  @enumMessageMap mMessagesMap feature nogetter ; #--- Messages map
 }
 
 #---------------------------------------------------------------------------*
@@ -350,10 +350,10 @@ map @modifierMap {
 #---------------------------------------------------------------------------*
 
 class @ExternTypeModel extends @TypeModel {
-  @constructorMap mExternTypeConstructorMap ;
-  @readerMap mReaderMap ;
-  @modifierMap mModifierMap ;
-  @typeListModel mAddAssignFormalInputArgumentList ; # List is empty if += operator is not defined
+  @constructorMap mExternTypeConstructorMap feature nogetter ;
+  @readerMap mReaderMap feature nogetter ;
+  @modifierMap mModifierMap feature nogetter ;
+  @typeListModel mAddAssignFormalInputArgumentList feature nogetter ; # List is empty if += operator is not defined
 }
 
 #---------------------------------------------------------------------------*
@@ -370,7 +370,7 @@ map @classMessageMap {
 #---------------------------------------------------------------------------*
 
 class @ClassModel extends @TypeModel {
-  @bool mIsAbstract ;
+  @bool mIsAbstract feature nogetter ;
   @stringset mSuperClasses ;
   @typeListModel mAttributeList ;
   @classMessageMap mMessageMap ;
@@ -427,7 +427,7 @@ enum @localConstantBuildStyleEnum {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_galgasType property generatedInSeparateFile {
+abstract class @AC_galgasType feature generatedInSeparateFile {
 #--- Get type name
   abstract method getTypeName !@string outTypeName ;
 
@@ -551,7 +551,7 @@ abstract class @AC_galgasType property generatedInSeparateFile {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeCplusPlusName property generatedInSeparateFile {
+abstract class @typeCplusPlusName feature generatedInSeparateFile {
   @location mVariableLocation ;
 }
 
@@ -559,14 +559,14 @@ abstract class @typeCplusPlusName property generatedInSeparateFile {
 # C++ name is the value of mName
 
 class @typeDirectName extends @typeCplusPlusName {
-  @string mName ;
+  @string mName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 # C++ name is _currentObject->mName
 
 class @typeCurrentObjectName extends @typeCplusPlusName {
-  @string mName ;
+  @string mName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -598,23 +598,23 @@ class @typeAutomaticName extends @typeCplusPlusName {
 # C++ name is 'var_cas_' followed by the value of an unique sequence number
 
 class @typeLocationAutomaticName extends @typeCplusPlusName {
-  @uint mSequenceNumber ;
+  @uint mSequenceNumber feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 # C++ name is 'operand_xxx->zz' followed by the value of mName
 
 class @typeOperandName extends @typeCplusPlusName {
-  @string mName ;
-  @bool mFieldKind ; # false : zz est vide ; true : zz est 'mInfo.'
-  @bool mIteratorNewStyle ;
+  @string mName feature nogetter ;
+  @bool mFieldKind feature nogetter ; # false : zz est vide ; true : zz est 'mInfo.'
+  @bool mIteratorNewStyle feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 # C++ name is 'operand_xxx->mKey' followed by the value of mName
 
 class @typeKeyName extends @typeCplusPlusName {
-  @bool mIteratorNewStyle ;
+  @bool mIteratorNewStyle feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -630,11 +630,11 @@ class @typeNullName extends @typeCplusPlusName {
 #---------------------------------------------------------------------------*
 
 list @typeListeTypesEtNomsArgMethode {
-  @AC_galgasType mType ;
-  @EXformalArgumentPassingMode mFormalArgumentPassingMode ;
-  @typeCplusPlusName mCppName ;
-  @bool mModeIn ;
-  @lstring mParameterName ;
+  @AC_galgasType mType feature nogetter ;
+  @EXformalArgumentPassingMode mFormalArgumentPassingMode feature nogetter ;
+  @typeCplusPlusName mCppName feature nogetter ;
+  @bool mModeIn feature nogetter ;
+  @lstring mParameterName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -652,8 +652,8 @@ map @typeSuperClassesMap {
 #---------------------------------------------------------------------------*
 
 list @typeListeAttributsSemantiques {
-  @AC_galgasType mAttributType ;
-  @lstring mAttributeName ;
+  @AC_galgasType mAttributType feature nogetter ;
+  @lstring mAttributeName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1836,7 +1836,7 @@ map @typeTableMethodes {
 
 class @typeGalgasUndefinedExternType extends @AC_galgasType {
 #--- Galgas class name
-  @lstring mGalgasClassName ;
+  @lstring mGalgasClassName feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -1868,17 +1868,17 @@ map @M_externTypeConstructorMap {
 
 class @typeGalgasExternType extends @typeGalgasUndefinedExternType {
 #--- Constructor map
-  @M_externTypeConstructorMap mConstructorMap ;
+  @M_externTypeConstructorMap mConstructorMap feature nogetter ;
 
 #--- Modifiers map
-  @typeTableMethodes mModifiersMap ;  
+  @typeTableMethodes mModifiersMap feature nogetter ;  
 
 #--- Readers map
-  @typeTableMethodes mReadersInInstructionMap ;  
+  @typeTableMethodes mReadersInInstructionMap feature nogetter ;  
 
 #--- Attributes for handling operator '+=' call
-  @bool mAcceptAddAssignOperatorCall ;
-  @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList ;
+  @bool mAcceptAddAssignOperatorCall feature nogetter ;
+  @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList feature nogetter ;
 
 #--- Constructors
   override method handleConstructorCall
@@ -1982,7 +1982,7 @@ map @M_nonterminalSymbolAlts {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_semanticsEntity property generatedInSeparateFile {
+abstract class @AC_semanticsEntity feature generatedInSeparateFile {
   message  "any entity";
   message messageTypeEntite  "any entity";
 }
@@ -2019,14 +2019,14 @@ map @M_semanticsEntitiesForUse  {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_typeForGrammarComponent property generatedInSeparateFile {
+abstract class @AC_typeForGrammarComponent feature generatedInSeparateFile {
   message typeForGrammarComponentMessage  "any type";
 }
 
 #---------------------------------------------------------------------------*
 
 map @M_typesForGrammarComponent {
-  @AC_typeForGrammarComponent mType ;
+  @AC_typeForGrammarComponent mType feature nogetter ;
   insert insertKey error message "the '@%K' type is already declared in %L" ;
   search searchKey error message "the '@%K' type is not defined" ;
 }
@@ -2063,8 +2063,8 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @AC_instruction_ForGrammar property generatedInSeparateFile {
-  @location mStartLocation ;
+abstract class @AC_instruction_ForGrammar feature generatedInSeparateFile {
+  @location mStartLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2157,8 +2157,8 @@ map @M_syntaxComponents {
 #---------------------------------------------------------------------------*
 
 class @T_terminalInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
-  @lstring mTerminalSymbolName ;
-  @uint mTerminalSymbolIndex ;
+  @lstring mTerminalSymbolName feature nogetter ;
+  @uint mTerminalSymbolIndex feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2168,8 +2168,8 @@ class @T_terminalInstruction_forGrammarComponent extends @AC_instruction_ForGram
 #---------------------------------------------------------------------------*
 
 class @T_nonterminalInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
-  @lstring mNonterminalSymbolName ;
-  @uint mNonterminalSymbolIndex ;
+  @lstring mNonterminalSymbolName feature nogetter ;
+  @uint mNonterminalSymbolIndex feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2189,8 +2189,8 @@ list @L_branchList_ForGrammarComponent {
 #---------------------------------------------------------------------------*
 
 class @T_selectInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
-  @L_branchList_ForGrammarComponent mSelectList ;
-  @uint mAddedNonterminalmSymbolIndex ;
+  @L_branchList_ForGrammarComponent mSelectList feature nogetter ;
+  @uint mAddedNonterminalmSymbolIndex feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2200,8 +2200,8 @@ class @T_selectInstruction_forGrammarComponent extends @AC_instruction_ForGramma
 #---------------------------------------------------------------------------*
 
 class @T_repeatInstruction_forGrammarComponent extends @AC_instruction_ForGrammar {
-  @L_branchList_ForGrammarComponent mRepeatList ;
-  @uint mAddedNonterminalmSymbolIndex ;
+  @L_branchList_ForGrammarComponent mRepeatList feature nogetter ;
+  @uint mAddedNonterminalmSymbolIndex feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2235,7 +2235,8 @@ map @typeClassInheritedMessagesMap {
 
 map @typeSemanticAttributesMap {
   @AC_galgasType mAttributType ;
-  @bool mIsSettable ;
+  @bool mHasSetter ;
+  @bool mHasGetter ;
   insert insertKey error message "an attribut named '%K' is already declared in %L" ;
   search searchKey error message "there is no attribut named '%K'" ;
 }
@@ -2259,7 +2260,7 @@ list @insertOrSearchMethodList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeDefEntiteUtilisable property generatedInSeparateFile {
+abstract class @typeDefEntiteUtilisable feature generatedInSeparateFile {
   message messageTypeEntite "any type" ;
 }
 
@@ -2270,7 +2271,7 @@ abstract class @typeDefEntiteUtilisable property generatedInSeparateFile {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasUndefinedListType extends @AC_galgasType {
-  @lstring mListTypeName ;
+  @lstring mListTypeName feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2291,9 +2292,9 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- List of all attributes
   @typeListeAttributsSemantiques mAttributeList ;
 #--- Extract Methods signature (for 'first', 'last', 'popFirst', 'popLast')
-  @L_EXsignature mExtractSignature ;
+  @L_EXsignature mExtractSignature feature nogetter ;
 #--- Input Methods signature (for 'prependValue')
-  @L_EXsignature mInputSignature ;
+  @L_EXsignature mInputSignature feature nogetter ;
 
 #--- list object accepts to be enumerated (foreach instruction)
   override
@@ -2419,12 +2420,12 @@ class @typeGalgasStructType extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasListmapType extends @AC_galgasType {
-  @lstring mListmapTypeName ;
-  @lstring mListTypename ;
+  @lstring mListmapTypeName feature nogetter ;
+  @lstring mListTypename feature nogetter ;
   @typeGalgasListType mListType ;
 
 #--- List of all attributes of list
-  @typeListeAttributsSemantiques mAttributeList ;
+  @typeListeAttributsSemantiques mAttributeList feature nogetter ;
 
 #--- listmap object accepts to be enumerated (foreach instruction)
   override
@@ -2602,9 +2603,9 @@ map @domainAttributeMap {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasDomainType extends @AC_galgasType {
-  @lstring mDomainTypeName ;
-  @domainAttributeMap mAttributeMap ;
-  @domainModifierMap mDomainModifierMap ;
+  @lstring mDomainTypeName feature nogetter ;
+  @domainAttributeMap mAttributeMap feature nogetter ;
+  @domainModifierMap mDomainModifierMap feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2649,7 +2650,7 @@ class @typeGalgasDomainType extends @AC_galgasType {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasUndefinedSortedListType extends @AC_galgasType {
-  @lstring mListTypeName ;
+  @lstring mListTypeName feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2668,9 +2669,9 @@ class @typeGalgasUndefinedSortedListType extends @AC_galgasType {
 
 class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- List of all attributes
-  @typeListeAttributsSemantiques mAttributeList ;
+  @typeListeAttributsSemantiques mAttributeList feature nogetter ;
 #--- Extract Methods signature (for 'smallest', 'greatest', 'popSmallest', 'popGreatest')
-  @L_EXsignature mExtractSignature ;
+  @L_EXsignature mExtractSignature feature nogetter ;
 
 #--- list object accepts to be enumerated (foreach instruction)
   override
@@ -2762,7 +2763,7 @@ map @typeTableBlocsDeTable {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasUndefinedMapType extends @AC_galgasType {
-  @lstring mMapTypeName ;
+  @lstring mMapTypeName feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2871,7 +2872,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasUndefinedMapindexType extends @AC_galgasType {
-  @lstring mMapindexTypeName ;
+  @lstring mMapindexTypeName feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -2911,14 +2912,14 @@ map @mapIndexSearchReaderMap {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasMapindexType extends @typeGalgasUndefinedMapindexType {
-  @lstring mMapTypeName ;
-  @typeListeAttributsSemantiques mMapAttributesList ;
-  @mapIndexSearchReaderMap mMapIndexSearchReaderMap ;
+  @lstring mMapTypeName feature nogetter ;
+  @typeListeAttributsSemantiques mMapAttributesList feature nogetter ;
+  @mapIndexSearchReaderMap mMapIndexSearchReaderMap feature nogetter ;
 
 #--- Associated map features
-  @typeTableBlocsDeTable aTableMethodesSurcharger ;
-  @mapModifierMap mModifierMethodMap ;
-  @mapMethodMap mReaderMethodMap ;
+  @typeTableBlocsDeTable aTableMethodesSurcharger feature nogetter ;
+  @mapModifierMap mModifierMethodMap feature nogetter ;
+  @mapMethodMap mReaderMethodMap feature nogetter ;
 
 #--- mapindex accept method calls corresponding to search declarations
   override
@@ -3050,7 +3051,7 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
       @string testedModifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] ;
       if [inModifierName string] == testedModifierName then
         found := true ;
-        if mIsSettable then
+        if mHasSetter then
           outModifierSignature += !mAttributType ![@EXformalArgumentPassingMode argumentIn] ;
         else
           error inModifierName:"This modifier corresponds to the '" . key . "' attribute that is not declared as settable" ;
@@ -3233,13 +3234,13 @@ class @typeGalgas_enum extends @AC_galgasType {
   @typeEnumMessageMap mMessagesMap ;
 
 #--- Modifier map
-  @enumModifierMap mModifierMap ;
+  @enumModifierMap mModifierMap feature nogetter ;
 
 #--- Method map
-  @enumMethodMap mMethodMap ;
+  @enumMethodMap mMethodMap feature nogetter ;
 
 #--- Operator map
-  @enumOperatorMap mOperatorMap ;
+  @enumOperatorMap mOperatorMap feature nogetter ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
@@ -4281,10 +4282,15 @@ routine handleReaderCall
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
         @bool found := false ;
-        foreach [t mAttributeList] while not found do
-          outReturnedType := mAttributType ;
-          found := [inReaderName string] == [mAttributeName string] ;
-        end foreach ;
+        if [[t mNonExternAttributesMap] hasKey ![inReaderName string]] then
+          found := true ;
+          @bool hasGetter ;
+          [[t mNonExternAttributesMap] searchKey !inReaderName ?outReturnedType ?* ? hasGetter] ;
+          if not hasGetter then
+            error inReaderName:"the '" . inReaderName . "' attribute has 'nogetter' feature, it cannot be used as a reader" ;
+            warning [[t mNonExternAttributesMap] locationForKey![inReaderName string]]:"for previous error, attribute is declared here";
+          end if ;
+        end if ;
       #--- Search for lazy attribute
         foreach [t mLazyAttributeList] while not found do
           foreach mComputedAttributeTypeAndNameList while not found do
@@ -4494,7 +4500,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-abstract class @templateInstruction property generatedInSeparateFile {
+abstract class @templateInstruction feature generatedInSeparateFile {
 }
 
 #---------------------------------------------------------------------------*
@@ -4506,13 +4512,13 @@ list @templateInstructionList {
 #---------------------------------------------------------------------------*
 
 class @templateInstructionString extends @templateInstruction {
-  @string mTemplateString ;
+  @string mTemplateString feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @templateInstructionConstant extends @templateInstruction {
-  @typeCplusPlusName mCppName ;
+  @typeCplusPlusName mCppName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

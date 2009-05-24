@@ -124,7 +124,7 @@ map @typeTableTablesDeMotsReserves {
 #                        Liste de conditions lexicales             *
 #------------------------------------------------------------------*
 
-abstract class @typeConditionLexicale property generatedInSeparateFile {
+abstract class @typeConditionLexicale  feature generatedInSeparateFile {
 }
 
 class @typeUnicodeCharSet extends @typeConditionLexicale {
@@ -157,7 +157,7 @@ list @typeListeConditionsLexicales {
 #                           Liste des instructions                 *
 #------------------------------------------------------------------*
 
-abstract class @typeInstructionLexicale property generatedInSeparateFile {
+abstract class @typeInstructionLexicale feature generatedInSeparateFile {
 }
 
 list @tListeInstructionsLexicales {
@@ -173,7 +173,7 @@ list @typeListeTestsEtInstructions {
 #            Arguments d'un appel de routines externes             *
 #------------------------------------------------------------------*
 
-abstract class @typeArgumentRoutineExterne property generatedInSeparateFile {
+abstract class @typeArgumentRoutineExterne feature generatedInSeparateFile {
 }
 
 list @typeListeArgumentsRoutExterne {
@@ -213,7 +213,7 @@ list @typeListeMessagesErreur {
 #                   definition de l'emission                       *
 #------------------------------------------------------------------*
 
-abstract class @typeEmissionParDefaut property generatedInSeparateFile {
+abstract class @typeEmissionParDefaut feature generatedInSeparateFile {
 }
 
 class @typeEmissionTerminalParDefaut extends @typeEmissionParDefaut {

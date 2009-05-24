@@ -36,7 +36,7 @@ list @typeCplusPlusNameList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeExpression property generatedInSeparateFile {
+abstract class @typeExpression feature generatedInSeparateFile {
 }
  
 #---------------------------------------------------------------------------*
@@ -1118,7 +1118,7 @@ class @typeStructuredExtractInstructionWithElse extends @typeInstruction {
 #                                                                      *
 #----------------------------------------------------------------------*
 
-abstract class @AC_elseOrDefaultForCastInstruction property generatedInSeparateFile {
+abstract class @AC_elseOrDefaultForCastInstruction feature generatedInSeparateFile {
 }
 
 #----------------------------------------------------------------------*
@@ -1204,59 +1204,59 @@ map @typeTableNomRoutinesDeclarees {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract class @typeEntityToGenerate property generatedInSeparateFile {
+abstract class @typeEntityToGenerate feature generatedInSeparateFile {
 }
 
 #---------------------------------------------------------------------------*
 
 class @typeExternTypeToGenerate extends @typeEntityToGenerate {
-  @lstring mGalgasName ;
+  @lstring mGalgasName feature nogetter ;
 #--- Constructor map
-  @M_externTypeConstructorMap mConstructorMap ;
+  @M_externTypeConstructorMap mConstructorMap feature nogetter ;
 #--- Modifiers map
-  @typeTableMethodes mModifiersMap ;  
+  @typeTableMethodes mModifiersMap feature nogetter ;  
 #--- Readers map
-  @typeTableMethodes mReadersInInstructionMap ;  
+  @typeTableMethodes mReadersInInstructionMap feature nogetter ;  
 #--- Attributes for handling operator '+=' call
-  @bool mAcceptAddAssignOperatorCall ;
-  @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList ;
+  @bool mAcceptAddAssignOperatorCall feature nogetter ;
+  @typeListeAttributsSemantiques mAddAssignOperatorCallTypeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @typeRoutineAengendrer extends @typeEntityToGenerate {
-  @lstring mRoutineName ;
-  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
-  @typeInstructionList mInstructionList ;
+  @lstring mRoutineName feature nogetter ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
+  @typeInstructionList mInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @typeFonctionAengendrer extends @typeEntityToGenerate {
-  @lstring mFunctionName ;
-  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
-  @AC_galgasType mReturnedType ;
-  @typeCplusPlusName mReturnedVar ;
-  @typeInstructionList mInstructionList ;
+  @lstring mFunctionName feature nogetter ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
+  @AC_galgasType mReturnedType feature nogetter ;
+  @typeCplusPlusName mReturnedVar feature nogetter ;
+  @typeInstructionList mInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @categoryMethodToImplement extends @typeEntityToGenerate {
-  @categoryMethodKind mCategoryMethodKind ;
-  @string mBaseClassName ;
-  @lstring mClassName ;
-  @lstring mMethodName ;
-  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments ;
-  @typeInstructionList mInstructionList ;
-  @location mMagicNumber ;
+  @categoryMethodKind mCategoryMethodKind feature nogetter ;
+  @string mBaseClassName feature nogetter ;
+  @lstring mClassName feature nogetter ;
+  @lstring mMethodName feature nogetter ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
+  @typeInstructionList mInstructionList feature nogetter ;
+  @location mMagicNumber feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_listTypeToImplement extends @typeEntityToGenerate {
-  @lstring aNomListe ;
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
+  @lstring aNomListe feature nogetter ;
+  @typeListeAttributsSemantiques mNonExternAttributesList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1269,85 +1269,88 @@ list @EXsortDescriptorList {
 #---------------------------------------------------------------------------*
 
 class @C_sortedListTypeToImplement extends @typeEntityToGenerate {
-  @lstring aNomListe ;
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
-  @EXsortDescriptorList mSortDescriptorList ;
+  @lstring aNomListe feature nogetter ;
+  @typeListeAttributsSemantiques mNonExternAttributesList feature nogetter ;
+  @EXsortDescriptorList mSortDescriptorList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
-  @lstring aNomTable ;
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
-  @lstring aNomClasseGenerique ;
-  @insertOrSearchMethodList mInsertMethodList ;
-  @insertOrSearchMethodList mSearchMethodList ;
-  @typeTableBlocsDeTable aTableMethodesSurcharger ;
+  @lstring aNomTable feature nogetter ;
+  @typeListeAttributsSemantiques mNonExternAttributesList feature nogetter ;
+  @lstring aNomClasseGenerique feature nogetter ;
+  @insertOrSearchMethodList mInsertMethodList feature nogetter ;
+  @insertOrSearchMethodList mSearchMethodList feature nogetter ;
+  @typeTableBlocsDeTable aTableMethodesSurcharger feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_mapToImplement extends @typeEntityToGenerate {
-  @lstring mMapTypeName ;
-  @lstring mEnumTypeName ; # Empty if no associated enumeration
-  @lstring mCheckFinalStateMethod ; # Empty if no associated enumeration
-  @typeListeAttributsSemantiques mNonExternAttributesList ;
-  @insertOrSearchMethodList mInsertMethodList ;
-  @insertOrSearchMethodList mSearchMethodList ;
-  @insertOrSearchMethodList mRemoveMethodList ;
+  @lstring mMapTypeName feature nogetter ;
+  @lstring mEnumTypeName feature nogetter ; # Empty if no associated enumeration
+  @lstring mCheckFinalStateMethod feature nogetter ; # Empty if no associated enumeration
+  @typeListeAttributsSemantiques mNonExternAttributesList feature nogetter ;
+  @insertOrSearchMethodList mInsertMethodList feature nogetter ;
+  @insertOrSearchMethodList mSearchMethodList feature nogetter ;
+  @insertOrSearchMethodList mRemoveMethodList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_classToImplement extends @typeEntityToGenerate {
 #--- Class Name
-  @lstring aNomClasse ;
+  @lstring aNomClasse feature nogetter ;
 
 #--- Is Abstract ?
-  @bool mIsAbstract ;
+  @bool mIsAbstract feature nogetter ;
 
 #--- Liste de tous les attributs not externes, y compris ceux definis dans une classe mere
-  @typeListeAttributsSemantiques aListeTousAttributsNonExternes ;  
+  @typeListeAttributsSemantiques aListeTousAttributsNonExternes feature nogetter ;  
 
 #--- Table de toutes les methodes, y compris celles heritees
-  @typeTableMethodes aTableToutesMethodes ;
+  @typeTableMethodes aTableToutesMethodes feature nogetter ;
 
 #--- Table des methodes de la classe abstract
-  @typeTableMethodesAimplementer mMethodsMap ;
+  @typeTableMethodesAimplementer mMethodsMap feature nogetter ;
 
 #--- Liste des attributs semantiques not externes definis dans cette classe
-  @typeListeAttributsSemantiques aListeAttributsCourants ;
+  @typeListeAttributsSemantiques aListeAttributsCourants feature nogetter ;
 
 #--- Table des classes ancetre de la classe courante
-  @typeSuperClassesMap mAncestorClassesMap ;
+  @typeSuperClassesMap mAncestorClassesMap feature nogetter ;
 
 #--- Table des messages
-  @typeClassMessagesMap mMessagesMap ;
+  @typeClassMessagesMap mMessagesMap feature nogetter ;
 
 #--- Table des messages
-  @string mClassMessage ;
+  @string mClassMessage feature nogetter ;
 
 #--- Generate in Separate file ?
-  @bool mHasGeneratedInSeparateFileSetting ;
+  @bool mHasGeneratedInSeparateFileSetting feature nogetter ;
 
 #--- Once Reader map
-  @L_lazyAttributeList mLazyAttributeList ;
+  @L_lazyAttributeList mLazyAttributeList feature nogetter ;
 
-#--- Liste des attributs semantiques not externes definis dans cette classe
-  @typeListeAttributsSemantiques mSetAttributeMofifierToImplementList ;
+#--- Attribute modifiers to implement
+  @typeListeAttributsSemantiques mSetterAttributeModifierToImplementList feature nogetter ;
+
+#--- Attribute readers to implement
+  @typeListeAttributsSemantiques mGetterAttributeReaderToImplementList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_mapindexToImplement extends @typeEntityToGenerate {
 #--- Map index type Name
-  @lstring mMapindexTypeName ;
+  @lstring mMapindexTypeName feature nogetter ;
 #--- Map type Map
-  @lstring mMapTypeName ;
+  @lstring mMapTypeName feature nogetter ;
 #--- Map attributes
-  @typeListeAttributsSemantiques mMapAttributesList ;
+  @typeListeAttributsSemantiques mMapAttributesList feature nogetter ;
 #--- Readers
-  @mapIndexSearchReaderMap mMapIndexSearchReaderMap ;
+  @mapIndexSearchReaderMap mMapIndexSearchReaderMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1362,11 +1365,11 @@ map @domainRelationMap {
 
 class @C_domainToImplement extends @typeEntityToGenerate {
 #--- Domain Name
-  @lstring mDomainName ;
+  @lstring mDomainName feature nogetter ;
 #--- Attribute Map
-  @domainAttributeMap mAttributeMap ;
+  @domainAttributeMap mAttributeMap feature nogetter ;
 #--- Relation Map
-  @domainRelationMap mRelationMap ;
+  @domainRelationMap mRelationMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1391,16 +1394,16 @@ class @typeEntiteFonctionExterne extends @AC_semanticsEntity {
 #---------------------------------------------------------------------------*
 
 class @typeRoutineExterneAengendrer extends @typeEntityToGenerate {
-  @lstring aNomAction ;
-  @L_EXsignature aSignature ;
+  @lstring aNomAction feature nogetter ;
+  @L_EXsignature aSignature feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @typeFonctionExterneAengendrer extends @typeEntityToGenerate {
-  @lstring aNomAction ;
-  @L_EXsignature aSignature ;
-  @AC_galgasType mReturnedType ;
+  @lstring aNomAction feature nogetter ;
+  @L_EXsignature aSignature feature nogetter ;
+  @AC_galgasType mReturnedType feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1420,10 +1423,10 @@ list @typeEntitiesToGenerateList {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasListmapToImplement extends @typeEntityToGenerate {
-  @lstring mListmapTypeName ;
-  @lstring mListTypename ;
+  @lstring mListmapTypeName feature nogetter ;
+  @lstring mListTypename feature nogetter ;
 #--- List of all attributes of list
-  @typeListeAttributsSemantiques mAttributesList ;
+  @typeListeAttributsSemantiques mAttributesList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1441,12 +1444,12 @@ map @typeEnumCstMessageStringMap {
 #---------------------------------------------------------------------------*
 
 class @enumGalgasType extends @typeEntityToGenerate {
-  @lstring mEnumTypeName ;
-  @enumConstantMap mConstantMap ;
-  @typeEnumMessageMap mEnumMessageMap ;
-  @enumModifierMap mEnumActionMap ;
-  @enumMethodMap mMethodMap ;
-  @enumOperatorMap mOperatorMap ;
+  @lstring mEnumTypeName feature nogetter ;
+  @enumConstantMap mConstantMap feature nogetter ;
+  @typeEnumMessageMap mEnumMessageMap feature nogetter ;
+  @enumModifierMap mEnumActionMap feature nogetter ;
+  @enumMethodMap mMethodMap feature nogetter ;
+  @enumOperatorMap mOperatorMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1524,27 +1527,27 @@ map @wrapperExtensionMap {
 #---------------------------------------------------------------------------*
 
 class @C_wrapperToImplement extends @typeEntityToGenerate {
-  @lstring mWrapperName ;
-  @string mSourceDirectory ; # Used for comment in generated code
-  @wrapperExtensionMap mExtensionMap ; # Used for comment in generated code
-  @wrapperFileSortedList mRegularFileSortedList ;
-  @wrapperDirectorySortedList mDirectorySortedList ;
+  @lstring mWrapperName feature nogetter ;
+  @string mSourceDirectory feature nogetter ; # Used for comment in generated code
+  @wrapperExtensionMap mExtensionMap feature nogetter ; # Used for comment in generated code
+  @wrapperFileSortedList mRegularFileSortedList feature nogetter ;
+  @wrapperDirectorySortedList mDirectorySortedList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_structToImplement extends @typeEntityToGenerate {
-  @lstring mStructName ;
-  @typeListeAttributsSemantiques mAttributeList ;
+  @lstring mStructName feature nogetter ;
+  @typeListeAttributsSemantiques mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @C_filewrapperTemplateToImplement extends @typeEntityToGenerate {
-  @lstring mFilewrapperName ;
-  @lstring mTemplateName ;
-  @typeListeTypesEtNomsArgMethode mTemplateArgumentList ;
-  @templateInstructionList mTemplateInstructionList ;
+  @lstring mFilewrapperName feature nogetter ;
+  @lstring mTemplateName feature nogetter ;
+  @typeListeTypesEtNomsArgMethode mTemplateArgumentList feature nogetter ;
+  @templateInstructionList mTemplateInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

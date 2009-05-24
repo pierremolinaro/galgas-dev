@@ -36,10 +36,10 @@ list @guiLabelList {
 #---------------------------------------------------------------------------*
 
 class @guiComponentRoot {
-  @lstring mGUIName ;
-  @lstring mGUIClass ;
-  @guiAttributeList mAttributes ;
-  @guiLabelList mLabels ;
+  @lstring mGUIName  ;
+  @lstring mGUIClass feature nogetter ;
+  @guiAttributeList mAttributes feature nogetter ;
+  @guiLabelList mLabels feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

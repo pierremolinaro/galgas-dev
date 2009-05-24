@@ -600,7 +600,7 @@ rule <template_declaration>
   $literal_string$ ? startString ;
   @bool preservesStartDelimiter ;
   select
-    $property$ ;
+    $feature$ ;
     $identifier$ ? @lstring name ;
     if [name string] != "preserved" then
       error name: "only the 'preserved' tag is allowed here" ;
@@ -700,7 +700,7 @@ rule <attribute_or_terminal_symbol_declaration>
     select
      isTemplateEndMark := false ;
     or
-      $property$ ;
+      $feature$ ;
       if not inIsTemplate then
         error here: "for using this construct, the lexique should have been declared as a template lexique" ;       end if ;
       $identifier$ ? @lstring mark ;
@@ -777,7 +777,7 @@ rule <key_words_list_declaration>
    select
     isTemplateEndMark := false ;
    or
-     $property$ ;
+     $feature$ ;
      if not inIsTemplate then
        error here: "for using this construct, the lexique should have been declared as a template lexique" ;
      end if ;
