@@ -11,10 +11,10 @@ lexique LL1_expression_lexique :
   message internalError : "internal error";
   
   rule '0'->'9':
-    enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
+    enterDigitIntoUInt(number,*) error decimalNumberTooLarge, internalError;
     repeat
     while '0'->'9':
-      enterDigitIntoUlong(number,*) error decimalNumberTooLarge, internalError;
+      enterDigitIntoUInt(number,*) error decimalNumberTooLarge, internalError;
     while '_' :
     end repeat;
     send $number$;
