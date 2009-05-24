@@ -301,10 +301,10 @@ class @filewrapperDeclaration extends @semanticDeclaration {
 #---------------------------------------------------------------------------*
 
 class @semanticsComponentRoot {
-  @lstring mSemanticsComponentName ;
-  @lstringlist mImportedComponentFileNameList ;
-  @semanticDeclarationStruct mSemanticDeclarations ;
-  @location mEndOfSourceFile ;
+  @lstring mSemanticsComponentName  ;
+  @lstringlist mImportedComponentFileNameList  ;
+  @semanticDeclarationStruct mSemanticDeclarations  ;
+  @location mEndOfSourceFile  ;
 }
 
 #---------------------------------------------------------------------------*

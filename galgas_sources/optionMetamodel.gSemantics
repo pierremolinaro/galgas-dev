@@ -32,8 +32,8 @@ list @commandLineOptionList {
 #---------------------------------------------------------------------------*
 
 class @optionComponentRoot {
-  @lstring mOptionComponentName ;
-  @commandLineOptionList mOptions ;
+  @lstring mOptionComponentName  ;
+  @commandLineOptionList mOptions  ;
 }
 
 #---------------------------------------------------------------------------*

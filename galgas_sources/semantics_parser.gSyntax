@@ -1838,7 +1838,7 @@ rule <class_declaration>
     ;
     select
     or
-      $property$ ;
+      $feature$ ;
       $identifier$ ? @lstring optionString ;
       if [optionString string] != "generatedInSeparateFile" then
         error optionString:"only the \"generatedInSeparateFile\" pragma is allowed here" ;
@@ -1981,12 +1981,24 @@ rule <class_declaration>
     @AC_semanticsEntity entite := [@typeEntiteType new !c] ;
     [!?ioComponentSemanticsEntitiesMap insertKey !abstractClassName !entite] ;
   #--- Modifiers
-    @typeListeAttributsSemantiques setAttributeMofifierToImplementList [emptyList] ;
+    @typeListeAttributsSemantiques setterAttributeModifierToImplementList [emptyList] ;
     foreach listeAttributsSemantiquesCourants do
-      @bool isSettable ;
-      [tableAttributs searchKey !mAttributeName ?* ?isSettable] ;
-      if isSettable then
-        setAttributeMofifierToImplementList +=
+      @bool hasSetter ;
+      [tableAttributs searchKey !mAttributeName ?* ?hasSetter ?*] ;
+      if hasSetter then
+        setterAttributeModifierToImplementList +=
+          !mAttributType
+          !mAttributeName
+        ;
+      end if ;
+    end foreach ;
+  #--- Readers
+    @typeListeAttributsSemantiques getterAttributeReaderToImplementList [emptyList] ;
+    foreach listeAttributsSemantiquesCourants do
+      @bool hasGetter ;
+      [tableAttributs searchKey !mAttributeName ?* ?* ?hasGetter] ;
+      if hasGetter then
+        getterAttributeReaderToImplementList +=
           !mAttributType
           !mAttributeName
         ;
@@ -2005,7 +2017,8 @@ rule <class_declaration>
       !classMessage
       !hasGeneratedInSeparateFileSetting
       !onceReaderListToImplement
-      !setAttributeMofifierToImplementList
+      !setterAttributeModifierToImplementList
+      !getterAttributeReaderToImplementList
     ] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
@@ -2057,7 +2070,7 @@ label importSemantics
     ;
     select
     or
-      $property$ ;
+      $feature$ ;
       $identifier$ ? @lstring optionString ;
       if [optionString string] != "generatedInSeparateFile" then
         error optionString:"only the \"generatedInSeparateFile\" pragma is allowed here" ;
@@ -6508,7 +6521,7 @@ rule <semantics_declaration>
         error sortAttribute: "this attribute is already used in sort list" ;
       else
         @AC_galgasType definitionType ;
-        [tableAttributs searchKey !sortAttribute ?definitionType ?*] ;
+        [tableAttributs searchKey !sortAttribute ?definitionType ?* ?*] ;
         [definitionType acceptToBeSortKeyInSortedListDefinition !sortAttribute] ;
         usedSortedAttributes += ![sortAttribute string] ;
       end if ;
@@ -6629,21 +6642,33 @@ rule <attributes_definition_list>
     @lstring attributeName ;
     $identifier$ ? attributeName ;
   #--- Options
-    @bool isSettable ;
+    @bool hasSetter := false ;
+    @bool hasGetter := true ;
     select
-      isSettable := false ;
     or
-      $property$ ;
-      $identifier$ ? @lstring directiveName ;
-      if [directiveName string] == "set" then
-        isSettable := true ;
-      else
-        error directiveName:"only 'set' directive name is allowed here" -> isSettable ;
-      end if ;
+      $feature$ ;
+      repeat
+        $identifier$ ? @lstring directiveName ;
+        if [directiveName string] == "nogetter" then
+          if not hasGetter then
+            error directiveName:"the 'nogetter' feature is already set" ;
+          end if ;
+          hasGetter := false ;
+        elsif [directiveName string] == "setter" then
+          if hasSetter then
+            error directiveName:"the 'setter' feature is already set" ;
+          end if ;
+          hasSetter := true ;
+        else
+          error directiveName:"only 'setter' or 'nogetter' feature names are allowed here" ;
+        end if ;
+      while
+        $,$ ;
+      end repeat ;
     end select ;
-    [!?tableAttributs insertKey !attributeName !definitionType !isSettable] ;
-    listeTousAttributsSemantiques += !definitionType ! attributeName ;
-    listeAttributsSemantiquesCourants += !definitionType ! attributeName ;
+    [!?tableAttributs insertKey !attributeName !definitionType !hasSetter !hasGetter] ;
+    listeTousAttributsSemantiques += !definitionType !attributeName ;
+    listeAttributsSemantiquesCourants += !definitionType !attributeName ;
     outAttributeListModel += !typeName ;
     $;$ ;
   end repeat ;

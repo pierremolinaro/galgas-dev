@@ -316,17 +316,17 @@ class @lexicalLogInstruction extends @lexicalInstruction {
 #---------------------------------------------------------------------------*
 
 class @lexiqueComponentRoot {
-  @lstring mLexiqueComponentName ;
-  @bool mIsTemplate ;
-  @templateDelimitorList mTemplateDelimitorList ;
-  @templateReplacementList mTemplateReplacementList ;
-  @lexicalAttributeList mLexicalAttributeList ;
-  @lexicalStyleList mLexicalStyleList ;
-  @terminalDeclarationList mTerminalDeclarationList ;
-  @lexicalErrorMessageDeclarationList mLexicalErrorMessageDeclarationList ;
-  @lexicalListDeclarationList mLexicalListDeclarationList ;
-  @lexicalImplicitRuleList mLexicalImplicitRuleList ;
-  @lexicalExplicitRuleList mLexicalExplicitRuleList ;
+  @lstring mLexiqueComponentName  ;
+  @bool mIsTemplate feature nogetter ;
+  @templateDelimitorList mTemplateDelimitorList feature nogetter ;
+  @templateReplacementList mTemplateReplacementList feature nogetter ;
+  @lexicalAttributeList mLexicalAttributeList  ;
+  @lexicalStyleList mLexicalStyleList feature nogetter ;
+  @terminalDeclarationList mTerminalDeclarationList  ;
+  @lexicalErrorMessageDeclarationList mLexicalErrorMessageDeclarationList feature nogetter ;
+  @lexicalListDeclarationList mLexicalListDeclarationList  ;
+  @lexicalImplicitRuleList mLexicalImplicitRuleList feature nogetter ;
+  @lexicalExplicitRuleList mLexicalExplicitRuleList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

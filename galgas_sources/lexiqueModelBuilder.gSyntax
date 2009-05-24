@@ -135,7 +135,7 @@ rule <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList :
   @lstringlist optionList [emptyList] ;
   select
   or
-    $property$ ;
+    $feature$ ;
     repeat
       $identifier$ ? @lstring optionName ;
       optionList += !optionName ;
@@ -578,7 +578,7 @@ rule <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList :
   @lstringlist optionList [emptyList] ;
   select
   or
-    $property$ ;
+    $feature$ ;
     $identifier$ ? @lstring optionName ;
     optionList += !optionName ;
   end select ;
@@ -630,7 +630,7 @@ rule <terminal_declaration> ?!@terminalDeclarationList ioTerminalDeclarationList
   @lstringlist optionList [emptyList] ;
   select
   or
-    $property$ ;
+    $feature$ ;
     repeat
       $identifier$ ? @lstring optionName ;
       optionList += !optionName ;

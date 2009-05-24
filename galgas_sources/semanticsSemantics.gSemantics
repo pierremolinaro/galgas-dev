@@ -492,10 +492,10 @@ list @classMethodList {
 
 class @classGalgasType extends @ACGalgasType {
   @bool mIsAbstract ;
-  @lstring mClassName ;
+  @lstring mClassName feature nogetter ;
   @typeMapIndex mSuperClassIndex ;
-  @attributeList mAttributeList ;
-  @classMethodList mMethodList ;
+  @attributeList mAttributeList feature nogetter ;
+  @classMethodList mMethodList feature nogetter ;
 
   override
   method checkTypeCrossReferences ??@uint inTypeCount :
@@ -544,8 +544,8 @@ class @classGalgasType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @listGalgasType extends @ACGalgasType {
-  @lstring mListTypeName ;
-  @attributeList mAttributeList ;
+  @lstring mListTypeName feature nogetter ;
+  @attributeList mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -555,8 +555,8 @@ class @listGalgasType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @listmapGalgasType extends @ACGalgasType {
-  @lstring mListmapTypeName ;
-  @typeMapIndex mAssociatedListTypeIndex ;
+  @lstring mListmapTypeName feature nogetter ;
+  @typeMapIndex mAssociatedListTypeIndex feature nogetter ;
 
   override
   method checkTypeCrossReferences ??@uint unused inTypeCount :
@@ -581,8 +581,8 @@ class @listmapGalgasType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @structGalgasType extends @ACGalgasType {
-  @lstring mStructTypeName ;
-  @attributeList mAttributeList ;
+  @lstring mStructTypeName feature nogetter ;
+  @attributeList mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -598,8 +598,8 @@ list @sortDescriptorList {
 #---------------------------------------------------------------------------*
 
 class @sortedlistGalgasType extends @ACGalgasType {
-  @lstring mListTypeName ;
-  @attributeList mAttributeList ;
+  @lstring mListTypeName feature nogetter ;
+  @attributeList mAttributeList feature nogetter ;
   @sortDescriptorList mSortDescriptorList ;
 }
 
@@ -610,8 +610,8 @@ class @sortedlistGalgasType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @mapType extends @ACGalgasType {
-  @lstring mMapTypeName ;
-  @attributeList mAttributeList ;
+  @lstring mMapTypeName feature nogetter ;
+  @attributeList mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -621,9 +621,9 @@ class @mapType extends @ACGalgasType {
 #---------------------------------------------------------------------------*
 
 class @mapindexType extends @ACGalgasType {
-  @lstring mMapIndexTypeName ;
-  @typeMapIndex mIndexOfMapType ;
-  @lstring mSearchMethodName ;
+  @lstring mMapIndexTypeName feature nogetter ;
+  @typeMapIndex mIndexOfMapType feature nogetter ;
+  @lstring mSearchMethodName feature nogetter ;
 
   override
   method checkTypeCrossReferences ??@uint unused inTypeCount :
@@ -656,8 +656,8 @@ map @enumConstructorMap {
 #---------------------------------------------------------------------------*
 
 class @enumType extends @ACGalgasType {
-  @lstring mEnumTypeName ;
-  @enumConstructorMap mEnumConstructorMap ;
+  @lstring mEnumTypeName feature nogetter ;
+  @enumConstructorMap mEnumConstructorMap feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
