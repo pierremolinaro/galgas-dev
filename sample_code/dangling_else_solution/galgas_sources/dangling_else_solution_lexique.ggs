@@ -10,5 +10,5 @@ rule list keyWordList ;
 rule 'a'->'z' | 'A'->'Z' :  enterCharacterIntoString (identifierString, toLower (*)) ;  send search identifierString in keyWordList default $id$ ;end rule ;
 
 #--- Delimitorslist delimitorsList error message "the '%K' delimitor" :  "+" , "*", "(", ")" ;rule list delimitorsList ;
-# --------------------- separators -----------------------------------------rule '\x1' -> ' ' :end rule ;
+# --------------------- separators -----------------------------------------rule '\u0001' -> ' ' :end rule ;
 end lexique ;

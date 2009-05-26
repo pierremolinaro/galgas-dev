@@ -28,12 +28,12 @@ rule list delimitorsList ;
 # ------------------------------------ Comment ----------------------------
 rule '#' :
   repeat
-  while '\x1' -> '\x9' | '\xB' | '\xC' | '\xE' -> '\xFF' :
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
   end repeat ;
 end rule ;
 
 # --------------------- separators -----------------------------------------
-rule '\x1' -> ' ' :
+rule '\u0001' -> ' ' :
 end rule ;
 
 end lexique ;
