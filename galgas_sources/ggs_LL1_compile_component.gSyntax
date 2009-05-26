@@ -214,40 +214,40 @@ rule <galgas_component>
     message "------ Project\n" ;
   end if ;
 #--- Build galgas_sources/GALGAS_OUTPUT/file_list.mke
-#  @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
-#  if [makefileFiles length] > 0 then
-#    @string externSourceFileList := "" ;
-#    @string galgasSourceList := "" ;
-#    @stringset pathSet [emptySet] ;
-#    pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
-#    foreach makefileFiles do
-#      @string fullPath ;
-#      @EXsourceFileKind sourceKind ;
-#      [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-#      @string filePath := [fullPath stringByDeletingLastPathComponent] ;
-#      if sourceKind == [@EXsourceFileKind externSourceFile] then
-#        if [filePath firstCharacterOrNul] == '/' then
-#          pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
-#        elsif filePath != "" then
-#          pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
-#        end if ;
-#        externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
-#      else
-#        galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
-#      end if ;
-#    end foreach ;
-#    @string pathesString := "" ;
-#    foreach pathSet do
-#      pathesString .= key ;
-#    end foreach ;
-#    @string newFileListContents := [filewrapper EXfileListTemplateFileWrapper.EXfileListTemplate
-#      !pathesString
-#      !galgasSourceList
-#      !externSourceFileList
-#    ] ;
-#    @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
-#    [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
-#  end if ;
+  @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
+  if [makefileFiles length] > 0 then
+    @string externSourceFileList := "" ;
+    @string galgasSourceList := "" ;
+    @stringset pathSet [emptySet] ;
+    pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
+    foreach makefileFiles do
+      @string fullPath ;
+      @EXsourceFileKind sourceKind ;
+      [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+      @string filePath := [fullPath stringByDeletingLastPathComponent] ;
+      if sourceKind == [@EXsourceFileKind externSourceFile] then
+        if [filePath firstCharacterOrNul] == '/' then
+          pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
+        elsif filePath != "" then
+          pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
+        end if ;
+        externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
+      else
+        galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
+      end if ;
+    end foreach ;
+    @string pathesString := "" ;
+    foreach pathSet do
+      pathesString .= key ;
+    end foreach ;
+    @string newFileListContents := [filewrapper EXfileListTemplateFileWrapper.EXfileListTemplate
+      !pathesString
+      !galgasSourceList
+      !externSourceFileList
+    ] ;
+    @string fileListPath := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
+    [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+  end if ;
 ##---- Convert old files
 #  @string oldCommonFile := [[[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/common_files_for_make/makefile.mke" ;
 #  if [oldCommonFile fileExists] & ([@uint errorCount] == 0) then
