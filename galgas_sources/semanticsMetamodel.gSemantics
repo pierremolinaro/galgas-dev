@@ -31,6 +31,7 @@ import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 list @attributeInCollectionList {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
+  @lstringlist mFeatureList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -52,7 +53,6 @@ class @listmapDeclaration extends @semanticDeclaration {
 
 list @mapMethodList {
   @lstring mMethodName ;
-#  @lstring mGetIDMethodName ;
   @lstring mErrorMessage ;
   @lstring mShadowErrorMessage ;
 }
