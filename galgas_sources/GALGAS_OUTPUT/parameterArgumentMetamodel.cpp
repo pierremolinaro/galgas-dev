@@ -316,7 +316,7 @@ void GGS_formalParameterList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mFormalParameterPassingMode,
@@ -334,7 +334,7 @@ _insulateList (void) {
 GGS_formalParameterList  GGS_formalParameterList::
 constructor_emptyList (void) {
   GGS_formalParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -346,7 +346,7 @@ constructor_listWithValue (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3) {
   GGS_formalParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -357,7 +357,7 @@ void GGS_formalParameterList::
 internalSubListWithRange (GGS_formalParameterList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -841,7 +841,7 @@ void GGS_formalInputParameterList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mFormalParameterTypeName,
@@ -858,7 +858,7 @@ _insulateList (void) {
 GGS_formalInputParameterList  GGS_formalInputParameterList::
 constructor_emptyList (void) {
   GGS_formalInputParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -869,7 +869,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2) {
   GGS_formalInputParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -880,7 +880,7 @@ void GGS_formalInputParameterList::
 internalSubListWithRange (GGS_formalInputParameterList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2097,7 +2097,7 @@ void GGS_actualParameterList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mActualParameter
@@ -2112,7 +2112,7 @@ _insulateList (void) {
 GGS_actualParameterList  GGS_actualParameterList::
 constructor_emptyList (void) {
   GGS_actualParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2121,7 +2121,7 @@ constructor_emptyList (void) {
 GGS_actualParameterList  GGS_actualParameterList::
 constructor_listWithValue (const GGS_actualParameter & argument_0) {
   GGS_actualParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -2132,7 +2132,7 @@ void GGS_actualParameterList::
 internalSubListWithRange (GGS_actualParameterList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2456,7 +2456,7 @@ void GGS_actualInputParameterList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mActualParameterTypeName,
@@ -2472,7 +2472,7 @@ _insulateList (void) {
 GGS_actualInputParameterList  GGS_actualInputParameterList::
 constructor_emptyList (void) {
   GGS_actualInputParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2482,7 +2482,7 @@ GGS_actualInputParameterList  GGS_actualInputParameterList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_actualInputParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -2493,7 +2493,7 @@ void GGS_actualInputParameterList::
 internalSubListWithRange (GGS_actualInputParameterList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

@@ -76,7 +76,7 @@ template <typename INFO> class cElementTableMethodesAimplementer {
 
 template <typename INFO> class cTableMethodesAimplementer {
   public : typedef cElementTableMethodesAimplementer <INFO> cElement ;
-  public : cElementTableMethodesAimplementer <INFO> * _mRoot ;
+  public : cElementTableMethodesAimplementer <INFO> * mRoot ;
   public : cElementTableMethodesAimplementer <INFO> * mFirstItem ;
   public : cElementTableMethodesAimplementer <INFO> * mLastItem ;
   private : sint32 mListLength ;

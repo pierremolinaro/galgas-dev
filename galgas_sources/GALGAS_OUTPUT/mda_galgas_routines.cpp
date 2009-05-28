@@ -241,7 +241,7 @@ _description (C_Compiler & _inLexique,
 GGS_targetFileListMap GGS_targetFileListMap::
 constructor_emptyMap (void) {
   GGS_targetFileListMap result ;
-  result._alloc (HERE) ;
+  result.alloc (HERE) ;
   return result ;
 }
 
@@ -478,7 +478,7 @@ enterIndex (const GGS_lstring & inKey,
   e_sourceFileMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -504,7 +504,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -527,7 +527,7 @@ _insertElement (C_Compiler & inLexique,
     info.mFullPath = inParameter0 ;
     info.mSourceKind = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }

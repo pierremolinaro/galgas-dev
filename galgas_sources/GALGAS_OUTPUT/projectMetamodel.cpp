@@ -298,7 +298,7 @@ void GGS_projectSourceList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSourceKind,
@@ -315,7 +315,7 @@ _insulateList (void) {
 GGS_projectSourceList  GGS_projectSourceList::
 constructor_emptyList (void) {
   GGS_projectSourceList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -326,7 +326,7 @@ constructor_listWithValue (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   GGS_projectSourceList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -337,7 +337,7 @@ void GGS_projectSourceList::
 internalSubListWithRange (GGS_projectSourceList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

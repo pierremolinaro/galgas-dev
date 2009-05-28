@@ -215,7 +215,7 @@ void GGS_programRuleList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSourceFileExtension,
@@ -233,7 +233,7 @@ _insulateList (void) {
 GGS_programRuleList  GGS_programRuleList::
 constructor_emptyList (void) {
   GGS_programRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -245,7 +245,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionList & argument_3) {
   GGS_programRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -256,7 +256,7 @@ void GGS_programRuleList::
 internalSubListWithRange (GGS_programRuleList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

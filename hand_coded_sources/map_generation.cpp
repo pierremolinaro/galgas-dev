@@ -184,7 +184,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
                "constructor_emptyMap (void) {\n"
                "  GGS_" << mListmapTypeName << " result ;\n"
-               "  result._alloc (HERE) ;\n"
+               "  result.alloc (HERE) ;\n"
                "  return result ;\n"
                "}\n\n" ;
 
@@ -747,7 +747,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   if (currentRemoveMethod.count () > 0) {
     inHfile << "//--- Internal method for removing an element\n"
-               "  protected : void _removeElement (C_Compiler & inLexique,\n"
+               "  protected : void removeElement (C_Compiler & inLexique,\n"
                "                                   const char * inErrorMessage,\n"
                "                                   const GGS_lstring & inKey,\n" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
@@ -978,7 +978,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  e_" << mMapTypeName << " info  ;\n"
                "  internalEnterIndex (inKey,\n"
                "                      (void *) & info,\n"
-               "                      mSharedMapRoot->_mRoot,\n"
+               "                      mSharedMapRoot->mRoot,\n"
                "                      outIndex) ;\n"
                "}\n\n" ;
 
@@ -1003,14 +1003,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  cElement * p = (cElement *) inPtr ;\n"
                "  sint32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'removeElement' method
   if (mRemoveMethodList.firstObject () != NULL) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapTypeName << "::\n"
-                 "_removeElement (C_Compiler & inLexique,\n"
+                 "removeElement (C_Compiler & inLexique,\n"
                  "                const char * inErrorMessage,\n"
                  "                const GGS_lstring & inKey,\n" ;
     current.rewind () ;
@@ -1028,8 +1028,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  sint32 elementID = - 1 ;\n"
                  "  if (isBuilt () && inKey.isBuilt ()) {\n"
                  "    insulateMap () ;\n"
-                 "    bool unused ;\n"
-                 "    _internalRemove (mSharedMapRoot->_mRoot, inKey, removedElement, unused) ;\n"
+                 "    bool branchHasBeenRemoved = false ;\n"
+                 "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                 "      checkMap (HERE) ;\n"
+                 "    #endif\n"
+                 "    internalRemove (mSharedMapRoot->mRoot, inKey, removedElement, branchHasBeenRemoved) ;\n"
+                 "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                 "      checkMap (HERE) ;\n"
+                 "    #endif\n"
                  "    if (removedElement == NULL) {\n"
                  "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
     current.rewind () ;
@@ -1095,7 +1101,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile << "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;\n"
                "    if (elementID < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "    }\n"
@@ -1244,7 +1250,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n"
-                 "  _removeElement (_inLexique,\n"
+                 "  removeElement (_inLexique,\n"
                  "                  " ;
     inCppFile.appendCLiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << ",\n"
@@ -1285,8 +1291,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n" ;
     if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
-      inCppFile << "  const bool _shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
-                   "  if (_shadowExists) {\n"
+      inCppFile << "  const bool shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
+                   "  if (shadowExists) {\n"
                    "    emitMapSemanticErrorMessage (_inLexique, inKey, " ;
       inCppFile.appendCLiteralStringConstant (currentInsertMethod._mShadowErrorMessage (HERE).string ()) ;
       inCppFile << " COMMA_THERE) ;\n" ;

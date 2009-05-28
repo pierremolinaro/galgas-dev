@@ -183,7 +183,7 @@ void GGS_guiAttributeList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mKey,
@@ -199,7 +199,7 @@ _insulateList (void) {
 GGS_guiAttributeList  GGS_guiAttributeList::
 constructor_emptyList (void) {
   GGS_guiAttributeList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -209,7 +209,7 @@ GGS_guiAttributeList  GGS_guiAttributeList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_guiAttributeList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -220,7 +220,7 @@ void GGS_guiAttributeList::
 internalSubListWithRange (GGS_guiAttributeList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -592,7 +592,7 @@ void GGS_guiLabelList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mAttribute1,
@@ -608,7 +608,7 @@ _insulateList (void) {
 GGS_guiLabelList  GGS_guiLabelList::
 constructor_emptyList (void) {
   GGS_guiLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -618,7 +618,7 @@ GGS_guiLabelList  GGS_guiLabelList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_guiLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -629,7 +629,7 @@ void GGS_guiLabelList::
 internalSubListWithRange (GGS_guiLabelList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
