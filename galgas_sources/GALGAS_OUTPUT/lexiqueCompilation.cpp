@@ -55,7 +55,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileLexiqueComponent (C_Compiler & _inLexique,
+void routine_compileLexiqueComponent (C_Compiler & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  /* var_cas_inOutputDirectory */ COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -65,7 +65,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
   const GGS_string _depExtension = GGS_string ("") ;
   const GGS_string _depPath = GGS_string ("") ;
   if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-    lexiqueLL1grammar::_performSourceFileParsing_ (_inLexique,
+    lexiqueLL1grammar::_performSourceFileParsing_ (inLexique,
                                   _depExtension.string (),
                                   _depPath.string (),
                                   NULL,
@@ -74,12 +74,12 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
                                   COMMA_SOURCE_FILE_AT_LINE (33)) ;
   }
   GGS_lstring  var_cas_componentName ;
-  var_cas_componentName = var_cas_lexiqueComponentRoot.reader_mLexiqueComponentName (_inLexique COMMA_SOURCE_FILE_AT_LINE (35)) ;
+  var_cas_componentName = var_cas_lexiqueComponentRoot.reader_mLexiqueComponentName (inLexique COMMA_SOURCE_FILE_AT_LINE (35)) ;
   GGS_string var_cas_basename ;
-  var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (36)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (36)) ;
-  if (((var_cas_componentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (37)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
-    var_cas_componentName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, ((((GGS_string ("GALGAS checks "
-      "the component name ('"))._operator_concat (var_cas_componentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (39))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (41)) ;
+  var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (36)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (36)) ;
+  if (((var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (37)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+    var_cas_componentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS checks "
+      "the component name ('"))._operator_concat (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (39))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (41)) ;
   }
   GGS_stringset  var_cas_allowedLexicalTypeNameSet ;
   var_cas_allowedLexicalTypeNameSet = GGS_stringset ::constructor_emptySet () ;
@@ -91,14 +91,14 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
   var_cas_allowedLexicalTypeNameSet._addAssign_operation (GGS_string ("lsint64")) ;
   var_cas_allowedLexicalTypeNameSet._addAssign_operation (GGS_string ("ldouble")) ;
   GGS_lexicalAttributeMap  var_cas_lexicalAttributeMap ;
-  var_cas_lexicalAttributeMap = GGS_lexicalAttributeMap ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_lexicalAttributeMap = GGS_lexicalAttributeMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
   {
-    GGS_lexicalAttributeList::cEnumerator enumerator_2868 (var_cas_lexiqueComponentRoot.reader_mLexicalAttributeList (_inLexique COMMA_SOURCE_FILE_AT_LINE (54)), true) ;
+    GGS_lexicalAttributeList::cEnumerator enumerator_2868 (var_cas_lexiqueComponentRoot.reader_mLexicalAttributeList (inLexique COMMA_SOURCE_FILE_AT_LINE (54)), true) ;
     const GGS_lexicalAttributeList::cElement * operand_2868 = NULL ;
     while (((operand_2868 = enumerator_2868.nextObject ()))) {
       macroValidPointer (operand_2868) ;
-      if ((var_cas_allowedLexicalTypeNameSet.reader_hasKey (_inLexique, operand_2868->mTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (55)) COMMA_SOURCE_FILE_AT_LINE (55))).isBuiltAndTrue ()) {
-        var_cas_lexicalAttributeMap.modifier_insertKey (_inLexique, operand_2868->mName, operand_2868->mTypeName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (56)) COMMA_SOURCE_FILE_AT_LINE (56)) ;
+      if ((var_cas_allowedLexicalTypeNameSet.reader_hasKey (inLexique, operand_2868->mTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (55)) COMMA_SOURCE_FILE_AT_LINE (55))).isBuiltAndTrue ()) {
+        var_cas_lexicalAttributeMap.modifier_insertKey (inLexique, operand_2868->mName, operand_2868->mTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (56)) COMMA_SOURCE_FILE_AT_LINE (56)) ;
       }else{
         GGS_string var_cas_m ;
         var_cas_m = GGS_string ("") ;
@@ -122,14 +122,14 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
             }while (_foreach_loop_3250) ;
           }
         }
-        operand_2868->mTypeName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, var_cas_m COMMA_SOURCE_FILE_AT_LINE (68)) ;
+        operand_2868->mTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, var_cas_m COMMA_SOURCE_FILE_AT_LINE (68)) ;
       }
     }
   }
   GGS_terminalMap  var_cas_terminalMap ;
-  var_cas_terminalMap = GGS_terminalMap ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_terminalMap = GGS_terminalMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
   {
-    GGS_terminalDeclarationList::cEnumerator enumerator_3496 (var_cas_lexiqueComponentRoot.reader_mTerminalDeclarationList (_inLexique COMMA_SOURCE_FILE_AT_LINE (72)), true) ;
+    GGS_terminalDeclarationList::cEnumerator enumerator_3496 (var_cas_lexiqueComponentRoot.reader_mTerminalDeclarationList (inLexique COMMA_SOURCE_FILE_AT_LINE (72)), true) ;
     const GGS_terminalDeclarationList::cElement * operand_3496 = NULL ;
     while (((operand_3496 = enumerator_3496.nextObject ()))) {
       macroValidPointer (operand_3496) ;
@@ -143,16 +143,16 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
           GGS_string var_cas_attributeTypeName ;
           const GGS_lexicalAttributeMap  _temp_3723 = var_cas_lexicalAttributeMap ;
           if (_temp_3723.isBuilt ()) {
-            _temp_3723 (HERE)->method_searchKey (_inLexique, operand_3623->mValue, var_cas_attributeTypeName COMMA_SOURCE_FILE_AT_LINE (76)) ;
+            _temp_3723 (HERE)->method_searchKey (inLexique, operand_3623->mValue, var_cas_attributeTypeName COMMA_SOURCE_FILE_AT_LINE (76)) ;
           }
           var_cas_argumentTypeList._addAssign_operation (var_cas_attributeTypeName) ;
         }
       }
-      var_cas_terminalMap.modifier_insertKey (_inLexique, operand_3496->mName, var_cas_argumentTypeList COMMA_SOURCE_FILE_AT_LINE (79)) ;
+      var_cas_terminalMap.modifier_insertKey (inLexique, operand_3496->mName, var_cas_argumentTypeList COMMA_SOURCE_FILE_AT_LINE (79)) ;
     }
   }
   {
-    GGS_lexicalListDeclarationList::cEnumerator enumerator_3911 (var_cas_lexiqueComponentRoot.reader_mLexicalListDeclarationList (_inLexique COMMA_SOURCE_FILE_AT_LINE (81)), true) ;
+    GGS_lexicalListDeclarationList::cEnumerator enumerator_3911 (var_cas_lexiqueComponentRoot.reader_mLexicalListDeclarationList (inLexique COMMA_SOURCE_FILE_AT_LINE (81)), true) ;
     const GGS_lexicalListDeclarationList::cElement * operand_3911 = NULL ;
     while (((operand_3911 = enumerator_3911.nextObject ()))) {
       macroValidPointer (operand_3911) ;
@@ -166,7 +166,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
           GGS_string var_cas_attributeTypeName ;
           const GGS_lexicalAttributeMap  _temp_4141 = var_cas_lexicalAttributeMap ;
           if (_temp_4141.isBuilt ()) {
-            _temp_4141 (HERE)->method_searchKey (_inLexique, operand_4041->mValue, var_cas_attributeTypeName COMMA_SOURCE_FILE_AT_LINE (85)) ;
+            _temp_4141 (HERE)->method_searchKey (inLexique, operand_4041->mValue, var_cas_attributeTypeName COMMA_SOURCE_FILE_AT_LINE (85)) ;
           }
           var_cas_argumentTypeList._addAssign_operation (var_cas_attributeTypeName) ;
         }
@@ -176,7 +176,7 @@ void routine_compileLexiqueComponent (C_Compiler & _inLexique,
         const GGS_lexicalListEntryList::cElement * operand_4267 = NULL ;
         while (((operand_4267 = enumerator_4267.nextObject ()))) {
           macroValidPointer (operand_4267) ;
-          var_cas_terminalMap.modifier_insertKey (_inLexique, operand_4267->mTerminalSpelling, var_cas_argumentTypeList COMMA_SOURCE_FILE_AT_LINE (89)) ;
+          var_cas_terminalMap.modifier_insertKey (inLexique, operand_4267->mTerminalSpelling, var_cas_argumentTypeList COMMA_SOURCE_FILE_AT_LINE (89)) ;
         }
       }
     }

@@ -4854,12 +4854,12 @@ sint16 galgasTemplateScanner::search_into_galgasDelimitorsList (const C_String &
 
 C_String galgasTemplateScanner::
 getCurrentTokenString (const cToken * inTokenPtr) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) inTokenPtr ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) inTokenPtr ;
   C_String s ;
-  if (_p == NULL) {
+  if (ptr == NULL) {
     s << "$$" ;
   }else{
-    switch (_p->mTokenCode) {
+    switch (ptr->mTokenCode) {
     case  galgasTemplateScanner_1_:
       s << "$$" ;
       break ;
@@ -4868,7 +4868,7 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << "identifier"
         << "$" ;
     s << " " ;
-    s.appendCLiteralStringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (ptr->tokenString) ;
       break;
     case  galgasTemplateScanner_1_abstract:
       s << "$"
@@ -5290,37 +5290,37 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
         << "literal_double"
         << "$" ;
       s << " " ;
-      s.appendDouble (_p->floatValue) ;
+      s.appendDouble (ptr->floatValue) ;
     s << " " ;
-    s.appendCLiteralStringConstant (_p->tokenString) ;
+    s.appendCLiteralStringConstant (ptr->tokenString) ;
       break;
     case  galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger:
       s << "$"
         << "unsigned_literal_integer"
         << "$" ;
       s << " " ;
-      s.appendUnsigned (_p->uint32value) ;
+      s.appendUnsigned (ptr->uint32value) ;
       break;
     case  galgasTemplateScanner_1_signed_5Fliteral_5Finteger:
       s << "$"
         << "signed_literal_integer"
         << "$" ;
       s << " " ;
-      s.appendSigned (_p->sint32value) ;
+      s.appendSigned (ptr->sint32value) ;
       break;
     case  galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger64:
       s << "$"
         << "unsigned_literal_integer64"
         << "$" ;
       s << " " ;
-      s.appendUnsigned64 (_p->uint64value) ;
+      s.appendUnsigned64 (ptr->uint64value) ;
       break;
     case  galgasTemplateScanner_1_signed_5Fliteral_5Finteger64:
       s << "$"
         << "signed_literal_integer64"
         << "$" ;
       s << " " ;
-      s.appendSigned64 (_p->sint64value) ;
+      s.appendSigned64 (ptr->sint64value) ;
       break;
     case  galgasTemplateScanner_1__2E:
       s << "$"
@@ -6481,149 +6481,149 @@ terminalStyleIndex (const sint32 inTerminal) {
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::enterToken (const cTokenFor_galgasTemplateScanner & inToken) {
-  cTokenFor_galgasTemplateScanner * _p = NULL ;
-  macroMyNew (_p, cTokenFor_galgasTemplateScanner ()) ;
-  _p->mTokenCode = inToken.mTokenCode ;
-  _p->mFirstLocation = mTokenFirstLocation ;
-  _p->mLastLocation  = mTokenLastLocation ;
-  _p->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;
-  _p->identifierString = inToken.identifierString ;
-  _p->uint32value = inToken.uint32value ;
-  _p->sint32value = inToken.sint32value ;
-  _p->uint64value = inToken.uint64value ;
-  _p->sint64value = inToken.sint64value ;
-  _p->charValue = inToken.charValue ;
-  _p->tokenString = inToken.tokenString ;
-  _p->floatValue = inToken.floatValue ;
-  enterTokenFromPointer (_p) ;
+  cTokenFor_galgasTemplateScanner * ptr = NULL ;
+  macroMyNew (ptr, cTokenFor_galgasTemplateScanner ()) ;
+  ptr->mTokenCode = inToken.mTokenCode ;
+  ptr->mFirstLocation = mTokenFirstLocation ;
+  ptr->mLastLocation  = mTokenLastLocation ;
+  ptr->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;
+  ptr->identifierString = inToken.identifierString ;
+  ptr->uint32value = inToken.uint32value ;
+  ptr->sint32value = inToken.sint32value ;
+  ptr->uint64value = inToken.uint64value ;
+  ptr->sint64value = inToken.sint64value ;
+  ptr->charValue = inToken.charValue ;
+  ptr->tokenString = inToken.tokenString ;
+  ptr->floatValue = inToken.floatValue ;
+  enterTokenFromPointer (ptr) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_identifierString (GGS_lstring & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_lstring (* this, _p->identifierString) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_lstring (* this, ptr->identifierString) ;
 }
 
 //---------------------------------------------------------------------------*
 
 C_String galgasTemplateScanner::
 _attributeValue_identifierString (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->identifierString ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->identifierString ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_uint32value (GGS_luint & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_luint (* this, _p->uint32value) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_luint (* this, ptr->uint32value) ;
 }
 
 //---------------------------------------------------------------------------*
 
 uint32 galgasTemplateScanner::
 _attributeValue_uint32value (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->uint32value ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->uint32value ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_sint32value (GGS_lsint & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_lsint (* this, _p->sint32value) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_lsint (* this, ptr->sint32value) ;
 }
 
 //---------------------------------------------------------------------------*
 
 sint32 galgasTemplateScanner::
 _attributeValue_sint32value (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->sint32value ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->sint32value ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_uint64value (GGS_luint64 & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_luint64 (* this, _p->uint64value) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_luint64 (* this, ptr->uint64value) ;
 }
 
 //---------------------------------------------------------------------------*
 
 uint64 galgasTemplateScanner::
 _attributeValue_uint64value (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->uint64value ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->uint64value ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_sint64value (GGS_lsint64 & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_lsint64 (* this, _p->sint64value) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_lsint64 (* this, ptr->sint64value) ;
 }
 
 //---------------------------------------------------------------------------*
 
 sint64 galgasTemplateScanner::
 _attributeValue_sint64value (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->sint64value ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->sint64value ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_charValue (GGS_lchar & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_lchar (* this, _p->charValue) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_lchar (* this, ptr->charValue) ;
 }
 
 //---------------------------------------------------------------------------*
 
 utf32 galgasTemplateScanner::
 _attributeValue_charValue (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->charValue ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->charValue ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_tokenString (GGS_lstring & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_lstring (* this, _p->tokenString) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_lstring (* this, ptr->tokenString) ;
 }
 
 //---------------------------------------------------------------------------*
 
 C_String galgasTemplateScanner::
 _attributeValue_tokenString (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->tokenString ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->tokenString ;
 }
 
 //---------------------------------------------------------------------------*
 
 void galgasTemplateScanner::
 _assignFromAttribute_floatValue (GGS_ldouble & outValue) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  outValue = GGS_ldouble (* this, _p->floatValue) ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  outValue = GGS_ldouble (* this, ptr->floatValue) ;
 }
 
 //---------------------------------------------------------------------------*
 
 double galgasTemplateScanner::
 _attributeValue_floatValue (void) const {
-  cTokenFor_galgasTemplateScanner * _p = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
-  return _p->floatValue ;
+  cTokenFor_galgasTemplateScanner * ptr = (cTokenFor_galgasTemplateScanner *) mCurrentTokenPtr ;
+  return ptr->floatValue ;
 }
 
 //---------------------------------------------------------------------------*

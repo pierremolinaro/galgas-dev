@@ -164,7 +164,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << " (HERE)->message_" << aNomMessage << " () ;\n" 
                  "      " ;
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".signalExtractError (_inLexique, message1_, message2_ COMMA_SOURCE_FILE_AT_LINE ("
+    ioCppFile << ".signalExtractError (inLexique, message1_, message2_ COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (aNomMessage.lineNumber ()) << ")) ;\n"
                  "    }\n"
                  "  }else{\n" ;
@@ -387,7 +387,7 @@ generateInstructions (AC_OutputStream & inCppFile,
   inCppFile << "\n"
                "} ;\n" ;
   mErrorLocationExpression (HERE)->generateExpression (inCppFile) ;
-  inCppFile << "._castDefaultErrorMessage (_inLexique, _castBranchDescriptor, "
+  inCppFile << "._castDefaultErrorMessage (inLexique, _castBranchDescriptor, "
             << cStringWithSigned (inBranchList.count ())
             << ", & typeid (* (" << inTemporaryVarName << ".getPtr ())) COMMA_SOURCE_FILE_AT_LINE ("
             << cStringWithSigned (mLocation.lineNumber ())
@@ -575,10 +575,10 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "_inLexique.printMessage (C_String (\"LOGGING "
+    ioCppFile << "inLexique.printMessage (C_String (\"LOGGING "
               << mGalgasVariableName << ": \") + " ;
     mLoggedVariable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile  << ".reader_description (_inLexique COMMA_HERE).string () + \"\\n\""
+    ioCppFile  << ".reader_description (inLexique COMMA_HERE).string () + \"\\n\""
                  " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mGalgasVariableName.lineNumber ())
               << ")) ;\n" ;
@@ -624,7 +624,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mErrorLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, " ;
+    ioCppFile << ".reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, " ;
     mErrorMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mLocation.lineNumber ())
@@ -691,7 +691,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     mWarningLocationExpression (HERE)->generateExpression (ioCppFile) ;
-    ioCppFile << ".reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, " ;
+    ioCppFile << ".reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, " ;
     mWarningMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mLocation.lineNumber ())
@@ -739,7 +739,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "_inLexique.printMessage (" ;
+    ioCppFile << "inLexique.printMessage (" ;
     mMessageExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mInstructionLocation.lineNumber ())
@@ -913,7 +913,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    ioCppFile << "._increment_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+    ioCppFile << "._increment_operation (inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }
@@ -963,7 +963,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    ioCppFile << "._decrement_operation (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+    ioCppFile << "._decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }
@@ -1164,7 +1164,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomVariableTable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".prologue_" << aNomMethodeBloc << " (_inLexique" ;
+    ioCppFile << ".prologue_" << aNomMethodeBloc << " (inLexique" ;
     GGS_typeExpressionList::cEnumerator current (mPrologueExpressionList, true) ;
     while (current.hc ()) {
       ioCppFile << ", " ;
@@ -1228,7 +1228,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomVariableTable (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".epilogue_" << aNomMethodeBloc << " (_inLexique" ;
+    ioCppFile << ".epilogue_" << aNomMethodeBloc << " (inLexique" ;
     GGS_typeExpressionList::cEnumerator current (mEpilogueExpressionList, true) ;
     while (current.hc ()) {
       ioCppFile << ", " ;

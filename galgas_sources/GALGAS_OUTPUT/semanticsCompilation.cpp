@@ -54,71 +54,71 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_constructBuiltinTypeMap (C_Compiler & _inLexique,
+void routine_constructBuiltinTypeMap (C_Compiler & inLexique,
                                 GGS_typeMap  & var_cas_outTypeMap COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_constructBuiltinTypeMap at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  var_cas_outTypeMap = GGS_typeMap ::constructor_emptyMap (_inLexique COMMA_HERE) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("string"), GGS_location (_inLexique) COMMA_HERE), GGS_stringGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (37)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("char"), GGS_location (_inLexique) COMMA_HERE), GGS_charGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (38)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("bool"), GGS_location (_inLexique) COMMA_HERE), GGS_boolGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (39)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("uint"), GGS_location (_inLexique) COMMA_HERE), GGS_uintGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (40)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("sint"), GGS_location (_inLexique) COMMA_HERE), GGS_sintGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (41)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("uint64"), GGS_location (_inLexique) COMMA_HERE), GGS_uint64GalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (42)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("sint64"), GGS_location (_inLexique) COMMA_HERE), GGS_sint64GalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (43)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("double"), GGS_location (_inLexique) COMMA_HERE), GGS_doubleGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (44)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("lstring"), GGS_location (_inLexique) COMMA_HERE), GGS_lstringGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (45)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("lchar"), GGS_location (_inLexique) COMMA_HERE), GGS_lcharGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (46)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("lbool"), GGS_location (_inLexique) COMMA_HERE), GGS_lboolGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (47)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("luint"), GGS_location (_inLexique) COMMA_HERE), GGS_luintGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (48)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("lsint"), GGS_location (_inLexique) COMMA_HERE), GGS_lsintGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (49)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("luint64"), GGS_location (_inLexique) COMMA_HERE), GGS_luint64GalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (50)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("lsint64"), GGS_location (_inLexique) COMMA_HERE), GGS_lsint64GalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (51)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("ldouble"), GGS_location (_inLexique) COMMA_HERE), GGS_ldoubleGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (52)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("binaryset"), GGS_location (_inLexique) COMMA_HERE), GGS_binarysetGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (53)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("stringset"), GGS_location (_inLexique) COMMA_HERE), GGS_stringsetGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (54)) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("location"), GGS_location (_inLexique) COMMA_HERE), GGS_locationGalgasType ::constructor_new (_inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (55)) ;
+  var_cas_outTypeMap = GGS_typeMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("string"), GGS_location (inLexique) COMMA_HERE), GGS_stringGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (37)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("char"), GGS_location (inLexique) COMMA_HERE), GGS_charGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (38)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("bool"), GGS_location (inLexique) COMMA_HERE), GGS_boolGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (39)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("uint"), GGS_location (inLexique) COMMA_HERE), GGS_uintGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (40)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("sint"), GGS_location (inLexique) COMMA_HERE), GGS_sintGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (41)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("uint64"), GGS_location (inLexique) COMMA_HERE), GGS_uint64GalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (42)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("sint64"), GGS_location (inLexique) COMMA_HERE), GGS_sint64GalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (43)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("double"), GGS_location (inLexique) COMMA_HERE), GGS_doubleGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (44)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lstring"), GGS_location (inLexique) COMMA_HERE), GGS_lstringGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (45)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lchar"), GGS_location (inLexique) COMMA_HERE), GGS_lcharGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (46)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lbool"), GGS_location (inLexique) COMMA_HERE), GGS_lboolGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (47)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("luint"), GGS_location (inLexique) COMMA_HERE), GGS_luintGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (48)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lsint"), GGS_location (inLexique) COMMA_HERE), GGS_lsintGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (49)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("luint64"), GGS_location (inLexique) COMMA_HERE), GGS_luint64GalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (50)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lsint64"), GGS_location (inLexique) COMMA_HERE), GGS_lsint64GalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (51)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("ldouble"), GGS_location (inLexique) COMMA_HERE), GGS_ldoubleGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (52)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("binaryset"), GGS_location (inLexique) COMMA_HERE), GGS_binarysetGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (53)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("stringset"), GGS_location (inLexique) COMMA_HERE), GGS_stringsetGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (54)) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("location"), GGS_location (inLexique) COMMA_HERE), GGS_locationGalgasType ::constructor_new (inLexique COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (55)) ;
   GGS_attributeList  var_cas_lstringAttribute ;
   var_cas_lstringAttribute = GGS_attributeList ::constructor_emptyList () ;
   GGS_typeMapIndex  var_cas_lstringIndex ;
-  GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("lstring"), GGS_location (_inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_lstringIndex COMMA_SOURCE_FILE_AT_LINE (59)) ;
-  var_cas_lstringAttribute._addAssign_operation (var_cas_lstringIndex, GGS_lstring ::constructor_new (_inLexique, GGS_string ("mValue"), GGS_location (_inLexique) COMMA_HERE)) ;
+  GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lstring"), GGS_location (inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_lstringIndex COMMA_SOURCE_FILE_AT_LINE (59)) ;
+  var_cas_lstringAttribute._addAssign_operation (var_cas_lstringIndex, GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_lstring  var_cas_lstringlist ;
-  var_cas_lstringlist = GGS_lstring ::constructor_new (_inLexique, GGS_string ("lstringlist"), GGS_location (_inLexique) COMMA_HERE) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, var_cas_lstringlist, GGS_listGalgasType ::constructor_new (_inLexique, var_cas_lstringlist, var_cas_lstringAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (62)) ;
+  var_cas_lstringlist = GGS_lstring ::constructor_new (inLexique, GGS_string ("lstringlist"), GGS_location (inLexique) COMMA_HERE) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, var_cas_lstringlist, GGS_listGalgasType ::constructor_new (inLexique, var_cas_lstringlist, var_cas_lstringAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (62)) ;
   GGS_attributeList  var_cas_stringAttribute ;
   var_cas_stringAttribute = GGS_attributeList ::constructor_emptyList () ;
   GGS_typeMapIndex  var_cas_stringIndex ;
-  GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("string"), GGS_location (_inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_stringIndex COMMA_SOURCE_FILE_AT_LINE (66)) ;
-  var_cas_stringAttribute._addAssign_operation (var_cas_stringIndex, GGS_lstring ::constructor_new (_inLexique, GGS_string ("mValue"), GGS_location (_inLexique) COMMA_HERE)) ;
+  GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("string"), GGS_location (inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_stringIndex COMMA_SOURCE_FILE_AT_LINE (66)) ;
+  var_cas_stringAttribute._addAssign_operation (var_cas_stringIndex, GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_lstring  var_cas_stringlist ;
-  var_cas_stringlist = GGS_lstring ::constructor_new (_inLexique, GGS_string ("stringlist"), GGS_location (_inLexique) COMMA_HERE) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, var_cas_stringlist, GGS_listGalgasType ::constructor_new (_inLexique, var_cas_stringlist, var_cas_stringAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (69)) ;
+  var_cas_stringlist = GGS_lstring ::constructor_new (inLexique, GGS_string ("stringlist"), GGS_location (inLexique) COMMA_HERE) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, var_cas_stringlist, GGS_listGalgasType ::constructor_new (inLexique, var_cas_stringlist, var_cas_stringAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (69)) ;
   GGS_attributeList  var_cas_uint64Attribute ;
   var_cas_uint64Attribute = GGS_attributeList ::constructor_emptyList () ;
   GGS_typeMapIndex  var_cas_uint64Index ;
-  GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("uint64"), GGS_location (_inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_uint64Index COMMA_SOURCE_FILE_AT_LINE (73)) ;
-  var_cas_uint64Attribute._addAssign_operation (var_cas_uint64Index, GGS_lstring ::constructor_new (_inLexique, GGS_string ("mValue"), GGS_location (_inLexique) COMMA_HERE)) ;
+  GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("uint64"), GGS_location (inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_uint64Index COMMA_SOURCE_FILE_AT_LINE (73)) ;
+  var_cas_uint64Attribute._addAssign_operation (var_cas_uint64Index, GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_lstring  var_cas_uint64list ;
-  var_cas_uint64list = GGS_lstring ::constructor_new (_inLexique, GGS_string ("uint64list"), GGS_location (_inLexique) COMMA_HERE) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, var_cas_uint64list, GGS_listGalgasType ::constructor_new (_inLexique, var_cas_uint64list, var_cas_uint64Attribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (76)) ;
+  var_cas_uint64list = GGS_lstring ::constructor_new (inLexique, GGS_string ("uint64list"), GGS_location (inLexique) COMMA_HERE) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, var_cas_uint64list, GGS_listGalgasType ::constructor_new (inLexique, var_cas_uint64list, var_cas_uint64Attribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (76)) ;
   GGS_attributeList  var_cas_luintAttribute ;
   var_cas_luintAttribute = GGS_attributeList ::constructor_emptyList () ;
   GGS_typeMapIndex  var_cas_luintIndex ;
-  GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("luint"), GGS_location (_inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_luintIndex COMMA_SOURCE_FILE_AT_LINE (80)) ;
-  var_cas_luintAttribute._addAssign_operation (var_cas_luintIndex, GGS_lstring ::constructor_new (_inLexique, GGS_string ("mValue"), GGS_location (_inLexique) COMMA_HERE)) ;
+  GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("luint"), GGS_location (inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_luintIndex COMMA_SOURCE_FILE_AT_LINE (80)) ;
+  var_cas_luintAttribute._addAssign_operation (var_cas_luintIndex, GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_lstring  var_cas_luintlist ;
-  var_cas_luintlist = GGS_lstring ::constructor_new (_inLexique, GGS_string ("luintlist"), GGS_location (_inLexique) COMMA_HERE) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, var_cas_luintlist, GGS_listGalgasType ::constructor_new (_inLexique, var_cas_luintlist, var_cas_luintAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (83)) ;
+  var_cas_luintlist = GGS_lstring ::constructor_new (inLexique, GGS_string ("luintlist"), GGS_location (inLexique) COMMA_HERE) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, var_cas_luintlist, GGS_listGalgasType ::constructor_new (inLexique, var_cas_luintlist, var_cas_luintAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (83)) ;
   GGS_attributeList  var_cas_uintAttribute ;
   var_cas_uintAttribute = GGS_attributeList ::constructor_emptyList () ;
   GGS_typeMapIndex  var_cas_uintIndex ;
-  GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, GGS_lstring ::constructor_new (_inLexique, GGS_string ("uint"), GGS_location (_inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_uintIndex COMMA_SOURCE_FILE_AT_LINE (87)) ;
-  var_cas_uintAttribute._addAssign_operation (var_cas_uintIndex, GGS_lstring ::constructor_new (_inLexique, GGS_string ("mValue"), GGS_location (_inLexique) COMMA_HERE)) ;
+  GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("uint"), GGS_location (inLexique) COMMA_HERE), var_cas_outTypeMap, var_cas_uintIndex COMMA_SOURCE_FILE_AT_LINE (87)) ;
+  var_cas_uintAttribute._addAssign_operation (var_cas_uintIndex, GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_lstring  var_cas_uintlist ;
-  var_cas_uintlist = GGS_lstring ::constructor_new (_inLexique, GGS_string ("uintlist"), GGS_location (_inLexique) COMMA_HERE) ;
-  var_cas_outTypeMap.modifier_insertKey (_inLexique, var_cas_uintlist, GGS_listGalgasType ::constructor_new (_inLexique, var_cas_uintlist, var_cas_uintAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (90)) ;
+  var_cas_uintlist = GGS_lstring ::constructor_new (inLexique, GGS_string ("uintlist"), GGS_location (inLexique) COMMA_HERE) ;
+  var_cas_outTypeMap.modifier_insertKey (inLexique, var_cas_uintlist, GGS_listGalgasType ::constructor_new (inLexique, var_cas_uintlist, var_cas_uintAttribute COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (90)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_constructBuiltinTypeMap\n") ;
   #endif
@@ -165,7 +165,7 @@ findCategoryMethod__semanticDeclaration__enterType (AC_galgasClassRunTimeInforma
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclaration__enterType (C_Compiler & _inLexique,
+category_method__mapDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_mapDeclaration * operand_6540,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -178,13 +178,13 @@ category_method__mapDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_6674 = enumerator_6674.nextObject ()))) {
         macroValidPointer (operand_6674) ;
         GGS_typeMapIndex  var_cas_attributeTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_6674->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (113)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_6674->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (113)) ;
         var_cas_attributeList._addAssign_operation (var_cas_attributeTypeIndex, operand_6674->mAttributeName) ;
       }
     }
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_mapType ::constructor_new (_inLexique, operand_6540->mMapTypeName, var_cas_attributeList COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_6540->mMapTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (121)) ;
+    var_cas_t = GGS_mapType ::constructor_new (inLexique, operand_6540->mMapTypeName, var_cas_attributeList COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_6540->mMapTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (121)) ;
   }
 }
 
@@ -195,16 +195,16 @@ category_method__mapDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapindexDeclaration__enterType (C_Compiler & _inLexique,
+category_method__mapindexDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_mapindexDeclaration * operand_7207,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_7207 != NULL) {
     GGS_typeMapIndex  var_cas_mapTypeIndex ;
-    GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_7207->mMapTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_mapTypeIndex COMMA_SOURCE_FILE_AT_LINE (131)) ;
+    GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_7207->mMapTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_mapTypeIndex COMMA_SOURCE_FILE_AT_LINE (131)) ;
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_mapindexType ::constructor_new (_inLexique, operand_7207->mMapIndexTypeName, var_cas_mapTypeIndex, operand_7207->mSearchMethodName COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_7207->mMapIndexTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (138)) ;
+    var_cas_t = GGS_mapindexType ::constructor_new (inLexique, operand_7207->mMapIndexTypeName, var_cas_mapTypeIndex, operand_7207->mSearchMethodName COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_7207->mMapIndexTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (138)) ;
   }
 }
 
@@ -215,24 +215,24 @@ category_method__mapindexDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclaration__enterType (C_Compiler & _inLexique,
+category_method__enumDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_enumDeclaration * operand_7740,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_7740 != NULL) {
     GGS_enumConstructorMap  var_cas_enumConstructorMap ;
-    var_cas_enumConstructorMap = GGS_enumConstructorMap ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+    var_cas_enumConstructorMap = GGS_enumConstructorMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
     {
       GGS_lstringlist::cEnumerator enumerator_7893 (operand_7740->mConstructorConstantList, true) ;
       const GGS_lstringlist::cElement * operand_7893 = NULL ;
       while (((operand_7893 = enumerator_7893.nextObject ()))) {
         macroValidPointer (operand_7893) ;
-        var_cas_enumConstructorMap.modifier_insertKey (_inLexique, operand_7893->mValue COMMA_SOURCE_FILE_AT_LINE (149)) ;
+        var_cas_enumConstructorMap.modifier_insertKey (inLexique, operand_7893->mValue COMMA_SOURCE_FILE_AT_LINE (149)) ;
       }
     }
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_enumType ::constructor_new (_inLexique, operand_7740->mEnumTypeName, var_cas_enumConstructorMap COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_7740->mEnumTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (156)) ;
+    var_cas_t = GGS_enumType ::constructor_new (inLexique, operand_7740->mEnumTypeName, var_cas_enumConstructorMap COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_7740->mEnumTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (156)) ;
   }
 }
 
@@ -243,12 +243,12 @@ category_method__enumDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperDeclaration__enterType (C_Compiler & _inLexique,
+category_method__filewrapperDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_filewrapperDeclaration * operand_8278,
                                 GGS_semanticContext & /* var_cas_ioSemanticContext */
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_8278 != NULL) {
-    _inLexique.printMessage (GGS_string ("@filewrapperDeclaration.enterType [in semanticCompilation.gSemantics]\n") COMMA_SOURCE_FILE_AT_LINE (164)) ;
+    inLexique.printMessage (GGS_string ("@filewrapperDeclaration.enterType [in semanticCompilation.gSemantics]\n") COMMA_SOURCE_FILE_AT_LINE (164)) ;
   }
 }
 
@@ -259,7 +259,7 @@ category_method__filewrapperDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclaration__enterType (C_Compiler & _inLexique,
+category_method__sortedListDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_sortedListDeclaration * operand_8554,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -272,13 +272,13 @@ category_method__sortedListDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_8688 = enumerator_8688.nextObject ()))) {
         macroValidPointer (operand_8688) ;
         GGS_typeMapIndex  var_cas_attributeTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_8688->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (176)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_8688->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (176)) ;
         var_cas_attributeList._addAssign_operation (var_cas_attributeTypeIndex, operand_8688->mAttributeName) ;
       }
     }
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_listGalgasType ::constructor_new (_inLexique, operand_8554->mSortedListTypeName, var_cas_attributeList COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_8554->mSortedListTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (184)) ;
+    var_cas_t = GGS_listGalgasType ::constructor_new (inLexique, operand_8554->mSortedListTypeName, var_cas_attributeList COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_8554->mSortedListTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (184)) ;
   }
 }
 
@@ -289,7 +289,7 @@ category_method__sortedListDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclaration__enterType (C_Compiler & _inLexique,
+category_method__structDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_structDeclaration * operand_9240,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -302,13 +302,13 @@ category_method__structDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_9374 = enumerator_9374.nextObject ()))) {
         macroValidPointer (operand_9374) ;
         GGS_typeMapIndex  var_cas_attributeTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_9374->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (196)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_9374->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (196)) ;
         var_cas_attributeList._addAssign_operation (var_cas_attributeTypeIndex, operand_9374->mAttributeName) ;
       }
     }
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_structGalgasType ::constructor_new (_inLexique, operand_9240->mStructTypeName, var_cas_attributeList COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_9240->mStructTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (204)) ;
+    var_cas_t = GGS_structGalgasType ::constructor_new (inLexique, operand_9240->mStructTypeName, var_cas_attributeList COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_9240->mStructTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (204)) ;
   }
 }
 
@@ -319,7 +319,7 @@ category_method__structDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclaration__enterType (C_Compiler & _inLexique,
+category_method__listDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_listDeclaration * operand_9918,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -332,13 +332,13 @@ category_method__listDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_10052 = enumerator_10052.nextObject ()))) {
         macroValidPointer (operand_10052) ;
         GGS_typeMapIndex  var_cas_attributeTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_10052->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (216)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_10052->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (216)) ;
         var_cas_attributeList._addAssign_operation (var_cas_attributeTypeIndex, operand_10052->mAttributeName) ;
       }
     }
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_listGalgasType ::constructor_new (_inLexique, operand_9918->mListTypeName, var_cas_attributeList COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_9918->mListTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (224)) ;
+    var_cas_t = GGS_listGalgasType ::constructor_new (inLexique, operand_9918->mListTypeName, var_cas_attributeList COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_9918->mListTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (224)) ;
   }
 }
 
@@ -349,19 +349,19 @@ category_method__listDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclaration__enterType (C_Compiler & _inLexique,
+category_method__classDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_classDeclaration * operand_10591,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_10591 != NULL) {
     GGS_typeMapIndex  var_cas_superClassIndex ;
-    if (((operand_10591->mSuperClassName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (234)))._operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
-      var_cas_superClassIndex = GGS_typeMapIndex ::constructor_null (_inLexique COMMA_HERE) ;
+    if (((operand_10591->mSuperClassName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (234)))._operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
+      var_cas_superClassIndex = GGS_typeMapIndex ::constructor_null (inLexique COMMA_HERE) ;
     }else{
-      GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_10591->mSuperClassName, var_cas_ioSemanticContext.mTypeMap, var_cas_superClassIndex COMMA_SOURCE_FILE_AT_LINE (237)) ;
+      GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_10591->mSuperClassName, var_cas_ioSemanticContext.mTypeMap, var_cas_superClassIndex COMMA_SOURCE_FILE_AT_LINE (237)) ;
       GGS_typeMapIndex  var_cas_classIndex ;
-      GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_10591->mClassTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_classIndex COMMA_SOURCE_FILE_AT_LINE (240)) ;
-      var_cas_ioSemanticContext.mDescendantClassListMap._addAssign_operation (operand_10591->mSuperClassName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (241)), var_cas_classIndex) ;
+      GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_10591->mClassTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_classIndex COMMA_SOURCE_FILE_AT_LINE (240)) ;
+      var_cas_ioSemanticContext.mDescendantClassListMap._addAssign_operation (operand_10591->mSuperClassName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (241)), var_cas_classIndex) ;
     }
     GGS_attributeList  var_cas_attributeList ;
     var_cas_attributeList = GGS_attributeList ::constructor_emptyList () ;
@@ -371,15 +371,15 @@ category_method__classDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_11247 = enumerator_11247.nextObject ()))) {
         macroValidPointer (operand_11247) ;
         GGS_typeMapIndex  var_cas_attributeTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_11247->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (247)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_11247->mAttributeTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_attributeTypeIndex COMMA_SOURCE_FILE_AT_LINE (247)) ;
         var_cas_attributeList._addAssign_operation (var_cas_attributeTypeIndex, operand_11247->mAttributeName) ;
       }
     }
     GGS_classMethodList  var_cas_methodList ;
     var_cas_methodList = GGS_classMethodList ::constructor_emptyList () ;
     GGS_classGalgasType  var_cas_t ;
-    var_cas_t = GGS_classGalgasType ::constructor_new (_inLexique, operand_10591->mIsAbstract, operand_10591->mClassTypeName, var_cas_superClassIndex, var_cas_attributeList, var_cas_methodList COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_10591->mClassTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (260)) ;
+    var_cas_t = GGS_classGalgasType ::constructor_new (inLexique, operand_10591->mIsAbstract, operand_10591->mClassTypeName, var_cas_superClassIndex, var_cas_attributeList, var_cas_methodList COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_10591->mClassTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (260)) ;
   }
 }
 
@@ -390,7 +390,7 @@ category_method__classDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externRoutineDeclaration__enterType (C_Compiler & _inLexique,
+category_method__externRoutineDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_externRoutineDeclaration * operand_11918,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -403,11 +403,11 @@ category_method__externRoutineDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_12090 = enumerator_12090.nextObject ()))) {
         macroValidPointer (operand_12090) ;
         GGS_typeMapIndex  var_cas_parameterTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_12090->mFormalParameterTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_parameterTypeIndex COMMA_SOURCE_FILE_AT_LINE (272)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_12090->mFormalParameterTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_parameterTypeIndex COMMA_SOURCE_FILE_AT_LINE (272)) ;
         var_cas_routineSignature._addAssign_operation (var_cas_parameterTypeIndex, operand_12090->mFormalParameterName, operand_12090->mFormalParameterPassingMode) ;
       }
     }
-    var_cas_ioSemanticContext.mRoutineMap.modifier_insertKey (_inLexique, operand_11918->mRoutineName, var_cas_routineSignature COMMA_SOURCE_FILE_AT_LINE (276)) ;
+    var_cas_ioSemanticContext.mRoutineMap.modifier_insertKey (inLexique, operand_11918->mRoutineName, var_cas_routineSignature COMMA_SOURCE_FILE_AT_LINE (276)) ;
   }
 }
 
@@ -418,7 +418,7 @@ category_method__externRoutineDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externFunctionDeclaration__enterType (C_Compiler & _inLexique,
+category_method__externFunctionDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_externFunctionDeclaration * operand_12619,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -431,13 +431,13 @@ category_method__externFunctionDeclaration__enterType (C_Compiler & _inLexique,
       while (((operand_12793 = enumerator_12793.nextObject ()))) {
         macroValidPointer (operand_12793) ;
         GGS_typeMapIndex  var_cas_parameterTypeIndex ;
-        GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_12793->mFormalParameterTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_parameterTypeIndex COMMA_SOURCE_FILE_AT_LINE (288)) ;
+        GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_12793->mFormalParameterTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_parameterTypeIndex COMMA_SOURCE_FILE_AT_LINE (288)) ;
         var_cas_functionSignature._addAssign_operation (var_cas_parameterTypeIndex, operand_12793->mFormalParameterName, operand_12793->mFormalParameterPassingMode) ;
       }
     }
     GGS_typeMapIndex  var_cas_resultTypeIndex ;
-    GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_12619->mResultTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_resultTypeIndex COMMA_SOURCE_FILE_AT_LINE (293)) ;
-    var_cas_ioSemanticContext.mFunctionMap.modifier_insertKey (_inLexique, operand_12619->mFunctionName, var_cas_functionSignature, var_cas_resultTypeIndex COMMA_SOURCE_FILE_AT_LINE (295)) ;
+    GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_12619->mResultTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_resultTypeIndex COMMA_SOURCE_FILE_AT_LINE (293)) ;
+    var_cas_ioSemanticContext.mFunctionMap.modifier_insertKey (inLexique, operand_12619->mFunctionName, var_cas_functionSignature, var_cas_resultTypeIndex COMMA_SOURCE_FILE_AT_LINE (295)) ;
   }
 }
 
@@ -448,16 +448,16 @@ category_method__externFunctionDeclaration__enterType (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclaration__enterType (C_Compiler & _inLexique,
+category_method__listmapDeclaration__enterType (C_Compiler & inLexique,
                                 const cPtr_listmapDeclaration * operand_13488,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_13488 != NULL) {
     GGS_typeMapIndex  var_cas_associatedListTypeIndex ;
-    GGS_typeMapIndex::class_method_makeRegularIndex (_inLexique, operand_13488->mAssociatedListTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_associatedListTypeIndex COMMA_SOURCE_FILE_AT_LINE (304)) ;
+    GGS_typeMapIndex::class_method_makeRegularIndex (inLexique, operand_13488->mAssociatedListTypeName, var_cas_ioSemanticContext.mTypeMap, var_cas_associatedListTypeIndex COMMA_SOURCE_FILE_AT_LINE (304)) ;
     GGS_ACGalgasType  var_cas_t ;
-    var_cas_t = GGS_listmapGalgasType ::constructor_new (_inLexique, operand_13488->mListmapTypeName, var_cas_associatedListTypeIndex COMMA_HERE) ;
-    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (_inLexique, operand_13488->mListmapTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (310)) ;
+    var_cas_t = GGS_listmapGalgasType ::constructor_new (inLexique, operand_13488->mListmapTypeName, var_cas_associatedListTypeIndex COMMA_HERE) ;
+    var_cas_ioSemanticContext.mTypeMap.modifier_insertKey (inLexique, operand_13488->mListmapTypeName, var_cas_t COMMA_SOURCE_FILE_AT_LINE (310)) ;
   }
 }
 
@@ -467,7 +467,7 @@ category_method__listmapDeclaration__enterType (C_Compiler & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildSemanticContext (C_Compiler & _inLexique,
+void routine_buildSemanticContext (C_Compiler & inLexique,
                                 const GGS_semanticDeclarationList   var_cas_inSemanticDeclarationList,
                                 const GGS_location   var_cas_inEndOfSourceFile,
                                 GGS_semanticContext & var_cas_outSemanticContext COMMA_UNUSED_LOCATION_ARGS) {
@@ -475,8 +475,8 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
     printf ("ENTER routine_buildSemanticContext at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_typeMap  var_cas_typeMap ;
-  ::routine_constructBuiltinTypeMap (_inLexique,  var_cas_typeMap COMMA_SOURCE_FILE_AT_LINE (322)) ;
-  var_cas_outSemanticContext = GGS_semanticContext::constructor_new (var_cas_typeMap, GGS_routineMap ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_functionMap ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_descendantClassListMap::constructor_emptyMap ()) ;
+  ::routine_constructBuiltinTypeMap (inLexique,  var_cas_typeMap COMMA_SOURCE_FILE_AT_LINE (322)) ;
+  var_cas_outSemanticContext = GGS_semanticContext::constructor_new (var_cas_typeMap, GGS_routineMap ::constructor_emptyMap (inLexique COMMA_HERE), GGS_functionMap ::constructor_emptyMap (inLexique COMMA_HERE), GGS_descendantClassListMap::constructor_emptyMap ()) ;
   {
     GGS_semanticDeclarationList::cEnumerator enumerator_14515 (var_cas_inSemanticDeclarationList, true) ;
     const GGS_semanticDeclarationList::cElement * operand_14515 = NULL ;
@@ -486,15 +486,15 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
       if (_temp_14554.isBuilt ()) {
         typeCategoryMethod__semanticDeclaration__enterType _method = findCategoryMethod__semanticDeclaration__enterType (_temp_14554._galgasObjectRunTimeInfo ()) ;
         if (_method != NULL) {
-          _method (_inLexique, _temp_14554 (HERE), var_cas_outSemanticContext COMMA_SOURCE_FILE_AT_LINE (332)) ;
+          _method (inLexique, _temp_14554 (HERE), var_cas_outSemanticContext COMMA_SOURCE_FILE_AT_LINE (332)) ;
         }
       }
     }
   }
-  if (((GGS_uint ::constructor_errorCount (_inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+  if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
     GGS_stringlist  var_cas_undefinedClasses ;
-    var_cas_undefinedClasses = var_cas_outSemanticContext.reader_mTypeMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (336)).reader_unsolvedIndexKeyStringList (_inLexique COMMA_SOURCE_FILE_AT_LINE (336)) ;
-    if (((var_cas_undefinedClasses.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (337)))._operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
+    var_cas_undefinedClasses = var_cas_outSemanticContext.reader_mTypeMap (inLexique COMMA_SOURCE_FILE_AT_LINE (336)).reader_unsolvedIndexKeyStringList (inLexique COMMA_SOURCE_FILE_AT_LINE (336)) ;
+    if (((var_cas_undefinedClasses.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (337)))._operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
       GGS_string var_cas_errorMessage ;
       var_cas_errorMessage = GGS_string ("there is 1 undefined type:") ;
       {
@@ -507,10 +507,10 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
           var_cas_errorMessage._dotAssign_operation (operand_14898->mValue) ;
         }
       }
-      var_cas_inEndOfSourceFile.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, var_cas_errorMessage COMMA_SOURCE_FILE_AT_LINE (343)) ;
-    }else if (((var_cas_undefinedClasses.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (343)))._operator_strictSup (GGS_uint (1U))).isBuiltAndTrue ()) {
+      var_cas_inEndOfSourceFile.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, var_cas_errorMessage COMMA_SOURCE_FILE_AT_LINE (343)) ;
+    }else if (((var_cas_undefinedClasses.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (343)))._operator_strictSup (GGS_uint (1U))).isBuiltAndTrue ()) {
       GGS_string var_cas_errorMessage ;
-      var_cas_errorMessage = ((GGS_string ("there are "))._operator_concat (var_cas_undefinedClasses.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (344)).reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (344))))._operator_concat (GGS_string (" undefined types:")) ;
+      var_cas_errorMessage = ((GGS_string ("there are "))._operator_concat (var_cas_undefinedClasses.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (344)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (344))))._operator_concat (GGS_string (" undefined types:")) ;
       {
         GGS_stringlist::cEnumerator enumerator_15192 (var_cas_undefinedClasses, true) ;
         const GGS_stringlist::cElement * operand_15192 = NULL ;
@@ -521,18 +521,18 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
           var_cas_errorMessage._dotAssign_operation (operand_15192->mValue) ;
         }
       }
-      var_cas_inEndOfSourceFile.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, var_cas_errorMessage COMMA_SOURCE_FILE_AT_LINE (349)) ;
+      var_cas_inEndOfSourceFile.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, var_cas_errorMessage COMMA_SOURCE_FILE_AT_LINE (349)) ;
     }
   }
-  if (((GGS_uint ::constructor_errorCount (_inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+  if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
     {
-      GGS_typeMap::cEnumerator enumerator_15564 (var_cas_outSemanticContext.reader_mTypeMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (356)), true) ;
+      GGS_typeMap::cEnumerator enumerator_15564 (var_cas_outSemanticContext.reader_mTypeMap (inLexique COMMA_SOURCE_FILE_AT_LINE (356)), true) ;
       const GGS_typeMap::cElement * operand_15564 = NULL ;
       while (((operand_15564 = enumerator_15564.nextObject ()))) {
         macroValidPointer (operand_15564) ;
         const GGS_ACGalgasType  _temp_15633 = operand_15564->mInfo.mType ;
         if (_temp_15633.isBuilt ()) {
-          _temp_15633 (HERE)->method_checkTypeCrossReferences (_inLexique, var_cas_outSemanticContext.reader_mTypeMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (357)).reader_count (_inLexique COMMA_SOURCE_FILE_AT_LINE (357)) COMMA_SOURCE_FILE_AT_LINE (357)) ;
+          _temp_15633 (HERE)->method_checkTypeCrossReferences (inLexique, var_cas_outSemanticContext.reader_mTypeMap (inLexique COMMA_SOURCE_FILE_AT_LINE (357)).reader_count (inLexique COMMA_SOURCE_FILE_AT_LINE (357)) COMMA_SOURCE_FILE_AT_LINE (357)) ;
         }
       }
     }
@@ -548,7 +548,7 @@ void routine_buildSemanticContext (C_Compiler & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseSemanticComponent (C_Compiler & _inLexique,
+void routine_parseSemanticComponent (C_Compiler & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct,
                                 GGS_semanticsComponentRoot  & var_cas_outSemanticsComponentRoot COMMA_UNUSED_LOCATION_ARGS) {
@@ -556,19 +556,19 @@ void routine_parseSemanticComponent (C_Compiler & _inLexique,
     printf ("ENTER routine_parseSemanticComponent at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_string var_cas_basename ;
-  var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (373)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (373)) ;
+  var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (373)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (373)) ;
   GGS_lstring  var_cas_basenameKey ;
-  var_cas_basenameKey = GGS_lstring ::constructor_new (_inLexique, var_cas_basename, GGS_location (_inLexique) COMMA_HERE) ;
-  if ((var_cas_ioParsedComponentStruct.reader_mParsedSemanticsComponentMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (375)).reader_hasKey (_inLexique, var_cas_basename COMMA_SOURCE_FILE_AT_LINE (375))).isBuiltAndTrue ()) {
-    const GGS_parsedSemanticsComponentMap  _temp_16564 = var_cas_ioParsedComponentStruct.reader_mParsedSemanticsComponentMap (_inLexique COMMA_SOURCE_FILE_AT_LINE (376)) ;
+  var_cas_basenameKey = GGS_lstring ::constructor_new (inLexique, var_cas_basename, GGS_location (inLexique) COMMA_HERE) ;
+  if ((var_cas_ioParsedComponentStruct.reader_mParsedSemanticsComponentMap (inLexique COMMA_SOURCE_FILE_AT_LINE (375)).reader_hasKey (inLexique, var_cas_basename COMMA_SOURCE_FILE_AT_LINE (375))).isBuiltAndTrue ()) {
+    const GGS_parsedSemanticsComponentMap  _temp_16564 = var_cas_ioParsedComponentStruct.reader_mParsedSemanticsComponentMap (inLexique COMMA_SOURCE_FILE_AT_LINE (376)) ;
     if (_temp_16564.isBuilt ()) {
-      _temp_16564 (HERE)->method_searchKey (_inLexique, var_cas_basenameKey, var_cas_outSemanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (376)) ;
+      _temp_16564 (HERE)->method_searchKey (inLexique, var_cas_basenameKey, var_cas_outSemanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (376)) ;
     }
   }else{
     const GGS_string _depExtension = GGS_string ("") ;
     const GGS_string _depPath = GGS_string ("") ;
     if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-      semanticsSLRgrammar::_performSourceFileParsing_ (_inLexique,
+      semanticsSLRgrammar::_performSourceFileParsing_ (inLexique,
                                     _depExtension.string (),
                                     _depPath.string (),
                                     NULL,
@@ -576,7 +576,7 @@ void routine_parseSemanticComponent (C_Compiler & _inLexique,
                                     var_cas_outSemanticsComponentRoot
                                     COMMA_SOURCE_FILE_AT_LINE (378)) ;
     }
-    var_cas_ioParsedComponentStruct.mParsedSemanticsComponentMap.modifier_insertKey (_inLexique, var_cas_basenameKey, var_cas_outSemanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (379)) ;
+    var_cas_ioParsedComponentStruct.mParsedSemanticsComponentMap.modifier_insertKey (inLexique, var_cas_basenameKey, var_cas_outSemanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (379)) ;
   }
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_parseSemanticComponent\n") ;
@@ -589,7 +589,7 @@ void routine_parseSemanticComponent (C_Compiler & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyImportSemanticComponent (C_Compiler & _inLexique,
+void routine_recursivelyImportSemanticComponent (C_Compiler & inLexique,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct,
                                 GGS_semanticDeclarationList  & var_cas_ioSemanticDeclarationList,
                                 GGS_stringset  & var_cas_ioParsedFileSet,
@@ -603,17 +603,17 @@ void routine_recursivelyImportSemanticComponent (C_Compiler & _inLexique,
     const GGS_lstringlist::cElement * operand_17184 = NULL ;
     while (((operand_17184 = enumerator_17184.nextObject ()))) {
       macroValidPointer (operand_17184) ;
-      if (((var_cas_ioParsedFileSet.reader_hasKey (_inLexique, operand_17184->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (393)) COMMA_SOURCE_FILE_AT_LINE (393)))._operator_not ()).isBuiltAndTrue ()) {
-        var_cas_ioParsedFileSet._addAssign_operation (operand_17184->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (394))) ;
+      if (((var_cas_ioParsedFileSet.reader_hasKey (inLexique, operand_17184->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (393)) COMMA_SOURCE_FILE_AT_LINE (393)))._operator_not ()).isBuiltAndTrue ()) {
+        var_cas_ioParsedFileSet._addAssign_operation (operand_17184->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (394))) ;
         GGS_string var_cas_extension ;
-        var_cas_extension = operand_17184->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (395)).reader_pathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (395)) ;
+        var_cas_extension = operand_17184->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (395)).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (395)) ;
         if (((var_cas_extension)._operator_isEqual (GGS_string ("gSemantics"))).isBuiltAndTrue ()) {
           GGS_lstring  var_cas_filePath ;
-          var_cas_filePath = GGS_lstring ::constructor_new (_inLexique, operand_17184->mValue.ggs_string ().reader_absolutePathFromPath (_inLexique, var_cas_inDirectory COMMA_SOURCE_FILE_AT_LINE (398)), operand_17184->mValue.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (399)) COMMA_HERE) ;
+          var_cas_filePath = GGS_lstring ::constructor_new (inLexique, operand_17184->mValue.ggs_string ().reader_absolutePathFromPath (inLexique, var_cas_inDirectory COMMA_SOURCE_FILE_AT_LINE (398)), operand_17184->mValue.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (399)) COMMA_HERE) ;
           GGS_semanticsComponentRoot  var_cas_semanticsComponentRoot ;
-          ::routine_parseSemanticComponent (_inLexique,  var_cas_filePath,  var_cas_ioParsedComponentStruct,  var_cas_semanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (402)) ;
-          var_cas_ioSemanticDeclarationList = (var_cas_ioSemanticDeclarationList)._operator_concat (var_cas_semanticsComponentRoot.reader_mSemanticDeclarations (_inLexique COMMA_SOURCE_FILE_AT_LINE (407)).reader_mSemanticDeclarationList (_inLexique COMMA_SOURCE_FILE_AT_LINE (407))) ;
-          ::routine_recursivelyImportSemanticComponent (_inLexique,  var_cas_ioParsedComponentStruct,  var_cas_ioSemanticDeclarationList,  var_cas_ioParsedFileSet,  var_cas_semanticsComponentRoot.reader_mImportedComponentFileNameList (_inLexique COMMA_SOURCE_FILE_AT_LINE (412)),  var_cas_inDirectory COMMA_SOURCE_FILE_AT_LINE (408)) ;
+          ::routine_parseSemanticComponent (inLexique,  var_cas_filePath,  var_cas_ioParsedComponentStruct,  var_cas_semanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (402)) ;
+          var_cas_ioSemanticDeclarationList = (var_cas_ioSemanticDeclarationList)._operator_concat (var_cas_semanticsComponentRoot.reader_mSemanticDeclarations (inLexique COMMA_SOURCE_FILE_AT_LINE (407)).reader_mSemanticDeclarationList (inLexique COMMA_SOURCE_FILE_AT_LINE (407))) ;
+          ::routine_recursivelyImportSemanticComponent (inLexique,  var_cas_ioParsedComponentStruct,  var_cas_ioSemanticDeclarationList,  var_cas_ioParsedFileSet,  var_cas_semanticsComponentRoot.reader_mImportedComponentFileNameList (inLexique COMMA_SOURCE_FILE_AT_LINE (412)),  var_cas_inDirectory COMMA_SOURCE_FILE_AT_LINE (408)) ;
         }
       }
     }
@@ -629,7 +629,7 @@ void routine_recursivelyImportSemanticComponent (C_Compiler & _inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileSemanticsComponent (C_Compiler & _inLexique,
+void routine_compileSemanticsComponent (C_Compiler & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  /* var_cas_inOutputDirectory */,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct COMMA_UNUSED_LOCATION_ARGS) {
@@ -637,22 +637,22 @@ void routine_compileSemanticsComponent (C_Compiler & _inLexique,
     printf ("ENTER routine_compileSemanticsComponent at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_semanticsComponentRoot  var_cas_semanticsComponentRoot ;
-  ::routine_parseSemanticComponent (_inLexique,  var_cas_inSourceFile,  var_cas_ioParsedComponentStruct,  var_cas_semanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (429)) ;
+  ::routine_parseSemanticComponent (inLexique,  var_cas_inSourceFile,  var_cas_ioParsedComponentStruct,  var_cas_semanticsComponentRoot COMMA_SOURCE_FILE_AT_LINE (429)) ;
   GGS_string var_cas_basename ;
-  var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (435)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (435)) ;
+  var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (435)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (435)) ;
   GGS_lstring  var_cas_componentName ;
-  var_cas_componentName = var_cas_semanticsComponentRoot.reader_mSemanticsComponentName (_inLexique COMMA_SOURCE_FILE_AT_LINE (436)) ;
-  if (((var_cas_componentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (437)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
-    var_cas_componentName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, ((((GGS_string ("GALGAS checks "
-      "the component name ('"))._operator_concat (var_cas_componentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (439))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (441)) ;
+  var_cas_componentName = var_cas_semanticsComponentRoot.reader_mSemanticsComponentName (inLexique COMMA_SOURCE_FILE_AT_LINE (436)) ;
+  if (((var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (437)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+    var_cas_componentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS checks "
+      "the component name ('"))._operator_concat (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (439))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (441)) ;
   }
   GGS_semanticDeclarationList  var_cas_semanticDeclarationList ;
-  var_cas_semanticDeclarationList = var_cas_semanticsComponentRoot.reader_mSemanticDeclarations (_inLexique COMMA_SOURCE_FILE_AT_LINE (444)).reader_mSemanticDeclarationList (_inLexique COMMA_SOURCE_FILE_AT_LINE (444)) ;
+  var_cas_semanticDeclarationList = var_cas_semanticsComponentRoot.reader_mSemanticDeclarations (inLexique COMMA_SOURCE_FILE_AT_LINE (444)).reader_mSemanticDeclarationList (inLexique COMMA_SOURCE_FILE_AT_LINE (444)) ;
   GGS_stringset  var_cas_parsedFileSet ;
-  var_cas_parsedFileSet = GGS_stringset ::constructor_setWithString (var_cas_inSourceFile.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (445))) ;
-  ::routine_recursivelyImportSemanticComponent (_inLexique,  var_cas_ioParsedComponentStruct,  var_cas_semanticDeclarationList,  var_cas_parsedFileSet,  var_cas_semanticsComponentRoot.reader_mImportedComponentFileNameList (_inLexique COMMA_SOURCE_FILE_AT_LINE (450)),  var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (451)) COMMA_SOURCE_FILE_AT_LINE (446)) ;
+  var_cas_parsedFileSet = GGS_stringset ::constructor_setWithString (var_cas_inSourceFile.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (445))) ;
+  ::routine_recursivelyImportSemanticComponent (inLexique,  var_cas_ioParsedComponentStruct,  var_cas_semanticDeclarationList,  var_cas_parsedFileSet,  var_cas_semanticsComponentRoot.reader_mImportedComponentFileNameList (inLexique COMMA_SOURCE_FILE_AT_LINE (450)),  var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (451)) COMMA_SOURCE_FILE_AT_LINE (446)) ;
   GGS_semanticContext var_cas_semanticContext ;
-  ::routine_buildSemanticContext (_inLexique,  var_cas_semanticDeclarationList,  var_cas_semanticsComponentRoot.reader_mEndOfSourceFile (_inLexique COMMA_SOURCE_FILE_AT_LINE (455)),  var_cas_semanticContext COMMA_SOURCE_FILE_AT_LINE (455)) ;
+  ::routine_buildSemanticContext (inLexique,  var_cas_semanticDeclarationList,  var_cas_semanticsComponentRoot.reader_mEndOfSourceFile (inLexique COMMA_SOURCE_FILE_AT_LINE (455)),  var_cas_semanticContext COMMA_SOURCE_FILE_AT_LINE (455)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_compileSemanticsComponent\n") ;
   #endif

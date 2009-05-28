@@ -86,13 +86,13 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_startSymbolLabelFormalParameterList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_startSymbolLabelFormalParameterList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -107,25 +107,25 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_startSymbolLabelFormalParameterList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_formalArgumentPassingMode& _out_0,
                               GGS_lstring & _out_1,
                               GGS_lstring & _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_formalArgumentPassingMode& _out_0,
                              GGS_lstring & _out_1,
                              GGS_lstring & _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_formalArgumentPassingMode& _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_lstring & _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_formalArgumentPassingMode& _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_lstring & _out_2
@@ -139,7 +139,7 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_startSymbolLabelFormalParameterList _operator_concat (const GGS_startSymbolLabelFormalParameterList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
@@ -160,7 +160,7 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -229,13 +229,13 @@ class GGS_grammarLabelList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_grammarLabelList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_grammarLabelList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -250,22 +250,22 @@ class GGS_grammarLabelList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_grammarLabelList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_lstring & _out_0,
                               GGS_startSymbolLabelFormalParameterList & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_lstring & _out_0,
                              GGS_startSymbolLabelFormalParameterList & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_startSymbolLabelFormalParameterList & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_startSymbolLabelFormalParameterList & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -277,7 +277,7 @@ class GGS_grammarLabelList : public AC_galgas_list {
                                 const GGS_startSymbolLabelFormalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_grammarLabelList _operator_concat (const GGS_grammarLabelList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -295,7 +295,7 @@ class GGS_grammarLabelList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -432,7 +432,7 @@ class elementOf_GGS_startSymbolLabelFormalParameterList : public AC_galgas_list:
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -468,7 +468,7 @@ class elementOf_GGS_grammarLabelList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -511,7 +511,7 @@ class cPtr_grammarComponentRoot : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;

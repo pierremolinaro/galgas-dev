@@ -62,12 +62,12 @@ generateInstruction (AC_OutputStream & ioCppFile,
   //--- Evaluate variant and condition
     ioCppFile << "  if (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
                  "    if (" << variantVariable << ".uintValue () == 0) {\n"
-                 "      _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE (" ;
+                 "      inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE (" ;
     ioCppFile.appendSigned (mLocation.lineNumber ()) ;
     ioCppFile << ")) ;\n"
                  "      " << conditionVariable << " = GGS_bool (false) ;\n"
                  "    }else{\n" 
-                 "      " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
+                 "      " << variantVariable << "._decrement_operation (inLexique COMMA_HERE) ;\n" ;
   //--- Second instruction list
     ioCppFile.incIndentation (+4) ;
     generateInstructionListForList (mInstructionList2, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 

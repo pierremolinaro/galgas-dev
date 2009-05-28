@@ -47,7 +47,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
       if (! lexiqueUtilise) {
         inCppFile << " /*" ;
       }
-      inCppFile << " _inLexique" ;
+      inCppFile << " inLexique" ;
       if (! lexiqueUtilise) {
         inCppFile << " */" ;
       }
@@ -236,7 +236,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inHfile << "//--- '" << messageCourant->mKey << "' message\n"
-               "  public : GGS_string reader_" << messageCourant->mKey << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n\n" ;
+               "  public : GGS_string reader_" << messageCourant->mKey << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n\n" ;
     messageCourant = messageCourant->nextObject () ;
   }
 
@@ -359,10 +359,10 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
       generatedZone3 << " " << currentOnceAttribute->mAttributeName << " ;\n"
                         "  public : " ;
       currentOnceAttribute->mAttributType (HERE)->generateCppClassName (generatedZone3) ;
-      generatedZone3 << " reader_" << currentOnceAttribute->mAttributeName << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+      generatedZone3 << " reader_" << currentOnceAttribute->mAttributeName << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
       currentOnceAttribute = currentOnceAttribute->nextObject () ;
     }
-    generatedZone3 << "  private : void computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (C_Compiler & _inLexique) const ;\n\n" ;
+    generatedZone3 << "  private : void computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (C_Compiler & inLexique) const ;\n\n" ;
     currentLazyDeclaration = currentLazyDeclaration->nextObject () ;
   }
 
@@ -385,7 +385,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Method for 'description' reader
   generatedZone3 << "//--- Method for 'description' reader\n"
                     "  public : virtual void\n"
-                    "  appendForDescription (C_Compiler & _inLexique,\n"
+                    "  appendForDescription (C_Compiler & inLexique,\n"
                     "                        C_String & ioString,\n"
                     "                        const sint32 inIndentation\n"
                     "                        COMMA_LOCATION_ARGS) const ;\n" ;
@@ -569,8 +569,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }else{
       inCppFile << "  bool equal = typeid (this) == typeid (inOperand) ;\n"
                    "  if (equal) {\n"
-                   "    const cPtr_" << aNomClasse << " * _p = dynamic_cast <const cPtr_" << aNomClasse << " *> (inOperand) ;\n"
-                   "    macroValidPointer (_p) ;\n"
+                   "    const cPtr_" << aNomClasse << " * ptr = dynamic_cast <const cPtr_" << aNomClasse << " *> (inOperand) ;\n"
+                   "    macroValidPointer (ptr) ;\n"
                    "    equal = " ;
       bool first = true ;
       while (current != NULL) {
@@ -580,7 +580,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
         }else{
           inCppFile << "\n         && " ;
         }
-        inCppFile << current->mAttributeName << "._operator_isEqual (_p->" << current->mAttributeName << ").boolValue ()" ;
+        inCppFile << current->mAttributeName << "._operator_isEqual (ptr->" << current->mAttributeName << ").boolValue ()" ;
         current = current->nextObject () ;
       }
       inCppFile << " ;\n"
@@ -601,7 +601,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (! lexiqueUtilise) {
       inCppFile << "/* " ;
     }
-    inCppFile << "_inLexique" ;
+    inCppFile << "inLexique" ;
     if (! lexiqueUtilise) {
       inCppFile << " */" ;
     }
@@ -628,9 +628,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       macroValidPointer (currentOnceAttribute) ;
       inCppFile.appendCppHyphenLineComment () ;
       currentOnceAttribute->mAttributType (HERE)->generateCppClassName (inCppFile) ;
-      inCppFile << " cPtr_" << aNomClasse << "::reader_" <<  currentOnceAttribute->mAttributeName << " (C_Compiler & _inLexique COMMA_UNUSED_LOCATION_ARGS) const {\n"
+      inCppFile << " cPtr_" << aNomClasse << "::reader_" <<  currentOnceAttribute->mAttributeName << " (C_Compiler & inLexique COMMA_UNUSED_LOCATION_ARGS) const {\n"
                    "  if (! _mOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << "isComputed) {\n"
-                   "    computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (_inLexique) ;\n"
+                   "    computeOnce" << cStringWithSigned (currentLazyDeclaration->mLocationMagicNumber.location ()) << " (inLexique) ;\n"
                    "  }\n"
                    "  return " <<  currentOnceAttribute->mAttributeName << " ;\n"
                    "}\n\n" ;
@@ -648,7 +648,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "void cPtr_" << aNomClasse << "::\n"
                "appendForDescription (C_Compiler & "
-            << ((current == NULL) ? "/* _inLexique */" : "_inLexique")
+            << ((current == NULL) ? "/* inLexique */" : "inLexique")
             << ",\n"
                "                      C_String & ioString,\n"
                "                      const sint32 "
@@ -666,7 +666,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     macroValidPointer (current) ;
     inCppFile << "\n"
                  "           << " << current->mAttributeName
-              << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1)" ;
+              << ".reader_description  (inLexique COMMA_THERE, inIndentation + 1)" ;
     current = current->nextObject () ;
   }
   inCppFile << " ;\n"
@@ -854,7 +854,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (messageCourant != NULL) {
     macroValidPointer (messageCourant) ;
     inCppFile << "GGS_string GGS_" << aNomClasse << "::\n"
-                 "reader_" << messageCourant->mKey << " (C_Compiler & /* _inLexique */\n"
+                 "reader_" << messageCourant->mKey << " (C_Compiler & /* inLexique */\n"
                  "                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  GGS_string result ;\n"
                  "  if (mPointer != NULL) {\n"

@@ -99,7 +99,7 @@ engendrerAppelProduction (const sint16 nombreDeParametres,
              << "_"
              << mSourceFileName << "_" << cStringWithSigned (aLigneDefinition)
              << "_" << cStringWithSigned (aColonneDefinition) << "_" << inAltName
-             << " (_inLexique" ;
+             << " (inLexique" ;
   for (sint32 i=1 ; i<nombreDeParametres ; i++) {
     fichierCPP << "," ;
     if ((i % 5) == 4) {

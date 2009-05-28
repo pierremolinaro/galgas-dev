@@ -163,7 +163,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
   generatedZone2 << "static void\n"
                  << inProgramComponentName << "_prologue (C_Compiler & "
-                 << (lexiqueIsUsedInPrologue ? "_inLexique" : "/* _inLexique */")
+                 << (lexiqueIsUsedInPrologue ? "inLexique" : "/* inLexique */")
                  << ",\n"
                     "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
   sint32 unusedPrototypeIndex = 0 ;
@@ -180,7 +180,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   const bool lexiqueIsUsedInEpilogue = isLexiqueFormalArgumentUsedForList (inEpilogueInstructionList, true) ;
   generatedZone2 << "static void\n"
                  << inProgramComponentName << "_epilogue (C_Compiler & "
-                 << (lexiqueIsUsedInEpilogue ? "_inLexique" : "/* _inLexique */")
+                 << (lexiqueIsUsedInEpilogue ? "inLexique" : "/* inLexique */")
                  << ",\n"
                     "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
   unusedPrototypeIndex = 0 ;
@@ -288,12 +288,12 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
     }
     sint32 prototypeIndex = 0 ;
     generatedZone2 << "if (fileExtension.compare (\"" << currentRule._mSourceExtension (HERE) << "\") == 0) {\n"
-                      "  C_Compiler & _inLexique = * _commonLexique ;\n"
+                      "  C_Compiler & inLexique = * _commonLexique ;\n"
                       "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
-                      "  const GGS_location _here (_inLexique) ;\n"
+                      "  const GGS_location _here (inLexique) ;\n"
                       "  const GGS_lstring var_cas_"
                    << currentRule._mSourceFileName (HERE)
-                   << " (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;\n" ;
+                   << " (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;\n" ;
     generateInstructionListForList (currentRule._mInstructionList (HERE),
                                     generatedZone2,
                                     "",

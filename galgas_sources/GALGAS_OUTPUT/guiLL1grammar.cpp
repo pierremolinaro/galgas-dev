@@ -246,9 +246,9 @@ static const sint16 gDecisionIndexes [8] = {
 //---------------------------------------------------------------------------*
 
 void guiLL1grammar::
-nt_gui_attribute_ (galgas_scanner & _inLexique,
+nt_gui_attribute_ (galgas_scanner & inLexique,
                                 GGS_guiAttributeList & parameter_1) {
-pr_gui_attribute_guiModelBuilder_94_20_ (_inLexique, parameter_1) ;
+pr_gui_attribute_guiModelBuilder_94_20_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -258,9 +258,9 @@ pr_gui_attribute_guiModelBuilder_94_20_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void guiLL1grammar::
-nt_gui_component_start_symbol_ (galgas_scanner & _inLexique,
+nt_gui_component_start_symbol_ (galgas_scanner & inLexique,
                                 GGS_guiComponentRoot & parameter_1) {
-pr_gui_component_start_symbol_guiModelBuilder_39_33_ (_inLexique, parameter_1) ;
+pr_gui_component_start_symbol_guiModelBuilder_39_33_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -339,9 +339,9 @@ void guiLL1grammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
 //---------------------------------------------------------------------------*
 
 void guiLL1grammar::
-nt_gui_label_ (galgas_scanner & _inLexique,
+nt_gui_label_ (galgas_scanner & inLexique,
                                 GGS_guiLabelList & parameter_1) {
-pr_gui_label_guiModelBuilder_104_16_ (_inLexique, parameter_1) ;
+pr_gui_label_guiModelBuilder_104_16_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -351,8 +351,8 @@ pr_gui_label_guiModelBuilder_104_16_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 
-sint16 guiLL1grammar::select_repeat_guiModelBuilder_0 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 guiLL1grammar::select_repeat_guiModelBuilder_0 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -362,8 +362,8 @@ sint16 guiLL1grammar::select_repeat_guiModelBuilder_0 (galgas_scanner & _inLexiq
 //---------------------------------------------------------------------------*
 
 
-sint16 guiLL1grammar::select_guiModelBuilder_1 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 guiLL1grammar::select_guiModelBuilder_1 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -373,8 +373,8 @@ sint16 guiLL1grammar::select_guiModelBuilder_1 (galgas_scanner & _inLexique) {
 //---------------------------------------------------------------------------*
 
 
-sint16 guiLL1grammar::select_repeat_guiModelBuilder_2 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 guiLL1grammar::select_repeat_guiModelBuilder_2 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

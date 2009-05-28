@@ -1046,15 +1046,15 @@ static const sint16 gDecisionIndexes [51] = {
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_function_call_or_attribute_ (galgas_scanner & _inLexique,
+nt_function_call_or_attribute_ (galgas_scanner & inLexique,
                                 const GGS_lstring parameter_1,
                                 GGS_lexicalActualArgument & parameter_2) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-  pr_function_call_or_attribute_lexiqueModelBuilder_399_33_ (_inLexique, parameter_1, parameter_2) ;
+  pr_function_call_or_attribute_lexiqueModelBuilder_399_33_ (inLexique, parameter_1, parameter_2) ;
     break ;
   case 2 :
-  pr_function_call_or_attribute_lexiqueModelBuilder_405_33_ (_inLexique, parameter_1, parameter_2) ;
+  pr_function_call_or_attribute_lexiqueModelBuilder_405_33_ (inLexique, parameter_1, parameter_2) ;
     break ;
   default :
     break ;
@@ -1068,17 +1068,17 @@ nt_function_call_or_attribute_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_action_effective_argument_ (galgas_scanner & _inLexique,
+nt_lexical_action_effective_argument_ (galgas_scanner & inLexique,
                                 GGS_lexicalActualArgumentList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-  pr_lexical_action_effective_argument_lexiqueModelBuilder_374_40_ (_inLexique, parameter_1) ;
+  pr_lexical_action_effective_argument_lexiqueModelBuilder_374_40_ (inLexique, parameter_1) ;
     break ;
   case 2 :
-  pr_lexical_action_effective_argument_lexiqueModelBuilder_382_40_ (_inLexique, parameter_1) ;
+  pr_lexical_action_effective_argument_lexiqueModelBuilder_382_40_ (inLexique, parameter_1) ;
     break ;
   case 3 :
-  pr_lexical_action_effective_argument_lexiqueModelBuilder_389_40_ (_inLexique, parameter_1) ;
+  pr_lexical_action_effective_argument_lexiqueModelBuilder_389_40_ (inLexique, parameter_1) ;
     break ;
   default :
     break ;
@@ -1092,9 +1092,9 @@ nt_lexical_action_effective_argument_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_attribute_declaration_ (galgas_scanner & _inLexique,
+nt_lexical_attribute_declaration_ (galgas_scanner & inLexique,
                                 GGS_lexicalAttributeList & parameter_1) {
-pr_lexical_attribute_declaration_lexiqueModelBuilder_597_36_ (_inLexique, parameter_1) ;
+pr_lexical_attribute_declaration_lexiqueModelBuilder_597_36_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1104,9 +1104,9 @@ pr_lexical_attribute_declaration_lexiqueModelBuilder_597_36_ (_inLexique, parame
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_error_message_declaration_ (galgas_scanner & _inLexique,
+nt_lexical_error_message_declaration_ (galgas_scanner & inLexique,
                                 GGS_lexicalErrorMessageDeclarationList & parameter_1) {
-pr_lexical_error_message_declaration_lexiqueModelBuilder_176_40_ (_inLexique, parameter_1) ;
+pr_lexical_error_message_declaration_lexiqueModelBuilder_176_40_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1116,9 +1116,9 @@ pr_lexical_error_message_declaration_lexiqueModelBuilder_176_40_ (_inLexique, pa
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_explicit_rule_ (galgas_scanner & _inLexique,
+nt_lexical_explicit_rule_ (galgas_scanner & inLexique,
                                 GGS_lexicalExplicitRuleList & parameter_1) {
-pr_lexical_explicit_rule_lexiqueModelBuilder_200_28_ (_inLexique, parameter_1) ;
+pr_lexical_explicit_rule_lexiqueModelBuilder_200_28_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1128,9 +1128,9 @@ pr_lexical_explicit_rule_lexiqueModelBuilder_200_28_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_expression_ (galgas_scanner & _inLexique,
+nt_lexical_expression_ (galgas_scanner & inLexique,
                                 GGS_lexicalExpression & parameter_1) {
-pr_lexical_expression_lexiqueModelBuilder_479_25_ (_inLexique, parameter_1) ;
+pr_lexical_expression_lexiqueModelBuilder_479_25_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1140,20 +1140,20 @@ pr_lexical_expression_lexiqueModelBuilder_479_25_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_factor_ (galgas_scanner & _inLexique,
+nt_lexical_factor_ (galgas_scanner & inLexique,
                                 GGS_lexicalExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-  pr_lexical_factor_lexiqueModelBuilder_498_21_ (_inLexique, parameter_1) ;
+  pr_lexical_factor_lexiqueModelBuilder_498_21_ (inLexique, parameter_1) ;
     break ;
   case 2 :
-  pr_lexical_factor_lexiqueModelBuilder_506_21_ (_inLexique, parameter_1) ;
+  pr_lexical_factor_lexiqueModelBuilder_506_21_ (inLexique, parameter_1) ;
     break ;
   case 3 :
-  pr_lexical_factor_lexiqueModelBuilder_518_21_ (_inLexique, parameter_1) ;
+  pr_lexical_factor_lexiqueModelBuilder_518_21_ (inLexique, parameter_1) ;
     break ;
   case 4 :
-  pr_lexical_factor_lexiqueModelBuilder_533_21_ (_inLexique, parameter_1) ;
+  pr_lexical_factor_lexiqueModelBuilder_533_21_ (inLexique, parameter_1) ;
     break ;
   default :
     break ;
@@ -1167,9 +1167,9 @@ nt_lexical_factor_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_implicit_rule_ (galgas_scanner & _inLexique,
+nt_lexical_implicit_rule_ (galgas_scanner & inLexique,
                                 GGS_lexicalImplicitRuleList & parameter_1) {
-pr_lexical_implicit_rule_lexiqueModelBuilder_191_28_ (_inLexique, parameter_1) ;
+pr_lexical_implicit_rule_lexiqueModelBuilder_191_28_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1179,38 +1179,38 @@ pr_lexical_implicit_rule_lexiqueModelBuilder_191_28_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_instruction_ (galgas_scanner & _inLexique,
+nt_lexical_instruction_ (galgas_scanner & inLexique,
                                 GGS_lexicalInstructionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-  pr_lexical_instruction_lexiqueModelBuilder_216_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_216_26_ (inLexique, parameter_1) ;
     break ;
   case 2 :
-  pr_lexical_instruction_lexiqueModelBuilder_267_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_267_26_ (inLexique, parameter_1) ;
     break ;
   case 3 :
-  pr_lexical_instruction_lexiqueModelBuilder_306_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_306_26_ (inLexique, parameter_1) ;
     break ;
   case 4 :
-  pr_lexical_instruction_lexiqueModelBuilder_340_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_340_26_ (inLexique, parameter_1) ;
     break ;
   case 5 :
-  pr_lexical_instruction_lexiqueModelBuilder_419_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_419_26_ (inLexique, parameter_1) ;
     break ;
   case 6 :
-  pr_lexical_instruction_lexiqueModelBuilder_429_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_429_26_ (inLexique, parameter_1) ;
     break ;
   case 7 :
-  pr_lexical_instruction_lexiqueModelBuilder_438_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_438_26_ (inLexique, parameter_1) ;
     break ;
   case 8 :
-  pr_lexical_instruction_lexiqueModelBuilder_448_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_448_26_ (inLexique, parameter_1) ;
     break ;
   case 9 :
-  pr_lexical_instruction_lexiqueModelBuilder_458_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_458_26_ (inLexique, parameter_1) ;
     break ;
   case 10 :
-  pr_lexical_instruction_lexiqueModelBuilder_471_26_ (_inLexique, parameter_1) ;
+  pr_lexical_instruction_lexiqueModelBuilder_471_26_ (inLexique, parameter_1) ;
     break ;
   default :
     break ;
@@ -1224,9 +1224,9 @@ nt_lexical_instruction_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_list_declaration_ (galgas_scanner & _inLexique,
+nt_lexical_list_declaration_ (galgas_scanner & inLexique,
                                 GGS_lexicalListDeclarationList & parameter_1) {
-pr_lexical_list_declaration_lexiqueModelBuilder_540_31_ (_inLexique, parameter_1) ;
+pr_lexical_list_declaration_lexiqueModelBuilder_540_31_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1236,9 +1236,9 @@ pr_lexical_list_declaration_lexiqueModelBuilder_540_31_ (_inLexique, parameter_1
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_list_entry_ (galgas_scanner & _inLexique,
+nt_lexical_list_entry_ (galgas_scanner & inLexique,
                                 GGS_lexicalListEntryList & parameter_1) {
-pr_lexical_list_entry_lexiqueModelBuilder_576_25_ (_inLexique, parameter_1) ;
+pr_lexical_list_entry_lexiqueModelBuilder_576_25_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1248,14 +1248,14 @@ pr_lexical_list_entry_lexiqueModelBuilder_576_25_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_send_instruction_ (galgas_scanner & _inLexique,
+nt_lexical_send_instruction_ (galgas_scanner & inLexique,
                                 GGS_lexicalInstruction & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-  pr_lexical_send_instruction_lexiqueModelBuilder_226_31_ (_inLexique, parameter_1) ;
+  pr_lexical_send_instruction_lexiqueModelBuilder_226_31_ (inLexique, parameter_1) ;
     break ;
   case 2 :
-  pr_lexical_send_instruction_lexiqueModelBuilder_234_31_ (_inLexique, parameter_1) ;
+  pr_lexical_send_instruction_lexiqueModelBuilder_234_31_ (inLexique, parameter_1) ;
     break ;
   default :
     break ;
@@ -1269,9 +1269,9 @@ nt_lexical_send_instruction_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexical_term_ (galgas_scanner & _inLexique,
+nt_lexical_term_ (galgas_scanner & inLexique,
                                 GGS_lexicalExpression & parameter_1) {
-pr_lexical_term_lexiqueModelBuilder_485_19_ (_inLexique, parameter_1) ;
+pr_lexical_term_lexiqueModelBuilder_485_19_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1281,9 +1281,9 @@ pr_lexical_term_lexiqueModelBuilder_485_19_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_lexique_component_start_symbol_ (galgas_scanner & _inLexique,
+nt_lexique_component_start_symbol_ (galgas_scanner & inLexique,
                                 GGS_lexiqueComponentRoot & parameter_1) {
-pr_lexique_component_start_symbol_lexiqueModelBuilder_64_37_ (_inLexique, parameter_1) ;
+pr_lexique_component_start_symbol_lexiqueModelBuilder_64_37_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1362,9 +1362,9 @@ void lexiqueLL1grammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_repeat_while_branch_ (galgas_scanner & _inLexique,
+nt_repeat_while_branch_ (galgas_scanner & inLexique,
                                 GGS_lexicalWhileBranchList & parameter_1) {
-pr_repeat_while_branch_lexiqueModelBuilder_291_26_ (_inLexique, parameter_1) ;
+pr_repeat_while_branch_lexiqueModelBuilder_291_26_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1374,9 +1374,9 @@ pr_repeat_while_branch_lexiqueModelBuilder_291_26_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_style_declaration_ (galgas_scanner & _inLexique,
+nt_style_declaration_ (galgas_scanner & inLexique,
                                 GGS_lexicalStyleList & parameter_1) {
-pr_style_declaration_lexiqueModelBuilder_647_24_ (_inLexique, parameter_1) ;
+pr_style_declaration_lexiqueModelBuilder_647_24_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1386,9 +1386,9 @@ pr_style_declaration_lexiqueModelBuilder_647_24_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_template_delimitor_ (galgas_scanner & _inLexique,
+nt_template_delimitor_ (galgas_scanner & inLexique,
                                 GGS_templateDelimitorList & parameter_1) {
-pr_template_delimitor_lexiqueModelBuilder_131_25_ (_inLexique, parameter_1) ;
+pr_template_delimitor_lexiqueModelBuilder_131_25_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1398,9 +1398,9 @@ pr_template_delimitor_lexiqueModelBuilder_131_25_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_template_replacement_ (galgas_scanner & _inLexique,
+nt_template_replacement_ (galgas_scanner & inLexique,
                                 GGS_templateReplacementList & parameter_1) {
-pr_template_replacement_lexiqueModelBuilder_155_27_ (_inLexique, parameter_1) ;
+pr_template_replacement_lexiqueModelBuilder_155_27_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1410,9 +1410,9 @@ pr_template_replacement_lexiqueModelBuilder_155_27_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void lexiqueLL1grammar::
-nt_terminal_declaration_ (galgas_scanner & _inLexique,
+nt_terminal_declaration_ (galgas_scanner & inLexique,
                                 GGS_terminalDeclarationList & parameter_1) {
-pr_terminal_declaration_lexiqueModelBuilder_608_27_ (_inLexique, parameter_1) ;
+pr_terminal_declaration_lexiqueModelBuilder_608_27_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1422,8 +1422,8 @@ pr_terminal_declaration_lexiqueModelBuilder_608_27_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_0 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_0 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1433,8 +1433,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_0 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_1 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_1 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1444,8 +1444,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_1 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_2 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_2 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1455,8 +1455,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_2 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_3 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_3 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1466,8 +1466,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_3 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_4 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_4 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1477,8 +1477,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_4 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_5 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_5 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1488,8 +1488,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_5 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_6 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_6 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1499,8 +1499,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_6 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_7 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_7 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1510,8 +1510,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_7 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_8 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_8 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1521,8 +1521,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_8 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_9 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_9 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1532,8 +1532,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_9 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_10 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_10 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1543,8 +1543,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_10 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_11 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_11 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1554,8 +1554,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_11 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_12 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_12 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1565,8 +1565,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_12 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_13 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_13 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1576,8 +1576,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_13 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_14 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_14 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1587,8 +1587,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_14 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_15 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_15 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1598,8 +1598,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_15 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_16 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_16 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1609,8 +1609,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_16 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_17 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_17 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1620,8 +1620,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_17 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_18 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_18 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1631,8 +1631,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_18 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_19 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_19 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1642,8 +1642,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_19 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_20 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_20 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1653,8 +1653,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_20 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_21 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_21 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1664,8 +1664,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_21 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_22 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_22 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1675,8 +1675,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_22 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_23 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_23 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1686,8 +1686,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_23 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_24 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_24 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1697,8 +1697,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_24 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_25 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_25 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1708,8 +1708,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_25 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_26 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_26 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1719,8 +1719,8 @@ sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_26 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_27 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_27 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1730,8 +1730,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_27 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_28 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_28 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1741,8 +1741,8 @@ sint16 lexiqueLL1grammar::select_lexiqueModelBuilder_28 (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 
-sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_29 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 lexiqueLL1grammar::select_repeat_lexiqueModelBuilder_29 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

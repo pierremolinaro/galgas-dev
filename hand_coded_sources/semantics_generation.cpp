@@ -188,7 +188,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + mRoutineName + "\"") ;
   inCppFile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
-    inCppFile << " _inLexique" ;
+    inCppFile << " inLexique" ;
   }
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hc ()) {
@@ -290,7 +290,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
   inCppFile << " function_" << mFunctionName << " (C_Compiler &" ;
   if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
-    inCppFile << " _inLexique" ;
+    inCppFile << " inLexique" ;
   }
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
   while (currentArgument.hc ()) {

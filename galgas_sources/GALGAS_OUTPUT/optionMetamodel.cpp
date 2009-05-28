@@ -68,13 +68,13 @@ bool elementOf_GGS_commandLineOptionList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_commandLineOptionList * _p = dynamic_cast <const elementOf_GGS_commandLineOptionList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOptionTypeName._operator_isEqual (_p->mOptionTypeName).boolValue ()
-         && mOptionInternalName._operator_isEqual (_p->mOptionInternalName).boolValue ()
-         && mOptionInvocationLetter._operator_isEqual (_p->mOptionInvocationLetter).boolValue ()
-         && mOptionInvocationString._operator_isEqual (_p->mOptionInvocationString).boolValue ()
-         && mOptionComment._operator_isEqual (_p->mOptionComment).boolValue () ;
+    const elementOf_GGS_commandLineOptionList * ptr = dynamic_cast <const elementOf_GGS_commandLineOptionList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOptionTypeName._operator_isEqual (ptr->mOptionTypeName).boolValue ()
+         && mOptionInternalName._operator_isEqual (ptr->mOptionInternalName).boolValue ()
+         && mOptionInvocationLetter._operator_isEqual (ptr->mOptionInvocationLetter).boolValue ()
+         && mOptionInvocationString._operator_isEqual (ptr->mOptionInvocationString).boolValue ()
+         && mOptionComment._operator_isEqual (ptr->mOptionComment).boolValue () ;
   }
   return equal ;
 }
@@ -82,30 +82,30 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_commandLineOptionList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionTypeName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionTypeName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionInternalName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionInternalName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionInvocationLetter.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionInvocationLetter.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionInvocationString.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionInvocationString.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionComment.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionComment.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -230,17 +230,17 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_commandLineOptionList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mOptionTypeName,
-                                _p->mOptionInternalName,
-                                _p->mOptionInvocationLetter,
-                                _p->mOptionInvocationString,
-                                _p->mOptionComment
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mOptionTypeName,
+                                ptr->mOptionInternalName,
+                                ptr->mOptionInvocationLetter,
+                                ptr->mOptionInvocationString,
+                                ptr->mOptionComment
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -276,15 +276,15 @@ internalSubListWithRange (GGS_commandLineOptionList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mOptionTypeName, _p->mOptionInternalName, _p->mOptionInvocationLetter, _p->mOptionInvocationString, _p->mOptionComment) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mOptionTypeName, ptr->mOptionInternalName, ptr->mOptionInvocationLetter, ptr->mOptionInvocationString, ptr->mOptionComment) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -292,7 +292,7 @@ internalSubListWithRange (GGS_commandLineOptionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionList GGS_commandLineOptionList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -301,7 +301,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -312,14 +312,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionList GGS_commandLineOptionList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_commandLineOptionList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -330,35 +330,35 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_commandLineOptionList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@commandLineOptionList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@commandLineOptionList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lchar & _out_2,
               GGS_lstring & _out_3,
               GGS_lstring & _out_4
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mOptionTypeName ;
-    _out_1 = _p->mOptionInternalName ;
-    _out_2 = _p->mOptionInvocationLetter ;
-    _out_3 = _p->mOptionInvocationString ;
-    _out_4 = _p->mOptionComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mOptionTypeName ;
+    _out_1 = ptr->mOptionInternalName ;
+    _out_2 = ptr->mOptionInvocationLetter ;
+    _out_3 = ptr->mOptionInvocationString ;
+    _out_4 = ptr->mOptionComment ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -371,26 +371,26 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lchar & _out_2,
              GGS_lstring & _out_3,
              GGS_lstring & _out_4
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mOptionTypeName ;
-    _out_1 = _p->mOptionInternalName ;
-    _out_2 = _p->mOptionInvocationLetter ;
-    _out_3 = _p->mOptionInvocationString ;
-    _out_4 = _p->mOptionComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mOptionTypeName ;
+    _out_1 = ptr->mOptionInternalName ;
+    _out_2 = ptr->mOptionInvocationLetter ;
+    _out_3 = ptr->mOptionInvocationString ;
+    _out_4 = ptr->mOptionComment ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -403,26 +403,26 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lchar & _out_2,
                  GGS_lstring & _out_3,
                  GGS_lstring & _out_4
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mOptionTypeName ;
-    _out_1 = _p->mOptionInternalName ;
-    _out_2 = _p->mOptionInvocationLetter ;
-    _out_3 = _p->mOptionInvocationString ;
-    _out_4 = _p->mOptionComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mOptionTypeName ;
+    _out_1 = ptr->mOptionInternalName ;
+    _out_2 = ptr->mOptionInvocationLetter ;
+    _out_3 = ptr->mOptionInvocationString ;
+    _out_4 = ptr->mOptionComment ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -437,26 +437,26 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lchar & _out_2,
                 GGS_lstring & _out_3,
                 GGS_lstring & _out_4
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mOptionTypeName ;
-    _out_1 = _p->mOptionInternalName ;
-    _out_2 = _p->mOptionInvocationLetter ;
-    _out_3 = _p->mOptionInvocationString ;
-    _out_4 = _p->mOptionComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mOptionTypeName ;
+    _out_1 = ptr->mOptionInternalName ;
+    _out_2 = ptr->mOptionInvocationLetter ;
+    _out_3 = ptr->mOptionInvocationString ;
+    _out_4 = ptr->mOptionComment ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -681,10 +681,10 @@ bool cPtr_optionComponentRoot::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_optionComponentRoot * _p = dynamic_cast <const cPtr_optionComponentRoot *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOptionComponentName._operator_isEqual (_p->mOptionComponentName).boolValue ()
-         && mOptions._operator_isEqual (_p->mOptions).boolValue () ;
+    const cPtr_optionComponentRoot * ptr = dynamic_cast <const cPtr_optionComponentRoot *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOptionComponentName._operator_isEqual (ptr->mOptionComponentName).boolValue ()
+         && mOptions._operator_isEqual (ptr->mOptions).boolValue () ;
   }
   return equal ;
 }
@@ -692,13 +692,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_optionComponentRoot::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@optionComponentRoot:"
-           << mOptionComponentName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mOptions.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOptionComponentName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mOptions.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*

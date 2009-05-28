@@ -48,20 +48,20 @@
 //---------------------------------------------------------------------------*
 
 void optionModelBuilder::
-pr_option_component_start_symbol_optionModelBuilder_30_36_ (galgas_scanner & _inLexique,
+pr_option_component_start_symbol_optionModelBuilder_30_36_ (galgas_scanner & inLexique,
                                 GGS_optionComponentRoot  &var_cas_outOptionComponentRoot) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
   GGS_lstring  var_cas_mOptionComponentName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_mOptionComponentName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_mOptionComponentName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
   GGS_commandLineOptionList  var_cas_mOptions ;
   var_cas_mOptions = GGS_commandLineOptionList ::constructor_emptyList () ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_optionModelBuilder_0 (_inLexique)) {
+      switch (select_repeat_optionModelBuilder_0 (inLexique)) {
         case 2 : {
-          nt_option_ (_inLexique, var_cas_mOptions) ;
+          nt_option_ (inLexique, var_cas_mOptions) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -69,10 +69,10 @@ pr_option_component_start_symbol_optionModelBuilder_30_36_ (galgas_scanner & _in
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
-  var_cas_outOptionComponentRoot = GGS_optionComponentRoot ::constructor_new (_inLexique, var_cas_mOptionComponentName, var_cas_mOptions COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  var_cas_outOptionComponentRoot = GGS_optionComponentRoot ::constructor_new (inLexique, var_cas_mOptionComponentName, var_cas_mOptions COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -82,27 +82,27 @@ pr_option_component_start_symbol_optionModelBuilder_30_36_ (galgas_scanner & _in
 //---------------------------------------------------------------------------*
 
 void optionModelBuilder::
-pr_option_optionModelBuilder_54_13_ (galgas_scanner & _inLexique,
+pr_option_optionModelBuilder_54_13_ (galgas_scanner & inLexique,
                                 GGS_commandLineOptionList  &var_cas_ioCommandLineOptionList) {
   GGS_lstring  var_cas_mOptionTypeName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_mOptionTypeName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_mOptionTypeName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
   GGS_lstring  var_cas_mOptionInternalName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_mOptionInternalName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_mOptionInternalName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
   GGS_lchar  var_cas_mOptionInvocationLetter ;
-  _inLexique._assignFromAttribute_charValue (var_cas_mOptionInvocationLetter) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fchar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+  inLexique._assignFromAttribute_charValue (var_cas_mOptionInvocationLetter) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fchar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
   GGS_lstring  var_cas_mOptionInvocationString ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_mOptionInvocationString) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2D_3E) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_mOptionInvocationString) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2D_3E) COMMA_HERE) ;
   GGS_lstring  var_cas_mOptionComment ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_mOptionComment) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_mOptionComment) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   var_cas_ioCommandLineOptionList._addAssign_operation (var_cas_mOptionTypeName, var_cas_mOptionInternalName, var_cas_mOptionInvocationLetter, var_cas_mOptionInvocationString, var_cas_mOptionComment) ;
 }
 

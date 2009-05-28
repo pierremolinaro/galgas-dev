@@ -57,7 +57,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    public : cElement (LOCATION_ARGS) ;\n"
              " //--- Description\n"
              "    public : virtual C_String\n"
-             "    _description (C_Compiler & _inLexique,\n"
+             "    _description (C_Compiler & inLexique,\n"
              "                  const sint32 inIndentation\n"
              "                  COMMA_LOCATION_ARGS) const ;\n"
              "    public : virtual cPtrObject * _clone (LOCATION_ARGS) ;\n"
@@ -173,10 +173,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "C_String GGS_" << mListmapTypeName << "::cElement::\n"
-               "_description (C_Compiler & _inLexique,\n"
+               "_description (C_Compiler & inLexique,\n"
                "              const sint32 inIndentation\n"
                "              COMMA_LOCATION_ARGS) const {\n"
-               "  const GGS_string s = mListObject.reader_description (_inLexique COMMA_THERE, inIndentation) ;\n"
+               "  const GGS_string s = mListObject.reader_description (inLexique COMMA_THERE, inIndentation) ;\n"
                "  return s.string () ;\n"
                "}\n\n" ;
  
@@ -217,7 +217,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "        const PM_C_Object object = nodeSortedArray [i].mObject ;\n"
                "        cElement * elementPtr = macroPtr (object, cElement) ;\n"
                "        bool wasInserted = false ;\n"
-               "        cPtrDictionaryNode * nodePtr = _findOrAddNodeForKey (key, wasInserted) ;\n"
+               "        cPtrDictionaryNode * nodePtr = findOrAddNodeForKey (key, wasInserted) ;\n"
                "        if (wasInserted) {\n"
                "           cElement * elementPtr = NULL ;\n"
                "           macroMyNew (elementPtr, cElement (HERE)) ;\n"
@@ -255,7 +255,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << ") {\n"
                "    bool wasInserted = false ;\n"
-               "    cPtrDictionaryNode * nodePtr = _findOrAddNodeForKey (inKey, wasInserted) ;\n"
+               "    cPtrDictionaryNode * nodePtr = findOrAddNodeForKey (inKey, wasInserted) ;\n"
                "    MF_Assert (nodePtr != NULL, \"NULL pointer (was inserted %d)\", wasInserted, 0) ;\n"
                "    if (wasInserted) {\n"
                "       cElement * elementPtr = NULL ;\n"
@@ -285,7 +285,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
                "  GGS_" << mListTypename << " result ;\n"
                "  if (isBuilt () && inKey.isBuilt ()) {\n"
-               "    cPtrDictionaryNode * nodePtr = _dictionaryNodeForKey (inKey.string ()) ; \n"
+               "    cPtrDictionaryNode * nodePtr = dictionaryNodeForKey (inKey.string ()) ; \n"
                "    if (nodePtr == NULL) {\n"
                "      result = GGS_" << mListTypename << "::constructor_emptyList () ;\n"
                "    }else{\n"
@@ -382,7 +382,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_bool _operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
              "//--- 'description' reader declaration\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Compiler & _inLexique\n"
+             "  reader_description (C_Compiler & inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n\n"
              "//--- Type Method 'makeRegularIndex'\n"
@@ -612,7 +612,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "//--- Data member\n"
              "  public : e_" << mMapTypeName << " mInfo ;\n"
              "//--- Method for 'description' reader\n"
-             "  public : void appendForMapDescription (C_Compiler & _inLexique,\n"
+             "  public : void appendForMapDescription (C_Compiler & inLexique,\n"
              "                                         const sint32 inElementIndex,\n"
              "                                         C_String & ioString,\n"
              "                                         const sint32 inIndentation\n"
@@ -795,7 +795,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "                                   GGS_luint * outIndex\n"
              "                                   COMMA_LOCATION_ARGS) const ;\n"
 //--- Generate 'description' reader declaration
-             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 //--- Generate 'mapWithMapToOverride' constructor declaration
@@ -892,7 +892,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Method for 'reader' element
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << mMapTypeName << "::\n"
-               "appendForMapDescription (C_Compiler & _inLexique,\n"
+               "appendForMapDescription (C_Compiler & inLexique,\n"
                "                         const sint32 inElementIndex,\n"
                "                         C_String & ioString,\n"
                "                         const sint32 inIndentation\n"
@@ -901,14 +901,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                "  ioString << \"|-key \" ;\n"
                "  ioString.appendSigned (inElementIndex) ;\n"
-               "  ioString << \":\" << mKey.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+               "  ioString << \":\" << mKey.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   while (current.hc ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-value \" ;\n"
                  "  ioString.appendSigned (inElementIndex) ;\n"
-                 "  ioString << \":\" << mInfo." << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
+                 "  ioString << \":\" << mInfo." << current._mAttributeName (HERE) << ".reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
     current.next () ;
   }
   inCppFile << "}\n\n" ;
@@ -922,8 +922,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  return true ;\n" ;
   }else{
     inCppFile << "isEqualToMapElement (const AC_galgas_map_element * inOperand) const {\n"
-                 "  const elementOf_GGS_" << mMapTypeName << " * _p = dynamic_cast <const elementOf_GGS_" << mMapTypeName << " *> (inOperand) ;\n"
-                 "  macroValidPointer (_p) ;\n"
+                 "  const elementOf_GGS_" << mMapTypeName << " * ptr = dynamic_cast <const elementOf_GGS_" << mMapTypeName << " *> (inOperand) ;\n"
+                 "  macroValidPointer (ptr) ;\n"
                  "  return " ;
     bool first = true ;
     while (current.hc ()) {
@@ -932,7 +932,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\n           && " ;
       }
-      inCppFile << "(mInfo." << current._mAttributeName (HERE) << "._operator_isEqual (_p->mInfo." << current._mAttributeName (HERE) << ")).boolValue ()" ;
+      inCppFile << "(mInfo." << current._mAttributeName (HERE) << "._operator_isEqual (ptr->mInfo." << current._mAttributeName (HERE) << ")).boolValue ()" ;
       current.next () ;
     }
     inCppFile << " ;\n" ;
@@ -978,7 +978,6 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  e_" << mMapTypeName << " info  ;\n"
                "  internalEnterIndex (inKey,\n"
                "                      (void *) & info,\n"
-               "                      mSharedMapRoot->mRoot,\n"
                "                      outIndex) ;\n"
                "}\n\n" ;
 
@@ -1003,7 +1002,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  cElement * p = (cElement *) inPtr ;\n"
                "  sint32 attributeIndex = -1 ; // Unused here\n"
                "  GGS_location existingKeyLocation ; // Unused here\n"
-               "  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;\n"
+               "  internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;\n"
                "}\n\n" ;
 
 //--- 'removeElement' method
@@ -1027,15 +1026,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  AC_galgas_map_element * removedElement = NULL ;\n"
                  "  sint32 elementID = - 1 ;\n"
                  "  if (isBuilt () && inKey.isBuilt ()) {\n"
-                 "    insulateMap () ;\n"
-                 "    bool branchHasBeenRemoved = false ;\n"
-                 "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                 "      checkMap (HERE) ;\n"
-                 "    #endif\n"
-                 "    internalRemove (mSharedMapRoot->mRoot, inKey, removedElement, branchHasBeenRemoved) ;\n"
-                 "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                 "      checkMap (HERE) ;\n"
-                 "    #endif\n"
+                 "    removedElement = internalRemove (inKey) ;\n"
                  "    if (removedElement == NULL) {\n"
                  "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
     current.rewind () ;
@@ -1046,12 +1037,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << "    }else{\n"
-                 "      cElement * _p = (cElement *) removedElement ;\n"
-                 "      elementID = _p->mID ;\n" ;
+                 "      cElement * ptr = (cElement *) removedElement ;\n"
+                 "      elementID = ptr->mID ;\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
     while (current.hc ()) {
-      inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << " = _p->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
+      inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << " = ptr->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
     }
@@ -1101,7 +1092,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current.next () ;
   }
   inCppFile << "    GGS_location existingKeyLocation ;\n"
-               "    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;\n"
+               "    internalInsert (inKey, (void *) & info, elementID, existingKeyLocation) ;\n"
                "    if (elementID < 0) {\n"
                "      emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;\n"
                "    }\n"
@@ -1235,7 +1226,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void GGS_"
               << mMapTypeName << "::\n"
                  "modifier_" << currentRemoveMethod._mMethodName (HERE)
-              << " (C_Compiler & _inLexique"
+              << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentRemoveMethod._mIsGetIndexMethod (HERE).boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
@@ -1250,7 +1241,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n"
-                 "  removeElement (_inLexique,\n"
+                 "  removeElement (inLexique,\n"
                  "                  " ;
     inCppFile.appendCLiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << ",\n"
@@ -1275,7 +1266,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void GGS_"
               << mMapTypeName << "::\n"
                  "modifier_" << currentInsertMethod._mMethodName (HERE)
-              << " (C_Compiler & _inLexique"
+              << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
       inCppFile << ",\n                                GGS_luint & outIndex" ;
@@ -1293,7 +1284,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inCppFile << "  const bool shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
                    "  if (shadowExists) {\n"
-                   "    emitMapSemanticErrorMessage (_inLexique, inKey, " ;
+                   "    emitMapSemanticErrorMessage (inLexique, inKey, " ;
       inCppFile.appendCLiteralStringConstant (currentInsertMethod._mShadowErrorMessage (HERE).string ()) ;
       inCppFile << " COMMA_THERE) ;\n" ;
       if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
@@ -1303,7 +1294,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.incIndentation (2) ;
     
     }
-    inCppFile << "  _insertElement (_inLexique,\n"
+    inCppFile << "  _insertElement (inLexique,\n"
                  "                 " ;
     inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << ",\n"
@@ -1364,7 +1355,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement reader 'description'
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mMapTypeName << "::\n"
-               "reader_description (C_Compiler & _inLexique\n"
+               "reader_description (C_Compiler & inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
                "  C_String s ;\n"
@@ -1376,7 +1367,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    sint32 elementID = 0 ;\n"
                "    while (p != NULL) {\n"
                "      macroValidPointer (p) ;\n"
-               "      p->appendForMapDescription (_inLexique, elementID, s, inIndentation COMMA_THERE) ;\n"
+               "      p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;\n"
                "      p = p->nextObject () ;\n"
                "      elementID ++ ;\n"
                "    }\n"
@@ -1529,7 +1520,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentInsertMethod.next () ;
   }
 //--- Generate 'description' reader declaration
-  inHfile << "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
+  inHfile << "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
              "} ;\n\n" ;
@@ -1693,7 +1684,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentInsertMethod._mMethodName (HERE)
-              << " (C_Compiler & _inLexique"
+              << " (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
@@ -1713,14 +1704,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       numeroVariable ++ ;
       current.next () ;
     }
-    inCppFile << "  " << currentInsertMethod._mMethodName (HERE) << " (_inLexique, info, inKey, inKey, " ;
+    inCppFile << "  " << currentInsertMethod._mMethodName (HERE) << " (inLexique, info, inKey, inKey, " ;
     inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << " COMMA_THERE) ;\n"
               << "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentInsertMethod._mMethodName (HERE)
-              << "GetIndex (C_Compiler & _inLexique"
+              << "GetIndex (C_Compiler & inLexique"
                  ",\n                                const GGS_lstring & inKey"
                  ",\n                                GGS_luint & outIndex" ;
     current.rewind () ;
@@ -1741,7 +1732,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       numeroVariable ++ ;
       current.next () ;
     }
-    inCppFile << "  const sint32 attributeIndex = " << currentInsertMethod._mMethodName (HERE) << " (_inLexique, info, inKey, inKey, " ;
+    inCppFile << "  const sint32 attributeIndex = " << currentInsertMethod._mMethodName (HERE) << " (inLexique, info, inKey, inKey, " ;
     inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
     inCppFile << " COMMA_THERE) ;\n"
               << "  outIndex = GGS_luint (GGS_uint (attributeIndex >= 0, (uint32) attributeIndex), inKey) ;\n"
@@ -1752,7 +1743,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement reader 'description'
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << aNomTable << "::\n"
-               "reader_description (C_Compiler & /* _inLexique */\n"
+               "reader_description (C_Compiler & /* inLexique */\n"
                "                    COMMA_UNUSED_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"

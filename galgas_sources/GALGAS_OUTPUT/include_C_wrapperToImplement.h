@@ -78,7 +78,7 @@ class cPtr_C_wrapperToImplement : public cPtr_typeEntityToGenerate {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;

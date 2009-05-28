@@ -48,7 +48,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
     inHfile.appendCppTitleComment (C_String ("Category method '@") + mClassName + "." + mMethodName + "'") ;
     inHfile << "typedef void (*typeCategoryMethod__" << mClassName << "__" << mMethodName << ") "
-               " (C_Compiler & _inLexique"
+               " (C_Compiler & inLexique"
             << ",\n                                "
                "const cPtr_" << mClassName << " * inObjectPtr" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -118,7 +118,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "category_method__" << mClassName << "__" << mMethodName
               << " (C_Compiler &" ;
     if (isLexiqueFormalArgumentUsedForList (mInstructionList, true)) {
-      inCppFile << " _inLexique" ;
+      inCppFile << " inLexique" ;
     }
     inCppFile << ",\n                                "
                  "const cPtr_" << mClassName << " * operand_" << cStringWithSigned (mMagicNumber.location ()) ;

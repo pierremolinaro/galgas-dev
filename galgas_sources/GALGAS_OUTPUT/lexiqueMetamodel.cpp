@@ -64,11 +64,11 @@ bool elementOf_GGS_templateDelimitorList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_templateDelimitorList * _p = dynamic_cast <const elementOf_GGS_templateDelimitorList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mStartString._operator_isEqual (_p->mStartString).boolValue ()
-         && mOptionList._operator_isEqual (_p->mOptionList).boolValue ()
-         && mEndString._operator_isEqual (_p->mEndString).boolValue () ;
+    const elementOf_GGS_templateDelimitorList * ptr = dynamic_cast <const elementOf_GGS_templateDelimitorList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mStartString._operator_isEqual (ptr->mStartString).boolValue ()
+         && mOptionList._operator_isEqual (ptr->mOptionList).boolValue ()
+         && mEndString._operator_isEqual (ptr->mEndString).boolValue () ;
   }
   return equal ;
 }
@@ -76,22 +76,22 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_templateDelimitorList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mStartString.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mStartString.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mEndString.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mEndString.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -198,15 +198,15 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_templateDelimitorList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mStartString,
-                                _p->mOptionList,
-                                _p->mEndString
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mStartString,
+                                ptr->mOptionList,
+                                ptr->mEndString
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -240,15 +240,15 @@ internalSubListWithRange (GGS_templateDelimitorList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mStartString, _p->mOptionList, _p->mEndString) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mStartString, ptr->mOptionList, ptr->mEndString) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -256,7 +256,7 @@ internalSubListWithRange (GGS_templateDelimitorList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_templateDelimitorList GGS_templateDelimitorList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -265,7 +265,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -276,14 +276,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_templateDelimitorList GGS_templateDelimitorList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_templateDelimitorList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -294,31 +294,31 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_templateDelimitorList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@templateDelimitorList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@templateDelimitorList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstringlist & _out_1,
               GGS_lstring & _out_2
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mStartString ;
-    _out_1 = _p->mOptionList ;
-    _out_2 = _p->mEndString ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mStartString ;
+    _out_1 = ptr->mOptionList ;
+    _out_2 = ptr->mEndString ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -329,22 +329,22 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstringlist & _out_1,
              GGS_lstring & _out_2
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mStartString ;
-    _out_1 = _p->mOptionList ;
-    _out_2 = _p->mEndString ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mStartString ;
+    _out_1 = ptr->mOptionList ;
+    _out_2 = ptr->mEndString ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -355,22 +355,22 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstringlist & _out_1,
                  GGS_lstring & _out_2
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mStartString ;
-    _out_1 = _p->mOptionList ;
-    _out_2 = _p->mEndString ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mStartString ;
+    _out_1 = ptr->mOptionList ;
+    _out_2 = ptr->mEndString ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -383,22 +383,22 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstringlist & _out_1,
                 GGS_lstring & _out_2
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mStartString ;
-    _out_1 = _p->mOptionList ;
-    _out_2 = _p->mEndString ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mStartString ;
+    _out_1 = ptr->mOptionList ;
+    _out_2 = ptr->mEndString ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -539,11 +539,11 @@ bool elementOf_GGS_templateReplacementList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_templateReplacementList * _p = dynamic_cast <const elementOf_GGS_templateReplacementList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mMatchString._operator_isEqual (_p->mMatchString).boolValue ()
-         && mReplacementString._operator_isEqual (_p->mReplacementString).boolValue ()
-         && mReplacementFunction._operator_isEqual (_p->mReplacementFunction).boolValue () ;
+    const elementOf_GGS_templateReplacementList * ptr = dynamic_cast <const elementOf_GGS_templateReplacementList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mMatchString._operator_isEqual (ptr->mMatchString).boolValue ()
+         && mReplacementString._operator_isEqual (ptr->mReplacementString).boolValue ()
+         && mReplacementFunction._operator_isEqual (ptr->mReplacementFunction).boolValue () ;
   }
   return equal ;
 }
@@ -551,22 +551,22 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_templateReplacementList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mMatchString.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mMatchString.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mReplacementString.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mReplacementString.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mReplacementFunction.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mReplacementFunction.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -673,15 +673,15 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_templateReplacementList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mMatchString,
-                                _p->mReplacementString,
-                                _p->mReplacementFunction
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mMatchString,
+                                ptr->mReplacementString,
+                                ptr->mReplacementFunction
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -715,15 +715,15 @@ internalSubListWithRange (GGS_templateReplacementList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mMatchString, _p->mReplacementString, _p->mReplacementFunction) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mMatchString, ptr->mReplacementString, ptr->mReplacementFunction) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -731,7 +731,7 @@ internalSubListWithRange (GGS_templateReplacementList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_templateReplacementList GGS_templateReplacementList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -740,7 +740,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -751,14 +751,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_templateReplacementList GGS_templateReplacementList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_templateReplacementList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -769,31 +769,31 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_templateReplacementList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@templateReplacementList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@templateReplacementList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMatchString ;
-    _out_1 = _p->mReplacementString ;
-    _out_2 = _p->mReplacementFunction ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMatchString ;
+    _out_1 = ptr->mReplacementString ;
+    _out_2 = ptr->mReplacementFunction ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -804,22 +804,22 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMatchString ;
-    _out_1 = _p->mReplacementString ;
-    _out_2 = _p->mReplacementFunction ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMatchString ;
+    _out_1 = ptr->mReplacementString ;
+    _out_2 = ptr->mReplacementFunction ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -830,22 +830,22 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMatchString ;
-    _out_1 = _p->mReplacementString ;
-    _out_2 = _p->mReplacementFunction ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMatchString ;
+    _out_1 = ptr->mReplacementString ;
+    _out_2 = ptr->mReplacementFunction ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -858,22 +858,22 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMatchString ;
-    _out_1 = _p->mReplacementString ;
-    _out_2 = _p->mReplacementFunction ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMatchString ;
+    _out_1 = ptr->mReplacementString ;
+    _out_2 = ptr->mReplacementFunction ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -1010,9 +1010,9 @@ bool elementOf_GGS_lexicalImplicitRuleList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalImplicitRuleList * _p = dynamic_cast <const elementOf_GGS_lexicalImplicitRuleList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mListName._operator_isEqual (_p->mListName).boolValue () ;
+    const elementOf_GGS_lexicalImplicitRuleList * ptr = dynamic_cast <const elementOf_GGS_lexicalImplicitRuleList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mListName._operator_isEqual (ptr->mListName).boolValue () ;
   }
   return equal ;
 }
@@ -1020,14 +1020,14 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalImplicitRuleList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mListName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mListName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1116,13 +1116,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalImplicitRuleList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mListName
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mListName
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -1154,15 +1154,15 @@ internalSubListWithRange (GGS_lexicalImplicitRuleList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mListName) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mListName) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -1170,7 +1170,7 @@ internalSubListWithRange (GGS_lexicalImplicitRuleList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalImplicitRuleList GGS_lexicalImplicitRuleList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -1179,7 +1179,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -1190,14 +1190,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalImplicitRuleList GGS_lexicalImplicitRuleList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalImplicitRuleList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -1208,27 +1208,27 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalImplicitRuleList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalImplicitRuleList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalImplicitRuleList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalImplicitRuleList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mListName ;
   }else{
     _out_0.drop () ;
   }
@@ -1237,18 +1237,18 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalImplicitRuleList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mListName ;
   }else{
     _out_0.drop () ;
   }
@@ -1257,18 +1257,18 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalImplicitRuleList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mListName ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -1279,18 +1279,18 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalImplicitRuleList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mListName ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -1355,10 +1355,10 @@ bool elementOf_GGS_lexicalErrorMessageDeclarationList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalErrorMessageDeclarationList * _p = dynamic_cast <const elementOf_GGS_lexicalErrorMessageDeclarationList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mMessageName._operator_isEqual (_p->mMessageName).boolValue ()
-         && mMessageValue._operator_isEqual (_p->mMessageValue).boolValue () ;
+    const elementOf_GGS_lexicalErrorMessageDeclarationList * ptr = dynamic_cast <const elementOf_GGS_lexicalErrorMessageDeclarationList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mMessageName._operator_isEqual (ptr->mMessageName).boolValue ()
+         && mMessageValue._operator_isEqual (ptr->mMessageValue).boolValue () ;
   }
   return equal ;
 }
@@ -1366,18 +1366,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalErrorMessageDeclarationList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mMessageName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mMessageName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mMessageValue.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mMessageValue.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1475,14 +1475,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalErrorMessageDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mMessageName,
-                                _p->mMessageValue
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mMessageName,
+                                ptr->mMessageValue
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -1515,15 +1515,15 @@ internalSubListWithRange (GGS_lexicalErrorMessageDeclarationList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mMessageName, _p->mMessageValue) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mMessageName, ptr->mMessageValue) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -1531,7 +1531,7 @@ internalSubListWithRange (GGS_lexicalErrorMessageDeclarationList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalErrorMessageDeclarationList GGS_lexicalErrorMessageDeclarationList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -1540,7 +1540,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -1551,14 +1551,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalErrorMessageDeclarationList GGS_lexicalErrorMessageDeclarationList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalErrorMessageDeclarationList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -1569,29 +1569,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalErrorMessageDeclarationList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalErrorMessageDeclarationList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalErrorMessageDeclarationList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalErrorMessageDeclarationList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMessageName ;
-    _out_1 = _p->mMessageValue ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMessageName ;
+    _out_1 = ptr->mMessageValue ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -1601,20 +1601,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalErrorMessageDeclarationList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMessageName ;
-    _out_1 = _p->mMessageValue ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMessageName ;
+    _out_1 = ptr->mMessageValue ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -1624,20 +1624,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalErrorMessageDeclarationList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMessageName ;
-    _out_1 = _p->mMessageValue ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMessageName ;
+    _out_1 = ptr->mMessageValue ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -1649,20 +1649,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalErrorMessageDeclarationList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mMessageName ;
-    _out_1 = _p->mMessageValue ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mMessageName ;
+    _out_1 = ptr->mMessageValue ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -1764,10 +1764,10 @@ bool elementOf_GGS_lexicalAttributeList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalAttributeList * _p = dynamic_cast <const elementOf_GGS_lexicalAttributeList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mTypeName._operator_isEqual (_p->mTypeName).boolValue ()
-         && mName._operator_isEqual (_p->mName).boolValue () ;
+    const elementOf_GGS_lexicalAttributeList * ptr = dynamic_cast <const elementOf_GGS_lexicalAttributeList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
+         && mName._operator_isEqual (ptr->mName).boolValue () ;
   }
   return equal ;
 }
@@ -1775,18 +1775,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalAttributeList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mTypeName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mTypeName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1884,14 +1884,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalAttributeList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mTypeName,
-                                _p->mName
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mTypeName,
+                                ptr->mName
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -1924,15 +1924,15 @@ internalSubListWithRange (GGS_lexicalAttributeList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mTypeName, _p->mName) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mTypeName, ptr->mName) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -1940,7 +1940,7 @@ internalSubListWithRange (GGS_lexicalAttributeList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalAttributeList GGS_lexicalAttributeList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -1949,7 +1949,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -1960,14 +1960,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalAttributeList GGS_lexicalAttributeList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalAttributeList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -1978,29 +1978,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalAttributeList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalAttributeList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalAttributeList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mTypeName ;
-    _out_1 = _p->mName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mTypeName ;
+    _out_1 = ptr->mName ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -2010,20 +2010,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mTypeName ;
-    _out_1 = _p->mName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mTypeName ;
+    _out_1 = ptr->mName ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -2033,20 +2033,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mTypeName ;
-    _out_1 = _p->mName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mTypeName ;
+    _out_1 = ptr->mName ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -2058,20 +2058,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mTypeName ;
-    _out_1 = _p->mName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mTypeName ;
+    _out_1 = ptr->mName ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -2173,10 +2173,10 @@ bool elementOf_GGS_lexicalStyleList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalStyleList * _p = dynamic_cast <const elementOf_GGS_lexicalStyleList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mName._operator_isEqual (_p->mName).boolValue ()
-         && mComment._operator_isEqual (_p->mComment).boolValue () ;
+    const elementOf_GGS_lexicalStyleList * ptr = dynamic_cast <const elementOf_GGS_lexicalStyleList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mName._operator_isEqual (ptr->mName).boolValue ()
+         && mComment._operator_isEqual (ptr->mComment).boolValue () ;
   }
   return equal ;
 }
@@ -2184,18 +2184,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalStyleList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mComment.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mComment.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2293,14 +2293,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalStyleList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mName,
-                                _p->mComment
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mName,
+                                ptr->mComment
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -2333,15 +2333,15 @@ internalSubListWithRange (GGS_lexicalStyleList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mName, _p->mComment) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mName, ptr->mComment) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -2349,7 +2349,7 @@ internalSubListWithRange (GGS_lexicalStyleList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalStyleList GGS_lexicalStyleList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -2358,7 +2358,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -2369,14 +2369,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalStyleList GGS_lexicalStyleList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalStyleList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -2387,29 +2387,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalStyleList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalStyleList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalStyleList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mComment ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -2419,20 +2419,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mComment ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -2442,20 +2442,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mComment ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -2467,20 +2467,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mComment ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mComment ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -2588,13 +2588,13 @@ bool elementOf_GGS_terminalDeclarationList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_terminalDeclarationList * _p = dynamic_cast <const elementOf_GGS_terminalDeclarationList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mName._operator_isEqual (_p->mName).boolValue ()
-         && mSentAttributeList._operator_isEqual (_p->mSentAttributeList).boolValue ()
-         && mErrorMessage._operator_isEqual (_p->mErrorMessage).boolValue ()
-         && mStyle._operator_isEqual (_p->mStyle).boolValue ()
-         && mOptionList._operator_isEqual (_p->mOptionList).boolValue () ;
+    const elementOf_GGS_terminalDeclarationList * ptr = dynamic_cast <const elementOf_GGS_terminalDeclarationList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mName._operator_isEqual (ptr->mName).boolValue ()
+         && mSentAttributeList._operator_isEqual (ptr->mSentAttributeList).boolValue ()
+         && mErrorMessage._operator_isEqual (ptr->mErrorMessage).boolValue ()
+         && mStyle._operator_isEqual (ptr->mStyle).boolValue ()
+         && mOptionList._operator_isEqual (ptr->mOptionList).boolValue () ;
   }
   return equal ;
 }
@@ -2602,30 +2602,30 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_terminalDeclarationList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mSentAttributeList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mSentAttributeList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mErrorMessage.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mErrorMessage.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mStyle.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mStyle.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2750,17 +2750,17 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_terminalDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mName,
-                                _p->mSentAttributeList,
-                                _p->mErrorMessage,
-                                _p->mStyle,
-                                _p->mOptionList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mName,
+                                ptr->mSentAttributeList,
+                                ptr->mErrorMessage,
+                                ptr->mStyle,
+                                ptr->mOptionList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -2796,15 +2796,15 @@ internalSubListWithRange (GGS_terminalDeclarationList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mName, _p->mSentAttributeList, _p->mErrorMessage, _p->mStyle, _p->mOptionList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mName, ptr->mSentAttributeList, ptr->mErrorMessage, ptr->mStyle, ptr->mOptionList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -2812,7 +2812,7 @@ internalSubListWithRange (GGS_terminalDeclarationList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_terminalDeclarationList GGS_terminalDeclarationList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -2821,7 +2821,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -2832,14 +2832,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_terminalDeclarationList GGS_terminalDeclarationList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_terminalDeclarationList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -2850,35 +2850,35 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_terminalDeclarationList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@terminalDeclarationList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@terminalDeclarationList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstringlist & _out_1,
               GGS_lstring & _out_2,
               GGS_lstring & _out_3,
               GGS_lstringlist & _out_4
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mSentAttributeList ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mStyle ;
-    _out_4 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mSentAttributeList ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mStyle ;
+    _out_4 = ptr->mOptionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -2891,26 +2891,26 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstringlist & _out_1,
              GGS_lstring & _out_2,
              GGS_lstring & _out_3,
              GGS_lstringlist & _out_4
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mSentAttributeList ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mStyle ;
-    _out_4 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mSentAttributeList ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mStyle ;
+    _out_4 = ptr->mOptionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -2923,26 +2923,26 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstringlist & _out_1,
                  GGS_lstring & _out_2,
                  GGS_lstring & _out_3,
                  GGS_lstringlist & _out_4
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mSentAttributeList ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mStyle ;
-    _out_4 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mSentAttributeList ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mStyle ;
+    _out_4 = ptr->mOptionList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -2957,26 +2957,26 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstringlist & _out_1,
                 GGS_lstring & _out_2,
                 GGS_lstring & _out_3,
                 GGS_lstringlist & _out_4
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mSentAttributeList ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mStyle ;
-    _out_4 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mSentAttributeList ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mStyle ;
+    _out_4 = ptr->mOptionList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -3191,11 +3191,11 @@ bool elementOf_GGS_lexicalListEntryList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalListEntryList * _p = dynamic_cast <const elementOf_GGS_lexicalListEntryList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mEntrySpelling._operator_isEqual (_p->mEntrySpelling).boolValue ()
-         && mTerminalSpelling._operator_isEqual (_p->mTerminalSpelling).boolValue ()
-         && mOptionList._operator_isEqual (_p->mOptionList).boolValue () ;
+    const elementOf_GGS_lexicalListEntryList * ptr = dynamic_cast <const elementOf_GGS_lexicalListEntryList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mEntrySpelling._operator_isEqual (ptr->mEntrySpelling).boolValue ()
+         && mTerminalSpelling._operator_isEqual (ptr->mTerminalSpelling).boolValue ()
+         && mOptionList._operator_isEqual (ptr->mOptionList).boolValue () ;
   }
   return equal ;
 }
@@ -3203,22 +3203,22 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalListEntryList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mEntrySpelling.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mEntrySpelling.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mTerminalSpelling.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mTerminalSpelling.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mOptionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mOptionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3325,15 +3325,15 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalListEntryList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mEntrySpelling,
-                                _p->mTerminalSpelling,
-                                _p->mOptionList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mEntrySpelling,
+                                ptr->mTerminalSpelling,
+                                ptr->mOptionList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -3367,15 +3367,15 @@ internalSubListWithRange (GGS_lexicalListEntryList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mEntrySpelling, _p->mTerminalSpelling, _p->mOptionList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mEntrySpelling, ptr->mTerminalSpelling, ptr->mOptionList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -3383,7 +3383,7 @@ internalSubListWithRange (GGS_lexicalListEntryList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalListEntryList GGS_lexicalListEntryList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -3392,7 +3392,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -3403,14 +3403,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalListEntryList GGS_lexicalListEntryList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalListEntryList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -3421,31 +3421,31 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalListEntryList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalListEntryList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalListEntryList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstringlist & _out_2
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mEntrySpelling ;
-    _out_1 = _p->mTerminalSpelling ;
-    _out_2 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mEntrySpelling ;
+    _out_1 = ptr->mTerminalSpelling ;
+    _out_2 = ptr->mOptionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -3456,22 +3456,22 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstringlist & _out_2
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mEntrySpelling ;
-    _out_1 = _p->mTerminalSpelling ;
-    _out_2 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mEntrySpelling ;
+    _out_1 = ptr->mTerminalSpelling ;
+    _out_2 = ptr->mOptionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -3482,22 +3482,22 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstringlist & _out_2
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mEntrySpelling ;
-    _out_1 = _p->mTerminalSpelling ;
-    _out_2 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mEntrySpelling ;
+    _out_1 = ptr->mTerminalSpelling ;
+    _out_2 = ptr->mOptionList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -3510,22 +3510,22 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstringlist & _out_2
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mEntrySpelling ;
-    _out_1 = _p->mTerminalSpelling ;
-    _out_2 = _p->mOptionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mEntrySpelling ;
+    _out_1 = ptr->mTerminalSpelling ;
+    _out_2 = ptr->mOptionList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -3670,13 +3670,13 @@ bool elementOf_GGS_lexicalListDeclarationList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalListDeclarationList * _p = dynamic_cast <const elementOf_GGS_lexicalListDeclarationList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mName._operator_isEqual (_p->mName).boolValue ()
-         && mStyle._operator_isEqual (_p->mStyle).boolValue ()
-         && mErrorMessage._operator_isEqual (_p->mErrorMessage).boolValue ()
-         && mSentAttributeList._operator_isEqual (_p->mSentAttributeList).boolValue ()
-         && mEntryList._operator_isEqual (_p->mEntryList).boolValue () ;
+    const elementOf_GGS_lexicalListDeclarationList * ptr = dynamic_cast <const elementOf_GGS_lexicalListDeclarationList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mName._operator_isEqual (ptr->mName).boolValue ()
+         && mStyle._operator_isEqual (ptr->mStyle).boolValue ()
+         && mErrorMessage._operator_isEqual (ptr->mErrorMessage).boolValue ()
+         && mSentAttributeList._operator_isEqual (ptr->mSentAttributeList).boolValue ()
+         && mEntryList._operator_isEqual (ptr->mEntryList).boolValue () ;
   }
   return equal ;
 }
@@ -3684,30 +3684,30 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalListDeclarationList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mStyle.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mStyle.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mErrorMessage.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mErrorMessage.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mSentAttributeList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mSentAttributeList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mEntryList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mEntryList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3832,17 +3832,17 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalListDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mName,
-                                _p->mStyle,
-                                _p->mErrorMessage,
-                                _p->mSentAttributeList,
-                                _p->mEntryList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mName,
+                                ptr->mStyle,
+                                ptr->mErrorMessage,
+                                ptr->mSentAttributeList,
+                                ptr->mEntryList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -3878,15 +3878,15 @@ internalSubListWithRange (GGS_lexicalListDeclarationList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mName, _p->mStyle, _p->mErrorMessage, _p->mSentAttributeList, _p->mEntryList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mName, ptr->mStyle, ptr->mErrorMessage, ptr->mSentAttributeList, ptr->mEntryList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -3894,7 +3894,7 @@ internalSubListWithRange (GGS_lexicalListDeclarationList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalListDeclarationList GGS_lexicalListDeclarationList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -3903,7 +3903,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -3914,14 +3914,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalListDeclarationList GGS_lexicalListDeclarationList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalListDeclarationList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -3932,35 +3932,35 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalListDeclarationList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalListDeclarationList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalListDeclarationList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2,
               GGS_lstringlist & _out_3,
               GGS_lexicalListEntryList & _out_4
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mStyle ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mSentAttributeList ;
-    _out_4 = _p->mEntryList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mStyle ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mSentAttributeList ;
+    _out_4 = ptr->mEntryList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -3973,26 +3973,26 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2,
              GGS_lstringlist & _out_3,
              GGS_lexicalListEntryList & _out_4
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mStyle ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mSentAttributeList ;
-    _out_4 = _p->mEntryList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mStyle ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mSentAttributeList ;
+    _out_4 = ptr->mEntryList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -4005,26 +4005,26 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2,
                  GGS_lstringlist & _out_3,
                  GGS_lexicalListEntryList & _out_4
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mStyle ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mSentAttributeList ;
-    _out_4 = _p->mEntryList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mStyle ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mSentAttributeList ;
+    _out_4 = ptr->mEntryList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -4039,26 +4039,26 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2,
                 GGS_lstringlist & _out_3,
                 GGS_lexicalListEntryList & _out_4
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mName ;
-    _out_1 = _p->mStyle ;
-    _out_2 = _p->mErrorMessage ;
-    _out_3 = _p->mSentAttributeList ;
-    _out_4 = _p->mEntryList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mName ;
+    _out_1 = ptr->mStyle ;
+    _out_2 = ptr->mErrorMessage ;
+    _out_3 = ptr->mSentAttributeList ;
+    _out_4 = ptr->mEntryList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -4276,7 +4276,7 @@ cPtr_lexicalExpression (LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalExpression::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -4398,10 +4398,10 @@ bool elementOf_GGS_lexicalExplicitRuleList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalExplicitRuleList * _p = dynamic_cast <const elementOf_GGS_lexicalExplicitRuleList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLexicalRuleExpression._operator_isEqual (_p->mLexicalRuleExpression).boolValue ()
-         && mInstructionList._operator_isEqual (_p->mInstructionList).boolValue () ;
+    const elementOf_GGS_lexicalExplicitRuleList * ptr = dynamic_cast <const elementOf_GGS_lexicalExplicitRuleList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLexicalRuleExpression._operator_isEqual (ptr->mLexicalRuleExpression).boolValue ()
+         && mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -4409,18 +4409,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalExplicitRuleList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mLexicalRuleExpression.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mLexicalRuleExpression.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mInstructionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mInstructionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4518,14 +4518,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalExplicitRuleList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mLexicalRuleExpression,
-                                _p->mInstructionList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mLexicalRuleExpression,
+                                ptr->mInstructionList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -4558,15 +4558,15 @@ internalSubListWithRange (GGS_lexicalExplicitRuleList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mLexicalRuleExpression, _p->mInstructionList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mLexicalRuleExpression, ptr->mInstructionList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -4574,7 +4574,7 @@ internalSubListWithRange (GGS_lexicalExplicitRuleList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitRuleList GGS_lexicalExplicitRuleList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -4583,7 +4583,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -4594,14 +4594,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitRuleList GGS_lexicalExplicitRuleList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalExplicitRuleList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -4612,29 +4612,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalExplicitRuleList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalExplicitRuleList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalExplicitRuleList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitRuleList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lexicalExpression & _out_0,
               GGS_lexicalInstructionList & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalRuleExpression ;
-    _out_1 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalRuleExpression ;
+    _out_1 = ptr->mInstructionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -4644,20 +4644,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitRuleList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lexicalExpression & _out_0,
              GGS_lexicalInstructionList & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalRuleExpression ;
-    _out_1 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalRuleExpression ;
+    _out_1 = ptr->mInstructionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -4667,20 +4667,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitRuleList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lexicalExpression & _out_0,
                  GGS_lexicalInstructionList & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalRuleExpression ;
-    _out_1 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalRuleExpression ;
+    _out_1 = ptr->mInstructionList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -4692,20 +4692,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitRuleList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lexicalExpression & _out_0,
                 GGS_lexicalInstructionList & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalRuleExpression ;
-    _out_1 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalRuleExpression ;
+    _out_1 = ptr->mInstructionList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -4819,10 +4819,10 @@ bool cPtr_lexicalOrExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalOrExpression * _p = dynamic_cast <const cPtr_lexicalOrExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLeftOperand._operator_isEqual (_p->mLeftOperand).boolValue ()
-         && mRightOperand._operator_isEqual (_p->mRightOperand).boolValue () ;
+    const cPtr_lexicalOrExpression * ptr = dynamic_cast <const cPtr_lexicalOrExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLeftOperand._operator_isEqual (ptr->mLeftOperand).boolValue ()
+         && mRightOperand._operator_isEqual (ptr->mRightOperand).boolValue () ;
   }
   return equal ;
 }
@@ -4830,13 +4830,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalOrExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalOrExpression:"
-           << mLeftOperand.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightOperand.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mLeftOperand.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightOperand.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5003,9 +5003,9 @@ bool cPtr_lexicalCharacterSetMatch::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalCharacterSetMatch * _p = dynamic_cast <const cPtr_lexicalCharacterSetMatch *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mCharacterSetName._operator_isEqual (_p->mCharacterSetName).boolValue () ;
+    const cPtr_lexicalCharacterSetMatch * ptr = dynamic_cast <const cPtr_lexicalCharacterSetMatch *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mCharacterSetName._operator_isEqual (ptr->mCharacterSetName).boolValue () ;
   }
   return equal ;
 }
@@ -5013,12 +5013,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalCharacterSetMatch::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalCharacterSetMatch:"
-           << mCharacterSetName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mCharacterSetName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5169,9 +5169,9 @@ bool cPtr_lexicalCharacterMatch::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalCharacterMatch * _p = dynamic_cast <const cPtr_lexicalCharacterMatch *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mCharacter._operator_isEqual (_p->mCharacter).boolValue () ;
+    const cPtr_lexicalCharacterMatch * ptr = dynamic_cast <const cPtr_lexicalCharacterMatch *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mCharacter._operator_isEqual (ptr->mCharacter).boolValue () ;
   }
   return equal ;
 }
@@ -5179,12 +5179,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalCharacterMatch::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalCharacterMatch:"
-           << mCharacter.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mCharacter.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5337,10 +5337,10 @@ bool cPtr_lexicalCharacterIntervalMatch::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalCharacterIntervalMatch * _p = dynamic_cast <const cPtr_lexicalCharacterIntervalMatch *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLowerBound._operator_isEqual (_p->mLowerBound).boolValue ()
-         && mUpperBound._operator_isEqual (_p->mUpperBound).boolValue () ;
+    const cPtr_lexicalCharacterIntervalMatch * ptr = dynamic_cast <const cPtr_lexicalCharacterIntervalMatch *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLowerBound._operator_isEqual (ptr->mLowerBound).boolValue ()
+         && mUpperBound._operator_isEqual (ptr->mUpperBound).boolValue () ;
   }
   return equal ;
 }
@@ -5348,13 +5348,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalCharacterIntervalMatch::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalCharacterIntervalMatch:"
-           << mLowerBound.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mUpperBound.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mLowerBound.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mUpperBound.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5521,9 +5521,9 @@ bool cPtr_lexicalStringMatch::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalStringMatch * _p = dynamic_cast <const cPtr_lexicalStringMatch *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mString._operator_isEqual (_p->mString).boolValue () ;
+    const cPtr_lexicalStringMatch * ptr = dynamic_cast <const cPtr_lexicalStringMatch *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mString._operator_isEqual (ptr->mString).boolValue () ;
   }
   return equal ;
 }
@@ -5531,12 +5531,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalStringMatch::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalStringMatch:"
-           << mString.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mString.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5689,10 +5689,10 @@ bool cPtr_lexicalStringNotMatch::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalStringNotMatch * _p = dynamic_cast <const cPtr_lexicalStringNotMatch *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mString._operator_isEqual (_p->mString).boolValue ()
-         && mErrorMessage._operator_isEqual (_p->mErrorMessage).boolValue () ;
+    const cPtr_lexicalStringNotMatch * ptr = dynamic_cast <const cPtr_lexicalStringNotMatch *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mString._operator_isEqual (ptr->mString).boolValue ()
+         && mErrorMessage._operator_isEqual (ptr->mErrorMessage).boolValue () ;
   }
   return equal ;
 }
@@ -5700,13 +5700,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalStringNotMatch::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalStringNotMatch:"
-           << mString.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mErrorMessage.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mString.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mErrorMessage.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5868,7 +5868,7 @@ cPtr_lexicalInstruction (LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalInstruction::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -5995,7 +5995,7 @@ cPtr_lexicalSendDefaultAction (LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalSendDefaultAction::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -6129,10 +6129,10 @@ bool cPtr_lexicalStructuredSendInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalStructuredSendInstruction * _p = dynamic_cast <const cPtr_lexicalStructuredSendInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLexicalSendSearchList._operator_isEqual (_p->mLexicalSendSearchList).boolValue ()
-         && mLexicalSendDefaultAction._operator_isEqual (_p->mLexicalSendDefaultAction).boolValue () ;
+    const cPtr_lexicalStructuredSendInstruction * ptr = dynamic_cast <const cPtr_lexicalStructuredSendInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLexicalSendSearchList._operator_isEqual (ptr->mLexicalSendSearchList).boolValue ()
+         && mLexicalSendDefaultAction._operator_isEqual (ptr->mLexicalSendDefaultAction).boolValue () ;
   }
   return equal ;
 }
@@ -6140,13 +6140,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalStructuredSendInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalStructuredSendInstruction:"
-           << mLexicalSendSearchList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalSendDefaultAction.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mLexicalSendSearchList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalSendDefaultAction.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6313,9 +6313,9 @@ bool cPtr_lexicalSimpleSendInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalSimpleSendInstruction * _p = dynamic_cast <const cPtr_lexicalSimpleSendInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mSentTerminal._operator_isEqual (_p->mSentTerminal).boolValue () ;
+    const cPtr_lexicalSimpleSendInstruction * ptr = dynamic_cast <const cPtr_lexicalSimpleSendInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mSentTerminal._operator_isEqual (ptr->mSentTerminal).boolValue () ;
   }
   return equal ;
 }
@@ -6323,12 +6323,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalSimpleSendInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalSimpleSendInstruction:"
-           << mSentTerminal.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mSentTerminal.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6479,9 +6479,9 @@ bool cPtr_lexicalSendTerminalByDefault::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalSendTerminalByDefault * _p = dynamic_cast <const cPtr_lexicalSendTerminalByDefault *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mDefaultSentTerminal._operator_isEqual (_p->mDefaultSentTerminal).boolValue () ;
+    const cPtr_lexicalSendTerminalByDefault * ptr = dynamic_cast <const cPtr_lexicalSendTerminalByDefault *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mDefaultSentTerminal._operator_isEqual (ptr->mDefaultSentTerminal).boolValue () ;
   }
   return equal ;
 }
@@ -6489,12 +6489,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalSendTerminalByDefault::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalSendTerminalByDefault:"
-           << mDefaultSentTerminal.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mDefaultSentTerminal.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6645,9 +6645,9 @@ bool cPtr_lexicalErrorByDefault::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalErrorByDefault * _p = dynamic_cast <const cPtr_lexicalErrorByDefault *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mDefaultErrorMessageName._operator_isEqual (_p->mDefaultErrorMessageName).boolValue () ;
+    const cPtr_lexicalErrorByDefault * ptr = dynamic_cast <const cPtr_lexicalErrorByDefault *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mDefaultErrorMessageName._operator_isEqual (ptr->mDefaultErrorMessageName).boolValue () ;
   }
   return equal ;
 }
@@ -6655,12 +6655,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalErrorByDefault::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalErrorByDefault:"
-           << mDefaultErrorMessageName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mDefaultErrorMessageName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6801,10 +6801,10 @@ bool elementOf_GGS_lexicalSendSearchList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalSendSearchList * _p = dynamic_cast <const elementOf_GGS_lexicalSendSearchList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mAttributeName._operator_isEqual (_p->mAttributeName).boolValue ()
-         && mSearchListName._operator_isEqual (_p->mSearchListName).boolValue () ;
+    const elementOf_GGS_lexicalSendSearchList * ptr = dynamic_cast <const elementOf_GGS_lexicalSendSearchList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mAttributeName._operator_isEqual (ptr->mAttributeName).boolValue ()
+         && mSearchListName._operator_isEqual (ptr->mSearchListName).boolValue () ;
   }
   return equal ;
 }
@@ -6812,18 +6812,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalSendSearchList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mAttributeName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mAttributeName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mSearchListName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mSearchListName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6921,14 +6921,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalSendSearchList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mAttributeName,
-                                _p->mSearchListName
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mAttributeName,
+                                ptr->mSearchListName
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -6961,15 +6961,15 @@ internalSubListWithRange (GGS_lexicalSendSearchList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mAttributeName, _p->mSearchListName) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mAttributeName, ptr->mSearchListName) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -6977,7 +6977,7 @@ internalSubListWithRange (GGS_lexicalSendSearchList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSendSearchList GGS_lexicalSendSearchList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -6986,7 +6986,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -6997,14 +6997,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSendSearchList GGS_lexicalSendSearchList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalSendSearchList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -7015,29 +7015,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalSendSearchList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalSendSearchList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalSendSearchList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mAttributeName ;
-    _out_1 = _p->mSearchListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mAttributeName ;
+    _out_1 = ptr->mSearchListName ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -7047,20 +7047,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mAttributeName ;
-    _out_1 = _p->mSearchListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mAttributeName ;
+    _out_1 = ptr->mSearchListName ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -7070,20 +7070,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mAttributeName ;
-    _out_1 = _p->mSearchListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mAttributeName ;
+    _out_1 = ptr->mSearchListName ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -7095,20 +7095,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mAttributeName ;
-    _out_1 = _p->mSearchListName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mAttributeName ;
+    _out_1 = ptr->mSearchListName ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -7222,10 +7222,10 @@ bool cPtr_lexicalRepeatInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalRepeatInstruction * _p = dynamic_cast <const cPtr_lexicalRepeatInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mRepeatedInstructionList._operator_isEqual (_p->mRepeatedInstructionList).boolValue ()
-         && mLexicalWhileBranchList._operator_isEqual (_p->mLexicalWhileBranchList).boolValue () ;
+    const cPtr_lexicalRepeatInstruction * ptr = dynamic_cast <const cPtr_lexicalRepeatInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mRepeatedInstructionList._operator_isEqual (ptr->mRepeatedInstructionList).boolValue ()
+         && mLexicalWhileBranchList._operator_isEqual (ptr->mLexicalWhileBranchList).boolValue () ;
   }
   return equal ;
 }
@@ -7233,13 +7233,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalRepeatInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalRepeatInstruction:"
-           << mRepeatedInstructionList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalWhileBranchList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mRepeatedInstructionList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalWhileBranchList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7396,10 +7396,10 @@ bool elementOf_GGS_lexicalWhileBranchList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalWhileBranchList * _p = dynamic_cast <const elementOf_GGS_lexicalWhileBranchList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mWhileExpression._operator_isEqual (_p->mWhileExpression).boolValue ()
-         && mWhileInstructionList._operator_isEqual (_p->mWhileInstructionList).boolValue () ;
+    const elementOf_GGS_lexicalWhileBranchList * ptr = dynamic_cast <const elementOf_GGS_lexicalWhileBranchList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mWhileExpression._operator_isEqual (ptr->mWhileExpression).boolValue ()
+         && mWhileInstructionList._operator_isEqual (ptr->mWhileInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -7407,18 +7407,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalWhileBranchList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mWhileExpression.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mWhileExpression.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mWhileInstructionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mWhileInstructionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7516,14 +7516,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalWhileBranchList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mWhileExpression,
-                                _p->mWhileInstructionList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mWhileExpression,
+                                ptr->mWhileInstructionList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -7556,15 +7556,15 @@ internalSubListWithRange (GGS_lexicalWhileBranchList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mWhileExpression, _p->mWhileInstructionList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mWhileExpression, ptr->mWhileInstructionList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -7572,7 +7572,7 @@ internalSubListWithRange (GGS_lexicalWhileBranchList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalWhileBranchList GGS_lexicalWhileBranchList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -7581,7 +7581,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -7592,14 +7592,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalWhileBranchList GGS_lexicalWhileBranchList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalWhileBranchList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -7610,29 +7610,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalWhileBranchList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalWhileBranchList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalWhileBranchList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lexicalExpression & _out_0,
               GGS_lexicalInstructionList & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mWhileExpression ;
-    _out_1 = _p->mWhileInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mWhileExpression ;
+    _out_1 = ptr->mWhileInstructionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -7642,20 +7642,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lexicalExpression & _out_0,
              GGS_lexicalInstructionList & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mWhileExpression ;
-    _out_1 = _p->mWhileInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mWhileExpression ;
+    _out_1 = ptr->mWhileInstructionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -7665,20 +7665,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lexicalExpression & _out_0,
                  GGS_lexicalInstructionList & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mWhileExpression ;
-    _out_1 = _p->mWhileInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mWhileExpression ;
+    _out_1 = ptr->mWhileInstructionList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -7690,20 +7690,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lexicalExpression & _out_0,
                 GGS_lexicalInstructionList & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mWhileExpression ;
-    _out_1 = _p->mWhileInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mWhileExpression ;
+    _out_1 = ptr->mWhileInstructionList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -7817,10 +7817,10 @@ bool cPtr_lexicalSelectInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalSelectInstruction * _p = dynamic_cast <const cPtr_lexicalSelectInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLexicalWhileBranchList._operator_isEqual (_p->mLexicalWhileBranchList).boolValue ()
-         && mDefaultInstructionList._operator_isEqual (_p->mDefaultInstructionList).boolValue () ;
+    const cPtr_lexicalSelectInstruction * ptr = dynamic_cast <const cPtr_lexicalSelectInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLexicalWhileBranchList._operator_isEqual (ptr->mLexicalWhileBranchList).boolValue ()
+         && mDefaultInstructionList._operator_isEqual (ptr->mDefaultInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -7828,13 +7828,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalSelectInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalSelectInstruction:"
-           << mLexicalWhileBranchList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mDefaultInstructionList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mLexicalWhileBranchList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mDefaultInstructionList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7989,9 +7989,9 @@ bool elementOf_GGS_lexicalInstructionList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalInstructionList * _p = dynamic_cast <const elementOf_GGS_lexicalInstructionList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mInstructionList._operator_isEqual (_p->mInstructionList).boolValue () ;
+    const elementOf_GGS_lexicalInstructionList * ptr = dynamic_cast <const elementOf_GGS_lexicalInstructionList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -7999,14 +7999,14 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalInstructionList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mInstructionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mInstructionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8095,13 +8095,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalInstructionList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mInstructionList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mInstructionList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -8133,15 +8133,15 @@ internalSubListWithRange (GGS_lexicalInstructionList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mInstructionList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mInstructionList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -8149,7 +8149,7 @@ internalSubListWithRange (GGS_lexicalInstructionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalInstructionList GGS_lexicalInstructionList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -8158,7 +8158,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -8169,14 +8169,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalInstructionList GGS_lexicalInstructionList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalInstructionList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -8187,27 +8187,27 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalInstructionList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalInstructionList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalInstructionList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lexicalInstruction & _out_0
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mInstructionList ;
   }else{
     _out_0.drop () ;
   }
@@ -8216,18 +8216,18 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lexicalInstruction & _out_0
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mInstructionList ;
   }else{
     _out_0.drop () ;
   }
@@ -8236,18 +8236,18 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lexicalInstruction & _out_0
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mInstructionList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -8258,18 +8258,18 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lexicalInstruction & _out_0
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mInstructionList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -8334,10 +8334,10 @@ bool elementOf_GGS_lexicalSelectBranchList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalSelectBranchList * _p = dynamic_cast <const elementOf_GGS_lexicalSelectBranchList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mSelectExpression._operator_isEqual (_p->mSelectExpression).boolValue ()
-         && mSelectInstructionList._operator_isEqual (_p->mSelectInstructionList).boolValue () ;
+    const elementOf_GGS_lexicalSelectBranchList * ptr = dynamic_cast <const elementOf_GGS_lexicalSelectBranchList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mSelectExpression._operator_isEqual (ptr->mSelectExpression).boolValue ()
+         && mSelectInstructionList._operator_isEqual (ptr->mSelectInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -8345,18 +8345,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalSelectBranchList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mSelectExpression.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mSelectExpression.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mSelectInstructionList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mSelectInstructionList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8454,14 +8454,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalSelectBranchList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mSelectExpression,
-                                _p->mSelectInstructionList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mSelectExpression,
+                                ptr->mSelectInstructionList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -8494,15 +8494,15 @@ internalSubListWithRange (GGS_lexicalSelectBranchList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mSelectExpression, _p->mSelectInstructionList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mSelectExpression, ptr->mSelectInstructionList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -8510,7 +8510,7 @@ internalSubListWithRange (GGS_lexicalSelectBranchList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSelectBranchList GGS_lexicalSelectBranchList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -8519,7 +8519,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -8530,14 +8530,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSelectBranchList GGS_lexicalSelectBranchList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalSelectBranchList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -8548,29 +8548,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalSelectBranchList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalSelectBranchList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalSelectBranchList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lexicalExpression & _out_0,
               GGS_lexicalInstructionList & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mSelectExpression ;
-    _out_1 = _p->mSelectInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mSelectExpression ;
+    _out_1 = ptr->mSelectInstructionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -8580,20 +8580,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lexicalExpression & _out_0,
              GGS_lexicalInstructionList & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mSelectExpression ;
-    _out_1 = _p->mSelectInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mSelectExpression ;
+    _out_1 = ptr->mSelectInstructionList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -8603,20 +8603,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lexicalExpression & _out_0,
                  GGS_lexicalInstructionList & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mSelectExpression ;
-    _out_1 = _p->mSelectInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mSelectExpression ;
+    _out_1 = ptr->mSelectInstructionList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -8628,20 +8628,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lexicalExpression & _out_0,
                 GGS_lexicalInstructionList & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mSelectExpression ;
-    _out_1 = _p->mSelectInstructionList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mSelectExpression ;
+    _out_1 = ptr->mSelectInstructionList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -8757,11 +8757,11 @@ bool cPtr_lexicalActionInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalActionInstruction * _p = dynamic_cast <const cPtr_lexicalActionInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mActionName._operator_isEqual (_p->mActionName).boolValue ()
-         && mActualArgumentList._operator_isEqual (_p->mActualArgumentList).boolValue ()
-         && mErrorMessageList._operator_isEqual (_p->mErrorMessageList).boolValue () ;
+    const cPtr_lexicalActionInstruction * ptr = dynamic_cast <const cPtr_lexicalActionInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mActionName._operator_isEqual (ptr->mActionName).boolValue ()
+         && mActualArgumentList._operator_isEqual (ptr->mActualArgumentList).boolValue ()
+         && mErrorMessageList._operator_isEqual (ptr->mErrorMessageList).boolValue () ;
   }
   return equal ;
 }
@@ -8769,14 +8769,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalActionInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalActionInstruction:"
-           << mActionName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mActualArgumentList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mErrorMessageList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mActionName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mActualArgumentList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mErrorMessageList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8954,7 +8954,7 @@ cPtr_lexicalActualArgument (LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalActualArgument::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -9074,9 +9074,9 @@ bool elementOf_GGS_lexicalActualArgumentList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_lexicalActualArgumentList * _p = dynamic_cast <const elementOf_GGS_lexicalActualArgumentList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLexicalActualArgument._operator_isEqual (_p->mLexicalActualArgument).boolValue () ;
+    const elementOf_GGS_lexicalActualArgumentList * ptr = dynamic_cast <const elementOf_GGS_lexicalActualArgumentList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLexicalActualArgument._operator_isEqual (ptr->mLexicalActualArgument).boolValue () ;
   }
   return equal ;
 }
@@ -9084,14 +9084,14 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_lexicalActualArgumentList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mLexicalActualArgument.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mLexicalActualArgument.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9180,13 +9180,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_lexicalActualArgumentList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mLexicalActualArgument
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mLexicalActualArgument
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -9218,15 +9218,15 @@ internalSubListWithRange (GGS_lexicalActualArgumentList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mLexicalActualArgument) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mLexicalActualArgument) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -9234,7 +9234,7 @@ internalSubListWithRange (GGS_lexicalActualArgumentList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalActualArgumentList GGS_lexicalActualArgumentList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -9243,7 +9243,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -9254,14 +9254,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalActualArgumentList GGS_lexicalActualArgumentList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalActualArgumentList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -9272,27 +9272,27 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalActualArgumentList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@lexicalActualArgumentList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@lexicalActualArgumentList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalActualArgumentList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lexicalActualArgument & _out_0
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalActualArgument ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalActualArgument ;
   }else{
     _out_0.drop () ;
   }
@@ -9301,18 +9301,18 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalActualArgumentList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lexicalActualArgument & _out_0
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalActualArgument ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalActualArgument ;
   }else{
     _out_0.drop () ;
   }
@@ -9321,18 +9321,18 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalActualArgumentList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lexicalActualArgument & _out_0
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalActualArgument ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalActualArgument ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -9343,18 +9343,18 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalActualArgumentList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lexicalActualArgument & _out_0
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLexicalActualArgument ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLexicalActualArgument ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -9429,9 +9429,9 @@ bool cPtr_lexicalAttributeArgument::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalAttributeArgument * _p = dynamic_cast <const cPtr_lexicalAttributeArgument *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mAttributeName._operator_isEqual (_p->mAttributeName).boolValue () ;
+    const cPtr_lexicalAttributeArgument * ptr = dynamic_cast <const cPtr_lexicalAttributeArgument *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mAttributeName._operator_isEqual (ptr->mAttributeName).boolValue () ;
   }
   return equal ;
 }
@@ -9439,12 +9439,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalAttributeArgument::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalAttributeArgument:"
-           << mAttributeName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mAttributeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9595,9 +9595,9 @@ bool cPtr_lexicalCharacterArgument::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalCharacterArgument * _p = dynamic_cast <const cPtr_lexicalCharacterArgument *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mCharacter._operator_isEqual (_p->mCharacter).boolValue () ;
+    const cPtr_lexicalCharacterArgument * ptr = dynamic_cast <const cPtr_lexicalCharacterArgument *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mCharacter._operator_isEqual (ptr->mCharacter).boolValue () ;
   }
   return equal ;
 }
@@ -9605,12 +9605,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalCharacterArgument::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalCharacterArgument:"
-           << mCharacter.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mCharacter.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9763,7 +9763,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalCurrentCharacterArgument::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -9911,10 +9911,10 @@ bool cPtr_lexicalFunctionArgument::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalFunctionArgument * _p = dynamic_cast <const cPtr_lexicalFunctionArgument *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mFunctionName._operator_isEqual (_p->mFunctionName).boolValue ()
-         && mFunctionActualArgumentList._operator_isEqual (_p->mFunctionActualArgumentList).boolValue () ;
+    const cPtr_lexicalFunctionArgument * ptr = dynamic_cast <const cPtr_lexicalFunctionArgument *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mFunctionName._operator_isEqual (ptr->mFunctionName).boolValue ()
+         && mFunctionActualArgumentList._operator_isEqual (ptr->mFunctionActualArgumentList).boolValue () ;
   }
   return equal ;
 }
@@ -9922,13 +9922,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalFunctionArgument::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalFunctionArgument:"
-           << mFunctionName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mFunctionActualArgumentList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mFunctionName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mFunctionActualArgumentList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10095,9 +10095,9 @@ bool cPtr_lexicalDropInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalDropInstruction * _p = dynamic_cast <const cPtr_lexicalDropInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mTerminalName._operator_isEqual (_p->mTerminalName).boolValue () ;
+    const cPtr_lexicalDropInstruction * ptr = dynamic_cast <const cPtr_lexicalDropInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mTerminalName._operator_isEqual (ptr->mTerminalName).boolValue () ;
   }
   return equal ;
 }
@@ -10105,12 +10105,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalDropInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalDropInstruction:"
-           << mTerminalName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mTerminalName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10261,9 +10261,9 @@ bool cPtr_lexicalErrorInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalErrorInstruction * _p = dynamic_cast <const cPtr_lexicalErrorInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mErrorMessageName._operator_isEqual (_p->mErrorMessageName).boolValue () ;
+    const cPtr_lexicalErrorInstruction * ptr = dynamic_cast <const cPtr_lexicalErrorInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mErrorMessageName._operator_isEqual (ptr->mErrorMessageName).boolValue () ;
   }
   return equal ;
 }
@@ -10271,12 +10271,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalErrorInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalErrorInstruction:"
-           << mErrorMessageName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mErrorMessageName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10427,9 +10427,9 @@ bool cPtr_lexicalWarningInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalWarningInstruction * _p = dynamic_cast <const cPtr_lexicalWarningInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mWarningMessageName._operator_isEqual (_p->mWarningMessageName).boolValue () ;
+    const cPtr_lexicalWarningInstruction * ptr = dynamic_cast <const cPtr_lexicalWarningInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mWarningMessageName._operator_isEqual (ptr->mWarningMessageName).boolValue () ;
   }
   return equal ;
 }
@@ -10437,12 +10437,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalWarningInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalWarningInstruction:"
-           << mWarningMessageName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mWarningMessageName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10593,9 +10593,9 @@ bool cPtr_lexicalTagInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalTagInstruction * _p = dynamic_cast <const cPtr_lexicalTagInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mTagName._operator_isEqual (_p->mTagName).boolValue () ;
+    const cPtr_lexicalTagInstruction * ptr = dynamic_cast <const cPtr_lexicalTagInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mTagName._operator_isEqual (ptr->mTagName).boolValue () ;
   }
   return equal ;
 }
@@ -10603,12 +10603,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalTagInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalTagInstruction:"
-           << mTagName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mTagName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10761,10 +10761,10 @@ bool cPtr_lexicalRewindInstruction::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexicalRewindInstruction * _p = dynamic_cast <const cPtr_lexicalRewindInstruction *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mTagName._operator_isEqual (_p->mTagName).boolValue ()
-         && mTerminalName._operator_isEqual (_p->mTerminalName).boolValue () ;
+    const cPtr_lexicalRewindInstruction * ptr = dynamic_cast <const cPtr_lexicalRewindInstruction *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mTagName._operator_isEqual (ptr->mTagName).boolValue ()
+         && mTerminalName._operator_isEqual (ptr->mTerminalName).boolValue () ;
   }
   return equal ;
 }
@@ -10772,13 +10772,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalRewindInstruction::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexicalRewindInstruction:"
-           << mTagName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mTerminalName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mTagName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mTerminalName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10947,7 +10947,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexicalLogInstruction::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -11113,19 +11113,19 @@ bool cPtr_lexiqueComponentRoot::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lexiqueComponentRoot * _p = dynamic_cast <const cPtr_lexiqueComponentRoot *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLexiqueComponentName._operator_isEqual (_p->mLexiqueComponentName).boolValue ()
-         && mIsTemplate._operator_isEqual (_p->mIsTemplate).boolValue ()
-         && mTemplateDelimitorList._operator_isEqual (_p->mTemplateDelimitorList).boolValue ()
-         && mTemplateReplacementList._operator_isEqual (_p->mTemplateReplacementList).boolValue ()
-         && mLexicalAttributeList._operator_isEqual (_p->mLexicalAttributeList).boolValue ()
-         && mLexicalStyleList._operator_isEqual (_p->mLexicalStyleList).boolValue ()
-         && mTerminalDeclarationList._operator_isEqual (_p->mTerminalDeclarationList).boolValue ()
-         && mLexicalErrorMessageDeclarationList._operator_isEqual (_p->mLexicalErrorMessageDeclarationList).boolValue ()
-         && mLexicalListDeclarationList._operator_isEqual (_p->mLexicalListDeclarationList).boolValue ()
-         && mLexicalImplicitRuleList._operator_isEqual (_p->mLexicalImplicitRuleList).boolValue ()
-         && mLexicalExplicitRuleList._operator_isEqual (_p->mLexicalExplicitRuleList).boolValue () ;
+    const cPtr_lexiqueComponentRoot * ptr = dynamic_cast <const cPtr_lexiqueComponentRoot *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLexiqueComponentName._operator_isEqual (ptr->mLexiqueComponentName).boolValue ()
+         && mIsTemplate._operator_isEqual (ptr->mIsTemplate).boolValue ()
+         && mTemplateDelimitorList._operator_isEqual (ptr->mTemplateDelimitorList).boolValue ()
+         && mTemplateReplacementList._operator_isEqual (ptr->mTemplateReplacementList).boolValue ()
+         && mLexicalAttributeList._operator_isEqual (ptr->mLexicalAttributeList).boolValue ()
+         && mLexicalStyleList._operator_isEqual (ptr->mLexicalStyleList).boolValue ()
+         && mTerminalDeclarationList._operator_isEqual (ptr->mTerminalDeclarationList).boolValue ()
+         && mLexicalErrorMessageDeclarationList._operator_isEqual (ptr->mLexicalErrorMessageDeclarationList).boolValue ()
+         && mLexicalListDeclarationList._operator_isEqual (ptr->mLexicalListDeclarationList).boolValue ()
+         && mLexicalImplicitRuleList._operator_isEqual (ptr->mLexicalImplicitRuleList).boolValue ()
+         && mLexicalExplicitRuleList._operator_isEqual (ptr->mLexicalExplicitRuleList).boolValue () ;
   }
   return equal ;
 }
@@ -11133,22 +11133,22 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lexiqueComponentRoot::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lexiqueComponentRoot:"
-           << mLexiqueComponentName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mIsTemplate.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mTemplateDelimitorList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mTemplateReplacementList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalAttributeList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalStyleList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mTerminalDeclarationList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalErrorMessageDeclarationList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalListDeclarationList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalImplicitRuleList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLexicalExplicitRuleList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mLexiqueComponentName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mIsTemplate.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mTemplateDelimitorList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mTemplateReplacementList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalAttributeList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalStyleList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mTerminalDeclarationList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalErrorMessageDeclarationList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalListDeclarationList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalImplicitRuleList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLexicalExplicitRuleList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*

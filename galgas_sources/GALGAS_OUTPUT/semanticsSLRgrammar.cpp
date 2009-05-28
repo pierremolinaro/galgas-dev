@@ -9747,14 +9747,14 @@ static const sint16 gProductionsTable [322 * 2] = {
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_concatenation_term_ (galgas_scanner & _inLexique,
+nt_concatenation_term_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-    pr_concatenation_term_expressionModelBuilder_72_25_ (_inLexique, parameter_1) ;
+    pr_concatenation_term_expressionModelBuilder_72_25_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9765,14 +9765,14 @@ nt_concatenation_term_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_expression_ (galgas_scanner & _inLexique,
+nt_expression_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 0 :
-    pr_expression_expressionModelBuilder_53_17_ (_inLexique, parameter_1) ;
+    pr_expression_expressionModelBuilder_53_17_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9783,62 +9783,62 @@ nt_expression_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_factor_ (galgas_scanner & _inLexique,
+nt_factor_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 6 :
-    pr_factor_expressionModelBuilder_244_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_244_13_ (inLexique, parameter_1) ;
     break ;
   case 7 :
-    pr_factor_expressionModelBuilder_257_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_257_13_ (inLexique, parameter_1) ;
     break ;
   case 8 :
-    pr_factor_expressionModelBuilder_269_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_269_13_ (inLexique, parameter_1) ;
     break ;
   case 9 :
-    pr_factor_expressionModelBuilder_282_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_282_13_ (inLexique, parameter_1) ;
     break ;
   case 10 :
-    pr_factor_expressionModelBuilder_321_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_321_13_ (inLexique, parameter_1) ;
     break ;
   case 11 :
-    pr_factor_expressionModelBuilder_334_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_334_13_ (inLexique, parameter_1) ;
     break ;
   case 12 :
-    pr_factor_expressionModelBuilder_347_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_347_13_ (inLexique, parameter_1) ;
     break ;
   case 13 :
-    pr_factor_expressionModelBuilder_358_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_358_13_ (inLexique, parameter_1) ;
     break ;
   case 14 :
-    pr_factor_expressionModelBuilder_369_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_369_13_ (inLexique, parameter_1) ;
     break ;
   case 15 :
-    pr_factor_expressionModelBuilder_386_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_386_13_ (inLexique, parameter_1) ;
     break ;
   case 16 :
-    pr_factor_expressionModelBuilder_398_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_398_13_ (inLexique, parameter_1) ;
     break ;
   case 17 :
-    pr_factor_expressionModelBuilder_410_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_410_13_ (inLexique, parameter_1) ;
     break ;
   case 18 :
-    pr_factor_expressionModelBuilder_422_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_422_13_ (inLexique, parameter_1) ;
     break ;
   case 19 :
-    pr_factor_expressionModelBuilder_434_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_434_13_ (inLexique, parameter_1) ;
     break ;
   case 20 :
-    pr_factor_expressionModelBuilder_446_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_446_13_ (inLexique, parameter_1) ;
     break ;
   case 21 :
-    pr_factor_expressionModelBuilder_458_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_458_13_ (inLexique, parameter_1) ;
     break ;
   case 22 :
-    pr_factor_expressionModelBuilder_473_13_ (_inLexique, parameter_1) ;
+    pr_factor_expressionModelBuilder_473_13_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9849,14 +9849,14 @@ nt_factor_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_output_expression_list_ (galgas_scanner & _inLexique,
+nt_output_expression_list_ (galgas_scanner & inLexique,
                                 GGS_outExpressionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 23 :
-    pr_output_expression_list_expressionModelBuilder_560_29_ (_inLexique, parameter_1) ;
+    pr_output_expression_list_expressionModelBuilder_560_29_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9867,14 +9867,14 @@ nt_output_expression_list_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_relation_factor_ (galgas_scanner & _inLexique,
+nt_relation_factor_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 3 :
-    pr_relation_factor_expressionModelBuilder_117_22_ (_inLexique, parameter_1) ;
+    pr_relation_factor_expressionModelBuilder_117_22_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9885,14 +9885,14 @@ nt_relation_factor_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_relation_term_ (galgas_scanner & _inLexique,
+nt_relation_term_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 2 :
-    pr_relation_term_expressionModelBuilder_98_20_ (_inLexique, parameter_1) ;
+    pr_relation_term_expressionModelBuilder_98_20_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9903,14 +9903,14 @@ nt_relation_term_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_simple_expression_ (galgas_scanner & _inLexique,
+nt_simple_expression_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 4 :
-    pr_simple_expression_expressionModelBuilder_171_24_ (_inLexique, parameter_1) ;
+    pr_simple_expression_expressionModelBuilder_171_24_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9921,14 +9921,14 @@ nt_simple_expression_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_term_ (galgas_scanner & _inLexique,
+nt_term_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 5 :
-    pr_term_expressionModelBuilder_211_11_ (_inLexique, parameter_1) ;
+    pr_term_expressionModelBuilder_211_11_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9939,14 +9939,14 @@ nt_term_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_actual_input_parameter_list_ (galgas_scanner & _inLexique,
+nt_actual_input_parameter_list_ (galgas_scanner & inLexique,
                                 GGS_actualInputParameterList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 27 :
-    pr_actual_input_parameter_list_parameterArgumentBuilder_177_34_ (_inLexique, parameter_1) ;
+    pr_actual_input_parameter_list_parameterArgumentBuilder_177_34_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9957,14 +9957,14 @@ nt_actual_input_parameter_list_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_actual_parameter_list_ (galgas_scanner & _inLexique,
+nt_actual_parameter_list_ (galgas_scanner & inLexique,
                                 GGS_actualParameterList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 25 :
-    pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (_inLexique, parameter_1) ;
+    pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9975,14 +9975,14 @@ nt_actual_parameter_list_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_formal_input_parameter_list_ (galgas_scanner & _inLexique,
+nt_formal_input_parameter_list_ (galgas_scanner & inLexique,
                                 GGS_formalInputParameterList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 26 :
-    pr_formal_input_parameter_list_parameterArgumentBuilder_149_34_ (_inLexique, parameter_1) ;
+    pr_formal_input_parameter_list_parameterArgumentBuilder_149_34_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -9993,14 +9993,14 @@ nt_formal_input_parameter_list_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_formal_parameter_list_ (galgas_scanner & _inLexique,
+nt_formal_parameter_list_ (galgas_scanner & inLexique,
                                 GGS_formalParameterList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 24 :
-    pr_formal_parameter_list_parameterArgumentBuilder_47_28_ (_inLexique, parameter_1) ;
+    pr_formal_parameter_list_parameterArgumentBuilder_47_28_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10011,17 +10011,17 @@ nt_formal_parameter_list_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_cast_else_or_default_ (galgas_scanner & _inLexique,
+nt_cast_else_or_default_ (galgas_scanner & inLexique,
                                 GGS_elseOrDefaultForCastInstruction & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 50 :
-    pr_cast_else_or_default_semanticInstructionListModelBuilder_696_27_ (_inLexique, parameter_1) ;
+    pr_cast_else_or_default_semanticInstructionListModelBuilder_696_27_ (inLexique, parameter_1) ;
     break ;
   case 51 :
-    pr_cast_else_or_default_semanticInstructionListModelBuilder_706_27_ (_inLexique, parameter_1) ;
+    pr_cast_else_or_default_semanticInstructionListModelBuilder_706_27_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10032,14 +10032,14 @@ nt_cast_else_or_default_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_cast_instruction_branch_ (galgas_scanner & _inLexique,
+nt_cast_instruction_branch_ (galgas_scanner & inLexique,
                                 GGS_castInstructionBranchList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 49 :
-    pr_cast_instruction_branch_semanticInstructionListModelBuilder_654_30_ (_inLexique, parameter_1) ;
+    pr_cast_instruction_branch_semanticInstructionListModelBuilder_654_30_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10050,14 +10050,14 @@ nt_cast_instruction_branch_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_foreach_enumerated_object_ (galgas_scanner & _inLexique,
+nt_foreach_enumerated_object_ (galgas_scanner & inLexique,
                                 GGS_foreachInstructionEnumeratedObjectList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 37 :
-    pr_foreach_enumerated_object_semanticInstructionListModelBuilder_252_32_ (_inLexique, parameter_1) ;
+    pr_foreach_enumerated_object_semanticInstructionListModelBuilder_252_32_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10068,17 +10068,17 @@ nt_foreach_enumerated_object_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_match_entry_ (galgas_scanner & _inLexique,
+nt_match_entry_ (galgas_scanner & inLexique,
                                 GGS_matchEntryList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 45 :
-    pr_match_entry_semanticInstructionListModelBuilder_532_18_ (_inLexique, parameter_1) ;
+    pr_match_entry_semanticInstructionListModelBuilder_532_18_ (inLexique, parameter_1) ;
     break ;
   case 46 :
-    pr_match_entry_semanticInstructionListModelBuilder_539_18_ (_inLexique, parameter_1) ;
+    pr_match_entry_semanticInstructionListModelBuilder_539_18_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10089,14 +10089,14 @@ nt_match_entry_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_match_instruction_branch_ (galgas_scanner & _inLexique,
+nt_match_instruction_branch_ (galgas_scanner & inLexique,
                                 GGS_matchInstructionBranchList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 47 :
-    pr_match_instruction_branch_semanticInstructionListModelBuilder_589_31_ (_inLexique, parameter_1) ;
+    pr_match_instruction_branch_semanticInstructionListModelBuilder_589_31_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10107,59 +10107,59 @@ nt_match_instruction_branch_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_semantic_declaration_ (galgas_scanner & _inLexique,
+nt_semantic_declaration_ (galgas_scanner & inLexique,
                                 GGS_semanticDeclarationStruct & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 29 :
-    pr_semantic_declaration_semanticInstructionListModelBuilder_70_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticInstructionListModelBuilder_70_27_ (inLexique, parameter_1) ;
     break ;
   case 30 :
-    pr_semantic_declaration_semanticInstructionListModelBuilder_96_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticInstructionListModelBuilder_96_27_ (inLexique, parameter_1) ;
     break ;
   case 31 :
-    pr_semantic_declaration_semanticInstructionListModelBuilder_117_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticInstructionListModelBuilder_117_27_ (inLexique, parameter_1) ;
     break ;
   case 32 :
-    pr_semantic_declaration_semanticInstructionListModelBuilder_148_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticInstructionListModelBuilder_148_27_ (inLexique, parameter_1) ;
     break ;
   case 64 :
-    pr_semantic_declaration_semanticsModelBuilder_147_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_147_27_ (inLexique, parameter_1) ;
     break ;
   case 67 :
-    pr_semantic_declaration_semanticsModelBuilder_203_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_203_27_ (inLexique, parameter_1) ;
     break ;
   case 69 :
-    pr_semantic_declaration_semanticsModelBuilder_267_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_267_27_ (inLexique, parameter_1) ;
     break ;
   case 76 :
-    pr_semantic_declaration_semanticsModelBuilder_465_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_465_27_ (inLexique, parameter_1) ;
     break ;
   case 77 :
-    pr_semantic_declaration_semanticsModelBuilder_541_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_541_27_ (inLexique, parameter_1) ;
     break ;
   case 78 :
-    pr_semantic_declaration_semanticsModelBuilder_565_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_565_27_ (inLexique, parameter_1) ;
     break ;
   case 82 :
-    pr_semantic_declaration_semanticsModelBuilder_624_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_624_27_ (inLexique, parameter_1) ;
     break ;
   case 88 :
-    pr_semantic_declaration_semanticsModelBuilder_819_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_819_27_ (inLexique, parameter_1) ;
     break ;
   case 89 :
-    pr_semantic_declaration_semanticsModelBuilder_883_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_883_27_ (inLexique, parameter_1) ;
     break ;
   case 90 :
-    pr_semantic_declaration_semanticsModelBuilder_931_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_931_27_ (inLexique, parameter_1) ;
     break ;
   case 91 :
-    pr_semantic_declaration_semanticsModelBuilder_951_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_951_27_ (inLexique, parameter_1) ;
     break ;
   case 92 :
-    pr_semantic_declaration_semanticsModelBuilder_980_27_ (_inLexique, parameter_1) ;
+    pr_semantic_declaration_semanticsModelBuilder_980_27_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10170,77 +10170,77 @@ nt_semantic_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_semantic_instruction_ (galgas_scanner & _inLexique,
+nt_semantic_instruction_ (galgas_scanner & inLexique,
                                 GGS_semanticInstruction & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 33 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_174_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_174_27_ (inLexique, parameter_1) ;
     break ;
   case 34 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_202_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_202_27_ (inLexique, parameter_1) ;
     break ;
   case 35 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_220_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_220_27_ (inLexique, parameter_1) ;
     break ;
   case 36 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_233_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_233_27_ (inLexique, parameter_1) ;
     break ;
   case 38 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_305_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_305_27_ (inLexique, parameter_1) ;
     break ;
   case 39 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_371_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_371_27_ (inLexique, parameter_1) ;
     break ;
   case 40 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_406_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_406_27_ (inLexique, parameter_1) ;
     break ;
   case 41 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_428_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_428_27_ (inLexique, parameter_1) ;
     break ;
   case 42 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_458_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_458_27_ (inLexique, parameter_1) ;
     break ;
   case 43 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_491_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_491_27_ (inLexique, parameter_1) ;
     break ;
   case 44 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_511_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_511_27_ (inLexique, parameter_1) ;
     break ;
   case 48 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_608_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_608_27_ (inLexique, parameter_1) ;
     break ;
   case 52 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_716_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_716_27_ (inLexique, parameter_1) ;
     break ;
   case 53 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_744_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_744_27_ (inLexique, parameter_1) ;
     break ;
   case 54 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_771_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_771_27_ (inLexique, parameter_1) ;
     break ;
   case 55 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_799_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_799_27_ (inLexique, parameter_1) ;
     break ;
   case 56 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_825_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_825_27_ (inLexique, parameter_1) ;
     break ;
   case 57 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_855_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_855_27_ (inLexique, parameter_1) ;
     break ;
   case 58 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_871_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_871_27_ (inLexique, parameter_1) ;
     break ;
   case 59 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_891_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_891_27_ (inLexique, parameter_1) ;
     break ;
   case 60 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_936_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_936_27_ (inLexique, parameter_1) ;
     break ;
   case 61 :
-    pr_semantic_instruction_semanticInstructionListModelBuilder_971_27_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_semanticInstructionListModelBuilder_971_27_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10251,14 +10251,14 @@ nt_semantic_instruction_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_semantic_instruction_list_ (galgas_scanner & _inLexique,
+nt_semantic_instruction_list_ (galgas_scanner & inLexique,
                                 GGS_semanticInstructionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 28 :
-    pr_semantic_instruction_list_semanticInstructionListModelBuilder_54_32_ (_inLexique, parameter_1) ;
+    pr_semantic_instruction_list_semanticInstructionListModelBuilder_54_32_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10269,14 +10269,14 @@ nt_semantic_instruction_list_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_attribute_declaration_ (galgas_scanner & _inLexique,
+nt_attribute_declaration_ (galgas_scanner & inLexique,
                                 GGS_attributeInCollectionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 63 :
-    pr_attribute_declaration_semanticsModelBuilder_123_28_ (_inLexique, parameter_1) ;
+    pr_attribute_declaration_semanticsModelBuilder_123_28_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10287,14 +10287,14 @@ nt_attribute_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_class_abstract_method_declaration_ (galgas_scanner & _inLexique,
+nt_class_abstract_method_declaration_ (galgas_scanner & inLexique,
                                 GGS_abstractMethodDefinitionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 72 :
-    pr_class_abstract_method_declaration_semanticsModelBuilder_370_40_ (_inLexique, parameter_1) ;
+    pr_class_abstract_method_declaration_semanticsModelBuilder_370_40_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10305,14 +10305,14 @@ nt_class_abstract_method_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_class_message_declaration_ (galgas_scanner & _inLexique,
+nt_class_message_declaration_ (galgas_scanner & inLexique,
                                 GGS_classMessageDefinitionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 71 :
-    pr_class_message_declaration_semanticsModelBuilder_354_32_ (_inLexique, parameter_1) ;
+    pr_class_message_declaration_semanticsModelBuilder_354_32_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10323,14 +10323,14 @@ nt_class_message_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_class_method_declaration_ (galgas_scanner & _inLexique,
+nt_class_method_declaration_ (galgas_scanner & inLexique,
                                 GGS_methodDefinitionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 74 :
-    pr_class_method_declaration_semanticsModelBuilder_417_31_ (_inLexique, parameter_1) ;
+    pr_class_method_declaration_semanticsModelBuilder_417_31_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10341,14 +10341,14 @@ nt_class_method_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_class_overriden_method_declaration_ (galgas_scanner & _inLexique,
+nt_class_overriden_method_declaration_ (galgas_scanner & inLexique,
                                 GGS_overridenMethodDefinitionList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 73 :
-    pr_class_overriden_method_declaration_semanticsModelBuilder_390_41_ (_inLexique, parameter_1) ;
+    pr_class_overriden_method_declaration_semanticsModelBuilder_390_41_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10359,14 +10359,14 @@ nt_class_overriden_method_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_enum_case_message_ (galgas_scanner & _inLexique,
+nt_enum_case_message_ (galgas_scanner & inLexique,
                                 GGS_enumCaseMessage & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 84 :
-    pr_enum_case_message_semanticsModelBuilder_689_24_ (_inLexique, parameter_1) ;
+    pr_enum_case_message_semanticsModelBuilder_689_24_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10377,14 +10377,14 @@ nt_enum_case_message_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_enum_message_declaration_ (galgas_scanner & _inLexique,
+nt_enum_message_declaration_ (galgas_scanner & inLexique,
                                 GGS_enumMessageList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 83 :
-    pr_enum_message_declaration_semanticsModelBuilder_661_31_ (_inLexique, parameter_1) ;
+    pr_enum_message_declaration_semanticsModelBuilder_661_31_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10395,14 +10395,14 @@ nt_enum_message_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_enum_method_ (galgas_scanner & _inLexique,
+nt_enum_method_ (galgas_scanner & inLexique,
                                 GGS_enumMethodList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 86 :
-    pr_enum_method_semanticsModelBuilder_748_18_ (_inLexique, parameter_1) ;
+    pr_enum_method_semanticsModelBuilder_748_18_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10413,14 +10413,14 @@ nt_enum_method_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_enum_modifier_ (galgas_scanner & _inLexique,
+nt_enum_modifier_ (galgas_scanner & inLexique,
                                 GGS_enumModifierList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 85 :
-    pr_enum_modifier_semanticsModelBuilder_713_20_ (_inLexique, parameter_1) ;
+    pr_enum_modifier_semanticsModelBuilder_713_20_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10431,14 +10431,14 @@ nt_enum_modifier_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_enum_operator_ (galgas_scanner & _inLexique,
+nt_enum_operator_ (galgas_scanner & inLexique,
                                 GGS_enumOperatorList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 87 :
-    pr_enum_operator_semanticsModelBuilder_781_20_ (_inLexique, parameter_1) ;
+    pr_enum_operator_semanticsModelBuilder_781_20_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10449,14 +10449,14 @@ nt_enum_operator_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_lazy_attribute_declaration_ (galgas_scanner & _inLexique,
+nt_lazy_attribute_declaration_ (galgas_scanner & inLexique,
                                 GGS_lazyAttributeList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 75 :
-    pr_lazy_attribute_declaration_semanticsModelBuilder_441_33_ (_inLexique, parameter_1) ;
+    pr_lazy_attribute_declaration_semanticsModelBuilder_441_33_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10467,14 +10467,14 @@ nt_lazy_attribute_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_map_method_declaration_ (galgas_scanner & _inLexique,
+nt_map_method_declaration_ (galgas_scanner & inLexique,
                                 GGS_mapMethodList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 66 :
-    pr_map_method_declaration_semanticsModelBuilder_181_29_ (_inLexique, parameter_1) ;
+    pr_map_method_declaration_semanticsModelBuilder_181_29_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10485,25 +10485,25 @@ nt_map_method_declaration_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_obsolete_declaration_ (galgas_scanner & _inLexique) {
-  switch (_inLexique.nextProductionIndex ()) {
+nt_obsolete_declaration_ (galgas_scanner & inLexique) {
+  switch (inLexique.nextProductionIndex ()) {
   case 65 :
-    pr_obsolete_declaration_semanticsModelBuilder_169_27_ (_inLexique) ;
+    pr_obsolete_declaration_semanticsModelBuilder_169_27_ (inLexique) ;
     break ;
   case 68 :
-    pr_obsolete_declaration_semanticsModelBuilder_259_27_ (_inLexique) ;
+    pr_obsolete_declaration_semanticsModelBuilder_259_27_ (inLexique) ;
     break ;
   case 70 :
-    pr_obsolete_declaration_semanticsModelBuilder_297_27_ (_inLexique) ;
+    pr_obsolete_declaration_semanticsModelBuilder_297_27_ (inLexique) ;
     break ;
   case 79 :
-    pr_obsolete_declaration_semanticsModelBuilder_585_27_ (_inLexique) ;
+    pr_obsolete_declaration_semanticsModelBuilder_585_27_ (inLexique) ;
     break ;
   case 80 :
-    pr_obsolete_declaration_semanticsModelBuilder_597_27_ (_inLexique) ;
+    pr_obsolete_declaration_semanticsModelBuilder_597_27_ (inLexique) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10514,14 +10514,14 @@ nt_obsolete_declaration_ (galgas_scanner & _inLexique) {
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_semantics_component_start_symbol_ (galgas_scanner & _inLexique,
+nt_semantics_component_start_symbol_ (galgas_scanner & inLexique,
                                 GGS_semanticsComponentRoot & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 62 :
-    pr_semantics_component_start_symbol_semanticsModelBuilder_57_39_ (_inLexique, parameter_1) ;
+    pr_semantics_component_start_symbol_semanticsModelBuilder_57_39_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10605,14 +10605,14 @@ void semanticsSLRgrammar::_performSourceStringParsing_ (C_Compiler & _inCompiler
 //---------------------------------------------------------------------------*
 
 void semanticsSLRgrammar::
-nt_sortedlist_sort_descriptor_ (galgas_scanner & _inLexique,
+nt_sortedlist_sort_descriptor_ (galgas_scanner & inLexique,
                                 GGS_sortedListSortDescriptorList & parameter_1) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 81 :
-    pr_sortedlist_sort_descriptor_semanticsModelBuilder_609_33_ (_inLexique, parameter_1) ;
+    pr_sortedlist_sort_descriptor_semanticsModelBuilder_609_33_ (inLexique, parameter_1) ;
     break ;
   default :
-    _inLexique.internalBottomUpParserError (HERE) ;
+    inLexique.internalBottomUpParserError (HERE) ;
   }
 }
 
@@ -10623,9 +10623,9 @@ nt_sortedlist_sort_descriptor_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_0 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_0 (galgas_scanner & inLexique) {
 // Productions numbers : 93 94
-  return (sint16) (_inLexique.nextProductionIndex () - 92) ;
+  return (sint16) (inLexique.nextProductionIndex () - 92) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10635,9 +10635,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_0 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_1 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_1 (galgas_scanner & inLexique) {
 // Productions numbers : 95 96 97
-  return (sint16) (_inLexique.nextProductionIndex () - 94) ;
+  return (sint16) (inLexique.nextProductionIndex () - 94) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10647,9 +10647,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_1 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_2 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_2 (galgas_scanner & inLexique) {
 // Productions numbers : 98 99
-  return (sint16) (_inLexique.nextProductionIndex () - 97) ;
+  return (sint16) (inLexique.nextProductionIndex () - 97) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10659,9 +10659,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_2 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_3 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_3 (galgas_scanner & inLexique) {
 // Productions numbers : 100 101 102 103 104 105 106
-  return (sint16) (_inLexique.nextProductionIndex () - 99) ;
+  return (sint16) (inLexique.nextProductionIndex () - 99) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10671,9 +10671,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_3 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_4 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_4 (galgas_scanner & inLexique) {
 // Productions numbers : 107 108 109 110 111
-  return (sint16) (_inLexique.nextProductionIndex () - 106) ;
+  return (sint16) (inLexique.nextProductionIndex () - 106) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10683,9 +10683,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_4 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_5 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_5 (galgas_scanner & inLexique) {
 // Productions numbers : 112 113 114 115
-  return (sint16) (_inLexique.nextProductionIndex () - 111) ;
+  return (sint16) (inLexique.nextProductionIndex () - 111) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10695,9 +10695,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_5 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_6 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_6 (galgas_scanner & inLexique) {
 // Productions numbers : 116 117
-  return (sint16) (_inLexique.nextProductionIndex () - 115) ;
+  return (sint16) (inLexique.nextProductionIndex () - 115) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10707,9 +10707,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_6 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_7 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_7 (galgas_scanner & inLexique) {
 // Productions numbers : 118 119
-  return (sint16) (_inLexique.nextProductionIndex () - 117) ;
+  return (sint16) (inLexique.nextProductionIndex () - 117) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10719,9 +10719,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_7 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_8 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_8 (galgas_scanner & inLexique) {
 // Productions numbers : 120 121
-  return (sint16) (_inLexique.nextProductionIndex () - 119) ;
+  return (sint16) (inLexique.nextProductionIndex () - 119) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10731,9 +10731,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_8 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_9 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_9 (galgas_scanner & inLexique) {
 // Productions numbers : 122 123 124 125
-  return (sint16) (_inLexique.nextProductionIndex () - 121) ;
+  return (sint16) (inLexique.nextProductionIndex () - 121) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10743,9 +10743,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_9 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_10 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_10 (galgas_scanner & inLexique) {
 // Productions numbers : 126 127
-  return (sint16) (_inLexique.nextProductionIndex () - 125) ;
+  return (sint16) (inLexique.nextProductionIndex () - 125) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10755,9 +10755,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_10 (galgas_scanner & _
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_11 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_11 (galgas_scanner & inLexique) {
 // Productions numbers : 128 129
-  return (sint16) (_inLexique.nextProductionIndex () - 127) ;
+  return (sint16) (inLexique.nextProductionIndex () - 127) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10767,9 +10767,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_11 (galgas_scanner & _
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_12 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_12 (galgas_scanner & inLexique) {
 // Productions numbers : 130 131
-  return (sint16) (_inLexique.nextProductionIndex () - 129) ;
+  return (sint16) (inLexique.nextProductionIndex () - 129) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10779,9 +10779,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_12 (galgas_scanner & _
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_expressionModelBuilder_13 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_expressionModelBuilder_13 (galgas_scanner & inLexique) {
 // Productions numbers : 132 133
-  return (sint16) (_inLexique.nextProductionIndex () - 131) ;
+  return (sint16) (inLexique.nextProductionIndex () - 131) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10791,9 +10791,9 @@ sint16 semanticsSLRgrammar::select_expressionModelBuilder_13 (galgas_scanner & _
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_14 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_14 (galgas_scanner & inLexique) {
 // Productions numbers : 134 135
-  return (sint16) (_inLexique.nextProductionIndex () - 133) ;
+  return (sint16) (inLexique.nextProductionIndex () - 133) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10803,9 +10803,9 @@ sint16 semanticsSLRgrammar::select_repeat_expressionModelBuilder_14 (galgas_scan
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_0 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_0 (galgas_scanner & inLexique) {
 // Productions numbers : 136 137
-  return (sint16) (_inLexique.nextProductionIndex () - 135) ;
+  return (sint16) (inLexique.nextProductionIndex () - 135) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10815,9 +10815,9 @@ sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_0 (galgas_sca
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_1 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_1 (galgas_scanner & inLexique) {
 // Productions numbers : 138 139 140 141
-  return (sint16) (_inLexique.nextProductionIndex () - 137) ;
+  return (sint16) (inLexique.nextProductionIndex () - 137) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10827,9 +10827,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_1 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_2 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_2 (galgas_scanner & inLexique) {
 // Productions numbers : 142 143
-  return (sint16) (_inLexique.nextProductionIndex () - 141) ;
+  return (sint16) (inLexique.nextProductionIndex () - 141) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10839,9 +10839,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_2 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_3 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_3 (galgas_scanner & inLexique) {
 // Productions numbers : 144 145 146 147 148
-  return (sint16) (_inLexique.nextProductionIndex () - 143) ;
+  return (sint16) (inLexique.nextProductionIndex () - 143) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10851,9 +10851,9 @@ sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_3 (galgas_sca
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_4 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_4 (galgas_scanner & inLexique) {
 // Productions numbers : 149 150
-  return (sint16) (_inLexique.nextProductionIndex () - 148) ;
+  return (sint16) (inLexique.nextProductionIndex () - 148) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10863,9 +10863,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_4 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_5 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_5 (galgas_scanner & inLexique) {
 // Productions numbers : 151 152
-  return (sint16) (_inLexique.nextProductionIndex () - 150) ;
+  return (sint16) (inLexique.nextProductionIndex () - 150) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10875,9 +10875,9 @@ sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_5 (galgas_sca
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_6 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_6 (galgas_scanner & inLexique) {
 // Productions numbers : 153 154
-  return (sint16) (_inLexique.nextProductionIndex () - 152) ;
+  return (sint16) (inLexique.nextProductionIndex () - 152) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10887,9 +10887,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_6 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_7 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_7 (galgas_scanner & inLexique) {
 // Productions numbers : 155 156
-  return (sint16) (_inLexique.nextProductionIndex () - 154) ;
+  return (sint16) (inLexique.nextProductionIndex () - 154) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10899,9 +10899,9 @@ sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_7 (galgas_sca
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_8 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_8 (galgas_scanner & inLexique) {
 // Productions numbers : 157 158
-  return (sint16) (_inLexique.nextProductionIndex () - 156) ;
+  return (sint16) (inLexique.nextProductionIndex () - 156) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10911,9 +10911,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_8 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_9 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_9 (galgas_scanner & inLexique) {
 // Productions numbers : 159 160
-  return (sint16) (_inLexique.nextProductionIndex () - 158) ;
+  return (sint16) (inLexique.nextProductionIndex () - 158) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10923,9 +10923,9 @@ sint16 semanticsSLRgrammar::select_repeat_parameterArgumentBuilder_9 (galgas_sca
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_10 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_10 (galgas_scanner & inLexique) {
 // Productions numbers : 161 162
-  return (sint16) (_inLexique.nextProductionIndex () - 160) ;
+  return (sint16) (inLexique.nextProductionIndex () - 160) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10935,9 +10935,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_10 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_11 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_11 (galgas_scanner & inLexique) {
 // Productions numbers : 163 164
-  return (sint16) (_inLexique.nextProductionIndex () - 162) ;
+  return (sint16) (inLexique.nextProductionIndex () - 162) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10947,9 +10947,9 @@ sint16 semanticsSLRgrammar::select_parameterArgumentBuilder_11 (galgas_scanner &
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_0 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_0 (galgas_scanner & inLexique) {
 // Productions numbers : 165 166
-  return (sint16) (_inLexique.nextProductionIndex () - 164) ;
+  return (sint16) (inLexique.nextProductionIndex () - 164) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10959,9 +10959,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_0 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_1 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_1 (galgas_scanner & inLexique) {
 // Productions numbers : 167 168 169
-  return (sint16) (_inLexique.nextProductionIndex () - 166) ;
+  return (sint16) (inLexique.nextProductionIndex () - 166) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10971,9 +10971,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_1 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_2 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_2 (galgas_scanner & inLexique) {
 // Productions numbers : 170 171
-  return (sint16) (_inLexique.nextProductionIndex () - 169) ;
+  return (sint16) (inLexique.nextProductionIndex () - 169) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10983,9 +10983,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_2 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_3 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_3 (galgas_scanner & inLexique) {
 // Productions numbers : 172 173 174 175
-  return (sint16) (_inLexique.nextProductionIndex () - 171) ;
+  return (sint16) (inLexique.nextProductionIndex () - 171) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10995,9 +10995,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_3 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_4 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_4 (galgas_scanner & inLexique) {
 // Productions numbers : 176 177
-  return (sint16) (_inLexique.nextProductionIndex () - 175) ;
+  return (sint16) (inLexique.nextProductionIndex () - 175) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11007,9 +11007,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_4 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_5 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_5 (galgas_scanner & inLexique) {
 // Productions numbers : 178 179
-  return (sint16) (_inLexique.nextProductionIndex () - 177) ;
+  return (sint16) (inLexique.nextProductionIndex () - 177) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11019,9 +11019,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_5 
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_6 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_6 (galgas_scanner & inLexique) {
 // Productions numbers : 180 181
-  return (sint16) (_inLexique.nextProductionIndex () - 179) ;
+  return (sint16) (inLexique.nextProductionIndex () - 179) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11031,9 +11031,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_6 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_7 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_7 (galgas_scanner & inLexique) {
 // Productions numbers : 182 183
-  return (sint16) (_inLexique.nextProductionIndex () - 181) ;
+  return (sint16) (inLexique.nextProductionIndex () - 181) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11043,9 +11043,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_7 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_8 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_8 (galgas_scanner & inLexique) {
 // Productions numbers : 184 185
-  return (sint16) (_inLexique.nextProductionIndex () - 183) ;
+  return (sint16) (inLexique.nextProductionIndex () - 183) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11055,9 +11055,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_8 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_9 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_9 (galgas_scanner & inLexique) {
 // Productions numbers : 186 187
-  return (sint16) (_inLexique.nextProductionIndex () - 185) ;
+  return (sint16) (inLexique.nextProductionIndex () - 185) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11067,9 +11067,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_9 (galgas
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_10 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_10 (galgas_scanner & inLexique) {
 // Productions numbers : 188 189
-  return (sint16) (_inLexique.nextProductionIndex () - 187) ;
+  return (sint16) (inLexique.nextProductionIndex () - 187) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11079,9 +11079,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_10 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_11 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_11 (galgas_scanner & inLexique) {
 // Productions numbers : 190 191
-  return (sint16) (_inLexique.nextProductionIndex () - 189) ;
+  return (sint16) (inLexique.nextProductionIndex () - 189) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11091,9 +11091,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_11
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_12 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_12 (galgas_scanner & inLexique) {
 // Productions numbers : 192 193
-  return (sint16) (_inLexique.nextProductionIndex () - 191) ;
+  return (sint16) (inLexique.nextProductionIndex () - 191) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11103,9 +11103,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_12 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_13 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_13 (galgas_scanner & inLexique) {
 // Productions numbers : 194 195
-  return (sint16) (_inLexique.nextProductionIndex () - 193) ;
+  return (sint16) (inLexique.nextProductionIndex () - 193) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11115,9 +11115,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_13
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_14 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_14 (galgas_scanner & inLexique) {
 // Productions numbers : 196 197
-  return (sint16) (_inLexique.nextProductionIndex () - 195) ;
+  return (sint16) (inLexique.nextProductionIndex () - 195) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11127,9 +11127,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_14 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_15 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_15 (galgas_scanner & inLexique) {
 // Productions numbers : 198 199
-  return (sint16) (_inLexique.nextProductionIndex () - 197) ;
+  return (sint16) (inLexique.nextProductionIndex () - 197) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11139,9 +11139,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_15
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_16 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_16 (galgas_scanner & inLexique) {
 // Productions numbers : 200 201 202 203
-  return (sint16) (_inLexique.nextProductionIndex () - 199) ;
+  return (sint16) (inLexique.nextProductionIndex () - 199) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11151,9 +11151,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_16
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_17 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_17 (galgas_scanner & inLexique) {
 // Productions numbers : 204 205
-  return (sint16) (_inLexique.nextProductionIndex () - 203) ;
+  return (sint16) (inLexique.nextProductionIndex () - 203) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11163,9 +11163,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_17 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_18 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_18 (galgas_scanner & inLexique) {
 // Productions numbers : 206 207
-  return (sint16) (_inLexique.nextProductionIndex () - 205) ;
+  return (sint16) (inLexique.nextProductionIndex () - 205) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11175,9 +11175,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_18
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_19 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_19 (galgas_scanner & inLexique) {
 // Productions numbers : 208 209
-  return (sint16) (_inLexique.nextProductionIndex () - 207) ;
+  return (sint16) (inLexique.nextProductionIndex () - 207) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11187,9 +11187,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_19
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_20 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_20 (galgas_scanner & inLexique) {
 // Productions numbers : 210 211
-  return (sint16) (_inLexique.nextProductionIndex () - 209) ;
+  return (sint16) (inLexique.nextProductionIndex () - 209) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11199,9 +11199,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_20
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_21 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_21 (galgas_scanner & inLexique) {
 // Productions numbers : 212 213
-  return (sint16) (_inLexique.nextProductionIndex () - 211) ;
+  return (sint16) (inLexique.nextProductionIndex () - 211) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11211,9 +11211,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_21 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_22 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_22 (galgas_scanner & inLexique) {
 // Productions numbers : 214 215
-  return (sint16) (_inLexique.nextProductionIndex () - 213) ;
+  return (sint16) (inLexique.nextProductionIndex () - 213) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11223,9 +11223,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_22 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_23 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_23 (galgas_scanner & inLexique) {
 // Productions numbers : 216 217 218
-  return (sint16) (_inLexique.nextProductionIndex () - 215) ;
+  return (sint16) (inLexique.nextProductionIndex () - 215) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11235,9 +11235,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_23 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_24 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_24 (galgas_scanner & inLexique) {
 // Productions numbers : 219 220
-  return (sint16) (_inLexique.nextProductionIndex () - 218) ;
+  return (sint16) (inLexique.nextProductionIndex () - 218) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11247,9 +11247,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_24
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_25 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_25 (galgas_scanner & inLexique) {
 // Productions numbers : 221 222
-  return (sint16) (_inLexique.nextProductionIndex () - 220) ;
+  return (sint16) (inLexique.nextProductionIndex () - 220) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11259,9 +11259,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_25
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_26 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_26 (galgas_scanner & inLexique) {
 // Productions numbers : 223 224
-  return (sint16) (_inLexique.nextProductionIndex () - 222) ;
+  return (sint16) (inLexique.nextProductionIndex () - 222) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11271,9 +11271,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_26
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_27 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_27 (galgas_scanner & inLexique) {
 // Productions numbers : 225 226
-  return (sint16) (_inLexique.nextProductionIndex () - 224) ;
+  return (sint16) (inLexique.nextProductionIndex () - 224) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11283,9 +11283,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_27
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_28 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_28 (galgas_scanner & inLexique) {
 // Productions numbers : 227 228
-  return (sint16) (_inLexique.nextProductionIndex () - 226) ;
+  return (sint16) (inLexique.nextProductionIndex () - 226) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11295,9 +11295,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_28
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_29 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_29 (galgas_scanner & inLexique) {
 // Productions numbers : 229 230
-  return (sint16) (_inLexique.nextProductionIndex () - 228) ;
+  return (sint16) (inLexique.nextProductionIndex () - 228) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11307,9 +11307,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_29 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_30 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_30 (galgas_scanner & inLexique) {
 // Productions numbers : 231 232
-  return (sint16) (_inLexique.nextProductionIndex () - 230) ;
+  return (sint16) (inLexique.nextProductionIndex () - 230) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11319,9 +11319,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_30 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_31 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_31 (galgas_scanner & inLexique) {
 // Productions numbers : 233 234
-  return (sint16) (_inLexique.nextProductionIndex () - 232) ;
+  return (sint16) (inLexique.nextProductionIndex () - 232) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11331,9 +11331,9 @@ sint16 semanticsSLRgrammar::select_semanticInstructionListModelBuilder_31 (galga
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_32 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_32 (galgas_scanner & inLexique) {
 // Productions numbers : 235 236
-  return (sint16) (_inLexique.nextProductionIndex () - 234) ;
+  return (sint16) (inLexique.nextProductionIndex () - 234) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11343,9 +11343,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_32
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_33 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_33 (galgas_scanner & inLexique) {
 // Productions numbers : 237 238
-  return (sint16) (_inLexique.nextProductionIndex () - 236) ;
+  return (sint16) (inLexique.nextProductionIndex () - 236) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11355,9 +11355,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticInstructionListModelBuilder_33
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_0 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_0 (galgas_scanner & inLexique) {
 // Productions numbers : 239 240 241 242
-  return (sint16) (_inLexique.nextProductionIndex () - 238) ;
+  return (sint16) (inLexique.nextProductionIndex () - 238) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11367,9 +11367,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_0 (galgas_scanne
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_1 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_1 (galgas_scanner & inLexique) {
 // Productions numbers : 243 244 245 246
-  return (sint16) (_inLexique.nextProductionIndex () - 242) ;
+  return (sint16) (inLexique.nextProductionIndex () - 242) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11379,9 +11379,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_1 (galgas_scanner & _in
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_2 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_2 (galgas_scanner & inLexique) {
 // Productions numbers : 247 248
-  return (sint16) (_inLexique.nextProductionIndex () - 246) ;
+  return (sint16) (inLexique.nextProductionIndex () - 246) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11391,9 +11391,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_2 (galgas_scanner & _in
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_3 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_3 (galgas_scanner & inLexique) {
 // Productions numbers : 249 250
-  return (sint16) (_inLexique.nextProductionIndex () - 248) ;
+  return (sint16) (inLexique.nextProductionIndex () - 248) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11403,9 +11403,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_3 (galgas_scanne
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_4 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_4 (galgas_scanner & inLexique) {
 // Productions numbers : 251 252
-  return (sint16) (_inLexique.nextProductionIndex () - 250) ;
+  return (sint16) (inLexique.nextProductionIndex () - 250) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11415,9 +11415,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_4 (galgas_scanner & _in
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_5 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_5 (galgas_scanner & inLexique) {
 // Productions numbers : 253 254
-  return (sint16) (_inLexique.nextProductionIndex () - 252) ;
+  return (sint16) (inLexique.nextProductionIndex () - 252) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11427,9 +11427,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_5 (galgas_scanner & _in
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_6 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_6 (galgas_scanner & inLexique) {
 // Productions numbers : 255 256 257 258 259
-  return (sint16) (_inLexique.nextProductionIndex () - 254) ;
+  return (sint16) (inLexique.nextProductionIndex () - 254) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11439,9 +11439,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_6 (galgas_scanne
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_7 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_7 (galgas_scanner & inLexique) {
 // Productions numbers : 260 261 262 263 264
-  return (sint16) (_inLexique.nextProductionIndex () - 259) ;
+  return (sint16) (inLexique.nextProductionIndex () - 259) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11451,9 +11451,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_7 (galgas_scanne
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_8 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_8 (galgas_scanner & inLexique) {
 // Productions numbers : 265 266
-  return (sint16) (_inLexique.nextProductionIndex () - 264) ;
+  return (sint16) (inLexique.nextProductionIndex () - 264) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11463,9 +11463,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_8 (galgas_scanne
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_9 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_9 (galgas_scanner & inLexique) {
 // Productions numbers : 267 268
-  return (sint16) (_inLexique.nextProductionIndex () - 266) ;
+  return (sint16) (inLexique.nextProductionIndex () - 266) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11475,9 +11475,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_9 (galgas_scanne
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_10 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_10 (galgas_scanner & inLexique) {
 // Productions numbers : 269 270
-  return (sint16) (_inLexique.nextProductionIndex () - 268) ;
+  return (sint16) (inLexique.nextProductionIndex () - 268) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11487,9 +11487,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_10 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_11 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_11 (galgas_scanner & inLexique) {
 // Productions numbers : 271 272
-  return (sint16) (_inLexique.nextProductionIndex () - 270) ;
+  return (sint16) (inLexique.nextProductionIndex () - 270) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11499,9 +11499,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_11 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_12 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_12 (galgas_scanner & inLexique) {
 // Productions numbers : 273 274
-  return (sint16) (_inLexique.nextProductionIndex () - 272) ;
+  return (sint16) (inLexique.nextProductionIndex () - 272) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11511,9 +11511,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_12 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_13 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_13 (galgas_scanner & inLexique) {
 // Productions numbers : 275 276 277 278 279 280 281 282
-  return (sint16) (_inLexique.nextProductionIndex () - 274) ;
+  return (sint16) (inLexique.nextProductionIndex () - 274) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11523,9 +11523,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_13 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_14 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_14 (galgas_scanner & inLexique) {
 // Productions numbers : 283 284
-  return (sint16) (_inLexique.nextProductionIndex () - 282) ;
+  return (sint16) (inLexique.nextProductionIndex () - 282) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11535,9 +11535,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_14 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_15 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_15 (galgas_scanner & inLexique) {
 // Productions numbers : 285 286
-  return (sint16) (_inLexique.nextProductionIndex () - 284) ;
+  return (sint16) (inLexique.nextProductionIndex () - 284) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11547,9 +11547,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_15 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_16 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_16 (galgas_scanner & inLexique) {
 // Productions numbers : 287 288
-  return (sint16) (_inLexique.nextProductionIndex () - 286) ;
+  return (sint16) (inLexique.nextProductionIndex () - 286) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11559,9 +11559,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_16 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_17 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_17 (galgas_scanner & inLexique) {
 // Productions numbers : 289 290
-  return (sint16) (_inLexique.nextProductionIndex () - 288) ;
+  return (sint16) (inLexique.nextProductionIndex () - 288) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11571,9 +11571,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_17 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_18 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_18 (galgas_scanner & inLexique) {
 // Productions numbers : 291 292
-  return (sint16) (_inLexique.nextProductionIndex () - 290) ;
+  return (sint16) (inLexique.nextProductionIndex () - 290) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11583,9 +11583,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_18 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_19 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_19 (galgas_scanner & inLexique) {
 // Productions numbers : 293 294
-  return (sint16) (_inLexique.nextProductionIndex () - 292) ;
+  return (sint16) (inLexique.nextProductionIndex () - 292) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11595,9 +11595,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_19 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_20 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_20 (galgas_scanner & inLexique) {
 // Productions numbers : 295 296 297
-  return (sint16) (_inLexique.nextProductionIndex () - 294) ;
+  return (sint16) (inLexique.nextProductionIndex () - 294) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11607,9 +11607,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_20 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_21 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_21 (galgas_scanner & inLexique) {
 // Productions numbers : 298 299
-  return (sint16) (_inLexique.nextProductionIndex () - 297) ;
+  return (sint16) (inLexique.nextProductionIndex () - 297) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11619,9 +11619,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_21 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_22 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_22 (galgas_scanner & inLexique) {
 // Productions numbers : 300 301
-  return (sint16) (_inLexique.nextProductionIndex () - 299) ;
+  return (sint16) (inLexique.nextProductionIndex () - 299) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11631,9 +11631,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_22 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_23 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_23 (galgas_scanner & inLexique) {
 // Productions numbers : 302 303
-  return (sint16) (_inLexique.nextProductionIndex () - 301) ;
+  return (sint16) (inLexique.nextProductionIndex () - 301) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11643,9 +11643,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_23 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_24 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_24 (galgas_scanner & inLexique) {
 // Productions numbers : 304 305
-  return (sint16) (_inLexique.nextProductionIndex () - 303) ;
+  return (sint16) (inLexique.nextProductionIndex () - 303) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11655,9 +11655,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_24 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_semanticsModelBuilder_25 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_semanticsModelBuilder_25 (galgas_scanner & inLexique) {
 // Productions numbers : 306 307
-  return (sint16) (_inLexique.nextProductionIndex () - 305) ;
+  return (sint16) (inLexique.nextProductionIndex () - 305) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11667,9 +11667,9 @@ sint16 semanticsSLRgrammar::select_semanticsModelBuilder_25 (galgas_scanner & _i
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_26 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_26 (galgas_scanner & inLexique) {
 // Productions numbers : 308 309
-  return (sint16) (_inLexique.nextProductionIndex () - 307) ;
+  return (sint16) (inLexique.nextProductionIndex () - 307) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11679,9 +11679,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_26 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_27 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_27 (galgas_scanner & inLexique) {
 // Productions numbers : 310 311
-  return (sint16) (_inLexique.nextProductionIndex () - 309) ;
+  return (sint16) (inLexique.nextProductionIndex () - 309) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11691,9 +11691,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_27 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_28 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_28 (galgas_scanner & inLexique) {
 // Productions numbers : 312 313 314 315 316
-  return (sint16) (_inLexique.nextProductionIndex () - 311) ;
+  return (sint16) (inLexique.nextProductionIndex () - 311) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11703,9 +11703,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_28 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_29 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_29 (galgas_scanner & inLexique) {
 // Productions numbers : 317 318
-  return (sint16) (_inLexique.nextProductionIndex () - 316) ;
+  return (sint16) (inLexique.nextProductionIndex () - 316) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11715,9 +11715,9 @@ sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_29 (galgas_scann
 //---------------------------------------------------------------------------*
 
 
-sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_30 (galgas_scanner & _inLexique) {
+sint16 semanticsSLRgrammar::select_repeat_semanticsModelBuilder_30 (galgas_scanner & inLexique) {
 // Productions numbers : 319 320
-  return (sint16) (_inLexique.nextProductionIndex () - 318) ;
+  return (sint16) (inLexique.nextProductionIndex () - 318) ;
 }
 
 //---------------------------------------------------------------------------*

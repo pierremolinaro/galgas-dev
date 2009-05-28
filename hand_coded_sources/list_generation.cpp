@@ -83,7 +83,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
-             "  appendForDescription (C_Compiler & _inLexique,\n"
+             "  appendForDescription (C_Compiler & inLexique,\n"
              "                        C_String & ioString,\n"
              "                        const sint32 inIndentation\n"
              "                        COMMA_LOCATION_ARGS) const ;\n\n" ;
@@ -142,12 +142,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                            const sint32 inFirstIndex,\n"
              "                            const sint32 inCount) const ;\n\n"
              "  public : GGS_" << aNomListe << "\n"
-             "  reader_subListWithRange (C_Compiler & _inLexique,\n"
+             "  reader_subListWithRange (C_Compiler & inLexique,\n"
              "                           const GGS_uint & inFirstIndex,\n"
              "                           const GGS_uint & inCount\n"
              "                           COMMA_LOCATION_ARGS) const ;\n\n"
              "  public : GGS_" << aNomListe << "\n"
-             "  reader_subListFromIndex (C_Compiler & _inLexique,\n"
+             "  reader_subListFromIndex (C_Compiler & inLexique,\n"
              "                           const GGS_uint & inIndex\n"
              "                           COMMA_LOCATION_ARGS) const ;\n\n"
 
@@ -169,7 +169,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'first'
              "//--- Method 'first'\n"
-             "  public : void method_first (C_Compiler & _inLexique" ;
+             "  public : void method_first (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -184,7 +184,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'last'
              "//--- Method 'last'\n"
-             "  public : void method_last (C_Compiler & _inLexique" ;
+             "  public : void method_last (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -199,7 +199,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popLast'
              "//--- Modifier 'popLast'\n"
-             "  public : void modifier_popLast (C_Compiler & _inLexique" ;
+             "  public : void modifier_popLast (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -214,7 +214,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popFirst'
              "//--- Modifier 'popFirst'\n"
-             "  public : void modifier_popFirst (C_Compiler & _inLexique" ;
+             "  public : void modifier_popFirst (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -255,7 +255,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //             "  public : cElement * operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Prepend a new value
-             "  public : void modifier_prependValue (C_Compiler & _inLexique" ;
+             "  public : void modifier_prependValue (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -303,7 +303,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : void _insulateList (void) ;\n\n"
              "//--- Reader 'description\n"
              "  public : GGS_string\n"
-             "  reader_description (C_Compiler & _inLexique\n"
+             "  reader_description (C_Compiler & inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
              "                      const sint32 inIndentation = 0) const ;\n\n" ;
 
@@ -430,15 +430,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "isEqualToObject (const cListElement * inOperand) const {\n"
                  "  bool equal = inOperand == this ;\n"
                  "  if (! equal) {\n"
-                 "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
-                 "    macroValidPointer (_p) ;\n"
+                 "    const elementOf_GGS_" << aNomListe << " * ptr = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
+                 "    macroValidPointer (ptr) ;\n"
                  "    equal = " ;
     numeroVariable = 0 ;
     while (current.hc ()) {
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (_p->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
+      inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (ptr->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
       current.next () ;
       numeroVariable ++ ;
     }
@@ -452,13 +452,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   if (! current.hc ()) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForDescription (C_Compiler & /* _inLexique */,\n"
+                 "appendForDescription (C_Compiler & /* inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
                  "                          const sint32 /* inIndentation */\n"
                  "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
   }else{
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-                 "appendForDescription (C_Compiler & _inLexique,\n"
+                 "appendForDescription (C_Compiler & inLexique,\n"
                  "                          C_String & ioString,\n"
                  "                          const sint32 inIndentation\n"
                  "                          COMMA_LOCATION_ARGS) const {\n" ;
@@ -467,7 +467,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "  ioString << \"\\n\" ;\n"
                    "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                    "  ioString << \"|-\" ;\n"
-                   "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+                   "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (inLexique COMMA_THERE, inIndentation) ;\n" ;
       current.next () ;
       numeroVariable ++ ;
     }
@@ -690,10 +690,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
-               "    cElement * _p = firstObject () ;\n"
+               "    cElement * ptr = firstObject () ;\n"
                "    alloc () ;\n"
-               "    while (_p != NULL) {\n"
-               "      macroValidPointer (_p) ;\n"
+               "    while (ptr != NULL) {\n"
+               "      macroValidPointer (ptr) ;\n"
                "      _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
@@ -701,13 +701,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
-    inCppFile << "_p->" << current._mAttributeName (HERE) ;
+    inCppFile << "ptr->" << current._mAttributeName (HERE) ;
     current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << "\n                                "
                "COMMA_HERE) ;\n"
-               "      _p = _p->nextObject () ;\n"
+               "      ptr = ptr->nextObject () ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
@@ -763,13 +763,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                          const sint32 inCount) const {\n"
                "  ioList.alloc () ;\n"
                "  if (inCount > 0) {\n"
-               "    cElement * _p = firstObject () ;\n"
+               "    cElement * ptr = firstObject () ;\n"
                "    for (sint32 i=0 ; i<inFirstIndex ; i++) {\n"
-               "      macroValidPointer (_p) ;\n"
-               "      _p = _p->nextObject () ;\n"
+               "      macroValidPointer (ptr) ;\n"
+               "      ptr = ptr->nextObject () ;\n"
                "    }\n"
                "    for (sint32 i=0 ; i<inCount ; i++) {\n"
-               "      macroValidPointer (_p) ;\n"
+               "      macroValidPointer (ptr) ;\n"
                "      ioList._addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
@@ -777,19 +777,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
-    inCppFile << "_p->" << current._mAttributeName (HERE) ;
+    inCppFile << "ptr->" << current._mAttributeName (HERE) ;
     current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
-               "      _p = _p->nextObject () ;\n"
+               "      ptr = ptr->nextObject () ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "reader_subListWithRange (C_Compiler & _inLexique,\n"
+               "reader_subListWithRange (C_Compiler & inLexique,\n"
                "                         const GGS_uint & inFirstIndex,\n"
                "                         const GGS_uint & inCount\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
@@ -798,7 +798,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;\n"
                "    const sint32 rangeCount = (sint32) inCount.uintValue () ;\n"
                "    if ((firstIndex + rangeCount) > count ()) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'subListWithRange' method invoked with upper bound greater than list object count\" COMMA_THERE) ;\n"
+               "      inLexique.onTheFlyRunTimeError (\"'subListWithRange' method invoked with upper bound greater than list object count\" COMMA_THERE) ;\n"
                "    }else{\n"
                "      internalSubListWithRange (result, firstIndex, rangeCount) ;\n"
                "    }\n"
@@ -808,14 +808,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "reader_subListFromIndex (C_Compiler & _inLexique,\n"
+               "reader_subListFromIndex (C_Compiler & inLexique,\n"
                "                         const GGS_uint & inIndex\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  if (isBuilt () && inIndex.isBuilt ()) {\n"
                "    const sint32 startIndex = (sint32) inIndex.uintValue () ;\n"
                "    if (startIndex > count ()) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'subListFromIndex' method invoked with start index greater than list object count\" COMMA_THERE) ;\n"
+               "      inLexique.onTheFlyRunTimeError (\"'subListFromIndex' method invoked with start index greater than list object count\" COMMA_THERE) ;\n"
                "    }else{\n"
                "      internalSubListWithRange (result, startIndex, count () - startIndex) ;\n"
                "    }\n"
@@ -826,16 +826,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Compiler & _inLexique\n"
+               "reader_description (C_Compiler & inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
-               "  return _description (_inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
+               "  return _description (inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'first'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_first (C_Compiler & _inLexique" ;
+               "method_first (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -847,18 +847,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n              "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = firstObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = firstObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -878,7 +878,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'last'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_last (C_Compiler & _inLexique" ;
+               "method_last (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -890,18 +890,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = lastObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'last' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = lastObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'last' method invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -920,7 +920,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'popFirst'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popFirst (C_Compiler & _inLexique" ;
+               "modifier_popFirst (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -932,18 +932,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = firstObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popFirst' modifier invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = firstObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'popFirst' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -963,7 +963,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'popLast'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popLast (C_Compiler & _inLexique" ;
+               "modifier_popLast (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -975,18 +975,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = lastObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popLast' modifier invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = lastObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'popLast' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1113,7 +1113,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
-             "  appendForDescription (C_Compiler & _inLexique,\n"
+             "  appendForDescription (C_Compiler & inLexique,\n"
              "                        C_String & ioString,\n"
              "                        const sint32 inIndentation\n"
              "                        COMMA_LOCATION_ARGS) const ;\n"
@@ -1190,7 +1190,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'smallest'
              "//--- Method 'smallest'\n"
-             "  public : void method_smallest (C_Compiler & _inLexique" ;
+             "  public : void method_smallest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -1205,7 +1205,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'greatest'
              "//--- Method 'greatest'\n"
-             "  public : void method_greatest (C_Compiler & _inLexique" ;
+             "  public : void method_greatest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -1220,7 +1220,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popGreatest'
              "//--- Method 'popGreatest'\n"
-             "  public : void modifier_popGreatest (C_Compiler & _inLexique" ;
+             "  public : void modifier_popGreatest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -1235,7 +1235,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popSmallest'
              "//--- Modifier 'popSmallest'\n"
-             "  public : void modifier_popSmallest (C_Compiler & _inLexique" ;
+             "  public : void modifier_popSmallest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
@@ -1291,7 +1291,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- List Insulation\n"
              "  protected : void _insulateList (void) ;\n"
              "//--- Reader 'description\n"
-             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n"
 
@@ -1386,8 +1386,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "isEqualToObject (const cSortedListElement * inOperand) const {\n"
                "  bool equal = inOperand == this ;\n"
                "  if (! equal) {\n"
-               "    const elementOf_GGS_" << aNomListe << " * _p = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
-               "    macroValidPointer (_p) ;\n"
+               "    const elementOf_GGS_" << aNomListe << " * ptr = dynamic_cast <const elementOf_GGS_" << aNomListe << " *> (inOperand) ;\n"
+               "    macroValidPointer (ptr) ;\n"
                "    equal = " ;
   current.rewind () ;
   numeroVariable = 0 ;
@@ -1395,7 +1395,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
-    inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (_p->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
+    inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (ptr->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1430,7 +1430,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
-               "appendForDescription (C_Compiler & _inLexique,\n"
+               "appendForDescription (C_Compiler & inLexique,\n"
                "                      C_String & ioString,\n"
                "                      const sint32 inIndentation\n"
                "                      COMMA_LOCATION_ARGS) const {\n" ;
@@ -1440,7 +1440,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-\" ;\n"
-                 "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (_inLexique COMMA_THERE, inIndentation) ;\n" ;
+                 "  ioString << " << current._mAttributeName (HERE) << ".reader_description  (inLexique COMMA_THERE, inIndentation) ;\n" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1589,21 +1589,21 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
-               "    cElement * _p = firstObject () ;\n"
+               "    cElement * ptr = firstObject () ;\n"
                "    alloc () ;\n"
-               "    while (_p != NULL) {\n"
-               "      macroValidPointer (_p) ;\n"
+               "    while (ptr != NULL) {\n"
+               "      macroValidPointer (ptr) ;\n"
                "      _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hc ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
-    inCppFile << "_p->" << current._mAttributeName (HERE) ;
+    inCppFile << "ptr->" << current._mAttributeName (HERE) ;
     current.next () ;
     numeroVariable ++ ;
   }
   inCppFile << ") ;\n"
-               "      _p = _p->nextObject () ;\n"
+               "      ptr = ptr->nextObject () ;\n"
                "    }\n"
                "  }\n"
                "}\n\n" ;
@@ -1654,16 +1654,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement reader 'description'
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
-               "reader_description (C_Compiler & _inLexique\n"
+               "reader_description (C_Compiler & inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
                "                    const sint32 inIndentation) const {\n"
-               "  return _description (_inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
+               "  return _description (inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Implement method 'smallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_smallest (C_Compiler & _inLexique" ;
+               "method_smallest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -1675,18 +1675,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = firstObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = firstObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'first' method invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1706,7 +1706,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'greatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_greatest (C_Compiler & _inLexique" ;
+               "method_greatest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -1718,18 +1718,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n             "
                "COMMA_LOCATION_ARGS) const {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = lastObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'greatest' method invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = lastObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'greatest' method invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1748,7 +1748,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'popSmallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popSmallest (C_Compiler & _inLexique" ;
+               "modifier_popSmallest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -1760,18 +1760,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                 "
                "COMMA_LOCATION_ARGS) {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = firstObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popSmallest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = firstObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'popSmallest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }
@@ -1791,7 +1791,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement modifier 'popGreatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popGreatest (C_Compiler & _inLexique" ;
+               "modifier_popGreatest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
@@ -1803,18 +1803,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << "\n                "
                "COMMA_LOCATION_ARGS) {\n"
-               "  cElement * _p = NULL ;\n"
+               "  cElement * ptr = NULL ;\n"
                "  if (isBuilt ()) {\n"
-               "    _p = lastObject () ;\n"
-               "    if (_p == NULL) {\n"
-               "      _inLexique.onTheFlyRunTimeError (\"'popGreatest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
+               "    ptr = lastObject () ;\n"
+               "    if (ptr == NULL) {\n"
+               "      inLexique.onTheFlyRunTimeError (\"'popGreatest' modifier invoked on an empty list\" COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  if (_p != NULL) {\n" ;
+               "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hc ()) {
-    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = _p->" << current._mAttributeName (HERE) << " ;\n" ;
+    inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
   }

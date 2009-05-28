@@ -209,7 +209,7 @@ class GGS_templateDelimiterMap : public AC_galgas_map {
                                    GGS_lstring & outParameter1,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_templateDelimiterMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -314,7 +314,7 @@ class GGS_templateReplacementMap : public AC_galgas_map {
                                    GGS_lstring & outParameter1,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_templateReplacementMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -411,7 +411,7 @@ class GGS_typeLexicalAttributesMap : public AC_galgas_map {
                                    GGS_AC_galgasType & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_typeLexicalAttributesMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -499,7 +499,7 @@ class GGS_tagMap : public AC_galgas_map {
                                    const GGS_lstring & inKey,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_tagMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -594,7 +594,7 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
                                    GGS_AC_galgasType & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_lexicalTypeMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -695,7 +695,7 @@ class GGS_typeTableMessagesErreurs : public AC_galgas_map {
                                    GGS_lstring & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_typeTableMessagesErreurs constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -787,7 +787,7 @@ class GGS_M_styles : public AC_galgas_map {
                                    const GGS_lstring & inKey,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_M_styles constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -834,13 +834,13 @@ class GGS_styleList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_styleList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_styleList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -855,22 +855,22 @@ class GGS_styleList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_styleList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_string& _out_0,
                               GGS_string& _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_string& _out_0,
                              GGS_string& _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_string& _out_0,
                                 GGS_string& _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_string& _out_0,
                                  GGS_string& _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -882,7 +882,7 @@ class GGS_styleList : public AC_galgas_list {
                                 const GGS_string& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_styleList _operator_concat (const GGS_styleList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -900,7 +900,7 @@ class GGS_styleList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -1033,7 +1033,7 @@ class GGS_typeTableDefinitionTerminaux : public AC_galgas_map {
                                    GGS_bool& outParameter3,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_typeTableDefinitionTerminaux constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -1132,7 +1132,7 @@ class GGS_typeTableMotsReserves : public AC_galgas_map {
                                    GGS_lstring & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_typeTableMotsReserves constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -1228,7 +1228,7 @@ class GGS_typeTableTablesDeMotsReserves : public AC_galgas_map {
                                    GGS_typeTableMotsReserves & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_typeTableTablesDeMotsReserves constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -1624,13 +1624,13 @@ class GGS_typeListeConditionsLexicales : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_typeListeConditionsLexicales
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typeListeConditionsLexicales
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1645,19 +1645,19 @@ class GGS_typeListeConditionsLexicales : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_typeListeConditionsLexicales * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_typeConditionLexicale & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_typeConditionLexicale & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_typeConditionLexicale & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_typeConditionLexicale & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -1667,7 +1667,7 @@ class GGS_typeListeConditionsLexicales : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_typeConditionLexicale & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeConditionsLexicales _operator_concat (const GGS_typeListeConditionsLexicales & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeConditionLexicale & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -1682,7 +1682,7 @@ class GGS_typeListeConditionsLexicales : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -1789,13 +1789,13 @@ class GGS_tListeInstructionsLexicales : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_tListeInstructionsLexicales
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_tListeInstructionsLexicales
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1810,19 +1810,19 @@ class GGS_tListeInstructionsLexicales : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_tListeInstructionsLexicales * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_typeInstructionLexicale & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_typeInstructionLexicale & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_typeInstructionLexicale & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_typeInstructionLexicale & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -1832,7 +1832,7 @@ class GGS_tListeInstructionsLexicales : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_typeInstructionLexicale & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_tListeInstructionsLexicales _operator_concat (const GGS_tListeInstructionsLexicales & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeInstructionLexicale & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -1847,7 +1847,7 @@ class GGS_tListeInstructionsLexicales : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -1900,13 +1900,13 @@ class GGS_typeListeTestsEtInstructions : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_typeListeTestsEtInstructions
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typeListeTestsEtInstructions
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1921,22 +1921,22 @@ class GGS_typeListeTestsEtInstructions : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_typeListeTestsEtInstructions * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_typeListeConditionsLexicales & _out_0,
                               GGS_tListeInstructionsLexicales & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_typeListeConditionsLexicales & _out_0,
                              GGS_tListeInstructionsLexicales & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_typeListeConditionsLexicales & _out_0,
                                 GGS_tListeInstructionsLexicales & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_typeListeConditionsLexicales & _out_0,
                                  GGS_tListeInstructionsLexicales & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -1948,7 +1948,7 @@ class GGS_typeListeTestsEtInstructions : public AC_galgas_list {
                                 const GGS_tListeInstructionsLexicales & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeTestsEtInstructions _operator_concat (const GGS_typeListeTestsEtInstructions & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeListeConditionsLexicales & argument_0,
                                 const GGS_tListeInstructionsLexicales & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1966,7 +1966,7 @@ class GGS_typeListeTestsEtInstructions : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -2081,13 +2081,13 @@ class GGS_typeListeArgumentsRoutExterne : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_typeListeArgumentsRoutExterne
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typeListeArgumentsRoutExterne
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -2102,19 +2102,19 @@ class GGS_typeListeArgumentsRoutExterne : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_typeListeArgumentsRoutExterne * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_typeArgumentRoutineExterne & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_typeArgumentRoutineExterne & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_typeArgumentRoutineExterne & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_typeArgumentRoutineExterne & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -2124,7 +2124,7 @@ class GGS_typeListeArgumentsRoutExterne : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_typeArgumentRoutineExterne & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeArgumentsRoutExterne _operator_concat (const GGS_typeListeArgumentsRoutExterne & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeArgumentRoutineExterne & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -2139,7 +2139,7 @@ class GGS_typeListeArgumentsRoutExterne : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -2483,13 +2483,13 @@ class GGS_typeListeMessagesErreur : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_typeListeMessagesErreur
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typeListeMessagesErreur
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -2504,19 +2504,19 @@ class GGS_typeListeMessagesErreur : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_typeListeMessagesErreur * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_luint & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_luint & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_luint & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_luint & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -2526,7 +2526,7 @@ class GGS_typeListeMessagesErreur : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_luint & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeMessagesErreur _operator_concat (const GGS_typeListeMessagesErreur & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_luint & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -2541,7 +2541,7 @@ class GGS_typeListeMessagesErreur : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -2765,13 +2765,13 @@ class GGS_typeListeRecherche : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_typeListeRecherche
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typeListeRecherche
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -2786,22 +2786,22 @@ class GGS_typeListeRecherche : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_typeListeRecherche * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_lstring & _out_0,
                               GGS_lstring & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_lstring & _out_0,
                              GGS_lstring & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_lstring & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -2813,7 +2813,7 @@ class GGS_typeListeRecherche : public AC_galgas_list {
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeRecherche _operator_concat (const GGS_typeListeRecherche & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2831,7 +2831,7 @@ class GGS_typeListeRecherche : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -3599,7 +3599,7 @@ class GGS_tokensInListMap : public AC_galgas_map {
                                    GGS_lstring & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_tokensInListMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -3654,7 +3654,7 @@ class elementOf_GGS_templateDelimiterMap : public AC_galgas_map_element {
 //--- Data member
   public : e_templateDelimiterMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3690,7 +3690,7 @@ class elementOf_GGS_templateReplacementMap : public AC_galgas_map_element {
 //--- Data member
   public : e_templateReplacementMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3725,7 +3725,7 @@ class elementOf_GGS_typeLexicalAttributesMap : public AC_galgas_map_element {
 //--- Data member
   public : e_typeLexicalAttributesMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3758,7 +3758,7 @@ class elementOf_GGS_tagMap : public AC_galgas_map_element {
 //--- Data member
   public : e_tagMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3793,7 +3793,7 @@ class elementOf_GGS_lexicalTypeMap : public AC_galgas_map_element {
 //--- Data member
   public : e_lexicalTypeMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3828,7 +3828,7 @@ class elementOf_GGS_typeTableMessagesErreurs : public AC_galgas_map_element {
 //--- Data member
   public : e_typeTableMessagesErreurs mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3861,7 +3861,7 @@ class elementOf_GGS_M_styles : public AC_galgas_map_element {
 //--- Data member
   public : e_M_styles mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3895,7 +3895,7 @@ class elementOf_GGS_styleList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -3935,7 +3935,7 @@ class elementOf_GGS_typeTableDefinitionTerminaux : public AC_galgas_map_element 
 //--- Data member
   public : e_typeTableDefinitionTerminaux mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -3970,7 +3970,7 @@ class elementOf_GGS_typeTableMotsReserves : public AC_galgas_map_element {
 //--- Data member
   public : e_typeTableMotsReserves mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -4005,7 +4005,7 @@ class elementOf_GGS_typeTableTablesDeMotsReserves : public AC_galgas_map_element
 //--- Data member
   public : e_typeTableTablesDeMotsReserves mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -4061,7 +4061,7 @@ class elementOf_GGS_typeListeConditionsLexicales : public AC_galgas_list::cListE
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4099,7 +4099,7 @@ class elementOf_GGS_tListeInstructionsLexicales : public AC_galgas_list::cListEl
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4135,7 +4135,7 @@ class elementOf_GGS_typeListeTestsEtInstructions : public AC_galgas_list::cListE
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4173,7 +4173,7 @@ class elementOf_GGS_typeListeArgumentsRoutExterne : public AC_galgas_list::cList
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4227,7 +4227,7 @@ class elementOf_GGS_typeListeMessagesErreur : public AC_galgas_list::cListElemen
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4275,7 +4275,7 @@ class elementOf_GGS_typeListeRecherche : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4356,7 +4356,7 @@ class elementOf_GGS_tokensInListMap : public AC_galgas_map_element {
 //--- Data member
   public : e_tokensInListMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation

@@ -67,7 +67,7 @@ cPtr_semanticExpression (LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 void cPtr_semanticExpression::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -187,9 +187,9 @@ bool elementOf_GGS_semanticExpressionList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_semanticExpressionList * _p = dynamic_cast <const elementOf_GGS_semanticExpressionList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mExpression._operator_isEqual (_p->mExpression).boolValue () ;
+    const elementOf_GGS_semanticExpressionList * ptr = dynamic_cast <const elementOf_GGS_semanticExpressionList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -197,14 +197,14 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_semanticExpressionList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mExpression.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mExpression.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -293,13 +293,13 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_semanticExpressionList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mExpression
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mExpression
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -331,15 +331,15 @@ internalSubListWithRange (GGS_semanticExpressionList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mExpression) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mExpression) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -347,7 +347,7 @@ internalSubListWithRange (GGS_semanticExpressionList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_semanticExpressionList GGS_semanticExpressionList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -356,7 +356,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -367,14 +367,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_semanticExpressionList GGS_semanticExpressionList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_semanticExpressionList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -385,27 +385,27 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_semanticExpressionList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@semanticExpressionList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@semanticExpressionList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_semanticExpression & _out_0
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mExpression ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mExpression ;
   }else{
     _out_0.drop () ;
   }
@@ -414,18 +414,18 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_semanticExpression & _out_0
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mExpression ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mExpression ;
   }else{
     _out_0.drop () ;
   }
@@ -434,18 +434,18 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_semanticExpression & _out_0
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mExpression ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mExpression ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -456,18 +456,18 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_semanticExpression & _out_0
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mExpression ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mExpression ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -544,10 +544,10 @@ bool cPtr_outExpressionList::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_outExpressionList * _p = dynamic_cast <const cPtr_outExpressionList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mExpression._operator_isEqual (_p->mExpression).boolValue ()
-         && mEndOfExpressionLocation._operator_isEqual (_p->mEndOfExpressionLocation).boolValue () ;
+    const cPtr_outExpressionList * ptr = dynamic_cast <const cPtr_outExpressionList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mExpression._operator_isEqual (ptr->mExpression).boolValue ()
+         && mEndOfExpressionLocation._operator_isEqual (ptr->mEndOfExpressionLocation).boolValue () ;
   }
   return equal ;
 }
@@ -555,13 +555,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_outExpressionList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@outExpressionList:"
-           << mExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mEndOfExpressionLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mEndOfExpressionLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -738,9 +738,9 @@ bool cPtr_variableExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_variableExpression * _p = dynamic_cast <const cPtr_variableExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mVariableName._operator_isEqual (_p->mVariableName).boolValue () ;
+    const cPtr_variableExpression * ptr = dynamic_cast <const cPtr_variableExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mVariableName._operator_isEqual (ptr->mVariableName).boolValue () ;
   }
   return equal ;
 }
@@ -748,12 +748,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_variableExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@variableExpression:"
-           << mVariableName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mVariableName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -906,7 +906,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_selfInExpression::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -1054,7 +1054,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_hereExpression::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -1202,7 +1202,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_trueExpression::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -1350,7 +1350,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_falseExpression::
-appendForDescription (C_Compiler & /* _inLexique */,
+appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
                       const sint32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -1496,9 +1496,9 @@ bool cPtr_literalCharExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalCharExpression * _p = dynamic_cast <const cPtr_literalCharExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mCharacter._operator_isEqual (_p->mCharacter).boolValue () ;
+    const cPtr_literalCharExpression * ptr = dynamic_cast <const cPtr_literalCharExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mCharacter._operator_isEqual (ptr->mCharacter).boolValue () ;
   }
   return equal ;
 }
@@ -1506,12 +1506,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalCharExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalCharExpression:"
-           << mCharacter.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mCharacter.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1662,9 +1662,9 @@ bool cPtr_literalStringExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalStringExpression * _p = dynamic_cast <const cPtr_literalStringExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mStringSequence._operator_isEqual (_p->mStringSequence).boolValue () ;
+    const cPtr_literalStringExpression * ptr = dynamic_cast <const cPtr_literalStringExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mStringSequence._operator_isEqual (ptr->mStringSequence).boolValue () ;
   }
   return equal ;
 }
@@ -1672,12 +1672,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalStringExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalStringExpression:"
-           << mStringSequence.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mStringSequence.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1828,9 +1828,9 @@ bool cPtr_literalDoubleExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalDoubleExpression * _p = dynamic_cast <const cPtr_literalDoubleExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
+    const cPtr_literalDoubleExpression * ptr = dynamic_cast <const cPtr_literalDoubleExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -1838,12 +1838,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalDoubleExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalDoubleExpression:"
-           << mValue.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1994,9 +1994,9 @@ bool cPtr_literalUIntExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalUIntExpression * _p = dynamic_cast <const cPtr_literalUIntExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
+    const cPtr_literalUIntExpression * ptr = dynamic_cast <const cPtr_literalUIntExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2004,12 +2004,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalUIntExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalUIntExpression:"
-           << mValue.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2160,9 +2160,9 @@ bool cPtr_literalUInt64Expression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalUInt64Expression * _p = dynamic_cast <const cPtr_literalUInt64Expression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
+    const cPtr_literalUInt64Expression * ptr = dynamic_cast <const cPtr_literalUInt64Expression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2170,12 +2170,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalUInt64Expression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalUInt64Expression:"
-           << mValue.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2326,9 +2326,9 @@ bool cPtr_literalSIntExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalSIntExpression * _p = dynamic_cast <const cPtr_literalSIntExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
+    const cPtr_literalSIntExpression * ptr = dynamic_cast <const cPtr_literalSIntExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2336,12 +2336,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalSIntExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalSIntExpression:"
-           << mValue.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2492,9 +2492,9 @@ bool cPtr_literalSInt64Expression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_literalSInt64Expression * _p = dynamic_cast <const cPtr_literalSInt64Expression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mValue._operator_isEqual (_p->mValue).boolValue () ;
+    const cPtr_literalSInt64Expression * ptr = dynamic_cast <const cPtr_literalSInt64Expression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2502,12 +2502,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_literalSInt64Expression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalSInt64Expression:"
-           << mValue.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2662,11 +2662,11 @@ bool cPtr_constructorExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_constructorExpression * _p = dynamic_cast <const cPtr_constructorExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mTypeName._operator_isEqual (_p->mTypeName).boolValue ()
-         && mConstructorName._operator_isEqual (_p->mConstructorName).boolValue ()
-         && mExpressions._operator_isEqual (_p->mExpressions).boolValue () ;
+    const cPtr_constructorExpression * ptr = dynamic_cast <const cPtr_constructorExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
+         && mConstructorName._operator_isEqual (ptr->mConstructorName).boolValue ()
+         && mExpressions._operator_isEqual (ptr->mExpressions).boolValue () ;
   }
   return equal ;
 }
@@ -2674,14 +2674,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_constructorExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@constructorExpression:"
-           << mTypeName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mConstructorName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mExpressions.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mConstructorName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mExpressions.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2868,11 +2868,11 @@ bool cPtr_readerCallExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_readerCallExpression * _p = dynamic_cast <const cPtr_readerCallExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mReceiver._operator_isEqual (_p->mReceiver).boolValue ()
-         && mReaderName._operator_isEqual (_p->mReaderName).boolValue ()
-         && mExpressions._operator_isEqual (_p->mExpressions).boolValue () ;
+    const cPtr_readerCallExpression * ptr = dynamic_cast <const cPtr_readerCallExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mReceiver._operator_isEqual (ptr->mReceiver).boolValue ()
+         && mReaderName._operator_isEqual (ptr->mReaderName).boolValue ()
+         && mExpressions._operator_isEqual (ptr->mExpressions).boolValue () ;
   }
   return equal ;
 }
@@ -2880,14 +2880,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_readerCallExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@readerCallExpression:"
-           << mReceiver.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mReaderName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mExpressions.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mReceiver.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mReaderName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mExpressions.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3072,10 +3072,10 @@ bool cPtr_optionExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_optionExpression * _p = dynamic_cast <const cPtr_optionExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOptionComponentName._operator_isEqual (_p->mOptionComponentName).boolValue ()
-         && mOptionEntryName._operator_isEqual (_p->mOptionEntryName).boolValue () ;
+    const cPtr_optionExpression * ptr = dynamic_cast <const cPtr_optionExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOptionComponentName._operator_isEqual (ptr->mOptionComponentName).boolValue ()
+         && mOptionEntryName._operator_isEqual (ptr->mOptionEntryName).boolValue () ;
   }
   return equal ;
 }
@@ -3083,13 +3083,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_optionExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@optionExpression:"
-           << mOptionComponentName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mOptionEntryName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOptionComponentName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mOptionEntryName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3260,11 +3260,11 @@ bool cPtr_concatExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_concatExpression * _p = dynamic_cast <const cPtr_concatExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_concatExpression * ptr = dynamic_cast <const cPtr_concatExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3272,14 +3272,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_concatExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@concatExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3466,11 +3466,11 @@ bool cPtr_orExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_orExpression * _p = dynamic_cast <const cPtr_orExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_orExpression * ptr = dynamic_cast <const cPtr_orExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3478,14 +3478,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_orExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@orExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3672,11 +3672,11 @@ bool cPtr_xorExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_xorExpression * _p = dynamic_cast <const cPtr_xorExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_xorExpression * ptr = dynamic_cast <const cPtr_xorExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3684,14 +3684,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_xorExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@xorExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3878,11 +3878,11 @@ bool cPtr_andExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_andExpression * _p = dynamic_cast <const cPtr_andExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_andExpression * ptr = dynamic_cast <const cPtr_andExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3890,14 +3890,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_andExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@andExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4084,11 +4084,11 @@ bool cPtr_equalExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_equalExpression * _p = dynamic_cast <const cPtr_equalExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_equalExpression * ptr = dynamic_cast <const cPtr_equalExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4096,14 +4096,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_equalExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@equalExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4290,11 +4290,11 @@ bool cPtr_notEqualExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_notEqualExpression * _p = dynamic_cast <const cPtr_notEqualExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_notEqualExpression * ptr = dynamic_cast <const cPtr_notEqualExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4302,14 +4302,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_notEqualExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@notEqualExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4496,11 +4496,11 @@ bool cPtr_lowerOrEqualExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_lowerOrEqualExpression * _p = dynamic_cast <const cPtr_lowerOrEqualExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_lowerOrEqualExpression * ptr = dynamic_cast <const cPtr_lowerOrEqualExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4508,14 +4508,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_lowerOrEqualExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lowerOrEqualExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4702,11 +4702,11 @@ bool cPtr_greaterOrEqualExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_greaterOrEqualExpression * _p = dynamic_cast <const cPtr_greaterOrEqualExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_greaterOrEqualExpression * ptr = dynamic_cast <const cPtr_greaterOrEqualExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4714,14 +4714,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_greaterOrEqualExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@greaterOrEqualExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4908,11 +4908,11 @@ bool cPtr_strictGreaterExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_strictGreaterExpression * _p = dynamic_cast <const cPtr_strictGreaterExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_strictGreaterExpression * ptr = dynamic_cast <const cPtr_strictGreaterExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4920,14 +4920,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_strictGreaterExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@strictGreaterExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5114,11 +5114,11 @@ bool cPtr_strictLowerExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_strictLowerExpression * _p = dynamic_cast <const cPtr_strictLowerExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_strictLowerExpression * ptr = dynamic_cast <const cPtr_strictLowerExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5126,14 +5126,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_strictLowerExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@strictLowerExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5320,11 +5320,11 @@ bool cPtr_rightShiftExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_rightShiftExpression * _p = dynamic_cast <const cPtr_rightShiftExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_rightShiftExpression * ptr = dynamic_cast <const cPtr_rightShiftExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5332,14 +5332,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_rightShiftExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@rightShiftExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5526,11 +5526,11 @@ bool cPtr_leftShiftExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_leftShiftExpression * _p = dynamic_cast <const cPtr_leftShiftExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_leftShiftExpression * ptr = dynamic_cast <const cPtr_leftShiftExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5538,14 +5538,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_leftShiftExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@leftShiftExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5732,11 +5732,11 @@ bool cPtr_addExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_addExpression * _p = dynamic_cast <const cPtr_addExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_addExpression * ptr = dynamic_cast <const cPtr_addExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5744,14 +5744,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_addExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@addExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5938,11 +5938,11 @@ bool cPtr_subExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_subExpression * _p = dynamic_cast <const cPtr_subExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_subExpression * ptr = dynamic_cast <const cPtr_subExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5950,14 +5950,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_subExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@subExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6144,11 +6144,11 @@ bool cPtr_multiplicationExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_multiplicationExpression * _p = dynamic_cast <const cPtr_multiplicationExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_multiplicationExpression * ptr = dynamic_cast <const cPtr_multiplicationExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6156,14 +6156,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_multiplicationExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@multiplicationExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6350,11 +6350,11 @@ bool cPtr_divisionExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_divisionExpression * _p = dynamic_cast <const cPtr_divisionExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_divisionExpression * ptr = dynamic_cast <const cPtr_divisionExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6362,14 +6362,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_divisionExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@divisionExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6556,11 +6556,11 @@ bool cPtr_moduloExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_moduloExpression * _p = dynamic_cast <const cPtr_moduloExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (_p->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (_p->mRightExpression).boolValue () ;
+    const cPtr_moduloExpression * ptr = dynamic_cast <const cPtr_moduloExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6568,14 +6568,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_moduloExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@moduloExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLeftExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mRightExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLeftExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mRightExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6760,10 +6760,10 @@ bool cPtr_unaryMinusExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_unaryMinusExpression * _p = dynamic_cast <const cPtr_unaryMinusExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mExpression._operator_isEqual (_p->mExpression).boolValue () ;
+    const cPtr_unaryMinusExpression * ptr = dynamic_cast <const cPtr_unaryMinusExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6771,13 +6771,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_unaryMinusExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@unaryMinusExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6946,10 +6946,10 @@ bool cPtr_notExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_notExpression * _p = dynamic_cast <const cPtr_notExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mExpression._operator_isEqual (_p->mExpression).boolValue () ;
+    const cPtr_notExpression * ptr = dynamic_cast <const cPtr_notExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6957,13 +6957,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_notExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@notExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7132,10 +7132,10 @@ bool cPtr_negateExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_negateExpression * _p = dynamic_cast <const cPtr_negateExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mOperatorLocation._operator_isEqual (_p->mOperatorLocation).boolValue ()
-         && mExpression._operator_isEqual (_p->mExpression).boolValue () ;
+    const cPtr_negateExpression * ptr = dynamic_cast <const cPtr_negateExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -7143,13 +7143,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_negateExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@negateExpression:"
-           << mOperatorLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7316,9 +7316,9 @@ bool cPtr_varInExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_varInExpression * _p = dynamic_cast <const cPtr_varInExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mVarName._operator_isEqual (_p->mVarName).boolValue () ;
+    const cPtr_varInExpression * ptr = dynamic_cast <const cPtr_varInExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mVarName._operator_isEqual (ptr->mVarName).boolValue () ;
   }
   return equal ;
 }
@@ -7326,12 +7326,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_varInExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@varInExpression:"
-           << mVarName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mVarName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7484,10 +7484,10 @@ bool cPtr_descriptionInExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_descriptionInExpression * _p = dynamic_cast <const cPtr_descriptionInExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mReceiverExpression._operator_isEqual (_p->mReceiverExpression).boolValue ()
-         && mLocation._operator_isEqual (_p->mLocation).boolValue () ;
+    const cPtr_descriptionInExpression * ptr = dynamic_cast <const cPtr_descriptionInExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mReceiverExpression._operator_isEqual (ptr->mReceiverExpression).boolValue ()
+         && mLocation._operator_isEqual (ptr->mLocation).boolValue () ;
   }
   return equal ;
 }
@@ -7495,13 +7495,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_descriptionInExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@descriptionInExpression:"
-           << mReceiverExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLocation.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mReceiverExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7674,12 +7674,12 @@ bool cPtr_castInExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_castInExpression * _p = dynamic_cast <const cPtr_castInExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mReceiverExpression._operator_isEqual (_p->mReceiverExpression).boolValue ()
-         && mUseKindOfClass._operator_isEqual (_p->mUseKindOfClass).boolValue ()
-         && mTypeName._operator_isEqual (_p->mTypeName).boolValue ()
-         && mErrorLocationExpression._operator_isEqual (_p->mErrorLocationExpression).boolValue () ;
+    const cPtr_castInExpression * ptr = dynamic_cast <const cPtr_castInExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mReceiverExpression._operator_isEqual (ptr->mReceiverExpression).boolValue ()
+         && mUseKindOfClass._operator_isEqual (ptr->mUseKindOfClass).boolValue ()
+         && mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
+         && mErrorLocationExpression._operator_isEqual (ptr->mErrorLocationExpression).boolValue () ;
   }
   return equal ;
 }
@@ -7687,15 +7687,15 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_castInExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@castInExpression:"
-           << mReceiverExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mUseKindOfClass.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mTypeName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mErrorLocationExpression.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mReceiverExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mUseKindOfClass.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mErrorLocationExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7894,9 +7894,9 @@ bool cPtr_filewrapperObjectInstanciationInExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_filewrapperObjectInstanciationInExpression * _p = dynamic_cast <const cPtr_filewrapperObjectInstanciationInExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mFilewrapperName._operator_isEqual (_p->mFilewrapperName).boolValue () ;
+    const cPtr_filewrapperObjectInstanciationInExpression * ptr = dynamic_cast <const cPtr_filewrapperObjectInstanciationInExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mFilewrapperName._operator_isEqual (ptr->mFilewrapperName).boolValue () ;
   }
   return equal ;
 }
@@ -7904,12 +7904,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_filewrapperObjectInstanciationInExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@filewrapperObjectInstanciationInExpression:"
-           << mFilewrapperName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mFilewrapperName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8062,10 +8062,10 @@ bool cPtr_filewrapperInExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_filewrapperInExpression * _p = dynamic_cast <const cPtr_filewrapperInExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mFilewrapperName._operator_isEqual (_p->mFilewrapperName).boolValue ()
-         && mFilewrapperPath._operator_isEqual (_p->mFilewrapperPath).boolValue () ;
+    const cPtr_filewrapperInExpression * ptr = dynamic_cast <const cPtr_filewrapperInExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mFilewrapperName._operator_isEqual (ptr->mFilewrapperName).boolValue ()
+         && mFilewrapperPath._operator_isEqual (ptr->mFilewrapperPath).boolValue () ;
   }
   return equal ;
 }
@@ -8073,13 +8073,13 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_filewrapperInExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@filewrapperInExpression:"
-           << mFilewrapperName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mFilewrapperPath.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mFilewrapperName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mFilewrapperPath.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8250,11 +8250,11 @@ bool cPtr_filewrapperTemplateInExpression::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_filewrapperTemplateInExpression * _p = dynamic_cast <const cPtr_filewrapperTemplateInExpression *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mFilewrapperName._operator_isEqual (_p->mFilewrapperName).boolValue ()
-         && mFilewrapperTemplateName._operator_isEqual (_p->mFilewrapperTemplateName).boolValue ()
-         && mActualOutputParameterList._operator_isEqual (_p->mActualOutputParameterList).boolValue () ;
+    const cPtr_filewrapperTemplateInExpression * ptr = dynamic_cast <const cPtr_filewrapperTemplateInExpression *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mFilewrapperName._operator_isEqual (ptr->mFilewrapperName).boolValue ()
+         && mFilewrapperTemplateName._operator_isEqual (ptr->mFilewrapperTemplateName).boolValue ()
+         && mActualOutputParameterList._operator_isEqual (ptr->mActualOutputParameterList).boolValue () ;
   }
   return equal ;
 }
@@ -8262,14 +8262,14 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_filewrapperTemplateInExpression::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@filewrapperTemplateInExpression:"
-           << mFilewrapperName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mFilewrapperTemplateName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mActualOutputParameterList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mFilewrapperName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mFilewrapperTemplateName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mActualOutputParameterList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*

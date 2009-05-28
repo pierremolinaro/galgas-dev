@@ -23,7 +23,7 @@ class cPureBNFproductionsList ;
 class cPtr_AC_instruction_ForGrammar : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual bool isSameSyntaxInstructionThan (C_Compiler & _inLexique,
+  public : virtual bool isSameSyntaxInstructionThan (C_Compiler & inLexique,
                           cPtr_AC_instruction_ForGrammar * inInstruction,
                           const GGS_location & inEndOfInstructionListLocation) const = 0 ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ;
@@ -60,7 +60,7 @@ class cPtr_AC_instruction_ForGrammar : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;

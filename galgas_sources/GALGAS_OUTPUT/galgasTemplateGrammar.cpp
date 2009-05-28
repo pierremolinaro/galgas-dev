@@ -151,11 +151,11 @@ static const sint16 gDecisionIndexes [5] = {
 //---------------------------------------------------------------------------*
 
 void galgasTemplateGrammar::
-nt_lexique_component_start_symbol_ (galgasTemplateScanner & _inLexique,
+nt_lexique_component_start_symbol_ (galgasTemplateScanner & inLexique,
                                 GGS_typeVariablesMap & parameter_1,
                                 const GGS_M_semanticsEntitiesForUse parameter_2,
                                 GGS_templateInstructionList & parameter_3) {
-pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (_inLexique, parameter_1, parameter_2, parameter_3) ;
+pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (inLexique, parameter_1, parameter_2, parameter_3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -238,11 +238,11 @@ void galgasTemplateGrammar::_performSourceStringParsing_ (C_Compiler & _inCompil
 //---------------------------------------------------------------------------*
 
 void galgasTemplateGrammar::
-nt_template_instruction_ (galgasTemplateScanner & _inLexique,
+nt_template_instruction_ (galgasTemplateScanner & inLexique,
                                 GGS_typeVariablesMap & parameter_1,
                                 const GGS_M_semanticsEntitiesForUse parameter_2,
                                 GGS_templateInstructionList & parameter_3) {
-pr_template_instruction_galgasTemplateParser_49_27_ (_inLexique, parameter_1, parameter_2, parameter_3) ;
+pr_template_instruction_galgasTemplateParser_49_27_ (inLexique, parameter_1, parameter_2, parameter_3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -252,8 +252,8 @@ pr_template_instruction_galgasTemplateParser_49_27_ (_inLexique, parameter_1, pa
 //---------------------------------------------------------------------------*
 
 
-sint16 galgasTemplateGrammar::select_repeat_galgasTemplateParser_0 (galgasTemplateScanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 galgasTemplateGrammar::select_repeat_galgasTemplateParser_0 (galgasTemplateScanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

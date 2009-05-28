@@ -308,7 +308,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_2 (galgas_scanner &) = 0 ;
 
-  protected : void pr_style_declaration_scanner_parser_568_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_style_declaration_scanner_parser_568_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_template_declaration_scanner_parser_590_27_ (galgas_scanner &,
                                 const GGS_bool ,
@@ -316,7 +316,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_scanner_parser_3 (galgas_scanner &) = 0 ;
 
-  protected : void pr_template_declaration_scanner_parser_590_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_template_declaration_scanner_parser_590_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_replace_declaration_scanner_parser_623_26_ (galgas_scanner &,
                                 const GGS_bool ,
@@ -324,7 +324,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_scanner_parser_4 (galgas_scanner &) = 0 ;
 
-  protected : void pr_replace_declaration_scanner_parser_623_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_replace_declaration_scanner_parser_623_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_attribute_or_terminal_symbol_declaration_scanner_parser_651_47_ (galgas_scanner &,
                                 GGS_typeTableDefinitionTerminaux  &,
@@ -342,7 +342,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_scanner_parser_8 (galgas_scanner &) = 0 ;
 
-  protected : void pr_attribute_or_terminal_symbol_declaration_scanner_parser_651_47_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_attribute_or_terminal_symbol_declaration_scanner_parser_651_47_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_key_words_list_declaration_scanner_parser_721_33_ (galgas_scanner &,
                                 GGS_typeTableTablesDeMotsReserves  &,
@@ -363,12 +363,12 @@ class scanner_parser {
 
   protected : virtual sint16 select_scanner_parser_13 (galgas_scanner &) = 0 ;
 
-  protected : void pr_key_words_list_declaration_scanner_parser_721_33_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_key_words_list_declaration_scanner_parser_721_33_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_error_message_declaration_scanner_parser_816_40_ (galgas_scanner &,
                                 GGS_typeTableMessagesErreurs  &) ;
 
-  protected : void pr_lexical_error_message_declaration_scanner_parser_816_40_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_error_message_declaration_scanner_parser_816_40_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_while_branches_list_scanner_parser_831_26_ (galgas_scanner &,
                                 GGS_typeListeTestsEtInstructions  &,
@@ -384,31 +384,31 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_16 (galgas_scanner &) = 0 ;
 
-  protected : void pr_while_branches_list_scanner_parser_831_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_while_branches_list_scanner_parser_831_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_test_expression_scanner_parser_897_30_ (galgas_scanner &,
                                 GGS_typeListeConditionsLexicales  &) ;
 
   protected : virtual sint16 select_repeat_scanner_parser_17 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_test_expression_scanner_parser_897_30_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_test_expression_scanner_parser_897_30_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_test_term_scanner_parser_912_24_ (galgas_scanner &,
                                 GGS_typeConditionLexicale  &) ;
 
-  protected : void pr_lexical_test_term_scanner_parser_912_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_test_term_scanner_parser_912_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_test_term_scanner_parser_935_24_ (galgas_scanner &,
                                 GGS_typeConditionLexicale  &) ;
 
-  protected : void pr_lexical_test_term_scanner_parser_935_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_test_term_scanner_parser_935_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_test_term_scanner_parser_945_24_ (galgas_scanner &,
                                 GGS_typeConditionLexicale  &) ;
 
   protected : virtual sint16 select_scanner_parser_18 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_test_term_scanner_parser_945_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_test_term_scanner_parser_945_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_rule_scanner_parser_962_19_ (galgas_scanner &,
                                 GGS_typeListeTestsEtInstructions  &,
@@ -418,7 +418,7 @@ class scanner_parser {
                                 GGS_typeTableTablesDeMotsReserves  &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_lexical_rule_scanner_parser_962_19_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_rule_scanner_parser_962_19_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_rule_scanner_parser_991_19_ (galgas_scanner &,
                                 GGS_typeListeTestsEtInstructions  &,
@@ -428,7 +428,7 @@ class scanner_parser {
                                 GGS_typeTableTablesDeMotsReserves  &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_lexical_rule_scanner_parser_991_19_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_rule_scanner_parser_991_19_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_instructions_list_scanner_parser_1012_32_ (galgas_scanner &,
                                 GGS_tListeInstructionsLexicales  &,
@@ -442,14 +442,14 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_19 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_instructions_list_scanner_parser_1012_32_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_instructions_list_scanner_parser_1012_32_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_error_messages_list_scanner_parser_1171_34_ (galgas_scanner &,
                                 GGS_typeListeMessagesErreur  &,
                                 GGS_typeTableMessagesErreurs  &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_lexical_error_messages_list_scanner_parser_1171_34_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_error_messages_list_scanner_parser_1171_34_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_error_messages_list_scanner_parser_1180_34_ (galgas_scanner &,
                                 GGS_typeListeMessagesErreur  &,
@@ -458,7 +458,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_20 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_error_messages_list_scanner_parser_1180_34_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_error_messages_list_scanner_parser_1180_34_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_parameters_non_empty_list_scanner_parser_1200_40_ (galgas_scanner &,
                                 GGS_typeListeArgumentsRoutExterne  &,
@@ -466,25 +466,25 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_21 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_parameters_non_empty_list_scanner_parser_1200_40_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_parameters_non_empty_list_scanner_parser_1200_40_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_parameter_scanner_parser_1218_24_ (galgas_scanner &,
                                 GGS_typeArgumentRoutineExterne  &,
                                 GGS_typeLexicalAttributesMap  &) ;
 
-  protected : void pr_lexical_parameter_scanner_parser_1218_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_parameter_scanner_parser_1218_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_parameter_scanner_parser_1228_24_ (galgas_scanner &,
                                 GGS_typeArgumentRoutineExterne  &,
                                 GGS_typeLexicalAttributesMap  &) ;
 
-  protected : void pr_lexical_parameter_scanner_parser_1228_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_parameter_scanner_parser_1228_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_parameter_scanner_parser_1239_24_ (galgas_scanner &,
                                 GGS_typeArgumentRoutineExterne  &,
                                 GGS_typeLexicalAttributesMap  &) ;
 
-  protected : void pr_lexical_parameter_scanner_parser_1239_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_parameter_scanner_parser_1239_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_parameter_scanner_parser_1250_24_ (galgas_scanner &,
                                 GGS_typeArgumentRoutineExterne  &,
@@ -492,7 +492,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_scanner_parser_22 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_parameter_scanner_parser_1250_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_parameter_scanner_parser_1250_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_when_branches_list_scanner_parser_1269_33_ (galgas_scanner &,
                                 GGS_typeListeTestsEtInstructions  &,
@@ -506,7 +506,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_23 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_when_branches_list_scanner_parser_1269_33_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_when_branches_list_scanner_parser_1269_33_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_default_branch_scanner_parser_1304_29_ (galgas_scanner &,
                                 GGS_tListeInstructionsLexicales  &,
@@ -518,7 +518,7 @@ class scanner_parser {
                                 const GGS_tagMap  ,
                                 const GGS_bool ) ;
 
-  protected : void pr_lexical_default_branch_scanner_parser_1304_29_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_default_branch_scanner_parser_1304_29_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_default_branch_scanner_parser_1319_29_ (galgas_scanner &,
                                 GGS_tListeInstructionsLexicales  &,
@@ -530,7 +530,7 @@ class scanner_parser {
                                 const GGS_tagMap  ,
                                 const GGS_bool ) ;
 
-  protected : void pr_lexical_default_branch_scanner_parser_1319_29_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_default_branch_scanner_parser_1319_29_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_send_instruction_scanner_parser_1344_31_ (galgas_scanner &,
                                 GGS_typeInstructionLexicale  &,
@@ -540,7 +540,7 @@ class scanner_parser {
                                 GGS_typeTableTablesDeMotsReserves  &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_lexical_send_instruction_scanner_parser_1344_31_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_send_instruction_scanner_parser_1344_31_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_send_instruction_scanner_parser_1360_31_ (galgas_scanner &,
                                 GGS_typeInstructionLexicale  &,
@@ -552,7 +552,7 @@ class scanner_parser {
 
   protected : virtual sint16 select_repeat_scanner_parser_24 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lexical_send_instruction_scanner_parser_1360_31_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_send_instruction_scanner_parser_1360_31_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_send_or_error_scanner_parser_1397_28_ (galgas_scanner &,
                                 GGS_typeEmissionParDefaut  &,
@@ -560,7 +560,7 @@ class scanner_parser {
                                 GGS_typeTableDefinitionTerminaux  &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_lexical_send_or_error_scanner_parser_1397_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_send_or_error_scanner_parser_1397_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_lexical_send_or_error_scanner_parser_1411_28_ (galgas_scanner &,
                                 GGS_typeEmissionParDefaut  &,
@@ -568,7 +568,7 @@ class scanner_parser {
                                 GGS_typeTableDefinitionTerminaux  &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_lexical_send_or_error_scanner_parser_1411_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lexical_send_or_error_scanner_parser_1411_28_parse (galgas_scanner & inLexique) ;
 
 } ;
 

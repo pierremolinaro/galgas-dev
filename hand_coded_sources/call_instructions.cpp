@@ -37,7 +37,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
 
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "GGS_" << mTypeName << "::class_method_" << mTypeMethodName << " (_inLexique"  ;
+    ioCppFile << "GGS_" << mTypeName << "::class_method_" << mTypeMethodName << " (inLexique"  ;
     GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
     while (argCourant.hc ()) {
       ioCppFile << ", " ;
@@ -106,7 +106,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     if (varInExpression != NULL) {
       if (dynamic_cast <cPtr_typeCppInheritedName *> (varInExpression->mCppVarName (HERE)) != NULL) {
         handled = true ;
-        ioCppFile << "inherited::method_" << mMethodName << " (_inLexique"  ;
+        ioCppFile << "inherited::method_" << mMethodName << " (inLexique"  ;
         GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
         while (argCourant.hc ()) {
           ioCppFile << ", " ;
@@ -118,7 +118,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                   << ")) ;\n" ;
       }else if (dynamic_cast <cPtr_typeCppThisName *> (varInExpression->mCppVarName (HERE)) != NULL) {
         handled = true ;
-        ioCppFile << "method_" << mMethodName << " (_inLexique"  ;
+        ioCppFile << "method_" << mMethodName << " (inLexique"  ;
         GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
         while (argCourant.hc ()) {
           ioCppFile << ", " ;
@@ -131,7 +131,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       }else if (dynamic_cast <cPtr_typeCppThisInCategoryName *> (varInExpression->mCppVarName (HERE)) != NULL) {
         cPtr_typeCppThisInCategoryName * p = dynamic_cast <cPtr_typeCppThisInCategoryName *> (varInExpression->mCppVarName (HERE)) ;
         handled = true ;
-        ioCppFile << "operand_" << cStringWithSigned (p->mVariableLocation.location ()) << "->method_" << mMethodName << " (_inLexique"  ;
+        ioCppFile << "operand_" << cStringWithSigned (p->mVariableLocation.location ()) << "->method_" << mMethodName << " (inLexique"  ;
         GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
         while (argCourant.hc ()) {
           ioCppFile << ", " ;
@@ -155,7 +155,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                 << mCategoryMethodClassBaseName << "__" << mMethodName
                 << " (_temp_" << cStringWithSigned (mMethodName.location ()) << "._galgasObjectRunTimeInfo ()) ;\n"
                    "  if (_method != NULL) {\n"
-                   "    _method (_inLexique, " << var << " (HERE)"  ;
+                   "    _method (inLexique, " << var << " (HERE)"  ;
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
       while (argCourant.hc ()) {
         ioCppFile << ", " ;
@@ -176,7 +176,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << " ;\n"
                    "if (" << var << ".isBuilt ()) {\n"
                    "  " << var << " (HERE)->method_"
-                << mMethodName << " (_inLexique"  ;
+                << mMethodName << " (inLexique"  ;
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
       while (argCourant.hc ()) {
         ioCppFile << ", " ;
@@ -248,7 +248,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    ioCppFile << ".modifier_" << aNomMethodeSimple << " (_inLexique"  ;
+    ioCppFile << ".modifier_" << aNomMethodeSimple << " (inLexique"  ;
     GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
     while (argCourant.hc ()) {
       ioCppFile << ", " ;
@@ -312,7 +312,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     aNomCppAttribut (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << ".method_" << aMethodeDeListe << " (_inLexique" ;
+    ioCppFile << ".method_" << aMethodeDeListe << " (inLexique" ;
     GGS_typeCplusPlusNameList::cEnumerator current (aListeNomsCppArguments, true) ;
     while (current.hc ()) {
       ioCppFile << ",  " ;
@@ -385,7 +385,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << mGrammarName << "::"
               << (mSourceIsFile.boolValue () ? "_performSourceFileParsing_" : "_performSourceStringParsing_")
               << mAltSymbol
-              << " (_inLexique"
+              << " (inLexique"
                  ",\n                                " ;
     if (mSourceIsFile.boolValue ()) {
       ioCppFile << "_depExtension.string (),\n                                "
@@ -465,7 +465,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    ioCppFile << "_inLexique.appendToSentString (" ;
+    ioCppFile << "inLexique.appendToSentString (" ;
     mExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ") ;\n" ; 
   }
@@ -531,7 +531,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
         ioCppFile << ") {\n  " ;
       }
     }
-    ioCppFile << "::routine_" << mRoutineName << " (_inLexique" ;
+    ioCppFile << "::routine_" << mRoutineName << " (inLexique" ;
     GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
     while (argCourant.hc ()) {
       ioCppFile << ",  " ;

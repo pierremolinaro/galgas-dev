@@ -165,7 +165,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << "_" << cStringWithSigned (aNomProduction.lineNumber ())
             << "_" << cStringWithSigned (aNomProduction.columnNumber ())
             << "_parse ("
-            << mLexiqueClassName << " & _inLexique) ;\n\n" ;
+            << mLexiqueClassName << " & inLexique) ;\n\n" ;
   }
 }
 
@@ -201,7 +201,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
-    inCppFile << "_inLexique" ;
+    inCppFile << "inLexique" ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << " */" ;
     }
@@ -223,7 +223,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    _inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
+                   "    inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
       if (currentAltForNonTerminal._key (HERE).length () == 0) {
         inCppFile << "NULL, " ;
       }else{
@@ -238,7 +238,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                     inGenerateDebug, true) ;
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    _inLexique.exitProduction () ;\n"
+                   "    inLexique.exitProduction () ;\n"
                    "  #endif\n";
     }
   //--- End of function
@@ -268,7 +268,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << "/* " ;
     }
-    inCppFile << "_inLexique" ;
+    inCppFile << "inLexique" ;
     if (! (lexiqueFormalArgumentUsed || inGenerateDebug)) {
       inCppFile << " */" ;
     }
@@ -276,7 +276,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   //--- Engendrer la liste d'instructions
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    _inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
+                   "    inLexique.enterProduction (\"<" << aNomProduction << ">\", " ;
       if (firstLabelDef._key (HERE).length () == 0) {
         inCppFile << "NULL, " ;
       }else{
@@ -291,7 +291,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                     inGenerateDebug, false) ;
     if (inGenerateDebug) {
       inCppFile << "  #ifdef DEBUG_TRACE_ENABLED\n"
-                   "    _inLexique.exitProduction () ;\n"
+                   "    inLexique.exitProduction () ;\n"
                    "  #endif\n";
     }
   //--- Fin de la fonction
