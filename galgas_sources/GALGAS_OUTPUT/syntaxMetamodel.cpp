@@ -167,7 +167,7 @@ void GGS_syntaxInstructionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mInstruction
@@ -182,7 +182,7 @@ _insulateList (void) {
 GGS_syntaxInstructionList  GGS_syntaxInstructionList::
 constructor_emptyList (void) {
   GGS_syntaxInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -191,7 +191,7 @@ constructor_emptyList (void) {
 GGS_syntaxInstructionList  GGS_syntaxInstructionList::
 constructor_listWithValue (const GGS_syntaxInstruction & argument_0) {
   GGS_syntaxInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -202,7 +202,7 @@ void GGS_syntaxInstructionList::
 internalSubListWithRange (GGS_syntaxInstructionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -526,7 +526,7 @@ void GGS_nonTerminalLabelList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mLabelName,
@@ -542,7 +542,7 @@ _insulateList (void) {
 GGS_nonTerminalLabelList  GGS_nonTerminalLabelList::
 constructor_emptyList (void) {
   GGS_nonTerminalLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -552,7 +552,7 @@ GGS_nonTerminalLabelList  GGS_nonTerminalLabelList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) {
   GGS_nonTerminalLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -563,7 +563,7 @@ void GGS_nonTerminalLabelList::
 internalSubListWithRange (GGS_nonTerminalLabelList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -951,7 +951,7 @@ void GGS_nonterminalDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mNonterminalName,
@@ -968,7 +968,7 @@ _insulateList (void) {
 GGS_nonterminalDeclarationList  GGS_nonterminalDeclarationList::
 constructor_emptyList (void) {
   GGS_nonterminalDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -979,7 +979,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_nonTerminalLabelList & argument_1,
                                 const GGS_bool& argument_2) {
   GGS_nonterminalDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -990,7 +990,7 @@ void GGS_nonterminalDeclarationList::
 internalSubListWithRange (GGS_nonterminalDeclarationList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -1426,7 +1426,7 @@ void GGS_syntaxRuleLabelList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mLabelName,
@@ -1443,7 +1443,7 @@ _insulateList (void) {
 GGS_syntaxRuleLabelList  GGS_syntaxRuleLabelList::
 constructor_emptyList (void) {
   GGS_syntaxRuleLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -1454,7 +1454,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_syntaxInstructionList & argument_2) {
   GGS_syntaxRuleLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -1465,7 +1465,7 @@ void GGS_syntaxRuleLabelList::
 internalSubListWithRange (GGS_syntaxRuleLabelList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -1885,7 +1885,7 @@ void GGS_syntaxRuleList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mNonterminalName,
@@ -1901,7 +1901,7 @@ _insulateList (void) {
 GGS_syntaxRuleList  GGS_syntaxRuleList::
 constructor_emptyList (void) {
   GGS_syntaxRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -1911,7 +1911,7 @@ GGS_syntaxRuleList  GGS_syntaxRuleList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_syntaxRuleLabelList & argument_1) {
   GGS_syntaxRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -1922,7 +1922,7 @@ void GGS_syntaxRuleList::
 internalSubListWithRange (GGS_syntaxRuleList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2670,7 +2670,7 @@ void GGS_listOfSyntaxInstructionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSyntaxInstructionList
@@ -2685,7 +2685,7 @@ _insulateList (void) {
 GGS_listOfSyntaxInstructionList  GGS_listOfSyntaxInstructionList::
 constructor_emptyList (void) {
   GGS_listOfSyntaxInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2694,7 +2694,7 @@ constructor_emptyList (void) {
 GGS_listOfSyntaxInstructionList  GGS_listOfSyntaxInstructionList::
 constructor_listWithValue (const GGS_syntaxInstructionList & argument_0) {
   GGS_listOfSyntaxInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -2705,7 +2705,7 @@ void GGS_listOfSyntaxInstructionList::
 internalSubListWithRange (GGS_listOfSyntaxInstructionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

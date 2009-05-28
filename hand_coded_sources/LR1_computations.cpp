@@ -999,7 +999,7 @@ class c_LR1_items_sets_collection {
 
 //--- Private data
   private : TC_UniqueArray <c_LR1_items_set> m_LR1_items_sets_array ;
-  private : cLR1_items_sets_AVL_tree * _mRoot [kSlotCount] ;
+  private : cLR1_items_sets_AVL_tree * mRoot [kSlotCount] ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -1008,7 +1008,7 @@ c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) :
 m_LR1_items_sets_array () {
   m_LR1_items_sets_array.makeRoomUsingSwap (500) ;
   for (uint32 i=0 ; i<kSlotCount ; i++) {
-    _mRoot [i] = (cLR1_items_sets_AVL_tree *) NULL ;
+    mRoot [i] = (cLR1_items_sets_AVL_tree *) NULL ;
   }
 }
 
@@ -1017,7 +1017,7 @@ m_LR1_items_sets_array () {
 c_LR1_items_sets_collection::
 ~c_LR1_items_sets_collection (void) {
   for (uint32 i=0 ; i<kSlotCount ; i++) {
-    macroMyDelete (_mRoot [i], cLR1_items_sets_AVL_tree) ;
+    macroMyDelete (mRoot [i], cLR1_items_sets_AVL_tree) ;
   }
 }
 
@@ -1027,7 +1027,7 @@ sint32 c_LR1_items_sets_collection::
 searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
   bool extension = false ;
   const uint32 h = ioItemSet.hashCode () % kSlotCount ;
-  return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (_mRoot [h], ioItemSet, m_LR1_items_sets_array, extension) ;
+  return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (mRoot [h], ioItemSet, m_LR1_items_sets_array, extension) ;
 }
 
 //---------------------------------------------------------------------------*

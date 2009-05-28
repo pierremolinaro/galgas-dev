@@ -231,7 +231,7 @@ void GGS_commandLineOptionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mOptionTypeName,
@@ -250,7 +250,7 @@ _insulateList (void) {
 GGS_commandLineOptionList  GGS_commandLineOptionList::
 constructor_emptyList (void) {
   GGS_commandLineOptionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -263,7 +263,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_lstring & argument_4) {
   GGS_commandLineOptionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
@@ -274,7 +274,7 @@ void GGS_commandLineOptionList::
 internalSubListWithRange (GGS_commandLineOptionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

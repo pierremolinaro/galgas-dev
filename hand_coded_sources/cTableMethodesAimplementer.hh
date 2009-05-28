@@ -73,7 +73,7 @@ cElementTableMethodesAimplementer <INFO>::~cElementTableMethodesAimplementer (vo
 
 template <typename INFO>
 cTableMethodesAimplementer <INFO>::cTableMethodesAimplementer (void) :
-_mRoot (NULL),
+mRoot (NULL),
 mFirstItem (NULL),
 mLastItem (NULL),
 mListLength (0),
@@ -92,7 +92,7 @@ cTableMethodesAimplementer <INFO>::~cTableMethodesAimplementer (void) {
 template <typename INFO>
 cTableMethodesAimplementer <INFO>::
 cTableMethodesAimplementer (const cTableMethodesAimplementer <INFO> & source) :
-_mRoot (NULL),
+mRoot (NULL),
 mFirstItem (NULL),
 mLastItem (NULL),
 mListLength (0),
@@ -107,7 +107,7 @@ cTableMethodesAimplementer <INFO> & cTableMethodesAimplementer <INFO>::
 operator = (const cTableMethodesAimplementer <INFO> & source) {
   if (this != & source) {
     drop () ;
-    _mRoot = source._mRoot ;
+    mRoot = source.mRoot ;
     mFirstItem = source.mFirstItem ;
     mLastItem = source.mLastItem ;
     mListLength = source.mListLength ;
@@ -129,10 +129,10 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::drop (void) {
   if (mReferenceCountPtr != NULL) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) == 1) {
-      macroMyDelete (_mRoot, cElement) ;
+      macroMyDelete (mRoot, cElement) ;
       macroMyDelete (mReferenceCountPtr, sint32) ;
     }else{
-      _mRoot = (cElement *) NULL ;
+      mRoot = (cElement *) NULL ;
       (*mReferenceCountPtr) -- ;
       mReferenceCountPtr = (sint32 *) NULL ;
     }
@@ -165,12 +165,12 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
       cElementTableMethodesAimplementer <INFO> * p = mFirstItem ;
       mLastItem = (cElement *) NULL ;
       mFirstItem = (cElement *) NULL ;
-      _mRoot = (cElement *) NULL ;
+      mRoot = (cElement *) NULL ;
       mListLength = 0 ;
       while (p != NULL) {
         macroValidPointer (p) ;
         sint32 numeroElement ;
-        internalRecursiveInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, _mRoot) ;
+        internalRecursiveInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, mRoot) ;
         p = p->mNextItem ;
       }
     }
@@ -191,7 +191,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Compiler & inLexique
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
-    internalRecursiveInsert (info, clef, numeroElement, true, _mRoot) ;
+    internalRecursiveInsert (info, clef, numeroElement, true, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;
@@ -214,7 +214,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Compiler & inLexi
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
   //--- Realiser l'insertion
-    internalRecursiveInsert (info, clef, numeroElement, false, _mRoot) ;
+    internalRecursiveInsert (info, clef, numeroElement, false, mRoot) ;
   //--- Erreur d'insertion : la clef existe deja
     if (numeroElement < 0) {
       inLocation.oldStyleSemanticErrorForGenericMap (inLexique, messageErreurInsertion, clef COMMA_THERE) ;

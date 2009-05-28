@@ -167,7 +167,7 @@ void GGS_typeCplusPlusNameList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mCppName
@@ -182,7 +182,7 @@ _insulateList (void) {
 GGS_typeCplusPlusNameList  GGS_typeCplusPlusNameList::
 constructor_emptyList (void) {
   GGS_typeCplusPlusNameList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -191,7 +191,7 @@ constructor_emptyList (void) {
 GGS_typeCplusPlusNameList  GGS_typeCplusPlusNameList::
 constructor_listWithValue (const GGS_typeCplusPlusName & argument_0) {
   GGS_typeCplusPlusNameList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -202,7 +202,7 @@ void GGS_typeCplusPlusNameList::
 internalSubListWithRange (GGS_typeCplusPlusNameList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -603,7 +603,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeClassMessagesMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -629,7 +629,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -649,7 +649,7 @@ _insertElement (C_Compiler & inLexique,
     e_typeClassMessagesMap info  ;
     info.mMessage = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -952,7 +952,7 @@ void GGS_typeSemanticsTypesList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mType,
@@ -968,7 +968,7 @@ _insulateList (void) {
 GGS_typeSemanticsTypesList  GGS_typeSemanticsTypesList::
 constructor_emptyList (void) {
   GGS_typeSemanticsTypesList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -978,7 +978,7 @@ GGS_typeSemanticsTypesList  GGS_typeSemanticsTypesList::
 constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_typeSemanticsTypesList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -989,7 +989,7 @@ void GGS_typeSemanticsTypesList::
 internalSubListWithRange (GGS_typeSemanticsTypesList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -1941,7 +1941,7 @@ void GGS_L_assignedVariables::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->aNomVariableCible,
@@ -1957,7 +1957,7 @@ _insulateList (void) {
 GGS_L_assignedVariables  GGS_L_assignedVariables::
 constructor_emptyList (void) {
   GGS_L_assignedVariables result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -1967,7 +1967,7 @@ GGS_L_assignedVariables  GGS_L_assignedVariables::
 constructor_listWithValue (const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_L_assignedVariables result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -1978,7 +1978,7 @@ void GGS_L_assignedVariables::
 internalSubListWithRange (GGS_L_assignedVariables & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2461,7 +2461,7 @@ void GGS_typeListeCibles::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->aCible
@@ -2476,7 +2476,7 @@ _insulateList (void) {
 GGS_typeListeCibles  GGS_typeListeCibles::
 constructor_emptyList (void) {
   GGS_typeListeCibles result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2485,7 +2485,7 @@ constructor_emptyList (void) {
 GGS_typeListeCibles  GGS_typeListeCibles::
 constructor_listWithValue (const GGS_typeCible & argument_0) {
   GGS_typeListeCibles result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -2496,7 +2496,7 @@ void GGS_typeListeCibles::
 internalSubListWithRange (GGS_typeListeCibles & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2820,7 +2820,7 @@ void GGS_L_nameWithType::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mType,
@@ -2836,7 +2836,7 @@ _insulateList (void) {
 GGS_L_nameWithType  GGS_L_nameWithType::
 constructor_emptyList (void) {
   GGS_L_nameWithType result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2846,7 +2846,7 @@ GGS_L_nameWithType  GGS_L_nameWithType::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_L_nameWithType result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -2857,7 +2857,7 @@ void GGS_L_nameWithType::
 internalSubListWithRange (GGS_L_nameWithType & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3324,7 +3324,7 @@ void GGS_typeExpressionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mExpression
@@ -3339,7 +3339,7 @@ _insulateList (void) {
 GGS_typeExpressionList  GGS_typeExpressionList::
 constructor_emptyList (void) {
   GGS_typeExpressionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3348,7 +3348,7 @@ constructor_emptyList (void) {
 GGS_typeExpressionList  GGS_typeExpressionList::
 constructor_listWithValue (const GGS_typeExpression & argument_0) {
   GGS_typeExpressionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -3359,7 +3359,7 @@ void GGS_typeExpressionList::
 internalSubListWithRange (GGS_typeExpressionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3667,7 +3667,7 @@ void GGS_varToDropList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mVarToDrop
@@ -3682,7 +3682,7 @@ _insulateList (void) {
 GGS_varToDropList  GGS_varToDropList::
 constructor_emptyList (void) {
   GGS_varToDropList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3691,7 +3691,7 @@ constructor_emptyList (void) {
 GGS_varToDropList  GGS_varToDropList::
 constructor_listWithValue (const GGS_typeCplusPlusName & argument_0) {
   GGS_varToDropList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -3702,7 +3702,7 @@ void GGS_varToDropList::
 internalSubListWithRange (GGS_varToDropList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -15548,7 +15548,7 @@ void GGS_L_expression_instructionsList_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mIFexpression,
@@ -15564,7 +15564,7 @@ _insulateList (void) {
 GGS_L_expression_instructionsList_list  GGS_L_expression_instructionsList_list::
 constructor_emptyList (void) {
   GGS_L_expression_instructionsList_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -15574,7 +15574,7 @@ GGS_L_expression_instructionsList_list  GGS_L_expression_instructionsList_list::
 constructor_listWithValue (const GGS_typeExpression & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   GGS_L_expression_instructionsList_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -15585,7 +15585,7 @@ void GGS_L_expression_instructionsList_list::
 internalSubListWithRange (GGS_L_expression_instructionsList_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -16143,7 +16143,7 @@ void GGS_L_switchBranchlist::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mConstantSet,
@@ -16159,7 +16159,7 @@ _insulateList (void) {
 GGS_L_switchBranchlist  GGS_L_switchBranchlist::
 constructor_emptyList (void) {
   GGS_L_switchBranchlist result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -16169,7 +16169,7 @@ GGS_L_switchBranchlist  GGS_L_switchBranchlist::
 constructor_listWithValue (const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   GGS_L_switchBranchlist result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -16180,7 +16180,7 @@ void GGS_L_switchBranchlist::
 internalSubListWithRange (GGS_L_switchBranchlist & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -16691,7 +16691,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeTableRoutinesAimplementer info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -16717,7 +16717,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -16734,7 +16734,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_typeTableRoutinesAimplementer info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -16947,7 +16947,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeTableAttributsSemantiques info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -16973,7 +16973,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -16996,7 +16996,7 @@ _insertElement (C_Compiler & inLexique,
     info.aNomCppAttribut = inParameter0 ;
     info.mAttributType = inParameter1 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -17854,7 +17854,7 @@ enterIndex (const GGS_lstring & inKey,
   e_M_nonTerminalSymbolForSyntax info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -17880,7 +17880,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -17900,7 +17900,7 @@ _insertElement (C_Compiler & inLexique,
     e_M_nonTerminalSymbolForSyntax info  ;
     info.mAltParametersMap = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -19369,7 +19369,7 @@ void GGS_L_matchInstructionCasesList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mCase1_name,
@@ -19386,7 +19386,7 @@ _insulateList (void) {
 GGS_L_matchInstructionCasesList  GGS_L_matchInstructionCasesList::
 constructor_emptyList (void) {
   GGS_L_matchInstructionCasesList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -19397,7 +19397,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_typeInstructionList & argument_2) {
   GGS_L_matchInstructionCasesList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -19408,7 +19408,7 @@ void GGS_L_matchInstructionCasesList::
 internalSubListWithRange (GGS_L_matchInstructionCasesList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -20222,7 +20222,7 @@ void GGS_foreachEnumerationList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mNewStyle,
@@ -20241,7 +20241,7 @@ _insulateList (void) {
 GGS_foreachEnumerationList  GGS_foreachEnumerationList::
 constructor_emptyList (void) {
   GGS_foreachEnumerationList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -20254,7 +20254,7 @@ constructor_listWithValue (const GGS_bool& argument_0,
                                 const GGS_string& argument_3,
                                 const GGS_bool& argument_4) {
   GGS_foreachEnumerationList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
@@ -20265,7 +20265,7 @@ void GGS_foreachEnumerationList::
 internalSubListWithRange (GGS_foreachEnumerationList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -21345,7 +21345,7 @@ void GGS_typeStructuredExtractCasesList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mClassName,
@@ -21363,7 +21363,7 @@ _insulateList (void) {
 GGS_typeStructuredExtractCasesList  GGS_typeStructuredExtractCasesList::
 constructor_emptyList (void) {
   GGS_typeStructuredExtractCasesList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -21375,7 +21375,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_2,
                                 const GGS_bool& argument_3) {
   GGS_typeStructuredExtractCasesList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -21386,7 +21386,7 @@ void GGS_typeStructuredExtractCasesList::
 internalSubListWithRange (GGS_typeStructuredExtractCasesList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -22571,7 +22571,7 @@ void GGS_typeStructuredCastBranchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mCastClassName,
@@ -22589,7 +22589,7 @@ _insulateList (void) {
 GGS_typeStructuredCastBranchList  GGS_typeStructuredCastBranchList::
 constructor_emptyList (void) {
   GGS_typeStructuredCastBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -22601,7 +22601,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeCplusPlusNameList & argument_2,
                                 const GGS_typeInstructionList & argument_3) {
   GGS_typeStructuredCastBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -22612,7 +22612,7 @@ void GGS_typeStructuredCastBranchList::
 internalSubListWithRange (GGS_typeStructuredCastBranchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -23837,7 +23837,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeTableNomRoutinesDeclarees info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -23863,7 +23863,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -23880,7 +23880,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_typeTableNomRoutinesDeclarees info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -25131,7 +25131,7 @@ void GGS_EXsortDescriptorList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSortAttribute,
@@ -25147,7 +25147,7 @@ _insulateList (void) {
 GGS_EXsortDescriptorList  GGS_EXsortDescriptorList::
 constructor_emptyList (void) {
   GGS_EXsortDescriptorList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -25157,7 +25157,7 @@ GGS_EXsortDescriptorList  GGS_EXsortDescriptorList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) {
   GGS_EXsortDescriptorList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -25168,7 +25168,7 @@ void GGS_EXsortDescriptorList::
 internalSubListWithRange (GGS_EXsortDescriptorList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -26418,7 +26418,7 @@ enterIndex (const GGS_lstring & inKey,
   e_domainRelationMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -26444,7 +26444,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -26464,7 +26464,7 @@ _insertElement (C_Compiler & inLexique,
     e_domainRelationMap info  ;
     info.mDomains = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -27649,7 +27649,7 @@ void GGS_typeEntitiesToGenerateList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mEntityToGenerate
@@ -27664,7 +27664,7 @@ _insulateList (void) {
 GGS_typeEntitiesToGenerateList  GGS_typeEntitiesToGenerateList::
 constructor_emptyList (void) {
   GGS_typeEntitiesToGenerateList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -27673,7 +27673,7 @@ constructor_emptyList (void) {
 GGS_typeEntitiesToGenerateList  GGS_typeEntitiesToGenerateList::
 constructor_listWithValue (const GGS_typeEntityToGenerate & argument_0) {
   GGS_typeEntitiesToGenerateList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -27684,7 +27684,7 @@ void GGS_typeEntitiesToGenerateList::
 internalSubListWithRange (GGS_typeEntitiesToGenerateList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -28122,7 +28122,7 @@ enterIndex (const GGS_lstring & inKey,
   e_typeEnumCstMessageStringMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -28148,7 +28148,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -28168,7 +28168,7 @@ _insertElement (C_Compiler & inLexique,
     e_typeEnumCstMessageStringMap info  ;
     info.mMessageString = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -28685,7 +28685,7 @@ void GGS_ruleDescriptorForProgramList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSourceExtension,
@@ -28703,7 +28703,7 @@ _insulateList (void) {
 GGS_ruleDescriptorForProgramList  GGS_ruleDescriptorForProgramList::
 constructor_emptyList (void) {
   GGS_ruleDescriptorForProgramList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -28715,7 +28715,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2,
                                 const GGS_typeInstructionList & argument_3) {
   GGS_ruleDescriptorForProgramList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -28726,7 +28726,7 @@ void GGS_ruleDescriptorForProgramList::
 internalSubListWithRange (GGS_ruleDescriptorForProgramList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -29219,7 +29219,7 @@ void GGS_wrapperFileSortedList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mRegularFileName,
@@ -29236,7 +29236,7 @@ _insulateList (void) {
 GGS_wrapperFileSortedList  GGS_wrapperFileSortedList::
 constructor_emptySortedList (void) {
   GGS_wrapperFileSortedList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -29248,7 +29248,7 @@ constructor_sortedListWithValue (const GGS_string& argument_0,
                            const GGS_uint & argument_2,
                            const GGS_uint & argument_3) {
   GGS_wrapperFileSortedList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -29577,7 +29577,7 @@ void GGS_wrapperDirectorySortedList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mDirectoryName,
@@ -29594,7 +29594,7 @@ _insulateList (void) {
 GGS_wrapperDirectorySortedList  GGS_wrapperDirectorySortedList::
 constructor_emptySortedList (void) {
   GGS_wrapperDirectorySortedList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -29606,7 +29606,7 @@ constructor_sortedListWithValue (const GGS_string& argument_0,
                            const GGS_wrapperDirectorySortedList & argument_2,
                            const GGS_uint & argument_3) {
   GGS_wrapperDirectorySortedList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
@@ -29843,7 +29843,7 @@ enterIndex (const GGS_lstring & inKey,
   e_wrapperExtensionMap info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -29869,7 +29869,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -29886,7 +29886,7 @@ _insertElement (C_Compiler & inLexique,
     insulateMap () ;
     e_wrapperExtensionMap info  ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }

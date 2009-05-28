@@ -411,7 +411,7 @@ void GGS_semanticInstructionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mInstruction
@@ -426,7 +426,7 @@ _insulateList (void) {
 GGS_semanticInstructionList  GGS_semanticInstructionList::
 constructor_emptyList (void) {
   GGS_semanticInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -435,7 +435,7 @@ constructor_emptyList (void) {
 GGS_semanticInstructionList  GGS_semanticInstructionList::
 constructor_listWithValue (const GGS_semanticInstruction & argument_0) {
   GGS_semanticInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -446,7 +446,7 @@ void GGS_semanticInstructionList::
 internalSubListWithRange (GGS_semanticInstructionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -881,7 +881,7 @@ void GGS_semanticDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSemanticDeclaration
@@ -896,7 +896,7 @@ _insulateList (void) {
 GGS_semanticDeclarationList  GGS_semanticDeclarationList::
 constructor_emptyList (void) {
   GGS_semanticDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -905,7 +905,7 @@ constructor_emptyList (void) {
 GGS_semanticDeclarationList  GGS_semanticDeclarationList::
 constructor_listWithValue (const GGS_semanticDeclaration & argument_0) {
   GGS_semanticDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -916,7 +916,7 @@ void GGS_semanticDeclarationList::
 internalSubListWithRange (GGS_semanticDeclarationList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3469,7 +3469,7 @@ void GGS_foreachInstructionEnumeratedObjectElementList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mElement
@@ -3484,7 +3484,7 @@ _insulateList (void) {
 GGS_foreachInstructionEnumeratedObjectElementList  GGS_foreachInstructionEnumeratedObjectElementList::
 constructor_emptyList (void) {
   GGS_foreachInstructionEnumeratedObjectElementList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3493,7 +3493,7 @@ constructor_emptyList (void) {
 GGS_foreachInstructionEnumeratedObjectElementList  GGS_foreachInstructionEnumeratedObjectElementList::
 constructor_listWithValue (const GGS_foreachInstructionEnumeratedObjectElement & argument_0) {
   GGS_foreachInstructionEnumeratedObjectElementList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -3504,7 +3504,7 @@ void GGS_foreachInstructionEnumeratedObjectElementList::
 internalSubListWithRange (GGS_foreachInstructionEnumeratedObjectElementList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3844,7 +3844,7 @@ void GGS_foreachInstructionEnumeratedObjectList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mEnumeratedExpression,
@@ -3861,7 +3861,7 @@ _insulateList (void) {
 GGS_foreachInstructionEnumeratedObjectList  GGS_foreachInstructionEnumeratedObjectList::
 constructor_emptyList (void) {
   GGS_foreachInstructionEnumeratedObjectList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3872,7 +3872,7 @@ constructor_listWithValue (const GGS_semanticExpression & argument_0,
                                 const GGS_foreachInstructionEnumeratedObjectElementList & argument_1,
                                 const GGS_bool& argument_2) {
   GGS_foreachInstructionEnumeratedObjectList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -3883,7 +3883,7 @@ void GGS_foreachInstructionEnumeratedObjectList::
 internalSubListWithRange (GGS_foreachInstructionEnumeratedObjectList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -4589,7 +4589,7 @@ void GGS_ifBranchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mIFexpression,
@@ -4605,7 +4605,7 @@ _insulateList (void) {
 GGS_ifBranchList  GGS_ifBranchList::
 constructor_emptyList (void) {
   GGS_ifBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -4615,7 +4615,7 @@ GGS_ifBranchList  GGS_ifBranchList::
 constructor_listWithValue (const GGS_semanticExpression & argument_0,
                                 const GGS_semanticInstructionList & argument_1) {
   GGS_ifBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -4626,7 +4626,7 @@ void GGS_ifBranchList::
 internalSubListWithRange (GGS_ifBranchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -6305,7 +6305,7 @@ void GGS_matchEntryList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mEntry
@@ -6320,7 +6320,7 @@ _insulateList (void) {
 GGS_matchEntryList  GGS_matchEntryList::
 constructor_emptyList (void) {
   GGS_matchEntryList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -6329,7 +6329,7 @@ constructor_emptyList (void) {
 GGS_matchEntryList  GGS_matchEntryList::
 constructor_listWithValue (const GGS_matchEntry & argument_0) {
   GGS_matchEntryList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -6340,7 +6340,7 @@ void GGS_matchEntryList::
 internalSubListWithRange (GGS_matchEntryList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -7036,7 +7036,7 @@ void GGS_matchInstructionBranchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mMatchEntryList,
@@ -7052,7 +7052,7 @@ _insulateList (void) {
 GGS_matchInstructionBranchList  GGS_matchInstructionBranchList::
 constructor_emptyList (void) {
   GGS_matchInstructionBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -7062,7 +7062,7 @@ GGS_matchInstructionBranchList  GGS_matchInstructionBranchList::
 constructor_listWithValue (const GGS_matchEntryList & argument_0,
                                 const GGS_semanticInstructionList & argument_1) {
   GGS_matchInstructionBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -7073,7 +7073,7 @@ void GGS_matchInstructionBranchList::
 internalSubListWithRange (GGS_matchInstructionBranchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -7699,7 +7699,7 @@ void GGS_castInstructionBranchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mUseKindOfClass,
@@ -7718,7 +7718,7 @@ _insulateList (void) {
 GGS_castInstructionBranchList  GGS_castInstructionBranchList::
 constructor_emptyList (void) {
   GGS_castInstructionBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -7731,7 +7731,7 @@ constructor_listWithValue (const GGS_bool& argument_0,
                                 const GGS_bool& argument_3,
                                 const GGS_semanticInstructionList & argument_4) {
   GGS_castInstructionBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
@@ -7742,7 +7742,7 @@ void GGS_castInstructionBranchList::
 internalSubListWithRange (GGS_castInstructionBranchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -10491,7 +10491,7 @@ void GGS_switchBranches::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSwitchConstantList,
@@ -10507,7 +10507,7 @@ _insulateList (void) {
 GGS_switchBranches  GGS_switchBranches::
 constructor_emptyList (void) {
   GGS_switchBranches result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -10517,7 +10517,7 @@ GGS_switchBranches  GGS_switchBranches::
 constructor_listWithValue (const GGS_lstringlist & argument_0,
                                 const GGS_semanticInstructionList & argument_1) {
   GGS_switchBranches result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -10528,7 +10528,7 @@ void GGS_switchBranches::
 internalSubListWithRange (GGS_switchBranches & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -11292,7 +11292,7 @@ void GGS_abstractCategoryMethodList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mAbstractCategoryMethodName,
@@ -11308,7 +11308,7 @@ _insulateList (void) {
 GGS_abstractCategoryMethodList  GGS_abstractCategoryMethodList::
 constructor_emptyList (void) {
   GGS_abstractCategoryMethodList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -11318,7 +11318,7 @@ GGS_abstractCategoryMethodList  GGS_abstractCategoryMethodList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) {
   GGS_abstractCategoryMethodList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -11329,7 +11329,7 @@ void GGS_abstractCategoryMethodList::
 internalSubListWithRange (GGS_abstractCategoryMethodList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -11597,7 +11597,7 @@ _description (C_Compiler & _inLexique,
 GGS_abstractCategoryMethodListMap GGS_abstractCategoryMethodListMap::
 constructor_emptyMap (void) {
   GGS_abstractCategoryMethodListMap result ;
-  result._alloc (HERE) ;
+  result.alloc (HERE) ;
   return result ;
 }
 
@@ -11894,7 +11894,7 @@ void GGS_categoryMethodList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mCategoryMethodName,
@@ -11911,7 +11911,7 @@ _insulateList (void) {
 GGS_categoryMethodList  GGS_categoryMethodList::
 constructor_emptyList (void) {
   GGS_categoryMethodList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -11922,7 +11922,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) {
   GGS_categoryMethodList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -11933,7 +11933,7 @@ void GGS_categoryMethodList::
 internalSubListWithRange (GGS_categoryMethodList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -12249,7 +12249,7 @@ _description (C_Compiler & _inLexique,
 GGS_categoryMethodListMap GGS_categoryMethodListMap::
 constructor_emptyMap (void) {
   GGS_categoryMethodListMap result ;
-  result._alloc (HERE) ;
+  result.alloc (HERE) ;
   return result ;
 }
 
@@ -12547,7 +12547,7 @@ void GGS_overridingCategoryMethodList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mOverridingCategoryMethodName,
@@ -12564,7 +12564,7 @@ _insulateList (void) {
 GGS_overridingCategoryMethodList  GGS_overridingCategoryMethodList::
 constructor_emptyList (void) {
   GGS_overridingCategoryMethodList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -12575,7 +12575,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) {
   GGS_overridingCategoryMethodList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -12586,7 +12586,7 @@ void GGS_overridingCategoryMethodList::
 internalSubListWithRange (GGS_overridingCategoryMethodList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -12902,7 +12902,7 @@ _description (C_Compiler & _inLexique,
 GGS_overridingCategoryMethodListMap GGS_overridingCategoryMethodListMap::
 constructor_emptyMap (void) {
   GGS_overridingCategoryMethodListMap result ;
-  result._alloc (HERE) ;
+  result.alloc (HERE) ;
   return result ;
 }
 

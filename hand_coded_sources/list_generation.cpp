@@ -691,7 +691,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
                "    cElement * _p = firstObject () ;\n"
-               "    _alloc () ;\n"
+               "    alloc () ;\n"
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
                "      _internalAppendValues (" ;
@@ -717,7 +717,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
                "constructor_emptyList (void) {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  result._alloc () ;\n"
+               "  result.alloc () ;\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
@@ -739,7 +739,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  result._alloc () ;\n"
+               "  result.alloc () ;\n"
                "  result._addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
@@ -761,7 +761,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "internalSubListWithRange (GGS_" << aNomListe << " & ioList,\n"
                "                          const sint32 inFirstIndex,\n"
                "                          const sint32 inCount) const {\n"
-               "  ioList._alloc () ;\n"
+               "  ioList.alloc () ;\n"
                "  if (inCount > 0) {\n"
                "    cElement * _p = firstObject () ;\n"
                "    for (sint32 i=0 ; i<inFirstIndex ; i++) {\n"
@@ -1590,7 +1590,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_insulateList (void) {\n"
                "  if (_shared ()) {\n"
                "    cElement * _p = firstObject () ;\n"
-               "    _alloc () ;\n"
+               "    alloc () ;\n"
                "    while (_p != NULL) {\n"
                "      macroValidPointer (_p) ;\n"
                "      _internalAppendValues (" ;
@@ -1613,7 +1613,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << aNomListe << "  GGS_" << aNomListe << "::\n"
                "constructor_emptySortedList (void) {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  result._alloc () ;\n"
+               "  result.alloc () ;\n"
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
@@ -1635,7 +1635,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
-               "  result._alloc () ;\n"
+               "  result.alloc () ;\n"
                "  result._addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;

@@ -294,7 +294,7 @@ void GGS_semanticExpressionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mExpression
@@ -309,7 +309,7 @@ _insulateList (void) {
 GGS_semanticExpressionList  GGS_semanticExpressionList::
 constructor_emptyList (void) {
   GGS_semanticExpressionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -318,7 +318,7 @@ constructor_emptyList (void) {
 GGS_semanticExpressionList  GGS_semanticExpressionList::
 constructor_listWithValue (const GGS_semanticExpression & argument_0) {
   GGS_semanticExpressionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -329,7 +329,7 @@ void GGS_semanticExpressionList::
 internalSubListWithRange (GGS_semanticExpressionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

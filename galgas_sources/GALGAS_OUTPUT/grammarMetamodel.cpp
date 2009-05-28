@@ -199,7 +199,7 @@ void GGS_startSymbolLabelFormalParameterList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mFormalAgumentPassingMode,
@@ -216,7 +216,7 @@ _insulateList (void) {
 GGS_startSymbolLabelFormalParameterList  GGS_startSymbolLabelFormalParameterList::
 constructor_emptyList (void) {
   GGS_startSymbolLabelFormalParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -227,7 +227,7 @@ constructor_listWithValue (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   GGS_startSymbolLabelFormalParameterList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -238,7 +238,7 @@ void GGS_startSymbolLabelFormalParameterList::
 internalSubListWithRange (GGS_startSymbolLabelFormalParameterList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -658,7 +658,7 @@ void GGS_grammarLabelList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mLabelName,
@@ -674,7 +674,7 @@ _insulateList (void) {
 GGS_grammarLabelList  GGS_grammarLabelList::
 constructor_emptyList (void) {
   GGS_grammarLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -684,7 +684,7 @@ GGS_grammarLabelList  GGS_grammarLabelList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1) {
   GGS_grammarLabelList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -695,7 +695,7 @@ void GGS_grammarLabelList::
 internalSubListWithRange (GGS_grammarLabelList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

@@ -1558,7 +1558,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     generatedZone2.appendCppTitleComment ("Lexical error message list") ;
     sint32 messageNumber = 0 ;
     while (currentMessage.hc ()) {
-      const bool used = inUsedErrorMessageSet._hasKey (currentMessage._key (HERE)) ;
+      const bool used = inUsedErrorMessageSet.hasKey (currentMessage._key (HERE)) ;
       if (used) {
         generatedZone2 << "//--- Message " << cStringWithSigned (messageNumber) << "\n" ;
       }else{

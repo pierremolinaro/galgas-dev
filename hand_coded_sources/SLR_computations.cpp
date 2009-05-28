@@ -519,21 +519,21 @@ class c_LR0_items_sets_collection {
 
 //--- Private data
   private : TC_UniqueArray <c_LR0_items_set> m_LR0_items_sets_array ;
-  private : cLR0_items_sets_AVL_tree * _mRoot ;
+  private : cLR0_items_sets_AVL_tree * mRoot ;
 } ;
 
 //---------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) :
 m_LR0_items_sets_array (),
-_mRoot (NULL) {
+mRoot (NULL) {
   m_LR0_items_sets_array.makeRoomUsingSwap (500) ;
 }
 
 //---------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::~c_LR0_items_sets_collection (void) {
-  macroMyDelete (_mRoot, cLR0_items_sets_AVL_tree) ;
+  macroMyDelete (mRoot, cLR0_items_sets_AVL_tree) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -541,7 +541,7 @@ c_LR0_items_sets_collection::~c_LR0_items_sets_collection (void) {
 sint32 c_LR0_items_sets_collection::
 searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
   bool extension = false ;
-  return cLR0_items_sets_AVL_tree::recursiveSearchOrInsert (_mRoot, ioItemSet, m_LR0_items_sets_array, extension) ;
+  return cLR0_items_sets_AVL_tree::recursiveSearchOrInsert (mRoot, ioItemSet, m_LR0_items_sets_array, extension) ;
 }
 
 //---------------------------------------------------------------------------*

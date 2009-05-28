@@ -199,7 +199,7 @@ void GGS_templateDelimitorList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mStartString,
@@ -216,7 +216,7 @@ _insulateList (void) {
 GGS_templateDelimitorList  GGS_templateDelimitorList::
 constructor_emptyList (void) {
   GGS_templateDelimitorList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -227,7 +227,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2) {
   GGS_templateDelimitorList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -238,7 +238,7 @@ void GGS_templateDelimitorList::
 internalSubListWithRange (GGS_templateDelimitorList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -674,7 +674,7 @@ void GGS_templateReplacementList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mMatchString,
@@ -691,7 +691,7 @@ _insulateList (void) {
 GGS_templateReplacementList  GGS_templateReplacementList::
 constructor_emptyList (void) {
   GGS_templateReplacementList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -702,7 +702,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   GGS_templateReplacementList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -713,7 +713,7 @@ void GGS_templateReplacementList::
 internalSubListWithRange (GGS_templateReplacementList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -1117,7 +1117,7 @@ void GGS_lexicalImplicitRuleList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mListName
@@ -1132,7 +1132,7 @@ _insulateList (void) {
 GGS_lexicalImplicitRuleList  GGS_lexicalImplicitRuleList::
 constructor_emptyList (void) {
   GGS_lexicalImplicitRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -1141,7 +1141,7 @@ constructor_emptyList (void) {
 GGS_lexicalImplicitRuleList  GGS_lexicalImplicitRuleList::
 constructor_listWithValue (const GGS_lstring & argument_0) {
   GGS_lexicalImplicitRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -1152,7 +1152,7 @@ void GGS_lexicalImplicitRuleList::
 internalSubListWithRange (GGS_lexicalImplicitRuleList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -1476,7 +1476,7 @@ void GGS_lexicalErrorMessageDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mMessageName,
@@ -1492,7 +1492,7 @@ _insulateList (void) {
 GGS_lexicalErrorMessageDeclarationList  GGS_lexicalErrorMessageDeclarationList::
 constructor_emptyList (void) {
   GGS_lexicalErrorMessageDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -1502,7 +1502,7 @@ GGS_lexicalErrorMessageDeclarationList  GGS_lexicalErrorMessageDeclarationList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalErrorMessageDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -1513,7 +1513,7 @@ void GGS_lexicalErrorMessageDeclarationList::
 internalSubListWithRange (GGS_lexicalErrorMessageDeclarationList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -1885,7 +1885,7 @@ void GGS_lexicalAttributeList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mTypeName,
@@ -1901,7 +1901,7 @@ _insulateList (void) {
 GGS_lexicalAttributeList  GGS_lexicalAttributeList::
 constructor_emptyList (void) {
   GGS_lexicalAttributeList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -1911,7 +1911,7 @@ GGS_lexicalAttributeList  GGS_lexicalAttributeList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalAttributeList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -1922,7 +1922,7 @@ void GGS_lexicalAttributeList::
 internalSubListWithRange (GGS_lexicalAttributeList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2294,7 +2294,7 @@ void GGS_lexicalStyleList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mName,
@@ -2310,7 +2310,7 @@ _insulateList (void) {
 GGS_lexicalStyleList  GGS_lexicalStyleList::
 constructor_emptyList (void) {
   GGS_lexicalStyleList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2320,7 +2320,7 @@ GGS_lexicalStyleList  GGS_lexicalStyleList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalStyleList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -2331,7 +2331,7 @@ void GGS_lexicalStyleList::
 internalSubListWithRange (GGS_lexicalStyleList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -2751,7 +2751,7 @@ void GGS_terminalDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mName,
@@ -2770,7 +2770,7 @@ _insulateList (void) {
 GGS_terminalDeclarationList  GGS_terminalDeclarationList::
 constructor_emptyList (void) {
   GGS_terminalDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -2783,7 +2783,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_3,
                                 const GGS_lstringlist & argument_4) {
   GGS_terminalDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
@@ -2794,7 +2794,7 @@ void GGS_terminalDeclarationList::
 internalSubListWithRange (GGS_terminalDeclarationList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3326,7 +3326,7 @@ void GGS_lexicalListEntryList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mEntrySpelling,
@@ -3343,7 +3343,7 @@ _insulateList (void) {
 GGS_lexicalListEntryList  GGS_lexicalListEntryList::
 constructor_emptyList (void) {
   GGS_lexicalListEntryList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3354,7 +3354,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   GGS_lexicalListEntryList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -3365,7 +3365,7 @@ void GGS_lexicalListEntryList::
 internalSubListWithRange (GGS_lexicalListEntryList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3833,7 +3833,7 @@ void GGS_lexicalListDeclarationList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mName,
@@ -3852,7 +3852,7 @@ _insulateList (void) {
 GGS_lexicalListDeclarationList  GGS_lexicalListDeclarationList::
 constructor_emptyList (void) {
   GGS_lexicalListDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3865,7 +3865,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_3,
                                 const GGS_lexicalListEntryList & argument_4) {
   GGS_lexicalListDeclarationList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
@@ -3876,7 +3876,7 @@ void GGS_lexicalListDeclarationList::
 internalSubListWithRange (GGS_lexicalListDeclarationList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -4519,7 +4519,7 @@ void GGS_lexicalExplicitRuleList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mLexicalRuleExpression,
@@ -4535,7 +4535,7 @@ _insulateList (void) {
 GGS_lexicalExplicitRuleList  GGS_lexicalExplicitRuleList::
 constructor_emptyList (void) {
   GGS_lexicalExplicitRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -4545,7 +4545,7 @@ GGS_lexicalExplicitRuleList  GGS_lexicalExplicitRuleList::
 constructor_listWithValue (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   GGS_lexicalExplicitRuleList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -4556,7 +4556,7 @@ void GGS_lexicalExplicitRuleList::
 internalSubListWithRange (GGS_lexicalExplicitRuleList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -6922,7 +6922,7 @@ void GGS_lexicalSendSearchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mAttributeName,
@@ -6938,7 +6938,7 @@ _insulateList (void) {
 GGS_lexicalSendSearchList  GGS_lexicalSendSearchList::
 constructor_emptyList (void) {
   GGS_lexicalSendSearchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -6948,7 +6948,7 @@ GGS_lexicalSendSearchList  GGS_lexicalSendSearchList::
 constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalSendSearchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -6959,7 +6959,7 @@ void GGS_lexicalSendSearchList::
 internalSubListWithRange (GGS_lexicalSendSearchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -7517,7 +7517,7 @@ void GGS_lexicalWhileBranchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mWhileExpression,
@@ -7533,7 +7533,7 @@ _insulateList (void) {
 GGS_lexicalWhileBranchList  GGS_lexicalWhileBranchList::
 constructor_emptyList (void) {
   GGS_lexicalWhileBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -7543,7 +7543,7 @@ GGS_lexicalWhileBranchList  GGS_lexicalWhileBranchList::
 constructor_listWithValue (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   GGS_lexicalWhileBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -7554,7 +7554,7 @@ void GGS_lexicalWhileBranchList::
 internalSubListWithRange (GGS_lexicalWhileBranchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -8096,7 +8096,7 @@ void GGS_lexicalInstructionList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mInstructionList
@@ -8111,7 +8111,7 @@ _insulateList (void) {
 GGS_lexicalInstructionList  GGS_lexicalInstructionList::
 constructor_emptyList (void) {
   GGS_lexicalInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -8120,7 +8120,7 @@ constructor_emptyList (void) {
 GGS_lexicalInstructionList  GGS_lexicalInstructionList::
 constructor_listWithValue (const GGS_lexicalInstruction & argument_0) {
   GGS_lexicalInstructionList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -8131,7 +8131,7 @@ void GGS_lexicalInstructionList::
 internalSubListWithRange (GGS_lexicalInstructionList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -8455,7 +8455,7 @@ void GGS_lexicalSelectBranchList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mSelectExpression,
@@ -8471,7 +8471,7 @@ _insulateList (void) {
 GGS_lexicalSelectBranchList  GGS_lexicalSelectBranchList::
 constructor_emptyList (void) {
   GGS_lexicalSelectBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -8481,7 +8481,7 @@ GGS_lexicalSelectBranchList  GGS_lexicalSelectBranchList::
 constructor_listWithValue (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   GGS_lexicalSelectBranchList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -8492,7 +8492,7 @@ void GGS_lexicalSelectBranchList::
 internalSubListWithRange (GGS_lexicalSelectBranchList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -9181,7 +9181,7 @@ void GGS_lexicalActualArgumentList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mLexicalActualArgument
@@ -9196,7 +9196,7 @@ _insulateList (void) {
 GGS_lexicalActualArgumentList  GGS_lexicalActualArgumentList::
 constructor_emptyList (void) {
   GGS_lexicalActualArgumentList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -9205,7 +9205,7 @@ constructor_emptyList (void) {
 GGS_lexicalActualArgumentList  GGS_lexicalActualArgumentList::
 constructor_listWithValue (const GGS_lexicalActualArgument & argument_0) {
   GGS_lexicalActualArgumentList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -9216,7 +9216,7 @@ void GGS_lexicalActualArgumentList::
 internalSubListWithRange (GGS_lexicalActualArgumentList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {

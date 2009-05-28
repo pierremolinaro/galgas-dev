@@ -155,7 +155,7 @@ template <typename INFO> class classeSurchargeTableControlePhase {
 template <typename INFO> class cGalgasVariablesMap {
   public : typedef cElementTableControlePhase <INFO> cElement ;
   public : typedef classeSurchargeTableControlePhase <INFO> typeSurchargeTable ;
-  public : cElement * _mRoot ;
+  public : cElement * mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
   private : sint32 mListLength ;
   public : sint32 count (void) const ;

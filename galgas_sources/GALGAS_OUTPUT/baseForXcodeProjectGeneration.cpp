@@ -183,7 +183,7 @@ void GGS_XcodeObjectReferenceList::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mRefString,
@@ -199,7 +199,7 @@ _insulateList (void) {
 GGS_XcodeObjectReferenceList  GGS_XcodeObjectReferenceList::
 constructor_emptyList (void) {
   GGS_XcodeObjectReferenceList result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -209,7 +209,7 @@ GGS_XcodeObjectReferenceList  GGS_XcodeObjectReferenceList::
 constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   GGS_XcodeObjectReferenceList result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
@@ -220,7 +220,7 @@ void GGS_XcodeObjectReferenceList::
 internalSubListWithRange (GGS_XcodeObjectReferenceList & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -3037,7 +3037,7 @@ enterIndex (const GGS_lstring & inKey,
   e_Xcode_PBXFileReference_map info  ;
   internalEnterIndex (inKey,
                       (void *) & info,
-                      mSharedMapRoot->_mRoot,
+                      mSharedMapRoot->mRoot,
                       outIndex) ;
 }
 
@@ -3063,7 +3063,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   cElement * p = (cElement *) inPtr ;
   sint32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
-  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->_mRoot, attributeIndex, existingKeyLocation) ;
+  internalInsert (p->mKey, (void *) & p->mInfo,mSharedMapRoot->mRoot, attributeIndex, existingKeyLocation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3083,7 +3083,7 @@ _insertElement (C_Compiler & inLexique,
     e_Xcode_PBXFileReference_map info  ;
     info.mFileReference = inParameter0 ;
     GGS_location existingKeyLocation ;
-    internalInsert (inKey, (void *) & info, mSharedMapRoot->_mRoot, elementID, existingKeyLocation) ;
+    internalInsert (inKey, (void *) & info, mSharedMapRoot->mRoot, elementID, existingKeyLocation) ;
     if (elementID < 0) {
       emitInsertMapSemanticErrorMessage (inLexique, inKey, inErrorMessage, existingKeyLocation COMMA_THERE) ;
     }
@@ -3594,7 +3594,7 @@ void GGS_Xcode_PBXBuildFile_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mFile
@@ -3609,7 +3609,7 @@ _insulateList (void) {
 GGS_Xcode_PBXBuildFile_list  GGS_Xcode_PBXBuildFile_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXBuildFile_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -3618,7 +3618,7 @@ constructor_emptyList (void) {
 GGS_Xcode_PBXBuildFile_list  GGS_Xcode_PBXBuildFile_list::
 constructor_listWithValue (const GGS_Xcode_PBXBuildFile & argument_0) {
   GGS_Xcode_PBXBuildFile_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -3629,7 +3629,7 @@ void GGS_Xcode_PBXBuildFile_list::
 internalSubListWithRange (GGS_Xcode_PBXBuildFile_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -4166,7 +4166,7 @@ void GGS_Xcode_PBXSourcesBuildPhase_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mBuildPhase
@@ -4181,7 +4181,7 @@ _insulateList (void) {
 GGS_Xcode_PBXSourcesBuildPhase_list  GGS_Xcode_PBXSourcesBuildPhase_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -4190,7 +4190,7 @@ constructor_emptyList (void) {
 GGS_Xcode_PBXSourcesBuildPhase_list  GGS_Xcode_PBXSourcesBuildPhase_list::
 constructor_listWithValue (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -4201,7 +4201,7 @@ void GGS_Xcode_PBXSourcesBuildPhase_list::
 internalSubListWithRange (GGS_Xcode_PBXSourcesBuildPhase_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -4738,7 +4738,7 @@ void GGS_Xcode_PBXResourcesBuildPhase_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mBuildPhase
@@ -4753,7 +4753,7 @@ _insulateList (void) {
 GGS_Xcode_PBXResourcesBuildPhase_list  GGS_Xcode_PBXResourcesBuildPhase_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -4762,7 +4762,7 @@ constructor_emptyList (void) {
 GGS_Xcode_PBXResourcesBuildPhase_list  GGS_Xcode_PBXResourcesBuildPhase_list::
 constructor_listWithValue (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -4773,7 +4773,7 @@ void GGS_Xcode_PBXResourcesBuildPhase_list::
 internalSubListWithRange (GGS_Xcode_PBXResourcesBuildPhase_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -5338,7 +5338,7 @@ void GGS_Xcode_PBXFrameworksBuildPhase_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mBuildPhase
@@ -5353,7 +5353,7 @@ _insulateList (void) {
 GGS_Xcode_PBXFrameworksBuildPhase_list  GGS_Xcode_PBXFrameworksBuildPhase_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -5362,7 +5362,7 @@ constructor_emptyList (void) {
 GGS_Xcode_PBXFrameworksBuildPhase_list  GGS_Xcode_PBXFrameworksBuildPhase_list::
 constructor_listWithValue (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -5373,7 +5373,7 @@ void GGS_Xcode_PBXFrameworksBuildPhase_list::
 internalSubListWithRange (GGS_Xcode_PBXFrameworksBuildPhase_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -5930,7 +5930,7 @@ void GGS_Xcode_PBXGroup_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mGroup
@@ -5945,7 +5945,7 @@ _insulateList (void) {
 GGS_Xcode_PBXGroup_list  GGS_Xcode_PBXGroup_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXGroup_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -5954,7 +5954,7 @@ constructor_emptyList (void) {
 GGS_Xcode_PBXGroup_list  GGS_Xcode_PBXGroup_list::
 constructor_listWithValue (const GGS_Xcode_PBXGroup & argument_0) {
   GGS_Xcode_PBXGroup_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -5965,7 +5965,7 @@ void GGS_Xcode_PBXGroup_list::
 internalSubListWithRange (GGS_Xcode_PBXGroup_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -6515,7 +6515,7 @@ void GGS_Xcode_XCBuildConfiguration_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mBuildConfig
@@ -6530,7 +6530,7 @@ _insulateList (void) {
 GGS_Xcode_XCBuildConfiguration_list  GGS_Xcode_XCBuildConfiguration_list::
 constructor_emptyList (void) {
   GGS_Xcode_XCBuildConfiguration_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -6539,7 +6539,7 @@ constructor_emptyList (void) {
 GGS_Xcode_XCBuildConfiguration_list  GGS_Xcode_XCBuildConfiguration_list::
 constructor_listWithValue (const GGS_Xcode_XCBuildConfiguration & argument_0) {
   GGS_Xcode_XCBuildConfiguration_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -6550,7 +6550,7 @@ void GGS_Xcode_XCBuildConfiguration_list::
 internalSubListWithRange (GGS_Xcode_XCBuildConfiguration_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -6970,7 +6970,7 @@ void GGS_Xcode_PBXNativeTarget_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mTargetKey,
@@ -6992,7 +6992,7 @@ _insulateList (void) {
 GGS_Xcode_PBXNativeTarget_list  GGS_Xcode_PBXNativeTarget_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXNativeTarget_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -7008,7 +7008,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_stringlist & argument_6,
                                 const GGS_stringlist & argument_7) {
   GGS_Xcode_PBXNativeTarget_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4, argument_5, argument_6, argument_7) ;
   return result ;
 }
@@ -7019,7 +7019,7 @@ void GGS_Xcode_PBXNativeTarget_list::
 internalSubListWithRange (GGS_Xcode_PBXNativeTarget_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -7872,7 +7872,7 @@ void GGS_Xcode_targetDependencyDescription_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mDependency
@@ -7887,7 +7887,7 @@ _insulateList (void) {
 GGS_Xcode_targetDependencyDescription_list  GGS_Xcode_targetDependencyDescription_list::
 constructor_emptyList (void) {
   GGS_Xcode_targetDependencyDescription_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -7896,7 +7896,7 @@ constructor_emptyList (void) {
 GGS_Xcode_targetDependencyDescription_list  GGS_Xcode_targetDependencyDescription_list::
 constructor_listWithValue (const GGS_Xcode_targetDependencyDescription & argument_0) {
   GGS_Xcode_targetDependencyDescription_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0) ;
   return result ;
 }
@@ -7907,7 +7907,7 @@ void GGS_Xcode_targetDependencyDescription_list::
 internalSubListWithRange (GGS_Xcode_targetDependencyDescription_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
@@ -8247,7 +8247,7 @@ void GGS_Xcode_PBXVariantGroup_list::
 _insulateList (void) {
   if (_shared ()) {
     cElement * _p = firstObject () ;
-    _alloc () ;
+    alloc () ;
     while (_p != NULL) {
       macroValidPointer (_p) ;
       _internalAppendValues (_p->mPBXVariantKey,
@@ -8264,7 +8264,7 @@ _insulateList (void) {
 GGS_Xcode_PBXVariantGroup_list  GGS_Xcode_PBXVariantGroup_list::
 constructor_emptyList (void) {
   GGS_Xcode_PBXVariantGroup_list result ;
-  result._alloc () ;
+  result.alloc () ;
   return result ;
 }
 
@@ -8275,7 +8275,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2) {
   GGS_Xcode_PBXVariantGroup_list result ;
-  result._alloc () ;
+  result.alloc () ;
   result._addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
@@ -8286,7 +8286,7 @@ void GGS_Xcode_PBXVariantGroup_list::
 internalSubListWithRange (GGS_Xcode_PBXVariantGroup_list & ioList,
                           const sint32 inFirstIndex,
                           const sint32 inCount) const {
-  ioList._alloc () ;
+  ioList.alloc () ;
   if (inCount > 0) {
     cElement * _p = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
