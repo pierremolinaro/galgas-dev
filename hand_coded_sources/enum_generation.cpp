@@ -91,7 +91,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Readers\n" ;
   GGS_typeEnumMessageMap::cEnumerator m (mEnumMessageMap) ;
   while (m.hc ()) {
-    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_Compiler & _inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m.next () ;
   }
   inHfile << "\n" ;
@@ -100,7 +100,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Modifiers\n" ;
   GGS_enumModifierMap::cEnumerator modifier (mEnumActionMap) ;
   while (modifier.hc ()) {
-    inHfile << "  public : void modifier_" << modifier._key (HERE) << " (C_Compiler & _inLexique" ;
+    inHfile << "  public : void modifier_" << modifier._key (HERE) << " (C_Compiler & inLexique" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (modifier._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
@@ -117,7 +117,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Methods\n" ;
   GGS_enumMethodMap::cEnumerator method (mMethodMap) ;
   while (method.hc ()) {
-    inHfile << "  public : void method_" << method._key (HERE) << " (C_Compiler & _inLexique" ;
+    inHfile << "  public : void method_" << method._key (HERE) << " (C_Compiler & inLexique" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (method._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hc ()) {
       inHfile << ",\n                                " ;
@@ -136,7 +136,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   GGS_enumOperatorMap::cEnumerator currentOperator (mOperatorMap) ;
   while (currentOperator.hc ()) {
     inHfile << "  public : GGS_" << mEnumTypeName << " operator_" << currentOperator._key (HERE)
-            << " (C_Compiler & _inLexique,\n"
+            << " (C_Compiler & inLexique,\n"
                "           const GGS_" << mEnumTypeName << " & inOperand" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentOperator._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hc ()) {
@@ -152,7 +152,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- 
   inHfile << "//--- 'description' reader\n"
-             "  public : GGS_string reader_description (C_Compiler & _inLexique\n"
+             "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
              "                                          const sint32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
@@ -263,7 +263,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   while (m .hc ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
-                 "reader_" << m._key (HERE) << " (C_Compiler & /* _inLexique */\n"
+                 "reader_" << m._key (HERE) << " (C_Compiler & /* inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << cStringWithSigned (m._mMessageStringList (HERE).count () + 1) << "] = {\"\"" ;
     GGS_lstringlist::cEnumerator e (m._mMessageStringList (HERE), true) ;
@@ -291,7 +291,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
                  "modifier_" << modifier._key (HERE) << " (C_Compiler &" ;
     if (lexiqueIsUsed) {
-      inCppFile << " _inLexique" ;
+      inCppFile << " inLexique" ;
     }
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (modifier._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hc ()) {
@@ -353,7 +353,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "void GGS_" << mEnumTypeName << "::\n"
                  "method_" << method._key (HERE) << " (C_Compiler &" ;
     if (lexiqueIsUsed) {
-      inCppFile << " _inLexique" ;
+      inCppFile << " inLexique" ;
     }
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (method._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hc ()) {
@@ -471,7 +471,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::\n"
                  "operator_" << currentOperator._key (HERE)
-              << " (C_Compiler & _inLexique,\n"
+              << " (C_Compiler & inLexique,\n"
                  "                                const GGS_" << mEnumTypeName << " & inOperand" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentOperator._mArgumentTypeAndNameList (HERE), true) ;
     while (currentArgument.hc ()) {
@@ -528,7 +528,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "      default: // error == -1\n"
                  "        { C_String errorMessage ;\n"
                  "          errorMessage << \"Unhandled configuration in enum operator\" ;\n"
-                 "          _inLexique.onTheFlySemanticError (errorMessage COMMA_HERE) ;\n"
+                 "          inLexique.onTheFlySemanticError (errorMessage COMMA_HERE) ;\n"
                  "        }\n"
                  "      break ;\n"
                  "      }\n"
@@ -543,7 +543,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_string GGS_" << mEnumTypeName
             << "::\n"
-               "reader_description (C_Compiler & /* _inLexique */\n"
+               "reader_description (C_Compiler & /* inLexique */\n"
                "                    COMMA_UNUSED_LOCATION_ARGS,\n"
                "                    const sint32 /* inIndentation */) const {\n"
                "  C_String s ;\n"

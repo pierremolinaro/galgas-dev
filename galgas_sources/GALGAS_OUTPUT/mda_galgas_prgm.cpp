@@ -96,11 +96,11 @@ mOptions_galgas_cli_options (){
 //---------------------------------------------------------------------------*
 
 static void
-mda_galgas_prgm_prologue (C_Compiler & _inLexique,
+mda_galgas_prgm_prologue (C_Compiler & inLexique,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
   GGS_string var_cas_creationProjectName ;
-  var_cas_creationProjectName = GGS_string (true, _inLexique.stringOptionValueFromKeys ("galgas_cli_options", "create_project" COMMA_SOURCE_FILE_AT_LINE (48))) ;
-  ::routine_projectCreation (_inLexique,  var_cas_creationProjectName COMMA_SOURCE_FILE_AT_LINE (49)) ;
+  var_cas_creationProjectName = GGS_string (true, inLexique.stringOptionValueFromKeys ("galgas_cli_options", "create_project" COMMA_SOURCE_FILE_AT_LINE (48))) ;
+  ::routine_projectCreation (inLexique,  var_cas_creationProjectName COMMA_SOURCE_FILE_AT_LINE (49)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -110,7 +110,7 @@ mda_galgas_prgm_prologue (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-mda_galgas_prgm_epilogue (C_Compiler & /* _inLexique */,
+mda_galgas_prgm_epilogue (C_Compiler & /* inLexique */,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
 }
 
@@ -184,29 +184,29 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
           sint16 r = 0 ;
           if (fileExtension.compare ("ggs") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             if (var_cas_inSourceFile.isBuilt ()) {
-              ::routine_fixFileGenerationStartDirectory (_inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (57)) ;
+              ::routine_fixFileGenerationStartDirectory (inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (57)) ;
             }
             GGS_M_lexiqueComponents  var_cas_lexiqueMapForUse ;
-            var_cas_lexiqueMapForUse = GGS_M_lexiqueComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_lexiqueMapForUse = GGS_M_lexiqueComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_semanticsComponents  var_cas_semanticsComponentsMap ;
-            var_cas_semanticsComponentsMap = GGS_M_semanticsComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_semanticsComponentsMap = GGS_M_semanticsComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_syntaxComponents  var_cas_syntaxComponentsMap ;
-            var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_grammarComponents  var_cas_grammarComponentsMap ;
-            var_cas_grammarComponentsMap = GGS_M_grammarComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_grammarComponentsMap = GGS_M_grammarComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_optionComponents  var_cas_optionComponentsMap ;
-            var_cas_optionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_optionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_EXsemanticContext var_cas_semanticContext ;
-            var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
+            var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (inLexique COMMA_HERE)) ;
             const GGS_string _depExtension = GGS_string ("galgas-dep") ;
             const GGS_string _depPath = GGS_string ("DEPENDENCIES") ;
             if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-              galgas_LL1_grammar::_performSourceFileParsing_ (_inLexique,
+              galgas_LL1_grammar::_performSourceFileParsing_ (inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
                                             NULL,
@@ -250,11 +250,11 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gOption") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
-            ::routine_compileOptionComponent (_inLexique,  var_cas_inSourceFile,  function_outputDirectory (_inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (83)) COMMA_SOURCE_FILE_AT_LINE (83)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
+            ::routine_compileOptionComponent (inLexique,  var_cas_inSourceFile,  function_outputDirectory (inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (83)) COMMA_SOURCE_FILE_AT_LINE (83)) ;
             if (verboseOptionOn) {
               co << "Analysis of '" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << "' completed. " ;
               switch (_commonLexique->totalErrorCount ()) {
@@ -286,11 +286,11 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gLexique") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
-            ::routine_compileLexiqueComponent (_inLexique,  var_cas_inSourceFile,  function_outputDirectory (_inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (91)) COMMA_SOURCE_FILE_AT_LINE (91)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
+            ::routine_compileLexiqueComponent (inLexique,  var_cas_inSourceFile,  function_outputDirectory (inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (91)) COMMA_SOURCE_FILE_AT_LINE (91)) ;
             if (verboseOptionOn) {
               co << "Analysis of '" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << "' completed. " ;
               switch (_commonLexique->totalErrorCount ()) {
@@ -322,14 +322,14 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gSemantics") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             GGS_string var_cas_outputDirectory ;
             GGS_parsedComponentStruct var_cas_parsedComponentStruct ;
-            var_cas_parsedComponentStruct = GGS_parsedComponentStruct::constructor_new (GGS_parsedSemanticsComponentMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
-            ::routine_compileSemanticsComponent (_inLexique,  var_cas_inSourceFile,  function_outputDirectory (_inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (103)),  var_cas_parsedComponentStruct COMMA_SOURCE_FILE_AT_LINE (103)) ;
+            var_cas_parsedComponentStruct = GGS_parsedComponentStruct::constructor_new (GGS_parsedSemanticsComponentMap ::constructor_emptyMap (inLexique COMMA_HERE)) ;
+            ::routine_compileSemanticsComponent (inLexique,  var_cas_inSourceFile,  function_outputDirectory (inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (103)),  var_cas_parsedComponentStruct COMMA_SOURCE_FILE_AT_LINE (103)) ;
             if (verboseOptionOn) {
               co << "Analysis of '" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << "' completed. " ;
               switch (_commonLexique->totalErrorCount ()) {
@@ -361,15 +361,15 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gSyntax") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             GGS_syntaxComponentRoot  var_cas_syntaxComponentRoot ;
             const GGS_string _depExtension = GGS_string ("") ;
             const GGS_string _depPath = GGS_string ("") ;
             if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-              syntaxSLRgrammar::_performSourceFileParsing_ (_inLexique,
+              syntaxSLRgrammar::_performSourceFileParsing_ (inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
                                             NULL,
@@ -408,15 +408,15 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gGrammar") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             GGS_grammarComponentRoot  var_cas_grammarComponentRoot ;
             const GGS_string _depExtension = GGS_string ("") ;
             const GGS_string _depPath = GGS_string ("") ;
             if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-              grammarLL1grammar::_performSourceFileParsing_ (_inLexique,
+              grammarLL1grammar::_performSourceFileParsing_ (inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
                                             NULL,
@@ -455,11 +455,11 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gGui") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
-            ::routine_compileGuiComponent (_inLexique,  var_cas_inSourceFile,  function_outputDirectory (_inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (129)) COMMA_SOURCE_FILE_AT_LINE (129)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
+            ::routine_compileGuiComponent (inLexique,  var_cas_inSourceFile,  function_outputDirectory (inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (129)) COMMA_SOURCE_FILE_AT_LINE (129)) ;
             if (verboseOptionOn) {
               co << "Analysis of '" << sourceFilesArray (i COMMA_HERE).lastPathComponent () << "' completed. " ;
               switch (_commonLexique->totalErrorCount ()) {
@@ -491,15 +491,15 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gProgram") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             GGS_programComponentRoot  var_cas_programComponentRoot ;
             const GGS_string _depExtension = GGS_string ("") ;
             const GGS_string _depPath = GGS_string ("") ;
             if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-              programSLRgrammar::_performSourceFileParsing_ (_inLexique,
+              programSLRgrammar::_performSourceFileParsing_ (inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
                                             NULL,
@@ -538,19 +538,19 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               }
             }
           }else if (fileExtension.compare ("gProject") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             GGS_string var_cas_outputDirectory ;
-            var_cas_outputDirectory = function_outputDirectory (_inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (150)) ;
+            var_cas_outputDirectory = function_outputDirectory (inLexique, var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (150)) ;
             GGS_projectSourceList  var_cas_projectSourceList ;
             GGS_lstring  var_cas_projectName ;
             GGS_location  var_cas_endOfSourceFile ;
             const GGS_string _depExtension = GGS_string ("") ;
             const GGS_string _depPath = GGS_string ("") ;
             if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-              projectLL1grammar::_performSourceFileParsing_ (_inLexique,
+              projectLL1grammar::_performSourceFileParsing_ (inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
                                             NULL,
@@ -561,7 +561,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                                             COMMA_SOURCE_FILE_AT_LINE (155)) ;
             }
             GGS_sourceFileMap  var_cas_sourceFileMap ;
-            var_cas_sourceFileMap = GGS_sourceFileMap ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_sourceFileMap = GGS_sourceFileMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_targetFileListMap var_cas_targetFileListMap ;
             var_cas_targetFileListMap = GGS_targetFileListMap::constructor_emptyMap () ;
             {
@@ -570,35 +570,35 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               while (((operand_7022 = enumerator_7022.nextObject ()))) {
                 macroValidPointer (operand_7022) ;
                 GGS_string var_cas_baseName ;
-                var_cas_baseName = operand_7022->mFilePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (160)).reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (160)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (160)) ;
-                var_cas_sourceFileMap.modifier_insertKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, var_cas_baseName, operand_7022->mFilePath.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (161)) COMMA_HERE), operand_7022->mFilePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (161)), operand_7022->mSourceKind COMMA_SOURCE_FILE_AT_LINE (161)) ;
+                var_cas_baseName = operand_7022->mFilePath.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (160)).reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (160)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (160)) ;
+                var_cas_sourceFileMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, var_cas_baseName, operand_7022->mFilePath.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (161)) COMMA_HERE), operand_7022->mFilePath.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (161)), operand_7022->mSourceKind COMMA_SOURCE_FILE_AT_LINE (161)) ;
                 {
                   GGS_lstringlist::cEnumerator enumerator_7261 (operand_7022->mTargetList, true) ;
                   const GGS_lstringlist::cElement * operand_7261 = NULL ;
                   while (((operand_7261 = enumerator_7261.nextObject ()))) {
                     macroValidPointer (operand_7261) ;
-                    if (((((operand_7261->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (163)))._operator_isNotEqual (GGS_string ("makefile")))._operator_and ((operand_7261->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (163)))._operator_isNotEqual (GGS_string ("xcode_tool"))))._operator_and ((operand_7261->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (163)))._operator_isNotEqual (GGS_string ("xcode_app")))).isBuiltAndTrue ()) {
-                      operand_7261->mValue.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("the target name should be \"makefile\", \"xcode_tool\" or \"xcode_app\"") COMMA_SOURCE_FILE_AT_LINE (165)) ;
+                    if (((((operand_7261->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (163)))._operator_isNotEqual (GGS_string ("makefile")))._operator_and ((operand_7261->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (163)))._operator_isNotEqual (GGS_string ("xcode_tool"))))._operator_and ((operand_7261->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (163)))._operator_isNotEqual (GGS_string ("xcode_app")))).isBuiltAndTrue ()) {
+                      operand_7261->mValue.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the target name should be \"makefile\", \"xcode_tool\" or \"xcode_app\"") COMMA_SOURCE_FILE_AT_LINE (165)) ;
                     }else{
-                      var_cas_targetFileListMap._addAssign_operation (operand_7261->mValue.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (166)), var_cas_baseName) ;
+                      var_cas_targetFileListMap._addAssign_operation (operand_7261->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (166)), var_cas_baseName) ;
                     }
                   }
                 }
               }
             }
             GGS_parsedComponentStruct var_cas_parsedComponentStruct ;
-            var_cas_parsedComponentStruct = GGS_parsedComponentStruct::constructor_new (GGS_parsedSemanticsComponentMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
+            var_cas_parsedComponentStruct = GGS_parsedComponentStruct::constructor_new (GGS_parsedSemanticsComponentMap ::constructor_emptyMap (inLexique COMMA_HERE)) ;
             {
               GGS_projectSourceList::cEnumerator enumerator_7783 (var_cas_projectSourceList, true) ;
               const GGS_projectSourceList::cElement * operand_7783 = NULL ;
               while (((operand_7783 = enumerator_7783.nextObject ()))) {
                 macroValidPointer (operand_7783) ;
                 GGS_string var_cas_extension ;
-                var_cas_extension = operand_7783->mFilePath.ggs_string ().reader_pathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (176)) ;
+                var_cas_extension = operand_7783->mFilePath.ggs_string ().reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (176)) ;
                 GGS_lstring  var_cas_fullFilePath ;
-                var_cas_fullFilePath = GGS_lstring ::constructor_new (_inLexique, ((var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (178)))._operator_concat (GGS_string ("/")))._operator_concat (operand_7783->mFilePath.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (178))), operand_7783->mFilePath.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (179)) COMMA_HERE) ;
-                if (((operand_7783->mSourceKind)._operator_isNotEqual (GGS_sourceFileKind::constructor_externSourceFile (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
-                  _inLexique.printMessage (((GGS_string ("----- Compiling '"))._operator_concat (operand_7783->mFilePath))._operator_concat (GGS_string ("'\n")) COMMA_SOURCE_FILE_AT_LINE (182)) ;
+                var_cas_fullFilePath = GGS_lstring ::constructor_new (inLexique, ((var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (178)))._operator_concat (GGS_string ("/")))._operator_concat (operand_7783->mFilePath.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (178))), operand_7783->mFilePath.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (179)) COMMA_HERE) ;
+                if (((operand_7783->mSourceKind)._operator_isNotEqual (GGS_sourceFileKind::constructor_externSourceFile (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
+                  inLexique.printMessage (((GGS_string ("----- Compiling '"))._operator_concat (operand_7783->mFilePath))._operator_concat (GGS_string ("'\n")) COMMA_SOURCE_FILE_AT_LINE (182)) ;
                 }
                 switch (operand_7783->mSourceKind.enumValue ()) {
                 case GGS_sourceFileKind::enum_externSourceFile:
@@ -608,36 +608,36 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 case GGS_sourceFileKind::enum_guiSourceFile:
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gGui"))).isBuiltAndTrue ()) {
-                    ::routine_compileGuiComponent (_inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (188)) ;
+                    ::routine_compileGuiComponent (inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (188)) ;
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of a gui component should be '.gGui'.") COMMA_SOURCE_FILE_AT_LINE (191)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of a gui component should be '.gGui'.") COMMA_SOURCE_FILE_AT_LINE (191)) ;
                   }
                   }
                   break ;
                 case GGS_sourceFileKind::enum_lexiqueSourceFile:
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gLexique"))).isBuiltAndTrue ()) {
-                    ::routine_compileLexiqueComponent (_inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (194)) ;
+                    ::routine_compileLexiqueComponent (inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (194)) ;
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of a lexique component should be '.gLexique'.") COMMA_SOURCE_FILE_AT_LINE (197)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of a lexique component should be '.gLexique'.") COMMA_SOURCE_FILE_AT_LINE (197)) ;
                   }
                   }
                   break ;
                 case GGS_sourceFileKind::enum_optionSourceFile:
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gOption"))).isBuiltAndTrue ()) {
-                    ::routine_compileOptionComponent (_inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (200)) ;
+                    ::routine_compileOptionComponent (inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory COMMA_SOURCE_FILE_AT_LINE (200)) ;
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of an option component should be '.gOption'.") COMMA_SOURCE_FILE_AT_LINE (203)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of an option component should be '.gOption'.") COMMA_SOURCE_FILE_AT_LINE (203)) ;
                   }
                   }
                   break ;
                 case GGS_sourceFileKind::enum_semanticsSourceFile:
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gSemantics"))).isBuiltAndTrue ()) {
-                    ::routine_compileSemanticsComponent (_inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory,  var_cas_parsedComponentStruct COMMA_SOURCE_FILE_AT_LINE (206)) ;
+                    ::routine_compileSemanticsComponent (inLexique,  var_cas_fullFilePath,  var_cas_outputDirectory,  var_cas_parsedComponentStruct COMMA_SOURCE_FILE_AT_LINE (206)) ;
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of a semantics component should be '.gSemantics'.") COMMA_SOURCE_FILE_AT_LINE (209)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of a semantics component should be '.gSemantics'.") COMMA_SOURCE_FILE_AT_LINE (209)) ;
                   }
                   }
                   break ;
@@ -645,7 +645,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gSyntax"))).isBuiltAndTrue ()) {
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of a syntax component should be '.gSyntax'.") COMMA_SOURCE_FILE_AT_LINE (215)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of a syntax component should be '.gSyntax'.") COMMA_SOURCE_FILE_AT_LINE (215)) ;
                   }
                   }
                   break ;
@@ -653,7 +653,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gGrammar"))).isBuiltAndTrue ()) {
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of a grammar component should be '.gGrammar'.") COMMA_SOURCE_FILE_AT_LINE (221)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of a grammar component should be '.gGrammar'.") COMMA_SOURCE_FILE_AT_LINE (221)) ;
                   }
                   }
                   break ;
@@ -661,7 +661,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                   {
                   if (((var_cas_extension)._operator_isEqual (GGS_string ("gProgram"))).isBuiltAndTrue ()) {
                   }else{
-                    operand_7783->mFilePath.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("extension of a program component should be '.gProgram'.") COMMA_SOURCE_FILE_AT_LINE (227)) ;
+                    operand_7783->mFilePath.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("extension of a program component should be '.gProgram'.") COMMA_SOURCE_FILE_AT_LINE (227)) ;
                   }
                   }
                   break ;
@@ -670,14 +670,14 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 }
               }
             }
-            if (((GGS_uint ::constructor_errorCount (_inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
-              _inLexique.printMessage (GGS_string ("----- Perform global checkings\n") COMMA_SOURCE_FILE_AT_LINE (232)) ;
-              ::routine_performProjectGlobalCheckings (_inLexique,  var_cas_parsedComponentStruct,  var_cas_endOfSourceFile COMMA_SOURCE_FILE_AT_LINE (233)) ;
+            if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+              inLexique.printMessage (GGS_string ("----- Perform global checkings\n") COMMA_SOURCE_FILE_AT_LINE (232)) ;
+              ::routine_performProjectGlobalCheckings (inLexique,  var_cas_parsedComponentStruct,  var_cas_endOfSourceFile COMMA_SOURCE_FILE_AT_LINE (233)) ;
             }
-            if (((GGS_uint ::constructor_errorCount (_inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+            if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
               GGS_stringlist  var_cas_makefileFiles ;
-              var_cas_makefileFiles = var_cas_targetFileListMap.reader_listForKey (_inLexique, GGS_string ("makefile") COMMA_SOURCE_FILE_AT_LINE (237)) ;
-              if (((var_cas_makefileFiles.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (238)))._operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
+              var_cas_makefileFiles = var_cas_targetFileListMap.reader_listForKey (inLexique, GGS_string ("makefile") COMMA_SOURCE_FILE_AT_LINE (237)) ;
+              if (((var_cas_makefileFiles.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (238)))._operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
                 GGS_string var_cas_externSourceFileList ;
                 var_cas_externSourceFileList = GGS_string ("") ;
                 GGS_string var_cas_galgasSourceList ;
@@ -694,22 +694,22 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_sourceFileKind var_cas_sourceKind ;
                     const GGS_sourceFileMap  _temp_10600 = var_cas_sourceFileMap ;
                     if (_temp_10600.isBuilt ()) {
-                      _temp_10600 (HERE)->method_searchKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, operand_10500->mValue, GGS_location (_inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (246)) ;
+                      _temp_10600 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_10500->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (246)) ;
                     }
                     GGS_string var_cas_filePath ;
-                    var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (247)) ;
-                    if (((var_cas_sourceKind)._operator_isEqual (GGS_sourceFileKind::constructor_externSourceFile (_inLexique COMMA_HERE))).isBuiltAndTrue ()) {
-                      if (((var_cas_filePath.reader_firstCharacterOrNul (_inLexique COMMA_SOURCE_FILE_AT_LINE (249)))._operator_isEqual (GGS_char (TO_UNICODE ('/')))).isBuiltAndTrue ()) {
+                    var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (247)) ;
+                    if (((var_cas_sourceKind)._operator_isEqual (GGS_sourceFileKind::constructor_externSourceFile (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
+                      if (((var_cas_filePath.reader_firstCharacterOrNul (inLexique COMMA_SOURCE_FILE_AT_LINE (249)))._operator_isEqual (GGS_char (TO_UNICODE ('/')))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string ("SOURCES_DIR += "))._operator_concat (var_cas_filePath))._operator_concat (GGS_string ("\n"))) ;
                       }else if (((var_cas_filePath)._operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                         var_cas_pathSet._addAssign_operation (((GGS_string ("SOURCES_DIR += ../hand_coded_sources/"))._operator_concat (var_cas_filePath))._operator_concat (GGS_string ("\n"))) ;
                       }
                       var_cas_externSourceFileList.appendCString ("SOURCES += ") ;
-                      var_cas_externSourceFileList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (254))) ;
+                      var_cas_externSourceFileList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (254))) ;
                       var_cas_externSourceFileList.appendCString ("\n") ;
                     }else{
                       var_cas_galgasSourceList.appendCString ("SOURCES += ") ;
-                      var_cas_galgasSourceList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (256)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (256))) ;
+                      var_cas_galgasSourceList._dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (256)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (256))) ;
                       var_cas_galgasSourceList.appendCString (".cpp\n") ;
                     }
                   }
@@ -730,35 +730,35 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 GGS_bool automatic_var_0 ;
                 const GGS_string _temp_11730 = var_cas_newFileListContents ;
                 if (_temp_11730.isBuilt ()) {
-                  _temp_11730 (HERE)->method_writeToFileWhenDifferentContents (_inLexique, var_cas_fileListPath, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (269)) ;
+                  _temp_11730 (HERE)->method_writeToFileWhenDifferentContents (inLexique, var_cas_fileListPath, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (269)) ;
                 }
               }
             }
             GGS_stringlist  var_cas_xcode_tool_files ;
-            var_cas_xcode_tool_files = var_cas_targetFileListMap.reader_listForKey (_inLexique, GGS_string ("xcode_tool") COMMA_SOURCE_FILE_AT_LINE (273)) ;
+            var_cas_xcode_tool_files = var_cas_targetFileListMap.reader_listForKey (inLexique, GGS_string ("xcode_tool") COMMA_SOURCE_FILE_AT_LINE (273)) ;
             GGS_stringlist  var_cas_xcode_app_files ;
-            var_cas_xcode_app_files = var_cas_targetFileListMap.reader_listForKey (_inLexique, GGS_string ("xcode_app") COMMA_SOURCE_FILE_AT_LINE (274)) ;
-            if (((GGS_uint ::constructor_errorCount (_inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+            var_cas_xcode_app_files = var_cas_targetFileListMap.reader_listForKey (inLexique, GGS_string ("xcode_app") COMMA_SOURCE_FILE_AT_LINE (274)) ;
+            if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
               GGS_string var_cas_XcodeProjectDir ;
-              var_cas_XcodeProjectDir = (GGS_string::constructor_stringWithSourceFilePath (_inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (276)).reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (276)))._operator_concat (GGS_string ("/project_xcode")) ;
+              var_cas_XcodeProjectDir = (GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (276)).reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (276)))._operator_concat (GGS_string ("/project_xcode")) ;
               GGS_stringlist  var_cas_iconFiles ;
-              var_cas_iconFiles = var_cas_XcodeProjectDir.reader_regularFilesWithExtensions (_inLexique, GGS_bool (false), GGS_stringlist ::constructor_listWithValue (GGS_string ("icns")) COMMA_SOURCE_FILE_AT_LINE (278)) ;
+              var_cas_iconFiles = var_cas_XcodeProjectDir.reader_regularFilesWithExtensions (inLexique, GGS_bool (false), GGS_stringlist ::constructor_listWithValue (GGS_string ("icns")) COMMA_SOURCE_FILE_AT_LINE (278)) ;
               GGS_stringlist  var_cas_xcodeProjects ;
-              var_cas_xcodeProjects = var_cas_XcodeProjectDir.reader_directoriesWithExtensions (_inLexique, GGS_bool (false), GGS_stringlist ::constructor_listWithValue (GGS_string ("xcodeproj")) COMMA_SOURCE_FILE_AT_LINE (279)) ;
-              if (((var_cas_xcodeProjects.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (281)))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
-                _inLexique.printMessage (((GGS_string ("****** Cannot update Xcode project, no project found in '"))._operator_concat (var_cas_XcodeProjectDir))._operator_concat (GGS_string ("' directory. ********\n")) COMMA_SOURCE_FILE_AT_LINE (282)) ;
-              }else if (((var_cas_xcodeProjects.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (283)))._operator_strictSup (GGS_uint (1U))).isBuiltAndTrue ()) {
-                _inLexique.printMessage (((GGS_string ("****** Cannot update Xcode project, more than one project exist in '"))._operator_concat (var_cas_XcodeProjectDir))._operator_concat (GGS_string ("' directory. ********\n")) COMMA_SOURCE_FILE_AT_LINE (284)) ;
-              }else if (((var_cas_xcodeProjects.reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (285)))._operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
+              var_cas_xcodeProjects = var_cas_XcodeProjectDir.reader_directoriesWithExtensions (inLexique, GGS_bool (false), GGS_stringlist ::constructor_listWithValue (GGS_string ("xcodeproj")) COMMA_SOURCE_FILE_AT_LINE (279)) ;
+              if (((var_cas_xcodeProjects.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (281)))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+                inLexique.printMessage (((GGS_string ("****** Cannot update Xcode project, no project found in '"))._operator_concat (var_cas_XcodeProjectDir))._operator_concat (GGS_string ("' directory. ********\n")) COMMA_SOURCE_FILE_AT_LINE (282)) ;
+              }else if (((var_cas_xcodeProjects.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (283)))._operator_strictSup (GGS_uint (1U))).isBuiltAndTrue ()) {
+                inLexique.printMessage (((GGS_string ("****** Cannot update Xcode project, more than one project exist in '"))._operator_concat (var_cas_XcodeProjectDir))._operator_concat (GGS_string ("' directory. ********\n")) COMMA_SOURCE_FILE_AT_LINE (284)) ;
+              }else if (((var_cas_xcodeProjects.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (285)))._operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
                 GGS_string var_cas_name ;
                 const GGS_stringlist  _temp_12875 = var_cas_xcodeProjects ;
                 if (_temp_12875.isBuilt ()) {
-                  _temp_12875 (HERE)->method_first (_inLexique, var_cas_name COMMA_SOURCE_FILE_AT_LINE (286)) ;
+                  _temp_12875 (HERE)->method_first (inLexique, var_cas_name COMMA_SOURCE_FILE_AT_LINE (286)) ;
                 }
                 GGS_string var_cas_fullXcodePath ;
                 var_cas_fullXcodePath = (((var_cas_XcodeProjectDir)._operator_concat (GGS_string ("/")))._operator_concat (var_cas_name))._operator_concat (GGS_string ("/project.pbxproj")) ;
                 GGS_string var_cas_intermediateFilePath ;
-                var_cas_intermediateFilePath = (GGS_string::constructor_stringWithSourceFilePath (_inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (289)))._operator_concat (GGS_string ("/DEPENDENCIES/file_list_for_xcode_project.txt")) ;
+                var_cas_intermediateFilePath = (GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (289)))._operator_concat (GGS_string ("/DEPENDENCIES/file_list_for_xcode_project.txt")) ;
                 GGS_stringset  var_cas_externSourceSet_tool ;
                 var_cas_externSourceSet_tool = GGS_stringset ::constructor_emptySet () ;
                 GGS_stringset  var_cas_guiSourceSet_tool ;
@@ -784,7 +784,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_sourceFileKind var_cas_sourceKind ;
                     const GGS_sourceFileMap  _temp_13734 = var_cas_sourceFileMap ;
                     if (_temp_13734.isBuilt ()) {
-                      _temp_13734 (HERE)->method_searchKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, operand_13634->mValue, GGS_location (_inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (302)) ;
+                      _temp_13734 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_13634->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (302)) ;
                     }
                     switch (var_cas_sourceKind.enumValue ()) {
                     case GGS_sourceFileKind::enum_externSourceFile:
@@ -857,7 +857,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     GGS_sourceFileKind var_cas_sourceKind ;
                     const GGS_sourceFileMap  _temp_15006 = var_cas_sourceFileMap ;
                     if (_temp_15006.isBuilt ()) {
-                      _temp_15006 (HERE)->method_searchKey (_inLexique, GGS_lstring ::constructor_new (_inLexique, operand_14906->mValue, GGS_location (_inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (333)) ;
+                      _temp_15006 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_14906->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (333)) ;
                     }
                     switch (var_cas_sourceKind.enumValue ()) {
                     case GGS_sourceFileKind::enum_externSourceFile:
@@ -905,7 +905,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     }
                   }
                 }
-                ::routine_generateXcodeProject (_inLexique,  var_cas_externSourceSet_tool,  var_cas_guiSourceSet_tool,  var_cas_scannerSourceSet_tool,  var_cas_optionSourceSet_tool,  var_cas_semanticsSourceSet_tool,  var_cas_syntaxSourceSet_tool,  var_cas_grammarSourceSet_tool,  var_cas_programSourceSet_tool,  var_cas_externSourceSet_app,  var_cas_guiSourceSet_app,  var_cas_scannerSourceSet_app,  var_cas_optionSourceSet_app,  var_cas_semanticsSourceSet_app,  var_cas_syntaxSourceSet_app,  var_cas_grammarSourceSet_app,  var_cas_programSourceSet_app,  var_cas_name.reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (371)),  var_cas_fullXcodePath.reader_stringByDeletingLastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (372)),  var_cas_iconFiles,  var_cas_intermediateFilePath COMMA_SOURCE_FILE_AT_LINE (354)) ;
+                ::routine_generateXcodeProject (inLexique,  var_cas_externSourceSet_tool,  var_cas_guiSourceSet_tool,  var_cas_scannerSourceSet_tool,  var_cas_optionSourceSet_tool,  var_cas_semanticsSourceSet_tool,  var_cas_syntaxSourceSet_tool,  var_cas_grammarSourceSet_tool,  var_cas_programSourceSet_tool,  var_cas_externSourceSet_app,  var_cas_guiSourceSet_app,  var_cas_scannerSourceSet_app,  var_cas_optionSourceSet_app,  var_cas_semanticsSourceSet_app,  var_cas_syntaxSourceSet_app,  var_cas_grammarSourceSet_app,  var_cas_programSourceSet_app,  var_cas_name.reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (371)),  var_cas_fullXcodePath.reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (372)),  var_cas_iconFiles,  var_cas_intermediateFilePath COMMA_SOURCE_FILE_AT_LINE (354)) ;
               }
             }
             if (verboseOptionOn) {

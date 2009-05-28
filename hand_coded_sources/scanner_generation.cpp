@@ -237,12 +237,12 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
             << inLexiqueName
             << "::\n"
                "getCurrentTokenString (const cToken * inTokenPtr) const {\n"
-               "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) inTokenPtr ;\n"
+               "  cTokenFor_" << inLexiqueName << " * ptr = (cTokenFor_" << inLexiqueName << " *) inTokenPtr ;\n"
                "  C_String s ;\n"
-               "  if (_p == NULL) {\n"
+               "  if (ptr == NULL) {\n"
                "    s << \"$$\" ;\n"
                "  }else{\n"
-               "    switch (_p->mTokenCode) {\n"
+               "    switch (ptr->mTokenCode) {\n"
                "    case  " << inLexiqueName << "_1_:\n"
                "      s << \"$$\" ;\n"
                "      break ;\n" ;
@@ -1167,7 +1167,7 @@ void cPtr_typeGalgas_lstring::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "    s << \" \" ;\n" ;
-  inCppFile << "    s.appendCLiteralStringConstant (_p->" << inAttributeName << ") ;\n" ; 
+  inCppFile << "    s.appendCLiteralStringConstant (ptr->" << inAttributeName << ") ;\n" ; 
 }
 
 //---------------------------------------------------------------------------*
@@ -1176,7 +1176,7 @@ void cPtr_typeGalgas_lchar::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "    s << \" \" ;\n" ;
-  inCppFile << "    s.appendCLiteralCharConstant (_p->" << inAttributeName << ") ;\n" ;
+  inCppFile << "    s.appendCLiteralCharConstant (ptr->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1184,7 +1184,7 @@ generateAttributeGetLexicalValue (const C_String & inAttributeName,
 void cPtr_typeGalgas_lbool::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
-  inCppFile << "      s << \" \" << (_p->" << inAttributeName << " ? \"true\" : \"false\") ;\n" ;
+  inCppFile << "      s << \" \" << (ptr->" << inAttributeName << " ? \"true\" : \"false\") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1193,7 +1193,7 @@ void cPtr_typeGalgas_luint::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "      s << \" \" ;\n" ;
-  inCppFile << "      s.appendUnsigned (_p->" << inAttributeName << ") ;\n" ;
+  inCppFile << "      s.appendUnsigned (ptr->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1202,7 +1202,7 @@ void cPtr_typeGalgas_luint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "      s << \" \" ;\n" ;
-  inCppFile << "      s.appendUnsigned64 (_p->" << inAttributeName << ") ;\n" ;
+  inCppFile << "      s.appendUnsigned64 (ptr->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1211,7 +1211,7 @@ void cPtr_typeGalgas_lsint::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "      s << \" \" ;\n" ;
-  inCppFile << "      s.appendSigned (_p->" << inAttributeName << ") ;\n" ;
+  inCppFile << "      s.appendSigned (ptr->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1220,7 +1220,7 @@ void cPtr_typeGalgas_lsint64::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "      s << \" \" ;\n" ;
-  inCppFile << "      s.appendSigned64 (_p->" << inAttributeName << ") ;\n" ;
+  inCppFile << "      s.appendSigned64 (ptr->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1229,7 +1229,7 @@ void cPtr_typeGalgas_ldouble::
 generateAttributeGetLexicalValue (const C_String & inAttributeName,
                                   AC_OutputStream & inCppFile) const {
   inCppFile << "      s << \" \" ;\n" ;
-  inCppFile << "      s.appendDouble (_p->" << inAttributeName << ") ;\n" ;
+  inCppFile << "      s.appendDouble (ptr->" << inAttributeName << ") ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1701,18 +1701,18 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
 
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "void " << inLexiqueName << "::enterToken (const cTokenFor_" << inLexiqueName << " & inToken) {\n"
-                    "  cTokenFor_" << inLexiqueName << " * _p = NULL ;\n"
-                    "  macroMyNew (_p, cTokenFor_" << inLexiqueName << " ()) ;\n"
-                    "  _p->mTokenCode = inToken.mTokenCode ;\n"
-                    "  _p->mFirstLocation = mTokenFirstLocation ;\n"
-                    "  _p->mLastLocation  = mTokenLastLocation ;\n"
-                    "  _p->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;\n" ;
+                    "  cTokenFor_" << inLexiqueName << " * ptr = NULL ;\n"
+                    "  macroMyNew (ptr, cTokenFor_" << inLexiqueName << " ()) ;\n"
+                    "  ptr->mTokenCode = inToken.mTokenCode ;\n"
+                    "  ptr->mFirstLocation = mTokenFirstLocation ;\n"
+                    "  ptr->mLastLocation  = mTokenLastLocation ;\n"
+                    "  ptr->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;\n" ;
   currentAttribute.rewind () ;
   while (currentAttribute.hc ()) {
-    generatedZone2 << "  _p->" << currentAttribute._key (HERE) << " = inToken." << currentAttribute._key (HERE) << " ;\n" ;
+    generatedZone2 << "  ptr->" << currentAttribute._key (HERE) << " = inToken." << currentAttribute._key (HERE) << " ;\n" ;
     currentAttribute.next () ;
   }
-  generatedZone2 << "  enterTokenFromPointer (_p) ;\n"
+  generatedZone2 << "  enterTokenFromPointer (ptr) ;\n"
                     "}\n\n" ;
 
 //--- Get lexical attribute value
@@ -1723,17 +1723,17 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                       "_assignFromAttribute_" << currentAttribute._key (HERE) << " (" ;
     currentAttribute._attributType (HERE) (HERE)->generateCppClassName (generatedZone2) ;
     generatedZone2 << "& outValue) const {\n"
-                      "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
+                      "  cTokenFor_" << inLexiqueName << " * ptr = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
                       "  outValue = " ;
     currentAttribute._attributType (HERE) (HERE)->generateCppClassName (generatedZone2) ;
-    generatedZone2 << "(* this, _p->" << currentAttribute._key (HERE) << ") ;\n"
+    generatedZone2 << "(* this, ptr->" << currentAttribute._key (HERE) << ") ;\n"
                       "}\n\n" ;
     generatedZone2.appendCppHyphenLineComment () ;
     generatedZone2 << currentAttribute._attributType (HERE) (HERE)->lexicalAttributeCppType ()
                    << " " << inLexiqueName << "::\n"
                       "_attributeValue_" << currentAttribute._key (HERE) << " (void) const {\n"
-                      "  cTokenFor_" << inLexiqueName << " * _p = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
-                      "  return _p->" << currentAttribute._key (HERE) << " ;\n"
+                      "  cTokenFor_" << inLexiqueName << " * ptr = (cTokenFor_" << inLexiqueName << " *) mCurrentTokenPtr ;\n"
+                      "  return ptr->" << currentAttribute._key (HERE) << " ;\n"
                       "}\n\n" ;
     currentAttribute.next () ;
   }

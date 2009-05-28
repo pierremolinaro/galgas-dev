@@ -347,7 +347,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_0 (galgas_scanner &) = 0 ;
 
-  protected : void pr_expression_expression_parser_622_17_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_expression_expression_parser_622_17_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_concatenation_term_expression_parser_669_25_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -359,7 +359,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_1 (galgas_scanner &) = 0 ;
 
-  protected : void pr_concatenation_term_expression_parser_669_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_concatenation_term_expression_parser_669_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_relation_term_expression_parser_737_20_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -371,7 +371,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_2 (galgas_scanner &) = 0 ;
 
-  protected : void pr_relation_term_expression_parser_737_20_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_relation_term_expression_parser_737_20_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_relation_factor_expression_parser_784_22_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -383,7 +383,7 @@ class expression_parser {
 
   protected : virtual sint16 select_expression_parser_3 (galgas_scanner &) = 0 ;
 
-  protected : void pr_relation_factor_expression_parser_784_22_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_relation_factor_expression_parser_784_22_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_simple_expression_expression_parser_917_24_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -395,7 +395,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_4 (galgas_scanner &) = 0 ;
 
-  protected : void pr_simple_expression_expression_parser_917_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_simple_expression_expression_parser_917_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_term_expression_parser_1011_11_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -407,7 +407,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_5 (galgas_scanner &) = 0 ;
 
-  protected : void pr_term_expression_parser_1011_11_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_term_expression_parser_1011_11_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1088_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -417,7 +417,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1088_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1088_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1118_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -427,7 +427,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1118_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1118_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1139_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -441,7 +441,7 @@ class expression_parser {
 
   protected : virtual sint16 select_expression_parser_7 (galgas_scanner &) = 0 ;
 
-  protected : void pr_factor_expression_parser_1139_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1139_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1235_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -451,7 +451,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1235_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1235_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1265_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -461,7 +461,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1265_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1265_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1295_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -471,7 +471,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1295_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1295_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1314_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -481,7 +481,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1314_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1314_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1333_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -493,7 +493,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_8 (galgas_scanner &) = 0 ;
 
-  protected : void pr_factor_expression_parser_1333_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1333_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1358_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -503,7 +503,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1358_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1358_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1378_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -513,7 +513,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1378_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1378_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1398_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -523,7 +523,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1398_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1398_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1418_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -533,7 +533,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1418_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1418_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1438_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -543,7 +543,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1438_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1438_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1458_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -553,7 +553,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1458_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1458_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1478_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -563,7 +563,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1478_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1478_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1503_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -583,7 +583,7 @@ class expression_parser {
 
   protected : virtual sint16 select_expression_parser_13 (galgas_scanner &) = 0 ;
 
-  protected : void pr_factor_expression_parser_1503_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1503_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_factor_expression_parser_1667_13_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -593,7 +593,7 @@ class expression_parser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : void pr_factor_expression_parser_1667_13_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_factor_expression_parser_1667_13_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_read_access_expression_parser_1722_18_ (galgas_scanner &,
                                 GGS_lstring  &,
@@ -601,7 +601,7 @@ class expression_parser {
                                 GGS_AC_galgasType  &,
                                 GGS_typeVariablesMap  &) ;
 
-  protected : void pr_read_access_expression_parser_1722_18_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_read_access_expression_parser_1722_18_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_read_access_expression_parser_1738_18_ (galgas_scanner &,
                                 GGS_lstring  &,
@@ -609,7 +609,7 @@ class expression_parser {
                                 GGS_AC_galgasType  &,
                                 GGS_typeVariablesMap  &) ;
 
-  protected : void pr_read_access_expression_parser_1738_18_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_read_access_expression_parser_1738_18_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_output_expression_list_expression_parser_1760_29_ (galgas_scanner &,
                                 GGS_typeExpressionList  &,
@@ -621,7 +621,7 @@ class expression_parser {
 
   protected : virtual sint16 select_repeat_expression_parser_14 (galgas_scanner &) = 0 ;
 
-  protected : void pr_output_expression_list_expression_parser_1760_29_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_output_expression_list_expression_parser_1760_29_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_effective_input_parameters_list_expression_parser_1807_44_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -637,7 +637,7 @@ class expression_parser {
 
   protected : virtual sint16 select_expression_parser_17 (galgas_scanner &) = 0 ;
 
-  protected : void pr_parse_effective_input_parameters_list_expression_parser_1807_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_effective_input_parameters_list_expression_parser_1807_44_parse (galgas_scanner & inLexique) ;
 
 } ;
 

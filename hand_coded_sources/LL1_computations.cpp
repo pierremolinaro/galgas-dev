@@ -272,7 +272,7 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
       const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
-      fichierCPP << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
+      fichierCPP << "  switch (inLexique.nextProductionIndex ()) {\n" ;
       for (sint32 j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << cStringWithSigned ((sint32)(j - first + 1)) << " :\n  " ;
         const sint32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
@@ -553,7 +553,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       generatedZone3 << inTargetFileName
                      << "::\n"
                      << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
-                     << " (" << inLexiqueName << " & " << (existeProduction ? "_inLexique" : "") ;
+                     << " (" << inLexiqueName << " & " << (existeProduction ? "inLexique" : "") ;
       GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       sint16 numeroParametre = 1 ;
       while (parametre.hc ()) {
@@ -721,8 +721,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
-              << " (" << inLexiqueName << " & _inLexique) {\n"
-                 "  return _inLexique.nextProductionIndex () ;\n"
+              << " (" << inLexiqueName << " & inLexique) {\n"
+                 "  return inLexique.nextProductionIndex () ;\n"
                  "}\n\n" ;
     }
   }

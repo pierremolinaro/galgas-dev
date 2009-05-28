@@ -48,107 +48,107 @@
 //---------------------------------------------------------------------------*
 
 void grammar_parser::
-pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
+pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & inLexique,
                                 GGS_M_lexiqueComponents  &var_cas_ioLexiqueMapForUse,
                                 GGS_M_semanticsComponents  &/* var_cas_ioSemanticsComponentsMap */,
                                 GGS_M_syntaxComponents  &var_cas_ioSyntaxComponentsMap,
                                 GGS_M_grammarComponents  &var_cas_ioGrammarComponentsMap,
                                 GGS_M_optionComponents  &var_cas_ioOptionsComponentsMap,
                                 GGS_EXsemanticContext &var_cas_ioSemanticContext) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
   GGS_lstring  var_cas_grammarName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_grammarName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_grammarName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_string var_cas_basename ;
-  var_cas_basename = GGS_string::constructor_stringWithSourceFilePath (_inLexique COMMA_HERE).reader_lastPathComponent (_inLexique COMMA_SOURCE_FILE_AT_LINE (112)).reader_stringByDeletingPathExtension (_inLexique COMMA_SOURCE_FILE_AT_LINE (112)) ;
-  if (((var_cas_grammarName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (113)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
-    var_cas_grammarName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticWarning (_inLexique, ((((GGS_string ("GALGAS 1.7.5 and later checks "
-      "the component name ('"))._operator_concat (var_cas_grammarName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (115))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (117)) ;
+  var_cas_basename = GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (112)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (112)) ;
+  if (((var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (113)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+    var_cas_grammarName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS 1.7.5 and later checks "
+      "the component name ('"))._operator_concat (var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (115))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (117)) ;
   }
   GGS_lstring  var_cas_grammarClass ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_grammarClass) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_grammarClass) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
   GGS_M_terminalSymbolsMapForUse  var_cas_terminalSymbolMap ;
   GGS_lstring  var_cas_lexiqueName ;
-  nt_get_lexique_infos_ (_inLexique, var_cas_terminalSymbolMap, var_cas_ioLexiqueMapForUse, var_cas_lexiqueName) ;
+  nt_get_lexique_infos_ (inLexique, var_cas_terminalSymbolMap, var_cas_ioLexiqueMapForUse, var_cas_lexiqueName) ;
   GGS_stringset  var_cas_classesNamesSet ;
   var_cas_classesNamesSet = GGS_stringset ::constructor_emptySet () ;
   GGS_L_syntaxComponents_ForGrammar  var_cas_syntaxComponentsList ;
   var_cas_syntaxComponentsList = GGS_L_syntaxComponents_ForGrammar ::constructor_emptyList () ;
   GGS_M_nonTerminalSymbolsForGrammar  var_cas_nonterminalSymbolsMapForGrammar ;
-  var_cas_nonterminalSymbolsMapForGrammar = GGS_M_nonTerminalSymbolsForGrammar ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_nonterminalSymbolsMapForGrammar = GGS_M_nonTerminalSymbolsForGrammar ::constructor_emptyMap (inLexique COMMA_HERE) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-        _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
-        switch (select_grammar_parser_1 (_inLexique)) {
+        inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
+        switch (select_grammar_parser_1 (inLexique)) {
           case 1 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
             GGS_lstring  var_cas_optionComponentName ;
-            _inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
             GGS_M_cli_options  var_cas_boolOptionsMap ;
             GGS_M_cli_options  var_cas_uintOptionsMap ;
             GGS_M_cli_options  var_cas_stringOptionsMap ;
-            switch (select_grammar_parser_2 (_inLexique)) {
+            switch (select_grammar_parser_2 (inLexique)) {
               case 1 : {
                 const GGS_M_optionComponents  _temp_5500 = var_cas_ioOptionsComponentsMap ;
                 if (_temp_5500.isBuilt ()) {
-                  _temp_5500 (HERE)->method_searchKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (144)) ;
+                  _temp_5500 (HERE)->method_searchKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (144)) ;
                 }
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
                 GGS_lstring  var_cas_fileName ;
-                _inLexique._assignFromAttribute_tokenString (var_cas_fileName) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                inLexique._assignFromAttribute_tokenString (var_cas_fileName) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
                 GGS_M_optionComponents  var_cas_importedOptionComponentsMap ;
-                var_cas_importedOptionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
-                nt_parse_option_component_for_importing_ (_inLexique, var_cas_fileName, var_cas_importedOptionComponentsMap) ;
+                var_cas_importedOptionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
+                nt_parse_option_component_for_importing_ (inLexique, var_cas_fileName, var_cas_importedOptionComponentsMap) ;
                 const GGS_M_optionComponents  _temp_5897 = var_cas_importedOptionComponentsMap ;
                 if (_temp_5897.isBuilt ()) {
-                  _temp_5897 (HERE)->method_searchKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (154)) ;
+                  _temp_5897 (HERE)->method_searchKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (154)) ;
                 }
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
-            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (_inLexique, var_cas_optionComponentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (157)) COMMA_SOURCE_FILE_AT_LINE (157)))._operator_not ()).isBuiltAndTrue ()) {
-              var_cas_ioOptionsComponentsMap.modifier_insertKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (158)) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (157)) COMMA_SOURCE_FILE_AT_LINE (157)))._operator_not ()).isBuiltAndTrue ()) {
+              var_cas_ioOptionsComponentsMap.modifier_insertKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (158)) ;
             }
             } break ;
           case 2 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
             GGS_lstring  var_cas_syntaxComponentName ;
-            _inLexique._assignFromAttribute_tokenString (var_cas_syntaxComponentName) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            inLexique._assignFromAttribute_tokenString (var_cas_syntaxComponentName) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
             GGS_M_syntaxComponents  var_cas_syntaxComponentsMap ;
-            switch (select_grammar_parser_3 (_inLexique)) {
+            switch (select_grammar_parser_3 (inLexique)) {
               case 1 : {
                 var_cas_syntaxComponentsMap = var_cas_ioSyntaxComponentsMap ;
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
                 GGS_lstring  var_cas_fileName ;
-                _inLexique._assignFromAttribute_tokenString (var_cas_fileName) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
-                nt_parse_syntax_for_importing_ (_inLexique, var_cas_fileName, var_cas_syntaxComponentsMap, var_cas_ioSemanticContext) ;
+                inLexique._assignFromAttribute_tokenString (var_cas_fileName) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
+                nt_parse_syntax_for_importing_ (inLexique, var_cas_fileName, var_cas_syntaxComponentsMap, var_cas_ioSemanticContext) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             GGS_M_nonTerminalSymbolsForGrammar  var_cas_importedNonterminalSymbolsMap ;
             GGS_L_productionRules_ForGrammarComponent  var_cas_importedProductionRulesList ;
             GGS_lstring  var_cas_importedLexiqueComponentName ;
             const GGS_M_syntaxComponents  _temp_7014 = var_cas_syntaxComponentsMap ;
             if (_temp_7014.isBuilt ()) {
-              _temp_7014 (HERE)->method_searchKey (_inLexique, var_cas_syntaxComponentName, var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_importedLexiqueComponentName COMMA_SOURCE_FILE_AT_LINE (183)) ;
+              _temp_7014 (HERE)->method_searchKey (inLexique, var_cas_syntaxComponentName, var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_importedLexiqueComponentName COMMA_SOURCE_FILE_AT_LINE (183)) ;
             }
-            if (((var_cas_lexiqueName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (189)))._operator_isNotEqual (var_cas_importedLexiqueComponentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (189)))).isBuiltAndTrue ()) {
-              var_cas_syntaxComponentName.reader_location (_inLexique COMMA_HERE).signalGGSSemanticError (_inLexique, GGS_string ("this component does not use the previously declared lexique") COMMA_SOURCE_FILE_AT_LINE (191)) ;
+            if (((var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (189)))._operator_isNotEqual (var_cas_importedLexiqueComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (189)))).isBuiltAndTrue ()) {
+              var_cas_syntaxComponentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this component does not use the previously declared lexique") COMMA_SOURCE_FILE_AT_LINE (191)) ;
             }
             var_cas_syntaxComponentsList._addAssign_operation (var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_syntaxComponentName) ;
             {
@@ -156,11 +156,11 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
               const GGS_M_nonTerminalSymbolsForGrammar::cElement * operand_7712 = NULL ;
               while (((operand_7712 = enumerator_7712.nextObject ()))) {
                 macroValidPointer (operand_7712) ;
-                if ((var_cas_nonterminalSymbolsMapForGrammar.reader_hasKey (_inLexique, operand_7712->mKey.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (198)) COMMA_SOURCE_FILE_AT_LINE (198))).isBuiltAndTrue ()) {
+                if ((var_cas_nonterminalSymbolsMapForGrammar.reader_hasKey (inLexique, operand_7712->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (198)) COMMA_SOURCE_FILE_AT_LINE (198))).isBuiltAndTrue ()) {
                   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_altSignatureMap ;
                   const GGS_M_nonTerminalSymbolsForGrammar  _temp_7987 = var_cas_nonterminalSymbolsMapForGrammar ;
                   if (_temp_7987.isBuilt ()) {
-                    _temp_7987 (HERE)->method_searchKey (_inLexique, operand_7712->mKey, var_cas_altSignatureMap COMMA_SOURCE_FILE_AT_LINE (200)) ;
+                    _temp_7987 (HERE)->method_searchKey (inLexique, operand_7712->mKey, var_cas_altSignatureMap COMMA_SOURCE_FILE_AT_LINE (200)) ;
                   }
                   {
                     GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator enumerator_8051 (var_cas_altSignatureMap, true) ;
@@ -172,9 +172,9 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
                       GGS_L_signature  var_cas_importedAltSignature ;
                       const GGS_M_nonterminalSymbolAltsForGrammar  _temp_8257 = var_cas_temp ;
                       if (_temp_8257.isBuilt ()) {
-                        _temp_8257 (HERE)->method_searchKey (_inLexique, operand_8051->mKey, var_cas_importedAltSignature COMMA_SOURCE_FILE_AT_LINE (204)) ;
+                        _temp_8257 (HERE)->method_searchKey (inLexique, operand_8051->mKey, var_cas_importedAltSignature COMMA_SOURCE_FILE_AT_LINE (204)) ;
                       }
-                      ::routine_checkSignature_ForGrammarComponent (_inLexique,  var_cas_importedAltSignature,  operand_8051->mInfo.mFormalParametersList,  operand_7712->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (205)),  operand_8051->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (205)) COMMA_SOURCE_FILE_AT_LINE (205)) ;
+                      ::routine_checkSignature_ForGrammarComponent (inLexique,  var_cas_importedAltSignature,  operand_8051->mInfo.mFormalParametersList,  operand_7712->mKey.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (205)),  operand_8051->mKey.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (205)) COMMA_SOURCE_FILE_AT_LINE (205)) ;
                     }
                   }
                   {
@@ -182,17 +182,17 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
                     const GGS_M_nonterminalSymbolAltsForGrammar::cElement * operand_8484 = NULL ;
                     while (((operand_8484 = enumerator_8484.nextObject ()))) {
                       macroValidPointer (operand_8484) ;
-                      if (((operand_8484->mKey.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (208)))._operator_isNotEqual (GGS_string ("parse"))).isBuiltAndTrue ()) {
+                      if (((operand_8484->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (208)))._operator_isNotEqual (GGS_string ("parse"))).isBuiltAndTrue ()) {
                         GGS_L_signature  automatic_var_0 ;
                         const GGS_M_nonterminalSymbolAltsForGrammar  _temp_8645 = var_cas_altSignatureMap ;
                         if (_temp_8645.isBuilt ()) {
-                          _temp_8645 (HERE)->method_searchKey (_inLexique, operand_8484->mKey, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (209)) ;
+                          _temp_8645 (HERE)->method_searchKey (inLexique, operand_8484->mKey, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (209)) ;
                         }
                       }
                     }
                   }
                 }else{
-                  var_cas_nonterminalSymbolsMapForGrammar.modifier_insertKey (_inLexique, operand_7712->mKey, operand_7712->mInfo.mNonterminalSymbolParametersMap COMMA_SOURCE_FILE_AT_LINE (213)) ;
+                  var_cas_nonterminalSymbolsMapForGrammar.modifier_insertKey (inLexique, operand_7712->mKey, operand_7712->mInfo.mNonterminalSymbolParametersMap COMMA_SOURCE_FILE_AT_LINE (213)) ;
                 }
               }
             }
@@ -200,7 +200,7 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
           default :
             break ;
         }
-      switch (select_repeat_grammar_parser_0 (_inLexique)) {
+      switch (select_repeat_grammar_parser_0 (inLexique)) {
         case 2 : {
           } break ;
         default :
@@ -209,24 +209,24 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
   GGS_lstring  var_cas_startSymbolName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_startSymbolName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_startSymbolName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_grammarAltMap ;
-  var_cas_grammarAltMap = GGS_M_nonterminalSymbolAltsForGrammar ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_grammarAltMap = GGS_M_nonterminalSymbolAltsForGrammar ::constructor_emptyMap (inLexique COMMA_HERE) ;
   GGS_lstring  var_cas_altName ;
-  var_cas_altName = GGS_lstring ::constructor_new (_inLexique, GGS_string (""), GGS_location (_inLexique) COMMA_HERE) ;
+  var_cas_altName = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
         GGS_L_signature  var_cas_signature ;
-        nt_formal_arguments_list_importGrammarForSemantics (_inLexique, var_cas_signature) ;
-        var_cas_grammarAltMap.modifier_insertKey (_inLexique, var_cas_altName, var_cas_signature COMMA_SOURCE_FILE_AT_LINE (229)) ;
-      switch (select_repeat_grammar_parser_4 (_inLexique)) {
+        nt_formal_arguments_list_importGrammarForSemantics (inLexique, var_cas_signature) ;
+        var_cas_grammarAltMap.modifier_insertKey (inLexique, var_cas_altName, var_cas_signature COMMA_SOURCE_FILE_AT_LINE (229)) ;
+      switch (select_repeat_grammar_parser_4 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          _inLexique._assignFromAttribute_tokenString (var_cas_altName) ;
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
+          inLexique._assignFromAttribute_tokenString (var_cas_altName) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_4 = false ;
@@ -234,12 +234,12 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_startSymbolAltMap ;
   GGS_luint  var_cas_startSymbolIndex ;
   const GGS_M_nonTerminalSymbolsForGrammar  _temp_9564 = var_cas_nonterminalSymbolsMapForGrammar ;
   if (_temp_9564.isBuilt ()) {
-    _temp_9564 (HERE)->method_searchKeyGetID (_inLexique, var_cas_startSymbolName, var_cas_startSymbolIndex, var_cas_startSymbolAltMap COMMA_SOURCE_FILE_AT_LINE (238)) ;
+    _temp_9564 (HERE)->method_searchKeyGetID (inLexique, var_cas_startSymbolName, var_cas_startSymbolIndex, var_cas_startSymbolAltMap COMMA_SOURCE_FILE_AT_LINE (238)) ;
   }
   {
     GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator enumerator_9689 (var_cas_startSymbolAltMap, true) ;
@@ -249,9 +249,9 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
       GGS_L_signature  var_cas_altMap ;
       const GGS_M_nonterminalSymbolAltsForGrammar  _temp_9792 = var_cas_grammarAltMap ;
       if (_temp_9792.isBuilt ()) {
-        _temp_9792 (HERE)->method_searchKey (_inLexique, operand_9689->mKey, var_cas_altMap COMMA_SOURCE_FILE_AT_LINE (242)) ;
+        _temp_9792 (HERE)->method_searchKey (inLexique, operand_9689->mKey, var_cas_altMap COMMA_SOURCE_FILE_AT_LINE (242)) ;
       }
-      ::routine_checkSignature_ForGrammarComponent (_inLexique,  operand_9689->mInfo.mFormalParametersList,  var_cas_altMap,  GGS_location (_inLexique),  operand_9689->mKey.reader_location (_inLexique COMMA_SOURCE_FILE_AT_LINE (243)) COMMA_SOURCE_FILE_AT_LINE (243)) ;
+      ::routine_checkSignature_ForGrammarComponent (inLexique,  operand_9689->mInfo.mFormalParametersList,  var_cas_altMap,  GGS_location (inLexique),  operand_9689->mKey.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (243)) COMMA_SOURCE_FILE_AT_LINE (243)) ;
     }
   }
   {
@@ -262,32 +262,32 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
       GGS_L_signature  automatic_var_1 ;
       const GGS_M_nonterminalSymbolAltsForGrammar  _temp_10006 = var_cas_startSymbolAltMap ;
       if (_temp_10006.isBuilt ()) {
-        _temp_10006 (HERE)->method_searchKey (_inLexique, operand_9944->mKey, automatic_var_1 COMMA_SOURCE_FILE_AT_LINE (246)) ;
+        _temp_10006 (HERE)->method_searchKey (inLexique, operand_9944->mKey, automatic_var_1 COMMA_SOURCE_FILE_AT_LINE (246)) ;
       }
     }
   }
   GGS_M_unusedNonTerminalSymbolsForGrammar  var_cas_unusedNonTerminalSymbolsForGrammar ;
-  var_cas_unusedNonTerminalSymbolsForGrammar = GGS_M_unusedNonTerminalSymbolsForGrammar ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_unusedNonTerminalSymbolsForGrammar = GGS_M_unusedNonTerminalSymbolsForGrammar ::constructor_emptyMap (inLexique COMMA_HERE) ;
   { bool syntaxRepeat_5 = true ;
     while (syntaxRepeat_5) {
-      switch (select_repeat_grammar_parser_5 (_inLexique)) {
+      switch (select_repeat_grammar_parser_5 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
           { bool syntaxRepeat_6 = true ;
             while (syntaxRepeat_6) {
                 GGS_lstring  var_cas_nonterminalSymbolName ;
-                _inLexique._assignFromAttribute_tokenString (var_cas_nonterminalSymbolName) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+                inLexique._assignFromAttribute_tokenString (var_cas_nonterminalSymbolName) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
                 GGS_luint  var_cas_nonterminalIndex ;
                 GGS_M_nonterminalSymbolAltsForGrammar  automatic_var_2 ;
                 const GGS_M_nonTerminalSymbolsForGrammar  _temp_10347 = var_cas_nonterminalSymbolsMapForGrammar ;
                 if (_temp_10347.isBuilt ()) {
-                  _temp_10347 (HERE)->method_searchKeyGetID (_inLexique, var_cas_nonterminalSymbolName, var_cas_nonterminalIndex, automatic_var_2 COMMA_SOURCE_FILE_AT_LINE (256)) ;
+                  _temp_10347 (HERE)->method_searchKeyGetID (inLexique, var_cas_nonterminalSymbolName, var_cas_nonterminalIndex, automatic_var_2 COMMA_SOURCE_FILE_AT_LINE (256)) ;
                 }
-                var_cas_unusedNonTerminalSymbolsForGrammar.modifier_insertKey (_inLexique, var_cas_nonterminalSymbolName, var_cas_nonterminalIndex COMMA_SOURCE_FILE_AT_LINE (257)) ;
-              switch (select_repeat_grammar_parser_6 (_inLexique)) {
+                var_cas_unusedNonTerminalSymbolsForGrammar.modifier_insertKey (inLexique, var_cas_nonterminalSymbolName, var_cas_nonterminalIndex COMMA_SOURCE_FILE_AT_LINE (257)) ;
+              switch (select_repeat_grammar_parser_6 (inLexique)) {
                 case 2 : {
-                  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+                  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
                   } break ;
                 default :
                   syntaxRepeat_6 = false ;
@@ -295,7 +295,7 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
               }
             }
           }
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_5 = false ;
@@ -307,96 +307,96 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & _inLexique,
       var_cas_grammarClass.isBuilt () &&
       var_cas_startSymbolIndex.isBuilt () &&
       var_cas_lexiqueName.isBuilt () &&
-      GGS_location (_inLexique).isBuilt () &&
+      GGS_location (inLexique).isBuilt () &&
       var_cas_terminalSymbolMap.isBuilt () &&
       var_cas_syntaxComponentsList.isBuilt () &&
       var_cas_nonterminalSymbolsMapForGrammar.isBuilt () &&
       var_cas_unusedNonTerminalSymbolsForGrammar.isBuilt ()) {
-    ::routine_analyzeGrammar (_inLexique,  var_cas_grammarName,  var_cas_grammarClass,  var_cas_startSymbolIndex,  var_cas_lexiqueName,  GGS_location (_inLexique),  var_cas_terminalSymbolMap,  var_cas_syntaxComponentsList,  var_cas_nonterminalSymbolsMapForGrammar,  var_cas_unusedNonTerminalSymbolsForGrammar COMMA_SOURCE_FILE_AT_LINE (264)) ;
+    ::routine_analyzeGrammar (inLexique,  var_cas_grammarName,  var_cas_grammarClass,  var_cas_startSymbolIndex,  var_cas_lexiqueName,  GGS_location (inLexique),  var_cas_terminalSymbolMap,  var_cas_syntaxComponentsList,  var_cas_nonterminalSymbolsMapForGrammar,  var_cas_unusedNonTerminalSymbolsForGrammar COMMA_SOURCE_FILE_AT_LINE (264)) ;
   }
-  var_cas_ioGrammarComponentsMap.modifier_insertKey (_inLexique, var_cas_grammarName, var_cas_startSymbolAltMap, var_cas_lexiqueName, var_cas_ioOptionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (276)) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  var_cas_ioGrammarComponentsMap.modifier_insertKey (inLexique, var_cas_grammarName, var_cas_startSymbolAltMap, var_cas_lexiqueName, var_cas_ioOptionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (276)) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void grammar_parser::
-pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scanner & _inLexique,
+pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scanner & inLexique,
                                 GGS_M_grammarComponents  &var_cas_ioGrammarComponentsMap,
                                 GGS_M_optionComponents  &var_cas_ioOptionsComponentsMap,
                                 GGS_EXsemanticContext &/* var_cas_ioSemanticContext */) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
   GGS_lstring  var_cas_grammarName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_grammarName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_grammarName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
   GGS_lstring  var_cas_lexiqueName ;
-  nt_get_lexique_infos_getLexiqueName (_inLexique, var_cas_lexiqueName) ;
+  nt_get_lexique_infos_getLexiqueName (inLexique, var_cas_lexiqueName) ;
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_grammarAltMap ;
-  var_cas_grammarAltMap = GGS_M_nonterminalSymbolAltsForGrammar ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_grammarAltMap = GGS_M_nonterminalSymbolAltsForGrammar ::constructor_emptyMap (inLexique COMMA_HERE) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-        _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
-        switch (select_grammar_parser_1 (_inLexique)) {
+        inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
+        switch (select_grammar_parser_1 (inLexique)) {
           case 1 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
             GGS_lstring  var_cas_optionComponentName ;
-            _inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
             GGS_M_cli_options  var_cas_boolOptionsMap ;
             GGS_M_cli_options  var_cas_uintOptionsMap ;
             GGS_M_cli_options  var_cas_stringOptionsMap ;
-            switch (select_grammar_parser_2 (_inLexique)) {
+            switch (select_grammar_parser_2 (inLexique)) {
               case 1 : {
                 const GGS_M_optionComponents  _temp_14781 = var_cas_ioOptionsComponentsMap ;
                 if (_temp_14781.isBuilt ()) {
-                  _temp_14781 (HERE)->method_searchKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (476)) ;
+                  _temp_14781 (HERE)->method_searchKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (476)) ;
                 }
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
                 GGS_lstring  var_cas_fileName ;
-                _inLexique._assignFromAttribute_tokenString (var_cas_fileName) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                inLexique._assignFromAttribute_tokenString (var_cas_fileName) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
                 GGS_M_optionComponents  var_cas_importedOptionComponentsMap ;
-                var_cas_importedOptionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
-                nt_parse_option_component_for_importing_ (_inLexique, var_cas_fileName, var_cas_importedOptionComponentsMap) ;
+                var_cas_importedOptionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
+                nt_parse_option_component_for_importing_ (inLexique, var_cas_fileName, var_cas_importedOptionComponentsMap) ;
                 const GGS_M_optionComponents  _temp_15178 = var_cas_importedOptionComponentsMap ;
                 if (_temp_15178.isBuilt ()) {
-                  _temp_15178 (HERE)->method_searchKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (486)) ;
+                  _temp_15178 (HERE)->method_searchKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (486)) ;
                 }
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
-            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (_inLexique, var_cas_optionComponentName.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (489)) COMMA_SOURCE_FILE_AT_LINE (489)))._operator_not ()).isBuiltAndTrue ()) {
-              var_cas_ioOptionsComponentsMap.modifier_insertKey (_inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (490)) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (489)) COMMA_SOURCE_FILE_AT_LINE (489)))._operator_not ()).isBuiltAndTrue ()) {
+              var_cas_ioOptionsComponentsMap.modifier_insertKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (490)) ;
             }
             } break ;
           case 2 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_3 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_3 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_syntax_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_syntax_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           default :
             break ;
         }
-      switch (select_repeat_grammar_parser_0 (_inLexique)) {
+      switch (select_repeat_grammar_parser_0 (inLexique)) {
         case 2 : {
           } break ;
         default :
@@ -405,20 +405,20 @@ pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scan
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
   GGS_lstring  var_cas_altName ;
-  var_cas_altName = GGS_lstring ::constructor_new (_inLexique, GGS_string (""), GGS_location (_inLexique) COMMA_HERE) ;
+  var_cas_altName = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
         GGS_L_signature  var_cas_signature ;
-        nt_formal_arguments_list_importGrammarForSemantics (_inLexique, var_cas_signature) ;
-        var_cas_grammarAltMap.modifier_insertKey (_inLexique, var_cas_altName, var_cas_signature COMMA_SOURCE_FILE_AT_LINE (511)) ;
-      switch (select_repeat_grammar_parser_4 (_inLexique)) {
+        nt_formal_arguments_list_importGrammarForSemantics (inLexique, var_cas_signature) ;
+        var_cas_grammarAltMap.modifier_insertKey (inLexique, var_cas_altName, var_cas_signature COMMA_SOURCE_FILE_AT_LINE (511)) ;
+      switch (select_repeat_grammar_parser_4 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          _inLexique._assignFromAttribute_tokenString (var_cas_altName) ;
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
+          inLexique._assignFromAttribute_tokenString (var_cas_altName) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_4 = false ;
@@ -426,19 +426,19 @@ pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scan
       }
     }
   }
-  var_cas_ioGrammarComponentsMap.modifier_insertKey (_inLexique, var_cas_grammarName, var_cas_grammarAltMap, var_cas_lexiqueName, var_cas_ioOptionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (519)) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  var_cas_ioGrammarComponentsMap.modifier_insertKey (inLexique, var_cas_grammarName, var_cas_grammarAltMap, var_cas_lexiqueName, var_cas_ioOptionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (519)) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   { bool syntaxRepeat_5 = true ;
     while (syntaxRepeat_5) {
-      switch (select_repeat_grammar_parser_5 (_inLexique)) {
+      switch (select_repeat_grammar_parser_5 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
           { bool syntaxRepeat_6 = true ;
             while (syntaxRepeat_6) {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
-              switch (select_repeat_grammar_parser_6 (_inLexique)) {
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+              switch (select_repeat_grammar_parser_6 (inLexique)) {
                 case 2 : {
-                  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+                  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
                   } break ;
                 default :
                   syntaxRepeat_6 = false ;
@@ -446,7 +446,7 @@ pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scan
               }
             }
           }
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_5 = false ;
@@ -454,61 +454,61 @@ pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scan
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void grammar_parser::
-pr_galgas_component_grammar_parser_100_23_importLexique (galgas_scanner & _inLexique,
+pr_galgas_component_grammar_parser_100_23_importLexique (galgas_scanner & inLexique,
                                 GGS_M_lexiqueComponents  &/* var_cas_ioLexiqueMapForUse */) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
-  nt_get_lexique_infos_parse (_inLexique) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  nt_get_lexique_infos_parse (inLexique) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-        _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
-        switch (select_grammar_parser_1 (_inLexique)) {
+        inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
+        switch (select_grammar_parser_1 (inLexique)) {
           case 1 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_2 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_2 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_option_component_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_option_component_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           case 2 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_3 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_3 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_syntax_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_syntax_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           default :
             break ;
         }
-      switch (select_repeat_grammar_parser_0 (_inLexique)) {
+      switch (select_repeat_grammar_parser_0 (inLexique)) {
         case 2 : {
           } break ;
         default :
@@ -517,15 +517,15 @@ pr_galgas_component_grammar_parser_100_23_importLexique (galgas_scanner & _inLex
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
-        nt_formal_arguments_list_parse (_inLexique) ;
-      switch (select_repeat_grammar_parser_4 (_inLexique)) {
+        nt_formal_arguments_list_parse (inLexique) ;
+      switch (select_repeat_grammar_parser_4 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_4 = false ;
@@ -533,18 +533,18 @@ pr_galgas_component_grammar_parser_100_23_importLexique (galgas_scanner & _inLex
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   { bool syntaxRepeat_5 = true ;
     while (syntaxRepeat_5) {
-      switch (select_repeat_grammar_parser_5 (_inLexique)) {
+      switch (select_repeat_grammar_parser_5 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
           { bool syntaxRepeat_6 = true ;
             while (syntaxRepeat_6) {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
-              switch (select_repeat_grammar_parser_6 (_inLexique)) {
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+              switch (select_repeat_grammar_parser_6 (inLexique)) {
                 case 2 : {
-                  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+                  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
                   } break ;
                 default :
                   syntaxRepeat_6 = false ;
@@ -552,7 +552,7 @@ pr_galgas_component_grammar_parser_100_23_importLexique (galgas_scanner & _inLex
               }
             }
           }
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_5 = false ;
@@ -560,61 +560,61 @@ pr_galgas_component_grammar_parser_100_23_importLexique (galgas_scanner & _inLex
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void grammar_parser::
-pr_galgas_component_grammar_parser_100_23_importOptions (galgas_scanner & _inLexique,
+pr_galgas_component_grammar_parser_100_23_importOptions (galgas_scanner & inLexique,
                                 GGS_M_optionComponents  &/* var_cas_ioOptionsComponentsMap */) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
-  nt_get_lexique_infos_parse (_inLexique) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  nt_get_lexique_infos_parse (inLexique) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-        _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
-        switch (select_grammar_parser_1 (_inLexique)) {
+        inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
+        switch (select_grammar_parser_1 (inLexique)) {
           case 1 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_2 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_2 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_option_component_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_option_component_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           case 2 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_3 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_3 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_syntax_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_syntax_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           default :
             break ;
         }
-      switch (select_repeat_grammar_parser_0 (_inLexique)) {
+      switch (select_repeat_grammar_parser_0 (inLexique)) {
         case 2 : {
           } break ;
         default :
@@ -623,15 +623,15 @@ pr_galgas_component_grammar_parser_100_23_importOptions (galgas_scanner & _inLex
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
-        nt_formal_arguments_list_parse (_inLexique) ;
-      switch (select_repeat_grammar_parser_4 (_inLexique)) {
+        nt_formal_arguments_list_parse (inLexique) ;
+      switch (select_repeat_grammar_parser_4 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_4 = false ;
@@ -639,18 +639,18 @@ pr_galgas_component_grammar_parser_100_23_importOptions (galgas_scanner & _inLex
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   { bool syntaxRepeat_5 = true ;
     while (syntaxRepeat_5) {
-      switch (select_repeat_grammar_parser_5 (_inLexique)) {
+      switch (select_repeat_grammar_parser_5 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
           { bool syntaxRepeat_6 = true ;
             while (syntaxRepeat_6) {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
-              switch (select_repeat_grammar_parser_6 (_inLexique)) {
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+              switch (select_repeat_grammar_parser_6 (inLexique)) {
                 case 2 : {
-                  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+                  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
                   } break ;
                 default :
                   syntaxRepeat_6 = false ;
@@ -658,7 +658,7 @@ pr_galgas_component_grammar_parser_100_23_importOptions (galgas_scanner & _inLex
               }
             }
           }
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_5 = false ;
@@ -666,63 +666,63 @@ pr_galgas_component_grammar_parser_100_23_importOptions (galgas_scanner & _inLex
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void grammar_parser::
-pr_galgas_component_grammar_parser_100_23_importSemantics (galgas_scanner & _inLexique,
+pr_galgas_component_grammar_parser_100_23_importSemantics (galgas_scanner & inLexique,
                                 GGS_M_semanticsComponents  &/* var_cas_ioSemanticsComponentsMap */,
                                 GGS_EXsemanticContext &/* var_cas_ioSemanticContext */,
                                 GGS_stringset  &/* var_cas_ioImportedSemanticsComponentNameSet */) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
-  nt_get_lexique_infos_parse (_inLexique) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  nt_get_lexique_infos_parse (inLexique) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-        _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
-        switch (select_grammar_parser_1 (_inLexique)) {
+        inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
+        switch (select_grammar_parser_1 (inLexique)) {
           case 1 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_2 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_2 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_option_component_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_option_component_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           case 2 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_3 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_3 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_syntax_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_syntax_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           default :
             break ;
         }
-      switch (select_repeat_grammar_parser_0 (_inLexique)) {
+      switch (select_repeat_grammar_parser_0 (inLexique)) {
         case 2 : {
           } break ;
         default :
@@ -731,15 +731,15 @@ pr_galgas_component_grammar_parser_100_23_importSemantics (galgas_scanner & _inL
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
-        nt_formal_arguments_list_parse (_inLexique) ;
-      switch (select_repeat_grammar_parser_4 (_inLexique)) {
+        nt_formal_arguments_list_parse (inLexique) ;
+      switch (select_repeat_grammar_parser_4 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_4 = false ;
@@ -747,18 +747,18 @@ pr_galgas_component_grammar_parser_100_23_importSemantics (galgas_scanner & _inL
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   { bool syntaxRepeat_5 = true ;
     while (syntaxRepeat_5) {
-      switch (select_repeat_grammar_parser_5 (_inLexique)) {
+      switch (select_repeat_grammar_parser_5 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
           { bool syntaxRepeat_6 = true ;
             while (syntaxRepeat_6) {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
-              switch (select_repeat_grammar_parser_6 (_inLexique)) {
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+              switch (select_repeat_grammar_parser_6 (inLexique)) {
                 case 2 : {
-                  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+                  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
                   } break ;
                 default :
                   syntaxRepeat_6 = false ;
@@ -766,7 +766,7 @@ pr_galgas_component_grammar_parser_100_23_importSemantics (galgas_scanner & _inL
               }
             }
           }
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_5 = false ;
@@ -774,62 +774,62 @@ pr_galgas_component_grammar_parser_100_23_importSemantics (galgas_scanner & _inL
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void grammar_parser::
-pr_galgas_component_grammar_parser_100_23_importSyntax (galgas_scanner & _inLexique,
+pr_galgas_component_grammar_parser_100_23_importSyntax (galgas_scanner & inLexique,
                                 GGS_M_syntaxComponents  &/* var_cas_ioSyntaxComponentsMap */,
                                 GGS_EXsemanticContext &/* var_cas_ioSemanticContext */) {
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
-  nt_get_lexique_infos_parse (_inLexique) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
+  nt_get_lexique_infos_parse (inLexique) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-        _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
-        switch (select_grammar_parser_1 (_inLexique)) {
+        inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import) COMMA_HERE) ;
+        switch (select_grammar_parser_1 (inLexique)) {
           case 1 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_2 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_2 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_option_component_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_option_component_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           case 2 : {
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            switch (select_grammar_parser_3 (_inLexique)) {
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_syntax) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+            switch (select_grammar_parser_3 (inLexique)) {
               case 1 : {
                 } break ;
               case 2 : {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                nt_parse_syntax_for_importing_parse (_inLexique) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
+                nt_parse_syntax_for_importing_parse (inLexique) ;
                 } break ;
               default :
                 break ;
             }
-            _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+            inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
             } break ;
           default :
             break ;
         }
-      switch (select_repeat_grammar_parser_0 (_inLexique)) {
+      switch (select_repeat_grammar_parser_0 (inLexique)) {
         case 2 : {
           } break ;
         default :
@@ -838,15 +838,15 @@ pr_galgas_component_grammar_parser_100_23_importSyntax (galgas_scanner & _inLexi
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
-        nt_formal_arguments_list_parse (_inLexique) ;
-      switch (select_repeat_grammar_parser_4 (_inLexique)) {
+        nt_formal_arguments_list_parse (inLexique) ;
+      switch (select_repeat_grammar_parser_4 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_4 = false ;
@@ -854,18 +854,18 @@ pr_galgas_component_grammar_parser_100_23_importSyntax (galgas_scanner & _inLexi
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
   { bool syntaxRepeat_5 = true ;
     while (syntaxRepeat_5) {
-      switch (select_repeat_grammar_parser_5 (_inLexique)) {
+      switch (select_repeat_grammar_parser_5 (inLexique)) {
         case 2 : {
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
           { bool syntaxRepeat_6 = true ;
             while (syntaxRepeat_6) {
-                _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
-              switch (select_repeat_grammar_parser_6 (_inLexique)) {
+                inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5Fterminal_5Fsymbol) COMMA_HERE) ;
+              switch (select_repeat_grammar_parser_6 (inLexique)) {
                 case 2 : {
-                  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
+                  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C) COMMA_HERE) ;
                   } break ;
                 default :
                   syntaxRepeat_6 = false ;
@@ -873,7 +873,7 @@ pr_galgas_component_grammar_parser_100_23_importSyntax (galgas_scanner & _inLexi
               }
             }
           }
-          _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+          inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
           } break ;
         default :
           syntaxRepeat_5 = false ;
@@ -881,9 +881,9 @@ pr_galgas_component_grammar_parser_100_23_importSyntax (galgas_scanner & _inLexi
       }
     }
   }
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*

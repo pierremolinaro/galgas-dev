@@ -78,7 +78,7 @@ class GGS_EXtargetFileListMap : public AC_galgas_listmap {
     public : cElement (LOCATION_ARGS) ;
  //--- Description
     public : virtual C_String
-    _description (C_Compiler & _inLexique,
+    _description (C_Compiler & inLexique,
                   const sint32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
@@ -192,7 +192,7 @@ class GGS_EXsourceFileKind {
 //--- Operators
 
 //--- 'description' reader
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
 
@@ -286,7 +286,7 @@ class GGS_EXsourceFileMap : public AC_galgas_map {
                                    GGS_EXsourceFileKind& outParameter1,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_EXsourceFileMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -362,7 +362,7 @@ class elementOf_GGS_EXsourceFileMap : public AC_galgas_map_element {
 //--- Data member
   public : e_EXsourceFileMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -501,14 +501,14 @@ class ggs_LL1_compile_component {
                                 const GGS_lstring  ,
                                 GGS_M_lexiqueComponents  &) ;
 
-  protected : void pr_parse_lexique_for_importing_ggs_LL1_compile_component_717_34_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_lexique_for_importing_ggs_LL1_compile_component_717_34_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_syntax_for_importing_ggs_LL1_compile_component_732_33_ (galgas_scanner &,
                                 const GGS_lstring  ,
                                 GGS_M_syntaxComponents  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_parse_syntax_for_importing_ggs_LL1_compile_component_732_33_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_syntax_for_importing_ggs_LL1_compile_component_732_33_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_grammar_component_for_importing_ggs_LL1_compile_component_749_44_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -516,13 +516,13 @@ class ggs_LL1_compile_component {
                                 GGS_M_optionComponents  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_parse_grammar_component_for_importing_ggs_LL1_compile_component_749_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_grammar_component_for_importing_ggs_LL1_compile_component_749_44_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_option_component_for_importing_ggs_LL1_compile_component_768_43_ (galgas_scanner &,
                                 const GGS_lstring  ,
                                 GGS_M_optionComponents  &) ;
 
-  protected : void pr_parse_option_component_for_importing_ggs_LL1_compile_component_768_43_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_option_component_for_importing_ggs_LL1_compile_component_768_43_parse (galgas_scanner & inLexique) ;
 
 } ;
 

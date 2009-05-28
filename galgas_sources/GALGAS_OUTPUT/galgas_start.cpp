@@ -48,7 +48,7 @@
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_ (galgas_scanner & _inLexique,
+pr_galgas_start_symbol_galgas_start_83_26_ (galgas_scanner & inLexique,
                                 GGS_M_lexiqueComponents  &var_cas_ioLexiqueMapForUse,
                                 GGS_M_semanticsComponents  &var_cas_ioSemanticsComponentsMap,
                                 GGS_M_syntaxComponents  &var_cas_ioSyntaxComponentsMap,
@@ -57,9 +57,9 @@ pr_galgas_start_symbol_galgas_start_83_26_ (galgas_scanner & _inLexique,
                                 GGS_EXsemanticContext &var_cas_ioSemanticContext) {
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_ (_inLexique, var_cas_ioLexiqueMapForUse, var_cas_ioSemanticsComponentsMap, var_cas_ioSyntaxComponentsMap, var_cas_ioGrammarComponentsMap, var_cas_ioOptionsComponentsMap, var_cas_ioSemanticContext) ;
+          nt_galgas_component_ (inLexique, var_cas_ioLexiqueMapForUse, var_cas_ioSemanticsComponentsMap, var_cas_ioSyntaxComponentsMap, var_cas_ioGrammarComponentsMap, var_cas_ioOptionsComponentsMap, var_cas_ioSemanticContext) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -72,24 +72,24 @@ pr_galgas_start_symbol_galgas_start_83_26_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_compileFile (galgas_scanner & _inLexique) {
+pr_galgas_start_symbol_galgas_start_83_26_compileFile (galgas_scanner & inLexique) {
   GGS_M_lexiqueComponents  var_cas_lexiqueMapForUse ;
-  var_cas_lexiqueMapForUse = GGS_M_lexiqueComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_lexiqueMapForUse = GGS_M_lexiqueComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
   GGS_M_semanticsComponents  var_cas_semanticsComponentsMap ;
-  var_cas_semanticsComponentsMap = GGS_M_semanticsComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_semanticsComponentsMap = GGS_M_semanticsComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
   GGS_M_syntaxComponents  var_cas_syntaxComponentsMap ;
-  var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
   GGS_M_grammarComponents  var_cas_grammarComponentsMap ;
-  var_cas_grammarComponentsMap = GGS_M_grammarComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_grammarComponentsMap = GGS_M_grammarComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
   GGS_M_optionComponents  var_cas_optionsComponentsMap ;
-  var_cas_optionsComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+  var_cas_optionsComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
   GGS_EXsemanticContext var_cas_semanticContext ;
-  var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
+  var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (inLexique COMMA_HERE)) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_ (_inLexique, var_cas_lexiqueMapForUse, var_cas_semanticsComponentsMap, var_cas_syntaxComponentsMap, var_cas_grammarComponentsMap, var_cas_optionsComponentsMap, var_cas_semanticContext) ;
+          nt_galgas_component_ (inLexique, var_cas_lexiqueMapForUse, var_cas_semanticsComponentsMap, var_cas_syntaxComponentsMap, var_cas_grammarComponentsMap, var_cas_optionsComponentsMap, var_cas_semanticContext) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -102,15 +102,15 @@ pr_galgas_start_symbol_galgas_start_83_26_compileFile (galgas_scanner & _inLexiq
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_importGrammarForSemantics (galgas_scanner & _inLexique,
+pr_galgas_start_symbol_galgas_start_83_26_importGrammarForSemantics (galgas_scanner & inLexique,
                                 GGS_M_grammarComponents  &var_cas_ioGrammarComponentsMap,
                                 GGS_M_optionComponents  &var_cas_ioOptionsComponentsMapForUse,
                                 GGS_EXsemanticContext &var_cas_ioSemanticContext) {
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_importGrammarForSemantics (_inLexique, var_cas_ioGrammarComponentsMap, var_cas_ioOptionsComponentsMapForUse, var_cas_ioSemanticContext) ;
+          nt_galgas_component_importGrammarForSemantics (inLexique, var_cas_ioGrammarComponentsMap, var_cas_ioOptionsComponentsMapForUse, var_cas_ioSemanticContext) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -123,13 +123,13 @@ pr_galgas_start_symbol_galgas_start_83_26_importGrammarForSemantics (galgas_scan
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_importLexique (galgas_scanner & _inLexique,
+pr_galgas_start_symbol_galgas_start_83_26_importLexique (galgas_scanner & inLexique,
                                 GGS_M_lexiqueComponents  &var_cas_ioLexiqueMapForUse) {
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_importLexique (_inLexique, var_cas_ioLexiqueMapForUse) ;
+          nt_galgas_component_importLexique (inLexique, var_cas_ioLexiqueMapForUse) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -142,13 +142,13 @@ pr_galgas_start_symbol_galgas_start_83_26_importLexique (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_importOptions (galgas_scanner & _inLexique,
+pr_galgas_start_symbol_galgas_start_83_26_importOptions (galgas_scanner & inLexique,
                                 GGS_M_optionComponents  &var_cas_ioOptionsComponentsMap) {
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_importOptions (_inLexique, var_cas_ioOptionsComponentsMap) ;
+          nt_galgas_component_importOptions (inLexique, var_cas_ioOptionsComponentsMap) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -161,15 +161,15 @@ pr_galgas_start_symbol_galgas_start_83_26_importOptions (galgas_scanner & _inLex
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_importSemantics (galgas_scanner & _inLexique,
+pr_galgas_start_symbol_galgas_start_83_26_importSemantics (galgas_scanner & inLexique,
                                 GGS_M_semanticsComponents  &var_cas_ioSemanticsComponentsMap,
                                 GGS_EXsemanticContext &var_cas_ioSemanticContext,
                                 GGS_stringset  &var_cas_ioImportedSemanticsComponentNameSet) {
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_importSemantics (_inLexique, var_cas_ioSemanticsComponentsMap, var_cas_ioSemanticContext, var_cas_ioImportedSemanticsComponentNameSet) ;
+          nt_galgas_component_importSemantics (inLexique, var_cas_ioSemanticsComponentsMap, var_cas_ioSemanticContext, var_cas_ioImportedSemanticsComponentNameSet) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -182,14 +182,14 @@ pr_galgas_start_symbol_galgas_start_83_26_importSemantics (galgas_scanner & _inL
 //---------------------------------------------------------------------------*
 
 void galgas_start::
-pr_galgas_start_symbol_galgas_start_83_26_importSyntax (galgas_scanner & _inLexique,
+pr_galgas_start_symbol_galgas_start_83_26_importSyntax (galgas_scanner & inLexique,
                                 GGS_M_syntaxComponents  &var_cas_ioSyntaxComponentsMap,
                                 GGS_EXsemanticContext &var_cas_ioSemanticContext) {
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgas_start_0 (_inLexique)) {
+      switch (select_repeat_galgas_start_0 (inLexique)) {
         case 2 : {
-          nt_galgas_component_importSyntax (_inLexique, var_cas_ioSyntaxComponentsMap, var_cas_ioSemanticContext) ;
+          nt_galgas_component_importSyntax (inLexique, var_cas_ioSyntaxComponentsMap, var_cas_ioSemanticContext) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;

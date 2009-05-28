@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------*
 
 static bool
-instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
+instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
                                           const GGS_L_ruleSyntaxSignature & inReferenceList,
                                           const GGS_L_ruleSyntaxSignature & inOtherList,
                                           const GGS_location & inEndOfInstructionListLocation) {
@@ -38,7 +38,7 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
   GGS_L_ruleSyntaxSignature::cEnumerator currentReferenceInstruction (inReferenceList, true) ;
   GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inOtherList, true) ;
   while (currentReferenceInstruction.hc () && currentInstruction.hc () && sameSignature) {
-    sameSignature = currentReferenceInstruction._mInstruction (HERE) (HERE)->isSameSyntaxInstructionThan (_inLexique, currentInstruction._mInstruction (HERE) (HERE), inEndOfInstructionListLocation) ;
+    sameSignature = currentReferenceInstruction._mInstruction (HERE) (HERE)->isSameSyntaxInstructionThan (inLexique, currentInstruction._mInstruction (HERE) (HERE), inEndOfInstructionListLocation) ;
     currentReferenceInstruction.next () ;
     currentInstruction.next () ;
   }
@@ -46,18 +46,18 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
     if (currentReferenceInstruction.hc ()) {
       currentInstruction.rewind () ;
       if (! currentInstruction.hc ()) {
-        inEndOfInstructionListLocation.signalSemanticError (_inLexique, 
+        inEndOfInstructionListLocation.signalSemanticError (inLexique, 
                                 "syntax signature error : the branch from this point is too short"
                                 COMMA_HERE) ;
       }else{
-        currentInstruction._mInstruction (HERE) (HERE)->mStartLocation.signalSemanticError (_inLexique, 
+        currentInstruction._mInstruction (HERE) (HERE)->mStartLocation.signalSemanticError (inLexique, 
                                 "syntax signature error : the branch from this point is too short"
                                 COMMA_HERE) ;
       }
       sameSignature = false ;
     }else if (currentInstruction.hc ()) {
       currentInstruction.rewind () ;
-      currentInstruction._mInstruction (HERE) (HERE)->mStartLocation.signalSemanticError (_inLexique, 
+      currentInstruction._mInstruction (HERE) (HERE)->mStartLocation.signalSemanticError (inLexique, 
                                         "syntax signature error : the branch from this point is too long"
                                         COMMA_HERE) ;
       sameSignature = false ;
@@ -69,7 +69,7 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_repeatInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Compiler & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_T_repeatInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_repeatInstruction_forGrammarComponent *> (inInstruction) ;
@@ -77,12 +77,12 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
   if (! sameSignature) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : a repeat instruction is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+    inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else{
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mRepeatList, true) ;
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mRepeatList, true) ;
     while (currentReferenceBranch.hc () && currentOperandBranch.hc () && sameSignature) {
-      sameSignature = instructionsListHaveSameSyntaxSignatures (_inLexique, currentReferenceBranch._mInstructionList (HERE),
+      sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mInstructionList (HERE),
                                                                 currentOperandBranch._mInstructionList (HERE), inEndOfInstructionListLocation) ;
       currentReferenceBranch.next () ;
       currentOperandBranch.next () ;
@@ -90,12 +90,12 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
     if (sameSignature && (! currentReferenceBranch. hc()) && currentOperandBranch.hc ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the repeat instruction has more branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+      inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }else if (sameSignature && currentReferenceBranch.hc () && ! currentOperandBranch.hc ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the repeat instruction has less branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+      inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }
   }
@@ -105,7 +105,7 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_selectInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Compiler & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & inEndOfInstructionListLocation) const {
   const cPtr_T_selectInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_selectInstruction_forGrammarComponent *> (inInstruction) ;
@@ -113,12 +113,12 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
   if (! sameSignature) {
     C_String errorMessage ;
     errorMessage << "syntax signature error: a select instruction is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+    inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
   }else{
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mSelectList, true) ;
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mSelectList, true) ;
     while (currentReferenceBranch.hc () && currentOperandBranch.hc () && sameSignature) {
-      sameSignature = instructionsListHaveSameSyntaxSignatures (_inLexique, currentReferenceBranch._mInstructionList (HERE),
+      sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mInstructionList (HERE),
                                                                 currentOperandBranch._mInstructionList (HERE), inEndOfInstructionListLocation) ;
       currentReferenceBranch.next () ;
       currentOperandBranch.next () ;
@@ -126,12 +126,12 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
     if (sameSignature && (! currentReferenceBranch. hc()) && currentOperandBranch.hc ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the select instruction has more branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+      inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }else if (sameSignature && currentReferenceBranch.hc () && ! currentOperandBranch.hc ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the select instruction has less branches than the original one" ;
-      inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+      inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       sameSignature = false ;
     }
   }
@@ -141,14 +141,14 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_nonterminalInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Compiler & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_nonterminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_nonterminalInstruction_forGrammarComponent *> (inInstruction) ;
   if ((p == NULL) || (p->mNonterminalSymbolName.compare (mNonterminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : <" << mNonterminalSymbolName << "> non terminal is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+    inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
     p = NULL ;
   }
   return p != NULL ;
@@ -157,14 +157,14 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 bool cPtr_T_terminalInstruction_forGrammarComponent::
-isSameSyntaxInstructionThan (C_Compiler & _inLexique,
+isSameSyntaxInstructionThan (C_Compiler & inLexique,
                              cPtr_AC_instruction_ForGrammar * inInstruction,
                              const GGS_location & /* inEndOfInstructionListLocation */) const {
   const cPtr_T_terminalInstruction_forGrammarComponent * p = dynamic_cast <const cPtr_T_terminalInstruction_forGrammarComponent *> (inInstruction) ;
   if ((p == NULL) || (p->mTerminalSymbolName.compare (mTerminalSymbolName) != 0)) {
     C_String errorMessage ;
     errorMessage << "syntax signature error : $" << mTerminalSymbolName << "$ terminal is expected here" ;
-    inInstruction->mStartLocation.signalSemanticError (_inLexique, errorMessage COMMA_HERE) ;
+    inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
     p = NULL ;
   }
   return p != NULL ;
@@ -173,7 +173,7 @@ isSameSyntaxInstructionThan (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_checkLabelSignatures (C_Compiler & _inLexique,
+routine_checkLabelSignatures (C_Compiler & inLexique,
                               GGS_typeAltProductionsMap & inAltProductionMap
                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::cEnumerator current (inAltProductionMap, true) ;
@@ -181,7 +181,7 @@ routine_checkLabelSignatures (C_Compiler & _inLexique,
     GGS_L_ruleSyntaxSignature referenceSyntaxList = current._mSyntaxSignature (HERE) ;
     current.next () ;
     while (current.hc ()) {
-      instructionsListHaveSameSyntaxSignatures (_inLexique, referenceSyntaxList,
+      instructionsListHaveSameSyntaxSignatures (inLexique, referenceSyntaxList,
                                                 current._mSyntaxSignature (HERE),
                                                 current._mEndOfInstructionListLocation (HERE)) ;
       current.next () ;
@@ -192,14 +192,14 @@ routine_checkLabelSignatures (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_checkParseRewindSignatures (C_Compiler & _inLexique,
+routine_checkParseRewindSignatures (C_Compiler & inLexique,
                                     GGS_L_parse_rewind_signature_list & inParseRewindSignatureList
                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_L_parse_rewind_signature_list::cEnumerator current (inParseRewindSignatureList, true) ;
   GGS_L_ruleSyntaxSignature referenceList = current._mSignature (HERE) ;
   current.next () ;
   while (current.hc ()) {
-    instructionsListHaveSameSyntaxSignatures (_inLexique, referenceList,
+    instructionsListHaveSameSyntaxSignatures (inLexique, referenceList,
                                               current._mSignature (HERE),
                                               current._mErrorLocation (HERE)) ;
     current.next () ;
@@ -234,7 +234,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   if (inGenerateSemanticInstructions) {
     GGS_L_assignedVariables::cEnumerator argument (aListeTypeEffectifs, true) ;
     while (argument.hc ()) {
-      inCppFile << "_inLexique._assignFromAttribute_"
+      inCppFile << "inLexique._assignFromAttribute_"
                 << argument._aNomAttributSource (HERE) << " (" ;
       argument._aNomVariableCible (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       inCppFile << ") ;\n" ;
@@ -248,14 +248,14 @@ generateInstruction (AC_OutputStream & inCppFile,
               << ((! argument .hc ()) ? "" : "(\" ?\") ")
               << ";\n" ;
     while (argument.hc ()) {
-      inCppFile << "    message_ << \" \" << _inLexique._attributeValue_" << argument._aNomAttributSource (HERE) << " () ;\n" ;
+      inCppFile << "    message_ << \" \" << inLexique._attributeValue_" << argument._aNomAttributSource (HERE) << " () ;\n" ;
       argument.next () ;
     }
-    inCppFile << "    _inLexique.didParseTerminal (\"$" << aNomTerminal << "$\", message_) ;\n"
+    inCppFile << "    inLexique.didParseTerminal (\"$" << aNomTerminal << "$\", message_) ;\n"
                  "  }\n"
                  "#endif\n" ;
   }
-  inCppFile << "_inLexique.acceptTerminal (ACCEPT_TERMINAL (" << mLexiqueClassName << "::"
+  inCppFile << "inLexique.acceptTerminal (ACCEPT_TERMINAL (" << mLexiqueClassName << "::"
             << mLexiqueClassName << "_1_" ;
   generateTerminalSymbolCppName (aNomTerminal, inCppFile) ;
   inCppFile << ") COMMA_HERE) ;\n" ;
@@ -316,7 +316,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateSemanticInstructions) const {
   inCppFile << "nt_" << mNonterminalName << "_"
             << (inGenerateSemanticInstructions ? mAltName.string () : C_String ("parse"))
-            << " (_inLexique" ;
+            << " (inLexique" ;
   if (inGenerateSemanticInstructions) {
     GGS_typeExpressionList::cEnumerator argument (mParametersExpressionList, true) ;
     while (argument.hc ()) {
@@ -407,7 +407,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateSemanticInstructions) const {
   inCppFile << "switch (select_" << inTargetFileName
            << "_" << cStringWithSigned (ioPrototypeIndex)
-           << " (_inLexique)) {\n" ;
+           << " (inLexique)) {\n" ;
   ioPrototypeIndex ++ ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
   sint16 numeroBranche = 1 ;
@@ -513,7 +513,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
   inCppFile << "switch (select_repeat_" << inTargetFileName
            << "_" << cStringWithSigned (prototypeIndex)
-           << " (_inLexique)) {\n" ;
+           << " (inLexique)) {\n" ;
   currentBranch.next () ;
   sint16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
@@ -621,7 +621,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   const sint32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
   inCppFile << "//--- First branch of parse/rewind instruction\n"
-            << "  const C_parsingContext context_" << cStringWithSigned (v) << " = _inLexique.parsingContext () ;\n" ;
+            << "  const C_parsingContext context_" << cStringWithSigned (v) << " = inLexique.parsingContext () ;\n" ;
   generateInstructionListForList (p._mInstructionList (HERE), inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -629,7 +629,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   p.next () ;
   while (p.hc ()) {
     inCppFile << "//--- Branch of parse/rewind instruction\n"
-              << "  _inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n" ;
+              << "  inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
     generateInstructionListForList (p._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, tempPrototypeIndex,
@@ -842,7 +842,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     inCppFile << " ;\n" ;
   //--- First pass on instruction list (parse only)
     const sint32 v = mEndOfInstructionLocation.location () ; // For making 'context_xxx' variable unique
-    inCppFile << "const C_parsingContext context_" << cStringWithSigned (v) << " = _inLexique.parsingContext () ;\n" ;
+    inCppFile << "const C_parsingContext context_" << cStringWithSigned (v) << " = inLexique.parsingContext () ;\n" ;
     const sint32 prototypeIndex = ioPrototypeIndex ;
     inCppFile.incIndentation (-2) ;
     generateInstructionListForList (mInstructionList, inCppFile,
@@ -857,14 +857,14 @@ generateInstruction (AC_OutputStream & inCppFile,
     inCppFile << " ;\n" 
                  "}\n"
                  "while (" << conditionVariable << ".isBuiltAndTrue ()) {\n"
-                 "  _inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n"
+                 "  inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n"
                  "  if (" << variantVariable << ".uintValue () == 0) {\n"
-                 "    _inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
+                 "    inLexique.onTheFlyRunTimeError (\"loop variant error\" COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mEndOfInstructionLocation.lineNumber ())
               << ")) ;\n"
                  "    " << conditionVariable << " = GGS_bool (false) ;\n"
                  "  }else{\n" 
-                 "    " << variantVariable << "._decrement_operation (_inLexique COMMA_HERE) ;\n" ;
+                 "    " << variantVariable << "._decrement_operation (inLexique COMMA_HERE) ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
     inCppFile.incIndentation (+2) ;
     generateInstructionListForList (mInstructionList, inCppFile,

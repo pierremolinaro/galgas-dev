@@ -284,13 +284,13 @@ class GGS_semanticInstructionList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_semanticInstructionList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_semanticInstructionList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -305,19 +305,19 @@ class GGS_semanticInstructionList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_semanticInstructionList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_semanticInstruction & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_semanticInstruction & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_semanticInstruction & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_semanticInstruction & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -327,7 +327,7 @@ class GGS_semanticInstructionList : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_semanticInstruction & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_semanticInstructionList _operator_concat (const GGS_semanticInstructionList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_semanticInstruction & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -342,7 +342,7 @@ class GGS_semanticInstructionList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -449,13 +449,13 @@ class GGS_semanticDeclarationList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_semanticDeclarationList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_semanticDeclarationList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -470,19 +470,19 @@ class GGS_semanticDeclarationList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_semanticDeclarationList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_semanticDeclaration & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_semanticDeclaration & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_semanticDeclaration & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_semanticDeclaration & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -492,7 +492,7 @@ class GGS_semanticDeclarationList : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_semanticDeclaration & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_semanticDeclarationList _operator_concat (const GGS_semanticDeclarationList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_semanticDeclaration & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -507,7 +507,7 @@ class GGS_semanticDeclarationList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -1284,13 +1284,13 @@ class GGS_foreachInstructionEnumeratedObjectElementList : public AC_galgas_list 
                             const sint32 inCount) const ;
 
   public : GGS_foreachInstructionEnumeratedObjectElementList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_foreachInstructionEnumeratedObjectElementList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1305,19 +1305,19 @@ class GGS_foreachInstructionEnumeratedObjectElementList : public AC_galgas_list 
 //--- Operator () used for method call
   public : const GGS_foreachInstructionEnumeratedObjectElementList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_foreachInstructionEnumeratedObjectElement & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_foreachInstructionEnumeratedObjectElement & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_foreachInstructionEnumeratedObjectElement & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_foreachInstructionEnumeratedObjectElement & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -1327,7 +1327,7 @@ class GGS_foreachInstructionEnumeratedObjectElementList : public AC_galgas_list 
   public : void _addAssign_operation (const GGS_foreachInstructionEnumeratedObjectElement & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_foreachInstructionEnumeratedObjectElementList _operator_concat (const GGS_foreachInstructionEnumeratedObjectElementList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_foreachInstructionEnumeratedObjectElement & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -1342,7 +1342,7 @@ class GGS_foreachInstructionEnumeratedObjectElementList : public AC_galgas_list 
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -1396,13 +1396,13 @@ class GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_foreachInstructionEnumeratedObjectList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_foreachInstructionEnumeratedObjectList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1417,25 +1417,25 @@ class GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_foreachInstructionEnumeratedObjectList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_semanticExpression & _out_0,
                               GGS_foreachInstructionEnumeratedObjectElementList & _out_1,
                               GGS_bool& _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_semanticExpression & _out_0,
                              GGS_foreachInstructionEnumeratedObjectElementList & _out_1,
                              GGS_bool& _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_semanticExpression & _out_0,
                                 GGS_foreachInstructionEnumeratedObjectElementList & _out_1,
                                 GGS_bool& _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_semanticExpression & _out_0,
                                  GGS_foreachInstructionEnumeratedObjectElementList & _out_1,
                                  GGS_bool& _out_2
@@ -1449,7 +1449,7 @@ class GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_list {
                                 const GGS_bool& argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_foreachInstructionEnumeratedObjectList _operator_concat (const GGS_foreachInstructionEnumeratedObjectList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_semanticExpression & argument_0,
                                 const GGS_foreachInstructionEnumeratedObjectElementList & argument_1,
                                 const GGS_bool& argument_2
@@ -1470,7 +1470,7 @@ class GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -1609,13 +1609,13 @@ class GGS_ifBranchList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_ifBranchList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_ifBranchList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1630,22 +1630,22 @@ class GGS_ifBranchList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_ifBranchList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_semanticExpression & _out_0,
                               GGS_semanticInstructionList & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_semanticExpression & _out_0,
                              GGS_semanticInstructionList & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_semanticExpression & _out_0,
                                 GGS_semanticInstructionList & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_semanticExpression & _out_0,
                                  GGS_semanticInstructionList & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -1657,7 +1657,7 @@ class GGS_ifBranchList : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_ifBranchList _operator_concat (const GGS_ifBranchList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_semanticExpression & argument_0,
                                 const GGS_semanticInstructionList & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1675,7 +1675,7 @@ class GGS_ifBranchList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -2158,13 +2158,13 @@ class GGS_matchEntryList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_matchEntryList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_matchEntryList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -2179,19 +2179,19 @@ class GGS_matchEntryList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_matchEntryList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_matchEntry & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_matchEntry & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_matchEntry & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_matchEntry & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -2201,7 +2201,7 @@ class GGS_matchEntryList : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_matchEntry & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_matchEntryList _operator_concat (const GGS_matchEntryList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_matchEntry & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -2216,7 +2216,7 @@ class GGS_matchEntryList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -2389,13 +2389,13 @@ class GGS_matchInstructionBranchList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_matchInstructionBranchList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_matchInstructionBranchList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -2410,22 +2410,22 @@ class GGS_matchInstructionBranchList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_matchInstructionBranchList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_matchEntryList & _out_0,
                               GGS_semanticInstructionList & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_matchEntryList & _out_0,
                              GGS_semanticInstructionList & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_matchEntryList & _out_0,
                                 GGS_semanticInstructionList & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_matchEntryList & _out_0,
                                  GGS_semanticInstructionList & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -2437,7 +2437,7 @@ class GGS_matchInstructionBranchList : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_matchInstructionBranchList _operator_concat (const GGS_matchInstructionBranchList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_matchEntryList & argument_0,
                                 const GGS_semanticInstructionList & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2455,7 +2455,7 @@ class GGS_matchInstructionBranchList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -2581,13 +2581,13 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_castInstructionBranchList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_castInstructionBranchList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -2602,7 +2602,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_castInstructionBranchList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_bool& _out_0,
                               GGS_lstring & _out_1,
                               GGS_lstring & _out_2,
@@ -2610,7 +2610,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
                               GGS_semanticInstructionList & _out_4
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_bool& _out_0,
                              GGS_lstring & _out_1,
                              GGS_lstring & _out_2,
@@ -2618,7 +2618,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
                              GGS_semanticInstructionList & _out_4
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_bool& _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_lstring & _out_2,
@@ -2626,7 +2626,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
                                 GGS_semanticInstructionList & _out_4
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_bool& _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_lstring & _out_2,
@@ -2644,7 +2644,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_4) ;
 //--- Handling '.' GALGAS operator
   public : GGS_castInstructionBranchList _operator_concat (const GGS_castInstructionBranchList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_bool& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
@@ -2671,7 +2671,7 @@ class GGS_castInstructionBranchList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -3477,13 +3477,13 @@ class GGS_switchBranches : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_switchBranches
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_switchBranches
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -3498,22 +3498,22 @@ class GGS_switchBranches : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_switchBranches * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_lstringlist & _out_0,
                               GGS_semanticInstructionList & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_lstringlist & _out_0,
                              GGS_semanticInstructionList & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_lstringlist & _out_0,
                                 GGS_semanticInstructionList & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_lstringlist & _out_0,
                                  GGS_semanticInstructionList & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -3525,7 +3525,7 @@ class GGS_switchBranches : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_switchBranches _operator_concat (const GGS_switchBranches & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstringlist & argument_0,
                                 const GGS_semanticInstructionList & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3543,7 +3543,7 @@ class GGS_switchBranches : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -3726,13 +3726,13 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_abstractCategoryMethodList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_abstractCategoryMethodList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -3747,22 +3747,22 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_abstractCategoryMethodList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_lstring & _out_0,
                               GGS_formalParameterList & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_lstring & _out_0,
                              GGS_formalParameterList & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_formalParameterList & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_formalParameterList & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -3774,7 +3774,7 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
                                 const GGS_formalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_abstractCategoryMethodList _operator_concat (const GGS_abstractCategoryMethodList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3792,7 +3792,7 @@ class GGS_abstractCategoryMethodList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -3846,7 +3846,7 @@ class GGS_abstractCategoryMethodListMap : public AC_galgas_listmap {
     public : cElement (LOCATION_ARGS) ;
  //--- Description
     public : virtual C_String
-    _description (C_Compiler & _inLexique,
+    _description (C_Compiler & inLexique,
                   const sint32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
@@ -3921,13 +3921,13 @@ class GGS_categoryMethodList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_categoryMethodList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_categoryMethodList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -3942,25 +3942,25 @@ class GGS_categoryMethodList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_categoryMethodList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_lstring & _out_0,
                               GGS_formalParameterList & _out_1,
                               GGS_semanticInstructionList & _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_lstring & _out_0,
                              GGS_formalParameterList & _out_1,
                              GGS_semanticInstructionList & _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_formalParameterList & _out_1,
                                 GGS_semanticInstructionList & _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_formalParameterList & _out_1,
                                  GGS_semanticInstructionList & _out_2
@@ -3974,7 +3974,7 @@ class GGS_categoryMethodList : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_categoryMethodList _operator_concat (const GGS_categoryMethodList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2
@@ -3995,7 +3995,7 @@ class GGS_categoryMethodList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -4057,7 +4057,7 @@ class GGS_categoryMethodListMap : public AC_galgas_listmap {
     public : cElement (LOCATION_ARGS) ;
  //--- Description
     public : virtual C_String
-    _description (C_Compiler & _inLexique,
+    _description (C_Compiler & inLexique,
                   const sint32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
@@ -4133,13 +4133,13 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_overridingCategoryMethodList
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_overridingCategoryMethodList
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -4154,25 +4154,25 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_overridingCategoryMethodList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_lstring & _out_0,
                               GGS_formalParameterList & _out_1,
                               GGS_semanticInstructionList & _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_lstring & _out_0,
                              GGS_formalParameterList & _out_1,
                              GGS_semanticInstructionList & _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_formalParameterList & _out_1,
                                 GGS_semanticInstructionList & _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_formalParameterList & _out_1,
                                  GGS_semanticInstructionList & _out_2
@@ -4186,7 +4186,7 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
                                 const GGS_semanticInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_overridingCategoryMethodList _operator_concat (const GGS_overridingCategoryMethodList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2
@@ -4207,7 +4207,7 @@ class GGS_overridingCategoryMethodList : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -4269,7 +4269,7 @@ class GGS_overridingCategoryMethodListMap : public AC_galgas_listmap {
     public : cElement (LOCATION_ARGS) ;
  //--- Description
     public : virtual C_String
-    _description (C_Compiler & _inLexique,
+    _description (C_Compiler & inLexique,
                   const sint32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
@@ -4346,7 +4346,7 @@ class cPtr_syntaxInstruction : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4380,7 +4380,7 @@ class cPtr_semanticInstruction : public cPtr_syntaxInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4414,7 +4414,7 @@ class elementOf_GGS_semanticInstructionList : public AC_galgas_list::cListElemen
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4447,7 +4447,7 @@ class cPtr_semanticDeclaration : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4481,7 +4481,7 @@ class elementOf_GGS_semanticDeclarationList : public AC_galgas_list::cListElemen
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4519,7 +4519,7 @@ class cPtr_externRoutineDeclaration : public cPtr_semanticDeclaration {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4564,7 +4564,7 @@ class cPtr_routineDeclaration : public cPtr_externRoutineDeclaration {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4613,7 +4613,7 @@ class cPtr_externFunctionDeclaration : public cPtr_semanticDeclaration {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4660,7 +4660,7 @@ class cPtr_functionDeclaration : public cPtr_externFunctionDeclaration {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4705,7 +4705,7 @@ class cPtr_localVariableDeclaration : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4754,7 +4754,7 @@ class cPtr_localVariableDeclarationWithInitialization : public cPtr_semanticInst
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4801,7 +4801,7 @@ class cPtr_localVariableDeclarationWithAssignment : public cPtr_semanticInstruct
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4846,7 +4846,7 @@ class cPtr_assignmentInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4893,7 +4893,7 @@ class cPtr_appendInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4933,7 +4933,7 @@ class cPtr_foreachInstructionEnumeratedObjectElement : public cPtr__AC_galgas_cl
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -4967,7 +4967,7 @@ class cPtr_foreachInstructionJoker : public cPtr_foreachInstructionEnumeratedObj
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5009,7 +5009,7 @@ class cPtr_foreachInstructionEnumeratedConstant : public cPtr_foreachInstruction
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5050,7 +5050,7 @@ class elementOf_GGS_foreachInstructionEnumeratedObjectElementList : public AC_ga
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5088,7 +5088,7 @@ class elementOf_GGS_foreachInstructionEnumeratedObjectList : public AC_galgas_li
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5136,7 +5136,7 @@ class cPtr_foreachInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5179,7 +5179,7 @@ class elementOf_GGS_ifBranchList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5217,7 +5217,7 @@ class cPtr_ifInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5264,7 +5264,7 @@ class cPtr_methodCallInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5313,7 +5313,7 @@ class cPtr_modifierCallInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5360,7 +5360,7 @@ class cPtr_errorInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5405,7 +5405,7 @@ class cPtr_warningInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5450,7 +5450,7 @@ class cPtr_routineCallInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5490,7 +5490,7 @@ class cPtr_matchEntry : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5524,7 +5524,7 @@ class elementOf_GGS_matchEntryList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5560,7 +5560,7 @@ class cPtr_constantMatchEntry : public cPtr_matchEntry {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5607,7 +5607,7 @@ class cPtr_classMatchEntry : public cPtr_matchEntry {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5650,7 +5650,7 @@ class elementOf_GGS_matchInstructionBranchList : public AC_galgas_list::cListEle
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5690,7 +5690,7 @@ class cPtr_matchInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5739,7 +5739,7 @@ class elementOf_GGS_castInstructionBranchList : public AC_galgas_list::cListElem
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5772,7 +5772,7 @@ class cPtr_elseOrDefaultForCastInstruction : public cPtr__AC_galgas_class {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5808,7 +5808,7 @@ class cPtr_elseForCastInstruction : public cPtr_elseOrDefaultForCastInstruction 
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5851,7 +5851,7 @@ class cPtr_defaultForCastInstruction : public cPtr_elseOrDefaultForCastInstructi
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5898,7 +5898,7 @@ class cPtr_castInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5945,7 +5945,7 @@ class cPtr_addInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -5992,7 +5992,7 @@ class cPtr_removeInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6035,7 +6035,7 @@ class cPtr_incrementInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6078,7 +6078,7 @@ class cPtr_decrementInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6127,7 +6127,7 @@ class cPtr_loopInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6170,7 +6170,7 @@ class cPtr_messageInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6213,7 +6213,7 @@ class cPtr_logInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6266,7 +6266,7 @@ class cPtr_grammarInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6309,7 +6309,7 @@ class elementOf_GGS_switchBranches : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6347,7 +6347,7 @@ class cPtr_switchInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6394,7 +6394,7 @@ class cPtr_typeMethodInstruction : public cPtr_semanticInstruction {
 
 //--- Method for 'description' reader
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6437,7 +6437,7 @@ class elementOf_GGS_abstractCategoryMethodList : public AC_galgas_list::cListEle
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6475,7 +6475,7 @@ class elementOf_GGS_categoryMethodList : public AC_galgas_list::cListElement {
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6513,7 +6513,7 @@ class elementOf_GGS_overridingCategoryMethodList : public AC_galgas_list::cListE
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -6551,7 +6551,7 @@ class GGS_semanticDeclarationStruct {
 
 //--- Reader 'description'
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 //--- Galgas 'new' destructor

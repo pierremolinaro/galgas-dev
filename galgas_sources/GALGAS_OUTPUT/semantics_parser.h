@@ -687,7 +687,7 @@ class semantics_parser {
                                 GGS_EXsemanticContext &,
                                 GGS_stringset  &) ;
 
-  protected : void pr_import_headers_semantics_and_grammars_semantics_parser_838_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_import_headers_semantics_and_grammars_semantics_parser_838_44_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_1107_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -709,7 +709,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_1107_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_1107_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_1240_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -731,7 +731,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_1240_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_1240_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parent_class_semantics_parser_1419_19_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -757,7 +757,7 @@ class semantics_parser {
                                 GGS_typeClassInheritedMessagesMap  &,
                                 GGS_bool &) ;
 
-  protected : void pr_parent_class_semantics_parser_1419_19_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parent_class_semantics_parser_1419_19_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parent_class_semantics_parser_1465_19_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -783,7 +783,7 @@ class semantics_parser {
                                 GGS_typeClassInheritedMessagesMap  &,
                                 GGS_bool &) ;
 
-  protected : void pr_parent_class_semantics_parser_1465_19_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parent_class_semantics_parser_1465_19_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_1552_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -803,7 +803,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_1552_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_1552_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_beginning_by_abstract_semantics_parser_1598_50_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -823,7 +823,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_beginning_by_abstract_semantics_parser_1598_50_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_beginning_by_abstract_semantics_parser_1598_50_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_1640_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -843,7 +843,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_1640_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_1640_28_parse (galgas_scanner & inLexique) ;
 
   protected : virtual void nt_lazy_reader_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -881,7 +881,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_5 (galgas_scanner &) = 0 ;
 
-  protected : void pr_lazy_reader_semantics_parser_1700_18_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_lazy_reader_semantics_parser_1700_18_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_class_declaration_semantics_parser_1799_24_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -911,7 +911,7 @@ class semantics_parser {
                                 GGS_EXsemanticContext &,
                                 const GGS_bool ) ;
 
-  protected : void pr_class_declaration_semantics_parser_1799_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_class_declaration_semantics_parser_1799_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_abstract_method_semantics_parser_2221_22_ (galgas_scanner &,
                                 const GGS_bool ,
@@ -920,7 +920,7 @@ class semantics_parser {
                                 GGS_typeTableMethodesAimplementer  &,
                                 GGS_typeTableEnAvant  &) ;
 
-  protected : void pr_abstract_method_semantics_parser_2221_22_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_abstract_method_semantics_parser_2221_22_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_method_semantics_parser_2255_19_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -942,7 +942,7 @@ class semantics_parser {
                                 const GGS_EXsemanticContext ,
                                 const GGS_L_lazyAttributeList  ) ;
 
-  protected : void pr_parse_method_semantics_parser_2255_19_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_method_semantics_parser_2255_19_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_non_abstract_method_semantics_parser_2340_26_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -961,7 +961,7 @@ class semantics_parser {
                                 const GGS_EXsemanticContext ,
                                 const GGS_L_lazyAttributeList  ) ;
 
-  protected : void pr_non_abstract_method_semantics_parser_2340_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_non_abstract_method_semantics_parser_2340_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_overrided_method_semantics_parser_2391_23_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -980,7 +980,7 @@ class semantics_parser {
                                 const GGS_EXsemanticContext ,
                                 const GGS_L_lazyAttributeList  ) ;
 
-  protected : void pr_overrided_method_semantics_parser_2391_23_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_overrided_method_semantics_parser_2391_23_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_formal_arguments_list_semantics_parser_2454_28_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1001,7 +1001,7 @@ class semantics_parser {
   protected : void pr_formal_arguments_list_semantics_parser_2454_28_importGrammarForSemantics (galgas_scanner &,
                                 GGS_L_signature  &) ;
 
-  protected : void pr_formal_arguments_list_semantics_parser_2454_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_formal_arguments_list_semantics_parser_2454_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_formal_input_arguments_list_semantics_parser_2621_34_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1020,7 +1020,7 @@ class semantics_parser {
   protected : void pr_formal_input_arguments_list_semantics_parser_2621_34_importGrammarForSemantics (galgas_scanner &,
                                 GGS_L_signature  &) ;
 
-  protected : void pr_formal_input_arguments_list_semantics_parser_2621_34_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_formal_input_arguments_list_semantics_parser_2621_34_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_type_parsing_semantics_parser_2724_19_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1028,7 +1028,7 @@ class semantics_parser {
                                 GGS_AC_galgasType  &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_type_parsing_semantics_parser_2724_19_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_type_parsing_semantics_parser_2724_19_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_semantics_parser_2749_44_ (galgas_scanner &,
                                 GGS_lstring  ,
@@ -1038,7 +1038,7 @@ class semantics_parser {
                                 const GGS_M_semanticsEntitiesForUse  ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_instruction_beginning_with_identifier_semantics_parser_2749_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_semantics_parser_2749_44_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_semantics_parser_2788_44_ (galgas_scanner &,
                                 GGS_lstring  ,
@@ -1050,7 +1050,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_17 (galgas_scanner &) = 0 ;
 
-  protected : void pr_instruction_beginning_with_identifier_semantics_parser_2788_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_semantics_parser_2788_44_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2844_65_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -1062,7 +1062,7 @@ class semantics_parser {
                                 const GGS_AC_galgasType  ,
                                 const GGS_lstringlist  ) ;
 
-  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2844_65_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2844_65_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_input_parameters_list_semantics_parser_2916_28_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1080,7 +1080,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_semantics_parser_21 (galgas_scanner &) = 0 ;
 
-  protected : void pr_input_parameters_list_semantics_parser_2916_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_input_parameters_list_semantics_parser_2916_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_semantics_parser_3012_44_ (galgas_scanner &,
                                 GGS_lstring  ,
@@ -1092,7 +1092,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_22 (galgas_scanner &) = 0 ;
 
-  protected : void pr_instruction_beginning_with_identifier_semantics_parser_3012_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_semantics_parser_3012_44_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3064_65_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -1106,7 +1106,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_23 (galgas_scanner &) = 0 ;
 
-  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3064_65_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3064_65_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3124_65_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -1120,7 +1120,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_24 (galgas_scanner &) = 0 ;
 
-  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3124_65_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3124_65_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3183_65_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -1132,7 +1132,7 @@ class semantics_parser {
                                 const GGS_AC_galgasType  ,
                                 const GGS_lstringlist  ) ;
 
-  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3183_65_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3183_65_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3209_65_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -1144,7 +1144,7 @@ class semantics_parser {
                                 const GGS_AC_galgasType  ,
                                 const GGS_lstringlist  ) ;
 
-  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3209_65_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3209_65_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_actual_parameters_list_semantics_parser_3231_29_ (galgas_scanner &,
                                 const GGS_L_EXsignature  ,
@@ -1155,7 +1155,7 @@ class semantics_parser {
                                 const GGS_M_semanticsEntitiesForUse  ,
                                 GGS_typeInstructionList  &) ;
 
-  protected : void pr_actual_parameters_list_semantics_parser_3231_29_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_actual_parameters_list_semantics_parser_3231_29_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_parameters_list_semantics_parser_3265_28_ (galgas_scanner &,
                                 GGS_L_actualParametersSignature  &,
@@ -1172,7 +1172,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_27 (galgas_scanner &) = 0 ;
 
-  protected : void pr_parse_parameters_list_semantics_parser_3265_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_parameters_list_semantics_parser_3265_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instructions_list_semantics_parser_3366_33_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1182,7 +1182,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instructions_list_semantics_parser_3366_33_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instructions_list_semantics_parser_3366_33_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_3392_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1192,7 +1192,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_3392_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_3392_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_extract_instruction_semantics_parser_3429_26_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1205,7 +1205,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_extract_instruction_semantics_parser_3429_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_extract_instruction_semantics_parser_3429_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_extract_instruction_semantics_parser_3499_26_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1220,7 +1220,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_28 (galgas_scanner &) = 0 ;
 
-  protected : void pr_extract_instruction_semantics_parser_3499_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_extract_instruction_semantics_parser_3499_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_3586_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1238,7 +1238,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_semantics_parser_32 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_3586_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_3586_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_3734_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1248,7 +1248,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_3734_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_3734_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_3777_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1260,7 +1260,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_33 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_3777_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_3777_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_3805_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1272,7 +1272,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_34 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_3805_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_3805_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_instruction_beginning_with_identifier_semantics_parser_3835_44_ (galgas_scanner &,
                                 GGS_lstring  ,
@@ -1282,7 +1282,7 @@ class semantics_parser {
                                 const GGS_M_semanticsEntitiesForUse  ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_instruction_beginning_with_identifier_semantics_parser_3835_44_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_instruction_beginning_with_identifier_semantics_parser_3835_44_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_3895_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1296,7 +1296,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_36 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_3895_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_3895_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4031_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1306,7 +1306,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4031_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4031_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4058_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1316,7 +1316,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4058_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4058_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_warning_instruction_semantics_parser_4077_26_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1325,7 +1325,7 @@ class semantics_parser {
                                 GGS_typeVariablesMap  &,
                                 GGS_typeInstructionList  &) ;
 
-  protected : void pr_warning_instruction_semantics_parser_4077_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_warning_instruction_semantics_parser_4077_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4124_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1335,7 +1335,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4124_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4124_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_error_instruction_semantics_parser_4143_24_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1348,7 +1348,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_38 (galgas_scanner &) = 0 ;
 
-  protected : void pr_error_instruction_semantics_parser_4143_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_error_instruction_semantics_parser_4143_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4209_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1358,7 +1358,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4209_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4209_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4244_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1372,7 +1372,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_semantics_parser_40 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4244_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4244_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4315_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1386,7 +1386,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_42 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4315_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4315_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4396_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1396,7 +1396,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4396_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4396_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4480_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1414,7 +1414,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_semantics_parser_46 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4480_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4480_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4634_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1424,7 +1424,7 @@ class semantics_parser {
                                 GGS_typeInstructionList  &,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4634_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4634_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_constant_while_before_in_foreach_instruction_semantics_parser_4670_51_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1457,7 +1457,7 @@ class semantics_parser {
                                 GGS_typeExpression  &,
                                 GGS_typeInstructionList  &) ;
 
-  protected : void pr_constant_while_before_in_foreach_instruction_semantics_parser_4670_51_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_constant_while_before_in_foreach_instruction_semantics_parser_4670_51_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_4866_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1471,7 +1471,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_semantics_parser_54 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_4866_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_4866_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_match_operand_semantics_parser_4976_26_ (galgas_scanner &,
                                 GGS_typeVariablesMap  &,
@@ -1481,7 +1481,7 @@ class semantics_parser {
                                 GGS_bool &,
                                 GGS_enumConstantMap  &) ;
 
-  protected : void pr_parse_match_operand_semantics_parser_4976_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_match_operand_semantics_parser_4976_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_match_case_semantics_parser_5014_23_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1492,7 +1492,7 @@ class semantics_parser {
                                 GGS_enumConstantMap  ,
                                 GGS_lstring  &) ;
 
-  protected : void pr_parse_match_case_semantics_parser_5014_23_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_match_case_semantics_parser_5014_23_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_parse_match_case_semantics_parser_5057_23_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1503,7 +1503,7 @@ class semantics_parser {
                                 GGS_enumConstantMap  ,
                                 GGS_lstring  &) ;
 
-  protected : void pr_parse_match_case_semantics_parser_5057_23_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_parse_match_case_semantics_parser_5057_23_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instruction_semantics_parser_5078_27_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1515,7 +1515,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_55 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instruction_semantics_parser_5078_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instruction_semantics_parser_5078_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantic_instructions_list_no_verif_semantics_parser_5195_42_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1527,7 +1527,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_56 (galgas_scanner &) = 0 ;
 
-  protected : void pr_semantic_instructions_list_no_verif_semantics_parser_5195_42_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantic_instructions_list_no_verif_semantics_parser_5195_42_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_optional_assignment_semantics_parser_5220_26_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -1540,7 +1540,7 @@ class semantics_parser {
                                 const GGS_EXsemanticContext ,
                                 const GGS_M_semanticsEntitiesForUse  ) ;
 
-  protected : void pr_optional_assignment_semantics_parser_5220_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_optional_assignment_semantics_parser_5220_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_optional_assignment_semantics_parser_5236_26_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -1553,7 +1553,7 @@ class semantics_parser {
                                 const GGS_EXsemanticContext ,
                                 const GGS_M_semanticsEntitiesForUse  ) ;
 
-  protected : void pr_optional_assignment_semantics_parser_5236_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_optional_assignment_semantics_parser_5236_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_optional_assignment_semantics_parser_5270_26_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -1566,7 +1566,7 @@ class semantics_parser {
                                 const GGS_EXsemanticContext ,
                                 const GGS_M_semanticsEntitiesForUse  ) ;
 
-  protected : void pr_optional_assignment_semantics_parser_5270_26_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_optional_assignment_semantics_parser_5270_26_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_5318_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1590,7 +1590,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_5318_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_5318_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_5451_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1620,13 +1620,13 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_5451_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_5451_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_ex_map_method_semantics_parser_6050_20_ (galgas_scanner &,
                                 GGS_lstring  &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_ex_map_method_semantics_parser_6050_20_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_ex_map_method_semantics_parser_6050_20_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_map_method_semantics_parser_6062_17_ (galgas_scanner &,
                                 GGS_lstring  &,
@@ -1635,7 +1635,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_semantics_parser_64 (galgas_scanner &) = 0 ;
 
-  protected : void pr_map_method_semantics_parser_6062_17_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_map_method_semantics_parser_6062_17_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_beginning_by_abstract_semantics_parser_6085_50_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1655,7 +1655,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_beginning_by_abstract_semantics_parser_6085_50_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_beginning_by_abstract_semantics_parser_6085_50_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_6183_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1677,7 +1677,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_6183_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_6183_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_6354_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1699,7 +1699,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_6354_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_6354_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_6469_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1725,7 +1725,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_6469_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_6469_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_attributes_definition_list_semantics_parser_6620_33_ (galgas_scanner &,
                                 const GGS_typeTableEnAvant  ,
@@ -1741,7 +1741,7 @@ class semantics_parser {
 
   protected : virtual sint16 select_repeat_semantics_parser_72 (galgas_scanner &) = 0 ;
 
-  protected : void pr_attributes_definition_list_semantics_parser_6620_33_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_attributes_definition_list_semantics_parser_6620_33_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_6683_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1761,7 +1761,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_6683_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_6683_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_6753_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1781,7 +1781,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_6753_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_6753_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_6897_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1809,7 +1809,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_6897_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_6897_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_7124_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1829,7 +1829,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_7124_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_7124_28_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7168_47_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1855,7 +1855,7 @@ class semantics_parser {
                                 GGS_typeTableEnAvant  &,
                                 GGS_typeTableRoutinesAimplementer  &) ;
 
-  protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7168_47_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7168_47_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_formal_argument_type_semantics_parser_7435_27_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1866,7 +1866,7 @@ class semantics_parser {
   protected : void pr_formal_argument_type_semantics_parser_7435_27_importGrammarForSemantics (galgas_scanner &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_formal_argument_type_semantics_parser_7435_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_formal_argument_type_semantics_parser_7435_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_formal_argument_type_semantics_parser_7457_27_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1877,7 +1877,7 @@ class semantics_parser {
   protected : void pr_formal_argument_type_semantics_parser_7457_27_importGrammarForSemantics (galgas_scanner &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_formal_argument_type_semantics_parser_7457_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_formal_argument_type_semantics_parser_7457_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_formal_argument_type_semantics_parser_7482_27_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1888,7 +1888,7 @@ class semantics_parser {
   protected : void pr_formal_argument_type_semantics_parser_7482_27_importGrammarForSemantics (galgas_scanner &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_formal_argument_type_semantics_parser_7482_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_formal_argument_type_semantics_parser_7482_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_formal_argument_type_semantics_parser_7507_27_ (galgas_scanner &,
                                 const GGS_M_semanticsEntitiesForUse  ,
@@ -1899,7 +1899,7 @@ class semantics_parser {
   protected : void pr_formal_argument_type_semantics_parser_7507_27_importGrammarForSemantics (galgas_scanner &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_formal_argument_type_semantics_parser_7507_27_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_formal_argument_type_semantics_parser_7507_27_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7538_47_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1917,7 +1917,7 @@ class semantics_parser {
                                 GGS_typeTableEnAvant  &,
                                 GGS_typeTableRoutinesAimplementer  &) ;
 
-  protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7538_47_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7538_47_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7602_47_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1935,7 +1935,7 @@ class semantics_parser {
                                 GGS_typeTableEnAvant  &,
                                 GGS_typeTableRoutinesAimplementer  &) ;
 
-  protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7602_47_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_begining_by_extern_semantics_parser_7602_47_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_semantics_parser_7716_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -1989,7 +1989,7 @@ class semantics_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_semantics_parser_7716_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_semantics_parser_7716_28_parse (galgas_scanner & inLexique) ;
 
 } ;
 

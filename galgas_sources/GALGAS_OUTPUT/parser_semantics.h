@@ -279,13 +279,13 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_typeListeBranchesInstructions
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typeListeBranchesInstructions
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -300,19 +300,19 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_typeListeBranchesInstructions * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_typeInstructionList & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_typeInstructionList & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_typeInstructionList & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_typeInstructionList & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -322,7 +322,7 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
   public : void _addAssign_operation (const GGS_typeInstructionList & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeBranchesInstructions _operator_concat (const GGS_typeListeBranchesInstructions & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeInstructionList & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -337,7 +337,7 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -510,13 +510,13 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
                             const sint32 inCount) const ;
 
   public : GGS_L_parse_rewind_signature_list
-  reader_subListWithRange (C_Compiler & _inLexique,
+  reader_subListWithRange (C_Compiler & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_L_parse_rewind_signature_list
-  reader_subListFromIndex (C_Compiler & _inLexique,
+  reader_subListFromIndex (C_Compiler & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -531,22 +531,22 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
 //--- Operator () used for method call
   public : const GGS_L_parse_rewind_signature_list * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & _inLexique,
+  public : void method_first (C_Compiler & inLexique,
                               GGS_L_ruleSyntaxSignature & _out_0,
                               GGS_location & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & _inLexique,
+  public : void method_last (C_Compiler & inLexique,
                              GGS_L_ruleSyntaxSignature & _out_0,
                              GGS_location & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & _inLexique,
+  public : void modifier_popLast (C_Compiler & inLexique,
                                 GGS_L_ruleSyntaxSignature & _out_0,
                                 GGS_location & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & _inLexique,
+  public : void modifier_popFirst (C_Compiler & inLexique,
                                  GGS_L_ruleSyntaxSignature & _out_0,
                                  GGS_location & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -558,7 +558,7 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
                                 const GGS_location & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_L_parse_rewind_signature_list _operator_concat (const GGS_L_parse_rewind_signature_list & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & _inLexique,
+  public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -576,7 +576,7 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
 
 //--- Reader 'description
   public : GGS_string
-  reader_description (C_Compiler & _inLexique
+  reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
                       const sint32 inIndentation = 0) const ;
 
@@ -955,7 +955,7 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
                                    GGS_location & outParameter3,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_typeAltProductionsMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -1087,7 +1087,7 @@ class elementOf_GGS_typeListeBranchesInstructions : public AC_galgas_list::cList
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -1131,7 +1131,7 @@ class elementOf_GGS_L_parse_rewind_signature_list : public AC_galgas_list::cList
 
 //--- Method used for description
   public : virtual void
-  appendForDescription (C_Compiler & _inLexique,
+  appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
                         const sint32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
@@ -1187,7 +1187,7 @@ class elementOf_GGS_typeAltProductionsMap : public AC_galgas_map_element {
 //--- Data member
   public : e_typeAltProductionsMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation

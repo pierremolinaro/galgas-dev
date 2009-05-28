@@ -102,7 +102,7 @@ class domain_parser {
 
   protected : virtual sint16 select_repeat_domain_parser_1 (galgas_scanner &) = 0 ;
 
-  protected : void pr_domain_declaration_domain_parser_65_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_domain_declaration_domain_parser_65_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_semantics_declaration_domain_parser_144_28_ (galgas_scanner &,
                                 GGS_M_semanticsEntitiesForUse  &,
@@ -122,7 +122,7 @@ class domain_parser {
                                 GGS_typeTableRoutinesAimplementer  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : void pr_semantics_declaration_domain_parser_144_28_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_semantics_declaration_domain_parser_144_28_parse (galgas_scanner & inLexique) ;
 
 } ;
 

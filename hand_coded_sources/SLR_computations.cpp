@@ -825,7 +825,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       generatedZone3 << inTargetFileName
                      << "::\n"
                      << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
-                     << " (" << inLexiqueName << " & _inLexique" ;
+                     << " (" << inLexiqueName << " & inLexique" ;
       const sint32 pureBNFleftNonterminalIndex = (sint32) nonTerminal._mID (HERE) ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
@@ -840,7 +840,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ;
-      generatedZone3 << "  switch (_inLexique.nextProductionIndex ()) {\n" ;
+      generatedZone3 << "  switch (inLexique.nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
         const sint32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -856,7 +856,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }
       }
       generatedZone3 << "  default :\n"
-                        "    _inLexique.internalBottomUpParserError (HERE) ;\n"
+                        "    inLexique.internalBottomUpParserError (HERE) ;\n"
                         "  }\n" ;
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal.next () ;
@@ -1011,7 +1011,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
       generatedZone3 << "\nsint16 " << inTargetFileName
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
-              << inLexiqueName << " & _inLexique"
+              << inLexiqueName << " & inLexique"
               << ") {\n" ;
       generatedZone3 << "// Productions numbers :" ;
 
@@ -1023,7 +1023,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3 << " " << cStringWithSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
       generatedZone3 << "\n"
-                 "  return (sint16) (_inLexique.nextProductionIndex () - "
+                 "  return (sint16) (inLexique.nextProductionIndex () - "
               << cStringWithSigned ((sint32)(first - 1))
               << ") ;\n"
                  "}\n\n" ;

@@ -365,7 +365,7 @@ class parser_parser {
   protected : void pr_get_lexique_infos_parser_parser_531_24_getLexiqueName (galgas_scanner &,
                                 GGS_lstring  &) ;
 
-  protected : void pr_get_lexique_infos_parser_parser_531_24_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_get_lexique_infos_parser_parser_531_24_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instruction_parser_parser_580_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -384,7 +384,7 @@ class parser_parser {
   protected : void pr_syntax_instruction_parser_parser_580_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instruction_parser_parser_580_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instruction_parser_parser_580_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_declaration_parser_parser_963_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -403,7 +403,7 @@ class parser_parser {
                                 GGS_M_nonTerminalSymbolsForGrammar  &,
                                 GGS_L_productionRules_ForGrammarComponent  &) ;
 
-  protected : void pr_syntax_declaration_parser_parser_963_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_declaration_parser_parser_963_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_declaration_parser_parser_1278_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -428,7 +428,7 @@ class parser_parser {
                                 GGS_M_nonTerminalSymbolsForGrammar  &,
                                 GGS_L_productionRules_ForGrammarComponent  &) ;
 
-  protected : void pr_syntax_declaration_parser_parser_1278_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_declaration_parser_parser_1278_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_declaration_parser_parser_1467_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -451,7 +451,7 @@ class parser_parser {
                                 GGS_M_nonTerminalSymbolsForGrammar  &,
                                 GGS_L_productionRules_ForGrammarComponent  &) ;
 
-  protected : void pr_syntax_declaration_parser_parser_1467_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_declaration_parser_parser_1467_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instructions_list_parser_parser_1666_31_ (galgas_scanner &,
                                 const GGS_string ,
@@ -470,7 +470,7 @@ class parser_parser {
   protected : void pr_syntax_instructions_list_parser_parser_1666_31_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instructions_list_parser_parser_1666_31_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instructions_list_parser_parser_1666_31_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instruction_parser_parser_1707_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -489,7 +489,7 @@ class parser_parser {
   protected : void pr_syntax_instruction_parser_parser_1707_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instruction_parser_parser_1707_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instruction_parser_parser_1707_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instruction_parser_parser_1762_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -510,7 +510,7 @@ class parser_parser {
   protected : void pr_syntax_instruction_parser_parser_1762_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instruction_parser_parser_1762_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instruction_parser_parser_1762_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instruction_parser_parser_1853_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -531,7 +531,7 @@ class parser_parser {
   protected : void pr_syntax_instruction_parser_parser_1853_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instruction_parser_parser_1853_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instruction_parser_parser_1853_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instruction_parser_parser_1958_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -552,7 +552,7 @@ class parser_parser {
   protected : void pr_syntax_instruction_parser_parser_1958_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instruction_parser_parser_1958_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instruction_parser_parser_1958_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instruction_parser_parser_2064_25_ (galgas_scanner &,
                                 const GGS_string ,
@@ -577,7 +577,7 @@ class parser_parser {
   protected : void pr_syntax_instruction_parser_parser_2064_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instruction_parser_parser_2064_25_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instruction_parser_parser_2064_25_parse (galgas_scanner & inLexique) ;
 
   protected : void pr_syntax_instructions_list_no_verif_parser_parser_2303_40_ (galgas_scanner &,
                                 const GGS_string ,
@@ -598,7 +598,7 @@ class parser_parser {
   protected : void pr_syntax_instructions_list_no_verif_parser_parser_2303_40_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
 
-  protected : void pr_syntax_instructions_list_no_verif_parser_parser_2303_40_parse (galgas_scanner & _inLexique) ;
+  protected : void pr_syntax_instructions_list_no_verif_parser_parser_2303_40_parse (galgas_scanner & inLexique) ;
 
 } ;
 

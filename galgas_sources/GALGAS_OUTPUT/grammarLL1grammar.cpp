@@ -357,9 +357,9 @@ static const sint16 gDecisionIndexes [14] = {
 //---------------------------------------------------------------------------*
 
 void grammarLL1grammar::
-nt_grammar_component_start_symbol_ (galgas_scanner & _inLexique,
+nt_grammar_component_start_symbol_ (galgas_scanner & inLexique,
                                 GGS_grammarComponentRoot & parameter_1) {
-pr_grammar_component_start_symbol_grammarModelBuilder_47_37_ (_inLexique, parameter_1) ;
+pr_grammar_component_start_symbol_grammarModelBuilder_47_37_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -438,10 +438,10 @@ void grammarLL1grammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
 //---------------------------------------------------------------------------*
 
 void grammarLL1grammar::
-nt_grammar_start_symbol_label_ (galgas_scanner & _inLexique,
+nt_grammar_start_symbol_label_ (galgas_scanner & inLexique,
                                 const GGS_lstring parameter_1,
                                 GGS_grammarLabelList & parameter_2) {
-pr_grammar_start_symbol_label_grammarModelBuilder_115_33_ (_inLexique, parameter_1, parameter_2) ;
+pr_grammar_start_symbol_label_grammarModelBuilder_115_33_ (inLexique, parameter_1, parameter_2) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -451,21 +451,21 @@ pr_grammar_start_symbol_label_grammarModelBuilder_115_33_ (_inLexique, parameter
 //---------------------------------------------------------------------------*
 
 void grammarLL1grammar::
-nt_label_formal_parameter_ (galgas_scanner & _inLexique,
+nt_label_formal_parameter_ (galgas_scanner & inLexique,
                                 GGS_lstring & parameter_1,
                                 GGS_startSymbolLabelFormalParameterList & parameter_2) {
-  switch (_inLexique.nextProductionIndex ()) {
+  switch (inLexique.nextProductionIndex ()) {
   case 1 :
-  pr_label_formal_parameter_grammarModelBuilder_135_29_ (_inLexique, parameter_1, parameter_2) ;
+  pr_label_formal_parameter_grammarModelBuilder_135_29_ (inLexique, parameter_1, parameter_2) ;
     break ;
   case 2 :
-  pr_label_formal_parameter_grammarModelBuilder_155_29_ (_inLexique, parameter_1, parameter_2) ;
+  pr_label_formal_parameter_grammarModelBuilder_155_29_ (inLexique, parameter_1, parameter_2) ;
     break ;
   case 3 :
-  pr_label_formal_parameter_grammarModelBuilder_175_29_ (_inLexique, parameter_1, parameter_2) ;
+  pr_label_formal_parameter_grammarModelBuilder_175_29_ (inLexique, parameter_1, parameter_2) ;
     break ;
   case 4 :
-  pr_label_formal_parameter_grammarModelBuilder_195_29_ (_inLexique, parameter_1, parameter_2) ;
+  pr_label_formal_parameter_grammarModelBuilder_195_29_ (inLexique, parameter_1, parameter_2) ;
     break ;
   default :
     break ;
@@ -479,8 +479,8 @@ nt_label_formal_parameter_ (galgas_scanner & _inLexique,
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_0 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_0 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -490,8 +490,8 @@ sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_0 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_grammarModelBuilder_1 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_grammarModelBuilder_1 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -501,8 +501,8 @@ sint16 grammarLL1grammar::select_grammarModelBuilder_1 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_2 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_2 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -512,8 +512,8 @@ sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_2 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_3 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_3 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -523,8 +523,8 @@ sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_3 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_4 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_4 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -534,8 +534,8 @@ sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_4 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_5 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_5 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -545,8 +545,8 @@ sint16 grammarLL1grammar::select_repeat_grammarModelBuilder_5 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_grammarModelBuilder_6 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_grammarModelBuilder_6 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -556,8 +556,8 @@ sint16 grammarLL1grammar::select_grammarModelBuilder_6 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_grammarModelBuilder_7 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_grammarModelBuilder_7 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -567,8 +567,8 @@ sint16 grammarLL1grammar::select_grammarModelBuilder_7 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 grammarLL1grammar::select_grammarModelBuilder_8 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 grammarLL1grammar::select_grammarModelBuilder_8 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

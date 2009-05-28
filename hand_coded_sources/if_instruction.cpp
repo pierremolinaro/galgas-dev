@@ -28,7 +28,7 @@
 
 void cPtr_typeCastInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_" << mCastTypeName <<"::_castFrom (_inLexique, " ;
+  ioCppFile << "GGS_" << mCastTypeName <<"::_castFrom (inLexique, " ;
   mCastedExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".getPtr (), "
             << (mCheckForKindOfClass.boolValue () ? "true" : "false")
@@ -68,7 +68,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._operator_unary_minus (_inLexique COMMA_HERE)" ;
+  ioCppFile << "._operator_unary_minus (inLexique COMMA_HERE)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -104,7 +104,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeFunctionCall::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "function_" << mFunctionName << " (_inLexique" ;
+  ioCppFile << "function_" << mFunctionName << " (inLexique" ;
   GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
   while (enumerator.hc ()) {
     ioCppFile << ", " ;
@@ -460,7 +460,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeHereExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_location (_inLexique)" ;
+  ioCppFile << "GGS_location (inLexique)" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -766,7 +766,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   const bool hasLexiqueAndLocationArguments = mHasLexiqueAndLocationArguments.boolValue () ;
   ioCppFile << "::constructor_" << mClassMethodName << " (" ;
   if (hasLexiqueAndLocationArguments) {
-    ioCppFile << "_inLexique" ;
+    ioCppFile << "inLexique" ;
   }
   GGS_typeExpressionList::cEnumerator current (mExpressionList, true) ;
   bool first = ! hasLexiqueAndLocationArguments ;
@@ -1081,7 +1081,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeAddOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._add_operation (_inLexique, " ;
+  ioCppFile << "._add_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1122,7 +1122,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeSubOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._substract_operation (_inLexique, " ;
+  ioCppFile << "._substract_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1163,7 +1163,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeMultiplyOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._multiply_operation (_inLexique, " ;
+  ioCppFile << "._multiply_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1204,7 +1204,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeDivideOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._divide_operation (_inLexique, " ;
+  ioCppFile << "._divide_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1245,7 +1245,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeModuloOperation::generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._modulo_operation (_inLexique, " ;
+  ioCppFile << "._modulo_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
             << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1287,7 +1287,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeLeftShiftOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._left_shift_operation (_inLexique, " ;
+  ioCppFile << "._left_shift_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
             << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1329,7 +1329,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeRightShiftOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mLeftExpression (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << "._right_shift_operation (_inLexique, " ;
+  ioCppFile << "._right_shift_operation (inLexique, " ;
   mRightExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
             << cStringWithSigned (mOperatorLocation.lineNumber ())
@@ -1374,7 +1374,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   if (mConversionMethod.string ().length () > 0) {
     ioCppFile << "." << mConversionMethod << " ()" ;
   }
-  ioCppFile << ".reader_" << mReaderName << " (_inLexique" ;
+  ioCppFile << ".reader_" << mReaderName << " (inLexique" ;
   GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
   while (e.hc ()) {
     ioCppFile << ", " ;
@@ -1431,7 +1431,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeDescriptionInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  ioCppFile << ".reader_description (_inLexique COMMA_SOURCE_FILE_AT_LINE ("
+  ioCppFile << ".reader_description (inLexique COMMA_SOURCE_FILE_AT_LINE ("
             << cStringWithSigned (mOperatorLocation.lineNumber ())
             << "))" ;
 }
@@ -1578,7 +1578,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_bool (_inLexique.boolOptionValueFromKeys (" ;
+  ioCppFile << "GGS_bool (inLexique.boolOptionValueFromKeys (" ;
   ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
@@ -1618,7 +1618,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_uint (_inLexique.uintOptionValueFromKeys (" ;
+  ioCppFile << "GGS_uint (inLexique.uintOptionValueFromKeys (" ;
   ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;
@@ -1658,7 +1658,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_string (true, _inLexique.stringOptionValueFromKeys (" ;
+  ioCppFile << "GGS_string (true, inLexique.stringOptionValueFromKeys (" ;
   ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
   ioCppFile << ", " ;
   ioCppFile.appendCLiteralStringConstant (mOptionName) ;

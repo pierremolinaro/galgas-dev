@@ -76,11 +76,11 @@ mOptions_galgas_cli_options (){
 //---------------------------------------------------------------------------*
 
 static void
-galgas_LL1_prgm_prologue (C_Compiler & _inLexique,
+galgas_LL1_prgm_prologue (C_Compiler & inLexique,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
   GGS_string var_cas_creationProjectName ;
-  var_cas_creationProjectName = GGS_string (true, _inLexique.stringOptionValueFromKeys ("galgas_cli_options", "create_project" COMMA_SOURCE_FILE_AT_LINE (32))) ;
-  ::routine_projectCreation (_inLexique,  var_cas_creationProjectName COMMA_SOURCE_FILE_AT_LINE (33)) ;
+  var_cas_creationProjectName = GGS_string (true, inLexique.stringOptionValueFromKeys ("galgas_cli_options", "create_project" COMMA_SOURCE_FILE_AT_LINE (32))) ;
+  ::routine_projectCreation (inLexique,  var_cas_creationProjectName COMMA_SOURCE_FILE_AT_LINE (33)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -90,7 +90,7 @@ galgas_LL1_prgm_prologue (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-galgas_LL1_prgm_epilogue (C_Compiler & /* _inLexique */,
+galgas_LL1_prgm_epilogue (C_Compiler & /* inLexique */,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
 }
 
@@ -164,29 +164,29 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
           sint16 r = 0 ;
           if (fileExtension.compare ("ggs") == 0) {
-            C_Compiler & _inLexique = * _commonLexique ;
+            C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
-            const GGS_location _here (_inLexique) ;
-            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (_inLexique, _source, _here COMMA_HERE)) ;
+            const GGS_location _here (inLexique) ;
+            const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, _source, _here COMMA_HERE)) ;
             if (var_cas_inSourceFile.isBuilt ()) {
-              ::routine_fixFileGenerationStartDirectory (_inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (41)) ;
+              ::routine_fixFileGenerationStartDirectory (inLexique,  var_cas_inSourceFile COMMA_SOURCE_FILE_AT_LINE (41)) ;
             }
             GGS_M_lexiqueComponents  var_cas_lexiqueMapForUse ;
-            var_cas_lexiqueMapForUse = GGS_M_lexiqueComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_lexiqueMapForUse = GGS_M_lexiqueComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_semanticsComponents  var_cas_semanticsComponentsMap ;
-            var_cas_semanticsComponentsMap = GGS_M_semanticsComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_semanticsComponentsMap = GGS_M_semanticsComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_syntaxComponents  var_cas_syntaxComponentsMap ;
-            var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_syntaxComponentsMap = GGS_M_syntaxComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_grammarComponents  var_cas_grammarComponentsMap ;
-            var_cas_grammarComponentsMap = GGS_M_grammarComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_grammarComponentsMap = GGS_M_grammarComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_M_optionComponents  var_cas_optionComponentsMap ;
-            var_cas_optionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (_inLexique COMMA_HERE) ;
+            var_cas_optionComponentsMap = GGS_M_optionComponents ::constructor_emptyMap (inLexique COMMA_HERE) ;
             GGS_EXsemanticContext var_cas_semanticContext ;
-            var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (_inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (_inLexique COMMA_HERE)) ;
+            var_cas_semanticContext = GGS_EXsemanticContext::constructor_new (GGS_M_filewrappers ::constructor_emptyMap (inLexique COMMA_HERE), GGS_stringset ::constructor_emptySet (), GGS_EXcategoryMethodMap ::constructor_emptyMap (inLexique COMMA_HERE)) ;
             const GGS_string _depExtension = GGS_string ("galgas-dep") ;
             const GGS_string _depPath = GGS_string ("DEPENDENCIES") ;
             if (_depExtension.isBuilt () && _depPath.isBuilt ()) {
-              galgas_LL1_grammar::_performSourceFileParsing_ (_inLexique,
+              galgas_LL1_grammar::_performSourceFileParsing_ (inLexique,
                                             _depExtension.string (),
                                             _depPath.string (),
                                             NULL,

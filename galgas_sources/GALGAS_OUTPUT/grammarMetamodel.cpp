@@ -64,11 +64,11 @@ bool elementOf_GGS_startSymbolLabelFormalParameterList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_startSymbolLabelFormalParameterList * _p = dynamic_cast <const elementOf_GGS_startSymbolLabelFormalParameterList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mFormalAgumentPassingMode._operator_isEqual (_p->mFormalAgumentPassingMode).boolValue ()
-         && mTypeName._operator_isEqual (_p->mTypeName).boolValue ()
-         && mArgumentName._operator_isEqual (_p->mArgumentName).boolValue () ;
+    const elementOf_GGS_startSymbolLabelFormalParameterList * ptr = dynamic_cast <const elementOf_GGS_startSymbolLabelFormalParameterList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mFormalAgumentPassingMode._operator_isEqual (ptr->mFormalAgumentPassingMode).boolValue ()
+         && mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
+         && mArgumentName._operator_isEqual (ptr->mArgumentName).boolValue () ;
   }
   return equal ;
 }
@@ -76,22 +76,22 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_startSymbolLabelFormalParameterList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mFormalAgumentPassingMode.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mFormalAgumentPassingMode.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mTypeName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mTypeName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mArgumentName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mArgumentName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -198,15 +198,15 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_startSymbolLabelFormalParameterList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mFormalAgumentPassingMode,
-                                _p->mTypeName,
-                                _p->mArgumentName
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mFormalAgumentPassingMode,
+                                ptr->mTypeName,
+                                ptr->mArgumentName
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -240,15 +240,15 @@ internalSubListWithRange (GGS_startSymbolLabelFormalParameterList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mFormalAgumentPassingMode, _p->mTypeName, _p->mArgumentName) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mFormalAgumentPassingMode, ptr->mTypeName, ptr->mArgumentName) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -256,7 +256,7 @@ internalSubListWithRange (GGS_startSymbolLabelFormalParameterList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -265,7 +265,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -276,14 +276,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_startSymbolLabelFormalParameterList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -294,31 +294,31 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_startSymbolLabelFormalParameterList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@startSymbolLabelFormalParameterList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@startSymbolLabelFormalParameterList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_formalArgumentPassingMode& _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mFormalAgumentPassingMode ;
-    _out_1 = _p->mTypeName ;
-    _out_2 = _p->mArgumentName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mFormalAgumentPassingMode ;
+    _out_1 = ptr->mTypeName ;
+    _out_2 = ptr->mArgumentName ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -329,22 +329,22 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_formalArgumentPassingMode& _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mFormalAgumentPassingMode ;
-    _out_1 = _p->mTypeName ;
-    _out_2 = _p->mArgumentName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mFormalAgumentPassingMode ;
+    _out_1 = ptr->mTypeName ;
+    _out_2 = ptr->mArgumentName ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -355,22 +355,22 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_formalArgumentPassingMode& _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mFormalAgumentPassingMode ;
-    _out_1 = _p->mTypeName ;
-    _out_2 = _p->mArgumentName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mFormalAgumentPassingMode ;
+    _out_1 = ptr->mTypeName ;
+    _out_2 = ptr->mArgumentName ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -383,22 +383,22 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_formalArgumentPassingMode& _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mFormalAgumentPassingMode ;
-    _out_1 = _p->mTypeName ;
-    _out_2 = _p->mArgumentName ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mFormalAgumentPassingMode ;
+    _out_1 = ptr->mTypeName ;
+    _out_2 = ptr->mArgumentName ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -537,10 +537,10 @@ bool elementOf_GGS_grammarLabelList::
 isEqualToObject (const cListElement * inOperand) const {
   bool equal = inOperand == this ;
   if (! equal) {
-    const elementOf_GGS_grammarLabelList * _p = dynamic_cast <const elementOf_GGS_grammarLabelList *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mLabelName._operator_isEqual (_p->mLabelName).boolValue ()
-         && mFormalParameterList._operator_isEqual (_p->mFormalParameterList).boolValue () ;
+    const elementOf_GGS_grammarLabelList * ptr = dynamic_cast <const elementOf_GGS_grammarLabelList *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mLabelName._operator_isEqual (ptr->mLabelName).boolValue ()
+         && mFormalParameterList._operator_isEqual (ptr->mFormalParameterList).boolValue () ;
   }
   return equal ;
 }
@@ -548,18 +548,18 @@ isEqualToObject (const cListElement * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void elementOf_GGS_grammarLabelList::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
                           const sint32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mLabelName.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mLabelName.reader_description  (inLexique COMMA_THERE, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "|-" ;
-  ioString << mFormalParameterList.reader_description  (_inLexique COMMA_THERE, inIndentation) ;
+  ioString << mFormalParameterList.reader_description  (inLexique COMMA_THERE, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -657,14 +657,14 @@ modifier_prependValue (C_Compiler & /* inLexique */,
 void GGS_grammarLabelList::
 _insulateList (void) {
   if (_shared ()) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     alloc () ;
-    while (_p != NULL) {
-      macroValidPointer (_p) ;
-      _internalAppendValues (_p->mLabelName,
-                                _p->mFormalParameterList
+    while (ptr != NULL) {
+      macroValidPointer (ptr) ;
+      _internalAppendValues (ptr->mLabelName,
+                                ptr->mFormalParameterList
                                 COMMA_HERE) ;
-      _p = _p->nextObject () ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -697,15 +697,15 @@ internalSubListWithRange (GGS_grammarLabelList & ioList,
                           const sint32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
-    cElement * _p = firstObject () ;
+    cElement * ptr = firstObject () ;
     for (sint32 i=0 ; i<inFirstIndex ; i++) {
-      macroValidPointer (_p) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ptr = ptr->nextObject () ;
     }
     for (sint32 i=0 ; i<inCount ; i++) {
-      macroValidPointer (_p) ;
-      ioList._addAssign_operation (_p->mLabelName, _p->mFormalParameterList) ;
-      _p = _p->nextObject () ;
+      macroValidPointer (ptr) ;
+      ioList._addAssign_operation (ptr->mLabelName, ptr->mFormalParameterList) ;
+      ptr = ptr->nextObject () ;
     }
   }
 }
@@ -713,7 +713,7 @@ internalSubListWithRange (GGS_grammarLabelList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_grammarLabelList GGS_grammarLabelList::
-reader_subListWithRange (C_Compiler & _inLexique,
+reader_subListWithRange (C_Compiler & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -722,7 +722,7 @@ reader_subListWithRange (C_Compiler & _inLexique,
     const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
     const sint32 rangeCount = (sint32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, firstIndex, rangeCount) ;
     }
@@ -733,14 +733,14 @@ reader_subListWithRange (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_grammarLabelList GGS_grammarLabelList::
-reader_subListFromIndex (C_Compiler & _inLexique,
+reader_subListFromIndex (C_Compiler & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_grammarLabelList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     const sint32 startIndex = (sint32) inIndex.uintValue () ;
     if (startIndex > count ()) {
-      _inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
+      inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
       internalSubListWithRange (result, startIndex, count () - startIndex) ;
     }
@@ -751,29 +751,29 @@ reader_subListFromIndex (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_grammarLabelList::
-reader_description (C_Compiler & _inLexique
+reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
                     const sint32 inIndentation) const {
-  return _description (_inLexique, "@grammarLabelList", inIndentation COMMA_THERE) ;
+  return _description (inLexique, "@grammarLabelList", inIndentation COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelList::
-method_first (C_Compiler & _inLexique,
+method_first (C_Compiler & inLexique,
               GGS_lstring & _out_0,
               GGS_startSymbolLabelFormalParameterList & _out_1
               COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'first' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLabelName ;
-    _out_1 = _p->mFormalParameterList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLabelName ;
+    _out_1 = ptr->mFormalParameterList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -783,20 +783,20 @@ method_first (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelList::
-method_last (C_Compiler & _inLexique,
+method_last (C_Compiler & inLexique,
              GGS_lstring & _out_0,
              GGS_startSymbolLabelFormalParameterList & _out_1
              COMMA_LOCATION_ARGS) const {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'last' method invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLabelName ;
-    _out_1 = _p->mFormalParameterList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLabelName ;
+    _out_1 = ptr->mFormalParameterList ;
   }else{
     _out_0.drop () ;
     _out_1.drop () ;
@@ -806,20 +806,20 @@ method_last (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelList::
-modifier_popFirst (C_Compiler & _inLexique,
+modifier_popFirst (C_Compiler & inLexique,
                  GGS_lstring & _out_0,
                  GGS_startSymbolLabelFormalParameterList & _out_1
                  COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = firstObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = firstObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popFirst' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLabelName ;
-    _out_1 = _p->mFormalParameterList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLabelName ;
+    _out_1 = ptr->mFormalParameterList ;
     _insulateList () ;
     _internalRemoveFirst () ;
   }else{
@@ -831,20 +831,20 @@ modifier_popFirst (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelList::
-modifier_popLast (C_Compiler & _inLexique,
+modifier_popLast (C_Compiler & inLexique,
                 GGS_lstring & _out_0,
                 GGS_startSymbolLabelFormalParameterList & _out_1
                 COMMA_LOCATION_ARGS) {
-  cElement * _p = NULL ;
+  cElement * ptr = NULL ;
   if (isBuilt ()) {
-    _p = lastObject () ;
-    if (_p == NULL) {
-      _inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
+    ptr = lastObject () ;
+    if (ptr == NULL) {
+      inLexique.onTheFlyRunTimeError ("'popLast' modifier invoked on an empty list" COMMA_THERE) ;
     }
   }
-  if (_p != NULL) {
-    _out_0 = _p->mLabelName ;
-    _out_1 = _p->mFormalParameterList ;
+  if (ptr != NULL) {
+    _out_0 = ptr->mLabelName ;
+    _out_1 = ptr->mFormalParameterList ;
     _insulateList () ;
     _internalRemoveLast () ;
   }else{
@@ -964,13 +964,13 @@ bool cPtr_grammarComponentRoot::
 isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   bool equal = typeid (this) == typeid (inOperand) ;
   if (equal) {
-    const cPtr_grammarComponentRoot * _p = dynamic_cast <const cPtr_grammarComponentRoot *> (inOperand) ;
-    macroValidPointer (_p) ;
-    equal = mGrammarName._operator_isEqual (_p->mGrammarName).boolValue ()
-         && mGrammarClass._operator_isEqual (_p->mGrammarClass).boolValue ()
-         && mStartSymbol._operator_isEqual (_p->mStartSymbol).boolValue ()
-         && mLabelList._operator_isEqual (_p->mLabelList).boolValue ()
-         && mUnusedNonterminalList._operator_isEqual (_p->mUnusedNonterminalList).boolValue () ;
+    const cPtr_grammarComponentRoot * ptr = dynamic_cast <const cPtr_grammarComponentRoot *> (inOperand) ;
+    macroValidPointer (ptr) ;
+    equal = mGrammarName._operator_isEqual (ptr->mGrammarName).boolValue ()
+         && mGrammarClass._operator_isEqual (ptr->mGrammarClass).boolValue ()
+         && mStartSymbol._operator_isEqual (ptr->mStartSymbol).boolValue ()
+         && mLabelList._operator_isEqual (ptr->mLabelList).boolValue ()
+         && mUnusedNonterminalList._operator_isEqual (ptr->mUnusedNonterminalList).boolValue () ;
   }
   return equal ;
 }
@@ -978,16 +978,16 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_grammarComponentRoot::
-appendForDescription (C_Compiler & _inLexique,
+appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
                       const sint32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@grammarComponentRoot:"
-           << mGrammarName.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mGrammarClass.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mStartSymbol.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mLabelList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1)
-           << mUnusedNonterminalList.reader_description  (_inLexique COMMA_THERE, inIndentation + 1) ;
+           << mGrammarName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mGrammarClass.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mStartSymbol.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mLabelList.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
+           << mUnusedNonterminalList.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -47,15 +47,15 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterTemplateString (C_Compiler & _inLexique,
+void routine_enterTemplateString (C_Compiler & inLexique,
                                 GGS_templateInstructionList  & var_cas_outResultingInstructionList COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_enterTemplateString at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   GGS_lstring  var_cas_s ;
-  var_cas_s = GGS_lstring ::constructor_retrieveAndResetTemplateString (_inLexique COMMA_HERE) ;
-  if (((var_cas_s.ggs_string ().reader_length (_inLexique COMMA_SOURCE_FILE_AT_LINE (42)))._operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
-    var_cas_outResultingInstructionList._addAssign_operation (GGS_templateInstructionString ::constructor_new (_inLexique, var_cas_s.reader_string (_inLexique COMMA_SOURCE_FILE_AT_LINE (43)) COMMA_HERE)) ;
+  var_cas_s = GGS_lstring ::constructor_retrieveAndResetTemplateString (inLexique COMMA_HERE) ;
+  if (((var_cas_s.ggs_string ().reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (42)))._operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
+    var_cas_outResultingInstructionList._addAssign_operation (GGS_templateInstructionString ::constructor_new (inLexique, var_cas_s.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (43)) COMMA_HERE)) ;
   }
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enterTemplateString\n") ;
@@ -69,19 +69,19 @@ void routine_enterTemplateString (C_Compiler & _inLexique,
 //---------------------------------------------------------------------------*
 
 void galgasTemplateParser::
-pr_template_instruction_galgasTemplateParser_49_27_ (galgasTemplateScanner & _inLexique,
+pr_template_instruction_galgasTemplateParser_49_27_ (galgasTemplateScanner & inLexique,
                                 GGS_typeVariablesMap  &var_cas_ioTemplateVariableMap,
                                 const GGS_M_semanticsEntitiesForUse  /* var_cas_inComponentSemanticsEntitiesMap */,
                                 GGS_templateInstructionList  &var_cas_ioResultingInstructionList) {
   GGS_lstring  var_cas_parameterName ;
-  _inLexique._assignFromAttribute_tokenString (var_cas_parameterName) ;
-  _inLexique.acceptTerminal (ACCEPT_TERMINAL (galgasTemplateScanner::galgasTemplateScanner_1_identifier) COMMA_HERE) ;
+  inLexique._assignFromAttribute_tokenString (var_cas_parameterName) ;
+  inLexique.acceptTerminal (ACCEPT_TERMINAL (galgasTemplateScanner::galgasTemplateScanner_1_identifier) COMMA_HERE) ;
   GGS_AC_galgasType  var_cas_type ;
   GGS_typeCplusPlusName  var_cas_cppName ;
-  var_cas_ioTemplateVariableMap.modifier_searchForReadOnlyAccess (_inLexique, var_cas_parameterName, var_cas_type, var_cas_cppName COMMA_SOURCE_FILE_AT_LINE (58)) ;
+  var_cas_ioTemplateVariableMap.modifier_searchForReadOnlyAccess (inLexique, var_cas_parameterName, var_cas_type, var_cas_cppName COMMA_SOURCE_FILE_AT_LINE (58)) ;
   GGS_typeGalgas_string  var_cas_x ;
-  var_cas_x = GGS_typeGalgas_string::_castFrom (_inLexique, var_cas_type.getPtr (), true, var_cas_parameterName COMMA_SOURCE_FILE_AT_LINE (59)) ;
-  var_cas_ioResultingInstructionList._addAssign_operation (GGS_templateInstructionConstant ::constructor_new (_inLexique, var_cas_cppName COMMA_HERE)) ;
+  var_cas_x = GGS_typeGalgas_string::_castFrom (inLexique, var_cas_type.getPtr (), true, var_cas_parameterName COMMA_SOURCE_FILE_AT_LINE (59)) ;
+  var_cas_ioResultingInstructionList._addAssign_operation (GGS_templateInstructionConstant ::constructor_new (inLexique, var_cas_cppName COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -91,19 +91,19 @@ pr_template_instruction_galgasTemplateParser_49_27_ (galgasTemplateScanner & _in
 //---------------------------------------------------------------------------*
 
 void galgasTemplateParser::
-pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (galgasTemplateScanner & _inLexique,
+pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (galgasTemplateScanner & inLexique,
                                 GGS_typeVariablesMap  &var_cas_ioTemplateVariableMap,
                                 const GGS_M_semanticsEntitiesForUse  var_cas_inComponentSemanticsEntitiesMap,
                                 GGS_templateInstructionList  &var_cas_outResultingInstructionList) {
   var_cas_outResultingInstructionList = GGS_templateInstructionList ::constructor_emptyList () ;
-  var_cas_ioTemplateVariableMap.prologue_verifyVariableUsing (_inLexique COMMA_SOURCE_FILE_AT_LINE (71)) ;
-  ::routine_enterTemplateString (_inLexique,  var_cas_outResultingInstructionList COMMA_SOURCE_FILE_AT_LINE (72)) ;
+  var_cas_ioTemplateVariableMap.prologue_verifyVariableUsing (inLexique COMMA_SOURCE_FILE_AT_LINE (71)) ;
+  ::routine_enterTemplateString (inLexique,  var_cas_outResultingInstructionList COMMA_SOURCE_FILE_AT_LINE (72)) ;
   { bool syntaxRepeat_0 = true ;
     while (syntaxRepeat_0) {
-      switch (select_repeat_galgasTemplateParser_0 (_inLexique)) {
+      switch (select_repeat_galgasTemplateParser_0 (inLexique)) {
         case 2 : {
-          nt_template_instruction_ (_inLexique, var_cas_ioTemplateVariableMap, var_cas_inComponentSemanticsEntitiesMap, var_cas_outResultingInstructionList) ;
-          ::routine_enterTemplateString (_inLexique,  var_cas_outResultingInstructionList COMMA_SOURCE_FILE_AT_LINE (80)) ;
+          nt_template_instruction_ (inLexique, var_cas_ioTemplateVariableMap, var_cas_inComponentSemanticsEntitiesMap, var_cas_outResultingInstructionList) ;
+          ::routine_enterTemplateString (inLexique,  var_cas_outResultingInstructionList COMMA_SOURCE_FILE_AT_LINE (80)) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -111,7 +111,7 @@ pr_lexique_component_start_symbol_galgasTemplateParser_65_37_ (galgasTemplateSca
       }
     }
   }
-  var_cas_ioTemplateVariableMap.epilogue_verifyVariableUsing (_inLexique, GGS_location (_inLexique) COMMA_SOURCE_FILE_AT_LINE (71)) ;
+  var_cas_ioTemplateVariableMap.epilogue_verifyVariableUsing (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (71)) ;
 }
 
 //---------------------------------------------------------------------------*

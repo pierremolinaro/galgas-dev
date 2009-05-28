@@ -165,9 +165,9 @@ static const sint16 gDecisionIndexes [5] = {
 //---------------------------------------------------------------------------*
 
 void optionLL1grammar::
-nt_option_ (galgas_scanner & _inLexique,
+nt_option_ (galgas_scanner & inLexique,
                                 GGS_commandLineOptionList & parameter_1) {
-pr_option_optionModelBuilder_54_13_ (_inLexique, parameter_1) ;
+pr_option_optionModelBuilder_54_13_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -177,9 +177,9 @@ pr_option_optionModelBuilder_54_13_ (_inLexique, parameter_1) ;
 //---------------------------------------------------------------------------*
 
 void optionLL1grammar::
-nt_option_component_start_symbol_ (galgas_scanner & _inLexique,
+nt_option_component_start_symbol_ (galgas_scanner & inLexique,
                                 GGS_optionComponentRoot & parameter_1) {
-pr_option_component_start_symbol_optionModelBuilder_30_36_ (_inLexique, parameter_1) ;
+pr_option_component_start_symbol_optionModelBuilder_30_36_ (inLexique, parameter_1) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -258,8 +258,8 @@ void optionLL1grammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
 //---------------------------------------------------------------------------*
 
 
-sint16 optionLL1grammar::select_repeat_optionModelBuilder_0 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 optionLL1grammar::select_repeat_optionModelBuilder_0 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*

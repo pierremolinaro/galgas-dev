@@ -128,7 +128,7 @@ class GGS_lexicalAttributeMap : public AC_galgas_map {
                                    GGS_string& outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_lexicalAttributeMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -224,7 +224,7 @@ class GGS_terminalMap : public AC_galgas_map {
                                    GGS_stringlist & outParameter0,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_description (C_Compiler & _inLexique
+  public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
                                           const sint32 inIndentation = 0) const ;
   public : static GGS_terminalMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
@@ -278,7 +278,7 @@ class elementOf_GGS_lexicalAttributeMap : public AC_galgas_map_element {
 //--- Data member
   public : e_lexicalAttributeMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation
@@ -313,7 +313,7 @@ class elementOf_GGS_terminalMap : public AC_galgas_map_element {
 //--- Data member
   public : e_terminalMap mInfo ;
 //--- Method for 'description' reader
-  public : void appendForMapDescription (C_Compiler & _inLexique,
+  public : void appendForMapDescription (C_Compiler & inLexique,
                                          const sint32 inElementIndex,
                                          C_String & ioString,
                                          const sint32 inIndentation

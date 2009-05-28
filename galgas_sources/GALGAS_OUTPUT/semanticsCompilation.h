@@ -75,7 +75,7 @@ void routine_constructBuiltinTypeMap (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticDeclaration__enterType)  (C_Compiler & _inLexique,
+typedef void (*typeCategoryMethod__semanticDeclaration__enterType)  (C_Compiler & inLexique,
                                 const cPtr_semanticDeclaration * inObjectPtr,
                                 GGS_semanticContext & var_cas_ioSemanticContext
                                 COMMA_LOCATION_ARGS) ;

@@ -237,11 +237,11 @@ static const sint16 gDecisionIndexes [7] = {
 //---------------------------------------------------------------------------*
 
 void projectLL1grammar::
-nt_project_component_start_symbol_ (galgas_scanner & _inLexique,
+nt_project_component_start_symbol_ (galgas_scanner & inLexique,
                                 GGS_projectSourceList & parameter_1,
                                 GGS_lstring & parameter_2,
                                 GGS_location & parameter_3) {
-pr_project_component_start_symbol_projectModelBuilder_35_37_ (_inLexique, parameter_1, parameter_2, parameter_3) ;
+pr_project_component_start_symbol_projectModelBuilder_35_37_ (inLexique, parameter_1, parameter_2, parameter_3) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -328,8 +328,8 @@ void projectLL1grammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
 //---------------------------------------------------------------------------*
 
 
-sint16 projectLL1grammar::select_repeat_projectModelBuilder_0 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 projectLL1grammar::select_repeat_projectModelBuilder_0 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -339,8 +339,8 @@ sint16 projectLL1grammar::select_repeat_projectModelBuilder_0 (galgas_scanner & 
 //---------------------------------------------------------------------------*
 
 
-sint16 projectLL1grammar::select_projectModelBuilder_1 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 projectLL1grammar::select_projectModelBuilder_1 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -350,8 +350,8 @@ sint16 projectLL1grammar::select_projectModelBuilder_1 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 projectLL1grammar::select_projectModelBuilder_2 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 projectLL1grammar::select_projectModelBuilder_2 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -361,8 +361,8 @@ sint16 projectLL1grammar::select_projectModelBuilder_2 (galgas_scanner & _inLexi
 //---------------------------------------------------------------------------*
 
 
-sint16 projectLL1grammar::select_repeat_projectModelBuilder_3 (galgas_scanner & _inLexique) {
-  return _inLexique.nextProductionIndex () ;
+sint16 projectLL1grammar::select_repeat_projectModelBuilder_3 (galgas_scanner & inLexique) {
+  return inLexique.nextProductionIndex () ;
 }
 
 //---------------------------------------------------------------------------*
