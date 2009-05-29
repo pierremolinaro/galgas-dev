@@ -1292,6 +1292,7 @@ class @C_mapToImplement extends @typeEntityToGenerate {
   @lstring mEnumTypeName feature nogetter ; # Empty if no associated enumeration
   @lstring mCheckFinalStateMethod feature nogetter ; # Empty if no associated enumeration
   @typeListeAttributsSemantiques mNonExternAttributesList feature nogetter ;
+  @typeSemanticAttributesMap mAttributeMap feature nogetter ;
   @insertOrSearchMethodList mInsertMethodList feature nogetter ;
   @insertOrSearchMethodList mSearchMethodList feature nogetter ;
   @insertOrSearchMethodList mRemoveMethodList feature nogetter ;

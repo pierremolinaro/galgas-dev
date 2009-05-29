@@ -113,11 +113,7 @@ end method ;
 override method @lexicalErrorInstruction.checkLexicalInstruction
   ?!@lexicalMessageMap ioLexicalMessageMap
 :
-  if [ioLexicalMessageMap hasKey ![mErrorMessageName string]] then
-
-  else
-    [ioLexicalMessageMap searchKey !mErrorMessageName ?* ?*] ;
-  end if ;
+  [!?ioLexicalMessageMap setMessageIsUsedForKey !true !mErrorMessageName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -125,7 +121,7 @@ end method ;
 override method @lexicalWarningInstruction.checkLexicalInstruction
   ?!@lexicalMessageMap ioLexicalMessageMap
 :
-  [ioLexicalMessageMap searchKey !mWarningMessageName ?* ?*] ;
+  [!?ioLexicalMessageMap setMessageIsUsedForKey !true !mWarningMessageName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
