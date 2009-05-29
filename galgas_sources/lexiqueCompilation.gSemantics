@@ -25,13 +25,118 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
+abstract method @lexicalInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStructuredSendInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalSimpleSendInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalRepeatInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap ioLexicalMessageMap
+:
+  foreach mLexicalWhileBranchList do
+    foreach mWhileInstructionList do
+      [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+    end foreach ;
+  end foreach ;
+  foreach mRepeatedInstructionList do
+    [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalSelectInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap ioLexicalMessageMap
+:
+  foreach mLexicalSelectBranchList do
+    foreach mSelectInstructionList do
+      [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+    end foreach ;
+  end foreach ;
+  foreach mDefaultInstructionList do
+    [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalActionInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalLogInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalRewindInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalDropInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalTagInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap unused ioLexicalMessageMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalErrorInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap ioLexicalMessageMap
+:
+  if [ioLexicalMessageMap hasKey ![mErrorMessageName string]] then
+
+  else
+    [ioLexicalMessageMap searchKey !mErrorMessageName ?* ?*] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalWarningInstruction.checkLexicalInstruction
+  ?!@lexicalMessageMap ioLexicalMessageMap
+:
+  [ioLexicalMessageMap searchKey !mWarningMessageName ?* ?*] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 routine compileLexiqueComponent
   ??@lstring inSourceFile
   ??@string unused inOutputDirectory
 :
   @lexiqueComponentRoot lexiqueComponentRoot ;
   grammar lexiqueLL1grammar in inSourceFile ?lexiqueComponentRoot ;
-#--- Check component name
+#--------------------------------------- Check component name
   @lstring componentName := [lexiqueComponentRoot mLexiqueComponentName] ;
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   if [componentName string] != basename then
@@ -40,55 +145,68 @@ routine compileLexiqueComponent
     . "') against the source file base name ('" . basename . "'): they should be identical"
     ;
   end if ; 
-#--- Lexical attribute type name set
-  @stringset allowedLexicalTypeNameSet [emptySet] ;
-  allowedLexicalTypeNameSet += !"lstring" ;
-  allowedLexicalTypeNameSet += !"lchar" ;
-  allowedLexicalTypeNameSet += !"luint" ;
-  allowedLexicalTypeNameSet += !"luint64" ;
-  allowedLexicalTypeNameSet += !"lsint" ;
-  allowedLexicalTypeNameSet += !"lsint64" ;
-  allowedLexicalTypeNameSet += !"ldouble" ;
-#--- Build lexical attribute map
+#--------------------------------------- Lexical attribute type name map
+  @lexicalTypeMap lexicalTypeMap [emptyMap] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"string" !here] ![@lexicalTypeEnum lexicalType_string]] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"char"   !here] ![@lexicalTypeEnum lexicalType_char]] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"uint"   !here] ![@lexicalTypeEnum lexicalType_uint]] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"uint64" !here] ![@lexicalTypeEnum lexicalType_uint64]] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"sint"   !here] ![@lexicalTypeEnum lexicalType_sint]] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
+  [!?lexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
+#--------------------------------------- Build lexical attribute map
   @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
   foreach [lexiqueComponentRoot mLexicalAttributeList] do
-    if [allowedLexicalTypeNameSet hasKey ![mTypeName string]] then
-      [!?lexicalAttributeMap insertKey !mName ![mTypeName string]] ;
+    if [lexicalTypeMap hasKey ![mTypeName string]] then
+      @lexicalTypeEnum lexicalType ;
+      [lexicalTypeMap searchKey !mTypeName ?lexicalType] ;
+      [!?lexicalAttributeMap insertKey !mName !lexicalType] ;
     else
       @string m := "" ;
       m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
       @bool firstLoop := true ;
-      foreach allowedLexicalTypeNameSet (@string kTypeName)
-      do
-        m .= " @" . kTypeName ;
+      foreach lexicalTypeMap do
+        m .= " @" . key ;
       between
         m .= "," ;
       end foreach ;
       error mTypeName: m ;
     end if ;
   end foreach ;
-#--- Build terminal map
+#--------------------------------------- Build terminal map
   @terminalMap terminalMap [emptyMap] ;
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
-    @stringlist argumentTypeList [emptyList] ;
+    @lexicalTypeList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
-      @string attributeTypeName ;
-      [lexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
-      argumentTypeList += !attributeTypeName ;
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexicalAttributeMap searchKey !kAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !attributeLexicalType ;
     end foreach ;
     [!?terminalMap insertKey !mName !argumentTypeList] ;
   end foreach ;
   foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
-    @stringlist argumentTypeList [emptyList] ;
+    @lexicalTypeList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
-      @string attributeTypeName ;
-      [lexicalAttributeMap searchKey !kAttributeName ?attributeTypeName] ;
-      argumentTypeList += !attributeTypeName ;
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexicalAttributeMap searchKey !kAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !attributeLexicalType ;
     end foreach ;
     foreach mEntryList do
       [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
     end foreach ;
   end foreach ;
+#--------------------------------------- Build Message map
+  @lexicalMessageMap lexicalMessageMap [emptyMap] ;
+  foreach [lexiqueComponentRoot mLexicalMessageDeclarationList] do
+    [!?lexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
+  end foreach ;
+#--------------------------------------- Check rules
+  foreach [lexiqueComponentRoot mLexicalExplicitRuleList] do
+    foreach mInstructionList do
+      [mInstruction checkLexicalInstruction !?lexicalMessageMap] ;
+    end foreach ;
+  end foreach ;
+log lexicalMessageMap ;
 end routine ;
 
 #---------------------------------------------------------------------------*

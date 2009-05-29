@@ -55,7 +55,7 @@ map @tagMap {
 
 #------------------------------------------------------------------*
 
-map @lexicalTypeMap {
+map @EXLexicalTypeMap {
   @AC_galgasType mAttributType ;
   insert insertKey error message "--- internal error ---" ;
   search searchKey error message "there is no type named '@%K'" ;

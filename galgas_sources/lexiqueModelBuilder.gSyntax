@@ -37,7 +37,7 @@ nonterminal <lexical_explicit_rule> ?!@lexicalExplicitRuleList ioLexicalExplicit
 
 nonterminal <lexical_implicit_rule> ?!@lexicalImplicitRuleList ioLexicalImplicitRuleList ;
 
-nonterminal <lexical_error_message_declaration> ?!@lexicalErrorMessageDeclarationList ioLexicalErrorMessageDeclaration ;
+nonterminal <lexical_message_declaration> ?!@lexicalMessageDeclarationList ioLexicalErrorMessageDeclaration ;
 
 nonterminal <lexical_instruction> ?!@lexicalInstructionList ioInstructionList ;
 
@@ -71,7 +71,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
   @lexicalAttributeList lexicalAttributeList [emptyList] ;
   @lexicalStyleList lexicalStyleList [emptyList] ;
   @terminalDeclarationList terminalDeclarationList [emptyList] ;
-  @lexicalErrorMessageDeclarationList lexicalErrorMessageDeclarationList [emptyList] ;
+  @lexicalMessageDeclarationList lexicalMessageDeclarationList [emptyList] ;
   @lexicalListDeclarationList lexicalListDeclarationList [emptyList] ;
   @lexicalImplicitRuleList lexicalImplicitRuleList [emptyList] ;
   @lexicalExplicitRuleList lexicalExplicitRuleList [emptyList] ;
@@ -108,7 +108,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
     end select ;
     $;$ ;
   while
-    <lexical_error_message_declaration> !? lexicalErrorMessageDeclarationList ;
+    <lexical_message_declaration> !? lexicalMessageDeclarationList ;
   end repeat ;
   $end$ ;
   $lexique$ ;
@@ -121,7 +121,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
     !lexicalAttributeList
     !lexicalStyleList
     !terminalDeclarationList
-    !lexicalErrorMessageDeclarationList
+    ! lexicalMessageDeclarationList
     !lexicalListDeclarationList
     !lexicalImplicitRuleList
     !lexicalExplicitRuleList
@@ -175,8 +175,8 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_error_message_declaration>
-  ?!@lexicalErrorMessageDeclarationList ioLexicalErrorMessageDeclarationList
+rule <lexical_message_declaration>
+  ?!@lexicalMessageDeclarationList ioLexicalMessageDeclarationList
 :
   $message$ ;
   @lstring messageName ;
@@ -185,7 +185,7 @@ rule <lexical_error_message_declaration>
   @lstring messageValue ;
   $literal_string$ ?messageValue ;
   $;$ ;
-  ioLexicalErrorMessageDeclarationList += !messageName !messageValue ;
+  ioLexicalMessageDeclarationList += !messageName !messageValue ;
 end rule ;
 
 #---------------------------------------------------------------------------*
