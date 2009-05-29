@@ -662,16 +662,18 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Modifiers "set'Value'ForKey"
   inHfile << "//--- Modifiers \"set'Value'ForKey\"\n" ;
-  GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
-  while (currentAttribute.hc ()) {
-    inHfile << "  public : void modifier_set" << currentAttribute._mAttributeName (HERE).stringWithUpperCaseFirstLetter ()
-            << "ForKey (C_Compiler & inLexique,\n"
-               "                        const " ;
-    currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
-    inHfile << "inValue,\n"
-               "                        const GGS_string & inKey\n"
-               "                        COMMA_LOCATION_ARGS) ;\n" ;
-    currentAttribute.next () ;
+  GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
+  while (currentAttributeForSetter.hc ()) {
+    if (currentAttributeForSetter._mHasSetter (HERE).boolValue ()) {
+      inHfile << "  public : void modifier_set" << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
+              << "ForKey (C_Compiler & inLexique,\n"
+                 "                        const " ;
+      currentAttributeForSetter._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
+      inHfile << "inValue,\n"
+                 "                        const GGS_lstring & inKey\n"
+                 "                        COMMA_LOCATION_ARGS) ;\n" ;
+    }
+    currentAttributeForSetter.next () ;
   }
   inHfile << "\n" ;
 
@@ -686,7 +688,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     if (currentRemoveMethod._mIsGetIndexMethod (HERE).boolValue ()) {
       inHfile << ",\n                                GGS_luint & outIndex" ;
     }
-    currentAttribute.rewind () ;
+    GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
     while (currentAttribute.hc ()) {
       inHfile << ",\n                                " ;
@@ -1150,34 +1152,36 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
 //--- Implement modifiers "set'Value'ForKey"
-  GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
-  while (currentAttribute.hc ()) {
-    inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << mMapTypeName << "::\n"
-                 "modifier_set" << currentAttribute._mAttributeName (HERE).stringWithUpperCaseFirstLetter ()
-              << "ForKey (C_Compiler & inLexique,\n"
-               "                        const " ;
-    currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
-    inCppFile << "inValue,\n"
-               "                        const GGS_string & inKey\n"
-               "                        COMMA_LOCATION_ARGS) {\n"
-               "  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {\n"
-               "    insulateMap () ;\n"
-               "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
-               "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
-               "    cElement * node = (cElement *) p ;\n"
-               "    if (node == NULL) {\n"
-               "      C_String errorMessage ;\n"
-               "      errorMessage << \"the '\" << inKey << \"' key does not exist when calling 'set"
-            << currentAttribute._mAttributeName (HERE).stringWithUpperCaseFirstLetter ()
-            << "ForKey' modifier\" ;\n"
-               "      inLexique.onTheFlyRunTimeError (errorMessage COMMA_THERE) ;\n"
-               "    }else{\n"
-               "      node->mInfo." << currentAttribute._mAttributeName (HERE) << " = inValue ;\n"
-               "    }\n"
-               "  }\n"
-               "}\n\n" ;
-    currentAttribute.next () ;
+  GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
+  while (currentAttributeForSetter.hc ()) {
+    if (currentAttributeForSetter._mHasSetter (HERE).boolValue ()) {
+      inCppFile.appendCppHyphenLineComment () ;
+      inCppFile << "void GGS_" << mMapTypeName << "::\n"
+                   "modifier_set" << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
+                << "ForKey (C_Compiler & inLexique,\n"
+                 "                        const " ;
+      currentAttributeForSetter._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
+      inCppFile << "inValue,\n"
+                 "                        const GGS_lstring & inKey\n"
+                 "                        COMMA_LOCATION_ARGS) {\n"
+                 "  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {\n"
+                 "    insulateMap () ;\n"
+                 "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
+                 "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
+                 "    cElement * node = (cElement *) p ;\n"
+                 "    if (node == NULL) {\n"
+                 "      C_String errorMessage ;\n"
+                 "      errorMessage << \"the '\" << inKey << \"' key does not exist when calling 'set"
+              << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
+              << "ForKey' modifier\" ;\n"
+                 "      inLexique.onTheFlyRunTimeError (errorMessage COMMA_THERE) ;\n"
+                 "    }else{\n"
+                 "      node->mInfo." << currentAttributeForSetter._key (HERE) << " = inValue ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "}\n\n" ;
+    }
+    currentAttributeForSetter.next () ;
   }
 
 //--- Implement search routines

@@ -48,7 +48,7 @@ map @terminalMap {
 
 map @lexicalMessageMap {
   @lstring mLexicalMessage ;
-  @bool mMessageIsUsed ;
+  @bool messageIsUsed feature setter ;
   insert insertKey error message "the '%K' message has been already declared in %L" ;
   search searchKey error message "the '%K' message is not declared" ;
 }
