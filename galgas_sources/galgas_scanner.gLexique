@@ -18,13 +18,13 @@
 
 lexique galgas_scanner :
 
-@lstring identifierString ;
-@luint uint32value ;
-@lsint sint32value ;
-@luint64 uint64value ;
-@lsint64 sint64value ;
-@lchar charValue ;
-@lstring tokenString ;
+@string identifierString ;
+@uint uint32value ;
+@sint sint32value ;
+@uint64 uint64value ;
+@sint64 sint64value ;
+@char charValue ;
+@string tokenString ;
 
 style keywordsStyle -> "Keywords:" ;
 style delimitersStyle -> "Delimiters:" ;
@@ -143,7 +143,7 @@ rule 'a'->'z' |  'A'->'Z' :
 end rule ;
 
 #------------------------------- Integer, floating Point Constant ------------------
-@ldouble floatValue ;
+@double floatValue ;
 $literal_double$ !floatValue !tokenString error message "a float number" style float_csts ;
 $unsigned_literal_integer$ ! uint32value error message "a 32-bit unsigned decimal number" style integerStyle ;
 $signed_literal_integer$ ! sint32value error message "a 32-bit signed decimal number" style integerStyle ;

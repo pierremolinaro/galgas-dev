@@ -75,7 +75,7 @@ nonterminal <attribute_or_terminal_symbol_declaration>
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeLexicalAttributesMap table_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
-  ??@lexicalTypeMap inLexicalTypeMap
+  ??@EXLexicalTypeMap inLexicalTypeMap
   ??@M_styles ioStylesMap
   ??@bool inIsTemplate
 label parse
@@ -217,24 +217,24 @@ extern routine generate_scanner
 
 #-------------------------------------------------------------------*
 
-routine buildLexicalTypeMap !@lexicalTypeMap outLexicalTypeMap :
-  outLexicalTypeMap := [@lexicalTypeMap emptyMap] ;
+routine buildLexicalTypeMap !@EXLexicalTypeMap outLexicalTypeMap :
+  outLexicalTypeMap := [@EXLexicalTypeMap emptyMap] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"lstring" !here] ![@typeGalgas_lstring new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"string" !here] ![@typeGalgas_lstring new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"lchar" !here] ![@typeGalgas_lchar new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"char" !here] ![@typeGalgas_lchar new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"luint" !here] ![@typeGalgas_luint new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"uint" !here] ![@typeGalgas_luint new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"lsint" !here] ![@typeGalgas_lsint new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"sint" !here] ![@typeGalgas_lsint new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"luint64" !here] ![@typeGalgas_luint64 new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"uint64" !here] ![@typeGalgas_luint64 new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"lsint64" !here] ![@typeGalgas_lsint64 new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@typeGalgas_lsint64 new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"lbool" !here] ![@typeGalgas_lbool new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"bool" !here] ![@typeGalgas_lbool new]] ;
 
-  [!?outLexicalTypeMap insertKey ![@lstring new !"ldouble" !here] ![@typeGalgas_ldouble new]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"double" !here] ![@typeGalgas_ldouble new]] ;
 end routine ;
 
 #-------------------------------------------------------------------*
@@ -280,7 +280,7 @@ rule <galgas_component>
   @templateDelimiterMap templateDelimiterMap [emptyMap] ;
   @templateReplacementMap templateReplacementMap [emptyMap] ;
 #--- Define lexical types
-  @lexicalTypeMap lexicalTypeMap ;
+  @EXLexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
 
 #-- Styles map
@@ -386,7 +386,7 @@ label importLexique
   @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
   @tokensInListMap tokensInListMap [emptyMap] ;
 #--- Define lexical types
-  @lexicalTypeMap lexicalTypeMap ;
+  @EXLexicalTypeMap lexicalTypeMap ;
   buildLexicalTypeMap ?lexicalTypeMap ;
 #-- Styles map
   @M_styles stylesMap [emptyMap] ;
@@ -654,7 +654,7 @@ rule <attribute_or_terminal_symbol_declaration>
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeLexicalAttributesMap table_des_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
-  ??@lexicalTypeMap inLexicalTypeMap
+  ??@EXLexicalTypeMap inLexicalTypeMap
   ??@M_styles ioStylesMap
   ??@bool inIsTemplate
 :

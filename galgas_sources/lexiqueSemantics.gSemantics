@@ -2,8 +2,36 @@ semantics lexiqueSemantics :
 
 #---------------------------------------------------------------------------*
 
+enum @lexicalTypeEnum {
+  constructor lexicalType_string ;
+  constructor lexicalType_char ;
+  constructor lexicalType_uint ;
+  constructor lexicalType_uint64 ;
+  constructor lexicalType_sint ;
+  constructor lexicalType_sint64 ;
+  constructor lexicalType_double ;
+}{
+
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalTypeList {
+  @lexicalTypeEnum mLexicalType ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @lexicalTypeMap {
+  @lexicalTypeEnum mLexicalType ;
+  insert insertKey error message "the '@%K' lexical type is already declared in %L" ;
+  search searchKey error message "there is no '@%K' lexical type" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @lexicalAttributeMap {
-  @string mTypeName ;
+  @lexicalTypeEnum mLexicalType ;
   insert insertKey error message "the '%K' lexical attribute has been already declared in %L" ;
   search searchKey error message "the '%K' lexical attribute is not declared" ;
 }
@@ -11,9 +39,18 @@ map @lexicalAttributeMap {
 #---------------------------------------------------------------------------*
 
 map @terminalMap {
-  @stringlist mArgumentTypeList ;
+  @lexicalTypeList mArgumentTypeList ;
   insert insertKey error message "the '%K' terminal has been already declared in %L" ;
   search searchKey error message "the '%K' terminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @lexicalMessageMap {
+  @lstring mLexicalMessage ;
+  @bool mMessageIsUsed ;
+  insert insertKey error message "the '%K' message has been already declared in %L" ;
+  search searchKey error message "the '%K' message is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

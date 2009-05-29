@@ -2,7 +2,7 @@
 #                                                                           *
 #  'lexique' component metamodel                                            *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -43,7 +43,7 @@ list @lexicalImplicitRuleList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalErrorMessageDeclarationList {
+list @lexicalMessageDeclarationList {
   @lstring mMessageName ;
   @lstring mMessageValue ;
 }
@@ -97,7 +97,14 @@ abstract class @lexicalExpression {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalInstructionList ;
+abstract class @lexicalInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalInstructionList {
+  @lexicalInstruction mInstruction ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -147,11 +154,6 @@ class @lexicalStringNotMatch extends @lexicalExpression {
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalInstruction {
-}
-
-#---------------------------------------------------------------------------*
-
 list @lexicalSendSearchList ;
 
 #---------------------------------------------------------------------------*
@@ -193,18 +195,6 @@ list @lexicalSendSearchList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalWhileBranchList ;
-list @lexicalSelectBranchList ;
-
-#---------------------------------------------------------------------------*
-
-class @lexicalRepeatInstruction extends @lexicalInstruction {
-  @lexicalInstructionList mRepeatedInstructionList ;
-  @lexicalWhileBranchList mLexicalWhileBranchList ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @lexicalWhileBranchList {
   @lexicalExpression mWhileExpression ;
   @lexicalInstructionList mWhileInstructionList ;
@@ -212,15 +202,9 @@ list @lexicalWhileBranchList {
 
 #---------------------------------------------------------------------------*
 
-class @lexicalSelectInstruction extends @lexicalInstruction {
-  @lexicalSelectBranchList mLexicalWhileBranchList ;
-  @lexicalInstructionList mDefaultInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @lexicalInstructionList {
-  @lexicalInstruction mInstructionList ;
+class @lexicalRepeatInstruction extends @lexicalInstruction {
+  @lexicalInstructionList mRepeatedInstructionList ;
+  @lexicalWhileBranchList mLexicalWhileBranchList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -232,14 +216,9 @@ list @lexicalSelectBranchList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalRoutineCallActualArgumentList ;
-
-#---------------------------------------------------------------------------*
-
-class @lexicalActionInstruction extends @lexicalInstruction {
-  @lstring mActionName ;
-  @lexicalRoutineCallActualArgumentList mActualArgumentList ;
-  @lstringlist mErrorMessageList ;
+class @lexicalSelectInstruction extends @lexicalInstruction {
+  @lexicalSelectBranchList mLexicalSelectBranchList ;
+  @lexicalInstructionList mDefaultInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -251,6 +230,14 @@ abstract class @lexicalActualArgument {
 
 list @lexicalRoutineCallActualArgumentList {
   @lexicalActualArgument mLexicalActualArgument ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalActionInstruction extends @lexicalInstruction {
+  @lstring mActionName ;
+  @lexicalRoutineCallActualArgumentList mActualArgumentList ;
+  @lstringlist mErrorMessageList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -340,10 +327,10 @@ class @lexiqueComponentRoot {
   @lexicalAttributeList mLexicalAttributeList  ;
   @lexicalStyleList mLexicalStyleList feature nogetter ;
   @terminalDeclarationList mTerminalDeclarationList  ;
-  @lexicalErrorMessageDeclarationList mLexicalErrorMessageDeclarationList feature nogetter ;
+  @lexicalMessageDeclarationList mLexicalMessageDeclarationList ;
   @lexicalListDeclarationList mLexicalListDeclarationList  ;
   @lexicalImplicitRuleList mLexicalImplicitRuleList feature nogetter ;
-  @lexicalExplicitRuleList mLexicalExplicitRuleList feature nogetter ;
+  @lexicalExplicitRuleList mLexicalExplicitRuleList ;
 }
 
 #---------------------------------------------------------------------------*
