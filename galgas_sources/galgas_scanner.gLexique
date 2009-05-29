@@ -135,8 +135,8 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat
-    enterCharacterIntoString (identifierString, toLower (*)) ;
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?identifierString !toLower (!*) ;
+    enterCharacterIntoString !?tokenString !* ;
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end repeat ;
   send search identifierString in galgasKeyWordList default $identifier$ ;
@@ -157,57 +157,57 @@ message internalError : "internal error" ;
 rule "0x" :
   repeat
   while '0'->'9' :
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   while 'a'->'f' :
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   while 'A'->'F' :
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   while '_' :
   end repeat ;
   select
   when "LS" :
-    convertHexStringIntoSInt64 (tokenString , sint64value) error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoSInt64 !?tokenString !sint64value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer64$ ;
   when 'S' | 's' :
-    convertHexStringIntoSInt (tokenString , sint32value) error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoSInt !?tokenString !sint32value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer$ ;
   when 'L' :
-    convertHexStringIntoUInt64 (tokenString , uint64value) error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoUInt64 !?tokenString !uint64value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer64$ ;
   default
-    convertHexStringIntoUInt (tokenString , uint32value) error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoUInt !?tokenString !uint32value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer$ ;
   end select ;
 end rule ;
 
 rule '0'->'9' :
-  enterCharacterIntoString (tokenString, *) ;
+  enterCharacterIntoString !?tokenString !* ;
   repeat
   while '0'->'9' :
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   while '_' :
   end repeat ;
   select
   when 'S' | 's' :
-    convertDecimalStringIntoSInt (tokenString , sint32value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoSInt !?tokenString !sint32value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer$ ;
   when "LS" :
-    convertDecimalStringIntoSInt64 (tokenString , sint64value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoSInt64 !?tokenString !sint64value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer64$ ;
   when 'L' :
-    convertDecimalStringIntoUInt64 (tokenString , uint64value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoUInt64 !?tokenString !uint64value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer64$ ;
   when '.' :
-    enterCharacterIntoString (tokenString, '.') ;
+    enterCharacterIntoString !?tokenString !'.' ;
     repeat
     while '0'->'9' :
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while '_' :
     end repeat ;
-    convertStringToDouble (tokenString, floatValue) error floatNumberConversionError ;
+    convertStringToDouble !?tokenString !floatValue error floatNumberConversionError ;
     send $literal_double$ ;
   default
-    convertDecimalStringIntoUInt (tokenString , uint32value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoUInt !?tokenString !uint32value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer$ ;
   end select ;
 end rule ;
@@ -222,15 +222,15 @@ $...$ error message "the '...' delimitor" style delimitersStyle ;
 rule '.' :
   select
   when '0'->'9' :
-    enterCharacterIntoString (tokenString, '0') ;
-    enterCharacterIntoString (tokenString, '.') ;
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !'0' ;
+    enterCharacterIntoString !?tokenString !'.' ;
+    enterCharacterIntoString !?tokenString !* ;
     repeat
     while '0'->'9' :
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while '_' :
     end repeat ;
-    convertStringToDouble (tokenString, floatValue) error floatNumberConversionError ;
+    convertStringToDouble !?tokenString !floatValue error floatNumberConversionError ;
     send $literal_double$ ;
   default
     select
@@ -255,7 +255,7 @@ rule '@' :
   select
   when 'a'->'z' | 'A'->'Z' | '_' :
     repeat
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     end repeat ;
   default
@@ -288,35 +288,35 @@ rule '\'' :
   when '\\' :
     select
     when 'f' :
-      enterCharacterIntoCharacter (charValue, '\f') ;
+      enterCharacterIntoCharacter !?charValue !'\f' ;
     when 'n' :
-      enterCharacterIntoCharacter (charValue, '\n') ;
+      enterCharacterIntoCharacter !?charValue !'\n' ;
     when 'r' :
-      enterCharacterIntoCharacter (charValue, '\r') ;
+      enterCharacterIntoCharacter !?charValue !'\r' ;
     when 't' :
-      enterCharacterIntoCharacter (charValue, '\t') ;
+      enterCharacterIntoCharacter !?charValue !'\t' ;
     when 'v' :
-      enterCharacterIntoCharacter (charValue, '\v') ;
+      enterCharacterIntoCharacter !?charValue !'\v' ;
     when '\\' :
-      enterCharacterIntoCharacter (charValue, '\\') ;
+      enterCharacterIntoCharacter !?charValue !'\\' ;
     when '0' :
-      enterCharacterIntoCharacter (charValue, '\0') ;
+      enterCharacterIntoCharacter !?charValue !'\0' ;
     when '\'' :
-      enterCharacterIntoCharacter (charValue, '\'') ;
+      enterCharacterIntoCharacter !?charValue !'\'' ;
     when 'u' :
       select
       when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
         select
         when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
           select
           when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-           enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+           enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
             select
             when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
-              convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
+              enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
+              convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
             default
               error invalideUnicodeDefinition4 ;
             end select ;
@@ -332,29 +332,29 @@ rule '\'' :
     when 'U' :
       select
       when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
         select
         when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
           select
           when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-            enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+            enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
             select
             when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+              enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
               select
               when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
                 select
                 when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                  enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                  enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
                   select
                   when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                   enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                   enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
                     select
                     when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                      enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
-                      convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
+                      enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
+                      convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
                     default
                       error invalideUnicodeDefinition8 ;
                     end select ;
@@ -384,7 +384,7 @@ rule '\'' :
       select
       when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
         repeat
-          enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
+          enterHexDigitIntoASCIIcharacter !?charValue !* error ASCIIcodeTooLargeError, internalError ;
         while '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
         end repeat ;
       default
@@ -393,14 +393,14 @@ rule '\'' :
     when '&' :
       repeat
       while ~ ";" error incorrectHTMLescapeSequence :
-        enterCharacterIntoString (tokenString, *) ;
+        enterCharacterIntoString !?tokenString !* ;
       end repeat ;
-      convertHTMSequenceToUnicodeCharacter (tokenString, charValue) error unknownHTMLescapeSequence ;
+      convertHTMSequenceToUnicodeCharacter !?tokenString !charValue error unknownHTMLescapeSequence ;
     default
       error incorrectCharConstant ;
     end select ;
   when ' ' -> '\uFFFD' :
-     enterCharacterIntoCharacter (charValue, *) ;
+     enterCharacterIntoCharacter !?charValue !* ;
   default
     error incorrectCharConstant ;
   end select ;
@@ -423,7 +423,7 @@ rule '$' :
   select
   when '!' -> '#' | '%' -> '~'  : # All printable characters, but '$'
     repeat
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while '!' -> '#' | '%' -> '~' :
     end repeat ;
   default
@@ -469,7 +469,7 @@ rule '<' :
     send $<<$ ;
   when 'a' -> 'z' | 'A' ->'Z' :
     repeat
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
     end repeat ;
     select
@@ -495,50 +495,50 @@ rule '"' :
   while '\\' :
     select
     when 'f' :
-      enterCharacterIntoString (tokenString, '\f') ;
+      enterCharacterIntoString !?tokenString !'\f' ;
     when 'n' :
-      enterCharacterIntoString (tokenString, '\n') ;
+      enterCharacterIntoString !?tokenString !'\n' ;
     when 'r' :
-      enterCharacterIntoString (tokenString, '\r') ;
+      enterCharacterIntoString !?tokenString !'\r' ;
     when 't' :
-      enterCharacterIntoString (tokenString, '\t') ;
+      enterCharacterIntoString !?tokenString !'\t' ;
     when 'v' :
-      enterCharacterIntoString (tokenString, '\v') ;
+      enterCharacterIntoString !?tokenString !'\v' ;
     when '\\' :
-      enterCharacterIntoString (tokenString, '\\') ;
+      enterCharacterIntoString !?tokenString !'\\' ;
     when '"' :
-      enterCharacterIntoString (tokenString, '"') ;
+      enterCharacterIntoString !?tokenString !'"' ;
     when '\'' :
-      enterCharacterIntoString (tokenString, '\'') ;
+      enterCharacterIntoString !?tokenString !'\'' ;
     when '&' :
       repeat
       while ~ ";" error incorrectHTMLescapeSequence :
-        enterCharacterIntoString (identifierString, *) ;
+        enterCharacterIntoString !?identifierString !* ;
       end repeat ;
-      convertHTMSequenceToUnicodeCharacter (identifierString, charValue) error unknownHTMLescapeSequence ;
-      enterCharacterIntoString (tokenString, charValue) ;
+      convertHTMSequenceToUnicodeCharacter !?identifierString !charValue error unknownHTMLescapeSequence ;
+      enterCharacterIntoString !?tokenString !charValue ;
     when '0' -> '9' :
       warning obsoleteStringConstruction ;
       repeat
-        enterHexDigitIntoASCIIcharacter (charValue, *) error ASCIIcodeTooLargeError, internalError ;
+        enterHexDigitIntoASCIIcharacter !?charValue !* error ASCIIcodeTooLargeError, internalError ;
       while '0' -> '9' :
       end repeat ;
-      enterCharacterIntoString (tokenString, charValue) ;
+      enterCharacterIntoString !?tokenString !charValue ;
     when 'u' :
       select
       when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
         select
         when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
           select
           when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-           enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+           enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
             select
             when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
-              convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
-              enterCharacterIntoString (tokenString, charValue) ;
+              enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
+              convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
+              enterCharacterIntoString !?tokenString !charValue ;
             default
               error invalideUnicodeDefinition4 ;
             end select ;
@@ -554,30 +554,30 @@ rule '"' :
     when 'U' :
       select
       when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-        enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+        enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
         select
         when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-          enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+          enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
           select
           when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-            enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+            enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
             select
             when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-              enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+              enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
               select
               when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
                 select
                 when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                  enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                  enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
                   select
                   when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                   enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
+                   enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
                     select
                     when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
-                      enterHexDigitIntoUInt (*, uint32value) error internalError, internalError ;
-                      convertUnsignedNumberToUnicodeChar (uint32value, charValue) error unassignedUnicodeValue ;
-                      enterCharacterIntoString (tokenString, charValue) ;
+                      enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
+                      convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
+                      enterCharacterIntoString !?tokenString !charValue ;
                     default
                       error invalideUnicodeDefinition8 ;
                     end select ;
@@ -606,7 +606,7 @@ rule '"' :
       error incorrectCharConstant ;
     end select ;
    while ' ' | '!' | '#'-> '\uFFFD' :
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   end repeat ;
   select
   when '"' :

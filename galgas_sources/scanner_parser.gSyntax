@@ -75,7 +75,7 @@ nonterminal <attribute_or_terminal_symbol_declaration>
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeLexicalAttributesMap table_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
-  ?!@lexicalTypeMap inLexicalTypeMap
+  ??@lexicalTypeMap inLexicalTypeMap
   ??@M_styles ioStylesMap
   ??@bool inIsTemplate
 label parse
@@ -215,6 +215,8 @@ extern routine generate_scanner
   ??@tokensInListMap inTokensInListMap
 ;
 
+#-------------------------------------------------------------------*
+
 routine buildLexicalTypeMap !@lexicalTypeMap outLexicalTypeMap :
   outLexicalTypeMap := [@lexicalTypeMap emptyMap] ;
 
@@ -305,7 +307,7 @@ rule <galgas_component>
       !?table_des_terminaux
       !?table_attributs
       !?terminalSymbolsMapForUse
-      !?lexicalTypeMap
+      !lexicalTypeMap
       !stylesMap
       !isTemplate
     ;
@@ -404,7 +406,7 @@ label importLexique
       !?table_des_terminaux
       !?table_attributs
       !?terminalSymbolsMapForUse
-      !?lexicalTypeMap
+      !lexicalTypeMap
       !stylesMap
       !true # For not raising error messages
     ;
@@ -652,7 +654,7 @@ rule <attribute_or_terminal_symbol_declaration>
   ?!@typeTableDefinitionTerminaux table_des_terminaux
   ?!@typeLexicalAttributesMap table_des_attributs
   ?!@M_terminalSymbolsMapForUse ioTerminalSymbolsMapForUse
-  ?!@lexicalTypeMap inLexicalTypeMap
+  ??@lexicalTypeMap inLexicalTypeMap
   ??@M_styles ioStylesMap
   ??@bool inIsTemplate
 :
@@ -1201,16 +1203,18 @@ rule <lexical_parameters_non_empty_list>
   !@typeListeArgumentsRoutExterne laf
   ?!@typeLexicalAttributesMap table_attributs
 :
-  $($ ;
   laf := [@typeListeArgumentsRoutExterne emptyList] ;
   repeat
+  while
+    select
+      $!?$ ;
+    or
+      $!$ ;
+    end select ;
     @typeArgumentRoutineExterne a ;
     <lexical_parameter> ?a !?table_attributs ;
     laf += !a ;
-  while
-    $,$ ;
   end repeat ;
-  $)$ ;
 end rule ;
 
 #-------------------------------------------------------------------*
@@ -1259,7 +1263,9 @@ rule <lexical_parameter>
     a := [@typeArgumentAttribut new !nom !t] ;
   or
     @typeListeArgumentsRoutExterne lare ;
+    $($ ;
     <lexical_parameters_non_empty_list> ?lare !?table_attributs ;
+    $)$ ;
     a := [@typeArgumentRoutine new !nom !lare] ;
   end select ;
 end rule ;

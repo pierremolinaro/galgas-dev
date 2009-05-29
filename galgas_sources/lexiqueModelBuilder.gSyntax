@@ -43,9 +43,11 @@ nonterminal <lexical_instruction> ?!@lexicalInstructionList ioInstructionList ;
 
 nonterminal <lexical_send_instruction> !@lexicalInstruction outInstruction ;
 
-nonterminal <function_call_or_attribute> ??@lstring inIdf !@lexicalActualArgument outArgument ;
+nonterminal <function_call_or_attribute> ??@lstring inIdf !@lexicalFormalInputArgument outArgument ;
 
-nonterminal <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList ;
+nonterminal <lexical_output_effective_argument>
+  !@lexicalFormalInputArgument outEffectiveArgument
+;
 
 nonterminal <lexical_expression> !@lexicalExpression outExpression ;
 
@@ -340,14 +342,19 @@ end rule ;
 rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
   @lstring actionName ;
   $identifier$ ? actionName ;
-  $($ ;
-  @lexicalActualArgumentList actualArgumentList [emptyList] ;
+  @lexicalRoutineCallActualArgumentList actualArgumentList [emptyList] ;
   repeat
-    <lexical_action_effective_argument> !?actualArgumentList ;
   while
-    $,$ ;
+    $!$ ;
+    @lexicalFormalInputArgument arg ;
+    <lexical_output_effective_argument> ?arg ;
+    actualArgumentList += !arg ;
+  while
+    $!?$ ;
+    $identifier$ ?@lstring attributeName ;
+    @lexicalAttributeInputOutputArgument arg [new !attributeName] ;
+    actualArgumentList += !arg ;
   end repeat ;
-  $)$ ;
   @lstringlist errorMessageList := [@lstringlist emptyList] ;
   select
   or
@@ -355,7 +362,7 @@ rule <lexical_instruction> ?!@lexicalInstructionList ioInstructionList :
     repeat
       @lstring errorMessageName ;
       $identifier$ ? errorMessageName ;
-      errorMessageList += ! errorMessageName ;
+      errorMessageList += !errorMessageName ;
     while
       $,$ ;
     end repeat ;
@@ -371,47 +378,51 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList :
-  @lchar character ;
-  $literal_char$ ? character ;
-  ioLexicalActualArgumentList += ![@lexicalCharacterArgument new !character] ;
+rule <lexical_output_effective_argument>
+  !@lexicalFormalInputArgument outEffectiveArgument
+:
+  $literal_char$ ?@lchar character ;
+  outEffectiveArgument := [@lexicalCharacterInputArgument new !character] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList :
+rule <lexical_output_effective_argument>
+  !@lexicalFormalInputArgument outEffectiveArgument
+:
   $*$ ;
-  ioLexicalActualArgumentList += ![@lexicalCurrentCharacterArgument new] ;
+  outEffectiveArgument := [@lexicalCurrentCharacterInputArgument new] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_action_effective_argument> ?!@lexicalActualArgumentList ioLexicalActualArgumentList :
-  @lstring idf ;
-  $identifier$ ? idf ;
-  @lexicalActualArgument argument ;
-  <function_call_or_attribute> !idf ?argument ;
-  ioLexicalActualArgumentList += !argument ;
+rule <lexical_output_effective_argument>
+  !@lexicalFormalInputArgument outEffectiveArgument
+:
+  $identifier$ ?@lstring idf ;
+  <function_call_or_attribute> !idf ?outEffectiveArgument ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <function_call_or_attribute> ??@lstring inIdf !@lexicalActualArgument outArgument :
-  outArgument := [@lexicalAttributeArgument new !inIdf] ;
+rule <function_call_or_attribute> ??@lstring inIdf !@lexicalFormalInputArgument outArgument :
+  outArgument := [@lexicalAttributeInputArgument new !inIdf] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <function_call_or_attribute> ??@lstring inIdf !@lexicalActualArgument outArgument :
+rule <function_call_or_attribute> ??@lstring inIdf !@lexicalFormalInputArgument outArgument :
   $($ ;
-  @lexicalActualArgumentList functionActualArgumentList [emptyList] ;
+  @lexicalFunctionCallActualArgumentList functionActualArgumentList [emptyList] ;
   repeat
-    <lexical_action_effective_argument> !?functionActualArgumentList ;
   while
-    $,$ ;
+    $!$ ;
+    @lexicalFormalInputArgument arg ;
+    <lexical_output_effective_argument> ?arg ;
+    functionActualArgumentList += !arg ;
   end repeat ;
   $)$ ;
-  outArgument := [@lexicalFunctionArgument new !inIdf !functionActualArgumentList] ;
+  outArgument := [@lexicalFunctionInputArgument new !inIdf !functionActualArgumentList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
