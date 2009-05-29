@@ -232,13 +232,13 @@ list @lexicalSelectBranchList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalActualArgumentList ;
+list @lexicalRoutineCallActualArgumentList ;
 
 #---------------------------------------------------------------------------*
 
 class @lexicalActionInstruction extends @lexicalInstruction {
   @lstring mActionName ;
-  @lexicalActualArgumentList mActualArgumentList ;
+  @lexicalRoutineCallActualArgumentList mActualArgumentList ;
   @lstringlist mErrorMessageList ;
 }
 
@@ -249,32 +249,49 @@ abstract class @lexicalActualArgument {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalActualArgumentList {
+list @lexicalRoutineCallActualArgumentList {
   @lexicalActualArgument mLexicalActualArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalAttributeArgument extends @lexicalActualArgument {
+abstract class @lexicalFormalInputArgument extends @lexicalActualArgument {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalFunctionCallActualArgumentList {
+  @lexicalFormalInputArgument mLexicalActualInputArgument ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalAttributeInputOutputArgument extends @lexicalFormalInputArgument {
   @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCharacterArgument extends @lexicalActualArgument {
+class @lexicalAttributeInputArgument extends @lexicalFormalInputArgument {
+  @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCharacterInputArgument extends @lexicalFormalInputArgument {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCurrentCharacterArgument extends @lexicalActualArgument {
+class @lexicalCurrentCharacterInputArgument extends @lexicalFormalInputArgument {
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalFunctionArgument extends @lexicalActualArgument {
+class @lexicalFunctionInputArgument extends @lexicalFormalInputArgument {
   @lstring mFunctionName ;
-  @lexicalActualArgumentList mFunctionActualArgumentList ;
+  @lexicalFunctionCallActualArgumentList mFunctionActualArgumentList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -134,8 +134,8 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat
-    enterCharacterIntoString (identifierString, toLower (*)) ;
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?identifierString !toLower (!*) ;
+    enterCharacterIntoString !?tokenString !* ;
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end repeat ;
   send search identifierString in galgasKeyWordList default $identifier$ ;
@@ -154,33 +154,33 @@ message floatNumberConversionError : "invalid float number" ;
 message internalError : "internal error" ;
 
 rule '0'->'9' :
-  enterCharacterIntoString (tokenString, *) ;
+  enterCharacterIntoString !?tokenString !* ;
   repeat
   while '0'->'9' :
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   while '_' :
   end repeat ;
   select
   when 'S' | 's' :
-    convertDecimalStringIntoSInt (tokenString , sint32value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoSInt !tokenString !?sint32value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer$ ;
   when "LS" :
-    convertDecimalStringIntoSInt64 (tokenString , sint64value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoSInt64 !tokenString !?sint64value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer64$ ;
   when 'L' :
-    convertDecimalStringIntoUInt64 (tokenString , uint64value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoUInt64 !tokenString !?uint64value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer64$ ;
   when '.' :
-    enterCharacterIntoString (tokenString, '.') ;
+    enterCharacterIntoString !?tokenString !'.' ;
     repeat
     while '0'->'9' :
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while '_' :
     end repeat ;
-    convertStringToDouble (tokenString, floatValue) error floatNumberConversionError ;
+    convertStringToDouble !tokenString !?floatValue error floatNumberConversionError ;
     send $literal_double$ ;
   default
-    convertDecimalStringIntoUInt (tokenString , uint32value) error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoUInt !tokenString !?uint32value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer$ ;
   end select ;
 end rule ;
@@ -195,15 +195,15 @@ $...$ error message "the '...' delimitor" style delimitersStyle ;
 rule '.' :
   select
   when '0'->'9' :
-    enterCharacterIntoString (tokenString, '0') ;
-    enterCharacterIntoString (tokenString, '.') ;
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !'0' ;
+    enterCharacterIntoString !?tokenString !'.' ;
+    enterCharacterIntoString !?tokenString !* ;
     repeat
     while '0'->'9' :
-      enterCharacterIntoString (tokenString, *) ;
+      enterCharacterIntoString !?tokenString !* ;
     while '_' :
     end repeat ;
-    convertStringToDouble (tokenString, floatValue) error floatNumberConversionError ;
+    convertStringToDouble !tokenString !?floatValue error floatNumberConversionError ;
     send $literal_double$ ;
   default
     select
