@@ -2812,6 +2812,14 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
     !@L_EXsignature outModifierSignature
   :
     [mModifierMethodMap searchKey !inModifierName ?outModifierSignature] ;
+    if not [mModifierMethodMap hasKey ![inModifierName string]] then
+      foreach mAttributeList do 
+        @string setValueForKeyName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
+        if setValueForKeyName == [inModifierName string] then
+          warning mAttributeName:"'" . mAttributeName  . "' attribute is declared here" ;
+        end if ;
+      end foreach ;
+    end if ;
   end method ;
 
 #--- Methods are search methods (when map defines no automaton)
