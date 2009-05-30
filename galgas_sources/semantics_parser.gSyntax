@@ -6025,12 +6025,14 @@ label importSemantics
       end if ;
     end repeat ;
   #--- Modifiers "Set'Value'ForKey"
-    foreach listeTousAttributsSemantiques do
-      @string modifierName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
-      @L_EXsignature modifierSignature [emptyList] ;
-      modifierSignature += !mAttributType !inPassingMode ; 
-      modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
-      [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
+    foreach tableAttributs do
+      if mHasSetter then
+        @string modifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] . "ForKey" ;
+        @L_EXsignature modifierSignature [emptyList] ;
+        modifierSignature += !mAttributType !inPassingMode ; 
+        modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
+        [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
+      end if ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
     @AC_galgasType c := [@typeGalgasMapType new
