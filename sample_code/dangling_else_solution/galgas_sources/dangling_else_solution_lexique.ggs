@@ -5,9 +5,9 @@ rule list keyWordList ;
 
 #--- Identifiers$id$ error message "an identifier" ;
 
-@lstring identifierString ;
+@string identifierString ;
 
-rule 'a'->'z' | 'A'->'Z' :  enterCharacterIntoString (identifierString, toLower (*)) ;  send search identifierString in keyWordList default $id$ ;end rule ;
+rule 'a'->'z' | 'A'->'Z' :  enterCharacterIntoString !?identifierString !toLower (!*) ;  send search identifierString in keyWordList default $id$ ;end rule ;
 
 #--- Delimitorslist delimitorsList error message "the '%K' delimitor" :  "+" , "*", "(", ")" ;rule list delimitorsList ;
 # --------------------- separators -----------------------------------------rule '\u0001' -> ' ' :end rule ;

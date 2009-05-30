@@ -483,6 +483,8 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "}\n\n" ;
 //--- Datas for PopUp list
   if (inTerminalSymbolCount > 0) {
+    generatedZone3.appendCppHyphenLineComment () ;
+    generatedZone3 << "#pragma mark Popup List Data\n\n" ;
     generatedZone3.appendCppTitleComment ("P O P U P    L I S T    D A T A") ;
     C_String mainArray ;
     mainArray << "static const uint16 * kPopUpListData [" << cStringWithSigned (inTerminalSymbolCount + 1) << "] = {\n"

@@ -23,6 +23,9 @@ project all_galgas :
 #--- Common Scanner
   lexique "galgas_scanner.gLexique" : makefile ;
 
+#--- Cocoa Interface
+  gui       "cocoaGalgas.gGui" ;
+
 #--- Lexique Component
   semantics "lexiqueMetamodel.gSemantics" : makefile ;
   syntax "lexiqueModelBuilder.gSyntax" : makefile ;

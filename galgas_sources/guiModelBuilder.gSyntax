@@ -93,10 +93,21 @@ end rule ;
 
 rule <gui_attribute> ?!@guiAttributeList ioAttributes :
   $identifier$ ?@lstring mKey ;
+  @lstring attributeString ;
+  select
+    attributeString := [@lstring new !"" !here] ;
+  or
+    $literal_string$ ?attributeString ;
+  end select ;
   $:$ ;
-  $literal_string$ ?@lstring mValue ;
+  @lstring mValue [new !"" !here] ;
+  repeat
+    $literal_string$ ?@lstring value ;
+    mValue := [@lstring new ![mValue string] . [value string] ![value location]] ;
+  while
+  end repeat ;
   $;$ ;
-  ioAttributes += !mKey !mValue ;
+  ioAttributes += !mKey !attributeString !mValue ;
 end rule ;
 
 #---------------------------------------------------------------------------*

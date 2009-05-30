@@ -26,6 +26,9 @@ project all_galgas :
 #--- Common Scanner
   lexique "galgas_scanner.gLexique" : makefile ;
 
+#--- Cocoa Interface
+  gui       "cocoaGalgas.gGui" ;
+
 #--- Project Creation
   semantics "projectCreation.gSemantics" : makefile ;
 
@@ -106,7 +109,6 @@ project all_galgas :
   syntax    "parser_parser.gSyntax" : makefile ;
   semantics "scanner_semantics.gSemantics" : makefile ;
   syntax    "cocoa_parser.gSyntax" : makefile ;
-  gui       "cocoaGalgas.gGui" ;
   syntax    "cli_options_parser.gSyntax" : makefile ;
   syntax    "grammar_parser.gSyntax" : makefile ;
   syntax    "scanner_parser.gSyntax" : makefile ;

@@ -1,6 +1,6 @@
 lexique class_sample_language_lexique :
 
-@lstring tokenString ;
+@string tokenString ;
 
 style keywordsStyle -> "Keywords:" ;
 
@@ -11,7 +11,7 @@ list keyWordList error message "the '%K' keyword" style keywordsStyle :
 
 rule 'a'->'z' | 'A'->'Z' :
   repeat
-    enterCharacterIntoString (tokenString, *) ;
+    enterCharacterIntoString !?tokenString !* ;
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end repeat ;
   send search tokenString in keyWordList default $identifier$ ;
