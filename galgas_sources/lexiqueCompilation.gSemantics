@@ -24,106 +24,245 @@ import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
+#                     checkLexicalDefaultAction                             *
+#---------------------------------------------------------------------------*
 
-abstract method @lexicalInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+abstract method @lexicalSendDefaultAction checkLexicalDefaultAction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalStructuredSendInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalSendTerminalByDefault checkLexicalDefaultAction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mDefaultSentTerminal ?*] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalErrorByDefault checkLexicalDefaultAction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mDefaultErrorMessageName string]] then
+    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mDefaultErrorMessageName string]] ;
+  else
+    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mDefaultErrorMessageName ?* ?*] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalExpression                              *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalExpression checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalOrExpression checkLexicalExpression
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+  [mLeftOperand checkLexicalExpression !? ioLexiqueAnalysisContext] ;
+  [mRightOperand checkLexicalExpression !? ioLexiqueAnalysisContext] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterMatch checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalSimpleSendInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalCharacterSetMatch checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalRepeatInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap ioLexicalMessageMap
+override method @lexicalCharacterIntervalMatch checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStringMatch checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStringNotMatch checkLexicalExpression
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+#  [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mErrorMessage] ;
+  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mErrorMessage string]] then
+    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mErrorMessage string]] ;
+  else
+    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mErrorMessage ?* ?*] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalInstruction                             *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStructuredSendInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+  foreach mLexicalSendSearchList do
+    [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*] ;
+  end foreach ;
+  [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalSimpleSendInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mSentTerminal ?*] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalRepeatInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   foreach mLexicalWhileBranchList do
+    [mWhileExpression checkLexicalExpression !? ioLexiqueAnalysisContext] ;
     foreach mWhileInstructionList do
-      [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+      [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
     end foreach ;
   end foreach ;
   foreach mRepeatedInstructionList do
-    [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+    [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
   end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalSelectInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap ioLexicalMessageMap
+override method @lexicalSelectInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   foreach mLexicalSelectBranchList do
     foreach mSelectInstructionList do
-      [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+      [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
     end foreach ;
   end foreach ;
   foreach mDefaultInstructionList do
-    [mInstruction checkLexicalInstruction !?ioLexicalMessageMap] ;
+    [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
   end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalActionInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalActionInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+  foreach mErrorMessageList do
+#    [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mValue] ;
+    if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mValue string]] then
+      [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mValue string]] ;
+    else
+      [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mValue ?* ?*] ;
+    end if ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalLogInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalLogInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalRewindInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalRewindInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalDropInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalDropInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalTagInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalTagInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap unused ioLexicalMessageMap
+override method @lexicalErrorInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+#  [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mErrorMessageName] ;
+  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mErrorMessageName string]] then
+    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mErrorMessageName string]] ;
+  else
+    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mErrorMessageName ?* ?*] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalWarningInstruction checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+:
+#  [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mWarningMessageName] ;
+  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mWarningMessageName string]] then
+    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mWarningMessageName string]] ;
+  else
+    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mWarningMessageName ?* ?*] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                         compileLexiqueComponent                           *
+#---------------------------------------------------------------------------*
+
+abstract method @abstractLexicalRule checkLexicalRule
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalImplicitRule checkLexicalRule
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalErrorInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap ioLexicalMessageMap
+override method @lexicalExplicitRule checkLexicalRule
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  [!?ioLexicalMessageMap setMessageIsUsedForKey !true !mErrorMessageName] ;
+  foreach mInstructionList do
+    [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
-
-override method @lexicalWarningInstruction.checkLexicalInstruction
-  ?!@lexicalMessageMap ioLexicalMessageMap
-:
-  [!?ioLexicalMessageMap setMessageIsUsedForKey !true !mWarningMessageName] ;
-end method ;
-
+#                         compileLexiqueComponent                           *
 #---------------------------------------------------------------------------*
 
 routine compileLexiqueComponent
@@ -151,12 +290,17 @@ routine compileLexiqueComponent
   [!?lexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
   [!?lexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
 #--------------------------------------- Build lexical attribute map
-  @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
+  @lexiqueAnalysisContext lexiqueAnalysisContext [new
+    ![@lexicalMessageMap emptyMap]
+    ![@terminalMap emptyMap]
+    ![@lexicalAttributeMap emptyMap]
+    ![@lexicalExplicitTokenListMapMap emptyMap]
+  ] ;
   foreach [lexiqueComponentRoot mLexicalAttributeList] do
     if [lexicalTypeMap hasKey ![mTypeName string]] then
       @lexicalTypeEnum lexicalType ;
       [lexicalTypeMap searchKey !mTypeName ?lexicalType] ;
-      [!?lexicalAttributeMap insertKey !mName !lexicalType] ;
+      [!?lexiqueAnalysisContext.mLexicalAttributeMap insertKey !mName !lexicalType] ;
     else
       @string m := "" ;
       m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
@@ -170,39 +314,44 @@ routine compileLexiqueComponent
     end if ;
   end foreach ;
 #--------------------------------------- Build terminal map
-  @terminalMap terminalMap [emptyMap] ;
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
     @lexicalTypeList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexicalAttributeMap searchKey !kAttributeName ?attributeLexicalType] ;
+      [[lexiqueAnalysisContext  mLexicalAttributeMap] searchKey !kAttributeName ?attributeLexicalType] ;
       argumentTypeList += !attributeLexicalType ;
     end foreach ;
-    [!?terminalMap insertKey !mName !argumentTypeList] ;
+    [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList] ;
   end foreach ;
   foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
     @lexicalTypeList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexicalAttributeMap searchKey !kAttributeName ?attributeLexicalType] ;
+      [[lexiqueAnalysisContext mLexicalAttributeMap] searchKey !kAttributeName ?attributeLexicalType] ;
       argumentTypeList += !attributeLexicalType ;
     end foreach ;
+    @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     foreach mEntryList do
-      [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+      [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
     end foreach ;
+    [!?lexiqueAnalysisContext.mLexicalTokenListMapMap insertKey !mName !lexicalTokenListMap] ;
   end foreach ;
 #--------------------------------------- Build Message map
-  @lexicalMessageMap lexicalMessageMap [emptyMap] ;
   foreach [lexiqueComponentRoot mLexicalMessageDeclarationList] do
-    [!?lexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
+    [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
   end foreach ;
 #--------------------------------------- Check rules
-  foreach [lexiqueComponentRoot mLexicalExplicitRuleList] do
-    foreach mInstructionList do
-      [mInstruction checkLexicalInstruction !?lexicalMessageMap] ;
-    end foreach ;
+  foreach [lexiqueComponentRoot mLexicalRuleList] do
+    [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext] ;
   end foreach ;
-log lexicalMessageMap ;
+#--------------------------------------- Warn for unused messages
+  foreach [lexiqueAnalysisContext mLexicalMessageMap] do
+    if not messageIsUsed then
+      warning key:"unused message" ;
+    end if ;
+  end foreach ;
+
 end routine ;
 
 #---------------------------------------------------------------------------*

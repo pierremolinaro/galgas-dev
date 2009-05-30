@@ -96,14 +96,14 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclaration.enterType
+abstract method @semanticDeclaration enterType
   ?!@semanticContext unused ioSemanticContext
 ;
 
 #---------------------------------------------------------------------------*
 
 override
-method @mapDeclaration.enterType
+method @mapDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -123,7 +123,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapindexDeclaration.enterType
+override method @mapindexDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle map type name
@@ -140,7 +140,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclaration.enterType
+override method @enumDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -158,7 +158,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclaration.enterType
+override method @filewrapperDeclaration enterType
   ?!@semanticContext unused ioSemanticContext
 :
   message "@filewrapperDeclaration.enterType [in semanticCompilation.gSemantics]\n" ;
@@ -166,7 +166,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclaration.enterType
+override method @sortedListDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -186,7 +186,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclaration.enterType
+override method @structDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -206,7 +206,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclaration.enterType
+override method @listDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle attributes
@@ -226,7 +226,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclaration.enterType
+override method @classDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
 #--- Handle super class
@@ -262,7 +262,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclaration.enterType # Handles also routine declaration
+override method @externRoutineDeclaration enterType # Handles also routine declaration
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -278,7 +278,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externFunctionDeclaration.enterType # Handles also function declaration
+override method @externFunctionDeclaration enterType # Handles also function declaration
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -297,7 +297,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclaration.enterType # Handles also routine declaration
+override method @listmapDeclaration enterType
   ?!@semanticContext ioSemanticContext
 :
   @typeMapIndex associatedListTypeIndex ;

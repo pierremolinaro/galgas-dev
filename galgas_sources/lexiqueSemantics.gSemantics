@@ -46,11 +46,37 @@ map @terminalMap {
 
 #---------------------------------------------------------------------------*
 
+map @lexicalExplicitTokenListMap {
+  @lstring mTerminal ;
+  @lstringlist mFeatureList ;
+  insert insertKey error message "the '%K' terminal has been already declared in the list" ;
+  search searchKey error message "the '%K' terminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @lexicalExplicitTokenListMapMap {
+  @lexicalExplicitTokenListMap mExplicitTokenListMap ;
+  insert insertKey error message "the '%K' token list has been already declared in %L" ;
+  search searchKey error message "the '%K' token list is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @lexicalMessageMap {
   @lstring mLexicalMessage ;
   @bool messageIsUsed feature setter ;
   insert insertKey error message "the '%K' message has been already declared in %L" ;
   search searchKey error message "the '%K' message is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @lexiqueAnalysisContext {
+  @lexicalMessageMap mLexicalMessageMap ;
+  @terminalMap mTerminalMap ;
+  @lexicalAttributeMap mLexicalAttributeMap ;
+  @lexicalExplicitTokenListMapMap mLexicalTokenListMapMap ;
 }
 
 #---------------------------------------------------------------------------*

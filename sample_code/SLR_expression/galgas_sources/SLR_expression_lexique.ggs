@@ -1,6 +1,6 @@
 lexique SLR_expression_lexique :
 
-@luint number;
+@uint number;
 $number$ ! number error message "a number";
   
 list operator_list error message "the '%K' keyword":
@@ -13,10 +13,10 @@ message decimalNumberTooLarge : "Decimal number too large";
 message internalError : "internal error";
   
 rule '0'->'9':
-  enterDigitIntoUInt (*, number) error decimalNumberTooLarge, internalError;
+  enterDigitIntoUInt !* !?number error decimalNumberTooLarge, internalError;
   repeat
   while '0'->'9':
-    enterDigitIntoUInt (*, number) error decimalNumberTooLarge, internalError;
+    enterDigitIntoUInt !* !?number error decimalNumberTooLarge, internalError;
   while '_' :
   end repeat;
   send $number$;

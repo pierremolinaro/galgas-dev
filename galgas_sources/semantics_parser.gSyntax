@@ -5741,7 +5741,7 @@ rule <semantics_declaration>
         @string modifierName := "set" . [[key string] stringByCapitalizingFirstCharacter] . "ForKey" ;
         @L_EXsignature modifierSignature [emptyList] ;
         modifierSignature += !mAttributType !inPassingMode ; 
-        modifierSignature += ![@typeGalgas_lstring new] !inPassingMode ; 
+        modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
         [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
       end if ;
     end foreach ;
@@ -6029,7 +6029,7 @@ label importSemantics
       @string modifierName := "set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ;
       @L_EXsignature modifierSignature [emptyList] ;
       modifierSignature += !mAttributType !inPassingMode ; 
-      modifierSignature += ![@typeGalgas_lstring new] !inPassingMode ; 
+      modifierSignature += ![@typeGalgas_string new] !inPassingMode ; 
       [!?mapModifierMethodMap insertKey ![@lstring new !modifierName !here] !modifierSignature] ;
     end foreach ;
   #--- Insertion dans la map des entites utilisables
@@ -6097,7 +6097,6 @@ rule <semantics_declaration_beginning_by_abstract>
   @categoryMethodKind categoryMethodKind [abstractMethod] ;
   $method$ ;
   $type_name$ ? @lstring className ;
-  $.$ ;
   $identifier$ ? @lstring methodName ;
 #---- Formal arguments -----------------------------------------
   @typeVariablesMap tableArgumentsMethode [emptyMap] ;
@@ -6155,7 +6154,6 @@ label importSemantics
   @categoryMethodKind categoryMethodKind [abstractMethod] ;
   $method$ ;
   $type_name$ ? @lstring className ;
-  $.$ ;
   $identifier$ ? @lstring methodName ;
 #---- Formal arguments -----------------------------------------
   @L_EXsignature listeDeTypes ;
@@ -6201,7 +6199,6 @@ rule <semantics_declaration>
   end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
-  $.$ ;
   $identifier$ ? @lstring methodName ;
 #---- Formal arguments -----------------------------------------
   @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
@@ -6321,7 +6318,6 @@ label importSemantics
   end select ;
   $method$ ;
   $type_name$ ? @lstring className ;
-  $.$ ;
   $identifier$ ? @lstring methodName ;
 #---- Formal arguments -----------------------------------------
   @L_EXsignature listeDeTypes ;

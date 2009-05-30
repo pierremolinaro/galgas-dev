@@ -670,7 +670,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                  "                        const " ;
       currentAttributeForSetter._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << "inValue,\n"
-                 "                        const GGS_lstring & inKey\n"
+                 "                        const GGS_string & inKey\n"
                  "                        COMMA_LOCATION_ARGS) ;\n" ;
     }
     currentAttributeForSetter.next () ;
@@ -1162,7 +1162,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                        const " ;
       currentAttributeForSetter._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "inValue,\n"
-                 "                        const GGS_lstring & inKey\n"
+                 "                        const GGS_string & inKey\n"
                  "                        COMMA_LOCATION_ARGS) {\n"
                  "  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {\n"
                  "    insulateMap () ;\n"

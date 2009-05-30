@@ -934,7 +934,6 @@ rule <semantic_declaration>
   $abstract$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $.$ ;
   $identifier$ ? @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -953,7 +952,6 @@ rule <semantic_declaration>
 :
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $.$ ;
   $identifier$ ? @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -983,7 +981,6 @@ rule <semantic_declaration>
   $override$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $.$ ;
   $identifier$ ? @lstring mMethodName ;
   @formalParameterList mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;

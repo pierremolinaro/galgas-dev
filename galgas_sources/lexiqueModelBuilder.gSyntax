@@ -33,9 +33,9 @@ nonterminal <lexical_list_declaration> ?!@lexicalListDeclarationList ioLexicalLi
 
 nonterminal <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList ;
 
-nonterminal <lexical_explicit_rule> ?!@lexicalExplicitRuleList ioLexicalExplicitRuleList ;
+nonterminal <lexical_explicit_rule> ?!@lexicalRuleList ioLexicalExplicitRuleList ;
 
-nonterminal <lexical_implicit_rule> ?!@lexicalImplicitRuleList ioLexicalImplicitRuleList ;
+nonterminal <lexical_implicit_rule> ?!@lexicalRuleList ioLexicalImplicitRuleList ;
 
 nonterminal <lexical_message_declaration> ?!@lexicalMessageDeclarationList ioLexicalErrorMessageDeclaration ;
 
@@ -73,8 +73,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
   @terminalDeclarationList terminalDeclarationList [emptyList] ;
   @lexicalMessageDeclarationList lexicalMessageDeclarationList [emptyList] ;
   @lexicalListDeclarationList lexicalListDeclarationList [emptyList] ;
-  @lexicalImplicitRuleList lexicalImplicitRuleList [emptyList] ;
-  @lexicalExplicitRuleList lexicalExplicitRuleList [emptyList] ;
+  @lexicalRuleList lexicalRuleList [emptyList] ;
   select
     isTemplate := true ;
     $template$ ;
@@ -102,9 +101,9 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
   while
     $rule$ ;
     select
-      <lexical_explicit_rule> !? lexicalExplicitRuleList ;
+      <lexical_explicit_rule> !? lexicalRuleList ;
     or
-      <lexical_implicit_rule> !? lexicalImplicitRuleList ;
+      <lexical_implicit_rule> !? lexicalRuleList ;
     end select ;
     $;$ ;
   while
@@ -121,10 +120,9 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
     !lexicalAttributeList
     !lexicalStyleList
     !terminalDeclarationList
-    ! lexicalMessageDeclarationList
+    !lexicalMessageDeclarationList
     !lexicalListDeclarationList
-    !lexicalImplicitRuleList
-    !lexicalExplicitRuleList
+    !lexicalRuleList
   ] ;
 end rule ;
 
@@ -190,16 +188,16 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_implicit_rule> ?!@lexicalImplicitRuleList ioLexicalImplicitRuleList :
+rule <lexical_implicit_rule> ?!@lexicalRuleList ioLexicalImplicitRuleList :
   $list$ ;
   @lstring listName ;
   $identifier$ ? listName ;
-  ioLexicalImplicitRuleList += !listName ;
+  ioLexicalImplicitRuleList += ![@lexicalImplicitRule new !listName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexical_explicit_rule> ?!@lexicalExplicitRuleList ioLexicalExplicitRuleList :
+rule <lexical_explicit_rule> ?!@lexicalRuleList ioLexicalExplicitRuleList :
   @lexicalExpression lexicalRuleExpression ;
   <lexical_expression> ?lexicalRuleExpression ;
   $:$ ;
@@ -210,7 +208,7 @@ rule <lexical_explicit_rule> ?!@lexicalExplicitRuleList ioLexicalExplicitRuleLis
   end repeat ;
   $end$ ;
   $rule$ ;
-  ioLexicalExplicitRuleList += !lexicalRuleExpression !instructionList ;
+  ioLexicalExplicitRuleList += ![@lexicalExplicitRule new !lexicalRuleExpression !instructionList] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

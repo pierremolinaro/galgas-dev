@@ -21,6 +21,22 @@ semantics lexiqueMetamodel :
 
 #---------------------------------------------------------------------------*
 
+abstract class @lexicalExpression {
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalInstruction {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalInstructionList {
+  @lexicalInstruction mInstruction ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @templateDelimitorList {
   @lstring mStartString ;
   @lstringlist mOptionList ;
@@ -37,8 +53,26 @@ list @templateReplacementList {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalImplicitRuleList {
+abstract class @abstractLexicalRule {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalRuleList {
+  @abstractLexicalRule mLexicalRule ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalImplicitRule extends @abstractLexicalRule {
   @lstring mListName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalExplicitRule extends @abstractLexicalRule {
+  @lexicalExpression mLexicalRuleExpression ;
+  @lexicalInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -77,7 +111,7 @@ list @terminalDeclarationList {
 list @lexicalListEntryList {
   @lstring mEntrySpelling ;
   @lstring mTerminalSpelling ;
-  @lstringlist mOptionList ;
+  @lstringlist mFeatureList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -85,32 +119,9 @@ list @lexicalListEntryList {
 list @lexicalListDeclarationList {
   @lstring mName ;
   @lstring mStyle ; # Empty string if no style
-  @lstring mErrorMessage ;
+  @lstring mSyntaxErrorMessage ;
   @lstringlist mSentAttributeList ;
   @lexicalListEntryList mEntryList ;  
-}
-
-#---------------------------------------------------------------------------*
-
-abstract class @lexicalExpression {
-}
-
-#---------------------------------------------------------------------------*
-
-abstract class @lexicalInstruction {
-}
-
-#---------------------------------------------------------------------------*
-
-list @lexicalInstructionList {
-  @lexicalInstruction mInstruction ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @lexicalExplicitRuleList {
-  @lexicalExpression mLexicalRuleExpression ;
-  @lexicalInstructionList mInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -154,7 +165,10 @@ class @lexicalStringNotMatch extends @lexicalExpression {
 
 #---------------------------------------------------------------------------*
 
-list @lexicalSendSearchList ;
+list @lexicalSendSearchList {
+  @lstring mAttributeName ;
+  @lstring mSearchListName ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -184,13 +198,6 @@ class @lexicalSendTerminalByDefault extends @lexicalSendDefaultAction {
 
 class @lexicalErrorByDefault extends @lexicalSendDefaultAction {
   @lstring mDefaultErrorMessageName ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @lexicalSendSearchList {
-  @lstring mAttributeName ;
-  @lstring mSearchListName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -329,8 +336,7 @@ class @lexiqueComponentRoot {
   @terminalDeclarationList mTerminalDeclarationList  ;
   @lexicalMessageDeclarationList mLexicalMessageDeclarationList ;
   @lexicalListDeclarationList mLexicalListDeclarationList  ;
-  @lexicalImplicitRuleList mLexicalImplicitRuleList feature nogetter ;
-  @lexicalExplicitRuleList mLexicalExplicitRuleList ;
+  @lexicalRuleList mLexicalRuleList ;
 }
 
 #---------------------------------------------------------------------------*

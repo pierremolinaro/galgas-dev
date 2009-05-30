@@ -23,6 +23,7 @@ semantics guiMetamodel :
 
 list @guiAttributeList {
   @lstring mKey ;
+  @lstring mAttributeName ;
   @lstring mValue ;
 }
 
