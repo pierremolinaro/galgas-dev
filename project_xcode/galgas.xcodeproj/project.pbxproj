@@ -144,8 +144,6 @@
 		CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
 		CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
-		CF4521A50E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
-		CF4521A70E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
 		CF4521A90E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
 		CF4521AB0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
 		CF4521AD0E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
@@ -3233,7 +3231,6 @@
 				CF3D5BC80D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30240D9EE03700EF3764 /* projectCreation.cpp in Sources */,
 				CF3F51CE0DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
-				CF4521A50E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF2945850E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CFAE48FD0E16AAF400A8130F /* PM_C_Array.cpp in Sources */,
 				CFAE48FF0E16AAF400A8130F /* PM_C_Dictionary.cpp in Sources */,
@@ -3762,7 +3759,6 @@
 				CF3D5BC90D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */,
 				CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */,
 				CF3F51D30DFF165E00F008D2 /* categoryMethods.cpp in Sources */,
-				CF4521A70E01576C00CAE9FC /* lexiqueCompilation.cpp in Sources */,
 				CF29458F0E09805600511E49 /* AC_galgas_listmap.cpp in Sources */,
 				CFAE49030E16AAF400A8130F /* PM_C_Array.cpp in Sources */,
 				CFAE49050E16AAF400A8130F /* PM_C_Dictionary.cpp in Sources */,
