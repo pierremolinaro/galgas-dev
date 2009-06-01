@@ -33,6 +33,7 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
   import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
   import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
+  import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
 
   import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
@@ -47,6 +48,9 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
 before {
   @string creationProjectName := [option galgas_cli_options.create_project] ;
   projectCreation !creationProjectName ;
+  if [option galgas_cli_options.printPredefinedLexicalActions] then
+    printPredefinedLexicalActions ;
+  end if ;
 }
 
 #---------------------------------------------------------------------------*

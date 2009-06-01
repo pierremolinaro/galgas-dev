@@ -84,7 +84,10 @@ enum @lexicalArgumentMode {
   constructor lexicalInputMode ;
   constructor lexicalInputOutputMode ;
 }{
-
+  reader lexicalFormalModeName :
+    lexicalInputMode       -> "!" ;
+    lexicalInputOutputMode -> "?!" ;
+  end reader ;
 }
 
 #---------------------------------------------------------------------------*
