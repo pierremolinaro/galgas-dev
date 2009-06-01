@@ -4743,12 +4743,14 @@ rule <semantic_instruction>
   @typeInstructionList elseBranchInstructionList [emptyList] ;
   block ioVariablesMap.testBloc () :
     block ioVariablesMap.testPart () :
-    #--- Add map entry attributes as local variables
-      [!?ioVariablesMap insertWithInstructionLocalVariable
+    #--- Add map entry key as constant
+      [!?ioVariablesMap insertUsedConstInArgument
+
         ![@lstring new !prefixString . "key" !instructionLocation]
         ![@typeGalgas_lstring new]
         ![@typeKeyName new !instructionLocation !false]
       ] ;
+    #--- Add map entry attributes as local variables
       foreach attributeList do
         [!?ioVariablesMap insertWithInstructionLocalVariable
           ![@lstring new !prefixString . [mAttributeName string] !instructionLocation]
@@ -5741,7 +5743,7 @@ rule <semantics_declaration>
                                                                        !tableMethodesBloc] ;
     listeEntitesAengendrer += !def ;
     $}$ ;
-  or
+  or #------------------ New Map
     @lstring enumTypeName ;
     @lstring checkFinalStateMethod ;
     select

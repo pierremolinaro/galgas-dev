@@ -23,6 +23,7 @@ program galgas_LL1_prgm "version GALGAS_BETA_VERSION" :
 
 import semantics projectCreation in "projectCreation.gSemantics" ;
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -31,6 +32,9 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 before {
   @string creationProjectName := [option galgas_cli_options.create_project] ;
   projectCreation !creationProjectName ;
+  if [option galgas_cli_options.printPredefinedLexicalActions] then
+    printPredefinedLexicalActions ;
+  end if ;
 }
 
 #---------------------------------------------------------------------------*

@@ -22,10 +22,9 @@ option galgas_cli_options :
   @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
   @bool generate_debug       : '\0', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols" ;
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
-  @uint max_errors           : '\0', "max-errors" -> "After after the given number of errors has been reached (by default: unlimited)" ;
-  @uint max_warnings         : '\0', "max-warnings" -> "Abort after the given number of warnings has been reached (by default: unlimited)" ;
-#  @string create_mda_project : '\0', "create-mda-project" -> "Create a new GALGAS Project, MDA style" ;
-#  @string libpm              : '\0', "libpm" -> "Define libpm location on project creation (by default, location is ./libpm)" ;
+  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
+#  @uint max_errors           : '\0', "max-errors" -> "After after the given number of errors has been reached (by default: unlimited)" ;
+#  @uint max_warnings         : '\0', "max-warnings" -> "Abort after the given number of warnings has been reached (by default: unlimited)" ;
 end option ;
 
 #---------------------------------------------------------------------------*

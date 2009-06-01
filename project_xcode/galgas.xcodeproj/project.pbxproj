@@ -625,6 +625,14 @@
 		CFCF922E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
 		CFCF92650B6E453800747AC6 /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
 		CFCF92670B6E454B00747AC6 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
+		CFD2EA830FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
+		CFD2EA840FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
+		CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
+		CFD2EA860FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
+		CFD2EA870FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
+		CFD2EA880FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
+		CFD2EA970FD45F990085EC05 /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
+		CFD2EA9A0FD460990085EC05 /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CFD3E85C0FA0C0F800C4995E /* C_String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD3E8520FA0C0F800C4995E /* C_String.cpp */; };
 		CFD3E85D0FA0C0F800C4995E /* unicode_character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD3E8580FA0C0F800C4995E /* unicode_character.cpp */; };
 		CFD3E85E0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD3E85A0FA0C0F800C4995E /* unicode_string_routines.cpp */; };
@@ -1583,6 +1591,8 @@
 		CFD215270913BE2E0011F11E /* include_typeVarInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeVarInExpression.h; sourceTree = "<group>"; };
 		CFD215280913BE2E0011F11E /* include_typeWarningInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeWarningInstruction.h; sourceTree = "<group>"; };
 		CFD220470913ED2D0011F11E /* include_typeGalgas_jokerInParameterList.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_jokerInParameterList.h; sourceTree = "<group>"; };
+		CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedLexicalActions.cpp; sourceTree = "<group>"; };
+		CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = predefinedLexicalActions.h; sourceTree = "<group>"; };
 		CFD3E8520FA0C0F800C4995E /* C_String.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_String.cpp; sourceTree = "<group>"; };
 		CFD3E8530FA0C0F800C4995E /* C_String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_String.h; sourceTree = "<group>"; };
 		CFD3E8540FA0C0F800C4995E /* cUnicodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cUnicodeData.h; sourceTree = "<group>"; };
@@ -2420,6 +2430,8 @@
 		CFF5376A057A504000854C83 /* Lexique Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */,
+				CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */,
 				CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */,
 				CF0CB7F30BC017C800E6FABE /* lexiqueModelBuilder.h */,
 				CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */,
@@ -3246,6 +3258,8 @@
 				CFD3E85D0FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E85E0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB576FE0FC340DE000B1844 /* scanner_actions.cpp in Sources */,
+				CFD2EA830FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
+				CFD2EA970FD45F990085EC05 /* lexiqueSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3418,6 +3432,7 @@
 				CFD3E8630FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E8640FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */,
+				CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3590,6 +3605,7 @@
 				CFD3E8660FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E8670FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577010FC340DE000B1844 /* scanner_actions.cpp in Sources */,
+				CFD2EA860FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3774,6 +3790,8 @@
 				CFD3E8600FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E8610FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB576FF0FC340DE000B1844 /* scanner_actions.cpp in Sources */,
+				CFD2EA840FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
+				CFD2EA9A0FD460990085EC05 /* lexiqueSemantics.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3946,6 +3964,7 @@
 				CFD3E8690FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E86A0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577020FC340DE000B1844 /* scanner_actions.cpp in Sources */,
+				CFD2EA870FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4118,6 +4137,7 @@
 				CFD3E86C0FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E86D0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577030FC340DE000B1844 /* scanner_actions.cpp in Sources */,
+				CFD2EA880FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

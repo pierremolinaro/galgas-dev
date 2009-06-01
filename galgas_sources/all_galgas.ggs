@@ -42,6 +42,7 @@ project all_galgas :
   syntax    "lexiqueModelBuilder.gSyntax" : makefile ;
   grammar   "lexiqueLL1grammar.gGrammar" : makefile ;
   semantics "lexiqueSemantics.gSemantics" : makefile ;
+  semantics "predefinedLexicalActions.gSemantics" : makefile ;
   semantics "lexiqueCompilation.gSemantics" : makefile ;
 
 #--- Option Component

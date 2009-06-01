@@ -88,6 +88,7 @@ SOURCES += lexiqueMetamodel.cpp
 SOURCES += lexiqueModelBuilder.cpp
 SOURCES += lexiqueLL1grammar.cpp
 SOURCES += lexiqueSemantics.cpp
+SOURCES += predefinedLexicalActions.cpp
 SOURCES += lexiqueCompilation.cpp
 SOURCES += optionSemantics.cpp
 SOURCES += optionMetamodel.cpp
