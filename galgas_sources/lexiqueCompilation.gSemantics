@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics lexiqueCompilation :
+import "lexiqueSemantics.gSemantics" ;
 
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
@@ -44,11 +45,9 @@ end method ;
 override method @lexicalErrorByDefault checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mDefaultErrorMessageName string]] then
-    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mDefaultErrorMessageName string]] ;
-  else
-    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mDefaultErrorMessageName ?* ?*] ;
-  end if ;
+  with xyz_ : !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mDefaultErrorMessageName do
+    xyz_mMessageIsUsed := true ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -101,11 +100,164 @@ end method ;
 override method @lexicalStringNotMatch checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-#  [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mErrorMessage] ;
-  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mErrorMessage string]] then
-    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mErrorMessage string]] ;
-  else
-    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mErrorMessage ?* ?*] ;
+  with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mErrorMessage do
+    mMessageIsUsed := true ;
+  end with ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalRoutineCallArgument                     *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalRoutineOrFunctionFormalInputArgument checkLexicalRoutineOrFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalAttributeInputArgument checkLexicalRoutineOrFunctionCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType ;
+  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+    !mAttributeName
+    ?attributeLexicalType
+  ] ;
+#--- Type check
+  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+    error mAttributeName:"type error, attribute type is "
+    . [attributeLexicalType lexicalTypeName]
+    . " type, but lexical routine prototype requires "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterInputArgument checkLexicalRoutineOrFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Type check
+  if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
+    error mCharacter:"type error, a literal character has @char "
+    . " type, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type value" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCurrentCharacterInputArgument checkLexicalRoutineOrFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Type check
+  if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
+    error mLocation:"type error, current character value has @char "
+    . " type, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type value" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalFunctionInputArgument checkLexicalRoutineOrFunctionCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Check attribute definition
+  @lexicalTypeList lexicalFormalTypeList ;
+  @lexicalTypeEnum returnedLexicalFormalType ;
+  [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
+    !mFunctionName
+    ?lexicalFormalTypeList
+    ?returnedLexicalFormalType
+  ] ;
+#--- Returned type check
+  if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
+    error mFunctionName:"type error, the function returns an "
+    . [returnedLexicalFormalType lexicalTypeName]
+    . " value, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " value" ;
+  end if ;
+#--- Check actual argument count
+  if [lexicalFormalTypeList length] != [mFunctionActualArgumentList length] then
+    error mFunctionName: "this lexical function names "
+    . [[mFunctionActualArgumentList length] string]
+    . " actual argument(s), but the prototype requires "
+    . [[lexicalFormalTypeList length] string] . " actual argument(s)" ;
+  end if ;
+#--- Check actual argument against formal parameters
+  foreach lexicalFormalTypeList, mFunctionActualArgumentList do
+#    [mLexicalActualInputArgument checkLexicalRoutineCallArgument
+#      !?ioLexiqueAnalysisContext
+#      ![@lexicalArgumentMode lexicalInputMode]
+#      !mLexicalType
+#    ] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalRoutineCallArgument                     *
+#---------------------------------------------------------------------------*
+
+abstract method @abstractLexicalRoutineActualArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalArgumentMode unused inLexicalRoutineFormalArgumentMode
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalAttributeInputOutputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalArgumentMode inLexicalRoutineFormalArgumentMode
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType ;
+  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+    !mAttributeName
+    ?attributeLexicalType
+  ] ;
+#--- Type check
+  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+    error mAttributeName:"type error, attribute type is "
+    . [attributeLexicalType lexicalTypeName]
+    . " type, but lexical routine prototype requires "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type" ;
+  end if ;
+#--- Passing mode check
+  if inLexicalRoutineFormalArgumentMode != [@lexicalArgumentMode lexicalInputOutputMode] then
+    error mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalFormalInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalArgumentMode inLexicalRoutineFormalArgumentMode
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType ;
+  [mRoutineOrFunctionFormalInputArgument checkLexicalRoutineOrFunctionCallArgument
+    !?ioLexiqueAnalysisContext
+    !inLexicalRoutineFormalArgumentType
+  ] ;
+#--- Passing mode check
+  if inLexicalRoutineFormalArgumentMode != [@lexicalArgumentMode lexicalInputMode] then
+    error mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode" ;
   end if ;
 end method ;
 
@@ -169,16 +321,43 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalActionInstruction checkLexicalInstruction
+override method @lexicalRoutineInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
+  @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList ;
+  @stringlist routineErrorMessageList ;
+  [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
+    !mActionName
+    ?lexicalRoutineFormalArgumentList
+    ?routineErrorMessageList
+  ] ;
+#--- Check actual argument count
+  if [lexicalRoutineFormalArgumentList length] != [mActualArgumentList length] then
+    error mActionName: "this lexical routine call names "
+    . [[mActualArgumentList length] string]
+    . " actual argument(s), but the lexical routine prototype requires "
+    . [[lexicalRoutineFormalArgumentList length] string] . " actual argument(s)" ;
+  end if ;
+#--- Check actual argument against formal parameters
+  foreach lexicalRoutineFormalArgumentList, mActualArgumentList do
+    [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
+      !?ioLexiqueAnalysisContext
+      !mLexicalArgumentMode
+      !mLexicalType
+    ] ;
+  end foreach ;
+#--- Check error message count
+  if [routineErrorMessageList length] != [mErrorMessageList length] then
+    error mActionName: "this lexical routine call names "
+    . [[mErrorMessageList length] string]
+    . " error message(s), but the lexical routine prototype requires "
+    . [[routineErrorMessageList length] string] . " error message(s)" ;
+  end if ;
+#--- Check error messages are actually defined
   foreach mErrorMessageList do
-#    [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mValue] ;
-    if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mValue string]] then
-      [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mValue string]] ;
-    else
-      [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mValue ?* ?*] ;
-    end if ;
+    with xyz_ : !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mValue do
+      xyz_mMessageIsUsed := true ;
+    end with ;
   end foreach ;
 end method ;
 
@@ -215,12 +394,9 @@ end method ;
 override method @lexicalErrorInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-#  [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mErrorMessageName] ;
-  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mErrorMessageName string]] then
-    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mErrorMessageName string]] ;
-  else
-    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mErrorMessageName ?* ?*] ;
-  end if ;
+  with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mErrorMessageName do
+    mMessageIsUsed := true ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -228,12 +404,9 @@ end method ;
 override method @lexicalWarningInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-#  [!? ioLexiqueAnalysisContext setMessageIsUsedForKey !true !mWarningMessageName] ;
-  if [[ioLexiqueAnalysisContext mLexicalMessageMap] hasKey ![mWarningMessageName string]] then
-    [!? ioLexiqueAnalysisContext.mLexicalMessageMap setMessageIsUsedForKey !true ![mWarningMessageName string]] ;
-  else
-    [[ioLexiqueAnalysisContext mLexicalMessageMap] searchKey !mWarningMessageName ?* ?*] ;
-  end if ;
+  with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mWarningMessageName do
+    mMessageIsUsed := true ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -260,6 +433,381 @@ override method @lexicalExplicitRule checkLexicalRule
     [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
   end foreach ;
 end method ;
+
+#---------------------------------------------------------------------------*
+#                         buildLexicalRoutineMap                            *
+#---------------------------------------------------------------------------*
+
+routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
+  outLexicalRoutineMap := [@lexicalRoutineMap emptyMap] ;
+#--- enterHexDigitIntoASCIIcharacter
+  @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList [emptyList] ;
+  @stringlist mErrorMessageList [emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mErrorMessageList += !"inErrorCodeGreaterThan255" ;
+  mErrorMessageList += !"inErrorNotHexDigitCharacter" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterHexDigitIntoASCIIcharacter" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterDigitIntoASCIIcharacter
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mErrorMessageList += !"inErrorCodeGreaterThan255" ;
+  mErrorMessageList += !"inErrorNotHexDigitCharacter" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterDigitIntoASCIIcharacter" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterCharacterIntoString
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterCharacterIntoString" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertStringToDouble
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_double] ;
+  mErrorMessageList += !"inConversionError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertStringToDouble" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterCharacterIntoCharacter
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterCharacterIntoCharacter" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- negateSInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"negateSInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- negateSInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"negateSInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertUIntToSInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertUIntToSInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertUInt64ToSInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertUInt64ToSInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterDigitIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterDigitIntoUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterDigitIntoUInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterDigitIntoUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterHexDigitIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterHexDigitIntoUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterHexDigitIntoUInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterHexDigitIntoUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertDecimalStringIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertDecimalStringIntoUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertDecimalStringIntoSInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertDecimalStringIntoSInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertDecimalStringIntoUInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertDecimalStringIntoUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertDecimalStringIntoSInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertDecimalStringIntoSInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterBinDigitIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotBinDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterBinDigitIntoUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterBinDigitIntoUInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotBinDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterBinDigitIntoUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterOctDigitIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotOctDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterOctDigitIntoUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- enterOctDigitIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotOctDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"enterOctDigitIntoUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- multiplyUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inResultTooLargeError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"multiplyUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- multiplyUInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inResultTooLargeError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"multiplyUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertHexStringIntoUInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertHexStringIntoUInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertHexStringIntoUInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertHexStringIntoUInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertHexStringIntoSInt
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertHexStringIntoSInt" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertHexStringIntoSInt64
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mErrorMessageList += !"inNumberTooLargeError" ;
+  mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertHexStringIntoSInt64" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertUnsignedNumberToUnicodeChar
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mErrorMessageList += !"inUnassignedUnicodeValueError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertUnsignedNumberToUnicodeChar" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- convertHTMLSequenceToUnicodeCharacter
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mErrorMessageList += !"inUnassignedHTMLSequenceError" ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"convertHTMLSequenceToUnicodeCharacter" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+#--- codePointToUnicode
+  mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
+  mErrorMessageList := [@stringlist emptyList] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"codePointToUnicode" !here]
+    !mLexicalRoutineFormalArgumentList
+    !mErrorMessageList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                         buildLexicalFunctionMap                           *
+#---------------------------------------------------------------------------*
+
+routine buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap :
+  outLexicalFunctionMap := [@lexicalFunctionMap emptyMap] ;
+#--- toLower
+  @lexicalTypeList lexicalTypeList [emptyList] ;
+  lexicalTypeList += ![@lexicalTypeEnum lexicalType_char] ;
+  [!?outLexicalFunctionMap insertKey
+    ![@lstring new !"toLower" !here]
+    !lexicalTypeList
+    ![@lexicalTypeEnum lexicalType_char]
+  ] ;
+#--- toUpper
+  lexicalTypeList := [@lexicalTypeList emptyList] ;
+  lexicalTypeList += ![@lexicalTypeEnum lexicalType_char] ;
+  [!?outLexicalFunctionMap insertKey
+    ![@lstring new !"toUpper" !here]
+    !lexicalTypeList
+    ![@lexicalTypeEnum lexicalType_char]
+  ] ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 #                         compileLexiqueComponent                           *
@@ -289,8 +837,16 @@ routine compileLexiqueComponent
   [!?lexicalTypeMap insertKey ![@lstring new !"sint"   !here] ![@lexicalTypeEnum lexicalType_sint]] ;
   [!?lexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
   [!?lexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
+#--------------------------------------- Build lexical routine map
+  @lexicalRoutineMap lexicalRoutineMap ;
+  buildLexicalRoutineMap ?lexicalRoutineMap ;
+#--------------------------------------- Build lexical function map
+  @lexicalFunctionMap lexicalFunctionMap ;
+  buildLexicalFunctionMap ?lexicalFunctionMap ;
 #--------------------------------------- Build lexical attribute map
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
+    !lexicalRoutineMap
+    !lexicalFunctionMap
     ![@lexicalMessageMap emptyMap]
     ![@terminalMap emptyMap]
     ![@lexicalAttributeMap emptyMap]
@@ -347,7 +903,7 @@ routine compileLexiqueComponent
   end foreach ;
 #--------------------------------------- Warn for unused messages
   foreach [lexiqueAnalysisContext mLexicalMessageMap] do
-    if not messageIsUsed then
+    if not mMessageIsUsed then
       warning key:"unused message" ;
     end if ;
   end foreach ;

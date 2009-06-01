@@ -5863,8 +5863,8 @@ parseLexicalToken (void) {
         if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
             testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
           do {
-            ::scanner_action_enterCharacterIntoString (*this, token.identifierString, ::scanner_action_toLower (*this, previousChar ())) ;
-            ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
             if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
                 testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
                 testForInputUTF32Char (TO_UNICODE ('_')) ||
@@ -5880,10 +5880,10 @@ parseLexicalToken (void) {
           }
           enterToken (token) ;
         }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
           do {
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+              ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
             }else{
               loop = false ;
@@ -5892,51 +5892,51 @@ parseLexicalToken (void) {
           loop = true ;
           if (testForInputUTF32Char (TO_UNICODE ('S')) ||
               testForInputUTF32Char (TO_UNICODE ('s'))) {
-            ::scanner_action_convertDecimalStringIntoSInt (*this, token.tokenString, token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
+            ::scanner_routine_convertDecimalStringIntoSInt (*this, token.tokenString, token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
             token.mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger ;
             enterToken (token) ;
           }else if (testForInputUTF32String (kUnicodeString_SL, 2, true)) {
-            ::scanner_action_convertDecimalStringIntoSInt64 (*this, token.tokenString, token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
+            ::scanner_routine_convertDecimalStringIntoSInt64 (*this, token.tokenString, token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
             token.mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger64 ;
             enterToken (token) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-            ::scanner_action_convertDecimalStringIntoUInt64 (*this, token.tokenString, token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
+            ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.tokenString, token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
             token.mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger64 ;
             enterToken (token) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
-            ::scanner_action_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
             do {
               if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-                ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+                ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
               }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
               }else{
                 loop = false ;
               }
             }while (loop) ;
             loop = true ;
-            ::scanner_action_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
+            ::scanner_routine_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
             token.mTokenCode = galgasTemplateScanner_1_literal_5Fdouble ;
             enterToken (token) ;
           }else{
-            ::scanner_action_convertDecimalStringIntoUInt (*this, token.tokenString, token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
+            ::scanner_routine_convertDecimalStringIntoUInt (*this, token.tokenString, token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
             token.mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger ;
             enterToken (token) ;
           }
         }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
           if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            ::scanner_action_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('0')) ;
-            ::scanner_action_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
-            ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('0')) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
             do {
               if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-                ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+                ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
               }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
               }else{
                 loop = false ;
               }
             }while (loop) ;
             loop = true ;
-            ::scanner_action_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
+            ::scanner_routine_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
             token.mTokenCode = galgasTemplateScanner_1_literal_5Fdouble ;
             enterToken (token) ;
           }else{
@@ -6128,8 +6128,8 @@ parseLexicalTokenForLexicalColoring (void) {
       if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
           testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
         do {
-          ::scanner_action_enterCharacterIntoString (*this, token.identifierString, ::scanner_action_toLower (*this, previousChar ())) ;
-          ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
           if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
               testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
               testForInputUTF32Char (TO_UNICODE ('_')) ||
@@ -6144,10 +6144,10 @@ parseLexicalTokenForLexicalColoring (void) {
           token.mTokenCode = galgasTemplateScanner_1_identifier ;
         }
       }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-        ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+        ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
         do {
           if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-            ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+            ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
           }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
           }else{
             loop = false ;
@@ -6156,46 +6156,46 @@ parseLexicalTokenForLexicalColoring (void) {
         loop = true ;
         if (testForInputUTF32Char (TO_UNICODE ('S')) ||
             testForInputUTF32Char (TO_UNICODE ('s'))) {
-          ::scanner_action_convertDecimalStringIntoSInt (*this, token.tokenString, token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
+          ::scanner_routine_convertDecimalStringIntoSInt (*this, token.tokenString, token.sint32value, gErrorMessage_0, gErrorMessage_2) ;
           token.mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger ;
         }else if (testForInputUTF32String (kUnicodeString_SL, 2, true)) {
-          ::scanner_action_convertDecimalStringIntoSInt64 (*this, token.tokenString, token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
+          ::scanner_routine_convertDecimalStringIntoSInt64 (*this, token.tokenString, token.sint64value, gErrorMessage_0, gErrorMessage_2) ;
           token.mTokenCode = galgasTemplateScanner_1_signed_5Fliteral_5Finteger64 ;
         }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-          ::scanner_action_convertDecimalStringIntoUInt64 (*this, token.tokenString, token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
+          ::scanner_routine_convertDecimalStringIntoUInt64 (*this, token.tokenString, token.uint64value, gErrorMessage_0, gErrorMessage_2) ;
           token.mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger64 ;
         }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
-          ::scanner_action_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
           do {
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+              ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
             }else{
               loop = false ;
             }
           }while (loop) ;
           loop = true ;
-          ::scanner_action_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
+          ::scanner_routine_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
           token.mTokenCode = galgasTemplateScanner_1_literal_5Fdouble ;
         }else{
-          ::scanner_action_convertDecimalStringIntoUInt (*this, token.tokenString, token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
+          ::scanner_routine_convertDecimalStringIntoUInt (*this, token.tokenString, token.uint32value, gErrorMessage_0, gErrorMessage_2) ;
           token.mTokenCode = galgasTemplateScanner_1_unsigned_5Fliteral_5Finteger ;
         }
       }else if (testForInputUTF32Char (TO_UNICODE ('.'))) {
         if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          ::scanner_action_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('0')) ;
-          ::scanner_action_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
-          ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('0')) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, TO_UNICODE ('.')) ;
+          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
           do {
             if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              ::scanner_action_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
+              ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
             }else{
               loop = false ;
             }
           }while (loop) ;
           loop = true ;
-          ::scanner_action_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
+          ::scanner_routine_convertStringToDouble (*this, token.tokenString, token.floatValue, gErrorMessage_1) ;
           token.mTokenCode = galgasTemplateScanner_1_literal_5Fdouble ;
         }else{
           if (testForInputUTF32String (kUnicodeString__2E__2E_, 2, true)) {

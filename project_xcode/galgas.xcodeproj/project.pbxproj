@@ -1190,6 +1190,7 @@
 		CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapType.h; sourceTree = "<group>"; };
 		CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_listmap.cpp; sourceTree = "<group>"; };
 		CF2945840E09805600511E49 /* AC_galgas_listmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_listmap.h; sourceTree = "<group>"; };
+		CF2B86690FD2EF4E00C5160F /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33792209EFA7DE00EC41F6 /* C_SourceTextForCocoa.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_SourceTextForCocoa.h; sourceTree = "<group>"; };
@@ -1984,6 +1985,7 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF2B86690FD2EF4E00C5160F /* include_typeWithInstruction.h */,
 				CFBFA17B0FB48EC300F0BF80 /* include_typeInstructionLexicalWarning.h */,
 				CFE6706F0FAF6008000DE30B /* include_typeUnicodeCharSet.h */,
 				CF33992D0EDDC2A900F0330E /* include_typeEntiteFonction.h */,

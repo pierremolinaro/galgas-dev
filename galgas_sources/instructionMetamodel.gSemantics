@@ -447,6 +447,22 @@ class @grammarInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  W I T H    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @withInstruction extends @semanticInstruction {
+  @lstring mPrefix ;
+  @lstring mTargetObjectName ;
+  @lstringlist mStructAttributeList ;
+  @lstring mSearchMethodName ;
+  @semanticExpression mKeyExpression ;
+  @semanticInstructionList mDoBranchInstructions ;
+  @semanticInstructionList mElseBranchInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  S W I T C H    I N S T R U C T I O N                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*

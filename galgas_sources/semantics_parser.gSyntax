@@ -4663,6 +4663,144 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# Instruction 'with p : !?map searchMethod !key do ... else ... end with ;' *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@EXsemanticContext inSemanticContext
+:
+  $with$ ;
+#--- Local Prefix
+  @string prefixString ;
+  select
+    prefixString := "" ;
+  or
+    $identifier$ ? @lstring prefix ;
+    prefixString := [prefix string] ;
+    $:$ ;
+  end select ;
+#--- Map object reference
+  $!?$ ;
+  $identifier$ ? @lstring nomVarDest ;
+  @location instructionLocation := [nomVarDest location] ;
+#--- Perform an io access for target variable
+  @AC_galgasType targetType ;
+  @typeCplusPlusName accessedVariableCppName ;
+  @string errorMessageName ;
+  [!?ioVariablesMap searchForReadWriteAccess !nomVarDest ?targetType ?accessedVariableCppName] ;
+#--- Struct attributes
+  @lstringlist structAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    @lstring structAttributeName ;
+    $identifier$ ? structAttributeName ;
+    structAttributeList += !structAttributeName ;
+    instructionLocation := [structAttributeName location] ;
+    @typeGalgasStructType structType := (cast targetType if >= @typeGalgasStructType else error structAttributeName) ;
+    @bool found := false ;
+    foreach [structType mAttributeList] (@AC_galgasType kAttributType @lstring kAttributeName) while not found do
+      found := [kAttributeName string] == [structAttributeName string] ;
+      targetType := kAttributType ;
+    end foreach ;
+    if not found then
+      error structAttributeName: "the '@" . [structType mStructTypeName] . "' does not define a '" . structAttributeName . "' attribute" ;
+    end if ;
+  end repeat ;
+#--- Search Method name
+  $identifier$ ? @lstring searchMethodName ;
+#--- key expression
+  $!$ ;
+  @typeExpression keyExpression ;
+  @AC_galgasType keyExpressionType ;
+  <expression>
+    !ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?keyExpression
+    ?keyExpressionType
+  ;
+#--- Check map access
+  @typeListeAttributsSemantiques attributeList ;
+  @string mapTypeName ;
+  [targetType check_with_InstructionAccess
+    !instructionLocation
+    !searchMethodName
+    !keyExpressionType
+    ?mapTypeName
+    ?errorMessageName
+    ?attributeList
+  ] ;
+#--- First branch
+  @typeInstructionList doBranchInstructionList [emptyList] ;
+  @typeInstructionList elseBranchInstructionList [emptyList] ;
+  block ioVariablesMap.testBloc () :
+    block ioVariablesMap.testPart () :
+    #--- Add map entry attributes as local variables
+      [!?ioVariablesMap insertWithInstructionLocalVariable
+        ![@lstring new !prefixString . "key" !instructionLocation]
+        ![@typeGalgas_lstring new]
+        ![@typeKeyName new !instructionLocation !false]
+      ] ;
+      foreach attributeList do
+        [!?ioVariablesMap insertWithInstructionLocalVariable
+          ![@lstring new !prefixString . [mAttributeName string] !instructionLocation]
+          !mAttributType
+          ![@typeOperandName new !instructionLocation ![mAttributeName string] !true !false]
+        ] ;
+      end foreach ;
+    #---
+      $do$ ;
+      <semantic_instructions_list_no_verif>
+        !inTableEnAvant
+        !ioComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?ioVariablesMap
+        !?doBranchInstructionList
+        !inSemanticContext
+      ;
+    end block (!here) ;
+    block ioVariablesMap.testPart () :
+      select
+      or
+        $else$ ;
+        <semantic_instructions_list_no_verif>
+          !inTableEnAvant
+          !ioComponentSemanticsEntitiesMap
+          !inOptionsComponentsMapForUse
+          !?ioVariablesMap
+          !?elseBranchInstructionList
+          !inSemanticContext
+        ;
+      end select ; 
+    end block (!here) ;
+  end block () ;
+  $end$ ;
+  $with$ ;
+  $;$ ;
+#--- Engendrer l'instruction
+  @typeInstruction instruction := [@typeWithInstruction new
+    !mapTypeName
+    !accessedVariableCppName
+    !structAttributeList
+    !errorMessageName
+    !keyExpression
+    !doBranchInstructionList
+    !elseBranchInstructionList
+    !instructionLocation
+  ] ;
+  ioInstructionList += !instruction ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #     Instruction 'foreach ... ;'                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*

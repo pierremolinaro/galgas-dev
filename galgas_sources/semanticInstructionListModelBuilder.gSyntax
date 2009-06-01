@@ -521,6 +521,58 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    W I T H    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $with$ ;
+  @lstring prefix ;
+  select
+    prefix := [@lstring new !"" !here] ;
+  or
+    $identifier$ ? prefix ;
+    $:$ ;
+  end select ;
+  $!?$ ;
+  $identifier$ ?@lstring mTargetObjectName ;
+  @lstringlist structAttributeList [emptyList] ;
+  repeat
+  while
+    $.$ ;
+    $identifier$ ?@lstring mStructFieldName ;
+    structAttributeList += !mStructFieldName ;
+  end repeat ;
+  $identifier$ ?@lstring mSearchMethodName ;
+  $!$ ;
+  @semanticExpression mKeyExpression ;
+  <expression> ? mKeyExpression ;
+  $do$ ;
+  @semanticInstructionList mDoBranchInstructions ;
+  <semantic_instruction_list> ? mDoBranchInstructions ;
+  @semanticInstructionList mElseBranchInstructions ;
+  select
+    mElseBranchInstructions := [@semanticInstructionList emptyList] ;
+  or
+    $else$ ;
+    <semantic_instruction_list> ? mElseBranchInstructions ;
+  end select ;
+  outInstruction := [@withInstruction new
+    !prefix
+    !mTargetObjectName
+    !structAttributeList
+    !mSearchMethodName
+    !mKeyExpression
+    !mDoBranchInstructions
+    !mElseBranchInstructions
+  ] ;
+  $end$ ;
+  $with$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    M A T C H    I N S T R U C T I O N                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*

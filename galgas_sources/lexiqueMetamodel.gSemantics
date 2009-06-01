@@ -230,18 +230,19 @@ class @lexicalSelectInstruction extends @lexicalInstruction {
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalActualArgument {
+abstract class @abstractLexicalRoutineActualArgument {
+  @location mActualPassingModeLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalRoutineCallActualArgumentList {
-  @lexicalActualArgument mLexicalActualArgument ;
+  @abstractLexicalRoutineActualArgument mLexicalRoutineActualArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalActionInstruction extends @lexicalInstruction {
+class @lexicalRoutineInstruction extends @lexicalInstruction {
   @lstring mActionName ;
   @lexicalRoutineCallActualArgumentList mActualArgumentList ;
   @lstringlist mErrorMessageList ;
@@ -249,41 +250,48 @@ class @lexicalActionInstruction extends @lexicalInstruction {
 
 #---------------------------------------------------------------------------*
 
-abstract class @lexicalFormalInputArgument extends @lexicalActualArgument {
+class @lexicalAttributeInputOutputArgument extends @abstractLexicalRoutineActualArgument {
+  @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalRoutineOrFunctionFormalInputArgument {
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalFormalInputArgument extends @abstractLexicalRoutineActualArgument {
+  @lexicalRoutineOrFunctionFormalInputArgument mRoutineOrFunctionFormalInputArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalFunctionCallActualArgumentList {
-  @lexicalFormalInputArgument mLexicalActualInputArgument ;
+  @lexicalRoutineOrFunctionFormalInputArgument mLexicalActualInputArgument ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalAttributeInputOutputArgument extends @lexicalFormalInputArgument {
+class @lexicalAttributeInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
   @lstring mAttributeName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalAttributeInputArgument extends @lexicalFormalInputArgument {
-  @lstring mAttributeName ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @lexicalCharacterInputArgument extends @lexicalFormalInputArgument {
+class @lexicalCharacterInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
   @lchar mCharacter ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalCurrentCharacterInputArgument extends @lexicalFormalInputArgument {
+class @lexicalCurrentCharacterInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @lexicalFunctionInputArgument extends @lexicalFormalInputArgument {
+class @lexicalFunctionInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
   @lstring mFunctionName ;
   @lexicalFunctionCallActualArgumentList mFunctionActualArgumentList ;
 }
