@@ -551,7 +551,7 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 
 void cPtr_typeArgumentRoutine::
 generateExternArgument (AC_OutputStream & inCppFile) const {
-  inCppFile << "::scanner_action_" << attributNomRoutine << " (*this, " ;
+  inCppFile << "::scanner_function_" << attributNomRoutine << " (*this, " ;
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
   inCppFile << ")" ;
 }
@@ -571,7 +571,7 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
                               const bool /*inGenerateEnterToken */,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
-  inCppFile << "::scanner_action_" << attributNomRoutineExterne << " (*this, " ;
+  inCppFile << "::scanner_routine_" << attributNomRoutineExterne << " (*this, " ;
 //--- Engendrer la liste des arguments (au moins 1)
   generateExternArgumentForList (attributListeArguments, inCppFile) ;
 //--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
@@ -1478,7 +1478,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
       if (currentReplacement._mReplacementFunction (HERE).length () == 0) {
         generatedZone2 << "NULL" ;
       }else{
-        generatedZone2 << "scanner_action_" << currentReplacement._mReplacementFunction (HERE) ;
+        generatedZone2 << "scanner_routine_" << currentReplacement._mReplacementFunction (HERE) ;
       }
       generatedZone2 << ", true},\n" ;
       currentReplacement.next () ;

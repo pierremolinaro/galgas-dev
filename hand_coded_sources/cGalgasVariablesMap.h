@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generic map used for GALGAS variables (handles read/write access)        *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -181,26 +181,12 @@ template <typename INFO> class cGalgasVariablesMap {
   public : bool isBuilt (void) const ;
 
 //--- Insertion Methods
-  public : sint32 insertEntityAttributeLocalVariable (C_Compiler & inLexique,
+  public : sint32 insertWithInstructionLocalVariable (C_Compiler & inLexique,
                                                       const INFO & info,
                                                       const GGS_lstring & clef,
                                                       const GGS_location & inLocation,
                                                       const char * messageErreurInsertion
                                                       COMMA_LOCATION_ARGS) ;
-
-  public : sint32 insertSingleEntityLocalVariable (C_Compiler & inLexique,
-                                                   const INFO & info,
-                                                   const GGS_lstring & clef,
-                                                   const GGS_location & inLocation,
-                                                   const char * messageErreurInsertion
-                                                   COMMA_LOCATION_ARGS) ;
-
-  public : sint32 insertListOfEntitiesLocalVariable (C_Compiler & inLexique,
-                                                     const INFO & info,
-                                                     const GGS_lstring & clef,
-                                                     const GGS_location & inLocation,
-                                                     const char * messageErreurInsertion
-                                                     COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertInArgument (C_Compiler & inLexique,
                                     const INFO & info,
@@ -215,13 +201,6 @@ template <typename INFO> class cGalgasVariablesMap {
                                           const GGS_location & inLocation,
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) ;
-
-  public : sint32 insertOutProperty (C_Compiler & inLexique,
-                                     const INFO & info,
-                                     const GGS_lstring & clef,
-                                     const GGS_location & inLocation,
-                                     const char * messageErreurInsertion
-                                     COMMA_LOCATION_ARGS) ;
 
   public : sint32 insertInOutArgument (C_Compiler & inLexique,
                                      const INFO & info,

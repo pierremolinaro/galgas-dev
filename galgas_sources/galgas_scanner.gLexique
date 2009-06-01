@@ -131,7 +131,8 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "unused",
   "warning",
   "when",              
-  "while" ;
+  "while",
+  "with" ;
 
 rule 'a'->'z' |  'A'->'Z' :
   repeat
@@ -166,16 +167,16 @@ rule "0x" :
   end repeat ;
   select
   when "LS" :
-    convertHexStringIntoSInt64 !?tokenString !sint64value error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoSInt64 !tokenString !?sint64value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer64$ ;
   when 'S' | 's' :
-    convertHexStringIntoSInt !?tokenString !sint32value error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoSInt !tokenString !?sint32value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer$ ;
   when 'L' :
-    convertHexStringIntoUInt64 !?tokenString !uint64value error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoUInt64 !tokenString !?uint64value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer64$ ;
   default
-    convertHexStringIntoUInt !?tokenString !uint32value error decimalNumberTooLarge, internalError ;
+    convertHexStringIntoUInt !tokenString !?uint32value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer$ ;
   end select ;
 end rule ;
@@ -189,13 +190,13 @@ rule '0'->'9' :
   end repeat ;
   select
   when 'S' | 's' :
-    convertDecimalStringIntoSInt !?tokenString !sint32value error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoSInt !tokenString !?sint32value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer$ ;
   when "LS" :
-    convertDecimalStringIntoSInt64 !?tokenString !sint64value error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoSInt64 !tokenString !?sint64value error decimalNumberTooLarge, internalError ;
     send $signed_literal_integer64$ ;
   when 'L' :
-    convertDecimalStringIntoUInt64 !?tokenString !uint64value error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoUInt64 !tokenString !?uint64value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer64$ ;
   when '.' :
     enterCharacterIntoString !?tokenString !'.' ;
@@ -204,10 +205,10 @@ rule '0'->'9' :
       enterCharacterIntoString !?tokenString !* ;
     while '_' :
     end repeat ;
-    convertStringToDouble !?tokenString !floatValue error floatNumberConversionError ;
+    convertStringToDouble !tokenString !?floatValue error floatNumberConversionError ;
     send $literal_double$ ;
   default
-    convertDecimalStringIntoUInt !?tokenString !uint32value error decimalNumberTooLarge, internalError ;
+    convertDecimalStringIntoUInt !tokenString !?uint32value error decimalNumberTooLarge, internalError ;
     send $unsigned_literal_integer$ ;
   end select ;
 end rule ;
@@ -230,7 +231,7 @@ rule '.' :
       enterCharacterIntoString !?tokenString !* ;
     while '_' :
     end repeat ;
-    convertStringToDouble !?tokenString !floatValue error floatNumberConversionError ;
+    convertStringToDouble !tokenString !?floatValue error floatNumberConversionError ;
     send $literal_double$ ;
   default
     select
@@ -316,7 +317,7 @@ rule '\'' :
             select
             when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
               enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
-              convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
+              convertUnsignedNumberToUnicodeChar !?uint32value !?charValue error unassignedUnicodeValue ;
             default
               error invalideUnicodeDefinition4 ;
             end select ;
@@ -354,7 +355,7 @@ rule '\'' :
                     select
                     when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
                       enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
-                      convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
+                      convertUnsignedNumberToUnicodeChar !?uint32value !?charValue error unassignedUnicodeValue ;
                     default
                       error invalideUnicodeDefinition8 ;
                     end select ;
@@ -395,7 +396,7 @@ rule '\'' :
       while ~ ";" error incorrectHTMLescapeSequence :
         enterCharacterIntoString !?tokenString !* ;
       end repeat ;
-      convertHTMSequenceToUnicodeCharacter !?tokenString !charValue error unknownHTMLescapeSequence ;
+      convertHTMLSequenceToUnicodeCharacter !?tokenString !?charValue error unknownHTMLescapeSequence ;
     default
       error incorrectCharConstant ;
     end select ;
@@ -515,7 +516,7 @@ rule '"' :
       while ~ ";" error incorrectHTMLescapeSequence :
         enterCharacterIntoString !?identifierString !* ;
       end repeat ;
-      convertHTMSequenceToUnicodeCharacter !?identifierString !charValue error unknownHTMLescapeSequence ;
+      convertHTMLSequenceToUnicodeCharacter !?identifierString !?charValue error unknownHTMLescapeSequence ;
       enterCharacterIntoString !?tokenString !charValue ;
     when '0' -> '9' :
       warning obsoleteStringConstruction ;
@@ -537,7 +538,7 @@ rule '"' :
             select
             when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
               enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
-              convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
+              convertUnsignedNumberToUnicodeChar !?uint32value !?charValue error unassignedUnicodeValue ;
               enterCharacterIntoString !?tokenString !charValue ;
             default
               error invalideUnicodeDefinition4 ;
@@ -576,7 +577,7 @@ rule '"' :
                     select
                     when '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
                       enterHexDigitIntoUInt !* !?uint32value error internalError, internalError ;
-                      convertUnsignedNumberToUnicodeChar !uint32value !?charValue error unassignedUnicodeValue ;
+                      convertUnsignedNumberToUnicodeChar !?uint32value !?charValue error unassignedUnicodeValue ;
                       enterCharacterIntoString !?tokenString !charValue ;
                     default
                       error invalideUnicodeDefinition8 ;

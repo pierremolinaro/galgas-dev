@@ -11,7 +11,15 @@ enum @lexicalTypeEnum {
   constructor lexicalType_sint64 ;
   constructor lexicalType_double ;
 }{
-
+  reader lexicalTypeName :
+    lexicalType_string -> "@string" ;
+    lexicalType_char   -> "@char" ;
+    lexicalType_uint   -> "@uint" ;
+    lexicalType_uint64 -> "@uint64" ;
+    lexicalType_sint   -> "@sint" ;
+    lexicalType_sint64 -> "@sint64" ;
+    lexicalType_double -> "@double" ;
+  end reader ;
 }
 
 #---------------------------------------------------------------------------*
@@ -65,14 +73,50 @@ map @lexicalExplicitTokenListMapMap {
 
 map @lexicalMessageMap {
   @lstring mLexicalMessage ;
-  @bool messageIsUsed feature setter ;
+  @bool mMessageIsUsed ;
   insert insertKey error message "the '%K' message has been already declared in %L" ;
   search searchKey error message "the '%K' message is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
 
+enum @lexicalArgumentMode {
+  constructor lexicalInputMode ;
+  constructor lexicalInputOutputMode ;
+}{
+
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalRoutineFormalArgumentList {
+  @lexicalArgumentMode mLexicalArgumentMode ;
+  @lexicalTypeEnum mLexicalType ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @lexicalRoutineMap {
+  @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList ;
+  @stringlist mErrorMessageList ;
+  insert insertKey error message "the '%K' lexical routine has been already declared" ;
+  search searchKey error message "the '%K' lexical routine is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @lexicalFunctionMap {
+  @lexicalTypeList mLexicalTypeList ;
+  @lexicalTypeEnum mReturnedLexicalType ;
+  insert insertKey error message "the '%K' lexical function has been already declared" ;
+  search searchKey error message "the '%K' lexical function is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @lexiqueAnalysisContext {
+  @lexicalRoutineMap mLexicalRoutineMessageMap ;
+  @lexicalFunctionMap mLexicalFunctionMap ;
   @lexicalMessageMap mLexicalMessageMap ;
   @terminalMap mTerminalMap ;
   @lexicalAttributeMap mLexicalAttributeMap ;

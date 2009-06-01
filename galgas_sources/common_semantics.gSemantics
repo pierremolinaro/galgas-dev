@@ -427,6 +427,8 @@ enum @localConstantBuildStyleEnum {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+abstract class @AC_galgasType ;
+
 abstract class @AC_galgasType feature generatedInSeparateFile {
 #--- Get type name
   abstract method getTypeName !@string outTypeName ;
@@ -435,6 +437,20 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
   method acceptToBeSortKeyInSortedListDefinition ??@lstring inErrorLocation :
     error inErrorLocation :
        "this attribute cannot be used for sorting" ;
+  end method ;
+
+#--- By default, object does not accept 'with' instruction access
+  method check_with_InstructionAccess
+    ??@location inErrorLocation
+    ??@lstring unused searchMethodName
+    ??@AC_galgasType unused inKeyExpressionType
+    !@string outMapTypeName
+    !@string outErrorMessage
+    !@typeListeAttributsSemantiques outAttributeList
+  :
+    error inErrorLocation :
+       "only a map object can be accessed by the 'with' instruction"
+    -> outAttributeList, outMapTypeName, outErrorMessage ;
   end method ;
 
 #--- By default, object does not accept assignment from 'here'
@@ -2804,6 +2820,32 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 
 #--- Search (method) map
   @mapMethodMap mReaderMethodMap ;
+
+#--- By default, object does not accept 'with' instruction access
+  override
+  method check_with_InstructionAccess
+    ??@location unused inErrorLocation
+    ??@lstring searchMethodName
+    ??@AC_galgasType inKeyExpressionType
+    !@string outMapTypeName
+    !@string outErrorMessage
+    !@typeListeAttributsSemantiques outAttributeList
+  :
+    outAttributeList := mAttributeList ;
+    outMapTypeName := [mMapTypeName string] ;
+  #--- Test for 'hasKey' method
+    if [searchMethodName string] == "hasKey" then
+      @typeGalgas_string classType := (cast inKeyExpressionType if >= @typeGalgas_string else error here) ;
+      outErrorMessage := "" ;
+    elsif [mReaderMethodMap hasKey ![searchMethodName string]] then
+      @typeGalgas_lstring classType := (cast inKeyExpressionType if >= @typeGalgas_lstring else error here) ;
+      outErrorMessage := [searchMethodName string] ;
+    else
+      error searchMethodName:
+        "this method does not exist: it should be the predefined 'hasKey', or a declared search method"
+      -> outErrorMessage ;
+    end if ;
+  end method ;
 
 #--- Modifiers are insert methods and (when map defines automaton) search methods
   override

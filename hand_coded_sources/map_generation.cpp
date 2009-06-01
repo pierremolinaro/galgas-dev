@@ -398,7 +398,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    return this ;\n"
              "  }\n\n"
              "//--- Search method(s)\n" ;
+//--- Declare mapindex search error messages
   GGS_mapIndexSearchReaderMap::cEnumerator currentMethod (mMapIndexSearchReaderMap) ;
+  while (currentMethod.hc ()) {
+    inHfile << "  public : static const utf32 kMapIndexSearchMessage_" << currentMethod._key (HERE) << " [] ;\n\n" ;
+    currentMethod.next () ;
+  }
+
+  currentMethod.rewind () ;
   while (currentMethod.hc ()) {
     inHfile << "  public : void\n"
                "  method_" << currentMethod._key (HERE) << " (C_Compiler & inLexique,\n"
@@ -510,8 +517,17 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "}\n\n" ;
 
-//--- Search methods
+//--- Declare mapindex search error messages
   GGS_mapIndexSearchReaderMap::cEnumerator currentMethod (mMapIndexSearchReaderMap) ;
+  while (currentMethod.hc ()) {
+    inCppFile << "const utf32 GGS_" << mMapindexTypeName << "::kMapIndexSearchMessage_" << currentMethod._key (HERE) << " [] = " ;
+    inCppFile.appendUTF32LiteralStringConstant (currentMethod._mRetrieveErrorMessage (HERE).string ()) ;
+    inCppFile << " ;\n\n" ;
+    currentMethod.next () ;
+  }
+
+//--- Search methods
+  currentMethod.rewind () ;
   while (currentMethod.hc ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
@@ -537,9 +553,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    if (mIndex.retrieve () == NULL) {\n"
                  "      inLexique.onTheFlyRunTimeError (\"bound entry has been deleted\" COMMA_THERE) ;\n"
                  "    }else if (! mIndex.retrieve ()->mIsDefined) {\n"
-                 "      AC_galgas_map::emitMapSemanticErrorMessage (inLexique, mKey, " ;
-    inCppFile.appendCLiteralStringConstant (currentMethod._mRetrieveErrorMessage (HERE)) ;
-    inCppFile << " COMMA_THERE) ;\n"
+                 "      AC_galgas_map::emitMapSemanticErrorMessage (inLexique, mKey,\n"
+                 "                                                  kMapIndexSearchMessage_" << currentMethod._key (HERE) << "\n"
+                 "                                                  COMMA_THERE) ;\n"
                  "    }else{\n"
                  "      MF_Assert (reinterpret_cast <const elementOf_GGS_" << mMapTypeName << " *> (mIndex.retrieve ()) != NULL, \"Dynamic cast error\", 0, 0) ;\n"
                  "      const elementOf_GGS_" << mMapTypeName << " * p = (const elementOf_GGS_" << mMapTypeName << " *) mIndex.retrieve () ;\n"
@@ -677,11 +693,18 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << "\n" ;
 
-//--- Declaring remove methods
+//--- Declare remove error messages
   GGS_insertOrSearchMethodList::cEnumerator currentRemoveMethod (mRemoveMethodList, true) ;
   while (currentRemoveMethod.hc ()) {
+    inHfile << "  public : static const utf32 kRemoveMessage_" << currentRemoveMethod._mMethodName (HERE) << " [] ;\n\n" ;
+    currentRemoveMethod.next () ;
+  }
+
+//--- Declaring remove methods
+  currentRemoveMethod.rewind () ;
+  while (currentRemoveMethod.hc ()) {
     inHfile << "//--- '" << currentRemoveMethod._mMethodName (HERE) << "' Remove Modifier\n" ;
-    inHfile <<    "  public : void modifier_"
+    inHfile << "  public : void modifier_"
             << currentRemoveMethod._mMethodName (HERE)
             << " (C_Compiler & inLexique" 
                ",\n                                const GGS_lstring & inKey" ;
@@ -697,11 +720,24 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
-    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
     currentRemoveMethod.next () ;
   }
-//--- Declaring insert methods
+
+
+//--- Declare insert error messages
   GGS_insertOrSearchMethodList::cEnumerator currentInsertMethod (mInsertMethodList, true) ;
+  while (currentInsertMethod.hc ()) {
+    inHfile << "  public : static const utf32 kInsertMessage_" << currentInsertMethod._mMethodName (HERE) << " [] ;\n\n" ;
+    if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
+      inHfile << "  public : static const utf32 kShadowMessage_" << currentInsertMethod._mMethodName (HERE) << " [] ;\n\n" ;
+    }
+    currentInsertMethod.next () ;
+  }
+
+
+//--- Declaring insert methods
+  currentInsertMethod.rewind () ;
   while (currentInsertMethod.hc ()) {
     inHfile << "//--- '" << currentInsertMethod._mMethodName (HERE) << "' Insert Modifier\n" ;
     inHfile <<    "  public : void modifier_"
@@ -720,11 +756,18 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       attributeIndex ++ ;
       currentAttribute.next () ;
     }
-    inHfile << " COMMA_LOCATION_ARGS) ;\n" ;
+    inHfile << " COMMA_LOCATION_ARGS) ;\n\n" ;
     currentInsertMethod.next () ;
   }
-//--- Declaring search methods
+
+//--- Define search error messages
   GGS_insertOrSearchMethodList::cEnumerator currentSearchMethod (mSearchMethodList, true) ;
+  while (currentSearchMethod.hc ()) {
+    inHfile << "  public : static const utf32 kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << " [] ;\n\n" ;
+    currentSearchMethod.next () ;
+  }
+//--- Declaring search methods
+  currentSearchMethod.rewind () ;
   while (currentSearchMethod.hc ()) {
     inHfile << "//--- '" << currentSearchMethod._mMethodName (HERE) << "' Search Method\n"
                "  public : void method_" 
@@ -750,7 +793,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   if (currentRemoveMethod.count () > 0) {
     inHfile << "//--- Internal method for removing an element\n"
                "  protected : void removeElement (C_Compiler & inLexique,\n"
-               "                                   const char * inErrorMessage,\n"
+               "                                   const utf32 * inErrorMessage,\n"
                "                                   const GGS_lstring & inKey,\n" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
@@ -766,8 +809,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
 
   inHfile << "//--- Internal method for inserting an element\n"
-             "  protected : void _insertElement (C_Compiler & inLexique,\n"
-             "                                   const char * inErrorMessage,\n"
+             "  protected : void insertElement (C_Compiler & inLexique,\n"
+             "                                   const utf32 * inErrorMessage,\n"
              "                                   const GGS_lstring & inKey,\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 attributeIndex = 0 ;
@@ -782,8 +825,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                   COMMA_LOCATION_ARGS) ;\n" ;
   
   inHfile << "//--- Internal method for searching for an element\n"
-             "  protected : void _searchElement (C_Compiler & inLexique,\n"
-             "                                   const char * inErrorMessage,\n"
+             "  protected : void searchElement (C_Compiler & inLexique,\n"
+             "                                   const utf32 * inErrorMessage,\n"
              "                                   const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
@@ -1012,7 +1055,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapTypeName << "::\n"
                  "removeElement (C_Compiler & inLexique,\n"
-                 "                const char * inErrorMessage,\n"
+                 "                const utf32 * inErrorMessage,\n"
                  "                const GGS_lstring & inKey,\n" ;
     current.rewind () ;
     sint32 attributeIndex = 0 ;
@@ -1057,11 +1100,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "}\n\n" ;
   }
 
-//--- '_insertElement' method
+//--- 'insertElement' method
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mMapTypeName << "::\n"
-               "_insertElement (C_Compiler & inLexique,\n"
-               "                const char * inErrorMessage,\n"
+               "insertElement (C_Compiler & inLexique,\n"
+               "                const utf32 * inErrorMessage,\n"
                "                const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   sint32 attributeIndex = 0 ;
@@ -1104,11 +1147,11 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }\n"
                "}\n\n" ;
 
-//--- '_searchElement' method
+//--- 'searchElement' method
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mMapTypeName << "::\n"
-               "_searchElement (C_Compiler & inLexique,\n"
-               "               const char * inErrorMessage,\n"
+               "searchElement (C_Compiler & inLexique,\n"
+               "               const utf32 * inErrorMessage,\n"
                "               const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
@@ -1184,8 +1227,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentAttributeForSetter.next () ;
   }
 
-//--- Implement search routines
+//--- Define search error messages
   GGS_insertOrSearchMethodList::cEnumerator currentSearchMethod (mSearchMethodList, true) ;
+  while (currentSearchMethod.hc ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "const utf32 GGS_" << mMapTypeName << "::kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << " [] = " ;
+    inCppFile.appendUTF32LiteralStringConstant (currentSearchMethod._mErrorMessage (HERE).string ()) ;
+    inCppFile << " ;\n\n" ;
+    currentSearchMethod.next () ;
+  }
+
+//--- Implement search routines
+  currentSearchMethod.rewind () ;
   while (currentSearchMethod.hc ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapTypeName << "::\n"
@@ -1205,10 +1258,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       current.next () ;
     }
     inCppFile << " COMMA_LOCATION_ARGS) const {\n" ;
-    inCppFile << "  _searchElement (inLexique,\n"
-                 "                  " ;
-    inCppFile.appendCLiteralStringConstant (currentSearchMethod._mErrorMessage (HERE).string ()) ;
-    inCppFile << ",\n"
+    inCppFile << "  searchElement (inLexique,\n"
+                 "                  kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << ",\n"
                  "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "                  outParameter" << cStringWithSigned (i) << ",\n" ;
@@ -1223,8 +1274,18 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentSearchMethod.next () ;
   }
 
-//--- Implement remove methods
+//--- Declare remove error messages
   GGS_insertOrSearchMethodList::cEnumerator currentRemoveMethod (mRemoveMethodList, true) ;
+  while (currentRemoveMethod.hc ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "const utf32 GGS_" << mMapTypeName << "::kRemoveMessage_" << currentRemoveMethod._mMethodName (HERE) << " [] = " ;
+    inCppFile.appendUTF32LiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE).string ()) ;
+    inCppFile << " ;\n\n" ;
+    currentRemoveMethod.next () ;
+  }
+
+//--- Implement remove methods
+  currentRemoveMethod.rewind () ;
   while (currentRemoveMethod.hc ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_"
@@ -1246,9 +1307,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << " COMMA_LOCATION_ARGS) {\n"
                  "  removeElement (inLexique,\n"
-                 "                  " ;
-    inCppFile.appendCLiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE).string ()) ;
-    inCppFile << ",\n"
+                 "                  kRemoveMessage_" << currentRemoveMethod._mMethodName (HERE) << ",\n"
                  "                  inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "                  outParameter" << cStringWithSigned (i) << ",\n" ;
@@ -1263,8 +1322,23 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     currentRemoveMethod.next () ;
   }
 
-//--- Implement insert routines
+//--- Define insert error messages
   GGS_insertOrSearchMethodList::cEnumerator currentInsertMethod (mInsertMethodList, true) ;
+  while (currentInsertMethod.hc ()) {
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "const utf32 GGS_" << mMapTypeName << "::kInsertMessage_" << currentInsertMethod._mMethodName (HERE) << " [] = " ;
+    inCppFile.appendUTF32LiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
+    inCppFile << " ;\n\n" ;
+    if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
+      inCppFile << "const utf32 GGS_" << mMapTypeName << "::kShadowMessage_" << currentInsertMethod._mMethodName (HERE) << " [] = " ;
+      inCppFile.appendUTF32LiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
+      inCppFile << " ;\n\n" ;
+    }
+    currentInsertMethod.next () ;
+  }
+
+//--- Implement insert routines
+  currentInsertMethod.rewind () ;
   while (currentInsertMethod.hc ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_"
@@ -1288,9 +1362,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inCppFile << "  const bool shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;\n"
                    "  if (shadowExists) {\n"
-                   "    emitMapSemanticErrorMessage (inLexique, inKey, " ;
-      inCppFile.appendCLiteralStringConstant (currentInsertMethod._mShadowErrorMessage (HERE).string ()) ;
-      inCppFile << " COMMA_THERE) ;\n" ;
+                   "    emitMapSemanticErrorMessage (inLexique, inKey, kShadowMessage_" << currentInsertMethod._mMethodName (HERE) << "\n"
+                << "                                 COMMA_THERE) ;\n" ;
       if (currentInsertMethod._mIsGetIndexMethod (HERE).boolValue ()) {
         inCppFile << "    outIndex.drop () ;\n" ;
       }
@@ -1298,10 +1371,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile.incIndentation (2) ;
     
     }
-    inCppFile << "  _insertElement (inLexique,\n"
-                 "                 " ;
-    inCppFile.appendCLiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
-    inCppFile << ",\n"
+    inCppFile << "  insertElement (inLexique,\n"
+                 "                 kInsertMessage_" << currentInsertMethod._mMethodName (HERE) << ",\n"
                  "                 inKey,\n" ;
     for (sint32 i=0 ; i<mNonExternAttributesList.count () ; i++) {
       inCppFile << "                 inParameter" << cStringWithSigned (i) << ",\n" ;

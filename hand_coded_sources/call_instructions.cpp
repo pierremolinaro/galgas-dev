@@ -20,6 +20,7 @@
 
 #include "utilities/MF_MemoryControl.h"
 #include "semantics_semantics.h"
+#include "semantics_instructions.h"
 
 //---------------------------------------------------------------------------*
 
@@ -579,6 +580,87 @@ formalCurrentObjectArgumentIsUsed (void) const {
     argCourant.next () ;
   }
   return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeWithInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                     const C_String & inTargetFileName,
+                     sint32 & ioPrototypeIndex,
+                     const bool inGenerateDebug,
+                     const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "elementOf_GGS_" << mMapTypeName << " * operand_" << cStringWithSigned (mInstructionLocation.location ())
+              << " = (elementOf_GGS_" << mMapTypeName << " *) " ;
+    mAccessedVariableCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
+    while (structAttribute.hc ()) {
+      ioCppFile << "." << structAttribute._mValue (HERE) ;
+      structAttribute.next () ;
+    }
+    if (mErrorMessageName.string ().length () > 0) {
+      ioCppFile << ".searchForWithInstruction (inLexique, " ;
+      mKeyExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << ", GGS_" << mMapTypeName << "::kSearchMessage_" << mErrorMessageName << " COMMA_SOURCE_FILE_AT_LINE ("
+                << cStringWithSigned (mInstructionLocation.lineNumber ())
+                << ")) ;\n" ;
+    }else{
+      ioCppFile << ".searchForTolerantWithInstruction (" ;
+      mKeyExpression (HERE)->generateExpression (ioCppFile) ;
+      ioCppFile << ") ;\n" ;
+    }
+    ioCppFile << "if (NULL != operand_" << cStringWithSigned (mInstructionLocation.location ()) << ") {\n" ;
+    generateInstructionListForList (mDoBranchInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex,
+                                    inGenerateDebug, true) ;
+    if (mElseBranchInstructionList.count () > 0) {
+      ioCppFile << "}else{\n" ;
+      generateInstructionListForList (mElseBranchInstructionList, ioCppFile, inTargetFileName, ioPrototypeIndex,
+                                      inGenerateDebug, true) ;
+    }
+    ioCppFile << "}\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeWithInstruction::
+isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
+  bool isUsed = mErrorMessageName.string ().length () > 0 ;
+  if (! isUsed) {
+    isUsed = isLexiqueFormalArgumentUsedForList (mDoBranchInstructionList, inGenerateSemanticInstructions) ;
+  }
+  if (! isUsed) {
+    isUsed = isLexiqueFormalArgumentUsedForList (mElseBranchInstructionList, inGenerateSemanticInstructions) ;
+  }
+  return isUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeWithInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool inGenerateSemanticInstructions) const {
+  return mAccessedVariableCppName.isSameObjectAs (inArgumentCppName)
+   || mKeyExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+   || formalArgumentIsUsedForList (mDoBranchInstructionList, inArgumentCppName, inGenerateSemanticInstructions)
+   || formalArgumentIsUsedForList (mElseBranchInstructionList, inArgumentCppName, inGenerateSemanticInstructions) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeWithInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mKeyExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+   || formalCurrentObjectArgumentIsUsedForList (mDoBranchInstructionList)
+   || formalCurrentObjectArgumentIsUsedForList (mElseBranchInstructionList) ;
 }
 
 //---------------------------------------------------------------------------*
