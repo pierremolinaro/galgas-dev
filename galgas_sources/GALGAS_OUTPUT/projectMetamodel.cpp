@@ -55,7 +55,7 @@ isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileKind::
-_operator_isEqual (const GGS_sourceFileKind inOperand) const {
+operator_isEqual (const GGS_sourceFileKind inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue == inOperand.mValue) ;
 }
@@ -63,7 +63,7 @@ _operator_isEqual (const GGS_sourceFileKind inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileKind::
-_operator_isNotEqual (const GGS_sourceFileKind inOperand) const {
+operator_isNotEqual (const GGS_sourceFileKind inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue != inOperand.mValue) ;
 }
@@ -71,7 +71,7 @@ _operator_isNotEqual (const GGS_sourceFileKind inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileKind::
-_operator_infOrEqual (const GGS_sourceFileKind inOperand) const {
+operator_infOrEqual (const GGS_sourceFileKind inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue <= inOperand.mValue) ;
 }
@@ -79,7 +79,7 @@ _operator_infOrEqual (const GGS_sourceFileKind inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileKind::
-_operator_supOrEqual (const GGS_sourceFileKind inOperand) const {
+operator_supOrEqual (const GGS_sourceFileKind inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue >= inOperand.mValue) ;
 }
@@ -87,7 +87,7 @@ _operator_supOrEqual (const GGS_sourceFileKind inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileKind::
-_operator_strictInf (const GGS_sourceFileKind inOperand) const {
+operator_strictInf (const GGS_sourceFileKind inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue < inOperand.mValue) ;
 }
@@ -95,7 +95,7 @@ _operator_strictInf (const GGS_sourceFileKind inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_sourceFileKind::
-_operator_strictSup (const GGS_sourceFileKind inOperand) const {
+operator_strictSup (const GGS_sourceFileKind inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue > inOperand.mValue) ;
 }
@@ -165,9 +165,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_projectSourceList * ptr = dynamic_cast <const elementOf_GGS_projectSourceList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSourceKind._operator_isEqual (ptr->mSourceKind).boolValue ()
-         && mFilePath._operator_isEqual (ptr->mFilePath).boolValue ()
-         && mTargetList._operator_isEqual (ptr->mTargetList).boolValue () ;
+    equal = mSourceKind.operator_isEqual (ptr->mSourceKind).boolValue ()
+         && mFilePath.operator_isEqual (ptr->mFilePath).boolValue ()
+         && mTargetList.operator_isEqual (ptr->mTargetList).boolValue () ;
   }
   return equal ;
 }
@@ -245,16 +245,16 @@ _addAssign_operation (const GGS_sourceFileKind& argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_projectSourceList GGS_projectSourceList::
-_operator_concat (const GGS_projectSourceList & inOperand) const {
+operator_concat (const GGS_projectSourceList & inOperand) const {
   GGS_projectSourceList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-_dotAssign_operation (const GGS_projectSourceList inOperand) {
+dotAssign_operation (const GGS_projectSourceList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;

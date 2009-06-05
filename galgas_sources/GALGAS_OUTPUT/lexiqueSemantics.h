@@ -138,12 +138,12 @@ class GGS_lexicalTypeEnum {
   public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
-  public : GGS_bool _operator_isEqual (const GGS_lexicalTypeEnum inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalTypeEnum inOperand) const ;
-  public : GGS_bool _operator_infOrEqual (const GGS_lexicalTypeEnum inOperand) const ;
-  public : GGS_bool _operator_supOrEqual (const GGS_lexicalTypeEnum inOperand) const ;
-  public : GGS_bool _operator_strictInf (const GGS_lexicalTypeEnum inOperand) const ;
-  public : GGS_bool _operator_strictSup (const GGS_lexicalTypeEnum inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalTypeEnum inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalTypeEnum inOperand) const ;
+  public : GGS_bool operator_infOrEqual (const GGS_lexicalTypeEnum inOperand) const ;
+  public : GGS_bool operator_supOrEqual (const GGS_lexicalTypeEnum inOperand) const ;
+  public : GGS_bool operator_strictInf (const GGS_lexicalTypeEnum inOperand) const ;
+  public : GGS_bool operator_strictSup (const GGS_lexicalTypeEnum inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -204,12 +204,12 @@ class GGS_lexicalTypeList : public AC_galgas_list {
                                  GGS_lexicalTypeEnum& _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_lexicalTypeList inOperand) ;
+  public : void dotAssign_operation (const GGS_lexicalTypeList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lexicalTypeEnum& argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_lexicalTypeList _operator_concat (const GGS_lexicalTypeList & inOperand) const ;
+  public : GGS_lexicalTypeList operator_concat (const GGS_lexicalTypeList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lexicalTypeEnum& argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -273,8 +273,8 @@ class GGS_lexicalTypeMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalTypeMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalTypeMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalTypeMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalTypeMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -370,8 +370,8 @@ class GGS_lexicalAttributeMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalAttributeMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalAttributeMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalAttributeMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalAttributeMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -467,8 +467,8 @@ class GGS_terminalMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_terminalMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_terminalMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_terminalMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_terminalMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -564,8 +564,8 @@ class GGS_lexicalExplicitTokenListMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -666,8 +666,8 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -763,8 +763,8 @@ class GGS_lexicalMessageMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalMessageMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalMessageMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalMessageMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalMessageMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -902,12 +902,12 @@ class GGS_lexicalArgumentMode {
   public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
-  public : GGS_bool _operator_isEqual (const GGS_lexicalArgumentMode inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalArgumentMode inOperand) const ;
-  public : GGS_bool _operator_infOrEqual (const GGS_lexicalArgumentMode inOperand) const ;
-  public : GGS_bool _operator_supOrEqual (const GGS_lexicalArgumentMode inOperand) const ;
-  public : GGS_bool _operator_strictInf (const GGS_lexicalArgumentMode inOperand) const ;
-  public : GGS_bool _operator_strictSup (const GGS_lexicalArgumentMode inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalArgumentMode inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalArgumentMode inOperand) const ;
+  public : GGS_bool operator_infOrEqual (const GGS_lexicalArgumentMode inOperand) const ;
+  public : GGS_bool operator_supOrEqual (const GGS_lexicalArgumentMode inOperand) const ;
+  public : GGS_bool operator_strictInf (const GGS_lexicalArgumentMode inOperand) const ;
+  public : GGS_bool operator_strictSup (const GGS_lexicalArgumentMode inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -973,13 +973,13 @@ class GGS_lexicalRoutineFormalArgumentList : public AC_galgas_list {
                                  GGS_lexicalTypeEnum& _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_lexicalRoutineFormalArgumentList inOperand) ;
+  public : void dotAssign_operation (const GGS_lexicalRoutineFormalArgumentList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
                                 const GGS_lexicalTypeEnum& argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_lexicalRoutineFormalArgumentList _operator_concat (const GGS_lexicalRoutineFormalArgumentList & inOperand) const ;
+  public : GGS_lexicalRoutineFormalArgumentList operator_concat (const GGS_lexicalRoutineFormalArgumentList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lexicalArgumentMode& argument_0,
                                 const GGS_lexicalTypeEnum& argument_1
@@ -1054,8 +1054,8 @@ class GGS_lexicalRoutineMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalRoutineMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalRoutineMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalRoutineMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalRoutineMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -1156,8 +1156,8 @@ class GGS_lexicalFunctionMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_lexicalFunctionMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexicalFunctionMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexicalFunctionMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexicalFunctionMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -1619,8 +1619,8 @@ class GGS_lexiqueAnalysisContext {
   public : inline GGS_lexiqueAnalysisContext * operator () (UNUSED_LOCATION_ARGS) { return this ; }
 
 //--- Comparison
-  public : GGS_bool _operator_isEqual (const GGS_lexiqueAnalysisContext & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_lexiqueAnalysisContext & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_lexiqueAnalysisContext & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_lexiqueAnalysisContext & inOperand) const ;
 
 //--- Reader 'description'
   public : GGS_string

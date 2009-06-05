@@ -84,7 +84,7 @@ message "a '.ggs' GALGAS source file"
 when . "gOption"
 message "a GALGAS option source file"
 ??@lstring inSourceFile {
-  compileOptionComponent !inSourceFile !outputDirectory (!inSourceFile) ;
+  compileOptionComponent !inSourceFile ! outputDirectory (!inSourceFile) ;
 }
 
 #---------------------------------------------------------------------------*
@@ -92,7 +92,7 @@ message "a GALGAS option source file"
 when . "gLexique"
 message "a GALGAS lexique source file"
 ??@lstring inSourceFile {
-  compileLexiqueComponent !inSourceFile !outputDirectory (!inSourceFile) ;
+  compileLexiqueComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) ;
 }
 
 #---------------------------------------------------------------------------*
@@ -100,11 +100,10 @@ message "a GALGAS lexique source file"
 when . "gSemantics"
 message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
-  @string outputDirectory ;
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
   ] ;
-  compileSemanticsComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct;
+  compileSemanticsComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -130,7 +129,7 @@ message "a GALGAS grammar source file"
 when . "gGui"
 message "a GALGAS GUI source file"
 ??@lstring inSourceFile {
-  compileGuiComponent !inSourceFile !outputDirectory (!inSourceFile) ;
+  compileGuiComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) ;
 }
 
 #---------------------------------------------------------------------------*
@@ -151,6 +150,7 @@ message "a GALGAS program source file"
 when . "gProject"
 message "a GALGAS project source file"
 ??@lstring inSourceFile {
+  @string outputDirectoryTEMP := outputDirectoryTEMP (!inSourceFile) ;
   @string outputDirectory := outputDirectory (!inSourceFile) ;
 #--- Parse metamodel component
   @projectSourceList projectSourceList ;
@@ -189,43 +189,43 @@ message "a GALGAS project source file"
     when externSourceFile :
     when guiSourceFile :
       if extension == "gGui" then
-        compileGuiComponent !fullFilePath !outputDirectory ;
+        compileGuiComponent !fullFilePath ! outputDirectoryTEMP ;
       else
         error mFilePath:"extension of a gui component should be '.gGui'." ;
       end if ;
     when lexiqueSourceFile :
       if extension == "gLexique" then
-        compileLexiqueComponent !fullFilePath !outputDirectory ;
+        compileLexiqueComponent !fullFilePath ! outputDirectoryTEMP ;
       else
         error mFilePath:"extension of a lexique component should be '.gLexique'." ;
       end if ;
     when optionSourceFile :
       if extension == "gOption" then
-        compileOptionComponent !fullFilePath !outputDirectory ;
+        compileOptionComponent !fullFilePath ! outputDirectory ;
       else
         error mFilePath:"extension of an option component should be '.gOption'." ;
       end if ;
     when semanticsSourceFile :
       if extension == "gSemantics" then
-        compileSemanticsComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
+        compileSemanticsComponent !fullFilePath ! outputDirectoryTEMP !?parsedComponentStruct ;
       else
         error mFilePath:"extension of a semantics component should be '.gSemantics'." ;
       end if ;
     when syntaxSourceFile :
       if extension == "gSyntax" then
-#        compileSyntaxComponent !fullFilePath !outputDirectory ;
+#        compileSyntaxComponent !fullFilePath ! outputDirectoryTEMP ;
       else
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
       end if ;
     when grammarSourceFile :
       if extension == "gGrammar" then
-#        compileGrammarComponent !fullFilePath !outputDirectory ;
+#        compileGrammarComponent !fullFilePath ! outputDirectoryTEMP ;
       else
         error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
       end if ;
     when programSourceFile :
       if extension == "gProgram" then
-#       compileProgramComponent !fullFilePath !outputDirectory ;
+#       compileProgramComponent !fullFilePath ! outputDirectoryTEMP ;
       else
         error mFilePath:"extension of a program component should be '.gProgram'." ;
       end if ;
@@ -269,7 +269,7 @@ message "a GALGAS project source file"
         !galgasSourceList
         !externSourceFileList
       ] ;
-      @string fileListPath := outputDirectory . "/file_list.mke" ;
+      @string fileListPath := outputDirectoryTEMP . "/file_list.mke" ;
       [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
     end if ;
   end if ;

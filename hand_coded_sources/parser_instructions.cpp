@@ -864,7 +864,7 @@ generateInstruction (AC_OutputStream & inCppFile,
               << ")) ;\n"
                  "    " << conditionVariable << " = GGS_bool (false) ;\n"
                  "  }else{\n" 
-                 "    " << variantVariable << "._decrement_operation (inLexique COMMA_HERE) ;\n" ;
+                 "    " << variantVariable << ".decrement_operation (inLexique COMMA_HERE) ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
     inCppFile.incIndentation (+2) ;
     generateInstructionListForList (mInstructionList, inCppFile,

@@ -55,7 +55,7 @@ isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeEnum::
-_operator_isEqual (const GGS_lexicalTypeEnum inOperand) const {
+operator_isEqual (const GGS_lexicalTypeEnum inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue == inOperand.mValue) ;
 }
@@ -63,7 +63,7 @@ _operator_isEqual (const GGS_lexicalTypeEnum inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeEnum::
-_operator_isNotEqual (const GGS_lexicalTypeEnum inOperand) const {
+operator_isNotEqual (const GGS_lexicalTypeEnum inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue != inOperand.mValue) ;
 }
@@ -71,7 +71,7 @@ _operator_isNotEqual (const GGS_lexicalTypeEnum inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeEnum::
-_operator_infOrEqual (const GGS_lexicalTypeEnum inOperand) const {
+operator_infOrEqual (const GGS_lexicalTypeEnum inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue <= inOperand.mValue) ;
 }
@@ -79,7 +79,7 @@ _operator_infOrEqual (const GGS_lexicalTypeEnum inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeEnum::
-_operator_supOrEqual (const GGS_lexicalTypeEnum inOperand) const {
+operator_supOrEqual (const GGS_lexicalTypeEnum inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue >= inOperand.mValue) ;
 }
@@ -87,7 +87,7 @@ _operator_supOrEqual (const GGS_lexicalTypeEnum inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeEnum::
-_operator_strictInf (const GGS_lexicalTypeEnum inOperand) const {
+operator_strictInf (const GGS_lexicalTypeEnum inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue < inOperand.mValue) ;
 }
@@ -95,7 +95,7 @@ _operator_strictInf (const GGS_lexicalTypeEnum inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeEnum::
-_operator_strictSup (const GGS_lexicalTypeEnum inOperand) const {
+operator_strictSup (const GGS_lexicalTypeEnum inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue > inOperand.mValue) ;
 }
@@ -175,7 +175,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalTypeList * ptr = dynamic_cast <const elementOf_GGS_lexicalTypeList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalType._operator_isEqual (ptr->mLexicalType).boolValue () ;
+    equal = mLexicalType.operator_isEqual (ptr->mLexicalType).boolValue () ;
   }
   return equal ;
 }
@@ -233,16 +233,16 @@ _addAssign_operation (const GGS_lexicalTypeEnum& argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeList GGS_lexicalTypeList::
-_operator_concat (const GGS_lexicalTypeList & inOperand) const {
+operator_concat (const GGS_lexicalTypeList & inOperand) const {
   GGS_lexicalTypeList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-_dotAssign_operation (const GGS_lexicalTypeList inOperand) {
+dotAssign_operation (const GGS_lexicalTypeList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -547,7 +547,7 @@ bool elementOf_GGS_lexicalTypeMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalTypeMap * ptr = dynamic_cast <const elementOf_GGS_lexicalTypeMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mLexicalType._operator_isEqual (ptr->mInfo.mLexicalType)).boolValue () ;
+  return (mInfo.mLexicalType.operator_isEqual (ptr->mInfo.mLexicalType)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -595,14 +595,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeMap::
-_operator_isEqual (const GGS_lexicalTypeMap & inOperand) const {
+operator_isEqual (const GGS_lexicalTypeMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalTypeMap::
-_operator_isNotEqual (const GGS_lexicalTypeMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalTypeMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -913,7 +913,7 @@ bool elementOf_GGS_lexicalAttributeMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalAttributeMap * ptr = dynamic_cast <const elementOf_GGS_lexicalAttributeMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mLexicalType._operator_isEqual (ptr->mInfo.mLexicalType)).boolValue () ;
+  return (mInfo.mLexicalType.operator_isEqual (ptr->mInfo.mLexicalType)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -961,14 +961,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalAttributeMap::
-_operator_isEqual (const GGS_lexicalAttributeMap & inOperand) const {
+operator_isEqual (const GGS_lexicalAttributeMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalAttributeMap::
-_operator_isNotEqual (const GGS_lexicalAttributeMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalAttributeMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -1301,7 +1301,7 @@ bool elementOf_GGS_terminalMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_terminalMap * ptr = dynamic_cast <const elementOf_GGS_terminalMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mArgumentTypeList._operator_isEqual (ptr->mInfo.mArgumentTypeList)).boolValue () ;
+  return (mInfo.mArgumentTypeList.operator_isEqual (ptr->mInfo.mArgumentTypeList)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1349,14 +1349,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_terminalMap::
-_operator_isEqual (const GGS_terminalMap & inOperand) const {
+operator_isEqual (const GGS_terminalMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_terminalMap::
-_operator_isNotEqual (const GGS_terminalMap & inOperand) const {
+operator_isNotEqual (const GGS_terminalMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -1677,8 +1677,8 @@ bool elementOf_GGS_lexicalExplicitTokenListMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalExplicitTokenListMap * ptr = dynamic_cast <const elementOf_GGS_lexicalExplicitTokenListMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mTerminal._operator_isEqual (ptr->mInfo.mTerminal)).boolValue ()
-           && (mInfo.mFeatureList._operator_isEqual (ptr->mInfo.mFeatureList)).boolValue () ;
+  return (mInfo.mTerminal.operator_isEqual (ptr->mInfo.mTerminal)).boolValue ()
+           && (mInfo.mFeatureList.operator_isEqual (ptr->mInfo.mFeatureList)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1726,14 +1726,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalExplicitTokenListMap::
-_operator_isEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const {
+operator_isEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalExplicitTokenListMap::
-_operator_isNotEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalExplicitTokenListMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -2070,7 +2070,7 @@ bool elementOf_GGS_lexicalExplicitTokenListMapMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalExplicitTokenListMapMap * ptr = dynamic_cast <const elementOf_GGS_lexicalExplicitTokenListMapMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mExplicitTokenListMap._operator_isEqual (ptr->mInfo.mExplicitTokenListMap)).boolValue () ;
+  return (mInfo.mExplicitTokenListMap.operator_isEqual (ptr->mInfo.mExplicitTokenListMap)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2118,14 +2118,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalExplicitTokenListMapMap::
-_operator_isEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const {
+operator_isEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalExplicitTokenListMapMap::
-_operator_isNotEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalExplicitTokenListMapMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -2450,8 +2450,8 @@ bool elementOf_GGS_lexicalMessageMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalMessageMap * ptr = dynamic_cast <const elementOf_GGS_lexicalMessageMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mLexicalMessage._operator_isEqual (ptr->mInfo.mLexicalMessage)).boolValue ()
-           && (mInfo.mMessageIsUsed._operator_isEqual (ptr->mInfo.mMessageIsUsed)).boolValue () ;
+  return (mInfo.mLexicalMessage.operator_isEqual (ptr->mInfo.mLexicalMessage)).boolValue ()
+           && (mInfo.mMessageIsUsed.operator_isEqual (ptr->mInfo.mMessageIsUsed)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2499,14 +2499,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalMessageMap::
-_operator_isEqual (const GGS_lexicalMessageMap & inOperand) const {
+operator_isEqual (const GGS_lexicalMessageMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalMessageMap::
-_operator_isNotEqual (const GGS_lexicalMessageMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalMessageMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -2799,7 +2799,7 @@ isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalArgumentMode::
-_operator_isEqual (const GGS_lexicalArgumentMode inOperand) const {
+operator_isEqual (const GGS_lexicalArgumentMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue == inOperand.mValue) ;
 }
@@ -2807,7 +2807,7 @@ _operator_isEqual (const GGS_lexicalArgumentMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalArgumentMode::
-_operator_isNotEqual (const GGS_lexicalArgumentMode inOperand) const {
+operator_isNotEqual (const GGS_lexicalArgumentMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue != inOperand.mValue) ;
 }
@@ -2815,7 +2815,7 @@ _operator_isNotEqual (const GGS_lexicalArgumentMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalArgumentMode::
-_operator_infOrEqual (const GGS_lexicalArgumentMode inOperand) const {
+operator_infOrEqual (const GGS_lexicalArgumentMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue <= inOperand.mValue) ;
 }
@@ -2823,7 +2823,7 @@ _operator_infOrEqual (const GGS_lexicalArgumentMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalArgumentMode::
-_operator_supOrEqual (const GGS_lexicalArgumentMode inOperand) const {
+operator_supOrEqual (const GGS_lexicalArgumentMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue >= inOperand.mValue) ;
 }
@@ -2831,7 +2831,7 @@ _operator_supOrEqual (const GGS_lexicalArgumentMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalArgumentMode::
-_operator_strictInf (const GGS_lexicalArgumentMode inOperand) const {
+operator_strictInf (const GGS_lexicalArgumentMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue < inOperand.mValue) ;
 }
@@ -2839,7 +2839,7 @@ _operator_strictInf (const GGS_lexicalArgumentMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalArgumentMode::
-_operator_strictSup (const GGS_lexicalArgumentMode inOperand) const {
+operator_strictSup (const GGS_lexicalArgumentMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue > inOperand.mValue) ;
 }
@@ -2901,8 +2901,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalRoutineFormalArgumentList * ptr = dynamic_cast <const elementOf_GGS_lexicalRoutineFormalArgumentList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalArgumentMode._operator_isEqual (ptr->mLexicalArgumentMode).boolValue ()
-         && mLexicalType._operator_isEqual (ptr->mLexicalType).boolValue () ;
+    equal = mLexicalArgumentMode.operator_isEqual (ptr->mLexicalArgumentMode).boolValue ()
+         && mLexicalType.operator_isEqual (ptr->mLexicalType).boolValue () ;
   }
   return equal ;
 }
@@ -2970,16 +2970,16 @@ _addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::
-_operator_concat (const GGS_lexicalRoutineFormalArgumentList & inOperand) const {
+operator_concat (const GGS_lexicalRoutineFormalArgumentList & inOperand) const {
   GGS_lexicalRoutineFormalArgumentList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-_dotAssign_operation (const GGS_lexicalRoutineFormalArgumentList inOperand) {
+dotAssign_operation (const GGS_lexicalRoutineFormalArgumentList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -3343,8 +3343,8 @@ bool elementOf_GGS_lexicalRoutineMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalRoutineMap * ptr = dynamic_cast <const elementOf_GGS_lexicalRoutineMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mLexicalRoutineFormalArgumentList._operator_isEqual (ptr->mInfo.mLexicalRoutineFormalArgumentList)).boolValue ()
-           && (mInfo.mErrorMessageList._operator_isEqual (ptr->mInfo.mErrorMessageList)).boolValue () ;
+  return (mInfo.mLexicalRoutineFormalArgumentList.operator_isEqual (ptr->mInfo.mLexicalRoutineFormalArgumentList)).boolValue ()
+           && (mInfo.mErrorMessageList.operator_isEqual (ptr->mInfo.mErrorMessageList)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3392,14 +3392,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalRoutineMap::
-_operator_isEqual (const GGS_lexicalRoutineMap & inOperand) const {
+operator_isEqual (const GGS_lexicalRoutineMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalRoutineMap::
-_operator_isNotEqual (const GGS_lexicalRoutineMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalRoutineMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -3744,8 +3744,8 @@ bool elementOf_GGS_lexicalFunctionMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_lexicalFunctionMap * ptr = dynamic_cast <const elementOf_GGS_lexicalFunctionMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mLexicalTypeList._operator_isEqual (ptr->mInfo.mLexicalTypeList)).boolValue ()
-           && (mInfo.mReturnedLexicalType._operator_isEqual (ptr->mInfo.mReturnedLexicalType)).boolValue () ;
+  return (mInfo.mLexicalTypeList.operator_isEqual (ptr->mInfo.mLexicalTypeList)).boolValue ()
+           && (mInfo.mReturnedLexicalType.operator_isEqual (ptr->mInfo.mReturnedLexicalType)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3793,14 +3793,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalFunctionMap::
-_operator_isEqual (const GGS_lexicalFunctionMap & inOperand) const {
+operator_isEqual (const GGS_lexicalFunctionMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexicalFunctionMap::
-_operator_isNotEqual (const GGS_lexicalFunctionMap & inOperand) const {
+operator_isNotEqual (const GGS_lexicalFunctionMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -4136,25 +4136,25 @@ bool GGS_lexiqueAnalysisContext::isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexiqueAnalysisContext::
-_operator_isEqual (const GGS_lexiqueAnalysisContext & inOperand) const {
-  return mLexicalRoutineMessageMap._operator_isEqual (inOperand.mLexicalRoutineMessageMap)
-    ._operator_and (mLexicalFunctionMap._operator_isEqual (inOperand.mLexicalFunctionMap))
-    ._operator_and (mLexicalMessageMap._operator_isEqual (inOperand.mLexicalMessageMap))
-    ._operator_and (mTerminalMap._operator_isEqual (inOperand.mTerminalMap))
-    ._operator_and (mLexicalAttributeMap._operator_isEqual (inOperand.mLexicalAttributeMap))
-    ._operator_and (mLexicalTokenListMapMap._operator_isEqual (inOperand.mLexicalTokenListMapMap)) ;
+operator_isEqual (const GGS_lexiqueAnalysisContext & inOperand) const {
+  return mLexicalRoutineMessageMap.operator_isEqual (inOperand.mLexicalRoutineMessageMap)
+    .operator_and (mLexicalFunctionMap.operator_isEqual (inOperand.mLexicalFunctionMap))
+    .operator_and (mLexicalMessageMap.operator_isEqual (inOperand.mLexicalMessageMap))
+    .operator_and (mTerminalMap.operator_isEqual (inOperand.mTerminalMap))
+    .operator_and (mLexicalAttributeMap.operator_isEqual (inOperand.mLexicalAttributeMap))
+    .operator_and (mLexicalTokenListMapMap.operator_isEqual (inOperand.mLexicalTokenListMapMap)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_lexiqueAnalysisContext::
-_operator_isNotEqual (const GGS_lexiqueAnalysisContext & inOperand) const {
-  return mLexicalRoutineMessageMap._operator_isNotEqual (inOperand.mLexicalRoutineMessageMap)
-    ._operator_or (mLexicalFunctionMap._operator_isNotEqual (inOperand.mLexicalFunctionMap))
-    ._operator_or (mLexicalMessageMap._operator_isNotEqual (inOperand.mLexicalMessageMap))
-    ._operator_or (mTerminalMap._operator_isNotEqual (inOperand.mTerminalMap))
-    ._operator_or (mLexicalAttributeMap._operator_isNotEqual (inOperand.mLexicalAttributeMap))
-    ._operator_or (mLexicalTokenListMapMap._operator_isNotEqual (inOperand.mLexicalTokenListMapMap)) ;
+operator_isNotEqual (const GGS_lexiqueAnalysisContext & inOperand) const {
+  return mLexicalRoutineMessageMap.operator_isNotEqual (inOperand.mLexicalRoutineMessageMap)
+    .operator_or (mLexicalFunctionMap.operator_isNotEqual (inOperand.mLexicalFunctionMap))
+    .operator_or (mLexicalMessageMap.operator_isNotEqual (inOperand.mLexicalMessageMap))
+    .operator_or (mTerminalMap.operator_isNotEqual (inOperand.mTerminalMap))
+    .operator_or (mLexicalAttributeMap.operator_isNotEqual (inOperand.mLexicalAttributeMap))
+    .operator_or (mLexicalTokenListMapMap.operator_isNotEqual (inOperand.mLexicalTokenListMapMap)) ;
 }
 
 //---------------------------------------------------------------------------*

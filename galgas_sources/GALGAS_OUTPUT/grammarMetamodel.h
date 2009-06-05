@@ -131,14 +131,14 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
                                  GGS_lstring & _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_startSymbolLabelFormalParameterList inOperand) ;
+  public : void dotAssign_operation (const GGS_startSymbolLabelFormalParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_startSymbolLabelFormalParameterList _operator_concat (const GGS_startSymbolLabelFormalParameterList & inOperand) const ;
+  public : GGS_startSymbolLabelFormalParameterList operator_concat (const GGS_startSymbolLabelFormalParameterList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
@@ -270,13 +270,13 @@ class GGS_grammarLabelList : public AC_galgas_list {
                                  GGS_startSymbolLabelFormalParameterList & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_grammarLabelList inOperand) ;
+  public : void dotAssign_operation (const GGS_grammarLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_grammarLabelList _operator_concat (const GGS_grammarLabelList & inOperand) const ;
+  public : GGS_grammarLabelList operator_concat (const GGS_grammarLabelList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1

@@ -256,12 +256,12 @@ class GGS_semanticExpressionList : public AC_galgas_list {
                                  GGS_semanticExpression & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_semanticExpressionList inOperand) ;
+  public : void dotAssign_operation (const GGS_semanticExpressionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_semanticExpression & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_semanticExpressionList _operator_concat (const GGS_semanticExpressionList & inOperand) const ;
+  public : GGS_semanticExpressionList operator_concat (const GGS_semanticExpressionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_semanticExpression & argument_0
                                 COMMA_LOCATION_ARGS) ;

@@ -134,12 +134,12 @@ class GGS_formalArgumentPassingMode {
   public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
-  public : GGS_bool _operator_isEqual (const GGS_formalArgumentPassingMode inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_formalArgumentPassingMode inOperand) const ;
-  public : GGS_bool _operator_infOrEqual (const GGS_formalArgumentPassingMode inOperand) const ;
-  public : GGS_bool _operator_supOrEqual (const GGS_formalArgumentPassingMode inOperand) const ;
-  public : GGS_bool _operator_strictInf (const GGS_formalArgumentPassingMode inOperand) const ;
-  public : GGS_bool _operator_strictSup (const GGS_formalArgumentPassingMode inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_formalArgumentPassingMode inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_formalArgumentPassingMode inOperand) const ;
+  public : GGS_bool operator_infOrEqual (const GGS_formalArgumentPassingMode inOperand) const ;
+  public : GGS_bool operator_supOrEqual (const GGS_formalArgumentPassingMode inOperand) const ;
+  public : GGS_bool operator_strictInf (const GGS_formalArgumentPassingMode inOperand) const ;
+  public : GGS_bool operator_strictSup (const GGS_formalArgumentPassingMode inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -215,7 +215,7 @@ class GGS_formalParameterList : public AC_galgas_list {
                                  GGS_bool& _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_formalParameterList inOperand) ;
+  public : void dotAssign_operation (const GGS_formalParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
@@ -223,7 +223,7 @@ class GGS_formalParameterList : public AC_galgas_list {
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_formalParameterList _operator_concat (const GGS_formalParameterList & inOperand) const ;
+  public : GGS_formalParameterList operator_concat (const GGS_formalParameterList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
@@ -371,14 +371,14 @@ class GGS_formalInputParameterList : public AC_galgas_list {
                                  GGS_bool& _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_formalInputParameterList inOperand) ;
+  public : void dotAssign_operation (const GGS_formalInputParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_formalInputParameterList _operator_concat (const GGS_formalInputParameterList & inOperand) const ;
+  public : GGS_formalInputParameterList operator_concat (const GGS_formalInputParameterList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
@@ -794,12 +794,12 @@ class GGS_actualParameterList : public AC_galgas_list {
                                  GGS_actualParameter & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_actualParameterList inOperand) ;
+  public : void dotAssign_operation (const GGS_actualParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_actualParameter & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_actualParameterList _operator_concat (const GGS_actualParameterList & inOperand) const ;
+  public : GGS_actualParameterList operator_concat (const GGS_actualParameterList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_actualParameter & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -909,13 +909,13 @@ class GGS_actualInputParameterList : public AC_galgas_list {
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_actualInputParameterList inOperand) ;
+  public : void dotAssign_operation (const GGS_actualInputParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_actualInputParameterList _operator_concat (const GGS_actualInputParameterList & inOperand) const ;
+  public : GGS_actualInputParameterList operator_concat (const GGS_actualInputParameterList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1

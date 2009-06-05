@@ -74,19 +74,19 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & inLexique,
           GGS_lstring  var_cas_attributeTypeName ;
           inLexique._assignFromAttribute_tokenString (var_cas_attributeTypeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
-          if (((var_cas_attributeTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (86)))._operator_isNotEqual (GGS_string ("string"))).isBuiltAndTrue ()) {
+          if (((var_cas_attributeTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (86))).operator_isNotEqual (GGS_string ("string"))).isBuiltAndTrue ()) {
             var_cas_attributeTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only the '@string' is supported here") COMMA_SOURCE_FILE_AT_LINE (88)) ;
           }
           GGS_lstring  var_cas_attributeName ;
           inLexique._assignFromAttribute_tokenString (var_cas_attributeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           if ((var_cas_propertyNameSet.reader_hasKey (inLexique, var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (91)) COMMA_SOURCE_FILE_AT_LINE (91))).isBuiltAndTrue ()) {
-            var_cas_attributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the domain has already a property named '"))._operator_concat (var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (92))))._operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (93)) ;
+            var_cas_attributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the domain has already a property named '")).operator_concat (var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (92)))).operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (93)) ;
           }else{
             var_cas_propertyNameSet._addAssign_operation (var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (94))) ;
             var_cas_attributeMap.modifier_insertKey (inLexique, var_cas_attributeName COMMA_SOURCE_FILE_AT_LINE (95)) ;
             GGS_lstring  var_cas_addModifierName ;
-            var_cas_addModifierName = GGS_lstring ::constructor_new (inLexique, (GGS_string ("addTo"))._operator_concat (var_cas_attributeName.ggs_string ().reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (96))), var_cas_attributeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (96)) COMMA_HERE) ;
+            var_cas_addModifierName = GGS_lstring ::constructor_new (inLexique, (GGS_string ("addTo")).operator_concat (var_cas_attributeName.ggs_string ().reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (96))), var_cas_attributeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (96)) COMMA_HERE) ;
             var_cas_domainModifierMap.modifier_insertKey (inLexique, var_cas_addModifierName, var_cas_domainModifierAttributeList COMMA_SOURCE_FILE_AT_LINE (97)) ;
           }
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
@@ -122,11 +122,11 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & inLexique,
             }
           }
           if ((var_cas_propertyNameSet.reader_hasKey (inLexique, var_cas_relationTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (118)) COMMA_SOURCE_FILE_AT_LINE (118))).isBuiltAndTrue ()) {
-            var_cas_relationTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the domain has already a property named '"))._operator_concat (var_cas_relationTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (119))))._operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (120)) ;
+            var_cas_relationTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the domain has already a property named '")).operator_concat (var_cas_relationTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (119)))).operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (120)) ;
           }else{
             var_cas_propertyNameSet._addAssign_operation (var_cas_relationTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (121))) ;
             GGS_lstring  var_cas_addModifierName ;
-            var_cas_addModifierName = GGS_lstring ::constructor_new (inLexique, (GGS_string ("addTo"))._operator_concat (var_cas_relationTypeName.ggs_string ().reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (122))), var_cas_relationTypeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (122)) COMMA_HERE) ;
+            var_cas_addModifierName = GGS_lstring ::constructor_new (inLexique, (GGS_string ("addTo")).operator_concat (var_cas_relationTypeName.ggs_string ().reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (122))), var_cas_relationTypeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (122)) COMMA_HERE) ;
             var_cas_domainModifierMap.modifier_insertKey (inLexique, var_cas_addModifierName, var_cas_relationModifierAttributeList COMMA_SOURCE_FILE_AT_LINE (123)) ;
             var_cas_relationMap.modifier_insertKey (inLexique, var_cas_relationTypeName, var_cas_domains COMMA_SOURCE_FILE_AT_LINE (124)) ;
           }

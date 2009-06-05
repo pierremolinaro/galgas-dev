@@ -92,7 +92,7 @@ void routine_matchAndOperator (C_Compiler & inLexique,
                 if ((operand_5304 != NULL) && (operand_5328 != NULL)) {
                   var_cas_outResultType = var_cas_inLeftExpressionType ;
                 }else{
-                  GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("operand type error : ("))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (157))))._operator_concat (GGS_string (" & ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (158))))._operator_concat (GGS_string (") is not valid")) COMMA_SOURCE_FILE_AT_LINE (160)) ;
+                  GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("operand type error : (")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (157)))).operator_concat (GGS_string (" & "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (158)))).operator_concat (GGS_string (") is not valid")) COMMA_SOURCE_FILE_AT_LINE (160)) ;
                   var_cas_outResultType.drop () ;
                 }
               }
@@ -158,7 +158,7 @@ void routine_matchOrOperator (C_Compiler & inLexique,
                 if ((operand_6825 != NULL) && (operand_6849 != NULL)) {
                   var_cas_outResultType = var_cas_inLeftExpressionType ;
                 }else{
-                  GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("operand type error : ("))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (190))))._operator_concat (GGS_string (" | ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (191))))._operator_concat (GGS_string (") is not valid")) COMMA_SOURCE_FILE_AT_LINE (193)) ;
+                  GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("operand type error : (")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (190)))).operator_concat (GGS_string (" | "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (191)))).operator_concat (GGS_string (") is not valid")) COMMA_SOURCE_FILE_AT_LINE (193)) ;
                   var_cas_outResultType.drop () ;
                 }
               }
@@ -219,7 +219,7 @@ void routine_matchXorOperator (C_Compiler & inLexique,
               if ((operand_8347 != NULL) && (operand_8371 != NULL)) {
                 var_cas_outResultType = var_cas_inLeftExpressionType ;
               }else{
-                GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("operand type error : ("))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (221))))._operator_concat (GGS_string (" | ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (222))))._operator_concat (GGS_string (") is not valid")) COMMA_SOURCE_FILE_AT_LINE (224)) ;
+                GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("operand type error : (")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (221)))).operator_concat (GGS_string (" | "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (222)))).operator_concat (GGS_string (") is not valid")) COMMA_SOURCE_FILE_AT_LINE (224)) ;
                 var_cas_outResultType.drop () ;
               }
             }
@@ -262,20 +262,20 @@ void routine_matchConcatOperator (C_Compiler & inLexique,
         cPtr_typeGalgasUndefinedListType * operand_9766 = dynamic_cast <cPtr_typeGalgasUndefinedListType *> (ptr_9766) ;
         cPtr_typeGalgasUndefinedListType * operand_9790 = dynamic_cast <cPtr_typeGalgasUndefinedListType *> (ptr_9790) ;
         if ((operand_9766 != NULL) && (operand_9790 != NULL)) {
-          if (((operand_9766->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (244)))._operator_isNotEqual (operand_9790->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (244)))).isBuiltAndTrue ()) {
-            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("concatenation operator error: lists should have the same type (here '@"))._operator_concat (operand_9766->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (246))))._operator_concat (GGS_string ("' is different from '@")))._operator_concat (operand_9790->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (246))))._operator_concat (GGS_string ("')")) COMMA_SOURCE_FILE_AT_LINE (247)) ;
+          if (((operand_9766->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (244))).operator_isNotEqual (operand_9790->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (244)))).isBuiltAndTrue ()) {
+            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("concatenation operator error: lists should have the same type (here '@")).operator_concat (operand_9766->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (246)))).operator_concat (GGS_string ("' is different from '@"))).operator_concat (operand_9790->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (246)))).operator_concat (GGS_string ("')")) COMMA_SOURCE_FILE_AT_LINE (247)) ;
           }
           var_cas_outResultType = var_cas_inLeftExpressionType ;
         }else{
           cPtr_typeGalgasListmapType * operand_9766 = dynamic_cast <cPtr_typeGalgasListmapType *> (ptr_9766) ;
           cPtr_typeGalgasListmapType * operand_9790 = dynamic_cast <cPtr_typeGalgasListmapType *> (ptr_9790) ;
           if ((operand_9766 != NULL) && (operand_9790 != NULL)) {
-            if (((operand_9766->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (250)))._operator_isNotEqual (operand_9790->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (250)))).isBuiltAndTrue ()) {
-              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("concatenation operator error: listmaps should have the same type (here '@"))._operator_concat (operand_9766->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (252))))._operator_concat (GGS_string ("' is different from '@")))._operator_concat (operand_9790->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (252))))._operator_concat (GGS_string ("')")) COMMA_SOURCE_FILE_AT_LINE (253)) ;
+            if (((operand_9766->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (250))).operator_isNotEqual (operand_9790->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (250)))).isBuiltAndTrue ()) {
+              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("concatenation operator error: listmaps should have the same type (here '@")).operator_concat (operand_9766->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (252)))).operator_concat (GGS_string ("' is different from '@"))).operator_concat (operand_9790->mListmapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (252)))).operator_concat (GGS_string ("')")) COMMA_SOURCE_FILE_AT_LINE (253)) ;
             }
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
-            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("concatenation operator error: @"))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (256))))._operator_concat (GGS_string (" and @")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (257))))._operator_concat (GGS_string (" objects cannot be concatened")) COMMA_SOURCE_FILE_AT_LINE (259)) ;
+            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("concatenation operator error: @")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (256)))).operator_concat (GGS_string (" and @"))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (257)))).operator_concat (GGS_string (" objects cannot be concatened")) COMMA_SOURCE_FILE_AT_LINE (259)) ;
             var_cas_outResultType.drop () ;
           }
         }
@@ -333,7 +333,7 @@ void routine_checkLogicalNegateOperator (C_Compiler & inLexique,
       }else if (dynamic_cast <cPtr_typeGalgas_sint64 *> (_var_12686.getPtr ()) != NULL) {
         var_cas_outResultType = var_cas_inOperandType ;
       }else{
-        GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the ~ operator is not defined for an "))._operator_concat (var_cas_inOperandType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (299))))._operator_concat (GGS_string (" object")) COMMA_SOURCE_FILE_AT_LINE (301)) ;
+        GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the ~ operator is not defined for an ")).operator_concat (var_cas_inOperandType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (299)))).operator_concat (GGS_string (" object")) COMMA_SOURCE_FILE_AT_LINE (301)) ;
         var_cas_outResultType.drop () ;
       }
     }
@@ -441,32 +441,32 @@ void routine_comparison_types_check (C_Compiler & inLexique,
                                             cPtr_typeGalgas_enum * operand_13245 = dynamic_cast <cPtr_typeGalgas_enum *> (ptr_13245) ;
                                             cPtr_typeGalgas_enum * operand_13269 = dynamic_cast <cPtr_typeGalgas_enum *> (ptr_13269) ;
                                             if ((operand_13245 != NULL) && (operand_13269 != NULL)) {
-                                              if (((operand_13245->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (336)))._operator_isNotEqual (operand_13269->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (336)))).isBuiltAndTrue ()) {
-                                                GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between an '@"))._operator_concat (operand_13245->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (337))))._operator_concat (GGS_string ("' enumeration and an '@")))._operator_concat (operand_13269->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (338))))._operator_concat (GGS_string ("' enumeration is not valid")) COMMA_SOURCE_FILE_AT_LINE (339)) ;
+                                              if (((operand_13245->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (336))).operator_isNotEqual (operand_13269->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (336)))).isBuiltAndTrue ()) {
+                                                GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between an '@")).operator_concat (operand_13245->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (337)))).operator_concat (GGS_string ("' enumeration and an '@"))).operator_concat (operand_13269->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (338)))).operator_concat (GGS_string ("' enumeration is not valid")) COMMA_SOURCE_FILE_AT_LINE (339)) ;
                                               }
                                             }else{
                                               cPtr_typeGalgasUndefinedListType * operand_13245 = dynamic_cast <cPtr_typeGalgasUndefinedListType *> (ptr_13245) ;
                                               cPtr_typeGalgasUndefinedListType * operand_13269 = dynamic_cast <cPtr_typeGalgasUndefinedListType *> (ptr_13269) ;
                                               if ((operand_13245 != NULL) && (operand_13269 != NULL)) {
-                                                if (((operand_13245->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (341)))._operator_isNotEqual (operand_13269->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (341)))).isBuiltAndTrue ()) {
-                                                  GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("I was expecting the list type '@"))._operator_concat (operand_13245->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (342))))._operator_concat (GGS_string ("', I have got the list type '@")))._operator_concat (operand_13269->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (343))))._operator_concat (GGS_string ("\"")) COMMA_SOURCE_FILE_AT_LINE (344)) ;
+                                                if (((operand_13245->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (341))).operator_isNotEqual (operand_13269->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (341)))).isBuiltAndTrue ()) {
+                                                  GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("I was expecting the list type '@")).operator_concat (operand_13245->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (342)))).operator_concat (GGS_string ("', I have got the list type '@"))).operator_concat (operand_13269->mListTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (343)))).operator_concat (GGS_string ("\"")) COMMA_SOURCE_FILE_AT_LINE (344)) ;
                                                 }
                                               }else{
                                                 cPtr_typeGalgasUndefinedMapType * operand_13245 = dynamic_cast <cPtr_typeGalgasUndefinedMapType *> (ptr_13245) ;
                                                 cPtr_typeGalgasUndefinedMapType * operand_13269 = dynamic_cast <cPtr_typeGalgasUndefinedMapType *> (ptr_13269) ;
                                                 if ((operand_13245 != NULL) && (operand_13269 != NULL)) {
-                                                  if (((operand_13245->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (347)))._operator_isNotEqual (operand_13269->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (347)))).isBuiltAndTrue ()) {
-                                                    GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("I was expecting the map type '@"))._operator_concat (operand_13245->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (348))))._operator_concat (GGS_string ("', I have got the map type '@")))._operator_concat (operand_13269->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (349))))._operator_concat (GGS_string ("\"")) COMMA_SOURCE_FILE_AT_LINE (350)) ;
+                                                  if (((operand_13245->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (347))).operator_isNotEqual (operand_13269->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (347)))).isBuiltAndTrue ()) {
+                                                    GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("I was expecting the map type '@")).operator_concat (operand_13245->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (348)))).operator_concat (GGS_string ("', I have got the map type '@"))).operator_concat (operand_13269->mMapTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (349)))).operator_concat (GGS_string ("\"")) COMMA_SOURCE_FILE_AT_LINE (350)) ;
                                                   }
                                                 }else{
                                                   cPtr_typeGalgasUndefinedClassType * operand_13245 = dynamic_cast <cPtr_typeGalgasUndefinedClassType *> (ptr_13245) ;
                                                   cPtr_typeGalgasUndefinedClassType * operand_13269 = dynamic_cast <cPtr_typeGalgasUndefinedClassType *> (ptr_13269) ;
                                                   if ((operand_13245 != NULL) && (operand_13269 != NULL)) {
-                                                    if (((operand_13245->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (354)))._operator_isNotEqual (operand_13269->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (354)))).isBuiltAndTrue ()) {
-                                                      GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("I was expecting the class type '@"))._operator_concat (operand_13245->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (355))))._operator_concat (GGS_string ("', I have got the class type '@")))._operator_concat (operand_13269->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (356))))._operator_concat (GGS_string ("\"")) COMMA_SOURCE_FILE_AT_LINE (357)) ;
+                                                    if (((operand_13245->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (354))).operator_isNotEqual (operand_13269->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (354)))).isBuiltAndTrue ()) {
+                                                      GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("I was expecting the class type '@")).operator_concat (operand_13245->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (355)))).operator_concat (GGS_string ("', I have got the class type '@"))).operator_concat (operand_13269->mClassTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (356)))).operator_concat (GGS_string ("\"")) COMMA_SOURCE_FILE_AT_LINE (357)) ;
                                                     }
                                                   }else{
-                                                    GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (359))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (360))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (361)) ;
+                                                    GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (359)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (360)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (361)) ;
                                                   }
                                                 }
                                               }
@@ -551,11 +551,11 @@ void routine_magnitude_comparison_types_check (C_Compiler & inLexique,
                       cPtr_typeGalgas_enum * operand_16615 = dynamic_cast <cPtr_typeGalgas_enum *> (ptr_16615) ;
                       cPtr_typeGalgas_enum * operand_16639 = dynamic_cast <cPtr_typeGalgas_enum *> (ptr_16639) ;
                       if ((operand_16615 != NULL) && (operand_16639 != NULL)) {
-                        if (((operand_16615->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (385)))._operator_isNotEqual (operand_16639->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (385)))).isBuiltAndTrue ()) {
-                          GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between an '@"))._operator_concat (operand_16615->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (386))))._operator_concat (GGS_string ("' enumeration and an '@")))._operator_concat (operand_16639->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (387))))._operator_concat (GGS_string ("' enumeration is not valid")) COMMA_SOURCE_FILE_AT_LINE (388)) ;
+                        if (((operand_16615->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (385))).operator_isNotEqual (operand_16639->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (385)))).isBuiltAndTrue ()) {
+                          GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between an '@")).operator_concat (operand_16615->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (386)))).operator_concat (GGS_string ("' enumeration and an '@"))).operator_concat (operand_16639->mEnumTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (387)))).operator_concat (GGS_string ("' enumeration is not valid")) COMMA_SOURCE_FILE_AT_LINE (388)) ;
                         }
                       }else{
-                        GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (390))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (391))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (392)) ;
+                        GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("comparison between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (390)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (391)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (392)) ;
                       }
                     }
                   }
@@ -613,7 +613,7 @@ void routine_left_shift_types_check (C_Compiler & inLexique,
             if ((operand_18273 != NULL) && (operand_18297 != NULL)) {
               var_cas_outResultType = var_cas_inLeftExpressionType ;
             }else{
-              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("shift between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (418))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (419))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (422)) ;
+              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("shift between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (418)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (419)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (422)) ;
               var_cas_outResultType.drop () ;
             }
           }
@@ -667,7 +667,7 @@ void routine_right_shift_types_check (C_Compiler & inLexique,
             if ((operand_19279 != NULL) && (operand_19303 != NULL)) {
               var_cas_outResultType = var_cas_inLeftExpressionType ;
             }else{
-              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("shift between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (444))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (445))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (448)) ;
+              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("shift between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (444)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (445)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (448)) ;
               var_cas_outResultType.drop () ;
             }
           }
@@ -716,7 +716,7 @@ void routine_addition_types_check (C_Compiler & inLexique,
           if ((operand_20594 != NULL) && (operand_20618 != NULL)) {
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
-            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("addition between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (472))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (473))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (476)) ;
+            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("addition between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (472)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (473)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (476)) ;
             var_cas_outResultType.drop () ;
           }
         }
@@ -769,7 +769,7 @@ void routine_substraction_types_check (C_Compiler & inLexique,
             if ((operand_21819 != NULL) && (operand_21843 != NULL)) {
               var_cas_outResultType = var_cas_inLeftExpressionType ;
             }else{
-              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("substraction between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (502))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (503))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (506)) ;
+              GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("substraction between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (502)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (503)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (506)) ;
               var_cas_outResultType.drop () ;
             }
           }
@@ -818,7 +818,7 @@ void routine_multiply_types_check (C_Compiler & inLexique,
           if ((operand_23150 != NULL) && (operand_23174 != NULL)) {
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
-            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("multiplication between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (530))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (531))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (534)) ;
+            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("multiplication between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (530)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (531)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (534)) ;
             var_cas_outResultType.drop () ;
           }
         }
@@ -866,7 +866,7 @@ void routine_divide_types_check (C_Compiler & inLexique,
           if ((operand_24375 != NULL) && (operand_24399 != NULL)) {
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
-            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("division between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (558))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (559))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (562)) ;
+            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("division between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (558)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (559)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (562)) ;
             var_cas_outResultType.drop () ;
           }
         }
@@ -914,7 +914,7 @@ void routine_modulo_types_check (C_Compiler & inLexique,
           if ((operand_25594 != NULL) && (operand_25618 != NULL)) {
             var_cas_outResultType = var_cas_inLeftExpressionType ;
           }else{
-            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("modulo between "))._operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (586))))._operator_concat (GGS_string (" and ")))._operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (587))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (590)) ;
+            GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("modulo between ")).operator_concat (var_cas_inLeftExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (586)))).operator_concat (GGS_string (" and "))).operator_concat (var_cas_inRightExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (587)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (590)) ;
             var_cas_outResultType.drop () ;
           }
         }
@@ -946,7 +946,7 @@ void routine_unary_minus_type_check (C_Compiler & inLexique,
       }else if (dynamic_cast <cPtr_typeGalgas_sint64 *> (_var_27047.getPtr ()) != NULL) {
         var_cas_outResultType = var_cas_inExpressionType ;
       }else{
-        GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("unary minus for "))._operator_concat (var_cas_inExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (609))))._operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (613)) ;
+        GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("unary minus for ")).operator_concat (var_cas_inExpressionType.reader_messageGalgasType (inLexique COMMA_SOURCE_FILE_AT_LINE (609)))).operator_concat (GGS_string (" is not valid")) COMMA_SOURCE_FILE_AT_LINE (613)) ;
         var_cas_outResultType.drop () ;
       }
     }
@@ -1628,17 +1628,17 @@ pr_factor_expression_parser_1139_13_ (galgas_scanner & inLexique,
       var_cas_superClassMap = var_cas_resultClassType.reader_mAncestorClassesMap (inLexique COMMA_SOURCE_FILE_AT_LINE (1189)) ;
       GGS_string var_cas_classMessage ;
       var_cas_classMessage = var_cas_resultClassType.reader_mClassMessage (inLexique COMMA_SOURCE_FILE_AT_LINE (1190)) ;
-      if (((var_cas_classMessage.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1192)))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
-        var_cas_castedTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("in order to be used in a cast expression, the '@"))._operator_concat (var_cas_castedTypeName))._operator_concat (GGS_string ("' class should define a class message")) COMMA_SOURCE_FILE_AT_LINE (1194)) ;
+      if (((var_cas_classMessage.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1192))).operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+        var_cas_castedTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("in order to be used in a cast expression, the '@")).operator_concat (var_cas_castedTypeName)).operator_concat (GGS_string ("' class should define a class message")) COMMA_SOURCE_FILE_AT_LINE (1194)) ;
       }
       GGS_string var_cas_sourceExpressionTypeNameString ;
       var_cas_sourceExpressionTypeNameString = var_cas_kSourceExpresionClassName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1196)) ;
-      if (((var_cas_checkForKindOfClass)._operator_not ()).isBuiltAndTrue ()) {
-        if ((((var_cas_castedTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1198)))._operator_isNotEqual (var_cas_sourceExpressionTypeNameString))._operator_and ((var_cas_superClassMap.reader_hasKey (inLexique, var_cas_sourceExpressionTypeNameString COMMA_SOURCE_FILE_AT_LINE (1198)))._operator_not ())).isBuiltAndTrue ()) {
-          var_cas_castedTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("This class is not '@"))._operator_concat (var_cas_sourceExpressionTypeNameString))._operator_concat (GGS_string ("' and does inherit from it")) COMMA_SOURCE_FILE_AT_LINE (1200)) ;
+      if (((var_cas_checkForKindOfClass).operator_not ()).isBuiltAndTrue ()) {
+        if ((((var_cas_castedTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1198))).operator_isNotEqual (var_cas_sourceExpressionTypeNameString)).operator_and ((var_cas_superClassMap.reader_hasKey (inLexique, var_cas_sourceExpressionTypeNameString COMMA_SOURCE_FILE_AT_LINE (1198))).operator_not ())).isBuiltAndTrue ()) {
+          var_cas_castedTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("This class is not '@")).operator_concat (var_cas_sourceExpressionTypeNameString)).operator_concat (GGS_string ("' and does inherit from it")) COMMA_SOURCE_FILE_AT_LINE (1200)) ;
         }
-      }else if (((var_cas_superClassMap.reader_hasKey (inLexique, var_cas_sourceExpressionTypeNameString COMMA_SOURCE_FILE_AT_LINE (1201)))._operator_not ()).isBuiltAndTrue ()) {
-        var_cas_castedTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("This class does not inherit from '@"))._operator_concat (var_cas_sourceExpressionTypeNameString))._operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (1203)) ;
+      }else if (((var_cas_superClassMap.reader_hasKey (inLexique, var_cas_sourceExpressionTypeNameString COMMA_SOURCE_FILE_AT_LINE (1201))).operator_not ()).isBuiltAndTrue ()) {
+        var_cas_castedTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("This class does not inherit from '@")).operator_concat (var_cas_sourceExpressionTypeNameString)).operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (1203)) ;
       }
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_else) COMMA_HERE) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_error) COMMA_HERE) ;
@@ -2180,7 +2180,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
           GGS_lstring  var_cas_optionName ;
           inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          if (((var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1627)))._operator_isNotEqual (GGS_string ("verbose_output"))).isBuiltAndTrue ()) {
+          if (((var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1627))).operator_isNotEqual (GGS_string ("verbose_output"))).isBuiltAndTrue ()) {
             var_cas_optionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this option name does not correspond to a builtin option") COMMA_SOURCE_FILE_AT_LINE (1629)) ;
           }
           var_cas_outExpression = GGS_typeBoolOption ::constructor_new (inLexique, GGS_string ("generic_galgas_cli_options"), var_cas_optionName COMMA_HERE) ;
@@ -2211,7 +2211,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
             var_cas_outExpression = GGS_typeStringOption ::constructor_new (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1649)), var_cas_optionName COMMA_HERE) ;
             var_cas_outResultType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
           }else{
-            var_cas_optionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("the '"))._operator_concat (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1652))))._operator_concat (GGS_string ("' option component has no '")))._operator_concat (var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1652))))._operator_concat (GGS_string ("' option")) COMMA_SOURCE_FILE_AT_LINE (1654)) ;
+            var_cas_optionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("the '")).operator_concat (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1652)))).operator_concat (GGS_string ("' option component has no '"))).operator_concat (var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1652)))).operator_concat (GGS_string ("' option")) COMMA_SOURCE_FILE_AT_LINE (1654)) ;
             var_cas_outExpression.drop () ;
             var_cas_outResultType.drop () ;
           }
@@ -2335,7 +2335,7 @@ pr_factor_expression_parser_1667_13_ (galgas_scanner & inLexique,
         var_cas_outResultType = var_cas_ae.reader_mReturnedType (inLexique COMMA_SOURCE_FILE_AT_LINE (1689)) ;
         var_cas_isExternActionCall = GGS_bool (true) ;
       }else{
-        var_cas_functionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("'"))._operator_concat (var_cas_functionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1693))))._operator_concat (GGS_string ("' should name a function or an extern function")) COMMA_SOURCE_FILE_AT_LINE (1696)) ;
+        var_cas_functionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("'")).operator_concat (var_cas_functionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1693)))).operator_concat (GGS_string ("' should name a function or an extern function")) COMMA_SOURCE_FILE_AT_LINE (1696)) ;
         var_cas_signatureRoutine.drop () ;
         var_cas_isExternActionCall.drop () ;
         var_cas_outResultType.drop () ;
@@ -2462,9 +2462,9 @@ pr_output_expression_list_expression_parser_1760_29_ (galgas_scanner & inLexique
   }
   GGS_location  var_cas_endOfListLocation ;
   var_cas_endOfListLocation = GGS_location (inLexique) ;
-  if (((var_cas_inFormalAttributesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1789)))._operator_strictInf (var_cas_effectiveTypesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1789)))).isBuiltAndTrue ()) {
+  if (((var_cas_inFormalAttributesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1789))).operator_strictInf (var_cas_effectiveTypesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1789)))).isBuiltAndTrue ()) {
     var_cas_endOfListLocation.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("too much expressions") COMMA_SOURCE_FILE_AT_LINE (1791)) ;
-  }else if (((var_cas_inFormalAttributesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1791)))._operator_strictSup (var_cas_effectiveTypesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1791)))).isBuiltAndTrue ()) {
+  }else if (((var_cas_inFormalAttributesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1791))).operator_strictSup (var_cas_effectiveTypesList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (1791)))).isBuiltAndTrue ()) {
     var_cas_endOfListLocation.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("one or more expressions missing") COMMA_SOURCE_FILE_AT_LINE (1793)) ;
   }else{
     {
@@ -2545,18 +2545,18 @@ pr_parse_effective_input_parameters_list_expression_parser_1807_44_ (galgas_scan
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A) COMMA_HERE) ;
               GGS_uint  var_cas_jokerCount ;
               var_cas_jokerCount = var_cas_jokerCountWithLocation.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (1834)) ;
-              GGS_uint _variant_72337 = var_cas_jokerCount._add_operation (inLexique, GGS_uint (1U) COMMA_SOURCE_FILE_AT_LINE (1835)) ;
+              GGS_uint _variant_72337 = var_cas_jokerCount.add_operation (inLexique, GGS_uint (1U) COMMA_SOURCE_FILE_AT_LINE (1835)) ;
               GGS_bool _condition_72337 (_variant_72337.isBuilt (), true) ;
               while (_condition_72337.isBuiltAndTrue ()) {
-                _condition_72337 = (var_cas_jokerCount)._operator_strictSup (GGS_uint (0U)) ;
+                _condition_72337 = (var_cas_jokerCount).operator_strictSup (GGS_uint (0U)) ;
                 if (_condition_72337.isBuiltAndTrue ()) {
                   if (_variant_72337.uintValue () == 0) {
                     inLexique.onTheFlyRunTimeError ("loop variant error" COMMA_SOURCE_FILE_AT_LINE (1839)) ;
                     _condition_72337 = GGS_bool (false) ;
                   }else{
-                    _variant_72337._decrement_operation (inLexique COMMA_HERE) ;
+                    _variant_72337.decrement_operation (inLexique COMMA_HERE) ;
                     var_cas_argumentsList._addAssign_operation (GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-                    var_cas_jokerCount._decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (1838)) ;
+                    var_cas_jokerCount.decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (1838)) ;
                   }
                 }
               }

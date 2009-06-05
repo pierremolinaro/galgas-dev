@@ -74,8 +74,8 @@ class GGS_commandLineOptionMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_commandLineOptionMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_commandLineOptionMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_commandLineOptionMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_commandLineOptionMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *

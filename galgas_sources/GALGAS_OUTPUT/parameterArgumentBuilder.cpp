@@ -131,21 +131,21 @@ pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (galgas_scanner & inLex
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A) COMMA_HERE) ;
               GGS_uint  var_cas_n ;
               var_cas_n = var_cas_count.reader_uint (inLexique COMMA_SOURCE_FILE_AT_LINE (101)) ;
-              if (((var_cas_n)._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+              if (((var_cas_n).operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
                 var_cas_count.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the count value should be > 0") COMMA_SOURCE_FILE_AT_LINE (104)) ;
               }else{
                 GGS_uint _variant_4946 = var_cas_n ;
                 GGS_bool _condition_4946 (_variant_4946.isBuilt (), true) ;
                 while (_condition_4946.isBuiltAndTrue ()) {
-                  _condition_4946 = (var_cas_n)._operator_strictSup (GGS_uint (0U)) ;
+                  _condition_4946 = (var_cas_n).operator_strictSup (GGS_uint (0U)) ;
                   if (_condition_4946.isBuiltAndTrue ()) {
                     if (_variant_4946.uintValue () == 0) {
                       inLexique.onTheFlyRunTimeError ("loop variant error" COMMA_SOURCE_FILE_AT_LINE (109)) ;
                       _condition_4946 = GGS_bool (false) ;
                     }else{
-                      _variant_4946._decrement_operation (inLexique COMMA_HERE) ;
+                      _variant_4946.decrement_operation (inLexique COMMA_HERE) ;
                       var_cas_outActualParameterList._addAssign_operation (GGS_inputJokerActualParameter ::constructor_new (inLexique COMMA_HERE)) ;
-                      var_cas_n._decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (108)) ;
+                      var_cas_n.decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (108)) ;
                     }
                   }
                 }

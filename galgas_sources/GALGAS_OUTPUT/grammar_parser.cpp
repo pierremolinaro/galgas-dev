@@ -61,9 +61,9 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_string var_cas_basename ;
   var_cas_basename = GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (112)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (112)) ;
-  if (((var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (113)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+  if (((var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (113))).operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
     var_cas_grammarName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS 1.7.5 and later checks "
-      "the component name ('"))._operator_concat (var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (115))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (117)) ;
+      "the component name ('")).operator_concat (var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (115)))).operator_concat (GGS_string ("') against the source file base name ('"))).operator_concat (var_cas_basename)).operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (117)) ;
   }
   GGS_lstring  var_cas_grammarClass ;
   inLexique._assignFromAttribute_tokenString (var_cas_grammarClass) ;
@@ -114,7 +114,7 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & inLexique,
                 break ;
             }
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
-            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (157)) COMMA_SOURCE_FILE_AT_LINE (157)))._operator_not ()).isBuiltAndTrue ()) {
+            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (157)) COMMA_SOURCE_FILE_AT_LINE (157))).operator_not ()).isBuiltAndTrue ()) {
               var_cas_ioOptionsComponentsMap.modifier_insertKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (158)) ;
             }
             } break ;
@@ -147,7 +147,7 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & inLexique,
             if (_temp_7014.isBuilt ()) {
               _temp_7014 (HERE)->method_searchKey (inLexique, var_cas_syntaxComponentName, var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_importedLexiqueComponentName COMMA_SOURCE_FILE_AT_LINE (183)) ;
             }
-            if (((var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (189)))._operator_isNotEqual (var_cas_importedLexiqueComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (189)))).isBuiltAndTrue ()) {
+            if (((var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (189))).operator_isNotEqual (var_cas_importedLexiqueComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (189)))).isBuiltAndTrue ()) {
               var_cas_syntaxComponentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this component does not use the previously declared lexique") COMMA_SOURCE_FILE_AT_LINE (191)) ;
             }
             var_cas_syntaxComponentsList._addAssign_operation (var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_syntaxComponentName) ;
@@ -182,7 +182,7 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & inLexique,
                     const GGS_M_nonterminalSymbolAltsForGrammar::cElement * operand_8484 = NULL ;
                     while (((operand_8484 = enumerator_8484.nextObject ()))) {
                       macroValidPointer (operand_8484) ;
-                      if (((operand_8484->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (208)))._operator_isNotEqual (GGS_string ("parse"))).isBuiltAndTrue ()) {
+                      if (((operand_8484->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (208))).operator_isNotEqual (GGS_string ("parse"))).isBuiltAndTrue ()) {
                         GGS_L_signature  automatic_var_0 ;
                         const GGS_M_nonterminalSymbolAltsForGrammar  _temp_8645 = var_cas_altSignatureMap ;
                         if (_temp_8645.isBuilt ()) {
@@ -373,7 +373,7 @@ pr_galgas_component_grammar_parser_100_23_importGrammarForSemantics (galgas_scan
                 break ;
             }
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B) COMMA_HERE) ;
-            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (489)) COMMA_SOURCE_FILE_AT_LINE (489)))._operator_not ()).isBuiltAndTrue ()) {
+            if (((var_cas_ioOptionsComponentsMap.reader_hasKey (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (489)) COMMA_SOURCE_FILE_AT_LINE (489))).operator_not ()).isBuiltAndTrue ()) {
               var_cas_ioOptionsComponentsMap.modifier_insertKey (inLexique, var_cas_optionComponentName, var_cas_boolOptionsMap, var_cas_uintOptionsMap, var_cas_stringOptionsMap COMMA_SOURCE_FILE_AT_LINE (490)) ;
             }
             } break ;

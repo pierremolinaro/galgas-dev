@@ -66,9 +66,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_guiAttributeList * ptr = dynamic_cast <const elementOf_GGS_guiAttributeList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mKey._operator_isEqual (ptr->mKey).boolValue ()
-         && mAttributeName._operator_isEqual (ptr->mAttributeName).boolValue ()
-         && mValue._operator_isEqual (ptr->mValue).boolValue () ;
+    equal = mKey.operator_isEqual (ptr->mKey).boolValue ()
+         && mAttributeName.operator_isEqual (ptr->mAttributeName).boolValue ()
+         && mValue.operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -146,16 +146,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_guiAttributeList GGS_guiAttributeList::
-_operator_concat (const GGS_guiAttributeList & inOperand) const {
+operator_concat (const GGS_guiAttributeList & inOperand) const {
   GGS_guiAttributeList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_guiAttributeList::
-_dotAssign_operation (const GGS_guiAttributeList inOperand) {
+dotAssign_operation (const GGS_guiAttributeList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -539,8 +539,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_guiLabelList * ptr = dynamic_cast <const elementOf_GGS_guiLabelList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mAttribute1._operator_isEqual (ptr->mAttribute1).boolValue ()
-         && mAttribute2._operator_isEqual (ptr->mAttribute2).boolValue () ;
+    equal = mAttribute1.operator_isEqual (ptr->mAttribute1).boolValue ()
+         && mAttribute2.operator_isEqual (ptr->mAttribute2).boolValue () ;
   }
   return equal ;
 }
@@ -608,16 +608,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_guiLabelList GGS_guiLabelList::
-_operator_concat (const GGS_guiLabelList & inOperand) const {
+operator_concat (const GGS_guiLabelList & inOperand) const {
   GGS_guiLabelList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_guiLabelList::
-_dotAssign_operation (const GGS_guiLabelList inOperand) {
+dotAssign_operation (const GGS_guiLabelList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -964,10 +964,10 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_guiComponentRoot * ptr = dynamic_cast <const cPtr_guiComponentRoot *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mGUIName._operator_isEqual (ptr->mGUIName).boolValue ()
-         && mGUIClass._operator_isEqual (ptr->mGUIClass).boolValue ()
-         && mAttributes._operator_isEqual (ptr->mAttributes).boolValue ()
-         && mLabels._operator_isEqual (ptr->mLabels).boolValue () ;
+    equal = mGUIName.operator_isEqual (ptr->mGUIName).boolValue ()
+         && mGUIClass.operator_isEqual (ptr->mGUIClass).boolValue ()
+         && mAttributes.operator_isEqual (ptr->mAttributes).boolValue ()
+         && mLabels.operator_isEqual (ptr->mLabels).boolValue () ;
   }
   return equal ;
 }

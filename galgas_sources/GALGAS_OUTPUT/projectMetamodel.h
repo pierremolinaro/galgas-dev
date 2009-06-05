@@ -129,12 +129,12 @@ class GGS_sourceFileKind {
   public : inline void drop (void) { mValue = kNotBuilt ; }
 
 //--- Comparison operators
-  public : GGS_bool _operator_isEqual (const GGS_sourceFileKind inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_sourceFileKind inOperand) const ;
-  public : GGS_bool _operator_infOrEqual (const GGS_sourceFileKind inOperand) const ;
-  public : GGS_bool _operator_supOrEqual (const GGS_sourceFileKind inOperand) const ;
-  public : GGS_bool _operator_strictInf (const GGS_sourceFileKind inOperand) const ;
-  public : GGS_bool _operator_strictSup (const GGS_sourceFileKind inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_sourceFileKind inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_sourceFileKind inOperand) const ;
+  public : GGS_bool operator_infOrEqual (const GGS_sourceFileKind inOperand) const ;
+  public : GGS_bool operator_supOrEqual (const GGS_sourceFileKind inOperand) const ;
+  public : GGS_bool operator_strictInf (const GGS_sourceFileKind inOperand) const ;
+  public : GGS_bool operator_strictSup (const GGS_sourceFileKind inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -205,14 +205,14 @@ class GGS_projectSourceList : public AC_galgas_list {
                                  GGS_lstringlist & _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_projectSourceList inOperand) ;
+  public : void dotAssign_operation (const GGS_projectSourceList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_projectSourceList _operator_concat (const GGS_projectSourceList & inOperand) const ;
+  public : GGS_projectSourceList operator_concat (const GGS_projectSourceList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,

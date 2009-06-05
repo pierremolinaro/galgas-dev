@@ -139,12 +139,12 @@ class GGS_syntaxInstructionList : public AC_galgas_list {
                                  GGS_syntaxInstruction & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_syntaxInstructionList inOperand) ;
+  public : void dotAssign_operation (const GGS_syntaxInstructionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_syntaxInstruction & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_syntaxInstructionList _operator_concat (const GGS_syntaxInstructionList & inOperand) const ;
+  public : GGS_syntaxInstructionList operator_concat (const GGS_syntaxInstructionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_syntaxInstruction & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -254,13 +254,13 @@ class GGS_nonTerminalLabelList : public AC_galgas_list {
                                  GGS_formalParameterList & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_nonTerminalLabelList inOperand) ;
+  public : void dotAssign_operation (const GGS_nonTerminalLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_nonTerminalLabelList _operator_concat (const GGS_nonTerminalLabelList & inOperand) const ;
+  public : GGS_nonTerminalLabelList operator_concat (const GGS_nonTerminalLabelList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1
@@ -386,14 +386,14 @@ class GGS_nonterminalDeclarationList : public AC_galgas_list {
                                  GGS_bool& _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_nonterminalDeclarationList inOperand) ;
+  public : void dotAssign_operation (const GGS_nonterminalDeclarationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_nonTerminalLabelList & argument_1,
                                 const GGS_bool& argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_nonterminalDeclarationList _operator_concat (const GGS_nonterminalDeclarationList & inOperand) const ;
+  public : GGS_nonterminalDeclarationList operator_concat (const GGS_nonterminalDeclarationList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_nonTerminalLabelList & argument_1,
@@ -530,14 +530,14 @@ class GGS_syntaxRuleLabelList : public AC_galgas_list {
                                  GGS_syntaxInstructionList & _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_syntaxRuleLabelList inOperand) ;
+  public : void dotAssign_operation (const GGS_syntaxRuleLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_syntaxInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_syntaxRuleLabelList _operator_concat (const GGS_syntaxRuleLabelList & inOperand) const ;
+  public : GGS_syntaxRuleLabelList operator_concat (const GGS_syntaxRuleLabelList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
@@ -669,13 +669,13 @@ class GGS_syntaxRuleList : public AC_galgas_list {
                                  GGS_syntaxRuleLabelList & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_syntaxRuleList inOperand) ;
+  public : void dotAssign_operation (const GGS_syntaxRuleList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_syntaxRuleLabelList & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_syntaxRuleList _operator_concat (const GGS_syntaxRuleList & inOperand) const ;
+  public : GGS_syntaxRuleList operator_concat (const GGS_syntaxRuleList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_syntaxRuleLabelList & argument_1
@@ -913,12 +913,12 @@ class GGS_listOfSyntaxInstructionList : public AC_galgas_list {
                                  GGS_syntaxInstructionList & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_listOfSyntaxInstructionList inOperand) ;
+  public : void dotAssign_operation (const GGS_listOfSyntaxInstructionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_syntaxInstructionList & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_listOfSyntaxInstructionList _operator_concat (const GGS_listOfSyntaxInstructionList & inOperand) const ;
+  public : GGS_listOfSyntaxInstructionList operator_concat (const GGS_listOfSyntaxInstructionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_syntaxInstructionList & argument_0
                                 COMMA_LOCATION_ARGS) ;

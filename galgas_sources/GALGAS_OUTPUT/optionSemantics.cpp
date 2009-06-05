@@ -103,9 +103,9 @@ bool elementOf_GGS_commandLineOptionMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_commandLineOptionMap * ptr = dynamic_cast <const elementOf_GGS_commandLineOptionMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.mOptionChar._operator_isEqual (ptr->mInfo.mOptionChar)).boolValue ()
-           && (mInfo.mOptionString._operator_isEqual (ptr->mInfo.mOptionString)).boolValue ()
-           && (mInfo.mComment._operator_isEqual (ptr->mInfo.mComment)).boolValue () ;
+  return (mInfo.mOptionChar.operator_isEqual (ptr->mInfo.mOptionChar)).boolValue ()
+           && (mInfo.mOptionString.operator_isEqual (ptr->mInfo.mOptionString)).boolValue ()
+           && (mInfo.mComment.operator_isEqual (ptr->mInfo.mComment)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -153,14 +153,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_commandLineOptionMap::
-_operator_isEqual (const GGS_commandLineOptionMap & inOperand) const {
+operator_isEqual (const GGS_commandLineOptionMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_commandLineOptionMap::
-_operator_isNotEqual (const GGS_commandLineOptionMap & inOperand) const {
+operator_isNotEqual (const GGS_commandLineOptionMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 

@@ -484,6 +484,7 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
 
 #--- By default, object does not accept to be enumerated (foreach instruction)
   method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
     ??@location inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -582,6 +583,15 @@ abstract class @AC_galgasType feature generatedInSeparateFile {
 #--- Error message
   message messageGalgasType "any type" ;
   message "any type" ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @typeEntiteType extends @AC_semanticsEntity {
+  @AC_galgasType aDefType ;
+
+  message messageTypeEntite "a type" ;
+  message "a type" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1807,6 +1817,7 @@ class @typeGalgas_stringset extends @AC_galgasType {
 #--- stringset object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -2287,12 +2298,37 @@ abstract class @typeDefEntiteUtilisable feature generatedInSeparateFile {
 #---------------------------------------------------------------------------*
 
 class @typeGalgasUndefinedListType extends @AC_galgasType {
-  @lstring mListTypeName feature nogetter ;
+  @lstring mListTypeName ;
 
 #--- Get type name
   override method getTypeName !@string outTypeName :
     outTypeName := [mListTypeName string] ;
   end method ;
+
+#--- list object accepts to be enumerated (foreach instruction),
+#    if corresponding regular type is defined
+#  override
+#  method acceptForeachInstruction
+#    ??@M_semanticsEntitiesForUse inSemanticsEntitiesForUse
+#    ??@location unused inErrorLocation
+#    !@typeListeAttributsSemantiques outForeachList
+#    !@localConstantBuildStyleEnum outStyle
+#    !@bool outNewStyle
+#  :
+#    if [inSemanticsEntitiesForUse hasKey ![mListTypeName string]] then
+#      @AC_semanticsEntity e ;
+#      [inSemanticsEntitiesForUse searchKey ! mListTypeName ?e] ;
+#      @typeGalgasListType type := [(cast e if >= @typeGalgasListType else error mListTypeName) aDefType] ;
+#      outNewStyle := false ;
+#      outForeachList := [type mAttributeList] ;
+#      outStyle := [@localConstantBuildStyleEnum listStyle] ;
+#    else
+#      error inErrorLocation :
+#         "variables of this type cannot be enumerated by in 'foreach' instruction"
+#         -> outForeachList, outStyle, outNewStyle
+#      ;
+#    end if ;
+#  end method ;
 
   message "an undefined list type" ;
   message messageGalgasType "an undefined list type" ;
@@ -2315,6 +2351,7 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
 #--- list object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -2322,6 +2359,22 @@ class @typeGalgasListType extends @typeGalgasUndefinedListType {
   :
     outNewStyle := false ;
     outForeachList := mAttributeList ;
+#    outForeachList := [@typeListeAttributsSemantiques emptyList] ;
+#    foreach mAttributeList do
+#      cast mAttributType :
+#      when == @typeGalgasUndefinedListType aType do
+#        if [inSemanticsEntitiesForUse hasKey ![[aType mListTypeName] string]] then
+#          @AC_semanticsEntity e ;
+#          [inSemanticsEntitiesForUse searchKey ![aType mListTypeName] ?e] ;
+#          @AC_galgasType type := [(cast e if >= @typeEntiteType else error [aType mListTypeName]) aDefType] ;
+#          outForeachList += !type !mAttributeName ;
+#        else
+#          outForeachList += !mAttributType !mAttributeName ;
+#        end if ;
+#      else
+#        outForeachList += !mAttributType !mAttributeName ;
+#      end cast ;
+#    end foreach ;
     outStyle := [@localConstantBuildStyleEnum listStyle] ;
   end method ;
   
@@ -2446,6 +2499,7 @@ class @typeGalgasListmapType extends @AC_galgasType {
 #--- listmap object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -2692,6 +2746,7 @@ class @typeGalgasSortedListType extends @typeGalgasUndefinedSortedListType {
 #--- list object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -2880,6 +2935,7 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
 #--- table object accepts to be enumerated (foreach instruction)
   override
   method acceptForeachInstruction
+    ??@M_semanticsEntitiesForUse unused inSemanticsEntitiesForUse
     ??@location unused inErrorLocation
     !@typeListeAttributsSemantiques outForeachList
     !@localConstantBuildStyleEnum outStyle
@@ -3172,15 +3228,6 @@ class @typeGalgasClassType extends @typeGalgasUndefinedClassType {
 #--- Error message
   message "a class type" ;
   message messageGalgasType "a class type" ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @typeEntiteType extends @AC_semanticsEntity {
-  @AC_galgasType aDefType ;
-
-  message messageTypeEntite "a type" ;
-  message "a type" ;
 }
 
 #---------------------------------------------------------------------------*

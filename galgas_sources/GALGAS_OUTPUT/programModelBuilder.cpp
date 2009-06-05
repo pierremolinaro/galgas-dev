@@ -125,7 +125,7 @@ pr_program_component_start_symbol_programModelBuilder_44_37_ (galgas_scanner & i
           GGS_lstring  var_cas_typeName ;
           inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
-          if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (96)))._operator_isNotEqual (GGS_string ("lstring"))).isBuiltAndTrue ()) {
+          if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (96))).operator_isNotEqual (GGS_string ("lstring"))).isBuiltAndTrue ()) {
             var_cas_typeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the only type allowed here is '@lstring'") COMMA_SOURCE_FILE_AT_LINE (98)) ;
           }
           GGS_lstring  var_cas_mSourceFileVariableName ;

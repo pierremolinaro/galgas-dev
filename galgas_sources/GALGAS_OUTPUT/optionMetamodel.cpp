@@ -70,11 +70,11 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_commandLineOptionList * ptr = dynamic_cast <const elementOf_GGS_commandLineOptionList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOptionTypeName._operator_isEqual (ptr->mOptionTypeName).boolValue ()
-         && mOptionInternalName._operator_isEqual (ptr->mOptionInternalName).boolValue ()
-         && mOptionInvocationLetter._operator_isEqual (ptr->mOptionInvocationLetter).boolValue ()
-         && mOptionInvocationString._operator_isEqual (ptr->mOptionInvocationString).boolValue ()
-         && mOptionComment._operator_isEqual (ptr->mOptionComment).boolValue () ;
+    equal = mOptionTypeName.operator_isEqual (ptr->mOptionTypeName).boolValue ()
+         && mOptionInternalName.operator_isEqual (ptr->mOptionInternalName).boolValue ()
+         && mOptionInvocationLetter.operator_isEqual (ptr->mOptionInvocationLetter).boolValue ()
+         && mOptionInvocationString.operator_isEqual (ptr->mOptionInvocationString).boolValue ()
+         && mOptionComment.operator_isEqual (ptr->mOptionComment).boolValue () ;
   }
   return equal ;
 }
@@ -172,16 +172,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionList GGS_commandLineOptionList::
-_operator_concat (const GGS_commandLineOptionList & inOperand) const {
+operator_concat (const GGS_commandLineOptionList & inOperand) const {
   GGS_commandLineOptionList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-_dotAssign_operation (const GGS_commandLineOptionList inOperand) {
+dotAssign_operation (const GGS_commandLineOptionList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -683,8 +683,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_optionComponentRoot * ptr = dynamic_cast <const cPtr_optionComponentRoot *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOptionComponentName._operator_isEqual (ptr->mOptionComponentName).boolValue ()
-         && mOptions._operator_isEqual (ptr->mOptions).boolValue () ;
+    equal = mOptionComponentName.operator_isEqual (ptr->mOptionComponentName).boolValue ()
+         && mOptions.operator_isEqual (ptr->mOptions).boolValue () ;
   }
   return equal ;
 }

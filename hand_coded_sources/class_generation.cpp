@@ -580,7 +580,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
         }else{
           inCppFile << "\n         && " ;
         }
-        inCppFile << current->mAttributeName << "._operator_isEqual (ptr->" << current->mAttributeName << ").boolValue ()" ;
+        inCppFile << current->mAttributeName << ".operator_isEqual (ptr->" << current->mAttributeName << ").boolValue ()" ;
         current = current->nextObject () ;
       }
       inCppFile << " ;\n"

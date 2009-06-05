@@ -214,7 +214,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         ioCppFile << ") ;\n" ;
         ioPreviousWasLiteralString = false ; 
       }
-      ioCppFile << inTargetVariableCppName << "._dotAssign_operation (" ;
+      ioCppFile << inTargetVariableCppName << ".dotAssign_operation (" ;
       inExpressionPtr->generateExpression (ioCppFile) ;
       ioCppFile << ") ;\n" ;
     }
@@ -260,7 +260,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
     if (mSourceExpressionConverter.string ().length () > 0) {
       ioCppFile << targetVariableCppName
-                << "._dotAssign_operation (" ;
+                << ".dotAssign_operation (" ;
       mSourceExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << "." << mSourceExpressionConverter
                 << " ()) ;\n" ;

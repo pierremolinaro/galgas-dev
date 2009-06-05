@@ -42,13 +42,28 @@ semantics mda_galgas_routines :
 
 #---------------------------------------------------------------------------*
 
-function outputDirectory
+function outputDirectoryTEMP
   ??@lstring inSourceFile
 ->
   @string outOuputDirectory
 :
   outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
   outOuputDirectory .= "/GALGAS_OUTPUT_TEMP" ;
+end function ;
+
+#---------------------------------------------------------------------------*
+
+function outputDirectory
+  ??@lstring inSourceFile
+->
+  @string outOuputDirectory
+:
+  if [inSourceFile characterAtIndex !0] == '/' then
+    outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+    outOuputDirectory .= "/GALGAS_OUTPUT" ;
+  else
+    outOuputDirectory := "GALGAS_OUTPUT" ;
+  end if ;
 end function ;
 
 #---------------------------------------------------------------------------*

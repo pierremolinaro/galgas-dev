@@ -4916,6 +4916,7 @@ label secondPhase
       @localConstantBuildStyleEnum localConstantBuildStyleEnum ;
       @bool iteratorNewStyle ;
       [sourceExpressionType acceptForeachInstruction
+        !ioComponentSemanticsEntitiesMap
         !magicNumber
         ?formalEnumerationList
         ?localConstantBuildStyleEnum

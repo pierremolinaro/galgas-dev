@@ -195,9 +195,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_typeInstructionAppelNonTerminal * ptr = dynamic_cast <const cPtr_typeInstructionAppelNonTerminal *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mNonterminalName._operator_isEqual (ptr->mNonterminalName).boolValue ()
-         && mParametersExpressionList._operator_isEqual (ptr->mParametersExpressionList).boolValue ()
-         && mAltName._operator_isEqual (ptr->mAltName).boolValue () ;
+    equal = mNonterminalName.operator_isEqual (ptr->mNonterminalName).boolValue ()
+         && mParametersExpressionList.operator_isEqual (ptr->mParametersExpressionList).boolValue ()
+         && mAltName.operator_isEqual (ptr->mAltName).boolValue () ;
   }
   return equal ;
 }
@@ -401,9 +401,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_typeInstructionVerifSyntaxique * ptr = dynamic_cast <const cPtr_typeInstructionVerifSyntaxique *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = aNomTerminal._operator_isEqual (ptr->aNomTerminal).boolValue ()
-         && aListeTypeEffectifs._operator_isEqual (ptr->aListeTypeEffectifs).boolValue ()
-         && mLexiqueClassName._operator_isEqual (ptr->mLexiqueClassName).boolValue () ;
+    equal = aNomTerminal.operator_isEqual (ptr->aNomTerminal).boolValue ()
+         && aListeTypeEffectifs.operator_isEqual (ptr->aListeTypeEffectifs).boolValue ()
+         && mLexiqueClassName.operator_isEqual (ptr->mLexiqueClassName).boolValue () ;
   }
   return equal ;
 }
@@ -591,7 +591,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_typeListeBranchesInstructions * ptr = dynamic_cast <const elementOf_GGS_typeListeBranchesInstructions *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue () ;
+    equal = mInstructionList.operator_isEqual (ptr->mInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -649,16 +649,16 @@ _addAssign_operation (const GGS_typeInstructionList & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_typeListeBranchesInstructions GGS_typeListeBranchesInstructions::
-_operator_concat (const GGS_typeListeBranchesInstructions & inOperand) const {
+operator_concat (const GGS_typeListeBranchesInstructions & inOperand) const {
   GGS_typeListeBranchesInstructions result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-_dotAssign_operation (const GGS_typeListeBranchesInstructions inOperand) {
+dotAssign_operation (const GGS_typeListeBranchesInstructions inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -948,8 +948,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_C_select_instruction * ptr = dynamic_cast <const cPtr_C_select_instruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mIFbranchesList._operator_isEqual (ptr->mIFbranchesList).boolValue ()
-         && aPositionDebut._operator_isEqual (ptr->aPositionDebut).boolValue () ;
+    equal = mIFbranchesList.operator_isEqual (ptr->mIFbranchesList).boolValue ()
+         && aPositionDebut.operator_isEqual (ptr->aPositionDebut).boolValue () ;
   }
   return equal ;
 }
@@ -1134,8 +1134,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_C_repeat_instruction * ptr = dynamic_cast <const cPtr_C_repeat_instruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = aListesBranchesRepeter._operator_isEqual (ptr->aListesBranchesRepeter).boolValue ()
-         && aPositionDebut._operator_isEqual (ptr->aPositionDebut).boolValue () ;
+    equal = aListesBranchesRepeter.operator_isEqual (ptr->aListesBranchesRepeter).boolValue ()
+         && aPositionDebut.operator_isEqual (ptr->aPositionDebut).boolValue () ;
   }
   return equal ;
 }
@@ -1308,8 +1308,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_L_parse_rewind_signature_list * ptr = dynamic_cast <const elementOf_GGS_L_parse_rewind_signature_list *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSignature._operator_isEqual (ptr->mSignature).boolValue ()
-         && mErrorLocation._operator_isEqual (ptr->mErrorLocation).boolValue () ;
+    equal = mSignature.operator_isEqual (ptr->mSignature).boolValue ()
+         && mErrorLocation.operator_isEqual (ptr->mErrorLocation).boolValue () ;
   }
   return equal ;
 }
@@ -1377,16 +1377,16 @@ _addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_L_parse_rewind_signature_list GGS_L_parse_rewind_signature_list::
-_operator_concat (const GGS_L_parse_rewind_signature_list & inOperand) const {
+operator_concat (const GGS_L_parse_rewind_signature_list & inOperand) const {
   GGS_L_parse_rewind_signature_list result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-_dotAssign_operation (const GGS_L_parse_rewind_signature_list inOperand) {
+dotAssign_operation (const GGS_L_parse_rewind_signature_list inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -1729,8 +1729,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_C_parse_rewind_instruction * ptr = dynamic_cast <const cPtr_C_parse_rewind_instruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mInstructionLocation._operator_isEqual (ptr->mInstructionLocation).boolValue ()
-         && mBranchList._operator_isEqual (ptr->mBranchList).boolValue () ;
+    equal = mInstructionLocation.operator_isEqual (ptr->mInstructionLocation).boolValue ()
+         && mBranchList.operator_isEqual (ptr->mBranchList).boolValue () ;
   }
   return equal ;
 }
@@ -1919,10 +1919,10 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_C_parse_loop_instruction * ptr = dynamic_cast <const cPtr_C_parse_loop_instruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mEndOfInstructionLocation._operator_isEqual (ptr->mEndOfInstructionLocation).boolValue ()
-         && mVariantExpression._operator_isEqual (ptr->mVariantExpression).boolValue ()
-         && mWhileExpression._operator_isEqual (ptr->mWhileExpression).boolValue ()
-         && mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue () ;
+    equal = mEndOfInstructionLocation.operator_isEqual (ptr->mEndOfInstructionLocation).boolValue ()
+         && mVariantExpression.operator_isEqual (ptr->mVariantExpression).boolValue ()
+         && mWhileExpression.operator_isEqual (ptr->mWhileExpression).boolValue ()
+         && mInstructionList.operator_isEqual (ptr->mInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -2141,8 +2141,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_C_parse_when_else_instruction * ptr = dynamic_cast <const cPtr_C_parse_when_else_instruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mIFbranchesList._operator_isEqual (ptr->mIFbranchesList).boolValue ()
-         && mElseInstructionsList._operator_isEqual (ptr->mElseInstructionsList).boolValue () ;
+    equal = mIFbranchesList.operator_isEqual (ptr->mIFbranchesList).boolValue ()
+         && mElseInstructionsList.operator_isEqual (ptr->mElseInstructionsList).boolValue () ;
   }
   return equal ;
 }
@@ -2329,9 +2329,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_typeNonterminalToGenerate * ptr = dynamic_cast <const cPtr_typeNonterminalToGenerate *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = aNomNonTerminal._operator_isEqual (ptr->aNomNonTerminal).boolValue ()
-         && mNonterminalSymbolParametersMap._operator_isEqual (ptr->mNonterminalSymbolParametersMap).boolValue ()
-         && mLexiqueClassName._operator_isEqual (ptr->mLexiqueClassName).boolValue () ;
+    equal = aNomNonTerminal.operator_isEqual (ptr->aNomNonTerminal).boolValue ()
+         && mNonterminalSymbolParametersMap.operator_isEqual (ptr->mNonterminalSymbolParametersMap).boolValue ()
+         && mLexiqueClassName.operator_isEqual (ptr->mLexiqueClassName).boolValue () ;
   }
   return equal ;
 }
@@ -2566,10 +2566,10 @@ bool elementOf_GGS_typeAltProductionsMap::
 isEqualToMapElement (const AC_galgas_map_element * inOperand) const {
   const elementOf_GGS_typeAltProductionsMap * ptr = dynamic_cast <const elementOf_GGS_typeAltProductionsMap *> (inOperand) ;
   macroValidPointer (ptr) ;
-  return (mInfo.aListeDeTypesEffectifs._operator_isEqual (ptr->mInfo.aListeDeTypesEffectifs)).boolValue ()
-           && (mInfo.mAllInstructionsList._operator_isEqual (ptr->mInfo.mAllInstructionsList)).boolValue ()
-           && (mInfo.mSyntaxSignature._operator_isEqual (ptr->mInfo.mSyntaxSignature)).boolValue ()
-           && (mInfo.mEndOfInstructionListLocation._operator_isEqual (ptr->mInfo.mEndOfInstructionListLocation)).boolValue () ;
+  return (mInfo.aListeDeTypesEffectifs.operator_isEqual (ptr->mInfo.aListeDeTypesEffectifs)).boolValue ()
+           && (mInfo.mAllInstructionsList.operator_isEqual (ptr->mInfo.mAllInstructionsList)).boolValue ()
+           && (mInfo.mSyntaxSignature.operator_isEqual (ptr->mInfo.mSyntaxSignature)).boolValue ()
+           && (mInfo.mEndOfInstructionListLocation.operator_isEqual (ptr->mInfo.mEndOfInstructionListLocation)).boolValue () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2617,14 +2617,14 @@ enterIndex (const GGS_lstring & inKey,
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_typeAltProductionsMap::
-_operator_isEqual (const GGS_typeAltProductionsMap & inOperand) const {
+operator_isEqual (const GGS_typeAltProductionsMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_typeAltProductionsMap::
-_operator_isNotEqual (const GGS_typeAltProductionsMap & inOperand) const {
+operator_isNotEqual (const GGS_typeAltProductionsMap & inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;
 }
 
@@ -2972,11 +2972,11 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_typeProductionAengendrer * ptr = dynamic_cast <const cPtr_typeProductionAengendrer *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = aNomProduction._operator_isEqual (ptr->aNomProduction).boolValue ()
-         && mAltProductionMap._operator_isEqual (ptr->mAltProductionMap).boolValue ()
-         && mProductionTagName._operator_isEqual (ptr->mProductionTagName).boolValue ()
-         && mLexiqueClassName._operator_isEqual (ptr->mLexiqueClassName).boolValue ()
-         && mHasParseLabel._operator_isEqual (ptr->mHasParseLabel).boolValue () ;
+    equal = aNomProduction.operator_isEqual (ptr->aNomProduction).boolValue ()
+         && mAltProductionMap.operator_isEqual (ptr->mAltProductionMap).boolValue ()
+         && mProductionTagName.operator_isEqual (ptr->mProductionTagName).boolValue ()
+         && mLexiqueClassName.operator_isEqual (ptr->mLexiqueClassName).boolValue ()
+         && mHasParseLabel.operator_isEqual (ptr->mHasParseLabel).boolValue () ;
   }
   return equal ;
 }

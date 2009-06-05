@@ -913,7 +913,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    ioCppFile << "._increment_operation (inLexique COMMA_SOURCE_FILE_AT_LINE ("
+    ioCppFile << ".increment_operation (inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }
@@ -963,7 +963,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    ioCppFile << "._decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE ("
+    ioCppFile << ".decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE ("
               << cStringWithSigned (mInstructionLocation.lineNumber ())
               << ")) ;\n" ;
   }

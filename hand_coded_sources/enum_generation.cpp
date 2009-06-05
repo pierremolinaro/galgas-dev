@@ -158,12 +158,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Drop operation\n"
              "  public : inline void drop (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
-             "  public : GGS_bool _operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
-             "  public : GGS_bool _operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
-             "  public : GGS_bool _operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
-             "  public : GGS_bool _operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
-             "  public : GGS_bool _operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
+             "  public : GGS_bool operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const ;\n"
              "} ;\n\n" ;
 } 
 
@@ -208,7 +208,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "operator_isEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue == inOperand.mValue) ;\n"
                "}\n\n" ;
@@ -217,7 +217,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "operator_isNotEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue != inOperand.mValue) ;\n"
                "}\n\n" ;
@@ -226,7 +226,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "operator_infOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue <= inOperand.mValue) ;\n"
                "}\n\n" ;
@@ -235,7 +235,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "operator_supOrEqual (const GGS_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue >= inOperand.mValue) ;\n"
                "}\n\n" ;
@@ -244,7 +244,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "operator_strictInf (const GGS_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue < inOperand.mValue) ;\n"
                "}\n\n" ;
@@ -253,7 +253,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
   inCppFile << "GGS_bool GGS_" << mEnumTypeName
             << "::\n"
-               "_operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const {\n"
+               "operator_strictSup (const GGS_" << mEnumTypeName << " inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   mValue > inOperand.mValue) ;\n"
                "}\n\n" ;

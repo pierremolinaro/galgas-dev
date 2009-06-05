@@ -229,7 +229,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Append a new value
              "//--- Handle '.=' operator\n"
-             "  public : void _dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
+             "  public : void dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
              "//--- Handling '+=' GALGAS operator\n"
              "  public : void _addAssign_operation (" ;
   current.rewind () ;
@@ -248,7 +248,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_" << aNomListe << " operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Direct element access
 //             "//--- Direct element access\n"
@@ -438,7 +438,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
-      inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (ptr->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
+      inCppFile << current._mAttributeName (HERE) << ".operator_isEqual (ptr->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
       current.next () ;
       numeroVariable ++ ;
     }
@@ -598,15 +598,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  GGS_" << aNomListe << " result = * this ;\n"
-               "  result._dotAssign_operation (inOperand) ;\n"
+               "  result.dotAssign_operation (inOperand) ;\n"
                "  return result ;\n"
                "}\n\n" ;
                
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
+               "dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
                "  if (isBuilt () && inOperand.isBuilt ()) {\n"
                "    if (count () == 0) {\n"
                "      * this = inOperand ;\n"
@@ -1149,8 +1149,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Copy Constructor\n"
              "  public : GGS_" << aNomListe << " (const GGS_" << aNomListe << " & inSource) ;\n"
              "//--- Comparison Operators\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool operator_isEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
+             "  public : GGS_bool operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const ;\n"
 
 //--- Constructor 'emptySortedList'
              "//--- Constructor 'emptySortedList'\n"
@@ -1249,7 +1249,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "COMMA_LOCATION_ARGS) ;\n"
 
              "//--- Handle '.=' operator\n"
-             "  public : void _dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
+             "  public : void dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
 
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
@@ -1270,7 +1270,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- List concatenation
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << aNomListe << " _operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n\n"
+             "  public : GGS_" << aNomListe << " operator_concat (const GGS_" << aNomListe << " & inOperand) const ;\n\n"
 
 //--- Internal methods
              "//--- Internal Methods\n"
@@ -1395,7 +1395,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
-    inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (ptr->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
+    inCppFile << current._mAttributeName (HERE) << ".operator_isEqual (ptr->"  << current._mAttributeName (HERE) << ").boolValue ()" ;
     current.next () ;
     numeroVariable ++ ;
   }
@@ -1465,13 +1465,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Generate comparison
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "operator_isEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_bool GGS_" << aNomListe << "::\n"
-               "_operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "operator_isNotEqual (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToList (inOperand)) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
@@ -1538,15 +1538,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "_operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
+               "operator_concat (const GGS_" << aNomListe << " & inOperand) const {\n"
                "  GGS_" << aNomListe << " result = * this ;\n"
-               "  result._dotAssign_operation (inOperand) ;\n"
+               "  result.dotAssign_operation (inOperand) ;\n"
                "  return result ;\n"
                "}\n\n" ;
                
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
+               "dotAssign_operation (const GGS_" << aNomListe << " inOperand) {\n"
                "  if (isBuilt () && inOperand.isBuilt ()) {\n"
                "    if (count () == 0) {\n"
                "      *this = inOperand ;\n"

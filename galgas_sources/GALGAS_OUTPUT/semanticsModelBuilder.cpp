@@ -633,13 +633,13 @@ pr_semantic_declaration_semanticsModelBuilder_465_27_ (galgas_scanner & inLexiqu
           } break ;
         case 8 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_message) COMMA_HERE) ;
-          if (((var_cas_mClassMessage.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (508)))._operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
+          if (((var_cas_mClassMessage.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (508))).operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the class message is already defined") COMMA_SOURCE_FILE_AT_LINE (510)) ;
           }
           GGS_lstring  var_cas_classMessage ;
           inLexique._assignFromAttribute_tokenString (var_cas_classMessage) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-          if (((var_cas_classMessage.ggs_string ().reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (513)))._operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
+          if (((var_cas_classMessage.ggs_string ().reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (513))).operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {
             var_cas_classMessage.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the class message string should be not empty") COMMA_SOURCE_FILE_AT_LINE (515)) ;
           }
           var_cas_mClassMessage = var_cas_classMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (516)) ;
@@ -921,7 +921,7 @@ pr_enum_modifier_semanticsModelBuilder_713_20_ (galgas_scanner & inLexique,
   GGS_lstring  var_cas_typeName ;
   inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
-  if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (718)))._operator_isNotEqual (GGS_string ("location"))).isBuiltAndTrue ()) {
+  if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (718))).operator_isNotEqual (GGS_string ("location"))).isBuiltAndTrue ()) {
     var_cas_typeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only '@location' type is allowed here") COMMA_SOURCE_FILE_AT_LINE (720)) ;
   }
   GGS_lstring  var_cas_mLocationFormalArgumentName ;
@@ -973,7 +973,7 @@ pr_enum_method_semanticsModelBuilder_748_18_ (galgas_scanner & inLexique,
   GGS_lstring  var_cas_typeName ;
   inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
-  if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (753)))._operator_isNotEqual (GGS_string ("location"))).isBuiltAndTrue ()) {
+  if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (753))).operator_isNotEqual (GGS_string ("location"))).isBuiltAndTrue ()) {
     var_cas_typeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only '@location' type is allowed here") COMMA_SOURCE_FILE_AT_LINE (755)) ;
   }
   GGS_lstring  var_cas_mLocationFormalArgumentName ;
@@ -1021,7 +1021,7 @@ pr_enum_operator_semanticsModelBuilder_781_20_ (galgas_scanner & inLexique,
   GGS_lstring  var_cas_typeName ;
   inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5Fname) COMMA_HERE) ;
-  if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (786)))._operator_isNotEqual (GGS_string ("location"))).isBuiltAndTrue ()) {
+  if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (786))).operator_isNotEqual (GGS_string ("location"))).isBuiltAndTrue ()) {
     var_cas_typeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only '@location' type is allowed here") COMMA_SOURCE_FILE_AT_LINE (788)) ;
   }
   GGS_lstring  var_cas_mLocationFormalArgumentName ;

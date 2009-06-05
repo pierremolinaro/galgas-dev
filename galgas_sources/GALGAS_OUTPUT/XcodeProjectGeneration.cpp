@@ -200,7 +200,7 @@ void routine_build_LIBPM_GALGAS_files_for_sources_build_phase (C_Compiler & inLe
     const GGS_stringlist::cElement * operand_4512 = NULL ;
     while (((operand_4512 = enumerator_4512.nextObject ()))) {
       macroValidPointer (operand_4512) ;
-      var_cas_fileList._addAssign_operation ((operand_4512->mValue)._operator_concat (GGS_string (".cpp"))) ;
+      var_cas_fileList._addAssign_operation ((operand_4512->mValue).operator_concat (GGS_string (".cpp"))) ;
     }
   }
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (130)) ;
@@ -676,7 +676,7 @@ void routine_build_GENERATED_BY_GALGAS_files_for_sources_build_phase (C_Compiler
   {
     GGS_stringset::cEnumerator enumerator_16437 (var_cas_inComponentNameSet, true) ;
     while (enumerator_16437.hc ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_16437._key (HERE))._operator_concat (GGS_string (".cpp"))) ;
+      var_cas_fileList._addAssign_operation ((enumerator_16437._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_16437.next () ;
     }
   }
@@ -712,7 +712,7 @@ void routine_build_GENERATED_BY_GALGAS_group (C_Compiler & inLexique,
   {
     GGS_stringset::cEnumerator enumerator_17068 (var_cas_inGUISourceNameSet, true) ;
     while (enumerator_17068.hc ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_17068._key (HERE))._operator_concat (GGS_string (".mm"))) ;
+      var_cas_fileList._addAssign_operation ((enumerator_17068._key (HERE)).operator_concat (GGS_string (".mm"))) ;
       enumerator_17068.next () ;
     }
   }
@@ -742,7 +742,7 @@ void routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (C_Compi
     while (enumerator_17588.hc ()) {
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_17588._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (575)) ;
-      if ((((((var_cas_extension)._operator_isEqual (GGS_string ("cpp")))._operator_or ((var_cas_extension)._operator_isEqual (GGS_string ("c"))))._operator_or ((var_cas_extension)._operator_isEqual (GGS_string ("m"))))._operator_or ((var_cas_extension)._operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
+      if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
         var_cas_fileList._addAssign_operation (enumerator_17588._key (HERE)) ;
       }
       enumerator_17588.next () ;
@@ -774,7 +774,7 @@ void routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (C_Comp
     while (enumerator_18277.hc ()) {
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_18277._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (597)) ;
-      if ((((var_cas_extension)._operator_isNotEqual (GGS_string ("cpp")))._operator_and ((var_cas_extension)._operator_isNotEqual (GGS_string ("c")))).isBuiltAndTrue ()) {
+      if ((((var_cas_extension).operator_isNotEqual (GGS_string ("cpp"))).operator_and ((var_cas_extension).operator_isNotEqual (GGS_string ("c")))).isBuiltAndTrue ()) {
         var_cas_fileList._addAssign_operation (enumerator_18277._key (HERE)) ;
       }
       enumerator_18277.next () ;
@@ -806,7 +806,7 @@ void routine_build_HAND_CODED_SOURCES_group (C_Compiler & inLexique,
     while (enumerator_18897.hc ()) {
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_18897._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (619)) ;
-      if ((((((var_cas_extension)._operator_isEqual (GGS_string ("cpp")))._operator_or ((var_cas_extension)._operator_isEqual (GGS_string ("c"))))._operator_or ((var_cas_extension)._operator_isEqual (GGS_string ("m"))))._operator_or ((var_cas_extension)._operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
+      if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
         var_cas_fileList._addAssign_operation (enumerator_18897._key (HERE)) ;
       }
       enumerator_18897.next () ;
@@ -839,7 +839,7 @@ void routine_build_FRAMEWORKS_group (C_Compiler & inLexique,
   {
     GGS_stringset::cEnumerator enumerator_19637 (var_cas_inExternSourceForTool, true) ;
     while (enumerator_19637.hc ()) {
-      if (((enumerator_19637._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (644)))._operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
+      if (((enumerator_19637._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (644))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
         var_cas_fileSet._addAssign_operation (enumerator_19637._key (HERE)) ;
       }
       enumerator_19637.next () ;
@@ -848,7 +848,7 @@ void routine_build_FRAMEWORKS_group (C_Compiler & inLexique,
   {
     GGS_stringset::cEnumerator enumerator_19771 (var_cas_inExternSourceForApp, true) ;
     while (enumerator_19771.hc ()) {
-      if (((enumerator_19771._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (649)))._operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
+      if (((enumerator_19771._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (649))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
         var_cas_fileSet._addAssign_operation (enumerator_19771._key (HERE)) ;
       }
       enumerator_19771.next () ;
@@ -878,7 +878,7 @@ void routine_build_FRAMEWORKS_for_frameworks_build_phase (C_Compiler & inLexique
   {
     GGS_stringset::cEnumerator enumerator_20329 (var_cas_inExternFileSet, true) ;
     while (enumerator_20329.hc ()) {
-      if (((enumerator_20329._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (670)))._operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
+      if (((enumerator_20329._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (670))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
         var_cas_fileList._addAssign_operation (enumerator_20329._key (HERE)) ;
       }
       enumerator_20329.next () ;
@@ -907,7 +907,7 @@ void routine_build_RESOURCES_for_resources_build_phase (C_Compiler & inLexique,
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = var_cas_inIconFiles ;
   var_cas_fileList._addAssign_operation (var_cas_inProjectName) ;
-  var_cas_fileList._addAssign_operation ((var_cas_inProjectName)._operator_concat (GGS_string ("_debug"))) ;
+  var_cas_fileList._addAssign_operation ((var_cas_inProjectName).operator_concat (GGS_string ("_debug"))) ;
   var_cas_fileList._addAssign_operation (GGS_string ("I_Action.tiff")) ;
   var_cas_fileList._addAssign_operation (GGS_string ("I_SaveAs.tiff")) ;
   var_cas_fileList._addAssign_operation (GGS_string ("I_Stop.tiff")) ;
@@ -990,21 +990,21 @@ void routine_build_COCOA_APP_files_for_sources_build_phase (C_Compiler & inLexiq
   {
     GGS_stringset::cEnumerator enumerator_23748 (var_cas_inGUISourceNameSet, true) ;
     while (enumerator_23748.hc ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_23748._key (HERE))._operator_concat (GGS_string (".mm"))) ;
+      var_cas_fileList._addAssign_operation ((enumerator_23748._key (HERE)).operator_concat (GGS_string (".mm"))) ;
       enumerator_23748.next () ;
     }
   }
   {
     GGS_stringset::cEnumerator enumerator_23831 (var_cas_inScannerSourceNameSet, true) ;
     while (enumerator_23831.hc ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_23831._key (HERE))._operator_concat (GGS_string (".cpp"))) ;
+      var_cas_fileList._addAssign_operation ((enumerator_23831._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_23831.next () ;
     }
   }
   {
     GGS_stringset::cEnumerator enumerator_23914 (var_cas_inOptionSourceNameSet, true) ;
     while (enumerator_23914.hc ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_23914._key (HERE))._operator_concat (GGS_string (".cpp"))) ;
+      var_cas_fileList._addAssign_operation ((enumerator_23914._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_23914.next () ;
     }
   }
@@ -1049,18 +1049,18 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   GGS_XcodeObjectReferenceList  var_cas_fileListOf_HAND_CODED_SOURCES_group ;
   var_cas_fileListOf_HAND_CODED_SOURCES_group = GGS_XcodeObjectReferenceList ::constructor_emptyList () ;
   GGS_stringset  var_cas_fileSet ;
-  var_cas_fileSet = (var_cas_inExternSourceNameSet_tool)._operator_or (var_cas_inExternSourceNameSet_app) ;
+  var_cas_fileSet = (var_cas_inExternSourceNameSet_tool).operator_or (var_cas_inExternSourceNameSet_app) ;
   var_cas_fileSet.minusAssign_operation (GGS_string ("AppKit.framework")) ;
   var_cas_fileSet.minusAssign_operation (GGS_string ("Cocoa.framework")) ;
   ::routine_build_HAND_CODED_SOURCES_group (inLexique,  var_cas_XcodeProjectDescription,  var_cas_fileSet,  var_cas_fileListOf_HAND_CODED_SOURCES_group COMMA_SOURCE_FILE_AT_LINE (824)) ;
   ::routine_enter_group (inLexique,  var_cas_XcodeProjectDescription,  GGS_string ("Hand Coded Sources"),  GGS_string ("../galgas_sources"),  var_cas_fileListOf_HAND_CODED_SOURCES_group COMMA_SOURCE_FILE_AT_LINE (830)) ;
   GGS_stringset  var_cas_componentNameSet_tool ;
-  var_cas_componentNameSet_tool = (((((var_cas_inScannerSourceNameSet_tool)._operator_or (var_cas_inOptionSourceNameSet_tool))._operator_or (var_cas_inSemanticsSourceSet_tool))._operator_or (var_cas_inSyntaxSourceSet_tool))._operator_or (var_cas_inGrammarSourceSet_tool))._operator_or (var_cas_inProgramSourceSet_tool) ;
+  var_cas_componentNameSet_tool = (((((var_cas_inScannerSourceNameSet_tool).operator_or (var_cas_inOptionSourceNameSet_tool)).operator_or (var_cas_inSemanticsSourceSet_tool)).operator_or (var_cas_inSyntaxSourceSet_tool)).operator_or (var_cas_inGrammarSourceSet_tool)).operator_or (var_cas_inProgramSourceSet_tool) ;
   GGS_stringset  var_cas_componentNameSet_app ;
-  var_cas_componentNameSet_app = (((((var_cas_inScannerSourceNameSet_app)._operator_or (var_cas_inOptionSourceNameSet_app))._operator_or (var_cas_inSemanticsSourceSet_app))._operator_or (var_cas_inSyntaxSourceSet_app))._operator_or (var_cas_inGrammarSourceSet_app))._operator_or (var_cas_inProgramSourceSet_app) ;
+  var_cas_componentNameSet_app = (((((var_cas_inScannerSourceNameSet_app).operator_or (var_cas_inOptionSourceNameSet_app)).operator_or (var_cas_inSemanticsSourceSet_app)).operator_or (var_cas_inSyntaxSourceSet_app)).operator_or (var_cas_inGrammarSourceSet_app)).operator_or (var_cas_inProgramSourceSet_app) ;
   GGS_XcodeObjectReferenceList  var_cas_fileListOf_GENERATED_BY_GALGAS_group ;
   var_cas_fileListOf_GENERATED_BY_GALGAS_group = GGS_XcodeObjectReferenceList ::constructor_emptyList () ;
-  ::routine_build_GENERATED_BY_GALGAS_group (inLexique,  var_cas_XcodeProjectDescription,  (var_cas_componentNameSet_tool)._operator_or (var_cas_componentNameSet_app),  (var_cas_inGUISourceNameSet_tool)._operator_or (var_cas_inGUISourceNameSet_app),  var_cas_fileListOf_GENERATED_BY_GALGAS_group COMMA_SOURCE_FILE_AT_LINE (848)) ;
+  ::routine_build_GENERATED_BY_GALGAS_group (inLexique,  var_cas_XcodeProjectDescription,  (var_cas_componentNameSet_tool).operator_or (var_cas_componentNameSet_app),  (var_cas_inGUISourceNameSet_tool).operator_or (var_cas_inGUISourceNameSet_app),  var_cas_fileListOf_GENERATED_BY_GALGAS_group COMMA_SOURCE_FILE_AT_LINE (848)) ;
   ::routine_enter_group (inLexique,  var_cas_XcodeProjectDescription,  GGS_string ("Generated by GALGAS"),  GGS_string ("../galgas_sources/GALGAS_OUTPUT"),  var_cas_fileListOf_GENERATED_BY_GALGAS_group COMMA_SOURCE_FILE_AT_LINE (855)) ;
   GGS_XcodeObjectReferenceList  var_cas_libpmGroupChildrenList ;
   var_cas_libpmGroupChildrenList = GGS_XcodeObjectReferenceList ::constructor_emptyList () ;
@@ -1141,7 +1141,7 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   var_cas_toolTargetSettings = GGS_stringlist ::constructor_emptyList () ;
   var_cas_toolTargetSettings._addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 2;")) ;
   GGS_string var_cas_toolTargetKey ;
-  ::routine_add_tool_target (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inProjectName,  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1138)))._operator_concat (GGS_string (" Tool")),  var_cas_toolTargetSettings,  GGS_string ("../../libpm/galgas/PP_GalgasPrefix.pch"),  var_cas_listForSourceBuildPhaseOfTool,  var_cas_listForFrameworksBuildPhaseOfTool,  GGS_stringlist ::constructor_emptyList (),  var_cas_toolTargetKey COMMA_SOURCE_FILE_AT_LINE (1135)) ;
+  ::routine_add_tool_target (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inProjectName,  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1138))).operator_concat (GGS_string (" Tool")),  var_cas_toolTargetSettings,  GGS_string ("../../libpm/galgas/PP_GalgasPrefix.pch"),  var_cas_listForSourceBuildPhaseOfTool,  var_cas_listForFrameworksBuildPhaseOfTool,  GGS_stringlist ::constructor_emptyList (),  var_cas_toolTargetKey COMMA_SOURCE_FILE_AT_LINE (1135)) ;
   GGS_Xcode_PBXBuildFile_list  var_cas_listForSourceBuildPhaseOfDebugTool ;
   var_cas_listForSourceBuildPhaseOfDebugTool = GGS_Xcode_PBXBuildFile_list ::constructor_emptyList () ;
   ::routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inExternSourceNameSet_tool,  var_cas_listForSourceBuildPhaseOfDebugTool COMMA_SOURCE_FILE_AT_LINE (1149)) ;
@@ -1163,7 +1163,7 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   var_cas_debugToolTargetSettings._addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0;")) ;
   var_cas_debugToolTargetSettings._addAssign_operation (GGS_string ("GCC_WARN_UNINITIALIZED_AUTOS = NO;")) ;
   GGS_string var_cas_toolDebugTargetKey ;
-  ::routine_add_tool_target (inLexique,  var_cas_XcodeProjectDescription,  (var_cas_inProjectName)._operator_concat (GGS_string ("_debug")),  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1221)))._operator_concat (GGS_string (" Tool Debug")),  var_cas_debugToolTargetSettings,  GGS_string (""),  var_cas_listForSourceBuildPhaseOfDebugTool,  var_cas_listForFrameworksBuildPhaseOfToolDebug,  GGS_stringlist ::constructor_emptyList (),  var_cas_toolDebugTargetKey COMMA_SOURCE_FILE_AT_LINE (1218)) ;
+  ::routine_add_tool_target (inLexique,  var_cas_XcodeProjectDescription,  (var_cas_inProjectName).operator_concat (GGS_string ("_debug")),  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1221))).operator_concat (GGS_string (" Tool Debug")),  var_cas_debugToolTargetSettings,  GGS_string (""),  var_cas_listForSourceBuildPhaseOfDebugTool,  var_cas_listForFrameworksBuildPhaseOfToolDebug,  GGS_stringlist ::constructor_emptyList (),  var_cas_toolDebugTargetKey COMMA_SOURCE_FILE_AT_LINE (1218)) ;
   GGS_Xcode_PBXBuildFile_list  var_cas_listForSourceBuildPhaseOfCocoaApp ;
   var_cas_listForSourceBuildPhaseOfCocoaApp = GGS_Xcode_PBXBuildFile_list ::constructor_emptyList () ;
   ::routine_build_COCOA_APP_files_for_sources_build_phase (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inGUISourceNameSet_app,  var_cas_inScannerSourceNameSet_app,  var_cas_inOptionSourceNameSet_app,  var_cas_listForSourceBuildPhaseOfCocoaApp COMMA_SOURCE_FILE_AT_LINE (1232)) ;
@@ -1185,7 +1185,7 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   var_cas_cocoaAppTargetSettings = GGS_stringlist ::constructor_emptyList () ;
   var_cas_cocoaAppTargetSettings._addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 2;")) ;
   GGS_string automatic_var_0 ;
-  ::routine_add_app_target (inLexique,  var_cas_XcodeProjectDescription,  (GGS_string ("Cocoa"))._operator_concat (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1273))),  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1274)))._operator_concat (GGS_string (" Cocoa")),  var_cas_cocoaAppTargetSettings,  GGS_string ("../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch"),  GGS_string ("Info.plist"),  var_cas_listForSourceBuildPhaseOfCocoaApp,  var_cas_listForFrameworksBuildPhaseOfCocoaApp,  var_cas_listForResourcesBuildPhaseOfCocoaApp,  var_cas_directDependencyList,  automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (1271)) ;
+  ::routine_add_app_target (inLexique,  var_cas_XcodeProjectDescription,  (GGS_string ("Cocoa")).operator_concat (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1273))),  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1274))).operator_concat (GGS_string (" Cocoa")),  var_cas_cocoaAppTargetSettings,  GGS_string ("../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch"),  GGS_string ("Info.plist"),  var_cas_listForSourceBuildPhaseOfCocoaApp,  var_cas_listForFrameworksBuildPhaseOfCocoaApp,  var_cas_listForResourcesBuildPhaseOfCocoaApp,  var_cas_directDependencyList,  automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (1271)) ;
   GGS_stringlist  var_cas_pathes ;
   var_cas_pathes = GGS_stringlist ::constructor_emptyList () ;
   var_cas_pathes._addAssign_operation (GGS_string ("../galgas_sources/GALGAS_OUTPUT")) ;

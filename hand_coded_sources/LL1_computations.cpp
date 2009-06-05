@@ -628,7 +628,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << ") ;\n"
                           "          if (_inSentStringPtr != NULL) {\n"
-                          "            _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "            _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
                           "          }\n"
                           "        }\n" ;
         generatedZone3 << "      }else{\n"
@@ -704,7 +704,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << ") ;\n"
                           "    if (_inSentStringPtr != NULL) {\n"
-                          "      _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "      _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
                           "    }\n"
                           "  }\n" ;
         generatedZone3 << "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n" ;

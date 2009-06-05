@@ -316,7 +316,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalInstructionList * ptr = dynamic_cast <const elementOf_GGS_lexicalInstructionList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mInstruction._operator_isEqual (ptr->mInstruction).boolValue () ;
+    equal = mInstruction.operator_isEqual (ptr->mInstruction).boolValue () ;
   }
   return equal ;
 }
@@ -374,16 +374,16 @@ _addAssign_operation (const GGS_lexicalInstruction & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalInstructionList GGS_lexicalInstructionList::
-_operator_concat (const GGS_lexicalInstructionList & inOperand) const {
+operator_concat (const GGS_lexicalInstructionList & inOperand) const {
   GGS_lexicalInstructionList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-_dotAssign_operation (const GGS_lexicalInstructionList inOperand) {
+dotAssign_operation (const GGS_lexicalInstructionList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -663,9 +663,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_templateDelimitorList * ptr = dynamic_cast <const elementOf_GGS_templateDelimitorList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mStartString._operator_isEqual (ptr->mStartString).boolValue ()
-         && mOptionList._operator_isEqual (ptr->mOptionList).boolValue ()
-         && mEndString._operator_isEqual (ptr->mEndString).boolValue () ;
+    equal = mStartString.operator_isEqual (ptr->mStartString).boolValue ()
+         && mOptionList.operator_isEqual (ptr->mOptionList).boolValue ()
+         && mEndString.operator_isEqual (ptr->mEndString).boolValue () ;
   }
   return equal ;
 }
@@ -743,16 +743,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_templateDelimitorList GGS_templateDelimitorList::
-_operator_concat (const GGS_templateDelimitorList & inOperand) const {
+operator_concat (const GGS_templateDelimitorList & inOperand) const {
   GGS_templateDelimitorList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-_dotAssign_operation (const GGS_templateDelimitorList inOperand) {
+dotAssign_operation (const GGS_templateDelimitorList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -1138,9 +1138,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_templateReplacementList * ptr = dynamic_cast <const elementOf_GGS_templateReplacementList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mMatchString._operator_isEqual (ptr->mMatchString).boolValue ()
-         && mReplacementString._operator_isEqual (ptr->mReplacementString).boolValue ()
-         && mReplacementFunction._operator_isEqual (ptr->mReplacementFunction).boolValue () ;
+    equal = mMatchString.operator_isEqual (ptr->mMatchString).boolValue ()
+         && mReplacementString.operator_isEqual (ptr->mReplacementString).boolValue ()
+         && mReplacementFunction.operator_isEqual (ptr->mReplacementFunction).boolValue () ;
   }
   return equal ;
 }
@@ -1218,16 +1218,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_templateReplacementList GGS_templateReplacementList::
-_operator_concat (const GGS_templateReplacementList & inOperand) const {
+operator_concat (const GGS_templateReplacementList & inOperand) const {
   GGS_templateReplacementList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-_dotAssign_operation (const GGS_templateReplacementList inOperand) {
+dotAssign_operation (const GGS_templateReplacementList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -1736,7 +1736,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalRuleList * ptr = dynamic_cast <const elementOf_GGS_lexicalRuleList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalRule._operator_isEqual (ptr->mLexicalRule).boolValue () ;
+    equal = mLexicalRule.operator_isEqual (ptr->mLexicalRule).boolValue () ;
   }
   return equal ;
 }
@@ -1794,16 +1794,16 @@ _addAssign_operation (const GGS_abstractLexicalRule & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRuleList GGS_lexicalRuleList::
-_operator_concat (const GGS_lexicalRuleList & inOperand) const {
+operator_concat (const GGS_lexicalRuleList & inOperand) const {
   GGS_lexicalRuleList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRuleList::
-_dotAssign_operation (const GGS_lexicalRuleList inOperand) {
+dotAssign_operation (const GGS_lexicalRuleList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -2091,7 +2091,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalImplicitRule * ptr = dynamic_cast <const cPtr_lexicalImplicitRule *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mListName._operator_isEqual (ptr->mListName).boolValue () ;
+    equal = mListName.operator_isEqual (ptr->mListName).boolValue () ;
   }
   return equal ;
 }
@@ -2259,8 +2259,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalExplicitRule * ptr = dynamic_cast <const cPtr_lexicalExplicitRule *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalRuleExpression._operator_isEqual (ptr->mLexicalRuleExpression).boolValue ()
-         && mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue () ;
+    equal = mLexicalRuleExpression.operator_isEqual (ptr->mLexicalRuleExpression).boolValue ()
+         && mInstructionList.operator_isEqual (ptr->mInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -2433,8 +2433,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalMessageDeclarationList * ptr = dynamic_cast <const elementOf_GGS_lexicalMessageDeclarationList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mMessageName._operator_isEqual (ptr->mMessageName).boolValue ()
-         && mMessageValue._operator_isEqual (ptr->mMessageValue).boolValue () ;
+    equal = mMessageName.operator_isEqual (ptr->mMessageName).boolValue ()
+         && mMessageValue.operator_isEqual (ptr->mMessageValue).boolValue () ;
   }
   return equal ;
 }
@@ -2502,16 +2502,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalMessageDeclarationList GGS_lexicalMessageDeclarationList::
-_operator_concat (const GGS_lexicalMessageDeclarationList & inOperand) const {
+operator_concat (const GGS_lexicalMessageDeclarationList & inOperand) const {
   GGS_lexicalMessageDeclarationList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageDeclarationList::
-_dotAssign_operation (const GGS_lexicalMessageDeclarationList inOperand) {
+dotAssign_operation (const GGS_lexicalMessageDeclarationList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -2842,8 +2842,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalAttributeList * ptr = dynamic_cast <const elementOf_GGS_lexicalAttributeList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
-         && mName._operator_isEqual (ptr->mName).boolValue () ;
+    equal = mTypeName.operator_isEqual (ptr->mTypeName).boolValue ()
+         && mName.operator_isEqual (ptr->mName).boolValue () ;
   }
   return equal ;
 }
@@ -2911,16 +2911,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalAttributeList GGS_lexicalAttributeList::
-_operator_concat (const GGS_lexicalAttributeList & inOperand) const {
+operator_concat (const GGS_lexicalAttributeList & inOperand) const {
   GGS_lexicalAttributeList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-_dotAssign_operation (const GGS_lexicalAttributeList inOperand) {
+dotAssign_operation (const GGS_lexicalAttributeList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -3251,8 +3251,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalStyleList * ptr = dynamic_cast <const elementOf_GGS_lexicalStyleList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mName._operator_isEqual (ptr->mName).boolValue ()
-         && mComment._operator_isEqual (ptr->mComment).boolValue () ;
+    equal = mName.operator_isEqual (ptr->mName).boolValue ()
+         && mComment.operator_isEqual (ptr->mComment).boolValue () ;
   }
   return equal ;
 }
@@ -3320,16 +3320,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalStyleList GGS_lexicalStyleList::
-_operator_concat (const GGS_lexicalStyleList & inOperand) const {
+operator_concat (const GGS_lexicalStyleList & inOperand) const {
   GGS_lexicalStyleList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-_dotAssign_operation (const GGS_lexicalStyleList inOperand) {
+dotAssign_operation (const GGS_lexicalStyleList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -3666,11 +3666,11 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_terminalDeclarationList * ptr = dynamic_cast <const elementOf_GGS_terminalDeclarationList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mName._operator_isEqual (ptr->mName).boolValue ()
-         && mSentAttributeList._operator_isEqual (ptr->mSentAttributeList).boolValue ()
-         && mErrorMessage._operator_isEqual (ptr->mErrorMessage).boolValue ()
-         && mStyle._operator_isEqual (ptr->mStyle).boolValue ()
-         && mOptionList._operator_isEqual (ptr->mOptionList).boolValue () ;
+    equal = mName.operator_isEqual (ptr->mName).boolValue ()
+         && mSentAttributeList.operator_isEqual (ptr->mSentAttributeList).boolValue ()
+         && mErrorMessage.operator_isEqual (ptr->mErrorMessage).boolValue ()
+         && mStyle.operator_isEqual (ptr->mStyle).boolValue ()
+         && mOptionList.operator_isEqual (ptr->mOptionList).boolValue () ;
   }
   return equal ;
 }
@@ -3768,16 +3768,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_terminalDeclarationList GGS_terminalDeclarationList::
-_operator_concat (const GGS_terminalDeclarationList & inOperand) const {
+operator_concat (const GGS_terminalDeclarationList & inOperand) const {
   GGS_terminalDeclarationList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-_dotAssign_operation (const GGS_terminalDeclarationList inOperand) {
+dotAssign_operation (const GGS_terminalDeclarationList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -4269,9 +4269,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalListEntryList * ptr = dynamic_cast <const elementOf_GGS_lexicalListEntryList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mEntrySpelling._operator_isEqual (ptr->mEntrySpelling).boolValue ()
-         && mTerminalSpelling._operator_isEqual (ptr->mTerminalSpelling).boolValue ()
-         && mFeatureList._operator_isEqual (ptr->mFeatureList).boolValue () ;
+    equal = mEntrySpelling.operator_isEqual (ptr->mEntrySpelling).boolValue ()
+         && mTerminalSpelling.operator_isEqual (ptr->mTerminalSpelling).boolValue ()
+         && mFeatureList.operator_isEqual (ptr->mFeatureList).boolValue () ;
   }
   return equal ;
 }
@@ -4349,16 +4349,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalListEntryList GGS_lexicalListEntryList::
-_operator_concat (const GGS_lexicalListEntryList & inOperand) const {
+operator_concat (const GGS_lexicalListEntryList & inOperand) const {
   GGS_lexicalListEntryList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-_dotAssign_operation (const GGS_lexicalListEntryList inOperand) {
+dotAssign_operation (const GGS_lexicalListEntryList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -4748,11 +4748,11 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalListDeclarationList * ptr = dynamic_cast <const elementOf_GGS_lexicalListDeclarationList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mName._operator_isEqual (ptr->mName).boolValue ()
-         && mStyle._operator_isEqual (ptr->mStyle).boolValue ()
-         && mSyntaxErrorMessage._operator_isEqual (ptr->mSyntaxErrorMessage).boolValue ()
-         && mSentAttributeList._operator_isEqual (ptr->mSentAttributeList).boolValue ()
-         && mEntryList._operator_isEqual (ptr->mEntryList).boolValue () ;
+    equal = mName.operator_isEqual (ptr->mName).boolValue ()
+         && mStyle.operator_isEqual (ptr->mStyle).boolValue ()
+         && mSyntaxErrorMessage.operator_isEqual (ptr->mSyntaxErrorMessage).boolValue ()
+         && mSentAttributeList.operator_isEqual (ptr->mSentAttributeList).boolValue ()
+         && mEntryList.operator_isEqual (ptr->mEntryList).boolValue () ;
   }
   return equal ;
 }
@@ -4850,16 +4850,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalListDeclarationList GGS_lexicalListDeclarationList::
-_operator_concat (const GGS_lexicalListDeclarationList & inOperand) const {
+operator_concat (const GGS_lexicalListDeclarationList & inOperand) const {
   GGS_lexicalListDeclarationList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-_dotAssign_operation (const GGS_lexicalListDeclarationList inOperand) {
+dotAssign_operation (const GGS_lexicalListDeclarationList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -5361,8 +5361,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalOrExpression * ptr = dynamic_cast <const cPtr_lexicalOrExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLeftOperand._operator_isEqual (ptr->mLeftOperand).boolValue ()
-         && mRightOperand._operator_isEqual (ptr->mRightOperand).boolValue () ;
+    equal = mLeftOperand.operator_isEqual (ptr->mLeftOperand).boolValue ()
+         && mRightOperand.operator_isEqual (ptr->mRightOperand).boolValue () ;
   }
   return equal ;
 }
@@ -5545,7 +5545,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalCharacterSetMatch * ptr = dynamic_cast <const cPtr_lexicalCharacterSetMatch *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mCharacterSetName._operator_isEqual (ptr->mCharacterSetName).boolValue () ;
+    equal = mCharacterSetName.operator_isEqual (ptr->mCharacterSetName).boolValue () ;
   }
   return equal ;
 }
@@ -5711,7 +5711,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalCharacterMatch * ptr = dynamic_cast <const cPtr_lexicalCharacterMatch *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mCharacter._operator_isEqual (ptr->mCharacter).boolValue () ;
+    equal = mCharacter.operator_isEqual (ptr->mCharacter).boolValue () ;
   }
   return equal ;
 }
@@ -5879,8 +5879,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalCharacterIntervalMatch * ptr = dynamic_cast <const cPtr_lexicalCharacterIntervalMatch *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLowerBound._operator_isEqual (ptr->mLowerBound).boolValue ()
-         && mUpperBound._operator_isEqual (ptr->mUpperBound).boolValue () ;
+    equal = mLowerBound.operator_isEqual (ptr->mLowerBound).boolValue ()
+         && mUpperBound.operator_isEqual (ptr->mUpperBound).boolValue () ;
   }
   return equal ;
 }
@@ -6063,7 +6063,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalStringMatch * ptr = dynamic_cast <const cPtr_lexicalStringMatch *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mString._operator_isEqual (ptr->mString).boolValue () ;
+    equal = mString.operator_isEqual (ptr->mString).boolValue () ;
   }
   return equal ;
 }
@@ -6231,8 +6231,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalStringNotMatch * ptr = dynamic_cast <const cPtr_lexicalStringNotMatch *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mString._operator_isEqual (ptr->mString).boolValue ()
-         && mErrorMessage._operator_isEqual (ptr->mErrorMessage).boolValue () ;
+    equal = mString.operator_isEqual (ptr->mString).boolValue ()
+         && mErrorMessage.operator_isEqual (ptr->mErrorMessage).boolValue () ;
   }
   return equal ;
 }
@@ -6405,8 +6405,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalSendSearchList * ptr = dynamic_cast <const elementOf_GGS_lexicalSendSearchList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mAttributeName._operator_isEqual (ptr->mAttributeName).boolValue ()
-         && mSearchListName._operator_isEqual (ptr->mSearchListName).boolValue () ;
+    equal = mAttributeName.operator_isEqual (ptr->mAttributeName).boolValue ()
+         && mSearchListName.operator_isEqual (ptr->mSearchListName).boolValue () ;
   }
   return equal ;
 }
@@ -6474,16 +6474,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSendSearchList GGS_lexicalSendSearchList::
-_operator_concat (const GGS_lexicalSendSearchList & inOperand) const {
+operator_concat (const GGS_lexicalSendSearchList & inOperand) const {
   GGS_lexicalSendSearchList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-_dotAssign_operation (const GGS_lexicalSendSearchList inOperand) {
+dotAssign_operation (const GGS_lexicalSendSearchList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -6953,8 +6953,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalStructuredSendInstruction * ptr = dynamic_cast <const cPtr_lexicalStructuredSendInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalSendSearchList._operator_isEqual (ptr->mLexicalSendSearchList).boolValue ()
-         && mLexicalSendDefaultAction._operator_isEqual (ptr->mLexicalSendDefaultAction).boolValue () ;
+    equal = mLexicalSendSearchList.operator_isEqual (ptr->mLexicalSendSearchList).boolValue ()
+         && mLexicalSendDefaultAction.operator_isEqual (ptr->mLexicalSendDefaultAction).boolValue () ;
   }
   return equal ;
 }
@@ -7137,7 +7137,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalSimpleSendInstruction * ptr = dynamic_cast <const cPtr_lexicalSimpleSendInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSentTerminal._operator_isEqual (ptr->mSentTerminal).boolValue () ;
+    equal = mSentTerminal.operator_isEqual (ptr->mSentTerminal).boolValue () ;
   }
   return equal ;
 }
@@ -7303,7 +7303,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalSendTerminalByDefault * ptr = dynamic_cast <const cPtr_lexicalSendTerminalByDefault *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mDefaultSentTerminal._operator_isEqual (ptr->mDefaultSentTerminal).boolValue () ;
+    equal = mDefaultSentTerminal.operator_isEqual (ptr->mDefaultSentTerminal).boolValue () ;
   }
   return equal ;
 }
@@ -7469,7 +7469,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalErrorByDefault * ptr = dynamic_cast <const cPtr_lexicalErrorByDefault *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mDefaultErrorMessageName._operator_isEqual (ptr->mDefaultErrorMessageName).boolValue () ;
+    equal = mDefaultErrorMessageName.operator_isEqual (ptr->mDefaultErrorMessageName).boolValue () ;
   }
   return equal ;
 }
@@ -7625,8 +7625,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalWhileBranchList * ptr = dynamic_cast <const elementOf_GGS_lexicalWhileBranchList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mWhileExpression._operator_isEqual (ptr->mWhileExpression).boolValue ()
-         && mWhileInstructionList._operator_isEqual (ptr->mWhileInstructionList).boolValue () ;
+    equal = mWhileExpression.operator_isEqual (ptr->mWhileExpression).boolValue ()
+         && mWhileInstructionList.operator_isEqual (ptr->mWhileInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -7694,16 +7694,16 @@ _addAssign_operation (const GGS_lexicalExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalWhileBranchList GGS_lexicalWhileBranchList::
-_operator_concat (const GGS_lexicalWhileBranchList & inOperand) const {
+operator_concat (const GGS_lexicalWhileBranchList & inOperand) const {
   GGS_lexicalWhileBranchList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-_dotAssign_operation (const GGS_lexicalWhileBranchList inOperand) {
+dotAssign_operation (const GGS_lexicalWhileBranchList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -8046,8 +8046,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalRepeatInstruction * ptr = dynamic_cast <const cPtr_lexicalRepeatInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mRepeatedInstructionList._operator_isEqual (ptr->mRepeatedInstructionList).boolValue ()
-         && mLexicalWhileBranchList._operator_isEqual (ptr->mLexicalWhileBranchList).boolValue () ;
+    equal = mRepeatedInstructionList.operator_isEqual (ptr->mRepeatedInstructionList).boolValue ()
+         && mLexicalWhileBranchList.operator_isEqual (ptr->mLexicalWhileBranchList).boolValue () ;
   }
   return equal ;
 }
@@ -8220,8 +8220,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalSelectBranchList * ptr = dynamic_cast <const elementOf_GGS_lexicalSelectBranchList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSelectExpression._operator_isEqual (ptr->mSelectExpression).boolValue ()
-         && mSelectInstructionList._operator_isEqual (ptr->mSelectInstructionList).boolValue () ;
+    equal = mSelectExpression.operator_isEqual (ptr->mSelectExpression).boolValue ()
+         && mSelectInstructionList.operator_isEqual (ptr->mSelectInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -8289,16 +8289,16 @@ _addAssign_operation (const GGS_lexicalExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSelectBranchList GGS_lexicalSelectBranchList::
-_operator_concat (const GGS_lexicalSelectBranchList & inOperand) const {
+operator_concat (const GGS_lexicalSelectBranchList & inOperand) const {
   GGS_lexicalSelectBranchList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-_dotAssign_operation (const GGS_lexicalSelectBranchList inOperand) {
+dotAssign_operation (const GGS_lexicalSelectBranchList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -8641,8 +8641,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalSelectInstruction * ptr = dynamic_cast <const cPtr_lexicalSelectInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalSelectBranchList._operator_isEqual (ptr->mLexicalSelectBranchList).boolValue ()
-         && mDefaultInstructionList._operator_isEqual (ptr->mDefaultInstructionList).boolValue () ;
+    equal = mLexicalSelectBranchList.operator_isEqual (ptr->mLexicalSelectBranchList).boolValue ()
+         && mDefaultInstructionList.operator_isEqual (ptr->mDefaultInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -8957,7 +8957,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalRoutineCallActualArgumentList * ptr = dynamic_cast <const elementOf_GGS_lexicalRoutineCallActualArgumentList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalRoutineActualArgument._operator_isEqual (ptr->mLexicalRoutineActualArgument).boolValue () ;
+    equal = mLexicalRoutineActualArgument.operator_isEqual (ptr->mLexicalRoutineActualArgument).boolValue () ;
   }
   return equal ;
 }
@@ -9015,16 +9015,16 @@ _addAssign_operation (const GGS_abstractLexicalRoutineActualArgument & argument_
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineCallActualArgumentList GGS_lexicalRoutineCallActualArgumentList::
-_operator_concat (const GGS_lexicalRoutineCallActualArgumentList & inOperand) const {
+operator_concat (const GGS_lexicalRoutineCallActualArgumentList & inOperand) const {
   GGS_lexicalRoutineCallActualArgumentList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineCallActualArgumentList::
-_dotAssign_operation (const GGS_lexicalRoutineCallActualArgumentList inOperand) {
+dotAssign_operation (const GGS_lexicalRoutineCallActualArgumentList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -9316,9 +9316,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalRoutineInstruction * ptr = dynamic_cast <const cPtr_lexicalRoutineInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mActionName._operator_isEqual (ptr->mActionName).boolValue ()
-         && mActualArgumentList._operator_isEqual (ptr->mActualArgumentList).boolValue ()
-         && mErrorMessageList._operator_isEqual (ptr->mErrorMessageList).boolValue () ;
+    equal = mActionName.operator_isEqual (ptr->mActionName).boolValue ()
+         && mActualArgumentList.operator_isEqual (ptr->mActualArgumentList).boolValue ()
+         && mErrorMessageList.operator_isEqual (ptr->mErrorMessageList).boolValue () ;
   }
   return equal ;
 }
@@ -9519,8 +9519,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalAttributeInputOutputArgument * ptr = dynamic_cast <const cPtr_lexicalAttributeInputOutputArgument *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mActualPassingModeLocation._operator_isEqual (ptr->mActualPassingModeLocation).boolValue ()
-         && mAttributeName._operator_isEqual (ptr->mAttributeName).boolValue () ;
+    equal = mActualPassingModeLocation.operator_isEqual (ptr->mActualPassingModeLocation).boolValue ()
+         && mAttributeName.operator_isEqual (ptr->mAttributeName).boolValue () ;
   }
   return equal ;
 }
@@ -9817,8 +9817,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalFormalInputArgument * ptr = dynamic_cast <const cPtr_lexicalFormalInputArgument *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mActualPassingModeLocation._operator_isEqual (ptr->mActualPassingModeLocation).boolValue ()
-         && mRoutineOrFunctionFormalInputArgument._operator_isEqual (ptr->mRoutineOrFunctionFormalInputArgument).boolValue () ;
+    equal = mActualPassingModeLocation.operator_isEqual (ptr->mActualPassingModeLocation).boolValue ()
+         && mRoutineOrFunctionFormalInputArgument.operator_isEqual (ptr->mRoutineOrFunctionFormalInputArgument).boolValue () ;
   }
   return equal ;
 }
@@ -9975,7 +9975,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_lexicalFunctionCallActualArgumentList * ptr = dynamic_cast <const elementOf_GGS_lexicalFunctionCallActualArgumentList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexicalActualInputArgument._operator_isEqual (ptr->mLexicalActualInputArgument).boolValue () ;
+    equal = mLexicalActualInputArgument.operator_isEqual (ptr->mLexicalActualInputArgument).boolValue () ;
   }
   return equal ;
 }
@@ -10033,16 +10033,16 @@ _addAssign_operation (const GGS_lexicalRoutineOrFunctionFormalInputArgument & ar
 //---------------------------------------------------------------------------*
 
 GGS_lexicalFunctionCallActualArgumentList GGS_lexicalFunctionCallActualArgumentList::
-_operator_concat (const GGS_lexicalFunctionCallActualArgumentList & inOperand) const {
+operator_concat (const GGS_lexicalFunctionCallActualArgumentList & inOperand) const {
   GGS_lexicalFunctionCallActualArgumentList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionCallActualArgumentList::
-_dotAssign_operation (const GGS_lexicalFunctionCallActualArgumentList inOperand) {
+dotAssign_operation (const GGS_lexicalFunctionCallActualArgumentList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -10330,7 +10330,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalAttributeInputArgument * ptr = dynamic_cast <const cPtr_lexicalAttributeInputArgument *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mAttributeName._operator_isEqual (ptr->mAttributeName).boolValue () ;
+    equal = mAttributeName.operator_isEqual (ptr->mAttributeName).boolValue () ;
   }
   return equal ;
 }
@@ -10496,7 +10496,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalCharacterInputArgument * ptr = dynamic_cast <const cPtr_lexicalCharacterInputArgument *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mCharacter._operator_isEqual (ptr->mCharacter).boolValue () ;
+    equal = mCharacter.operator_isEqual (ptr->mCharacter).boolValue () ;
   }
   return equal ;
 }
@@ -10662,7 +10662,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalCurrentCharacterInputArgument * ptr = dynamic_cast <const cPtr_lexicalCurrentCharacterInputArgument *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLocation._operator_isEqual (ptr->mLocation).boolValue () ;
+    equal = mLocation.operator_isEqual (ptr->mLocation).boolValue () ;
   }
   return equal ;
 }
@@ -10830,8 +10830,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalFunctionInputArgument * ptr = dynamic_cast <const cPtr_lexicalFunctionInputArgument *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFunctionName._operator_isEqual (ptr->mFunctionName).boolValue ()
-         && mFunctionActualArgumentList._operator_isEqual (ptr->mFunctionActualArgumentList).boolValue () ;
+    equal = mFunctionName.operator_isEqual (ptr->mFunctionName).boolValue ()
+         && mFunctionActualArgumentList.operator_isEqual (ptr->mFunctionActualArgumentList).boolValue () ;
   }
   return equal ;
 }
@@ -11014,7 +11014,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalDropInstruction * ptr = dynamic_cast <const cPtr_lexicalDropInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mTerminalName._operator_isEqual (ptr->mTerminalName).boolValue () ;
+    equal = mTerminalName.operator_isEqual (ptr->mTerminalName).boolValue () ;
   }
   return equal ;
 }
@@ -11180,7 +11180,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalErrorInstruction * ptr = dynamic_cast <const cPtr_lexicalErrorInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mErrorMessageName._operator_isEqual (ptr->mErrorMessageName).boolValue () ;
+    equal = mErrorMessageName.operator_isEqual (ptr->mErrorMessageName).boolValue () ;
   }
   return equal ;
 }
@@ -11346,7 +11346,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalWarningInstruction * ptr = dynamic_cast <const cPtr_lexicalWarningInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mWarningMessageName._operator_isEqual (ptr->mWarningMessageName).boolValue () ;
+    equal = mWarningMessageName.operator_isEqual (ptr->mWarningMessageName).boolValue () ;
   }
   return equal ;
 }
@@ -11512,7 +11512,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalTagInstruction * ptr = dynamic_cast <const cPtr_lexicalTagInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mTagName._operator_isEqual (ptr->mTagName).boolValue () ;
+    equal = mTagName.operator_isEqual (ptr->mTagName).boolValue () ;
   }
   return equal ;
 }
@@ -11680,8 +11680,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexicalRewindInstruction * ptr = dynamic_cast <const cPtr_lexicalRewindInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mTagName._operator_isEqual (ptr->mTagName).boolValue ()
-         && mTerminalName._operator_isEqual (ptr->mTerminalName).boolValue () ;
+    equal = mTagName.operator_isEqual (ptr->mTagName).boolValue ()
+         && mTerminalName.operator_isEqual (ptr->mTerminalName).boolValue () ;
   }
   return equal ;
 }
@@ -12030,16 +12030,16 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lexiqueComponentRoot * ptr = dynamic_cast <const cPtr_lexiqueComponentRoot *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLexiqueComponentName._operator_isEqual (ptr->mLexiqueComponentName).boolValue ()
-         && mIsTemplate._operator_isEqual (ptr->mIsTemplate).boolValue ()
-         && mTemplateDelimitorList._operator_isEqual (ptr->mTemplateDelimitorList).boolValue ()
-         && mTemplateReplacementList._operator_isEqual (ptr->mTemplateReplacementList).boolValue ()
-         && mLexicalAttributeList._operator_isEqual (ptr->mLexicalAttributeList).boolValue ()
-         && mLexicalStyleList._operator_isEqual (ptr->mLexicalStyleList).boolValue ()
-         && mTerminalDeclarationList._operator_isEqual (ptr->mTerminalDeclarationList).boolValue ()
-         && mLexicalMessageDeclarationList._operator_isEqual (ptr->mLexicalMessageDeclarationList).boolValue ()
-         && mLexicalListDeclarationList._operator_isEqual (ptr->mLexicalListDeclarationList).boolValue ()
-         && mLexicalRuleList._operator_isEqual (ptr->mLexicalRuleList).boolValue () ;
+    equal = mLexiqueComponentName.operator_isEqual (ptr->mLexiqueComponentName).boolValue ()
+         && mIsTemplate.operator_isEqual (ptr->mIsTemplate).boolValue ()
+         && mTemplateDelimitorList.operator_isEqual (ptr->mTemplateDelimitorList).boolValue ()
+         && mTemplateReplacementList.operator_isEqual (ptr->mTemplateReplacementList).boolValue ()
+         && mLexicalAttributeList.operator_isEqual (ptr->mLexicalAttributeList).boolValue ()
+         && mLexicalStyleList.operator_isEqual (ptr->mLexicalStyleList).boolValue ()
+         && mTerminalDeclarationList.operator_isEqual (ptr->mTerminalDeclarationList).boolValue ()
+         && mLexicalMessageDeclarationList.operator_isEqual (ptr->mLexicalMessageDeclarationList).boolValue ()
+         && mLexicalListDeclarationList.operator_isEqual (ptr->mLexicalListDeclarationList).boolValue ()
+         && mLexicalRuleList.operator_isEqual (ptr->mLexicalRuleList).boolValue () ;
   }
   return equal ;
 }

@@ -67,9 +67,9 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : static GGS_" << mListmapTypeName << "\n"
              "  constructor_emptyMap (void) ;\n\n"
              "//--- Handle '.=' operator\n"
-             "  public : void _dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) ; //Don't pass 'inOperand' by reference !\n\n"
+             "  public : void dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) ; //Don't pass 'inOperand' by reference !\n\n"
              "//--- Handling '.' GALGAS operator\n"
-             "  public : GGS_" << mListmapTypeName << " _operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const ;\n\n"
+             "  public : GGS_" << mListmapTypeName << " operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const ;\n\n"
              "//--- Handle '+=' operator\n"
              "  public : void\n"
              "  _addAssign_operation (const GGS_string & inKey" ;
@@ -167,7 +167,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "bool GGS_" << mListmapTypeName << "::cElement::isEqual (const cPtrListMapObject * inOperand) const {\n"
-               "  const GGS_bool equal = mListObject._operator_isEqual (((cElement *) inOperand)->mListObject) ;\n"
+               "  const GGS_bool equal = mListObject.operator_isEqual (((cElement *) inOperand)->mListObject) ;\n"
                "  return equal.boolValue () ;\n"
                "}\n\n" ;
 
@@ -196,15 +196,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mListmapTypeName << " GGS_" << mListmapTypeName << "::\n"
-               "_operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const {\n"
+               "operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const {\n"
                "  GGS_" << mListmapTypeName << " result = * this ;\n"
-               "  result._dotAssign_operation (inOperand) ;\n"
+               "  result.dotAssign_operation (inOperand) ;\n"
                "  return result ;\n"
                "}\n\n" ;
                
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mListmapTypeName << "::\n"
-               "_dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) {\n"
+               "dotAssign_operation (const GGS_" << mListmapTypeName << " inOperand) {\n"
                "  if (isBuilt () && inOperand.isBuilt ()) {\n"
                "    if (count (HERE) == 0) {\n"
                "      * this = inOperand ;\n"
@@ -224,7 +224,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "           nodePtr->mObject._setPointer (elementPtr) ;\n"
                "        }\n"
                "        GGS_" << mListTypename << " & listPtr = macroPtr (nodePtr->mObject, cElement)->mListObject ;\n"
-               "        listPtr._dotAssign_operation (elementPtr->mListObject) ;\n"
+               "        listPtr.dotAssign_operation (elementPtr->mListObject) ;\n"
                "      }\n"
                "    }\n"
                "  }\n"
@@ -378,8 +378,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  constructor_null (C_Compiler & inLexique\n"
              "                    COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Comparison operators\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
+             "  public : GGS_bool operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n"
+             "  public : GGS_bool operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const ;\n\n"
              "//--- 'description' reader declaration\n"
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & inLexique\n"
@@ -467,14 +467,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
-               "_operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
+               "operator_isEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   (mState == inOperand.mState)) ;\n"
                "}\n\n" ;
               
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapindexTypeName << "::\n"
-               "_operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
+               "operator_isNotEqual (const GGS_" << mMapindexTypeName << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (),\n"
                "                   (mState != inOperand.mState)) ;\n"
                "}\n\n" ;
@@ -657,8 +657,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline cElement * firstObject (void) const { return (cElement *) internalFirstObject () ; }\n"
              "  public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }\n\n"
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n\n"
+             "  public : GGS_bool operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n"
+             "  public : GGS_bool operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const ;\n\n"
              "//--- Create a new element\n"
              "  protected : virtual AC_galgas_map_element *\n"
              "  new_element (const GGS_lstring & inKey, void * inInfo) ;\n\n"
@@ -977,7 +977,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       }else{
         inCppFile << "\n           && " ;
       }
-      inCppFile << "(mInfo." << current._mAttributeName (HERE) << "._operator_isEqual (ptr->mInfo." << current._mAttributeName (HERE) << ")).boolValue ()" ;
+      inCppFile << "(mInfo." << current._mAttributeName (HERE) << ".operator_isEqual (ptr->mInfo." << current._mAttributeName (HERE) << ")).boolValue ()" ;
       current.next () ;
     }
     inCppFile << " ;\n" ;
@@ -1029,13 +1029,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Generate comparison
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
-               "_operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
+               "operator_isEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (), isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
-               "_operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
+               "operator_isNotEqual (const GGS_" << mMapTypeName << " & inOperand) const {\n"
                "  return GGS_bool (isBuilt () && inOperand.isBuilt (), ! isEqualToMap (inOperand)) ;\n"
                "}\n\n" ;
 
@@ -1518,8 +1518,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : inline GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n"
              "  public : inline const GGS_" << aNomTable << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "//--- Comparison methods\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true) ; }\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true) ; }\n"
+             "  public : GGS_bool operator_isEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true) ; }\n"
+             "  public : GGS_bool operator_isNotEqual (const GGS_" << aNomTable << " & /* inOperand */) const { return GGS_bool (true) ; }\n"
              "//--- Handle 'emptyMap' constructor\n"
              "  public : static GGS_" << aNomTable << " constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;\n" ;
 
