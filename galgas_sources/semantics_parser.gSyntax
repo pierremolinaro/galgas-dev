@@ -6563,7 +6563,7 @@ label importSemantics
     $;$ ;
     if not ([tableEnAvant hasKey ![listTypeName string]] | [ioComponentSemanticsEntitiesMap hasKey ![listTypeName string]]) then
       @AC_galgasType t := [@typeGalgasUndefinedListType new ! listTypeName] ;
-      [!?tableEnAvant insertKey ! listTypeName !t] ;
+      [!?tableEnAvant insertKey !listTypeName !t] ;
     end if ;
   or
     ${$ ;

@@ -20,6 +20,29 @@ semantics common_semantics :
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#        Semantics entity abstract type                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @AC_semanticsEntity feature generatedInSeparateFile {
+  message  "any entity";
+  message messageTypeEntite  "any entity";
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Map of semantics entities                                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @M_semanticsEntitiesForUse {
+  @AC_semanticsEntity aDefEntite ;
+  insert insertKey error message "a semantics entity named '%K' is already declared in %L" ;
+  search searchKey error message "there is no semantics entity named '%K'" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  A C T U A L    P A R A M E T E R S    P A S S I N G    M O D E S         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -1994,17 +2017,6 @@ map @M_nonterminalSymbolAlts {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#        Semantics entity abstract type                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract class @AC_semanticsEntity feature generatedInSeparateFile {
-  message  "any entity";
-  message messageTypeEntite  "any entity";
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #        Grammar as semantics entity                                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -2015,18 +2027,6 @@ class @C_grammarForSemantics extends @AC_semanticsEntity {
 
   message messageTypeEntite  "a grammar entity";
   message "a grammar entity";
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    Map of semantics entities                                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @M_semanticsEntitiesForUse  {
-  @AC_semanticsEntity aDefEntite ;
-  insert insertKey error message "a semantics entity named '%K' is already declared in %L" ;
-  search searchKey error message "there is no semantics entity named '%K'" ;
 }
 
 #---------------------------------------------------------------------------*
