@@ -55,7 +55,7 @@ isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_formalArgumentPassingMode::
-_operator_isEqual (const GGS_formalArgumentPassingMode inOperand) const {
+operator_isEqual (const GGS_formalArgumentPassingMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue == inOperand.mValue) ;
 }
@@ -63,7 +63,7 @@ _operator_isEqual (const GGS_formalArgumentPassingMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_formalArgumentPassingMode::
-_operator_isNotEqual (const GGS_formalArgumentPassingMode inOperand) const {
+operator_isNotEqual (const GGS_formalArgumentPassingMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue != inOperand.mValue) ;
 }
@@ -71,7 +71,7 @@ _operator_isNotEqual (const GGS_formalArgumentPassingMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_formalArgumentPassingMode::
-_operator_infOrEqual (const GGS_formalArgumentPassingMode inOperand) const {
+operator_infOrEqual (const GGS_formalArgumentPassingMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue <= inOperand.mValue) ;
 }
@@ -79,7 +79,7 @@ _operator_infOrEqual (const GGS_formalArgumentPassingMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_formalArgumentPassingMode::
-_operator_supOrEqual (const GGS_formalArgumentPassingMode inOperand) const {
+operator_supOrEqual (const GGS_formalArgumentPassingMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue >= inOperand.mValue) ;
 }
@@ -87,7 +87,7 @@ _operator_supOrEqual (const GGS_formalArgumentPassingMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_formalArgumentPassingMode::
-_operator_strictInf (const GGS_formalArgumentPassingMode inOperand) const {
+operator_strictInf (const GGS_formalArgumentPassingMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue < inOperand.mValue) ;
 }
@@ -95,7 +95,7 @@ _operator_strictInf (const GGS_formalArgumentPassingMode inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_formalArgumentPassingMode::
-_operator_strictSup (const GGS_formalArgumentPassingMode inOperand) const {
+operator_strictSup (const GGS_formalArgumentPassingMode inOperand) const {
   return GGS_bool (isBuilt () && inOperand.isBuilt (),
                    mValue > inOperand.mValue) ;
 }
@@ -169,10 +169,10 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_formalParameterList * ptr = dynamic_cast <const elementOf_GGS_formalParameterList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFormalParameterPassingMode._operator_isEqual (ptr->mFormalParameterPassingMode).boolValue ()
-         && mFormalParameterTypeName._operator_isEqual (ptr->mFormalParameterTypeName).boolValue ()
-         && mFormalParameterName._operator_isEqual (ptr->mFormalParameterName).boolValue ()
-         && mIsUnused._operator_isEqual (ptr->mIsUnused).boolValue () ;
+    equal = mFormalParameterPassingMode.operator_isEqual (ptr->mFormalParameterPassingMode).boolValue ()
+         && mFormalParameterTypeName.operator_isEqual (ptr->mFormalParameterTypeName).boolValue ()
+         && mFormalParameterName.operator_isEqual (ptr->mFormalParameterName).boolValue ()
+         && mIsUnused.operator_isEqual (ptr->mIsUnused).boolValue () ;
   }
   return equal ;
 }
@@ -260,16 +260,16 @@ _addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_formalParameterList GGS_formalParameterList::
-_operator_concat (const GGS_formalParameterList & inOperand) const {
+operator_concat (const GGS_formalParameterList & inOperand) const {
   GGS_formalParameterList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterList::
-_dotAssign_operation (const GGS_formalParameterList inOperand) {
+dotAssign_operation (const GGS_formalParameterList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -708,9 +708,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_formalInputParameterList * ptr = dynamic_cast <const elementOf_GGS_formalInputParameterList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFormalParameterTypeName._operator_isEqual (ptr->mFormalParameterTypeName).boolValue ()
-         && mFormalParameterName._operator_isEqual (ptr->mFormalParameterName).boolValue ()
-         && mIsUnused._operator_isEqual (ptr->mIsUnused).boolValue () ;
+    equal = mFormalParameterTypeName.operator_isEqual (ptr->mFormalParameterTypeName).boolValue ()
+         && mFormalParameterName.operator_isEqual (ptr->mFormalParameterName).boolValue ()
+         && mIsUnused.operator_isEqual (ptr->mIsUnused).boolValue () ;
   }
   return equal ;
 }
@@ -788,16 +788,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_formalInputParameterList GGS_formalInputParameterList::
-_operator_concat (const GGS_formalInputParameterList & inOperand) const {
+operator_concat (const GGS_formalInputParameterList & inOperand) const {
   GGS_formalInputParameterList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_formalInputParameterList::
-_dotAssign_operation (const GGS_formalInputParameterList inOperand) {
+dotAssign_operation (const GGS_formalInputParameterList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -1318,7 +1318,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_outputActualParameter * ptr = dynamic_cast <const cPtr_outputActualParameter *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOutputActualParameterExpression._operator_isEqual (ptr->mOutputActualParameterExpression).boolValue () ;
+    equal = mOutputActualParameterExpression.operator_isEqual (ptr->mOutputActualParameterExpression).boolValue () ;
   }
   return equal ;
 }
@@ -1486,8 +1486,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_outputInputActualParameter * ptr = dynamic_cast <const cPtr_outputInputActualParameter *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOutputInputActualParameterName._operator_isEqual (ptr->mOutputInputActualParameterName).boolValue ()
-         && mStructAttributeList._operator_isEqual (ptr->mStructAttributeList).boolValue () ;
+    equal = mOutputInputActualParameterName.operator_isEqual (ptr->mOutputInputActualParameterName).boolValue ()
+         && mStructAttributeList.operator_isEqual (ptr->mStructAttributeList).boolValue () ;
   }
   return equal ;
 }
@@ -1672,8 +1672,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_inputActualParameter * ptr = dynamic_cast <const cPtr_inputActualParameter *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mDeclarationTypeName._operator_isEqual (ptr->mDeclarationTypeName).boolValue ()
-         && mInputActualParameterName._operator_isEqual (ptr->mInputActualParameterName).boolValue () ;
+    equal = mDeclarationTypeName.operator_isEqual (ptr->mDeclarationTypeName).boolValue ()
+         && mInputActualParameterName.operator_isEqual (ptr->mInputActualParameterName).boolValue () ;
   }
   return equal ;
 }
@@ -1992,7 +1992,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_actualParameterList * ptr = dynamic_cast <const elementOf_GGS_actualParameterList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mActualParameter._operator_isEqual (ptr->mActualParameter).boolValue () ;
+    equal = mActualParameter.operator_isEqual (ptr->mActualParameter).boolValue () ;
   }
   return equal ;
 }
@@ -2050,16 +2050,16 @@ _addAssign_operation (const GGS_actualParameter & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_actualParameterList GGS_actualParameterList::
-_operator_concat (const GGS_actualParameterList & inOperand) const {
+operator_concat (const GGS_actualParameterList & inOperand) const {
   GGS_actualParameterList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_actualParameterList::
-_dotAssign_operation (const GGS_actualParameterList inOperand) {
+dotAssign_operation (const GGS_actualParameterList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -2337,8 +2337,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_actualInputParameterList * ptr = dynamic_cast <const elementOf_GGS_actualInputParameterList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mActualParameterTypeName._operator_isEqual (ptr->mActualParameterTypeName).boolValue ()
-         && mActualParameterName._operator_isEqual (ptr->mActualParameterName).boolValue () ;
+    equal = mActualParameterTypeName.operator_isEqual (ptr->mActualParameterTypeName).boolValue ()
+         && mActualParameterName.operator_isEqual (ptr->mActualParameterName).boolValue () ;
   }
   return equal ;
 }
@@ -2406,16 +2406,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_actualInputParameterList GGS_actualInputParameterList::
-_operator_concat (const GGS_actualInputParameterList & inOperand) const {
+operator_concat (const GGS_actualInputParameterList & inOperand) const {
   GGS_actualInputParameterList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_actualInputParameterList::
-_dotAssign_operation (const GGS_actualInputParameterList inOperand) {
+dotAssign_operation (const GGS_actualInputParameterList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;

@@ -316,8 +316,8 @@ category_method__lexicalAttributeInputArgument__checkLexicalRoutineOrFunctionCal
     if (_temp_5588.isBuilt ()) {
       _temp_5588 (HERE)->method_searchKey (inLexique, operand_5343->mAttributeName, var_cas_attributeLexicalType COMMA_SOURCE_FILE_AT_LINE (126)) ;
     }
-    if (((var_cas_attributeLexicalType)._operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
-      operand_5343->mAttributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("type error, attribute type is "))._operator_concat (var_cas_attributeLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (133))))._operator_concat (GGS_string (" type, but lexical routine prototype requires ")))._operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (135))))._operator_concat (GGS_string (" type")) COMMA_SOURCE_FILE_AT_LINE (137)) ;
+    if (((var_cas_attributeLexicalType).operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
+      operand_5343->mAttributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("type error, attribute type is ")).operator_concat (var_cas_attributeLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (133)))).operator_concat (GGS_string (" type, but lexical routine prototype requires "))).operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (135)))).operator_concat (GGS_string (" type")) COMMA_SOURCE_FILE_AT_LINE (137)) ;
     }
   }
 }
@@ -335,8 +335,8 @@ category_method__lexicalCharacterInputArgument__checkLexicalRoutineOrFunctionCal
                                 GGS_lexicalTypeEnum  var_cas_inLexicalRoutineFormalArgumentType
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_6151 != NULL) {
-    if (((GGS_lexicalTypeEnum::constructor_lexicalType_char (inLexique COMMA_HERE))._operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
-      operand_6151->mCharacter.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, (((GGS_string ("type error, a literal character has @char "))._operator_concat (GGS_string (" type, but lexical routine prototype requires an ")))._operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (150))))._operator_concat (GGS_string (" type value")) COMMA_SOURCE_FILE_AT_LINE (152)) ;
+    if (((GGS_lexicalTypeEnum::constructor_lexicalType_char (inLexique COMMA_HERE)).operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
+      operand_6151->mCharacter.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, (((GGS_string ("type error, a literal character has @char ")).operator_concat (GGS_string (" type, but lexical routine prototype requires an "))).operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (150)))).operator_concat (GGS_string (" type value")) COMMA_SOURCE_FILE_AT_LINE (152)) ;
     }
   }
 }
@@ -354,8 +354,8 @@ category_method__lexicalCurrentCharacterInputArgument__checkLexicalRoutineOrFunc
                                 GGS_lexicalTypeEnum  var_cas_inLexicalRoutineFormalArgumentType
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_6773 != NULL) {
-    if (((GGS_lexicalTypeEnum::constructor_lexicalType_char (inLexique COMMA_HERE))._operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
-      operand_6773->mLocation.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, (((GGS_string ("type error, current character value has @char "))._operator_concat (GGS_string (" type, but lexical routine prototype requires an ")))._operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (165))))._operator_concat (GGS_string (" type value")) COMMA_SOURCE_FILE_AT_LINE (167)) ;
+    if (((GGS_lexicalTypeEnum::constructor_lexicalType_char (inLexique COMMA_HERE)).operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
+      operand_6773->mLocation.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, (((GGS_string ("type error, current character value has @char ")).operator_concat (GGS_string (" type, but lexical routine prototype requires an "))).operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (165)))).operator_concat (GGS_string (" type value")) COMMA_SOURCE_FILE_AT_LINE (167)) ;
     }
   }
 }
@@ -379,11 +379,11 @@ category_method__lexicalFunctionInputArgument__checkLexicalRoutineOrFunctionCall
     if (_temp_7682.isBuilt ()) {
       _temp_7682 (HERE)->method_searchKey (inLexique, operand_7390->mFunctionName, var_cas_lexicalFormalTypeList, var_cas_returnedLexicalFormalType COMMA_SOURCE_FILE_AT_LINE (179)) ;
     }
-    if (((var_cas_returnedLexicalFormalType)._operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
-      operand_7390->mFunctionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("type error, the function returns an "))._operator_concat (var_cas_returnedLexicalFormalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (187))))._operator_concat (GGS_string (" value, but lexical routine prototype requires an ")))._operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (189))))._operator_concat (GGS_string (" value")) COMMA_SOURCE_FILE_AT_LINE (191)) ;
+    if (((var_cas_returnedLexicalFormalType).operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
+      operand_7390->mFunctionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("type error, the function returns an ")).operator_concat (var_cas_returnedLexicalFormalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (187)))).operator_concat (GGS_string (" value, but lexical routine prototype requires an "))).operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (189)))).operator_concat (GGS_string (" value")) COMMA_SOURCE_FILE_AT_LINE (191)) ;
     }
-    if (((var_cas_lexicalFormalTypeList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (193)))._operator_isNotEqual (operand_7390->mFunctionActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (193)))).isBuiltAndTrue ()) {
-      operand_7390->mFunctionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("this lexical function names "))._operator_concat (operand_7390->mFunctionActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (195)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (195))))._operator_concat (GGS_string (" actual argument(s), but the prototype requires ")))._operator_concat (var_cas_lexicalFormalTypeList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (197)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (197))))._operator_concat (GGS_string (" actual argument(s)")) COMMA_SOURCE_FILE_AT_LINE (198)) ;
+    if (((var_cas_lexicalFormalTypeList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (193))).operator_isNotEqual (operand_7390->mFunctionActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (193)))).isBuiltAndTrue ()) {
+      operand_7390->mFunctionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("this lexical function names ")).operator_concat (operand_7390->mFunctionActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (195)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (195)))).operator_concat (GGS_string (" actual argument(s), but the prototype requires "))).operator_concat (var_cas_lexicalFormalTypeList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (197)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (197)))).operator_concat (GGS_string (" actual argument(s)")) COMMA_SOURCE_FILE_AT_LINE (198)) ;
     }
     {
       GGS_lexicalTypeList::cEnumerator enumerator_8570 (var_cas_lexicalFormalTypeList, true) ;
@@ -452,10 +452,10 @@ category_method__lexicalAttributeInputOutputArgument__checkLexicalRoutineCallArg
     if (_temp_9790.isBuilt ()) {
       _temp_9790 (HERE)->method_searchKey (inLexique, operand_9486->mAttributeName, var_cas_attributeLexicalType COMMA_SOURCE_FILE_AT_LINE (228)) ;
     }
-    if (((var_cas_attributeLexicalType)._operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
-      operand_9486->mAttributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("type error, attribute type is "))._operator_concat (var_cas_attributeLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (235))))._operator_concat (GGS_string (" type, but lexical routine prototype requires ")))._operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (237))))._operator_concat (GGS_string (" type")) COMMA_SOURCE_FILE_AT_LINE (239)) ;
+    if (((var_cas_attributeLexicalType).operator_isNotEqual (var_cas_inLexicalRoutineFormalArgumentType)).isBuiltAndTrue ()) {
+      operand_9486->mAttributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("type error, attribute type is ")).operator_concat (var_cas_attributeLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (235)))).operator_concat (GGS_string (" type, but lexical routine prototype requires "))).operator_concat (var_cas_inLexicalRoutineFormalArgumentType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (237)))).operator_concat (GGS_string (" type")) COMMA_SOURCE_FILE_AT_LINE (239)) ;
     }
-    if (((var_cas_inLexicalRoutineFormalArgumentMode)._operator_isNotEqual (GGS_lexicalArgumentMode::constructor_lexicalInputOutputMode (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
+    if (((var_cas_inLexicalRoutineFormalArgumentMode).operator_isNotEqual (GGS_lexicalArgumentMode::constructor_lexicalInputOutputMode (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
       operand_9486->mActualPassingModeLocation.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the output mode (!) is required here, not an output/input mode") COMMA_SOURCE_FILE_AT_LINE (243)) ;
     }
   }
@@ -483,7 +483,7 @@ category_method__lexicalFormalInputArgument__checkLexicalRoutineCallArgument (C_
         _method (inLexique, _temp_10899 (HERE), var_cas_ioLexiqueAnalysisContext, var_cas_inLexicalRoutineFormalArgumentType COMMA_SOURCE_FILE_AT_LINE (255)) ;
       }
     }
-    if (((var_cas_inLexicalRoutineFormalArgumentMode)._operator_isNotEqual (GGS_lexicalArgumentMode::constructor_lexicalInputMode (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
+    if (((var_cas_inLexicalRoutineFormalArgumentMode).operator_isNotEqual (GGS_lexicalArgumentMode::constructor_lexicalInputMode (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
       operand_10573->mActualPassingModeLocation.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the output/input mode (!\?) is required here, not an input mode") COMMA_SOURCE_FILE_AT_LINE (262)) ;
     }
   }
@@ -702,8 +702,8 @@ category_method__lexicalRoutineInstruction__checkLexicalInstruction (C_Compiler 
     if (_temp_13814.isBuilt ()) {
       _temp_13814 (HERE)->method_searchKey (inLexique, operand_13582->mActionName, var_cas_lexicalRoutineFormalArgumentList, var_cas_routineErrorMessageList COMMA_SOURCE_FILE_AT_LINE (330)) ;
     }
-    if (((var_cas_lexicalRoutineFormalArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (336)))._operator_isNotEqual (operand_13582->mActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (336)))).isBuiltAndTrue ()) {
-      operand_13582->mActionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("this lexical routine call names "))._operator_concat (operand_13582->mActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (338)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (338))))._operator_concat (GGS_string (" actual argument(s), but the lexical routine prototype requires ")))._operator_concat (var_cas_lexicalRoutineFormalArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (340)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (340))))._operator_concat (GGS_string (" actual argument(s)")) COMMA_SOURCE_FILE_AT_LINE (341)) ;
+    if (((var_cas_lexicalRoutineFormalArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (336))).operator_isNotEqual (operand_13582->mActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (336)))).isBuiltAndTrue ()) {
+      operand_13582->mActionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("this lexical routine call names ")).operator_concat (operand_13582->mActualArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (338)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (338)))).operator_concat (GGS_string (" actual argument(s), but the lexical routine prototype requires "))).operator_concat (var_cas_lexicalRoutineFormalArgumentList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (340)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (340)))).operator_concat (GGS_string (" actual argument(s)")) COMMA_SOURCE_FILE_AT_LINE (341)) ;
     }
     {
       GGS_lexicalRoutineFormalArgumentList::cEnumerator enumerator_14386 (var_cas_lexicalRoutineFormalArgumentList, true) ;
@@ -723,8 +723,8 @@ category_method__lexicalRoutineInstruction__checkLexicalInstruction (C_Compiler 
         }
       }
     }
-    if (((var_cas_routineErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (351)))._operator_isNotEqual (operand_13582->mErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (351)))).isBuiltAndTrue ()) {
-      operand_13582->mActionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("this lexical routine call names "))._operator_concat (operand_13582->mErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (353)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (353))))._operator_concat (GGS_string (" error message(s), but the lexical routine prototype requires ")))._operator_concat (var_cas_routineErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (355)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (355))))._operator_concat (GGS_string (" error message(s)")) COMMA_SOURCE_FILE_AT_LINE (356)) ;
+    if (((var_cas_routineErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (351))).operator_isNotEqual (operand_13582->mErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (351)))).isBuiltAndTrue ()) {
+      operand_13582->mActionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("this lexical routine call names ")).operator_concat (operand_13582->mErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (353)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (353)))).operator_concat (GGS_string (" error message(s), but the lexical routine prototype requires "))).operator_concat (var_cas_routineErrorMessageList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (355)).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (355)))).operator_concat (GGS_string (" error message(s)")) COMMA_SOURCE_FILE_AT_LINE (356)) ;
     }
     {
       GGS_lstringlist::cEnumerator enumerator_15015 (operand_13582->mErrorMessageList, true) ;
@@ -944,9 +944,9 @@ void routine_compileLexiqueComponent (C_Compiler & inLexique,
   var_cas_componentName = var_cas_lexiqueComponentRoot.reader_mLexiqueComponentName (inLexique COMMA_SOURCE_FILE_AT_LINE (449)) ;
   GGS_string var_cas_basename ;
   var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (450)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (450)) ;
-  if (((var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (451)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+  if (((var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (451))).operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
     var_cas_componentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS checks "
-      "the component name ('"))._operator_concat (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (453))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (455)) ;
+      "the component name ('")).operator_concat (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (453)))).operator_concat (GGS_string ("') against the source file base name ('"))).operator_concat (var_cas_basename)).operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (455)) ;
   }
   GGS_lexicalTypeMap  var_cas_lexicalTypeMap ;
   var_cas_lexicalTypeMap = GGS_lexicalTypeMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
@@ -979,7 +979,7 @@ void routine_compileLexiqueComponent (C_Compiler & inLexique,
         GGS_string var_cas_m ;
         var_cas_m = GGS_string ("") ;
         var_cas_m.appendCString ("the @") ;
-        var_cas_m._dotAssign_operation (operand_20041->mTypeName) ;
+        var_cas_m.dotAssign_operation (operand_20041->mTypeName) ;
         var_cas_m.appendCString (" type is not a valid lexical attribute type; are allowed:") ;
         GGS_bool var_cas_firstLoop ;
         var_cas_firstLoop = GGS_bool (true) ;
@@ -991,7 +991,7 @@ void routine_compileLexiqueComponent (C_Compiler & inLexique,
             do{
               macroValidPointer (operand_20514) ;
               var_cas_m.appendCString (" @") ;
-              var_cas_m._dotAssign_operation (operand_20514->mKey) ;
+              var_cas_m.dotAssign_operation (operand_20514->mKey) ;
               operand_20514 = enumerator_20514.nextObject () ;
               _foreach_loop_20514 = ((operand_20514 != NULL)) ;
               if (_foreach_loop_20514) {
@@ -1088,7 +1088,7 @@ void routine_compileLexiqueComponent (C_Compiler & inLexique,
     const GGS_lexicalMessageMap::cElement * operand_22505 = NULL ;
     while (((operand_22505 = enumerator_22505.nextObject ()))) {
       macroValidPointer (operand_22505) ;
-      if (((operand_22505->mInfo.mMessageIsUsed)._operator_not ()).isBuiltAndTrue ()) {
+      if (((operand_22505->mInfo.mMessageIsUsed).operator_not ()).isBuiltAndTrue ()) {
         operand_22505->mKey.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, GGS_string ("unused message") COMMA_SOURCE_FILE_AT_LINE (533)) ;
       }
     }

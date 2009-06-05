@@ -316,12 +316,12 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
                                  GGS_typeInstructionList & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeListeBranchesInstructions inOperand) ;
+  public : void dotAssign_operation (const GGS_typeListeBranchesInstructions inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeInstructionList & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeListeBranchesInstructions _operator_concat (const GGS_typeListeBranchesInstructions & inOperand) const ;
+  public : GGS_typeListeBranchesInstructions operator_concat (const GGS_typeListeBranchesInstructions & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeInstructionList & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -551,13 +551,13 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
                                  GGS_location & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_L_parse_rewind_signature_list inOperand) ;
+  public : void dotAssign_operation (const GGS_L_parse_rewind_signature_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_L_parse_rewind_signature_list _operator_concat (const GGS_L_parse_rewind_signature_list & inOperand) const ;
+  public : GGS_L_parse_rewind_signature_list operator_concat (const GGS_L_parse_rewind_signature_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1
@@ -878,8 +878,8 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeAltProductionsMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_typeAltProductionsMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_typeAltProductionsMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_typeAltProductionsMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *

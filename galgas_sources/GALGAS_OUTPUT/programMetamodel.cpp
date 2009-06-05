@@ -68,10 +68,10 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_programRuleList * ptr = dynamic_cast <const elementOf_GGS_programRuleList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSourceFileExtension._operator_isEqual (ptr->mSourceFileExtension).boolValue ()
-         && mSourceFileHelp._operator_isEqual (ptr->mSourceFileHelp).boolValue ()
-         && mSourceFileVariableName._operator_isEqual (ptr->mSourceFileVariableName).boolValue ()
-         && mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue () ;
+    equal = mSourceFileExtension.operator_isEqual (ptr->mSourceFileExtension).boolValue ()
+         && mSourceFileHelp.operator_isEqual (ptr->mSourceFileHelp).boolValue ()
+         && mSourceFileVariableName.operator_isEqual (ptr->mSourceFileVariableName).boolValue ()
+         && mInstructionList.operator_isEqual (ptr->mInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -159,16 +159,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_programRuleList GGS_programRuleList::
-_operator_concat (const GGS_programRuleList & inOperand) const {
+operator_concat (const GGS_programRuleList & inOperand) const {
   GGS_programRuleList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-_dotAssign_operation (const GGS_programRuleList inOperand) {
+dotAssign_operation (const GGS_programRuleList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -625,12 +625,12 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_programComponentRoot * ptr = dynamic_cast <const cPtr_programComponentRoot *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mProgramName._operator_isEqual (ptr->mProgramName).boolValue ()
-         && mVersionString._operator_isEqual (ptr->mVersionString).boolValue ()
-         && mPrologueInstructionList._operator_isEqual (ptr->mPrologueInstructionList).boolValue ()
-         && mEpilogueInstructionList._operator_isEqual (ptr->mEpilogueInstructionList).boolValue ()
-         && mProgramRules._operator_isEqual (ptr->mProgramRules).boolValue ()
-         && mSemanticDeclarations._operator_isEqual (ptr->mSemanticDeclarations).boolValue () ;
+    equal = mProgramName.operator_isEqual (ptr->mProgramName).boolValue ()
+         && mVersionString.operator_isEqual (ptr->mVersionString).boolValue ()
+         && mPrologueInstructionList.operator_isEqual (ptr->mPrologueInstructionList).boolValue ()
+         && mEpilogueInstructionList.operator_isEqual (ptr->mEpilogueInstructionList).boolValue ()
+         && mProgramRules.operator_isEqual (ptr->mProgramRules).boolValue ()
+         && mSemanticDeclarations.operator_isEqual (ptr->mSemanticDeclarations).boolValue () ;
   }
   return equal ;
 }

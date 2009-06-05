@@ -74,8 +74,8 @@ rule <galgas_component>
   @stringset optionNameSet [emptySet] ;
 #--- Option component header
   $option$ ;
-  @lstring optionComponentName ;
-  $identifier$ ? optionComponentName ;
+  $identifier$ ? @lstring optionComponentName ;
+  warning optionComponentName:"Using '.ggs' extension for option component is obsolete — from GALGAS 1.8.4 use '.gOption' extension" ;
   @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
   if [optionComponentName string] != basename then
     warning optionComponentName: "GALGAS 1.7.5 and later checks "

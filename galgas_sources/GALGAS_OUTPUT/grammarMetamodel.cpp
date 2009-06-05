@@ -66,9 +66,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_startSymbolLabelFormalParameterList * ptr = dynamic_cast <const elementOf_GGS_startSymbolLabelFormalParameterList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFormalAgumentPassingMode._operator_isEqual (ptr->mFormalAgumentPassingMode).boolValue ()
-         && mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
-         && mArgumentName._operator_isEqual (ptr->mArgumentName).boolValue () ;
+    equal = mFormalAgumentPassingMode.operator_isEqual (ptr->mFormalAgumentPassingMode).boolValue ()
+         && mTypeName.operator_isEqual (ptr->mTypeName).boolValue ()
+         && mArgumentName.operator_isEqual (ptr->mArgumentName).boolValue () ;
   }
   return equal ;
 }
@@ -146,16 +146,16 @@ _addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_startSymbolLabelFormalParameterList GGS_startSymbolLabelFormalParameterList::
-_operator_concat (const GGS_startSymbolLabelFormalParameterList & inOperand) const {
+operator_concat (const GGS_startSymbolLabelFormalParameterList & inOperand) const {
   GGS_startSymbolLabelFormalParameterList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-_dotAssign_operation (const GGS_startSymbolLabelFormalParameterList inOperand) {
+dotAssign_operation (const GGS_startSymbolLabelFormalParameterList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -539,8 +539,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_grammarLabelList * ptr = dynamic_cast <const elementOf_GGS_grammarLabelList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLabelName._operator_isEqual (ptr->mLabelName).boolValue ()
-         && mFormalParameterList._operator_isEqual (ptr->mFormalParameterList).boolValue () ;
+    equal = mLabelName.operator_isEqual (ptr->mLabelName).boolValue ()
+         && mFormalParameterList.operator_isEqual (ptr->mFormalParameterList).boolValue () ;
   }
   return equal ;
 }
@@ -608,16 +608,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_grammarLabelList GGS_grammarLabelList::
-_operator_concat (const GGS_grammarLabelList & inOperand) const {
+operator_concat (const GGS_grammarLabelList & inOperand) const {
   GGS_grammarLabelList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelList::
-_dotAssign_operation (const GGS_grammarLabelList inOperand) {
+dotAssign_operation (const GGS_grammarLabelList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -966,11 +966,11 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_grammarComponentRoot * ptr = dynamic_cast <const cPtr_grammarComponentRoot *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mGrammarName._operator_isEqual (ptr->mGrammarName).boolValue ()
-         && mGrammarClass._operator_isEqual (ptr->mGrammarClass).boolValue ()
-         && mStartSymbol._operator_isEqual (ptr->mStartSymbol).boolValue ()
-         && mLabelList._operator_isEqual (ptr->mLabelList).boolValue ()
-         && mUnusedNonterminalList._operator_isEqual (ptr->mUnusedNonterminalList).boolValue () ;
+    equal = mGrammarName.operator_isEqual (ptr->mGrammarName).boolValue ()
+         && mGrammarClass.operator_isEqual (ptr->mGrammarClass).boolValue ()
+         && mStartSymbol.operator_isEqual (ptr->mStartSymbol).boolValue ()
+         && mLabelList.operator_isEqual (ptr->mLabelList).boolValue ()
+         && mUnusedNonterminalList.operator_isEqual (ptr->mUnusedNonterminalList).boolValue () ;
   }
   return equal ;
 }

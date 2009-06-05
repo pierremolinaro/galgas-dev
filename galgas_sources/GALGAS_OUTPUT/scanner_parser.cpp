@@ -98,9 +98,9 @@ pr_galgas_component_scanner_parser_244_23_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_string var_cas_basename ;
   var_cas_basename = GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (263)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (263)) ;
-  if (((var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (264)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+  if (((var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (264))).operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
     var_cas_lexiqueName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS 1.7.5 and later checks "
-      "the component name ('"))._operator_concat (var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (266))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (268)) ;
+      "the component name ('")).operator_concat (var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (266)))).operator_concat (GGS_string ("') against the source file base name ('"))).operator_concat (var_cas_basename)).operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (268)) ;
   }
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A) COMMA_HERE) ;
   GGS_M_terminalSymbolsMapForUse  var_cas_terminalSymbolsMapForUse ;
@@ -173,13 +173,13 @@ pr_galgas_component_scanner_parser_244_23_ (galgas_scanner & inLexique,
     const GGS_typeTableMessagesErreurs::cElement * operand_11767 = NULL ;
     while (((operand_11767 = enumerator_11767.nextObject ()))) {
       macroValidPointer (operand_11767) ;
-      if (((var_cas_usedErrorMessageSet.reader_hasKey (inLexique, operand_11767->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (345)) COMMA_SOURCE_FILE_AT_LINE (345)))._operator_not ()).isBuiltAndTrue ()) {
+      if (((var_cas_usedErrorMessageSet.reader_hasKey (inLexique, operand_11767->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (345)) COMMA_SOURCE_FILE_AT_LINE (345))).operator_not ()).isBuiltAndTrue ()) {
         operand_11767->mKey.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, GGS_string ("this error message is not used") COMMA_SOURCE_FILE_AT_LINE (346)) ;
       }
     }
   }
   var_cas_ioLexiqueMapForUse.modifier_insertKey (inLexique, var_cas_lexiqueName, var_cas_terminalSymbolsMapForUse COMMA_SOURCE_FILE_AT_LINE (350)) ;
-  if (((var_cas_isTemplate)._operator_and ((var_cas_templateDelimiterMap.reader_count (inLexique COMMA_SOURCE_FILE_AT_LINE (352)))._operator_isEqual (GGS_uint (0U)))).isBuiltAndTrue ()) {
+  if (((var_cas_isTemplate).operator_and ((var_cas_templateDelimiterMap.reader_count (inLexique COMMA_SOURCE_FILE_AT_LINE (352))).operator_isEqual (GGS_uint (0U)))).isBuiltAndTrue ()) {
     GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("a template lexique should define at least one template") COMMA_SOURCE_FILE_AT_LINE (354)) ;
   }
   if (var_cas_isTemplate.isBuilt () &&
@@ -569,7 +569,7 @@ pr_template_declaration_scanner_parser_592_27_ (galgas_scanner & inLexique,
                                 const GGS_bool var_cas_inIsTemplate,
                                 GGS_templateDelimiterMap  &var_cas_ioTemplateDelimiterMap) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_template) COMMA_HERE) ;
-  if (((var_cas_inIsTemplate)._operator_not ()).isBuiltAndTrue ()) {
+  if (((var_cas_inIsTemplate).operator_not ()).isBuiltAndTrue ()) {
     GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the lexique should be declared as template lexique") COMMA_SOURCE_FILE_AT_LINE (600)) ;
   }
   GGS_lstring  var_cas_startString ;
@@ -582,7 +582,7 @@ pr_template_declaration_scanner_parser_592_27_ (galgas_scanner & inLexique,
       GGS_lstring  var_cas_name ;
       inLexique._assignFromAttribute_tokenString (var_cas_name) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-      if (((var_cas_name.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (607)))._operator_isNotEqual (GGS_string ("preserved"))).isBuiltAndTrue ()) {
+      if (((var_cas_name.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (607))).operator_isNotEqual (GGS_string ("preserved"))).isBuiltAndTrue ()) {
         var_cas_name.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only the 'preserved' tag is allowed here") COMMA_SOURCE_FILE_AT_LINE (609)) ;
       }
       var_cas_preservesStartDelimiter = GGS_bool (true) ;
@@ -633,7 +633,7 @@ pr_replace_declaration_scanner_parser_625_26_ (galgas_scanner & inLexique,
                                 const GGS_bool var_cas_inIsTemplate,
                                 GGS_templateReplacementMap  &var_cas_ioTemplateReplacementMap) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_replace) COMMA_HERE) ;
-  if (((var_cas_inIsTemplate)._operator_not ()).isBuiltAndTrue ()) {
+  if (((var_cas_inIsTemplate).operator_not ()).isBuiltAndTrue ()) {
     GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the lexique should be declared as template lexique") COMMA_SOURCE_FILE_AT_LINE (633)) ;
   }
   GGS_lstring  var_cas_startString ;
@@ -776,13 +776,13 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_653_47_ (galgas_scann
           } break ;
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_feature) COMMA_HERE) ;
-          if (((var_cas_inIsTemplate)._operator_not ()).isBuiltAndTrue ()) {
+          if (((var_cas_inIsTemplate).operator_not ()).isBuiltAndTrue ()) {
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("for using this construct, the lexique should have been declared as a template lexique") COMMA_SOURCE_FILE_AT_LINE (707)) ;
           }
           GGS_lstring  var_cas_mark ;
           inLexique._assignFromAttribute_tokenString (var_cas_mark) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          if (((var_cas_mark.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (709)))._operator_isNotEqual (GGS_string ("templateEndMark"))).isBuiltAndTrue ()) {
+          if (((var_cas_mark.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (709))).operator_isNotEqual (GGS_string ("templateEndMark"))).isBuiltAndTrue ()) {
             var_cas_mark.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only 'templateEndMark' is allowed here") COMMA_SOURCE_FILE_AT_LINE (711)) ;
           }
           var_cas_isTemplateEndMark = GGS_bool (true) ;
@@ -948,13 +948,13 @@ pr_key_words_list_declaration_scanner_parser_723_33_ (galgas_scanner & inLexique
             } break ;
           case 2 : {
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_feature) COMMA_HERE) ;
-            if (((var_cas_inIsTemplate)._operator_not ()).isBuiltAndTrue ()) {
+            if (((var_cas_inIsTemplate).operator_not ()).isBuiltAndTrue ()) {
               GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("for using this construct, the lexique should have been declared as a template lexique") COMMA_SOURCE_FILE_AT_LINE (785)) ;
             }
             GGS_lstring  var_cas_mark ;
             inLexique._assignFromAttribute_tokenString (var_cas_mark) ;
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-            if (((var_cas_mark.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (787)))._operator_isNotEqual (GGS_string ("templateEndMark"))).isBuiltAndTrue ()) {
+            if (((var_cas_mark.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (787))).operator_isNotEqual (GGS_string ("templateEndMark"))).isBuiltAndTrue ()) {
               var_cas_mark.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only 'templateEndMark' is allowed here") COMMA_SOURCE_FILE_AT_LINE (789)) ;
             }
             var_cas_isTemplateEndMark = GGS_bool (true) ;
@@ -1283,7 +1283,7 @@ pr_lexical_test_term_scanner_parser_914_24_ (galgas_scanner & inLexique,
   var_cas_availableCharSet._addAssign_operation (GGS_string ("isUnicodeCommand")) ;
   var_cas_availableCharSet._addAssign_operation (GGS_string ("isUnicodePunctuation")) ;
   var_cas_availableCharSet._addAssign_operation (GGS_string ("isUnicodeSymbol")) ;
-  if (((var_cas_availableCharSet.reader_hasKey (inLexique, var_cas_unicodeCharSetName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (930)) COMMA_SOURCE_FILE_AT_LINE (930)))._operator_not ()).isBuiltAndTrue ()) {
+  if (((var_cas_availableCharSet.reader_hasKey (inLexique, var_cas_unicodeCharSetName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (930)) COMMA_SOURCE_FILE_AT_LINE (930))).operator_not ()).isBuiltAndTrue ()) {
     var_cas_unicodeCharSetName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("unknown Unicode character set") COMMA_SOURCE_FILE_AT_LINE (932)) ;
   }
 }
@@ -1510,7 +1510,7 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           } break ;
         case 7 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_rewind) COMMA_HERE) ;
-          if (((var_cas_inCanSendTerminal)._operator_not ()).isBuiltAndTrue ()) {
+          if (((var_cas_inCanSendTerminal).operator_not ()).isBuiltAndTrue ()) {
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the rewind instruction cannot be used within a repeat instruction") COMMA_SOURCE_FILE_AT_LINE (1112)) ;
           }
           GGS_lstring  var_cas_tagIdentifier ;
@@ -1537,7 +1537,7 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           } break ;
         case 8 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_drop) COMMA_HERE) ;
-          if (((var_cas_inCanSendTerminal)._operator_not ()).isBuiltAndTrue ()) {
+          if (((var_cas_inCanSendTerminal).operator_not ()).isBuiltAndTrue ()) {
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the drop instruction cannot be used within a repeat instruction") COMMA_SOURCE_FILE_AT_LINE (1126)) ;
           }
           GGS_lstring  var_cas_nomTerminal ;
@@ -1556,7 +1556,7 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           } break ;
         case 9 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_send) COMMA_HERE) ;
-          if (((var_cas_inCanSendTerminal)._operator_not ()).isBuiltAndTrue ()) {
+          if (((var_cas_inCanSendTerminal).operator_not ()).isBuiltAndTrue ()) {
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the send instruction cannot be used within a repeat instruction") COMMA_SOURCE_FILE_AT_LINE (1136)) ;
           }
           GGS_typeInstructionLexicale  var_cas_e ;

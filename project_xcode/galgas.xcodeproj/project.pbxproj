@@ -6,6 +6,22 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		CF3728130FD9A21200EA9161 /* All Targets */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CF3728250FD9A23900EA9161 /* Build configuration list for PBXAggregateTarget "All Targets" */;
+			buildPhases = (
+			);
+			dependencies = (
+				CF3728160FD9A22100EA9161 /* PBXTargetDependency */,
+				CF3728180FD9A22100EA9161 /* PBXTargetDependency */,
+				CF37281A0FD9A22100EA9161 /* PBXTargetDependency */,
+			);
+			name = "All Targets";
+			productName = "All Targets";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
@@ -16,6 +32,16 @@
 		CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF03A5690FD9973E00D079B7 /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
+		CF03A56C0FD997FF00D079B7 /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF03A56E0FD9980D00D079B7 /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF03A56F0FD9980E00D079B7 /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF03A5700FD9980F00D079B7 /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF03A5720FD9981E00D079B7 /* optionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7CB0BC0161E00E6FABE /* optionMetamodel.cpp */; };
+		CF03A5730FD9981F00D079B7 /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
+		CF03A5740FD9982000D079B7 /* optionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8080BC0187500E6FABE /* optionModelBuilder.cpp */; };
+		CF03A5750FD9982100D079B7 /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
+		CF03A5760FD9982200D079B7 /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
 		CF041D050F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
 		CF041D060F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
 		CF041D070F6157720001CEEB /* C_Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF041D030F6157720001CEEB /* C_Compiler.cpp */; };
@@ -1103,6 +1129,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CF3728150FD9A22100EA9161 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D15AC270486D014006FF6A4 /* GALGAS Cocoa (universal) */;
+			remoteInfo = "GALGAS Cocoa (universal)";
+		};
+		CF3728170FD9A22100EA9161 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF6DF20D09E3F3A700506859 /* GALGAS Cocoa (i386) */;
+			remoteInfo = "GALGAS Cocoa (i386)";
+		};
+		CF3728190FD9A22100EA9161 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFEDF4BF0C2D16840038713A /* GALGAS Cocoa (PPC) */;
+			remoteInfo = "GALGAS Cocoa (PPC)";
+		};
 		CF3780770AE93C5400D69EDB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -3010,6 +3057,7 @@
 				CFEDF4BF0C2D16840038713A /* GALGAS Cocoa (PPC) */,
 				CFEDF2040C2D161F0038713A /* GALGAS tool LL1 (PPC) */,
 				CFEDF3650C2D16610038713A /* GALGAS tool LL1 debug (PPC) */,
+				CF3728130FD9A21200EA9161 /* All Targets */,
 			);
 		};
 /* End PBXProject section */
@@ -3260,6 +3308,11 @@
 				CFB576FE0FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA830FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CFD2EA970FD45F990085EC05 /* lexiqueSemantics.cpp in Sources */,
+				CF03A5690FD9973E00D079B7 /* optionCompilation.cpp in Sources */,
+				CF03A56C0FD997FF00D079B7 /* optionSemantics.cpp in Sources */,
+				CF03A56E0FD9980D00D079B7 /* optionMetamodel.cpp in Sources */,
+				CF03A56F0FD9980E00D079B7 /* optionModelBuilder.cpp in Sources */,
+				CF03A5700FD9980F00D079B7 /* optionLL1grammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3792,6 +3845,11 @@
 				CFB576FF0FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA840FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CFD2EA9A0FD460990085EC05 /* lexiqueSemantics.cpp in Sources */,
+				CF03A5720FD9981E00D079B7 /* optionMetamodel.cpp in Sources */,
+				CF03A5730FD9981F00D079B7 /* optionSemantics.cpp in Sources */,
+				CF03A5740FD9982000D079B7 /* optionModelBuilder.cpp in Sources */,
+				CF03A5750FD9982100D079B7 /* optionLL1grammar.cpp in Sources */,
+				CF03A5760FD9982200D079B7 /* optionCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4189,6 +4247,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CF3728160FD9A22100EA9161 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D15AC270486D014006FF6A4 /* GALGAS Cocoa (universal) */;
+			targetProxy = CF3728150FD9A22100EA9161 /* PBXContainerItemProxy */;
+		};
+		CF3728180FD9A22100EA9161 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF6DF20D09E3F3A700506859 /* GALGAS Cocoa (i386) */;
+			targetProxy = CF3728170FD9A22100EA9161 /* PBXContainerItemProxy */;
+		};
+		CF37281A0FD9A22100EA9161 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFEDF4BF0C2D16840038713A /* GALGAS Cocoa (PPC) */;
+			targetProxy = CF3728190FD9A22100EA9161 /* PBXContainerItemProxy */;
+		};
 		CF3780780AE93C5400D69EDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8DD76F620486A84900D96B5E /* GALGAS tool LL1 (universal) */;
@@ -4379,6 +4452,13 @@
 			};
 			name = Default;
 		};
+		CF3728140FD9A21300EA9161 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "All Targets";
+			};
+			name = Default;
+		};
 		CF6DF18E09E3F23700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4513,6 +4593,14 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF0DA6A6085630E800F38E67 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		CF3728250FD9A23900EA9161 /* Build configuration list for PBXAggregateTarget "All Targets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF3728140FD9A21300EA9161 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;

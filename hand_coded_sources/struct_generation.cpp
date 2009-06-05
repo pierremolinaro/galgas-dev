@@ -50,8 +50,8 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : inline const GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) const { return this ; }\n"
              "  public : inline GGS_" << mStructName << " * operator () (UNUSED_LOCATION_ARGS) { return this ; }\n\n"
              "//--- Comparison\n"
-             "  public : GGS_bool _operator_isEqual (const GGS_" << mStructName << " & inOperand) const ;\n"
-             "  public : GGS_bool _operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const ;\n\n"
+             "  public : GGS_bool operator_isEqual (const GGS_" << mStructName << " & inOperand) const ;\n"
+             "  public : GGS_bool operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const ;\n\n"
              "//--- Reader 'description'\n"
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & inLexique\n"
@@ -167,15 +167,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mStructName << "::\n"
-               "_operator_isEqual (const GGS_" << mStructName << " & inOperand) const {\n" ;
+               "operator_isEqual (const GGS_" << mStructName << " & inOperand) const {\n" ;
   current.rewind () ;
   inCppFile << "  return " ;
   first = true ;
   while (current.hc ()) {
     if (! first) {
-      inCppFile << "\n    ._operator_and (" ;
+      inCppFile << "\n    .operator_and (" ;
     }
-    inCppFile << current._mAttributeName (HERE) << "._operator_isEqual (inOperand." << current._mAttributeName (HERE) << ")" ;
+    inCppFile << current._mAttributeName (HERE) << ".operator_isEqual (inOperand." << current._mAttributeName (HERE) << ")" ;
     if (first) {
       first = false ;
     }else{
@@ -187,15 +187,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mStructName << "::\n"
-               "_operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const {\n"
+               "operator_isNotEqual (const GGS_" << mStructName << " & inOperand) const {\n"
                "  return " ;
   current.rewind () ;
   first = true ;
   while (current.hc ()) {
     if (! first) {
-      inCppFile << "\n    ._operator_or (" ;
+      inCppFile << "\n    .operator_or (" ;
     }
-    inCppFile << current._mAttributeName (HERE) << "._operator_isNotEqual (inOperand." << current._mAttributeName (HERE) << ")" ;
+    inCppFile << current._mAttributeName (HERE) << ".operator_isNotEqual (inOperand." << current._mAttributeName (HERE) << ")" ;
     if (first) {
       first = false ;
     }else{

@@ -155,7 +155,7 @@ pr_gui_attribute_guiModelBuilder_94_20_ (galgas_scanner & inLexique,
         GGS_lstring  var_cas_value ;
         inLexique._assignFromAttribute_tokenString (var_cas_value) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-        var_cas_mValue = GGS_lstring ::constructor_new (inLexique, (var_cas_mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (106)))._operator_concat (var_cas_value.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (106))), var_cas_value.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (106)) COMMA_HERE) ;
+        var_cas_mValue = GGS_lstring ::constructor_new (inLexique, (var_cas_mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (106))).operator_concat (var_cas_value.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (106))), var_cas_value.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (106)) COMMA_HERE) ;
       switch (select_repeat_guiModelBuilder_4 (inLexique)) {
         case 2 : {
           } break ;

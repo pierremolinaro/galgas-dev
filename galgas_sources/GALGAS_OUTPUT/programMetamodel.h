@@ -137,7 +137,7 @@ class GGS_programRuleList : public AC_galgas_list {
                                  GGS_semanticInstructionList & _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_programRuleList inOperand) ;
+  public : void dotAssign_operation (const GGS_programRuleList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
@@ -145,7 +145,7 @@ class GGS_programRuleList : public AC_galgas_list {
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionList & argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_programRuleList _operator_concat (const GGS_programRuleList & inOperand) const ;
+  public : GGS_programRuleList operator_concat (const GGS_programRuleList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,

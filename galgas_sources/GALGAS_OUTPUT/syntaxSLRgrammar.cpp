@@ -8880,7 +8880,7 @@ void syntaxSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
           syntaxSLRgrammar _grammar ;
           _grammar.nt_syntax_component_start_symbol_ (*scanner_, parameter_1) ;
           if (_inSentStringPtr != NULL) {
-            _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;
+            _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
           }
         }
       }else{
@@ -8917,7 +8917,7 @@ void syntaxSLRgrammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
       syntaxSLRgrammar _grammar ;
       _grammar.nt_syntax_component_start_symbol_ (*scanner_, parameter_1) ;
       if (_inSentStringPtr != NULL) {
-        _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;
+        _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
       }
     }
   }

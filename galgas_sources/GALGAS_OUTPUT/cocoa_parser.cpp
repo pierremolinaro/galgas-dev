@@ -61,9 +61,9 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_string var_cas_basename ;
   var_cas_basename = GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (113)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (113)) ;
-  if (((var_cas_guiComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (114)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+  if (((var_cas_guiComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (114))).operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
     var_cas_guiComponentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS 1.7.5 and later checks "
-      "the component name ('"))._operator_concat (var_cas_guiComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (116))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (118)) ;
+      "the component name ('")).operator_concat (var_cas_guiComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (116)))).operator_concat (GGS_string ("') against the source file base name ('"))).operator_concat (var_cas_basename)).operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (118)) ;
   }
   GGS_lstring  var_cas_guiKindName ;
   inLexique._assignFromAttribute_tokenString (var_cas_guiKindName) ;
@@ -103,7 +103,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
   GGS_lstring  var_cas_lexiqueClassName ;
   GGS_M_nonterminalSymbolAltsForGrammar  var_cas_nonterminalSymbolParametersMap ;
   GGS_M_optionComponents  var_cas_optionsComponentsMap ;
-  if (((var_cas_ioGrammarComponentsMap.reader_count (inLexique COMMA_SOURCE_FILE_AT_LINE (165)))._operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
+  if (((var_cas_ioGrammarComponentsMap.reader_count (inLexique COMMA_SOURCE_FILE_AT_LINE (165))).operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
     GGS_lstring  var_cas_grammarKey ;
     var_cas_grammarKey = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
     {
@@ -118,8 +118,8 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
     if (_temp_6657.isBuilt ()) {
       _temp_6657 (HERE)->method_searchKey (inLexique, var_cas_grammarKey, var_cas_nonterminalSymbolParametersMap, var_cas_lexiqueClassName, var_cas_optionsComponentsMap COMMA_SOURCE_FILE_AT_LINE (170)) ;
     }
-  }else if (((var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (176)))._operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
-    GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, (((((GGS_string ("the grammar should be named in the header, as follows (replace xxx by actual grammar name):\n"))._operator_concat (GGS_string ("gui ")))._operator_concat (var_cas_guiComponentName))._operator_concat (GGS_string ("\"")))._operator_concat (var_cas_guiKindName))._operator_concat (GGS_string ("\" grammar xxx :")) COMMA_SOURCE_FILE_AT_LINE (180)) ;
+  }else if (((var_cas_grammarName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (176))).operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
+    GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, (((((GGS_string ("the grammar should be named in the header, as follows (replace xxx by actual grammar name):\n")).operator_concat (GGS_string ("gui "))).operator_concat (var_cas_guiComponentName)).operator_concat (GGS_string ("\""))).operator_concat (var_cas_guiKindName)).operator_concat (GGS_string ("\" grammar xxx :")) COMMA_SOURCE_FILE_AT_LINE (180)) ;
     var_cas_nonterminalSymbolParametersMap.drop () ;
     var_cas_lexiqueClassName.drop () ;
     var_cas_optionsComponentsMap.drop () ;
@@ -172,7 +172,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
       switch (select_repeat_cocoa_parser_2 (inLexique)) {
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          if (((var_cas_lexiqueImported)._operator_not ()).isBuiltAndTrue ()) {
+          if (((var_cas_lexiqueImported).operator_not ()).isBuiltAndTrue ()) {
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the lexique should be imported by an import__ \"...\" statement.") COMMA_SOURCE_FILE_AT_LINE (218)) ;
           }
           GGS_lstring  var_cas_terminal1 ;
@@ -221,7 +221,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
                 GGS_lstring  var_cas_s ;
                 inLexique._assignFromAttribute_tokenString (var_cas_s) ;
                 inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5Fstring) COMMA_HERE) ;
-                var_cas_sourceExpression = GGS_lstring ::constructor_new (inLexique, (var_cas_sourceExpression.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (247)))._operator_concat (var_cas_s.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (247))), var_cas_s.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (247)) COMMA_HERE) ;
+                var_cas_sourceExpression = GGS_lstring ::constructor_new (inLexique, (var_cas_sourceExpression.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (247))).operator_concat (var_cas_s.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (247))), var_cas_s.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (247)) COMMA_HERE) ;
               switch (select_repeat_cocoa_parser_4 (inLexique)) {
                 case 2 : {
                   } break ;
@@ -231,18 +231,18 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
               }
             }
           }
-          if (((var_cas_sourceExpression.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (250)))._operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
+          if (((var_cas_sourceExpression.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (250))).operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
             var_cas_sourceExpression.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this string should not be empty") COMMA_SOURCE_FILE_AT_LINE (252)) ;
           }
-          if (((var_cas_settingName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (253)))._operator_isEqual (GGS_string ("nibAndMainClass"))).isBuiltAndTrue ()) {
+          if (((var_cas_settingName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (253))).operator_isEqual (GGS_string ("nibAndMainClass"))).isBuiltAndTrue ()) {
             var_cas_nibAndClassList._addAssign_operation (var_cas_sourceExpression) ;
-          }else if (((var_cas_settingName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (255)))._operator_isEqual (GGS_string ("textMacro"))).isBuiltAndTrue ()) {
-            if (((var_cas_entryName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (256)))._operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
+          }else if (((var_cas_settingName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (255))).operator_isEqual (GGS_string ("textMacro"))).isBuiltAndTrue ()) {
+            if (((var_cas_entryName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (256))).operator_isEqual (GGS_string (""))).isBuiltAndTrue ()) {
               var_cas_entryName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this string should not be empty") COMMA_SOURCE_FILE_AT_LINE (258)) ;
             }
             var_cas_textMacroList._addAssign_operation (var_cas_entryName, var_cas_sourceExpression) ;
-          }else if (((var_cas_settingName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (260)))._operator_isEqual (GGS_string ("blockComment"))).isBuiltAndTrue ()) {
-            if (((var_cas_blockComment)._operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
+          }else if (((var_cas_settingName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (260))).operator_isEqual (GGS_string ("blockComment"))).isBuiltAndTrue ()) {
+            if (((var_cas_blockComment).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
               var_cas_settingName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this key is already defined") COMMA_SOURCE_FILE_AT_LINE (263)) ;
             }else{
               var_cas_blockComment = var_cas_sourceExpression.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (264)) ;

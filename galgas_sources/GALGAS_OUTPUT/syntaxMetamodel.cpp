@@ -62,7 +62,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_syntaxInstructionList * ptr = dynamic_cast <const elementOf_GGS_syntaxInstructionList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mInstruction._operator_isEqual (ptr->mInstruction).boolValue () ;
+    equal = mInstruction.operator_isEqual (ptr->mInstruction).boolValue () ;
   }
   return equal ;
 }
@@ -120,16 +120,16 @@ _addAssign_operation (const GGS_syntaxInstruction & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_syntaxInstructionList GGS_syntaxInstructionList::
-_operator_concat (const GGS_syntaxInstructionList & inOperand) const {
+operator_concat (const GGS_syntaxInstructionList & inOperand) const {
   GGS_syntaxInstructionList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxInstructionList::
-_dotAssign_operation (const GGS_syntaxInstructionList inOperand) {
+dotAssign_operation (const GGS_syntaxInstructionList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -407,8 +407,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_nonTerminalLabelList * ptr = dynamic_cast <const elementOf_GGS_nonTerminalLabelList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLabelName._operator_isEqual (ptr->mLabelName).boolValue ()
-         && mFormalParameters._operator_isEqual (ptr->mFormalParameters).boolValue () ;
+    equal = mLabelName.operator_isEqual (ptr->mLabelName).boolValue ()
+         && mFormalParameters.operator_isEqual (ptr->mFormalParameters).boolValue () ;
   }
   return equal ;
 }
@@ -476,16 +476,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_nonTerminalLabelList GGS_nonTerminalLabelList::
-_operator_concat (const GGS_nonTerminalLabelList & inOperand) const {
+operator_concat (const GGS_nonTerminalLabelList & inOperand) const {
   GGS_nonTerminalLabelList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalLabelList::
-_dotAssign_operation (const GGS_nonTerminalLabelList inOperand) {
+dotAssign_operation (const GGS_nonTerminalLabelList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -818,9 +818,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_nonterminalDeclarationList * ptr = dynamic_cast <const elementOf_GGS_nonterminalDeclarationList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mNonterminalName._operator_isEqual (ptr->mNonterminalName).boolValue ()
-         && mLabels._operator_isEqual (ptr->mLabels).boolValue ()
-         && mHasParseLabel._operator_isEqual (ptr->mHasParseLabel).boolValue () ;
+    equal = mNonterminalName.operator_isEqual (ptr->mNonterminalName).boolValue ()
+         && mLabels.operator_isEqual (ptr->mLabels).boolValue ()
+         && mHasParseLabel.operator_isEqual (ptr->mHasParseLabel).boolValue () ;
   }
   return equal ;
 }
@@ -898,16 +898,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_nonterminalDeclarationList GGS_nonterminalDeclarationList::
-_operator_concat (const GGS_nonterminalDeclarationList & inOperand) const {
+operator_concat (const GGS_nonterminalDeclarationList & inOperand) const {
   GGS_nonterminalDeclarationList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_nonterminalDeclarationList::
-_dotAssign_operation (const GGS_nonterminalDeclarationList inOperand) {
+dotAssign_operation (const GGS_nonterminalDeclarationList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -1293,9 +1293,9 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_syntaxRuleLabelList * ptr = dynamic_cast <const elementOf_GGS_syntaxRuleLabelList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mLabelName._operator_isEqual (ptr->mLabelName).boolValue ()
-         && mFormalParameters._operator_isEqual (ptr->mFormalParameters).boolValue ()
-         && mSyntaxInstructionList._operator_isEqual (ptr->mSyntaxInstructionList).boolValue () ;
+    equal = mLabelName.operator_isEqual (ptr->mLabelName).boolValue ()
+         && mFormalParameters.operator_isEqual (ptr->mFormalParameters).boolValue ()
+         && mSyntaxInstructionList.operator_isEqual (ptr->mSyntaxInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -1373,16 +1373,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_syntaxRuleLabelList GGS_syntaxRuleLabelList::
-_operator_concat (const GGS_syntaxRuleLabelList & inOperand) const {
+operator_concat (const GGS_syntaxRuleLabelList & inOperand) const {
   GGS_syntaxRuleLabelList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleLabelList::
-_dotAssign_operation (const GGS_syntaxRuleLabelList inOperand) {
+dotAssign_operation (const GGS_syntaxRuleLabelList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -1766,8 +1766,8 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_syntaxRuleList * ptr = dynamic_cast <const elementOf_GGS_syntaxRuleList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mNonterminalName._operator_isEqual (ptr->mNonterminalName).boolValue ()
-         && mLabelList._operator_isEqual (ptr->mLabelList).boolValue () ;
+    equal = mNonterminalName.operator_isEqual (ptr->mNonterminalName).boolValue ()
+         && mLabelList.operator_isEqual (ptr->mLabelList).boolValue () ;
   }
   return equal ;
 }
@@ -1835,16 +1835,16 @@ _addAssign_operation (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 GGS_syntaxRuleList GGS_syntaxRuleList::
-_operator_concat (const GGS_syntaxRuleList & inOperand) const {
+operator_concat (const GGS_syntaxRuleList & inOperand) const {
   GGS_syntaxRuleList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_syntaxRuleList::
-_dotAssign_operation (const GGS_syntaxRuleList inOperand) {
+dotAssign_operation (const GGS_syntaxRuleList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -2189,9 +2189,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_nonterminalCallInstruction * ptr = dynamic_cast <const cPtr_nonterminalCallInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mNonterminalName._operator_isEqual (ptr->mNonterminalName).boolValue ()
-         && mLabelName._operator_isEqual (ptr->mLabelName).boolValue ()
-         && mActualParameterList._operator_isEqual (ptr->mActualParameterList).boolValue () ;
+    equal = mNonterminalName.operator_isEqual (ptr->mNonterminalName).boolValue ()
+         && mLabelName.operator_isEqual (ptr->mLabelName).boolValue ()
+         && mActualParameterList.operator_isEqual (ptr->mActualParameterList).boolValue () ;
   }
   return equal ;
 }
@@ -2393,8 +2393,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_terminalCheckInstruction * ptr = dynamic_cast <const cPtr_terminalCheckInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mTerminalName._operator_isEqual (ptr->mTerminalName).boolValue ()
-         && mActualInputParameterList._operator_isEqual (ptr->mActualInputParameterList).boolValue () ;
+    equal = mTerminalName.operator_isEqual (ptr->mTerminalName).boolValue ()
+         && mActualInputParameterList.operator_isEqual (ptr->mActualInputParameterList).boolValue () ;
   }
   return equal ;
 }
@@ -2565,7 +2565,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_listOfSyntaxInstructionList * ptr = dynamic_cast <const elementOf_GGS_listOfSyntaxInstructionList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSyntaxInstructionList._operator_isEqual (ptr->mSyntaxInstructionList).boolValue () ;
+    equal = mSyntaxInstructionList.operator_isEqual (ptr->mSyntaxInstructionList).boolValue () ;
   }
   return equal ;
 }
@@ -2623,16 +2623,16 @@ _addAssign_operation (const GGS_syntaxInstructionList & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_listOfSyntaxInstructionList GGS_listOfSyntaxInstructionList::
-_operator_concat (const GGS_listOfSyntaxInstructionList & inOperand) const {
+operator_concat (const GGS_listOfSyntaxInstructionList & inOperand) const {
   GGS_listOfSyntaxInstructionList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_listOfSyntaxInstructionList::
-_dotAssign_operation (const GGS_listOfSyntaxInstructionList inOperand) {
+dotAssign_operation (const GGS_listOfSyntaxInstructionList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -2922,8 +2922,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_repeatInstruction * ptr = dynamic_cast <const cPtr_repeatInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mRepeatedInstructionList._operator_isEqual (ptr->mRepeatedInstructionList).boolValue ()
-         && mRepeatBranchList._operator_isEqual (ptr->mRepeatBranchList).boolValue () ;
+    equal = mRepeatedInstructionList.operator_isEqual (ptr->mRepeatedInstructionList).boolValue ()
+         && mRepeatBranchList.operator_isEqual (ptr->mRepeatBranchList).boolValue () ;
   }
   return equal ;
 }
@@ -3106,7 +3106,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_selectInstruction * ptr = dynamic_cast <const cPtr_selectInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSelectBranchList._operator_isEqual (ptr->mSelectBranchList).boolValue () ;
+    equal = mSelectBranchList.operator_isEqual (ptr->mSelectBranchList).boolValue () ;
   }
   return equal ;
 }
@@ -3272,7 +3272,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_parseDoInstruction * ptr = dynamic_cast <const cPtr_parseDoInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mParseDoBranchList._operator_isEqual (ptr->mParseDoBranchList).boolValue () ;
+    equal = mParseDoBranchList.operator_isEqual (ptr->mParseDoBranchList).boolValue () ;
   }
   return equal ;
 }
@@ -3446,11 +3446,11 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_blockInstruction * ptr = dynamic_cast <const cPtr_blockInstruction *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mReceiverVariable._operator_isEqual (ptr->mReceiverVariable).boolValue ()
-         && mBlockMethodName._operator_isEqual (ptr->mBlockMethodName).boolValue ()
-         && mPrologActualParameterList._operator_isEqual (ptr->mPrologActualParameterList).boolValue ()
-         && mInstructionList._operator_isEqual (ptr->mInstructionList).boolValue ()
-         && mEpilogActualParameterList._operator_isEqual (ptr->mEpilogActualParameterList).boolValue () ;
+    equal = mReceiverVariable.operator_isEqual (ptr->mReceiverVariable).boolValue ()
+         && mBlockMethodName.operator_isEqual (ptr->mBlockMethodName).boolValue ()
+         && mPrologActualParameterList.operator_isEqual (ptr->mPrologActualParameterList).boolValue ()
+         && mInstructionList.operator_isEqual (ptr->mInstructionList).boolValue ()
+         && mEpilogActualParameterList.operator_isEqual (ptr->mEpilogActualParameterList).boolValue () ;
   }
   return equal ;
 }
@@ -3690,10 +3690,10 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_syntaxComponentRoot * ptr = dynamic_cast <const cPtr_syntaxComponentRoot *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mSyntaxComponentName._operator_isEqual (ptr->mSyntaxComponentName).boolValue ()
-         && mNonterminalDeclarationList._operator_isEqual (ptr->mNonterminalDeclarationList).boolValue ()
-         && mRuleList._operator_isEqual (ptr->mRuleList).boolValue ()
-         && mSemanticDeclarations._operator_isEqual (ptr->mSemanticDeclarations).boolValue () ;
+    equal = mSyntaxComponentName.operator_isEqual (ptr->mSyntaxComponentName).boolValue ()
+         && mNonterminalDeclarationList.operator_isEqual (ptr->mNonterminalDeclarationList).boolValue ()
+         && mRuleList.operator_isEqual (ptr->mRuleList).boolValue ()
+         && mSemanticDeclarations.operator_isEqual (ptr->mSemanticDeclarations).boolValue () ;
   }
   return equal ;
 }

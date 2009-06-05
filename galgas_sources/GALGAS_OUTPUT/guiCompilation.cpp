@@ -76,9 +76,9 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
   var_cas_componentName = var_cas_guiComponentRoot.reader_mGUIName (inLexique COMMA_SOURCE_FILE_AT_LINE (33)) ;
   GGS_string var_cas_basename ;
   var_cas_basename = var_cas_inSourceFile.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (34)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (34)) ;
-  if (((var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (35)))._operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
+  if (((var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (35))).operator_isNotEqual (var_cas_basename)).isBuiltAndTrue ()) {
     var_cas_componentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, ((((GGS_string ("GALGAS checks "
-      "the component name ('"))._operator_concat (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (37))))._operator_concat (GGS_string ("') against the source file base name ('")))._operator_concat (var_cas_basename))._operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (39)) ;
+      "the component name ('")).operator_concat (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (37)))).operator_concat (GGS_string ("') against the source file base name ('"))).operator_concat (var_cas_basename)).operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (39)) ;
   }
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_compileGuiComponent\n") ;

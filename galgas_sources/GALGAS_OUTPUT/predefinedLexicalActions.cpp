@@ -297,15 +297,15 @@ void routine_printPredefinedLexicalActions (C_Compiler & inLexique COMMA_UNUSED_
     const GGS_lexicalRoutineMap::cElement * operand_22707 = NULL ;
     while (((operand_22707 = enumerator_22707.nextObject ()))) {
       macroValidPointer (operand_22707) ;
-      var_cas_s._dotAssign_operation (operand_22707->mKey.ggs_string ()) ;
+      var_cas_s.dotAssign_operation (operand_22707->mKey.ggs_string ()) ;
       {
         GGS_lexicalRoutineFormalArgumentList::cEnumerator enumerator_22771 (operand_22707->mInfo.mLexicalRoutineFormalArgumentList, true) ;
         const GGS_lexicalRoutineFormalArgumentList::cElement * operand_22771 = NULL ;
         while (((operand_22771 = enumerator_22771.nextObject ()))) {
           macroValidPointer (operand_22771) ;
           var_cas_s.appendCString (" ") ;
-          var_cas_s._dotAssign_operation (operand_22771->mLexicalArgumentMode.reader_lexicalFormalModeName (inLexique COMMA_SOURCE_FILE_AT_LINE (414))) ;
-          var_cas_s._dotAssign_operation (operand_22771->mLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (414))) ;
+          var_cas_s.dotAssign_operation (operand_22771->mLexicalArgumentMode.reader_lexicalFormalModeName (inLexique COMMA_SOURCE_FILE_AT_LINE (414))) ;
+          var_cas_s.dotAssign_operation (operand_22771->mLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (414))) ;
         }
       }
       {
@@ -317,7 +317,7 @@ void routine_printPredefinedLexicalActions (C_Compiler & inLexique COMMA_UNUSED_
           do{
             macroValidPointer (operand_22919) ;
             var_cas_s.appendCString (" ") ;
-            var_cas_s._dotAssign_operation (operand_22919->mValue) ;
+            var_cas_s.dotAssign_operation (operand_22919->mValue) ;
             operand_22919 = enumerator_22919.nextObject () ;
             _foreach_loop_22919 = ((operand_22919 != NULL)) ;
             if (_foreach_loop_22919) {
@@ -338,18 +338,18 @@ void routine_printPredefinedLexicalActions (C_Compiler & inLexique COMMA_UNUSED_
     const GGS_lexicalFunctionMap::cElement * operand_23379 = NULL ;
     while (((operand_23379 = enumerator_23379.nextObject ()))) {
       macroValidPointer (operand_23379) ;
-      var_cas_s._dotAssign_operation (operand_23379->mKey.ggs_string ()) ;
+      var_cas_s.dotAssign_operation (operand_23379->mKey.ggs_string ()) ;
       {
         GGS_lexicalTypeList::cEnumerator enumerator_23426 (operand_23379->mInfo.mLexicalTypeList, true) ;
         const GGS_lexicalTypeList::cElement * operand_23426 = NULL ;
         while (((operand_23426 = enumerator_23426.nextObject ()))) {
           macroValidPointer (operand_23426) ;
           var_cas_s.appendCString (" \?") ;
-          var_cas_s._dotAssign_operation (operand_23426->mLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (431))) ;
+          var_cas_s.dotAssign_operation (operand_23426->mLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (431))) ;
         }
       }
       var_cas_s.appendCString (" -> ") ;
-      var_cas_s._dotAssign_operation (operand_23379->mInfo.mReturnedLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (433))) ;
+      var_cas_s.dotAssign_operation (operand_23379->mInfo.mReturnedLexicalType.reader_lexicalTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (433))) ;
       var_cas_s.appendCString (" ;\n"
         "\n") ;
     }

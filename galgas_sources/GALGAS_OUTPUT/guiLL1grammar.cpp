@@ -324,7 +324,7 @@ void guiLL1grammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
           guiLL1grammar _grammar ;
           _grammar.nt_gui_component_start_symbol_ (*scanner_, parameter_1) ;
           if (_inSentStringPtr != NULL) {
-            _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;
+            _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
           }
         }
       }else{
@@ -359,7 +359,7 @@ void guiLL1grammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
     guiLL1grammar _grammar ;
     _grammar.nt_gui_component_start_symbol_ (*scanner_, parameter_1) ;
     if (_inSentStringPtr != NULL) {
-      _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;
+      _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
     }
   }
   macroDetachPointer (scanner_, galgas_scanner) ;

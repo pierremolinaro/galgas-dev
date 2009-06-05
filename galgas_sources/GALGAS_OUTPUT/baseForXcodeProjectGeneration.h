@@ -175,13 +175,13 @@ class GGS_XcodeObjectReferenceList : public AC_galgas_list {
                                  GGS_string& _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_XcodeObjectReferenceList inOperand) ;
+  public : void dotAssign_operation (const GGS_XcodeObjectReferenceList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_XcodeObjectReferenceList _operator_concat (const GGS_XcodeObjectReferenceList & inOperand) const ;
+  public : GGS_XcodeObjectReferenceList operator_concat (const GGS_XcodeObjectReferenceList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_string& argument_1
@@ -1109,8 +1109,8 @@ class GGS_Xcode_PBXFileReference_map : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_Xcode_PBXFileReference_map & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -1310,12 +1310,12 @@ class GGS_Xcode_PBXBuildFile_list : public AC_galgas_list {
                                  GGS_Xcode_PBXBuildFile & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXBuildFile_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXBuildFile_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_PBXBuildFile & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXBuildFile_list _operator_concat (const GGS_Xcode_PBXBuildFile_list & inOperand) const ;
+  public : GGS_Xcode_PBXBuildFile_list operator_concat (const GGS_Xcode_PBXBuildFile_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_PBXBuildFile & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -1485,12 +1485,12 @@ class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list {
                                  GGS_Xcode_PBXSourcesBuildPhase & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXSourcesBuildPhase_list _operator_concat (const GGS_Xcode_PBXSourcesBuildPhase_list & inOperand) const ;
+  public : GGS_Xcode_PBXSourcesBuildPhase_list operator_concat (const GGS_Xcode_PBXSourcesBuildPhase_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -1660,12 +1660,12 @@ class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list {
                                  GGS_Xcode_PBXResourcesBuildPhase & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXResourcesBuildPhase_list _operator_concat (const GGS_Xcode_PBXResourcesBuildPhase_list & inOperand) const ;
+  public : GGS_Xcode_PBXResourcesBuildPhase_list operator_concat (const GGS_Xcode_PBXResourcesBuildPhase_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -1835,12 +1835,12 @@ class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list {
                                  GGS_Xcode_PBXFrameworksBuildPhase & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXFrameworksBuildPhase_list _operator_concat (const GGS_Xcode_PBXFrameworksBuildPhase_list & inOperand) const ;
+  public : GGS_Xcode_PBXFrameworksBuildPhase_list operator_concat (const GGS_Xcode_PBXFrameworksBuildPhase_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -2012,12 +2012,12 @@ class GGS_Xcode_PBXGroup_list : public AC_galgas_list {
                                  GGS_Xcode_PBXGroup & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXGroup_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXGroup_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_PBXGroup & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXGroup_list _operator_concat (const GGS_Xcode_PBXGroup_list & inOperand) const ;
+  public : GGS_Xcode_PBXGroup_list operator_concat (const GGS_Xcode_PBXGroup_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_PBXGroup & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -2187,12 +2187,12 @@ class GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list {
                                  GGS_Xcode_XCBuildConfiguration & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_XCBuildConfiguration_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_XCBuildConfiguration_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_XCBuildConfiguration & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_XCBuildConfiguration_list _operator_concat (const GGS_Xcode_XCBuildConfiguration_list & inOperand) const ;
+  public : GGS_Xcode_XCBuildConfiguration_list operator_concat (const GGS_Xcode_XCBuildConfiguration_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_XCBuildConfiguration & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -2332,7 +2332,7 @@ class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
                                  GGS_stringlist & _out_7
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXNativeTarget_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXNativeTarget_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_string& argument_0,
@@ -2344,7 +2344,7 @@ class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
                                 const GGS_stringlist & argument_6,
                                 const GGS_stringlist & argument_7) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXNativeTarget_list _operator_concat (const GGS_Xcode_PBXNativeTarget_list & inOperand) const ;
+  public : GGS_Xcode_PBXNativeTarget_list operator_concat (const GGS_Xcode_PBXNativeTarget_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_string& argument_1,
@@ -2589,12 +2589,12 @@ class GGS_Xcode_targetDependencyDescription_list : public AC_galgas_list {
                                  GGS_Xcode_targetDependencyDescription & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_targetDependencyDescription_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_targetDependencyDescription_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_Xcode_targetDependencyDescription & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_targetDependencyDescription_list _operator_concat (const GGS_Xcode_targetDependencyDescription_list & inOperand) const ;
+  public : GGS_Xcode_targetDependencyDescription_list operator_concat (const GGS_Xcode_targetDependencyDescription_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_Xcode_targetDependencyDescription & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -2709,14 +2709,14 @@ class GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list {
                                  GGS_string& _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_Xcode_PBXVariantGroup_list inOperand) ;
+  public : void dotAssign_operation (const GGS_Xcode_PBXVariantGroup_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_Xcode_PBXVariantGroup_list _operator_concat (const GGS_Xcode_PBXVariantGroup_list & inOperand) const ;
+  public : GGS_Xcode_PBXVariantGroup_list operator_concat (const GGS_Xcode_PBXVariantGroup_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_string& argument_1,
@@ -4598,8 +4598,8 @@ class GGS_XcodeProjectDescription {
   public : inline GGS_XcodeProjectDescription * operator () (UNUSED_LOCATION_ARGS) { return this ; }
 
 //--- Comparison
-  public : GGS_bool _operator_isEqual (const GGS_XcodeProjectDescription & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_XcodeProjectDescription & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_XcodeProjectDescription & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_XcodeProjectDescription & inOperand) const ;
 
 //--- Reader 'description'
   public : GGS_string

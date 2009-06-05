@@ -137,7 +137,7 @@ class GGS_commandLineOptionList : public AC_galgas_list {
                                  GGS_lstring & _out_4
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_commandLineOptionList inOperand) ;
+  public : void dotAssign_operation (const GGS_commandLineOptionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
@@ -146,7 +146,7 @@ class GGS_commandLineOptionList : public AC_galgas_list {
                                 const GGS_lstring & argument_3,
                                 const GGS_lstring & argument_4) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_commandLineOptionList _operator_concat (const GGS_commandLineOptionList & inOperand) const ;
+  public : GGS_commandLineOptionList operator_concat (const GGS_commandLineOptionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,

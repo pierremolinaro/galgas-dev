@@ -128,14 +128,14 @@ class GGS_guiAttributeList : public AC_galgas_list {
                                  GGS_lstring & _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_guiAttributeList inOperand) ;
+  public : void dotAssign_operation (const GGS_guiAttributeList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_guiAttributeList _operator_concat (const GGS_guiAttributeList & inOperand) const ;
+  public : GGS_guiAttributeList operator_concat (const GGS_guiAttributeList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
@@ -267,13 +267,13 @@ class GGS_guiLabelList : public AC_galgas_list {
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_guiLabelList inOperand) ;
+  public : void dotAssign_operation (const GGS_guiLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_guiLabelList _operator_concat (const GGS_guiLabelList & inOperand) const ;
+  public : GGS_guiLabelList operator_concat (const GGS_guiLabelList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1

@@ -7970,7 +7970,7 @@ void programSLRgrammar::_performSourceFileParsing_ (C_Compiler & _inCompiler,
           programSLRgrammar _grammar ;
           _grammar.nt_program_component_start_symbol_ (*scanner_, parameter_1) ;
           if (_inSentStringPtr != NULL) {
-            _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;
+            _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
           }
         }
       }else{
@@ -8007,7 +8007,7 @@ void programSLRgrammar::_performSourceStringParsing_ (C_Compiler & _inCompiler,
       programSLRgrammar _grammar ;
       _grammar.nt_program_component_start_symbol_ (*scanner_, parameter_1) ;
       if (_inSentStringPtr != NULL) {
-        _inSentStringPtr->_dotAssign_operation (scanner_->sentString ()) ;
+        _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;
       }
     }
   }

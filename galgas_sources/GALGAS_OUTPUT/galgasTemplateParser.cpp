@@ -54,7 +54,7 @@ void routine_enterTemplateString (C_Compiler & inLexique,
   #endif
   GGS_lstring  var_cas_s ;
   var_cas_s = GGS_lstring ::constructor_retrieveAndResetTemplateString (inLexique COMMA_HERE) ;
-  if (((var_cas_s.ggs_string ().reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (42)))._operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
+  if (((var_cas_s.ggs_string ().reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (42))).operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
     var_cas_outResultingInstructionList._addAssign_operation (GGS_templateInstructionString ::constructor_new (inLexique, var_cas_s.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (43)) COMMA_HERE)) ;
   }
   #ifdef DEBUG_TRACE_ENABLED

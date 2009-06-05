@@ -189,7 +189,7 @@ isEqualToObject (const cListElement * inOperand) const {
   if (! equal) {
     const elementOf_GGS_semanticExpressionList * ptr = dynamic_cast <const elementOf_GGS_semanticExpressionList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
+    equal = mExpression.operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -247,16 +247,16 @@ _addAssign_operation (const GGS_semanticExpression & argument_0) {
 //---------------------------------------------------------------------------*
 
 GGS_semanticExpressionList GGS_semanticExpressionList::
-_operator_concat (const GGS_semanticExpressionList & inOperand) const {
+operator_concat (const GGS_semanticExpressionList & inOperand) const {
   GGS_semanticExpressionList result = * this ;
-  result._dotAssign_operation (inOperand) ;
+  result.dotAssign_operation (inOperand) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-_dotAssign_operation (const GGS_semanticExpressionList inOperand) {
+dotAssign_operation (const GGS_semanticExpressionList inOperand) {
   if (isBuilt () && inOperand.isBuilt ()) {
     if (count () == 0) {
       * this = inOperand ;
@@ -546,8 +546,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_outExpressionList * ptr = dynamic_cast <const cPtr_outExpressionList *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mExpression._operator_isEqual (ptr->mExpression).boolValue ()
-         && mEndOfExpressionLocation._operator_isEqual (ptr->mEndOfExpressionLocation).boolValue () ;
+    equal = mExpression.operator_isEqual (ptr->mExpression).boolValue ()
+         && mEndOfExpressionLocation.operator_isEqual (ptr->mEndOfExpressionLocation).boolValue () ;
   }
   return equal ;
 }
@@ -740,7 +740,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_variableExpression * ptr = dynamic_cast <const cPtr_variableExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mVariableName._operator_isEqual (ptr->mVariableName).boolValue () ;
+    equal = mVariableName.operator_isEqual (ptr->mVariableName).boolValue () ;
   }
   return equal ;
 }
@@ -1498,7 +1498,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalCharExpression * ptr = dynamic_cast <const cPtr_literalCharExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mCharacter._operator_isEqual (ptr->mCharacter).boolValue () ;
+    equal = mCharacter.operator_isEqual (ptr->mCharacter).boolValue () ;
   }
   return equal ;
 }
@@ -1664,7 +1664,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalStringExpression * ptr = dynamic_cast <const cPtr_literalStringExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mStringSequence._operator_isEqual (ptr->mStringSequence).boolValue () ;
+    equal = mStringSequence.operator_isEqual (ptr->mStringSequence).boolValue () ;
   }
   return equal ;
 }
@@ -1830,7 +1830,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalDoubleExpression * ptr = dynamic_cast <const cPtr_literalDoubleExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
+    equal = mValue.operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -1996,7 +1996,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalUIntExpression * ptr = dynamic_cast <const cPtr_literalUIntExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
+    equal = mValue.operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2162,7 +2162,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalUInt64Expression * ptr = dynamic_cast <const cPtr_literalUInt64Expression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
+    equal = mValue.operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2328,7 +2328,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalSIntExpression * ptr = dynamic_cast <const cPtr_literalSIntExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
+    equal = mValue.operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2494,7 +2494,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_literalSInt64Expression * ptr = dynamic_cast <const cPtr_literalSInt64Expression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mValue._operator_isEqual (ptr->mValue).boolValue () ;
+    equal = mValue.operator_isEqual (ptr->mValue).boolValue () ;
   }
   return equal ;
 }
@@ -2664,9 +2664,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_constructorExpression * ptr = dynamic_cast <const cPtr_constructorExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
-         && mConstructorName._operator_isEqual (ptr->mConstructorName).boolValue ()
-         && mExpressions._operator_isEqual (ptr->mExpressions).boolValue () ;
+    equal = mTypeName.operator_isEqual (ptr->mTypeName).boolValue ()
+         && mConstructorName.operator_isEqual (ptr->mConstructorName).boolValue ()
+         && mExpressions.operator_isEqual (ptr->mExpressions).boolValue () ;
   }
   return equal ;
 }
@@ -2870,9 +2870,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_readerCallExpression * ptr = dynamic_cast <const cPtr_readerCallExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mReceiver._operator_isEqual (ptr->mReceiver).boolValue ()
-         && mReaderName._operator_isEqual (ptr->mReaderName).boolValue ()
-         && mExpressions._operator_isEqual (ptr->mExpressions).boolValue () ;
+    equal = mReceiver.operator_isEqual (ptr->mReceiver).boolValue ()
+         && mReaderName.operator_isEqual (ptr->mReaderName).boolValue ()
+         && mExpressions.operator_isEqual (ptr->mExpressions).boolValue () ;
   }
   return equal ;
 }
@@ -3074,8 +3074,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_optionExpression * ptr = dynamic_cast <const cPtr_optionExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOptionComponentName._operator_isEqual (ptr->mOptionComponentName).boolValue ()
-         && mOptionEntryName._operator_isEqual (ptr->mOptionEntryName).boolValue () ;
+    equal = mOptionComponentName.operator_isEqual (ptr->mOptionComponentName).boolValue ()
+         && mOptionEntryName.operator_isEqual (ptr->mOptionEntryName).boolValue () ;
   }
   return equal ;
 }
@@ -3262,9 +3262,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_concatExpression * ptr = dynamic_cast <const cPtr_concatExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3468,9 +3468,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_orExpression * ptr = dynamic_cast <const cPtr_orExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3674,9 +3674,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_xorExpression * ptr = dynamic_cast <const cPtr_xorExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -3880,9 +3880,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_andExpression * ptr = dynamic_cast <const cPtr_andExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4086,9 +4086,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_equalExpression * ptr = dynamic_cast <const cPtr_equalExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4292,9 +4292,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_notEqualExpression * ptr = dynamic_cast <const cPtr_notEqualExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4498,9 +4498,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_lowerOrEqualExpression * ptr = dynamic_cast <const cPtr_lowerOrEqualExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4704,9 +4704,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_greaterOrEqualExpression * ptr = dynamic_cast <const cPtr_greaterOrEqualExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -4910,9 +4910,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_strictGreaterExpression * ptr = dynamic_cast <const cPtr_strictGreaterExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5116,9 +5116,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_strictLowerExpression * ptr = dynamic_cast <const cPtr_strictLowerExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5322,9 +5322,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_rightShiftExpression * ptr = dynamic_cast <const cPtr_rightShiftExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5528,9 +5528,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_leftShiftExpression * ptr = dynamic_cast <const cPtr_leftShiftExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5734,9 +5734,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_addExpression * ptr = dynamic_cast <const cPtr_addExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -5940,9 +5940,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_subExpression * ptr = dynamic_cast <const cPtr_subExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6146,9 +6146,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_multiplicationExpression * ptr = dynamic_cast <const cPtr_multiplicationExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6352,9 +6352,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_divisionExpression * ptr = dynamic_cast <const cPtr_divisionExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6558,9 +6558,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_moduloExpression * ptr = dynamic_cast <const cPtr_moduloExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mLeftExpression._operator_isEqual (ptr->mLeftExpression).boolValue ()
-         && mRightExpression._operator_isEqual (ptr->mRightExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mLeftExpression.operator_isEqual (ptr->mLeftExpression).boolValue ()
+         && mRightExpression.operator_isEqual (ptr->mRightExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6762,8 +6762,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_unaryMinusExpression * ptr = dynamic_cast <const cPtr_unaryMinusExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mExpression.operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -6948,8 +6948,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_notExpression * ptr = dynamic_cast <const cPtr_notExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mExpression.operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -7134,8 +7134,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_negateExpression * ptr = dynamic_cast <const cPtr_negateExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mOperatorLocation._operator_isEqual (ptr->mOperatorLocation).boolValue ()
-         && mExpression._operator_isEqual (ptr->mExpression).boolValue () ;
+    equal = mOperatorLocation.operator_isEqual (ptr->mOperatorLocation).boolValue ()
+         && mExpression.operator_isEqual (ptr->mExpression).boolValue () ;
   }
   return equal ;
 }
@@ -7318,7 +7318,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_varInExpression * ptr = dynamic_cast <const cPtr_varInExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mVarName._operator_isEqual (ptr->mVarName).boolValue () ;
+    equal = mVarName.operator_isEqual (ptr->mVarName).boolValue () ;
   }
   return equal ;
 }
@@ -7486,8 +7486,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_descriptionInExpression * ptr = dynamic_cast <const cPtr_descriptionInExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mReceiverExpression._operator_isEqual (ptr->mReceiverExpression).boolValue ()
-         && mLocation._operator_isEqual (ptr->mLocation).boolValue () ;
+    equal = mReceiverExpression.operator_isEqual (ptr->mReceiverExpression).boolValue ()
+         && mLocation.operator_isEqual (ptr->mLocation).boolValue () ;
   }
   return equal ;
 }
@@ -7676,10 +7676,10 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_castInExpression * ptr = dynamic_cast <const cPtr_castInExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mReceiverExpression._operator_isEqual (ptr->mReceiverExpression).boolValue ()
-         && mUseKindOfClass._operator_isEqual (ptr->mUseKindOfClass).boolValue ()
-         && mTypeName._operator_isEqual (ptr->mTypeName).boolValue ()
-         && mErrorLocationExpression._operator_isEqual (ptr->mErrorLocationExpression).boolValue () ;
+    equal = mReceiverExpression.operator_isEqual (ptr->mReceiverExpression).boolValue ()
+         && mUseKindOfClass.operator_isEqual (ptr->mUseKindOfClass).boolValue ()
+         && mTypeName.operator_isEqual (ptr->mTypeName).boolValue ()
+         && mErrorLocationExpression.operator_isEqual (ptr->mErrorLocationExpression).boolValue () ;
   }
   return equal ;
 }
@@ -7896,7 +7896,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_filewrapperObjectInstanciationInExpression * ptr = dynamic_cast <const cPtr_filewrapperObjectInstanciationInExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFilewrapperName._operator_isEqual (ptr->mFilewrapperName).boolValue () ;
+    equal = mFilewrapperName.operator_isEqual (ptr->mFilewrapperName).boolValue () ;
   }
   return equal ;
 }
@@ -8064,8 +8064,8 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_filewrapperInExpression * ptr = dynamic_cast <const cPtr_filewrapperInExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFilewrapperName._operator_isEqual (ptr->mFilewrapperName).boolValue ()
-         && mFilewrapperPath._operator_isEqual (ptr->mFilewrapperPath).boolValue () ;
+    equal = mFilewrapperName.operator_isEqual (ptr->mFilewrapperName).boolValue ()
+         && mFilewrapperPath.operator_isEqual (ptr->mFilewrapperPath).boolValue () ;
   }
   return equal ;
 }
@@ -8252,9 +8252,9 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
   if (equal) {
     const cPtr_filewrapperTemplateInExpression * ptr = dynamic_cast <const cPtr_filewrapperTemplateInExpression *> (inOperand) ;
     macroValidPointer (ptr) ;
-    equal = mFilewrapperName._operator_isEqual (ptr->mFilewrapperName).boolValue ()
-         && mFilewrapperTemplateName._operator_isEqual (ptr->mFilewrapperTemplateName).boolValue ()
-         && mActualOutputParameterList._operator_isEqual (ptr->mActualOutputParameterList).boolValue () ;
+    equal = mFilewrapperName.operator_isEqual (ptr->mFilewrapperName).boolValue ()
+         && mFilewrapperTemplateName.operator_isEqual (ptr->mFilewrapperTemplateName).boolValue ()
+         && mActualOutputParameterList.operator_isEqual (ptr->mActualOutputParameterList).boolValue () ;
   }
   return equal ;
 }

@@ -21,7 +21,9 @@ syntax ggs_LL1_compile_component :
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
+import semantics optionCompilation in "optionCompilation.gSemantics" ;
 import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
+import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
 
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 
@@ -202,7 +204,10 @@ rule <galgas_component>
       message "------ Compile file '" . [fileName string] . "'\n" ;
     end if ;
   #--- Compile file
-    if sourceFileKind != [@EXsourceFileKind externSourceFile] then
+    if sourceFileKind == [@EXsourceFileKind optionSourceFile] then
+      @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      compileOptionComponent !fileName !s ;
+    elsif sourceFileKind != [@EXsourceFileKind externSourceFile] then
       grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;
     end if ;
     $;$ ;

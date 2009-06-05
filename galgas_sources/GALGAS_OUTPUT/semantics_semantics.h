@@ -353,12 +353,12 @@ class GGS_typeCplusPlusNameList : public AC_galgas_list {
                                  GGS_typeCplusPlusName & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeCplusPlusNameList inOperand) ;
+  public : void dotAssign_operation (const GGS_typeCplusPlusNameList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeCplusPlusName & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeCplusPlusNameList _operator_concat (const GGS_typeCplusPlusNameList & inOperand) const ;
+  public : GGS_typeCplusPlusNameList operator_concat (const GGS_typeCplusPlusNameList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeCplusPlusName & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -477,8 +477,8 @@ class GGS_typeClassMessagesMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeClassMessagesMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_typeClassMessagesMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_typeClassMessagesMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_typeClassMessagesMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -620,13 +620,13 @@ class GGS_typeSemanticsTypesList : public AC_galgas_list {
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeSemanticsTypesList inOperand) ;
+  public : void dotAssign_operation (const GGS_typeSemanticsTypesList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeSemanticsTypesList _operator_concat (const GGS_typeSemanticsTypesList & inOperand) const ;
+  public : GGS_typeSemanticsTypesList operator_concat (const GGS_typeSemanticsTypesList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1
@@ -708,8 +708,8 @@ class GGS_typeVariablesMap : public cGalgasVariablesMap <e_typeVariablesMap> {
   public : inline GGS_typeVariablesMap * operator () (UNUSED_LOCATION_ARGS) { return this ; }
   public : inline const GGS_typeVariablesMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true) ; }
-  public : GGS_bool _operator_isNotEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true) ; }
+  public : GGS_bool operator_isEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true) ; }
+  public : GGS_bool operator_isNotEqual (const GGS_typeVariablesMap & /* inOperand */) const { return GGS_bool (true) ; }
 //--- Handle 'emptyMap' constructor
   public : static GGS_typeVariablesMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
 //--- 'searchForReadOnlyAccess' search method
@@ -940,13 +940,13 @@ class GGS_L_assignedVariables : public AC_galgas_list {
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_L_assignedVariables inOperand) ;
+  public : void dotAssign_operation (const GGS_L_assignedVariables inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_L_assignedVariables _operator_concat (const GGS_L_assignedVariables & inOperand) const ;
+  public : GGS_L_assignedVariables operator_concat (const GGS_L_assignedVariables & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1
@@ -1117,12 +1117,12 @@ class GGS_typeListeCibles : public AC_galgas_list {
                                  GGS_typeCible & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeListeCibles inOperand) ;
+  public : void dotAssign_operation (const GGS_typeListeCibles inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeCible & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeListeCibles _operator_concat (const GGS_typeListeCibles & inOperand) const ;
+  public : GGS_typeListeCibles operator_concat (const GGS_typeListeCibles & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeCible & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -1232,13 +1232,13 @@ class GGS_L_nameWithType : public AC_galgas_list {
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_L_nameWithType inOperand) ;
+  public : void dotAssign_operation (const GGS_L_nameWithType inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_L_nameWithType _operator_concat (const GGS_L_nameWithType & inOperand) const ;
+  public : GGS_L_nameWithType operator_concat (const GGS_L_nameWithType & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1
@@ -1321,8 +1321,8 @@ class GGS_typeTableMethodesAimplementer : public cTableMethodesAimplementer <e_t
   public : inline GGS_typeTableMethodesAimplementer * operator () (UNUSED_LOCATION_ARGS) { return this ; }
   public : inline const GGS_typeTableMethodesAimplementer * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true) ; }
-  public : GGS_bool _operator_isNotEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true) ; }
+  public : GGS_bool operator_isEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true) ; }
+  public : GGS_bool operator_isNotEqual (const GGS_typeTableMethodesAimplementer & /* inOperand */) const { return GGS_bool (true) ; }
 //--- Handle 'emptyMap' constructor
   public : static GGS_typeTableMethodesAimplementer constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
 //---
@@ -1412,12 +1412,12 @@ class GGS_typeExpressionList : public AC_galgas_list {
                                  GGS_typeExpression & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeExpressionList inOperand) ;
+  public : void dotAssign_operation (const GGS_typeExpressionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeExpression & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeExpressionList _operator_concat (const GGS_typeExpressionList & inOperand) const ;
+  public : GGS_typeExpressionList operator_concat (const GGS_typeExpressionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeExpression & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -1522,12 +1522,12 @@ class GGS_varToDropList : public AC_galgas_list {
                                  GGS_typeCplusPlusName & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_varToDropList inOperand) ;
+  public : void dotAssign_operation (const GGS_varToDropList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeCplusPlusName & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_varToDropList _operator_concat (const GGS_varToDropList & inOperand) const ;
+  public : GGS_varToDropList operator_concat (const GGS_varToDropList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeCplusPlusName & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -5303,13 +5303,13 @@ class GGS_L_expression_instructionsList_list : public AC_galgas_list {
                                  GGS_typeInstructionList & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_L_expression_instructionsList_list inOperand) ;
+  public : void dotAssign_operation (const GGS_L_expression_instructionsList_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeExpression & argument_0,
                                 const GGS_typeInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_L_expression_instructionsList_list _operator_concat (const GGS_L_expression_instructionsList_list & inOperand) const ;
+  public : GGS_L_expression_instructionsList_list operator_concat (const GGS_L_expression_instructionsList_list & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeExpression & argument_0,
                                 const GGS_typeInstructionList & argument_1
@@ -5490,13 +5490,13 @@ class GGS_L_switchBranchlist : public AC_galgas_list {
                                  GGS_typeInstructionList & _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_L_switchBranchlist inOperand) ;
+  public : void dotAssign_operation (const GGS_L_switchBranchlist inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_L_switchBranchlist _operator_concat (const GGS_L_switchBranchlist & inOperand) const ;
+  public : GGS_L_switchBranchlist operator_concat (const GGS_L_switchBranchlist & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1
@@ -5633,8 +5633,8 @@ class GGS_typeTableRoutinesAimplementer : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeTableRoutinesAimplementer & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_typeTableRoutinesAimplementer & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_typeTableRoutinesAimplementer & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_typeTableRoutinesAimplementer & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -5720,8 +5720,8 @@ class GGS_typeTableAttributsSemantiques : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeTableAttributsSemantiques & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_typeTableAttributsSemantiques & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_typeTableAttributsSemantiques & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_typeTableAttributsSemantiques & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -5979,8 +5979,8 @@ class GGS_M_nonTerminalSymbolForSyntax : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_M_nonTerminalSymbolForSyntax & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_M_nonTerminalSymbolForSyntax & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_M_nonTerminalSymbolForSyntax & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_M_nonTerminalSymbolForSyntax & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -6449,14 +6449,14 @@ class GGS_L_matchInstructionCasesList : public AC_galgas_list {
                                  GGS_typeInstructionList & _out_2
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_L_matchInstructionCasesList inOperand) ;
+  public : void dotAssign_operation (const GGS_L_matchInstructionCasesList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_typeInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_L_matchInstructionCasesList _operator_concat (const GGS_L_matchInstructionCasesList & inOperand) const ;
+  public : GGS_L_matchInstructionCasesList operator_concat (const GGS_L_matchInstructionCasesList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
@@ -6679,7 +6679,7 @@ class GGS_foreachEnumerationList : public AC_galgas_list {
                                  GGS_bool& _out_4
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_foreachEnumerationList inOperand) ;
+  public : void dotAssign_operation (const GGS_foreachEnumerationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_bool& argument_0,
@@ -6688,7 +6688,7 @@ class GGS_foreachEnumerationList : public AC_galgas_list {
                                 const GGS_string& argument_3,
                                 const GGS_bool& argument_4) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_foreachEnumerationList _operator_concat (const GGS_foreachEnumerationList & inOperand) const ;
+  public : GGS_foreachEnumerationList operator_concat (const GGS_foreachEnumerationList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_bool& argument_0,
                                 const GGS_typeExpression & argument_1,
@@ -6988,7 +6988,7 @@ class GGS_typeStructuredExtractCasesList : public AC_galgas_list {
                                  GGS_bool& _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeStructuredExtractCasesList inOperand) ;
+  public : void dotAssign_operation (const GGS_typeStructuredExtractCasesList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
@@ -6996,7 +6996,7 @@ class GGS_typeStructuredExtractCasesList : public AC_galgas_list {
                                 const GGS_typeInstructionList & argument_2,
                                 const GGS_bool& argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeStructuredExtractCasesList _operator_concat (const GGS_typeStructuredExtractCasesList & inOperand) const ;
+  public : GGS_typeStructuredExtractCasesList operator_concat (const GGS_typeStructuredExtractCasesList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_location & argument_1,
@@ -7384,7 +7384,7 @@ class GGS_typeStructuredCastBranchList : public AC_galgas_list {
                                  GGS_typeInstructionList & _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeStructuredCastBranchList inOperand) ;
+  public : void dotAssign_operation (const GGS_typeStructuredCastBranchList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
@@ -7392,7 +7392,7 @@ class GGS_typeStructuredCastBranchList : public AC_galgas_list {
                                 const GGS_typeCplusPlusNameList & argument_2,
                                 const GGS_typeInstructionList & argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeStructuredCastBranchList _operator_concat (const GGS_typeStructuredCastBranchList & inOperand) const ;
+  public : GGS_typeStructuredCastBranchList operator_concat (const GGS_typeStructuredCastBranchList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1,
@@ -7737,8 +7737,8 @@ class GGS_typeTableNomRoutinesDeclarees : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeTableNomRoutinesDeclarees & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_typeTableNomRoutinesDeclarees & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_typeTableNomRoutinesDeclarees & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_typeTableNomRoutinesDeclarees & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -8228,13 +8228,13 @@ class GGS_EXsortDescriptorList : public AC_galgas_list {
                                  GGS_bool& _out_1
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_EXsortDescriptorList inOperand) ;
+  public : void dotAssign_operation (const GGS_EXsortDescriptorList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_EXsortDescriptorList _operator_concat (const GGS_EXsortDescriptorList & inOperand) const ;
+  public : GGS_EXsortDescriptorList operator_concat (const GGS_EXsortDescriptorList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1
@@ -8623,8 +8623,8 @@ class GGS_domainRelationMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_domainRelationMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_domainRelationMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_domainRelationMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_domainRelationMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -9061,12 +9061,12 @@ class GGS_typeEntitiesToGenerateList : public AC_galgas_list {
                                  GGS_typeEntityToGenerate & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_typeEntitiesToGenerateList inOperand) ;
+  public : void dotAssign_operation (const GGS_typeEntitiesToGenerateList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_typeEntityToGenerate & argument_0) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_typeEntitiesToGenerateList _operator_concat (const GGS_typeEntitiesToGenerateList & inOperand) const ;
+  public : GGS_typeEntitiesToGenerateList operator_concat (const GGS_typeEntitiesToGenerateList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_typeEntityToGenerate & argument_0
                                 COMMA_LOCATION_ARGS) ;
@@ -9189,8 +9189,8 @@ class GGS_typeEnumCstMessageStringMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_typeEnumCstMessageStringMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_typeEnumCstMessageStringMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_typeEnumCstMessageStringMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_typeEnumCstMessageStringMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *
@@ -9417,7 +9417,7 @@ class GGS_ruleDescriptorForProgramList : public AC_galgas_list {
                                  GGS_typeInstructionList & _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_ruleDescriptorForProgramList inOperand) ;
+  public : void dotAssign_operation (const GGS_ruleDescriptorForProgramList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_lstring & argument_0,
@@ -9425,7 +9425,7 @@ class GGS_ruleDescriptorForProgramList : public AC_galgas_list {
                                 const GGS_lstring & argument_2,
                                 const GGS_typeInstructionList & argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_ruleDescriptorForProgramList _operator_concat (const GGS_ruleDescriptorForProgramList & inOperand) const ;
+  public : GGS_ruleDescriptorForProgramList operator_concat (const GGS_ruleDescriptorForProgramList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_string& argument_1,
@@ -9523,8 +9523,8 @@ class GGS_wrapperFileSortedList : public AC_galgas_sortedlist {
 //--- Copy Constructor
   public : GGS_wrapperFileSortedList (const GGS_wrapperFileSortedList & inSource) ;
 //--- Comparison Operators
-  public : GGS_bool _operator_isEqual (const GGS_wrapperFileSortedList & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_wrapperFileSortedList & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_wrapperFileSortedList & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_wrapperFileSortedList & inOperand) const ;
 //--- Constructor 'emptySortedList'
   public : static GGS_wrapperFileSortedList constructor_emptySortedList (void) ;
   public : static GGS_wrapperFileSortedList constructor_sortedListWithValue (const GGS_string& argument_0,
@@ -9570,7 +9570,7 @@ class GGS_wrapperFileSortedList : public AC_galgas_sortedlist {
                                  GGS_uint & _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_wrapperFileSortedList inOperand) ;
+  public : void dotAssign_operation (const GGS_wrapperFileSortedList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_string& argument_0,
@@ -9578,7 +9578,7 @@ class GGS_wrapperFileSortedList : public AC_galgas_sortedlist {
                                 const GGS_uint & argument_2,
                                 const GGS_uint & argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_wrapperFileSortedList _operator_concat (const GGS_wrapperFileSortedList & inOperand) const ;
+  public : GGS_wrapperFileSortedList operator_concat (const GGS_wrapperFileSortedList & inOperand) const ;
 
 //--- Internal Methods
   protected : void _internalAppendValues (const GGS_string& argument_0,
@@ -9624,8 +9624,8 @@ class GGS_wrapperDirectorySortedList : public AC_galgas_sortedlist {
 //--- Copy Constructor
   public : GGS_wrapperDirectorySortedList (const GGS_wrapperDirectorySortedList & inSource) ;
 //--- Comparison Operators
-  public : GGS_bool _operator_isEqual (const GGS_wrapperDirectorySortedList & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_wrapperDirectorySortedList & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_wrapperDirectorySortedList & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_wrapperDirectorySortedList & inOperand) const ;
 //--- Constructor 'emptySortedList'
   public : static GGS_wrapperDirectorySortedList constructor_emptySortedList (void) ;
   public : static GGS_wrapperDirectorySortedList constructor_sortedListWithValue (const GGS_string& argument_0,
@@ -9671,7 +9671,7 @@ class GGS_wrapperDirectorySortedList : public AC_galgas_sortedlist {
                                  GGS_uint & _out_3
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
-  public : void _dotAssign_operation (const GGS_wrapperDirectorySortedList inOperand) ;
+  public : void dotAssign_operation (const GGS_wrapperDirectorySortedList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
   public : void _addAssign_operation (const GGS_string& argument_0,
@@ -9679,7 +9679,7 @@ class GGS_wrapperDirectorySortedList : public AC_galgas_sortedlist {
                                 const GGS_wrapperDirectorySortedList & argument_2,
                                 const GGS_uint & argument_3) ;
 //--- Handling '.' GALGAS operator
-  public : GGS_wrapperDirectorySortedList _operator_concat (const GGS_wrapperDirectorySortedList & inOperand) const ;
+  public : GGS_wrapperDirectorySortedList operator_concat (const GGS_wrapperDirectorySortedList & inOperand) const ;
 
 //--- Internal Methods
   protected : void _internalAppendValues (const GGS_string& argument_0,
@@ -9727,8 +9727,8 @@ class GGS_wrapperExtensionMap : public AC_galgas_map {
   public : inline cElement * lastObject (void) const { return (cElement *) internalLastObject () ; }
 
 //--- Comparison methods
-  public : GGS_bool _operator_isEqual (const GGS_wrapperExtensionMap & inOperand) const ;
-  public : GGS_bool _operator_isNotEqual (const GGS_wrapperExtensionMap & inOperand) const ;
+  public : GGS_bool operator_isEqual (const GGS_wrapperExtensionMap & inOperand) const ;
+  public : GGS_bool operator_isNotEqual (const GGS_wrapperExtensionMap & inOperand) const ;
 
 //--- Create a new element
   protected : virtual AC_galgas_map_element *

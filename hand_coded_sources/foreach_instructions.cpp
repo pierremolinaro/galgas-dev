@@ -67,7 +67,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ")) ;\n"
                  "      " << conditionVariable << " = GGS_bool (false) ;\n"
                  "    }else{\n" 
-                 "      " << variantVariable << "._decrement_operation (inLexique COMMA_HERE) ;\n" ;
+                 "      " << variantVariable << ".decrement_operation (inLexique COMMA_HERE) ;\n" ;
   //--- Second instruction list
     ioCppFile.incIndentation (+4) ;
     generateInstructionListForList (mInstructionList2, ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug, true) ; 
