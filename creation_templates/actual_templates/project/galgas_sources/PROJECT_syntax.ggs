@@ -1,6 +1,6 @@
 syntax %PROJECT_NAME%_syntax :
 import lexique %PROJECT_NAME%_lexique in "%PROJECT_NAME%_lexique.ggs" ;
-import option %PROJECT_NAME%_options in "%PROJECT_NAME%_options.ggs" ;
+import option %PROJECT_NAME%_options in "%PROJECT_NAME%_options.gOption" ;
 import semantics %PROJECT_NAME%_semantics in "%PROJECT_NAME%_semantics.ggs" ;
 
 # ADD YOUR CODE HERE
