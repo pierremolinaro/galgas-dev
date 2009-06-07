@@ -12,7 +12,7 @@ sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/all_PROJECT.ggs >
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_cocoa.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_cocoa.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_grammar.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_grammar.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_lexique.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_lexique.ggs &&
-sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_options.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_options.ggs &&
+sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_options.gOption > ${DIR}/actual_templates/project/galgas_sources/PROJECT_options.gOption &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_program.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_program.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_semantics.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_semantics.ggs &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/galgas_sources/PROJECT_syntax.ggs > ${DIR}/actual_templates/project/galgas_sources/PROJECT_syntax.ggs &&
@@ -70,7 +70,4 @@ rm -f ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/* &&
 cp ${DIR}/PROJECT/makefile_x86linux_on_macosx/build.command ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/build.command &&
 cp ${DIR}/PROJECT/makefile_x86linux_on_macosx/clean.command ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/clean.command &&
 sed "s/PROJECT/%PROJECT_NAME%/g" ${DIR}/PROJECT/makefile_x86linux_on_macosx/makefile > ${DIR}/actual_templates/project/makefile_x86linux_on_macosx/makefile &&
-#------------------------------------------------------------------------- MDA Project
-rm -f ${DIR}/actual_templates/mda-project/project_xcode/* &&
-sed "s/MDA_PROJECT/%PROJECT_NAME%/g" ${DIR}/MDA_PROJECT/project_xcode/MDA_PROJECT.xcodeproj/project.pbxproj > ${DIR}/actual_templates/mda-project/project_xcode/project.pbxproj &&
 echo "---------------- SUCCES --------------------------"

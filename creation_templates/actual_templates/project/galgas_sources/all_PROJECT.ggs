@@ -1,6 +1,6 @@
 project all_%PROJECT_NAME% :
   lexique "%PROJECT_NAME%_lexique.ggs" : makefile, xcode_tool, xcode_app ;
-  option "%PROJECT_NAME%_options.ggs" : makefile, xcode_tool, xcode_app ;
+  option "%PROJECT_NAME%_options.gOption" : makefile, xcode_tool, xcode_app ;
   semantics "%PROJECT_NAME%_semantics.ggs" : makefile, xcode_tool ;
   syntax "%PROJECT_NAME%_syntax.ggs" : makefile, xcode_tool ;
   grammar "%PROJECT_NAME%_grammar.ggs" : makefile, xcode_tool ;

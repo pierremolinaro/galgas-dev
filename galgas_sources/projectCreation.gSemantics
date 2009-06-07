@@ -33,7 +33,7 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
   template PROJECT_cocoa "/galgas_sources/PROJECT_cocoa.ggs" ?@string PROJECT_NAME ;
   template PROJECT_grammar "/galgas_sources/PROJECT_grammar.ggs" ?@string PROJECT_NAME ;
   template PROJECT_lexique "/galgas_sources/PROJECT_lexique.ggs" ?@string PROJECT_NAME ;
-  template PROJECT_options "/galgas_sources/PROJECT_options.ggs" ?@string PROJECT_NAME ;
+  template PROJECT_options "/galgas_sources/PROJECT_options.gOption" ?@string PROJECT_NAME ;
   template PROJECT_program "/galgas_sources/PROJECT_program.ggs" ?@string PROJECT_NAME ;
   template PROJECT_semantics "/galgas_sources/PROJECT_semantics.ggs" ?@string PROJECT_NAME ;
   template PROJECT_syntax "/galgas_sources/PROJECT_syntax.ggs" ?@string PROJECT_NAME ;
@@ -69,7 +69,7 @@ routine performProjectCreation ??@string inProjectName :
   [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_cocoa.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_grammar !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_grammar.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_lexique !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_lexique.ggs"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_options !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_options.ggs"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_options !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_options.gOption"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_program !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_program.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_semantics !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_semantics.ggs"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_syntax !inProjectName] writeToFile !galgas_sources_DIR ."/" .inProjectName ."_syntax.ggs"] ;

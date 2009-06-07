@@ -1,4 +1,0 @@
-gui MDA_PROJECT_cocoa "cocoa" :
-import metamodel MDA_PROJECT_metamodel in "MDA_PROJECT_metamodel.ggs" ;
-import grammar MDA_PROJECT_grammar in "MDA_PROJECT_grammar.ggs" ;
-end gui ;

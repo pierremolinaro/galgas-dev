@@ -1,6 +1,6 @@
 syntax PROJECT_syntax :
 import lexique PROJECT_lexique in "PROJECT_lexique.ggs" ;
-import option PROJECT_options in "PROJECT_options.ggs" ;
+import option PROJECT_options in "PROJECT_options.gOption" ;
 import semantics PROJECT_semantics in "PROJECT_semantics.ggs" ;
 
 # ADD YOUR CODE HERE

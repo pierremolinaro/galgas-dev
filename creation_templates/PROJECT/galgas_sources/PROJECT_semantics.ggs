@@ -1,5 +1,5 @@
 semantics PROJECT_semantics :
-  import option PROJECT_options in "PROJECT_options.ggs" ;
+  import option PROJECT_options in "PROJECT_options.gOption" ;
 
 # ADD YOUR CODE HERE
 

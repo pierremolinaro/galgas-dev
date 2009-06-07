@@ -1,9 +1,0 @@
-treewalking MDA_PROJECT_treewalking (MDA_PROJECT_metamodel) :
-import "MDA_PROJECT_metamodel.ggs" ;
-import metamodel MDA_PROJECT_metamodel in "MDA_PROJECT_metamodel.ggs" ;
-import semantics MDA_PROJECT_semantics in "MDA_PROJECT_semantics.ggs" ;
-
-rule @MDA_PROJECT_root :
-end rule ;
-
-end treewalking ;
