@@ -31,345 +31,375 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
 #--- enterHexDigitIntoASCIIcharacter
   @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList [emptyList] ;
   @stringlist mErrorMessageList [emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] !"ioASCIICharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inHexDigitCharacter" ;
   mErrorMessageList += !"inErrorCodeGreaterThan255" ;
   mErrorMessageList += !"inErrorNotHexDigitCharacter" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterHexDigitIntoASCIIcharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterDigitIntoASCIIcharacter
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] !"ioASCIICharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inDecimalDigitCharacter" ;
   mErrorMessageList += !"inErrorCodeGreaterThan255" ;
   mErrorMessageList += !"inErrorNotHexDigitCharacter" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterDigitIntoASCIIcharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterCharacterIntoString
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] !"ioString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inCharacter" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterCharacterIntoString" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertStringToDouble
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_double] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_double] !"ioDouble" ;
   mErrorMessageList += !"inConversionError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertStringToDouble" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterCharacterIntoCharacter
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] !"ioCharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inCharacter" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterCharacterIntoCharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- negateSInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] !"ioNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"negateSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- negateSInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] !"ioNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"negateSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertUIntToSInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint] !"inUnsignedNumber" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] !"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertUIntToSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertUInt64ToSInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint64] !"inUnsignedNumber" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] !"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertUInt64ToSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterDigitIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inDecimalDigitCharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterDigitIntoUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inDecimalDigitCharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterHexDigitIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inHexDigitCharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterHexDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterHexDigitIntoUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inHexDigitCharacter" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterHexDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertDecimalStringIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertDecimalStringIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertDecimalStringIntoSInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] !"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertDecimalStringIntoSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertDecimalStringIntoUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertDecimalStringIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertDecimalStringIntoSInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] !"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotDecimalDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertDecimalStringIntoSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterBinDigitIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotBinDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterBinDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterBinDigitIntoUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotBinDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterBinDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterOctDigitIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotOctDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterOctDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- enterOctDigitIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotOctDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterOctDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- multiplyUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint] !"inUnsignedNumber"  ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inResultTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"multiplyUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- multiplyUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint]!"inUnsignedNumber" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inResultTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"multiplyUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertHexStringIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint]!"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertHexStringIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertHexStringIntoUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64]!"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertHexStringIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertHexStringIntoSInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string]!"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint]!"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertHexStringIntoSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertHexStringIntoSInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string]!"inString"  ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64]!"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotHexDigitError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertHexStringIntoSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertUnsignedNumberToUnicodeChar
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"inUnsignedNumber" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] !"ioUnicodeCharacter" ;
   mErrorMessageList += !"inUnassignedUnicodeValueError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertUnsignedNumberToUnicodeChar" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- convertHTMLSequenceToUnicodeCharacter
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] !"inString";
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] !"ioUnicodeCharacter" ;
   mErrorMessageList += !"inUnassignedHTMLSequenceError" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"convertHTMLSequenceToUnicodeCharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 #--- codePointToUnicode
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inCodePointString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] !"ioString" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"codePointToUnicode" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
+    !""
   ] ;
 end routine ;
 
@@ -380,20 +410,22 @@ end routine ;
 routine buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap :
   outLexicalFunctionMap := [@lexicalFunctionMap emptyMap] ;
 #--- toLower
-  @lexicalTypeList lexicalTypeList [emptyList] ;
-  lexicalTypeList += ![@lexicalTypeEnum lexicalType_char] ;
+  @lexicalFunctionFormalArgumentList lexicalTypeList [emptyList] ;
+  lexicalTypeList += ![@lexicalTypeEnum lexicalType_char] !"inCharacter" ;
   [!?outLexicalFunctionMap insertKey
     ![@lstring new !"toLower" !here]
     !lexicalTypeList
     ![@lexicalTypeEnum lexicalType_char]
+    !""
   ] ;
 #--- toUpper
-  lexicalTypeList := [@lexicalTypeList emptyList] ;
-  lexicalTypeList += ![@lexicalTypeEnum lexicalType_char] ;
+  lexicalTypeList := [@lexicalFunctionFormalArgumentList emptyList] ;
+  lexicalTypeList += ![@lexicalTypeEnum lexicalType_char] !"inCharacter" ;
   [!?outLexicalFunctionMap insertKey
     ![@lstring new !"toUpper" !here]
     !lexicalTypeList
     ![@lexicalTypeEnum lexicalType_char]
+    !""
   ] ;
 end routine ;
 
@@ -411,14 +443,18 @@ routine printPredefinedLexicalActions :
   foreach lexicalRoutineMap do
     s .= key ;
     foreach mLexicalRoutineFormalArgumentList do
-      s .= " " . [mLexicalArgumentMode lexicalFormalModeName] . [mLexicalType lexicalTypeName] ;
+      s .= " " . [mLexicalArgumentMode lexicalFormalModeName] . [mLexicalType lexicalTypeName] . " " . mArgumentNameForComment ;
     end foreach ;
     foreach mErrorMessageList
     before s .= " error" ;
     do s .= " " . mValue ;
     between s .= "," ;
     end foreach ;
-    s .= " ;\n\n" ;
+    s .= " ;\n" ;
+    if mReplacementRoutineName != "" then
+      s .= "Note: the '" . key . "' routine is obsolete: use '" . mReplacementRoutineName . "' routine.\n" ;
+    end if ;
+    s .= "\n" ;
   end foreach ;
 #--------------------------------------- Build lexical function map
   @lexicalFunctionMap lexicalFunctionMap ;
@@ -428,9 +464,14 @@ routine printPredefinedLexicalActions :
   foreach lexicalFunctionMap do
     s .= key ;
     foreach mLexicalTypeList do
-      s .= " ?" . [mLexicalType lexicalTypeName] ;
+      s .= " ?" . [mLexicalType lexicalTypeName]. " " . mArgumentNameForComment ;
     end foreach ;
     s .= " -> " . [mReturnedLexicalType lexicalTypeName] . " ;\n\n" ;
+    s .= " ;\n" ;
+    if mReplacementFunctionName != "" then
+      s .= "Note: the '" . key . "' function is obsolete: use '" . mReplacementFunctionName . "' function.\n" ;
+    end if ;
+    s .= "\n" ;
   end foreach ;
 #--------------------------------------- Display
   s .= "************************************************************\n" ;
