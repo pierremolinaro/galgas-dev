@@ -243,7 +243,7 @@ list @lexicalRoutineCallActualArgumentList {
 #---------------------------------------------------------------------------*
 
 class @lexicalRoutineInstruction extends @lexicalInstruction {
-  @lstring mActionName ;
+  @lstring mRoutineName ;
   @lexicalRoutineCallActualArgumentList mActualArgumentList ;
   @lstringlist mErrorMessageList ;
 }

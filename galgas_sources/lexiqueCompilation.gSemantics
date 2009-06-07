@@ -174,13 +174,19 @@ override method @lexicalFunctionInputArgument checkLexicalRoutineOrFunctionCallA
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
 #--- Check attribute definition
-  @lexicalTypeList lexicalFormalTypeList ;
+  @lexicalFunctionFormalArgumentList lexicalFormalTypeList ;
   @lexicalTypeEnum returnedLexicalFormalType ;
+  @string replacementFunctionName ;
   [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
     !mFunctionName
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
+    ?replacementFunctionName
   ] ;
+#--- Obsolete function ?
+  if replacementFunctionName != "" then
+    warning mFunctionName:"obsolete lexical function, replaced by '" . replacementFunctionName . "'" ;
+  end if ;
 #--- Returned type check
   if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
     error mFunctionName:"type error, the function returns an "
@@ -327,14 +333,20 @@ override method @lexicalRoutineInstruction checkLexicalInstruction
 :
   @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList ;
   @stringlist routineErrorMessageList ;
+  @string replacementRoutineName ;
   [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
-    !mActionName
+    !mRoutineName
     ?lexicalRoutineFormalArgumentList
     ?routineErrorMessageList
+    ?replacementRoutineName
   ] ;
+#--- Obsolete routine ?
+  if replacementRoutineName != "" then
+    warning mRoutineName:"obsolete lexical routine, replaced by '" . replacementRoutineName . "'" ;
+  end if ;
 #--- Check actual argument count
   if [lexicalRoutineFormalArgumentList length] != [mActualArgumentList length] then
-    error mActionName: "this lexical routine call names "
+    error mRoutineName: "this lexical routine call names "
     . [[mActualArgumentList length] string]
     . " actual argument(s), but the lexical routine prototype requires "
     . [[lexicalRoutineFormalArgumentList length] string] . " actual argument(s)" ;
@@ -349,7 +361,7 @@ override method @lexicalRoutineInstruction checkLexicalInstruction
   end foreach ;
 #--- Check error message count
   if [routineErrorMessageList length] != [mErrorMessageList length] then
-    error mActionName: "this lexical routine call names "
+    error mRoutineName: "this lexical routine call names "
     . [[mErrorMessageList length] string]
     . " error message(s), but the lexical routine prototype requires "
     . [[routineErrorMessageList length] string] . " error message(s)" ;

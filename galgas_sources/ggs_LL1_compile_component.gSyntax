@@ -204,7 +204,7 @@ rule <galgas_component>
       message "------ Compile file '" . [fileName string] . "'\n" ;
     end if ;
   #--- Compile file
-    if sourceFileKind == [@EXsourceFileKind optionSourceFile] then
+    if (sourceFileKind == [@EXsourceFileKind optionSourceFile]) & ([fileName pathExtension] == "gOption") then
       @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
       compileOptionComponent !fileName !s ;
     elsif sourceFileKind != [@EXsourceFileKind externSourceFile] then
