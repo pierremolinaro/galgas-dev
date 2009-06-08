@@ -149,6 +149,7 @@ end rule ;
 rule <formal_input_parameter_list> !@formalInputParameterList outFormalInputParameterList :
   outFormalInputParameterList := [@formalInputParameterList emptyList] ;
   repeat
+  while
     $?$ ;
     $type_name$ ?@lstring mFormalParameterTypeName ;
     @bool mIsUnused ;
@@ -164,7 +165,6 @@ rule <formal_input_parameter_list> !@formalInputParameterList outFormalInputPara
       !mFormalParameterName
       !mIsUnused
     ;
-  while
   end repeat ;
 end rule ;
 
