@@ -3,7 +3,7 @@ program xml_parsing_program "version 1.0.0":
 #--- Import clauses
 import semantics xml_parsing_semantics in "xml_parsing_semantics.ggs" ;
 import semantics xml_types in "../../../../libpm/galgas_components/xml_types.ggs" ;
-import option xml_parsing_options in "xml_parsing_options.ggs" ;
+import option xml_parsing_options in "xml_parsing_options.gOption" ;
 import grammar xml_parsing_grammar in "../../../../libpm/galgas_components/xml_parsing_grammar.ggs" ;
 
 #--- Prologue routine

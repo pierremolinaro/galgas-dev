@@ -26,6 +26,20 @@ import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantic
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
+#         G E N E R A T I O N    T E M P L A T E S                          *
+#---------------------------------------------------------------------------*
+
+filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
+ "h", "cpp"
+} {
+  template headerZone2 "lexique_header_template_zone_2.h"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@string USER_DEFINED_ATTRIBUTE_DECLARATION
+  ;
+  template headerZone3 "lexique_header_template_zone_3.h" ;
+}
+
+#---------------------------------------------------------------------------*
 #                     checkLexicalDefaultAction                             *
 #---------------------------------------------------------------------------*
 
@@ -107,17 +121,17 @@ override method @lexicalStringNotMatch checkLexicalExpression
 end method ;
 
 #---------------------------------------------------------------------------*
-#                       checkLexicalRoutineCallArgument                     *
+#                       checkLexicalFunctionCallArgument                    *
 #---------------------------------------------------------------------------*
 
-abstract method @lexicalRoutineOrFunctionFormalInputArgument checkLexicalRoutineOrFunctionCallArgument
+abstract method @lexicalRoutineOrFunctionFormalInputArgument checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalAttributeInputArgument checkLexicalRoutineOrFunctionCallArgument
+override method @lexicalAttributeInputArgument checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -139,7 +153,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCharacterInputArgument checkLexicalRoutineOrFunctionCallArgument
+override method @lexicalCharacterInputArgument checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -154,7 +168,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalCurrentCharacterInputArgument checkLexicalRoutineOrFunctionCallArgument
+override method @lexicalCurrentCharacterInputArgument checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -169,7 +183,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @lexicalFunctionInputArgument checkLexicalRoutineOrFunctionCallArgument
+override method @lexicalFunctionInputArgument checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
@@ -204,11 +218,115 @@ override method @lexicalFunctionInputArgument checkLexicalRoutineOrFunctionCallA
   end if ;
 #--- Check actual argument against formal parameters
   foreach lexicalFormalTypeList, mFunctionActualArgumentList do
-#    [mLexicalActualInputArgument checkLexicalRoutineCallArgument
-#      !?ioLexiqueAnalysisContext
-#      ![@lexicalArgumentMode lexicalInputMode]
-#      !mLexicalType
-#    ] ;
+    [mLexicalActualInputArgument checkLexicalFunctionCallArgument
+      !?ioLexiqueAnalysisContext
+      !mLexicalType
+    ] ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalRoutineCallArgument                     *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalAttributeInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType ;
+  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+    !mAttributeName
+    ?attributeLexicalType
+  ] ;
+#--- Type check
+  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+    error mAttributeName:"type error, attribute type is "
+    . [attributeLexicalType lexicalTypeName]
+    . " type, but lexical routine prototype requires "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Type check
+  if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
+    error mCharacter:"type error, a literal character has @char "
+    . " type, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type value" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCurrentCharacterInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Type check
+  if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
+    error mLocation:"type error, current character value has @char "
+    . " type, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type value" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalFunctionInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Check attribute definition
+  @lexicalFunctionFormalArgumentList lexicalFormalTypeList ;
+  @lexicalTypeEnum returnedLexicalFormalType ;
+  @string replacementFunctionName ;
+  [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
+    !mFunctionName
+    ?lexicalFormalTypeList
+    ?returnedLexicalFormalType
+    ?replacementFunctionName
+  ] ;
+#--- Obsolete function ?
+  if replacementFunctionName != "" then
+    warning mFunctionName:"obsolete lexical function, replaced by '" . replacementFunctionName . "'" ;
+  end if ;
+#--- Returned type check
+  if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
+    error mFunctionName:"type error, the function returns an "
+    . [returnedLexicalFormalType lexicalTypeName]
+    . " value, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " value" ;
+  end if ;
+#--- Check actual argument count
+  if [lexicalFormalTypeList length] != [mFunctionActualArgumentList length] then
+    error mFunctionName: "this lexical function names "
+    . [[mFunctionActualArgumentList length] string]
+    . " actual argument(s), but the prototype requires "
+    . [[lexicalFormalTypeList length] string] . " actual argument(s)" ;
+  end if ;
+#--- Check actual argument against formal parameters
+  foreach lexicalFormalTypeList, mFunctionActualArgumentList do
+    [mLexicalActualInputArgument checkLexicalFunctionCallArgument
+      !?ioLexiqueAnalysisContext
+      !mLexicalType
+    ] ;
   end foreach ;
 end method ;
 
@@ -258,7 +376,7 @@ override method @lexicalFormalInputArgument checkLexicalRoutineCallArgument
 :
 #--- Check attribute definition
   @lexicalTypeEnum attributeLexicalType ;
-  [mRoutineOrFunctionFormalInputArgument checkLexicalRoutineOrFunctionCallArgument
+  [mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
     !?ioLexiqueAnalysisContext
     !inLexicalRoutineFormalArgumentType
   ] ;
@@ -355,8 +473,8 @@ override method @lexicalRoutineInstruction checkLexicalInstruction
   foreach lexicalRoutineFormalArgumentList, mActualArgumentList do
     [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
       !?ioLexiqueAnalysisContext
-      !mLexicalArgumentMode
-      !mLexicalType
+      !mLexicalFormalArgumentMode
+      !mLexicalFormalArgumentType
     ] ;
   end foreach ;
 #--- Check error message count
@@ -453,7 +571,7 @@ end method ;
 
 routine compileLexiqueComponent
   ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
+  ??@string inOutputDirectory
 :
   @lexiqueComponentRoot lexiqueComponentRoot ;
   grammar lexiqueLL1grammar in inSourceFile ?lexiqueComponentRoot ;
@@ -545,7 +663,18 @@ routine compileLexiqueComponent
       warning key:"unused message" ;
     end if ;
   end foreach ;
-
+#--------------------------------------- Build Header file
+  @string lexiqueClassName := [componentName string] ;
+#--- Generate header file
+  [@string generateFile
+    !inOutputDirectory
+    !lexiqueClassName . ".h"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    ![filewrapper lexiqueGenerationTemplates.headerZone2 !lexiqueClassName !""]
+    !"\n\n" # Defaut user zone2
+    ![filewrapper lexiqueGenerationTemplates.headerZone3]
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

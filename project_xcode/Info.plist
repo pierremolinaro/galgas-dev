@@ -95,28 +95,6 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>gMetamodel</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS metamodel Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
 				<string>gSyntax</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
@@ -189,28 +167,6 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS program Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gTreewalking</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS treewalking Component</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>TEXT</string>

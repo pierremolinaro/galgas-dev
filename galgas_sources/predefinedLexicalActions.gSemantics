@@ -47,7 +47,7 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
   mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_char] !"ioASCIICharacter" ;
   mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inDecimalDigitCharacter" ;
   mErrorMessageList += !"inErrorCodeGreaterThan255" ;
-  mErrorMessageList += !"inErrorNotHexDigitCharacter" ;
+  mErrorMessageList += !"inErrorNotDecimalDigitCharacter" ;
   [!?outLexicalRoutineMap insertKey
     ![@lstring new !"enterDigitIntoASCIIcharacter" !here]
     !mLexicalRoutineFormalArgumentList
@@ -113,7 +113,7 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
 #--- convertUIntToSInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint] !"inUnsignedNumber" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint] !"inUnsignedNumber" ;
   mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint] !"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
@@ -125,7 +125,7 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
 #--- convertUInt64ToSInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_sint64] !"inUnsignedNumber" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_uint64] !"inUnsignedNumber" ;
   mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_sint64] !"ioSignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   [!?outLexicalRoutineMap insertKey
@@ -443,7 +443,7 @@ routine printPredefinedLexicalActions :
   foreach lexicalRoutineMap do
     s .= key ;
     foreach mLexicalRoutineFormalArgumentList do
-      s .= " " . [mLexicalArgumentMode lexicalFormalModeName] . [mLexicalType lexicalTypeName] . " " . mArgumentNameForComment ;
+      s .= " " . [mLexicalFormalArgumentMode lexicalFormalModeName] . [mLexicalFormalArgumentType lexicalTypeName] . " " . mArgumentNameForComment ;
     end foreach ;
     foreach mErrorMessageList
     before s .= " error" ;
@@ -466,8 +466,7 @@ routine printPredefinedLexicalActions :
     foreach mLexicalTypeList do
       s .= " ?" . [mLexicalType lexicalTypeName]. " " . mArgumentNameForComment ;
     end foreach ;
-    s .= " -> " . [mReturnedLexicalType lexicalTypeName] . " ;\n\n" ;
-    s .= " ;\n" ;
+    s .= " -> " . [mReturnedLexicalType lexicalTypeName] . " ;\n" ;
     if mReplacementFunctionName != "" then
       s .= "Note: the '" . key . "' function is obsolete: use '" . mReplacementFunctionName . "' function.\n" ;
     end if ;
