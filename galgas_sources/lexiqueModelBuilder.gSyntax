@@ -390,8 +390,18 @@ end rule ;
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgument outEffectiveArgument
 :
+  $unsigned_literal_integer$ ?@luint unsignedValue ;
+  outEffectiveArgument := [@lexicalUnsignedInputArgument new !unsignedValue] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_output_effective_argument>
+  !@lexicalRoutineOrFunctionFormalInputArgument outEffectiveArgument
+:
+  @location currentLocation := here ;
   $*$ ;
-  outEffectiveArgument := [@lexicalCurrentCharacterInputArgument new !here] ;
+  outEffectiveArgument := [@lexicalCurrentCharacterInputArgument new !currentLocation] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

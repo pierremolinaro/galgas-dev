@@ -264,7 +264,22 @@ override method @lexicalCharacterInputArgument checkLexicalRoutineCallArgument
 :
 #--- Type check
   if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
-    error mCharacter:"type error, a literal character has @char "
+    error mCharacter:"type error, a literal character has @char"
+    . " type, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type value" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalUnsignedInputArgument checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Type check
+  if [@lexicalTypeEnum lexicalType_uint] != inLexicalRoutineFormalArgumentType then
+    error mUnsigned:"type error, a literal unsigned value has @uint"
     . " type, but lexical routine prototype requires an "
     . [inLexicalRoutineFormalArgumentType lexicalTypeName]
     . " type value" ;
@@ -279,7 +294,7 @@ override method @lexicalCurrentCharacterInputArgument checkLexicalRoutineCallArg
 :
 #--- Type check
   if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
-    error mLocation:"type error, current character value has @char "
+    error mLocation:"type error, current character value has @char"
     . " type, but lexical routine prototype requires an "
     . [inLexicalRoutineFormalArgumentType lexicalTypeName]
     . " type value" ;

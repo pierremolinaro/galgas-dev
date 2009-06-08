@@ -285,6 +285,12 @@ class @lexicalCharacterInputArgument extends @lexicalRoutineOrFunctionFormalInpu
 
 #---------------------------------------------------------------------------*
 
+class @lexicalUnsignedInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
+  @luint mUnsigned ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @lexicalCurrentCharacterInputArgument extends @lexicalRoutineOrFunctionFormalInputArgument {
   @location mLocation ;
 }

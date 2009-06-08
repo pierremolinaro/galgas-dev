@@ -241,7 +241,7 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
 #--- enterBinDigitIntoUInt
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inCharacter" ;
   mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotBinDigitError" ;
@@ -254,7 +254,7 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
 #--- enterBinDigitIntoUInt64
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
-  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_string] !"inString" ;
+  mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputMode] ![@lexicalTypeEnum lexicalType_char] !"inCharacter" ;
   mLexicalRoutineFormalArgumentList += ![@lexicalArgumentMode lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_uint64] !"ioUnsignedNumber" ;
   mErrorMessageList += !"inNumberTooLargeError" ;
   mErrorMessageList += !"inCharacterIsNotBinDigitError" ;
