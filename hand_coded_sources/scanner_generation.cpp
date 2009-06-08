@@ -1270,9 +1270,8 @@ generate_scanner_header_file (C_Compiler & inLexique,
                     "#include \"galgas/GGS_lsint64.h\"\n"
                     "#include \"galgas/GGS_lchar.h\"\n"
                     "#include \"galgas/GGS_ldouble.h\"\n"
-                    "#include \"galgas/GGS_lbool.h\"\n\n" ;
-  generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"galgas/C_Lexique.h\"\n\n" ;
+                    "#include \"galgas/GGS_lbool.h\"\n"
+                    "#include \"galgas/C_Lexique.h\"\n\n" ;
 
 //--------------- Token Class declaration  
   generatedZone2.appendCppTitleComment ("Lexical scanner class") ;

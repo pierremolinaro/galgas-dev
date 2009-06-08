@@ -1200,9 +1200,10 @@ label importSemantics
     ?signature
   ;
 #--- Inserer dans la map des routines utilisables, -------------------------
-  [!?ioExternActionMap insertKey !routineName !signature !false] ;
-#    or verifier la coherence de la signature
- if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
+  if not [ioExternActionMap hasKey ![routineName string]] then
+    [!?ioExternActionMap insertKey !routineName !signature !false] ;
+  end if ;
+  if [ioComponentSemanticsEntitiesMap hasKey ![routineName string]] then
     @AC_semanticsEntity entite ;
     [ioComponentSemanticsEntitiesMap searchKey ! routineName ?entite] ;
     @typeEntiteRoutine precedenteDeclaration := (cast entite if == @typeEntiteRoutine else error routineName) ;

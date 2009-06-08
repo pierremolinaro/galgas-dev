@@ -93,8 +93,8 @@ enum @lexicalArgumentMode {
 #---------------------------------------------------------------------------*
 
 list @lexicalRoutineFormalArgumentList {
-  @lexicalArgumentMode mLexicalArgumentMode ;
-  @lexicalTypeEnum mLexicalType ;
+  @lexicalArgumentMode mLexicalFormalArgumentMode ;
+  @lexicalTypeEnum mLexicalFormalArgumentType ;
   @string mArgumentNameForComment ;
  }
 
