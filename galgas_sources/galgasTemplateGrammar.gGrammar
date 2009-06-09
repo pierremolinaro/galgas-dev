@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  Template LL1 grammar                                                     *
+#  Template SLR grammar                                                     *
 #                                                                           *
 #  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
 #                                                                           *
@@ -17,9 +17,10 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar galgasTemplateGrammar "LL1" :
+grammar galgasTemplateGrammar "SLR" :
   import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
   import syntax galgasTemplateParser in "galgasTemplateParser.gSyntax" ;
+  import syntax templateExpressionParser in "templateExpressionParser.gSyntax" ;
 
   root <lexique_component_start_symbol>
     ?!@typeVariablesMap ioTemplateVariableMap
