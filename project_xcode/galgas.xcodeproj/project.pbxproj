@@ -198,6 +198,12 @@
 		CF546D9B0A347E450076D39C /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
 		CF546DA50A347E460076D39C /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
 		CF546DA70A347E460076D39C /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
+		CF580BDA0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
+		CF580BDB0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
+		CF580BDC0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
+		CF580BDD0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
+		CF580BDE0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
+		CF580BDF0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */; };
 		CF59F05D0D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
 		CF59F05F0D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
 		CF59F0620D71CB6000427156 /* wrapper_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */; };
@@ -1304,6 +1310,8 @@
 		CF546DC10A3481C80076D39C /* include_typeGalgas_luint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_luint64.h; sourceTree = "<group>"; };
 		CF546DC20A3481C80076D39C /* include_typeGalgas_sint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_sint64.h; sourceTree = "<group>"; };
 		CF546DC30A3481C80076D39C /* include_typeGalgas_uint64.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_uint64.h; sourceTree = "<group>"; };
+		CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateExpressionParser.cpp; sourceTree = "<group>"; };
+		CF580BD90FDE862F003EBACF /* templateExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateExpressionParser.h; sourceTree = "<group>"; };
 		CF59EFED0D71CAB700427156 /* include_C_wrapperToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_wrapperToImplement.h; sourceTree = "<group>"; };
 		CF59EFF50D71CAB700427156 /* include_multipleReferenceGalgasType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_multipleReferenceGalgasType.h; sourceTree = "<group>"; };
 		CF59F05C0D71CB6000427156 /* wrapper_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrapper_generation.cpp; sourceTree = "<group>"; };
@@ -2313,6 +2321,8 @@
 		CFDE72200D85C5DE00596413 /* Template Scanner */ = {
 			isa = PBXGroup;
 			children = (
+				CF580BD80FDE862F003EBACF /* templateExpressionParser.cpp */,
+				CF580BD90FDE862F003EBACF /* templateExpressionParser.h */,
 				CFCB12570D9D74330016BE3F /* galgasTemplateGrammar.cpp */,
 				CFCB12580D9D74330016BE3F /* galgasTemplateGrammar.h */,
 				CFCB12590D9D74330016BE3F /* galgasTemplateParser.cpp */,
@@ -3313,6 +3323,7 @@
 				CF03A56E0FD9980D00D079B7 /* optionMetamodel.cpp in Sources */,
 				CF03A56F0FD9980E00D079B7 /* optionModelBuilder.cpp in Sources */,
 				CF03A5700FD9980F00D079B7 /* optionLL1grammar.cpp in Sources */,
+				CF580BDA0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3486,6 +3497,7 @@
 				CFD3E8640FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
+				CF580BDC0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3659,6 +3671,7 @@
 				CFD3E8670FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577010FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA860FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
+				CF580BDD0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3850,6 +3863,7 @@
 				CF03A5740FD9982000D079B7 /* optionModelBuilder.cpp in Sources */,
 				CF03A5750FD9982100D079B7 /* optionLL1grammar.cpp in Sources */,
 				CF03A5760FD9982200D079B7 /* optionCompilation.cpp in Sources */,
+				CF580BDB0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4023,6 +4037,7 @@
 				CFD3E86A0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577020FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA870FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
+				CF580BDE0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4196,6 +4211,7 @@
 				CFD3E86D0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577030FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA880FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
+				CF580BDF0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

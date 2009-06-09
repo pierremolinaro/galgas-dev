@@ -83,6 +83,7 @@ SOURCES += galgas_scanner.cpp
 SOURCES += projectCreation.cpp
 SOURCES += galgasTemplateScanner.cpp
 SOURCES += galgasTemplateParser.cpp
+SOURCES += templateExpressionParser.cpp
 SOURCES += galgasTemplateGrammar.cpp
 SOURCES += lexiqueMetamodel.cpp
 SOURCES += lexiqueModelBuilder.cpp
