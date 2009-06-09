@@ -28,7 +28,7 @@
 
 void cPtr_typeCastInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_" << mCastTypeName <<"::_castFrom (inLexique, " ;
+  ioCppFile << "GGS_" << mCastTypeName <<"::castFrom (inLexique, " ;
   mCastedExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << ".getPtr (), "
             << (mCheckForKindOfClass.boolValue () ? "true" : "false")

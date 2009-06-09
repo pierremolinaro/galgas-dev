@@ -38,15 +38,6 @@ nonterminal <expression>
 label parse
 ;
 
-nonterminal <concatenation_term>
-  ??@M_semanticsEntitiesForUse inEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  !@typeExpression outExpression
-  !@AC_galgasType outResultType
-label parse
-;
-
 nonterminal <relation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -202,41 +193,6 @@ routine matchXorOperatorForTemplate
   else
     error here : "operand type error : (" . [inLeftExpressionType messageGalgasType] .
            " | " . [inRightExpressionType messageGalgasType] . ") is not valid" 
-           -> outResultType ;
-  end match ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   M A T C H    .    O P E R A T O R                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine matchConcatOperatorForTemplate
-  ??@AC_galgasType inLeftExpressionType
-  ??@AC_galgasType inRightExpressionType
-  !@AC_galgasType outResultType
-:
-  match inLeftExpressionType :: inRightExpressionType :
-  when @typeGalgas_string () :: @typeGalgas_string () :
-    outResultType := inLeftExpressionType ;
-  when @typeGalgas_string () :: @typeGalgas_lstring () :
-    outResultType := inLeftExpressionType ;
-  when @typeGalgasUndefinedListType (@lstring kListType1) :: @typeGalgasUndefinedListType (@lstring kListType2) :
-    if [kListType1 string] != [kListType2 string] then
-      error here:"concatenation operator error: lists should have the same type (here '@" 
-        . [kListType1 string] . "' is different from '@" . [kListType2 string] . "')" ;
-    end if ;
-    outResultType := inLeftExpressionType ;
-  when @typeGalgasListmapType (@lstring kListType1 ...) :: @typeGalgasListmapType (@lstring kListType2 ...) :
-    if [kListType1 string] != [kListType2 string] then
-      error here:"concatenation operator error: listmaps should have the same type (here '@" 
-        . [kListType1 string] . "' is different from '@" . [kListType2 string] . "')" ;
-    end if ;
-    outResultType := inLeftExpressionType ;
-  else
-    error here : "concatenation operator error: @" . [inLeftExpressionType messageGalgasType] .
-           " and @" . [inRightExpressionType messageGalgasType] . " objects cannot be concatened" 
            -> outResultType ;
   end match ;
 end routine ;
@@ -602,50 +558,6 @@ end routine ;
 #------------------------------------------------------------------------------*
 
 rule <expression>
-  ??@M_semanticsEntitiesForUse inEntitiesMap
-  ??@M_optionComponents inOptionsComponentsMapForUse
-  ?!@typeVariablesMap ioVariablesMap
-  !@typeExpression outExpression
-  !@AC_galgasType outResultType
-:
-  <concatenation_term>
-    !inEntitiesMap
-    !inOptionsComponentsMapForUse
-    !?ioVariablesMap
-    ?outExpression
-    ?outResultType
-  ;
-  repeat
-  while
-    @location operatorLocation := here ;
-    $.$ ;
-    @typeExpression leftOperand := outExpression ;
-    @typeExpression rightOperand ;
-    @AC_galgasType firstOperandType := outResultType ;
-    @AC_galgasType secondOperandType ;
-    <concatenation_term>
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !?ioVariablesMap
-      ?rightOperand
-      ?secondOperandType
-    ;
-   outExpression := [@typeConcatOperation new !operatorLocation !leftOperand !rightOperand] ;
-    matchConcatOperatorForTemplate
-      !firstOperandType
-      !secondOperandType
-      ?outResultType
-     ;
-  end repeat ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   E X P R E S S I O N                                                        *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <concatenation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
@@ -1291,24 +1203,6 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    here                                                   *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor>
-  ??@M_semanticsEntitiesForUse unused inEntitiesMap
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
-  ?!@typeVariablesMap unused ioVariablesMap
-  !@typeExpression outExpression
-  !@AC_galgasType outResultType
-:
-  $here$ ;
-  outExpression := [@typeHereExpression new] ;
-  outResultType := [@typeGalgas_location new] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
 #                         F A C T O R                                          *
 #   description          :   [expression description]                          *
 #   reader call          :   [expression reader !... ]                         *
@@ -1465,28 +1359,6 @@ rule <read_access>
 :
   $identifier$ ? nomVariable ;
   [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ; 
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   R E A D    A C C E S S    T O    S E L F                                   *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <read_access>
-  !@lstring nomVariable
-  !@typeCplusPlusName nomCppEntite
-  !@AC_galgasType typeEntite
-  ?!@typeVariablesMap ioVariablesMap
-:
-  $self$ ;
-  if [ioVariablesMap hasKey !"self"] then
-    nomVariable := [@lstring new !"self" !here] ;
-    [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ;
-  else
-    error here: "'self' is not defined in this context"
-     -> nomVariable, nomCppEntite, typeEntite ;
-  end if ;
 end rule ;
 
 #------------------------------------------------------------------------------*

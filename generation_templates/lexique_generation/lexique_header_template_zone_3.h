@@ -1,6 +1,6 @@
 
 //--- Terminal symbols enumeration
-  public : enum {xml_parsing_lexique_1_,
+  public : enum {%LEXIQUE_CLASS_NAME%_1_,
   xml_parsing_lexique_1_comment,
   xml_parsing_lexique_1__3C,
   xml_parsing_lexique_1__3C_3F,
@@ -20,7 +20,7 @@
                                                               C_String & messageErreur) ;
 
 //--- Get terminal count
-  public : virtual sint16 terminalVocabularyCount (void) const { return 10 ; }
+  public : virtual sint16 terminalVocabularyCount (void) const { return %([[TERMINAL_LIST length] string])% ; }
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 //--- Enter Token

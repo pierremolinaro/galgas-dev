@@ -30,13 +30,15 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 #---------------------------------------------------------------------------*
 
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
- "h", "cpp"
 } {
   template headerZone2 "lexique_header_template_zone_2.h"
     ?@string LEXIQUE_CLASS_NAME
     ?@string USER_DEFINED_ATTRIBUTE_DECLARATION
   ;
-  template headerZone3 "lexique_header_template_zone_3.h" ;
+  template headerZone3 "lexique_header_template_zone_3.h"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@terminalList TERMINAL_LIST
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -159,7 +161,22 @@ override method @lexicalCharacterInputArgument checkLexicalFunctionCallArgument
 :
 #--- Type check
   if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
-    error mCharacter:"type error, a literal character has @char "
+    error mCharacter:"type error, a literal character has @char"
+    . " type, but lexical routine prototype requires an "
+    . [inLexicalRoutineFormalArgumentType lexicalTypeName]
+    . " type value" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalUnsignedInputArgument checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
+:
+#--- Type check
+  if [@lexicalTypeEnum lexicalType_uint] != inLexicalRoutineFormalArgumentType then
+    error mUnsigned:"type error, a literal character has @uint"
     . " type, but lexical routine prototype requires an "
     . [inLexicalRoutineFormalArgumentType lexicalTypeName]
     . " type value" ;
@@ -174,7 +191,7 @@ override method @lexicalCurrentCharacterInputArgument checkLexicalFunctionCallAr
 :
 #--- Type check
   if [@lexicalTypeEnum lexicalType_char] != inLexicalRoutineFormalArgumentType then
-    error mLocation:"type error, current character value has @char "
+    error mLocation:"type error, current character value has @char"
     . " type, but lexical routine prototype requires an "
     . [inLexicalRoutineFormalArgumentType lexicalTypeName]
     . " type value" ;
@@ -620,6 +637,7 @@ routine compileLexiqueComponent
     !lexicalFunctionMap
     ![@lexicalMessageMap emptyMap]
     ![@terminalMap emptyMap]
+    ![@terminalList emptyList]
     ![@lexicalAttributeMap emptyMap]
     ![@lexicalExplicitTokenListMapMap emptyMap]
   ] ;
@@ -649,6 +667,7 @@ routine compileLexiqueComponent
       argumentTypeList += !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList] ;
+    lexiqueAnalysisContext.mTerminalList += !mName !argumentTypeList ;
   end foreach ;
   foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
     @lexicalTypeList argumentTypeList [emptyList] ;
@@ -659,6 +678,7 @@ routine compileLexiqueComponent
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     foreach mEntryList do
+      lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList ;
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
     end foreach ;
@@ -681,15 +701,23 @@ routine compileLexiqueComponent
 #--------------------------------------- Build Header file
   @string lexiqueClassName := [componentName string] ;
 #--- Generate header file
-  [@string generateFile
-    !inOutputDirectory
-    !lexiqueClassName . ".h"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    ![filewrapper lexiqueGenerationTemplates.headerZone2 !lexiqueClassName !""]
-    !"\n\n" # Defaut user zone2
-    ![filewrapper lexiqueGenerationTemplates.headerZone3]
-  ] ;
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      !lexiqueClassName . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.headerZone2
+         !lexiqueClassName
+         !""
+       ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper lexiqueGenerationTemplates.headerZone3
+         !lexiqueClassName
+         ![lexiqueAnalysisContext mTerminalList]
+       ]
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

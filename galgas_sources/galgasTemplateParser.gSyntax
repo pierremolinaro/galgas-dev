@@ -24,13 +24,24 @@ import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 nonterminal <lexique_component_start_symbol>
   ?!@typeVariablesMap ioTemplateVariableMap
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
   !@templateInstructionList outResultingInstructionList
 ;
 
 nonterminal <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
+;
+
+nonterminal <expression>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+label parse
 ;
 
 #---------------------------------------------------------------------------*
@@ -48,7 +59,31 @@ end routine ;
 
 rule <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
+  ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+:
+  @typeExpression expression ;
+  @AC_galgasType resultType ;
+  $($ ;
+  <expression>
+    !inComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    !?ioTemplateVariableMap
+    ?expression
+    ?resultType
+  ;
+  @typeGalgas_string x := (cast resultType if >= @typeGalgas_string else error here) ;
+  ioResultingInstructionList += ![@templateInstructionExpression new !expression] ;
+  $)$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@typeVariablesMap ioTemplateVariableMap
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
 :
   @lstring parameterName ;
@@ -65,6 +100,7 @@ end rule ;
 rule <lexique_component_start_symbol>
   ?!@typeVariablesMap ioTemplateVariableMap
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
   !@templateInstructionList outResultingInstructionList
 :
   outResultingInstructionList := [@templateInstructionList emptyList] ;
@@ -75,6 +111,7 @@ rule <lexique_component_start_symbol>
       <template_instruction>
         !?ioTemplateVariableMap
         !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
         !?outResultingInstructionList
       ;
       enterTemplateString !?outResultingInstructionList ;

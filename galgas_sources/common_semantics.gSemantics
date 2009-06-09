@@ -4609,9 +4609,24 @@ list @templateInstructionList {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#   E X P R E S S I O N    A B S T R A C T    C L A S S                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @typeExpression feature generatedInSeparateFile {
+}
+ 
+#---------------------------------------------------------------------------*
 
 class @templateInstructionString extends @templateInstruction {
   @string mTemplateString feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionExpression extends @templateInstruction {
+  @typeExpression mExpression feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

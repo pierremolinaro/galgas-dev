@@ -54,6 +54,13 @@ map @terminalMap {
 
 #---------------------------------------------------------------------------*
 
+list @terminalList {
+  @lstring mTerminalName ;
+  @lexicalTypeList mArgumentTypeList ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @lexicalExplicitTokenListMap {
   @lstring mTerminal ;
   @lstringlist mFeatureList ;
@@ -125,6 +132,7 @@ map @lexicalFunctionMap {
   search searchKey error message "the '%K' lexical function is not declared" ;
 }
 
+
 #---------------------------------------------------------------------------*
 
 struct @lexiqueAnalysisContext {
@@ -132,6 +140,7 @@ struct @lexiqueAnalysisContext {
   @lexicalFunctionMap mLexicalFunctionMap ;
   @lexicalMessageMap mLexicalMessageMap ;
   @terminalMap mTerminalMap ;
+  @terminalList mTerminalList ;
   @lexicalAttributeMap mLexicalAttributeMap ;
   @lexicalExplicitTokenListMapMap mLexicalTokenListMapMap ;
 }

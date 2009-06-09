@@ -889,13 +889,16 @@ rule <semantic_declaration>
   $literal_string$ ? @lstring mFilewrapperPath ;
   ${$ ;
   @lstringlist mFilewrapperExtensionList [emptyList] ;
-  repeat
-    @lstring extension ;
-    $literal_string$ ? extension ;
-    mFilewrapperExtensionList += !extension ;
-  while
-    $,$ ;
-  end repeat ;
+  select
+  or
+    repeat
+      @lstring extension ;
+      $literal_string$ ? extension ;
+      mFilewrapperExtensionList += !extension ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
   $}$ ;
   ${$ ;
   @filewrapperTemplateList mFilewrapperTemplateList [emptyList] ;
