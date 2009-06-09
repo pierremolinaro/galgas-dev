@@ -164,10 +164,10 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Object assignment constructor\n"
              "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) ;\n\n" ;
 
-//--- _castFrom class method
-  inHfile << "//--- _castFrom class method (implements cast expression)\n"
+//--- castFrom class method
+  inHfile << "//--- castFrom class method (implements cast expression)\n"
              "  public : static GGS_" << aNomClasse << "\n"
-             "  _castFrom (C_Compiler & inLexique,\n"
+             "  castFrom (C_Compiler & inLexique,\n"
              "             cPtr__AC_galgas_class * inPointer,\n"
              "             const bool inUseKindOfClass,\n"
              "             const GGS_location & inErrorLocation\n"
@@ -765,22 +765,22 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- _castFrom method
-  inCppFile << "//--- _castFrom class method (implements cast expression)\n"
+//--- castFrom method
+  inCppFile << "//--- castFrom class method (implements cast expression)\n"
                "GGS_" << aNomClasse << " GGS_" << aNomClasse << "::\n"
-               "_castFrom (C_Compiler & inLexique,\n"
+               "castFrom (C_Compiler & inLexique,\n"
                "           cPtr__AC_galgas_class * inPointer,\n"
                "           const bool inUseKindOfClass,\n"
                "           const GGS_location & inErrorLocation\n"
                "           COMMA_LOCATION_ARGS) {\n"
-               "  GGS_" << aNomClasse << " _result ;\n"
+               "  GGS_" << aNomClasse << " result ;\n"
                "  if (inPointer != NULL) {\n"
                "    macroValidPointer (inPointer) ;\n"
                "    const bool ok = inUseKindOfClass\n"
                "      ? (dynamic_cast <cPtr_" << aNomClasse << " *> (inPointer) != NULL)\n"
                "      : (typeid (cPtr_" << aNomClasse << ") == typeid (*inPointer)) ;\n"
                "    if (ok) {\n"
-               "      _result = GGS_" << aNomClasse << " (inPointer) ;\n"
+               "      result = GGS_" << aNomClasse << " (inPointer) ;\n"
                "    }else{\n"
                "      inErrorLocation.signalCastError (inLexique,\n"
                "                                       & typeid (cPtr_" << aNomClasse << "),\n"
@@ -789,7 +789,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                                       COMMA_THERE) ;\n"
                "    }\n"
                "  }\n"
-               "  return _result ;\n"
+               "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 

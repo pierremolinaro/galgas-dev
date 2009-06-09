@@ -22,6 +22,7 @@ class cPtr_templateInstructionString : public cPtr_templateInstruction {
 //--- START OF USER ZONE 2
 
   public : virtual void generateTemplateInstruction (AC_OutputStream & inCppFile) const ;
+  public : virtual bool isUsingLexiqueArgument (void) const ;
   public : virtual bool isConstantUsed (const GGS_typeCplusPlusName & inCppName) const ;
 
 //--- END OF USER ZONE 2

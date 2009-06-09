@@ -25,6 +25,7 @@ grammar galgasTemplateGrammar "SLR" :
   root <lexique_component_start_symbol>
     ?!@typeVariablesMap ioTemplateVariableMap
     ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+    ??@M_optionComponents inOptionsComponentsMapForUse
     !@templateInstructionList outResultingInstructionList
   ;
 end grammar ;

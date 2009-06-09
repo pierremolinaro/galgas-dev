@@ -7040,7 +7040,7 @@ end routine ;
 rule <semantics_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
-  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
   ?!@typeTableEnAvant tableEnAvant
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
@@ -7054,13 +7054,16 @@ rule <semantics_declaration>
   $literal_string$ ? sourcePath ;
   ${$ ;
   @wrapperExtensionMap extensionMap [emptyMap] ;
-  repeat
-    @lstring extension ;
-    $literal_string$ ? extension ;
-    [!?extensionMap insertKey !extension] ;
-  while
-    $,$ ;
-  end repeat ;
+  select
+  or
+    repeat
+      @lstring extension ;
+      $literal_string$ ? extension ;
+      [!?extensionMap insertKey !extension] ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
   $}$ ;
 #--- Build absolute path
   @M_regularFiles regularFileMap [emptyMap] ;
@@ -7152,6 +7155,7 @@ rule <semantics_declaration>
     grammar galgasTemplateGrammar in templateAbsolutePath
       !?templateVariableMap
       !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
       ?templateInstructionList
     ;
     listeEntitesAengendrer += ![@C_filewrapperTemplateToImplement new
@@ -7182,13 +7186,16 @@ label importSemantics
   $literal_string$ ? sourcePath ;
   ${$ ;
   @wrapperExtensionMap extensionMap [emptyMap] ;
-  repeat
-    @lstring extension ;
-    $literal_string$ ? extension ;
-    [!?extensionMap insertKey !extension] ;
-  while
-    $,$ ;
-  end repeat ;
+  select
+  or
+    repeat
+      @lstring extension ;
+      $literal_string$ ? extension ;
+      [!?extensionMap insertKey !extension] ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
   $}$ ;
   @M_regularFiles regularFileMap [emptyMap] ;
   if not [[ioSemanticContext mFilewrappers] hasKey ![wrapperName string]] then

@@ -53,8 +53,6 @@ filewrapper projectCreationFileWrapper in "../creation_templates/actual_template
   template makefile_x86linux_on_macosx_makefile "/makefile_x86linux_on_macosx/makefile" ?@string PROJECT_NAME ;
   template info_plist "/project_xcode/Info.plist" ?@string PROJECT_NAME ;
   template cocoa_infoPlist_strings "/project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME ;
-#--- MDA Project
-#  template xcodeProject "/mda-project/project_xcode/project.pbxproj" ?@string PROJECT_NAME ;
 }
 
 
