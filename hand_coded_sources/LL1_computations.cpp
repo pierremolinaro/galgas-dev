@@ -251,9 +251,9 @@ void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
     mFichierBNF << "\n" ;
     aIndice = 0 ;
   }
-  mFichierBNF << aNomClasseLexique << "::" << aNomClasseLexique << "_1_" ;
-  generateTerminalSymbolCppName (mVocabulary.getSymbol (element COMMA_HERE), mFichierBNF) ;
-  mFichierBNF << ", " ;
+  mFichierBNF << aNomClasseLexique << "::" << aNomClasseLexique << "_1_"
+              << mVocabulary.getSymbol (element COMMA_HERE).identifierRepresentation ()
+              << ", " ;
 }
 
 //---------------------------------------------------------------------------*
@@ -331,11 +331,11 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
             inCppFile << "TERMINAL ("
                     << inLexiqueName << "::" << inLexiqueName
-                    << "_1_" ;
-            generateTerminalSymbolCppName (inVocabulary.getSymbol (v COMMA_HERE), inCppFile) ;
-            inCppFile << ") // $"
-                      << inVocabulary.getSymbol (v COMMA_HERE) 
-                      << "$\n" ;
+                    << "_1_"
+                    << inVocabulary.getSymbol (v COMMA_HERE).identifierRepresentation ()
+                    << ") // $"
+                    << inVocabulary.getSymbol (v COMMA_HERE) 
+                    << "$\n" ;
           }else{
             inCppFile << "NONTERMINAL ("
                       << cStringWithSigned ((sint32) (v - inVocabulary.getTerminalSymbolsCount ()))
@@ -384,9 +384,9 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
         for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
           if (array (symbol COMMA_HERE)) {
-            inCppFile << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-            generateTerminalSymbolCppName (inVocabulary.getSymbol (symbol COMMA_HERE), inCppFile) ;
-            inCppFile << ", " ;
+            inCppFile << inLexiqueName << "::" << inLexiqueName << "_1_"
+                      << inVocabulary.getSymbol (symbol COMMA_HERE).identifierRepresentation ()
+                      << ", " ;
           }
         }
         inCppFile << "-1, // Choice "

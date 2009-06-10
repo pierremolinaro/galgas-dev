@@ -182,9 +182,9 @@ generateKeyWordTableEntries (const GGS_typeTableMotsReserves & inMap,
     inCppFile.appendSigned (i) ;
     inCppFile << "_forTable_" << inTableName ;
     inCppFile << ", " << cStringWithSigned (entriesArray (i COMMA_HERE).mEntryStringLength)
-             << ", " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (entriesArray (i COMMA_HERE).mTokenCode, inCppFile) ;
-    inCppFile << "}" << ((i == (entriesCount - 1)) ? "" : ",") << "\n" ;
+              << ", " << inLexiqueName << "::" << inLexiqueName << "_1_"
+              << entriesArray (i COMMA_HERE).mTokenCode.identifierRepresentation ()
+              << "}" << ((i == (entriesCount - 1)) ? "" : ",") << "\n" ;
   }
   inCppFile << "} ;\n\n" ;
 }
@@ -248,9 +248,9 @@ generateGetTokenStringMethod (const GGS_typeTableDefinitionTerminaux & table_des
                "      break ;\n" ;
   GGS_typeTableDefinitionTerminaux::cEnumerator currentTerminal (table_des_terminaux) ;
   while (currentTerminal.hc ()) {
-    inCppFile << "    case  " << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (currentTerminal._key (HERE), inCppFile) ;
-    inCppFile << ":\n"
+    inCppFile << "    case  " << inLexiqueName << "_1_"
+              << currentTerminal._key (HERE).identifierRepresentation ()
+              << ":\n"
                  "      s << \"$\"\n"
                  "        << " ;
     inCppFile.appendCLiteralStringConstant (currentTerminal._key (HERE)) ;
@@ -703,9 +703,9 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   inCppFile << "mCurrentLocation = _locationForTag_" << mLexicalTagName << " ;\n"
-               "token.mTokenCode = " << inLexiqueName << "_1_" ;
-  generateTerminalSymbolCppName (mTerminal, inCppFile) ;
-  inCppFile << " ;\n" ;
+               "token.mTokenCode = " << inLexiqueName << "_1_"
+            << mTerminal.identifierRepresentation ()
+            << " ;\n" ;
   if (inGenerateEnterToken) {
     inCppFile << "enterToken (token) ;\n" ;
   }
@@ -726,9 +726,9 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
-  inCppFile << "token.mTokenCode = " << inLexiqueName << "_1_" ;
-  generateTerminalSymbolCppName (mTerminal, inCppFile) ;
-  inCppFile << " ;\n" ;
+  inCppFile << "token.mTokenCode = " << inLexiqueName << "_1_"
+            << mTerminal.identifierRepresentation ()
+            << " ;\n" ;
   if (inGenerateEnterToken) {
     inCppFile << "enterToken (token) ;\n" ;
   }
@@ -750,9 +750,9 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
   if (! inGenerateEnterToken) {
-    inCppFile << "token.mTokenCode = " << inLexiqueName << "_1_" ;
-    generateTerminalSymbolCppName (mTerminal, inCppFile) ;
-    inCppFile << " ;\n" ;
+    inCppFile << "token.mTokenCode = " << inLexiqueName << "_1_"
+              << mTerminal.identifierRepresentation ()
+              << " ;\n" ;
   }
 }
 
@@ -802,9 +802,9 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 void cPtr_typeEmissionTerminalParDefaut::
 generateDefaultToken (const C_String & inLexiqueName,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "token.mTokenCode = " << inLexiqueName << "_1_" ;
-  generateTerminalSymbolCppName (attributNomTerminal, inCppFile) ;
-  inCppFile << " ;\n" ;
+  inCppFile << "token.mTokenCode = " << inLexiqueName << "_1_"
+            << attributNomTerminal.identifierRepresentation ()
+            << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1320,8 +1320,8 @@ generate_scanner_header_file (C_Compiler & inLexique,
   while (currentTerminal.hc ()) {
     generatedZone3 << ",\n  " ;
     generatedZone3 << inLexiqueName ;
-    generatedZone3 << "_1_" ;
-    generateTerminalSymbolCppName (currentTerminal._key (HERE), generatedZone3) ;
+    generatedZone3 << "_1_"
+                   << currentTerminal._key (HERE).identifierRepresentation () ;
     currentTerminal.next () ;
   }
   generatedZone3 << "} ;\n\n" ;
@@ -1582,14 +1582,14 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
   }
   while (currentTerminal.hc ()) {
     C_String constanteCname ;
-    constanteCname << "gSyntaxErrorMessage_" ;
-    generateTerminalSymbolCppName (currentTerminal._key (HERE), constanteCname) ;
+    constanteCname << "gSyntaxErrorMessage_"
+                   << currentTerminal._key (HERE).identifierRepresentation () ;
     generatedZone2 << "//--- Syntax error message for terminal '$" << currentTerminal._key (HERE) << "$' :\n"
                       "static const utf32 " << constanteCname << " [] = " ;
     generatedZone2.appendUTF32LiteralStringConstant (currentTerminal._mErrorMessage (HERE).string ()) ;
     generatedZone2 << " ;\n\n" ;
-    errorMessageList << ",\n       gSyntaxErrorMessage_" ;
-    generateTerminalSymbolCppName (currentTerminal._key (HERE), errorMessageList) ;
+    errorMessageList << ",\n       gSyntaxErrorMessage_"
+                     << currentTerminal._key (HERE).identifierRepresentation () ;
     currentTerminal.next () ;
   }
 
@@ -1689,9 +1689,9 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
     generatedZone2.appendUnsigned (currentTerminal._mStyleIndex (HERE).uintValue ()) ;
     generatedZone2 << " /* "
                    << inLexiqueName
-                   << "_1_" ;
-    generateTerminalSymbolCppName (currentTerminal._key (HERE), generatedZone2) ;
-    generatedZone2 << " */" ;
+                   << "_1_"
+                   << currentTerminal._key (HERE).identifierRepresentation ()
+                   << " */" ;
     currentTerminal.next () ;
   }
   generatedZone2 << "\n  } ;\n"

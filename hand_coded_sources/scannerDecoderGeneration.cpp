@@ -46,23 +46,6 @@ generateDecoderForInstructionList (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void generateTerminalSymbolCppName (const C_String & inValue,
-                                    AC_OutputStream & ioString) {
-  const sint32 length = inValue.length () ;
-  for (sint32 i=0 ; i<length ; i++) {
-    const utf32 c = inValue (i COMMA_HERE) ;
-    if (isalnum ((int) UNICODE_VALUE (c))) {
-      ioString.appendUnicodeCharacter (c COMMA_HERE) ;
-    }else{
-      char s [10] ;
-      sprintf (s, "%X", UNICODE_VALUE (c)) ;
-      ioString << "_" << s ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Decoder Classes
 #endif
@@ -376,9 +359,9 @@ writeDecoderState (const C_String & inLexiqueName,
     if (mDefaultResponse < 0) {
       inCppFile << "  -1, // Default response : lexical error\n" ;
     }else{
-      inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-      generateTerminalSymbolCppName (mDefaultTerminal, inCppFile) ;
-      inCppFile << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
+      inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_"
+                << mDefaultTerminal.identifierRepresentation ()
+                << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
     }
     inCppFile << "  -1 // All transitions have the default response\n"
                  "} ;\n\n" ;
@@ -395,9 +378,9 @@ writeDecoderState (const C_String & inLexiqueName,
     if (mDefaultResponse < 0) {
       inCppFile << "  -1, // Default response: lexical error\n" ;
     }else{
-      inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-      generateTerminalSymbolCppName (mDefaultTerminal, inCppFile) ;
-      inCppFile << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
+      inCppFile << "  " << inLexiqueName << "::" << inLexiqueName << "_1_"
+                << mDefaultTerminal.identifierRepresentation ()
+                << ", // Default response: accept $" << mDefaultTerminal << "$ terminal\n" ;
     }
     inCppFile << "  " << cStringWithSigned (firstNotNull) << ", // First entry\n"
                  "  " << cStringWithSigned (lastNotNull - firstNotNull + 1) << ", // Entry Count\n" ;
@@ -414,9 +397,9 @@ writeDecoderState (const C_String & inLexiqueName,
                   << " (kDecoder_" << cStringWithSigned (mTransitions [i].mNextState) << ")"
                   << ((i<lastNotNull) ? "," : "") ;
       }else{
-        inCppFile << "  " <<  inLexiqueName << "::" << inLexiqueName << "_1_" ;
-        generateTerminalSymbolCppName (mTransitions [i].mTerminal, inCppFile) ;
-        inCppFile << ((i<lastNotNull) ? "," : "") << " // Accept" ;
+        inCppFile << "  " <<  inLexiqueName << "::" << inLexiqueName << "_1_"
+                  << mTransitions [i].mTerminal.identifierRepresentation ()
+                  << ((i<lastNotNull) ? "," : "") << " // Accept" ;
       }
       inCppFile << " for character " ;
       if (::isgraph (i)) {

@@ -31,11 +31,6 @@
 
 //---------------------------------------------------------------------------*
 
-void generateTerminalSymbolCppName (const C_String & inValue,
-                                    AC_OutputStream & ioFile) ;
-
-//---------------------------------------------------------------------------*
-
 void
 scannerDecoderGeneration (C_Lexique & inLexique,
                           const C_String & inLexiqueName,
