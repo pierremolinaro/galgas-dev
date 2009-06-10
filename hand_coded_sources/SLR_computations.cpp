@@ -714,9 +714,9 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         }else{
           generatedZone3 << ", " ;
         }
-        generatedZone3 << inLexiqueName << "::" << inLexiqueName << "_1_" ;
-        generateTerminalSymbolCppName (inVocabulary.getSymbol (j COMMA_HERE), generatedZone3) ;
-        generatedZone3 << ", " ;
+        generatedZone3 << inLexiqueName << "::" << inLexiqueName << "_1_"
+                       << inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()
+                       << ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
           generatedZone3 << "REDUCE (" << cStringWithSigned (parameter) << ")" ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action

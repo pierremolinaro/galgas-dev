@@ -256,9 +256,9 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "#endif\n" ;
   }
   inCppFile << "inLexique.acceptTerminal (ACCEPT_TERMINAL (" << mLexiqueClassName << "::"
-            << mLexiqueClassName << "_1_" ;
-  generateTerminalSymbolCppName (aNomTerminal, inCppFile) ;
-  inCppFile << ") COMMA_HERE) ;\n" ;
+            << mLexiqueClassName << "_1_"
+            << aNomTerminal.identifierRepresentation ()
+            << ") COMMA_HERE) ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
