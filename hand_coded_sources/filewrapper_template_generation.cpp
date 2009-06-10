@@ -219,6 +219,85 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_templateInstructionExpression
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_templateInstructionForeach::
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "GGS_" << mCppExpressionTypeName
+            << "::cEnumerator enumerator_" ;
+  ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+  ioCppFile << " (" ;
+  mExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ", " << (mIsAscending.boolValue () ? "true" : "false")
+            << ") ;\n" ;
+  if (! mNewEnumerationStyle.boolValue ()) {
+    ioCppFile << "const GGS_" << mCppExpressionTypeName
+              << "::cElement * operand_" ;
+   ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+   ioCppFile << " = NULL ;\n" ;
+  }
+  if (mNewEnumerationStyle.boolValue ()) {
+    ioCppFile <<  "while (enumerator_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << ".hc ()" ;
+  }else{
+    ioCppFile << "while (((operand_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << " = enumerator_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << ".nextObject ()))" ;
+  }
+  ioCppFile << ") {\n" ;
+  if (! mNewEnumerationStyle.boolValue ()) {
+    ioCppFile << "  macroValidPointer (operand_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << ") ;\n" ;
+  }
+  GGS_templateInstructionList::cEnumerator currentInstruction (mDoInstructionList, true) ;
+  while (currentInstruction.hc ()) {
+    currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+    currentInstruction.next () ;
+  }
+  if (mNewEnumerationStyle.boolValue ()) {
+    ioCppFile << "  enumerator_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << ".next () ;\n" ;
+  }
+  ioCppFile << "}\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionForeach::
+isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
+  bool used = mExpression (HERE)->formalArgumentIsUsedForTest (inCppName) ;
+  GGS_templateInstructionList::cEnumerator instruction (mDoInstructionList, true) ;
+  while (instruction.hc ()) {
+    used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    instruction.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionForeach::
+isUsingLexiqueArgument (void) const {
+  bool used = mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  GGS_templateInstructionList::cEnumerator instruction (mDoInstructionList, true) ;
+  while (instruction.hc ()) {
+    used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    instruction.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Filewrapper template call
 #endif
 
