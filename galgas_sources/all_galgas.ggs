@@ -34,8 +34,8 @@ project all_galgas :
 
 #--- Template
   lexique   "galgasTemplateScanner.gLexique" : makefile ;
-  syntax    "galgasTemplateParser.gSyntax" : makefile ;
   syntax    "templateExpressionParser.gSyntax" : makefile ;
+  syntax    "galgasTemplateParser.gSyntax" : makefile ;
   grammar   "galgasTemplateGrammar.gGrammar" : makefile ;
 
 #--- Lexique Component

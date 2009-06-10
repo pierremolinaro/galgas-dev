@@ -3659,6 +3659,8 @@ routine handleStringReaderCall
     outReturnedType := [@typeGalgas_bool new] ;
   elsif [inReaderName string] == "length" then
     outReturnedType := [@typeGalgas_uint new] ;
+  elsif [inReaderName string] == "identifierRepresentation" then
+    outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "stringByTrimmingWhiteSpaces" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "md5" then
@@ -4633,6 +4635,17 @@ class @templateInstructionExpression extends @templateInstruction {
 
 class @templateInstructionConstant extends @templateInstruction {
   @typeCplusPlusName mCppName feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionForeach extends @templateInstruction {
+  @bool mIsAscending feature nogetter ;
+  @string mCppExpressionTypeName feature nogetter ;
+  @bool mNewEnumerationStyle feature nogetter ;
+  @typeExpression mExpression feature nogetter ;
+  @location mInstructionLocation feature nogetter ;
+  @templateInstructionList mDoInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

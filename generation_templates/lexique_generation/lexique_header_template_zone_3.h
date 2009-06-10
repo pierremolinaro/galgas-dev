@@ -1,17 +1,16 @@
 
 //--- Terminal symbols enumeration
-  public : enum {%LEXIQUE_CLASS_NAME%_1_,
-  xml_parsing_lexique_1_comment,
-  xml_parsing_lexique_1__3C,
-  xml_parsing_lexique_1__3C_3F,
-  xml_parsing_lexique_1__3E,
-  xml_parsing_lexique_1__3F_3E,
-  xml_parsing_lexique_1__2F_3E,
-  xml_parsing_lexique_1__3C_2F,
-  xml_parsing_lexique_1__3D,
-  xml_parsing_lexique_1_name,
-  xml_parsing_lexique_1_value} ;
-
+  public : enum {%LEXIQUE_CLASS_NAME%_1_%
+    foreach TERMINAL_LIST do
+      %,\%  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+    end foreach
+  %} ;
+%
+  foreach DELIMITOR_LIST_LIST do
+    %\%//--- Key words table '%([mName string])%'\%%
+    %  public : static sint16 search_into_%([mName string])% (const C_String & inSearchedString) ;\%%
+  end foreach
+%  
 //--- Key words table 'xmlDelimitorsList'
   public : static sint16 search_into_xmlDelimitorsList (const C_String & inSearchedString) ;
 

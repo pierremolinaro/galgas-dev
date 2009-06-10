@@ -22,6 +22,8 @@ template "%" ... "%" ;
 
 replace "!%" -> "%" ;
 
+replace "\\%" -> "\n" ;
+
 @string identifierString ;
 @uint uint32value ;
 @sint sint32value ;

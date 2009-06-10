@@ -38,6 +38,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template headerZone3 "lexique_header_template_zone_3.h"
     ?@string LEXIQUE_CLASS_NAME
     ?@terminalList TERMINAL_LIST
+    ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
   ;
 }
 
@@ -715,6 +716,7 @@ routine compileLexiqueComponent
       ![filewrapper lexiqueGenerationTemplates.headerZone3
          !lexiqueClassName
          ![lexiqueAnalysisContext mTerminalList]
+         ![lexiqueComponentRoot mLexicalListDeclarationList]
        ]
     ] ;
   end if ;
