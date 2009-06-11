@@ -49,7 +49,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Attributes
              "//--- Attributes\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator attributCourant (mNonExternAttributesList, true) ;
-  while (attributCourant.hc ()) {
+  while (attributCourant.hasCurrentObject ()) {
     attributCourant._mAttributType (HERE) (HERE)->generatePublicDeclaration (inHfile, attributCourant._mAttributeName (HERE)) ;
     attributCourant.next () ;
   }
@@ -58,7 +58,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : elementOf_GGS_" << aNomListe << " (" ;
   attributCourant.rewind () ;
   bool premier = true ;
-  while (attributCourant.hc ()) {
+  while (attributCourant.hasCurrentObject ()) {
     if (premier) {
       premier = false ;
     }else{
@@ -123,7 +123,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : static GGS_" << aNomListe << " constructor_listWithValue (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
@@ -172,7 +172,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void method_first (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                              " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -187,7 +187,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void method_last (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                             " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -202,7 +202,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void modifier_popLast (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -217,7 +217,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void modifier_popFirst (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -234,7 +234,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void _addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
@@ -258,7 +258,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void modifier_prependValue (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                                "
                "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
@@ -272,7 +272,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
               "  protected : void _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
@@ -287,7 +287,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  protected : void _internalPrependValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
@@ -310,7 +310,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Direct read access
   inHfile << "//--------------------------------- Direct Read Access\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "  public : " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
@@ -322,7 +322,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Direct write access
   inHfile << "//--------------------------------- Direct Write Access\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "  public : void\n"
                "  modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
                "                              const " ;
@@ -347,7 +347,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "      return (cElement *) internalNextObject () ;\n"
              "    }\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "  public : /* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
@@ -395,7 +395,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "elementOf_GGS_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -410,7 +410,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "AC_galgas_list::cListElement (THERE)" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n"
               << current._mAttributeName (HERE) << " (argument_" << cStringWithSigned (numeroVariable) << ")" ;
     current.next () ;
@@ -423,7 +423,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   current.rewind () ;
   inCppFile << "bool elementOf_GGS_" << aNomListe << "::\n" ;
-  if (! current.hc ()) {
+  if (! current.hasCurrentObject ()) {
     inCppFile << "isEqualToObject (const cListElement * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
@@ -434,7 +434,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "    macroValidPointer (ptr) ;\n"
                  "    equal = " ;
     numeroVariable = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       if (numeroVariable > 0) {
         inCppFile << "\n         && " ;
       }
@@ -450,7 +450,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   inCppFile.appendCppHyphenLineComment () ;
   current.rewind () ;
-  if (! current.hc ()) {
+  if (! current.hasCurrentObject ()) {
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                  "appendForDescription (C_Compiler & /* inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
@@ -463,7 +463,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                          const sint32 inIndentation\n"
                  "                          COMMA_LOCATION_ARGS) const {\n" ;
     numeroVariable = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "  ioString << \"\\n\" ;\n"
                    "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                    "  ioString << \"|-\" ;\n"
@@ -483,7 +483,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                    " ;
     }
@@ -499,7 +499,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  macroMyNew (nouvelElement, cElement (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -519,7 +519,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_internalPrependValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
@@ -533,7 +533,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  macroMyNew (nouvelElement, cElement (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
@@ -550,7 +550,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -564,7 +564,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (isBuilt ()" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "&& argument_" << cStringWithSigned (numeroVariable) << ".isBuilt ()" ;
     current.next () ;
     numeroVariable ++ ;
@@ -574,7 +574,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -618,7 +618,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "          macroValidPointer (p) ;\n" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "          " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " p_" << cStringWithSigned (numeroVariable) << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
@@ -628,7 +628,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "          _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
@@ -650,7 +650,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "modifier_prependValue (C_Compiler & /* inLexique */" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n                     "
                  "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
@@ -662,7 +662,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "COMMA_UNUSED_LOCATION_ARGS) {\n"
                "  if (isBuilt ()" ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << " && argument_" << cStringWithSigned (numeroVariable) << ".isBuilt ()" ;
     current.next () ;
     numeroVariable ++ ;
@@ -672,7 +672,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    _internalPrependValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -697,7 +697,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -727,7 +727,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "constructor_listWithValue (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -743,7 +743,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  result._addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
@@ -773,7 +773,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      ioList._addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
@@ -838,7 +838,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "method_first (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n              " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -857,7 +857,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -865,7 +865,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -881,7 +881,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "method_last (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n             " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -900,7 +900,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -908,7 +908,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -923,7 +923,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "modifier_popFirst (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -942,7 +942,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -952,7 +952,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -966,7 +966,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "modifier_popLast (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n                " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -985,7 +985,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -995,7 +995,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1005,7 +1005,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Direct read access
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomListe << "::\n"
@@ -1026,7 +1026,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Direct write access
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomListe << "::\n"
                  "modifier_set" << current._mAttributeName (HERE).stringWithUpperCaseFirstLetter () << "AtIndex (C_Compiler & inLexique,\n"
@@ -1046,7 +1046,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
 
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "/* const */ " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inCppFile) ;
@@ -1077,7 +1077,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 //--- Attributes
              "//--- Attributes\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator attributCourant (mNonExternAttributesList, true) ;
-  while (attributCourant.hc ()) {
+  while (attributCourant.hasCurrentObject ()) {
     attributCourant._mAttributType (HERE)(HERE)->generatePublicDeclaration (inHfile, attributCourant._mAttributeName (HERE)) ;
     attributCourant.next () ;
   }
@@ -1086,7 +1086,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : elementOf_GGS_" << aNomListe << " (" ;
   attributCourant.rewind () ;
   bool premier = true ;
-  while (attributCourant.hc ()) {
+  while (attributCourant.hasCurrentObject ()) {
     if (premier) {
       premier = false ;
     }else{
@@ -1160,7 +1160,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                           " ;
     }
@@ -1193,7 +1193,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void method_smallest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                              " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1208,7 +1208,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void method_greatest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                             " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1223,7 +1223,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void modifier_popGreatest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1238,7 +1238,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void modifier_popSmallest (C_Compiler & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                                 " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
     inHfile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1256,7 +1256,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : void _addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
@@ -1277,7 +1277,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
               "  protected : void _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
     }
@@ -1308,7 +1308,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "      return (cElement *) internalNextObject () ;\n"
              "    }\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "    public : /* const */ " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
     inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
@@ -1356,7 +1356,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "elementOf_GGS_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
     current._mAttributType (HERE)(HERE)->generateFormalParameter (inCppFile, true) ;
@@ -1367,7 +1367,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ")" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable == 0) {
       inCppFile << ":\n" ;
     }else{
@@ -1391,7 +1391,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    equal = " ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << "\n         && " ;
     }
@@ -1410,13 +1410,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
   
   GGS_EXsortDescriptorList::cEnumerator sortAttribute (mSortDescriptorList, true) ;
-  if (sortAttribute.hc ()) {
+  if (sortAttribute.hasCurrentObject ()) {
     inCppFile << "  sint32 result = "
               << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
               << sortAttribute._mSortAttribute (HERE)
               << ".compareForSortedList (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
     sortAttribute.next () ;
-    while (sortAttribute.hc ()) {
+    while (sortAttribute.hasCurrentObject ()) {
       inCppFile << "  if (result == 0) {\n"
                    "    result = "
                 << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
@@ -1436,7 +1436,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                      COMMA_LOCATION_ARGS) const {\n" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-\" ;\n"
@@ -1481,7 +1481,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                    " ;
     inCppFile << "const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
@@ -1494,7 +1494,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  macroMyNew (nouvelElement, cElement (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
@@ -1510,7 +1510,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
     }
@@ -1526,7 +1526,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "argument_" << cStringWithSigned (numeroVariable) ;
     current.next () ;
@@ -1558,7 +1558,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "          macroValidPointer (p) ;\n" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "          " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " p_" << cStringWithSigned (numeroVariable) << " = p->" << current._mAttributeName (HERE) << " ;\n" ;
@@ -1568,7 +1568,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "          _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
@@ -1596,7 +1596,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "      _internalAppendValues (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "ptr->" << current._mAttributeName (HERE) ;
     current.next () ;
@@ -1623,7 +1623,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "constructor_sortedListWithValue (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                           " ;
     }
@@ -1639,7 +1639,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  result._addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ", " ;
     }
@@ -1666,7 +1666,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "method_smallest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1685,7 +1685,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1693,7 +1693,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1709,7 +1709,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "method_greatest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n             " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1728,7 +1728,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1736,7 +1736,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1751,7 +1751,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "modifier_popSmallest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n                 " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1770,7 +1770,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1780,7 +1780,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1794,7 +1794,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "modifier_popGreatest (C_Compiler & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << ",\n                " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "_out_" << cStringWithSigned (numeroVariable) ;
@@ -1813,7 +1813,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (ptr != NULL) {\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << " = ptr->" << current._mAttributeName (HERE) << " ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1823,7 +1823,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  }else{\n" ;
   numeroVariable = 0 ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _out_" << cStringWithSigned (numeroVariable) << ".drop () ;\n" ;
     numeroVariable ++ ;
     current.next () ;
@@ -1832,7 +1832,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "/* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;

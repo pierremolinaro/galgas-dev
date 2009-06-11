@@ -363,7 +363,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_257_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_lstring  var_cas_identifier ;
-  inLexique._assignFromAttribute_tokenString (var_cas_identifier) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_identifier) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_outExpression = GGS_varInExpression ::constructor_new (inLexique, var_cas_identifier COMMA_HERE) ;
 }
@@ -414,7 +414,7 @@ pr_factor_expressionModelBuilder_282_13_ (galgas_scanner & inLexique,
           break ;
       }
       GGS_lstring  var_cas_typeName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_else) COMMA_HERE) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_error) COMMA_HERE) ;
@@ -500,7 +500,7 @@ pr_factor_expressionModelBuilder_369_13_ (galgas_scanner & inLexique,
   { bool syntaxRepeat_8 = true ;
     while (syntaxRepeat_8) {
         GGS_lstring  var_cas_literalString ;
-        inLexique._assignFromAttribute_tokenString (var_cas_literalString) ;
+        inLexique.assignFromAttribute_tokenString (var_cas_literalString) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
         var_cas_literalStringList._addAssign_operation (var_cas_literalString.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (374))) ;
       switch (select_repeat_expressionModelBuilder_8 (inLexique)) {
@@ -525,7 +525,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_386_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_luint  var_cas_literalInt ;
-  inLexique._assignFromAttribute_uint32value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_uint32value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
   var_cas_outExpression = GGS_literalUIntExpression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
 }
@@ -540,7 +540,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_398_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_lsint  var_cas_literalInt ;
-  inLexique._assignFromAttribute_sint32value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_sint32value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_signed_5F_literal_5F_integer) COMMA_HERE) ;
   var_cas_outExpression = GGS_literalSIntExpression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
 }
@@ -555,7 +555,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_410_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_luint64  var_cas_literalInt ;
-  inLexique._assignFromAttribute_uint64value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_uint64value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unsigned_5F_literal_5F_integer_36__34_) COMMA_HERE) ;
   var_cas_outExpression = GGS_literalUInt64Expression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
 }
@@ -570,7 +570,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_422_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_lsint64  var_cas_literalInt ;
-  inLexique._assignFromAttribute_sint64value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_sint64value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_signed_5F_literal_5F_integer_36__34_) COMMA_HERE) ;
   var_cas_outExpression = GGS_literalSInt64Expression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
 }
@@ -585,7 +585,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_434_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_lchar  var_cas_literalChar ;
-  inLexique._assignFromAttribute_charValue (var_cas_literalChar) ;
+  inLexique.assignFromAttribute_charValue (var_cas_literalChar) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_char) COMMA_HERE) ;
   var_cas_outExpression = GGS_literalCharExpression ::constructor_new (inLexique, var_cas_literalChar COMMA_HERE) ;
 }
@@ -600,7 +600,7 @@ void expressionModelBuilder::
 pr_factor_expressionModelBuilder_446_13_ (galgas_scanner & inLexique,
                                 GGS_semanticExpression  &var_cas_outExpression) {
   GGS_ldouble  var_cas_literalDouble ;
-  inLexique._assignFromAttribute_floatValue (var_cas_literalDouble) ;
+  inLexique.assignFromAttribute_floatValue (var_cas_literalDouble) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_double) COMMA_HERE) ;
   var_cas_outExpression = GGS_literalDoubleExpression ::constructor_new (inLexique, var_cas_literalDouble COMMA_HERE) ;
 }
@@ -639,7 +639,7 @@ pr_factor_expressionModelBuilder_473_13_ (galgas_scanner & inLexique,
           } break ;
         case 2 : {
           GGS_lstring  var_cas_readerName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_readerName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_readerName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_outExpressionList  var_cas_expressionList ;
           nt_output_expression_list_ (inLexique, var_cas_expressionList) ;
@@ -651,10 +651,10 @@ pr_factor_expressionModelBuilder_473_13_ (galgas_scanner & inLexique,
       } break ;
     case 2 : {
       GGS_lstring  var_cas_className ;
-      inLexique._assignFromAttribute_tokenString (var_cas_className) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_className) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
       GGS_lstring  var_cas_constructorName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_constructorName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_constructorName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
       GGS_outExpressionList  var_cas_expressionList ;
       nt_output_expression_list_ (inLexique, var_cas_expressionList) ;
@@ -666,17 +666,17 @@ pr_factor_expressionModelBuilder_473_13_ (galgas_scanner & inLexique,
         case 1 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           var_cas_outExpression = GGS_optionExpression ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("generic_galgas_cli_options"), GGS_location (inLexique) COMMA_HERE), var_cas_optionName COMMA_HERE) ;
           } break ;
         case 2 : {
           GGS_lstring  var_cas_optionComponentName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionComponentName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           var_cas_outExpression = GGS_optionExpression ::constructor_new (inLexique, var_cas_optionComponentName, var_cas_optionName COMMA_HERE) ;
           } break ;
@@ -687,7 +687,7 @@ pr_factor_expressionModelBuilder_473_13_ (galgas_scanner & inLexique,
     case 4 : {
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_filewrapper) COMMA_HERE) ;
       GGS_lstring  var_cas_filewrapperName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_filewrapperName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_filewrapperName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
       switch (select_expressionModelBuilder_12 (inLexique)) {
         case 1 : {
@@ -698,13 +698,13 @@ pr_factor_expressionModelBuilder_473_13_ (galgas_scanner & inLexique,
           switch (select_expressionModelBuilder_13 (inLexique)) {
             case 1 : {
               GGS_lstring  var_cas_filePath ;
-              inLexique._assignFromAttribute_tokenString (var_cas_filePath) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_filePath) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
               var_cas_outExpression = GGS_filewrapperInExpression ::constructor_new (inLexique, var_cas_filewrapperName, var_cas_filePath COMMA_HERE) ;
               } break ;
             case 2 : {
               GGS_lstring  var_cas_filewrapperTemplateName ;
-              inLexique._assignFromAttribute_tokenString (var_cas_filewrapperTemplateName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_filewrapperTemplateName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_outExpressionList  var_cas_expressionList ;
               nt_output_expression_list_ (inLexique, var_cas_expressionList) ;

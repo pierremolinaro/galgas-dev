@@ -150,7 +150,6 @@ project all_galgas :
   extern "prgm_generation.cpp" : makefile ;
   extern "printOriginalGrammar.cpp" : makefile ;
   extern "scanner_generation.cpp" : makefile ;
-  extern "scannerDecoderGeneration.cpp" : makefile ;
   extern "semantics_generation.cpp" : makefile ;
   extern "semantics_instructions.cpp" : makefile ;
   extern "SLR_computations.cpp" : makefile ;

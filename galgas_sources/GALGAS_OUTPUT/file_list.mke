@@ -68,7 +68,6 @@ SOURCES += parser_instructions.cpp
 SOURCES += prgm_generation.cpp
 SOURCES += printOriginalGrammar.cpp
 SOURCES += scanner_generation.cpp
-SOURCES += scannerDecoderGeneration.cpp
 SOURCES += semantics_generation.cpp
 SOURCES += semantics_instructions.cpp
 SOURCES += SLR_computations.cpp

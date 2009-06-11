@@ -58,12 +58,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "#import \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionComponentsMap, true) ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone2 << "#import \"" << currentOptionComponent._key (HERE) << ".h\"\n" ;
     currentOptionComponent.next () ;
   }
   GGS_lstringlist::cEnumerator currentNib (inNibAndClassList, true) ;
-  while (currentNib.hc ()) {
+  while (currentNib.hasCurrentObject ()) {
     TC_UniqueArray <C_String> result ;
     currentNib._mValue (HERE).componentsSeparatedByString (".", result) ;
     generatedZone2 << "#import \"" << result (1 COMMA_HERE) << ".h\"\n" ;
@@ -83,7 +83,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   sint32 boolOptionCount = genericOptions.getBoolOptionsCount () ;
   boolOptionCount += galgasOptions.getBoolOptionsCount () ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     boolOptionCount += currentOptionComponent._mBoolOptionsMap (HERE).count () ;
     currentOptionComponent.next () ;
   }
@@ -102,9 +102,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mBoolOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralCharConstant (mapEnumerator._mOptionChar (HERE).charValue ()) ;
       generatedZone3 << ",\n" ;
@@ -126,9 +126,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mBoolOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralStringConstant (mapEnumerator._mOptionString (HERE).string ()) ;
       generatedZone3 << ",\n" ;
@@ -150,9 +150,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mBoolOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralStringConstant (mapEnumerator._mComment (HERE).string ()) ;
       generatedZone3 << ",\n" ;
@@ -195,7 +195,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   sint32 uintOptionCount = genericOptions.getUintOptionsCount () ;
   uintOptionCount += galgasOptions.getUintOptionsCount () ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     uintOptionCount += currentOptionComponent._mUintOptionsMap (HERE).count () ;
     currentOptionComponent.next () ;
   }
@@ -214,9 +214,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mUintOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralCharConstant (mapEnumerator._mOptionChar (HERE).charValue ()) ;
       generatedZone3 << ",\n" ;
@@ -238,9 +238,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mUintOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralStringConstant (mapEnumerator._mOptionString (HERE).string ()) ;
       generatedZone3 << ",\n" ;
@@ -262,9 +262,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mUintOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralStringConstant (mapEnumerator._mComment (HERE).string ()) ;
       generatedZone3 << ",\n" ;
@@ -313,7 +313,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   sint32 stringOptionCount = genericOptions.getStringOptionsCount () ;
   stringOptionCount += galgasOptions.getStringOptionsCount () ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     stringOptionCount += currentOptionComponent._mStringOptionsMap (HERE).count () ;
     currentOptionComponent.next () ;
   }
@@ -332,9 +332,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mStringOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralCharConstant (mapEnumerator._mOptionChar (HERE).charValue ()) ;
       generatedZone3 << ",\n" ;
@@ -356,9 +356,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mStringOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralStringConstant (mapEnumerator._mOptionString (HERE).string ()) ;
       generatedZone3 << ",\n" ;
@@ -380,9 +380,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
     generatedZone3 << ",\n" ;
   }
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mStringOptionsMap (HERE), true) ;
-    while (mapEnumerator.hc ()) {
+    while (mapEnumerator.hasCurrentObject ()) {
       generatedZone3 << "  " ;
       generatedZone3.appendCLiteralStringConstant (mapEnumerator._mComment (HERE).string ()) ;
       generatedZone3 << ",\n" ;
@@ -430,7 +430,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                  << ") ;\n"
                  << "static C_galgas_CLI_Options gGalgasOptions ;\n" ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone3 << "static " << currentOptionComponent._key (HERE) << " gOption" << cStringWithSigned (index) << " ;\n" ;
     currentOptionComponent.next () ;
     index ++ ;
@@ -438,7 +438,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, & gGalgasOptions, " ;
   index = 0 ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone3 << "& gOption" << cStringWithSigned (index) << ", " ;
     currentOptionComponent.next () ;
     index ++ ;
@@ -456,7 +456,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "static uint32 kTextMacroCount = " << cStringWithSigned (inTextMacroList.count ()) << " ;\n\n" ;
   GGS_textMacroList::cEnumerator currentMacro (inTextMacroList, true) ;
   generatedZone3 << "static const char * kTextMacroTitle [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
-  while (currentMacro.hc ()) {
+  while (currentMacro.hasCurrentObject ()) {
     generatedZone3.appendCLiteralStringConstant (currentMacro._mKey (HERE)) ;
     generatedZone3 << ",\n  " ;
     currentMacro.next () ;
@@ -465,7 +465,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "} ;\n\n" ;
   generatedZone3 << "static const char * kTextMacroContent [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
   currentMacro.rewind () ;
-  while (currentMacro.hc ()) {
+  while (currentMacro.hasCurrentObject ()) {
     generatedZone3.appendCLiteralStringConstant (currentMacro._mContents (HERE)) ;
     generatedZone3 << ",\n  " ;
     currentMacro.next () ;
@@ -493,7 +493,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
       mainArray << ",\n  " ;
       bool first = true ;
       GGS_labelForPopUpList::cEnumerator currentMark (inLabelForPopUpList, true) ;
-      while (currentMark.hc ()) {
+      while (currentMark.hasCurrentObject ()) {
         const sint32 terminalID1 = (sint32) currentMark._mTerminal1ID (HERE).uintValue () ;
         if (terminalID1 == i) {
           const uint32 terminalID2 = currentMark._mTerminal2ID (HERE).uintValue () ;
@@ -525,7 +525,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "NSArray * nibsAndClasses (void) {\n"
                     "  return [NSArray arrayWithObjects:\n" ;
   currentNib.rewind () ;
-  while (currentNib.hc ()) {
+  while (currentNib.hasCurrentObject ()) {
     TC_UniqueArray <C_String> result ;
     currentNib._mValue (HERE).componentsSeparatedByString (".", result) ;
     generatedZone3 << "    [NSArray arrayWithObjects:@\"" << result (0 COMMA_HERE)

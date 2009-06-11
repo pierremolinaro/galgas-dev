@@ -52,10 +52,10 @@ pr_grammar_component_start_symbol_grammarModelBuilder_47_37_ (galgas_scanner & i
                                 GGS_grammarComponentRoot  &var_cas_outGrammarComponentRoot) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
   GGS_lstring  var_cas_mGrammarName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mGrammarName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mGrammarName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_lstring  var_cas_mGrammarClass ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mGrammarClass) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mGrammarClass) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   { bool syntaxRepeat_0 = true ;
@@ -95,7 +95,7 @@ pr_grammar_component_start_symbol_grammarModelBuilder_47_37_ (galgas_scanner & i
   }
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_root) COMMA_HERE) ;
   GGS_lstring  var_cas_mStartSymbol ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mStartSymbol) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mStartSymbol) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5F_terminal_5F_symbol) COMMA_HERE) ;
   GGS_lstring  var_cas_labelName ;
   var_cas_labelName = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
@@ -107,7 +107,7 @@ pr_grammar_component_start_symbol_grammarModelBuilder_47_37_ (galgas_scanner & i
       switch (select_repeat_grammarModelBuilder_2 (inLexique)) {
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
-          inLexique._assignFromAttribute_tokenString (var_cas_labelName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_labelName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
@@ -127,7 +127,7 @@ pr_grammar_component_start_symbol_grammarModelBuilder_47_37_ (galgas_scanner & i
           { bool syntaxRepeat_4 = true ;
             while (syntaxRepeat_4) {
                 GGS_lstring  var_cas_nonterminalSymbolName ;
-                inLexique._assignFromAttribute_tokenString (var_cas_nonterminalSymbolName) ;
+                inLexique.assignFromAttribute_tokenString (var_cas_nonterminalSymbolName) ;
                 inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5F_terminal_5F_symbol) COMMA_HERE) ;
                 var_cas_mUnusedNonterminalList._addAssign_operation (var_cas_nonterminalSymbolName) ;
               switch (select_repeat_grammarModelBuilder_4 (inLexique)) {
@@ -200,7 +200,7 @@ pr_label_formal_parameter_grammarModelBuilder_135_29_ (galgas_scanner & inLexiqu
                                 GGS_startSymbolLabelFormalParameterList  &var_cas_ioStartSymbolLabelFormalParameterList) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F_) COMMA_HERE) ;
   GGS_lstring  var_cas_mTypeName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mTypeName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mTypeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
   switch (select_grammarModelBuilder_6 (inLexique)) {
     case 1 : {
@@ -211,7 +211,7 @@ pr_label_formal_parameter_grammarModelBuilder_135_29_ (galgas_scanner & inLexiqu
     default :
       break ;
   }
-  inLexique._assignFromAttribute_tokenString (var_cas_outArgumentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
@@ -228,7 +228,7 @@ pr_label_formal_parameter_grammarModelBuilder_155_29_ (galgas_scanner & inLexiqu
                                 GGS_startSymbolLabelFormalParameterList  &var_cas_ioStartSymbolLabelFormalParameterList) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F__3F_) COMMA_HERE) ;
   GGS_lstring  var_cas_mTypeName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mTypeName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mTypeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
   switch (select_grammarModelBuilder_7 (inLexique)) {
     case 1 : {
@@ -239,7 +239,7 @@ pr_label_formal_parameter_grammarModelBuilder_155_29_ (galgas_scanner & inLexiqu
     default :
       break ;
   }
-  inLexique._assignFromAttribute_tokenString (var_cas_outArgumentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
@@ -256,7 +256,7 @@ pr_label_formal_parameter_grammarModelBuilder_175_29_ (galgas_scanner & inLexiqu
                                 GGS_startSymbolLabelFormalParameterList  &var_cas_ioStartSymbolLabelFormalParameterList) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F__21_) COMMA_HERE) ;
   GGS_lstring  var_cas_mTypeName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mTypeName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mTypeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
   switch (select_grammarModelBuilder_8 (inLexique)) {
     case 1 : {
@@ -267,7 +267,7 @@ pr_label_formal_parameter_grammarModelBuilder_175_29_ (galgas_scanner & inLexiqu
     default :
       break ;
   }
-  inLexique._assignFromAttribute_tokenString (var_cas_outArgumentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentInOut (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
@@ -284,9 +284,9 @@ pr_label_formal_parameter_grammarModelBuilder_195_29_ (galgas_scanner & inLexiqu
                                 GGS_startSymbolLabelFormalParameterList  &var_cas_ioStartSymbolLabelFormalParameterList) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__21_) COMMA_HERE) ;
   GGS_lstring  var_cas_mTypeName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mTypeName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mTypeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
-  inLexique._assignFromAttribute_tokenString (var_cas_outArgumentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }

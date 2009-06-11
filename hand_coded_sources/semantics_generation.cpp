@@ -148,7 +148,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile.appendCppTitleComment (C_String ("Routine '") + mRoutineName + "'") ;
   inHfile << "void routine_" << mRoutineName << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-  while (currentArgument.hc ()) {
+  while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
     currentArgument.next () ;
@@ -191,7 +191,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " inLexique" ;
   }
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-  while (currentArgument.hc ()) {
+  while (currentArgument.hasCurrentObject ()) {
     inCppFile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
     const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
@@ -249,7 +249,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
   inHfile << " function_" << mFunctionName << " (C_Compiler &" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-  while (currentArgument.hc ()) {
+  while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
     currentArgument.next () ;
@@ -293,7 +293,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << " inLexique" ;
   }
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-  while (currentArgument.hc ()) {
+  while (currentArgument.hasCurrentObject ()) {
     inCppFile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
     const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;
@@ -359,7 +359,7 @@ void cPtr_typeRoutineExterneAengendrer::
 generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "void routine_" << aNomAction << " (C_Compiler &" ;
   GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
-  while (currentArgument.hc ()) {
+  while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
     currentArgument.next () ;
@@ -426,7 +426,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   mReturnedType (HERE)->generateCppClassName (inHfile) ;
   inHfile << " function_" << aNomAction << " (C_Compiler &" ;
   GGS_L_EXsignature::cEnumerator currentArgument (aSignature, true) ;
-  while (currentArgument.hc ()) {
+  while (currentArgument.hasCurrentObject ()) {
     inHfile << ",\n                                " ;
     generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
     currentArgument.next () ;
@@ -514,9 +514,9 @@ generate_header_file (C_Compiler & inLexique,
         << ".h\"\n\n" ;
 //--- Generate include imported semantics components
   GGS_stringset::cEnumerator fileEnumerator (inIncludesForHeaderFile, true) ;
-  if (fileEnumerator. hc ()) {
+  if (fileEnumerator. hasCurrentObject ()) {
     generatedZone2.appendCppComment ("Include imported semantics") ;
-    while (fileEnumerator. hc ()) {
+    while (fileEnumerator. hasCurrentObject ()) {
       generatedZone2 << "#include \"" ;
       generatedZone2 << fileEnumerator._key (HERE) ;
       generatedZone2 << ".h\"\n" ;
@@ -529,18 +529,18 @@ generate_header_file (C_Compiler & inLexique,
 //--- Generate classes declarations
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
   generatedZone3.appendCppTitleComment ("Class Predeclarations") ;
-  while (element.hc ()) {
+  while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generatePredeclarations (generatedZone3) ;
     element.next () ;
   }
   generatedZone3 << "\n" ;
   element.rewind () ;
-  while (element.hc ()) {
+  while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateHdeclarations (generatedZone3) ;
     element.next () ;
   }
   element.rewind () ;
-  while (element.hc ()) {
+  while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateHdeclarations_2 (generatedZone3, inLexique) ;
     element.next () ;
   }
@@ -548,7 +548,7 @@ generate_header_file (C_Compiler & inLexique,
 //--- Engendrer la declaration de la classe de l'analyseur
   bool engendrerClasseCpp = false ;
   element.rewind () ;
-  while (element.hc () && ! engendrerClasseCpp) {
+  while (element.hasCurrentObject () && ! engendrerClasseCpp) {
     engendrerClasseCpp = element._mEntityToGenerate (HERE) (HERE)->isCppClassNeeded () ;
     element.next () ;
   }
@@ -1745,10 +1745,10 @@ generate_cpp_file (C_Compiler & inLexique,
 
 //--- Engendrer les fichiers d'inclusion correspondant aux methodes externes
   GGS_stringset::cEnumerator includeEnumerator (tableFichiersEnTetePourFichierCPP, true) ;
-  if (includeEnumerator.hc ()) {
+  if (includeEnumerator.hasCurrentObject ()) {
     generatedZone2.appendCppTitleComment ("Include directives generated by grammar includes") ;
   }
-  while (includeEnumerator.hc ()) {
+  while (includeEnumerator.hasCurrentObject ()) {
     generatedZone2 << "#include \"" << includeEnumerator._key (HERE) << "\"\n" ;
     includeEnumerator.next () ;
   }
@@ -1764,7 +1764,7 @@ generate_cpp_file (C_Compiler & inLexique,
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
   sint32 select_repeat_production_index = 0 ;
-  while (element.hc ()) {
+  while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateCppClassImplementation (inLexique,
                                          generatedZone3,
                                          nomComposant,
@@ -1777,7 +1777,7 @@ generate_cpp_file (C_Compiler & inLexique,
   C_String prologueActions ;
   C_String epilogueActions ;
   element.rewind () ;
-  while (element.hc ()) {
+  while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->enterPrologueEpilogueAction (prologueActions,
                                                                     epilogueActions) ;
     element.next () ;

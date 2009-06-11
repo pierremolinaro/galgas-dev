@@ -65,7 +65,7 @@ pr_galgas_component_cli_options_parser_63_23_ (galgas_scanner & inLexique,
   var_cas_optionNameSet = GGS_stringset ::constructor_emptySet () ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
   GGS_lstring  var_cas_optionComponentName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_optionComponentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_optionComponentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, GGS_string ("Using '.ggs' extension for option component is obsolete \xE2""\x80""\x94"" from GALGAS 1.8.4 use '.gOption' extension") COMMA_SOURCE_FILE_AT_LINE (78)) ;
   GGS_string var_cas_basename ;
@@ -80,22 +80,22 @@ pr_galgas_component_cli_options_parser_63_23_ (galgas_scanner & inLexique,
       switch (select_repeat_cli_options_parser_0 (inLexique)) {
         case 2 : {
           GGS_lstring  var_cas_typeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
           GGS_lstring  var_cas_optionName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
           GGS_lchar  var_cas_optionChar ;
-          inLexique._assignFromAttribute_charValue (var_cas_optionChar) ;
+          inLexique.assignFromAttribute_charValue (var_cas_optionChar) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_char) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionString ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionString) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionString) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2D__3E_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionComment ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionComment) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionComment) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
           if ((var_cas_optionNameSet.reader_hasKey (inLexique, var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (104)) COMMA_SOURCE_FILE_AT_LINE (104))).isBuiltAndTrue ()) {
@@ -212,7 +212,7 @@ pr_galgas_component_cli_options_parser_63_23_importOptions (galgas_scanner & inL
   var_cas_optionNameSet = GGS_stringset ::constructor_emptySet () ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_option) COMMA_HERE) ;
   GGS_lstring  var_cas_optionComponentName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_optionComponentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   { bool syntaxRepeat_0 = true ;
@@ -220,22 +220,22 @@ pr_galgas_component_cli_options_parser_63_23_importOptions (galgas_scanner & inL
       switch (select_repeat_cli_options_parser_0 (inLexique)) {
         case 2 : {
           GGS_lstring  var_cas_typeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
           GGS_lstring  var_cas_optionName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
           GGS_lchar  var_cas_optionChar ;
-          inLexique._assignFromAttribute_charValue (var_cas_optionChar) ;
+          inLexique.assignFromAttribute_charValue (var_cas_optionChar) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_char) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionString ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionString) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionString) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2D__3E_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionComment ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionComment) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionComment) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
           if ((var_cas_optionNameSet.reader_hasKey (inLexique, var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (242)) COMMA_SOURCE_FILE_AT_LINE (242))).isBuiltAndTrue ()) {

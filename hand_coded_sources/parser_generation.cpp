@@ -66,11 +66,11 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
                              const C_String & /* inTargetFileName */,
                              sint32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::cEnumerator currentAltForNonTerminal (mNonterminalSymbolParametersMap, true) ;
-  while (currentAltForNonTerminal.hc ()) {
+  while (currentAltForNonTerminal.hasCurrentObject ()) {
     inHfile << "  protected : virtual void nt_" << aNomNonTerminal << "_" << currentAltForNonTerminal._key (HERE)
             << " (" << mLexiqueClassName << " &" ;
     GGS_L_EXsignature::cEnumerator currentArgument (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
-    while (currentArgument.hc ()) {
+    while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
       currentArgument.next () ;
@@ -131,7 +131,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool prototypesForSelectedAndRepeatNotDeclared = true ;
-  while (currentAltForNonTerminal.hc ()) {
+  while (currentAltForNonTerminal.hasCurrentObject ()) {
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     inHfile << "  protected : " ;
     inHfile << "void " ;
@@ -142,7 +142,7 @@ generateCppClassDeclaration (AC_OutputStream & inHfile,
             << "_" << currentAltForNonTerminal._key (HERE) << " ("
             << mLexiqueClassName << " &" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
-    while (currentArgument.hc ()) {
+    while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
       currentArgument.next () ;
@@ -181,7 +181,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool first = true ;
-  while (currentAltForNonTerminal.hc ()) {
+  while (currentAltForNonTerminal.hasCurrentObject ()) {
     ioPrototypeIndex = select_repeat_prototypeIndexStart ;
     if (first) {
       first = false ;
@@ -206,7 +206,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << " */" ;
     }
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (currentAltForNonTerminal._aListeDeTypesEffectifs (HERE), true) ;
-    while (currentArgument.hc ()) {
+    while (currentArgument.hasCurrentObject ()) {
       inCppFile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
       const bool variableUtilisee = formalArgumentIsUsedForList (currentAltForNonTerminal._mAllInstructionsList (HERE), currentArgument._mCppName (HERE), true) ;
@@ -315,7 +315,7 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
   sint32 select_repeat_production_index = 0 ;
-  while (element.hc ()) {
+  while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateCppClassDeclaration (inHfile,
                                                                     nomComposant,
                                                                     select_repeat_production_index) ;

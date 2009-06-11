@@ -64,11 +64,11 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "                      const sint32 inIndentation = 0) const ;\n"
                     "//--- Constructors\n" ;
   GGS_M_externTypeConstructorMap::cEnumerator constructor (mConstructorMap) ;
-  while (constructor.hc ()) {
+  while (constructor.hasCurrentObject ()) {
     generatedZone2 << "  public : static GGS_" << mGalgasName
                    << " constructor_" << constructor._key (HERE) << " (C_Compiler & inLexique" ;
     GGS_typeListeAttributsSemantiques::cEnumerator arg (constructor._aListeDesAttributs (HERE), true) ;
-    while (arg.hc ()) {
+    while (arg.hasCurrentObject ()) {
       arg._mAttributType (HERE)(HERE)->generatePublicDeclaration (inHfile, arg._mAttributeName (HERE)) ;
       arg.next () ;
     }

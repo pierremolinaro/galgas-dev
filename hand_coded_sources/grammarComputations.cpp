@@ -184,7 +184,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
 //--- Engendrer les inclusions --------------------------------------------------------------
   generatedZone2.appendCppHyphenLineComment () ;
   GGS_L_syntaxComponents_ForGrammar::cEnumerator component (inSyntaxComponentsList, true) ;
-  while (component.hc ()) {
+  while (component.hasCurrentObject ()) {
     generatedZone2 << "#include \"" << component._mSyntaxComponentName (HERE) << ".h\"\n" ;
     component.next () ;
   }
@@ -197,7 +197,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   component.rewind () ;
 //--- Liens d'heritage
   bool premier = true ;
-  while (component.hc ()) {
+  while (component.hasCurrentObject ()) {
     if (premier) {
       generatedZone3 << " :" ;
       premier = false ;
@@ -210,15 +210,15 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
   generatedZone3 << " {\n" ;
 //--- declaration des non-terminaux de la grammaire d'origine
   GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
-  while (nonTerminal.hc ()) {
+  while (nonTerminal.hasCurrentObject ()) {
     GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
-    while (currentAltForNonTerminal.hc ()) {
+    while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "  public : virtual " ;
       generatedZone3 << "void " ;
       generatedZone3 << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
                      << " (" << inLexiqueName << " &" ;
       GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
-      while (parametre.hc ()) {
+      while (parametre.hasCurrentObject ()) {
         generatedZone3 << ",\n                                " ;
         generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
         parametre.next () ;
@@ -237,7 +237,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                           ",\n                                "
                           "const GGS_lstring inFileName" ;
         parametre.rewind () ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
           parametre.next () ;
@@ -253,7 +253,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                           ",\n                                "
                           "const GGS_string inSourceString" ;
         parametre.rewind () ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
           parametre.next () ;
@@ -298,7 +298,7 @@ fixInfoForInstructionsList (const GGS_L_ruleSyntaxSignature & inInstructionsList
                             C_Compiler & inLexique,
                             bool & ioOk) {
   GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inInstructionsList, true) ;
-  while (currentInstruction.hc ()) {
+  while (currentInstruction.hasCurrentObject ()) {
     currentInstruction._mInstruction (HERE) (HERE)->fixInfos (inInfo, inLexique, ioOk) ;
 
     currentInstruction.next () ;
@@ -312,7 +312,7 @@ fixInfos (cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     fixInfoForInstructionsList (currentBranch._mInstructionList (HERE),
                                 inInfo,
                                 inLexique,
@@ -328,7 +328,7 @@ fixInfos (cInfo & inInfo,
           C_Compiler & inLexique,
           bool & ioOk) {
   GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     fixInfoForInstructionsList (currentBranch._mInstructionList (HERE),
                                 inInfo,
                                 inLexique,
@@ -921,9 +921,9 @@ routine_analyzeGrammar (C_Compiler & inLexique,
     symbolsInfo.mTerminalSymbolMap = inTerminalSymbolMap ;
     symbolsInfo.mNonterminalSymbolsMapForGrammar = inNonterminalSymbolsMapForGrammar ;
     GGS_L_syntaxComponents_ForGrammar::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
-    while (currentSyntaxComponent.hc ()) {
+    while (currentSyntaxComponent.hasCurrentObject ()) {
       GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
-      while (currentRule.hc ()) {
+      while (currentRule.hasCurrentObject ()) {
         GGS_luint index ;
         GGS_M_nonterminalSymbolAltsForGrammar unused ;
         inNonterminalSymbolsMapForGrammar.method_searchKeyGetID (inLexique, currentRule._mLeftNonterminalSymbol (HERE),

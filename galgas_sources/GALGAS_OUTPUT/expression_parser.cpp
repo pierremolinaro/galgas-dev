@@ -1614,7 +1614,7 @@ pr_factor_expression_parser_1139_13_ (galgas_scanner & inLexique,
           break ;
       }
       GGS_lstring  var_cas_castedTypeName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_castedTypeName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_castedTypeName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
       GGS_AC_semanticsEntity  var_cas_entite ;
       const GGS_M_semanticsEntitiesForUse  _temp_45954 = var_cas_inEntitiesMap ;
@@ -1826,7 +1826,7 @@ pr_factor_expression_parser_1333_13_ (galgas_scanner & inLexique,
   { bool syntaxRepeat_8 = true ;
     while (syntaxRepeat_8) {
         GGS_lstring  var_cas_literalString ;
-        inLexique._assignFromAttribute_tokenString (var_cas_literalString) ;
+        inLexique.assignFromAttribute_tokenString (var_cas_literalString) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
         var_cas_literalStringList._addAssign_operation (var_cas_literalString.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1345))) ;
       switch (select_repeat_expression_parser_8 (inLexique)) {
@@ -1875,7 +1875,7 @@ pr_factor_expression_parser_1358_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_luint  var_cas_literalInt ;
-  inLexique._assignFromAttribute_uint32value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_uint32value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
   var_cas_outExpression = GGS_typeLiteralUIntExpression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
   var_cas_outResultType = GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE) ;
@@ -1903,7 +1903,7 @@ pr_factor_expression_parser_1378_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_lsint  var_cas_literalInt ;
-  inLexique._assignFromAttribute_sint32value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_sint32value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_signed_5F_literal_5F_integer) COMMA_HERE) ;
   var_cas_outExpression = GGS_typeLiteralSIntExpression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
   var_cas_outResultType = GGS_typeGalgas_sint ::constructor_new (inLexique COMMA_HERE) ;
@@ -1931,7 +1931,7 @@ pr_factor_expression_parser_1398_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_luint64  var_cas_literalInt ;
-  inLexique._assignFromAttribute_uint64value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_uint64value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unsigned_5F_literal_5F_integer_36__34_) COMMA_HERE) ;
   var_cas_outExpression = GGS_typeLiteralUInt64Expression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
   var_cas_outResultType = GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE) ;
@@ -1959,7 +1959,7 @@ pr_factor_expression_parser_1418_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_lsint64  var_cas_literalInt ;
-  inLexique._assignFromAttribute_sint64value (var_cas_literalInt) ;
+  inLexique.assignFromAttribute_sint64value (var_cas_literalInt) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_signed_5F_literal_5F_integer_36__34_) COMMA_HERE) ;
   var_cas_outExpression = GGS_typeLiteralSInt64Expression ::constructor_new (inLexique, var_cas_literalInt COMMA_HERE) ;
   var_cas_outResultType = GGS_typeGalgas_sint64 ::constructor_new (inLexique COMMA_HERE) ;
@@ -1987,7 +1987,7 @@ pr_factor_expression_parser_1438_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_lchar  var_cas_literalChar ;
-  inLexique._assignFromAttribute_charValue (var_cas_literalChar) ;
+  inLexique.assignFromAttribute_charValue (var_cas_literalChar) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_char) COMMA_HERE) ;
   var_cas_outExpression = GGS_typeLiteralCharExpression ::constructor_new (inLexique, var_cas_literalChar COMMA_HERE) ;
   var_cas_outResultType = GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE) ;
@@ -2015,7 +2015,7 @@ pr_factor_expression_parser_1458_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_ldouble  var_cas_literalDouble ;
-  inLexique._assignFromAttribute_floatValue (var_cas_literalDouble) ;
+  inLexique.assignFromAttribute_floatValue (var_cas_literalDouble) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_double) COMMA_HERE) ;
   var_cas_outExpression = GGS_typeLiteralDoubleExpression ::constructor_new (inLexique, var_cas_literalDouble COMMA_HERE) ;
   var_cas_outResultType = GGS_typeGalgas_double ::constructor_new (inLexique COMMA_HERE) ;
@@ -2073,7 +2073,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
     case 1 : {
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_filewrapper) COMMA_HERE) ;
       GGS_lstring  var_cas_filewrapperName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_filewrapperName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_filewrapperName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
       GGS_M_regularFiles  var_cas_regularFileMap ;
       GGS_filewrapperTemplateMap  var_cas_templateMap ;
@@ -2091,7 +2091,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
           switch (select_expression_parser_11 (inLexique)) {
             case 1 : {
               GGS_lstring  var_cas_templateName ;
-              inLexique._assignFromAttribute_tokenString (var_cas_templateName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_templateName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeListeAttributsSemantiques  var_cas_formalAttributeList ;
               const GGS_filewrapperTemplateMap  _temp_60623 = var_cas_templateMap ;
@@ -2105,7 +2105,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
               } break ;
             case 2 : {
               GGS_lstring  var_cas_path ;
-              inLexique._assignFromAttribute_tokenString (var_cas_path) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_path) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
               GGS_uint  var_cas_wrapperFileIndex ;
               GGS_uint  automatic_var_1 ;
@@ -2136,7 +2136,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
           } break ;
         case 2 : {
           GGS_lstring  var_cas_methodName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_methodName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_methodName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_typeListeAttributsSemantiques  var_cas_accessorsTypeList ;
           GGS_string var_cas_conversionMethod ;
@@ -2151,10 +2151,10 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
       } break ;
     case 3 : {
       GGS_lstring  var_cas_className ;
-      inLexique._assignFromAttribute_tokenString (var_cas_className) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_className) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
       GGS_lstring  var_cas_mClassMethodName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_mClassMethodName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_mClassMethodName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
       GGS_AC_semanticsEntity  var_cas_e ;
       const GGS_M_semanticsEntitiesForUse  _temp_62977 = var_cas_inEntitiesMap ;
@@ -2178,7 +2178,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
         case 1 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           if (((var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1627))).operator_isNotEqual (GGS_string ("verbose_output"))).isBuiltAndTrue ()) {
             var_cas_optionName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this option name does not correspond to a builtin option") COMMA_SOURCE_FILE_AT_LINE (1629)) ;
@@ -2188,7 +2188,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
           } break ;
         case 2 : {
           GGS_lstring  var_cas_optionComponentName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionComponentName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionComponentName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_M_cli_options  var_cas_boolOptionsMap ;
           GGS_M_cli_options  var_cas_uintOptionsMap ;
@@ -2199,7 +2199,7 @@ pr_factor_expression_parser_1503_13_ (galgas_scanner & inLexique,
           }
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E_) COMMA_HERE) ;
           GGS_lstring  var_cas_optionName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_optionName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_optionName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           if ((var_cas_boolOptionsMap.reader_hasKey (inLexique, var_cas_optionName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1642)) COMMA_SOURCE_FILE_AT_LINE (1642))).isBuiltAndTrue ()) {
             var_cas_outExpression = GGS_typeBoolOption ::constructor_new (inLexique, var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1643)), var_cas_optionName COMMA_HERE) ;
@@ -2312,7 +2312,7 @@ pr_factor_expression_parser_1667_13_ (galgas_scanner & inLexique,
                                 GGS_typeExpression  &var_cas_outExpression,
                                 GGS_AC_galgasType  &var_cas_outResultType) {
   GGS_lstring  var_cas_functionName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_functionName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_functionName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_L_EXsignature  var_cas_signatureRoutine ;
   GGS_AC_semanticsEntity  var_cas_entite ;
@@ -2381,7 +2381,7 @@ pr_read_access_expression_parser_1722_18_ (galgas_scanner & inLexique,
                                 GGS_typeCplusPlusName  &var_cas_nomCppEntite,
                                 GGS_AC_galgasType  &var_cas_typeEntite,
                                 GGS_typeVariablesMap  &var_cas_ioVariablesMap) {
-  inLexique._assignFromAttribute_tokenString (var_cas_nomVariable) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_nomVariable) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   var_cas_ioVariablesMap.modifier_searchForReadOnlyAccess (inLexique, var_cas_nomVariable, var_cas_typeEntite, var_cas_nomCppEntite COMMA_SOURCE_FILE_AT_LINE (1729)) ;
 }
@@ -2527,10 +2527,10 @@ pr_parse_effective_input_parameters_list_expression_parser_1807_44_ (galgas_scan
             case 1 : {
               var_cas_outNoUsedParameter = GGS_bool (false) ;
               GGS_lstring  var_cas_typeName ;
-              inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
               GGS_lstring  var_cas_constantName ;
-              inLexique._assignFromAttribute_tokenString (var_cas_constantName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_constantName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               var_cas_argumentsList._addAssign_operation (var_cas_typeName, var_cas_constantName) ;
               } break ;
@@ -2540,7 +2540,7 @@ pr_parse_effective_input_parameters_list_expression_parser_1807_44_ (galgas_scan
               } break ;
             case 3 : {
               GGS_luint  var_cas_jokerCountWithLocation ;
-              inLexique._assignFromAttribute_uint32value (var_cas_jokerCountWithLocation) ;
+              inLexique.assignFromAttribute_uint32value (var_cas_jokerCountWithLocation) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A_) COMMA_HERE) ;
               GGS_uint  var_cas_jokerCount ;

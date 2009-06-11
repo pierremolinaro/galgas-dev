@@ -30,11 +30,6 @@ class cPtr_typeLexicalDropInstruction : public cPtr_typeInstructionLexicale {
                                 AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const ;
 
-  public : virtual void
-  generateDecoderFromInstruction (C_Lexique & inLexique,
-                                  cDecoderTargetState & ioCurrentState,
-                                  cDecoderController & ioDecoderController) ;
-
 //--- END OF USER ZONE 2
 
 //--- Constructor

@@ -61,7 +61,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : static GGS_" << mStructName << " constructor_new (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
   sint32 numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                 " ;
     }
@@ -74,7 +74,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << ") ;\n\n"
              "//--- Readers\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "  public : inline " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
@@ -85,7 +85,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   }
   inHfile << "//--- Attributes\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "  public : " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
     inHfile << " " << current._mAttributeName (HERE) << " ;\n" ;
@@ -127,7 +127,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
   bool first = true ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (first) {
       first = false ;
     }else{
@@ -144,7 +144,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mStructName << "::drop (void) {\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "  " << current._mAttributeName (HERE) << ".drop () ;\n" ;
     current.next () ;
   }
@@ -154,7 +154,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   inCppFile << "  return " ;
   first = true ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (first) {
       first = false ;
     }else{
@@ -171,7 +171,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   inCppFile << "  return " ;
   first = true ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (! first) {
       inCppFile << "\n    .operator_and (" ;
     }
@@ -191,7 +191,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return " ;
   current.rewind () ;
   first = true ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (! first) {
       inCppFile << "\n    .operator_or (" ;
     }
@@ -210,7 +210,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               "constructor_new (" ;
   current.rewind () ;
   sint32 numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                 " ;
     }
@@ -224,7 +224,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  GGS_" << mStructName << " result ;\n" ;
   current.rewind () ;
   numeroVariable = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "  result." << current._mAttributeName (HERE) << " = argument_" << cStringWithSigned (numeroVariable) << " ;\n" ;
     current.next () ;
     numeroVariable ++ ;
@@ -241,7 +241,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  _s << \"<struct @" << mStructName << "\" ;\n"
                "  if (isBuilt ()) {\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    _s << \"\\n\" ;\n"
                  "    _s.writeStringMultiple (\"| \", inIndentation + 1) ;\n"
                  "    _s << \"" << current._mAttributeName (HERE) << " \" ;\n"

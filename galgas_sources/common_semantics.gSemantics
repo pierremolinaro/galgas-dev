@@ -4646,6 +4646,7 @@ class @templateInstructionForeach extends @templateInstruction {
   @typeExpression mExpression feature nogetter ;
   @location mInstructionLocation feature nogetter ;
   @templateInstructionList mDoInstructionList feature nogetter ;
+  @templateInstructionList mBetweenInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

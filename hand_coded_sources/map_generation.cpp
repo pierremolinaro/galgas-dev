@@ -75,7 +75,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  _addAssign_operation (const GGS_string & inKey" ;
   GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mAttributesList, true) ;
   sint32 attributeIndex = 0 ;
-  while (currentAttribute.hc ()) {
+  while (currentAttribute.hasCurrentObject ()) {
     inHfile << ",\n"
                "                        const " ;
     currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
@@ -236,7 +236,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "_addAssign_operation (const GGS_string & inKey" ;
   GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mAttributesList, true) ;
   sint32 attributeIndex = 0 ;
-  while (currentAttribute.hc ()) {
+  while (currentAttribute.hasCurrentObject ()) {
     inCppFile << ",\n"
                  "                      const " ;
     currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
@@ -248,7 +248,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (isBuilt () && inKey.isBuilt ()" ;
   currentAttribute.rewind () ;
   attributeIndex = 0 ;
-  while (currentAttribute.hc ()) {
+  while (currentAttribute.hasCurrentObject ()) {
     inCppFile << " && inAttribute" << cStringWithSigned (attributeIndex) << ".isBuilt ()" ;
     attributeIndex ++ ;
     currentAttribute.next () ;
@@ -266,7 +266,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    listPtr._addAssign_operation (" ;
   currentAttribute.rewind () ;
   attributeIndex = 0 ;
-  while (currentAttribute.hc ()) {
+  while (currentAttribute.hasCurrentObject ()) {
     if (attributeIndex > 0) {
       inCppFile << ", " ;
     }
@@ -400,19 +400,19 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Search method(s)\n" ;
 //--- Declare mapindex search error messages
   GGS_mapIndexSearchReaderMap::cEnumerator currentMethod (mMapIndexSearchReaderMap) ;
-  while (currentMethod.hc ()) {
+  while (currentMethod.hasCurrentObject ()) {
     inHfile << "  public : static const utf32 kMapIndexSearchMessage_" << currentMethod._key (HERE) << " [] ;\n\n" ;
     currentMethod.next () ;
   }
 
   currentMethod.rewind () ;
-  while (currentMethod.hc ()) {
+  while (currentMethod.hasCurrentObject ()) {
     inHfile << "  public : void\n"
                "  method_" << currentMethod._key (HERE) << " (C_Compiler & inLexique,\n"
                "                     GGS_lstring & outKey" ;
     GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mMapAttributesList, true) ;
     sint32 attributeIndex = 1 ;
-    while (currentAttribute.hc ()) {
+    while (currentAttribute.hasCurrentObject ()) {
       inHfile << ",\n"
                  "                     " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
@@ -519,7 +519,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Declare mapindex search error messages
   GGS_mapIndexSearchReaderMap::cEnumerator currentMethod (mMapIndexSearchReaderMap) ;
-  while (currentMethod.hc ()) {
+  while (currentMethod.hasCurrentObject ()) {
     inCppFile << "const utf32 GGS_" << mMapindexTypeName << "::kMapIndexSearchMessage_" << currentMethod._key (HERE) << " [] = " ;
     inCppFile.appendUTF32LiteralStringConstant (currentMethod._mRetrieveErrorMessage (HERE).string ()) ;
     inCppFile << " ;\n\n" ;
@@ -528,14 +528,14 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Search methods
   currentMethod.rewind () ;
-  while (currentMethod.hc ()) {
+  while (currentMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapindexTypeName << "::\n"
                  "method_" << currentMethod._key (HERE) << " (C_Compiler & inLexique,\n"
                  "                   GGS_lstring & outKey" ;
     GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mMapAttributesList, true) ;
     sint32 attributeIndex = 1 ;
-    while (currentAttribute.hc ()) {
+    while (currentAttribute.hasCurrentObject ()) {
       inCppFile << ",\n"
                    "                   " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
@@ -562,7 +562,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "      outKey = mKey ;\n" ;
     currentAttribute.rewind () ;
     attributeIndex = 1 ;
-    while (currentAttribute.hc ()) {
+    while (currentAttribute.hasCurrentObject ()) {
       inCppFile << "      outAttribute" << cStringWithSigned (attributeIndex)
                 << " = p->mInfo." << currentAttribute._mAttributeName (HERE)
                 << " ;\n" ;
@@ -604,7 +604,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
 
 //--- declarer les attributs
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     current._mAttributType (HERE) (HERE)->generatePublicDeclaration (inHfile, current._mAttributeName (HERE)) ;
     current.next () ;
   }
@@ -679,7 +679,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Modifiers "set'Value'ForKey"
   inHfile << "//--- Modifiers \"set'Value'ForKey\"\n" ;
   GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
-  while (currentAttributeForSetter.hc ()) {
+  while (currentAttributeForSetter.hasCurrentObject ()) {
     if (currentAttributeForSetter._mHasSetter (HERE).boolValue ()) {
       inHfile << "  public : void modifier_set" << currentAttributeForSetter._key (HERE).stringWithUpperCaseFirstLetter ()
               << "ForKey (C_Compiler & inLexique,\n"
@@ -695,14 +695,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare remove error messages
   GGS_insertOrSearchMethodList::cEnumerator currentRemoveMethod (mRemoveMethodList, true) ;
-  while (currentRemoveMethod.hc ()) {
+  while (currentRemoveMethod.hasCurrentObject ()) {
     inHfile << "  public : static const utf32 kRemoveMessage_" << currentRemoveMethod._mMethodName (HERE) << " [] ;\n\n" ;
     currentRemoveMethod.next () ;
   }
 
 //--- Declaring remove methods
   currentRemoveMethod.rewind () ;
-  while (currentRemoveMethod.hc ()) {
+  while (currentRemoveMethod.hasCurrentObject ()) {
     inHfile << "//--- '" << currentRemoveMethod._mMethodName (HERE) << "' Remove Modifier\n" ;
     inHfile << "  public : void modifier_"
             << currentRemoveMethod._mMethodName (HERE)
@@ -713,7 +713,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
-    while (currentAttribute.hc ()) {
+    while (currentAttribute.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << "outParameter" << cStringWithSigned (attributeIndex) ;
@@ -727,7 +727,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare insert error messages
   GGS_insertOrSearchMethodList::cEnumerator currentInsertMethod (mInsertMethodList, true) ;
-  while (currentInsertMethod.hc ()) {
+  while (currentInsertMethod.hasCurrentObject ()) {
     inHfile << "  public : static const utf32 kInsertMessage_" << currentInsertMethod._mMethodName (HERE) << " [] ;\n\n" ;
     if (currentInsertMethod._mShadowErrorMessage (HERE).string ().length () > 0) {
       inHfile << "  public : static const utf32 kShadowMessage_" << currentInsertMethod._mMethodName (HERE) << " [] ;\n\n" ;
@@ -738,7 +738,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declaring insert methods
   currentInsertMethod.rewind () ;
-  while (currentInsertMethod.hc ()) {
+  while (currentInsertMethod.hasCurrentObject ()) {
     inHfile << "//--- '" << currentInsertMethod._mMethodName (HERE) << "' Insert Modifier\n" ;
     inHfile <<    "  public : void modifier_"
             << currentInsertMethod._mMethodName (HERE)
@@ -749,7 +749,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
-    while (currentAttribute.hc ()) {
+    while (currentAttribute.hasCurrentObject ()) {
       inHfile << ",\n                                const " ;
       currentAttribute._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
@@ -762,13 +762,13 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Define search error messages
   GGS_insertOrSearchMethodList::cEnumerator currentSearchMethod (mSearchMethodList, true) ;
-  while (currentSearchMethod.hc ()) {
+  while (currentSearchMethod.hasCurrentObject ()) {
     inHfile << "  public : static const utf32 kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << " [] ;\n\n" ;
     currentSearchMethod.next () ;
   }
 //--- Declaring search methods
   currentSearchMethod.rewind () ;
-  while (currentSearchMethod.hc ()) {
+  while (currentSearchMethod.hasCurrentObject ()) {
     inHfile << "//--- '" << currentSearchMethod._mMethodName (HERE) << "' Search Method\n"
                "  public : void method_" 
             << currentSearchMethod._mMethodName (HERE)
@@ -779,7 +779,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     }
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, false) ;
       inHfile << " & outParameter" << cStringWithSigned (attributeIndex) ;
@@ -797,7 +797,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                "                                   const GGS_lstring & inKey,\n" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inHfile << "                                   " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << "outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
@@ -814,7 +814,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                   const GGS_lstring & inKey,\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
   sint32 attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "                                   const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "& inParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
@@ -830,7 +830,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                                   const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "                                   " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "& outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
@@ -866,7 +866,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "      return (cElement *) internalNextObject () ;\n"
              "    }\n" ;
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << "    public : /* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
@@ -911,7 +911,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "e_" << mMapTypeName << "::e_" << mMapTypeName << " (void) :\n" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     bool first = true ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
@@ -948,7 +948,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  ioString.appendSigned (inElementIndex) ;\n"
                "  ioString << \":\" << mKey.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;\n" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "  ioString << \"\\n\" ;\n"
                  "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
                  "  ioString << \"|-value \" ;\n"
@@ -962,7 +962,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "bool elementOf_GGS_" << mMapTypeName << "::\n" ;
   current.rewind () ;
-  if (! current.hc ()) {
+  if (! current.hasCurrentObject ()) {
     inCppFile << "isEqualToMapElement (const AC_galgas_map_element * /* inOperand */) const {\n"
                  "  return true ;\n" ;
   }else{
@@ -971,7 +971,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  macroValidPointer (ptr) ;\n"
                  "  return " ;
     bool first = true ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
@@ -1059,7 +1059,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                const GGS_lstring & inKey,\n" ;
     current.rewind () ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
@@ -1076,7 +1076,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "      emitMapSemanticErrorMessage (inLexique, inKey, inErrorMessage COMMA_THERE) ;\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << ".drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
@@ -1086,7 +1086,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "      elementID = ptr->mID ;\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "      outParameter" << cStringWithSigned (attributeIndex) << " = ptr->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
@@ -1108,7 +1108,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   sint32 attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "                const " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
     inCppFile << "inParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
@@ -1121,7 +1121,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  if (isBuilt ()\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "   && inParameter" << cStringWithSigned (attributeIndex) << ".isBuilt ()\n" ;
     attributeIndex ++ ;
     current.next () ;
@@ -1131,7 +1131,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    e_" << mMapTypeName << " info  ;\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    info." << current._mAttributeName (HERE) << " = inParameter" << cStringWithSigned (attributeIndex) << " ;\n" ;
     attributeIndex ++ ;
     current.next () ;
@@ -1155,7 +1155,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "               const GGS_lstring & inKey,\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "               " ;
     current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
     inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) << ",\n" ;
@@ -1183,7 +1183,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  }else{\n" ;
   current.rewind () ;
   attributeIndex = 0 ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << " = node->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
     attributeIndex ++ ;
     current.next () ;
@@ -1196,7 +1196,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement modifiers "set'Value'ForKey"
   GGS_typeSemanticAttributesMap::cEnumerator currentAttributeForSetter (mAttributeMap, true) ;
-  while (currentAttributeForSetter.hc ()) {
+  while (currentAttributeForSetter.hasCurrentObject ()) {
     if (currentAttributeForSetter._mHasSetter (HERE).boolValue ()) {
       inCppFile.appendCppHyphenLineComment () ;
       inCppFile << "void GGS_" << mMapTypeName << "::\n"
@@ -1229,7 +1229,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Define search error messages
   GGS_insertOrSearchMethodList::cEnumerator currentSearchMethod (mSearchMethodList, true) ;
-  while (currentSearchMethod.hc ()) {
+  while (currentSearchMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "const utf32 GGS_" << mMapTypeName << "::kSearchMessage_" << currentSearchMethod._mMethodName (HERE) << " [] = " ;
     inCppFile.appendUTF32LiteralStringConstant (currentSearchMethod._mErrorMessage (HERE).string ()) ;
@@ -1239,7 +1239,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement search routines
   currentSearchMethod.rewind () ;
-  while (currentSearchMethod.hc ()) {
+  while (currentSearchMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mMapTypeName << "::\n"
               << "method_" << currentSearchMethod._mMethodName (HERE)
@@ -1250,7 +1250,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
       inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) ;
@@ -1276,7 +1276,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Declare remove error messages
   GGS_insertOrSearchMethodList::cEnumerator currentRemoveMethod (mRemoveMethodList, true) ;
-  while (currentRemoveMethod.hc ()) {
+  while (currentRemoveMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "const utf32 GGS_" << mMapTypeName << "::kRemoveMessage_" << currentRemoveMethod._mMethodName (HERE) << " [] = " ;
     inCppFile.appendUTF32LiteralStringConstant (currentRemoveMethod._mErrorMessage (HERE).string ()) ;
@@ -1286,7 +1286,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement remove methods
   currentRemoveMethod.rewind () ;
-  while (currentRemoveMethod.hc ()) {
+  while (currentRemoveMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_"
               << mMapTypeName << "::\n"
@@ -1298,7 +1298,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "outParameter" << cStringWithSigned (attributeIndex) ;
@@ -1324,7 +1324,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Define insert error messages
   GGS_insertOrSearchMethodList::cEnumerator currentInsertMethod (mInsertMethodList, true) ;
-  while (currentInsertMethod.hc ()) {
+  while (currentInsertMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "const utf32 GGS_" << mMapTypeName << "::kInsertMessage_" << currentInsertMethod._mMethodName (HERE) << " [] = " ;
     inCppFile.appendUTF32LiteralStringConstant (currentInsertMethod._mErrorMessage (HERE).string ()) ;
@@ -1339,7 +1339,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement insert routines
   currentInsertMethod.rewind () ;
-  while (currentInsertMethod.hc ()) {
+  while (currentInsertMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_"
               << mMapTypeName << "::\n"
@@ -1351,7 +1351,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << "inParameter" << cStringWithSigned (attributeIndex) ;
@@ -1456,7 +1456,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   current.rewind () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "/* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
@@ -1499,7 +1499,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- declarer les attributs
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     current._mAttributType (HERE) (HERE)->generatePublicDeclaration (inHfile, current._mAttributeName (HERE)) ;
     current.next () ;
   }
@@ -1525,7 +1525,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declaring search methods
   GGS_insertOrSearchMethodList::cEnumerator currentSearchMethod (mSearchMethodList, true) ;
-  while (currentSearchMethod.hc ()) {
+  while (currentSearchMethod.hasCurrentObject ()) {
     inHfile << "//--- '" << currentSearchMethod._mMethodName (HERE) << "' search method\n"
                "public : void modifier_" 
             << currentSearchMethod._mMethodName (HERE)
@@ -1533,7 +1533,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                ",\n                                const GGS_lstring & inKey" ;
     current.rewind () ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, false) ;
       inHfile << " & outParameter" << cStringWithSigned (attributeIndex) ;
@@ -1548,7 +1548,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                ",\n                                GGS_luint & outIndex" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, false) ;
       inHfile << " & outParameter" << cStringWithSigned (attributeIndex) ;
@@ -1561,7 +1561,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declaring insert methods
   GGS_insertOrSearchMethodList::cEnumerator currentInsertMethod (mInsertMethodList, true) ;
-  while (currentInsertMethod.hc ()) {
+  while (currentInsertMethod.hasCurrentObject ()) {
     inHfile << "//---\n"
                "public : void modifier_"
             << currentInsertMethod._mMethodName (HERE)
@@ -1569,7 +1569,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                ",\n                                const GGS_lstring & inKey" ;
     current.rewind () ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inHfile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
@@ -1584,7 +1584,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
                ",\n                                GGS_luint & outIndex" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inHfile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inHfile, true) ;
       inHfile << " inParameter" << cStringWithSigned (attributeIndex) ;
@@ -1639,7 +1639,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "e_" << aNomTable << "::e_" << aNomTable << " (void) :\n" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     bool first = true ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
@@ -1671,7 +1671,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implementing search methods
   GGS_insertOrSearchMethodList::cEnumerator currentSearchMethod (mSearchMethodList, true) ;
-  while (currentSearchMethod.hc ()) {
+  while (currentSearchMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_" 
               << currentSearchMethod._mMethodName (HERE)
@@ -1679,7 +1679,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
       inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) ;
@@ -1695,7 +1695,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  if (info == NULL) {\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << ".drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
@@ -1703,7 +1703,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  }else{\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << " = info->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
@@ -1718,7 +1718,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  ",\n                                GGS_luint & outIndex" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, false) ;
       inCppFile << " & outParameter" << cStringWithSigned (attributeIndex) ;
@@ -1733,7 +1733,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  if (info == NULL) {\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << ".drop () ;\n" ;
       attributeIndex ++ ;
       current.next () ;
@@ -1742,7 +1742,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  }else{\n" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "    outParameter" << cStringWithSigned (attributeIndex) << " = info->mInfo." << current._mAttributeName (HERE) << " ;\n" ;
       attributeIndex ++ ;
       current.next () ;
@@ -1755,7 +1755,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implementation des methodes d'insertion
   GGS_insertOrSearchMethodList::cEnumerator currentInsertMethod (mInsertMethodList, true) ;
-  while (currentInsertMethod.hc ()) {
+  while (currentInsertMethod.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomTable << "::modifier_"
               << currentInsertMethod._mMethodName (HERE)
@@ -1763,7 +1763,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  ",\n                                const GGS_lstring & inKey" ;
     GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
     sint32 attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << " inParameter" << cStringWithSigned (attributeIndex) ;
@@ -1774,7 +1774,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  e_" << aNomTable << " info ;\n" ;
     current.rewind () ;
     sint32 numeroVariable = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "  info." << current._mAttributeName (HERE) << " = inParameter" << cStringWithSigned (numeroVariable) << " ;\n" ;
       numeroVariable ++ ;
       current.next () ;
@@ -1791,7 +1791,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  ",\n                                GGS_luint & outIndex" ;
     current.rewind () ;
     attributeIndex = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << ",\n                                const " ;
       current._mAttributType (HERE) (HERE)->generateFormalParameter (inCppFile, true) ;
       inCppFile << " inParameter" << cStringWithSigned (attributeIndex) ;
@@ -1802,7 +1802,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  e_" << aNomTable << " info ;\n" ;
     current.rewind () ;
     numeroVariable = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       inCppFile << "  info." << current._mAttributeName (HERE) << " = inParameter" << cStringWithSigned (numeroVariable) << " ;\n" ;
       numeroVariable ++ ;
       current.next () ;

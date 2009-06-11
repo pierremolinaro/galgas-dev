@@ -40,7 +40,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
-    while (structAttribute.hc ()) {
+    while (structAttribute.hasCurrentObject ()) {
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
@@ -199,7 +199,7 @@ generateInstructionPart (AC_OutputStream & ioCppFile,
         ioCppFile << inTargetVariableCppName << ".appendCString (" ;
       }
       GGS_stringlist::cEnumerator currentString (p2->mLiteralStringList, true) ;
-      while (currentString.hc ()) {
+      while (currentString.hasCurrentObject ()) {
         if (first) {
           first = false ;
         }else{
@@ -253,7 +253,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     C_String targetVariableCppName ;
     mTargetVarCppName (HERE)->generateCplusPlusName (targetVariableCppName) ;
     GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
-    while (structAttribute.hc ()) {
+    while (structAttribute.hasCurrentObject ()) {
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
