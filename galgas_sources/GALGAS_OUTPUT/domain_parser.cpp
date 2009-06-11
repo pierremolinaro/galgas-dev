@@ -55,7 +55,7 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & inLexique,
   var_cas_propertyNameSet = GGS_stringset ::constructor_emptySet () ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_domain) COMMA_HERE) ;
   GGS_lstring  var_cas_domainTypeName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_domainTypeName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_domainTypeName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7B_) COMMA_HERE) ;
   GGS_domainAttributeMap  var_cas_attributeMap ;
@@ -72,13 +72,13 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & inLexique,
       switch (select_repeat_domain_parser_0 (inLexique)) {
         case 2 : {
           GGS_lstring  var_cas_attributeTypeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_attributeTypeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_attributeTypeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
           if (((var_cas_attributeTypeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (86))).operator_isNotEqual (GGS_string ("string"))).isBuiltAndTrue ()) {
             var_cas_attributeTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only the '@string' is supported here") COMMA_SOURCE_FILE_AT_LINE (88)) ;
           }
           GGS_lstring  var_cas_attributeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_attributeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_attributeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           if ((var_cas_propertyNameSet.reader_hasKey (inLexique, var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (91)) COMMA_SOURCE_FILE_AT_LINE (91))).isBuiltAndTrue ()) {
             var_cas_attributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("the domain has already a property named '")).operator_concat (var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (92)))).operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (93)) ;
@@ -93,7 +93,7 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & inLexique,
           } break ;
         case 3 : {
           GGS_lstring  var_cas_relationTypeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_relationTypeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_relationTypeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__5B_) COMMA_HERE) ;
           GGS_L_EXsignature  var_cas_relationModifierAttributeList ;
@@ -103,7 +103,7 @@ pr_domain_declaration_domain_parser_65_25_ (galgas_scanner & inLexique,
           { bool syntaxRepeat_1 = true ;
             while (syntaxRepeat_1) {
                 GGS_lstring  var_cas_attributeName ;
-                inLexique._assignFromAttribute_tokenString (var_cas_attributeName) ;
+                inLexique.assignFromAttribute_tokenString (var_cas_attributeName) ;
                 inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                 const GGS_domainAttributeMap  _temp_5122 = var_cas_attributeMap ;
                 if (_temp_5122.isBuilt ()) {

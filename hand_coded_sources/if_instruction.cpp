@@ -106,7 +106,7 @@ void cPtr_typeFunctionCall::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "function_" << mFunctionName << " (inLexique" ;
   GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
-  while (enumerator.hc ()) {
+  while (enumerator.hasCurrentObject ()) {
     ioCppFile << ", " ;
     enumerator._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
     enumerator.next () ;
@@ -122,7 +122,7 @@ bool cPtr_typeFunctionCall::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool isUsed = false ;
   GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
-  while (enumerator.hc () && ! isUsed) {
+  while (enumerator.hasCurrentObject () && ! isUsed) {
     isUsed = enumerator._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     enumerator.next () ;
   }
@@ -135,7 +135,7 @@ bool cPtr_typeFunctionCall::
 formalCurrentObjectArgumentIsUsedForTest (void) const {
   bool isUsed = false ;
   GGS_typeExpressionList::cEnumerator enumerator (mExpressionList, true) ;
-  while (enumerator.hc () && ! isUsed) {
+  while (enumerator.hasCurrentObject () && ! isUsed) {
     isUsed = enumerator._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     enumerator.next () ;
   }
@@ -498,7 +498,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "GGS_string (" ;
   GGS_stringlist::cEnumerator currentString (mLiteralStringList, true) ;
   bool first = true ;
-  while (currentString.hc ()) {
+  while (currentString.hasCurrentObject ()) {
     if (first) {
       first = false ;
     }else{
@@ -770,7 +770,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   }
   GGS_typeExpressionList::cEnumerator current (mExpressionList, true) ;
   bool first = ! hasLexiqueAndLocationArguments ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     if (first) {
       first = false ;
     }else{
@@ -791,7 +791,7 @@ bool cPtr_typeConstructorExpression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool isUsed = false ;
   GGS_typeExpressionList::cEnumerator current (mExpressionList, true) ;
-  while (current.hc () && ! isUsed) {
+  while (current.hasCurrentObject () && ! isUsed) {
     isUsed = current._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     current.next () ;
   }
@@ -804,7 +804,7 @@ bool cPtr_typeConstructorExpression::
 formalCurrentObjectArgumentIsUsedForTest (void) const {
   bool isUsed = false ;
   GGS_typeExpressionList::cEnumerator current (mExpressionList, true) ;
-  while (current.hc () && ! isUsed) {
+  while (current.hasCurrentObject () && ! isUsed) {
     isUsed = current._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     current.next () ;
   }
@@ -817,7 +817,7 @@ bool cPtr_typeConstructorExpression::
 isLexiqueFormalArgumentUsedForTest (void) const {
   bool isUsed = mHasLexiqueAndLocationArguments.boolValue () ;
   GGS_typeExpressionList::cEnumerator current (mExpressionList, true) ;
-  while (current.hc () && ! isUsed) {
+  while (current.hasCurrentObject () && ! isUsed) {
     isUsed = current._mExpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest () ;
     current.next () ;
   }
@@ -1376,7 +1376,7 @@ generateExpression (AC_OutputStream & ioCppFile) const {
   }
   ioCppFile << ".reader_" << mReaderName << " (inLexique" ;
   GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
-  while (e.hc ()) {
+  while (e.hasCurrentObject ()) {
     ioCppFile << ", " ;
     e._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
     e.next () ;
@@ -1392,7 +1392,7 @@ bool cPtr_typeReaderCallInExpression::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool used = mExpressionValue (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
-  while (e.hc () && ! used) {
+  while (e.hasCurrentObject () && ! used) {
     used = e._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     e.next () ;
   }
@@ -1405,7 +1405,7 @@ bool cPtr_typeReaderCallInExpression::
 formalCurrentObjectArgumentIsUsedForTest (void) const {
   bool used = mExpressionValue (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
   GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
-  while (e.hc () && ! used) {
+  while (e.hasCurrentObject () && ! used) {
     used = e._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     e.next () ;
   }
@@ -1469,7 +1469,7 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 void cPtr_typeVarInExpression::generateExpression (AC_OutputStream & ioCppFile) const {
   mCppVarName (HERE)->generateCplusPlusName (ioCppFile) ;
   GGS_lstringlist::cEnumerator structAttribute (mStructAttributeList, true) ;
-  while (structAttribute.hc ()) {
+  while (structAttribute.hasCurrentObject ()) {
     ioCppFile << "." << structAttribute._mValue (HERE) ;
     structAttribute.next () ;
   }
@@ -1780,7 +1780,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
   if (inGenerateSemanticInstructions) {
     GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
     bool first = true ;
-    while (currentBranch.hc ()) {
+    while (currentBranch.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
@@ -1808,7 +1808,7 @@ bool cPtr_C_if_instruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionsList, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = currentBranch._mIFexpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest ()
        || isLexiqueFormalArgumentUsedForList (currentBranch._mInstructionList (HERE), inGenerateSemanticInstructions) ;
     currentBranch.next () ;
@@ -1823,7 +1823,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = currentBranch._mIFexpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch.next () ;
@@ -1837,7 +1837,7 @@ bool cPtr_C_if_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = formalCurrentObjectArgumentIsUsedForList (mElseInstructionsList) ;
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = currentBranch._mIFexpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
       || formalCurrentObjectArgumentIsUsedForList (currentBranch._mInstructionList (HERE)) ;
     currentBranch.next () ;
@@ -1865,9 +1865,9 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mSwitchExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".enumValue ()) {\n" ;
     GGS_L_switchBranchlist::cEnumerator currentBranch (mBranchList, true) ;
-    while (currentBranch.hc ()) {
+    while (currentBranch.hasCurrentObject ()) {
       const GGS_stringset::cEnumerator enumerator (currentBranch._mConstantSet (HERE), true) ;
-      while (enumerator.hc ()) {
+      while (enumerator.hasCurrentObject ()) {
         ioCppFile << "case GGS_" << mEnumTypeName << "::enum_" << enumerator._key (HERE) << ":\n" ;
         enumerator.next () ;
       }
@@ -1890,7 +1890,7 @@ bool cPtr_C_switch_instruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = mSwitchExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
   GGS_L_switchBranchlist::cEnumerator currentBranch (mBranchList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = isLexiqueFormalArgumentUsedForList (currentBranch._mInstructionList (HERE), inGenerateSemanticInstructions) ;
     currentBranch.next () ;
   }
@@ -1904,7 +1904,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = mSwitchExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
   GGS_L_switchBranchlist::cEnumerator currentBranch (mBranchList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = formalArgumentIsUsedForList (currentBranch._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch.next () ;
   }
@@ -1917,7 +1917,7 @@ bool cPtr_C_switch_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = mSwitchExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
   GGS_L_switchBranchlist::cEnumerator currentBranch (mBranchList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch._mInstructionList (HERE)) ;
     currentBranch.next () ;
   }

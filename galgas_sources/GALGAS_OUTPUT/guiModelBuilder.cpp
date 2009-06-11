@@ -52,10 +52,10 @@ pr_gui_component_start_symbol_guiModelBuilder_39_33_ (galgas_scanner & inLexique
                                 GGS_guiComponentRoot  &var_cas_outGuiComponentRoot) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_gui) COMMA_HERE) ;
   GGS_lstring  var_cas_mGUIName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mGUIName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mGUIName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_lstring  var_cas_mGUIClass ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mGUIClass) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mGUIClass) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   { bool syntaxRepeat_0 = true ;
@@ -133,7 +133,7 @@ void guiModelBuilder::
 pr_gui_attribute_guiModelBuilder_94_20_ (galgas_scanner & inLexique,
                                 GGS_guiAttributeList  &var_cas_ioAttributes) {
   GGS_lstring  var_cas_mKey ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mKey) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mKey) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_lstring  var_cas_attributeString ;
   switch (select_guiModelBuilder_3 (inLexique)) {
@@ -141,7 +141,7 @@ pr_gui_attribute_guiModelBuilder_94_20_ (galgas_scanner & inLexique,
       var_cas_attributeString = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
       } break ;
     case 2 : {
-      inLexique._assignFromAttribute_tokenString (var_cas_attributeString) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_attributeString) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
       } break ;
     default :
@@ -153,7 +153,7 @@ pr_gui_attribute_guiModelBuilder_94_20_ (galgas_scanner & inLexique,
   { bool syntaxRepeat_4 = true ;
     while (syntaxRepeat_4) {
         GGS_lstring  var_cas_value ;
-        inLexique._assignFromAttribute_tokenString (var_cas_value) ;
+        inLexique.assignFromAttribute_tokenString (var_cas_value) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
         var_cas_mValue = GGS_lstring ::constructor_new (inLexique, (var_cas_mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (106))).operator_concat (var_cas_value.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (106))), var_cas_value.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (106)) COMMA_HERE) ;
       switch (select_repeat_guiModelBuilder_4 (inLexique)) {
@@ -180,11 +180,11 @@ pr_gui_label_guiModelBuilder_115_16_ (galgas_scanner & inLexique,
                                 GGS_guiLabelList  &var_cas_ioLabels) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_label) COMMA_HERE) ;
   GGS_lstring  var_cas_mAttribute1 ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mAttribute1) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mAttribute1) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_terminal) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
   GGS_lstring  var_cas_mAttribute2 ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mAttribute2) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mAttribute2) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_terminal) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   var_cas_ioLabels._addAssign_operation (var_cas_mAttribute1, var_cas_mAttribute2) ;

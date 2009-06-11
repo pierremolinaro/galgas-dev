@@ -52,7 +52,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << ",\n                                "
                "const cPtr_" << mClassName << " * inObjectPtr" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-    while (currentArgument.hc ()) {
+    while (currentArgument.hasCurrentObject ()) {
       inHfile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
       inHfile << " " ;
@@ -123,7 +123,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << ",\n                                "
                  "const cPtr_" << mClassName << " * operand_" << cStringWithSigned (mMagicNumber.location ()) ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
-    while (currentArgument.hc ()) {
+    while (currentArgument.hasCurrentObject ()) {
       inCppFile << ",\n                                " ;
       generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
       const bool variableUtilisee = formalArgumentIsUsedForList (mInstructionList, currentArgument._mCppName (HERE), true) ;

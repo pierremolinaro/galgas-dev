@@ -24,7 +24,6 @@
 //---------------------------------------------------------------------------*
 
 #include "semantics_instructions.h"
-#include "scannerDecoderGeneration.h"
 #include "parser_parser.h"
 
 //---------------------------------------------------------------------------*
@@ -37,15 +36,15 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
   bool sameSignature = true ;
   GGS_L_ruleSyntaxSignature::cEnumerator currentReferenceInstruction (inReferenceList, true) ;
   GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inOtherList, true) ;
-  while (currentReferenceInstruction.hc () && currentInstruction.hc () && sameSignature) {
+  while (currentReferenceInstruction.hasCurrentObject () && currentInstruction.hasCurrentObject () && sameSignature) {
     sameSignature = currentReferenceInstruction._mInstruction (HERE) (HERE)->isSameSyntaxInstructionThan (inLexique, currentInstruction._mInstruction (HERE) (HERE), inEndOfInstructionListLocation) ;
     currentReferenceInstruction.next () ;
     currentInstruction.next () ;
   }
   if (sameSignature) {
-    if (currentReferenceInstruction.hc ()) {
+    if (currentReferenceInstruction.hasCurrentObject ()) {
       currentInstruction.rewind () ;
-      if (! currentInstruction.hc ()) {
+      if (! currentInstruction.hasCurrentObject ()) {
         inEndOfInstructionListLocation.signalSemanticError (inLexique, 
                                 "syntax signature error : the branch from this point is too short"
                                 COMMA_HERE) ;
@@ -55,7 +54,7 @@ instructionsListHaveSameSyntaxSignatures (C_Compiler & inLexique,
                                 COMMA_HERE) ;
       }
       sameSignature = false ;
-    }else if (currentInstruction.hc ()) {
+    }else if (currentInstruction.hasCurrentObject ()) {
       currentInstruction.rewind () ;
       currentInstruction._mInstruction (HERE) (HERE)->mStartLocation.signalSemanticError (inLexique, 
                                         "syntax signature error : the branch from this point is too long"
@@ -81,18 +80,18 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
   }else{
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mRepeatList, true) ;
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mRepeatList, true) ;
-    while (currentReferenceBranch.hc () && currentOperandBranch.hc () && sameSignature) {
+    while (currentReferenceBranch.hasCurrentObject () && currentOperandBranch.hasCurrentObject () && sameSignature) {
       sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mInstructionList (HERE),
                                                                 currentOperandBranch._mInstructionList (HERE), inEndOfInstructionListLocation) ;
       currentReferenceBranch.next () ;
       currentOperandBranch.next () ;
     }
-    if (sameSignature && (! currentReferenceBranch. hc()) && currentOperandBranch.hc ()) {
+    if (sameSignature && (! currentReferenceBranch. hasCurrentObject()) && currentOperandBranch.hasCurrentObject ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the repeat instruction has more branches than the original one" ;
       inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       sameSignature = false ;
-    }else if (sameSignature && currentReferenceBranch.hc () && ! currentOperandBranch.hc ()) {
+    }else if (sameSignature && currentReferenceBranch.hasCurrentObject () && ! currentOperandBranch.hasCurrentObject ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the repeat instruction has less branches than the original one" ;
       inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
@@ -117,18 +116,18 @@ isSameSyntaxInstructionThan (C_Compiler & inLexique,
   }else{
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentReferenceBranch (mSelectList, true) ;
     GGS_L_branchList_ForGrammarComponent::cEnumerator currentOperandBranch (p->mSelectList, true) ;
-    while (currentReferenceBranch.hc () && currentOperandBranch.hc () && sameSignature) {
+    while (currentReferenceBranch.hasCurrentObject () && currentOperandBranch.hasCurrentObject () && sameSignature) {
       sameSignature = instructionsListHaveSameSyntaxSignatures (inLexique, currentReferenceBranch._mInstructionList (HERE),
                                                                 currentOperandBranch._mInstructionList (HERE), inEndOfInstructionListLocation) ;
       currentReferenceBranch.next () ;
       currentOperandBranch.next () ;
     }
-    if (sameSignature && (! currentReferenceBranch. hc()) && currentOperandBranch.hc ()) {
+    if (sameSignature && (! currentReferenceBranch. hasCurrentObject()) && currentOperandBranch.hasCurrentObject ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the select instruction has more branches than the original one" ;
       inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
       sameSignature = false ;
-    }else if (sameSignature && currentReferenceBranch.hc () && ! currentOperandBranch.hc ()) {
+    }else if (sameSignature && currentReferenceBranch.hasCurrentObject () && ! currentOperandBranch.hasCurrentObject ()) {
       C_String errorMessage ;
       errorMessage << "syntax signature error: the select instruction has less branches than the original one" ;
       inInstruction->mStartLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
@@ -177,10 +176,10 @@ routine_checkLabelSignatures (C_Compiler & inLexique,
                               GGS_typeAltProductionsMap & inAltProductionMap
                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeAltProductionsMap::cEnumerator current (inAltProductionMap, true) ;
-  if (current.hc ()) { // current may be NULL in case of error
+  if (current.hasCurrentObject ()) { // current may be NULL in case of error
     GGS_L_ruleSyntaxSignature referenceSyntaxList = current._mSyntaxSignature (HERE) ;
     current.next () ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       instructionsListHaveSameSyntaxSignatures (inLexique, referenceSyntaxList,
                                                 current._mSyntaxSignature (HERE),
                                                 current._mEndOfInstructionListLocation (HERE)) ;
@@ -198,7 +197,7 @@ routine_checkParseRewindSignatures (C_Compiler & inLexique,
   GGS_L_parse_rewind_signature_list::cEnumerator current (inParseRewindSignatureList, true) ;
   GGS_L_ruleSyntaxSignature referenceList = current._mSignature (HERE) ;
   current.next () ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     instructionsListHaveSameSyntaxSignatures (inLexique, referenceList,
                                               current._mSignature (HERE),
                                               current._mErrorLocation (HERE)) ;
@@ -233,8 +232,8 @@ generateInstruction (AC_OutputStream & inCppFile,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     GGS_L_assignedVariables::cEnumerator argument (aListeTypeEffectifs, true) ;
-    while (argument.hc ()) {
-      inCppFile << "inLexique._assignFromAttribute_"
+    while (argument.hasCurrentObject ()) {
+      inCppFile << "inLexique.assignFromAttribute_"
                 << argument._aNomAttributSource (HERE) << " (" ;
       argument._aNomVariableCible (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
       inCppFile << ") ;\n" ;
@@ -245,10 +244,10 @@ generateInstruction (AC_OutputStream & inCppFile,
     GGS_L_assignedVariables::cEnumerator argument (aListeTypeEffectifs, true) ;
     inCppFile << "#ifdef DEBUG_TRACE_ENABLED\n"
                  "  { C_String message_ "
-              << ((! argument .hc ()) ? "" : "(\" ?\") ")
+              << ((! argument .hasCurrentObject ()) ? "" : "(\" ?\") ")
               << ";\n" ;
-    while (argument.hc ()) {
-      inCppFile << "    message_ << \" \" << inLexique._attributeValue_" << argument._aNomAttributSource (HERE) << " () ;\n" ;
+    while (argument.hasCurrentObject ()) {
+      inCppFile << "    message_ << \" \" << inLexique.attributeValue_" << argument._aNomAttributSource (HERE) << " () ;\n" ;
       argument.next () ;
     }
     inCppFile << "    inLexique.didParseTerminal (\"$" << aNomTerminal << "$\", message_) ;\n"
@@ -275,7 +274,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                         const bool /* inGenerateSemanticInstructions */) const {
   bool used = false ;
   GGS_L_assignedVariables::cEnumerator argument (aListeTypeEffectifs, true) ;
-  while (argument.hc () && !used) {
+  while (argument.hasCurrentObject () && !used) {
     used = argument._aNomVariableCible (HERE).isSameObjectAs (inArgumentCppName) ;
     argument.next () ;
   }
@@ -319,7 +318,7 @@ generateInstruction (AC_OutputStream & inCppFile,
             << " (inLexique" ;
   if (inGenerateSemanticInstructions) {
     GGS_typeExpressionList::cEnumerator argument (mParametersExpressionList, true) ;
-    while (argument.hc ()) {
+    while (argument.hasCurrentObject ()) {
       inCppFile << ", " ;
       argument._mExpression (HERE) (HERE)->generateExpression (inCppFile) ;
       argument.next () ;
@@ -343,7 +342,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
   bool used = false ;
   if (inGenerateSemanticInstructions) {
     GGS_typeExpressionList::cEnumerator argument (mParametersExpressionList, true) ;
-    while (argument.hc () && !used) {
+    while (argument.hasCurrentObject () && !used) {
       used = argument._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
       argument.next () ;
     }
@@ -357,7 +356,7 @@ bool cPtr_typeInstructionAppelNonTerminal::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
   GGS_typeExpressionList::cEnumerator argument (mParametersExpressionList, true) ;
-  while (argument.hc () && !used) {
+  while (argument.hasCurrentObject () && !used) {
     used = argument._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     argument.next () ;
   }
@@ -386,7 +385,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
   }
   ioPrototypeIndex ++ ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     generateSelectAndRepeatPrototypesForList (currentBranch._mInstructionList (HERE),
                                               inHfile,
                                               inLexiqueClassName,
@@ -412,7 +411,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
   sint16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     inCppFile << "case " << cStringWithSigned (numeroBranche) << " : {\n" ;
     generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
@@ -441,7 +440,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = formalArgumentIsUsedForList (currentBranch._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch.next () ;
   }
@@ -454,7 +453,7 @@ bool cPtr_C_select_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch._mInstructionList (HERE)) ;
     currentBranch.next () ;
   }
@@ -483,7 +482,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
   }
   ioPrototypeIndex ++ ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (aListesBranchesRepeter, true) ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     generateSelectAndRepeatPrototypesForList (currentBranch._mInstructionList (HERE),
                                               inHfile,
                                               inLexiqueClassName,
@@ -517,7 +516,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   currentBranch.next () ;
   sint16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     inCppFile << "case " << cStringWithSigned ((sint32) (numeroBranche + 1)) << " : {\n" ;
     generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
@@ -550,7 +549,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (aListesBranchesRepeter, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = formalArgumentIsUsedForList (currentBranch._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch.next () ;
   }
@@ -563,7 +562,7 @@ bool cPtr_C_repeat_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (aListesBranchesRepeter, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch._mInstructionList (HERE)) ;
     currentBranch.next () ;
   }
@@ -596,7 +595,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                             inNotDeclared) ;
 //--- Other branches
   p.next () ;
-  while (p.hc ()) {
+  while (p.hasCurrentObject ()) {
     sint32 tempPrototypeIndex = prototypeIndex ;
     generateSelectAndRepeatPrototypesForList (p._mInstructionList (HERE),
                                               inHfile,
@@ -627,7 +626,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                                   inGenerateDebug, inGenerateSemanticInstructions) ;
 //--- Other branches
   p.next () ;
-  while (p.hc ()) {
+  while (p.hasCurrentObject ()) {
     inCppFile << "//--- Branch of parse/rewind instruction\n"
               << "  inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n" ;
     sint32 tempPrototypeIndex = prototypeIndex ;
@@ -653,7 +652,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mBranchList, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = formalArgumentIsUsedForList (currentBranch._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch.next () ;
   }
@@ -666,7 +665,7 @@ bool cPtr_C_parse_rewind_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mBranchList, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch._mInstructionList (HERE)) ;
     currentBranch.next () ;
   }
@@ -699,7 +698,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                             inNotDeclared) ;
 //--- Generate for other branches
   currentBranch.next () ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     sint32 localPrototypeIndex = kPrototypeIndex ;
     generateSelectAndRepeatPrototypesForList (currentBranch._mInstructionList (HERE),
                                               inHfile,
@@ -731,7 +730,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
     const sint32 kPrototypeIndex = ioPrototypeIndex ;
     bool first = true ;
-    while (currentBranch.hc ()) {
+    while (currentBranch.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
@@ -763,7 +762,7 @@ bool cPtr_C_parse_when_else_instruction::
 isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const {
   bool used = isLexiqueFormalArgumentUsedForList (mElseInstructionsList, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while (currentBranch.hc () && ! used) {
+  while (currentBranch.hasCurrentObject () && ! used) {
     used = currentBranch._mIFexpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest ()
        || isLexiqueFormalArgumentUsedForList (currentBranch._mInstructionList (HERE), inGenerateSemanticInstructions) ;
     currentBranch.next () ;
@@ -778,7 +777,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
                       const bool inGenerateSemanticInstructions) const {
   bool used = formalArgumentIsUsedForList (mElseInstructionsList, inArgumentCppName, inGenerateSemanticInstructions) ;
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = currentBranch._mIFexpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
       || formalArgumentIsUsedForList (currentBranch._mInstructionList (HERE), inArgumentCppName, inGenerateSemanticInstructions) ;
     currentBranch.next () ;
@@ -792,7 +791,7 @@ bool cPtr_C_parse_when_else_instruction::
 formalCurrentObjectArgumentIsUsed (void) const {
   bool used = false ;
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  while ((! used) && currentBranch.hc ()) {
+  while ((! used) && currentBranch.hasCurrentObject ()) {
     used = formalCurrentObjectArgumentIsUsedForList (currentBranch._mInstructionList (HERE)) ;
     currentBranch.next () ;
   }

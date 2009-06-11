@@ -30,7 +30,6 @@
 #include "cVocabulary.h"
 #include "common_semantics.h"
 #include "semantics_instructions.h"
-#include "scannerDecoderGeneration.h"
 #include "cDecisionTableElement.h"
 
 //---------------------------------------------------------------------------*
@@ -1291,10 +1290,10 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 
 //--- Generate methods, one by non terminal ----------------------------------
   GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
-  while (nonTerminal.hc ()) {
+  while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
     GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
-    while (currentAltForNonTerminal.hc ()) {
+    while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "void " ;
       generatedZone3 << inTargetFileName
                      << "::\n"
@@ -1304,7 +1303,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
       sint16 numeroParametre = 1 ;
-      while (parametre.hc ()) {
+      while (parametre.hasCurrentObject ()) {
         generatedZone3 << ",\n                                " ;
         generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
         if (first >= 0) {
@@ -1338,7 +1337,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
     //--- Engendrer l'axiome ?
     if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
       GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
-      while (currentAltForNonTerminal.hc ()) {
+      while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
@@ -1356,7 +1355,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "const GGS_lstring _inFileName" ;
         GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
         sint16 numeroParametre = 1 ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
           generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
@@ -1384,7 +1383,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           generatedZone3 << ", parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;
@@ -1400,7 +1399,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "        _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
@@ -1416,7 +1415,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "    _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           if (parametre._mFormalArgumentPassingMode (HERE).enumValue () == GGS_EXformalArgumentPassingMode::enum_argumentOut) {
             generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
@@ -1436,7 +1435,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "const GGS_string _inSourceString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
           generateFormalArgumentFromTypeName (parametre._mGalgasTypeName (HERE), parametre._mFormalArgumentPassingMode (HERE), generatedZone3) ;
           generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
@@ -1458,7 +1457,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                        << " (*scanner_" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
-        while (parametre.hc ()) {
+        while (parametre.hasCurrentObject ()) {
           generatedZone3 << ", parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.next () ;
           numeroParametre ++ ;

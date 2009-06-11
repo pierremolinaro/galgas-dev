@@ -31,7 +31,7 @@ wrapperFileCount (const GGS_wrapperFileSortedList & inRegularFileSortedList,
                   const GGS_wrapperDirectorySortedList & inDirectorySortedList) {
   sint32 count = inRegularFileSortedList.count () ;
   GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
-  while (d.hc ()) {
+  while (d.hasCurrentObject ()) {
     count += wrapperFileCount (d._mRegularFileSortedList (HERE),
                                d._mDirectorySortedList (HERE)) ;
     d.next () ;  
@@ -88,7 +88,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //--- Recursively generate sub directories
   TC_UniqueArray <uint32> subDirectories ;
   GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
-  while (d.hc ()) {
+  while (d.hasCurrentObject ()) {
     generateWrapperContents (inCppFile,
                              d._mRegularFileSortedList (HERE),
                              d._mDirectorySortedList (HERE),
@@ -101,7 +101,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //--- Generate regular files
   TC_UniqueArray <uint32> wrapperFileIndexes ;
   GGS_wrapperFileSortedList::cEnumerator f (inRegularFileSortedList, true) ;
-  while (f.hc ()) {
+  while (f.hasCurrentObject ()) {
     TC_UniqueArray <unsigned char> binaryData ;
     const bool ok = f._mAbsoluteFilePath (HERE).string ().binaryDataWithContentOfFile (binaryData) ;
     if (! ok) {

@@ -57,7 +57,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
                                 GGS_EXsemanticContext &var_cas_ioSemanticContext) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_gui) COMMA_HERE) ;
   GGS_lstring  var_cas_guiComponentName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_guiComponentName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_guiComponentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_string var_cas_basename ;
   var_cas_basename = GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (113)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (113)) ;
@@ -66,7 +66,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
       "the component name ('")).operator_concat (var_cas_guiComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (116)))).operator_concat (GGS_string ("') against the source file base name ('"))).operator_concat (var_cas_basename)).operator_concat (GGS_string ("'): they should be identical")) COMMA_SOURCE_FILE_AT_LINE (118)) ;
   }
   GGS_lstring  var_cas_guiKindName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_guiKindName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_guiKindName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
   GGS_lstring  var_cas_grammarName ;
   switch (select_cocoa_parser_0 (inLexique)) {
@@ -75,7 +75,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
       } break ;
     case 2 : {
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_grammar) COMMA_HERE) ;
-      inLexique._assignFromAttribute_tokenString (var_cas_grammarName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_grammarName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
       } break ;
     default :
@@ -146,7 +146,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
     case 2 : {
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_import_5F__5F_) COMMA_HERE) ;
       GGS_lstring  var_cas_lexiqueFileName ;
-      inLexique._assignFromAttribute_tokenString (var_cas_lexiqueFileName) ;
+      inLexique.assignFromAttribute_tokenString (var_cas_lexiqueFileName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
       nt_parse_lexique_for_importing_ (inLexique, var_cas_lexiqueFileName, var_cas_ioLexiqueMapForUse) ;
@@ -176,7 +176,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
             GGS_location (inLexique).reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the lexique should be imported by an import__ \"...\" statement.") COMMA_SOURCE_FILE_AT_LINE (218)) ;
           }
           GGS_lstring  var_cas_terminal1 ;
-          inLexique._assignFromAttribute_tokenString (var_cas_terminal1) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_terminal1) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_terminal) COMMA_HERE) ;
           GGS_luint  var_cas_terminal1ID ;
           GGS_typeListeAttributsSemantiques  automatic_var_1 ;
@@ -186,7 +186,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
           }
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
           GGS_lstring  var_cas_terminal2 ;
-          inLexique._assignFromAttribute_tokenString (var_cas_terminal2) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_terminal2) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_terminal) COMMA_HERE) ;
           GGS_luint  var_cas_terminal2ID ;
           GGS_typeListeAttributsSemantiques  automatic_var_2 ;
@@ -199,7 +199,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
           } break ;
         case 3 : {
           GGS_lstring  var_cas_settingName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_settingName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_settingName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_lstring  var_cas_entryName ;
           switch (select_cocoa_parser_3 (inLexique)) {
@@ -207,7 +207,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
               var_cas_entryName = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
               } break ;
             case 2 : {
-              inLexique._assignFromAttribute_tokenString (var_cas_entryName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_entryName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
               } break ;
             default :
@@ -219,7 +219,7 @@ pr_galgas_component_cocoa_parser_101_23_ (galgas_scanner & inLexique,
           { bool syntaxRepeat_4 = true ;
             while (syntaxRepeat_4) {
                 GGS_lstring  var_cas_s ;
-                inLexique._assignFromAttribute_tokenString (var_cas_s) ;
+                inLexique.assignFromAttribute_tokenString (var_cas_s) ;
                 inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
                 var_cas_sourceExpression = GGS_lstring ::constructor_new (inLexique, (var_cas_sourceExpression.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (247))).operator_concat (var_cas_s.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (247))), var_cas_s.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (247)) COMMA_HERE) ;
               switch (select_repeat_cocoa_parser_4 (inLexique)) {

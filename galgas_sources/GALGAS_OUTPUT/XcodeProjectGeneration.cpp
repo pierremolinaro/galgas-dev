@@ -675,7 +675,7 @@ void routine_build_GENERATED_BY_GALGAS_files_for_sources_build_phase (C_Compiler
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   {
     GGS_stringset::cEnumerator enumerator_16437 (var_cas_inComponentNameSet, true) ;
-    while (enumerator_16437.hc ()) {
+    while (enumerator_16437.hasCurrentObject ()) {
       var_cas_fileList._addAssign_operation ((enumerator_16437._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_16437.next () ;
     }
@@ -704,14 +704,14 @@ void routine_build_GENERATED_BY_GALGAS_group (C_Compiler & inLexique,
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   {
     GGS_stringset::cEnumerator enumerator_16979 (var_cas_inComponentNameSet, true) ;
-    while (enumerator_16979.hc ()) {
+    while (enumerator_16979.hasCurrentObject ()) {
       ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  enumerator_16979._key (HERE) COMMA_SOURCE_FILE_AT_LINE (553)) ;
       enumerator_16979.next () ;
     }
   }
   {
     GGS_stringset::cEnumerator enumerator_17068 (var_cas_inGUISourceNameSet, true) ;
-    while (enumerator_17068.hc ()) {
+    while (enumerator_17068.hasCurrentObject ()) {
       var_cas_fileList._addAssign_operation ((enumerator_17068._key (HERE)).operator_concat (GGS_string (".mm"))) ;
       enumerator_17068.next () ;
     }
@@ -739,7 +739,7 @@ void routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (C_Compi
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   {
     GGS_stringset::cEnumerator enumerator_17588 (var_cas_inExternSourceNameSet, true) ;
-    while (enumerator_17588.hc ()) {
+    while (enumerator_17588.hasCurrentObject ()) {
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_17588._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (575)) ;
       if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
@@ -771,7 +771,7 @@ void routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (C_Comp
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   {
     GGS_stringset::cEnumerator enumerator_18277 (var_cas_inExternSourceNameSet, true) ;
-    while (enumerator_18277.hc ()) {
+    while (enumerator_18277.hasCurrentObject ()) {
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_18277._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (597)) ;
       if ((((var_cas_extension).operator_isNotEqual (GGS_string ("cpp"))).operator_and ((var_cas_extension).operator_isNotEqual (GGS_string ("c")))).isBuiltAndTrue ()) {
@@ -803,7 +803,7 @@ void routine_build_HAND_CODED_SOURCES_group (C_Compiler & inLexique,
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   {
     GGS_stringset::cEnumerator enumerator_18897 (var_cas_inExternSourceNameSet, true) ;
-    while (enumerator_18897.hc ()) {
+    while (enumerator_18897.hasCurrentObject ()) {
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_18897._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (619)) ;
       if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
@@ -838,7 +838,7 @@ void routine_build_FRAMEWORKS_group (C_Compiler & inLexique,
   var_cas_fileSet._addAssign_operation (GGS_string ("Cocoa.framework")) ;
   {
     GGS_stringset::cEnumerator enumerator_19637 (var_cas_inExternSourceForTool, true) ;
-    while (enumerator_19637.hc ()) {
+    while (enumerator_19637.hasCurrentObject ()) {
       if (((enumerator_19637._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (644))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
         var_cas_fileSet._addAssign_operation (enumerator_19637._key (HERE)) ;
       }
@@ -847,7 +847,7 @@ void routine_build_FRAMEWORKS_group (C_Compiler & inLexique,
   }
   {
     GGS_stringset::cEnumerator enumerator_19771 (var_cas_inExternSourceForApp, true) ;
-    while (enumerator_19771.hc ()) {
+    while (enumerator_19771.hasCurrentObject ()) {
       if (((enumerator_19771._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (649))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
         var_cas_fileSet._addAssign_operation (enumerator_19771._key (HERE)) ;
       }
@@ -877,7 +877,7 @@ void routine_build_FRAMEWORKS_for_frameworks_build_phase (C_Compiler & inLexique
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   {
     GGS_stringset::cEnumerator enumerator_20329 (var_cas_inExternFileSet, true) ;
-    while (enumerator_20329.hc ()) {
+    while (enumerator_20329.hasCurrentObject ()) {
       if (((enumerator_20329._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (670))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
         var_cas_fileList._addAssign_operation (enumerator_20329._key (HERE)) ;
       }
@@ -989,21 +989,21 @@ void routine_build_COCOA_APP_files_for_sources_build_phase (C_Compiler & inLexiq
   var_cas_fileList._addAssign_operation (GGS_string ("md5.cpp")) ;
   {
     GGS_stringset::cEnumerator enumerator_23748 (var_cas_inGUISourceNameSet, true) ;
-    while (enumerator_23748.hc ()) {
+    while (enumerator_23748.hasCurrentObject ()) {
       var_cas_fileList._addAssign_operation ((enumerator_23748._key (HERE)).operator_concat (GGS_string (".mm"))) ;
       enumerator_23748.next () ;
     }
   }
   {
     GGS_stringset::cEnumerator enumerator_23831 (var_cas_inScannerSourceNameSet, true) ;
-    while (enumerator_23831.hc ()) {
+    while (enumerator_23831.hasCurrentObject ()) {
       var_cas_fileList._addAssign_operation ((enumerator_23831._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_23831.next () ;
     }
   }
   {
     GGS_stringset::cEnumerator enumerator_23914 (var_cas_inOptionSourceNameSet, true) ;
-    while (enumerator_23914.hc ()) {
+    while (enumerator_23914.hasCurrentObject ()) {
       var_cas_fileList._addAssign_operation ((enumerator_23914._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_23914.next () ;
     }

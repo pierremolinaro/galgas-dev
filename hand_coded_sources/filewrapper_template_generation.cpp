@@ -33,7 +33,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
   inHfile << "GGS_string\n"
              "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_Compiler & inLexique" ;
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     inHfile << ",\n                                "
                "const " ;
     current._mType (HERE)(HERE)->generateFormalParameter (inHfile, true) ;
@@ -68,65 +68,67 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
 
 void cPtr_C_filewrapperTemplateToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
-                                AC_OutputStream & inCppFile,
+                                AC_OutputStream & ioCppFile,
                                 const C_String & /* inTargetFileName */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
-  inCppFile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
+  ioCppFile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   bool lexiqueIsUsed = false ;
   GGS_templateInstructionList::cEnumerator currentInstruction (mTemplateInstructionList, true) ;
-  while (currentInstruction.hc () && ! lexiqueIsUsed) {
+  while (currentInstruction.hasCurrentObject () && ! lexiqueIsUsed) {
     lexiqueIsUsed = currentInstruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
     currentInstruction.next () ;
   }
-  inCppFile << "GGS_string\n"
+  ioCppFile << "GGS_string\n"
                "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_Compiler & " ;
   if (lexiqueIsUsed) {
-    inCppFile << "inLexique" ;
+    ioCppFile << "inLexique" ;
   }else{
-    inCppFile << "/* inLexique */" ;
+    ioCppFile << "/* inLexique */" ;
   }
   GGS_typeListeTypesEtNomsArgMethode::cEnumerator current (mTemplateArgumentList, true) ;
-  while (current.hc ()) {
-    inCppFile << ",\n                                "
+  while (current.hasCurrentObject ()) {
+    ioCppFile << ",\n                                "
                  "const " ;
-    current._mType (HERE)(HERE)->generateFormalParameter (inCppFile, true) ;
-    current._mCppName (HERE)(HERE)->generateCplusPlusName (inCppFile) ;
+    current._mType (HERE)(HERE)->generateFormalParameter (ioCppFile, true) ;
+    current._mCppName (HERE)(HERE)->generateCplusPlusName (ioCppFile) ;
     current.nextObject () ;
   }
-  inCppFile << ") {\n"
+  ioCppFile << ") {\n"
                "  C_String result ;\n" ;
   current.rewind () ;
-  if (current.hc ()) {
-    inCppFile << "  const bool isBuilt = " ;
+  if (current.hasCurrentObject ()) {
+    ioCppFile << "  const bool isBuilt = " ;
     sint32 numeroVariable = 0 ;
-    while (current.hc ()) {
+    while (current.hasCurrentObject ()) {
       if (numeroVariable != 0) {
-        inCppFile << "\n    && " ;
+        ioCppFile << "\n    && " ;
       }
-      current._mCppName (HERE)(HERE)->generateCplusPlusName (inCppFile) ;
-      inCppFile << ".isBuilt ()" ;
+      current._mCppName (HERE)(HERE)->generateCplusPlusName (ioCppFile) ;
+      ioCppFile << ".isBuilt ()" ;
       current.next () ;
       numeroVariable ++ ;
     }
-    inCppFile << " ;\n"
+    ioCppFile << " ;\n"
                  "  if (isBuilt) {\n" ;
-    inCppFile.incIndentation (+2) ;
+    ioCppFile.incIndentation (+2) ;
   }
   currentInstruction.rewind () ;
-  while (currentInstruction.hc ()) {
-    currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (inCppFile) ;
+  ioCppFile.incIndentation (+2) ;
+  while (currentInstruction.hasCurrentObject ()) {
+    currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
     currentInstruction.next () ;
   }
+  ioCppFile.incIndentation (-2) ;
   current.rewind () ;
-  if (current.hc ()) {
-    inCppFile << "}\n"
+  if (current.hasCurrentObject ()) {
+    ioCppFile << "}\n"
                  "return GGS_string (isBuilt, result) ;\n" ;
-    inCppFile.incIndentation (-2) ;
+    ioCppFile.incIndentation (-2) ;
   }else{
-    inCppFile << "  return GGS_string (true, result) ;\n" ;
+    ioCppFile << "  return GGS_string (true, result) ;\n" ;
   }
-  inCppFile << "}\n\n" ;
+  ioCppFile << "}\n\n" ;
 }  
 
 //---------------------------------------------------------------------------*
@@ -138,10 +140,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_templateInstructionString::
-generateTemplateInstruction (AC_OutputStream & inCppFile) const {
-  inCppFile << "  result << " ;
-  inCppFile.appendCLiteralStringConstant (mTemplateString.string (), 240) ;
-  inCppFile << " ;\n" ;
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "result << " ;
+  ioCppFile.appendCLiteralStringConstant (mTemplateString.string (), 240) ;
+  ioCppFile << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -167,10 +169,10 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_templateInstructionConstant::
-generateTemplateInstruction (AC_OutputStream & inCppFile) const {
-  inCppFile << "  result << " ;
-  mCppName(HERE)->generateCplusPlusName (inCppFile) ;
-  inCppFile << " ;\n" ;
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "result << " ;
+  mCppName(HERE)->generateCplusPlusName (ioCppFile) ;
+  ioCppFile << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -196,10 +198,10 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_templateInstructionExpression::
-generateTemplateInstruction (AC_OutputStream & inCppFile) const {
-  inCppFile << "  result << " ;
-  mExpression (HERE)->generateExpression (inCppFile) ;
-  inCppFile << " ;\n" ;
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "result << " ;
+  mExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -219,7 +221,7 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark cPtr_templateInstructionExpression
+  #pragma mark cPtr_templateInstructionForeach
 #endif
 
 //---------------------------------------------------------------------------*
@@ -242,7 +244,7 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
   if (mNewEnumerationStyle.boolValue ()) {
     ioCppFile <<  "while (enumerator_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
-    ioCppFile << ".hc ()" ;
+    ioCppFile << ".hasCurrentObject ()" ;
   }else{
     ioCppFile << "while (((operand_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
@@ -251,21 +253,36 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
     ioCppFile << ".nextObject ()))" ;
   }
   ioCppFile << ") {\n" ;
+  ioCppFile.incIndentation (+2) ;
   if (! mNewEnumerationStyle.boolValue ()) {
-    ioCppFile << "  macroValidPointer (operand_" ;
+    ioCppFile << "macroValidPointer (operand_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
     ioCppFile << ") ;\n" ;
   }
   GGS_templateInstructionList::cEnumerator currentInstruction (mDoInstructionList, true) ;
-  while (currentInstruction.hc ()) {
+  while (currentInstruction.hasCurrentObject ()) {
     currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
     currentInstruction.next () ;
   }
+  if (mBetweenInstructionList.count () > 0) {
+    ioCppFile << "if (enumerator_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << ".hasNextObject ()) {\n" ;
+    ioCppFile.incIndentation (+2) ;
+    GGS_templateInstructionList::cEnumerator currentInstruction2 (mBetweenInstructionList, true) ;
+    while (currentInstruction2.hasCurrentObject ()) {
+      currentInstruction2._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+      currentInstruction2.next () ;
+    }
+    ioCppFile.incIndentation (-2) ;
+    ioCppFile << "}\n" ;
+  }
   if (mNewEnumerationStyle.boolValue ()) {
-    ioCppFile << "  enumerator_" ;
+    ioCppFile << "enumerator_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
     ioCppFile << ".next () ;\n" ;
   }
+  ioCppFile.incIndentation (-2) ;
   ioCppFile << "}\n" ;
 }
 
@@ -275,9 +292,14 @@ bool cPtr_templateInstructionForeach::
 isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
   bool used = mExpression (HERE)->formalArgumentIsUsedForTest (inCppName) ;
   GGS_templateInstructionList::cEnumerator instruction (mDoInstructionList, true) ;
-  while (instruction.hc ()) {
+  while (instruction.hasCurrentObject () && ! used) {
     used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
     instruction.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction2 (mBetweenInstructionList, true) ;
+  while (instruction2.hasCurrentObject () && ! used) {
+    used = instruction2._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    instruction2.next () ;
   }
   return used ;
 }
@@ -288,9 +310,14 @@ bool cPtr_templateInstructionForeach::
 isUsingLexiqueArgument (void) const {
   bool used = mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
   GGS_templateInstructionList::cEnumerator instruction (mDoInstructionList, true) ;
-  while (instruction.hc ()) {
+  while (instruction.hasCurrentObject () && ! used) {
     used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
     instruction.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction2 (mBetweenInstructionList, true) ;
+  while (instruction2.hasCurrentObject () && ! used) {
+    used = instruction2._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    instruction2.next () ;
   }
   return used ;
 }
@@ -306,7 +333,7 @@ isUsingLexiqueArgument (void) const {
 void cPtr_typeFileWrapperTemplateCall::generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "template_filewrapper_" << mFileWrapperName << "_" << mTemplateName << " (inLexique" ;
   GGS_typeExpressionList::cEnumerator current (mOutExpressionList, true) ;
-  while (current.hc ()) {
+  while (current.hasCurrentObject ()) {
     ioCppFile << ", " ;
     current._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
     current.next () ;
@@ -320,7 +347,7 @@ bool cPtr_typeFileWrapperTemplateCall::
 formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
   bool isUsed = false ;
   GGS_typeExpressionList::cEnumerator current (mOutExpressionList, true) ;
-  while ((current.hc ()) && ! isUsed) {
+  while ((current.hasCurrentObject ()) && ! isUsed) {
     isUsed = current._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
     current.next () ;
   }
@@ -340,7 +367,7 @@ bool cPtr_typeFileWrapperTemplateCall::
 formalCurrentObjectArgumentIsUsedForTest (void) const {
   bool isUsed = false ;
   GGS_typeExpressionList::cEnumerator current (mOutExpressionList, true) ;
-  while ((current.hc ()) && ! isUsed) {
+  while ((current.hasCurrentObject ()) && ! isUsed) {
     isUsed = current._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
     current.next () ;
   }

@@ -51,7 +51,7 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
   GGS_M_terminalSymbolsMapForUse::cEnumerator t (inTerminalSymbolMap) ;
-  while (t.hc ()) {
+  while (t.hasCurrentObject ()) {
     mStringsArray.addObject (t._key (HERE)) ;  
     t.next () ;
   }
@@ -60,7 +60,7 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
   GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
-  while (nonTerminal.hc ()) {
+  while (nonTerminal.hasCurrentObject ()) {
     mStringsArray.addObject (nonTerminal._key (HERE)) ;  
     nonTerminal.next () ;
   }

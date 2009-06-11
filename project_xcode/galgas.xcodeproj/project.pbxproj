@@ -848,7 +848,6 @@
 		CFEDF3180C2D161F0038713A /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
 		CFEDF3190C2D161F0038713A /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CFEDF31A0C2D161F0038713A /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */; };
-		CFEDF31B0C2D161F0038713A /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
 		CFEDF31C0C2D161F0038713A /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
 		CFEDF31D0C2D161F0038713A /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
 		CFEDF31E0C2D161F0038713A /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
@@ -982,7 +981,6 @@
 		CFEDF4780C2D16610038713A /* GGS_lsint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546D970A347E450076D39C /* GGS_lsint64.cpp */; };
 		CFEDF4790C2D16610038713A /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CFEDF47A0C2D16610038713A /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */; };
-		CFEDF47B0C2D16610038713A /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
 		CFEDF47C0C2D16610038713A /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
 		CFEDF47D0C2D16610038713A /* GGS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF664010B6769FF00E97917 /* GGS_binaryset.cpp */; };
 		CFEDF47E0C2D16610038713A /* C_galgas_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF92080B6E41B000747AC6 /* C_galgas_io.cpp */; };
@@ -1090,10 +1088,6 @@
 		CFEEBE6805C056D0009FE498 /* cocoa_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */; };
 		CFEEBE6B05C056F9009FE498 /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
 		CFEEBE6C05C056F9009FE498 /* cocoa_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */; };
-		CFEECA160B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
-		CFEECA180B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
-		CFEECA200B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
-		CFEECA220B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */; };
 		CFF13E3A059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E3C059730EB00C43F5E /* cli_options_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E38059730EB00C43F5E /* cli_options_parser.cpp */; };
 		CFF13E420597311700C43F5E /* option_component_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF13E410597311700C43F5E /* option_component_generation.cpp */; };
@@ -1737,8 +1731,6 @@
 		CFEEB5D20DFAA15200EDAF05 /* mda_galgas_routines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mda_galgas_routines.h; sourceTree = "<group>"; };
 		CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_parser.cpp; sourceTree = "<group>"; };
 		CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cocoa_generation.cpp; sourceTree = "<group>"; };
-		CFEECA110B300C1C00A02FF1 /* scannerDecoderGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scannerDecoderGeneration.h; sourceTree = "<group>"; };
-		CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scannerDecoderGeneration.cpp; sourceTree = "<group>"; };
 		CFEF408E0B99886600CA3AF7 /* include_C_mapindexToImplement.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_mapindexToImplement.h; sourceTree = "<group>"; };
 		CFEFE7D70BB1A520006F37CB /* include_typeConditionNonChaine.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeConditionNonChaine.h; sourceTree = "<group>"; };
 		CFEFE9440BB1C550006F37CB /* include_typeLexicalLogInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalLogInstruction.h; sourceTree = "<group>"; };
@@ -2515,8 +2507,6 @@
 			isa = PBXGroup;
 			children = (
 				CFF5377A057A509C00854C83 /* scanner_generation.cpp */,
-				CFEECA110B300C1C00A02FF1 /* scannerDecoderGeneration.h */,
-				CFEECA120B300C1C00A02FF1 /* scannerDecoderGeneration.cpp */,
 			);
 			name = "Scanner Component";
 			sourceTree = "<group>";
@@ -3281,7 +3271,6 @@
 				CF546D990A347E450076D39C /* GGS_lsint64.cpp in Sources */,
 				CF7B06270AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */,
 				CF96D6B50B1DA4740067E271 /* AC_galgas_sortedlist.cpp in Sources */,
-				CFEECA160B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
 				CF4895720B66682D005A9E78 /* predefined_types.cpp in Sources */,
 				CFF6640B0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 				CFCF92220B6E41B000747AC6 /* C_galgas_io.cpp in Sources */,
@@ -3425,7 +3414,6 @@
 				CF546DA50A347E460076D39C /* GGS_lsint64.cpp in Sources */,
 				CF7B06330AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */,
 				CF96D6C10B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
-				CFEECA180B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
 				CF48956A0B66682D005A9E78 /* predefined_types.cpp in Sources */,
 				CFF664030B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 				CFCF920E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */,
@@ -3599,7 +3587,6 @@
 				CF546DA70A347E460076D39C /* GGS_lsint64.cpp in Sources */,
 				CF7B06350AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */,
 				CF96D6C30B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
-				CFEECA200B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
 				CF4895760B66682D005A9E78 /* predefined_types.cpp in Sources */,
 				CFF6640F0B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 				CFCF922E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */,
@@ -3821,7 +3808,6 @@
 				CF546D9B0A347E450076D39C /* GGS_lsint64.cpp in Sources */,
 				CF7B06290AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */,
 				CF96D6B70B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */,
-				CFEECA220B300C1C00A02FF1 /* scannerDecoderGeneration.cpp in Sources */,
 				CF4895700B66682D005A9E78 /* predefined_types.cpp in Sources */,
 				CFF664090B6769FF00E97917 /* GGS_binaryset.cpp in Sources */,
 				CFCF921E0B6E41B000747AC6 /* C_galgas_io.cpp in Sources */,
@@ -3965,7 +3951,6 @@
 				CFEDF3180C2D161F0038713A /* GGS_lsint64.cpp in Sources */,
 				CFEDF3190C2D161F0038713A /* AC_galgas_list.cpp in Sources */,
 				CFEDF31A0C2D161F0038713A /* AC_galgas_sortedlist.cpp in Sources */,
-				CFEDF31B0C2D161F0038713A /* scannerDecoderGeneration.cpp in Sources */,
 				CFEDF31C0C2D161F0038713A /* predefined_types.cpp in Sources */,
 				CFEDF31D0C2D161F0038713A /* GGS_binaryset.cpp in Sources */,
 				CFEDF31E0C2D161F0038713A /* C_galgas_io.cpp in Sources */,
@@ -4139,7 +4124,6 @@
 				CFEDF4780C2D16610038713A /* GGS_lsint64.cpp in Sources */,
 				CFEDF4790C2D16610038713A /* AC_galgas_list.cpp in Sources */,
 				CFEDF47A0C2D16610038713A /* AC_galgas_sortedlist.cpp in Sources */,
-				CFEDF47B0C2D16610038713A /* scannerDecoderGeneration.cpp in Sources */,
 				CFEDF47C0C2D16610038713A /* predefined_types.cpp in Sources */,
 				CFEDF47D0C2D16610038713A /* GGS_binaryset.cpp in Sources */,
 				CFEDF47E0C2D16610038713A /* C_galgas_io.cpp in Sources */,

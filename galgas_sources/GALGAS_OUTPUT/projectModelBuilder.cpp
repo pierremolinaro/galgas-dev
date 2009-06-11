@@ -53,7 +53,7 @@ pr_project_component_start_symbol_projectModelBuilder_35_37_ (galgas_scanner & i
                                 GGS_lstring  &var_cas_outProjectName,
                                 GGS_location  &var_cas_outEndOfSourceFile) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_project) COMMA_HERE) ;
-  inLexique._assignFromAttribute_tokenString (var_cas_outProjectName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_outProjectName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   var_cas_outProjectSourceList = GGS_projectSourceList ::constructor_emptyList () ;
@@ -99,7 +99,7 @@ pr_project_component_start_symbol_projectModelBuilder_35_37_ (galgas_scanner & i
               break ;
           }
           GGS_lstring  var_cas_filePath ;
-          inLexique._assignFromAttribute_tokenString (var_cas_filePath) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_filePath) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           GGS_lstringlist  var_cas_targetList ;
           var_cas_targetList = GGS_lstringlist ::constructor_emptyList () ;
@@ -111,7 +111,7 @@ pr_project_component_start_symbol_projectModelBuilder_35_37_ (galgas_scanner & i
               { bool syntaxRepeat_3 = true ;
                 while (syntaxRepeat_3) {
                     GGS_lstring  var_cas_targetName ;
-                    inLexique._assignFromAttribute_tokenString (var_cas_targetName) ;
+                    inLexique.assignFromAttribute_tokenString (var_cas_targetName) ;
                     inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                     var_cas_targetList._addAssign_operation (var_cas_targetName) ;
                   switch (select_repeat_projectModelBuilder_3 (inLexique)) {

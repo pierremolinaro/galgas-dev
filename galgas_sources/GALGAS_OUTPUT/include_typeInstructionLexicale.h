@@ -27,12 +27,7 @@ class cPtr_typeInstructionLexicale : public cPtr__AC_galgas_class {
   generate_scanner_instruction (const C_String & inLexiqueName,
                                 const bool inGenerateEnterToken,
                                 AC_OutputStream & inCppFile,
-                              TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const = 0 ;
-
-  public : virtual void
-  generateDecoderFromInstruction (C_Lexique & inLexique,
-                                  cDecoderTargetState & ioCurrentState,
-                                  cDecoderController & ioDecoderController) ;
+                                TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const = 0 ;
 
 //--- END OF USER ZONE 2
 

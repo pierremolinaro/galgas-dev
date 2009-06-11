@@ -39,7 +39,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
                     "#define INTERFACE_" << inProgramComponentName << "_DEFINED\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionsComponentsMap, true) ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone2 << "#include \"" << currentOptionComponent._key (HERE) << ".h\"\n" ;
     currentOptionComponent.next () ;
   }
@@ -61,7 +61,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
                     "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
                     "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone2 << "  private : " << currentOptionComponent._key (HERE)
                    << " mOptions_" << currentOptionComponent._key (HERE) << "; \n" ;
     currentOptionComponent.next () ;
@@ -121,7 +121,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
 
   generatedZone2.appendCppHyphenLineComment () ;
   GGS_stringset::cEnumerator inclusionEnumerator (inInclusionsForImplementationFile, true) ;
-  while (inclusionEnumerator.hc ()) {
+  while (inclusionEnumerator.hasCurrentObject ()) {
     generatedZone2 << "#include \"" << inclusionEnumerator._key (HERE) << "\"\n" ;
     inclusionEnumerator.next () ;
   }
@@ -143,7 +143,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "mBuiltinOptions (inAcceptsDebugOption),\n"
                     "mGalgasOptions ()" ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionsComponentsMap, true) ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone2 << ",\n"
                       "mOptions_" << currentOptionComponent._key (HERE) << " ()" ;
     currentOptionComponent.next () ;
@@ -152,7 +152,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  add (& mBuiltinOptions) ;\n"
                     "  add (& mGalgasOptions) ;\n" ;
   currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hc ()) {
+  while (currentOptionComponent.hasCurrentObject ()) {
     generatedZone2 << "  add (& mOptions_" << currentOptionComponent._key (HERE) << ") ;\n" ;
     currentOptionComponent.next () ;
   }
@@ -211,14 +211,14 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                  << ") ;\n"
                  << "    const char * extensions [] = {" ;
   GGS_ruleDescriptorForProgramList::cEnumerator currentDescriptor (inRuleDescriptorForProgramList, true) ;
-  while (currentDescriptor.hc ()) {
+  while (currentDescriptor.hasCurrentObject ()) {
     generatedZone2 << "\"" << currentDescriptor._mSourceExtension (HERE) << "\", " ;
     currentDescriptor.next () ;
   }
   generatedZone2 << "NULL} ;\n"
                  << "    const char * helpMessages [] = {" ;
   currentDescriptor.rewind () ;
-  while (currentDescriptor.hc ()) {
+  while (currentDescriptor.hasCurrentObject ()) {
     generatedZone2.appendCLiteralStringConstant (currentDescriptor._mHelpMessage (HERE).string ()) ;
     generatedZone2 << ", " ;
     currentDescriptor.next () ;
@@ -282,7 +282,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.incIndentation (+10) ;
   uint32 grammarIndex = 0 ;
   GGS_ruleDescriptorForProgramList::cEnumerator currentRule (inRuleDescriptorForProgramList, true) ;
-  while (currentRule.hc ()) {
+  while (currentRule.hasCurrentObject ()) {
     if (grammarIndex > 0) {
       generatedZone2 << "}else " ;
     }

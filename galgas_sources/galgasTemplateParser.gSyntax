@@ -168,6 +168,23 @@ rule <template_instruction>
       end repeat ;
     end block (!here) ;
   end block () ;
+#--- between block
+  @templateInstructionList betweenInstructionList [emptyList] ;
+  select
+  or
+    $between$ ;
+    enterTemplateString !? betweenInstructionList ;
+    repeat
+    while
+      <template_instruction>
+        !?ioTemplateVariableMap
+        !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?betweenInstructionList
+      ;
+      enterTemplateString !?betweenInstructionList ;
+    end repeat ;
+  end select ;
   $end$ ;
   $foreach$ ;
   ioResultingInstructionList += ![@templateInstructionForeach new
@@ -177,6 +194,7 @@ rule <template_instruction>
    !expression
    !instructionLocation
    !doInstructionList
+   !betweenInstructionList
   ] ;
 end rule ;
 

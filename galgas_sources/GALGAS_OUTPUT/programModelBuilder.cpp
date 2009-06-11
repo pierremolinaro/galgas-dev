@@ -52,10 +52,10 @@ pr_program_component_start_symbol_programModelBuilder_44_37_ (galgas_scanner & i
                                 GGS_programComponentRoot  &var_cas_outProgramComponentRoot) {
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_program) COMMA_HERE) ;
   GGS_lstring  var_cas_mProgramName ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mProgramName) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mProgramName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_lstring  var_cas_mVersionString ;
-  inLexique._assignFromAttribute_tokenString (var_cas_mVersionString) ;
+  inLexique.assignFromAttribute_tokenString (var_cas_mVersionString) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   { bool syntaxRepeat_0 = true ;
@@ -115,21 +115,21 @@ pr_program_component_start_symbol_programModelBuilder_44_37_ (galgas_scanner & i
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_when) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E_) COMMA_HERE) ;
           GGS_lstring  var_cas_mSourceFileExtension ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mSourceFileExtension) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mSourceFileExtension) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_message) COMMA_HERE) ;
           GGS_lstring  var_cas_mSourceFileHelp ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mSourceFileHelp) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mSourceFileHelp) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F__3F_) COMMA_HERE) ;
           GGS_lstring  var_cas_typeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_typeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
           if (((var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (96))).operator_isNotEqual (GGS_string ("lstring"))).isBuiltAndTrue ()) {
             var_cas_typeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the only type allowed here is '@lstring'") COMMA_SOURCE_FILE_AT_LINE (98)) ;
           }
           GGS_lstring  var_cas_mSourceFileVariableName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mSourceFileVariableName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mSourceFileVariableName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7B_) COMMA_HERE) ;
           GGS_semanticInstructionList  var_cas_mInstructionList ;

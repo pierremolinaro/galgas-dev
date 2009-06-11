@@ -723,7 +723,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 var_cas_pathesString = GGS_string ("") ;
                 {
                   GGS_stringset::cEnumerator enumerator_11659 (var_cas_pathSet, true) ;
-                  while (enumerator_11659.hc ()) {
+                  while (enumerator_11659.hasCurrentObject ()) {
                     var_cas_pathesString.dotAssign_operation (enumerator_11659._key (HERE)) ;
                     enumerator_11659.next () ;
                   }

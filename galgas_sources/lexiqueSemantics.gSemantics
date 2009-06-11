@@ -20,6 +20,16 @@ enum @lexicalTypeEnum {
     lexicalType_sint64 -> "@sint64" ;
     lexicalType_double -> "@double" ;
   end reader ;
+
+  reader cppTypeName :
+    lexicalType_string -> "C_String" ;
+    lexicalType_char   -> "utf32" ;
+    lexicalType_uint   -> "uint32" ;
+    lexicalType_uint64 -> "uint64" ;
+    lexicalType_sint   -> "sint64" ;
+    lexicalType_sint64 -> "sint64" ;
+    lexicalType_double -> "double" ;
+  end reader ;
 }
 
 #---------------------------------------------------------------------------*

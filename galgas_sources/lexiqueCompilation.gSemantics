@@ -31,14 +31,18 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
 } {
-  template headerZone2 "lexique_header_template_zone_2.h"
+  template headerZone2 "lexique_header_template_zone_2.h.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
-    ?@string USER_DEFINED_ATTRIBUTE_DECLARATION
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
   ;
-  template headerZone3 "lexique_header_template_zone_3.h"
+  template headerZone3 "lexique_header_template_zone_3.h.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
     ?@terminalList TERMINAL_LIST
     ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
+  ;
+  template implementationZone2 "lexique_implementation.cpp.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
   ;
 }
 
@@ -710,7 +714,7 @@ routine compileLexiqueComponent
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.headerZone2
          !lexiqueClassName
-         !""
+         ![lexiqueAnalysisContext mLexicalAttributeMap]
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.headerZone3
@@ -718,6 +722,21 @@ routine compileLexiqueComponent
          ![lexiqueAnalysisContext mTerminalList]
          ![lexiqueComponentRoot mLexicalListDeclarationList]
        ]
+    ] ;
+  end if ;
+#--- Generate implementation file
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      !lexiqueClassName . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.implementationZone2
+         !lexiqueClassName
+         ![lexiqueAnalysisContext mLexicalAttributeMap]
+       ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # Zone 3
     ] ;
   end if ;
 end routine ;

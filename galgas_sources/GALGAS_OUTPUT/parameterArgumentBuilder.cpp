@@ -77,7 +77,7 @@ pr_formal_parameter_list_parameterArgumentBuilder_47_28_ (galgas_scanner & inLex
               break ;
           }
           GGS_lstring  var_cas_mFormalParameterTypeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mFormalParameterTypeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mFormalParameterTypeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
           GGS_bool var_cas_mIsUnused ;
           switch (select_parameterArgumentBuilder_2 (inLexique)) {
@@ -92,7 +92,7 @@ pr_formal_parameter_list_parameterArgumentBuilder_47_28_ (galgas_scanner & inLex
               break ;
           }
           GGS_lstring  var_cas_mFormalParameterName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mFormalParameterName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mFormalParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           var_cas_outFormalParameterList._addAssign_operation (var_cas_mFormalParameterPassingMode, var_cas_mFormalParameterTypeName, var_cas_mFormalParameterName, var_cas_mIsUnused) ;
           } break ;
@@ -126,7 +126,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (galgas_scanner & inLex
               } break ;
             case 2 : {
               GGS_luint  var_cas_count ;
-              inLexique._assignFromAttribute_uint32value (var_cas_count) ;
+              inLexique.assignFromAttribute_uint32value (var_cas_count) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unsigned_5F_literal_5F_integer) COMMA_HERE) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A_) COMMA_HERE) ;
               GGS_uint  var_cas_n ;
@@ -164,7 +164,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (galgas_scanner & inLex
         case 4 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__21__3F_) COMMA_HERE) ;
           GGS_lstring  var_cas_outputInputActualParameterName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_outputInputActualParameterName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_outputInputActualParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_lstringlist  var_cas_structAttributeList ;
           var_cas_structAttributeList = GGS_lstringlist ::constructor_emptyList () ;
@@ -174,7 +174,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (galgas_scanner & inLex
                 case 2 : {
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2E_) COMMA_HERE) ;
                   GGS_lstring  var_cas_structAttributeName ;
-                  inLexique._assignFromAttribute_tokenString (var_cas_structAttributeName) ;
+                  inLexique.assignFromAttribute_tokenString (var_cas_structAttributeName) ;
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
                   } break ;
@@ -194,14 +194,14 @@ pr_actual_parameter_list_parameterArgumentBuilder_89_28_ (galgas_scanner & inLex
               var_cas_declarationTypeName = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
               } break ;
             case 2 : {
-              inLexique._assignFromAttribute_tokenString (var_cas_declarationTypeName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_declarationTypeName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
               } break ;
             default :
               break ;
           }
           GGS_lstring  var_cas_inputActualParameterName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_inputActualParameterName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_inputActualParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           var_cas_outActualParameterList._addAssign_operation (GGS_inputActualParameter ::constructor_new (inLexique, var_cas_declarationTypeName, var_cas_inputActualParameterName COMMA_HERE)) ;
           } break ;
@@ -229,7 +229,7 @@ pr_formal_input_parameter_list_parameterArgumentBuilder_149_34_ (galgas_scanner 
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F_) COMMA_HERE) ;
           GGS_lstring  var_cas_mFormalParameterTypeName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mFormalParameterTypeName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mFormalParameterTypeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
           GGS_bool var_cas_mIsUnused ;
           switch (select_parameterArgumentBuilder_8 (inLexique)) {
@@ -244,7 +244,7 @@ pr_formal_input_parameter_list_parameterArgumentBuilder_149_34_ (galgas_scanner 
               break ;
           }
           GGS_lstring  var_cas_mFormalParameterName ;
-          inLexique._assignFromAttribute_tokenString (var_cas_mFormalParameterName) ;
+          inLexique.assignFromAttribute_tokenString (var_cas_mFormalParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           var_cas_outFormalInputParameterList._addAssign_operation (var_cas_mFormalParameterTypeName, var_cas_mFormalParameterName, var_cas_mIsUnused) ;
           } break ;
@@ -277,7 +277,7 @@ pr_actual_input_parameter_list_parameterArgumentBuilder_177_34_ (galgas_scanner 
               var_cas_mActualParameterTypeName = GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE) ;
               } break ;
             case 2 : {
-              inLexique._assignFromAttribute_tokenString (var_cas_mActualParameterTypeName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_mActualParameterTypeName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
               } break ;
             default :
@@ -286,7 +286,7 @@ pr_actual_input_parameter_list_parameterArgumentBuilder_177_34_ (galgas_scanner 
           GGS_lstring  var_cas_mActualParameterName ;
           switch (select_parameterArgumentBuilder_11 (inLexique)) {
             case 1 : {
-              inLexique._assignFromAttribute_tokenString (var_cas_mActualParameterName) ;
+              inLexique.assignFromAttribute_tokenString (var_cas_mActualParameterName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               } break ;
             case 2 : {

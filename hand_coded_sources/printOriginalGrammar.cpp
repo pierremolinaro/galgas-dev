@@ -30,7 +30,7 @@ static void
 printInstructionsListForGrammar (const GGS_L_ruleSyntaxSignature & inInstructionsList,
                                  C_HTML_FileWrite & inHTMLfile) {
   GGS_L_ruleSyntaxSignature::cEnumerator currentInstruction (inInstructionsList, true) ;
-  while (currentInstruction.hc ()) {
+  while (currentInstruction.hasCurrentObject ()) {
     currentInstruction._mInstruction (HERE) (HERE)->printInstructionForGrammar (inHTMLfile) ;
     currentInstruction.next () ;
   }
@@ -46,7 +46,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("</span>") ;
   GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mRepeatList, true) ;
   bool first = true ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     if (first) {
       first = false ;
     }else{
@@ -74,7 +74,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("</span>") ;
   GGS_L_branchList_ForGrammarComponent::cEnumerator currentBranch (mSelectList, true) ;
   bool first = true ;
-  while (currentBranch.hc ()) {
+  while (currentBranch.hasCurrentObject ()) {
     if (first) {
       first = false ;
     }else{
@@ -117,7 +117,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
 //--- Print message
   sint32 productionsCount = 0 ;
   GGS_L_syntaxComponents_ForGrammar::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
-  while (currentSyntaxComponent.hc ()) {
+  while (currentSyntaxComponent.hasCurrentObject ()) {
     productionsCount += currentSyntaxComponent._mProductionRulesList (HERE).count () ;
     currentSyntaxComponent.next () ;
   }
@@ -131,14 +131,14 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
 
 //--- Print productions rules by traversing syntax components
   currentSyntaxComponent.rewind () ;
-  while (currentSyntaxComponent.hc ()) {
+  while (currentSyntaxComponent.hasCurrentObject ()) {
     inHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\">") ;
     inHTMLfile << "RULES FROM '"
                << currentSyntaxComponent._mSyntaxComponentName (HERE)
                << "' component" ;
     inHTMLfile.outputRawData ("</td></tr>") ;
     GGS_L_productionRules_ForGrammarComponent::cEnumerator currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
-    while (currentRule.hc ()) {
+    while (currentRule.hasCurrentObject ()) {
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
       inHTMLfile << "rule " ;

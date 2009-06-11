@@ -44,7 +44,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   
   inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
-  while (currentAttribute.hc ()) {
+  while (currentAttribute.hasCurrentObject ()) {
     inHfile << "//--- '" << currentAttribute._key (HERE) << "' attribute\n"
                "  protected : cDomainAttribute _attribute_" << currentAttribute._key (HERE) << " ;\n"
                "  public : void modifier_addTo"
@@ -55,7 +55,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentAttribute.next () ;
   }
   GGS_domainRelationMap::cEnumerator currentRelation (mRelationMap) ;
-  while (currentRelation .hc ()) {
+  while (currentRelation .hasCurrentObject ()) {
     inHfile << "//--- '" << currentRelation._key (HERE) << "' relation\n"
                "  protected : C_BDD _relationBDD_" << currentRelation._key (HERE) << " ;\n" ;
     for (sint32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
@@ -122,7 +122,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void)" ;
   GGS_domainRelationMap::cEnumerator currentRelation (mRelationMap) ;
   bool first = true ;
-  while (currentRelation.hc ()) {
+  while (currentRelation.hasCurrentObject ()) {
     for (sint32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       if (first) {
         inCppFile << " :\n" ;
@@ -155,7 +155,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Accessors
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
-  while (currentAttribute.hc ()) {
+  while (currentAttribute.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
@@ -175,7 +175,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Relation
   currentRelation.rewind () ;
-  while (currentRelation.hc ()) {
+  while (currentRelation.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
@@ -191,7 +191,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  bool bitCountExtended = false ;\n" ;
     GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
     sint32 idx = 1 ;
-    while (currentDomainRelation.hc ()) {
+    while (currentDomainRelation.hasCurrentObject ()) {
       inCppFile << "  const uint32 entry" << cStringWithSigned (idx) << " = findOrAddEntry (_attribute_" << currentDomainRelation._mValue (HERE)
                 << ", inValue_" << cStringWithSigned (idx) << ", bitCountExtended) ;\n" ;
       idx ++ ;
@@ -222,10 +222,10 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "updateRelationsAfterBitCountExtension (void) {\n" ;
   currentRelation.rewind () ;
   sint32 relationIndex = 0 ;
-  while (currentRelation.hc ()) {
+  while (currentRelation.hasCurrentObject ()) {
     inCppFile << "  const uint16 bitNeededCountArray" << cStringWithSigned (relationIndex) << " [] = {" ;
     GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
-    while (currentDomainRelation.hc ()) {
+    while (currentDomainRelation.hasCurrentObject ()) {
       inCppFile << "_attribute_" << currentDomainRelation._mValue (HERE) << ".mBitCount, " ;
       currentDomainRelation.next () ;
     }
@@ -233,7 +233,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  uint16 * bitCountCurrentArray" << cStringWithSigned (relationIndex) << " [] = {" ;
     sint32 relationDomainIndex = 0 ;
     currentDomainRelation.rewind () ;
-    while (currentDomainRelation.hc ()) {
+    while (currentDomainRelation.hasCurrentObject ()) {
       inCppFile << "& _bitCount_" << cStringWithSigned (relationDomainIndex) << "_forRelation_" << currentRelation._key (HERE) << ", " ;
       relationDomainIndex ++ ;
       currentDomainRelation.next () ;

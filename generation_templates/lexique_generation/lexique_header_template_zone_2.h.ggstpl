@@ -21,8 +21,11 @@
 //---------------------------------------------------------------------------*
 
 class cTokenFor_%LEXIQUE_CLASS_NAME% : public cToken {
-  %USER_DEFINED_ATTRIBUTE_DECLARATION%
-
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %  public : %([mLexicalType cppTypeName])% mLexicalAttribute_%([key string])% ;\%%
+  end foreach
+%
   public : cTokenFor_%LEXIQUE_CLASS_NAME% (void) ;
 } ;
 
