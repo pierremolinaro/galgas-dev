@@ -145,18 +145,18 @@ generateInstruction (AC_OutputStream & ioCppFile,
       }
     }
     if ((! handled) && (mCategoryMethodClassBaseName.string ().length () > 0)) {
-      C_String var ; var << "_temp_" << cStringWithSigned (mMethodName.location ()) ;
+      C_String var ; var << "temp_" << cStringWithSigned (mMethodName.location ()) ;
       C_String staticClassName ; mExpressionType (HERE)->generateCppClassName (staticClassName) ;
       ioCppFile << "const " << staticClassName << " " << var << " = " ;
       mExpression (HERE)->generateExpression (ioCppFile) ;
       ioCppFile << " ;\n"
                    "if (" << var << ".isBuilt ()) {\n"
                    "  typeCategoryMethod__" << mCategoryMethodClassBaseName
-                << "__" << mMethodName << " _method = findCategoryMethod__"
+                << "__" << mMethodName << " method = findCategoryMethod__"
                 << mCategoryMethodClassBaseName << "__" << mMethodName
-                << " (_temp_" << cStringWithSigned (mMethodName.location ()) << "._galgasObjectRunTimeInfo ()) ;\n"
-                   "  if (_method != NULL) {\n"
-                   "    _method (inLexique, " << var << " (HERE)"  ;
+                << " (temp_" << cStringWithSigned (mMethodName.location ()) << ".galgasObjectRunTimeInfo ()) ;\n"
+                   "  if (method != NULL) {\n"
+                   "    method (inLexique, " << var << " (HERE)"  ;
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
       while (argCourant.hasCurrentObject ()) {
         ioCppFile << ", " ;
@@ -169,7 +169,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
                    "  }\n"
                    "}\n" ;
     }else if (! handled) {
-      C_String var ; var << "_temp_" << cStringWithSigned (mMethodName.location ()) ;
+      C_String var ; var << "temp_" << cStringWithSigned (mMethodName.location ()) ;
       ioCppFile << "const " ;
       mExpressionType (HERE)->generateCppClassName (ioCppFile) ;
       ioCppFile << " " << var << " = " ;

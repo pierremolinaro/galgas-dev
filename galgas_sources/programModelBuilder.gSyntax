@@ -82,6 +82,9 @@ rule <program_component_start_symbol> !@programComponentRoot outProgramComponent
     ![@abstractCategoryMethodListMap emptyMap]
     ![@categoryMethodListMap emptyMap]
     ![@overridingCategoryMethodListMap emptyMap]
+    ![@abstractCategoryReaderListMap emptyMap]
+    ![@categoryReaderListMap emptyMap]
+    ![@overridingCategoryReaderListMap emptyMap]
   ] ;
   @programRuleList mProgramRules [emptyList] ;
   repeat

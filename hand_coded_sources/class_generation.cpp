@@ -268,7 +268,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
   if (superClassName.length () == 0) {
     inHfile << "//--- Galgas RTTI\n"
-               "AC_galgasClassRunTimeInformation * _galgasObjectRunTimeInfo (void) const ;\n\n" ;
+               "AC_galgasClassRunTimeInformation * galgasObjectRunTimeInfo (void) const ;\n\n" ;
   }
 
 //--- Engendrer la fin de la declaration de la classe
@@ -952,7 +952,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
   if (superClassName.length () == 0) {
     inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "AC_galgasClassRunTimeInformation * GGS_" << aNomClasse << "::_galgasObjectRunTimeInfo (void) const {\n"
+    inCppFile << "AC_galgasClassRunTimeInformation * GGS_" << aNomClasse << "::galgasObjectRunTimeInfo (void) const {\n"
                  "  AC_galgasClassRunTimeInformation * result = NULL ;\n"
                  "  if (mPointer != NULL) {\n"
                  "    result = mPointer->galgasRTTI () ;\n"

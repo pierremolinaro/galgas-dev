@@ -540,15 +540,72 @@ listmap @overridingCategoryMethodListMap (@overridingCategoryMethodList) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @abstractCategoryReaderList {
+  @lstring mAbstractCategoryReaderName ;
+  @formalInputParameterList mAbstractCategoryFormalInputParameterList ;
+  @lstring mReturnedTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @abstractCategoryReaderListMap (@abstractCategoryReaderList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    R E A D E R    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @categoryReaderList {
+  @lstring mCategoryReaderName ;
+  @formalInputParameterList mReaderCategoryFormalInputParameterList ;
+  @lstring mReturnedTypeName ;
+  @lstring mReturnedVariableName ;
+  @semanticInstructionList mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @categoryReaderListMap (@categoryReaderList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @overridingCategoryReaderList {
+  @lstring mOverridingCategoryReaderName ;
+  @formalInputParameterList mOverridingReaderFormalInputParameterList ;
+  @lstring mReturnedTypeName ;
+  @lstring mReturnedVariableName ;
+  @semanticInstructionList mRoutineInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @overridingCategoryReaderListMap (@overridingCategoryReaderList) ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #           S E M A N T I C   D E C L A R A T I O N S                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 struct @semanticDeclarationStruct {
   @semanticDeclarationList mSemanticDeclarationList ;
+#--- Category Methods
   @abstractCategoryMethodListMap mAbstractCategoryMethodListMap ;
   @categoryMethodListMap mCategoryMethodListMap ;
   @overridingCategoryMethodListMap mOverridingCategoryMethodListMap ;
+#--- Category readers
+  @abstractCategoryReaderListMap mAbstractCategoryReaderListMap ;
+  @categoryReaderListMap mCategoryReaderListMap ;
+  @overridingCategoryReaderListMap mOverridingCategoryReaderListMap ;
 }
 
 #---------------------------------------------------------------------------*

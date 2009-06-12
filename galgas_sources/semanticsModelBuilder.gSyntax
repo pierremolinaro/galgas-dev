@@ -68,6 +68,9 @@ rule <semantics_component_start_symbol>
     ![@abstractCategoryMethodListMap emptyMap]
     ![@categoryMethodListMap emptyMap]
     ![@overridingCategoryMethodListMap emptyMap]
+    ![@abstractCategoryReaderListMap emptyMap]
+    ![@categoryReaderListMap emptyMap]
+    ![@overridingCategoryReaderListMap emptyMap]
   ] ;
   repeat
   while
@@ -997,6 +1000,100 @@ rule <semantic_declaration>
     ![mClassName string]
     !mMethodName
     !mFormalParameterList
+    !mRoutineInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $abstract$ ;
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mReaderName ;
+  @formalInputParameterList mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? * ;
+  $;$ ;
+  ioSemanticDeclarations.mAbstractCategoryReaderListMap +=
+    ![mClassName string]
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalInputParameterList mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVariableName ;
+  $:$ ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  $reader$ ;
+  $;$ ;
+  ioSemanticDeclarations.mCategoryReaderListMap +=
+    ![mClassName string]
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !mRoutineInstructionList
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationStruct ioSemanticDeclarations
+:
+  $override$ ;
+  $reader$ ;
+  $type_name$ ? @lstring mClassName ;
+  $identifier$ ? @lstring mMethodName ;
+  @formalInputParameterList mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVariableName ;
+  $:$ ;
+  @semanticInstructionList mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  $reader$ ;
+  $;$ ;
+  ioSemanticDeclarations.mOverridingCategoryReaderListMap +=
+    ![mClassName string]
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
     !mRoutineInstructionList
   ;
 end rule ;

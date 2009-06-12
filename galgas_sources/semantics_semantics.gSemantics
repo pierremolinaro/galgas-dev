@@ -313,6 +313,7 @@ class @typeReaderCallInExpression extends @typeExpression {
   @lstring mReaderName ;
   @typeExpressionList mExpressionList ;
   @string mConversionMethod ;
+  @string mCategoryReaderClassBaseName ;
 }
  
 #---------------------------------------------------------------------------*
@@ -1255,6 +1256,20 @@ class @categoryMethodToImplement extends @typeEntityToGenerate {
   @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
   @typeInstructionList mInstructionList feature nogetter ;
   @location mMagicNumber feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @categoryReaderToImplement extends @typeEntityToGenerate {
+  @categoryMethodKind mCategoryMethodKind feature nogetter ;
+  @string mBaseClassName feature nogetter ;
+  @lstring mClassName feature nogetter ;
+  @lstring mMethodName feature nogetter ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
+  @typeInstructionList mInstructionList feature nogetter ;
+  @location mMagicNumber feature nogetter ;
+  @AC_galgasType mReturnedType feature nogetter ;
+  @typeCplusPlusName mReturnedCppVariableName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

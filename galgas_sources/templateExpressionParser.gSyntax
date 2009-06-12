@@ -31,6 +31,7 @@ import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
 nonterminal <expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -40,6 +41,7 @@ label parse
 
 nonterminal <relation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -49,6 +51,7 @@ label parse
 
 nonterminal <relation_factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -58,6 +61,7 @@ label parse
 
 nonterminal <simple_expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -67,6 +71,7 @@ label parse
 
 nonterminal <term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -76,6 +81,7 @@ label parse
 
 nonterminal <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -93,6 +99,7 @@ label parse
 
 nonterminal <output_expression_list>
   !@typeExpressionList outExpressionList 
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@typeListeAttributsSemantiques inAttributesList
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -559,6 +566,7 @@ end routine ;
 
 rule <expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -566,6 +574,7 @@ rule <expression>
 :
   <relation_term>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?outExpression
@@ -581,6 +590,7 @@ rule <expression>
     @AC_galgasType secondOperandType ;
     <relation_term>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightOperand
@@ -601,6 +611,7 @@ rule <expression>
     @AC_galgasType secondOperandType ;
     <relation_term>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightOperand
@@ -623,6 +634,7 @@ end rule ;
 
 rule <relation_term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -630,6 +642,7 @@ rule <relation_term>
 :
   <relation_factor>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?outExpression
@@ -645,6 +658,7 @@ rule <relation_term>
     @AC_galgasType secondOperandType ;
     <relation_factor>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightOperand
@@ -667,6 +681,7 @@ end rule ;
 
 rule <relation_factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -674,6 +689,7 @@ rule <relation_factor>
 :
   <simple_expression>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?outExpression
@@ -689,6 +705,7 @@ rule <relation_factor>
     @AC_galgasType rightType ;
     <simple_expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -705,6 +722,7 @@ rule <relation_factor>
     @AC_galgasType rightType ;
     <simple_expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -722,6 +740,7 @@ rule <relation_factor>
     @AC_galgasType rightType ;
     <simple_expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -739,6 +758,7 @@ rule <relation_factor>
     @AC_galgasType rightType ;
     <simple_expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -756,6 +776,7 @@ rule <relation_factor>
     @AC_galgasType rightType ;
     <simple_expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -773,6 +794,7 @@ rule <relation_factor>
     @AC_galgasType rightType ;
     <simple_expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -792,6 +814,7 @@ end rule ;
 
 rule <simple_expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -799,6 +822,7 @@ rule <simple_expression>
 :
   <term>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?outExpression
@@ -814,6 +838,7 @@ rule <simple_expression>
     @AC_galgasType rightType ;
     <term>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -830,6 +855,7 @@ rule <simple_expression>
     @AC_galgasType rightType ;
     <term>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -846,6 +872,7 @@ rule <simple_expression>
     @AC_galgasType rightType ;
     <term>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -862,6 +889,7 @@ rule <simple_expression>
     @AC_galgasType rightType ;
     <term>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -880,6 +908,7 @@ end rule ;
 
 rule <term>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -887,6 +916,7 @@ rule <term>
 :
   <factor>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?outExpression
@@ -902,6 +932,7 @@ rule <term>
     @AC_galgasType rightType ;
     <factor>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -918,6 +949,7 @@ rule <term>
     @AC_galgasType rightType ;
     <factor>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -934,6 +966,7 @@ rule <term>
     @AC_galgasType rightType ;
     <factor>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?rightExpression
@@ -952,6 +985,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -963,6 +997,7 @@ rule <factor>
   @AC_galgasType type ;
   <factor>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?expression
@@ -980,6 +1015,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -998,6 +1034,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -1006,6 +1043,7 @@ rule <factor>
   $($ ;
   <expression>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?outExpression
@@ -1022,6 +1060,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -1033,6 +1072,7 @@ rule <factor>
   @AC_galgasType operandType ;
   <factor>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?ifCondition
@@ -1050,6 +1090,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -1061,6 +1102,7 @@ rule <factor>
   @AC_galgasType operandType ;
   <factor>
     !inEntitiesMap
+    !inCategoryReaderMap
     !inOptionsComponentsMapForUse
     !?ioVariablesMap
     ?ifCondition
@@ -1078,6 +1120,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1096,6 +1139,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1114,6 +1158,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1133,6 +1178,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1152,6 +1198,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1171,6 +1218,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1190,6 +1238,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@EXcategoryReaderMap unused inCategoryReaderMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@typeVariablesMap unused ioVariablesMap
   !@typeExpression outExpression
@@ -1212,6 +1261,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -1224,6 +1274,7 @@ rule <factor>
     @AC_galgasType expressionType ;
     <expression>
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?expressionValue
@@ -1240,17 +1291,28 @@ rule <factor>
     #--- Search reader for getting formal parameters list
       @typeListeAttributsSemantiques accessorsTypeList ;
       @string conversionMethod ;
-      handleReaderCall !inEntitiesMap !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
+      @string categoryReaderClassBaseName ;
+      handleReaderCall
+        !inEntitiesMap
+        !inCategoryReaderMap
+        !expressionType
+        !methodName
+        ?accessorsTypeList
+        ?outResultType
+        ?conversionMethod
+        ?categoryReaderClassBaseName
+      ;
     #--- Actual parameters
       @typeExpressionList expressionList ;
       <output_expression_list>
         ?expressionList 
+        !inCategoryReaderMap
         !accessorsTypeList
         !inEntitiesMap
         !inOptionsComponentsMapForUse
         !?ioVariablesMap
       ;
-      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod] ;
+      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod !categoryReaderClassBaseName] ;
     end select ;
   or
     $option$ ;
@@ -1300,6 +1362,7 @@ end rule ;
 
 rule <factor>
   ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioVariablesMap
   !@typeExpression outExpression
@@ -1336,6 +1399,7 @@ rule <factor>
   $($ ;
   <output_expression_list>
     ?expressionList
+    !inCategoryReaderMap
     !listeAttributsSemantiques
     !inEntitiesMap
     !inOptionsComponentsMapForUse
@@ -1369,6 +1433,7 @@ end rule ;
 
 rule <output_expression_list>
   !@typeExpressionList outExpressionList 
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@typeListeAttributsSemantiques inFormalAttributesList
   ??@M_semanticsEntitiesForUse inEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
@@ -1383,6 +1448,7 @@ rule <output_expression_list>
     @AC_galgasType resultType ;
     <expression> 
       !inEntitiesMap
+      !inCategoryReaderMap
       !inOptionsComponentsMapForUse
       !?ioVariablesMap
       ?expression

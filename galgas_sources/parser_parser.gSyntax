@@ -302,6 +302,7 @@ rule <galgas_component>
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
+    ![@EXcategoryReaderMap emptyMap]
   ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents
