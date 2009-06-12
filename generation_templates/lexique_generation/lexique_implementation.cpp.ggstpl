@@ -67,36 +67,11 @@ C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError C
 //                        Lexical error message list                         *
 //                                                                           *
 //---------------------------------------------------------------------------*
-
-//--- Message 0
-static const utf32 gErrorMessage_0 [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('b'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('l'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('g'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
+%
+  foreach LEXICAL_MESSAGE_MAP do
+   %\%static const utf32 gLexicalMessage_%([key string])% [] = % ([mLexicalMessage utf32StringConstantRepresentation])% ;\%%
+  end foreach
+%
 //---------------------------------------------------------------------------*
 //                                                                           *
 //                          Syntax error messages                            *
