@@ -44,6 +44,9 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
   ;
 }
 
@@ -114,8 +117,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lexicalStringMatch checkLexicalExpression
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
+  ioLexiqueAnalysisContext.mStringInExplicitRuleSet += ![mString string] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -123,6 +127,7 @@ end method ;
 override method @lexicalStringNotMatch checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
+  ioLexiqueAnalysisContext.mStringInExplicitRuleSet += ![mString string] ;
   with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mErrorMessage do
     mMessageIsUsed := true ;
   end with ;
@@ -457,13 +462,13 @@ override method @lexicalRepeatInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   foreach mLexicalWhileBranchList do
-    [mWhileExpression checkLexicalExpression !? ioLexiqueAnalysisContext] ;
+    [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
     foreach mWhileInstructionList do
-      [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
     end foreach ;
   end foreach ;
   foreach mRepeatedInstructionList do
-    [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
   end foreach ;
 end method ;
 
@@ -473,12 +478,13 @@ override method @lexicalSelectInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   foreach mLexicalSelectBranchList do
+    [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
     foreach mSelectInstructionList do
-      [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
     end foreach ;
   end foreach ;
   foreach mDefaultInstructionList do
-    [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
   end foreach ;
 end method ;
 
@@ -598,8 +604,9 @@ end method ;
 override method @lexicalExplicitRule checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
+  [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
   foreach mInstructionList do
-    [mInstruction checkLexicalInstruction !? ioLexiqueAnalysisContext] ;
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
   end foreach ;
 end method ;
 
@@ -646,6 +653,7 @@ routine compileLexiqueComponent
     ![@terminalList emptyList]
     ![@lexicalAttributeMap emptyMap]
     ![@lexicalExplicitTokenListMapMap emptyMap]
+    ![@stringset emptySet]
   ] ;
   foreach [lexiqueComponentRoot mLexicalAttributeList] do
     if [lexicalTypeMap hasKey ![mTypeName string]] then
@@ -666,29 +674,32 @@ routine compileLexiqueComponent
   end foreach ;
 #--------------------------------------- Build terminal map
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
-    @lexicalTypeList argumentTypeList [emptyList] ;
+    @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
       [[lexiqueAnalysisContext  mLexicalAttributeMap] searchKey !kAttributeName ?attributeLexicalType] ;
-      argumentTypeList += !attributeLexicalType ;
+      argumentTypeList += ![kAttributeName string] !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList] ;
-    lexiqueAnalysisContext.mTerminalList += !mName !argumentTypeList ;
+    lexiqueAnalysisContext.mTerminalList += !mName !argumentTypeList ![mSyntaxErrorMessage string] ;
   end foreach ;
   foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
-    @lexicalTypeList argumentTypeList [emptyList] ;
+    @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
       [[lexiqueAnalysisContext mLexicalAttributeMap] searchKey !kAttributeName ?attributeLexicalType] ;
-      argumentTypeList += !attributeLexicalType ;
+      argumentTypeList += ![kAttributeName string] !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
+    @tokenSortedlist tokenSortedlist [emptySortedList] ;
     foreach mEntryList do
-      lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList ;
+      @string syntaxErrorMessage := [mSyntaxErrorMessage stringByReplacingStringByString !"%K" ![mTerminalSpelling string]] ;
+      lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList !syntaxErrorMessage ;
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
+      tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ;
     end foreach ;
-    [!?lexiqueAnalysisContext.mLexicalTokenListMapMap insertKey !mName !lexicalTokenListMap] ;
+    [!?lexiqueAnalysisContext.mLexicalTokenListMapMap insertKey !mName !lexicalTokenListMap !tokenSortedlist] ;
   end foreach ;
 #--------------------------------------- Build Message map
   foreach [lexiqueComponentRoot mLexicalMessageDeclarationList] do
@@ -736,6 +747,9 @@ routine compileLexiqueComponent
          !lexiqueClassName
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
+         ![lexiqueAnalysisContext mTerminalList]
+         ![lexiqueAnalysisContext mLexicalTokenListMapMap]
+         ![lexiqueAnalysisContext mStringInExplicitRuleSet]
        ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3

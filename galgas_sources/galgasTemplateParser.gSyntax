@@ -104,6 +104,14 @@ rule <template_instruction>
   ?!@templateInstructionList ioResultingInstructionList
 :
   $foreach$ ;
+  @string prefix ;
+  select
+    prefix := "" ;
+  or
+    $`$ ;
+    $identifier$ ? @lstring prefixString ;
+    prefix := [prefixString string] ;
+  end select ;
   @bool ascending ;
   select
     ascending := true ;
@@ -150,7 +158,8 @@ rule <template_instruction>
         else
           cppName := [@typeOperandName new !instructionLocation ![attributeName string] !mapStyle !iteratorNewStyle] ;
         end if ;
-        [!? ioTemplateVariableMap insertUsedConstInArgument !attributeName !type !cppName] ;
+        @lstring implicitVariableName [new !prefix . attributeName ! [attributeName location]] ;
+        [!?ioTemplateVariableMap insertUsedConstInArgument !implicitVariableName !type !cppName] ;
         firstOne := false ;
       end foreach ;
       $do$ ;

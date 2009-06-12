@@ -34,7 +34,7 @@ cTokenFor_%LEXIQUE_CLASS_NAME%::cTokenFor_%LEXIQUE_CLASS_NAME% (void) :
 %
   foreach LEXICAL_ATTRIBUTE_MAP
   do %mLexicalAttribute_%([key string])% ()%
-  between %,\%%
+  between %,!n%
   end foreach
 % {
 }
@@ -69,33 +69,20 @@ C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError C
 //---------------------------------------------------------------------------*
 %
   foreach LEXICAL_MESSAGE_MAP do
-   %\%static const utf32 gLexicalMessage_%([key string])% [] = % ([mLexicalMessage utf32StringConstantRepresentation])% ;\%%
+   %!nstatic const utf32 gLexicalMessage_%([key string])% [] = % ([mLexicalMessage utf32StringConstantRepresentation])% ;!n%
   end foreach
 %
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                          Syntax error messages                            *
+//          Syntax error messages, for every terminal symbol                 *
 //                                                                           *
 //---------------------------------------------------------------------------*
-
-//--- Syntax error message for terminal '$identifier$' :
-static const utf32 gSyntaxErrorMessage_identifier [] = {
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE (' '),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('f'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('r'),
-  TO_UNICODE (0)
-} ;
-
+%
+  foreach TERMINAL_LIST do
+   %!n//--- Syntax error message for terminal '$%([mTerminalName string])%$' :!n%
+   %static const utf32 gSyntaxErrorMessage_%([[mTerminalName string] identifierRepresentation])% [] = % ([mSyntaxErrorMessage utf32StringConstantRepresentation])% ;!n%
+  end foreach
+%
 //---------------------------------------------------------------------------*
 //                                                                           *
 //                appendTerminalMessageToSyntaxErrorMessage                  *
@@ -105,265 +92,36 @@ static const utf32 gSyntaxErrorMessage_identifier [] = {
 void %LEXIQUE_CLASS_NAME%::
 appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,
                                            C_String & outSyntaxErrorMessage) {
-  static const utf32 * syntaxErrorMessageArray [144] = {kEndOfSourceLexicalErrorMessage,
-       gSyntaxErrorMessage_identifier,
-       gSyntaxErrorMessage_abstract,
-       gSyntaxErrorMessage_after,
-       gSyntaxErrorMessage_before,
-       gSyntaxErrorMessage_between,
-       gSyntaxErrorMessage_block,
-       gSyntaxErrorMessage_cast,
-       gSyntaxErrorMessage_class,
-       gSyntaxErrorMessage_compile,
-       gSyntaxErrorMessage_const,
-       gSyntaxErrorMessage_constructor,
-       gSyntaxErrorMessage_default,
-       gSyntaxErrorMessage_description,
-       gSyntaxErrorMessage_dependency,
-       gSyntaxErrorMessage_do,
-       gSyntaxErrorMessage_domain,
-       gSyntaxErrorMessage_drop,
-       gSyntaxErrorMessage_else,
-       gSyntaxErrorMessage_elsif,
-       gSyntaxErrorMessage_end,
-       gSyntaxErrorMessage_enum,
-       gSyntaxErrorMessage_error,
-       gSyntaxErrorMessage_extends,
-       gSyntaxErrorMessage_extern,
-       gSyntaxErrorMessage_extract,
-       gSyntaxErrorMessage_false,
-       gSyntaxErrorMessage_feature,
-       gSyntaxErrorMessage_filewrapper,
-       gSyntaxErrorMessage_foreach,
-       gSyntaxErrorMessage_function,
-       gSyntaxErrorMessage_grammar,
-       gSyntaxErrorMessage_gui,
-       gSyntaxErrorMessage_here,
-       gSyntaxErrorMessage_if,
-       gSyntaxErrorMessage_import,
-       gSyntaxErrorMessage_import_5F__5F_,
-       gSyntaxErrorMessage_in,
-       gSyntaxErrorMessage_insert,
-       gSyntaxErrorMessage_label,
-       gSyntaxErrorMessage_lazy,
-       gSyntaxErrorMessage_lexique,
-       gSyntaxErrorMessage_list,
-       gSyntaxErrorMessage_listmap,
-       gSyntaxErrorMessage_log,
-       gSyntaxErrorMessage_loop,
-       gSyntaxErrorMessage_map,
-       gSyntaxErrorMessage_mapindex,
-       gSyntaxErrorMessage_match,
-       gSyntaxErrorMessage_message,
-       gSyntaxErrorMessage_method,
-       gSyntaxErrorMessage_mod,
-       gSyntaxErrorMessage_modifier,
-       gSyntaxErrorMessage_nonterminal,
-       gSyntaxErrorMessage_not,
-       gSyntaxErrorMessage_on,
-       gSyntaxErrorMessage_operator,
-       gSyntaxErrorMessage_option,
-       gSyntaxErrorMessage_or,
-       gSyntaxErrorMessage_override,
-       gSyntaxErrorMessage_parse,
-       gSyntaxErrorMessage_project,
-       gSyntaxErrorMessage_program,
-       gSyntaxErrorMessage_reader,
-       gSyntaxErrorMessage_remove,
-       gSyntaxErrorMessage_replace,
-       gSyntaxErrorMessage_repeat,
-       gSyntaxErrorMessage_rewind,
-       gSyntaxErrorMessage_root,
-       gSyntaxErrorMessage_routine,
-       gSyntaxErrorMessage_rule,
-       gSyntaxErrorMessage_search,
-       gSyntaxErrorMessage_select,
-       gSyntaxErrorMessage_self,
-       gSyntaxErrorMessage_semantics,
-       gSyntaxErrorMessage_send,
-       gSyntaxErrorMessage_sortedlist,
-       gSyntaxErrorMessage_state,
-       gSyntaxErrorMessage_struct,
-       gSyntaxErrorMessage_style,
-       gSyntaxErrorMessage_switch,
-       gSyntaxErrorMessage_syntax,
-       gSyntaxErrorMessage_tag,
-       gSyntaxErrorMessage_template,
-       gSyntaxErrorMessage_then,
-       gSyntaxErrorMessage_true,
-       gSyntaxErrorMessage_unused,
-       gSyntaxErrorMessage_warning,
-       gSyntaxErrorMessage_when,
-       gSyntaxErrorMessage_while,
-       gSyntaxErrorMessage_with,
-       gSyntaxErrorMessage_literal_5F_double,
-       gSyntaxErrorMessage_unsigned_5F_literal_5F_integer,
-       gSyntaxErrorMessage_signed_5F_literal_5F_integer,
-       gSyntaxErrorMessage_unsigned_5F_literal_5F_integer_36__34_,
-       gSyntaxErrorMessage_signed_5F_literal_5F_integer_36__34_,
-       gSyntaxErrorMessage__2E_,
-       gSyntaxErrorMessage__2E__3D_,
-       gSyntaxErrorMessage__2E__2E__2E_,
-       gSyntaxErrorMessage_type_5F_name,
-       gSyntaxErrorMessage_literal_5F_char,
-       gSyntaxErrorMessage_terminal,
-       gSyntaxErrorMessage__2A_,
-       gSyntaxErrorMessage__7C_,
-       gSyntaxErrorMessage__2C_,
-       gSyntaxErrorMessage__2B_,
-       gSyntaxErrorMessage__2D__2D_,
-       gSyntaxErrorMessage__3A__3A_,
-       gSyntaxErrorMessage__3E_,
-       gSyntaxErrorMessage__3B_,
-       gSyntaxErrorMessage__3A_,
-       gSyntaxErrorMessage__2D_,
-       gSyntaxErrorMessage__28_,
-       gSyntaxErrorMessage__29_,
-       gSyntaxErrorMessage__2D__3E_,
-       gSyntaxErrorMessage__3F_,
-       gSyntaxErrorMessage__3D__3D_,
-       gSyntaxErrorMessage__3F__3F_,
-       gSyntaxErrorMessage__21_,
-       gSyntaxErrorMessage__3A__3D_,
-       gSyntaxErrorMessage__2B__2B_,
-       gSyntaxErrorMessage__5B_,
-       gSyntaxErrorMessage__5D_,
-       gSyntaxErrorMessage__2B__3D_,
-       gSyntaxErrorMessage__3F__21_,
-       gSyntaxErrorMessage__21__3F_,
-       gSyntaxErrorMessage__2F_,
-       gSyntaxErrorMessage__21__3D_,
-       gSyntaxErrorMessage__3E__3D_,
-       gSyntaxErrorMessage__26_,
-       gSyntaxErrorMessage__7B_,
-       gSyntaxErrorMessage__7D_,
-       gSyntaxErrorMessage__2D__3D_,
-       gSyntaxErrorMessage__5E_,
-       gSyntaxErrorMessage__3E__3E_,
-       gSyntaxErrorMessage__7E_,
-       gSyntaxErrorMessage__3C__2D_,
-       gSyntaxErrorMessage__3C_,
-       gSyntaxErrorMessage__3C__2D__3E_,
-       gSyntaxErrorMessage__3C__3D_,
-       gSyntaxErrorMessage__3C__3C_,
-       gSyntaxErrorMessage_non_5F_terminal_5F_symbol,
-       gSyntaxErrorMessage_literal_5F_string,
-       gSyntaxErrorMessage_comment} ;
+  static const utf32 * syntaxErrorMessageArray [144] = {kEndOfSourceLexicalErrorMessage%
+  foreach TERMINAL_LIST do
+   %,!n    gSyntaxErrorMessage_%([[mTerminalName string] identifierRepresentation])
+  end foreach
+%} ;
   outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                   Key words table 'galgasKeyWordList'                     *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-static const sint32 ktable_size_galgasKeyWordList = 89 ;
-
-static const utf32 kEntry_0_forTable_galgasKeyWordList [] = {
-  TO_UNICODE ('d'),
-  TO_UNICODE ('o'),
-  TO_UNICODE (0)
-}; 
-
-
-static const C_unicode_lexique_table_entry ktable_for_galgasKeyWordList [ktable_size_galgasKeyWordList] = {
-  {kEntry_0_forTable_galgasKeyWordList, 2, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_do},
-  {kEntry_1_forTable_galgasKeyWordList, 2, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_if},
-  {kEntry_2_forTable_galgasKeyWordList, 2, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_in},
-  {kEntry_3_forTable_galgasKeyWordList, 2, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_on},
-  {kEntry_4_forTable_galgasKeyWordList, 2, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_or},
-  {kEntry_5_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_end},
-  {kEntry_6_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_gui},
-  {kEntry_7_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_log},
-  {kEntry_8_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_map},
-  {kEntry_9_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_mod},
-  {kEntry_10_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_not},
-  {kEntry_11_forTable_galgasKeyWordList, 3, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_tag},
-  {kEntry_12_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_cast},
-  {kEntry_13_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_drop},
-  {kEntry_14_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_else},
-  {kEntry_15_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_enum},
-  {kEntry_16_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_here},
-  {kEntry_17_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_lazy},
-  {kEntry_18_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_list},
-  {kEntry_19_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_loop},
-  {kEntry_20_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_root},
-  {kEntry_21_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_rule},
-  {kEntry_22_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_self},
-  {kEntry_23_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_send},
-  {kEntry_24_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_then},
-  {kEntry_25_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_true},
-  {kEntry_26_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_when},
-  {kEntry_27_forTable_galgasKeyWordList, 4, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_with},
-  {kEntry_28_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_after},
-  {kEntry_29_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_block},
-  {kEntry_30_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_class},
-  {kEntry_31_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_const},
-  {kEntry_32_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_elsif},
-  {kEntry_33_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_error},
-  {kEntry_34_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_false},
-  {kEntry_35_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_label},
-  {kEntry_36_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_match},
-  {kEntry_37_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_parse},
-  {kEntry_38_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_state},
-  {kEntry_39_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_style},
-  {kEntry_40_forTable_galgasKeyWordList, 5, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_while},
-  {kEntry_41_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_before},
-  {kEntry_42_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_domain},
-  {kEntry_43_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_extern},
-  {kEntry_44_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_import},
-  {kEntry_45_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_insert},
-  {kEntry_46_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_method},
-  {kEntry_47_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_option},
-  {kEntry_48_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_reader},
-  {kEntry_49_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_remove},
-  {kEntry_50_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_repeat},
-  {kEntry_51_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_rewind},
-  {kEntry_52_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_search},
-  {kEntry_53_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_select},
-  {kEntry_54_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_struct},
-  {kEntry_55_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_switch},
-  {kEntry_56_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_syntax},
-  {kEntry_57_forTable_galgasKeyWordList, 6, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_unused},
-  {kEntry_58_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_between},
-  {kEntry_59_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_compile},
-  {kEntry_60_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_default},
-  {kEntry_61_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_extends},
-  {kEntry_62_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_extract},
-  {kEntry_63_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_feature},
-  {kEntry_64_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_foreach},
-  {kEntry_65_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_grammar},
-  {kEntry_66_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_lexique},
-  {kEntry_67_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_listmap},
-  {kEntry_68_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_message},
-  {kEntry_69_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_program},
-  {kEntry_70_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_project},
-  {kEntry_71_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_replace},
-  {kEntry_72_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_routine},
-  {kEntry_73_forTable_galgasKeyWordList, 7, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_warning},
-  {kEntry_74_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_abstract},
-  {kEntry_75_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_function},
-  {kEntry_76_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_import_5F__5F_},
-  {kEntry_77_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_mapindex},
-  {kEntry_78_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_modifier},
-  {kEntry_79_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_operator},
-  {kEntry_80_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_override},
-  {kEntry_81_forTable_galgasKeyWordList, 8, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_template},
-  {kEntry_82_forTable_galgasKeyWordList, 9, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_semantics},
-  {kEntry_83_forTable_galgasKeyWordList, 10, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_dependency},
-  {kEntry_84_forTable_galgasKeyWordList, 10, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_sortedlist},
-  {kEntry_85_forTable_galgasKeyWordList, 11, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_constructor},
-  {kEntry_86_forTable_galgasKeyWordList, 11, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_description},
-  {kEntry_87_forTable_galgasKeyWordList, 11, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_filewrapper},
-  {kEntry_88_forTable_galgasKeyWordList, 11, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_nonterminal}
-} ;
-
-sint16 %LEXIQUE_CLASS_NAME%::search_into_galgasKeyWordList (const C_String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_galgasKeyWordList, ktable_size_galgasKeyWordList) ;
-}
-
-
+%
+  foreach `tokenList_ LEXICAL_TOKEN_LIST_MAP do
+    %//---------------------------------------------------------------------------*!n%
+    %//                                                                           *!n%
+    %//             Key words table '%([tokenList_key string])%'                            *!n%
+    %//                                                                           *!n%
+    %//---------------------------------------------------------------------------*!n%
+    %!nstatic const sint32 ktable_size_%([tokenList_key string])% = %([[tokenList_mExplicitTokenListMap count] string])% ;!n!n%
+    foreach `entry_ tokenList_mExplicitTokenListMap do
+      %static const utf32 kEntry_%([[entry_key string] identifierRepresentation])%_forTable_%([tokenList_key string])% [] = % ([entry_mTerminal utf32StringConstantRepresentation])% ;!n!n%
+    end foreach
+    %static const C_unicode_lexique_table_entry ktable_for_%([tokenList_key string])% [ktable_size_%([tokenList_key string])%] = {!n%
+      foreach tokenList_mTokenSortedList
+      do %  {kEntry_%([mName identifierRepresentation])%_forTable_%([tokenList_key string])%, %([mLength string])%, %LEXIQUE_CLASS_NAME%::%LEXIQUE_CLASS_NAME%_1_%([mName identifierRepresentation])%}%
+      between %,!n%
+      end foreach
+    %!n}!n!n%
+    %sint16 %LEXIQUE_CLASS_NAME%::search_into_%([tokenList_key string])% (const C_String & inSearchedString) {!n%
+    %  return searchInList (inSearchedString, ktable_for_%([tokenList_key string])%, ktable_size_%([tokenList_key string])%) ;!n%
+    %}!n!n%
+  end foreach
+%
 //---------------------------------------------------------------------------*
 //                                                                           *
 //                          getCurrentTokenString                            *
@@ -375,752 +133,23 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
   cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%LEXIQUE_CLASS_NAME% *) inTokenPtr ;
   C_String s ;
   if (ptr == NULL) {
-    s << "$$" ;
+    s.appendCString("$$") ;
   }else{
     switch (ptr->mTokenCode) {
-    case  %LEXIQUE_CLASS_NAME%_1_:
-      s << "$$" ;
+    case %LEXIQUE_CLASS_NAME%_1_:
+      s.appendCString("$$") ;
       break ;
-    case  %LEXIQUE_CLASS_NAME%_1_identifier:
-      s << "$"
-        << "identifier"
-        << "$" ;
-    s << " " ;
-    s.appendCLiteralStringConstant (ptr->tokenString) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_abstract:
-      s << "$"
-        << "abstract"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_after:
-      s << "$"
-        << "after"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_before:
-      s << "$"
-        << "before"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_between:
-      s << "$"
-        << "between"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_block:
-      s << "$"
-        << "block"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_cast:
-      s << "$"
-        << "cast"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_class:
-      s << "$"
-        << "class"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_compile:
-      s << "$"
-        << "compile"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_const:
-      s << "$"
-        << "const"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_constructor:
-      s << "$"
-        << "constructor"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_default:
-      s << "$"
-        << "default"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_description:
-      s << "$"
-        << "description"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_dependency:
-      s << "$"
-        << "dependency"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_do:
-      s << "$"
-        << "do"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_domain:
-      s << "$"
-        << "domain"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_drop:
-      s << "$"
-        << "drop"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_else:
-      s << "$"
-        << "else"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_elsif:
-      s << "$"
-        << "elsif"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_end:
-      s << "$"
-        << "end"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_enum:
-      s << "$"
-        << "enum"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_error:
-      s << "$"
-        << "error"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_extends:
-      s << "$"
-        << "extends"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_extern:
-      s << "$"
-        << "extern"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_extract:
-      s << "$"
-        << "extract"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_false:
-      s << "$"
-        << "false"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_feature:
-      s << "$"
-        << "feature"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_filewrapper:
-      s << "$"
-        << "filewrapper"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_foreach:
-      s << "$"
-        << "foreach"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_function:
-      s << "$"
-        << "function"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_grammar:
-      s << "$"
-        << "grammar"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_gui:
-      s << "$"
-        << "gui"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_here:
-      s << "$"
-        << "here"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_if:
-      s << "$"
-        << "if"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_import:
-      s << "$"
-        << "import"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_import_5F__5F_:
-      s << "$"
-        << "import__"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_in:
-      s << "$"
-        << "in"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_insert:
-      s << "$"
-        << "insert"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_label:
-      s << "$"
-        << "label"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_lazy:
-      s << "$"
-        << "lazy"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_lexique:
-      s << "$"
-        << "lexique"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_list:
-      s << "$"
-        << "list"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_listmap:
-      s << "$"
-        << "listmap"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_log:
-      s << "$"
-        << "log"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_loop:
-      s << "$"
-        << "loop"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_map:
-      s << "$"
-        << "map"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_mapindex:
-      s << "$"
-        << "mapindex"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_match:
-      s << "$"
-        << "match"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_message:
-      s << "$"
-        << "message"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_method:
-      s << "$"
-        << "method"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_mod:
-      s << "$"
-        << "mod"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_modifier:
-      s << "$"
-        << "modifier"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_nonterminal:
-      s << "$"
-        << "nonterminal"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_not:
-      s << "$"
-        << "not"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_on:
-      s << "$"
-        << "on"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_operator:
-      s << "$"
-        << "operator"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_option:
-      s << "$"
-        << "option"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_or:
-      s << "$"
-        << "or"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_override:
-      s << "$"
-        << "override"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_parse:
-      s << "$"
-        << "parse"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_project:
-      s << "$"
-        << "project"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_program:
-      s << "$"
-        << "program"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_reader:
-      s << "$"
-        << "reader"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_remove:
-      s << "$"
-        << "remove"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_replace:
-      s << "$"
-        << "replace"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_repeat:
-      s << "$"
-        << "repeat"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_rewind:
-      s << "$"
-        << "rewind"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_root:
-      s << "$"
-        << "root"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_routine:
-      s << "$"
-        << "routine"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_rule:
-      s << "$"
-        << "rule"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_search:
-      s << "$"
-        << "search"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_select:
-      s << "$"
-        << "select"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_self:
-      s << "$"
-        << "self"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_semantics:
-      s << "$"
-        << "semantics"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_send:
-      s << "$"
-        << "send"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_sortedlist:
-      s << "$"
-        << "sortedlist"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_state:
-      s << "$"
-        << "state"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_struct:
-      s << "$"
-        << "struct"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_style:
-      s << "$"
-        << "style"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_switch:
-      s << "$"
-        << "switch"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_syntax:
-      s << "$"
-        << "syntax"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_tag:
-      s << "$"
-        << "tag"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_template:
-      s << "$"
-        << "template"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_then:
-      s << "$"
-        << "then"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_true:
-      s << "$"
-        << "true"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_unused:
-      s << "$"
-        << "unused"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_warning:
-      s << "$"
-        << "warning"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_when:
-      s << "$"
-        << "when"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_while:
-      s << "$"
-        << "while"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_with:
-      s << "$"
-        << "with"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_literal_5F_double:
-      s << "$"
-        << "literal_double"
-        << "$" ;
-      s << " " ;
-      s.appendDouble (ptr->floatValue) ;
-    s << " " ;
-    s.appendCLiteralStringConstant (ptr->tokenString) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_unsigned_5F_literal_5F_integer:
-      s << "$"
-        << "unsigned_literal_integer"
-        << "$" ;
-      s << " " ;
-      s.appendUnsigned (ptr->uint32value) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_signed_5F_literal_5F_integer:
-      s << "$"
-        << "signed_literal_integer"
-        << "$" ;
-      s << " " ;
-      s.appendSigned (ptr->sint32value) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_unsigned_5F_literal_5F_integer_36__34_:
-      s << "$"
-        << "unsigned_literal_integer64"
-        << "$" ;
-      s << " " ;
-      s.appendUnsigned64 (ptr->uint64value) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_signed_5F_literal_5F_integer_36__34_:
-      s << "$"
-        << "signed_literal_integer64"
-        << "$" ;
-      s << " " ;
-      s.appendSigned64 (ptr->sint64value) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2E_:
-      s << "$"
-        << "."
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2E__3D_:
-      s << "$"
-        << ".="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2E__2E__2E_:
-      s << "$"
-        << "..."
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_type_5F_name:
-      s << "$"
-        << "type_name"
-        << "$" ;
-    s << " " ;
-    s.appendCLiteralStringConstant (ptr->tokenString) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_literal_5F_char:
-      s << "$"
-        << "literal_char"
-        << "$" ;
-    s << " " ;
-    s.appendCLiteralCharConstant (ptr->charValue) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_terminal:
-      s << "$"
-        << "terminal"
-        << "$" ;
-    s << " " ;
-    s.appendCLiteralStringConstant (ptr->tokenString) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2A_:
-      s << "$"
-        << "*"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__7C_:
-      s << "$"
-        << "|"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2C_:
-      s << "$"
-        << ","
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2B_:
-      s << "$"
-        << "+"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2D__2D_:
-      s << "$"
-        << "--"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3A__3A_:
-      s << "$"
-        << "::"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3E_:
-      s << "$"
-        << ">"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3B_:
-      s << "$"
-        << ";"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3A_:
-      s << "$"
-        << ":"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2D_:
-      s << "$"
-        << "-"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__28_:
-      s << "$"
-        << "("
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__29_:
-      s << "$"
-        << ")"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2D__3E_:
-      s << "$"
-        << "->"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3F_:
-      s << "$"
-        << "\?"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3D__3D_:
-      s << "$"
-        << "=="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3F__3F_:
-      s << "$"
-        << "\?\?"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__21_:
-      s << "$"
-        << "!"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3A__3D_:
-      s << "$"
-        << ":="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2B__2B_:
-      s << "$"
-        << "++"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__5B_:
-      s << "$"
-        << "["
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__5D_:
-      s << "$"
-        << "]"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2B__3D_:
-      s << "$"
-        << "+="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3F__21_:
-      s << "$"
-        << "\?!"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__21__3F_:
-      s << "$"
-        << "!\?"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2F_:
-      s << "$"
-        << "/"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__21__3D_:
-      s << "$"
-        << "!="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3E__3D_:
-      s << "$"
-        << ">="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__26_:
-      s << "$"
-        << "&"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__7B_:
-      s << "$"
-        << "{"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__7D_:
-      s << "$"
-        << "}"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__2D__3D_:
-      s << "$"
-        << "-="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__5E_:
-      s << "$"
-        << "^"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3E__3E_:
-      s << "$"
-        << ">>"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__7E_:
-      s << "$"
-        << "~"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3C__2D_:
-      s << "$"
-        << "<-"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3C_:
-      s << "$"
-        << "<"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3C__2D__3E_:
-      s << "$"
-        << "<->"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3C__3D_:
-      s << "$"
-        << "<="
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1__3C__3C_:
-      s << "$"
-        << "<<"
-        << "$" ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_non_5F_terminal_5F_symbol:
-      s << "$"
-        << "non_terminal_symbol"
-        << "$" ;
-    s << " " ;
-    s.appendCLiteralStringConstant (ptr->tokenString) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_literal_5F_string:
-      s << "$"
-        << "literal_string"
-        << "$" ;
-    s << " " ;
-    s.appendCLiteralStringConstant (ptr->tokenString) ;
-      break;
-    case  %LEXIQUE_CLASS_NAME%_1_comment:
-      s << "$"
-        << "comment"
-        << "$" ;
-      break;
-    default:
+%foreach TERMINAL_LIST do
+   %    case %LEXIQUE_CLASS_NAME%_1_%([[mTerminalName string] identifierRepresentation])%:!n%
+   %      s.appendUnicodeCharacter (TO_UNICODE ('$')) ;!n%
+   %      s.appendCString (%([[mTerminalName string] CStringConstantRepresentation])%) ;!n%
+   %      s.appendCString("$ ") ;!n%
+   foreach mSentAttributeList do
+     %      s.%([mLexicalType appendMethodName])% (ptr->mLexicalAttribute_%mAttributeName%) ;!n%
+   end foreach
+   %      break ;!n%
+end foreach
+%    default:
       break ;
     }
   }
@@ -1132,17 +161,15 @@ getCurrentTokenString (const cToken * inTokenPtr) const {
 //                      U N I C O D E    S T R I N G S                       *
 //                                                                           *
 //---------------------------------------------------------------------------*
-
-//--- Unicode string for '!'
-static const utf32 kUnicodeString__21_ [] = {
-  TO_UNICODE ('!'),
-  TO_UNICODE (0)
-} ; 
-
-
+%
+  foreach STRINGS_IN_EXPLICIT_RULES do
+   %!n//--- Unicode string for '$%key%$'!n%
+   %static const utf32 kUnicodeString_%([key identifierRepresentation])% [] = % ([key utf32StringConstantRepresentation])% ;!n%
+  end foreach
+%
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                            parseLexicalToken                              *
+//               P A R S E    L E X I C A L    T O K E N                     *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -1152,15 +179,11 @@ parseLexicalToken (void) {
   bool loop = true ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
-    token.identifierString.setLengthToZero () ;
-    token.uint32value = 0 ;
-    token.sint32value = 0 ;
-    token.uint64value = 0 ;
-    token.sint64value = 0 ;
-    token.charValue = TO_UNICODE ('\0') ;
-    token.tokenString.setLengthToZero () ;
-    token.floatValue = 0.0 ;
-    mTokenFirstLocation = mCurrentLocation ;
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %    token.mLexicalAttribute_%([key string]) ([mLexicalType initialization]) % ;!n%
+  end foreach
+%    mTokenFirstLocation = mCurrentLocation ;
     try{
       if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
           testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
@@ -1201,6 +224,10 @@ parseLexicalToken (void) {
 }
 
 //---------------------------------------------------------------------------*
+//                                                                           *
+//                         E N T E R    T O K E N                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
 
 void %LEXIQUE_CLASS_NAME%::enterToken (const cTokenFor_%LEXIQUE_CLASS_NAME% & inToken) {
   cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = NULL ;
@@ -1209,31 +236,39 @@ void %LEXIQUE_CLASS_NAME%::enterToken (const cTokenFor_%LEXIQUE_CLASS_NAME% & in
   ptr->mFirstLocation = mTokenFirstLocation ;
   ptr->mLastLocation  = mTokenLastLocation ;
   ptr->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;
-  ptr->identifierString = inToken.identifierString ;
-  ptr->uint32value = inToken.uint32value ;
-  ptr->sint32value = inToken.sint32value ;
-  ptr->uint64value = inToken.uint64value ;
-  ptr->sint64value = inToken.sint64value ;
-  ptr->charValue = inToken.charValue ;
-  ptr->tokenString = inToken.tokenString ;
-  ptr->floatValue = inToken.floatValue ;
-  enterTokenFromPointer (ptr) ;
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %  ptr->mLexicalAttribute_%([key string])% = inToken.mLexicalAttribute_%([key string])% ;!n%
+  end foreach
+%  enterTokenFromPointer (ptr) ;
 }
 
 //---------------------------------------------------------------------------*
-
-void %LEXIQUE_CLASS_NAME%::
-assignFromAttribute_identifierString (GGS_lstring & outValue) const {
-  cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%LEXIQUE_CLASS_NAME% *) mCurrentTokenPtr ;
-  outValue = GGS_lstring (* this, ptr->identifierString) ;
-}
-
+//                                                                           *
+//         A S S I G N    F R O M    A T T R I B U T E                       *
+//                                                                           *
 //---------------------------------------------------------------------------*
-
-C_String %LEXIQUE_CLASS_NAME%::
-attributeValue_identifierString (void) const {
-  cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%LEXIQUE_CLASS_NAME% *) mCurrentTokenPtr ;
-  return ptr->identifierString ;
-}
-
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %void %LEXIQUE_CLASS_NAME%::!n%
+    %assignFromAttribute_%([key string])% (%([mLexicalType appendMethodName])% & outValue) const {!n%
+    %  cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%LEXIQUE_CLASS_NAME% *) mCurrentTokenPtr ;!n%
+    %  outValue = %([mLexicalType appendMethodName])% (* this, ptr->mLexicalAttribute_%([key string])%) ;!n%
+    %}!n!n%
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//               A T T R I B U T E   A C C E S S                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %%([mLexicalType cppTypeName])% %LEXIQUE_CLASS_NAME%::!n%
+    %attributeValue_%([key string])% (void) const {!n%
+    %  cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%LEXIQUE_CLASS_NAME% *) mCurrentTokenPtr ;!n%
+    %  return ptr->mLexicalAttribute_%([key string])% ;!n%
+    %}!n!n%
+  end foreach
+%
 //---------------------------------------------------------------------------*

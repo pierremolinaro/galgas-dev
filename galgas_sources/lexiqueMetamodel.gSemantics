@@ -101,7 +101,7 @@ list @lexicalStyleList {
 list @terminalDeclarationList {
   @lstring mName ;
   @lstringlist mSentAttributeList ;
-  @lstring mErrorMessage ;
+  @lstring mSyntaxErrorMessage ;
   @lstring mStyle ; # Empty string if no style
   @lstringlist mOptionList ;
 }
