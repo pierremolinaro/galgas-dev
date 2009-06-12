@@ -577,7 +577,7 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
 //--- Engendrer la liste des messages d'erreurs (zero, un ou plusieurs)
   GGS_typeListeMessagesErreur::cEnumerator courant (attributListeMessageErreur, true) ;
   while (courant.hasCurrentObject ()) {
-    inCppFile << ", gErrorMessage_" ;
+    inCppFile << ", gLexicalMessage_" ;
     inCppFile.appendUnsigned (courant._mErrorMessageIndex (HERE).uintValue ()) ;
     courant.next () ;
   }
@@ -812,7 +812,7 @@ generateDefaultToken (const C_String & inLexiqueName,
 void cPtr_typeEmissionErreurParDefaut::
 generateDefaultToken (const C_String &,
                       AC_OutputStream & inCppFile) const {
-  inCppFile << "lexicalError (gErrorMessage_" ;
+  inCppFile << "lexicalError (gLexicalMessage_" ;
   inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
   inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
@@ -832,7 +832,7 @@ generate_scanner_instruction (const C_String &, // inLexiqueName
                               const bool /* inGenerateEnterToken */,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
-  inCppFile << "lexicalError (gErrorMessage_" ;
+  inCppFile << "lexicalError (gLexicalMessage_" ;
   inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
   inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
@@ -852,7 +852,7 @@ generate_scanner_instruction (const C_String &, // inLexiqueName
                               const bool /* inGenerateEnterToken */,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
-  inCppFile << "lexicalWarning (gErrorMessage_" ;
+  inCppFile << "lexicalWarning (gLexicalMessage_" ;
   inCppFile.appendUnsigned (mErrorMessageIndex.uintValue ()) ;
   inCppFile << " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 }
@@ -900,7 +900,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile,
     ioUnicodeStringToGenerate.addObjectInOrderedArray (chaine._mValue (HERE)) ;
     inCppFile << ", " ;
     inCppFile.appendSigned (chaine._mValue (HERE).length ()) ;
-    inCppFile << ", gErrorMessage_" ;
+    inCppFile << ", gLexicalMessage_" ;
     inCppFile.appendUnsigned (mEndOfFileErrorMessageIndex.uintValue ()) ;
     inCppFile << " COMMA_LINE_AND_SOURCE_FILE)" ;
   }else{
@@ -917,7 +917,7 @@ generateLexicalCondition (AC_OutputStream & inCppFile,
       ioUnicodeStringToGenerate.addObjectInOrderedArray (chaine._mValue (HERE)) ;
       inCppFile << ", " ;
       inCppFile.appendSigned (chaine._mValue (HERE).length ()) ;
-      inCppFile << ", gErrorMessage_" ;
+      inCppFile << ", gLexicalMessage_" ;
       inCppFile.appendUnsigned (mEndOfFileErrorMessageIndex.uintValue ()) ;
       inCppFile << " COMMA_LINE_AND_SOURCE_FILE)" ;
       chaine.next () ;
@@ -1563,7 +1563,7 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
         generatedZone2 << "//--- Message " << cStringWithSigned (messageNumber) << " (not used)\n"
                           "// " ;      
       }
-      generatedZone2 << "static const utf32 gErrorMessage_" << cStringWithSigned (messageNumber) << " [] = " ;
+      generatedZone2 << "static const utf32 gLexicalMessage_" << cStringWithSigned (messageNumber) << " [] = " ;
       generatedZone2.appendUTF32LiteralStringConstant (currentMessage._mErrorMessage (HERE)) ;
       generatedZone2 << " ;\n" ;
       currentMessage.next() ;

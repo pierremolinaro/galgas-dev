@@ -43,6 +43,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template implementationZone2 "lexique_implementation.cpp.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
   ;
 }
 
@@ -734,6 +735,7 @@ routine compileLexiqueComponent
       ![filewrapper lexiqueGenerationTemplates.implementationZone2
          !lexiqueClassName
          ![lexiqueAnalysisContext mLexicalAttributeMap]
+         ![lexiqueAnalysisContext mLexicalMessageMap]
        ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3
