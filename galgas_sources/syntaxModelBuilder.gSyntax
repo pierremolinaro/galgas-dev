@@ -91,6 +91,9 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
     ![@abstractCategoryMethodListMap emptyMap]
     ![@categoryMethodListMap emptyMap]
     ![@overridingCategoryMethodListMap emptyMap]
+    ![@abstractCategoryReaderListMap emptyMap]
+    ![@categoryReaderListMap emptyMap]
+    ![@overridingCategoryReaderListMap emptyMap]
   ] ;
   repeat
   while

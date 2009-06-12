@@ -1050,9 +1050,9 @@ pr_galgas_component_ggs_LL1_compile_component_137_23_ (galgas_scanner & inLexiqu
         macroValidPointer (operand_9350) ;
         GGS_string var_cas_fullPath ;
         GGS_EXsourceFileKind var_cas_sourceKind ;
-        const GGS_EXsourceFileMap  _temp_9446 = var_cas_sourceFileMap ;
-        if (_temp_9446.isBuilt ()) {
-          _temp_9446 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_9350->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (231)) ;
+        const GGS_EXsourceFileMap  temp_9446 = var_cas_sourceFileMap ;
+        if (temp_9446.isBuilt ()) {
+          temp_9446 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_9350->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (231)) ;
         }
         GGS_string var_cas_filePath ;
         var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (232)) ;
@@ -1086,9 +1086,9 @@ pr_galgas_component_ggs_LL1_compile_component_137_23_ (galgas_scanner & inLexiqu
     GGS_string var_cas_fileListPath ;
     var_cas_fileListPath = (GGS_string::constructor_stringWithSourceFilePath (inLexique COMMA_HERE).reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (253))).operator_concat (GGS_string ("/GALGAS_OUTPUT/file_list.mke")) ;
     GGS_bool automatic_var_0 ;
-    const GGS_string _temp_10605 = var_cas_newFileListContents ;
-    if (_temp_10605.isBuilt ()) {
-      _temp_10605 (HERE)->method_writeToFileWhenDifferentContents (inLexique, var_cas_fileListPath, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (254)) ;
+    const GGS_string temp_10605 = var_cas_newFileListContents ;
+    if (temp_10605.isBuilt ()) {
+      temp_10605 (HERE)->method_writeToFileWhenDifferentContents (inLexique, var_cas_fileListPath, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (254)) ;
     }
   }
   if (((GGS_bool (inLexique.boolOptionValueFromKeys ("galgas_cli_options", "doNotGenerateXcodeProject" COMMA_SOURCE_FILE_AT_LINE (344)))).operator_not ()).isBuiltAndTrue ()) {
@@ -1108,9 +1108,9 @@ pr_galgas_component_ggs_LL1_compile_component_137_23_ (galgas_scanner & inLexiqu
         inLexique.printMessage (((GGS_string ("****** Cannot update Xcode project, more than one project exist in '")).operator_concat (var_cas_XcodeProjectDir)).operator_concat (GGS_string ("' directory. ********\n")) COMMA_SOURCE_FILE_AT_LINE (356)) ;
       }else if (((var_cas_xcodeProjects.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (357))).operator_isEqual (GGS_uint (1U))).isBuiltAndTrue ()) {
         GGS_string var_cas_name ;
-        const GGS_stringlist  _temp_16996 = var_cas_xcodeProjects ;
-        if (_temp_16996.isBuilt ()) {
-          _temp_16996 (HERE)->method_first (inLexique, var_cas_name COMMA_SOURCE_FILE_AT_LINE (358)) ;
+        const GGS_stringlist  temp_16996 = var_cas_xcodeProjects ;
+        if (temp_16996.isBuilt ()) {
+          temp_16996 (HERE)->method_first (inLexique, var_cas_name COMMA_SOURCE_FILE_AT_LINE (358)) ;
         }
         GGS_string var_cas_fullXcodePath ;
         var_cas_fullXcodePath = (((var_cas_XcodeProjectDir).operator_concat (GGS_string ("/"))).operator_concat (var_cas_name)).operator_concat (GGS_string ("/project.pbxproj")) ;
@@ -1139,9 +1139,9 @@ pr_galgas_component_ggs_LL1_compile_component_137_23_ (galgas_scanner & inLexiqu
             macroValidPointer (operand_17722) ;
             GGS_string var_cas_fullPath ;
             GGS_EXsourceFileKind var_cas_sourceKind ;
-            const GGS_EXsourceFileMap  _temp_17824 = var_cas_sourceFileMap ;
-            if (_temp_17824.isBuilt ()) {
-              _temp_17824 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_17722->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (373)) ;
+            const GGS_EXsourceFileMap  temp_17824 = var_cas_sourceFileMap ;
+            if (temp_17824.isBuilt ()) {
+              temp_17824 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_17722->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (373)) ;
             }
             switch (var_cas_sourceKind.enumValue ()) {
             case GGS_EXsourceFileKind::enum_externSourceFile:
@@ -1212,9 +1212,9 @@ pr_galgas_component_ggs_LL1_compile_component_137_23_ (galgas_scanner & inLexiqu
             macroValidPointer (operand_18996) ;
             GGS_string var_cas_fullPath ;
             GGS_EXsourceFileKind var_cas_sourceKind ;
-            const GGS_EXsourceFileMap  _temp_19098 = var_cas_sourceFileMap ;
-            if (_temp_19098.isBuilt ()) {
-              _temp_19098 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_18996->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (404)) ;
+            const GGS_EXsourceFileMap  temp_19098 = var_cas_sourceFileMap ;
+            if (temp_19098.isBuilt ()) {
+              temp_19098 (HERE)->method_searchKey (inLexique, GGS_lstring ::constructor_new (inLexique, operand_18996->mValue, GGS_location (inLexique) COMMA_HERE), var_cas_fullPath, var_cas_sourceKind COMMA_SOURCE_FILE_AT_LINE (404)) ;
             }
             switch (var_cas_sourceKind.enumValue ()) {
             case GGS_EXsourceFileKind::enum_externSourceFile:

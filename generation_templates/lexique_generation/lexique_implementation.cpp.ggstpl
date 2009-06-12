@@ -185,28 +185,14 @@ parseLexicalToken (void) {
   end foreach
 %    mTokenFirstLocation = mCurrentLocation ;
     try{
-      if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
-          testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z'))) {
-        do {
-          ::scanner_routine_enterCharacterIntoString (*this, token.identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
-          ::scanner_routine_enterCharacterIntoString (*this, token.tokenString, previousChar ()) ;
-          if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) ||
-              testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ||
-              testForInputUTF32Char (TO_UNICODE ('_')) ||
-              testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        token.mTokenCode = search_into_galgasKeyWordList (token.identifierString) ;
-        if (token.mTokenCode == -1) {
-          token.mTokenCode = %LEXIQUE_CLASS_NAME%_1_identifier ;
-        }
-        enterToken (token) ;
-      }else if (testForInputUTF32String (kUnicodeString__30_x, 2, true)) {
-      }else if (testForInputUTF32CharRange (TO_UNICODE (1), TO_UNICODE (' '))) {
-      }else if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+      %
+  foreach LEXICAL_RULE_LIST
+  do
+    %if (%([mLexicalRule generateCode !LEXIQUE_ANALYSIS_CONTEXT])%) {!n%
+    %        ...!n%
+    %      }else %
+  end foreach
+%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
         token.mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;

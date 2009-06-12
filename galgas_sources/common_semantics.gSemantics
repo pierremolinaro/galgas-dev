@@ -739,8 +739,18 @@ enum @categoryMethodKind {
 map @EXcategoryMethodMap {
   @categoryMethodKind mCategoryMethodKind ;
   @L_EXsignature aListeArgumentsFormels ;
-  insert insertKey error message "the '%K' method is already declared in %L" ;
-  search searchKey, searchKeyAndGetIndex error message "the '%K' method is not declared" ;
+  insert insertKey error message "the '%K' category method is already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' category method is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @EXcategoryReaderMap {
+  @categoryMethodKind mCategoryMethodKind ;
+  @L_EXsignature aListeArgumentsFormels ;
+  @AC_galgasType mReturnedType ;
+  insert insertKey error message "the '%K' category reader is already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' category reader is not declared" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -3778,13 +3788,16 @@ end routine ;
 
 routine handleReaderCall
   ??@M_semanticsEntitiesForUse ioEntitiesMap
+  ??@EXcategoryReaderMap inCategoryReaderMap
   ??@AC_galgasType inReceiverType
   ??@lstring inReaderName
   !@typeListeAttributsSemantiques outAccessorTypesList
   !@AC_galgasType outReturnedType
   !@string outCppConversionMethod
+  !@string outCategoryReaderClassBaseName
 :
   outCppConversionMethod := "" ; # Means no conversion needed
+  outCategoryReaderClassBaseName := "" ; # Means not a category reader
   if [inReaderName string] == "description" then
     outReturnedType := [@typeGalgas_string new] ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -4384,6 +4397,7 @@ routine handleReaderCall
     when >= @typeGalgasClassType t do
       outReturnedType := [@typeGalgas_string new] ; # Any Value
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      @stringlist acceptedReaderList [emptyList] ;
       if not [[t mMessagesMap] hasKey ![inReaderName string]] then
       #--- Search for attribute
         @bool found := false ;
@@ -4416,9 +4430,36 @@ routine handleReaderCall
             end foreach ;
           end foreach ;
         end foreach ;
+      #--- Search for category reader
+        if not found then
+          @L_EXsignature signature [emptyList] ;
+          @string className := [[t mClassTypeName] string] ;
+          @lstring key [new !className . ":" . [inReaderName string] ![inReaderName location]] ;
+          if [inCategoryReaderMap hasKey ![key string]] then
+            @categoryMethodKind categoryMethodKind ;
+            [inCategoryReaderMap searchKey !key ?categoryMethodKind ?signature ?outReturnedType] ;
+            if categoryMethodKind != [@categoryMethodKind overridingMethod] then
+              outCategoryReaderClassBaseName := className ;
+            end if ;
+          end if ;
+          foreach [t mAncestorClassesMap] while outCategoryReaderClassBaseName == "" do
+            @lstring superKey [new ![key string] . ":" . [inReaderName string] ![inReaderName location]] ;
+            if [inCategoryReaderMap hasKey ![superKey string]] then
+              @categoryMethodKind categoryMethodKind ;
+              [inCategoryReaderMap searchKey !superKey ?categoryMethodKind ?signature ?outReturnedType] ;
+              if categoryMethodKind != [@categoryMethodKind overridingMethod] then
+                outCategoryReaderClassBaseName := className ;
+              end if ;
+            end if ;
+          end foreach ;
+          found := outCategoryReaderClassBaseName != "" ;
+          foreach signature do
+            outAccessorTypesList += !mType ![@lstring new !"?" !here] ;
+          end foreach ;
+        end if ;
       #---
         if not found then
-          error inReaderName: "this reader is not defined (you can name as class reader class attributes, class messages and lazy attributes)" ;
+          error inReaderName: "this reader is not defined" ;
         end if ;
       end if ;
     when >= @typeGalgasStructType t do
@@ -4659,6 +4700,7 @@ struct @EXsemanticContext {
   @M_filewrappers mFilewrappers ;
   @stringset mImportedSemanticComponents ;
   @EXcategoryMethodMap mCategoryMethodMap ;
+  @EXcategoryReaderMap mReaderMethodMap ;
 }
 
 #---------------------------------------------------------------------------*

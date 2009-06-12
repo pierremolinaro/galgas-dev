@@ -707,9 +707,9 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_653_47_ (galgas_scann
       inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
       GGS_AC_galgasType  var_cas_attributeType ;
-      const GGS_EXLexicalTypeMap  _temp_20227 = var_cas_inLexicalTypeMap ;
-      if (_temp_20227.isBuilt ()) {
-        _temp_20227 (HERE)->method_searchKey (inLexique, var_cas_typeName, var_cas_attributeType COMMA_SOURCE_FILE_AT_LINE (666)) ;
+      const GGS_EXLexicalTypeMap  temp_20227 = var_cas_inLexicalTypeMap ;
+      if (temp_20227.isBuilt ()) {
+        temp_20227 (HERE)->method_searchKey (inLexique, var_cas_typeName, var_cas_attributeType COMMA_SOURCE_FILE_AT_LINE (666)) ;
       }
       GGS_lstring  var_cas_attributeName ;
       inLexique.assignFromAttribute_tokenString (var_cas_attributeName) ;
@@ -731,9 +731,9 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_653_47_ (galgas_scann
               inLexique.assignFromAttribute_tokenString (var_cas_idf) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_AC_galgasType  var_cas_t ;
-              const GGS_typeLexicalAttributesMap  _temp_20679 = var_cas_table_des_attributs ;
-              if (_temp_20679.isBuilt ()) {
-                _temp_20679 (HERE)->method_searchKey (inLexique, var_cas_idf, var_cas_t COMMA_SOURCE_FILE_AT_LINE (681)) ;
+              const GGS_typeLexicalAttributesMap  temp_20679 = var_cas_table_des_attributs ;
+              if (temp_20679.isBuilt ()) {
+                temp_20679 (HERE)->method_searchKey (inLexique, var_cas_idf, var_cas_t COMMA_SOURCE_FILE_AT_LINE (681)) ;
               }
               var_cas_attributeList._addAssign_operation (var_cas_t, var_cas_idf) ;
               } break ;
@@ -763,9 +763,9 @@ pr_attribute_or_terminal_symbol_declaration_scanner_parser_653_47_ (galgas_scann
           break ;
       }
       GGS_luint  var_cas_styleIndex ;
-      const GGS_M_styles  _temp_21137 = var_cas_ioStylesMap ;
-      if (_temp_21137.isBuilt ()) {
-        _temp_21137 (HERE)->method_searchKeyGetID (inLexique, var_cas_styleName, var_cas_styleIndex COMMA_SOURCE_FILE_AT_LINE (698)) ;
+      const GGS_M_styles  temp_21137 = var_cas_ioStylesMap ;
+      if (temp_21137.isBuilt ()) {
+        temp_21137 (HERE)->method_searchKeyGetID (inLexique, var_cas_styleName, var_cas_styleIndex COMMA_SOURCE_FILE_AT_LINE (698)) ;
       }
       GGS_string var_cas_errorMessageString ;
       var_cas_errorMessageString = var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (699)) ;
@@ -884,9 +884,9 @@ pr_key_words_list_declaration_scanner_parser_723_33_ (galgas_scanner & inLexique
           inLexique.assignFromAttribute_tokenString (var_cas_idf) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_AC_galgasType  var_cas_t ;
-          const GGS_typeLexicalAttributesMap  _temp_22766 = var_cas_table_des_attributs ;
-          if (_temp_22766.isBuilt ()) {
-            _temp_22766 (HERE)->method_searchKey (inLexique, var_cas_idf, var_cas_t COMMA_SOURCE_FILE_AT_LINE (745)) ;
+          const GGS_typeLexicalAttributesMap  temp_22766 = var_cas_table_des_attributs ;
+          if (temp_22766.isBuilt ()) {
+            temp_22766 (HERE)->method_searchKey (inLexique, var_cas_idf, var_cas_t COMMA_SOURCE_FILE_AT_LINE (745)) ;
           }
           var_cas_attributeList._addAssign_operation (var_cas_t, var_cas_idf) ;
           } break ;
@@ -918,9 +918,9 @@ pr_key_words_list_declaration_scanner_parser_723_33_ (galgas_scanner & inLexique
       break ;
   }
   GGS_luint  var_cas_styleIndex ;
-  const GGS_M_styles  _temp_23177 = var_cas_ioStylesMap ;
-  if (_temp_23177.isBuilt ()) {
-    _temp_23177 (HERE)->method_searchKeyGetID (inLexique, var_cas_styleName, var_cas_styleIndex COMMA_SOURCE_FILE_AT_LINE (763)) ;
+  const GGS_M_styles  temp_23177 = var_cas_ioStylesMap ;
+  if (temp_23177.isBuilt ()) {
+    temp_23177 (HERE)->method_searchKeyGetID (inLexique, var_cas_styleName, var_cas_styleIndex COMMA_SOURCE_FILE_AT_LINE (763)) ;
   }
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   { bool syntaxRepeat_11 = true ;
@@ -1130,9 +1130,9 @@ pr_while_branches_list_scanner_parser_833_26_ (galgas_scanner & inLexique,
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
             GGS_luint  var_cas_errorMessageIndex ;
             GGS_lstring  automatic_var_0 ;
-            const GGS_typeTableMessagesErreurs  _temp_26199 = var_cas_table_des_messages_erreur ;
-            if (_temp_26199.isBuilt ()) {
-              _temp_26199 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (859)) ;
+            const GGS_typeTableMessagesErreurs  temp_26199 = var_cas_table_des_messages_erreur ;
+            if (temp_26199.isBuilt ()) {
+              temp_26199 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (859)) ;
             }
             var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (860))) ;
             var_cas_lcl._addAssign_operation (GGS_typeConditionNonChaine ::constructor_new (inLexique, var_cas_stringList, var_cas_errorMessageIndex COMMA_HERE)) ;
@@ -1416,9 +1416,9 @@ pr_lexical_rule_scanner_parser_993_19_ (galgas_scanner & inLexique,
   inLexique.assignFromAttribute_tokenString (var_cas_listName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_typeTableMotsReserves  var_cas_keyWordsMap ;
-  const GGS_typeTableTablesDeMotsReserves  _temp_30477 = var_cas_table_tables_mots_reserves ;
-  if (_temp_30477.isBuilt ()) {
-    _temp_30477 (HERE)->method_searchKey (inLexique, var_cas_listName, var_cas_keyWordsMap COMMA_SOURCE_FILE_AT_LINE (1007)) ;
+  const GGS_typeTableTablesDeMotsReserves  temp_30477 = var_cas_table_tables_mots_reserves ;
+  if (temp_30477.isBuilt ()) {
+    temp_30477 (HERE)->method_searchKey (inLexique, var_cas_listName, var_cas_keyWordsMap COMMA_SOURCE_FILE_AT_LINE (1007)) ;
   }
   if (var_cas_keyWordsMap.isBuilt () &&
       var_cas_ioLexicalRulesList.isBuilt ()) {
@@ -1516,9 +1516,9 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           GGS_lstring  var_cas_tagIdentifier ;
           inLexique.assignFromAttribute_tokenString (var_cas_tagIdentifier) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          const GGS_tagMap  _temp_33635 = var_cas_tagMap ;
-          if (_temp_33635.isBuilt ()) {
-            _temp_33635 (HERE)->method_searchKey (inLexique, var_cas_tagIdentifier COMMA_SOURCE_FILE_AT_LINE (1115)) ;
+          const GGS_tagMap  temp_33635 = var_cas_tagMap ;
+          if (temp_33635.isBuilt ()) {
+            temp_33635 (HERE)->method_searchKey (inLexique, var_cas_tagIdentifier COMMA_SOURCE_FILE_AT_LINE (1115)) ;
           }
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_send) COMMA_HERE) ;
           GGS_lstring  var_cas_nomTerminal ;
@@ -1528,9 +1528,9 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           GGS_typeListeAttributsSemantiques  automatic_var_2 ;
           GGS_luint  automatic_var_3 ;
           GGS_bool automatic_var_4 ;
-          const GGS_typeTableDefinitionTerminaux  _temp_33758 = var_cas_table_des_terminaux ;
-          if (_temp_33758.isBuilt ()) {
-            _temp_33758 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_1, automatic_var_2, automatic_var_3, automatic_var_4 COMMA_SOURCE_FILE_AT_LINE (1119)) ;
+          const GGS_typeTableDefinitionTerminaux  temp_33758 = var_cas_table_des_terminaux ;
+          if (temp_33758.isBuilt ()) {
+            temp_33758 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_1, automatic_var_2, automatic_var_3, automatic_var_4 COMMA_SOURCE_FILE_AT_LINE (1119)) ;
           }
           var_cas_li._addAssign_operation (GGS_typeLexicalRewindAndSendInstruction ::constructor_new (inLexique, var_cas_tagIdentifier, var_cas_nomTerminal COMMA_HERE)) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
@@ -1548,9 +1548,9 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           GGS_typeListeAttributsSemantiques  automatic_var_6 ;
           GGS_luint  automatic_var_7 ;
           GGS_bool automatic_var_8 ;
-          const GGS_typeTableDefinitionTerminaux  _temp_34137 = var_cas_table_des_terminaux ;
-          if (_temp_34137.isBuilt ()) {
-            _temp_34137 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_5, automatic_var_6, automatic_var_7, automatic_var_8 COMMA_SOURCE_FILE_AT_LINE (1130)) ;
+          const GGS_typeTableDefinitionTerminaux  temp_34137 = var_cas_table_des_terminaux ;
+          if (temp_34137.isBuilt ()) {
+            temp_34137 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_5, automatic_var_6, automatic_var_7, automatic_var_8 COMMA_SOURCE_FILE_AT_LINE (1130)) ;
           }
           var_cas_li._addAssign_operation (GGS_typeLexicalDropInstruction ::constructor_new (inLexique, var_cas_nomTerminal COMMA_HERE)) ;
           } break ;
@@ -1571,9 +1571,9 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_luint  var_cas_errorMessageIndex ;
           GGS_lstring  automatic_var_9 ;
-          const GGS_typeTableMessagesErreurs  _temp_34803 = var_cas_table_des_messages_erreur ;
-          if (_temp_34803.isBuilt ()) {
-            _temp_34803 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_9 COMMA_SOURCE_FILE_AT_LINE (1153)) ;
+          const GGS_typeTableMessagesErreurs  temp_34803 = var_cas_table_des_messages_erreur ;
+          if (temp_34803.isBuilt ()) {
+            temp_34803 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_9 COMMA_SOURCE_FILE_AT_LINE (1153)) ;
           }
           var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1154))) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
@@ -1588,9 +1588,9 @@ pr_lexical_instructions_list_scanner_parser_1014_32_ (galgas_scanner & inLexique
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           GGS_luint  var_cas_errorMessageIndex ;
           GGS_lstring  automatic_var_10 ;
-          const GGS_typeTableMessagesErreurs  _temp_35191 = var_cas_table_des_messages_erreur ;
-          if (_temp_35191.isBuilt ()) {
-            _temp_35191 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_10 COMMA_SOURCE_FILE_AT_LINE (1163)) ;
+          const GGS_typeTableMessagesErreurs  temp_35191 = var_cas_table_des_messages_erreur ;
+          if (temp_35191.isBuilt ()) {
+            temp_35191 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_10 COMMA_SOURCE_FILE_AT_LINE (1163)) ;
           }
           var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1164))) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
@@ -1717,9 +1717,9 @@ pr_lexical_error_messages_list_scanner_parser_1182_34_ (galgas_scanner & inLexiq
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
         GGS_luint  var_cas_errorMessageIndex ;
         GGS_lstring  automatic_var_11 ;
-        const GGS_typeTableMessagesErreurs  _temp_36104 = var_cas_table_des_messages_erreur ;
-        if (_temp_36104.isBuilt ()) {
-          _temp_36104 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_11 COMMA_SOURCE_FILE_AT_LINE (1192)) ;
+        const GGS_typeTableMessagesErreurs  temp_36104 = var_cas_table_des_messages_erreur ;
+        if (temp_36104.isBuilt ()) {
+          temp_36104 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_11 COMMA_SOURCE_FILE_AT_LINE (1192)) ;
         }
         var_cas_lme._addAssign_operation (var_cas_errorMessageIndex) ;
         var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1194))) ;
@@ -1903,9 +1903,9 @@ pr_lexical_parameter_scanner_parser_1254_24_ (galgas_scanner & inLexique,
   switch (select_scanner_parser_23 (inLexique)) {
     case 1 : {
       GGS_AC_galgasType  var_cas_t ;
-      const GGS_typeLexicalAttributesMap  _temp_37927 = var_cas_table_attributs ;
-      if (_temp_37927.isBuilt ()) {
-        _temp_37927 (HERE)->method_searchKey (inLexique, var_cas_nom, var_cas_t COMMA_SOURCE_FILE_AT_LINE (1262)) ;
+      const GGS_typeLexicalAttributesMap  temp_37927 = var_cas_table_attributs ;
+      if (temp_37927.isBuilt ()) {
+        temp_37927 (HERE)->method_searchKey (inLexique, var_cas_nom, var_cas_t COMMA_SOURCE_FILE_AT_LINE (1262)) ;
       }
       var_cas_a = GGS_typeArgumentAttribut ::constructor_new (inLexique, var_cas_nom, var_cas_t COMMA_HERE) ;
       } break ;
@@ -2073,9 +2073,9 @@ pr_lexical_send_instruction_scanner_parser_1350_31_ (galgas_scanner & inLexique,
   GGS_typeListeAttributsSemantiques  automatic_var_13 ;
   GGS_luint  automatic_var_14 ;
   GGS_bool automatic_var_15 ;
-  const GGS_typeTableDefinitionTerminaux  _temp_40996 = var_cas_table_des_terminaux ;
-  if (_temp_40996.isBuilt ()) {
-    _temp_40996 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_12, automatic_var_13, automatic_var_14, automatic_var_15 COMMA_SOURCE_FILE_AT_LINE (1360)) ;
+  const GGS_typeTableDefinitionTerminaux  temp_40996 = var_cas_table_des_terminaux ;
+  if (temp_40996.isBuilt ()) {
+    temp_40996 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_12, automatic_var_13, automatic_var_14, automatic_var_15 COMMA_SOURCE_FILE_AT_LINE (1360)) ;
   }
   var_cas_instruction = GGS_typeInstructionEmettreSimple ::constructor_new (inLexique, var_cas_nomTerminal COMMA_HERE) ;
 }
@@ -2110,9 +2110,9 @@ pr_lexical_send_instruction_scanner_parser_1366_31_ (galgas_scanner & inLexique,
         inLexique.assignFromAttribute_tokenString (var_cas_nomAttribut) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
         GGS_AC_galgasType  var_cas_natureAttribut ;
-        const GGS_typeLexicalAttributesMap  _temp_41708 = var_cas_table_attributs ;
-        if (_temp_41708.isBuilt ()) {
-          _temp_41708 (HERE)->method_searchKey (inLexique, var_cas_nomAttribut, var_cas_natureAttribut COMMA_SOURCE_FILE_AT_LINE (1380)) ;
+        const GGS_typeLexicalAttributesMap  temp_41708 = var_cas_table_attributs ;
+        if (temp_41708.isBuilt ()) {
+          temp_41708 (HERE)->method_searchKey (inLexique, var_cas_nomAttribut, var_cas_natureAttribut COMMA_SOURCE_FILE_AT_LINE (1380)) ;
         }
         GGS_typeGalgas_lstring  var_cas_lgs ;
         var_cas_lgs = GGS_typeGalgas_lstring::castFrom (inLexique, var_cas_natureAttribut.getPtr (), true, var_cas_nomAttribut COMMA_SOURCE_FILE_AT_LINE (1381)) ;
@@ -2121,9 +2121,9 @@ pr_lexical_send_instruction_scanner_parser_1366_31_ (galgas_scanner & inLexique,
         inLexique.assignFromAttribute_tokenString (var_cas_listName) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
         GGS_typeTableMotsReserves  automatic_var_16 ;
-        const GGS_typeTableTablesDeMotsReserves  _temp_41950 = var_cas_table_tables_mots_reserves ;
-        if (_temp_41950.isBuilt ()) {
-          _temp_41950 (HERE)->method_searchKey (inLexique, var_cas_listName, automatic_var_16 COMMA_SOURCE_FILE_AT_LINE (1385)) ;
+        const GGS_typeTableTablesDeMotsReserves  temp_41950 = var_cas_table_tables_mots_reserves ;
+        if (temp_41950.isBuilt ()) {
+          temp_41950 (HERE)->method_searchKey (inLexique, var_cas_listName, automatic_var_16 COMMA_SOURCE_FILE_AT_LINE (1385)) ;
         }
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_default) COMMA_HERE) ;
         var_cas_lr._addAssign_operation (var_cas_nomAttribut, var_cas_listName) ;
@@ -2185,9 +2185,9 @@ pr_lexical_send_or_error_scanner_parser_1403_28_ (galgas_scanner & inLexique,
   GGS_typeListeAttributsSemantiques  automatic_var_18 ;
   GGS_luint  automatic_var_19 ;
   GGS_bool automatic_var_20 ;
-  const GGS_typeTableDefinitionTerminaux  _temp_42666 = var_cas_table_des_terminaux ;
-  if (_temp_42666.isBuilt ()) {
-    _temp_42666 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_17, automatic_var_18, automatic_var_19, automatic_var_20 COMMA_SOURCE_FILE_AT_LINE (1411)) ;
+  const GGS_typeTableDefinitionTerminaux  temp_42666 = var_cas_table_des_terminaux ;
+  if (temp_42666.isBuilt ()) {
+    temp_42666 (HERE)->method_searchKey (inLexique, var_cas_nomTerminal, automatic_var_17, automatic_var_18, automatic_var_19, automatic_var_20 COMMA_SOURCE_FILE_AT_LINE (1411)) ;
   }
   var_cas_emissionParDefaut = GGS_typeEmissionTerminalParDefaut ::constructor_new (inLexique, var_cas_nomTerminal COMMA_HERE) ;
 }
@@ -2217,9 +2217,9 @@ pr_lexical_send_or_error_scanner_parser_1417_28_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
   GGS_luint  var_cas_errorMessageIndex ;
   GGS_lstring  automatic_var_21 ;
-  const GGS_typeTableMessagesErreurs  _temp_43221 = var_cas_tableMessagesErreurs ;
-  if (_temp_43221.isBuilt ()) {
-    _temp_43221 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_21 COMMA_SOURCE_FILE_AT_LINE (1427)) ;
+  const GGS_typeTableMessagesErreurs  temp_43221 = var_cas_tableMessagesErreurs ;
+  if (temp_43221.isBuilt ()) {
+    temp_43221 (HERE)->method_searchKeyGetID (inLexique, var_cas_errorMessageName, var_cas_errorMessageIndex, automatic_var_21 COMMA_SOURCE_FILE_AT_LINE (1427)) ;
   }
   var_cas_ioUsedErrorMessageSet._addAssign_operation (var_cas_errorMessageName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1428))) ;
   var_cas_emissionParDefaut = GGS_typeEmissionErreurParDefaut ::constructor_new (inLexique, var_cas_errorMessageIndex COMMA_HERE) ;

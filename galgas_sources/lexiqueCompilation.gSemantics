@@ -26,6 +26,96 @@ import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantic
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
+#---------------------------------------------------------------------------*
+
+abstract reader @lexicalExpression generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalOrExpression generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalCharacterIntervalMatch generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalStringMatch generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalStringNotMatch generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalCharacterMatch generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalCharacterSetMatch generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
+#---------------------------------------------------------------------------*
+
+abstract reader @abstractLexicalRule generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalImplicitRule generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "1" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexicalExplicitRule generateCode
+  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "2" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #         G E N E R A T I O N    T E M P L A T E S                          *
 #---------------------------------------------------------------------------*
 
@@ -47,6 +137,8 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@terminalList TERMINAL_LIST
     ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
     ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleList LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
   ;
 }
 
@@ -750,6 +842,8 @@ routine compileLexiqueComponent
          ![lexiqueAnalysisContext mTerminalList]
          ![lexiqueAnalysisContext mLexicalTokenListMapMap]
          ![lexiqueAnalysisContext mStringInExplicitRuleSet]
+         ![lexiqueComponentRoot mLexicalRuleList]
+         !lexiqueAnalysisContext
        ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3

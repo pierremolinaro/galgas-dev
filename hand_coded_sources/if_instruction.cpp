@@ -152,6 +152,13 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 void cPtr_typeTestComplement::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile << "(" ;
@@ -1370,20 +1377,44 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 
 void cPtr_typeReaderCallInExpression::
 generateExpression (AC_OutputStream & ioCppFile) const {
-  mExpressionValue (HERE)->generateExpression (ioCppFile) ;
-  if (mConversionMethod.string ().length () > 0) {
-    ioCppFile << "." << mConversionMethod << " ()" ;
+  if (mCategoryReaderClassBaseName.string ().length () == 0) {
+    mExpressionValue (HERE)->generateExpression (ioCppFile) ;
+    if (mConversionMethod.string ().length () > 0) {
+      ioCppFile << "." << mConversionMethod << " ()" ;
+    }
+    ioCppFile << ".reader_" << mReaderName << " (inLexique" ;
+    GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
+    while (e.hasCurrentObject ()) {
+      ioCppFile << ", " ;
+      e._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+      e.next () ;
+    }
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << cStringWithSigned (mReaderName.lineNumber ())
+              << "))" ;
+  }else{
+    ioCppFile << "(findCategoryReader__" << mCategoryReaderClassBaseName << "__" << mReaderName
+              << " (" ;
+    mExpressionValue (HERE)->generateExpression (ioCppFile) ;
+    if (mConversionMethod.string ().length () > 0) {
+      ioCppFile << "." << mConversionMethod << " ()" ;
+    }
+    ioCppFile << " (HERE)->galgasRTTI ()) (inLexique, " ;
+    mExpressionValue (HERE)->generateExpression (ioCppFile) ;
+    if (mConversionMethod.string ().length () > 0) {
+      ioCppFile << "." << mConversionMethod << " ()" ;
+    }
+    ioCppFile << ".getPtr ()" ;
+    GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
+    while (e.hasCurrentObject ()) {
+      ioCppFile << ", " ;
+      e._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+      e.next () ;
+    }
+    ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+              << cStringWithSigned (mReaderName.lineNumber ())
+              << ")))" ;
   }
-  ioCppFile << ".reader_" << mReaderName << " (inLexique" ;
-  GGS_typeExpressionList::cEnumerator e (mExpressionList, true) ;
-  while (e.hasCurrentObject ()) {
-    ioCppFile << ", " ;
-    e._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
-    e.next () ;
-  }
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-            << cStringWithSigned (mReaderName.lineNumber ())
-            << "))" ;
 }
 
 //---------------------------------------------------------------------------*

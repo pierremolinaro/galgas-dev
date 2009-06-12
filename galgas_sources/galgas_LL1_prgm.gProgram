@@ -64,6 +64,7 @@ message "a '.ggs' GALGAS source file"
     ![@M_filewrappers emptyMap]
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
+    ![@EXcategoryReaderMap emptyMap]
   ] ;
   grammar galgas_LL1_grammar in inSourceFile dependency "galgas-dep" in "DEPENDENCIES"
     !?lexiqueMapForUse

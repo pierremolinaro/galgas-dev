@@ -68,7 +68,7 @@ end function ;
 
 #---------------------------------------------------------------------------*
 
-routine checkCategoryDefinitionForClass
+routine checkCategoryMethodDefinitionForClass
   ??@string inClassNameForErrorSignaling
   ??@string inClassName
   ??@lstring inAbstractCategoryMethodName
@@ -92,7 +92,7 @@ routine checkCategoryDefinitionForClass
     end foreach ;
     if not found then
       if isAbstract then
-        checkCategoryDefinitionForClass
+        checkCategoryMethodDefinitionForClass
           !inClassNameForErrorSignaling
           ![descendantClassName string]
           !inAbstractCategoryMethodName
@@ -103,6 +103,48 @@ routine checkCategoryDefinitionForClass
         error inAbstractCategoryMethodName: "an abstract category method '" . inAbstractCategoryMethodName . "' is defined for abstract class '@"
         . inClassNameForErrorSignaling
         . "', but concrete descendant class '@" . descendantClassName . "' does not implement this method" ; 
+      end if ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine checkCategoryReaderDefinitionForClass
+  ??@string inClassNameForErrorSignaling
+  ??@string inClassName
+  ??@lstring inAbstractCategoryReaderName
+  ??@descendantClassListMap inDescendantClassListMap
+  ??@overridingCategoryReaderListMap inOverridingCategoryReaderListMap
+:
+  @classIndexList descendantClasses := [inDescendantClassListMap listForKey !inClassName] ;
+  foreach descendantClasses do
+    @lstring descendantClassName ; @ACGalgasType t ; [mClassMapindex searchKey ?descendantClassName ?t] ;
+    @bool isAbstract ;
+    cast t :
+    when >= @classGalgasType classType do
+      isAbstract := [classType mIsAbstract] ;
+    else
+      error descendantClassName: "the '@" . descendantClassName . "' type should be a class" -> isAbstract ;
+    end cast ;
+    @overridingCategoryReaderList overridingReaders := [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]] ;
+    @bool found := false ;
+    foreach overridingReaders while not found do
+      found := [inAbstractCategoryReaderName string] == [mOverridingCategoryReaderName string] ;
+    end foreach ;
+    if not found then
+      if isAbstract then
+        checkCategoryReaderDefinitionForClass
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryReaderName
+          !inDescendantClassListMap
+          !inOverridingCategoryReaderListMap
+        ;
+      else
+        error inAbstractCategoryReaderName: "an abstract category reader '" . inAbstractCategoryReaderName . "' is defined for abstract class '@"
+        . inClassNameForErrorSignaling
+        . "', but concrete descendant class '@" . descendantClassName . "' does not implement this reader" ; 
       end if ;
     end if ;
   end foreach ;
@@ -135,12 +177,35 @@ routine performProjectGlobalCheckings
     @descendantClassListMap descendantClassListMap := [semanticContext mDescendantClassListMap] ;
     foreach abstractCategoryMethodListMap do
       foreach object do
-        checkCategoryDefinitionForClass
+        checkCategoryMethodDefinitionForClass
           !key
           !key
           !mAbstractCategoryMethodName
           !descendantClassListMap
           !overridingCategoryMethodListMap
+        ;
+      end foreach ;
+    end foreach ;
+  end if ;
+#--- Check that for every abstract category reader, an overridden category reader
+#    defined in an concrete subclass
+  if [@uint errorCount] == 0 then
+    @abstractCategoryReaderListMap abstractCategoryReaderListMap [emptyMap] ;
+    @categoryReaderListMap categoryReaderListMap [emptyMap] ;
+    @overridingCategoryReaderListMap overridingCategoryReaderListMap [emptyMap];
+    foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+      abstractCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mAbstractCategoryReaderListMap] ;
+      overridingCategoryReaderListMap .= [[mRoot mSemanticDeclarations] mOverridingCategoryReaderListMap] ;
+    end foreach ;
+    @descendantClassListMap descendantClassListMap := [semanticContext mDescendantClassListMap] ;
+    foreach abstractCategoryReaderListMap do
+      foreach object do
+        checkCategoryReaderDefinitionForClass
+          !key
+          !key
+          !mAbstractCategoryReaderName
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
         ;
       end foreach ;
     end foreach ;

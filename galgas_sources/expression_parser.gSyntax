@@ -1576,7 +1576,17 @@ rule <factor>
     #--- Search reader for getting formal parameters list
       @typeListeAttributsSemantiques accessorsTypeList ;
       @string conversionMethod ;
-      handleReaderCall !inEntitiesMap !expressionType !methodName ?accessorsTypeList ?outResultType ?conversionMethod ;
+      @string categoryReaderClassBaseName ;
+      handleReaderCall
+        !inEntitiesMap
+        ![inSemanticContext mReaderMethodMap]
+        !expressionType
+        !methodName
+        ?accessorsTypeList
+        ?outResultType
+        ?conversionMethod
+        ?categoryReaderClassBaseName
+      ;
     #--- Actual parameters
       @typeExpressionList expressionList ;
       <output_expression_list>
@@ -1587,7 +1597,7 @@ rule <factor>
         !inSemanticContext
         !?ioVariablesMap
       ;
-      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod] ;
+      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod !categoryReaderClassBaseName] ;
     end select ;
   or
   #--- Class name

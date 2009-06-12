@@ -2415,269 +2415,269 @@ void routine_performProjectCreation (C_Compiler & inLexique,
   var_cas_common_files_for_make_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/common_files_for_make")) ;
   GGS_string var_cas_galgas_sources_DIR ;
   var_cas_galgas_sources_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/galgas_sources")) ;
-  const GGS_string _temp_4588 = var_cas_galgas_sources_DIR ;
-  if (_temp_4588.isBuilt ()) {
-    _temp_4588 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (65)) ;
+  const GGS_string temp_4588 = var_cas_galgas_sources_DIR ;
+  if (temp_4588.isBuilt ()) {
+    temp_4588 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (65)) ;
   }
-  const GGS_string _temp_4670 = template_filewrapper_projectCreationFileWrapper_all_ggs (inLexique, var_cas_inProjectName) ;
-  if (_temp_4670.isBuilt ()) {
-    _temp_4670 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/all_"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string (".ggs")) COMMA_SOURCE_FILE_AT_LINE (66)) ;
+  const GGS_string temp_4670 = template_filewrapper_projectCreationFileWrapper_all_ggs (inLexique, var_cas_inProjectName) ;
+  if (temp_4670.isBuilt ()) {
+    temp_4670 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/all_"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string (".ggs")) COMMA_SOURCE_FILE_AT_LINE (66)) ;
   }
-  const GGS_string _temp_4810 = template_filewrapper_projectCreationFileWrapper_PROJECT_cocoa (inLexique, var_cas_inProjectName) ;
-  if (_temp_4810.isBuilt ()) {
-    _temp_4810 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_cocoa.ggs")) COMMA_SOURCE_FILE_AT_LINE (67)) ;
+  const GGS_string temp_4810 = template_filewrapper_projectCreationFileWrapper_PROJECT_cocoa (inLexique, var_cas_inProjectName) ;
+  if (temp_4810.isBuilt ()) {
+    temp_4810 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_cocoa.ggs")) COMMA_SOURCE_FILE_AT_LINE (67)) ;
   }
-  const GGS_string _temp_4954 = template_filewrapper_projectCreationFileWrapper_PROJECT_grammar (inLexique, var_cas_inProjectName) ;
-  if (_temp_4954.isBuilt ()) {
-    _temp_4954 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_grammar.ggs")) COMMA_SOURCE_FILE_AT_LINE (68)) ;
+  const GGS_string temp_4954 = template_filewrapper_projectCreationFileWrapper_PROJECT_grammar (inLexique, var_cas_inProjectName) ;
+  if (temp_4954.isBuilt ()) {
+    temp_4954 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_grammar.ggs")) COMMA_SOURCE_FILE_AT_LINE (68)) ;
   }
-  const GGS_string _temp_5100 = template_filewrapper_projectCreationFileWrapper_PROJECT_lexique (inLexique, var_cas_inProjectName) ;
-  if (_temp_5100.isBuilt ()) {
-    _temp_5100 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_lexique.ggs")) COMMA_SOURCE_FILE_AT_LINE (69)) ;
+  const GGS_string temp_5100 = template_filewrapper_projectCreationFileWrapper_PROJECT_lexique (inLexique, var_cas_inProjectName) ;
+  if (temp_5100.isBuilt ()) {
+    temp_5100 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_lexique.ggs")) COMMA_SOURCE_FILE_AT_LINE (69)) ;
   }
-  const GGS_string _temp_5246 = template_filewrapper_projectCreationFileWrapper_PROJECT_options (inLexique, var_cas_inProjectName) ;
-  if (_temp_5246.isBuilt ()) {
-    _temp_5246 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_options.gOption")) COMMA_SOURCE_FILE_AT_LINE (70)) ;
+  const GGS_string temp_5246 = template_filewrapper_projectCreationFileWrapper_PROJECT_options (inLexique, var_cas_inProjectName) ;
+  if (temp_5246.isBuilt ()) {
+    temp_5246 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_options.gOption")) COMMA_SOURCE_FILE_AT_LINE (70)) ;
   }
-  const GGS_string _temp_5396 = template_filewrapper_projectCreationFileWrapper_PROJECT_program (inLexique, var_cas_inProjectName) ;
-  if (_temp_5396.isBuilt ()) {
-    _temp_5396 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_program.ggs")) COMMA_SOURCE_FILE_AT_LINE (71)) ;
+  const GGS_string temp_5396 = template_filewrapper_projectCreationFileWrapper_PROJECT_program (inLexique, var_cas_inProjectName) ;
+  if (temp_5396.isBuilt ()) {
+    temp_5396 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_program.ggs")) COMMA_SOURCE_FILE_AT_LINE (71)) ;
   }
-  const GGS_string _temp_5544 = template_filewrapper_projectCreationFileWrapper_PROJECT_semantics (inLexique, var_cas_inProjectName) ;
-  if (_temp_5544.isBuilt ()) {
-    _temp_5544 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_semantics.ggs")) COMMA_SOURCE_FILE_AT_LINE (72)) ;
+  const GGS_string temp_5544 = template_filewrapper_projectCreationFileWrapper_PROJECT_semantics (inLexique, var_cas_inProjectName) ;
+  if (temp_5544.isBuilt ()) {
+    temp_5544 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_semantics.ggs")) COMMA_SOURCE_FILE_AT_LINE (72)) ;
   }
-  const GGS_string _temp_5691 = template_filewrapper_projectCreationFileWrapper_PROJECT_syntax (inLexique, var_cas_inProjectName) ;
-  if (_temp_5691.isBuilt ()) {
-    _temp_5691 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_syntax.ggs")) COMMA_SOURCE_FILE_AT_LINE (73)) ;
+  const GGS_string temp_5691 = template_filewrapper_projectCreationFileWrapper_PROJECT_syntax (inLexique, var_cas_inProjectName) ;
+  if (temp_5691.isBuilt ()) {
+    temp_5691 (HERE)->method_writeToFile (inLexique, (((var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_syntax.ggs")) COMMA_SOURCE_FILE_AT_LINE (73)) ;
   }
-  const GGS_string _temp_5830 = template_filewrapper_projectCreationFileWrapper_build_bat (inLexique, var_cas_inProjectName) ;
-  if (_temp_5830.isBuilt ()) {
-    _temp_5830 (HERE)->method_writeToFile (inLexique, (var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/build.bat")) COMMA_SOURCE_FILE_AT_LINE (74)) ;
+  const GGS_string temp_5830 = template_filewrapper_projectCreationFileWrapper_build_bat (inLexique, var_cas_inProjectName) ;
+  if (temp_5830.isBuilt ()) {
+    temp_5830 (HERE)->method_writeToFile (inLexique, (var_cas_galgas_sources_DIR).operator_concat (GGS_string ("/build.bat")) COMMA_SOURCE_FILE_AT_LINE (74)) ;
   }
   GGS_string var_cas_hand_coded_sources_DIR ;
   var_cas_hand_coded_sources_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/hand_coded_sources")) ;
-  const GGS_string _temp_6006 = var_cas_hand_coded_sources_DIR ;
-  if (_temp_6006.isBuilt ()) {
-    _temp_6006 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (77)) ;
+  const GGS_string temp_6006 = var_cas_hand_coded_sources_DIR ;
+  if (temp_6006.isBuilt ()) {
+    temp_6006 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (77)) ;
   }
-  const GGS_string _temp_6101 = template_filewrapper_projectCreationFileWrapper_PROJECT_computations (inLexique, var_cas_inProjectName) ;
-  if (_temp_6101.isBuilt ()) {
-    _temp_6101 (HERE)->method_writeToFile (inLexique, (((var_cas_hand_coded_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_computations.cpp")) COMMA_SOURCE_FILE_AT_LINE (78)) ;
+  const GGS_string temp_6101 = template_filewrapper_projectCreationFileWrapper_PROJECT_computations (inLexique, var_cas_inProjectName) ;
+  if (temp_6101.isBuilt ()) {
+    temp_6101 (HERE)->method_writeToFile (inLexique, (((var_cas_hand_coded_sources_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string ("_computations.cpp")) COMMA_SOURCE_FILE_AT_LINE (78)) ;
   }
   GGS_string var_cas_makefile_macosx_DIR ;
   var_cas_makefile_macosx_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_macosx")) ;
-  const GGS_string _temp_6296 = var_cas_makefile_macosx_DIR ;
-  if (_temp_6296.isBuilt ()) {
-    _temp_6296 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (81)) ;
+  const GGS_string temp_6296 = var_cas_makefile_macosx_DIR ;
+  if (temp_6296.isBuilt ()) {
+    temp_6296 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (81)) ;
   }
-  const GGS_string _temp_6398 = GGS_string (gWrapperFileContent_0_projectCreationFileWrapper) ;
-  if (_temp_6398.isBuilt ()) {
-    _temp_6398 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (82)) ;
+  const GGS_string temp_6398 = GGS_string (gWrapperFileContent_0_projectCreationFileWrapper) ;
+  if (temp_6398.isBuilt ()) {
+    temp_6398 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (82)) ;
   }
-  const GGS_string _temp_6539 = GGS_string (gWrapperFileContent_2_projectCreationFileWrapper) ;
-  if (_temp_6539.isBuilt ()) {
-    _temp_6539 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (83)) ;
+  const GGS_string temp_6539 = GGS_string (gWrapperFileContent_2_projectCreationFileWrapper) ;
+  if (temp_6539.isBuilt ()) {
+    temp_6539 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (83)) ;
   }
-  const GGS_string _temp_6682 = GGS_string (gWrapperFileContent_1_projectCreationFileWrapper) ;
-  if (_temp_6682.isBuilt ()) {
-    _temp_6682 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (84)) ;
+  const GGS_string temp_6682 = GGS_string (gWrapperFileContent_1_projectCreationFileWrapper) ;
+  if (temp_6682.isBuilt ()) {
+    temp_6682 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (84)) ;
   }
-  const GGS_string _temp_6827 = GGS_string (gWrapperFileContent_3_projectCreationFileWrapper) ;
-  if (_temp_6827.isBuilt ()) {
-    _temp_6827 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (85)) ;
+  const GGS_string temp_6827 = GGS_string (gWrapperFileContent_3_projectCreationFileWrapper) ;
+  if (temp_6827.isBuilt ()) {
+    temp_6827 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (85)) ;
   }
-  const GGS_string _temp_6967 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_6967.isBuilt ()) {
-    _temp_6967 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (86)) ;
+  const GGS_string temp_6967 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_6967.isBuilt ()) {
+    temp_6967 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (86)) ;
   }
-  const GGS_string _temp_7102 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile64 (inLexique, var_cas_inProjectName) ;
-  if (_temp_7102.isBuilt ()) {
-    _temp_7102 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (87)) ;
+  const GGS_string temp_7102 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_makefile64 (inLexique, var_cas_inProjectName) ;
+  if (temp_7102.isBuilt ()) {
+    temp_7102 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (87)) ;
   }
   GGS_string var_cas_makefile_macosx_ppc_DIR ;
   var_cas_makefile_macosx_ppc_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_macosx_ppc")) ;
-  const GGS_string _temp_7284 = var_cas_makefile_macosx_ppc_DIR ;
-  if (_temp_7284.isBuilt ()) {
-    _temp_7284 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (90)) ;
+  const GGS_string temp_7284 = var_cas_makefile_macosx_ppc_DIR ;
+  if (temp_7284.isBuilt ()) {
+    temp_7284 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (90)) ;
   }
-  const GGS_string _temp_7390 = GGS_string (gWrapperFileContent_8_projectCreationFileWrapper) ;
-  if (_temp_7390.isBuilt ()) {
-    _temp_7390 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (91)) ;
+  const GGS_string temp_7390 = GGS_string (gWrapperFileContent_8_projectCreationFileWrapper) ;
+  if (temp_7390.isBuilt ()) {
+    temp_7390 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (91)) ;
   }
-  const GGS_string _temp_7539 = GGS_string (gWrapperFileContent_10_projectCreationFileWrapper) ;
-  if (_temp_7539.isBuilt ()) {
-    _temp_7539 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (92)) ;
+  const GGS_string temp_7539 = GGS_string (gWrapperFileContent_10_projectCreationFileWrapper) ;
+  if (temp_7539.isBuilt ()) {
+    temp_7539 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (92)) ;
   }
-  const GGS_string _temp_7690 = GGS_string (gWrapperFileContent_9_projectCreationFileWrapper) ;
-  if (_temp_7690.isBuilt ()) {
-    _temp_7690 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (93)) ;
+  const GGS_string temp_7690 = GGS_string (gWrapperFileContent_9_projectCreationFileWrapper) ;
+  if (temp_7690.isBuilt ()) {
+    temp_7690 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (93)) ;
   }
-  const GGS_string _temp_7843 = GGS_string (gWrapperFileContent_11_projectCreationFileWrapper) ;
-  if (_temp_7843.isBuilt ()) {
-    _temp_7843 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (94)) ;
+  const GGS_string temp_7843 = GGS_string (gWrapperFileContent_11_projectCreationFileWrapper) ;
+  if (temp_7843.isBuilt ()) {
+    temp_7843 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (94)) ;
   }
-  const GGS_string _temp_7991 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_7991.isBuilt ()) {
-    _temp_7991 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (95)) ;
+  const GGS_string temp_7991 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_7991.isBuilt ()) {
+    temp_7991 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (95)) ;
   }
-  const GGS_string _temp_8134 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile64 (inLexique, var_cas_inProjectName) ;
-  if (_temp_8134.isBuilt ()) {
-    _temp_8134 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (96)) ;
+  const GGS_string temp_8134 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_ppc_makefile64 (inLexique, var_cas_inProjectName) ;
+  if (temp_8134.isBuilt ()) {
+    temp_8134 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_ppc_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (96)) ;
   }
   GGS_string var_cas_makefile_macosx_i386_DIR ;
   var_cas_makefile_macosx_i386_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_macosx_i386")) ;
-  const GGS_string _temp_8324 = var_cas_makefile_macosx_i386_DIR ;
-  if (_temp_8324.isBuilt ()) {
-    _temp_8324 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (99)) ;
+  const GGS_string temp_8324 = var_cas_makefile_macosx_i386_DIR ;
+  if (temp_8324.isBuilt ()) {
+    temp_8324 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (99)) ;
   }
-  const GGS_string _temp_8431 = GGS_string (gWrapperFileContent_4_projectCreationFileWrapper) ;
-  if (_temp_8431.isBuilt ()) {
-    _temp_8431 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (100)) ;
+  const GGS_string temp_8431 = GGS_string (gWrapperFileContent_4_projectCreationFileWrapper) ;
+  if (temp_8431.isBuilt ()) {
+    temp_8431 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (100)) ;
   }
-  const GGS_string _temp_8582 = GGS_string (gWrapperFileContent_6_projectCreationFileWrapper) ;
-  if (_temp_8582.isBuilt ()) {
-    _temp_8582 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (101)) ;
+  const GGS_string temp_8582 = GGS_string (gWrapperFileContent_6_projectCreationFileWrapper) ;
+  if (temp_8582.isBuilt ()) {
+    temp_8582 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (101)) ;
   }
-  const GGS_string _temp_8735 = GGS_string (gWrapperFileContent_5_projectCreationFileWrapper) ;
-  if (_temp_8735.isBuilt ()) {
-    _temp_8735 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (102)) ;
+  const GGS_string temp_8735 = GGS_string (gWrapperFileContent_5_projectCreationFileWrapper) ;
+  if (temp_8735.isBuilt ()) {
+    temp_8735 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (102)) ;
   }
-  const GGS_string _temp_8890 = GGS_string (gWrapperFileContent_7_projectCreationFileWrapper) ;
-  if (_temp_8890.isBuilt ()) {
-    _temp_8890 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (103)) ;
+  const GGS_string temp_8890 = GGS_string (gWrapperFileContent_7_projectCreationFileWrapper) ;
+  if (temp_8890.isBuilt ()) {
+    temp_8890 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (103)) ;
   }
-  const GGS_string _temp_9040 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_9040.isBuilt ()) {
-    _temp_9040 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (104)) ;
+  const GGS_string temp_9040 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_9040.isBuilt ()) {
+    temp_9040 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (104)) ;
   }
-  const GGS_string _temp_9185 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile64 (inLexique, var_cas_inProjectName) ;
-  if (_temp_9185.isBuilt ()) {
-    _temp_9185 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (105)) ;
+  const GGS_string temp_9185 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_i386_makefile64 (inLexique, var_cas_inProjectName) ;
+  if (temp_9185.isBuilt ()) {
+    temp_9185 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_i386_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (105)) ;
   }
   GGS_string var_cas_makefile_macosx_universal_DIR ;
   var_cas_makefile_macosx_universal_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_macosx_universal")) ;
-  const GGS_string _temp_9396 = var_cas_makefile_macosx_universal_DIR ;
-  if (_temp_9396.isBuilt ()) {
-    _temp_9396 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (108)) ;
+  const GGS_string temp_9396 = var_cas_makefile_macosx_universal_DIR ;
+  if (temp_9396.isBuilt ()) {
+    temp_9396 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (108)) ;
   }
-  const GGS_string _temp_9508 = GGS_string (gWrapperFileContent_12_projectCreationFileWrapper) ;
-  if (_temp_9508.isBuilt ()) {
-    _temp_9508 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (109)) ;
+  const GGS_string temp_9508 = GGS_string (gWrapperFileContent_12_projectCreationFileWrapper) ;
+  if (temp_9508.isBuilt ()) {
+    temp_9508 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (109)) ;
   }
-  const GGS_string _temp_9670 = GGS_string (gWrapperFileContent_14_projectCreationFileWrapper) ;
-  if (_temp_9670.isBuilt ()) {
-    _temp_9670 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (110)) ;
+  const GGS_string temp_9670 = GGS_string (gWrapperFileContent_14_projectCreationFileWrapper) ;
+  if (temp_9670.isBuilt ()) {
+    temp_9670 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (110)) ;
   }
-  const GGS_string _temp_9834 = GGS_string (gWrapperFileContent_13_projectCreationFileWrapper) ;
-  if (_temp_9834.isBuilt ()) {
-    _temp_9834 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (111)) ;
+  const GGS_string temp_9834 = GGS_string (gWrapperFileContent_13_projectCreationFileWrapper) ;
+  if (temp_9834.isBuilt ()) {
+    temp_9834 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/build64.command")) COMMA_SOURCE_FILE_AT_LINE (111)) ;
   }
-  const GGS_string _temp_9999 = GGS_string (gWrapperFileContent_15_projectCreationFileWrapper) ;
-  if (_temp_9999.isBuilt ()) {
-    _temp_9999 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (112)) ;
+  const GGS_string temp_9999 = GGS_string (gWrapperFileContent_15_projectCreationFileWrapper) ;
+  if (temp_9999.isBuilt ()) {
+    temp_9999 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/clean64.command")) COMMA_SOURCE_FILE_AT_LINE (112)) ;
   }
-  const GGS_string _temp_10160 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_10160.isBuilt ()) {
-    _temp_10160 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (113)) ;
+  const GGS_string temp_10160 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_10160.isBuilt ()) {
+    temp_10160 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (113)) ;
   }
-  const GGS_string _temp_10316 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile64 (inLexique, var_cas_inProjectName) ;
-  if (_temp_10316.isBuilt ()) {
-    _temp_10316 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (114)) ;
+  const GGS_string temp_10316 = template_filewrapper_projectCreationFileWrapper_makefile_macosx_universal_makefile64 (inLexique, var_cas_inProjectName) ;
+  if (temp_10316.isBuilt ()) {
+    temp_10316 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_macosx_universal_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (114)) ;
   }
   GGS_string var_cas_makefile_mingw_on_macosx_DIR ;
   var_cas_makefile_mingw_on_macosx_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_mingw_on_macosx")) ;
-  const GGS_string _temp_10529 = var_cas_makefile_mingw_on_macosx_DIR ;
-  if (_temp_10529.isBuilt ()) {
-    _temp_10529 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (117)) ;
+  const GGS_string temp_10529 = var_cas_makefile_mingw_on_macosx_DIR ;
+  if (temp_10529.isBuilt ()) {
+    temp_10529 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (117)) ;
   }
-  const GGS_string _temp_10640 = GGS_string (gWrapperFileContent_16_projectCreationFileWrapper) ;
-  if (_temp_10640.isBuilt ()) {
-    _temp_10640 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_mingw_on_macosx_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (118)) ;
+  const GGS_string temp_10640 = GGS_string (gWrapperFileContent_16_projectCreationFileWrapper) ;
+  if (temp_10640.isBuilt ()) {
+    temp_10640 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_mingw_on_macosx_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (118)) ;
   }
-  const GGS_string _temp_10799 = GGS_string (gWrapperFileContent_17_projectCreationFileWrapper) ;
-  if (_temp_10799.isBuilt ()) {
-    _temp_10799 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_mingw_on_macosx_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (119)) ;
+  const GGS_string temp_10799 = GGS_string (gWrapperFileContent_17_projectCreationFileWrapper) ;
+  if (temp_10799.isBuilt ()) {
+    temp_10799 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_mingw_on_macosx_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (119)) ;
   }
-  const GGS_string _temp_10955 = template_filewrapper_projectCreationFileWrapper_makefile_mingw_on_macosx_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_10955.isBuilt ()) {
-    _temp_10955 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_macosx_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (120)) ;
+  const GGS_string temp_10955 = template_filewrapper_projectCreationFileWrapper_makefile_mingw_on_macosx_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_10955.isBuilt ()) {
+    temp_10955 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_macosx_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (120)) ;
   }
   GGS_string var_cas_makefile_mingw_on_win32_DIR ;
   var_cas_makefile_mingw_on_win32_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_msys_on_win32")) ;
-  const GGS_string _temp_11158 = var_cas_makefile_mingw_on_win32_DIR ;
-  if (_temp_11158.isBuilt ()) {
-    _temp_11158 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (123)) ;
+  const GGS_string temp_11158 = var_cas_makefile_mingw_on_win32_DIR ;
+  if (temp_11158.isBuilt ()) {
+    temp_11158 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (123)) ;
   }
-  const GGS_string _temp_11253 = GGS_string (gWrapperFileContent_18_projectCreationFileWrapper) ;
-  if (_temp_11253.isBuilt ()) {
-    _temp_11253 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/build.bat")) COMMA_SOURCE_FILE_AT_LINE (124)) ;
+  const GGS_string temp_11253 = GGS_string (gWrapperFileContent_18_projectCreationFileWrapper) ;
+  if (temp_11253.isBuilt ()) {
+    temp_11253 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/build.bat")) COMMA_SOURCE_FILE_AT_LINE (124)) ;
   }
-  const GGS_string _temp_11391 = GGS_string (gWrapperFileContent_19_projectCreationFileWrapper) ;
-  if (_temp_11391.isBuilt ()) {
-    _temp_11391 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/clean.bat")) COMMA_SOURCE_FILE_AT_LINE (125)) ;
+  const GGS_string temp_11391 = GGS_string (gWrapperFileContent_19_projectCreationFileWrapper) ;
+  if (temp_11391.isBuilt ()) {
+    temp_11391 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/clean.bat")) COMMA_SOURCE_FILE_AT_LINE (125)) ;
   }
-  const GGS_string _temp_11531 = GGS_string (gWrapperFileContent_20_projectCreationFileWrapper) ;
-  if (_temp_11531.isBuilt ()) {
-    _temp_11531 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/install.bat")) COMMA_SOURCE_FILE_AT_LINE (126)) ;
+  const GGS_string temp_11531 = GGS_string (gWrapperFileContent_20_projectCreationFileWrapper) ;
+  if (temp_11531.isBuilt ()) {
+    temp_11531 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/install.bat")) COMMA_SOURCE_FILE_AT_LINE (126)) ;
   }
-  const GGS_string _temp_11682 = template_filewrapper_projectCreationFileWrapper_makefile_msys_on_win32_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_11682.isBuilt ()) {
-    _temp_11682 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (127)) ;
+  const GGS_string temp_11682 = template_filewrapper_projectCreationFileWrapper_makefile_msys_on_win32_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_11682.isBuilt ()) {
+    temp_11682 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_mingw_on_win32_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (127)) ;
   }
   GGS_string var_cas_makefile_unix_DIR ;
   var_cas_makefile_unix_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_unix")) ;
-  const GGS_string _temp_11846 = var_cas_makefile_unix_DIR ;
-  if (_temp_11846.isBuilt ()) {
-    _temp_11846 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (130)) ;
+  const GGS_string temp_11846 = var_cas_makefile_unix_DIR ;
+  if (temp_11846.isBuilt ()) {
+    temp_11846 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (130)) ;
   }
-  const GGS_string _temp_11943 = template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_11943.isBuilt ()) {
-    _temp_11943 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_unix_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (131)) ;
+  const GGS_string temp_11943 = template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_11943.isBuilt ()) {
+    temp_11943 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_unix_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (131)) ;
   }
-  const GGS_string _temp_12074 = template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile64 (inLexique, var_cas_inProjectName) ;
-  if (_temp_12074.isBuilt ()) {
-    _temp_12074 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_unix_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (132)) ;
+  const GGS_string temp_12074 = template_filewrapper_projectCreationFileWrapper_makefile_unix_makefile64 (inLexique, var_cas_inProjectName) ;
+  if (temp_12074.isBuilt ()) {
+    temp_12074 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_unix_DIR).operator_concat (GGS_string ("/makefile64")) COMMA_SOURCE_FILE_AT_LINE (132)) ;
   }
   GGS_string var_cas_makefile_x86linux_on_macosx_DIR ;
   var_cas_makefile_x86linux_on_macosx_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/makefile_x86linux_on_macosx")) ;
-  const GGS_string _temp_12290 = var_cas_makefile_x86linux_on_macosx_DIR ;
-  if (_temp_12290.isBuilt ()) {
-    _temp_12290 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (135)) ;
+  const GGS_string temp_12290 = var_cas_makefile_x86linux_on_macosx_DIR ;
+  if (temp_12290.isBuilt ()) {
+    temp_12290 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (135)) ;
   }
-  const GGS_string _temp_12404 = GGS_string (gWrapperFileContent_21_projectCreationFileWrapper) ;
-  if (_temp_12404.isBuilt ()) {
-    _temp_12404 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_x86linux_on_macosx_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (136)) ;
+  const GGS_string temp_12404 = GGS_string (gWrapperFileContent_21_projectCreationFileWrapper) ;
+  if (temp_12404.isBuilt ()) {
+    temp_12404 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_x86linux_on_macosx_DIR).operator_concat (GGS_string ("/build.command")) COMMA_SOURCE_FILE_AT_LINE (136)) ;
   }
-  const GGS_string _temp_12570 = GGS_string (gWrapperFileContent_22_projectCreationFileWrapper) ;
-  if (_temp_12570.isBuilt ()) {
-    _temp_12570 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_x86linux_on_macosx_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (137)) ;
+  const GGS_string temp_12570 = GGS_string (gWrapperFileContent_22_projectCreationFileWrapper) ;
+  if (temp_12570.isBuilt ()) {
+    temp_12570 (HERE)->method_writeToExecutableFile (inLexique, (var_cas_makefile_x86linux_on_macosx_DIR).operator_concat (GGS_string ("/clean.command")) COMMA_SOURCE_FILE_AT_LINE (137)) ;
   }
-  const GGS_string _temp_12733 = template_filewrapper_projectCreationFileWrapper_makefile_x86linux_on_macosx_makefile (inLexique, var_cas_inProjectName) ;
-  if (_temp_12733.isBuilt ()) {
-    _temp_12733 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_x86linux_on_macosx_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (138)) ;
+  const GGS_string temp_12733 = template_filewrapper_projectCreationFileWrapper_makefile_x86linux_on_macosx_makefile (inLexique, var_cas_inProjectName) ;
+  if (temp_12733.isBuilt ()) {
+    temp_12733 (HERE)->method_writeToFile (inLexique, (var_cas_makefile_x86linux_on_macosx_DIR).operator_concat (GGS_string ("/makefile")) COMMA_SOURCE_FILE_AT_LINE (138)) ;
   }
   GGS_string var_cas_projectxcode_DIR ;
   var_cas_projectxcode_DIR = (var_cas_inProjectName).operator_concat (GGS_string ("/project_xcode")) ;
-  const GGS_string _temp_12933 = (((var_cas_projectxcode_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string (".xcodeproj")) ;
-  if (_temp_12933.isBuilt ()) {
-    _temp_12933 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (141)) ;
+  const GGS_string temp_12933 = (((var_cas_projectxcode_DIR).operator_concat (GGS_string ("/"))).operator_concat (var_cas_inProjectName)).operator_concat (GGS_string (".xcodeproj")) ;
+  if (temp_12933.isBuilt ()) {
+    temp_12933 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (141)) ;
   }
-  const GGS_string _temp_13018 = template_filewrapper_projectCreationFileWrapper_info_plist (inLexique, var_cas_inProjectName) ;
-  if (_temp_13018.isBuilt ()) {
-    _temp_13018 (HERE)->method_writeToFile (inLexique, (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/Info.plist")) COMMA_SOURCE_FILE_AT_LINE (142)) ;
+  const GGS_string temp_13018 = template_filewrapper_projectCreationFileWrapper_info_plist (inLexique, var_cas_inProjectName) ;
+  if (temp_13018.isBuilt ()) {
+    temp_13018 (HERE)->method_writeToFile (inLexique, (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/Info.plist")) COMMA_SOURCE_FILE_AT_LINE (142)) ;
   }
-  const GGS_string _temp_13106 = (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/English.lproj")) ;
-  if (_temp_13106.isBuilt ()) {
-    _temp_13106 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (143)) ;
+  const GGS_string temp_13106 = (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/English.lproj")) ;
+  if (temp_13106.isBuilt ()) {
+    temp_13106 (HERE)->method_makeDirectory (inLexique COMMA_SOURCE_FILE_AT_LINE (143)) ;
   }
-  const GGS_string _temp_13208 = GGS_string (gWrapperFileContent_23_projectCreationFileWrapper) ;
-  if (_temp_13208.isBuilt ()) {
-    _temp_13208 (HERE)->method_writeToFile (inLexique, (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/English.lproj/Credits.rtf")) COMMA_SOURCE_FILE_AT_LINE (144)) ;
+  const GGS_string temp_13208 = GGS_string (gWrapperFileContent_23_projectCreationFileWrapper) ;
+  if (temp_13208.isBuilt ()) {
+    temp_13208 (HERE)->method_writeToFile (inLexique, (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/English.lproj/Credits.rtf")) COMMA_SOURCE_FILE_AT_LINE (144)) ;
   }
-  const GGS_string _temp_13354 = template_filewrapper_projectCreationFileWrapper_cocoa_infoPlist_strings (inLexique, var_cas_inProjectName) ;
-  if (_temp_13354.isBuilt ()) {
-    _temp_13354 (HERE)->method_writeToFile (inLexique, (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/English.lproj/InfoPlist.strings")) COMMA_SOURCE_FILE_AT_LINE (145)) ;
+  const GGS_string temp_13354 = template_filewrapper_projectCreationFileWrapper_cocoa_infoPlist_strings (inLexique, var_cas_inProjectName) ;
+  if (temp_13354.isBuilt ()) {
+    temp_13354 (HERE)->method_writeToFile (inLexique, (var_cas_projectxcode_DIR).operator_concat (GGS_string ("/English.lproj/InfoPlist.strings")) COMMA_SOURCE_FILE_AT_LINE (145)) ;
   }
   inLexique.printMessage (GGS_string ("*** DONE ***\n") COMMA_SOURCE_FILE_AT_LINE (147)) ;
   #ifdef DEBUG_TRACE_ENABLED
