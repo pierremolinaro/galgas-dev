@@ -2,13 +2,13 @@
 //--- Terminal symbols enumeration
   public : enum {%LEXIQUE_CLASS_NAME%_1_%
     foreach TERMINAL_LIST do
-      %,\%  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+      %,!n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
     end foreach
   %} ;
 %
   foreach DELIMITOR_LIST_LIST do
-    %\%//--- Key words table '%([mName string])%'\%%
-    %  public : static sint16 search_into_%([mName string])% (const C_String & inSearchedString) ;\%%
+    %!n//--- Key words table '%([mName string])%'!n%
+    %  public : static sint16 search_into_%([mName string])% (const C_String & inSearchedString) ;!n%
   end foreach
 %  
 //--- Key words table 'xmlDelimitorsList'

@@ -26,9 +26,39 @@ enum @lexicalTypeEnum {
     lexicalType_char   -> "utf32" ;
     lexicalType_uint   -> "uint32" ;
     lexicalType_uint64 -> "uint64" ;
-    lexicalType_sint   -> "sint64" ;
+    lexicalType_sint   -> "sint32" ;
     lexicalType_sint64 -> "sint64" ;
     lexicalType_double -> "double" ;
+  end reader ;
+
+  reader appendMethodName :
+    lexicalType_string -> "appendCLiteralStringConstant" ;
+    lexicalType_char   -> "appendUnicodeCharacter" ;
+    lexicalType_uint   -> "appendUnsigned" ;
+    lexicalType_uint64 -> "appendUnsigned64" ;
+    lexicalType_sint   -> "appendSigned" ;
+    lexicalType_sint64 -> "appendSigned64" ;
+    lexicalType_double -> "appendDouble" ;
+  end reader ;
+
+  reader exportedCPPTypeName :
+    lexicalType_string -> "GGS_lstring" ;
+    lexicalType_char   -> "GGS_lchar" ;
+    lexicalType_uint   -> "GGS_luint" ;
+    lexicalType_uint64 -> "GGS_luint64" ;
+    lexicalType_sint   -> "GGS_lsint" ;
+    lexicalType_sint64 -> "GGS_lsint64" ;
+    lexicalType_double -> "GGS_double" ;
+  end reader ;
+
+  reader initialization :
+    lexicalType_string -> ".setLengthToZero ()" ;
+    lexicalType_char   -> " = TO_UNICODE (0)" ;
+    lexicalType_uint   -> " = 0" ;
+    lexicalType_uint64 -> " = 0" ;
+    lexicalType_sint   -> " = 0" ;
+    lexicalType_sint64 -> " = 0" ;
+    lexicalType_double -> " = 0.0" ;
   end reader ;
 }
 
@@ -56,8 +86,15 @@ map @lexicalAttributeMap {
 
 #---------------------------------------------------------------------------*
 
+list @lexicalSentValueList {
+  @string mAttributeName ;
+  @lexicalTypeEnum mLexicalType ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @terminalMap {
-  @lexicalTypeList mArgumentTypeList ;
+  @lexicalSentValueList mSentAttributeList ;
   insert insertKey error message "the '%K' terminal has been already declared in %L" ;
   search searchKey error message "the '%K' terminal is not declared" ;
 }
@@ -66,7 +103,8 @@ map @terminalMap {
 
 list @terminalList {
   @lstring mTerminalName ;
-  @lexicalTypeList mArgumentTypeList ;
+  @lexicalSentValueList mSentAttributeList ;
+  @string mSyntaxErrorMessage ;
 }
 
 #---------------------------------------------------------------------------*
@@ -80,8 +118,18 @@ map @lexicalExplicitTokenListMap {
 
 #---------------------------------------------------------------------------*
 
+sortedlist @tokenSortedlist {
+  @uint mLength ;
+  @string mName ;
+}{
+  mLength <, mName <
+}
+
+#---------------------------------------------------------------------------*
+
 map @lexicalExplicitTokenListMapMap {
   @lexicalExplicitTokenListMap mExplicitTokenListMap ;
+  @tokenSortedlist mTokenSortedList ;
   insert insertKey error message "the '%K' token list has been already declared in %L" ;
   search searchKey error message "the '%K' token list is not declared" ;
 }
@@ -153,6 +201,7 @@ struct @lexiqueAnalysisContext {
   @terminalList mTerminalList ;
   @lexicalAttributeMap mLexicalAttributeMap ;
   @lexicalExplicitTokenListMapMap mLexicalTokenListMapMap ;
+  @stringset mStringInExplicitRuleSet ;
 }
 
 #---------------------------------------------------------------------------*

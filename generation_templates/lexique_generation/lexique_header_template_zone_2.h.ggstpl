@@ -23,7 +23,7 @@
 class cTokenFor_%LEXIQUE_CLASS_NAME% : public cToken {
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
-    %  public : %([mLexicalType cppTypeName])% mLexicalAttribute_%([key string])% ;\%%
+    %  public : %([mLexicalType cppTypeName])% mLexicalAttribute_%([key string])% ;!n%
   end foreach
 %
   public : cTokenFor_%LEXIQUE_CLASS_NAME% (void) ;

@@ -22,7 +22,9 @@ template "%" ... "%" ;
 
 replace "!%" -> "%" ;
 
-replace "\\%" -> "\n" ;
+replace "!n" -> "\n" ;
+
+replace "!!" -> "!" ;
 
 @string identifierString ;
 @uint uint32value ;
@@ -228,7 +230,7 @@ end rule ;
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",
-  "::",    ">",    ";",      ":",
+  "::",    ">",    ";",      ":",     "`",
   "-",     "(",    ")",     "->",      "?",
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",
