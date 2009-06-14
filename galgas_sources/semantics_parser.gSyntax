@@ -4603,6 +4603,7 @@ rule <semantic_instruction>
     sentStringName := [@typeNullName new !here] ; # No sent string
   or
     $send$ ;
+    warning here: "using 'send'" ;
     $in$ ;
     @lstring sentVariableName ;
     $identifier$ ? sentVariableName ;
@@ -4642,6 +4643,7 @@ rule <semantic_instruction>
   ??@EXsemanticContext inSemanticContext
 :
   $send$ ;
+    warning here: "using 'send'" ;
 #--- Source expression
   @typeExpression expression ;
   @AC_galgasType expressionType ;

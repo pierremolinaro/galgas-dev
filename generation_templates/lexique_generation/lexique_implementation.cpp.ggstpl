@@ -188,9 +188,7 @@ parseLexicalToken (void) {
       %
   foreach LEXICAL_RULE_LIST
   do
-    %if (%([mLexicalRule generateCode !LEXIQUE_ANALYSIS_CONTEXT])%) {!n%
-    %        ...!n%
-    %      }else %
+    ([mLexicalRule generateCode !LEXIQUE_ANALYSIS_CONTEXT])
   end foreach
 %if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
         token.mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code

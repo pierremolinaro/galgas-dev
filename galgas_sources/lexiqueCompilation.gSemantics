@@ -29,63 +29,88 @@ import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 #   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
 #---------------------------------------------------------------------------*
 
-abstract reader @lexicalExpression generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+abstract reader @lexicalExpression generateConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalOrExpression generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+override reader @lexicalOrExpression generateConditionCode
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "" ;
+  outGeneratedCode := [mLeftOperand generateConditionCode !inLexiqueAnalysisContext] ;
+  outGeneratedCode .= " || " ;
+  outGeneratedCode .= [mRightOperand generateConditionCode !inLexiqueAnalysisContext] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterIntervalMatch generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+override reader @lexicalCharacterIntervalMatch generateConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "" ;
+  outGeneratedCode := "testForInputUTF32CharRange (" ;
+  outGeneratedCode .= [[mLowerBound char] utf32CharConstantRepresentation] ;
+  outGeneratedCode .= ", " ;
+  outGeneratedCode .= [[mUpperBound char] utf32CharConstantRepresentation] ;
+  outGeneratedCode .= ")" ;
+#  send "testForInputUTF32CharRange (" ;
+#  send [[mLowerBound char] utf32CharConstantRepresentation] ;
+#  send ", " ;
+#  send [[mUpperBound char] utf32CharConstantRepresentation] ;
+#  send ")" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStringMatch generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+override reader @lexicalStringMatch generateConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "" ;
+  outGeneratedCode := "testForInputUTF32String (kUnicodeString_" . [mString identifierRepresentation] ;
+  outGeneratedCode .= ", " ;
+  outGeneratedCode .= [[mString length] string] ;
+  outGeneratedCode .= ", true)" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalStringNotMatch generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+override reader @lexicalStringNotMatch generateConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "" ;
+  outGeneratedCode := "notTestForInputUTF32String (kUnicodeString_" ;
+  outGeneratedCode .= [mString identifierRepresentation] ;
+  outGeneratedCode .= ", " ;
+  outGeneratedCode .= [[mString length] string] ;
+  outGeneratedCode .= ", gLexicalMessage_" ;
+  outGeneratedCode .= mErrorMessage ;
+  outGeneratedCode .= " COMMA_LINE_AND_SOURCE_FILE)" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterMatch generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+override reader @lexicalCharacterMatch generateConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "" ;
+  outGeneratedCode := "testForInputUTF32Char (" ;
+  outGeneratedCode .= [[mCharacter char] utf32CharConstantRepresentation] ;
+  outGeneratedCode .= ")" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @lexicalCharacterSetMatch generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+override reader @lexicalCharacterSetMatch generateConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "" ;
+  outGeneratedCode := "testForCharWithFunction (" ;
+  outGeneratedCode .= mCharacterSetName ;
+  outGeneratedCode .= ")" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -93,26 +118,41 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 abstract reader @abstractLexicalRule generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalImplicitRule generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "1" ;
+  @tokenSortedlist tokenSortedList ;
+  [[inLexiqueAnalysisContext mLexicalTokenListMapMap] searchKey !mListName ?* ?tokenSortedList] ;
+  outGeneratedCode := "" ;
+  foreach > tokenSortedList do
+    outGeneratedCode .= "if (testForInputUTF32String (kUnicodeString_" ;
+    outGeneratedCode .= [mName identifierRepresentation] ;
+    outGeneratedCode .= ", " ;
+    outGeneratedCode .= [[mName length] string] ;
+    outGeneratedCode .= ", true)) {\n" ;
+    outGeneratedCode .= "  ...\n" ;
+    outGeneratedCode .= "}else " ;
+  end foreach ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalExplicitRule generateCode
-  ?@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "2" ;
+  outGeneratedCode := "if (" ;
+  outGeneratedCode .= [mLexicalRuleExpression generateConditionCode !inLexiqueAnalysisContext] ;
+  outGeneratedCode .= ") {\n" ;
+  outGeneratedCode .= "  ...\n" ;
+  outGeneratedCode .= "}else " ;
 end reader ;
 
 #---------------------------------------------------------------------------*

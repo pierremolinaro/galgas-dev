@@ -148,6 +148,18 @@ class @appendInstruction extends @semanticInstruction {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  S E N D    I N S T R U C T I O N                                         *
+#                                                                           *
+#  send EXPRESSION ;                                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @sendInstruction extends @semanticInstruction {
+  @semanticExpression mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  F O R E A C H    I N S T R U C T I O N                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -176,6 +188,7 @@ list @foreachInstructionEnumeratedObjectElementList {
 #---------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectList {
+  @bool mIsAscending ;
   @semanticExpression mEnumeratedExpression ;
   @foreachInstructionEnumeratedObjectElementList mElementList ;
   @bool mEndsWithEllipsis ;

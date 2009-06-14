@@ -252,6 +252,16 @@ nonterminal <foreach_enumerated_object>
 rule <foreach_enumerated_object>
   ?!@foreachInstructionEnumeratedObjectList ioForeachInstructionEnumeratedObjectList
 :
+  @bool ascending ;
+  select
+    ascending := true ;
+  or
+    $<$ ;
+    ascending := true ;
+  or
+    $>$ ;
+    ascending := false ;
+  end select ;
   @semanticExpression mEnumeratedExpression ;
   <expression> ? mEnumeratedExpression ;
   @foreachInstructionEnumeratedObjectElementList mElementList [emptyList] ;
@@ -294,6 +304,7 @@ rule <foreach_enumerated_object>
     $)$ ;
   end select ;
   ioForeachInstructionEnumeratedObjectList +=
+    !ascending
     !mEnumeratedExpression
     !mElementList
     !mEndsWithEllipsis
@@ -359,6 +370,22 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
     !mBetweenInstructionList
     !mDoInstructionList
     !mAfterInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E N D    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstruction outInstruction :
+  $send$ ;
+  @semanticExpression expression ;
+  <expression> ? expression ;
+  $;$ ;
+  outInstruction := [@sendInstruction new
+    !expression
   ] ;
 end rule ;
 
