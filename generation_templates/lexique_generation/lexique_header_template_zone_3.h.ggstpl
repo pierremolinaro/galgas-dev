@@ -11,19 +11,43 @@
     %  public : static sint16 search_into_%([mName string])% (const C_String & inSearchedString) ;!n%
   end foreach
 %  
-//--- Key words table 'xmlDelimitorsList'
-  public : static sint16 search_into_xmlDelimitorsList (const C_String & inSearchedString) ;
 
+//--- Assign from attribute
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+    %  public : void assignFromAttribute_%([key string])% (%([mLexicalType exportedCPPTypeName])% & outValue) const ;!n%
+  end foreach
+%
+
+//--- Attribute access
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+    %  public : %([mLexicalType cppTypeName])% attributeValue_%([key string])% (void) const ;!n%
+  end foreach
+%
+
+//--- Parse lexical token
   protected : virtual bool parseLexicalToken (void) ;
+
+//--- Append terminal message
   protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const sint16 numeroTerminal,
                                                               C_String & messageErreur) ;
 
 //--- Get terminal count
   public : virtual sint16 terminalVocabularyCount (void) const { return %([[TERMINAL_LIST length] string])% ; }
+
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
+
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_xml_parsing_lexique & inToken) ;
+  protected : void enterToken (const cTokenFor_%LEXIQUE_CLASS_NAME% & inToken) ;
+
+//--- TEMPORARY
+  public : virtual uint8 terminalStyleIndex (const sint32 /* inTerminal */) { return 0 ; }
+  protected : virtual sint16 parseLexicalTokenForLexicalColoring (void) { return 0 ; }
+  public : static sint32 getStylesCount (void) { return 0 ; }
+  public : static const char * getStyleName (const sint32 /* inIndex */) { return "" ; }
+  public : static const char * getStyleIdentifier (const sint32 /* inIndex */) { return "" ; }
 } ;
 
 //---------------------------------------------------------------------------*

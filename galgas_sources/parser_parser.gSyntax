@@ -303,6 +303,7 @@ rule <galgas_component>
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
     ![@EXcategoryReaderMap emptyMap]
+    ![@EXcategoryTemplateMap emptyMap]
   ] ;
   <import_headers_semantics_and_grammars>
     ?includedSemanticsComponents

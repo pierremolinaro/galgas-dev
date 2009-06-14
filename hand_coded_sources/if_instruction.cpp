@@ -1454,6 +1454,67 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeCategoryTemplateCall::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "(findCategoryTemplate__" << mCategoryTemplateClassBaseName << "__" << mTemplateName
+            << " (" ;
+  mExpressionValue (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " (HERE)->galgasRTTI ()) (inLexique, " ;
+  mExpressionValue (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ".getPtr ()" ;
+  GGS_typeExpressionList::cEnumerator e (mOutExpressionList, true) ;
+  while (e.hasCurrentObject ()) {
+    ioCppFile << ", " ;
+    e._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+    e.next () ;
+  }
+  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
+            << cStringWithSigned (mTemplateName.lineNumber ())
+            << ")))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCategoryTemplateCall::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  bool used = mExpressionValue (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+  GGS_typeExpressionList::cEnumerator e (mOutExpressionList, true) ;
+  while (e.hasCurrentObject () && ! used) {
+    used = e._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inArgumentCppName) ;
+    e.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCategoryTemplateCall::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  bool used = mExpressionValue (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+  GGS_typeExpressionList::cEnumerator e (mOutExpressionList, true) ;
+  while (e.hasCurrentObject () && ! used) {
+    used = e._mExpression (HERE) (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+    e.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeCategoryTemplateCall::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark 'description' pseudo reader
 #endif
 

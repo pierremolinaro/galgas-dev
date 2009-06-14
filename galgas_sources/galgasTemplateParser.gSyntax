@@ -23,7 +23,7 @@ import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 
 nonterminal <lexique_component_start_symbol>
   ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXcategoryReaderMap inCategoryReaderMap
+  ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   !@templateInstructionList outResultingInstructionList
@@ -31,7 +31,7 @@ nonterminal <lexique_component_start_symbol>
 
 nonterminal <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXcategoryReaderMap inCategoryReaderMap
+  ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
@@ -39,7 +39,7 @@ nonterminal <template_instruction>
 
 nonterminal <expression>
   ??@M_semanticsEntitiesForUse inEntitiesMap
-  ??@EXcategoryReaderMap inCategoryReaderMap
+  ??@EXsemanticContext inSemanticContext
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@typeVariablesMap ioTemplateVariableMap
   !@typeExpression outExpression
@@ -62,17 +62,17 @@ end routine ;
 
 rule <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXcategoryReaderMap inCategoryReaderMap
+  ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
 :
+  $($ ;
   @typeExpression expression ;
   @AC_galgasType resultType ;
-  $($ ;
   <expression>
     !inComponentSemanticsEntitiesMap
-    !inCategoryReaderMap
+    !inSemanticContext
     !inOptionsComponentsMapForUse
     !?ioTemplateVariableMap
     ?expression
@@ -87,7 +87,7 @@ end rule ;
 
 rule <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXcategoryReaderMap unused inCategoryReaderMap
+  ??@EXsemanticContext unused inSemanticContext
   ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
   ??@M_optionComponents unused inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
@@ -105,7 +105,53 @@ end rule ;
 
 rule <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXcategoryReaderMap inCategoryReaderMap
+  ??@EXsemanticContext inSemanticContext
+  ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+:
+  $block$ ;
+  @typeExpression expression ;
+  @AC_galgasType resultType ;
+  <expression>
+    !inComponentSemanticsEntitiesMap
+    !inSemanticContext
+    !inOptionsComponentsMapForUse
+    !?ioTemplateVariableMap
+    ?expression
+    ?resultType
+  ;
+  @typeGalgas_uint x := (cast resultType if >= @typeGalgas_uint else error here) ;
+  $:$ ;
+#--- Instruction list
+  @templateInstructionList blockInstructionList [emptyList] ;
+  enterTemplateString !? blockInstructionList ;
+  repeat
+  while
+    <template_instruction>
+      !?ioTemplateVariableMap
+      !inSemanticContext
+      !inComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?blockInstructionList
+    ;
+    enterTemplateString !?blockInstructionList ;
+  end repeat ;
+#---
+  $end$ ;
+  $block$ ;
+  ioResultingInstructionList += ![@templateBlockInstruction new
+   !expression
+   !here
+   !blockInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@typeVariablesMap ioTemplateVariableMap
+  ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
@@ -133,7 +179,7 @@ rule <template_instruction>
   @AC_galgasType expressionType ;
   <expression>
     !inComponentSemanticsEntitiesMap
-    !inCategoryReaderMap
+    !inSemanticContext
     !inOptionsComponentsMapForUse
     !?ioTemplateVariableMap
     ?expression
@@ -177,7 +223,7 @@ rule <template_instruction>
       while
         <template_instruction>
           !?ioTemplateVariableMap
-          !inCategoryReaderMap
+          !inSemanticContext
           !inComponentSemanticsEntitiesMap
           !inOptionsComponentsMapForUse
           !?doInstructionList
@@ -196,7 +242,7 @@ rule <template_instruction>
     while
       <template_instruction>
         !?ioTemplateVariableMap
-        !inCategoryReaderMap
+        !inSemanticContext
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?betweenInstructionList
@@ -221,7 +267,7 @@ end rule ;
 
 rule <lexique_component_start_symbol>
   ?!@typeVariablesMap ioTemplateVariableMap
-  ??@EXcategoryReaderMap inCategoryReaderMap
+  ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
   !@templateInstructionList outResultingInstructionList
@@ -233,7 +279,7 @@ rule <lexique_component_start_symbol>
     while
       <template_instruction>
         !?ioTemplateVariableMap
-        !inCategoryReaderMap
+        !inSemanticContext
         !inComponentSemanticsEntitiesMap
         !inOptionsComponentsMapForUse
         !?outResultingInstructionList

@@ -666,7 +666,7 @@ generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
-  inCppFile << "const C_LocationInSource _locationForTag_" << mLexicalTagName << " = mCurrentLocation ;\n" ;
+  inCppFile << "const C_LocationInSource locationForTag_" << mLexicalTagName << " = mCurrentLocation ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -702,7 +702,7 @@ generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
                               AC_OutputStream & inCppFile,
                               TC_UniqueArray <C_String> & /* ioUnicodeStringToGenerate */) const {
-  inCppFile << "mCurrentLocation = _locationForTag_" << mLexicalTagName << " ;\n"
+  inCppFile << "mCurrentLocation = locationForTag_" << mLexicalTagName << " ;\n"
                "token.mTokenCode = " << inLexiqueName << "_1_"
             << mTerminal.identifierRepresentation ()
             << " ;\n" ;
@@ -1591,11 +1591,6 @@ generate_scanner_cpp_file (C_Compiler & inLexique,
                      << currentTerminal._key (HERE).identifierRepresentation () ;
     currentTerminal.next () ;
   }
-
-  generatedZone2 << "//--- Syntax error message for 'end of source' :\n"
-                    "static const utf32 kEndOfSourceLexicalErrorMessage [] = " ;
-  generatedZone2.appendUTF32LiteralStringConstant ("end of source") ;
-  generatedZone2 << " ;\n\n" ;
 
   generatedZone2.appendCppTitleComment ("appendTerminalMessageToSyntaxErrorMessage") ;
   generatedZone2 << "void " << inLexiqueName << "::\n"

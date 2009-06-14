@@ -619,7 +619,8 @@ rule <galgas_component>
       ![@M_filewrappers emptyMap]
       ![@stringset emptySet]
       ![@EXcategoryMethodMap emptyMap]
-    ![@EXcategoryReaderMap emptyMap]
+      ![@EXcategoryReaderMap emptyMap]
+      ![@EXcategoryTemplateMap emptyMap]
     ] ;
     repeat
     while
@@ -6524,7 +6525,7 @@ rule <semantics_declaration_beginning_by_abstract>
   @AC_galgasType returnedType := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
 #---- Insert in category reader map ----------------------------
   @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  [!?ioSemanticContext.mReaderMethodMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+  [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
 #---- Get class attribute list ---------------------------------
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
@@ -6535,7 +6536,7 @@ rule <semantics_declaration_beginning_by_abstract>
 #--- Check no super class defines this method
   foreach ancestorClassesMap do
     @string keyClassMethod := [key string]  . ":" . [readerName string] ;
-    if [[ioSemanticContext mReaderMethodMap] hasKey !keyClassMethod] then
+    if [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] then
       error readerName: "this reader is already defined for super class @" . key
       . ": you should use the 'override' key word" ;
     end if ;
@@ -6590,8 +6591,8 @@ label importSemantics
   @AC_galgasType returnedType := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
 #---- Insert in category reader map ----------------------------
   @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  if not [[ioSemanticContext mReaderMethodMap] hasKey ![key string]] then
-    [!?ioSemanticContext. mReaderMethodMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+  if not [[ioSemanticContext mCategoryReaderMap] hasKey ![key string]] then
+    [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
   end if ;
   $;$ ;
 end rule ;
@@ -6646,7 +6647,7 @@ rule <semantics_declaration>
   [!?methodLocalVariablesMap insertOutArgument !returnedVariableName !returnedType !returnedCppVarName] ;
 #---- Insert in category reader map ----------------------------
   @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  [!?ioSemanticContext.mReaderMethodMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+  [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
 #---- Get class attribute list ---------------------------------
   [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
   @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
@@ -6660,12 +6661,12 @@ rule <semantics_declaration>
     foreach ancestorClassesMap while not found do
       @string keyClassMethod := [key string]  . ":" . [readerName string] ;
       baseClassName := [key string] ;
-      found := [[ioSemanticContext mReaderMethodMap] hasKey !keyClassMethod] ;
+      found := [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] ;
       if found then
         @categoryMethodKind categoryMethodKind ;
         @L_EXsignature listeDeTypesPrecedenteDeclaration ;
         @AC_galgasType returnedTypePreviousDeclaration ;
-        [[ioSemanticContext mReaderMethodMap] searchKey
+        [[ioSemanticContext mCategoryReaderMap] searchKey
            ![@lstring new !keyClassMethod !here]
            ?categoryMethodKind
            ?listeDeTypesPrecedenteDeclaration
@@ -6692,7 +6693,7 @@ rule <semantics_declaration>
   else #--- Check no super class defines this method
     foreach ancestorClassesMap do
       @string keyClassMethod := [key string]  . ":" . [readerName string] ;
-      if [[ioSemanticContext mReaderMethodMap] hasKey !keyClassMethod] then
+      if [[ioSemanticContext mCategoryReaderMap] hasKey !keyClassMethod] then
         error readerName: "this reader is already defined for super class @" . key
         . ": you should use the 'override' key word" ;
      end if ;
@@ -6777,14 +6778,285 @@ label importSemantics
   @AC_galgasType returnedType := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
 #---- Insert in category reader map ----------------------------
   @lstring key [new ![className string] . ":" . [readerName string] ![readerName location]] ;
-  if not [[ioSemanticContext mReaderMethodMap] hasKey ![key string]] then
-    [!?ioSemanticContext. mReaderMethodMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
+  if not [[ioSemanticContext mCategoryReaderMap] hasKey ![key string]] then
+    [!?ioSemanticContext. mCategoryReaderMap insertKey !key !categoryMethodKind !listeDeTypes !returnedType] ;
   end if ;
 #--- Instructions
   $:$ ;
   <semantic_instructions_list> parse ;
   $end$ ;
   $reader$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T    C A T E G O R Y    T E M P L A T E   D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration_beginning_by_abstract>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  @categoryMethodKind categoryMethodKind [abstractMethod] ;
+  $template$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring templateName ;
+#---- Formal arguments -----------------------------------------
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @L_EXsignature listeDeTypes ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_input_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+#---- Insert in category reader map ----------------------------
+  @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
+  [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+#---- Get class attribute list ---------------------------------
+  @AC_semanticsEntity theEntity ;
+  [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
+  @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
+  @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error className) ;
+#---- Check method definition in super class -------------------
+  @string baseClassName ;
+  @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
+#--- Check no super class defines this method
+  foreach ancestorClassesMap do
+    @string keyClassMethod := [key string]  . ":" . [templateName string] ;
+    if [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] then
+      error templateName: "this template is already defined for super class @" . key
+      . ": you should use the 'override' key word" ;
+    end if ;
+  end foreach ;
+  baseClassName := [className string] ;
+  $;$ ;
+#--- Generate 
+  listeEntitesAengendrer += ![@categoryTemplateToImplement new
+    !categoryMethodKind
+    !baseClassName
+    !className
+    !templateName
+    !listeTypeEtNomsArguments
+    ![@templateInstructionList emptyList]
+    ![templateName location] # Magic Number
+  ] ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  @categoryMethodKind categoryMethodKind [abstractMethod] ;
+  $template$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring templateName ;
+#---- Formal arguments -----------------------------------------
+  @L_EXsignature listeDeTypes ;
+  @typeVariablesMap tableArgumentsMethode [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_input_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?tableArgumentsMethode
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+#---- Insert in category template map ----------------------------
+  @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
+  if not [[ioSemanticContext mCategoryTemplateMap] hasKey ![key string]] then
+    [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  end if ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     C A T E G O R Y    T E M P L A T E   D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantics_declaration>
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  @categoryMethodKind categoryMethodKind ;
+  select
+    categoryMethodKind := [@categoryMethodKind baseMethod] ;
+  or
+    $override$ ;
+    categoryMethodKind := [@categoryMethodKind overridingMethod] ;
+  end select ;
+  $template$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring templateName ;
+#---- Formal arguments -----------------------------------------
+  @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
+  @L_EXsignature listeDeTypes ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_input_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?methodLocalVariablesMap
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+#---- Insert in template reader map ----------------------------
+  @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
+  [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+#---- Get class attribute list ---------------------------------
+  @AC_semanticsEntity theEntity ;
+  [ioComponentSemanticsEntitiesMap searchKey !className ?theEntity] ;
+  @AC_galgasType type := [(cast theEntity  if >= @typeEntiteType else error className) aDefType] ;
+  @typeGalgasClassType classType := (cast type if >= @typeGalgasClassType else error className) ;
+#---- Check method definition in super class -------------------
+  @string baseClassName ;
+  @typeSuperClassesMap ancestorClassesMap := [classType mAncestorClassesMap] ;  
+  if categoryMethodKind == [@categoryMethodKind overridingMethod] then #--- Check a super class defines this method
+    baseClassName := "" ;
+    @bool found := false ;
+    foreach ancestorClassesMap while not found do
+      @string keyClassMethod := [key string]  . ":" . [templateName string] ;
+      baseClassName := [key string] ;
+      found := [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] ;
+      if found then
+        @categoryMethodKind categoryMethodKind ;
+        @L_EXsignature listeDeTypesPrecedenteDeclaration ;
+        [[ioSemanticContext mCategoryTemplateMap] searchKey
+           ![@lstring new !keyClassMethod !here]
+           ?categoryMethodKind
+           ?listeDeTypesPrecedenteDeclaration
+        ] ;
+        verifierCompatibiliteSignatures
+          !listeDeTypesPrecedenteDeclaration
+          !listeDeTypes
+          ![templateName location]
+        ;
+        found := categoryMethodKind != [@categoryMethodKind overridingMethod] ;
+      end if ;
+    end foreach ;
+    if not found then
+      error templateName: "this overriden template is not defined in any super class of @" . className
+      . ": you should remove the 'override' key word" ;
+    end if ;
+  else #--- Check no super class defines this method
+    foreach ancestorClassesMap do
+      @string keyClassMethod := [key string]  . ":" . [templateName string] ;
+      if [[ioSemanticContext mCategoryTemplateMap] hasKey !keyClassMethod] then
+        error templateName: "this template is already defined for super class @" . key
+        . ": you should use the 'override' key word" ;
+     end if ;
+    end foreach ;
+    baseClassName := [className string] ;
+  end if ;
+#---- Add attributes as used local constants -------------------
+  foreach [classType mAttributeList] do
+    @typeCplusPlusName cppName := [@typeOperandName new
+      ![templateName location] # Magic Number
+      ![mAttributeName string]
+      !false # not mapStyle
+      !false # not iterator new style
+    ] ;
+    [!?methodLocalVariablesMap insertUsedConstInArgument !mAttributeName !mAttributType !cppName] ;
+  end foreach ;
+#--- Insert the predefined "self" variable
+  [!?methodLocalVariablesMap insertUsedConstInArgument ![@lstring new !"self" !here] !classType ![@typeCppThisInCategoryName new ![templateName location]]] ;
+#--- Instructions
+  $:$ ;
+  @string templateString := "" ;
+  repeat
+    $literal_string$ ?@lstring s ;
+    templateString .= [s string] ;
+  while
+  end repeat ;
+  @templateInstructionList templateInstructionList ;
+  grammar galgasTemplateGrammar on templateString
+    !?methodLocalVariablesMap
+    !ioSemanticContext
+    !ioComponentSemanticsEntitiesMap
+    !inOptionsComponentsMapForUse
+    ?templateInstructionList
+  ;
+  $end$ ;
+  $template$ ;
+  $;$ ;
+  listeEntitesAengendrer += ![@categoryTemplateToImplement new
+    !categoryMethodKind
+    !baseClassName
+    !className
+    !templateName
+    !listeTypeEtNomsArguments
+    !templateInstructionList
+    ![templateName location] # Magic Number
+  ] ;
+label importSemantics
+  ?!@ModelMap unused ioModelMap
+  ?!@ActionMap unused ioExternActionMap
+  ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ?!@typeTableNomRoutinesDeclarees unused tableNomRoutinesDeclarees
+  ?!@typeTableEnAvant tableEnAvant
+  ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
+  ?!@EXsemanticContext ioSemanticContext
+:
+  @categoryMethodKind categoryMethodKind ;
+  select
+    categoryMethodKind := [@categoryMethodKind baseMethod] ;
+  or
+    $override$ ;
+    categoryMethodKind := [@categoryMethodKind overridingMethod] ;
+  end select ;
+  $template$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring templateName ;
+#---- Formal arguments -----------------------------------------
+  @L_EXsignature listeDeTypes ;
+  @typeVariablesMap methodLocalVariablesMap [emptyMap] ;
+  @typeListeTypesEtNomsArgMethode listeTypeEtNomsArguments ;
+  @L_signature signatureForGrammarComponent ;
+  <formal_input_arguments_list>
+    !ioComponentSemanticsEntitiesMap
+    ?listeDeTypes
+    !?methodLocalVariablesMap
+    ?listeTypeEtNomsArguments
+    !?tableEnAvant
+    ?signatureForGrammarComponent
+  ;
+#---- Insert in category template map ----------------------------
+  @lstring key [new ![className string] . ":" . [templateName string] ![templateName location]] ;
+  if not [[ioSemanticContext mCategoryTemplateMap] hasKey ![key string]] then
+    [!?ioSemanticContext.mCategoryTemplateMap insertKey !key !categoryMethodKind !listeDeTypes] ;
+  end if ;
+#--- Instructions
+  $:$ ;
+  repeat
+    $literal_string$ ?* ;
+  while
+  end repeat ;
+  $end$ ;
+  $template$ ;
   $;$ ;
 end rule ;
 
@@ -7454,7 +7726,7 @@ rule <semantics_declaration>
     @templateInstructionList templateInstructionList ;
     grammar galgasTemplateGrammar in templateAbsolutePath
       !?templateVariableMap
-      ![ioSemanticContext mReaderMethodMap]
+      !ioSemanticContext
       !ioComponentSemanticsEntitiesMap
       !inOptionsComponentsMapForUse
       ?templateInstructionList

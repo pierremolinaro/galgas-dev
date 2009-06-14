@@ -9,8 +9,34 @@
 
 //---------------------------------------------------------------------------*
 
-#include "semantics_semantics.h"
+#include "filewrapper_template_generation.h"
 #include "utilities/MF_MemoryControl.h"
+
+//---------------------------------------------------------------------------*
+
+bool templateInstructionListUsesLexique (const GGS_templateInstructionList & inTemplateInstructionList) {
+  bool lexiqueIsUsed = false ;
+  GGS_templateInstructionList::cEnumerator currentInstruction (inTemplateInstructionList, true) ;
+  while (currentInstruction.hasCurrentObject () && ! lexiqueIsUsed) {
+    lexiqueIsUsed = currentInstruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    currentInstruction.next () ;
+  }
+  return lexiqueIsUsed ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool
+templateInstructionListUsesFormalArgument (const GGS_templateInstructionList & inTemplateInstructionList,
+                                           const GGS_typeCplusPlusName & inCppName) {
+  bool templateFormalArgumentIsUsed = false ;
+  GGS_templateInstructionList::cEnumerator currentInstruction (inTemplateInstructionList, true) ;
+  while (currentInstruction.hasCurrentObject () && ! templateFormalArgumentIsUsed) {
+    templateFormalArgumentIsUsed = currentInstruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    currentInstruction.next () ;
+  }
+  return templateFormalArgumentIsUsed ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -73,15 +99,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 sint32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   ioCppFile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
-  bool lexiqueIsUsed = false ;
-  GGS_templateInstructionList::cEnumerator currentInstruction (mTemplateInstructionList, true) ;
-  while (currentInstruction.hasCurrentObject () && ! lexiqueIsUsed) {
-    lexiqueIsUsed = currentInstruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
-    currentInstruction.next () ;
-  }
   ioCppFile << "GGS_string\n"
                "template_filewrapper_" << mFilewrapperName << "_" << mTemplateName << " (C_Compiler & " ;
-  if (lexiqueIsUsed) {
+  if (templateInstructionListUsesLexique (mTemplateInstructionList)) {
     ioCppFile << "inLexique" ;
   }else{
     ioCppFile << "/* inLexique */" ;
@@ -113,7 +133,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  if (isBuilt) {\n" ;
     ioCppFile.incIndentation (+2) ;
   }
-  currentInstruction.rewind () ;
+  GGS_templateInstructionList::cEnumerator currentInstruction (mTemplateInstructionList, true) ;
   ioCppFile.incIndentation (+2) ;
   while (currentInstruction.hasCurrentObject ()) {
     currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
@@ -130,6 +150,69 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   ioCppFile << "}\n\n" ;
 }  
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_templateBlockInstruction
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_templateBlockInstruction::
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "const GGS_uint indentation_"
+            << cStringWithUnsigned (mMagicNumber.location ())
+            << " = " ;
+  mExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << " ;\n"
+            << "if (indentation_"
+            << cStringWithUnsigned (mMagicNumber.location ())
+            << ".isBuilt ()) {\n"
+               "  result.incIndentation ((sint32) indentation_"
+            << cStringWithUnsigned (mMagicNumber.location ())
+            << ".uintValue ()) ;\n"
+               "}\n" ;
+  GGS_templateInstructionList::cEnumerator currentInstruction2 (mBlockInstructionList, true) ;
+  while (currentInstruction2.hasCurrentObject ()) {
+    currentInstruction2._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+    currentInstruction2.next () ;
+  }
+  ioCppFile << " ;\n"
+            << "if (indentation_"
+            << cStringWithUnsigned (mMagicNumber.location ())
+            << ".isBuilt ()) {\n"
+               "  result.incIndentation (- ((sint32) indentation_"
+            << cStringWithUnsigned (mMagicNumber.location ())
+            << ".uintValue ())) ;\n"
+               "}\n" ;
+  }
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateBlockInstruction::
+isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
+  bool used = mExpression (HERE)->formalArgumentIsUsedForTest (inCppName) ;
+  GGS_templateInstructionList::cEnumerator instruction (mBlockInstructionList, true) ;
+  while (instruction.hasCurrentObject () && ! used) {
+    used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    instruction.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateBlockInstruction::
+isUsingLexiqueArgument (void) const {
+  bool used = mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  GGS_templateInstructionList::cEnumerator instruction (mBlockInstructionList, true) ;
+  while (instruction.hasCurrentObject () && ! used) {
+    used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    instruction.next () ;
+  }
+  return used ;
+}
 
 //---------------------------------------------------------------------------*
 

@@ -323,13 +323,13 @@ class @lexicalWarningInstruction extends @lexicalInstruction {
 #---------------------------------------------------------------------------*
 
 class @lexicalTagInstruction extends @lexicalInstruction {
-  @lstring mTagName ;
+  @lstring mLexicalTagName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @lexicalRewindInstruction extends @lexicalInstruction {
-  @lstring mTagName ;
+  @lstring mLexicalTagName ;
   @lstring mTerminalName ;
 }
 

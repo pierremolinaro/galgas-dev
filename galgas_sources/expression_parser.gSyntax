@@ -1495,8 +1495,9 @@ end rule ;
 #   reader call          :   [expression reader !... ]                         *
 #   constructor call     :   [@class constructor !... ]                        *
 #   option value         :   [option option_component_name.option_name]        *
-#   filewrapper          :   [filewrapper filewrapper_name."path"]             *
-#   filewrapper template :   [filewrapper fw.template !...]                    *
+#   filewrapper object   :   [filewrapper filewrapper_name]                    *
+#   filewrapper string   :   [filewrapper filewrapper_name."path"]             *
+#   filewrapper template :   [filewrapper fw.template_name !...]               *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
@@ -1579,7 +1580,7 @@ rule <factor>
       @string categoryReaderClassBaseName ;
       handleReaderCall
         !inEntitiesMap
-        ![inSemanticContext mReaderMethodMap]
+        ![inSemanticContext mCategoryReaderMap]
         !expressionType
         !methodName
         ?accessorsTypeList

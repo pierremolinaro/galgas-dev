@@ -754,6 +754,15 @@ map @EXcategoryReaderMap {
 }
 
 #---------------------------------------------------------------------------*
+
+map @EXcategoryTemplateMap {
+  @categoryMethodKind mCategoryMethodKind ;
+  @L_EXsignature aListeArgumentsFormels ;
+  insert insertKey error message "the '%K' category template is already declared in %L" ;
+  search searchKey, searchKeyAndGetIndex error message "the '%K' category template is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 # M E T H O D ,    A C T I O N ,   R O U T I N E    S I G N A T U R E       *
 #                                                                           *
@@ -1012,6 +1021,12 @@ class @typeGalgas_string extends @AC_galgasType {
     !@L_EXsignature outModifierSignature
   :
     if [inModifierName string] == "setCapacity" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "incIndentation" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "decIndentation" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "setCharacterAtIndex" then
@@ -4681,6 +4696,14 @@ class @templateInstructionExpression extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
+class @templateBlockInstruction extends @templateInstruction {
+  @typeExpression mExpression feature nogetter ;
+  @location mMagicNumber feature nogetter ;
+  @templateInstructionList mBlockInstructionList feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @templateInstructionConstant extends @templateInstruction {
   @typeCplusPlusName mCppName feature nogetter ;
 }
@@ -4703,7 +4726,8 @@ struct @EXsemanticContext {
   @M_filewrappers mFilewrappers ;
   @stringset mImportedSemanticComponents ;
   @EXcategoryMethodMap mCategoryMethodMap ;
-  @EXcategoryReaderMap mReaderMethodMap ;
+  @EXcategoryReaderMap mCategoryReaderMap ;
+  @EXcategoryTemplateMap mCategoryTemplateMap ;
 }
 
 #---------------------------------------------------------------------------*
