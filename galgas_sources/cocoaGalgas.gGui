@@ -34,6 +34,7 @@ label $nonterminal$, $non_terminal_symbol$ ;
 label $rule$, $non_terminal_symbol$ ;
 label $routine$, $identifier$ ;
 label $method$, $type_name$ ;
+label $reader$, $type_name$ ;
 
 textMacro "Types/Class" :
   "class @aClassName : extends @superClassNane {\n"

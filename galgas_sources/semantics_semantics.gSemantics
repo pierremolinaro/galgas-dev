@@ -336,6 +336,17 @@ class @typeFileWrapperTemplateCall extends @typeExpression {
 }
  
 #---------------------------------------------------------------------------*
+#   C A T E G O R Y    T E M P L A T E     C A L L                          *
+#---------------------------------------------------------------------------*
+
+class @typeCategoryTemplateCall extends @typeExpression {
+  @typeExpression mExpressionValue ;
+  @string mCategoryTemplateClassBaseName ;
+  @lstring mTemplateName ;
+  @typeExpressionList mOutExpressionList ;
+}
+ 
+#---------------------------------------------------------------------------*
 #   F I L E W R A P P E R    O B J E C T    I N S T A N C I A T I O N       *
 #---------------------------------------------------------------------------*
 
@@ -1270,6 +1281,18 @@ class @categoryReaderToImplement extends @typeEntityToGenerate {
   @location mMagicNumber feature nogetter ;
   @AC_galgasType mReturnedType feature nogetter ;
   @typeCplusPlusName mReturnedCppVariableName feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @categoryTemplateToImplement extends @typeEntityToGenerate {
+  @categoryMethodKind mCategoryMethodKind feature nogetter ;
+  @string mBaseClassName feature nogetter ;
+  @lstring mClassName feature nogetter ;
+  @lstring mMethodName feature nogetter ;
+  @typeListeTypesEtNomsArgMethode aListeTypeEtNomsArguments feature nogetter ;
+  @templateInstructionList mInstructionList feature nogetter ;
+  @location mMagicNumber feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

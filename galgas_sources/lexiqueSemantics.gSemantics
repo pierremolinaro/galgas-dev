@@ -200,8 +200,8 @@ struct @lexiqueAnalysisContext {
   @terminalMap mTerminalMap ;
   @terminalList mTerminalList ;
   @lexicalAttributeMap mLexicalAttributeMap ;
-  @lexicalExplicitTokenListMapMap mLexicalTokenListMapMap ;
-  @stringset mStringInExplicitRuleSet ;
+  @lexicalExplicitTokenListMapMap mLexicalTokenListMap ;
+  @stringset mUnicodeStringToGenerate ;
 }
 
 #---------------------------------------------------------------------------*

@@ -1658,6 +1658,9 @@
 		CFD648AB0A3B1FC900AED725 /* include_typeLiteralDoubleExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralDoubleExpression.h; sourceTree = "<group>"; };
 		CFD6CF110851A0B90000FA6E /* galgas_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_LL1_grammar.h; sourceTree = "<group>"; };
 		CFD6CF120851A0B90000FA6E /* ggs_LL1_compile_component.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ggs_LL1_compile_component.h; sourceTree = "<group>"; };
+		CFD749670FE5205E009FFF8A /* include_categoryTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryTemplateToImplement.h; sourceTree = "<group>"; };
+		CFD749E90FE53F5A009FFF8A /* include_typeCategoryTemplateCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeCategoryTemplateCall.h; sourceTree = "<group>"; };
+		CFD749FF0FE543FF009FFF8A /* include_templateBlockInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateBlockInstruction.h; sourceTree = "<group>"; };
 		CFD75C040D733E3100AC867C /* extern_type_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extern_type_generation.cpp; sourceTree = "<group>"; };
 		CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_stringset.cpp; sourceTree = "<group>"; };
 		CFD7D4900910C6AD00B72461 /* GGS_stringset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_stringset.h; sourceTree = "<group>"; };
@@ -2045,6 +2048,9 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFD749FF0FE543FF009FFF8A /* include_templateBlockInstruction.h */,
+				CFD749E90FE53F5A009FFF8A /* include_typeCategoryTemplateCall.h */,
+				CFD749670FE5205E009FFF8A /* include_categoryTemplateToImplement.h */,
 				CFD9BD740FE2C51E003747E2 /* include_categoryReaderToImplement.h */,
 				CFABE5BC0FDFAE1200E07BE8 /* include_templateInstructionForeach.h */,
 				CF3DB3F50FDECD5200F9D978 /* include_templateInstructionExpression.h */,

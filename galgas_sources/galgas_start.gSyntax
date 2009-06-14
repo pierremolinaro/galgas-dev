@@ -155,6 +155,7 @@ label compileFile
     ![@stringset emptySet]
     ![@EXcategoryMethodMap emptyMap]
     ![@EXcategoryReaderMap emptyMap]
+    ![@EXcategoryTemplateMap emptyMap]
   ] ;
   repeat
   while

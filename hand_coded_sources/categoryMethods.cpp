@@ -21,7 +21,7 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
-#include "semantics_semantics.h"
+#include "filewrapper_template_generation.h"
 #include "semantics_instructions.h"
 
 //---------------------------------------------------------------------------*
@@ -371,6 +371,196 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "  }\n"
                  "  if (NULL == result) {\n"
                  "    result = category_reader__" << mClassName << "_defaultReader ;\n"
+                 "  }\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Category Template
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryTemplateToImplement::
+generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
+                         C_Compiler & /* inLexique */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryTemplateToImplement::
+generatePredeclarations (AC_OutputStream & /* inHfile */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryTemplateToImplement::
+generateHdeclarations (AC_OutputStream & inHfile) const {
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
+    inHfile.appendCppTitleComment (C_String ("Category template '@") + mClassName + "." + mMethodName + "'") ;
+    inHfile << "typedef C_String (*typeCategoryTemplate__" << mClassName << "__" << mMethodName << ") "
+               " (C_Compiler & inLexique"
+            << ",\n                                "
+               "const sint32 inIndentation"
+            << ",\n                                "
+               "const cPtr_" << mClassName << " * inObjectPtr" ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+    while (currentArgument.hasCurrentObject ()) {
+      inHfile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inHfile) ;
+      inHfile << " " ;
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inHfile) ;
+      currentArgument.next () ;
+    }
+    inHfile << "\n                                "
+               "COMMA_LOCATION_ARGS) ;\n\n" ;
+    inHfile.appendCppHyphenLineComment () ;
+    inHfile << "void\n"
+               "enterCategoryTemplate__" << mClassName << "__" << mMethodName
+            << " (typeCategoryTemplate__" << mClassName << "__" << mMethodName << " inRoutine,\n"
+               "                     const sint32 inClassID) ;\n\n" ;
+    inHfile.appendCppHyphenLineComment () ;
+    inHfile << "typeCategoryTemplate__" << mClassName << "__" << mMethodName << "\n"
+               "findCategoryTemplate__" << mClassName << "__" << mMethodName
+            << " (AC_galgasClassRunTimeInformation * inClassPtr) ;\n\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_categoryTemplateToImplement::isCppClassNeeded (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryTemplateToImplement::
+enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
+                             AC_OutputStream & /* inEpilogueActions */) const {
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
+    inPrologueActions << " enterCategoryTemplate__" << mBaseClassName << "__" << mMethodName << " (" ;
+    if (mCategoryMethodKind.enumValue () == GGS_categoryMethodKind::enum_overridingMethod) {
+      inPrologueActions << "(typeCategoryTemplate__" << mBaseClassName << "__" << mMethodName << ") " ;
+    }
+    inPrologueActions << "category_template__"
+                      << mClassName << "__" << mMethodName << ", gClassInfoFor__"
+                      << mClassName << ".slotID ()) ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryTemplateToImplement::
+generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
+                             const C_String & /* inTargetFileName*/,
+                             sint32 & /* ioPrototypeIndex */) const {
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_categoryTemplateToImplement::
+generateCppClassImplementation (C_Compiler & /* inLexique */,
+                                AC_OutputStream & inCppFile,
+                                const C_String & /* inTargetFileName */,
+                                sint32 & /* ioPrototypeIndex */,
+                                const bool /* inGenerateDebug */) const {
+//--- Generate method
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
+    inCppFile.appendCppTitleComment (C_String ("Category template '@") + mClassName + "." + mMethodName + "'") ;
+    inCppFile << "static C_String\n"
+                 "category_template__" << mClassName << "__" << mMethodName
+              << " (C_Compiler &" ;
+    if (templateInstructionListUsesLexique (mInstructionList)) {
+      inCppFile << " inLexique" ;
+    }
+    inCppFile << ",\n                                "
+                 "const sint32 inIndentation"
+                 ",\n                                "
+                 "const cPtr_" << mClassName << " * operand_" << cStringWithSigned (mMagicNumber.location ()) ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+    while (currentArgument.hasCurrentObject ()) {
+      inCppFile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
+      const bool variableUtilisee = templateInstructionListUsesFormalArgument (mInstructionList, currentArgument._mCppName (HERE)) ;
+      inCppFile << " " ;
+      if (! variableUtilisee) {
+        inCppFile << "/* " ;
+      }
+      currentArgument._mCppName (HERE) (HERE)->generateCplusPlusName (inCppFile) ;
+      if (! variableUtilisee) {
+        inCppFile << " */" ;
+      }
+      currentArgument.next () ;
+    }
+    inCppFile << "\n                                "
+                 "COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "  C_String result ;\n"
+                 "  result.incIndentation (inIndentation) ;\n"
+                 "  if (operand_" << cStringWithSigned (mMagicNumber.location ()) << " != NULL) {\n" ;
+    GGS_templateInstructionList::cEnumerator currentInstruction (mInstructionList, true) ;
+    inCppFile.incIndentation (+4) ;
+    while (currentInstruction.hasCurrentObject ()) {
+      currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (inCppFile) ;
+      currentInstruction.next () ;
+    }
+    inCppFile.incIndentation (-4) ;
+    inCppFile << "  }\n"
+                 "  return result ;\n"
+                 "}\n\n" ;
+  }
+//--- Generate virtual table
+  if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_overridingMethod) {
+    inCppFile.appendCppTitleComment (C_String ("Virtual Table for category template '@") + mClassName + "." + mMethodName + "'") ;
+    inCppFile << "static TC_UniqueArray <typeCategoryTemplate__" << mClassName << "__" << mMethodName
+              << "> gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << " ;\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void\n"
+                 "enterCategoryTemplate__" << mClassName << "__" << mMethodName
+              << " (typeCategoryTemplate__" << mClassName << "__" << mMethodName << " inRoutine,\n"
+                 "                     const sint32 inClassID) {\n"
+                 "  gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
+                 "}\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+//--- Generate default routine
+    inCppFile << "static C_String\n"
+                 "category_template__" << mClassName << "_defaultTemplate (C_Compiler &"
+                 ",\n                                "
+                 "const sint32"
+                 ",\n                                "
+                 "const cPtr_" << mClassName << " *" ;
+    GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
+    while (currentArgument.hasCurrentObject ()) {
+      inCppFile << ",\n                                " ;
+      generateFormalArgumentFromType (currentArgument._mType (HERE) (HERE), currentArgument._mFormalArgumentPassingMode (HERE), inCppFile) ;
+      inCppFile << " " ;
+      currentArgument.next () ;
+    }
+    inCppFile << "\n                                "
+                 "COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "  return C_String () ;\n"
+                 "}\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+//--- Generate find routine
+    inCppFile << "typeCategoryTemplate__" << mClassName << "__" << mMethodName << "\n"
+               "findCategoryTemplate__" << mClassName << "__" << mMethodName
+              << " (AC_galgasClassRunTimeInformation * inClassPtr) {\n"
+                 "  typeCategoryTemplate__" << mClassName << "__" << mMethodName << " result = NULL ;\n"
+                 "  if (inClassPtr->slotID () < gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".count ()) {\n"
+                 "    result = gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << " (inClassPtr->slotID () COMMA_HERE) ;\n"
+                 "  }\n"
+                 "  if (result == NULL) {\n"
+                 "    AC_galgasClassRunTimeInformation * superClassPtr = inClassPtr->superClassPtr () ;\n"
+                 "    if (superClassPtr != NULL) {\n"
+                 "      result = findCategoryTemplate__" << mClassName << "__" << mMethodName << " (superClassPtr) ;\n"
+                 "      gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassPtr->slotID (), result, NULL) ;\n"
+                 "    }\n"
+                 "  }\n"
+                 "  if (NULL == result) {\n"
+                 "    result = category_template__" << mClassName << "_defaultTemplate ;\n"
                  "  }\n"
                  "  return result ;\n"
                  "}\n\n" ;
