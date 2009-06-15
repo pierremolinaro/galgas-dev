@@ -4716,8 +4716,10 @@ class @templateInstructionForeach extends @templateInstruction {
   @bool mNewEnumerationStyle feature nogetter ;
   @typeExpression mExpression feature nogetter ;
   @location mInstructionLocation feature nogetter ;
+  @templateInstructionList mBeforeInstructionList feature nogetter ;
   @templateInstructionList mDoInstructionList feature nogetter ;
   @templateInstructionList mBetweenInstructionList feature nogetter ;
+  @templateInstructionList mAfterInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

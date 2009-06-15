@@ -200,6 +200,25 @@ rule <template_instruction>
     ?localConstantBuildStyleEnum
     ?iteratorNewStyle
   ] ;
+#--- before block
+  @templateInstructionList beforeInstructionList [emptyList] ;
+  select
+  or
+    $before$ ;
+    enterTemplateString !? beforeInstructionList ;
+    repeat
+    while
+      <template_instruction>
+        !?ioTemplateVariableMap
+        !inSemanticContext
+        !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?beforeInstructionList
+      ;
+      enterTemplateString !? beforeInstructionList ;
+    end repeat ;
+  end select ;
+#--- Do block
   block ioTemplateVariableMap.repeatBlock () :
     block ioTemplateVariableMap.repeatPart () :
     #--- Build enumeration variables
@@ -250,6 +269,25 @@ rule <template_instruction>
       enterTemplateString !?betweenInstructionList ;
     end repeat ;
   end select ;
+#--- after block
+  @templateInstructionList afterInstructionList [emptyList] ;
+  select
+  or
+    $after$ ;
+    enterTemplateString !?afterInstructionList ;
+    repeat
+    while
+      <template_instruction>
+        !?ioTemplateVariableMap
+        !inSemanticContext
+        !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?beforeInstructionList
+      ;
+      enterTemplateString !?afterInstructionList ;
+    end repeat ;
+  end select ;
+#---
   $end$ ;
   $foreach$ ;
   ioResultingInstructionList += ![@templateInstructionForeach new
@@ -258,8 +296,10 @@ rule <template_instruction>
    !iteratorNewStyle
    !expression
    !instructionLocation
+   !beforeInstructionList
    !doInstructionList
    !betweenInstructionList
+   !afterInstructionList
   ] ;
 end rule ;
 

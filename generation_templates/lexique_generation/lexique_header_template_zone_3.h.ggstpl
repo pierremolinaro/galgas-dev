@@ -2,27 +2,27 @@
 //--- Terminal symbols enumeration
   public : enum {%LEXIQUE_CLASS_NAME%_1_%
     foreach TERMINAL_LIST do
-      %,!n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+      %,\n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
     end foreach
   %} ;
 %
   foreach DELIMITOR_LIST_LIST do
-    %!n//--- Key words table '%([mName string])%'!n%
-    %  public : static sint16 search_into_%([mName string])% (const C_String & inSearchedString) ;!n%
+    %\n//--- Key words table '%([mName string])%'\n%
+    %  public : static sint16 search_into_%([mName string])% (const C_String & inSearchedString) ;\n%
   end foreach
 %  
 
 //--- Assign from attribute
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : void assignFromAttribute_%([key string])% (%([mLexicalType exportedCPPTypeName])% & outValue) const ;!n%
+    %  public : void assignFromAttribute_%([key string])% (%([mLexicalType exportedCPPTypeName])% & outValue) const ;\n%
   end foreach
 %
 
 //--- Attribute access
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %([mLexicalType cppTypeName])% attributeValue_%([key string])% (void) const ;!n%
+    %  public : %([mLexicalType cppTypeName])% attributeValue_%([key string])% (void) const ;\n%
   end foreach
 %
 

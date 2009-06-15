@@ -48,8 +48,8 @@ cp ${DIR}/PROJECT/makefile_macosx_universal/build.command ${DIR}/actual_template
 cp ${DIR}/PROJECT/makefile_macosx_universal/build64.command ${DIR}/actual_templates/project/makefile_macosx_universal/build64.command &&
 cp ${DIR}/PROJECT/makefile_macosx_universal/clean.command ${DIR}/actual_templates/project/makefile_macosx_universal/clean.command &&
 cp ${DIR}/PROJECT/makefile_macosx_universal/clean64.command ${DIR}/actual_templates/project/makefile_macosx_universal/clean64.command &&
-sed "s/%/!%/g" ${DIR}/PROJECT/makefile_macosx_universal/makefile | sed "s/PROJECT/%PROJECT_NAME%/g" > ${DIR}/actual_templates/project/makefile_macosx_universal/makefile &&
-sed "s/%/!%/g" ${DIR}/PROJECT/makefile_macosx_universal/makefile64 | sed "s/PROJECT/%PROJECT_NAME%/g" > ${DIR}/actual_templates/project/makefile_macosx_universal/makefile64 &&
+sed "s/%/\\\\%/g" ${DIR}/PROJECT/makefile_macosx_universal/makefile | sed "s/PROJECT/%PROJECT_NAME%/g" > ${DIR}/actual_templates/project/makefile_macosx_universal/makefile &&
+sed "s/%/\\\\%/g" ${DIR}/PROJECT/makefile_macosx_universal/makefile64 | sed "s/PROJECT/%PROJECT_NAME%/g" > ${DIR}/actual_templates/project/makefile_macosx_universal/makefile64 &&
 #--- Makefile makefile_mingw_on_macosx
 rm -f ${DIR}/actual_templates/project/makefile_mingw_on_macosx/* &&
 cp ${DIR}/PROJECT/makefile_mingw_on_macosx/build.command ${DIR}/actual_templates/project/makefile_mingw_on_macosx/build.command &&

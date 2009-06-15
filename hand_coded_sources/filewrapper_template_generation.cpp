@@ -324,6 +324,18 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
    ioCppFile << " = NULL ;\n" ;
   }
+  const bool hasBeforeOrAfter = (mBeforeInstructionList.count () + mAfterInstructionList.count ()) > 0 ;
+  if (hasBeforeOrAfter) {
+    ioCppFile <<  "if (enumerator_" ;
+    ioCppFile.appendSigned (mInstructionLocation.location ()) ;
+    ioCppFile << ".hasCurrentObject ()) {\n" ;
+    ioCppFile.incIndentation (+2) ;
+    GGS_templateInstructionList::cEnumerator currentInstruction (mBeforeInstructionList, true) ;
+    while (currentInstruction.hasCurrentObject ()) {
+      currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+      currentInstruction.next () ;
+    }
+  }
   if (mNewEnumerationStyle.boolValue ()) {
     ioCppFile <<  "while (enumerator_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
@@ -367,6 +379,15 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
   }
   ioCppFile.incIndentation (-2) ;
   ioCppFile << "}\n" ;
+  if (hasBeforeOrAfter) {
+    GGS_templateInstructionList::cEnumerator currentInstruction (mAfterInstructionList, true) ;
+    while (currentInstruction.hasCurrentObject ()) {
+      currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+      currentInstruction.next () ;
+    }
+    ioCppFile.incIndentation (-2) ;
+    ioCppFile << "}\n" ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -378,6 +399,16 @@ isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
   while (instruction.hasCurrentObject () && ! used) {
     used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
     instruction.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction4 (mAfterInstructionList, true) ;
+  while (instruction4.hasCurrentObject () && ! used) {
+    used = instruction4._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    instruction4.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction3 (mBeforeInstructionList, true) ;
+  while (instruction3.hasCurrentObject () && ! used) {
+    used = instruction3._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    instruction3.next () ;
   }
   GGS_templateInstructionList::cEnumerator instruction2 (mBetweenInstructionList, true) ;
   while (instruction2.hasCurrentObject () && ! used) {
@@ -396,6 +427,16 @@ isUsingLexiqueArgument (void) const {
   while (instruction.hasCurrentObject () && ! used) {
     used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
     instruction.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction4 (mBeforeInstructionList, true) ;
+  while (instruction4.hasCurrentObject () && ! used) {
+    used = instruction4._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    instruction4.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction3 (mAfterInstructionList, true) ;
+  while (instruction3.hasCurrentObject () && ! used) {
+    used = instruction3._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    instruction3.next () ;
   }
   GGS_templateInstructionList::cEnumerator instruction2 (mBetweenInstructionList, true) ;
   while (instruction2.hasCurrentObject () && ! used) {

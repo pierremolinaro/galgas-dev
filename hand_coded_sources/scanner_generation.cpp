@@ -30,32 +30,6 @@
 
 //---------------------------------------------------------------------------*
 
-static bool
-instructions_list_uses_loop_variable (const GGS_tListeInstructionsLexicales & inList) {
-  bool use = false ;
-  GGS_tListeInstructionsLexicales::cEnumerator courant (inList, true) ;
-  while (courant.hasCurrentObject () && ! use) {
-    use = courant._attributInstruction (HERE) (HERE)->instruction__uses_loop_variable () ;
-    courant.next () ;
-  }
-  return use ;
-}
-
-//---------------------------------------------------------------------------*
-
-static bool
-instructions_list_uses_loop_variable (const GGS_typeListeTestsEtInstructions & inList) {
-  bool use = false ;
-  GGS_typeListeTestsEtInstructions::cEnumerator courant (inList, true) ;
-  while (courant.hasCurrentObject () && ! use) {
-    use = instructions_list_uses_loop_variable (courant._attributListeInstructions (HERE)) ;
-    courant.next () ;
-  }
-  return use ;
-}
-
-//---------------------------------------------------------------------------*
-
 static void
 generate_scanner_instructions_list (const GGS_tListeInstructionsLexicales & inList,
                                     const C_String & inLexiqueName,
@@ -368,10 +342,8 @@ generate_scanning_method (AC_OutputStream & inCppFile,
                "parseLexicalToken (void) {\n"
                "  cTokenFor_" << inLexiqueName << " token ;\n" ;
   inCppFile.incIndentation (+2) ;
-  if (instructions_list_uses_loop_variable (programme_principal)) {
-    inCppFile << "bool loop = true ;\n" ;
-  }
-  inCppFile << "token.mTokenCode = -1 ;\n"
+  inCppFile << "mLoop = true ;\n"
+               "token.mTokenCode = -1 ;\n"
                "while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n" ;
   if (inIsTemplate) {
     inCppFile << "  if ((mMatchedTemplateDelimiterIndex >= 0)\n"
@@ -464,10 +436,8 @@ generateScanningMethodForLexicalColoring (AC_OutputStream & inCppFile,
            << inLexiqueName
            << "::\n"
               "parseLexicalTokenForLexicalColoring (void) {\n"
-              "  cTokenFor_" << inLexiqueName << " token ;\n" ;
-   if (instructions_list_uses_loop_variable (programme_principal)) {
-     inCppFile << "  bool loop = true ;\n" ;
-   }
+              "  cTokenFor_" << inLexiqueName << " token ;\n"
+              "  mLoop = true ;\n" ;
   inCppFile.incIndentation (+2) ;
   inCppFile << "token.mTokenCode = -1 ;\n"
                "while (token.mTokenCode < 0) {\n" ;
@@ -559,13 +529,6 @@ generateExternArgument (AC_OutputStream & inCppFile) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionActionExterne::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeInstructionActionExterne::
 generate_scanner_instruction (const C_String &, //inLexiqueName
                               const bool /*inGenerateEnterToken */,
@@ -588,13 +551,6 @@ generate_scanner_instruction (const C_String &, //inLexiqueName
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionRepetitionLexicale::
-instruction__uses_loop_variable (void) const {
-  return true ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeInstructionRepetitionLexicale::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
@@ -607,24 +563,17 @@ generate_scanner_instruction (const C_String & inLexiqueName,
   generateScannerCode (attributListeBranches, inLexiqueName, inCppFile, inGenerateEnterToken, nonEmptyList, ioUnicodeStringToGenerate) ;
   if (nonEmptyList) {
     inCppFile << "}else{\n"
-                 "  loop = false ;\n"
+                 "  mLoop = false ;\n"
                  "}\n" ;
   }else{
-    inCppFile << "  loop = false ;\n" ;
+    inCppFile << "  mLoop = false ;\n" ;
   }
   inCppFile.incIndentation (-2) ;
-  inCppFile << "}while (loop) ;\n"
-               "loop = true ;\n" ;
+  inCppFile << "}while (mLoop) ;\n"
+               "mLoop = true ;\n" ;
 }
 
 //---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionSiLexical::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionSiLexical::
@@ -654,13 +603,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLexicalTagInstruction::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeLexicalTagInstruction::
 generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
@@ -672,13 +614,6 @@ generate_scanner_instruction (const C_String & /* inLexiqueName */,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLexicalLogInstruction::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeLexicalLogInstruction::
 generate_scanner_instruction (const C_String & /* inLexiqueName */,
                               const bool /* inGenerateEnterToken */,
@@ -688,13 +623,6 @@ generate_scanner_instruction (const C_String & /* inLexiqueName */,
 }
 
 //---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeLexicalRewindAndSendInstruction::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
 //---------------------------------------------------------------------------*
 
 void cPtr_typeLexicalRewindAndSendInstruction::
@@ -714,13 +642,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionEmettreSimple::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeInstructionEmettreSimple::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
@@ -737,13 +658,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeLexicalDropInstruction::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeLexicalDropInstruction::
 generate_scanner_instruction (const C_String & inLexiqueName,
                               const bool inGenerateEnterToken,
@@ -757,13 +671,6 @@ generate_scanner_instruction (const C_String & inLexiqueName,
 }
 
 //---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionEmettre::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionEmettre::
@@ -820,13 +727,6 @@ generateDefaultToken (const C_String &,
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
-bool cPtr_typeInstructionErreurLexicale::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
-//---------------------------------------------------------------------------*
-
 void cPtr_typeInstructionErreurLexicale::
 generate_scanner_instruction (const C_String &, // inLexiqueName
                               const bool /* inGenerateEnterToken */,
@@ -838,13 +738,6 @@ generate_scanner_instruction (const C_String &, // inLexiqueName
 }
 
 //---------------------------------------------------------------------------*
-//---------------------------------------------------------------------------*
-
-bool cPtr_typeInstructionLexicalWarning::
-instruction__uses_loop_variable (void) const {
-  return false ;
-}
-
 //---------------------------------------------------------------------------*
 
 void cPtr_typeInstructionLexicalWarning::
