@@ -1,4 +1,5 @@
 semantics lexiqueSemantics :
+import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -156,18 +157,6 @@ map @lexicalMessageMap {
 
 #---------------------------------------------------------------------------*
 
-enum @lexicalArgumentMode {
-  constructor lexicalInputMode ;
-  constructor lexicalInputOutputMode ;
-}{
-  reader lexicalFormalModeName :
-    lexicalInputMode       -> "!" ;
-    lexicalInputOutputMode -> "?!" ;
-  end reader ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @lexicalRoutineFormalArgumentList {
   @lexicalArgumentMode mLexicalFormalArgumentMode ;
   @lexicalTypeEnum mLexicalFormalArgumentType ;
@@ -180,6 +169,7 @@ map @lexicalRoutineMap {
   @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList ;
   @stringlist mErrorMessageList ;
   @string mReplacementRoutineName ; # If obsolete, the name of replacement routine
+  @bool mIsExtern ;
   insert insertKey error message "the '%K' lexical routine has been already declared" ;
   search searchKey error message "the '%K' lexical routine is not declared" ;
 }
@@ -197,6 +187,7 @@ map @lexicalFunctionMap {
   @lexicalFunctionFormalArgumentList mLexicalTypeList ;
   @lexicalTypeEnum mReturnedLexicalType ;
   @string mReplacementFunctionName ; # If obsolete, the name of replacement routine
+  @bool mIsExtern ;
   insert insertKey error message "the '%K' lexical function has been already declared" ;
   search searchKey error message "the '%K' lexical function is not declared" ;
 }
