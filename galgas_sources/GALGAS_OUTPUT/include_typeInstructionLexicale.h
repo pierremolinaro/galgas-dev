@@ -20,9 +20,6 @@
 class cPtr_typeInstructionLexicale : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual bool
-  instruction__uses_loop_variable (void) const = 0 ;
-
   public : virtual void
   generate_scanner_instruction (const C_String & inLexiqueName,
                                 const bool inGenerateEnterToken,

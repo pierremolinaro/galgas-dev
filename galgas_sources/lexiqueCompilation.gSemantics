@@ -279,11 +279,11 @@ override reader @lexicalRepeatInstruction generateInstructionCode
     outGeneratedCode .= "}else " ;
   end foreach ;
   outGeneratedCode .= "}else{\n"
-                      "  loop = false ;\n"
+                      "  mLoop = false ;\n"
                       "}\n" ;
   [!?outGeneratedCode decIndentation !2] ;
-  outGeneratedCode .= "}while (loop) ;\n"
-                      "loop = true ;\n" ;
+  outGeneratedCode .= "}while (mLoop) ;\n"
+                      "mLoop = true ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

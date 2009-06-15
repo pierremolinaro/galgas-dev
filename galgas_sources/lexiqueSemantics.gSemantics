@@ -41,6 +41,16 @@ enum @lexicalTypeEnum {
     lexicalType_double -> "appendDouble" ;
   end reader ;
 
+  reader appendArgumentOfMethod :
+    lexicalType_string -> "" ;
+    lexicalType_char   -> " COMMA_HERE" ;
+    lexicalType_uint   -> "" ;
+    lexicalType_uint64 -> "" ;
+    lexicalType_sint   -> "" ;
+    lexicalType_sint64 -> "" ;
+    lexicalType_double -> "" ;
+  end reader ;
+
   reader exportedCPPTypeName :
     lexicalType_string -> "GGS_lstring" ;
     lexicalType_char   -> "GGS_lchar" ;
@@ -48,7 +58,7 @@ enum @lexicalTypeEnum {
     lexicalType_uint64 -> "GGS_luint64" ;
     lexicalType_sint   -> "GGS_lsint" ;
     lexicalType_sint64 -> "GGS_lsint64" ;
-    lexicalType_double -> "GGS_double" ;
+    lexicalType_double -> "GGS_ldouble" ;
   end reader ;
 
   reader initialization :
