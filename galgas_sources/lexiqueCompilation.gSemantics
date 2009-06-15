@@ -425,7 +425,7 @@ override reader @lexicalImplicitRule generateCode
     outGeneratedCode .= ", " ;
     outGeneratedCode .= [[mName length] string] ;
     outGeneratedCode .= ", true)) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = " . inScannerClassName . "_1_" . [mName identifierRepresentation] . " ;\n" ;
+    outGeneratedCode .= "  token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
     outGeneratedCode .= "  enterToken (token) ;\n" ;
     outGeneratedCode .= "}else " ;
   end foreach ;
@@ -1125,7 +1125,7 @@ routine compileLexiqueComponent
       lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList !syntaxErrorMessage ;
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
-      tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ;
+      tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
       lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEntrySpelling string] ;
     end foreach ;
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist] ;
