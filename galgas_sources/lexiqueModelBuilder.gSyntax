@@ -606,7 +606,7 @@ rule <lexical_list_entry> ?!@lexicalListEntryList ioLexicalListEntryList :
   @lstring terminalSpelling ;
   select
     $->$ ;
-    $literal_string$ ? terminalSpelling ;
+    $terminal$ ? terminalSpelling ;
   or
     terminalSpelling := entrySpelling ;
   end select ;

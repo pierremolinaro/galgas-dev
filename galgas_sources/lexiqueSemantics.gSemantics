@@ -121,6 +121,7 @@ map @lexicalExplicitTokenListMap {
 sortedlist @tokenSortedlist {
   @uint mLength ;
   @string mName ;
+  @string mTerminalName ;
 }{
   mLength <, mName <
 }
