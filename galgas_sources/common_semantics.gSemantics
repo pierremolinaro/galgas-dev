@@ -4724,6 +4724,20 @@ class @templateInstructionForeach extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
+list @templateInstructionIfBranchList {
+  @typeExpression mExpression ;
+  @templateInstructionList mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionIf extends @templateInstruction {
+  @templateInstructionIfBranchList mTemplateInstructionIfBranchList feature nogetter ;
+  @templateInstructionList mElseInstructionList feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @EXsemanticContext {
   @M_filewrappers mFilewrappers ;
   @stringset mImportedSemanticComponents ;

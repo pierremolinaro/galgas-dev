@@ -457,7 +457,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
 } {
   template headerZone2 "lexique_header_template_zone_2.h.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
-    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
   ;
   template headerZone3 "lexique_header_template_zone_3.h.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
@@ -651,6 +651,7 @@ override method @lexicalFunctionInputArgument checkLexicalFunctionCallArgument
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
     ?replacementFunctionName
+    ?*
   ] ;
 #--- Obsolete function ?
   if replacementFunctionName != "" then
@@ -771,6 +772,7 @@ override method @lexicalFunctionInputArgument checkLexicalRoutineCallArgument
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
     ?replacementFunctionName
+    ?*
   ] ;
 #--- Obsolete function ?
   if replacementFunctionName != "" then
@@ -928,6 +930,7 @@ override method @lexicalRoutineInstruction checkLexicalInstruction
     ?lexicalRoutineFormalArgumentList
     ?routineErrorMessageList
     ?replacementRoutineName
+    ?*
   ] ;
 #--- Obsolete routine ?
   if replacementRoutineName != "" then
@@ -1069,9 +1072,31 @@ routine compileLexiqueComponent
 #--------------------------------------- Build lexical routine map
   @lexicalRoutineMap lexicalRoutineMap ;
   buildLexicalRoutineMap ?lexicalRoutineMap ;
+#--------------------------------------- Add extern routines
+  foreach [lexiqueComponentRoot mExternRoutineList] do
+    @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList [emptyList] ;
+    foreach mLexicalRoutineFormalArgumentList do
+      @lexicalTypeEnum lexicalFormalArgumentType ;
+      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType] ;
+      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string] ;
+    end foreach ;
+    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !"" !true] ;
+  end foreach ;
 #--------------------------------------- Build lexical function map
   @lexicalFunctionMap lexicalFunctionMap ;
   buildLexicalFunctionMap ?lexicalFunctionMap ;
+#--------------------------------------- Add extern functions
+  foreach [lexiqueComponentRoot mExternFunctionList] do
+    @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList [emptyList] ;
+    foreach mLexicalFunctionFormalArgumentList do
+      @lexicalTypeEnum lexicalFormalArgumentType ;
+      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType] ;
+      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string] ;
+    end foreach ;
+    @lexicalTypeEnum returnedArgumentType ;
+    [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType] ;
+    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
+  end foreach ;
 #--------------------------------------- Build lexical attribute map
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
     !lexicalRoutineMap
@@ -1155,7 +1180,7 @@ routine compileLexiqueComponent
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.headerZone2
          !lexiqueClassName
-         ![lexiqueAnalysisContext mLexicalAttributeMap]
+         !lexiqueAnalysisContext
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.headerZone3

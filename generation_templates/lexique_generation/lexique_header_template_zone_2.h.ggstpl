@@ -16,13 +16,51 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                          Lexical scanner class                            *
+//                    E X T E R N    R O U T I N E S                         *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
+    if mIsExtern then
+      %\nvoid scanner_routine_%([key string])% (C_Lexique & inLexique%
+      foreach mLexicalRoutineFormalArgumentList do
+        %,\n                %([mLexicalFormalArgumentMode cppConstInFormalArgument])
+                             ([mLexicalFormalArgumentType cppTypeName])
+                             ([mLexicalFormalArgumentMode cppReferenceInFormalArgument])
+                             % %mArgumentNameForComment
+      end foreach
+      foreach mErrorMessageList do
+        %,\n                const char * %mValue
+      end foreach
+      %) ;\n%
+    end if
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                    E X T E R N    F U N C T I O N S                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
+    if mIsExtern then
+      %\n%([mReturnedLexicalType cppTypeName])% scanner_function_%([key string])% (C_Lexique & inLexique%
+      foreach mLexicalTypeList do
+        %,\n                const %([mLexicalType cppTypeName])% %mArgumentNameForComment
+      end foreach
+      %) ;\n%
+    end if
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                       T O K E N    C L A S S                              *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
 class cTokenFor_%LEXIQUE_CLASS_NAME% : public cToken {
 %
-  foreach LEXICAL_ATTRIBUTE_MAP do
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
     %  public : %([mLexicalType cppTypeName])% mLexicalAttribute_%([key string])% ;\n%
   end foreach
 %
@@ -31,7 +69,7 @@ class cTokenFor_%LEXIQUE_CLASS_NAME% : public cToken {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                          Lexical scanner class                            *
+//                     S C A N N E R    C L A S S                            *
 //                                                                           *
 //---------------------------------------------------------------------------*
 

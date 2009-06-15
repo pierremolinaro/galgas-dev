@@ -61,6 +61,11 @@ nonterminal <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorLis
 
 nonterminal <template_replacement> ?!@templateReplacementList ioTemplateReplacementList ;
 
+nonterminal <extern_routine_or_function_declaration>
+  ?!@externRoutineList ioExternRoutineList
+  ?!@externFunctionList ioExternFunctionList
+;
+
 #---------------------------------------------------------------------------*
 
 rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponentRoot :
@@ -74,6 +79,8 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
   @lexicalMessageDeclarationList lexicalMessageDeclarationList [emptyList] ;
   @lexicalListDeclarationList lexicalListDeclarationList [emptyList] ;
   @lexicalRuleList lexicalRuleList [emptyList] ;
+  @externRoutineList externRoutineList [emptyList] ;
+  @externFunctionList externFunctionList [emptyList] ;
   select
     isTemplate := true ;
     $template$ ;
@@ -84,8 +91,10 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
 #--- Lexique Component Name
   $identifier$ ? lexiqueComponentName ;
   $:$ ;
-#--- Parse the option list
+#--- Parse lexique body
   repeat
+  while 
+    <extern_routine_or_function_declaration> !? externRoutineList !? externFunctionList ;
   while 
     <template_delimitor> !? templateDelimitorList ;
   while 
@@ -123,6 +132,8 @@ rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponent
     !lexicalMessageDeclarationList
     !lexicalListDeclarationList
     !lexicalRuleList
+    !externRoutineList
+    !externFunctionList
   ] ;
 end rule ;
 
@@ -667,13 +678,67 @@ end rule ;
 
 rule <style_declaration> ?!@lexicalStyleList ioLexicalStyleList :
   $style$ ;
-  @lstring name ;
-  $identifier$ ? name  ;
+  $identifier$ ?@lstring name  ;
   $->$ ;
-  @lstring comment ;
-  $literal_string$ ? comment ;
+  $literal_string$ ?@lstring comment ;
   $;$ ;
   ioLexicalStyleList += !name !comment ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <extern_routine_or_function_declaration>
+  ?!@externRoutineList ioExternRoutineList
+  ?!@externFunctionList ioExternFunctionList
+:
+  $extern$ ;
+  select
+    $routine$ ;
+    $identifier$ ?@lstring routineName ;
+    @lexicalExternRoutineFormalArgumentList lexicalRoutineFormalArgumentList [emptyList] ;
+    repeat
+    while
+      @lexicalArgumentMode lexicalArgumentMode ;
+      select
+        $?!$ ;
+        lexicalArgumentMode := [@lexicalArgumentMode lexicalInputOutputMode] ;
+      or
+        $?$ ;
+        lexicalArgumentMode := [@lexicalArgumentMode lexicalInputMode] ;
+      end select ;
+      $type_name$ ?@lstring lexicalTypeName ;
+      $identifier$ ?@lstring formalArgumentName ;
+      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName ;
+    end repeat ;
+    @stringlist errorMessageList [emptyList] ;
+    select
+    or
+      $error$ ;
+      repeat
+        $identifier$ ?@lstring errorMessageName ;
+        errorMessageList += ![errorMessageName string] ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+    $;$ ;      
+    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList ;
+  or
+    $function$ ;
+    $identifier$ ?@lstring functionName ;
+    @lexicalExternFunctionFormalArgumentList lexicalFunctionFormalArgumentList [emptyList] ;
+    repeat
+    while
+      $?$ ;
+      $type_name$ ?@lstring lexicalTypeName ;
+      $identifier$ ?@lstring formalArgumentName ;
+      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName ;
+    end repeat ;
+    $->$ ;
+    $type_name$ ?@lstring returnedTypeName ;
+    $;$ ;      
+    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName ;
+  end select ;
 end rule ;
 
 #---------------------------------------------------------------------------*

@@ -215,6 +215,8 @@ extern routine generate_scanner
   ??@tokensInListMap inTokensInListMap
 ;
 
+nonterminal <extern_routine_or_function_declaration> ;
+
 #-------------------------------------------------------------------*
 
 routine buildLexicalTypeMap !@EXLexicalTypeMap outLexicalTypeMap :
@@ -290,6 +292,8 @@ rule <galgas_component>
   @styleList styleList [emptyList] ;
   styleList += !"" !"Default style" ;
   repeat
+  while 
+    <extern_routine_or_function_declaration> ;
   while 
     <style_declaration> !?stylesMap !?styleList ;
   while
@@ -396,6 +400,8 @@ label importLexique
   styleList += !"" !"Default style" ;
   repeat
   while 
+    <extern_routine_or_function_declaration> ;
+  while 
     <style_declaration> !? stylesMap !? styleList ;
   while
     <template_declaration> parse ;
@@ -445,6 +451,8 @@ label importSyntax
   $:$ ;
   repeat
   while 
+    <extern_routine_or_function_declaration> ;
+  while 
     <style_declaration> parse;
   while
     <template_declaration> parse ;
@@ -477,6 +485,8 @@ label importSemantics
   $identifier$ ? * ;
   $:$ ;
   repeat
+  while 
+    <extern_routine_or_function_declaration> ;
   while 
     <style_declaration> parse ;
   while
@@ -511,6 +521,8 @@ label importGrammarForSemantics
   $:$ ;
   repeat
   while 
+    <extern_routine_or_function_declaration> ;
+  while 
     <style_declaration> parse ;
   while
     <template_declaration> parse ;
@@ -541,6 +553,8 @@ label importOptions
   $identifier$ ? * ;
   $:$ ;
   repeat
+  while 
+    <extern_routine_or_function_declaration> ;
   while 
     <style_declaration> parse ;
   while
@@ -1427,6 +1441,47 @@ rule <lexical_send_or_error>
   [tableMessagesErreurs searchKeyGetID !errorMessageName ?errorMessageIndex ?*] ;
   ioUsedErrorMessageSet += ![errorMessageName string] ;
   emissionParDefaut := [@typeEmissionErreurParDefaut new !errorMessageIndex] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <extern_routine_or_function_declaration>
+:
+  $extern$ ;
+  select
+    $routine$ ;
+    $identifier$ ?* ;
+    repeat
+    while
+      select
+        $?!$ ;
+      or
+        $?$ ;
+      end select ;
+      $type_name$ ?* ;
+      $identifier$ ?* ;
+    end repeat ;
+    select
+    or
+      $error$ ;
+      repeat
+        $identifier$ ?* ;
+      while
+        $,$ ;
+      end repeat ;
+    end select ;
+    $;$ ;      
+  or
+    $function$ ;
+    $identifier$ ?* ;
+    repeat
+    while
+      $?$ ;
+      $type_name$ ?* ;
+      $identifier$ ?* ;
+    end repeat ;
+    $;$ ;      
+  end select ;
 end rule ;
 
 #-------------------------------------------------------------------*

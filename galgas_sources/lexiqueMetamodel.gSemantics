@@ -340,6 +340,59 @@ class @lexicalLogInstruction extends @lexicalInstruction {
 
 #---------------------------------------------------------------------------*
 
+enum @lexicalArgumentMode {
+  constructor lexicalInputMode ;
+  constructor lexicalInputOutputMode ;
+}{
+  reader lexicalFormalModeName :
+    lexicalInputMode       -> "!" ;
+    lexicalInputOutputMode -> "?!" ;
+  end reader ;
+
+  reader cppConstInFormalArgument :
+    lexicalInputMode       -> "const " ;
+    lexicalInputOutputMode -> "" ;
+  end reader ;
+
+  reader cppReferenceInFormalArgument :
+    lexicalInputMode       -> "" ;
+    lexicalInputOutputMode -> " &" ;
+  end reader ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalExternRoutineFormalArgumentList {
+  @lexicalArgumentMode mPassingMode ;
+  @lstring mLexicalTypeName ;
+  @lstring mFormalArgumentName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @externRoutineList {
+  @lstring mRoutineName ;
+  @lexicalExternRoutineFormalArgumentList mLexicalRoutineFormalArgumentList ;
+  @stringlist mErrorMessageList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalExternFunctionFormalArgumentList {
+  @lstring mLexicalTypeName ;
+  @lstring mFormalArgumentName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @externFunctionList {
+  @lstring mFunctionName ;
+  @lexicalExternFunctionFormalArgumentList mLexicalFunctionFormalArgumentList ;
+  @lstring mReturnedTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @lexiqueComponentRoot {
   @lstring mLexiqueComponentName  ;
   @bool mIsTemplate feature nogetter ;
@@ -351,6 +404,8 @@ class @lexiqueComponentRoot {
   @lexicalMessageDeclarationList mLexicalMessageDeclarationList ;
   @lexicalListDeclarationList mLexicalListDeclarationList  ;
   @lexicalRuleList mLexicalRuleList ;
+  @externRoutineList mExternRoutineList ;
+  @externFunctionList mExternFunctionList  ;
 }
 
 #---------------------------------------------------------------------------*

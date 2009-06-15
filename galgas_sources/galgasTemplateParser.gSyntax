@@ -305,6 +305,74 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+rule <template_instruction>
+  ?!@typeVariablesMap ioTemplateVariableMap
+  ??@EXsemanticContext inSemanticContext
+  ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+:
+  $if$ ;
+  @templateInstructionIfBranchList templateInstructionIfBranchList [emptyList] ;
+  repeat
+    @typeExpression expression ;
+    @AC_galgasType expressionType ;
+    <expression>
+      !inComponentSemanticsEntitiesMap
+      !inSemanticContext
+      !inOptionsComponentsMapForUse
+      !?ioTemplateVariableMap
+      ?expression
+      ?expressionType
+    ;
+    @typeGalgas_bool x := (cast expressionType if >= @typeGalgas_bool else error here) ;
+    $then$ ;
+    @templateInstructionList instructionList [emptyList] ;
+    enterTemplateString !? instructionList ;
+    repeat
+    while
+      <template_instruction>
+        !?ioTemplateVariableMap
+        !inSemanticContext
+        !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?instructionList
+      ;
+      enterTemplateString !? instructionList ;
+    end repeat ;
+    templateInstructionIfBranchList += !expression !instructionList ;
+  while
+    $elsif$ ;
+  end repeat ;
+#--- else
+  @templateInstructionList elseInstructionList [emptyList] ;
+  select
+  or
+    $else$ ;
+    enterTemplateString !?elseInstructionList ;
+    repeat
+    while
+      <template_instruction>
+        !?ioTemplateVariableMap
+        !inSemanticContext
+        !inComponentSemanticsEntitiesMap
+        !inOptionsComponentsMapForUse
+        !?elseInstructionList
+      ;
+      enterTemplateString !?elseInstructionList ;
+    end repeat ;
+  end select ;
+#---
+  $end$ ;
+  $if$ ;
+  ioResultingInstructionList += ![@templateInstructionIf new
+    !templateInstructionIfBranchList
+    !elseInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <lexique_component_start_symbol>
   ?!@typeVariablesMap ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext

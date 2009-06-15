@@ -449,6 +449,88 @@ isUsingLexiqueArgument (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cPtr_templateInstructionIf
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_templateInstructionIf::
+generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
+  GGS_templateInstructionIfBranchList::cEnumerator branch (mTemplateInstructionIfBranchList, true) ;
+  while (branch.hasCurrentObject ()) {
+    ioCppFile << "if (" ;
+    branch._mExpression (HERE) (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << ".boolValue ()) {\n" ;
+    ioCppFile.incIndentation (+2) ;
+    GGS_templateInstructionList::cEnumerator instruction (branch._mInstructionList (HERE), true) ;
+    while (instruction.hasCurrentObject ()) {
+      instruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+      instruction.next () ;
+    }
+    ioCppFile.incIndentation (-2) ;
+    ioCppFile << "}else " ;
+    branch.next () ;
+  }
+  ioCppFile << "{\n" ;
+  ioCppFile.incIndentation (+2) ;
+  GGS_templateInstructionList::cEnumerator instruction (mElseInstructionList, true) ;
+  while (instruction.hasCurrentObject ()) {
+    instruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+    instruction.next () ;
+  }
+  ioCppFile.incIndentation (-2) ;
+  ioCppFile << "}\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionIf::
+isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
+  bool used = false ;
+  GGS_templateInstructionIfBranchList::cEnumerator branch (mTemplateInstructionIfBranchList, true) ;
+  while (branch.hasCurrentObject () && ! used) {
+    used = branch._mExpression (HERE) (HERE)->formalArgumentIsUsedForTest (inCppName) ;
+    GGS_templateInstructionList::cEnumerator instruction (branch._mInstructionList (HERE), true) ;
+    while (instruction.hasCurrentObject () && ! used) {
+      used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+      instruction.next () ;
+    }
+    branch.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction (mElseInstructionList, true) ;
+  while (instruction.hasCurrentObject () && ! used) {
+    used = instruction._mInstruction (HERE) (HERE)->isConstantUsed (inCppName) ;
+    instruction.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_templateInstructionIf::
+isUsingLexiqueArgument (void) const {
+  bool used = false ;
+  GGS_templateInstructionIfBranchList::cEnumerator branch (mTemplateInstructionIfBranchList, true) ;
+  while (branch.hasCurrentObject () && ! used) {
+    used = branch._mExpression (HERE) (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+    GGS_templateInstructionList::cEnumerator instruction (branch._mInstructionList (HERE), true) ;
+    while (instruction.hasCurrentObject () && ! used) {
+      used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+      instruction.next () ;
+    }
+    branch.next () ;
+  }
+  GGS_templateInstructionList::cEnumerator instruction (mElseInstructionList, true) ;
+  while (instruction.hasCurrentObject () && ! used) {
+    used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;
+    instruction.next () ;
+  }
+  return used ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Filewrapper template call
 #endif
 
