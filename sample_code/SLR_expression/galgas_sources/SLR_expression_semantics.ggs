@@ -1,5 +1,5 @@
 semantics SLR_expression_semantics :
-import option SLR_expression_options in "SLR_expression_options.ggs" ;
+import option SLR_expression_options in "SLR_expression_options.gOption" ;
 
 abstract class @cExpression {
 }

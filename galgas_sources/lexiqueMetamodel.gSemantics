@@ -37,7 +37,7 @@ list @lexicalInstructionList {
 
 #---------------------------------------------------------------------------*
 
-list @templateDelimitorList {
+list @metamodelTemplateDelimitorList {
   @lstring mStartString ;
   @lstringlist mOptionList ;
   @lstring mEndString ;
@@ -396,10 +396,10 @@ list @externFunctionList {
 class @lexiqueComponentRoot {
   @lstring mLexiqueComponentName  ;
   @bool mIsTemplate feature nogetter ;
-  @templateDelimitorList mTemplateDelimitorList feature nogetter ;
-  @templateReplacementList mTemplateReplacementList feature nogetter ;
+  @metamodelTemplateDelimitorList mTemplateDelimitorList ;
+  @templateReplacementList mTemplateReplacementList ;
   @lexicalAttributeList mLexicalAttributeList  ;
-  @lexicalStyleList mLexicalStyleList feature nogetter ;
+  @lexicalStyleList mLexicalStyleList ;
   @terminalDeclarationList mTerminalDeclarationList  ;
   @lexicalMessageDeclarationList mLexicalMessageDeclarationList ;
   @lexicalListDeclarationList mLexicalListDeclarationList  ;

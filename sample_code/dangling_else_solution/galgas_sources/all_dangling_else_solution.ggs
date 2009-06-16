@@ -1,6 +1,6 @@
 project all_dangling_else_solution:
-  lexique "dangling_else_solution_lexique.ggs" : makefile, xcode_tool, xcode_app ;
-  option "dangling_else_solution_options.ggs" : makefile, xcode_tool, xcode_app ;
+  lexique "dangling_else_solution_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
+  option "dangling_else_solution_options.gOption" : makefile, xcode_tool, xcode_app ;
   semantics "dangling_else_solution_semantics.ggs" : makefile, xcode_tool ;
   syntax "dangling_else_solution_syntax.ggs" : makefile, xcode_tool ;
   grammar "dangling_else_solution_grammar.ggs" : makefile, xcode_tool ;

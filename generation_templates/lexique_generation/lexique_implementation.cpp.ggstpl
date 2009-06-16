@@ -48,7 +48,11 @@ cTokenFor_%LEXIQUE_CLASS_NAME%::cTokenFor_%LEXIQUE_CLASS_NAME% (void)%
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE) {
+C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE)%
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+    %,\nmMatchedTemplateDelimiterIndex (-1)%
+  end if
+% {
 }
 
 //---------------------------------------------------------------------------*
@@ -59,7 +63,11 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE) {
+C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE)%
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+    %,\nmMatchedTemplateDelimiterIndex (-1)%
+  end if
+% {
 }
 
 //---------------------------------------------------------------------------*
@@ -107,7 +115,7 @@ appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,
 //---------------------------------------------------------------------------*
 %
   foreach STRINGS_IN_EXPLICIT_RULES do
-   %\n//--- Unicode string for '$%key%$'\n%
+   %\n//--- Unicode string for '$%([key identifierRepresentation])%$'\n%
    %static const utf32 kUnicodeString_%([key identifierRepresentation])% [] = % ([key utf32StringConstantRepresentation])% ;\n%
   end foreach
 %
@@ -166,6 +174,62 @@ end foreach
 
 //---------------------------------------------------------------------------*
 //                                                                           *
+//                           Template Delimiters                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+% foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
+    before %static const templateDelimiterStruct kTemplateDefinitionArray [%([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%] = {\n%
+    do %  {kUnicodeString_%([mStartString identifierRepresentation])%, %([[mStartString length] string])%, %
+      if [mEndString length] == 0 then
+        %NULL, 0,%
+      else
+        %kUnicodeString_%([mEndString identifierRepresentation])%, %([[mEndString length] string])%,%
+      end if
+      % NULL, %
+      ([not mPreservesStartDelimiter string])
+      %}%
+    between %,\n%
+    after %\n} ;\n%
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                           Template Replacements                           *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+% foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
+    before %static const templateDelimiterStruct kTemplateReplacementArray [%([[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string])%] = {\n%
+    do
+      %  {kUnicodeString_%([mMatchString identifierRepresentation])%, %([[mMatchString length] string])%, %
+      %kUnicodeString_%([mReplacementString identifierRepresentation])%, %([[mReplacementString length] string])%, %
+      if [mReplacementFunction length] == 0 then
+        %NULL%
+      else
+        %scanner_routine_%([mReplacementFunction string])
+      end if
+      %, true}%
+    between %,\n%
+    after %\n} ;\n%
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//            Terminal Symbols as end of script in template mark             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+% foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+    before %static const bool kEndOfScriptInTemplateArray [%([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])%] = {\n%
+    do %  %([mIsEndOfTemplateMark string])% /* %([mTerminalName string])% */%
+    between %,\n%
+    after %\n} ;\n%
+  end foreach
+%
+
+//---------------------------------------------------------------------------*
+//                                                                           *
 //               P A R S E    L E X I C A L    T O K E N                     *
 //                                                                           *
 //---------------------------------------------------------------------------*
@@ -177,6 +241,68 @@ parseLexicalToken (void) {
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
 %
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+%    if ((mMatchedTemplateDelimiterIndex >= 0)
+     && (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
+     && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+      const bool foundEndDelimitor = testForInputUTF32String (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
+                                                              kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
+                                                              true) ;
+      if (foundEndDelimitor) {
+        mMatchedTemplateDelimiterIndex = -1 ;
+      }
+    }
+    while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+      sint32 replacementIndex = 0 ;
+      while (replacementIndex >= 0) {
+        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 6) ;
+        if (replacementIndex >= 0) {
+          if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
+            token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
+          }else{
+            C_String s ;
+            while (notTestForInputUTF32String (kTemplateReplacementArray [replacementIndex].mEndString,
+                                               kTemplateReplacementArray [replacementIndex].mEndStringLength,
+                                               kEndOfSourceLexicalErrorMessage
+                                               COMMA_HERE)) {
+              s.appendUnicodeCharacter (previousChar () COMMA_HERE) ;
+            }
+            kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
+          }
+        }
+      }
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, 1) ;
+      if (mMatchedTemplateDelimiterIndex < 0) {
+        token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
+        advance () ;
+      }
+    }
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+%  foreach LEXICAL_ATTRIBUTE_MAP do
+    %    token.mLexicalAttribute_%([key string]) ([mLexicalType initialization]) % ;\n%
+  end foreach
+%    mTokenFirstLocation = mCurrentLocation ;
+    try{
+%
+  block 8 :
+    foreach LEXICAL_RULE_LIST do
+      ([mLexicalRule generateCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT])
+    end foreach
+  end block
+%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+          token.mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+        }else{ // Unknown input character
+          unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+        }
+      }catch (const C_lexicalErrorException &) {
+        token.mTokenCode = -1 ; // No token
+        advance () ; // ... go throught unknown character
+      }
+    }
+    if ((token.mTokenCode > 0) && kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
+      mMatchedTemplateDelimiterIndex = -1 ;
+    }
+  %else
   foreach LEXICAL_ATTRIBUTE_MAP do
     %    token.mLexicalAttribute_%([key string]) ([mLexicalType initialization]) % ;\n%
   end foreach
@@ -196,7 +322,7 @@ parseLexicalToken (void) {
     }catch (const C_lexicalErrorException &) {
       token.mTokenCode = -1 ; // No token
       advance () ; // ... go throught unknown character
-    }
+    }%end if%
   }
   if ((UNICODE_VALUE (mCurrentChar) == '\0') && (token.mTemplateStringBeforeToken.length () > 0)) {
     token.mTokenCode = 0 ;

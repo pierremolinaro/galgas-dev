@@ -1,7 +1,7 @@
 
 //--- Terminal symbols enumeration
   public : enum {%LEXIQUE_CLASS_NAME%_1_%
-    foreach TERMINAL_LIST do
+    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
       %,\n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
     end foreach
   %} ;
@@ -34,7 +34,7 @@
                                                               C_String & messageErreur) ;
 
 //--- Get terminal count
-  public : virtual sint16 terminalVocabularyCount (void) const { return %([[TERMINAL_LIST length] string])% ; }
+  public : virtual sint16 terminalVocabularyCount (void) const { return %([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])% ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

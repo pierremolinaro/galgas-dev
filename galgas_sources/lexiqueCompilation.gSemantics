@@ -458,10 +458,10 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template headerZone2 "lexique_header_template_zone_2.h.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
   template headerZone3 "lexique_header_template_zone_3.h.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
-    ?@terminalList TERMINAL_LIST
     ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
   ;
@@ -474,6 +474,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleList LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
 }
 
@@ -1097,7 +1098,7 @@ routine compileLexiqueComponent
     [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType] ;
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
   end foreach ;
-#--------------------------------------- Build lexical attribute map
+#--------------------------------------- Build lexical analysis context struct
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
     !lexicalRoutineMap
     !lexicalFunctionMap
@@ -1107,6 +1108,7 @@ routine compileLexiqueComponent
     ![@lexicalAttributeMap emptyMap]
     ![@lexicalExplicitTokenListMapMap emptyMap]
     ![@stringset emptySet]
+    ![@templateDelimitorList emptyList]
   ] ;
   foreach [lexiqueComponentRoot mLexicalAttributeList] do
     if [lexicalTypeMap hasKey ![mTypeName string]] then
@@ -1134,7 +1136,17 @@ routine compileLexiqueComponent
       argumentTypeList += ![kAttributeName string] !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList] ;
-    lexiqueAnalysisContext.mTerminalList += !mName !argumentTypeList ![mSyntaxErrorMessage string] ;
+    @bool isEndOfTemplateMark := false ;
+    foreach mOptionList do
+      if [mValue string] != "templateEndMark" then
+        error mValue:"only the 'templateEndMark' feature is allowed here" ;
+      elsif isEndOfTemplateMark then
+        error mValue:"the 'templateEndMark' feature is already set" ;
+      else
+        isEndOfTemplateMark := true ;
+      end if ;
+     end foreach ;
+    lexiqueAnalysisContext.mTerminalList += !mName !argumentTypeList ![mSyntaxErrorMessage string] !isEndOfTemplateMark ;
   end foreach ;
   foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
     @lexicalSentValueList argumentTypeList [emptyList] ;
@@ -1147,7 +1159,17 @@ routine compileLexiqueComponent
     @tokenSortedlist tokenSortedlist [emptySortedList] ;
     foreach mEntryList do
       @string syntaxErrorMessage := [mSyntaxErrorMessage stringByReplacingStringByString !"%K" ![mTerminalSpelling string]] ;
-      lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList !syntaxErrorMessage ;
+      @bool isEndOfTemplateMark := false ;
+      foreach mFeatureList do
+        if [mValue string] != "templateEndMark" then
+          error mValue:"only the 'templateEndMark' feature is allowed here" ;
+        elsif isEndOfTemplateMark then
+          error mValue:"the 'templateEndMark' feature is already set" ;
+        else
+          isEndOfTemplateMark := true ;
+        end if ;
+      end foreach ;
+      lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList !syntaxErrorMessage !isEndOfTemplateMark ;
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
       tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
@@ -1169,6 +1191,28 @@ routine compileLexiqueComponent
       warning key:"unused message" ;
     end if ;
   end foreach ;
+#--------------------------------------- Template delimiters
+  foreach [lexiqueComponentRoot mTemplateDelimitorList] do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string] ;
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string] ;
+   @bool preservesStartDelimiter := false ;
+   foreach mOptionList do
+     if [mValue string] != "preserved" then
+       error mValue:"only the 'preserved' feature is allowed here" ;
+     elsif preservesStartDelimiter then
+       error mValue:"the 'preserved' feature is already set" ;
+     else
+       preservesStartDelimiter := true ;
+     end if ;
+   end foreach ;
+   lexiqueAnalysisContext. mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
+  end foreach ;
+#--------------------------------------- Template replacements
+  foreach [lexiqueComponentRoot mTemplateReplacementList] do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string] ;
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string] ;
+   # § TODO Check replacement function
+  end foreach ;
 #--------------------------------------- Build Header file
   @string lexiqueClassName := [componentName string] ;
 #--- Generate header file
@@ -1181,11 +1225,11 @@ routine compileLexiqueComponent
       ![filewrapper lexiqueGenerationTemplates.headerZone2
          !lexiqueClassName
          !lexiqueAnalysisContext
+         !lexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.headerZone3
          !lexiqueClassName
-         ![lexiqueAnalysisContext mTerminalList]
          ![lexiqueComponentRoot mLexicalListDeclarationList]
          !lexiqueAnalysisContext
        ]
@@ -1207,6 +1251,7 @@ routine compileLexiqueComponent
          ![lexiqueAnalysisContext mUnicodeStringToGenerate]
          ![lexiqueComponentRoot mLexicalRuleList]
          !lexiqueAnalysisContext
+         !lexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3

@@ -1,6 +1,6 @@
 syntax xcode_project_generation_syntax :
-import lexique xcode_project_generation_lexique in "xcode_project_generation_lexique.ggs" ;
-import option xcode_project_generation_options in "xcode_project_generation_options.ggs" ;
+import lexique xcode_project_generation_lexique in "xcode_project_generation_lexique.gLexique" ;
+import option xcode_project_generation_options in "xcode_project_generation_options.gOption" ;
 import semantics xcode_project_generation_semantics in "xcode_project_generation_semantics.ggs" ;
 
 # ADD YOUR CODE HERE

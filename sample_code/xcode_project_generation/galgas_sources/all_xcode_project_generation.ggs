@@ -5,8 +5,8 @@ project all_xcode_project_generation:
   semantics "generateProjectWithGroupsAndFiles.ggs" : makefile, xcode_tool ;
   semantics "generateCommandLineToolTarget.ggs" : makefile, xcode_tool ;
 #---
-  lexique   "xcode_project_generation_lexique.ggs" : makefile, xcode_tool, xcode_app ;
-  option    "xcode_project_generation_options.ggs" : makefile, xcode_tool, xcode_app ;
+  lexique   "xcode_project_generation_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
+  option    "xcode_project_generation_options.gOption" : makefile, xcode_tool, xcode_app ;
   semantics "xcode_project_generation_semantics.ggs" : makefile, xcode_tool ;
   syntax    "xcode_project_generation_syntax.ggs" : makefile, xcode_tool ;
   grammar   "xcode_project_generation_grammar.ggs" : makefile, xcode_tool ;
