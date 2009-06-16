@@ -255,7 +255,7 @@ parseLexicalToken (void) {
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       sint32 replacementIndex = 0 ;
       while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 6) ;
+        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, %([[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string])%) ;
         if (replacementIndex >= 0) {
           if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
             token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
@@ -271,7 +271,7 @@ parseLexicalToken (void) {
           }
         }
       }
-      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, 1) ;
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, %([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
         advance () ;
