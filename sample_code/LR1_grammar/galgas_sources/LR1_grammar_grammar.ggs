@@ -1,6 +1,6 @@
 grammar LR1_grammar_grammar "LR1":
-import lexique LR1_grammar_lexique in "LR1_grammar_lexique.ggs" ;
-import option LR1_grammar_options in "LR1_grammar_options.ggs" ;
+import lexique LR1_grammar_lexique in "LR1_grammar_lexique.gLexique" ;
+import option LR1_grammar_options in "LR1_grammar_options.gOption" ;
 import syntax LR1_grammar_syntax in "LR1_grammar_syntax.ggs" ;
 
 root <S> ;

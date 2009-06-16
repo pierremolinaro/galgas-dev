@@ -57,7 +57,7 @@ nonterminal <lexical_factor> !@lexicalExpression outExpression ;
 
 nonterminal <repeat_while_branch> ?!@lexicalWhileBranchList ioLexicalWhileBranchList ;
 
-nonterminal <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList ;
+nonterminal <template_delimitor> ?!@metamodelTemplateDelimitorList ioTemplateDelimitorList ;
 
 nonterminal <template_replacement> ?!@templateReplacementList ioTemplateReplacementList ;
 
@@ -71,7 +71,7 @@ nonterminal <extern_routine_or_function_declaration>
 rule <lexique_component_start_symbol> !@lexiqueComponentRoot outLexiqueComponentRoot :
   @lstring lexiqueComponentName ;
   @bool isTemplate ;
-  @templateDelimitorList templateDelimitorList [emptyList] ;
+  @metamodelTemplateDelimitorList templateDelimitorList [emptyList] ;
   @templateReplacementList templateReplacementList [emptyList] ;
   @lexicalAttributeList lexicalAttributeList [emptyList] ;
   @lexicalStyleList lexicalStyleList [emptyList] ;
@@ -139,7 +139,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <template_delimitor> ?!@templateDelimitorList ioTemplateDelimitorList :
+rule <template_delimitor> ?!@metamodelTemplateDelimitorList ioTemplateDelimitorList :
   $template$ ;
   @lstring startString ;
   $literal_string$ ? startString ;

@@ -1,6 +1,6 @@
 syntax SLR_expression_syntax :
-import lexique SLR_expression_lexique in "SLR_expression_lexique.ggs" ;
-import option SLR_expression_options in "SLR_expression_options.ggs" ;
+import lexique SLR_expression_lexique in "SLR_expression_lexique.gLexique" ;
+import option SLR_expression_options in "SLR_expression_options.gOption" ;
 import semantics SLR_expression_semantics in "SLR_expression_semantics.ggs" ;
 
 nonterminal <StartSymbol> ;
