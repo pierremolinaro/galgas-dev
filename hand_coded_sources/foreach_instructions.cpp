@@ -118,8 +118,8 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeForeachInstruction::
 generateSimpleInstruction (AC_OutputStream & ioCppFile,
                            const C_String & inTargetFileName,
-													 sint32 & ioPrototypeIndex,
-													 const bool inGenerateDebug) const {
+                           sint32 & ioPrototypeIndex,
+                           const bool inGenerateDebug) const {
   ioCppFile << "{\n" ;
   ioCppFile.incIndentation (+2) ;
 //--- Generate index variable declaration, and initialization to zero
@@ -214,8 +214,8 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
 void cPtr_typeForeachInstruction::
 generateInstructionWithOptions (AC_OutputStream & ioCppFile,
                                 const C_String & inTargetFileName,
-													      sint32 & ioPrototypeIndex,
-													      const bool inGenerateDebug) const {
+                                sint32 & ioPrototypeIndex,
+                                const bool inGenerateDebug) const {
   ioCppFile << "{\n" ;
   ioCppFile.incIndentation (+2) ;
 //--- Declare enumerators
@@ -244,8 +244,8 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
     enumeratedVariable.next () ;
   }
 //--- Test if enumerated objects have element, and if while expression is initially true
-	enumeratedVariable.rewind () ;
-	const sint32 locationForLoopVar = enumeratedVariable._mLocationOffset (HERE).location () ;
+  enumeratedVariable.rewind () ;
+  const sint32 locationForLoopVar = enumeratedVariable._mLocationOffset (HERE).location () ;
   if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
     ioCppFile << "if (enumerator_" ;
     ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
@@ -285,7 +285,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   ioCppFile << "  bool _foreach_loop_" ;
   ioCppFile.appendSigned (locationForLoopVar) ;
   ioCppFile << " ;\n"
-	             "  do{\n" ;
+               "  do{\n" ;
   ioCppFile.incIndentation (+2) ;
 //--- Check pointers
   enumeratedVariable.rewind () ;
@@ -348,13 +348,13 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
       ioCppFile << " != NULL)" ;
     }
     enumeratedVariable.next () ;
-	}
+  }
   if ((dynamic_cast <cPtr_typeTrueBool *> (mWhileExpression (HERE))) == NULL) {
     ioCppFile <<  "\n    && (" ;
     mWhileExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << ".isBuiltAndTrue ())" ;    
   }
-	ioCppFile << ") ;\n" ;
+  ioCppFile << ") ;\n" ;
 //--- Between instructions
   ioCppFile << "  if (_foreach_loop_" ;
   ioCppFile.appendSigned (locationForLoopVar);
@@ -365,7 +365,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   ioCppFile << "  }\n" ;
 //--- End if loop
   ioCppFile.incIndentation (-2) ;
-	ioCppFile << "  }while (_foreach_loop_" ;
+  ioCppFile << "  }while (_foreach_loop_" ;
   ioCppFile.appendSigned (locationForLoopVar) ;
   ioCppFile << ") ;\n" ;
 //--- After instructions
@@ -384,11 +384,11 @@ generateInstruction (AC_OutputStream & ioCppFile,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-	  if ((mBeforeInstructionList.count () + mBetweenInstructionList.count () + mAfterInstructionList.count ()) > 0) {
-		  generateInstructionWithOptions (ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug) ;
-		}else{
-		  generateSimpleInstruction (ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug) ;
-		}
+    if ((mBeforeInstructionList.count () + mBetweenInstructionList.count () + mAfterInstructionList.count ()) > 0) {
+      generateInstructionWithOptions (ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug) ;
+    }else{
+      generateSimpleInstruction (ioCppFile, inTargetFileName, ioPrototypeIndex, inGenerateDebug) ;
+    }
   }
 }
 
