@@ -29,11 +29,11 @@ class cPtr_typeForeachInstruction : public cPtr_typeInstruction {
                        const bool inGenerateSemanticInstructions) const ;
 
   public : virtual bool
-	isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const ;
+  isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const ;
 
   public : virtual bool
-	formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
-												const bool inGenerateSemanticInstructions) const ;
+  formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                        const bool inGenerateSemanticInstructions) const ;
 
   public : virtual bool
   formalCurrentObjectArgumentIsUsed (void) const ;
