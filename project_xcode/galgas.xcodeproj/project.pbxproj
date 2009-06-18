@@ -608,7 +608,6 @@
 		CFAE491B0E16AAF400A8130F /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAE48F70E16AAF400A8130F /* PM_C_Array.cpp */; };
 		CFAE491D0E16AAF400A8130F /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAE48F90E16AAF400A8130F /* PM_C_Dictionary.cpp */; };
 		CFAE491F0E16AAF400A8130F /* PM_C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAE48FB0E16AAF400A8130F /* PM_C_Object.cpp */; };
-		CFB3DAA90FEA98A1000D8DA0 /* SmartString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3DAA80FEA98A1000D8DA0 /* SmartString.cpp */; };
 		CFB576FE0FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB576FF0FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
@@ -1473,8 +1472,6 @@
 		CFAE48FA0E16AAF400A8130F /* PM_C_Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM_C_Dictionary.h; sourceTree = "<group>"; };
 		CFAE48FB0E16AAF400A8130F /* PM_C_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PM_C_Object.cpp; sourceTree = "<group>"; };
 		CFAE48FC0E16AAF400A8130F /* PM_C_Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM_C_Object.h; sourceTree = "<group>"; };
-		CFB3DAA70FEA98A1000D8DA0 /* SmartString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartString.h; sourceTree = "<group>"; };
-		CFB3DAA80FEA98A1000D8DA0 /* SmartString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmartString.cpp; sourceTree = "<group>"; };
 		CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_actions.cpp; sourceTree = "<group>"; };
 		CFB576FD0FC340DE000B1844 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_actions.h; sourceTree = "<group>"; };
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
@@ -2386,8 +2383,6 @@
 			isa = PBXGroup;
 			children = (
 				CFEEBE6A05C056F9009FE498 /* cocoa_generation.cpp */,
-				CFB3DAA70FEA98A1000D8DA0 /* SmartString.h */,
-				CFB3DAA80FEA98A1000D8DA0 /* SmartString.cpp */,
 			);
 			name = "Cocoa Component";
 			sourceTree = "<group>";
@@ -3505,7 +3500,6 @@
 				CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CF580BDC0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
-				CFB3DAA90FEA98A1000D8DA0 /* SmartString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
