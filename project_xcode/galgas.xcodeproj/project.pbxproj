@@ -182,6 +182,14 @@
 		CF507CAF0B6F854B00ECFEEB /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */; };
 		CF507CB10B6F854B00ECFEEB /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */; };
 		CF507CB50B6F854B00ECFEEB /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */; };
+		CF51CA580FEABCFE0031BFFE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF51CA590FEABCFF0031BFFE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF51CA5A0FEABD000031BFFE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF51CA5B0FEABD010031BFFE /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
+		CF51CA5C0FEABD050031BFFE /* lexiqueModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7F20BC017C800E6FABE /* lexiqueModelBuilder.cpp */; };
+		CF51CA5D0FEABD060031BFFE /* lexiqueMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB7A10BC0142B00E6FABE /* lexiqueMetamodel.cpp */; };
+		CF51CA5E0FEABD070031BFFE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
+		CF51CA5F0FEABD080031BFFE /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
 		CF546CE90A3476300076D39C /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546CE70A3476300076D39C /* GGS_uint64.cpp */; };
 		CF546CEB0A3476300076D39C /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546CE70A3476300076D39C /* GGS_uint64.cpp */; };
 		CF546CF50A3476300076D39C /* GGS_uint64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF546CE70A3476300076D39C /* GGS_uint64.cpp */; };
@@ -3327,6 +3335,10 @@
 				CF03A56F0FD9980E00D079B7 /* optionModelBuilder.cpp in Sources */,
 				CF03A5700FD9980F00D079B7 /* optionLL1grammar.cpp in Sources */,
 				CF580BDA0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
+				CF51CA580FEABCFE0031BFFE /* lexiqueModelBuilder.cpp in Sources */,
+				CF51CA590FEABCFF0031BFFE /* lexiqueMetamodel.cpp in Sources */,
+				CF51CA5A0FEABD000031BFFE /* lexiqueLL1grammar.cpp in Sources */,
+				CF51CA5B0FEABD010031BFFE /* lexiqueCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3864,6 +3876,10 @@
 				CF03A5750FD9982100D079B7 /* optionLL1grammar.cpp in Sources */,
 				CF03A5760FD9982200D079B7 /* optionCompilation.cpp in Sources */,
 				CF580BDB0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
+				CF51CA5C0FEABD050031BFFE /* lexiqueModelBuilder.cpp in Sources */,
+				CF51CA5D0FEABD060031BFFE /* lexiqueMetamodel.cpp in Sources */,
+				CF51CA5E0FEABD070031BFFE /* lexiqueLL1grammar.cpp in Sources */,
+				CF51CA5F0FEABD080031BFFE /* lexiqueCompilation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
