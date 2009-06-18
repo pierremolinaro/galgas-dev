@@ -18,9 +18,7 @@
 
 project all_galgas :
 #--- Temporary Program for PPC and i386 Cocoa GALGAS Only 
-  program "mda_galgas_prgm.gProgram" ;
-
-#--- Command Line Options
+  program "mda_galgas_prgm.gProgram" ;  #--- Command Line Options
   option "galgas_cli_options.gOption" : makefile ;
 
 #--- Common Scanner
