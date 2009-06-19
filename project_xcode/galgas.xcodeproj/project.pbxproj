@@ -152,6 +152,9 @@
 		CF33653F0F2F85480003B7D9 /* C_TextFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */; };
 		CF381D3F0B6FD70600289177 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF397DD60B2C663A001F008D /* AC_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599208536A5B0077AEAF /* AC_CLI_Options.cpp */; };
+		CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
+		CF3CFB2E0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
+		CF3CFB2F0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
 		CF3D5BC80D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5BC70D9E97E300BE06A6 /* filewrapper_template_generation.cpp */; };
 		CF3D5BC90D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5BC70D9E97E300BE06A6 /* filewrapper_template_generation.cpp */; };
 		CF3D5BCE0D9E97E300BE06A6 /* filewrapper_template_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D5BC70D9E97E300BE06A6 /* filewrapper_template_generation.cpp */; };
@@ -1264,6 +1267,8 @@
 		CF3399310EDDC2A900F0330E /* include_typeFonctionExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFonctionExterneAengendrer.h; sourceTree = "<group>"; };
 		CF3399320EDDC2A900F0330E /* include_typeRoutineExterneAengendrer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeRoutineExterneAengendrer.h; sourceTree = "<group>"; };
 		CF397F8A0B2C9B87001F008D /* include_typeLexicalDropInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLexicalDropInstruction.h; sourceTree = "<group>"; };
+		CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFontButton.h; sourceTree = "<group>"; };
+		CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFontButton.m; sourceTree = "<group>"; };
 		CF3D5B970D9E976800BE06A6 /* include_C_filewrapperTemplateToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_filewrapperTemplateToImplement.h; sourceTree = "<group>"; };
 		CF3D5B980D9E976800BE06A6 /* include_templateInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstruction.h; sourceTree = "<group>"; };
 		CF3D5B990D9E976800BE06A6 /* include_templateInstructionConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionConstant.h; sourceTree = "<group>"; };
@@ -1369,7 +1374,7 @@
 		CF82597308536A130077AEAF /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Document.h; sourceTree = "<group>"; };
 		CF82597408536A130077AEAF /* OC_GGS_Document.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_Document.mm; sourceTree = "<group>"; };
 		CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_PreferencesController.h; sourceTree = "<group>"; };
-		CF82597608536A130077AEAF /* OC_GGS_PreferencesController.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_PreferencesController.mm; sourceTree = "<group>"; };
+		CF82597608536A130077AEAF /* OC_GGS_PreferencesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_PreferencesController.mm; sourceTree = "<group>"; };
 		CF82597708536A130077AEAF /* OC_GGS_RulerView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerView.h; sourceTree = "<group>"; };
 		CF82597808536A130077AEAF /* OC_GGS_RulerView.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_RulerView.mm; sourceTree = "<group>"; };
 		CF82597908536A130077AEAF /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextView.h; sourceTree = "<group>"; };
@@ -2005,6 +2010,8 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
+				CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */,
 				CF82598C08536A1F0077AEAF /* MainMenu.nib */,
 				CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
@@ -3189,6 +3196,7 @@
 				CFD3E8740FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E8750FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577370FC3495C000B1844 /* scanner_actions.cpp in Sources */,
+				CF3CFB2E0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3730,6 +3738,7 @@
 				CFD3E8780FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E8790FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577350FC3494D000B1844 /* scanner_actions.cpp in Sources */,
+				CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4271,6 +4280,7 @@
 				CFD3E8700FA0C0F800C4995E /* unicode_character.cpp in Sources */,
 				CFD3E8710FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577360FC34952000B1844 /* scanner_actions.cpp in Sources */,
+				CF3CFB2F0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
