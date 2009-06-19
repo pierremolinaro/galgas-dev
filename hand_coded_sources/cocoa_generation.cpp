@@ -631,11 +631,11 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "  }\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "NSColor * getColor (const sint32 inIndex) {\n"
+  generatedZone3 << "NSColor * getForegroundColorForSourceColoring (const sint32 inIndex) {\n"
                     "  return [gColorArray objectAtIndex: inIndex] ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 <<  "void changeColor (const sint32 inIndex, NSColor * inNewColor) {\n"
+  generatedZone3 <<  "void changeForegroundColorForSourceColoring (const sint32 inIndex, NSColor * inNewColor) {\n"
                      "  [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;

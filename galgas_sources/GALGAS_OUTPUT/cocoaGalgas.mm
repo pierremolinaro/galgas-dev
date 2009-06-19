@@ -650,13 +650,13 @@ initializeTextColors (NSString * inGGS_indexed_color,
 
 //---------------------------------------------------------------------------*
 
-NSColor * getColor (const sint32 inIndex) {
+NSColor * getForegroundColorForSourceColoring (const sint32 inIndex) {
   return [gColorArray objectAtIndex: inIndex] ;
 }
 
 //---------------------------------------------------------------------------*
 
-void changeColor (const sint32 inIndex, NSColor * inNewColor) {
+void changeForegroundColorForSourceColoring (const sint32 inIndex, NSColor * inNewColor) {
   [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;
 }
 
