@@ -142,6 +142,7 @@ routine build_LIBPM_COCOA_GALGAS_group
 :
   @stringlist fileList [emptyList] ;
   append_m_h_files !?fileList !"NSSplitViewExtensions" ;
+  append_m_h_files !?fileList !"PMFontButton" ;
   append_mm_h_files !?fileList !"OC_GGS_BuildWindowController" ;
   append_mm_h_files !?fileList !"OC_GGS_Document" ;
   append_mm_h_files !?fileList !"OC_GGS_PreferencesController" ;
@@ -718,6 +719,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
   @stringlist fileList [emptyList] ;
   fileList += !"main.m" ;
   fileList += !"NSSplitViewExtensions.m" ;
+  fileList += !"PMFontButton.m" ;
   fileList += !"OC_GGS_BuildWindowController.mm" ;
   fileList += !"OC_GGS_Document.mm" ;
   fileList += !"OC_GGS_PreferencesController.mm" ;
