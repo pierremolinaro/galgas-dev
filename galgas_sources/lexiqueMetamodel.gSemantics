@@ -358,6 +358,11 @@ enum @lexicalArgumentMode {
     lexicalInputMode       -> "" ;
     lexicalInputOutputMode -> " &" ;
   end reader ;
+
+  reader cocoaPointerInFormalArgument :
+    lexicalInputMode       -> "" ;
+    lexicalInputOutputMode -> " *" ;
+  end reader ;
 }
 
 #---------------------------------------------------------------------------*

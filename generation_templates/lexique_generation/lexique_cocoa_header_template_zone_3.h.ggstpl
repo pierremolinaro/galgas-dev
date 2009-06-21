@@ -1,0 +1,23 @@
+
+//--- Terminal symbols enumeration
+  @protected enum {%LEXIQUE_CLASS_NAME%_1_%
+    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+      %,\n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+    end foreach
+  %} ;
+
+//--- Get terminal count
+- (Int32) terminalVocabularyCount (void) const { return %([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])% ; }
+
+- (UInt32) terminalStyleIndexForTerminal: (SInt32) inTerminal ;
+
+- (Int32) parseLexicalTokenForLexicalColoring ;
+
+- (Sint32) stylesCount ;
+
+- (NSString *) styleNameForStyleIndex: (SInt32) inIndex ;
+
+- (NSString *) styleIdentifierForStyleIndex: (SInt32) inIndex ;
+@end
+
+//---------------------------------------------------------------------------*

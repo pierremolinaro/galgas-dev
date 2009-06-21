@@ -1,0 +1,57 @@
+
+#import "OC_Lexique.h"
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                    E X T E R N    R O U T I N E S                         *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
+    if mIsExtern then
+      %\nvoid scanner_cocoa_routine_%([key string])% (OC_Lexique * inLexique%
+      foreach mLexicalRoutineFormalArgumentList do
+        %,\n                %([mLexicalFormalArgumentMode cppConstInFormalArgument])
+                             ([mLexicalFormalArgumentType cocoaTypeName])
+                             ([mLexicalFormalArgumentMode cocoaPointerInFormalArgument])
+                             % %mArgumentNameForComment
+      end foreach
+      %) ;\n%
+    end if
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                    E X T E R N    F U N C T I O N S                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
+    if mIsExtern then
+      %\n%([mReturnedLexicalType cppTypeName])% scanner_cocoa_function_%([key string])% (C_Lexique & inLexique%
+      foreach mLexicalTypeList do
+        %,\n                const %([mLexicalType cppTypeName])% %mArgumentNameForComment
+      end foreach
+      %) ;\n%
+    end if
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                     S C A N N E R    C L A S S                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+@interface %LEXIQUE_CLASS_NAME% : OC_Lexique {
+//--- Attributes
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+    %  @private %([mLexicalType cocoaTypeName])% mLexicalAttribute_%([key string])% ;\n%
+  end foreach
+%
+%if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
+//--- Scanner mode for template scanner
+  @private Int32 mMatchedTemplateDelimiterIndex ;
+%end if%
+
+}

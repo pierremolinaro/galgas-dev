@@ -100,7 +100,7 @@ list @L_assignedVariables  {
 #---------------------------------------------------------------------------*
 #                                                                           *
 #                            class 'typeCible'                              *
-#     Est utilise pour denoter le type d'une variable cible anonyme         *       
+#     Est utilise pour denoter le type d'une variable cible anonyme         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -626,7 +626,7 @@ class @typeInfOrEqualTest extends @typeExpression {
   @typeExpression mLeftExpression ;
   @typeExpression mRightExpression ;
 }
- 
+
 #---------------------------------------------------------------------------*
 
 class @typeStrictSupTest extends @typeExpression {
