@@ -26,16 +26,16 @@ lexique galgas_scanner :
 @char charValue ;
 @string tokenString ;
 
-style keywordsStyle -> "Keywords:" ;
-style delimitersStyle -> "Delimiters:" ;
-style terminalStyle -> "Terminal Symbols:" ;
-style nonTerminalStyle -> "Non Terminal Symbols:" ;
-style integerStyle -> "Integer Constants:" ;
-style float_csts -> "Floating Point Constants:" ;
-style characterStyle -> "Character Constants:" ;
-style stringStyle -> "String Constants:" ;
-style typeNameStyle -> "Type Names (@...):" ;
-style commentStyle -> "Comments:" ;
+style keywordsStyle -> "Keywords" ;
+style delimitersStyle -> "Delimiters" ;
+style terminalStyle -> "Terminal Symbols" ;
+style nonTerminalStyle -> "Non Terminal Symbols" ;
+style integerStyle -> "Integer Constants" ;
+style float_csts -> "Floating Point Constants" ;
+style characterStyle -> "Character Constants" ;
+style stringStyle -> "String Constants" ;
+style typeNameStyle -> "Type Names (@...)" ;
+style commentStyle -> "Comments" ;
 
 # -------------------------- identifier or key word --------------------
 # keywords can be written in lower or upper case

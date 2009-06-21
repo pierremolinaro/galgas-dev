@@ -53,9 +53,6 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone2 << "#import <Cocoa/Cocoa.h>\n\n"             
                     "#import \"F_CocoaWrapperForGalgas.h\"\n"
                     "#import \"C_sourceTextForCocoa.h\"\n"
-                    "#import \"command_line_interface/C_CLI_OptionGroup.h\"\n"
-                    "#import \"command_line_interface/C_builtin_CLI_Options.h\"\n"
-                    "#import \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionComponentsMap, true) ;
   while (currentOptionComponent.hasCurrentObject ()) {
@@ -423,32 +420,10 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark ------------------------\n\n" ;
   generatedZone3.appendCppTitleComment ("Global static variables") ;
-/*  sint32 index = 0 ;
-  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
-  generatedZone3 << "static C_builtin_CLI_Options gGenericOptions ("
-                 << (generateDebug ? "true" : "false")
-                 << ") ;\n"
-                 << "static C_galgas_CLI_Options gGalgasOptions ;\n" ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    generatedZone3 << "static " << currentOptionComponent._key (HERE) << " gOption" << cStringWithSigned (index) << " ;\n" ;
-    currentOptionComponent.next () ;
-    index ++ ;
-  }
-  generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions (& gGenericOptions, & gGalgasOptions, " ;
-  index = 0 ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    generatedZone3 << "& gOption" << cStringWithSigned (index) << ", " ;
-    currentOptionComponent.next () ;
-    index ++ ;
-  }
-  generatedZone3 << "NULL) ;\n" ; */
   generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions ;\n" ;
   generatedZone3 << "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", \"\") ;\n"
                     "static C_galgas_io * gIOParametersPtr = NULL ;\n"
-                    "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n"
-                    "static NSMutableArray * gColorArray ;\n\n" ;
+                    "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n\n" ;
 //--- Macros list
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Text Macros\n\n" ;
@@ -598,45 +573,6 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                  << ",\n"
                     "                                            outPopUpEntries) ;\n"
                     "  macroDetachPointer (sourceTextPtr, C_sourceTextForCocoa) ;\n"
-                    "}\n\n" ;
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "void\n"
-                    "initializeTextColors (NSString * inGGS_indexed_color,\n"
-                    "                      NSString * inGGS_named_color) {\n"
-                    "  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;\n"
-                    "  gColorArray = [NSMutableArray arrayWithCapacity:getStylesCount ()] ;\n"
-                    "  [gColorArray retain] ;\n"
-                    "  for (int i=0 ; i<getStylesCount () ; i++) {\n"
-                    "    NSString * name = [NSString stringWithFormat:@\"%@_%s\", inGGS_named_color, getStyleIdentifier (i)] ;\n"
-                    "    NSData * colorData = [defaults dataForKey:name] ;\n"
-                    "    if (colorData == nil) {\n"
-                    "      NSString * indexedName = [NSString stringWithFormat:@\"%@_%d\", inGGS_indexed_color, i] ;\n"
-                    "      colorData = [defaults dataForKey:indexedName] ;\n"
-                    "      [defaults setObject:colorData forKey:name] ;\n"
-                    "      [defaults setObject:nil forKey:indexedName] ;\n"
-                    "    }\n"
-                    "    if (colorData != nil) {\n"
-                    "      NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData: colorData] ;\n"
-                    "      [gColorArray addObject:color] ;\n"
-                    "    }else{\n"
-                    "      #ifdef USER_DEFAULT_COLORS_DEFINED\n"
-                    "        NSColor * newColor = getDefaultUserColor (i) ;\n"
-                    "      #else\n"
-                    "        NSColor * newColor = [NSColor blackColor] ;\n"
-                    "      #endif\n"
-                    "        [gColorArray addObject:newColor] ;\n"
-                    "        colorData = [NSArchiver archivedDataWithRootObject:newColor] ;\n"
-                    "        [defaults setObject:colorData forKey:name] ;\n"
-                    "    }\n"
-                    "  }\n"
-                    "}\n\n" ;
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "NSColor * getForegroundColorForSourceColoring (const sint32 inIndex) {\n"
-                    "  return [gColorArray objectAtIndex: inIndex] ;\n"
-                    "}\n\n" ;
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 <<  "void changeForegroundColorForSourceColoring (const sint32 inIndex, NSColor * inNewColor) {\n"
-                     "  [gColorArray replaceObjectAtIndex: inIndex withObject: inNewColor] ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
 

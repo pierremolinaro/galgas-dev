@@ -59,6 +59,18 @@
 		CF0676470E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CF0676480E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CF0676490E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
+		CF0AF9110FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
+		CF0AF9120FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
+		CF0AF9130FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
+		CF0AF9140FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
+		CF0AF9150FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
+		CF0AF9160FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
+		CF0AF9340FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
+		CF0AF9350FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
+		CF0AF9360FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
+		CF0AF9370FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
+		CF0AF9380FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
+		CF0AF9390FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
 		CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
 		CF0CB5DE0BBFF41200E6FABE /* AC_galgas_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */; };
@@ -1222,6 +1234,10 @@
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueGeneration.cpp; sourceTree = "<group>"; };
+		CF0AF9100FED2CCB0007E6B2 /* lexiqueGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueGeneration.h; sourceTree = "<group>"; };
+		CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueCocoaGeneration.cpp; sourceTree = "<group>"; };
+		CF0AF9330FED32DB0007E6B2 /* lexiqueCocoaGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueCocoaGeneration.h; sourceTree = "<group>"; };
 		CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueSemantics.cpp; sourceTree = "<group>"; };
 		CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = lexiqueSemantics.h; sourceTree = "<group>"; };
 		CF0CB5D80BBFF41100E6FABE /* AC_galgas_class.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_class.cpp; sourceTree = "<group>"; };
@@ -2029,8 +2045,8 @@
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.mm */,
 				CF82597708536A130077AEAF /* OC_GGS_RulerView.h */,
 				CF82597808536A130077AEAF /* OC_GGS_RulerView.mm */,
-				CF82597A08536A130077AEAF /* OC_GGS_TextView.mm */,
 				CF82597908536A130077AEAF /* OC_GGS_TextView.h */,
+				CF82597A08536A130077AEAF /* OC_GGS_TextView.mm */,
 				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
 				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
@@ -2518,12 +2534,16 @@
 				CF0CB3F60BBFB97A00E6FABE /* lexiqueSemantics.h */,
 				CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */,
 				CF0CB81D0BC0192C00E6FABE /* lexiqueLL1grammar.h */,
-				CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */,
-				CF4521A40E01576C00CAE9FC /* lexiqueCompilation.h */,
 				CFF5376D057A506700854C83 /* scanner_parser.cpp */,
 				CF76F4A7090E73B900036FAC /* scanner_parser.h */,
 				CFF5376F057A506700854C83 /* scanner_semantics.cpp */,
 				CF76F4AE090E73C200036FAC /* scanner_semantics.h */,
+				CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */,
+				CF4521A40E01576C00CAE9FC /* lexiqueCompilation.h */,
+				CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */,
+				CF0AF9100FED2CCB0007E6B2 /* lexiqueGeneration.h */,
+				CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */,
+				CF0AF9330FED32DB0007E6B2 /* lexiqueCocoaGeneration.h */,
 			);
 			name = "Lexique Component";
 			sourceTree = "<group>";
@@ -3347,6 +3367,8 @@
 				CF51CA590FEABCFF0031BFFE /* lexiqueMetamodel.cpp in Sources */,
 				CF51CA5A0FEABD000031BFFE /* lexiqueLL1grammar.cpp in Sources */,
 				CF51CA5B0FEABD010031BFFE /* lexiqueCompilation.cpp in Sources */,
+				CF0AF9110FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
+				CF0AF9340FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3520,6 +3542,8 @@
 				CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CF580BDC0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
+				CF0AF9130FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
+				CF0AF9360FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3693,6 +3717,8 @@
 				CFB577010FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA860FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CF580BDD0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
+				CF0AF9140FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
+				CF0AF9370FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3889,6 +3915,8 @@
 				CF51CA5D0FEABD060031BFFE /* lexiqueMetamodel.cpp in Sources */,
 				CF51CA5E0FEABD070031BFFE /* lexiqueLL1grammar.cpp in Sources */,
 				CF51CA5F0FEABD080031BFFE /* lexiqueCompilation.cpp in Sources */,
+				CF0AF9120FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
+				CF0AF9350FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4062,6 +4090,8 @@
 				CFB577020FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA870FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CF580BDE0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
+				CF0AF9150FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
+				CF0AF9380FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4235,6 +4265,8 @@
 				CFB577030FC340DE000B1844 /* scanner_actions.cpp in Sources */,
 				CFD2EA880FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */,
 				CF580BDF0FDE862F003EBACF /* templateExpressionParser.cpp in Sources */,
+				CF0AF9160FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
+				CF0AF9390FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

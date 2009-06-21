@@ -18,465 +18,12 @@
 #---------------------------------------------------------------------------*
 
 semantics lexiqueCompilation :
-import "predefinedLexicalActions.gSemantics" ;
+import "lexiqueGeneration.gSemantics" ;
 
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
-import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
+import semantics lexiqueGeneration in "lexiqueGeneration.gSemantics" ;
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
-
-#---------------------------------------------------------------------------*
-#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
-#---------------------------------------------------------------------------*
-
-abstract reader @lexicalExpression generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalOrExpression generateConditionCode
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := [mLeftOperand generateConditionCode !inLexiqueAnalysisContext] ;
-  outGeneratedCode .= " || " ;
-  outGeneratedCode .= [mRightOperand generateConditionCode !inLexiqueAnalysisContext] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalCharacterIntervalMatch generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "" ;
-  outGeneratedCode := "testForInputUTF32CharRange (" ;
-  outGeneratedCode .= [[mLowerBound char] utf32CharConstantRepresentation] ;
-  outGeneratedCode .= ", " ;
-  outGeneratedCode .= [[mUpperBound char] utf32CharConstantRepresentation] ;
-  outGeneratedCode .= ")" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalStringMatch generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "testForInputUTF32String (kUnicodeString_" . [mString identifierRepresentation] ;
-  outGeneratedCode .= ", " ;
-  outGeneratedCode .= [[mString length] string] ;
-  outGeneratedCode .= ", true)" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalStringNotMatch generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "notTestForInputUTF32String (kUnicodeString_" ;
-  outGeneratedCode .= [mString identifierRepresentation] ;
-  outGeneratedCode .= ", " ;
-  outGeneratedCode .= [[mString length] string] ;
-  outGeneratedCode .= ", gLexicalMessage_" ;
-  outGeneratedCode .= mErrorMessage ;
-  outGeneratedCode .= " COMMA_LINE_AND_SOURCE_FILE)" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalCharacterMatch generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "testForInputUTF32Char (" ;
-  outGeneratedCode .= [[mCharacter char] utf32CharConstantRepresentation] ;
-  outGeneratedCode .= ")" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalCharacterSetMatch generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "testForCharWithFunction (" ;
-  outGeneratedCode .= mCharacterSetName ;
-  outGeneratedCode .= ")" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
-#---------------------------------------------------------------------------*
-
-abstract reader @lexicalRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalAttributeInputArgument generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "token.mLexicalAttribute_" . mAttributeName ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalCharacterInputArgument generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := [[mCharacter char] utf32CharConstantRepresentation] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalUnsignedInputArgument generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := [[mUnsigned uint] string] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalCurrentCharacterInputArgument generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "previousChar ()" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalFunctionInputArgument generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "::scanner_function_" . mFunctionName . " (*this" ;
-  foreach mFunctionActualArgumentList do
-    outGeneratedCode .= ", " . [mLexicalActualInputArgument generateRoutineOrFunctionArgument] ;
-  end foreach ;
-  outGeneratedCode .= ")" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#                   R O U T I N E    A R G U M E N T                        *
-#---------------------------------------------------------------------------*
-
-abstract reader @abstractLexicalRoutineActualArgument generateRoutineArgument
-  -> @string outGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalAttributeInputOutputArgument generateRoutineArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "token.mLexicalAttribute_" . mAttributeName ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalFormalInputArgument generateRoutineArgument
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := [mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
-#---------------------------------------------------------------------------*
-
-abstract reader @lexicalSendDefaultAction generateDefaultSendCode
-  ?@string inScannerClassName
-  -> @string outGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalSendTerminalByDefault generateDefaultSendCode
-  ?@string inScannerClassName
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "token.mTokenCode = " . inScannerClassName . "_1_" . mDefaultSentTerminal . " ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalErrorByDefault generateDefaultSendCode
-  ?@string unused inScannerClassName
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "lexicalError (gLexicalMessage_" . mDefaultErrorMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
-#---------------------------------------------------------------------------*
-
-abstract reader @lexicalInstruction generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalStructuredSendInstruction generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "" ;
-  foreach mLexicalSendSearchList do
-    outGeneratedCode .= "if (token.mTokenCode == -1) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = search_into_" . mSearchListName . " (token.mLexicalAttribute_" . mAttributeName . ") ;\n" ;
-    outGeneratedCode .= "}\n" ;
-  end foreach ;
-  outGeneratedCode .= "if (token.mTokenCode == -1) {\n" ;
-  outGeneratedCode .= "  " . [mLexicalSendDefaultAction generateDefaultSendCode !inScannerClassName] ;
-  outGeneratedCode .= "}\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalSimpleSendInstruction generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "token.mTokenCode = " . inScannerClassName . "_1_" . [mSentTerminal identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalRepeatInstruction generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "do {\n" ;
-  [!?outGeneratedCode incIndentation !2] ;
-#--- Repeated instruction
-  foreach mRepeatedInstructionList do
-    outGeneratedCode .= [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
-  end foreach ;
-#---
-  foreach mLexicalWhileBranchList
-  do
-    outGeneratedCode .= "if (" ;
-    outGeneratedCode .= [mWhileExpression generateConditionCode !inLexiqueAnalysisContext] ;
-    outGeneratedCode .= ") {\n" ;
-    [!?outGeneratedCode incIndentation !2] ;
-    foreach mWhileInstructionList do
-      outGeneratedCode .= [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
-    end foreach ;
-    [!?outGeneratedCode decIndentation !2] ;
-  between
-    outGeneratedCode .= "}else " ;
-  end foreach ;
-  outGeneratedCode .= "}else{\n"
-                      "  mLoop = false ;\n"
-                      "}\n" ;
-  [!?outGeneratedCode decIndentation !2] ;
-  outGeneratedCode .= "}while (mLoop) ;\n"
-                      "mLoop = true ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalSelectInstruction generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "" ;
-#---
-  foreach mLexicalSelectBranchList
-  do
-    outGeneratedCode .= "if (" ;
-    outGeneratedCode .= [mSelectExpression generateConditionCode !inLexiqueAnalysisContext] ;
-    outGeneratedCode .= ") {\n" ;
-    [!?outGeneratedCode incIndentation !2] ;
-    foreach mSelectInstructionList do
-      outGeneratedCode .= [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
-    end foreach ;
-    [!?outGeneratedCode decIndentation !2] ;
-  between
-    outGeneratedCode .= "}else " ;
-  end foreach ;
-#--- Default branch
-  if [mDefaultInstructionList length] > 0 then
-    outGeneratedCode .= "}else{\n" ;
-    [!?outGeneratedCode incIndentation !2] ;
-    foreach mDefaultInstructionList do
-      outGeneratedCode .= [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
-    end foreach ;
-    [!?outGeneratedCode decIndentation !2] ;
-  end if ;
-  outGeneratedCode .= "}\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalRoutineInstruction generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "::scanner_routine_" . mRoutineName . " (*this" ;
-  foreach mActualArgumentList do
-    outGeneratedCode .= ", " . [mLexicalRoutineActualArgument generateRoutineArgument] ;
-  end foreach ;
-  foreach mErrorMessageList do
-    outGeneratedCode .= ", gLexicalMessage_" . mValue ;
-  end foreach ;
-  outGeneratedCode .= ") ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalDropInstruction generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "" ; # No generated code
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalErrorInstruction generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "lexicalError (gLexicalMessage_" . mErrorMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalWarningInstruction generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "lexicalWarning (gLexicalMessage_" . mWarningMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalTagInstruction generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "const C_LocationInSource locationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalRewindInstruction generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
-  outGeneratedCode .= "token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalLogInstruction generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "lexicalLog (LINE_AND_SOURCE_FILE) ;\n" ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
-#---------------------------------------------------------------------------*
-
-abstract reader @abstractLexicalRule generateCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalImplicitRule generateCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  @tokenSortedlist tokenSortedList ;
-  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList] ;
-  outGeneratedCode := "" ;
-  foreach > tokenSortedList do
-    outGeneratedCode .= "if (testForInputUTF32String (kUnicodeString_" ;
-    outGeneratedCode .= [mName identifierRepresentation] ;
-    outGeneratedCode .= ", " ;
-    outGeneratedCode .= [[mName length] string] ;
-    outGeneratedCode .= ", true)) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-    outGeneratedCode .= "  enterToken (token) ;\n" ;
-    outGeneratedCode .= "}else " ;
-  end foreach ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @lexicalExplicitRule generateCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
-:
-  outGeneratedCode := "if (" ;
-  outGeneratedCode .= [mLexicalRuleExpression generateConditionCode !inLexiqueAnalysisContext] ;
-  outGeneratedCode .= ") {\n" ;
-  [!?outGeneratedCode incIndentation !2] ;
-  foreach mInstructionList do
-    outGeneratedCode .= [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
-  end foreach ;
-  [!?outGeneratedCode decIndentation !2] ;
-  outGeneratedCode .= "}else " ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-#         G E N E R A T I O N    T E M P L A T E S                          *
-#---------------------------------------------------------------------------*
-
-filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
-} {
-  template headerZone2 "lexique_header_template_zone_2.h.ggstpl"
-    ?@string LEXIQUE_CLASS_NAME
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
-  ;
-  template headerZone3 "lexique_header_template_zone_3.h.ggstpl"
-    ?@string LEXIQUE_CLASS_NAME
-    ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-  ;
-  template implementationZone2 "lexique_implementation.cpp.ggstpl"
-    ?@string LEXIQUE_CLASS_NAME
-    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
-    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
-    ?@terminalList TERMINAL_LIST
-    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
-    ?@stringset STRINGS_IN_EXPLICIT_RULES
-    ?@lexicalRuleList LEXICAL_RULE_LIST
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
-  ;
-}
 
 #---------------------------------------------------------------------------*
 #                     checkLexicalDefaultAction                             *
@@ -1043,6 +590,55 @@ override method @lexicalExplicitRule checkLexicalRule
 end method ;
 
 #---------------------------------------------------------------------------*
+#         G E N E R A T I O N    T E M P L A T E S                          *
+#---------------------------------------------------------------------------*
+
+filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
+} {
+  template headerZone2 "lexique_header_template_zone_2.h.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+  ;
+  template headerZone3 "lexique_header_template_zone_3.h.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+  ;
+  template implementationZone2 "lexique_implementation.cpp.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleList LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+  ;
+  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+  ;
+  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+  ;
+  template cocoaImplementationZone2 "lexique_cocoa_implementation.cpp.ggstpl"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleList LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+  ;
+}
+
+#---------------------------------------------------------------------------*
 #                         compileLexiqueComponent                           *
 #---------------------------------------------------------------------------*
 
@@ -1098,7 +694,7 @@ routine compileLexiqueComponent
     [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType] ;
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
   end foreach ;
-#--------------------------------------- Build lexical analysis context struct
+#---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
     !lexicalRoutineMap
     !lexicalFunctionMap
@@ -1108,10 +704,12 @@ routine compileLexiqueComponent
     ![@lexicalAttributeMap emptyMap]
     ![@lexicalExplicitTokenListMapMap emptyMap]
     ![@stringset emptySet]
-    ![@templateDelimitorList emptyList]
+    ![@templateDelimitorList emptyList]    ![@styleMap emptyMap]
   ] ;
-  foreach [lexiqueComponentRoot mLexicalAttributeList] do
-    if [lexicalTypeMap hasKey ![mTypeName string]] then
+#--------------------------------------- Build style map  @uint styleIndex := 1 ;  foreach [lexiqueComponentRoot mLexicalStyleList] do
+    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex] ;    styleIndex ++ ;  end foreach ;
+#--------------------------------------- Build lexical analysis context struct
+  foreach [lexiqueComponentRoot mLexicalAttributeList] do    if [lexicalTypeMap hasKey ![mTypeName string]] then
       @lexicalTypeEnum lexicalType ;
       [lexicalTypeMap searchKey !mTypeName ?lexicalType] ;
       [!?lexiqueAnalysisContext.mLexicalAttributeMap insertKey !mName !lexicalType] ;
@@ -1129,6 +727,8 @@ routine compileLexiqueComponent
   end foreach ;
 #--------------------------------------- Build terminal map
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
+    @uint terminalStyleIndex := 0 ;
+    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mName ?* ?terminalStyleIndex] ;    end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
@@ -1145,10 +745,11 @@ routine compileLexiqueComponent
       else
         isEndOfTemplateMark := true ;
       end if ;
-     end foreach ;
-    lexiqueAnalysisContext.mTerminalList += !mName !argumentTypeList ![mSyntaxErrorMessage string] !isEndOfTemplateMark ;
+    end foreach ;
+    lexiqueAnalysisContext.mTerminalList +=      !mName      !argumentTypeList      ![mSyntaxErrorMessage string]      !isEndOfTemplateMark      !terminalStyleIndex    ;
   end foreach ;
-  foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
+  foreach [lexiqueComponentRoot mLexicalListDeclarationList] do    @uint terminalStyleIndex := 0 ;
+    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mName ?* ?terminalStyleIndex] ;    end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
@@ -1169,7 +770,7 @@ routine compileLexiqueComponent
           isEndOfTemplateMark := true ;
         end if ;
       end foreach ;
-      lexiqueAnalysisContext.mTerminalList += !mTerminalSpelling !argumentTypeList !syntaxErrorMessage !isEndOfTemplateMark ;
+      lexiqueAnalysisContext.mTerminalList +=        !mTerminalSpelling        !argumentTypeList        !syntaxErrorMessage        !isEndOfTemplateMark        !terminalStyleIndex      ;
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
       tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
@@ -1243,6 +844,47 @@ routine compileLexiqueComponent
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.implementationZone2
+         !lexiqueClassName
+         ![lexiqueAnalysisContext mLexicalAttributeMap]
+         ![lexiqueAnalysisContext mLexicalMessageMap]
+         ![lexiqueAnalysisContext mTerminalList]
+         ![lexiqueAnalysisContext mLexicalTokenListMap]
+         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+         ![lexiqueComponentRoot mLexicalRuleList]
+         !lexiqueAnalysisContext
+         !lexiqueComponentRoot
+       ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # Zone 3
+    ] ;
+  end if ;
+#--- Generate cocoa header file
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      !lexiqueClassName . "-cocoa.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+         !lexiqueClassName
+         !lexiqueAnalysisContext
+         !lexiqueComponentRoot
+       ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
+         !lexiqueClassName
+         !lexiqueAnalysisContext
+       ]
+    ] ;
+  end if ;
+#--- Generate Cocoa implementation file
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      !lexiqueClassName . "-cocoa.m"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
          !lexiqueClassName
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
