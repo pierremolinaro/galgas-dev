@@ -183,6 +183,13 @@ nonterminal <map_method_declaration> ?!@mapMethodList ioMapMethodList ;
 
 rule <map_method_declaration> ?!@mapMethodList ioMapMethodList :
   $identifier$ ? @lstring mMethodName ;
+  @lstring mAlternateMethodName ;
+  select
+    mAlternateMethodName := [@lstring new !"" !here] ;
+  or
+    $,$ ;
+    $identifier$ ? mAlternateMethodName ;
+  end select ;
   $error$ ;
   $message$ ;
   $literal_string$ ? @lstring mErrorMessage ;
@@ -195,7 +202,7 @@ rule <map_method_declaration> ?!@mapMethodList ioMapMethodList :
   end select ;
   $;$ ;
   ioMapMethodList +=
-    !mMethodName
+    !mMethodName    !mAlternateMethodName
     !mErrorMessage
     !mShadowErrorMessage
   ;

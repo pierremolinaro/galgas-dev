@@ -781,6 +781,12 @@
 		CFE5996E0F2F3F7A0086D65E /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
 		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.mm */; };
+		CFECE4660FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
+		CFECE4670FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
+		CFECE4680FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
+		CFECE46C0FEFA5A60031D087 /* galgas_scanner-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */; };
+		CFECE46D0FEFA5A60031D087 /* galgas_scanner-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */; };
+		CFECE6400FEFE4DB0031D087 /* galgas_scanner-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */; };
 		CFEDF2BC0C2D161F0038713A /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53781057A50D600854C83 /* expression_parser.cpp */; };
 		CFEDF2BD0C2D161F0038713A /* galgas_start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53806057A53A700854C83 /* galgas_start.cpp */; };
 		CFEDF2BE0C2D161F0038713A /* grammar_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9040E6057F270E007362F4 /* grammar_parser.cpp */; };
@@ -1749,6 +1755,10 @@
 		CFE6A40A0969324A000106C9 /* include_typeMinusOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeMinusOperation.h; sourceTree = "<group>"; };
 		CFE709130D7965E700825B21 /* include_typeFileWrapperObjectInstanciation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeFileWrapperObjectInstanciation.h; sourceTree = "<group>"; };
 		CFE709140D7965E700825B21 /* include_typeGalgas_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgas_filewrapper.h; sourceTree = "<group>"; };
+		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
+		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
+		CFECE4690FEFA5A60031D087 /* galgas_scanner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "galgas_scanner-cocoa.h"; sourceTree = "<group>"; };
+		CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "galgas_scanner-cocoa.m"; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
 		CFEDF3610C2D161F0038713A /* galgasPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasPPC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEDF4BD0C2D16610038713A /* galgasDebugPPC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugPPC; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2026,8 +2036,6 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
-				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
-				CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */,
 				CF82598C08536A1F0077AEAF /* MainMenu.nib */,
 				CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
@@ -2054,6 +2062,10 @@
 				CFE1672E0E8E6E1B00AFDAFC /* C_SourceTextForCocoa.mm */,
 				CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */,
 				CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.mm */,
+				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
+				CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */,
+				CFECE4640FEFA5270031D087 /* OC_Lexique.h */,
+				CFECE4650FEFA5270031D087 /* OC_Lexique.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2395,6 +2407,9 @@
 		CFEEBE6505C0569F009FE498 /* GUI Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */,
+				CFECE4690FEFA5A60031D087 /* galgas_scanner-cocoa.h */,
+				CF6702F805C073220065267C /* cocoaGalgas.mm */,
 				CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */,
 				CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */,
 				CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */,
@@ -2403,7 +2418,6 @@
 				CFE26C820C12C38A0066ACB3 /* guiModelBuilder.h */,
 				CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */,
 				CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */,
-				CF6702F805C073220065267C /* cocoaGalgas.mm */,
 				CFEEBE6605C056D0009FE498 /* cocoa_parser.cpp */,
 				CF76F4C3090E73FE00036FAC /* cocoa_parser.h */,
 			);
@@ -3217,6 +3231,8 @@
 				CFD3E8750FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577370FC3495C000B1844 /* scanner_actions.cpp in Sources */,
 				CF3CFB2E0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
+				CFECE4670FEFA5270031D087 /* OC_Lexique.m in Sources */,
+				CFECE46D0FEFA5A60031D087 /* galgas_scanner-cocoa.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3765,6 +3781,8 @@
 				CFD3E8790FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577350FC3494D000B1844 /* scanner_actions.cpp in Sources */,
 				CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
+				CFECE4680FEFA5270031D087 /* OC_Lexique.m in Sources */,
+				CFECE6400FEFE4DB0031D087 /* galgas_scanner-cocoa.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4313,6 +4331,8 @@
 				CFD3E8710FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */,
 				CFB577360FC34952000B1844 /* scanner_actions.cpp in Sources */,
 				CF3CFB2F0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
+				CFECE4660FEFA5270031D087 /* OC_Lexique.m in Sources */,
+				CFECE46C0FEFA5A60031D087 /* galgas_scanner-cocoa.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

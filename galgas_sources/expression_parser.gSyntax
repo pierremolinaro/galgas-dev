@@ -1600,7 +1600,7 @@ rule <factor>
       ;
       outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod !categoryReaderClassBaseName] ;
     end select ;
-  or
+  or #------------ Constructor call
   #--- Class name
     @lstring className ;
     $type_name$ ?className ;

@@ -1255,6 +1255,7 @@ end rule ;
 #                         F A C T O R                                          *
 #   description          :   [expression description]                          *
 #   reader call          :   [expression reader !... ]                         *
+#   constructor call     :   [@class constructor !... ]                        *
 #   option value         :   [option option_component_name.option_name]        *
 #   filewrapper template :   [filewrapper fw.template_name !...]               *
 #   category template    :   [template expression template_name !...]          *
@@ -1312,6 +1313,35 @@ rule <factor>
       !expressionList
     ] ;
     outResultType := [@typeGalgas_string new] ;
+  or #------------ Constructor call
+  #--- Class name
+    @lstring className ;
+    $type_name$ ?className ;
+  #--- Class method name
+    @lstring mClassMethodName ;
+    $identifier$ ? mClassMethodName ;
+    @AC_semanticsEntity e ;
+    [inEntitiesMap searchKey !className ?e] ;
+    outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
+    @typeListeAttributsSemantiques formalAttributeList ;
+    @bool hasLexiqueAndLocationArguments ;
+    [outResultType handleConstructorCall !mClassMethodName ?formalAttributeList ?hasLexiqueAndLocationArguments] ;
+  #--- Actual arguments
+    @typeExpressionList expressionList ;
+    <output_expression_list>
+      ?expressionList
+      !inSemanticContext
+      !formalAttributeList
+      !inEntitiesMap
+      !inOptionsComponentsMapForUse
+      !?ioVariablesMap
+    ;
+    outExpression := [@typeConstructorExpression new
+      !outResultType
+      ![mClassMethodName string]
+      !hasLexiqueAndLocationArguments
+      !expressionList
+    ] ;
   or
   #--------------------------------- Filewrapper
     $filewrapper$ ;
