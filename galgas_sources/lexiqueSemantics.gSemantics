@@ -73,15 +73,41 @@ enum @lexicalTypeEnum {
     lexicalType_double -> " = 0.0" ;
   end reader ;
   reader cocoaTypeName :
-    lexicalType_string -> "NSString *" ;
-    lexicalType_char   -> "utf32" ;
+    lexicalType_string -> "NSMutableString *" ;
+    lexicalType_char   -> "UInt32" ;
     lexicalType_uint   -> "UInt32" ;
     lexicalType_uint64 -> "UInt64" ;
-    lexicalType_sint   -> "Int32" ;
-    lexicalType_sint64 -> "Int64" ;
+    lexicalType_sint   -> "SInt32" ;
+    lexicalType_sint64 -> "SInt64" ;
     lexicalType_double -> "double" ;
   end reader ;
-
+  reader cocoaInitializationCode :
+    lexicalType_string -> "[[NSMutableString alloc] init]" ;
+    lexicalType_char   -> "0" ;
+    lexicalType_uint   -> "0" ;
+    lexicalType_uint64 -> "0" ;
+    lexicalType_sint   -> "0" ;
+    lexicalType_sint64 -> "0" ;
+    lexicalType_double -> "0.0" ;
+  end reader ;
+  reader cocoaResetPrefix :
+    lexicalType_string -> "[" ;
+    lexicalType_char   -> "" ;
+    lexicalType_uint   -> "" ;
+    lexicalType_uint64 -> "" ;
+    lexicalType_sint   -> "" ;
+    lexicalType_sint64 -> "" ;
+    lexicalType_double -> "" ;
+  end reader ;
+  reader cocoaReset :
+    lexicalType_string -> " setString:@\"\"]" ;
+    lexicalType_char   -> "= 0" ;
+    lexicalType_uint   -> "= 0" ;
+    lexicalType_uint64 -> "= 0" ;
+    lexicalType_sint   -> "= 0" ;
+    lexicalType_sint64 -> "= 0" ;
+    lexicalType_double -> "= 0.0" ;
+  end reader ;
 }
 
 #---------------------------------------------------------------------------*
@@ -153,7 +179,7 @@ sortedlist @tokenSortedlist {
 
 map @lexicalExplicitTokenListMapMap {
   @lexicalExplicitTokenListMap mExplicitTokenListMap ;
-  @tokenSortedlist mTokenSortedList ;
+  @tokenSortedlist mTokenSortedList ;  @bool mShouldBeGenerated feature setter ;
   insert insertKey error message "the '%K' token list has been already declared in %L" ;
   search searchKey error message "the '%K' token list is not declared" ;
 }

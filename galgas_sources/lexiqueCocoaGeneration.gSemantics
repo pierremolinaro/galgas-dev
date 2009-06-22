@@ -52,11 +52,11 @@ override reader @lexicalCharacterIntervalMatch generateCocoaConditionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "" ;
-  outGeneratedCode := "testForInputUTF32CharRange (" ;
-  outGeneratedCode .= [[mLowerBound char] utf32CharConstantRepresentation] ;
-  outGeneratedCode .= ", " ;
-  outGeneratedCode .= [[mUpperBound char] utf32CharConstantRepresentation] ;
-  outGeneratedCode .= ")" ;
+  outGeneratedCode := "[self testForInputFromChar:" ;
+  outGeneratedCode .= [[[mLowerBound char] uint] string] ;
+  outGeneratedCode .= " toChar:" ;
+  outGeneratedCode .= [[[mUpperBound char] uint] string] ;
+  outGeneratedCode .= "]" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -65,10 +65,8 @@ override reader @lexicalStringMatch generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "testForInputUTF32String (kUnicodeString_" . [mString identifierRepresentation] ;
-  outGeneratedCode .= ", " ;
-  outGeneratedCode .= [[mString length] string] ;
-  outGeneratedCode .= ", true)" ;
+  outGeneratedCode := "[self testForInputString:@" . [mString CStringConstantRepresentation] ;
+  outGeneratedCode .= " advance:YES]" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -77,13 +75,9 @@ override reader @lexicalStringNotMatch generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "notTestForInputUTF32String (kUnicodeString_" ;
-  outGeneratedCode .= [mString identifierRepresentation] ;
-  outGeneratedCode .= ", " ;
-  outGeneratedCode .= [[mString length] string] ;
-  outGeneratedCode .= ", gLexicalMessage_" ;
-  outGeneratedCode .= mErrorMessage ;
-  outGeneratedCode .= " COMMA_LINE_AND_SOURCE_FILE)" ;
+  outGeneratedCode := "[self notTestForInputString:@" ;
+  outGeneratedCode .= [mString CStringConstantRepresentation] ;
+  outGeneratedCode .= " error:& mNoLexicalError]" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -92,9 +86,9 @@ override reader @lexicalCharacterMatch generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "testForInputUTF32Char (" ;
-  outGeneratedCode .= [[mCharacter char] utf32CharConstantRepresentation] ;
-  outGeneratedCode .= ")" ;
+  outGeneratedCode := "[self testForInputChar:" ;
+  outGeneratedCode .= [[[mCharacter char] uint] string] ;
+  outGeneratedCode .= "]" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -103,9 +97,9 @@ override reader @lexicalCharacterSetMatch generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "testForCharWithFunction (" ;
+  outGeneratedCode := "[self testForCharWithFunction:" ;
   outGeneratedCode .= mCharacterSetName ;
-  outGeneratedCode .= ")" ;
+  outGeneratedCode .= "]" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -121,7 +115,7 @@ abstract reader @lexicalRoutineOrFunctionFormalInputArgument generateCocoaRoutin
 override reader @lexicalAttributeInputArgument generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mLexicalAttribute_" . mAttributeName ;
+  outGeneratedCode := "mLexicalAttribute_" . mAttributeName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -129,7 +123,7 @@ end reader ;
 override reader @lexicalCharacterInputArgument generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
-  outGeneratedCode := [[mCharacter char] utf32CharConstantRepresentation] ;
+  outGeneratedCode := [[[mCharacter char] uint] string] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -145,7 +139,7 @@ end reader ;
 override reader @lexicalCurrentCharacterInputArgument generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "previousChar ()" ;
+  outGeneratedCode := "mPreviousChar" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -153,10 +147,10 @@ end reader ;
 override reader @lexicalFunctionInputArgument generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "::scanner_function_" . mFunctionName . " (*this" ;
-  foreach mFunctionActualArgumentList do
-    outGeneratedCode .= ", " . [mLexicalActualInputArgument generateCocoaRoutineOrFunctionArgument] ;
-  end foreach ;
+  outGeneratedCode := "scanner_cocoa_function_" . mFunctionName . " (" ;
+  foreach mFunctionActualArgumentList
+  do outGeneratedCode .= [mLexicalActualInputArgument generateCocoaRoutineOrFunctionArgument] ;
+  between outGeneratedCode .= ", " ;  end foreach ;
   outGeneratedCode .= ")" ;
 end reader ;
 
@@ -165,20 +159,25 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 abstract reader @abstractLexicalRoutineActualArgument generateCocoaRoutineArgument
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalAttributeInputOutputArgument generateCocoaRoutineArgument
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
-:
-  outGeneratedCode := "token.mLexicalAttribute_" . mAttributeName ;
+:  @lexicalTypeEnum lexicalType ;
+  [[inLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?lexicalType] ;
+  outGeneratedCode := "" ;  if lexicalType != [@lexicalTypeEnum lexicalType_string] then    outGeneratedCode .= "& " ;  end if ;
+  outGeneratedCode .= "mLexicalAttribute_" . mAttributeName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalFormalInputArgument generateCocoaRoutineArgument
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := [mRoutineOrFunctionFormalInputArgument generateCocoaRoutineOrFunctionArgument] ;
@@ -199,7 +198,7 @@ override reader @lexicalSendTerminalByDefault generateCocoaDefaultSendCode
   ?@string inScannerClassName
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mTokenCode = " . inScannerClassName . "_1_" . mDefaultSentTerminal . " ;\n" ;
+  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . mDefaultSentTerminal . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -208,7 +207,7 @@ override reader @lexicalErrorByDefault generateCocoaDefaultSendCode
   ?@string unused inScannerClassName
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalError (gLexicalMessage_" . mDefaultErrorMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "mNoLexicalError = NO ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -230,14 +229,14 @@ override reader @lexicalStructuredSendInstruction generateCocoaInstructionCode
 :
   outGeneratedCode := "" ;
   foreach mLexicalSendSearchList do
-    outGeneratedCode .= "if (token.mTokenCode == -1) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = search_into_" . mSearchListName . " (token.mLexicalAttribute_" . mAttributeName . ") ;\n" ;
+    outGeneratedCode .= "if (mTokenCode == -1) {\n" ;
+    outGeneratedCode .= "  mTokenCode = search_into_" . mSearchListName . " (mLexicalAttribute_" . mAttributeName . ") ;\n" ;
     outGeneratedCode .= "}\n" ;
   end foreach ;
-  outGeneratedCode .= "if (token.mTokenCode == -1) {\n" ;
+  outGeneratedCode .= "if (mTokenCode == -1) {\n" ;
   outGeneratedCode .= "  " . [mLexicalSendDefaultAction generateCocoaDefaultSendCode !inScannerClassName] ;
   outGeneratedCode .= "}\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
+  outGeneratedCode .= "/* enterToken (token) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -247,8 +246,8 @@ override reader @lexicalSimpleSendInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "token.mTokenCode = " . inScannerClassName . "_1_" . [mSentTerminal identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
+  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . [mSentTerminal identifierRepresentation] . " ;\n" ;
+  outGeneratedCode .= "/* enterToken (token) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -267,9 +266,9 @@ override reader @lexicalRepeatInstruction generateCocoaInstructionCode
 #---
   foreach mLexicalWhileBranchList
   do
-    outGeneratedCode .= "if (" ;
+    outGeneratedCode .= "if (mNoLexicalError && (" ;
     outGeneratedCode .= [mWhileExpression generateCocoaConditionCode !inLexiqueAnalysisContext] ;
-    outGeneratedCode .= ") {\n" ;
+    outGeneratedCode .= ")) {\n" ;
     [!?outGeneratedCode incIndentation !2] ;
     foreach mWhileInstructionList do
       outGeneratedCode .= [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
@@ -279,11 +278,11 @@ override reader @lexicalRepeatInstruction generateCocoaInstructionCode
     outGeneratedCode .= "}else " ;
   end foreach ;
   outGeneratedCode .= "}else{\n"
-                      "  mLoop = false ;\n"
+                      "  mLoop = NO ;\n"
                       "}\n" ;
   [!?outGeneratedCode decIndentation !2] ;
-  outGeneratedCode .= "}while (mLoop) ;\n"
-                      "mLoop = true ;\n" ;
+  outGeneratedCode .= "}while (mLoop && mNoLexicalError) ;\n"
+                      "mLoop = YES ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -297,9 +296,9 @@ override reader @lexicalSelectInstruction generateCocoaInstructionCode
 #---
   foreach mLexicalSelectBranchList
   do
-    outGeneratedCode .= "if (" ;
+    outGeneratedCode .= "if (mNoLexicalError && (" ;
     outGeneratedCode .= [mSelectExpression generateCocoaConditionCode !inLexiqueAnalysisContext] ;
-    outGeneratedCode .= ") {\n" ;
+    outGeneratedCode .= ")) {\n" ;
     [!?outGeneratedCode incIndentation !2] ;
     foreach mSelectInstructionList do
       outGeneratedCode .= [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;
@@ -324,15 +323,12 @@ end reader ;
 
 override reader @lexicalRoutineInstruction generateCocoaInstructionCode
   ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "::scanner_routine_" . mRoutineName . " (*this" ;
+  outGeneratedCode := "scanner_cocoa_routine_" . mRoutineName . " (& mNoLexicalError" ;
   foreach mActualArgumentList do
-    outGeneratedCode .= ", " . [mLexicalRoutineActualArgument generateCocoaRoutineArgument] ;
-  end foreach ;
-  foreach mErrorMessageList do
-    outGeneratedCode .= ", gLexicalMessage_" . mValue ;
+    outGeneratedCode .= ", " . [mLexicalRoutineActualArgument generateCocoaRoutineArgument !inLexiqueAnalysisContext] ;
   end foreach ;
   outGeneratedCode .= ") ;\n" ;
 end reader ;
@@ -354,7 +350,7 @@ override reader @lexicalErrorInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalError (gLexicalMessage_" . mErrorMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "mNoLexicalError = NO ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -364,7 +360,7 @@ override reader @lexicalWarningInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalWarning (gLexicalMessage_" . mWarningMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "" ; # No generated code
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -374,7 +370,7 @@ override reader @lexicalTagInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "const C_LocationInSource locationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n" ;
+  outGeneratedCode := "const UInt32 locationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -385,8 +381,8 @@ override reader @lexicalRewindInstruction generateCocoaInstructionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
-  outGeneratedCode .= "token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
+  outGeneratedCode .= "mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
+  outGeneratedCode .= "/* enterToken (token) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -396,7 +392,7 @@ override reader @lexicalLogInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalLog (LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "/* lexicalLog (LINE_AND_SOURCE_FILE) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -417,16 +413,14 @@ override reader @lexicalImplicitRule generateCocoaCode
   -> @string outGeneratedCode
 :
   @tokenSortedlist tokenSortedList ;
-  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList] ;
+  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*] ;
   outGeneratedCode := "" ;
   foreach > tokenSortedList do
-    outGeneratedCode .= "if (testForInputUTF32String (kUnicodeString_" ;
-    outGeneratedCode .= [mName identifierRepresentation] ;
-    outGeneratedCode .= ", " ;
-    outGeneratedCode .= [[mName length] string] ;
-    outGeneratedCode .= ", true)) {\n" ;
-    outGeneratedCode .= "  token.mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-    outGeneratedCode .= "  enterToken (token) ;\n" ;
+    outGeneratedCode .= "if (mNoLexicalError && [self testForInputString:@" ;
+    outGeneratedCode .= [mName CStringConstantRepresentation] ;
+    outGeneratedCode .= " advance:YES]) {\n" ;
+    outGeneratedCode .= "  mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
+    outGeneratedCode .= "  /* enterToken (token) ; */\n" ;
     outGeneratedCode .= "}else " ;
   end foreach ;
 end reader ;
@@ -438,9 +432,9 @@ override reader @lexicalExplicitRule generateCocoaCode
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "if (" ;
+  outGeneratedCode := "if (mNoLexicalError && (" ;
   outGeneratedCode .= [mLexicalRuleExpression generateCocoaConditionCode !inLexiqueAnalysisContext] ;
-  outGeneratedCode .= ") {\n" ;
+  outGeneratedCode .= ")) {\n" ;
   [!?outGeneratedCode incIndentation !2] ;
   foreach mInstructionList do
     outGeneratedCode .= [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext] ;

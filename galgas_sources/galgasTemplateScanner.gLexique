@@ -39,6 +39,7 @@ style delimitersStyle -> "Delimiters" ;
 style nonTerminalStyle -> "Non Terminal Symbols" ;
 style integerStyle -> "Integer Constants" ;
 style float_csts -> "Floating Point Constants" ;
+style typeNameStyle -> "Type Names (@...)" ;
 style commentStyle -> "Comments" ;
 
 # -------------------------- identifier or key word --------------------
@@ -145,6 +146,25 @@ rule 'a'->'z' |  'A'->'Z' :
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
   end repeat ;
   send search identifierString in galgasKeyWordList default $identifier$ ;
+end rule ;
+
+# -------------------------- Type Name -----------------------------
+
+$type_name$ ! tokenString error message "a type name (@...)" style typeNameStyle ;
+
+message incorrectTypeNameError : "in a type name, a letter should follow the '@' character" ;
+
+rule '@' :
+  select
+  when 'a'->'z' | 'A'->'Z' | '_' :
+    repeat
+      enterCharacterIntoString !?tokenString !* ;
+    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end repeat ;
+  default
+    error incorrectTypeNameError ;
+  end select ;
+  send $type_name$ ; 
 end rule ;
 
 #------------------------------- Integer, floating Point Constant ------------------

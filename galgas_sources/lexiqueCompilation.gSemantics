@@ -19,10 +19,12 @@
 
 semantics lexiqueCompilation :
 import "lexiqueGeneration.gSemantics" ;
+import "lexiqueCocoaGeneration.gSemantics" ;
 
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics lexiqueGeneration in "lexiqueGeneration.gSemantics" ;
+import semantics lexiqueCocoaGeneration in "lexiqueCocoaGeneration.gSemantics" ;
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -420,6 +422,7 @@ override method @lexicalStructuredSendInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   foreach mLexicalSendSearchList do
+    with !?ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !mSearchListName do      mShouldBeGenerated := true ;    end with ;
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*] ;
   end foreach ;
   [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext] ;
@@ -575,8 +578,7 @@ abstract method @abstractLexicalRule checkLexicalRule
 override method @lexicalImplicitRule checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey ! mListName ?* ?*] ;
-end method ;
+  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*] ;end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -622,16 +624,15 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
   template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.ggstpl"
-    ?@string LEXIQUE_CLASS_NAME
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@string unused LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
   ;
   template cocoaImplementationZone2 "lexique_cocoa_implementation.cpp.ggstpl"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
-    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
-    ?@terminalList TERMINAL_LIST
-    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
-    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalMessageMap unused LEXICAL_MESSAGE_MAP
+    ?@terminalList unused TERMINAL_LIST
+    ?@stringset unused STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleList LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
@@ -728,7 +729,7 @@ routine compileLexiqueComponent
 #--------------------------------------- Build terminal map
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
     @uint terminalStyleIndex := 0 ;
-    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mName ?* ?terminalStyleIndex] ;    end if ;
+    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;    end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
@@ -749,7 +750,7 @@ routine compileLexiqueComponent
     lexiqueAnalysisContext.mTerminalList +=      !mName      !argumentTypeList      ![mSyntaxErrorMessage string]      !isEndOfTemplateMark      !terminalStyleIndex    ;
   end foreach ;
   foreach [lexiqueComponentRoot mLexicalListDeclarationList] do    @uint terminalStyleIndex := 0 ;
-    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mName ?* ?terminalStyleIndex] ;    end if ;
+    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;    end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
@@ -776,7 +777,7 @@ routine compileLexiqueComponent
       tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
       lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEntrySpelling string] ;
     end foreach ;
-    [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist] ;
+    [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false] ;
   end foreach ;
 #--------------------------------------- Build Message map
   foreach [lexiqueComponentRoot mLexicalMessageDeclarationList] do
@@ -889,7 +890,6 @@ routine compileLexiqueComponent
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
          ![lexiqueAnalysisContext mTerminalList]
-         ![lexiqueAnalysisContext mLexicalTokenListMap]
          ![lexiqueAnalysisContext mUnicodeStringToGenerate]
          ![lexiqueComponentRoot mLexicalRuleList]
          !lexiqueAnalysisContext

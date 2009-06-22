@@ -36,6 +36,19 @@
     end if
   end foreach
 %
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N           *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+enum {%LEXIQUE_CLASS_NAME%_1_%
+    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+      %,\n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+    end foreach
+  %\n} ;
+
 //---------------------------------------------------------------------------*
 //                                                                           *
 //                     S C A N N E R    C L A S S                            *
@@ -51,7 +64,6 @@
 %
 %if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
 //--- Scanner mode for template scanner
-  @private Int32 mMatchedTemplateDelimiterIndex ;
+  @private SInt32 mMatchedTemplateDelimiterIndex ;
 %end if%
-
 }
