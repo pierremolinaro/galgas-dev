@@ -1509,7 +1509,7 @@ template_filewrapper_lexiqueGenerationTemplates_implementationZone2 (C_Compiler 
     result << var_cas_LEXIQUE_CLASS_NAME ;
     result << ".h\"\n"
       "\n"
-      "#include \"strings/unicode_character.h\"\n"
+      "#include \"strings/unicode_character_cpp.h\"\n"
       "#include \"galgas/scanner_actions.h\"\n"
       "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
       "  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()\n"

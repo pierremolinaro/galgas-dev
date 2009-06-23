@@ -595,6 +595,8 @@
 		CF96D6C30B1DA4750067E271 /* AC_galgas_sortedlist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF96D6B30B1DA4740067E271 /* AC_galgas_sortedlist.cpp */; };
 		CF976F0B0AD9954600D81E5D /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
 		CF976F0D0AD9954B00D81E5D /* galgasDebug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgasDebug */; };
+		CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
+		CF9950D00FF146B0006E6395 /* galgas_scanner-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */; };
 		CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
 		CF9F4E22092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF9F4E23092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
@@ -3792,6 +3794,8 @@
 				CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
 				CF7FD6A30FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
 				CF7FD6AE0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */,
+				CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */,
+				CF9950D00FF146B0006E6395 /* galgas_scanner-cocoa.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
