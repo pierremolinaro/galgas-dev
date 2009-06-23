@@ -26,7 +26,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "galgasTemplateScanner.h"
 
-#include "strings/unicode_character.h"
+#include "strings/unicode_character_cpp.h"
 #include "galgas/scanner_actions.h"
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()

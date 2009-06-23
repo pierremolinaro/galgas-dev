@@ -10,7 +10,7 @@
 
 #include "semantics_semantics.h"
 #include "utilities/MF_MemoryControl.h"
-#include "strings/unicode_character.h"
+#include "strings/unicode_character_cpp.h"
 
 //---------------------------------------------------------------------------*
 
