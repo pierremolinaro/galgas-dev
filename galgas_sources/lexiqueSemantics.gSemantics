@@ -249,6 +249,14 @@ map @styleMap {
   search searchKey, searchKeyGetID error message "the '%K' style is not declared" ;
 }
 
+#------------------------------------------------------------------*
+
+map @lexicalTagMap {
+  insert insertKey error message "the '%K' tag is already declared in %L",
+                                 "the '%K' tag declaration shadows the tag declared in %L" ;
+  search searchKey error message "the '%K' tag is not declared" ;
+}
+
 #---------------------------------------------------------------------------*
 
 struct @lexiqueAnalysisContext {
@@ -260,8 +268,7 @@ struct @lexiqueAnalysisContext {
   @lexicalAttributeMap mLexicalAttributeMap ;
   @lexicalExplicitTokenListMapMap mLexicalTokenListMap ;
   @stringset mUnicodeStringToGenerate ;
-  @templateDelimitorList mTemplateDelimitorList ;  @styleMap mStyleMap ;
-}
+  @templateDelimitorList mTemplateDelimitorList ;  @styleMap mStyleMap ;}
 
 #---------------------------------------------------------------------------*
 

@@ -371,13 +371,10 @@ routine build_LIBPM_STRINGS_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
-##  append_cpp_h_files !?fileList !"AC_CoreString" ;
-##  append_cpp_h_files !?fileList !"C_CoreASCIIString" ;
   append_cpp_h_files !?fileList !"C_String" ;
-  append_cpp_h_files !?fileList !"unicode_character" ;
+  append_cpp_h_files !?fileList !"unicode_character_cpp" ;
   append_cpp_h_files !?fileList !"unicode_string_routines" ;
   fileList += !"cUnicodeData.h" ;
-##  fileList += !"string_class_template.h" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -393,10 +390,8 @@ routine build_LIBPM_STRINGS_files_for_sources_build_phase
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
-##  fileList += !"AC_CoreString.cpp" ;
-##  fileList += !"C_CoreASCIIString.cpp" ;
   fileList += !"C_String.cpp" ;
-  fileList += !"unicode_character.cpp" ;
+  fileList += !"unicode_character_cpp.cpp" ;
   fileList += !"unicode_string_routines.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
@@ -592,11 +587,10 @@ routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist fileList [emptyList] ;
+:  @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
     @string extension := [key pathExtension] ;
-    if (extension != "cpp") & (extension != "c") then
+    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") then
       fileList += !key ;
     end if ;
   end foreach ;
@@ -713,7 +707,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inGUISourceNameSet
   ??@stringset inScannerSourceNameSet
-  ??@stringset inOptionSourceNameSet
+  ??@stringset inOptionSourceNameSet  ??@stringset inExternSourceNameSet_app
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
@@ -768,7 +762,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"C_DateTime.cpp" ;
 #--- LIBPM / Strings
   fileList += !"C_String.cpp" ;
-  fileList += !"unicode_character.cpp" ;
+  fileList += !"unicode_character_cpp.cpp" ;
   fileList += !"unicode_string_routines.cpp" ;
 #--- LIBPM / Utilities
   fileList += !"C_Exception.cpp" ;
@@ -782,6 +776,10 @@ routine build_COCOA_APP_files_for_sources_build_phase
   end foreach ;
   foreach inOptionSourceNameSet do
     fileList += !key . ".cpp" ;
+  end foreach ;
+#--- Extern files
+  foreach inExternSourceNameSet_app do    @string extension := [key pathExtension] ;    if (extension == "c") | (extension == "cpp") | (extension == "m") | (extension == "mm") then      fileList += !key ;
+    end if ;
   end foreach ;
 #---
   enter_file_list_for_sources_build_phase
@@ -814,16 +812,14 @@ routine generateXcodeProject
   ??@string in_xcodeproj_filePath
   ??@stringlist inIconFiles
   ??@string inReferenceFilePath
-:
-  @XcodeProjectDescription XcodeProjectDescription ;
+:  @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
 #-------------------------------------------------- Build source lists
 #---------- HAND CODED SOURCES
   @XcodeObjectReferenceList fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
   @stringset fileSet := inExternSourceNameSet_tool | inExternSourceNameSet_app ;
   fileSet -= !"AppKit.framework" ;
-  fileSet -= !"Cocoa.framework" ;
-  build_HAND_CODED_SOURCES_group
+  fileSet -= !"Cocoa.framework" ;  build_HAND_CODED_SOURCES_group
     !?XcodeProjectDescription
     !fileSet
     !?fileListOf_HAND_CODED_SOURCES_group
@@ -1235,7 +1231,7 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !inGUISourceNameSet_app
     !inScannerSourceNameSet_app
-    !inOptionSourceNameSet_app
+    !inOptionSourceNameSet_app    !inExternSourceNameSet_app
     !?listForSourceBuildPhaseOfCocoaApp
   ;
 #--- Frameworks Build Phase
