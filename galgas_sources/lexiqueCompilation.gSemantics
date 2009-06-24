@@ -414,12 +414,14 @@ end method ;
 
 abstract method @lexicalInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @lexicalStructuredSendInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
   foreach mLexicalSendSearchList do
     with !?ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !mSearchListName do      mShouldBeGenerated := true ;    end with ;
@@ -432,6 +434,7 @@ end method ;
 
 override method @lexicalSimpleSendInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mSentTerminal ?*] ;
 end method ;
@@ -440,15 +443,18 @@ end method ;
 
 override method @lexicalRepeatInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap
 :
   foreach mLexicalWhileBranchList do
     [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
+    @lexicalTagMap tagMap [mapWithMapToOverride !ioTagMap] ;
     foreach mWhileInstructionList do
-      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap] ;
     end foreach ;
   end foreach ;
+  @lexicalTagMap tagMap [mapWithMapToOverride !ioTagMap] ;
   foreach mRepeatedInstructionList do
-    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap] ;
   end foreach ;
 end method ;
 
@@ -456,15 +462,18 @@ end method ;
 
 override method @lexicalSelectInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap  ioTagMap
 :
   foreach mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
+    @lexicalTagMap tagMap [mapWithMapToOverride !ioTagMap] ;
     foreach mSelectInstructionList do
-      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap] ;
     end foreach ;
   end foreach ;
+  @lexicalTagMap tagMap [mapWithMapToOverride !ioTagMap] ;
   foreach mDefaultInstructionList do
-    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap] ;
   end foreach ;
 end method ;
 
@@ -472,6 +481,7 @@ end method ;
 
 override method @lexicalRoutineInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
   @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList ;
   @stringlist routineErrorMessageList ;
@@ -521,34 +531,41 @@ end method ;
 
 override method @lexicalLogInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @lexicalRewindInstruction checkLexicalInstruction
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap
 :
+  [ioTagMap searchKey !mLexicalTagName] ;
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @lexicalDropInstruction checkLexicalInstruction
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @lexicalTagInstruction checkLexicalInstruction
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
-:
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext  ?!@lexicalTagMap ioTagMap
+:  [!?ioTagMap insertKey !mLexicalTagName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @lexicalErrorInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
   with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mErrorMessageName do
     mMessageIsUsed := true ;
@@ -559,6 +576,7 @@ end method ;
 
 override method @lexicalWarningInstruction checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
 :
   with !?ioLexiqueAnalysisContext.mLexicalMessageMap searchKey !mWarningMessageName do
     mMessageIsUsed := true ;
@@ -586,8 +604,9 @@ override method @lexicalExplicitRule checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext] ;
+  @lexicalTagMap tagMap [emptyMap] ;
   foreach mInstructionList do
-    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext] ;
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap] ;
   end foreach ;
 end method ;
 
@@ -705,8 +724,7 @@ routine compileLexiqueComponent
     ![@lexicalAttributeMap emptyMap]
     ![@lexicalExplicitTokenListMapMap emptyMap]
     ![@stringset emptySet]
-    ![@templateDelimitorList emptyList]    ![@styleMap emptyMap]
-  ] ;
+    ![@templateDelimitorList emptyList]    ![@styleMap emptyMap]  ] ;
 #--------------------------------------- Build style map  @uint styleIndex := 1 ;  foreach [lexiqueComponentRoot mLexicalStyleList] do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex] ;    styleIndex ++ ;  end foreach ;
 #--------------------------------------- Build lexical analysis context struct
