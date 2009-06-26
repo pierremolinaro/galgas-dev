@@ -162,15 +162,15 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 void cPtr_templateBlockInstruction::
 generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
   ioCppFile << "const GGS_uint indentation_"
-            << cStringWithUnsigned (mMagicNumber.location ())
+            << cStringWithSigned (mMagicNumber.location ())
             << " = " ;
   mExpression (HERE)->generateExpression (ioCppFile) ;
   ioCppFile << " ;\n"
             << "if (indentation_"
-            << cStringWithUnsigned (mMagicNumber.location ())
+            << cStringWithSigned (mMagicNumber.location ())
             << ".isBuilt ()) {\n"
                "  result.incIndentation ((sint32) indentation_"
-            << cStringWithUnsigned (mMagicNumber.location ())
+            << cStringWithSigned (mMagicNumber.location ())
             << ".uintValue ()) ;\n"
                "}\n" ;
   GGS_templateInstructionList::cEnumerator currentInstruction2 (mBlockInstructionList, true) ;
@@ -180,10 +180,10 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
   }
   ioCppFile << " ;\n"
             << "if (indentation_"
-            << cStringWithUnsigned (mMagicNumber.location ())
+            << cStringWithSigned (mMagicNumber.location ())
             << ".isBuilt ()) {\n"
                "  result.incIndentation (- ((sint32) indentation_"
-            << cStringWithUnsigned (mMagicNumber.location ())
+            << cStringWithSigned (mMagicNumber.location ())
             << ".uintValue ())) ;\n"
                "}\n" ;
   }
