@@ -52,6 +52,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#import \"OC_Token.h\"\n\n"             
                     "#import \"F_CocoaWrapperForGalgas.h\"\n"
+                    "#import \"OCP_TokenizerProtocol.h\"\n"
                     "#import \"C_sourceTextForCocoa.h\"\n"
                     "#import \"" << inLexiqueComponentName << ".h\"\n" ;
   GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionComponentsMap, true) ;
@@ -421,41 +422,32 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "#pragma mark ------------------------\n\n" ;
   generatedZone3.appendCppTitleComment ("Global static variables") ;
   generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions ;\n" ;
-  generatedZone3 << "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", \"\") ;\n"
-                    "static C_galgas_io * gIOParametersPtr = NULL ;\n"
-                    "static " << inLexiqueComponentName << " * gScannerPtr = NULL ;\n\n" ;
+  generatedZone3 << "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", \"\") ;\n\n" ;
 //--- Macros list
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Text Macros\n\n" ;
   generatedZone3.appendCppTitleComment ("T E X T    M A C R O S") ;
   generatedZone3 << "static uint32 kTextMacroCount = " << cStringWithSigned (inTextMacroList.count ()) << " ;\n\n" ;
   GGS_textMacroList::cEnumerator currentMacro (inTextMacroList, true) ;
-  generatedZone3 << "static const char * kTextMacroTitle [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
+  generatedZone3 << "static NSString * kTextMacroTitle [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
   while (currentMacro.hasCurrentObject ()) {
+    generatedZone3 << "@" ;
     generatedZone3.appendCLiteralStringConstant (currentMacro._mKey (HERE)) ;
     generatedZone3 << ",\n  " ;
     currentMacro.next () ;
   }
   generatedZone3 << "NULL\n"
                     "} ;\n\n" ;
-  generatedZone3 << "static const char * kTextMacroContent [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
+  generatedZone3 << "static NSString * kTextMacroContent [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
   currentMacro.rewind () ;
   while (currentMacro.hasCurrentObject ()) {
+    generatedZone3 << "@" ;
     generatedZone3.appendCLiteralStringConstant (currentMacro._mContents (HERE)) ;
     generatedZone3 << ",\n  " ;
     currentMacro.next () ;
   }
   generatedZone3 << "NULL\n"
                     "} ;\n\n" ;
-  generatedZone3 << "uint32 getTextMacroCount (void) {\n"
-                    "  return kTextMacroCount ;\n"
-                    "}\n\n" ;
-  generatedZone3 << "const char * getTextMacroTitleAtIndex (const uint32 inIndex) {\n"
-                    "  return kTextMacroTitle [inIndex] ;\n"
-                    "}\n\n" ;
-  generatedZone3 << "const char * getTextMacroContentAtIndex (const uint32 inIndex) {\n"
-                    "  return kTextMacroContent [inIndex] ;\n"
-                    "}\n\n" ;
 //--- Datas for PopUp list
   if (inTerminalSymbolCount > 0) {
     generatedZone3.appendCppHyphenLineComment () ;
@@ -511,55 +503,37 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "  ] ;\n"
                     "}\n\n" ;
 
-//--- Block Comment
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "#pragma mark Block Comment\n\n" ;
-  generatedZone3.appendCppTitleComment ("B L O C K    C O M M E N T") ;
-  generatedZone3 << "NSString * blockComment (void) {\n"
-                    "  return @" ;
-  generatedZone3.appendCLiteralStringConstant (inBlockComment.string ()) ;
-  generatedZone3 << " ;\n"
-                    "}\n\n" ;
-
 //--- Lexique interface           
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Lexique interface\n\n" ;
   generatedZone3.appendCppTitleComment ("Lexique interface") ;
-  generatedZone3 << "\n"
-                    "sint32 getStylesCount (void) {\n"
-                    "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
-                    "}\n\n" ;
+  generatedZone3 << "@interface OC_TemporaryTokenizer : NSObject <OCP_TokenizerProtocol> {\n"
+                    "  @private " << inLexiqueComponentName << " * mScannerPtr ;\n"
+                    "  @private C_galgas_io * mIOParametersPtr ;\n"
+                    "}\n\n"
+                    "@end\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "const char * getStyleName (const sint32 inIndex) {\n"
-                    "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
-                    "}\n\n" ;
+  generatedZone3 << "@implementation OC_TemporaryTokenizer\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "const char * getStyleIdentifier (const sint32 inIndex) {\n"
-                    "  return " << inLexiqueComponentName << "::getStyleIdentifier (inIndex) ;\n"
-                    "}\n\n" ;
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "void\n"
-                    "scanThenGetStyledRangeArray (NSString * inSourceString,\n"
-                    "                             const char * inSourceFileName,\n"
-                    "                             NSMutableArray * ioStyledRangeArray, // Array of OC_Token\n"
-                    "                             const sint32 inAffectedRangeLocation,\n"
-                    "                             const sint32 inAffectedRangeLength,\n"
-                    "                             const sint32 inReplacementStringLength,\n"
-                    "                             sint32 & outFirstIndexToRedraw,\n"
-                    "                             sint32 & outLastIndexToRedraw,\n"
-                    "                             sint32 & outEraseRangeStart,\n"
-                    "                             sint32 & outEraseRangeEnd,\n"
-                    "                             NSMenu * ioMenu) {\n"
-                    "  if (gScannerPtr == NULL) {\n"
-                    "    macroMyNew (gIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
-                    "    macroMyNew (gScannerPtr, " << inLexiqueComponentName << " (NULL, \"\", \"\", gIOParametersPtr, \"\" COMMA_HERE)) ;\n"
+  generatedZone3 << "- (void) tokenizeForSourceString: (NSString *) inSourceString\n"
+                    "         tokenArray: (NSMutableArray *) ioStyledRangeArray // Array of OC_Token\n"
+                    "         editedRange: (const NSRange *) inEditedRange\n"
+                    "         changeInLength: (const sint32) inChangeInLength\n"
+                    "         firstIndexToRedraw: (sint32 *) outFirstIndexToRedraw\n"
+                    "         lastIndexToRedraw: (sint32 *) outLastIndexToRedraw\n"
+                    "         eraseRangeStart: (sint32 *) outEraseRangeStart\n"
+                    "         eraseRangeEnd: (sint32 *) outEraseRangeEnd\n"
+                    "         popupMenu: (NSMenu *) ioMenu {\n"
+                    "  if (mScannerPtr == NULL) {\n"
+                    "    macroMyNew (mIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
+                    "    macroMyNew (mScannerPtr, " << inLexiqueComponentName << " (NULL, \"\", \"\", mIOParametersPtr, \"\" COMMA_HERE)) ;\n"
                     "  }\n"
                     "  AC_sourceText * sourceTextPtr = NULL ;\n"
                     "  macroMyNew (sourceTextPtr,\n"
                     "              C_sourceTextForCocoa (inSourceString,\n"
-                    "                                    inSourceFileName\n"
+                    "                                    \"\"\n"
                     "                                    COMMA_HERE)) ;\n"
-                    "  gScannerPtr->resetAndLoadSourceFromText (sourceTextPtr) ;\n"
+                    "  mScannerPtr->resetAndLoadSourceFromText (sourceTextPtr) ;\n"
                     "  TC_UniqueArray <C_styledRange> styledRangeArray ([ioStyledRangeArray count] COMMA_HERE) ;\n"
                     "  for (uint32 i=0 ; i<[ioStyledRangeArray count] ; i++) {\n"
                     "    OC_Token * token = [ioStyledRangeArray objectAtIndex:i] ;\n"
@@ -567,14 +541,17 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "    styledRangeArray.addObject (sr) ;\n"
                     "  }\n"
                     "  TC_UniqueArray <C_popupEntry> popUpEntries ;\n"
-                    "  gScannerPtr->scanThenGetStyledRangeArray (styledRangeArray,\n"
-                    "                                            inAffectedRangeLocation,\n"
-                    "                                            inAffectedRangeLength,\n"
-                    "                                            inReplacementStringLength,\n"
-                    "                                            outFirstIndexToRedraw,\n"
-                    "                                            outLastIndexToRedraw,\n"
-                    "                                            outEraseRangeStart,\n"
-                    "                                            outEraseRangeEnd,\n"
+                    "  const sint32 affectedRangeLocation = inEditedRange->location ;\n"
+                    "  const sint32 affectedRangeLength = inEditedRange->length ;\n"
+                    "  const sint32 replacementStringLength = inEditedRange->length + inChangeInLength ;\n"
+                    "  mScannerPtr->scanThenGetStyledRangeArray (styledRangeArray,\n"
+                    "                                            affectedRangeLocation,\n"
+                    "                                            affectedRangeLength,\n"
+                    "                                            replacementStringLength,\n"
+                    "                                            *outFirstIndexToRedraw,\n"
+                    "                                            *outLastIndexToRedraw,\n"
+                    "                                            *outEraseRangeStart,\n"
+                    "                                            *outEraseRangeEnd,\n"
                     "                                            "
                  << ((inTerminalSymbolCount == 0) ? "NULL" : "kPopUpListData")
                  << ",\n"
@@ -599,6 +576,50 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "    [ioStyledRangeArray addObject:token] ;\n"
                     "  }\n"
                     "  macroDetachPointer (sourceTextPtr, C_sourceTextForCocoa) ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (NSString *) blockComment {\n"
+                    "  return @" ;
+  generatedZone3.appendCLiteralStringConstant (inBlockComment.string ()) ;
+  generatedZone3 << " ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "\n"
+                    "- (UInt32) styleCount {\n"
+                    "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (const char *) styleNameForIndex: (const SInt32) inIndex {\n"
+                    "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (const char *) styleIdentifierForIndex: (const SInt32) inIndex {\n"
+                    "  return " << inLexiqueComponentName << "::getStyleIdentifier (inIndex) ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (UInt32) textMacroCount {\n"
+                    "  return kTextMacroCount ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n"
+                    "  return kTextMacroTitle [inIndex] ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n"
+                    "  return kTextMacroContent [inIndex] ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "@end\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "NSObject <OCP_TokenizerProtocol> * tokenizerForExtension (const NSString * inExtension) {\n"
+                    "  return [[OC_TemporaryTokenizer alloc] init] ;\n"
+                    "}\n\n" ;
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "NSArray * tokenizers (void) {\n"
+                    "  return [NSArray arrayWithObjects:\n"
+                    "    [[[OC_TemporaryTokenizer alloc] init] autorelease],\n"
+                    "    nil\n"
+                    "  ] ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
 
