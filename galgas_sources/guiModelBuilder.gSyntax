@@ -26,10 +26,6 @@ import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
 
 nonterminal <gui_component_start_symbol> !@guiComponentRoot outGuiComponentRoot ;
 
-nonterminal <gui_attribute> ?!@guiAttributeList ioAttributes ;
-
-nonterminal <gui_label> ?!@guiLabelList ioLabels ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #   G U I    C O M P O N E N T                                              *
@@ -47,11 +43,12 @@ rule <gui_component_start_symbol>
 #--- Loop on import declarations
   repeat
   while
-    $import__$ ;
+    $import__$ ;    warning here: "when source file extension is '.gGui', the 'import__' construct is obsolete and has no effect: you can delete it" ;
     $literal_string$ ? * ;
     $;$ ;
   while
     $import$ ;
+    warning here: "when source file extension is '.gGui', the 'import' construct is obsolete and has no effect: you can delete it" ;
     select
       $semantics$ ;
     or
@@ -69,13 +66,47 @@ rule <gui_component_start_symbol>
     $;$ ;
   end repeat ;
 #--- Attributes and labels
-  @guiAttributeList mAttributes [emptyList] ;
-  @guiLabelList mLabels [emptyList] ;
+  @guiSimpleAttributeList simpleGlobalAttributes [emptyList] ;
+  @withLexiqueList withLexiqueList [emptyList] ;
   repeat
   while
-    <gui_attribute> !?mAttributes ;
+    $identifier$ ?* ;
+    warning here: "when source file extension is '.gGui', this construct outside a 'with lexique' is obsolete and has no effect: you can delete it" ;
+    $literal_string$ ?* ;
+    $:$ ;
+    repeat
+      $literal_string$ ?* ;
+    while
+    end repeat ;
+    $;$ ;
   while
-    <gui_label> !?mLabels ;
+    $identifier$ ?@lstring mKey ;
+    $:$ ;
+    @lstring mValue [new !"" !here] ;
+    repeat
+      $literal_string$ ?@lstring value ;
+      mValue := [@lstring new ![mValue string] . [value string] ![value location]] ;
+    while
+    end repeat ;
+    $;$ ;
+    simpleGlobalAttributes += !mKey !mValue ;
+  while
+    $label$ ;
+    warning here: "when source file extension is '.gGui', the 'label' construct outside a 'with lexique' is obsolete and has no effect: you can delete it" ;
+    $terminal$ ?* ;
+    $,$ ;
+    $terminal$ ?* ;
+    $;$ ;
+  while    $with$ ;    $lexique$ ;    $literal_string$ ?@lstring lexiqueReference ;    @guiLabelList labels [emptyList] ;
+    @guiSimpleAttributeList simpleAttributes [emptyList] ;    @guiCompoundAttributeList compoundAttributes [emptyList] ;
+    ${$ ;    repeat    while      $label$ ;      $terminal$ ? @lstring terminal1 ;
+      $,$ ;
+      $terminal$ ? @lstring terminal2 ;
+      $;$ ;      labels += !terminal1 !terminal2 ;
+    while      $identifier$ ?@lstring key ;      $literal_string$ ?@lstring name ;      $:$ ;      @lstring value [new !"" !here] ;      repeat
+        $literal_string$ ?@lstring v ;        value := [@lstring new ![value string] . [v string] ![v location]] ;      while      end repeat ;      $;$ ;      compoundAttributes += !key !name !value ;    while      $identifier$ ?@lstring name ;      $:$ ;
+      $literal_string$ ?@lstring value ;      $;$ ;      simpleAttributes += !name !value ;    end repeat ;    $}$ ;    withLexiqueList +=       !lexiqueReference      !labels
+      !simpleAttributes      !compoundAttributes    ;
   end repeat ;
 #---
   $end$ ;
@@ -84,41 +115,9 @@ rule <gui_component_start_symbol>
   outGuiComponentRoot := [@guiComponentRoot new
     !mGUIName
     !mGUIClass
-    !mAttributes
-    !mLabels
+    !simpleGlobalAttributes
+    !withLexiqueList
   ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <gui_attribute> ?!@guiAttributeList ioAttributes :
-  $identifier$ ?@lstring mKey ;
-  @lstring attributeString ;
-  select
-    attributeString := [@lstring new !"" !here] ;
-  or
-    $literal_string$ ?attributeString ;
-  end select ;
-  $:$ ;
-  @lstring mValue [new !"" !here] ;
-  repeat
-    $literal_string$ ?@lstring value ;
-    mValue := [@lstring new ![mValue string] . [value string] ![value location]] ;
-  while
-  end repeat ;
-  $;$ ;
-  ioAttributes += !mKey !attributeString !mValue ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <gui_label> ?!@guiLabelList ioLabels :
-  $label$ ;
-  $terminal$ ?@lstring mAttribute1 ;
-  $,$ ;
-  $terminal$ ?@lstring mAttribute2 ;
-  $;$ ;
-  ioLabels += !mAttribute1 !mAttribute2 ;
 end rule ;
 
 #---------------------------------------------------------------------------*

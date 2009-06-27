@@ -39,7 +39,7 @@ program mda_galgas_prgm "version GALGAS_BETA_VERSION" :
   import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
   import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
   import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
-  import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
+  import grammar guiGrammar in "guiGrammar.gGrammar" ;
   import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
 

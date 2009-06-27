@@ -266,7 +266,13 @@ rule <galgas_component>
     else
       error settingName: "unkown key" ;
     end if ;
-    $;$ ;
+    $;$ ;  while    $with$ ;    $lexique$ ;    warning here : "the 'with lexique' construct has no effect when 'gui' component file extension is '.ggs'" ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+      $,$ ;
+      $terminal$ ? * ;
+      $;$ ;
+    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;      repeat
+        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
+      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
   end repeat ;
 #--- Generate Cocoa c++ file
   generateCocoaComponent
@@ -323,6 +329,14 @@ label importLexique
     while
     end repeat ;
     $;$ ;
+  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+      $,$ ;
+      $terminal$ ? * ;
+      $;$ ;
+    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+      repeat
+        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
+      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -368,6 +382,14 @@ label importSyntax
     while
     end repeat ;
     $;$ ;
+  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+      $,$ ;
+      $terminal$ ? * ;
+      $;$ ;
+    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+      repeat
+        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
+      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -414,6 +436,14 @@ label importSemantics
     while
     end repeat ;
     $;$ ;
+  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+      $,$ ;
+      $terminal$ ? * ;
+      $;$ ;
+    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+      repeat
+        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
+      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -459,6 +489,14 @@ label importGrammarForSemantics
     while
     end repeat ;
     $;$ ;
+  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+      $,$ ;
+      $terminal$ ? * ;
+      $;$ ;
+    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+      repeat
+        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
+      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -503,6 +541,14 @@ label importOptions
     while
     end repeat ;
     $;$ ;
+  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+      $,$ ;
+      $terminal$ ? * ;
+      $;$ ;
+    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+      repeat
+        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
+      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
