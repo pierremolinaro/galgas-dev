@@ -676,6 +676,12 @@
 		CFC1506B0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */; };
 		CFC1506C0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */; };
 		CFC1506D0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */; };
+		CFC153030FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
+		CFC153040FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
+		CFC153050FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
+		CFC153060FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
+		CFC153070FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
+		CFC153080FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFCB125D0D9D74330016BE3F /* galgasTemplateGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB12570D9D74330016BE3F /* galgasTemplateGrammar.cpp */; };
 		CFCB125F0D9D74330016BE3F /* galgasTemplateParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB12590D9D74330016BE3F /* galgasTemplateParser.cpp */; };
 		CFCB12610D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
@@ -776,10 +782,8 @@
 		CFE167830E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE167840E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE167850E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
-		CFE26CA70C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
 		CFE26CA90C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
 		CFE26CAB0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
-		CFE26CAD0C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
 		CFE26CAF0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
 		CFE26CB10C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFE26D010C12FD100066ACB3 /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
@@ -920,7 +924,6 @@
 		CFEDF3480C2D161F0038713A /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
 		CFEDF3490C2D161F0038713A /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFEDF34A0C2D161F0038713A /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
-		CFEDF34B0C2D161F0038713A /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
 		CFEDF34C0C2D161F0038713A /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
 		CFEDF34D0C2D161F0038713A /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFEDF34E0C2D161F0038713A /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
@@ -1053,7 +1056,6 @@
 		CFEDF4A80C2D16610038713A /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */; };
 		CFEDF4A90C2D16610038713A /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFEDF4AA0C2D16610038713A /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
-		CFEDF4AB0C2D16610038713A /* guiLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */; };
 		CFEDF4AC0C2D16610038713A /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
 		CFEDF4AD0C2D16610038713A /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFEDF4AE0C2D16610038713A /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
@@ -1550,6 +1552,8 @@
 		CFBFA17B0FB48EC300F0BF80 /* include_typeInstructionLexicalWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicalWarning.h; sourceTree = "<group>"; };
 		CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = I_ScrollToEndArrow.gif; sourceTree = "<group>"; };
 		CFC151360FF6622E00A61DE8 /* OCP_TokenizerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCP_TokenizerProtocol.h; sourceTree = "<group>"; };
+		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
+		CFC153020FF6A76700A61DE8 /* guiGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiGrammar.h; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
 		CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDivideOperation.h; sourceTree = "<group>"; };
 		CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeModuloOperation.h; sourceTree = "<group>"; };
@@ -1751,8 +1755,6 @@
 		CFE154340C106A8200A1D904 /* parameterArgumentMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parameterArgumentMetamodel.h; sourceTree = "<group>"; };
 		CFE1672E0E8E6E1B00AFDAFC /* C_SourceTextForCocoa.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = C_SourceTextForCocoa.mm; sourceTree = "<group>"; };
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiLL1grammar.cpp; sourceTree = "<group>"; };
-		CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiLL1grammar.h; sourceTree = "<group>"; };
 		CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiMetamodel.cpp; sourceTree = "<group>"; };
 		CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = guiMetamodel.h; sourceTree = "<group>"; };
 		CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = guiModelBuilder.cpp; sourceTree = "<group>"; };
@@ -2432,11 +2434,11 @@
 		CFEEBE6505C0569F009FE498 /* GUI Component */ = {
 			isa = PBXGroup;
 			children = (
+				CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */,
+				CFC153020FF6A76700A61DE8 /* guiGrammar.h */,
 				CFECE46A0FEFA5A60031D087 /* galgas_scanner-cocoa.m */,
 				CFECE4690FEFA5A60031D087 /* galgas_scanner-cocoa.h */,
 				CF6702F805C073220065267C /* cocoaGalgas.mm */,
-				CFE26C7D0C12C38A0066ACB3 /* guiLL1grammar.cpp */,
-				CFE26C7E0C12C38A0066ACB3 /* guiLL1grammar.h */,
 				CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */,
 				CFE26C800C12C38A0066ACB3 /* guiMetamodel.h */,
 				CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */,
@@ -3415,6 +3417,7 @@
 				CF0AF9110FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
 				CF0AF9340FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 				CF7FD6A10FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
+				CFC153030FF6A76700A61DE8 /* guiGrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3546,7 +3549,6 @@
 				CFDD30A50C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30A70C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30A90C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
-				CFE26CA70C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */,
 				CFE26CA90C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
 				CFE26CAB0C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 				CFE26D010C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
@@ -3590,6 +3592,7 @@
 				CF0AF9130FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
 				CF0AF9360FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 				CF7FD6A40FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
+				CFC153050FF6A76700A61DE8 /* guiGrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3721,7 +3724,6 @@
 				CFDD30AD0C11C9440089A9F3 /* grammarLL1grammar.cpp in Sources */,
 				CFDD30AF0C11C9440089A9F3 /* grammarMetamodel.cpp in Sources */,
 				CFDD30B10C11C9440089A9F3 /* grammarModelBuilder.cpp in Sources */,
-				CFE26CAD0C12C38B0066ACB3 /* guiLL1grammar.cpp in Sources */,
 				CFE26CAF0C12C38B0066ACB3 /* guiMetamodel.cpp in Sources */,
 				CFE26CB10C12C38B0066ACB3 /* guiModelBuilder.cpp in Sources */,
 				CFE26D070C12FD100066ACB3 /* programMetamodel.cpp in Sources */,
@@ -3765,6 +3767,7 @@
 				CF0AF9140FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
 				CF0AF9370FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 				CF7FD6A50FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
+				CFC153060FF6A76700A61DE8 /* guiGrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3967,6 +3970,7 @@
 				CF0AF9120FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
 				CF0AF9350FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 				CF7FD6A20FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
+				CFC153040FF6A76700A61DE8 /* guiGrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4098,7 +4102,6 @@
 				CFEDF3480C2D161F0038713A /* grammarLL1grammar.cpp in Sources */,
 				CFEDF3490C2D161F0038713A /* grammarMetamodel.cpp in Sources */,
 				CFEDF34A0C2D161F0038713A /* grammarModelBuilder.cpp in Sources */,
-				CFEDF34B0C2D161F0038713A /* guiLL1grammar.cpp in Sources */,
 				CFEDF34C0C2D161F0038713A /* guiMetamodel.cpp in Sources */,
 				CFEDF34D0C2D161F0038713A /* guiModelBuilder.cpp in Sources */,
 				CFEDF34E0C2D161F0038713A /* programMetamodel.cpp in Sources */,
@@ -4142,6 +4145,7 @@
 				CF0AF9150FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
 				CF0AF9380FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 				CF7FD6A70FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
+				CFC153070FF6A76700A61DE8 /* guiGrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4273,7 +4277,6 @@
 				CFEDF4A80C2D16610038713A /* grammarLL1grammar.cpp in Sources */,
 				CFEDF4A90C2D16610038713A /* grammarMetamodel.cpp in Sources */,
 				CFEDF4AA0C2D16610038713A /* grammarModelBuilder.cpp in Sources */,
-				CFEDF4AB0C2D16610038713A /* guiLL1grammar.cpp in Sources */,
 				CFEDF4AC0C2D16610038713A /* guiMetamodel.cpp in Sources */,
 				CFEDF4AD0C2D16610038713A /* guiModelBuilder.cpp in Sources */,
 				CFEDF4AE0C2D16610038713A /* programMetamodel.cpp in Sources */,
@@ -4317,6 +4320,7 @@
 				CF0AF9160FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */,
 				CF0AF9390FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */,
 				CF7FD6A80FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */,
+				CFC153080FF6A76700A61DE8 /* guiGrammar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

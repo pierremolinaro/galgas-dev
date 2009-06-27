@@ -21,7 +21,14 @@ semantics guiMetamodel :
 
 #---------------------------------------------------------------------------*
 
-list @guiAttributeList {
+list @guiSimpleAttributeList {
+  @lstring mKey ;
+  @lstring mValue ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @guiCompoundAttributeList {
   @lstring mKey ;
   @lstring mAttributeName ;
   @lstring mValue ;
@@ -36,11 +43,17 @@ list @guiLabelList {
 
 #---------------------------------------------------------------------------*
 
+list @withLexiqueList {  @lstring mLexiqueFileName ;  @guiLabelList mLabels ;
+  @guiSimpleAttributeList mSimpleAttributes ;  @guiCompoundAttributeList mCompoundAttributes ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @guiComponentRoot {
   @lstring mGUIName  ;
-  @lstring mGUIClass feature nogetter ;
-  @guiAttributeList mAttributes feature nogetter ;
-  @guiLabelList mLabels feature nogetter ;
+  @lstring mGUIClass ;
+  @guiSimpleAttributeList mGlobalSimpleAttributeList ;
+  @withLexiqueList mWithLexiqueList ;
 }
 
 #---------------------------------------------------------------------------*

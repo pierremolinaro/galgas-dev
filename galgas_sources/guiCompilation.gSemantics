@@ -19,7 +19,7 @@
 
 semantics guiCompilation :
 import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
-import grammar guiLL1grammar in "guiLL1grammar.gGrammar" ;
+import grammar guiGrammar in "guiGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
@@ -28,7 +28,7 @@ routine compileGuiComponent
   ??@string unused inOutputDirectory
 :
   @guiComponentRoot guiComponentRoot ;
-  grammar guiLL1grammar in inSourceFile ?guiComponentRoot ;
+  grammar guiGrammar in inSourceFile ?guiComponentRoot ;
 #--- Check component name
   @lstring componentName := [guiComponentRoot mGUIName] ;
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
