@@ -143,8 +143,7 @@ routine build_LIBPM_COCOA_GALGAS_group
   @stringlist fileList [emptyList] ;
   append_m_h_files !?fileList !"NSSplitViewExtensions" ;
   append_m_h_files !?fileList !"PMFontButton" ;
-  append_m_h_files !?fileList !"OC_Token" ;
-  append_m_h_files !?fileList !"OC_Lexique" ;
+  append_m_h_files !?fileList !"OC_Token" ;  append_m_h_files !?fileList !"OC_Lexique" ;
   append_mm_h_files !?fileList !"OC_GGS_BuildWindowController" ;
   append_mm_h_files !?fileList !"OC_GGS_Document" ;
   append_mm_h_files !?fileList !"OC_GGS_PreferencesController" ;
@@ -159,6 +158,7 @@ routine build_LIBPM_COCOA_GALGAS_group
   fileList += !"I_Stop.tiff" ;
   fileList += !"I_Window.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
+  fileList += !"OCP_TokenizerProtocol.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
 #--- Enter nib files
   enter_nib_in_group

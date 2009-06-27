@@ -1549,6 +1549,7 @@
 		CFBD0DD30D78AC580031CA4B /* GGS_filewrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGS_filewrapper.h; sourceTree = "<group>"; };
 		CFBFA17B0FB48EC300F0BF80 /* include_typeInstructionLexicalWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeInstructionLexicalWarning.h; sourceTree = "<group>"; };
 		CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = I_ScrollToEndArrow.gif; sourceTree = "<group>"; };
+		CFC151360FF6622E00A61DE8 /* OCP_TokenizerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCP_TokenizerProtocol.h; sourceTree = "<group>"; };
 		CFC1766E09FE1CD30026596C /* include_typeDecrementInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDecrementInstruction.h; sourceTree = "<group>"; };
 		CFC1766F09FE1CD30026596C /* include_typeDivideOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDivideOperation.h; sourceTree = "<group>"; };
 		CFC1767009FE1CD30026596C /* include_typeModuloOperation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeModuloOperation.h; sourceTree = "<group>"; };
@@ -2085,6 +2086,7 @@
 				CFECE4650FEFA5270031D087 /* OC_Lexique.m */,
 				CF9E55F90FF5372D007692D1 /* OC_Token.h */,
 				CF9E55FA0FF5372D007692D1 /* OC_Token.m */,
+				CFC151360FF6622E00A61DE8 /* OCP_TokenizerProtocol.h */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
