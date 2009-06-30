@@ -188,11 +188,10 @@
   }
 //--- Add Update Tab view
   NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
-  NSTabViewItem * updateTabViewItem = [[NSTabViewItem alloc] init] ;
+  NSTabViewItem * updateTabViewItem = [[[NSTabViewItem alloc] init] autorelease] ;
   [updateTabViewItem setView:mUpdateView] ;
   [updateTabViewItem setLabel:@"Update"] ;
   [prefsTabView addTabViewItem:updateTabViewItem] ;
-  [updateTabViewItem release] ;
 //--- Add bindings
   [mCheckUpdateAtStartUpCheckBox
     bind:@"value"
@@ -323,7 +322,7 @@
   mSearchForUpdatesInBackground = inSender == nil ;
   [mCheckNowButton setEnabled:NO] ;
   [[PMDownloadData alloc]
-    initWithURLString:[self lastReleaseHTTPPath]
+    initDownloadWithURLString:[self lastReleaseHTTPPath]
     delegate:self
     downloadDidEndSelector:@selector (downloadAllAvailableGalgasVersion:)
     userInfo:nil
@@ -334,15 +333,15 @@
 
 - (void) downloadAllAvailableGalgasVersion: (PMDownloadData *) inDownloader {
   [mCheckNowButton setEnabled:YES] ;
-  NSString * errorString = [inDownloader downloadErrorString] ;
-  if (errorString != nil) {
+  NSError * error = [inDownloader downloadError] ;
+  if (error != nil) {
     if (! mSearchForUpdatesInBackground) {
       NSAlert * alert = [NSAlert
         alertWithMessageText:@"Cannot connect to the server."
         defaultButton:@"Ok"
         alternateButton:nil
         otherButton:nil
-        informativeTextWithFormat:@"Reason: '%@'.", errorString
+        informativeTextWithFormat:@"Reason: '%@'.", [error localizedDescription]
       ] ;
       [alert
         beginSheetModalForWindow:nil
@@ -636,7 +635,7 @@
       if (status == 0) {
         NSString * filePath = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", [self temporaryDir]] ;
         NSString * cocoaGalgasPath = [[NSBundle mainBundle] bundlePath] ;
-        status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES] ;
+        status = ! [cocoaGalgasPath writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:NULL] ;
       }
       if (status == 0) {
         NSAlert * alert = [NSAlert
@@ -807,7 +806,7 @@
   AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
   NSFileManager * fm = [NSFileManager defaultManager] ;
   if (! [fm fileExistsAtPath:installationPath]) {
-    const char * createDirArgs [] = {"-p", [installationPath cString], NULL} ;
+    const char * createDirArgs [] = {"-p", [installationPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef
       commandPath:"/bin/mkdir"
@@ -818,7 +817,7 @@
   unsigned i ;
   for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
     NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
-    const char * copyArgs [] = {[toolSourcePath cString], [installationPath cString], NULL} ;
+    const char * copyArgs [] = {[toolSourcePath cStringUsingEncoding:NSUTF8StringEncoding], [installationPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef
       commandPath:"/bin/cp"
@@ -967,7 +966,7 @@
   unsigned i ;
   for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
     NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i]] ;
-    const char * copyArgs [] = {[toolPath cString], NULL} ;
+    const char * copyArgs [] = {[toolPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef
       commandPath:"/bin/rm"
