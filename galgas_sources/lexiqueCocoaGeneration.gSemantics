@@ -236,7 +236,6 @@ override reader @lexicalStructuredSendInstruction generateCocoaInstructionCode
   outGeneratedCode .= "if (mTokenCode == -1) {\n" ;
   outGeneratedCode .= "  " . [mLexicalSendDefaultAction generateCocoaDefaultSendCode !inScannerClassName] ;
   outGeneratedCode .= "}\n" ;
-  outGeneratedCode .= "/* enterToken (token) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -247,7 +246,6 @@ override reader @lexicalSimpleSendInstruction generateCocoaInstructionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . [mSentTerminal identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "/* enterToken (token) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -382,7 +380,6 @@ override reader @lexicalRewindInstruction generateCocoaInstructionCode
 :
   outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
   outGeneratedCode .= "mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "/* enterToken (token) ; */\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -420,7 +417,6 @@ override reader @lexicalImplicitRule generateCocoaCode
     outGeneratedCode .= [mName CStringConstantRepresentation] ;
     outGeneratedCode .= " advance:YES]) {\n" ;
     outGeneratedCode .= "  mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-    outGeneratedCode .= "  /* enterToken (token) ; */\n" ;
     outGeneratedCode .= "}else " ;
   end foreach ;
 end reader ;
