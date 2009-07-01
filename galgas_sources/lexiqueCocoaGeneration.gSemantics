@@ -336,11 +336,11 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalDropInstruction generateCocoaInstructionCode
-  ?@string unused inScannerClassName
+  ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "" ; # No generated code
+  outGeneratedCode := "mTokenCode = " . inScannerClassName . "_1_" . mTerminalName . " ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

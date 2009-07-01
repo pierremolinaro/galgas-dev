@@ -55,7 +55,7 @@ enum {%LEXIQUE_CLASS_NAME%_1_%
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-@interface %LEXIQUE_CLASS_NAME% : OC_Lexique {
+@interface OC_Lexique_%LEXIQUE_CLASS_NAME% : OC_Lexique {
 //--- Attributes
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do

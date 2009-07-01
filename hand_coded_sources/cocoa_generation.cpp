@@ -50,7 +50,9 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "  #error \"This file has been compiled with a version of GALGAS different than the version of libpm\"\n"
                     "#endif\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#import \"OC_Token.h\"\n\n"             
+  generatedZone2 << "#import \"OC_Token.h\"\n"             
+                    "#include \"utilities/M_SourceLocation.h\"\n"
+                    "#include \"galgas/C_Lexique.h\"\n"
                     "#import \"F_CocoaWrapperForGalgas.h\"\n"
                     "#import \"OCP_TokenizerProtocol.h\"\n"
                     "#import \"C_sourceTextForCocoa.h\"\n"
@@ -519,8 +521,8 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "         tokenArray: (NSMutableArray *) ioStyledRangeArray // Array of OC_Token\n"
                     "         editedRange: (const NSRange *) inEditedRange\n"
                     "         changeInLength: (const sint32) inChangeInLength\n"
-                    "         firstIndexToRedraw: (sint32 *) outFirstIndexToRedraw\n"
-                    "         lastIndexToRedraw: (sint32 *) outLastIndexToRedraw\n"
+                    "         firstIndexToRedraw: (sint32 *) outLowerIndexToRedrawInStyleArray\n"
+                    "         lastIndexToRedraw: (sint32 *) outUpperIndexToRedrawInStyleArray\n"
                     "         eraseRangeStart: (sint32 *) outEraseRangeStart\n"
                     "         eraseRangeEnd: (sint32 *) outEraseRangeEnd\n"
                     "         popupMenu: (NSMenu *) ioMenu {\n"
@@ -548,8 +550,8 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "                                            affectedRangeLocation,\n"
                     "                                            affectedRangeLength,\n"
                     "                                            replacementStringLength,\n"
-                    "                                            *outFirstIndexToRedraw,\n"
-                    "                                            *outLastIndexToRedraw,\n"
+                    "                                            *outLowerIndexToRedrawInStyleArray,\n"
+                    "                                            *outUpperIndexToRedrawInStyleArray,\n"
                     "                                            *outEraseRangeStart,\n"
                     "                                            *outEraseRangeEnd,\n"
                     "                                            "
@@ -589,12 +591,12 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "  return " << inLexiqueComponentName << "::getStylesCount () ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "- (const char *) styleNameForIndex: (const SInt32) inIndex {\n"
-                    "  return " << inLexiqueComponentName << "::getStyleName (inIndex) ;\n"
+  generatedZone3 << "- (NSString *) styleNameForStyleIndex: (const SInt32) inIndex {\n"
+                    "  return [NSString stringWithCString:" << inLexiqueComponentName << "::getStyleName (inIndex)] ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "- (const char *) styleIdentifierForIndex: (const SInt32) inIndex {\n"
-                    "  return " << inLexiqueComponentName << "::getStyleIdentifier (inIndex) ;\n"
+  generatedZone3 << "- (NSString *) styleIdentifierForStyleIndex: (const SInt32) inIndex {\n"
+                    "  return [NSString stringWithCString:" << inLexiqueComponentName << "::getStyleIdentifier (inIndex)] ;\n"
                     "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "- (UInt32) textMacroCount {\n"
