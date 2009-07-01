@@ -164,7 +164,7 @@
         advance () ;
       }
     }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\0')) {
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\0') && mNoLexicalError) {
 %  foreach LEXICAL_ATTRIBUTE_MAP do
     %    mLexicalAttribute_%([key string]) ([mLexicalType initialization]) % ;\n%
   end foreach
