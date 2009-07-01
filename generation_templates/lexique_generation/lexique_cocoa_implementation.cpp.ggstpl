@@ -12,7 +12,7 @@
 
 //---------------------------------------------------------------------------*
 
-@implementation %LEXIQUE_CLASS_NAME%
+@implementation OC_Lexique_%LEXIQUE_CLASS_NAME%
 
 //---------------------------------------------------------------------------*
 
@@ -223,7 +223,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (UInt32) stylesCount {
+- (UInt32) styleCount {
   return %([[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string])% ;
 }
 

@@ -5,7 +5,7 @@
 
 - (void) parseLexicalTokenForLexicalColoring ;
 
-- (UInt32) stylesCount ;
+- (UInt32) styleCount ;
 
 - (NSString *) styleNameForStyleIndex: (SInt32) inIndex ;
 
