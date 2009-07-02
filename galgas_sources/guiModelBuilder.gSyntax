@@ -99,10 +99,14 @@ rule <gui_component_start_symbol>
     $;$ ;
   while    $with$ ;    $lexique$ ;    $literal_string$ ?@lstring lexiqueReference ;    @guiLabelList labels [emptyList] ;
     @guiSimpleAttributeList simpleAttributes [emptyList] ;    @guiCompoundAttributeList compoundAttributes [emptyList] ;
-    ${$ ;    repeat    while      $label$ ;      $terminal$ ? @lstring terminal1 ;
-      $,$ ;
-      $terminal$ ? @lstring terminal2 ;
-      $;$ ;      labels += !terminal1 !terminal2 ;
+    ${$ ;    repeat    while      $label$ ;
+      @lstringlist terminalList [emptyList] ;
+      repeat        $terminal$ ? @lstring terminal ;
+        terminalList += !terminal ;
+      while
+        $,$ ;
+      end repeat ;
+      $;$ ;      labels += !terminalList ;
     while      $identifier$ ?@lstring key ;      $literal_string$ ?@lstring name ;      $:$ ;      @lstring value [new !"" !here] ;      repeat
         $literal_string$ ?@lstring v ;        value := [@lstring new ![value string] . [v string] ![v location]] ;      while      end repeat ;      $;$ ;      compoundAttributes += !key !name !value ;    while      $identifier$ ?@lstring name ;      $:$ ;
       $literal_string$ ?@lstring value ;      $;$ ;      simpleAttributes += !name !value ;    end repeat ;    $}$ ;    withLexiqueList +=       !lexiqueReference      !labels

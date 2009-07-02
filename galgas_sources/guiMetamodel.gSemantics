@@ -37,8 +37,7 @@ list @guiCompoundAttributeList {
 #---------------------------------------------------------------------------*
 
 list @guiLabelList {
-  @lstring mAttribute1 ;
-  @lstring mAttribute2 ;
+  @lstringlist mTerminalList ;
 }
 
 #---------------------------------------------------------------------------*
