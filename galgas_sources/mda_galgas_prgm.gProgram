@@ -94,7 +94,11 @@ message "a GALGAS option source file"
 when . "gLexique"
 message "a GALGAS lexique source file"
 ??@lstring inSourceFile {
-  compileLexiqueComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
+  ] ;
+  compileLexiqueComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -104,6 +108,7 @@ message "a GALGAS semantics source file"
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
   ] ;
   compileSemanticsComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
 }
@@ -131,7 +136,11 @@ message "a GALGAS grammar source file"
 when . "gGui"
 message "a GALGAS GUI source file"
 ??@lstring inSourceFile {
-  compileGuiComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
+  ] ;
+  compileGuiComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -176,6 +185,7 @@ message "a GALGAS project source file"
 #--- Parset Component struct
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
   ] ;
 #--- Parse galgas sources
   foreach projectSourceList do
@@ -191,13 +201,13 @@ message "a GALGAS project source file"
     when externSourceFile :
     when guiSourceFile :
       if extension == "gGui" then
-        compileGuiComponent !fullFilePath ! outputDirectoryTEMP ;
+        compileGuiComponent !fullFilePath ! outputDirectoryTEMP !?parsedComponentStruct ;
       else
         error mFilePath:"extension of a gui component should be '.gGui'." ;
       end if ;
     when lexiqueSourceFile :
       if extension == "gLexique" then
-        compileLexiqueComponent !fullFilePath ! outputDirectoryTEMP ;
+        compileLexiqueComponent !fullFilePath ! outputDirectoryTEMP !?parsedComponentStruct ;
       else
         error mFilePath:"extension of a lexique component should be '.gLexique'." ;
       end if ;

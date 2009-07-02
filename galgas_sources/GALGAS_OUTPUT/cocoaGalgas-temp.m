@@ -152,10 +152,6 @@ unsigned getUIntOptionsCount (void) {
   return kUIntOptionCount ;
 }
 
-/* unsigned getUIntOptionDefaultValue (const unsigned inIndex) {
-  return gUintOptionValue [inIndex] ;
-} */
-
 unsigned getUIntOptionValue (const unsigned inIndex) {
   return gUintOptionValue [inIndex] ;
 }

@@ -196,14 +196,18 @@
     end foreach
   end block
 %if ([self testForInputChar:'\0']) { // End of source text ? 
-        mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
-      }else{ // Unknown input character
-        mNoLexicalError = NO ;
-      }%end if%
+      mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
+    }else{ // Unknown input character
+      mNoLexicalError = NO ;
+    }
+  //--- Error ?
+    if (! mNoLexicalError) {
+      mTokenCode = -1 ;
+      [self advance] ;
+    }%end if%
   }
   if ((mCurrentChar == '\0') && ([mTemplateStringBeforeToken length] > 0)) {
     mTokenCode = 0 ;
-    /* enterToken (token) ; */
   }
 }
 

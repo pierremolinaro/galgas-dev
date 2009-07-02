@@ -19,6 +19,8 @@
 
 semantics semanticsMetamodel :
 import "instructionMetamodel.gSemantics" ;
+import "lexiqueMetamodel.gSemantics" ;
+import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 
@@ -309,6 +311,14 @@ class @semanticsComponentRoot {
 
 #---------------------------------------------------------------------------*
 
+map @parsedLexiqueComponentMap {
+  @lexiqueComponentRoot mRoot ;
+  insert insertKey error message "the '%K' lexique component has already been parsed" ;
+  search searchKey error message "the '%K' lexique component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
 map @parsedSemanticsComponentMap {
   @semanticsComponentRoot mRoot ;
   insert insertKey error message "the '%K' semantics component has already been parsed" ;
@@ -319,6 +329,7 @@ map @parsedSemanticsComponentMap {
 
 struct @parsedComponentStruct {
   @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
+  @parsedLexiqueComponentMap mParsedLexiqueComponentMap ;
 }
 
 #---------------------------------------------------------------------------*
