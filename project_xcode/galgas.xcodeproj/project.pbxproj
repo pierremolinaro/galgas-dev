@@ -682,7 +682,6 @@
 		CFC153080FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC62E000FFB6AAD00D7F015 /* cocoaGalgas-temp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC62DFF0FFB6AAD00D7F015 /* cocoaGalgas-temp.m */; };
 		CFC62E020FFB6AAD00D7F015 /* cocoaGalgas-temp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC62DFF0FFB6AAD00D7F015 /* cocoaGalgas-temp.m */; };
-		CFC62F4B0FFBA4ED00D7F015 /* cocoaGalgas-temp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC62DFF0FFB6AAD00D7F015 /* cocoaGalgas-temp.m */; };
 		CFCB125D0D9D74330016BE3F /* galgasTemplateGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB12570D9D74330016BE3F /* galgasTemplateGrammar.cpp */; };
 		CFCB125F0D9D74330016BE3F /* galgasTemplateParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB12590D9D74330016BE3F /* galgasTemplateParser.cpp */; };
 		CFCB12610D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
@@ -752,6 +751,7 @@
 		CFD7E274059B5B8E00410349 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
 		CFD818FA0D8D9D1B00DEAD27 /* galgasI386 in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgasI386 */; };
 		CFD818FB0D8D9D1B00DEAD27 /* galgasDebugI386 in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgasDebugI386 */; };
+		CFD853670FFCDE9500616007 /* cocoaGalgas-temp.m in Sources */ = {isa = PBXBuildFile; fileRef = CFC62DFF0FFB6AAD00D7F015 /* cocoaGalgas-temp.m */; };
 		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
@@ -3820,7 +3820,7 @@
 				CF7FD6AE0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */,
 				CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */,
 				CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */,
-				CFC62F4B0FFBA4ED00D7F015 /* cocoaGalgas-temp.m in Sources */,
+				CFD853670FFCDE9500616007 /* cocoaGalgas-temp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

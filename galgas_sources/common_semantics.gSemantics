@@ -3663,7 +3663,7 @@ list @labelForPopUpList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @textMacroList {
+list @EXtextMacroList {
   @lstring mKey ;
   @lstring mContents ;
 }

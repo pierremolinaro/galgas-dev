@@ -18,14 +18,73 @@
 #---------------------------------------------------------------------------*
 
 semantics guiCompilation :
+import "semanticsMetamodel.gSemantics" ;
+import "semanticsSemantics.gSemantics" ;
+import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
+import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import grammar guiGrammar in "guiGrammar.gGrammar" ;
 
+#------------------------------------------------------------------*
+
+map @extensionMap {
+  @string mLexiqueName ;  insert insertKey error message "the '%K' extension is already declared in %L" ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @nibAndClassList {
+  @string mNibName ;
+  @string mClassName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @textMacroList {
+  @string mKey ;
+  @string mContents ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @importedLexiqueList {
+  @string mLexiqueClassName ;
+  @string mBlockComment ;
+  @string mTitle ;
+  @textMacroList mTextMacroList ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @guiAnalysisContext {
+  @nibAndClassList mNibAndClassList ;
+  @extensionMap mExtensionMap ;
+  @importedLexiqueList mWithLexiqueList ;
+}
+
+#---------------------------------------------------------------------------*
+#         G E N E R A T I O N    T E M P L A T E S                          *
+#---------------------------------------------------------------------------*
+
+filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
+} {
+  template gui_implementation "gui-implementation.m.gTemplate"
+    ?@guiAnalysisContext GUI_CONTEXT
+#    ?@string LEXIQUE_CLASS_NAME
+#    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+#    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#         C O M P I L E    G U I    C O M P O N E N T                       *
 #---------------------------------------------------------------------------*
 
 routine compileGuiComponent
   ??@lstring inSourceFile
-  ??@string unused inOutputDirectory
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @guiComponentRoot guiComponentRoot ;
   grammar guiGrammar in inSourceFile ?guiComponentRoot ;
@@ -37,7 +96,120 @@ routine compileGuiComponent
       "the component name ('" . [componentName string]
     . "') against the source file base name ('" . basename . "'): they should be identical"
     ;
-  end if ; 
+  end if ;
+#--- 
+  @guiAnalysisContext context [new
+    ![@nibAndClassList emptyList]
+    ![@extensionMap emptyMap]
+    ![@importedLexiqueList emptyList]
+  ] ;
+#--- Nib and main classes
+  foreach [guiComponentRoot mGlobalSimpleAttributeList] do
+    if [mKey string] != "nibAndMainClass" then
+      warning mKey:"the '" . mKey . "' key is invalid and has no effect" ;
+#      error mKey:"the '" . mKey . "' key is invalid: only 'nibAndMainClass' is allowed here" ;
+    else
+      @stringlist x := [mValue componentsSeparatedByString !"."] ;
+      if [x length] != 2 then
+        error mValue:"the string string should conform to \"nib_name.nib_main_class\"" ;
+      else
+        context.mNibAndClassList +=
+          ![x mValueAtIndex !0]
+          ![x mValueAtIndex !1]
+        ;
+      end if ;
+    end if ;
+  end foreach ;
+#--- 'with lexique' construct analysis
+  foreach [guiComponentRoot mWithLexiqueList] do
+  #--- Check lexique
+    @lexiqueComponentRoot lexiqueComponentRoot ;
+    if [mLexiqueFileName pathExtension] != "gLexique" then
+      error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" -> lexiqueComponentRoot ;
+    else
+      @lstring lexiqueFullPathName [new
+        ![mLexiqueFileName absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
+        ![mLexiqueFileName location]
+      ] ;
+      parseLexiqueComponent
+        !lexiqueFullPathName
+        !?ioParsedComponentStruct
+        ?lexiqueComponentRoot
+      ;
+    end if ;
+  #--- Compound attributes
+    @textMacroList textMacroList [emptyList] ;
+    foreach mCompoundAttributes do
+      if [mKey string] != "textMacro" then
+        error mKey: "for a compound attribute, only the 'textMacro' key is valid" ;
+      else
+        textMacroList += ![mAttributeName string] ![mValue string] ;
+      end if ;
+    end foreach ;
+  #--- Simple attributes
+    @bool hasAssociatedExtension := false ;
+    @bool hasTabViewTitle := false ;
+    @bool hasBlockComment := false ;
+    @string tabViewTitle := "" ;
+    @string blockComment := "" ;
+    foreach mSimpleAttributes do
+      if [mKey string] == "fileExtension" then
+        [!?context.mExtensionMap insertKey !mValue ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]] ;
+        hasAssociatedExtension := true ;
+      elsif [mKey string] == "title" then
+        if hasTabViewTitle then
+          error mKey: "the '" . mKey . "' key should be defined once" ;
+        end if ;
+        hasTabViewTitle := true ;
+        tabViewTitle := [mValue string] ;
+      elsif [mKey string] == "blockComment" then
+        if hasBlockComment then
+          error mKey: "the '" . mKey . "' key should be defined once" ;
+        end if ;
+        hasBlockComment := true ;
+        blockComment := [mValue string] ;
+      else
+        error mKey: "the '" . mKey . "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')" ;
+      end if ;
+    end foreach ;
+  #--- has an extension ?
+    if not hasAssociatedExtension then
+      error mLexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")" ;
+    end if ;
+  #--- has title ?
+    if not hasTabViewTitle then
+      error mLexiqueFileName:"the 'title' key should be defined once (it is not defined)" ;
+    end if ;
+  #---
+    context.mWithLexiqueList +=
+      ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]
+      !blockComment
+      !tabViewTitle
+      !textMacroList
+    ;
+  end foreach ;
+#--- Generation
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![componentName string] . "-2.mm"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper guiGenerationTemplates.gui_implementation
+         !context
+#         !lexiqueClassName
+#         ![lexiqueAnalysisContext mLexicalAttributeMap]
+#         ![lexiqueAnalysisContext mLexicalMessageMap]
+#         ![lexiqueAnalysisContext mTerminalList]
+#         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+#         ![lexiqueComponentRoot mLexicalRuleList]
+#         !lexiqueAnalysisContext
+#         !lexiqueComponentRoot
+       ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # Zone 3
+    ] ;
+  end if ;
 end routine ;
 
 

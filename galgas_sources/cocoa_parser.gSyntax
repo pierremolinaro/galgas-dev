@@ -88,7 +88,7 @@ extern routine generateCocoaComponent
   ??@lstring nomPRGMprincipal
   ??@lstring inGUIkindName
   ??@lstringlist inNIBandClassList
-  ??@textMacroList inTextMacroList
+  ??@EXtextMacroList inTextMacroList
   ??@string inBlockComment
   ??@lstring inLexiqueClassName
   ??@M_optionComponents inOptionsComponents
@@ -208,7 +208,7 @@ rule <galgas_component>
 #--- Assignment list
   @lstringlist nibAndClassList [emptyList] ;
   @labelForPopUpList labelForPopUpList [emptyList] ;
-  @textMacroList textMacroList [emptyList] ;
+  @EXtextMacroList textMacroList [emptyList] ;
   @string blockComment := "" ; # Means undefined
   repeat
   while

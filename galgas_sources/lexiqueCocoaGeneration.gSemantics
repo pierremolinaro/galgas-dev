@@ -229,11 +229,11 @@ override reader @lexicalStructuredSendInstruction generateCocoaInstructionCode
 :
   outGeneratedCode := "" ;
   foreach mLexicalSendSearchList do
-    outGeneratedCode .= "if (mTokenCode == -1) {\n" ;
+    outGeneratedCode .= "if (mTokenCode == 0) {\n" ;
     outGeneratedCode .= "  mTokenCode = search_into_" . mSearchListName . " (mLexicalAttribute_" . mAttributeName . ") ;\n" ;
     outGeneratedCode .= "}\n" ;
   end foreach ;
-  outGeneratedCode .= "if (mTokenCode == -1) {\n" ;
+  outGeneratedCode .= "if (mTokenCode == 0) {\n" ;
   outGeneratedCode .= "  " . [mLexicalSendDefaultAction generateCocoaDefaultSendCode !inScannerClassName] ;
   outGeneratedCode .= "}\n" ;
 end reader ;

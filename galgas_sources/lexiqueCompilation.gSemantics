@@ -20,7 +20,10 @@
 semantics lexiqueCompilation :
 import "lexiqueGeneration.gSemantics" ;
 import "lexiqueCocoaGeneration.gSemantics" ;
+import "semanticsMetamodel.gSemantics" ;
 
+import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics lexiqueGeneration in "lexiqueGeneration.gSemantics" ;
@@ -588,7 +591,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 abstract method @abstractLexicalRule checkLexicalRule
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ;
 
 #---------------------------------------------------------------------------*
@@ -659,15 +662,38 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
 }
 
 #---------------------------------------------------------------------------*
+#                         parseLexiqueComponent                             *
+#---------------------------------------------------------------------------*
+
+routine parseLexiqueComponent
+  ??@lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@lexiqueComponentRoot outLexiqueComponentRoot
+:
+  @lstring key [new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
+  if [[ioParsedComponentStruct mParsedLexiqueComponentMap] hasKey ! [key string]] then
+    [[ioParsedComponentStruct mParsedLexiqueComponentMap] searchKey !key ?outLexiqueComponentRoot] ;
+  else
+    grammar lexiqueLL1grammar in inSourceFile ?outLexiqueComponentRoot ;
+    [!?ioParsedComponentStruct.mParsedLexiqueComponentMap insertKey !key !outLexiqueComponentRoot] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 #                         compileLexiqueComponent                           *
 #---------------------------------------------------------------------------*
 
 routine compileLexiqueComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @lexiqueComponentRoot lexiqueComponentRoot ;
-  grammar lexiqueLL1grammar in inSourceFile ?lexiqueComponentRoot ;
+  parseLexiqueComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?lexiqueComponentRoot
+  ;
 #--------------------------------------- Check component name
   @lstring componentName := [lexiqueComponentRoot mLexiqueComponentName] ;
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;

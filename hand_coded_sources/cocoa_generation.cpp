@@ -37,7 +37,7 @@ static void
 generate_mm_file_for_cocoa (C_Compiler & inLexique,
                             const C_String & inCocoaComponentName,
                             const GGS_lstringlist & inNibAndClassList,
-                            const GGS_textMacroList & inTextMacroList,
+                            const GGS_EXtextMacroList & inTextMacroList,
                             const GGS_string & inBlockComment,
                             const C_String & inLexiqueComponentName,
                             const GGS_M_optionComponents & inOptionComponentsMap,
@@ -430,7 +430,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "#pragma mark Text Macros\n\n" ;
   generatedZone3.appendCppTitleComment ("T E X T    M A C R O S") ;
   generatedZone3 << "static uint32 kTextMacroCount = " << cStringWithSigned (inTextMacroList.count ()) << " ;\n\n" ;
-  GGS_textMacroList::cEnumerator currentMacro (inTextMacroList, true) ;
+  GGS_EXtextMacroList::cEnumerator currentMacro (inTextMacroList, true) ;
   generatedZone3 << "static NSString * kTextMacroTitle [" << cStringWithSigned (inTextMacroList.count () + 1) << "] = {\n  " ;
   while (currentMacro.hasCurrentObject ()) {
     generatedZone3 << "@" ;
@@ -610,6 +610,11 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3 << "- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n"
                     "  return kTextMacroContent [inIndex] ;\n"
                     "}\n\n" ;
+
+  generatedZone3.appendCppHyphenLineComment () ;
+  generatedZone3 << "- (NSString *) tabItemTitle {\n"
+                    "  return @\"Source\" ;\n"
+                    "}\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "@end\n\n" ;
   generatedZone3.appendCppHyphenLineComment () ;
@@ -641,7 +646,7 @@ routine_generateCocoaComponent (C_Compiler & inLexique,
                                 const GGS_lstring inGUIcomponentName,
                                 const GGS_lstring inGUIkindName,
                                 const GGS_lstringlist inNibAndClassList,
-                                const GGS_textMacroList inTextMacroList,
+                                const GGS_EXtextMacroList inTextMacroList,
                                 const GGS_string inBlockComment,
                                 const GGS_lstring inLexiqueComponentName,
                                 const GGS_M_optionComponents inOptionComponentsMap,
