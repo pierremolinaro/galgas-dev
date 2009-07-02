@@ -1410,7 +1410,7 @@
 		CF82596F08536A130077AEAF /* I_Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Stop.tiff; sourceTree = "<group>"; };
 		CF82597008536A130077AEAF /* I_Window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Window.png; sourceTree = "<group>"; };
 		CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildWindowController.h; sourceTree = "<group>"; };
-		CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildWindowController.mm; sourceTree = "<group>"; };
+		CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_BuildWindowController.mm; sourceTree = "<group>"; };
 		CF82597308536A130077AEAF /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Document.h; sourceTree = "<group>"; };
 		CF82597408536A130077AEAF /* OC_GGS_Document.mm */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.objcpp; path = OC_GGS_Document.mm; sourceTree = "<group>"; };
 		CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_PreferencesController.h; sourceTree = "<group>"; };
