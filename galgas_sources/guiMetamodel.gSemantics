@@ -42,8 +42,11 @@ list @guiLabelList {
 
 #---------------------------------------------------------------------------*
 
-list @withLexiqueList {  @lstring mLexiqueFileName ;  @guiLabelList mLabels ;
-  @guiSimpleAttributeList mSimpleAttributes ;  @guiCompoundAttributeList mCompoundAttributes ;
+list @withLexiqueList {
+  @lstring mLexiqueFileName ;
+  @guiLabelList mLabels ;
+  @guiSimpleAttributeList mSimpleAttributes ;
+  @guiCompoundAttributeList mCompoundAttributes ;
 }
 
 #---------------------------------------------------------------------------*

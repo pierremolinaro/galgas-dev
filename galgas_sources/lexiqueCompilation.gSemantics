@@ -427,7 +427,9 @@ override method @lexicalStructuredSendInstruction checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap
 :
   foreach mLexicalSendSearchList do
-    with !?ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !mSearchListName do      mShouldBeGenerated := true ;    end with ;
+    with !?ioLexiqueAnalysisContext.mLexicalTokenListMap searchKey !mSearchListName do
+      mShouldBeGenerated := true ;
+    end with ;
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*] ;
   end foreach ;
   [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext] ;
@@ -560,8 +562,10 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lexicalTagInstruction checkLexicalInstruction
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext  ?!@lexicalTagMap ioTagMap
-:  [!?ioTagMap insertKey !mLexicalTagName] ;
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap
+:
+  [!?ioTagMap insertKey !mLexicalTagName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -599,7 +603,8 @@ abstract method @abstractLexicalRule checkLexicalRule
 override method @lexicalImplicitRule checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*] ;end method ;
+  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -619,17 +624,17 @@ end method ;
 
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
 } {
-  template headerZone2 "lexique_header_template_zone_2.h.ggstpl"
+  template headerZone2 "lexique_header_template_zone_2.h.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
-  template headerZone3 "lexique_header_template_zone_3.h.ggstpl"
+  template headerZone3 "lexique_header_template_zone_3.h.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalListDeclarationList DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
   ;
-  template implementationZone2 "lexique_implementation.cpp.ggstpl"
+  template implementationZone2 "lexique_implementation.cpp.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
@@ -640,16 +645,16 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
-  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.ggstpl"
+  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
-  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.ggstpl"
+  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.gTemplate"
     ?@string unused LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
   ;
-  template cocoaImplementationZone2 "lexique_cocoa_implementation.cpp.ggstpl"
+  template cocoaImplementationZone2 "lexique_cocoa_implementation.cpp.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap unused LEXICAL_MESSAGE_MAP
@@ -750,11 +755,18 @@ routine compileLexiqueComponent
     ![@lexicalAttributeMap emptyMap]
     ![@lexicalExplicitTokenListMapMap emptyMap]
     ![@stringset emptySet]
-    ![@templateDelimitorList emptyList]    ![@styleMap emptyMap]  ] ;
-#--------------------------------------- Build style map  @uint styleIndex := 1 ;  foreach [lexiqueComponentRoot mLexicalStyleList] do
-    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex] ;    styleIndex ++ ;  end foreach ;
+    ![@templateDelimitorList emptyList]
+    ![@styleMap emptyMap]
+  ] ;
+#--------------------------------------- Build style map
+  @uint styleIndex := 1 ;
+  foreach [lexiqueComponentRoot mLexicalStyleList] do
+    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex] ;
+    styleIndex ++ ;
+  end foreach ;
 #--------------------------------------- Build lexical analysis context struct
-  foreach [lexiqueComponentRoot mLexicalAttributeList] do    if [lexicalTypeMap hasKey ![mTypeName string]] then
+  foreach [lexiqueComponentRoot mLexicalAttributeList] do
+    if [lexicalTypeMap hasKey ![mTypeName string]] then
       @lexicalTypeEnum lexicalType ;
       [lexicalTypeMap searchKey !mTypeName ?lexicalType] ;
       [!?lexiqueAnalysisContext.mLexicalAttributeMap insertKey !mName !lexicalType] ;
@@ -773,7 +785,9 @@ routine compileLexiqueComponent
 #--------------------------------------- Build terminal map
   foreach [lexiqueComponentRoot mTerminalDeclarationList] do
     @uint terminalStyleIndex := 0 ;
-    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;    end if ;
+    if [[mStyle string] length] > 0 then
+      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
+    end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
@@ -791,10 +805,19 @@ routine compileLexiqueComponent
         isEndOfTemplateMark := true ;
       end if ;
     end foreach ;
-    lexiqueAnalysisContext.mTerminalList +=      !mName      !argumentTypeList      ![mSyntaxErrorMessage string]      !isEndOfTemplateMark      !terminalStyleIndex    ;
+    lexiqueAnalysisContext.mTerminalList +=
+      !mName
+      !argumentTypeList
+      ![mSyntaxErrorMessage string]
+      !isEndOfTemplateMark
+      !terminalStyleIndex
+    ;
   end foreach ;
-  foreach [lexiqueComponentRoot mLexicalListDeclarationList] do    @uint terminalStyleIndex := 0 ;
-    if [[mStyle string] length] > 0 then      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;    end if ;
+  foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
+    @uint terminalStyleIndex := 0 ;
+    if [[mStyle string] length] > 0 then
+      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
+    end if ;
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList (@lstring kAttributeName) do
       @lexicalTypeEnum attributeLexicalType ;
@@ -815,7 +838,13 @@ routine compileLexiqueComponent
           isEndOfTemplateMark := true ;
         end if ;
       end foreach ;
-      lexiqueAnalysisContext.mTerminalList +=        !mTerminalSpelling        !argumentTypeList        !syntaxErrorMessage        !isEndOfTemplateMark        !terminalStyleIndex      ;
+      lexiqueAnalysisContext.mTerminalList +=
+        !mTerminalSpelling
+        !argumentTypeList
+        !syntaxErrorMessage
+        !isEndOfTemplateMark
+        !terminalStyleIndex
+      ;
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
       tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;

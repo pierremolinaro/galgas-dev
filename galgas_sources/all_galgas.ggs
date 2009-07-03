@@ -18,7 +18,9 @@
 
 project all_galgas:
 #--- Temporary Program for PPC and i386 Cocoa GALGAS Only
-  program "mda_galgas_prgm.gProgram" ;#--- Command Line Options
+  program "mda_galgas_prgm.gProgram" ;
+
+#--- Command Line Options
   option "galgas_cli_options.gOption" : makefile ;
 
 #--- Common Scanner
@@ -35,7 +37,8 @@ project all_galgas:
   syntax    "templateExpressionParser.gSyntax" : makefile ;
   syntax    "galgasTemplateParser.gSyntax" : makefile ;
   grammar   "galgasTemplateGrammar.gGrammar" : makefile ;
- #--- Lexique Component
+ 
+#--- Lexique Component
   semantics "lexiqueMetamodel.gSemantics" : makefile ;
   syntax    "lexiqueModelBuilder.gSyntax" : makefile ;
   grammar   "lexiqueLL1grammar.gGrammar" : makefile ;

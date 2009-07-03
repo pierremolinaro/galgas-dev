@@ -29,7 +29,8 @@ import grammar guiGrammar in "guiGrammar.gGrammar" ;
 #------------------------------------------------------------------*
 
 map @extensionMap {
-  @string mLexiqueName ;  insert insertKey error message "the '%K' extension is already declared in %L" ;
+  @string mLexiqueName ;
+  insert insertKey error message "the '%K' extension is already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
