@@ -3686,9 +3686,9 @@ routine handleStringReaderCall
     outReturnedType := [@typeGalgas_uint new] ;
   elsif [inReaderName string] == "identifierRepresentation" then
     outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "CStringConstantRepresentation" then
+  elsif [inReaderName string] == "utf8Representation" then
     outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "utf32StringConstantRepresentation" then
+  elsif [inReaderName string] == "utf32Representation" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "stringByTrimmingWhiteSpaces" then
     outReturnedType := [@typeGalgas_string new] ;
@@ -3765,8 +3765,6 @@ routine handleStringReaderCall
   elsif [inReaderName string] == "uppercaseString" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "reversedString" then
-    outReturnedType := [@typeGalgas_string new] ;
-  elsif [inReaderName string] == "escapedString" then
     outReturnedType := [@typeGalgas_string new] ;
   elsif [inReaderName string] == "componentsSeparatedByString" then
     outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !"" !here] ;

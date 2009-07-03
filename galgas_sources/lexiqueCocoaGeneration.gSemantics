@@ -65,7 +65,7 @@ override reader @lexicalStringMatch generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "[self testForInputString:@" . [mString CStringConstantRepresentation] ;
+  outGeneratedCode := "[self testForInputString:@" . [mString utf8Representation] ;
   outGeneratedCode .= " advance:YES]" ;
 end reader ;
 
@@ -76,7 +76,7 @@ override reader @lexicalStringNotMatch generateCocoaConditionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "[self notTestForInputString:@" ;
-  outGeneratedCode .= [mString CStringConstantRepresentation] ;
+  outGeneratedCode .= [mString utf8Representation] ;
   outGeneratedCode .= " error:& mNoLexicalError]" ;
 end reader ;
 
@@ -150,7 +150,8 @@ override reader @lexicalFunctionInputArgument generateCocoaRoutineOrFunctionArgu
   outGeneratedCode := "scanner_cocoa_function_" . mFunctionName . " (" ;
   foreach mFunctionActualArgumentList
   do outGeneratedCode .= [mLexicalActualInputArgument generateCocoaRoutineOrFunctionArgument] ;
-  between outGeneratedCode .= ", " ;  end foreach ;
+  between outGeneratedCode .= ", " ;
+  end foreach ;
   outGeneratedCode .= ")" ;
 end reader ;
 
@@ -168,9 +169,13 @@ abstract reader @abstractLexicalRoutineActualArgument generateCocoaRoutineArgume
 override reader @lexicalAttributeInputOutputArgument generateCocoaRoutineArgument
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
-:  @lexicalTypeEnum lexicalType ;
+:
+  @lexicalTypeEnum lexicalType ;
   [[inLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?lexicalType] ;
-  outGeneratedCode := "" ;  if lexicalType != [@lexicalTypeEnum lexicalType_string] then    outGeneratedCode .= "& " ;  end if ;
+  outGeneratedCode := "" ;
+  if lexicalType != [@lexicalTypeEnum lexicalType_string] then
+    outGeneratedCode .= "& " ;
+  end if ;
   outGeneratedCode .= "mLexicalAttribute_" . mAttributeName ;
 end reader ;
 
@@ -414,7 +419,7 @@ override reader @lexicalImplicitRule generateCocoaCode
   outGeneratedCode := "" ;
   foreach > tokenSortedList do
     outGeneratedCode .= "if (mNoLexicalError && [self testForInputString:@" ;
-    outGeneratedCode .= [mName CStringConstantRepresentation] ;
+    outGeneratedCode .= [mName utf8Representation] ;
     outGeneratedCode .= " advance:YES]) {\n" ;
     outGeneratedCode .= "  mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
     outGeneratedCode .= "}else " ;

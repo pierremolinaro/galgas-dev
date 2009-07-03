@@ -43,7 +43,8 @@ rule <gui_component_start_symbol>
 #--- Loop on import declarations
   repeat
   while
-    $import__$ ;    warning here: "when source file extension is '.gGui', the 'import__' construct is obsolete and has no effect: you can delete it" ;
+    $import__$ ;
+    warning here: "when source file extension is '.gGui', the 'import__' construct is obsolete and has no effect: you can delete it" ;
     $literal_string$ ? * ;
     $;$ ;
   while
@@ -97,20 +98,52 @@ rule <gui_component_start_symbol>
     $,$ ;
     $terminal$ ?* ;
     $;$ ;
-  while    $with$ ;    $lexique$ ;    $literal_string$ ?@lstring lexiqueReference ;    @guiLabelList labels [emptyList] ;
-    @guiSimpleAttributeList simpleAttributes [emptyList] ;    @guiCompoundAttributeList compoundAttributes [emptyList] ;
-    ${$ ;    repeat    while      $label$ ;
+  while
+    $with$ ;
+    $lexique$ ;
+    $literal_string$ ?@lstring lexiqueReference ;
+    @guiLabelList labels [emptyList] ;
+    @guiSimpleAttributeList simpleAttributes [emptyList] ;
+    @guiCompoundAttributeList compoundAttributes [emptyList] ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
       @lstringlist terminalList [emptyList] ;
-      repeat        $terminal$ ? @lstring terminal ;
+      repeat
+        $terminal$ ? @lstring terminal ;
         terminalList += !terminal ;
       while
         $,$ ;
       end repeat ;
-      $;$ ;      labels += !terminalList ;
-    while      $identifier$ ?@lstring key ;      $literal_string$ ?@lstring name ;      $:$ ;      @lstring value [new !"" !here] ;      repeat
-        $literal_string$ ?@lstring v ;        value := [@lstring new ![value string] . [v string] ![v location]] ;      while      end repeat ;      $;$ ;      compoundAttributes += !key !name !value ;    while      $identifier$ ?@lstring name ;      $:$ ;
-      $literal_string$ ?@lstring value ;      $;$ ;      simpleAttributes += !name !value ;    end repeat ;    $}$ ;    withLexiqueList +=       !lexiqueReference      !labels
-      !simpleAttributes      !compoundAttributes    ;
+      $;$ ;
+      labels += !terminalList ;
+    while
+      $identifier$ ?@lstring key ;
+      $literal_string$ ?@lstring name ;
+      $:$ ;
+      @lstring value [new !"" !here] ;
+      repeat
+        $literal_string$ ?@lstring v ;
+        value := [@lstring new ![value string] . [v string] ![v location]] ;
+      while
+      end repeat ;
+      $;$ ;
+      compoundAttributes += !key !name !value ;
+    while
+      $identifier$ ?@lstring name ;
+      $:$ ;
+      $literal_string$ ?@lstring value ;
+      $;$ ;
+      simpleAttributes += !name !value ;
+    end repeat ;
+    $}$ ;
+    withLexiqueList += 
+      !lexiqueReference
+      !labels
+      !simpleAttributes
+      !compoundAttributes
+    ;
   end repeat ;
 #---
   $end$ ;

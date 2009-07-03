@@ -22,8 +22,17 @@ import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
 import__ "galgas_scanner.gLexique" ;
 
 nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
-with lexique "galgas_scanner.gLexique" {
-  fileExtension : "gLexique" ;  fileExtension : "gSemantics" ;  fileExtension : "gSyntax" ;  fileExtension : "gGrammar" ;  fileExtension : "gProgram" ;  fileExtension : "gOption" ;  fileExtension : "gGUI" ;  blockComment : "#" ;
+
+
+with lexique "galgas_scanner.gLexique" {
+  fileExtension : "gLexique" ;
+  fileExtension : "gSemantics" ;
+  fileExtension : "gSyntax" ;
+  fileExtension : "gGrammar" ;
+  fileExtension : "gProgram" ;
+  fileExtension : "gOption" ;
+  fileExtension : "gGUI" ;
+  blockComment : "#" ;
   title: "Source" ;
   label $map$, $type_name$ ;
   label $list$, $type_name$ ;
@@ -34,7 +43,8 @@ nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
   label $rule$, $non_terminal_symbol$ ;
   label $routine$, $identifier$ ;
   label $method$, $type_name$ ;
-  label $reader$, $type_name$ ;  
+  label $reader$, $type_name$ ;
+  
   textMacro "Types/Class" :
     "class @aClassName : extends @superClassNane {\n"
     "  @aType mAnAttribute ;\n"
@@ -90,10 +100,12 @@ nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
     "struct @type {\n"
     "  @aType mAnAttribute ;\n"
     "}\n"
-  ;}
+  ;
+}
 
 with lexique "galgasTemplateScanner.gLexique" {
-  fileExtension : "gTemplate" ;  blockComment : "#" ;
+  fileExtension : "gTemplate" ;
+  blockComment : "#" ;
   title: "Template" ;
 }
 

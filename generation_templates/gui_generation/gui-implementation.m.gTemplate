@@ -99,17 +99,17 @@ static const char * gBoolOptionDescription [kBoolOptionCount] = {
   "Warn on declarations that shadow a previously declared object",
 } ;
 
-static bool gBoolOptionValue [kBoolOptionCount] ;
+static BOOL gBoolOptionValue [kBoolOptionCount] ;
 
 unsigned getBoolOptionsCount (void) {
   return kBoolOptionCount ;
 }
 
-bool getBoolOptionValue (const unsigned inIndex) {
+BOOL getBoolOptionValue (const unsigned inIndex) {
   return gBoolOptionValue [inIndex] ;
 }
 
-void setBoolOptionValue (const unsigned inIndex, const bool inValue) {
+void setBoolOptionValue (const unsigned inIndex, const BOOL inValue) {
   gBoolOptionValue [inIndex] = inValue ;
 }
 
@@ -531,7 +531,7 @@ NSObject <OCP_TokenizerProtocol> * tokenizerForExtension (const NSString * inExt
   NSObject <OCP_TokenizerProtocol> * result = nil ;\n%
 foreach [GUI_CONTEXT mExtensionMap]
   before %  if%
-  do % ([inExtension isEqualToString:@%([key CStringConstantRepresentation])%]) {\n%
+  do % ([inExtension isEqualToString:@%([key utf8Representation])%]) {\n%
      %    result = [[OC_Tokenizer_%mLexiqueName% alloc] init] ;\n%
   between %  }else if%
   after %  }\n%

@@ -72,7 +72,8 @@ enum @lexicalTypeEnum {
     lexicalType_sint64 -> " = 0" ;
     lexicalType_double -> " = 0.0" ;
   end reader ;
-  reader cocoaTypeName :
+
+  reader cocoaTypeName :
     lexicalType_string -> "NSMutableString *" ;
     lexicalType_char   -> "UInt32" ;
     lexicalType_uint   -> "UInt32" ;
@@ -81,7 +82,8 @@ enum @lexicalTypeEnum {
     lexicalType_sint64 -> "SInt64" ;
     lexicalType_double -> "double" ;
   end reader ;
-  reader cocoaInitializationCode :
+
+  reader cocoaInitializationCode :
     lexicalType_string -> "[[NSMutableString alloc] init]" ;
     lexicalType_char   -> "0" ;
     lexicalType_uint   -> "0" ;
@@ -90,7 +92,8 @@ enum @lexicalTypeEnum {
     lexicalType_sint64 -> "0" ;
     lexicalType_double -> "0.0" ;
   end reader ;
-  reader cocoaResetPrefix :
+
+  reader cocoaResetPrefix :
     lexicalType_string -> "[" ;
     lexicalType_char   -> "" ;
     lexicalType_uint   -> "" ;
@@ -99,7 +102,8 @@ enum @lexicalTypeEnum {
     lexicalType_sint64 -> "" ;
     lexicalType_double -> "" ;
   end reader ;
-  reader cocoaReset :
+
+  reader cocoaReset :
     lexicalType_string -> " setString:@\"\"]" ;
     lexicalType_char   -> "= 0" ;
     lexicalType_uint   -> "= 0" ;
@@ -153,7 +157,8 @@ list @terminalList {
   @lstring mTerminalName ;
   @lexicalSentValueList mSentAttributeList ;
   @string mSyntaxErrorMessage ;
-  @bool mIsEndOfTemplateMark ;  @uint mStyleIndex ; # 0 if default style
+  @bool mIsEndOfTemplateMark ;
+  @uint mStyleIndex ; # 0 if default style
 }
 
 #---------------------------------------------------------------------------*
@@ -179,7 +184,8 @@ sortedlist @tokenSortedlist {
 
 map @lexicalExplicitTokenListMapMap {
   @lexicalExplicitTokenListMap mExplicitTokenListMap ;
-  @tokenSortedlist mTokenSortedList ;  @bool mShouldBeGenerated feature setter ;
+  @tokenSortedlist mTokenSortedList ;
+  @bool mShouldBeGenerated feature setter ;
   insert insertKey error message "the '%K' token list has been already declared in %L" ;
   search searchKey error message "the '%K' token list is not declared" ;
 }
@@ -244,7 +250,8 @@ list @templateDelimitorList {
 #------------------------------------------------------------------*
 
 map @styleMap {
-  @lstring mComment ;  @uint mStyleIndex ; # Allways > 0
+  @lstring mComment ;
+  @uint mStyleIndex ; # Allways > 0
   insert insertKey error message "the '%K' style is already declared in %L" ;
   search searchKey, searchKeyGetID error message "the '%K' style is not declared" ;
 }
@@ -268,7 +275,9 @@ struct @lexiqueAnalysisContext {
   @lexicalAttributeMap mLexicalAttributeMap ;
   @lexicalExplicitTokenListMapMap mLexicalTokenListMap ;
   @stringset mUnicodeStringToGenerate ;
-  @templateDelimitorList mTemplateDelimitorList ;  @styleMap mStyleMap ;}
+  @templateDelimitorList mTemplateDelimitorList ;
+  @styleMap mStyleMap ;
+}
 
 #---------------------------------------------------------------------------*
 
