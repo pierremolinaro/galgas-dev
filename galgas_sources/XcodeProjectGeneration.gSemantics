@@ -143,8 +143,10 @@ routine build_LIBPM_COCOA_GALGAS_group
   @stringlist fileList [emptyList] ;
   append_m_h_files !?fileList !"NSSplitViewExtensions" ;
   append_m_h_files !?fileList !"PMFontButton" ;
-  append_m_h_files !?fileList !"OC_Token" ;  append_m_h_files !?fileList !"OC_Lexique" ;
+  append_m_h_files !?fileList !"OC_Token" ;
+  append_m_h_files !?fileList !"OC_Lexique" ;
   append_mm_h_files !?fileList !"OC_GGS_BuildWindowController" ;
+  append_m_h_files  !?fileList !"OC_GGS_BuildResult" ;
   append_mm_h_files !?fileList !"OC_GGS_Document" ;
   append_mm_h_files !?fileList !"OC_GGS_PreferencesController" ;
   append_mm_h_files !?fileList !"OC_GGS_RulerView" ;
@@ -157,6 +159,8 @@ routine build_LIBPM_COCOA_GALGAS_group
   fileList += !"I_SaveAs.tiff" ;
   fileList += !"I_Stop.tiff" ;
   fileList += !"I_Window.png" ;
+  fileList += !"I_Orange14.png" ;
+  fileList += !"I_Red14.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"OCP_TokenizerProtocol.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
@@ -591,7 +595,8 @@ routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:  @stringlist fileList [emptyList] ;
+:
+  @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
     @string extension := [key pathExtension] ;
     if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") then
@@ -694,6 +699,8 @@ routine build_RESOURCES_for_resources_build_phase
   fileList += !"I_SaveAs.tiff" ;
   fileList += !"I_Stop.tiff" ;
   fileList += !"I_Window.png" ;
+  fileList += !"I_Orange14.png" ;
+  fileList += !"I_Red14.png" ;
   fileList += !"MainMenu.nib" ;
   fileList += !"OC_GGS_Document.nib" ;
   fileList += !"InfoPlist.strings" ;
@@ -712,7 +719,8 @@ routine build_COCOA_APP_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inGUISourceNameSet
   ??@stringset inScannerSourceNameSet
-  ??@stringset inOptionSourceNameSet  ??@stringset inExternSourceNameSet_app
+  ??@stringset inOptionSourceNameSet
+  ??@stringset inExternSourceNameSet_app
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
@@ -723,6 +731,7 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"OC_Lexique.m" ;
   fileList += !"unicode_character_m.m" ;
   fileList += !"OC_GGS_BuildWindowController.mm" ;
+  fileList += !"OC_GGS_BuildResult.m" ;
   fileList += !"OC_GGS_Document.mm" ;
   fileList += !"OC_GGS_PreferencesController.mm" ;
   fileList += !"OC_GGS_RulerView.mm" ;
@@ -786,7 +795,10 @@ routine build_COCOA_APP_files_for_sources_build_phase
     fileList += !key . ".cpp" ;
   end foreach ;
 #--- Extern files
-  foreach inExternSourceNameSet_app do    @string extension := [key pathExtension] ;    if (extension == "c") | (extension == "cpp") | (extension == "m") | (extension == "mm") then      fileList += !key ;
+  foreach inExternSourceNameSet_app do
+    @string extension := [key pathExtension] ;
+    if (extension == "c") | (extension == "cpp") | (extension == "m") | (extension == "mm") then
+      fileList += !key ;
     end if ;
   end foreach ;
 #---
@@ -820,14 +832,16 @@ routine generateXcodeProject
   ??@string in_xcodeproj_filePath
   ??@stringlist inIconFiles
   ??@string inReferenceFilePath
-:  @XcodeProjectDescription XcodeProjectDescription ;
+:
+  @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
 #-------------------------------------------------- Build source lists
 #---------- HAND CODED SOURCES
   @XcodeObjectReferenceList fileListOf_HAND_CODED_SOURCES_group [emptyList] ;
   @stringset fileSet := inExternSourceNameSet_tool | inExternSourceNameSet_app ;
   fileSet -= !"AppKit.framework" ;
-  fileSet -= !"Cocoa.framework" ;  build_HAND_CODED_SOURCES_group
+  fileSet -= !"Cocoa.framework" ;
+  build_HAND_CODED_SOURCES_group
     !?XcodeProjectDescription
     !fileSet
     !?fileListOf_HAND_CODED_SOURCES_group
@@ -1239,7 +1253,8 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !inGUISourceNameSet_app
     !inScannerSourceNameSet_app
-    !inOptionSourceNameSet_app    !inExternSourceNameSet_app
+    !inOptionSourceNameSet_app
+    !inExternSourceNameSet_app
     !?listForSourceBuildPhaseOfCocoaApp
   ;
 #--- Frameworks Build Phase
