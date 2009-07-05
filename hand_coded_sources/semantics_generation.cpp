@@ -1732,6 +1732,7 @@ generate_cpp_file (C_Compiler & inLexique,
   generatedZone2 << "#include <typeinfo>\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"files/C_TextFileWrite.h\"\n"
+                    "#include \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
 
   generatedZone2.appendCppHyphenLineComment () ;
@@ -1755,7 +1756,7 @@ generate_cpp_file (C_Compiler & inLexique,
   generatedZone2 << "\n" ;
 
 //--- Generate debug ?
-  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
+  const bool generateDebug = false ;
   if (generateDebug) {
     generatedZone2 << "//#define DEBUG_TRACE_ENABLED\n\n" ;
   }

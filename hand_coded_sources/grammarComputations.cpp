@@ -48,6 +48,7 @@
 #include "buildPureBNFgrammar.h"
 #include "semantics_instructions.h"
 #include "grammar_parser.h"
+#include "galgas_cli_options.h"
 
 //---------------------------------------------------------------------------*
 
@@ -521,15 +522,9 @@ analyzeGrammar (C_Compiler & inLexique,
   enumErrorKind errorFlag = kNoError ;
 
 //--- Verbose Output
-  const bool verboseOptionOn = inLexique.boolOptionValueFromKeys ("generic_galgas_cli_options",
-                                                                  VERBOSE_OUTPUT
-                                                                  COMMA_HERE) ;
+  const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
 //--- Output a HTML file ?
-  const char * galgas_cli_component = "galgas_cli_options" ;
-  const char * outputHTMLgrammarFile = "outputHTMLgrammarFile" ;
-  const bool outputHTMLfile = inLexique.boolOptionValueFromKeys (galgas_cli_component,
-                                                                 outputHTMLgrammarFile
-                                                                 COMMA_HERE) ;
+  const bool outputHTMLfile = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file (if file is the empty string, no file is created)

@@ -2635,6 +2635,48 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    C H A R L I S T    T Y P E                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_charlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_char new] ![@lstring new !"mValue" !here] ;
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  outType := [@typeGalgasListType new
+    ![@lstring new !"charlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    L C H A R L I S T    T Y P E                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_lcharlist_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_lchar new] ![@lstring new !"mValue" !here] ;
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  outType := [@typeGalgasListType new
+    ![@lstring new !"lcharlist" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    S T R I N G L I S T    T Y P E                           *
 #                                                                           *
 #---------------------------------------------------------------------------*

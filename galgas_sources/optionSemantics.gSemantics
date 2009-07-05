@@ -2,7 +2,7 @@ semantics optionSemantics :
 
 #---------------------------------------------------------------------------*
 
-map @commandLineOptionMap {
+map @commandLineOptionMap { # the key is the option identifier
   @lchar mOptionChar ;
   @lstring mOptionString ;
   @lstring mComment ;

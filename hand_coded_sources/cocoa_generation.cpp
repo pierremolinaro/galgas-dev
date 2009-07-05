@@ -77,232 +77,59 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   generatedZone3 << "#pragma mark Boolean Command Line Options\n\n" ;
   generatedZone3.appendCppTitleComment ("Boolean Command Line Options") ;
-  C_builtin_CLI_Options genericOptions (false) ;
-  C_galgas_CLI_Options galgasOptions ;
-//--- Bool options
-  sint32 boolOptionCount = genericOptions.getBoolOptionsCount () ;
-  boolOptionCount += galgasOptions.getBoolOptionsCount () ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    boolOptionCount += currentOptionComponent._mBoolOptionsMap (HERE).count () ;
-    currentOptionComponent.next () ;
-  }
-
-  generatedZone3 << "static const unsigned kBoolOptionCount = " << cStringWithSigned (boolOptionCount) << " ;\n\n" ;
-
-  generatedZone3 << "static const char gBoolOptionChar [kBoolOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getBoolOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (TO_UNICODE (genericOptions.getBoolOptionChar (i))) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getBoolOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (TO_UNICODE (galgasOptions.getBoolOptionChar (i))) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mBoolOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralCharConstant (mapEnumerator._mOptionChar (HERE).charValue ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static const char * gBoolOptionString [kBoolOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getBoolOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (genericOptions.getBoolOptionString (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getBoolOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (galgasOptions.getBoolOptionString (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mBoolOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralStringConstant (mapEnumerator._mOptionString (HERE).string ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static const char * gBoolOptionDescription [kBoolOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getBoolOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (genericOptions.getBoolOptionDescription (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getBoolOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (galgasOptions.getBoolOptionDescription (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mBoolOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralStringConstant (mapEnumerator._mComment (HERE).string ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static bool gBoolOptionValue [kBoolOptionCount] ;\n\n" ;
-
   generatedZone3 << "unsigned getBoolOptionsCount (void) {\n"
-             "  return kBoolOptionCount ;\n"
+             "  return 0 ;\n"
              "}\n"
              "\n"
              "bool getBoolOptionValue (const unsigned inIndex) {\n"
-             "  return gBoolOptionValue [inIndex] ;\n"
+             "  return false ;\n"
              "}\n"
              "\n"
              "void setBoolOptionValue (const unsigned inIndex, const bool inValue) {\n"
-             "  gBoolOptionValue [inIndex] = inValue ;\n"
              "}\n"
              "\n"
              "char getBoolOptionChar (const unsigned inIndex)  {\n"
-             "  return gBoolOptionChar [inIndex] ;\n"
+             "  return '\\0' ;\n"
              "}\n"
              "\n"
              "const char * getBoolOptionString (const unsigned inIndex) {\n"
-             "  return gBoolOptionString [inIndex] ;\n"
+             "  return \"\" ;\n"
              "}\n"
              "\n"
              "const char * getBoolOptionDescription (const unsigned inIndex) {\n"
-             "  return gBoolOptionDescription [inIndex] ;\n"
+             "  return \"\" ;\n"
              "}\n"
              "\n" ;
 //--- uint options
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Unsigned Command Line Options\n\n" ;
   generatedZone3.appendCppTitleComment ("Unsigned Command Line Options") ;
-  sint32 uintOptionCount = genericOptions.getUintOptionsCount () ;
-  uintOptionCount += galgasOptions.getUintOptionsCount () ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    uintOptionCount += currentOptionComponent._mUintOptionsMap (HERE).count () ;
-    currentOptionComponent.next () ;
-  }
-
-  generatedZone3 << "static const unsigned kUIntOptionCount = " << cStringWithSigned (uintOptionCount) << " ;\n\n" ;
-
-  generatedZone3 << "static const char gUIntOptionChar [kUIntOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getUintOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (TO_UNICODE (genericOptions.getUintOptionChar (i))) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getUintOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (TO_UNICODE (galgasOptions.getUintOptionChar (i))) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mUintOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralCharConstant (mapEnumerator._mOptionChar (HERE).charValue ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static const char * gUIntOptionString [kUIntOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getUintOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (genericOptions.getUintOptionString (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getUintOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (galgasOptions.getUintOptionString (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mUintOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralStringConstant (mapEnumerator._mOptionString (HERE).string ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static const char * gUIntOptionDescription [kUIntOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getUintOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (genericOptions.getUintOptionDescription (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getUintOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (galgasOptions.getUintOptionDescription (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mUintOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralStringConstant (mapEnumerator._mComment (HERE).string ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static unsigned gUintOptionValue [kUIntOptionCount] ;\n\n" ;
-
   generatedZone3 << "\n"
              "unsigned getUIntOptionsCount (void) {\n"
-             "  return kUIntOptionCount ;\n"
+             "  return 0 ;\n"
              "}\n"
              "\n"
              "/* unsigned getUIntOptionDefaultValue (const unsigned inIndex) {\n"
-             "  return gUintOptionValue [inIndex] ;\n"
+             "  return 0 ;\n"
              "} */\n"
              "\n"
              "unsigned getUIntOptionValue (const unsigned inIndex) {\n"
-             "  return gUintOptionValue [inIndex] ;\n"
+             "  return 0 ;\n"
              "}\n"
              "\n"
              "void setUIntOptionValue (const unsigned inIndex, const unsigned inValue) {\n"
-             "  gUintOptionValue [inIndex] = inValue ;\n"
              "}\n"
              "\n"
              "char getUIntOptionChar (const unsigned inIndex)  {\n"
-             "  return gUIntOptionChar [inIndex] ;\n"
+             "  return '\\0' ;\n"
              "}\n"
              "\n"
              "const char * getUIntOptionString (const unsigned inIndex) {\n"
-             "  return gUIntOptionString [inIndex] ;\n"
+             "  return \"\" ;\n"
              "}\n"
              "\n"
              "const char * getUIntOptionDescription (const unsigned inIndex) {\n"
-             "  return gUIntOptionDescription [inIndex] ;\n"
+             "  return \"\" ;\n"
              "}\n"
              "\n" ;
 
@@ -310,121 +137,30 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark String Command Line Options\n\n" ;
   generatedZone3.appendCppTitleComment ("String Command Line Options") ;
-  sint32 stringOptionCount = genericOptions.getStringOptionsCount () ;
-  stringOptionCount += galgasOptions.getStringOptionsCount () ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    stringOptionCount += currentOptionComponent._mStringOptionsMap (HERE).count () ;
-    currentOptionComponent.next () ;
-  }
-
-  generatedZone3 << "static const unsigned kStringOptionCount = " << cStringWithSigned (stringOptionCount) << " ;\n\n" ;
- 
-  generatedZone3 << "static const char gStringOptionChar [kStringOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getStringOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (TO_UNICODE (genericOptions.getStringOptionChar (i))) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getStringOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralCharConstant (TO_UNICODE (galgasOptions.getStringOptionChar (i))) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mStringOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralCharConstant (mapEnumerator._mOptionChar (HERE).charValue ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static const char * gStringOptionString [kStringOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getStringOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (genericOptions.getStringOptionString (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getStringOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (galgasOptions.getStringOptionString (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mStringOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralStringConstant (mapEnumerator._mOptionString (HERE).string ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static const char * gStringOptionDescription [kStringOptionCount] = {\n" ;
-  for (sint32 i=0 ; i<genericOptions.getStringOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (genericOptions.getStringOptionDescription (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  for (sint32 i=0 ; i<galgasOptions.getStringOptionsCount () ; i++) {
-    generatedZone3 << "  " ;
-    generatedZone3.appendCLiteralStringConstant (galgasOptions.getStringOptionDescription (i)) ;
-    generatedZone3 << ",\n" ;
-  }
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    GGS_M_cli_options::cEnumerator mapEnumerator (currentOptionComponent._mStringOptionsMap (HERE), true) ;
-    while (mapEnumerator.hasCurrentObject ()) {
-      generatedZone3 << "  " ;
-      generatedZone3.appendCLiteralStringConstant (mapEnumerator._mComment (HERE).string ()) ;
-      generatedZone3 << ",\n" ;
-      mapEnumerator.next () ;
-    }
-    currentOptionComponent.next () ;
-  }
-  generatedZone3 << "} ;\n\n" ;
-
-  generatedZone3 << "static NSString * gStringOptionValue [kStringOptionCount] ;\n\n" ;
-
   generatedZone3 << "\n"
              "unsigned getStringOptionsCount (void) {\n"
-             "  return kStringOptionCount ;\n"
+             "  return 0 ;\n"
              "}\n"
              "\n"
              "NSString * getStringOptionValue (const unsigned inIndex) {\n"
-             "  return gStringOptionValue [inIndex] ;\n"
+             "  return @\"\" ;\n"
              "}\n"
              "\n"
              "void setStringOptionValue (const unsigned inIndex, const NSString * inValue) {\n"
-             "  gStringOptionValue [inIndex] = inValue ;\n"
              "}\n"
              "\n"
              "char getStringOptionChar (const unsigned inIndex)  {\n"
-             "  return gStringOptionChar [inIndex] ;\n"
+             "  return '\\0' ;\n"
              "}\n"
              "\n"
              "const char * getStringOptionString (const unsigned inIndex) {\n"
-             "  return gStringOptionString [inIndex] ;\n"
+             "  return \"\" ;\n"
              "}\n"
              "\n"
              "const char * getStringOptionDescription (const unsigned inIndex) {\n"
-             "  return gStringOptionDescription [inIndex] ;\n"
+             "  return \"\" ;\n"
              "}\n"
              "\n" ;
-//--- Global static variables
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "#pragma mark ------------------------\n\n" ;
-  generatedZone3.appendCppTitleComment ("Global static variables") ;
-  generatedZone3 << "static C_CLI_OptionGroup gCommandLineOptions ;\n" ;
-  generatedZone3 << "static C_galgas_io_parameters IOparameters (& gCommandLineOptions, false, \"\", \"\") ;\n\n" ;
 //--- Macros list
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Text Macros\n\n" ;
@@ -527,7 +263,7 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "         eraseRangeEnd: (int *) outEraseRangeEnd\n"
                     "         popupMenu: (NSMenu *) ioMenu {\n"
                     "  if (mScannerPtr == NULL) {\n"
-                    "    macroMyNew (mIOParametersPtr, C_galgas_io (IOparameters, C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
+                    "    macroMyNew (mIOParametersPtr, C_galgas_io (C_galgas_io_parameters (false, \"\", \"\"), C_galgas_io::kNoOutput COMMA_HERE)) ;\n"
                     "    macroMyNew (mScannerPtr, " << inLexiqueComponentName << " (NULL, \"\", \"\", mIOParametersPtr, \"\" COMMA_HERE)) ;\n"
                     "  }\n"
                     "  AC_sourceText * sourceTextPtr = NULL ;\n"
