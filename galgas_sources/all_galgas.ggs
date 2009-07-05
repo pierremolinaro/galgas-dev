@@ -146,7 +146,6 @@ project all_galgas:
   extern "LL1_computations.cpp" : makefile ;
   extern "LR1_computations.cpp" : makefile ;
   extern "map_generation.cpp" : makefile ;
-  extern "option_component_generation.cpp" : makefile ;
   extern "parser_generation.cpp" : makefile ;
   extern "parser_instructions.cpp" : makefile ;
   extern "prgm_generation.cpp" : makefile ;
