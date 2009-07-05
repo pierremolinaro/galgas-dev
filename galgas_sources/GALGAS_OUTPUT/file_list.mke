@@ -62,7 +62,6 @@ SOURCES += list_generation.cpp
 SOURCES += LL1_computations.cpp
 SOURCES += LR1_computations.cpp
 SOURCES += map_generation.cpp
-SOURCES += option_component_generation.cpp
 SOURCES += parser_generation.cpp
 SOURCES += parser_instructions.cpp
 SOURCES += prgm_generation.cpp
