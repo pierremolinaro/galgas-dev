@@ -55,10 +55,10 @@ project all_galgas:
   semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- Option Component
-  semantics "optionSemantics.gSemantics" : makefile ;
   semantics "optionMetamodel.gSemantics" : makefile ;
   syntax    "optionModelBuilder.gSyntax" : makefile ;
   grammar   "optionLL1grammar.gGrammar" : makefile ;
+  semantics "optionSemantics.gSemantics" : makefile ;
   semantics "optionCompilation.gSemantics" : makefile ;
 
 #--- Expression

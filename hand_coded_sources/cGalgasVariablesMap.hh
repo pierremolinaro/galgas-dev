@@ -26,6 +26,7 @@
 #include <stdlib.h>
 
 #include "utilities/MF_MemoryControl.h"
+#include "galgas_cli_options.h"
 #include "cGalgasVariablesMap.h"
 
 //---------------------------------------------------------------------------*
@@ -205,7 +206,7 @@ insertInArgument (C_Compiler & inLexique,
                   const char * messageErreurInsertion
                   COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreIn, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_HERE) COMMA_THERE) ;
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -219,7 +220,7 @@ insertUnusedInArgument (C_Compiler & inLexique,
                         const char * messageErreurInsertion
                         COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreIn, etatValue, true, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE) COMMA_THERE) ;
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -233,7 +234,7 @@ insertInOutArgument (C_Compiler & inLexique,
                      const char * messageErreurInsertion
                      COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE) COMMA_THERE) ;
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -247,7 +248,7 @@ insertUsedInOutArgument (C_Compiler & inLexique,
                          const char * messageErreurInsertion
                          COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, true, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 
@@ -262,7 +263,7 @@ insertUnusedInOutArgument (C_Compiler & inLexique,
                            const char * messageErreurInsertion
                            COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, true, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE) COMMA_THERE) ;
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -277,7 +278,7 @@ insertOutArgument (C_Compiler & inLexique,
                    COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreOut, etatNonValue, false, false,
                     clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 
@@ -293,7 +294,7 @@ insertWithInstructionLocalVariable (C_Compiler & inLexique,
                                     COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumParametreInOut, etatValue, false, true,
                     clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 
@@ -308,7 +309,7 @@ insertLocalVariable (C_Compiler & inLexique,
                      const char * messageErreurInsertion
                      COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumVariableLocale, etatNonValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 
@@ -323,7 +324,7 @@ insertConstInArgument (C_Compiler & inLexique,
                        const char * messageErreurInsertion
                        COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 
@@ -338,7 +339,7 @@ insertUsedConstInArgument (C_Compiler & inLexique,
                            const char * messageErreurInsertion
                            COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, false, true, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 
@@ -368,7 +369,7 @@ insertUnusedConstInArgument (C_Compiler & inLexique,
                              const char * messageErreurInsertion
                              COMMA_LOCATION_ARGS) {
   return insertKey (inLexique, inInfo, enumConstanteLocale, etatValue, true, false, clef, inLocation, messageErreurInsertion,
-                    inLexique.boolOptionValueFromKeys ("galgas_cli_options", "warnsShadows" COMMA_THERE)
+                    gOption_galgas_5F_cli_5F_options_warnsShadows.mValue
                     COMMA_THERE) ;
 }
 

@@ -20,4 +20,12 @@ list @LSTRINGLIST {
   @lstring mValue ;
 }
 
+list @CHARLIST {
+  @char mValue ;
+}
+
+list @LCHARLIST {
+  @lchar mValue ;
+}
+
 end semantics ;

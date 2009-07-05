@@ -65,6 +65,13 @@ isLexiqueFormalArgumentUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
 void cPtr_typeUnaryMinusOperation::
 generateExpression (AC_OutputStream & ioCppFile) const {
   mExpression (HERE)->generateExpression (ioCppFile) ;
@@ -1669,14 +1676,50 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 
 //---------------------------------------------------------------------------*
 
+void cPtr_typeOptionCollection::generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "option_"
+            << mOptionComponentName.string ().identifierRepresentation ()
+            << "_"
+            << mCollectionName.string ().identifierRepresentation ()
+            << " ()" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeOptionCollection::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & /* inArgumentCppName */) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeOptionCollection::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return true ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeOptionCollection::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return false ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
 void cPtr_typeBoolOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_bool (inLexique.boolOptionValueFromKeys (" ;
-  ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
-  ioCppFile << ", " ;
-  ioCppFile.appendCLiteralStringConstant (mOptionName) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << cStringWithSigned (mOptionName.lineNumber ())
-              << ")))" ;
+  ioCppFile << "gOption_"
+            << mOptionComponentName.string ().identifierRepresentation ()
+            << "_"
+            << mOptionName.string ().identifierRepresentation ()
+            << ".value ()" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1710,13 +1753,11 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeUIntOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_uint (inLexique.uintOptionValueFromKeys (" ;
-  ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
-  ioCppFile << ", " ;
-  ioCppFile.appendCLiteralStringConstant (mOptionName) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << cStringWithSigned (mOptionName.lineNumber ())
-              << ")))" ;
+  ioCppFile << "gOption_"
+            << mOptionComponentName.string ().identifierRepresentation ()
+            << "_"
+            << mOptionName.string ().identifierRepresentation ()
+            << ".value ()" ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1750,13 +1791,11 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeStringOption::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "GGS_string (true, inLexique.stringOptionValueFromKeys (" ;
-  ioCppFile.appendCLiteralStringConstant (mOptionComponentName.string ()) ;
-  ioCppFile << ", " ;
-  ioCppFile.appendCLiteralStringConstant (mOptionName) ;
-  ioCppFile << " COMMA_SOURCE_FILE_AT_LINE ("
-              << cStringWithSigned (mOptionName.lineNumber ())
-              << ")))" ;
+  ioCppFile << "gOption_"
+            << mOptionComponentName.string ().identifierRepresentation ()
+            << "_"
+            << mOptionName.string ().identifierRepresentation ()
+            << ".value ()" ;
 }
 
 //---------------------------------------------------------------------------*

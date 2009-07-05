@@ -24,9 +24,7 @@ class cPtr_typeFunctionCall : public cPtr_typeExpression {
 public : virtual void generateExpression (AC_OutputStream & inCppFile) const ;
 public : virtual bool isLexiqueFormalArgumentUsedForTest (void) const  ;
 public : virtual bool formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const ;
-
-  public : virtual bool 
-  formalCurrentObjectArgumentIsUsedForTest (void) const ;
+public : virtual bool formalCurrentObjectArgumentIsUsedForTest (void) const ;
 
 //--- END OF USER ZONE 2
 

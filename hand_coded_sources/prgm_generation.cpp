@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate main program                                                    *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2006 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -46,27 +46,9 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   
   generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
                     "#include \"galgas/C_Lexique.h\"\n"
-                    "#include \"command_line_interface/C_CLI_OptionGroup.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
 
   generatedZone2 << "\n" ;
-  generatedZone2.appendCppHyphenLineComment () ;
-
-//--- Command line options for this program
-  generatedZone2 << "class C_options_for_" << inProgramComponentName << " : public C_CLI_OptionGroup {\n"
-                    "//--- Constructor\n"
-                    "  public : C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) ;\n"
-                    "\n"
-                    "//--- Included options\n"
-                    "  private : C_builtin_CLI_Options mBuiltinOptions ;\n"
-                    "  private : C_galgas_CLI_Options mGalgasOptions ;\n" ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    generatedZone2 << "  private : " << currentOptionComponent._key (HERE)
-                   << " mOptions_" << currentOptionComponent._key (HERE) << "; \n" ;
-    currentOptionComponent.next () ;
-  }
-  generatedZone2 << "} ;\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
 
 //--- Fin du fichier d'en tete
@@ -92,7 +74,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                             const GGS_typeInstructionList inEpilogueInstructionList,
                             const C_String & inProgramComponentName,
                             const GGS_ruleDescriptorForProgramList & inRuleDescriptorForProgramList,
-                            const GGS_M_optionComponents & inOptionsComponentsMap,
+                            const GGS_M_optionComponents & ,
                             const GGS_stringset & inInclusionsForImplementationFile) {
 //--- Generate user includes
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
@@ -136,28 +118,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) \n"
                     "#endif\n\n" ;
 
-//--------------------------------------- Get bool options count
-  generatedZone2.appendCppTitleComment (C_String ("C_options_for_") + inProgramComponentName + "  CONSTRUCTOR") ;
-  generatedZone2 << "C_options_for_" << inProgramComponentName  << "::\n"
-                    "C_options_for_" << inProgramComponentName << " (const bool inAcceptsDebugOption) :\n"
-                    "mBuiltinOptions (inAcceptsDebugOption),\n"
-                    "mGalgasOptions ()" ;
-  GGS_M_optionComponents::cEnumerator currentOptionComponent (inOptionsComponentsMap, true) ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    generatedZone2 << ",\n"
-                      "mOptions_" << currentOptionComponent._key (HERE) << " ()" ;
-    currentOptionComponent.next () ;
-  }
-  generatedZone2 << "{\n"
-                    "  add (& mBuiltinOptions) ;\n"
-                    "  add (& mGalgasOptions) ;\n" ;
-  currentOptionComponent.rewind () ;
-  while (currentOptionComponent.hasCurrentObject ()) {
-    generatedZone2 << "  add (& mOptions_" << currentOptionComponent._key (HERE) << ") ;\n" ;
-    currentOptionComponent.next () ;
-  }
-  generatedZone2 << "}\n\n" ;
-
 //--- Prologue
   generatedZone2.appendCppTitleComment ("P R O G R A M    P R O L O G U E") ;
   const bool lexiqueIsUsedInPrologue = isLexiqueFormalArgumentUsedForList (inPrologueInstructionList, true) ;
@@ -194,7 +154,6 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
 
 //--- Generate 'mainForLIBPM' routine
   generatedZone2.appendCppTitleComment ("M A I N    F O R    L I B P M") ;
-  const bool generateDebug = inLexique.boolOptionValueFromKeys ("galgas_cli_options", "generate_debug" COMMA_HERE) ;
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
                     "  bool verboseOptionOn = true ;\n"
                     "  sint16 returnCode = 0 ; // No error\n"
@@ -206,10 +165,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  C_PrologueEpilogueAction::runPrologueActions () ;\n"
                     "  {\n"
                     "  //--- Input/output parameters\n"
-                    "    C_options_for_" << inProgramComponentName << " options ("
-                 << (generateDebug ? "true" : "false")
-                 << ") ;\n"
-                 << "    const char * extensions [] = {" ;
+                    "    const char * extensions [] = {" ;
   GGS_ruleDescriptorForProgramList::cEnumerator currentDescriptor (inRuleDescriptorForProgramList, true) ;
   while (currentDescriptor.hasCurrentObject ()) {
     generatedZone2 << "\"" << currentDescriptor._mSourceExtension (HERE) << "\", " ;
@@ -231,13 +187,11 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "                           " ;
   generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << ",\n"
-                    "                           options,\n"
                     "                           sourceFilesArray,\n"
                     "                           extensions,\n"
                     "                           helpMessages,\n"
                     "                           cocoaOutput) ;\n"
-                    "    C_galgas_io_parameters IOparameters  (& options,\n"
-                    "      cocoaOutput,\n"
+                    "    C_galgas_io_parameters IOparameters  (cocoaOutput,\n"
                     "      #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "        " ;
   generatedZone2.appendCLiteralStringConstant (inVersionString) ;
@@ -256,24 +210,18 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    macroMyNew (_commonLexique, C_Compiler (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
                     "  //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)\n"
                     "    #ifdef SIOUX_IS_IMPLEMENTED\n"
-                    "      SIOUXSettings.asktosaveonclose = options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
-                    "                                                                        ASK_TO_SAVE_ON_CLOSE,\n"
-                    "                                                                        false) ;\n"
+                    "      SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;\n"
                     "    #endif\n"
                     "  //--- Enable 64 bit alloc debug ? Only if compiled in 64 bit and in debug mode\n"
                     "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "      #ifdef __LP64__\n"
-                    "        if (options.boolOptionValueFromKeys (\"generic_cli_options\",\n"
-                    "                                             \"enable_allocation_debugging\",\n"
-                    "                                             false)) {\n"
+                    "        if (gOption_generic_5F_cli_5F_options_enable_5F_allocation_5F_debugging.mValue) {\n"
                     "          enableAllocDebugFor64BitTool () ;\n"
                     "        }\n"
                     "      #endif\n"
                     "    #endif\n"
                     "    try{\n"
-                    "      verboseOptionOn = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
-                    "                                                         \"verbose_output\",\n"
-                    "                                                         false) ;\n"
+                    "      verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;\n"
                     "      " << inProgramComponentName << "_prologue (* _commonLexique, sourceFilesArray) ;\n"
                     "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
                     "        try {\n"
@@ -349,11 +297,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "      if (_commonLexique->totalErrorCount () > 0) {\n"
                     "        returnCode = 1 ; // Error code\n"
                     "      }else if (_commonLexique->totalWarningCount () > 0) {\n"
-                    "        const bool warningsAreTreatedAsError\n"
-                    "            = options.boolOptionValueFromKeys (\"generic_galgas_cli_options\",\n"
-                    "                                               TREAT_WARNINGS_AS_ERRORS,\n"
-                    "                                               false) ;\n"
-                    "        if (warningsAreTreatedAsError) {\n"
+                    "        if (gOption_galgas_5F_cli_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {\n"
                     "          returnCode = 1 ; // Error code\n"
                     "          if (verboseOptionOn) {\n"
                     "            printf (\"** Note: warnings are treated as errors. **\\n\") ;\n"

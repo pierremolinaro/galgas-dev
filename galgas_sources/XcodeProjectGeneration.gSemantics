@@ -242,9 +242,10 @@ routine build_LIBPM_COMMAND_LINE_INTERFACE_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
+  append_cpp_h_files !?fileList !"C_BoolCommandLineOption" ;
+  append_cpp_h_files !?fileList !"C_UIntCommandLineOption" ;
+  append_cpp_h_files !?fileList !"C_StringCommandLineOption" ;
   append_cpp_h_files !?fileList !"C_builtin_CLI_Options" ;
-  append_cpp_h_files !?fileList !"AC_CLI_Options" ;
-  append_cpp_h_files !?fileList !"C_CLI_OptionGroup" ;
   append_cpp_h_files !?fileList !"F_Analyze_CLI_Options" ;
   fileList += !"F_main.cpp" ;
   fileList += !"mainForLIBPM.h" ;
@@ -264,8 +265,9 @@ routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   fileList += !"C_builtin_CLI_Options.cpp" ;
-  fileList += !"AC_CLI_Options.cpp" ;
-  fileList += !"C_CLI_OptionGroup.cpp" ;
+  fileList += !"C_BoolCommandLineOption.cpp" ;
+  fileList += !"C_UIntCommandLineOption.cpp" ;
+  fileList += !"C_StringCommandLineOption.cpp" ;
   fileList += !"F_Analyze_CLI_Options.cpp" ;
   fileList += !"F_main.cpp" ;
 #---
@@ -741,8 +743,9 @@ routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"C_SourceTextForCocoa.mm" ;
 #--- LIBPM / Command line Interface
   fileList += !"C_builtin_CLI_Options.cpp" ;
-  fileList += !"AC_CLI_Options.cpp" ;
-  fileList += !"C_CLI_OptionGroup.cpp" ;
+  fileList += !"C_BoolCommandLineOption.cpp" ;
+  fileList += !"C_UIntCommandLineOption.cpp" ;
+  fileList += !"C_StringCommandLineOption.cpp" ;
 #--- LIBPM / Files
   fileList += !"C_TextFileWrite.cpp" ;
 #--- LIBPM / GALGAS

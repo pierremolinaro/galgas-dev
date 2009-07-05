@@ -1491,10 +1491,186 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                         F A C T O R                                          *
+#                                                                              *
 #   description          :   [expression description]                          *
 #   reader call          :   [expression reader !... ]                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $[$ ;
+#--- Get source identity characteristics
+  @typeExpression expressionValue ;
+  @AC_galgasType expressionType ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?expressionValue
+    ?expressionType
+  ;
+  select
+    $description$ ;
+    outExpression := [@typeDescriptionInExpression new !expressionValue !here] ;
+    outResultType := [@typeGalgas_string new] ;
+  or
+  #--- Get reader name
+    @lstring methodName ;
+    $identifier$ ? methodName ;
+  #--- Search reader for getting formal parameters list
+    @typeListeAttributsSemantiques accessorsTypeList ;
+    @string conversionMethod ;
+    @string categoryReaderClassBaseName ;
+    handleReaderCall
+      !inEntitiesMap
+      ![inSemanticContext mCategoryReaderMap]
+      !expressionType
+      !methodName
+      ?accessorsTypeList
+      ?outResultType
+      ?conversionMethod
+      ?categoryReaderClassBaseName
+    ;
+  #--- Actual parameters
+    @typeExpressionList expressionList ;
+    <output_expression_list>
+      ?expressionList 
+      !accessorsTypeList
+      !inEntitiesMap
+      !inOptionsComponentsMapForUse
+      !inSemanticContext
+      !?ioVariablesMap
+    ;
+    outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod !categoryReaderClassBaseName] ;
+  end select ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#                                                                              *
 #   constructor call     :   [@class constructor !... ]                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $[$ ;
+#--- Class name
+  @lstring className ;
+  $type_name$ ?className ;
+#--- Class method name
+  @lstring mClassMethodName ;
+  $identifier$ ? mClassMethodName ;
+  @AC_semanticsEntity e ;
+  [inEntitiesMap searchKey !className ?e] ;
+  outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
+  @typeListeAttributsSemantiques listeAttributsSemantiques ;
+  @bool hasLexiqueAndLocationArguments ;
+  [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
+#--- Actual arguments
+  @typeExpressionList expressionList ;
+  <output_expression_list>
+    ?expressionList
+    !listeAttributsSemantiques
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+  ;
+  outExpression := [@typeConstructorExpression new
+    !outResultType
+    ![mClassMethodName string]
+    !hasLexiqueAndLocationArguments
+    !expressionList
+  ] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#                                                                              *
+#   option value         :   [option .option_name]                             *
 #   option value         :   [option option_component_name.option_name]        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse unused inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext unused inSemanticContext
+  ?!@typeVariablesMap unused ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+  $[$ ;
+  $option$ ;
+  select
+    $.$ ;
+    @lstring optionName ;
+    $identifier$ ?optionName ;
+    if ([optionName string] != "verbose_output") then
+      error optionName: "this option name does not correspond to a builtin option" ;
+    end if ;
+     outExpression := [@typeBoolOption new !"galgas_cli_options" !optionName] ;
+     outResultType := [@typeGalgas_bool new] ;
+  or
+    $:$ ;
+    @lstring collectionName ;
+    $identifier$ ?collectionName ;
+    if [collectionName string] == "boolOptionIdentifierList" then
+      outExpression := [@typeOptionCollection new !"galgas_cli_options" !collectionName] ;
+      build_stringlist_type  ?outResultType ;
+    else
+      error collectionName:"this collection name does not exist" -> outExpression, outResultType ;
+    end if ;
+  or
+    @lstring optionComponentName ;
+    $identifier$ ? optionComponentName ;
+    @M_cli_options boolOptionsMap ;
+    @M_cli_options uintOptionsMap ;
+    @M_cli_options stringOptionsMap ;
+    [inOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
+    $.$ ;
+    @lstring optionName ;
+    $identifier$ ?optionName ;
+    if [boolOptionsMap hasKey ![optionName string]] then
+      outExpression := [@typeBoolOption new ![optionComponentName string] !optionName] ;
+      outResultType := [@typeGalgas_bool new] ;
+    elsif [uintOptionsMap hasKey ![optionName string]] then
+      outExpression := [@typeUIntOption new ![optionComponentName string] !optionName] ;
+      outResultType := [@typeGalgas_uint new] ;
+    elsif [stringOptionsMap hasKey ![optionName string]] then
+      outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
+      outResultType := [@typeGalgas_string new] ;
+    else
+      error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
+        -> outExpression, outResultType ;
+    end if ;
+  end select ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#                                                                              *
 #   filewrapper object   :   [filewrapper filewrapper_name]                    *
 #   filewrapper string   :   [filewrapper filewrapper_name."path"]             *
 #   filewrapper template :   [filewrapper fw.template_name !...]               *
@@ -1510,159 +1686,47 @@ rule <factor>
   !@AC_galgasType outResultType
 :
   $[$ ;
+#--- File wrapper
+  $filewrapper$ ;
+#--- Get filewrapper name
+  $identifier$ ?@lstring filewrapperName ;
+  @M_regularFiles regularFileMap ;
+  @filewrapperTemplateMap templateMap ;
+  [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap ?templateMap] ;
   select
-  #--- File wrapper
-    $filewrapper$ ;
-  #--- Get filewrapper name
-    $identifier$ ?@lstring filewrapperName ;
-    @M_regularFiles regularFileMap ;
-    @filewrapperTemplateMap templateMap ;
-    [[inSemanticContext mFilewrappers] searchKey !filewrapperName ?regularFileMap ?templateMap] ;
-    select
-      outExpression := [@typeFileWrapperObjectInstanciation new !filewrapperName] ;
-      outResultType := [@typeGalgas_filewrapper new] ;
-    or
-      $.$ ;
-      select
-      #--- Get template name
-        @lstring templateName ;
-        $identifier$ ?templateName ;
-      #---
-        @typeListeAttributsSemantiques formalAttributeList ;
-        [templateMap searchKey !templateName ?formalAttributeList] ;
-      #--- Out expression list
-        @typeExpressionList expressionList ;
-        <output_expression_list>
-          ?expressionList
-          !formalAttributeList
-          !inEntitiesMap
-          !inOptionsComponentsMapForUse
-          !inSemanticContext
-          !?ioVariablesMap
-        ;
-      #---
-        outExpression := [@typeFileWrapperTemplateCall new !filewrapperName !templateName !expressionList] ;
-        outResultType := [@typeGalgas_string new] ;
-      or
-      #--- Get path
-        @lstring path ;
-        $literal_string$ ?path ;
-      #--- 
-        @uint wrapperFileIndex ;
-        [regularFileMap searchKey !path ?* ?wrapperFileIndex] ;
-        outExpression := [@typeFileWrapperWithStaticPath new !filewrapperName !wrapperFileIndex] ;
-        outResultType := [@typeGalgas_string new] ;
-      end select ;
-    end select ;
+    outExpression := [@typeFileWrapperObjectInstanciation new !filewrapperName] ;
+    outResultType := [@typeGalgas_filewrapper new] ;
   or
-  #--- Get source identity characteristics
-    @typeExpression expressionValue ;
-    @AC_galgasType expressionType ;
-    <expression>
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-      ?expressionValue
-      ?expressionType
-    ;
+    $.$ ;
     select
-      $description$ ;
-      outExpression := [@typeDescriptionInExpression new !expressionValue !here] ;
-      outResultType := [@typeGalgas_string new] ;
-    or
-    #--- Get reader name
-      @lstring methodName ;
-      $identifier$ ? methodName ;
-    #--- Search reader for getting formal parameters list
-      @typeListeAttributsSemantiques accessorsTypeList ;
-      @string conversionMethod ;
-      @string categoryReaderClassBaseName ;
-      handleReaderCall
-        !inEntitiesMap
-        ![inSemanticContext mCategoryReaderMap]
-        !expressionType
-        !methodName
-        ?accessorsTypeList
-        ?outResultType
-        ?conversionMethod
-        ?categoryReaderClassBaseName
-      ;
-    #--- Actual parameters
+    #--- Get template name
+      @lstring templateName ;
+      $identifier$ ?templateName ;
+    #---
+      @typeListeAttributsSemantiques formalAttributeList ;
+      [templateMap searchKey !templateName ?formalAttributeList] ;
+    #--- Out expression list
       @typeExpressionList expressionList ;
       <output_expression_list>
-        ?expressionList 
-        !accessorsTypeList
+        ?expressionList
+        !formalAttributeList
         !inEntitiesMap
         !inOptionsComponentsMapForUse
         !inSemanticContext
         !?ioVariablesMap
       ;
-      outExpression := [@typeReaderCallInExpression new !expressionValue !methodName !expressionList !conversionMethod !categoryReaderClassBaseName] ;
-    end select ;
-  or #------------ Constructor call
-  #--- Class name
-    @lstring className ;
-    $type_name$ ?className ;
-  #--- Class method name
-    @lstring mClassMethodName ;
-    $identifier$ ? mClassMethodName ;
-    @AC_semanticsEntity e ;
-    [inEntitiesMap searchKey !className ?e] ;
-    outResultType := [(cast e if >= @typeEntiteType else error className) aDefType] ;
-    @typeListeAttributsSemantiques listeAttributsSemantiques ;
-    @bool hasLexiqueAndLocationArguments ;
-    [outResultType handleConstructorCall !mClassMethodName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
-  #--- Actual arguments
-    @typeExpressionList expressionList ;
-    <output_expression_list>
-      ?expressionList
-      !listeAttributsSemantiques
-      !inEntitiesMap
-      !inOptionsComponentsMapForUse
-      !inSemanticContext
-      !?ioVariablesMap
-    ;
-    outExpression := [@typeConstructorExpression new
-      !outResultType
-      ![mClassMethodName string]
-      !hasLexiqueAndLocationArguments
-      !expressionList
-    ] ;
-  or
-    $option$ ;
-    select
-      $.$ ;
-      @lstring optionName ;
-      $identifier$ ?optionName ;
-      if ([optionName string] != "verbose_output") then
-        error optionName: "this option name does not correspond to a builtin option" ;
-      end if ;
-       outExpression := [@typeBoolOption new !"generic_galgas_cli_options" !optionName] ;
-       outResultType := [@typeGalgas_bool new] ;
+    #---
+      outExpression := [@typeFileWrapperTemplateCall new !filewrapperName !templateName !expressionList] ;
+      outResultType := [@typeGalgas_string new] ;
     or
-      @lstring optionComponentName ;
-      $identifier$ ? optionComponentName ;
-      @M_cli_options boolOptionsMap ;
-      @M_cli_options uintOptionsMap ;
-      @M_cli_options stringOptionsMap ;
-      [inOptionsComponentsMapForUse searchKey !optionComponentName ?boolOptionsMap ?uintOptionsMap ?stringOptionsMap] ;
-      $.$ ;
-      @lstring optionName ;
-      $identifier$ ?optionName ;
-      if [boolOptionsMap hasKey ![optionName string]] then
-        outExpression := [@typeBoolOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_bool new] ;
-      elsif [uintOptionsMap hasKey ![optionName string]] then
-        outExpression := [@typeUIntOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_uint new] ;
-      elsif [stringOptionsMap hasKey ![optionName string]] then
-        outExpression := [@typeStringOption new ![optionComponentName string] !optionName] ;
-        outResultType := [@typeGalgas_string new] ;
-      else
-        error optionName : "the '" . [optionComponentName string] . "' option component has no '" . [optionName string] . "' option" 
-          -> outExpression, outResultType ;
-      end if ;
+    #--- Get path
+      @lstring path ;
+      $literal_string$ ?path ;
+    #--- 
+      @uint wrapperFileIndex ;
+      [regularFileMap searchKey !path ?* ?wrapperFileIndex] ;
+      outExpression := [@typeFileWrapperWithStaticPath new !filewrapperName !wrapperFileIndex] ;
+      outResultType := [@typeGalgas_string new] ;
     end select ;
   end select ;
   $]$ ;

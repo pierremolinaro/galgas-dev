@@ -26,6 +26,16 @@ import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import grammar guiGrammar in "guiGrammar.gGrammar" ;
 
+#---------------------------------------------------------------------------*
+
+list @guiCommandLineOptionList {
+  @string mOptionComponent ;
+  @string mOptionIdentifier ;
+  @char mOptionChar ;
+  @string mOptionString ;
+  @string mComment ;
+}
+
 #------------------------------------------------------------------*
 
 map @extensionMap {
@@ -59,10 +69,19 @@ list @importedLexiqueList {
 #---------------------------------------------------------------------------*
 
 struct @guiAnalysisContext {
+  @guiCommandLineOptionList mBoolOptionList ;
+  @guiCommandLineOptionList mUIntOptionList ;
+  @guiCommandLineOptionList mStringOptionList ;
   @nibAndClassList mNibAndClassList ;
   @extensionMap mExtensionMap ;
   @importedLexiqueList mWithLexiqueList ;
 }
+
+#---------------------------------------------------------------------------*
+
+#extern routine enterPredefinedOptions
+#  ?!@guiAnalysisContext ioContext
+#;
 
 #---------------------------------------------------------------------------*
 #         G E N E R A T I O N    T E M P L A T E S                          *
@@ -100,10 +119,17 @@ routine compileGuiComponent
   end if ;
 #--- 
   @guiAnalysisContext context [new
+    ![@guiCommandLineOptionList emptyList] # Bool options
+    ![@guiCommandLineOptionList emptyList] # UInt options
+    ![@guiCommandLineOptionList emptyList] # string options
     ![@nibAndClassList emptyList]
     ![@extensionMap emptyMap]
     ![@importedLexiqueList emptyList]
   ] ;
+#--- Enter predefined options
+#  enterPredefinedOptions
+#    !?context
+#  ;
 #--- Nib and main classes
   foreach [guiComponentRoot mGlobalSimpleAttributeList] do
     if [mKey string] != "nibAndMainClass" then

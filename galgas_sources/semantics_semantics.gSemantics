@@ -487,6 +487,13 @@ class @typeLogicalNegate extends @typeExpression {
   @location mOperatorLocation ;
   @typeExpression mExpression ;
 }
+
+#---------------------------------------------------------------------------*
+
+class @typeOptionCollection extends @typeExpression {
+  @string mOptionComponentName ;
+  @lstring mCollectionName ;
+}
  
 #---------------------------------------------------------------------------*
 
