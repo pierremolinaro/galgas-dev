@@ -75,93 +75,13 @@ generate_mm_file_for_cocoa (C_Compiler & inLexique,
                     "\n" ;
 //------------------------------------ Command line options
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  generatedZone3 << "#pragma mark Boolean Command Line Options\n\n" ;
-  generatedZone3.appendCppTitleComment ("Boolean Command Line Options") ;
-  generatedZone3 << "unsigned getBoolOptionsCount (void) {\n"
-             "  return 0 ;\n"
-             "}\n"
-             "\n"
-             "bool getBoolOptionValue (const unsigned inIndex) {\n"
-             "  return false ;\n"
-             "}\n"
-             "\n"
-             "void setBoolOptionValue (const unsigned inIndex, const bool inValue) {\n"
-             "}\n"
-             "\n"
-             "char getBoolOptionChar (const unsigned inIndex)  {\n"
-             "  return '\\0' ;\n"
-             "}\n"
-             "\n"
-             "const char * getBoolOptionString (const unsigned inIndex) {\n"
-             "  return \"\" ;\n"
-             "}\n"
-             "\n"
-             "const char * getBoolOptionDescription (const unsigned inIndex) {\n"
-             "  return \"\" ;\n"
-             "}\n"
-             "\n" ;
-//--- uint options
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "#pragma mark Unsigned Command Line Options\n\n" ;
-  generatedZone3.appendCppTitleComment ("Unsigned Command Line Options") ;
-  generatedZone3 << "\n"
-             "unsigned getUIntOptionsCount (void) {\n"
-             "  return 0 ;\n"
-             "}\n"
-             "\n"
-             "/* unsigned getUIntOptionDefaultValue (const unsigned inIndex) {\n"
-             "  return 0 ;\n"
-             "} */\n"
-             "\n"
-             "unsigned getUIntOptionValue (const unsigned inIndex) {\n"
-             "  return 0 ;\n"
-             "}\n"
-             "\n"
-             "void setUIntOptionValue (const unsigned inIndex, const unsigned inValue) {\n"
-             "}\n"
-             "\n"
-             "char getUIntOptionChar (const unsigned inIndex)  {\n"
-             "  return '\\0' ;\n"
-             "}\n"
-             "\n"
-             "const char * getUIntOptionString (const unsigned inIndex) {\n"
-             "  return \"\" ;\n"
-             "}\n"
-             "\n"
-             "const char * getUIntOptionDescription (const unsigned inIndex) {\n"
-             "  return \"\" ;\n"
-             "}\n"
-             "\n" ;
-
-//--- string options
-  generatedZone3.appendCppHyphenLineComment () ;
-  generatedZone3 << "#pragma mark String Command Line Options\n\n" ;
-  generatedZone3.appendCppTitleComment ("String Command Line Options") ;
-  generatedZone3 << "\n"
-             "unsigned getStringOptionsCount (void) {\n"
-             "  return 0 ;\n"
-             "}\n"
-             "\n"
-             "NSString * getStringOptionValue (const unsigned inIndex) {\n"
-             "  return @\"\" ;\n"
-             "}\n"
-             "\n"
-             "void setStringOptionValue (const unsigned inIndex, const NSString * inValue) {\n"
-             "}\n"
-             "\n"
-             "char getStringOptionChar (const unsigned inIndex)  {\n"
-             "  return '\\0' ;\n"
-             "}\n"
-             "\n"
-             "const char * getStringOptionString (const unsigned inIndex) {\n"
-             "  return \"\" ;\n"
-             "}\n"
-             "\n"
-             "const char * getStringOptionDescription (const unsigned inIndex) {\n"
-             "  return \"\" ;\n"
-             "}\n"
-             "\n" ;
-//--- Macros list
+  generatedZone3 << "#pragma mark Command Line Options\n\n" ;
+  generatedZone3.appendCppTitleComment ("Command Line Options") ;
+  generatedZone3 << "void enterOptions (NSMutableArray * ioBoolOptionArray,\n"
+                    "                   NSMutableArray * ioUIntOptionArray,\n"
+                    "                   NSMutableArray * ioStringOptionArray) {\n"
+                    "}\n" ;
+ //--- Macros list
   generatedZone3.appendCppHyphenLineComment () ;
   generatedZone3 << "#pragma mark Text Macros\n\n" ;
   generatedZone3.appendCppTitleComment ("T E X T    M A C R O S") ;

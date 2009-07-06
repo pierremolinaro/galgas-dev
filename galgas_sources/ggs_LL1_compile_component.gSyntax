@@ -206,7 +206,12 @@ rule <galgas_component>
   #--- Compile file
     if (sourceFileKind == [@EXsourceFileKind optionSourceFile]) & ([fileName pathExtension] == "gOption") then
       @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
-      compileOptionComponent !fileName !s ;
+      @parsedComponentStruct parsedComponentStruct [new
+        ![@parsedSemanticsComponentMap emptyMap]
+        ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedOptionComponentMap emptyMap]
+      ] ;
+      compileOptionComponent !fileName !s !?parsedComponentStruct ;
     elsif sourceFileKind != [@EXsourceFileKind externSourceFile] then
       grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;
     end if ;

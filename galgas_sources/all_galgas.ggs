@@ -48,18 +48,18 @@ project all_galgas:
   semantics "lexiqueCocoaGeneration.gSemantics" : makefile ;
   semantics "lexiqueCompilation.gSemantics" : makefile ;
 
-#--- GUI component
-  semantics "guiMetamodel.gSemantics" : makefile ;
-  syntax    "guiModelBuilder.gSyntax" : makefile ;
-  grammar   "guiGrammar.gGrammar" : makefile ;
-  semantics "guiCompilation.gSemantics" : makefile ;
-
 #--- Option Component
   semantics "optionMetamodel.gSemantics" : makefile ;
   syntax    "optionModelBuilder.gSyntax" : makefile ;
   grammar   "optionLL1grammar.gGrammar" : makefile ;
   semantics "optionSemantics.gSemantics" : makefile ;
   semantics "optionCompilation.gSemantics" : makefile ;
+
+#--- GUI component
+  semantics "guiMetamodel.gSemantics" : makefile ;
+  syntax    "guiModelBuilder.gSyntax" : makefile ;
+  grammar   "guiGrammar.gGrammar" : makefile ;
+  semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- Expression
   semantics "expressionMetamodel.gSemantics" : makefile ;

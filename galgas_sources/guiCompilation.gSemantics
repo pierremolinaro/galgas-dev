@@ -24,6 +24,7 @@ import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import semantics guiMetamodel in "guiMetamodel.gSemantics" ;
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
+import semantics optionCompilation in "optionCompilation.gSemantics" ;
 import grammar guiGrammar in "guiGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -69,6 +70,7 @@ list @importedLexiqueList {
 #---------------------------------------------------------------------------*
 
 struct @guiAnalysisContext {
+  @stringlist mImportedOptionComponentList ;
   @guiCommandLineOptionList mBoolOptionList ;
   @guiCommandLineOptionList mUIntOptionList ;
   @guiCommandLineOptionList mStringOptionList ;
@@ -78,12 +80,6 @@ struct @guiAnalysisContext {
 }
 
 #---------------------------------------------------------------------------*
-
-#extern routine enterPredefinedOptions
-#  ?!@guiAnalysisContext ioContext
-#;
-
-#---------------------------------------------------------------------------*
 #         G E N E R A T I O N    T E M P L A T E S                          *
 #---------------------------------------------------------------------------*
 
@@ -91,9 +87,6 @@ filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
 } {
   template gui_implementation "gui-implementation.m.gTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
-#    ?@string LEXIQUE_CLASS_NAME
-#    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-#    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
 }
 
@@ -119,6 +112,7 @@ routine compileGuiComponent
   end if ;
 #--- 
   @guiAnalysisContext context [new
+    ![@stringlist emptyList]
     ![@guiCommandLineOptionList emptyList] # Bool options
     ![@guiCommandLineOptionList emptyList] # UInt options
     ![@guiCommandLineOptionList emptyList] # string options
@@ -126,10 +120,22 @@ routine compileGuiComponent
     ![@extensionMap emptyMap]
     ![@importedLexiqueList emptyList]
   ] ;
-#--- Enter predefined options
-#  enterPredefinedOptions
-#    !?context
-#  ;
+#--- Check imported options components
+  foreach [guiComponentRoot mImportedOptionList] do 
+    if [mValue pathExtension] != "gOption" then
+      error mValue: "only an option component (path extension '.gOption') can be imported here" ;
+    else
+      parseOptionComponent
+        ![@lstring new
+          ![mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
+          ![mValue location]
+        ]
+        !?ioParsedComponentStruct
+        ?*
+      ;
+      context.mImportedOptionComponentList += ![[mValue lastPathComponent] stringByDeletingPathExtension] ;
+    end if ;
+  end foreach ;
 #--- Nib and main classes
   foreach [guiComponentRoot mGlobalSimpleAttributeList] do
     if [mKey string] != "nibAndMainClass" then

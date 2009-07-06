@@ -86,7 +86,12 @@ message "a '.ggs' GALGAS source file"
 when . "gOption"
 message "a GALGAS option source file"
 ??@lstring inSourceFile {
-  compileOptionComponent !inSourceFile ! outputDirectory (!inSourceFile) ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
+  ] ;
+  compileOptionComponent !inSourceFile ! outputDirectory (!inSourceFile) !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -97,6 +102,7 @@ message "a GALGAS lexique source file"
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
     ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
   ] ;
   compileLexiqueComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct ;
 }
@@ -109,6 +115,7 @@ message "a GALGAS semantics source file"
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
     ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
   ] ;
   compileSemanticsComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
 }
@@ -139,6 +146,7 @@ message "a GALGAS GUI source file"
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
     ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
   ] ;
   compileGuiComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct ;
 }
@@ -186,6 +194,7 @@ message "a GALGAS project source file"
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
     ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
   ] ;
 #--- Parse galgas sources
   foreach projectSourceList do
@@ -213,7 +222,7 @@ message "a GALGAS project source file"
       end if ;
     when optionSourceFile :
       if extension == "gOption" then
-        compileOptionComponent !fullFilePath ! outputDirectory ;
+        compileOptionComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
       else
         error mFilePath:"extension of an option component should be '.gOption'." ;
       end if ;

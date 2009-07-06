@@ -39,9 +39,14 @@ rule <gui_component_start_symbol>
   $identifier$ ?@lstring mGUIName ;
   $literal_string$ ?@lstring mGUIClass ;
   $:$ ;
-#--- Old style imports
 #--- Loop on import declarations
+  @lstringlist importedOptionList [emptyList] ;
   repeat
+  while
+    $import$ ;
+    $literal_string$ ?@lstring optionReference ;
+    importedOptionList += !optionReference ;
+    $;$ ;
   while
     $import__$ ;
     warning here: "when source file extension is '.gGui', the 'import__' construct is obsolete and has no effect: you can delete it" ;
@@ -152,6 +157,7 @@ rule <gui_component_start_symbol>
   outGuiComponentRoot := [@guiComponentRoot new
     !mGUIName
     !mGUIClass
+    !importedOptionList
     !simpleGlobalAttributes
     !withLexiqueList
   ] ;
