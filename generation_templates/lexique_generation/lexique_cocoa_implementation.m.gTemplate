@@ -125,8 +125,8 @@
 - (void) parseLexicalTokenForLexicalColoring {
   mLoop = YES ;
   mNoLexicalError = YES ;
-  mTokenCode = -1 ;
-  while ((mTokenCode < 0) && (mCurrentChar != '\0')) {
+  mTokenCode = 0 ;
+  while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
 %
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0)

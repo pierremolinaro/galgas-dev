@@ -143,7 +143,7 @@ NSObject <OCP_TokenizerProtocol> * tokenizerForExtension (const NSString * inExt
 foreach [GUI_CONTEXT mExtensionMap]
   before %  if%
   do % ([inExtension isEqualToString:@%([key utf8Representation])%]) {\n%
-     %    result = [[OC_Tokenizer_%mLexiqueName% alloc] init] ;\n%
+     %    result = [[[OC_Tokenizer_%mLexiqueName% alloc] init] autorelease] ;\n%
   between %  }else if%
   after %  }\n%
 end foreach

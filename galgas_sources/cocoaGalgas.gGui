@@ -32,7 +32,9 @@ with lexique "galgas_scanner.gLexique" {
   fileExtension : "gGrammar" ;
   fileExtension : "gProgram" ;
   fileExtension : "gOption" ;
-  fileExtension : "gGUI" ;
+  fileExtension : "gGui" ;
+  fileExtension : "gProject" ;
+  fileExtension : "ggs" ;
   blockComment : "#" ;
   title: "Source" ;
   label $map$, $type_name$ ;
@@ -104,10 +106,10 @@ with lexique "galgas_scanner.gLexique" {
   ;
 }
 
-#with lexique "galgasTemplateScanner.gLexique" {
-#  fileExtension : "gTemplate" ;
-#  title: "Template" ;
-#}
+with lexique "galgasTemplateScanner.gLexique" {
+  fileExtension : "gTemplate" ;
+  title: "Template" ;
+}
 
 blockComment : "#" ;
 
