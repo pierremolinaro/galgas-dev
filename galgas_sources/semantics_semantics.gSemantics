@@ -490,13 +490,6 @@ class @typeLogicalNegate extends @typeExpression {
 
 #---------------------------------------------------------------------------*
 
-class @typeOptionCollection extends @typeExpression {
-  @string mOptionComponentName ;
-  @lstring mCollectionName ;
-}
- 
-#---------------------------------------------------------------------------*
-
 class @typeBoolOption extends @typeExpression {
   @string mOptionComponentName ;
   @lstring mOptionName ;

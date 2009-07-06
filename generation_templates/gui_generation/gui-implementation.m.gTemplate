@@ -38,196 +38,29 @@ end foreach%    nil
 
 //---------------------------------------------------------------------------*
 
-#pragma mark Boolean Command Line Options
+#pragma mark Command Line Options
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                       Boolean Command Line Options                        *
+//                       Command Line Options                                *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#define kBoolOptionCount (14)
-
-static const char gBoolOptionChar [kBoolOptionCount] = {
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  'v',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-  '\0',
-} ;
-
-static const char * gBoolOptionString [kBoolOptionCount] = {
-  "help",
-  "version",
-  "lexical-analysis-only",
-  "parse-only",
-  "verbose",
-  "log-file-read",
-  "no-file-generation",
-  "Werror",
-  "detailled-error-messages",
-  "do-not-generate-xcode-project",
-  "generate_debug",
-  "output-html-grammar-file",
-  "print-predefined-lexical-actions",
-  "shadow",
-} ;
-
-static const char * gBoolOptionDescription [kBoolOptionCount] = {
-  "Display help information",
-  "Display version",
-  "Perform only lexical analysis on input files",
-  "Parse only input files",
-  "Verbose Output",
-  "Log every file read",
-  "Do not generate any file",
-  "Treat warnings as errors",
-  "Print detailled error messages",
-  "Prevent Generation of the corresponding Xcode project",
-  "Generate Debug Information on terminals and non-terminals symbols",
-  "Output a HTML file for every grammar component",
-  "Print the list of predefined lexical routines and functions",
-  "Warn on declarations that shadow a previously declared object",
-} ;
-
-static BOOL gBoolOptionValue [kBoolOptionCount] ;
-
-unsigned getBoolOptionsCount (void) {
-  return kBoolOptionCount ;
-}
-
-BOOL getBoolOptionValue (const unsigned inIndex) {
-  return gBoolOptionValue [inIndex] ;
-}
-
-void setBoolOptionValue (const unsigned inIndex, const BOOL inValue) {
-  gBoolOptionValue [inIndex] = inValue ;
-}
-
-char getBoolOptionChar (const unsigned inIndex)  {
-  return gBoolOptionChar [inIndex] ;
-}
-
-const char * getBoolOptionString (const unsigned inIndex) {
-  return gBoolOptionString [inIndex] ;
-}
-
-const char * getBoolOptionDescription (const unsigned inIndex) {
-  return gBoolOptionDescription [inIndex] ;
-}
-
+%
+foreach [GUI_CONTEXT mImportedOptionComponentList] do
+  %#import "%mValue%-cocoa.m"\n%
+end foreach
+%
 //---------------------------------------------------------------------------*
 
-#pragma mark Unsigned Command Line Options
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                      Unsigned Command Line Options                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-#define kUIntOptionCount (2)
-
-static const char gUIntOptionChar [kUIntOptionCount] = {
-  '\0',
-  '\0',
-} ;
-
-static const char * gUIntOptionString [kUIntOptionCount] = {
-  "max-errors",
-  "max-warnings",
-} ;
-
-static const char * gUIntOptionDescription [kUIntOptionCount] = {
-  "Stop after the given number of errors has been reached (by default: 100)",
-  "Stop after the given number of warnings has been reached (by default: 100)",
-} ;
-
-static unsigned gUintOptionValue [kUIntOptionCount] ;
-
-
-unsigned getUIntOptionsCount (void) {
-  return kUIntOptionCount ;
-}
-
-unsigned getUIntOptionValue (const unsigned inIndex) {
-  return gUintOptionValue [inIndex] ;
-}
-
-void setUIntOptionValue (const unsigned inIndex, const unsigned inValue) {
-  gUintOptionValue [inIndex] = inValue ;
-}
-
-char getUIntOptionChar (const unsigned inIndex)  {
-  return gUIntOptionChar [inIndex] ;
-}
-
-const char * getUIntOptionString (const unsigned inIndex) {
-  return gUIntOptionString [inIndex] ;
-}
-
-const char * getUIntOptionDescription (const unsigned inIndex) {
-  return gUIntOptionDescription [inIndex] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark String Command Line Options
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                       String Command Line Options                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-#define kStringOptionCount (1)
-
-static const char gStringOptionChar [kStringOptionCount] = {
-  '\0',
-} ;
-
-static const char * gStringOptionString [kStringOptionCount] = {
-  "create-project",
-} ;
-
-static const char * gStringOptionDescription [kStringOptionCount] = {
-  "Create a new GALGAS Project",
-} ;
-
-static NSString * gStringOptionValue [kStringOptionCount] ;
-
-unsigned getStringOptionsCount (void) {
-  return kStringOptionCount ;
-}
-
-NSString * getStringOptionValue (const unsigned inIndex) {
-  return gStringOptionValue [inIndex] ;
-}
-
-void setStringOptionValue (const unsigned inIndex, NSString * inValue) {
-  gStringOptionValue [inIndex] = inValue ;
-}
-
-char getStringOptionChar (const unsigned inIndex)  {
-  return gStringOptionChar [inIndex] ;
-}
-
-const char * getStringOptionString (const unsigned inIndex) {
-  return gStringOptionString [inIndex] ;
-}
-
-const char * getStringOptionDescription (const unsigned inIndex) {
-  return gStringOptionDescription [inIndex] ;
-}
+void enterOptions (NSMutableArray * ioBoolOptionArray,
+                   NSMutableArray * ioUIntOptionArray,
+                   NSMutableArray * ioStringOptionArray) {
+%
+foreach [GUI_CONTEXT mImportedOptionComponentList] do
+  %  enterOptionsFor_%([mValue identifierRepresentation])% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray) ;\n%
+end foreach
+%}
 
 //---------------------------------------------------------------------------*
 

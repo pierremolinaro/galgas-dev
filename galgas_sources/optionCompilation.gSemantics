@@ -19,6 +19,9 @@
 semantics optionCompilation :
 import "optionMetamodel.gSemantics" ;
 import "optionSemantics.gSemantics" ;
+import "semanticsMetamodel.gSemantics" ;
+
+import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
 import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
 import semantics optionSemantics in "optionSemantics.gSemantics" ;
 import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
@@ -44,17 +47,53 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
   ;
+  template optionHeaderCocoaZone2 "option-header-cocoa-zone2.gTemplate"
+    ?@string OPTION_COMPONENT_NAME
+  ;
+  template optionHeaderCocoaZone3 "option-header-cocoa-zone3.gTemplate"
+    ?@string OPTION_COMPONENT_NAME
+  ;
+  template optionImplementationCocoa "option-implementation-cocoa.gTemplate"
+    ?@string OPTION_COMPONENT_NAME
+    ?@commandLineOptionMap BOOL_OPTION_MAP
+    ?@commandLineOptionMap UINT_OPTION_MAP
+    ?@commandLineOptionMap STRING_OPTION_MAP
+  ;
 }
+
+#---------------------------------------------------------------------------*
+#                         parseOptionComponent                              *
+#---------------------------------------------------------------------------*
+
+routine parseOptionComponent
+  ??@lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@optionComponentRoot outOptionComponentRoot
+:
+  @lstring key [new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
+  if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [key string]] then
+    [[ioParsedComponentStruct mParsedOptionComponentMap] searchKey !key ?outOptionComponentRoot] ;
+  else
+    grammar optionLL1grammar in inSourceFile ?outOptionComponentRoot ;
+    [!?ioParsedComponentStruct.mParsedOptionComponentMap insertKey !key !outOptionComponentRoot] ;
+  end if ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
 routine compileOptionComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse option component
   @optionComponentRoot optionComponentRoot ;
-  grammar optionLL1grammar in inSourceFile ?optionComponentRoot ;
+  parseOptionComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?optionComponentRoot
+  ;
+#  grammar optionLL1grammar in inSourceFile ?optionComponentRoot ;
 #--- Check component name
   @lstring componentName := [optionComponentRoot mOptionComponentName] ;
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
@@ -132,6 +171,39 @@ routine compileOptionComponent
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionImplementation
+        ![[optionComponentRoot mOptionComponentName] string]
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # User Zone 3
+    ] ;
+ end if ;
+#--- Generate Cocoa header
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![[optionComponentRoot mOptionComponentName] string] . "-cocoa.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+        ![[optionComponentRoot mOptionComponentName] string]
+      ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+        ![[optionComponentRoot mOptionComponentName] string]
+      ]
+    ] ;
+  end if ;
+#--- Generate Cocoa Implementation
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![[optionComponentRoot mOptionComponentName] string] . "-cocoa.m"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionImplementationCocoa
         ![[optionComponentRoot mOptionComponentName] string]
         !boolOptionMap
         !uintOptionMap

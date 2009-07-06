@@ -659,6 +659,12 @@
 		CFAE491B0E16AAF400A8130F /* PM_C_Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAE48F70E16AAF400A8130F /* PM_C_Array.cpp */; };
 		CFAE491D0E16AAF400A8130F /* PM_C_Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAE48F90E16AAF400A8130F /* PM_C_Dictionary.cpp */; };
 		CFAE491F0E16AAF400A8130F /* PM_C_Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAE48FB0E16AAF400A8130F /* PM_C_Object.cpp */; };
+		CFAE5AA010021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
+		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
+		CFAE5AA210021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
+		CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
+		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
+		CFAE5B1D10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
 		CFB576FE0FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB576FF0FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
 		CFB577000FC340DE000B1844 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */; };
@@ -1260,7 +1266,6 @@
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
-		CF074BB31000B6D500F45986 /* include_typeOptionCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeOptionCollection.h; sourceTree = "<group>"; };
 		CF074BC21000BB6E00F45986 /* C_BoolCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_BoolCommandLineOption.h; sourceTree = "<group>"; };
 		CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_BoolCommandLineOption.cpp; sourceTree = "<group>"; };
 		CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntCommandLineOption.h; sourceTree = "<group>"; };
@@ -1538,6 +1543,10 @@
 		CFAE48FA0E16AAF400A8130F /* PM_C_Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM_C_Dictionary.h; sourceTree = "<group>"; };
 		CFAE48FB0E16AAF400A8130F /* PM_C_Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PM_C_Object.cpp; sourceTree = "<group>"; };
 		CFAE48FC0E16AAF400A8130F /* PM_C_Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM_C_Object.h; sourceTree = "<group>"; };
+		CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_CommandLineOption.h; sourceTree = "<group>"; };
+		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
+		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
+		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
 		CFB576FC0FC340DE000B1844 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_actions.cpp; sourceTree = "<group>"; };
 		CFB576FD0FC340DE000B1844 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_actions.h; sourceTree = "<group>"; };
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
@@ -2111,6 +2120,10 @@
 				CF9E55F90FF5372D007692D1 /* OC_Token.h */,
 				CF9E55FA0FF5372D007692D1 /* OC_Token.m */,
 				CFC151360FF6622E00A61DE8 /* OCP_TokenizerProtocol.h */,
+				CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */,
+				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
+				CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */,
+				CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2137,7 +2150,6 @@
 		CFD2149A0913BDFA0011F11E /* Include Files */ = {
 			isa = PBXGroup;
 			children = (
-				CF074BB31000B6D500F45986 /* include_typeOptionCollection.h */,
 				CFFA553B0FE6C891005E7BCB /* include_templateInstructionIf.h */,
 				CFD749FF0FE543FF009FFF8A /* include_templateBlockInstruction.h */,
 				CFD749E90FE53F5A009FFF8A /* include_typeCategoryTemplateCall.h */,
@@ -3287,6 +3299,8 @@
 				CF074BED1000D13400F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C311000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074C9E1000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
+				CFAE5AA010021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
+				CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3841,6 +3855,8 @@
 				CF074BEB1000D12A00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C371000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA41000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
+				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
+				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4395,6 +4411,8 @@
 				CF074BEE1000D13F00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C351000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA21000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
+				CFAE5AA210021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
+				CFAE5B1D10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

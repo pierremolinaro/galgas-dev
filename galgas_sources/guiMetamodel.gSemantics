@@ -54,6 +54,7 @@ list @withLexiqueList {
 class @guiComponentRoot {
   @lstring mGUIName  ;
   @lstring mGUIClass ;
+  @lstringlist mImportedOptionList ;
   @guiSimpleAttributeList mGlobalSimpleAttributeList ;
   @withLexiqueList mWithLexiqueList ;
 }

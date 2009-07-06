@@ -20,9 +20,12 @@
 semantics semanticsMetamodel :
 import "instructionMetamodel.gSemantics" ;
 import "lexiqueMetamodel.gSemantics" ;
+import "optionMetamodel.gSemantics" ;
+
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
+import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -54,7 +57,8 @@ class @listmapDeclaration extends @semanticDeclaration {
 #---------------------------------------------------------------------------*
 
 list @mapMethodList {
-  @lstring mMethodName ;  @lstring mAlternateMethodName ;
+  @lstring mMethodName ;
+  @lstring mAlternateMethodName ;
   @lstring mErrorMessage ;
   @lstring mShadowErrorMessage ;
 }
@@ -327,9 +331,18 @@ map @parsedSemanticsComponentMap {
 
 #---------------------------------------------------------------------------*
 
+map @parsedOptionComponentMap {
+  @optionComponentRoot mOptionComponentRoot ;
+  insert insertKey error message "the '%K' option component has already been parsed" ;
+  search searchKey error message "the '%K' option component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @parsedComponentStruct {
   @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
   @parsedLexiqueComponentMap mParsedLexiqueComponentMap ;
+  @parsedOptionComponentMap mParsedOptionComponentMap ;
 }
 
 #---------------------------------------------------------------------------*

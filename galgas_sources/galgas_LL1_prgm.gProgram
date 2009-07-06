@@ -46,7 +46,12 @@ message "a GALGAS option source file"
 ??@lstring inSourceFile {
   @string outputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
   outputDirectory .= "/GALGAS_OUTPUT" ;
-  compileOptionComponent !inSourceFile !outputDirectory ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
+  ] ;
+  compileOptionComponent !inSourceFile !outputDirectory !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*

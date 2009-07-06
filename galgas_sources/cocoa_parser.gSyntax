@@ -128,6 +128,13 @@ rule <galgas_component>
     $identifier$ ? grammarName ;
   end select ;
   $:$ ;
+  repeat
+  while
+    $import$ ;
+    warning here:"this construct has no effect when source file name extension is '.ggs'" ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;    
 #--- Import semantics
   @ModelMap modelMap [emptyMap] ;
   @ActionMap actionMap [emptyMap] ;
@@ -266,13 +273,36 @@ rule <galgas_component>
     else
       error settingName: "unkown key" ;
     end if ;
-    $;$ ;  while    $with$ ;    $lexique$ ;    warning here : "the 'with lexique' construct has no effect when 'gui' component file extension is '.ggs'" ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+    $;$ ;
+  while
+    $with$ ;
+    $lexique$ ;
+    warning here : "the 'with lexique' construct has no effect when 'gui' component file extension is '.ggs'" ;
+    $literal_string$ ?* ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
+      $terminal$ ? * ;
       $,$ ;
       $terminal$ ? * ;
       $;$ ;
-    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;      repeat
-        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
-      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
+    while
+      $identifier$ ?* ;
+      $literal_string$ ?* ;
+      $:$ ;
+      repeat
+        $literal_string$ ?* ;
+      while
+      end repeat ;
+      $;$ ;
+    while
+      $identifier$ ?* ;
+      $:$ ;
+      $literal_string$ ?* ;
+      $;$ ;
+    end repeat ;
+    $}$ ;    
   end repeat ;
 #--- Generate Cocoa c++ file
   generateCocoaComponent
@@ -301,6 +331,12 @@ label importLexique
     $identifier$ ? * ;
   end select ;
   $:$ ;
+  repeat
+  while
+    $import$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -329,14 +365,34 @@ label importLexique
     while
     end repeat ;
     $;$ ;
-  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+  while
+    $with$ ;
+    $lexique$ ;
+    $literal_string$ ?* ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
+      $terminal$ ? * ;
       $,$ ;
       $terminal$ ? * ;
       $;$ ;
-    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+    while
+      $identifier$ ?* ;
+      $literal_string$ ?* ;
+      $:$ ;
       repeat
-        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
-      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
+        $literal_string$ ?* ;
+      while
+      end repeat ;
+      $;$ ;
+    while
+      $identifier$ ?* ;
+      $:$ ;
+      $literal_string$ ?* ;
+      $;$ ;
+    end repeat ;
+    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -354,6 +410,12 @@ label importSyntax
     $identifier$ ? * ;
   end select ;
   $:$ ;
+  repeat
+  while
+    $import$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -382,14 +444,34 @@ label importSyntax
     while
     end repeat ;
     $;$ ;
-  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+  while
+    $with$ ;
+    $lexique$ ;
+    $literal_string$ ?* ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
+      $terminal$ ? * ;
       $,$ ;
       $terminal$ ? * ;
       $;$ ;
-    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+    while
+      $identifier$ ?* ;
+      $literal_string$ ?* ;
+      $:$ ;
       repeat
-        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
-      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
+        $literal_string$ ?* ;
+      while
+      end repeat ;
+      $;$ ;
+    while
+      $identifier$ ?* ;
+      $:$ ;
+      $literal_string$ ?* ;
+      $;$ ;
+    end repeat ;
+    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -408,6 +490,12 @@ label importSemantics
     $identifier$ ? * ;
   end select ;
   $:$ ;
+  repeat
+  while
+    $import$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -436,14 +524,34 @@ label importSemantics
     while
     end repeat ;
     $;$ ;
-  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+  while
+    $with$ ;
+    $lexique$ ;
+    $literal_string$ ?* ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
+      $terminal$ ? * ;
       $,$ ;
       $terminal$ ? * ;
       $;$ ;
-    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+    while
+      $identifier$ ?* ;
+      $literal_string$ ?* ;
+      $:$ ;
       repeat
-        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
-      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
+        $literal_string$ ?* ;
+      while
+      end repeat ;
+      $;$ ;
+    while
+      $identifier$ ?* ;
+      $:$ ;
+      $literal_string$ ?* ;
+      $;$ ;
+    end repeat ;
+    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -462,6 +570,12 @@ label importGrammarForSemantics
     $identifier$ ? * ;
   end select ;
   $:$ ;
+  repeat
+  while
+    $import$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -489,14 +603,34 @@ label importGrammarForSemantics
     while
     end repeat ;
     $;$ ;
-  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+  while
+    $with$ ;
+    $lexique$ ;
+    $literal_string$ ?* ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
+      $terminal$ ? * ;
       $,$ ;
       $terminal$ ? * ;
       $;$ ;
-    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+    while
+      $identifier$ ?* ;
+      $literal_string$ ?* ;
+      $:$ ;
       repeat
-        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
-      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
+        $literal_string$ ?* ;
+      while
+      end repeat ;
+      $;$ ;
+    while
+      $identifier$ ?* ;
+      $:$ ;
+      $literal_string$ ?* ;
+      $;$ ;
+    end repeat ;
+    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;
@@ -513,6 +647,12 @@ label importOptions
     $identifier$ ? * ;
   end select ;
   $:$ ;
+  repeat
+  while
+    $import$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;    
   <import_headers_semantics_and_grammars> parse ;
   select
   or
@@ -541,14 +681,34 @@ label importOptions
     while
     end repeat ;
     $;$ ;
-  while    $with$ ;    $lexique$ ;    $literal_string$ ?* ;    ${$ ;    repeat    while      $label$ ;      $terminal$ ? * ;
+  while
+    $with$ ;
+    $lexique$ ;
+    $literal_string$ ?* ;
+    ${$ ;
+    repeat
+    while
+      $label$ ;
+      $terminal$ ? * ;
       $,$ ;
       $terminal$ ? * ;
       $;$ ;
-    while      $identifier$ ?* ;      $literal_string$ ?* ;      $:$ ;
+    while
+      $identifier$ ?* ;
+      $literal_string$ ?* ;
+      $:$ ;
       repeat
-        $literal_string$ ?* ;      while      end repeat ;      $;$ ;    while      $identifier$ ?* ;      $:$ ;
-      $literal_string$ ?* ;      $;$ ;    end repeat ;    $}$ ;    
+        $literal_string$ ?* ;
+      while
+      end repeat ;
+      $;$ ;
+    while
+      $identifier$ ?* ;
+      $:$ ;
+      $literal_string$ ?* ;
+      $;$ ;
+    end repeat ;
+    $}$ ;    
   end repeat ;
   $end$ ;
   $gui$ ;

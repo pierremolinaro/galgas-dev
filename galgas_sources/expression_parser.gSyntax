@@ -1631,16 +1631,6 @@ rule <factor>
      outExpression := [@typeBoolOption new !"galgas_cli_options" !optionName] ;
      outResultType := [@typeGalgas_bool new] ;
   or
-    $:$ ;
-    @lstring collectionName ;
-    $identifier$ ?collectionName ;
-    if [collectionName string] == "boolOptionIdentifierList" then
-      outExpression := [@typeOptionCollection new !"galgas_cli_options" !collectionName] ;
-      build_stringlist_type  ?outResultType ;
-    else
-      error collectionName:"this collection name does not exist" -> outExpression, outResultType ;
-    end if ;
-  or
     @lstring optionComponentName ;
     $identifier$ ? optionComponentName ;
     @M_cli_options boolOptionsMap ;
