@@ -62,301 +62,79 @@ foreach [GUI_CONTEXT mImportedOptionComponentList] do
 end foreach
 %}
 
-//---------------------------------------------------------------------------*
-
-#pragma mark Popup List Data
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                     P O P U P    L I S T    D A T A                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_7 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_20 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_41 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_45 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_49 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_52 [] = {141, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_62 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_68 [] = {1, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_69 [] = {141, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static uint16 kPopUpListData_75 [] = {99, 0} ;
-
-//---------------------------------------------------------------------------*
-
-static const uint16 * kPopUpListData [144] = {
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_7,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_20,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_41,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_45,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_49,
-  NULL,
-  NULL,
-  kPopUpListData_52,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_62,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_68,
-  kPopUpListData_69,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  kPopUpListData_75,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL} ;
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Lexique interface
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                            Lexique interface                              *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-@interface OC_Tokenizer_galgas_scanner : OC_Lexique_galgas_scanner {
-}
-
-@end
-
-//---------------------------------------------------------------------------*
-
-@implementation OC_Tokenizer_galgas_scanner
-
-//---------------------------------------------------------------------------*
-
-- (NSString *) blockComment {
-  return @"#" ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (UInt32) textMacroCount {
-  return 7 ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroTitle [8] = {
-    @"Types/Class",
-    @"Types/Enum",
-    @"Types/List",
-    @"Types/List Map",
-    @"Types/Map",
-    @"Types/Sorted List",
-    @"Types/Struct",
-    NULL
-  } ;
-  return kTextMacroTitle [inIndex] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroContent [8] = {
-    @"class @aClassName : extends @superClassNane {\n"
-    "  @aType mAnAttribute ;\n"
-    "  override method myMethod !@string outResult :\n"
-    "    outResult := \"a string\" ;\n"
-    "  end method ;\n"
-    "}\n",
-    @"enum @aType {\n"
-    "  constructor constant1 ;\n"
-    "  constructor constant2 ;\n"
-    "}{\n"
-    "  reader actualArgumentMessage :\n"
-    "    constant1 -> \"message for constant1\" ;\n"
-    "    constant2 -> \"message for constant2\" ;\n"
-    "  end reader ;\n"
-    "}\n",
-    @"list @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n",
-    @"list @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n"
-    "listmap @myListMap (@aList) ;\n",
-    @"map @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n",
-    @"sortedlist @type {\n"
-    "  @string mFirstAttribute ;\n"
-    "  @bool mSecondAttribute ;\n"
-    "}{\n"
-    "mFirstAttribute >, mSecondAttribute <\n"
-    "}\n",
-    @"struct @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "}\n",
-    NULL
-  } ;
-  return kTextMacroContent [inIndex] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (const UInt16 **) popupListData {
-  return kPopUpListData ;
-}
-
-//---------------------------------------------------------------------------*
-
-@end
+%foreach [GUI_CONTEXT mWithLexiqueList] do
+  %//---------------------------------------------------------------------------*\n\n%
+  %#pragma mark Lexique %mLexiqueClassName%\n\n%
+  %//---------------------------------------------------------------------------*\n%
+  %//                                                                           *\n%
+  %//                     P O P    U P    L I S T    D A T A                    *\n%
+  %//                                                                           *\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  foreach mLabels do
+    %static const UInt16 gPopUpData_%([mLexiqueClassName identifierRepresentation])%_%([[mLocation locationIndex] string])% [%([[mTerminalList length] + 1 string])%] = {\n%
+      foreach mTerminalList do
+        %  %mLexiqueClassName%_1_%([mValue identifierRepresentation])%,\n%
+      end foreach    
+    %  0\n%
+    %} ;\n\n%
+  end foreach
+  %static const UInt16 * gPopUpData_%([mLexiqueClassName identifierRepresentation])% [%([[mLabels length] + 1 string])%] = {\n%
+  foreach mLabels do
+    %  gPopUpData_%([mLexiqueClassName identifierRepresentation])%_%([[mLocation locationIndex] string])%,\n%
+  end foreach
+    %  NULL\n%
+    %} ;\n\n%
+  %//---------------------------------------------------------------------------*\n%
+  %//                                                                           *\n%
+  %//                            Lexique interface                              *\n%
+  %//                                                                           *\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %@interface OC_Tokenizer_%mLexiqueClassName% : OC_Lexique_%mLexiqueClassName% {\n\n%
+  %}\n\n%
+  %- (NSString *) blockComment ;\n\n%
+  %- (const UInt16 * *) popupListData ;\n\n%
+  %- (UInt32) textMacroCount ;\n\n%
+  %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;\n\n%
+  %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;\n\n%
+  %@end\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %@implementation OC_Tokenizer_%mLexiqueClassName%\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %- (NSString *) blockComment {\n%
+  %  return @%([mBlockComment utf8Representation])% ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %- (const UInt16 * *) popupListData {\n%
+  %  return gPopUpData_%([mLexiqueClassName identifierRepresentation])% ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %- (UInt32) textMacroCount {\n%
+  %  return %([[mTextMacroList length] string])% ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%
+  %  static NSString * kTextMacroTitle [%([[mTextMacroList length] + 1 string])%] = {\n%
+  foreach mTextMacroList do
+    %    @%([mKey utf8Representation])%,\n%
+  end foreach
+  %    NULL\n%
+  %  } ;\n%
+  %  return kTextMacroTitle [inIndex] ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n%
+  %  static NSString * kTextMacroContent [%([[mTextMacroList length] + 1 string])%] = {\n%
+  foreach mTextMacroList do
+    %    @%([mContents utf8Representation])%,\n%
+  end foreach
+  %    NULL\n%
+  %  } ;\n%
+  %  return kTextMacroContent [inIndex] ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %@end\n\n%
+end foreach
+%
 
 //---------------------------------------------------------------------------*
 

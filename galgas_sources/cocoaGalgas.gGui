@@ -47,7 +47,7 @@ with lexique "galgas_scanner.gLexique" {
   label $reader$, $type_name$ ;
   
   textMacro "Types/Class" :
-    "class @aClassName : extends @superClassNane {\n"
+    "class @aClassName : extends @superClassName {\n"
     "  @aType mAnAttribute ;\n"
     "  override method myMethod !@string outResult :\n"
     "    outResult := \"a string\" ;\n"
@@ -104,11 +104,10 @@ with lexique "galgas_scanner.gLexique" {
   ;
 }
 
-with lexique "galgasTemplateScanner.gLexique" {
-  fileExtension : "gTemplate" ;
-  blockComment : "#" ;
-  title: "Template" ;
-}
+#with lexique "galgasTemplateScanner.gLexique" {
+#  fileExtension : "gTemplate" ;
+#  title: "Template" ;
+#}
 
 blockComment : "#" ;
 

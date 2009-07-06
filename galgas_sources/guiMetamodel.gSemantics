@@ -38,6 +38,7 @@ list @guiCompoundAttributeList {
 
 list @guiLabelList {
   @lstringlist mTerminalList ;
+  @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
