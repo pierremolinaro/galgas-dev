@@ -654,7 +654,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@string unused LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
   ;
-  template cocoaImplementationZone2 "lexique_cocoa_implementation.cpp.gTemplate"
+  template cocoaImplementationZone2 "lexique_cocoa_implementation.m.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap unused LEXICAL_MESSAGE_MAP
