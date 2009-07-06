@@ -122,7 +122,7 @@ rule <gui_component_start_symbol>
         $,$ ;
       end repeat ;
       $;$ ;
-      labels += !terminalList ;
+      labels += !terminalList !here ;
     while
       $identifier$ ?@lstring key ;
       $literal_string$ ?@lstring name ;

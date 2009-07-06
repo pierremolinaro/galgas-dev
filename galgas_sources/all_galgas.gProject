@@ -23,6 +23,9 @@ project all_galgas :
 #--- Common Scanner
   lexique "galgas_scanner.gLexique" : makefile ;
 
+#--- Template
+  lexique   "galgasTemplateScanner.gLexique" : makefile ;
+
 #--- Cocoa Interface
   gui       "cocoaGalgas.gGui" ;
 
