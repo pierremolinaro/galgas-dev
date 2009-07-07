@@ -122,6 +122,7 @@
 		CF0CB8660BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CF0CB8860BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB88A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
+		CF18FA2F10036EBD005E0F68 /* cocoaGalgas-2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF67A7AD100269F9006F56B7 /* cocoaGalgas-2.m */; };
 		CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF21A4F10BAEE75A00C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
@@ -280,7 +281,6 @@
 		CF6702F905C073220065267C /* cocoaGalgas.mm in Sources */ = {isa = PBXBuildFile; fileRef = CF6702F805C073220065267C /* cocoaGalgas.mm */; };
 		CF67A7AE100269F9006F56B7 /* cocoaGalgas-2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF67A7AD100269F9006F56B7 /* cocoaGalgas-2.m */; };
 		CF67A7B0100269F9006F56B7 /* cocoaGalgas-2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF67A7AD100269F9006F56B7 /* cocoaGalgas-2.m */; };
-		CF67A7C310026B61006F56B7 /* cocoaGalgas-2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF67A7AD100269F9006F56B7 /* cocoaGalgas-2.m */; };
 		CF69B2820A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B2840A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
 		CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
@@ -3861,7 +3861,7 @@
 				CF074CA41000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
 				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
-				CF67A7C310026B61006F56B7 /* cocoaGalgas-2.m in Sources */,
+				CF18FA2F10036EBD005E0F68 /* cocoaGalgas-2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
