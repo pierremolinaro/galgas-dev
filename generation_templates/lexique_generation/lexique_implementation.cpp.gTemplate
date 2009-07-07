@@ -187,7 +187,7 @@ end foreach
         %kUnicodeString_%([mEndString identifierRepresentation])%, %([[mEndString length] string])%,%
       end if
       % NULL, %
-      ([not mPreservesStartDelimiter string])
+      ([not mPreservesStartDelimiter cString])
       %}%
     between %,\n%
     after %\n} ;\n%
@@ -222,7 +222,7 @@ end foreach
 
 % foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
     before %static const bool kEndOfScriptInTemplateArray [%([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])%] = {\n%
-    do %  %([mIsEndOfTemplateMark string])% /* %([mTerminalName string])% */%
+    do %  %([mIsEndOfTemplateMark cString])% /* %([mTerminalName string])% */%
     between %,\n%
     after %\n} ;\n%
   end foreach
@@ -342,8 +342,8 @@ void %LEXIQUE_CLASS_NAME%::enterToken (const cTokenFor_%LEXIQUE_CLASS_NAME% & in
   macroMyNew (ptr, cTokenFor_%LEXIQUE_CLASS_NAME% ()) ;
   ptr->mTokenCode = inToken.mTokenCode ;
   ptr->mFirstLocation = mTokenFirstLocation ;
-  ptr->mLastLocation  = mTokenLastLocation ;
-  ptr->mTemplateStringBeforeToken  = inToken.mTemplateStringBeforeToken ;
+  ptr->mLastLocation = mTokenLastLocation ;
+  ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
     %  ptr->mLexicalAttribute_%([key string])% = inToken.mLexicalAttribute_%([key string])% ;\n%

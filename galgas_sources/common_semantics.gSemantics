@@ -4244,7 +4244,10 @@ routine handleReaderCall
          -> outAccessorTypesList, outReturnedType ;
       end if ;
     when >= @typeGalgas_bool do
-      if [inReaderName string] == "string" then
+      if [inReaderName string] == "cString" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outReturnedType := [@typeGalgas_string new] ;
+      elsif [inReaderName string] == "ocString" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
       else

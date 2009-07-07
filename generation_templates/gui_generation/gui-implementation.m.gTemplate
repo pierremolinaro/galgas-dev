@@ -96,6 +96,7 @@ end foreach
   %- (UInt32) textMacroCount ;\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;\n\n%
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;\n\n%
+  %- (NSString *) tabItemTitle ;\n\n%
   %@end\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %@implementation OC_Tokenizer_%mLexiqueClassName%\n\n%
@@ -110,6 +111,10 @@ end foreach
   %//---------------------------------------------------------------------------*\n\n%
   %- (UInt32) textMacroCount {\n%
   %  return %([[mTextMacroList length] string])% ;\n%
+  %}\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %- (NSString *) tabItemTitle {\n%
+  %  return @%([mTitle utf8Representation])% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%

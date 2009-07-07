@@ -283,9 +283,11 @@ rule <galgas_component>
     repeat
     while
       $label$ ;
-      $terminal$ ? * ;
-      $,$ ;
-      $terminal$ ? * ;
+      repeat
+        $terminal$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
       $;$ ;
     while
       $identifier$ ?* ;
@@ -373,9 +375,11 @@ label importLexique
     repeat
     while
       $label$ ;
-      $terminal$ ? * ;
-      $,$ ;
-      $terminal$ ? * ;
+      repeat
+        $terminal$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
       $;$ ;
     while
       $identifier$ ?* ;
@@ -452,9 +456,11 @@ label importSyntax
     repeat
     while
       $label$ ;
-      $terminal$ ? * ;
-      $,$ ;
-      $terminal$ ? * ;
+      repeat
+        $terminal$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
       $;$ ;
     while
       $identifier$ ?* ;
@@ -532,9 +538,11 @@ label importSemantics
     repeat
     while
       $label$ ;
-      $terminal$ ? * ;
-      $,$ ;
-      $terminal$ ? * ;
+      repeat
+        $terminal$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
       $;$ ;
     while
       $identifier$ ?* ;
@@ -611,9 +619,11 @@ label importGrammarForSemantics
     repeat
     while
       $label$ ;
-      $terminal$ ? * ;
-      $,$ ;
-      $terminal$ ? * ;
+      repeat
+        $terminal$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
       $;$ ;
     while
       $identifier$ ?* ;
@@ -689,9 +699,11 @@ label importOptions
     repeat
     while
       $label$ ;
-      $terminal$ ? * ;
-      $,$ ;
-      $terminal$ ? * ;
+      repeat
+        $terminal$ ? * ;
+      while
+        $,$ ;
+      end repeat ;
       $;$ ;
     while
       $identifier$ ?* ;

@@ -62,8 +62,4 @@ enum {%LEXIQUE_CLASS_NAME%_1_%
     %  @private %([mLexicalType cocoaTypeName])% mLexicalAttribute_%([key string])% ;\n%
   end foreach
 %
-%if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
-//--- Scanner mode for template scanner
-  @private SInt32 mMatchedTemplateDelimiterIndex ;
-%end if%
 }

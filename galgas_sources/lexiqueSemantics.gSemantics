@@ -105,12 +105,12 @@ enum @lexicalTypeEnum {
 
   reader cocoaReset :
     lexicalType_string -> " setString:@\"\"]" ;
-    lexicalType_char   -> "= 0" ;
-    lexicalType_uint   -> "= 0" ;
-    lexicalType_uint64 -> "= 0" ;
-    lexicalType_sint   -> "= 0" ;
-    lexicalType_sint64 -> "= 0" ;
-    lexicalType_double -> "= 0.0" ;
+    lexicalType_char   -> " = 0" ;
+    lexicalType_uint   -> " = 0" ;
+    lexicalType_uint64 -> " = 0" ;
+    lexicalType_sint   -> " = 0" ;
+    lexicalType_sint64 -> " = 0" ;
+    lexicalType_double -> " = 0.0" ;
   end reader ;
 }
 
