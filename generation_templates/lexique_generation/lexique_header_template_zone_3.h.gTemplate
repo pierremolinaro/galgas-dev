@@ -2,7 +2,7 @@
 //--- Terminal symbols enumeration
   public : enum {%LEXIQUE_CLASS_NAME%_1_%
     foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
-      %,\n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+      %,\n  %LEXIQUE_CLASS_NAME%_1_% ([[mTerminalName string] identifierRepresentation])
     end foreach
   %} ;
 %

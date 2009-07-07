@@ -47,37 +47,16 @@
 //---------------------------------------------------------------------------*
 
 % foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
-    before %static const templateDelimiterStruct kTemplateDefinitionArray [%([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%] = {\n%
-    do %  {kUnicodeString_%([mStartString identifierRepresentation])%, %([[mStartString length] string])%, %
+    before %static const templateDelimiterStructForCocoa kTemplateDefinitionArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% [%([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%] = {\n%
+    do %  {@%([mStartString utf8Representation])%, %
       if [mEndString length] == 0 then
-        %NULL, 0,%
+        %nil,%
       else
-        %kUnicodeString_%([mEndString identifierRepresentation])%, %([[mEndString length] string])%,%
+        %@%([mEndString utf8Representation])%,%
       end if
-      % NULL, %
+      % nil, %
       ([not mPreservesStartDelimiter string])
       %}%
-    between %,\n%
-    after %\n} ;\n%
-  end foreach
-%
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                           Template Replacements                           *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-% foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
-    before %static const templateDelimiterStruct kTemplateReplacementArray [%([[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string])%] = {\n%
-    do
-      %  {kUnicodeString_%([mMatchString identifierRepresentation])%, %([[mMatchString length] string])%, %
-      %kUnicodeString_%([mReplacementString identifierRepresentation])%, %([[mReplacementString length] string])%, %
-      if [mReplacementFunction length] == 0 then
-        %NULL%
-      else
-        %scanner_routine_%([mReplacementFunction string])
-      end if
-      %, true}%
     between %,\n%
     after %\n} ;\n%
   end foreach
@@ -89,7 +68,7 @@
 //---------------------------------------------------------------------------*
 
 % foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
-    before %static const bool kEndOfScriptInTemplateArray [%([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])%] = {\n%
+    before %static const BOOL kEndOfScriptInTemplateArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% [%([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])%] = {\n%
     do %  %([mIsEndOfTemplateMark string])% /* %([mTerminalName string])% */%
     between %,\n%
     after %\n} ;\n%
@@ -104,14 +83,14 @@
       %//             Key words table '%([tokenList_key string])%'                            *\n%
       %//                                                                           *\n%
       %//---------------------------------------------------------------------------*\n\n%
-      %static const C_cocoa_lexique_table_entry ktable_for_%([tokenList_key string])% [%([[tokenList_mExplicitTokenListMap count] string])%] = {\n%
+      %static const C_cocoa_lexique_table_entry ktable_for_%([LEXIQUE_CLASS_NAME identifierRepresentation])%_%([tokenList_key string])% [%([[tokenList_mExplicitTokenListMap count] string])%] = {\n%
         foreach tokenList_mTokenSortedList
         do %  {@%([mName utf8Representation])%, %LEXIQUE_CLASS_NAME%_1_%([mTerminalName identifierRepresentation])%}%
         between %,\n%
         end foreach
       %\n} ;\n\n%
-      %static SInt32 search_into_%([tokenList_key string])% (NSString * inSearchedString) {\n%
-      %  return searchStringInTable (inSearchedString, ktable_for_%([tokenList_key string])%, %([[tokenList_mExplicitTokenListMap count] string])%) ;\n%
+      %static SInt32 search_into_%([LEXIQUE_CLASS_NAME identifierRepresentation])%_%([tokenList_key string])% (NSString * inSearchedString) {\n%
+      %  return searchStringInTable (inSearchedString, ktable_for_%([LEXIQUE_CLASS_NAME identifierRepresentation])%_%([tokenList_key string])%, %([[tokenList_mExplicitTokenListMap count] string])%) ;\n%
       %}\n\n%
     end if
   end foreach
@@ -124,49 +103,29 @@
 
 - (void) parseLexicalTokenForLexicalColoring {
   mLoop = YES ;
-  mNoLexicalError = YES ;
+  BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
 %
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0)
-     && (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
+     && ([kTemplateDefinitionArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% [mMatchedTemplateDelimiterIndex].mStartString length] > 0)
      && (mCurrentChar != '\0')) {
-      const bool foundEndDelimitor = testForInputUTF32String (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
-                                                              kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
-                                                              true) ;
+      const BOOL foundEndDelimitor = [self testForInputString:kTemplateDefinitionArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% [mMatchedTemplateDelimiterIndex].mEndString advance:YES] ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
     }
     while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
-      sint32 replacementIndex = 0 ;
-      while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, %([[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string])%) ;
-        if (replacementIndex >= 0) {
-          if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
-            token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
-          }else{
-            C_String s ;
-            while (notTestForInputUTF32String (kTemplateReplacementArray [replacementIndex].mEndString,
-                                               kTemplateReplacementArray [replacementIndex].mEndStringLength,
-                                               kEndOfSourceLexicalErrorMessage
-                                               COMMA_HERE)) {
-              s.appendUnicodeCharacter (previousChar () COMMA_HERE) ;
-            }
-            kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
-          }
-        }
-      }
-      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, %([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%) ;
+      mTokenCode = -2 ;
+      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% listLength:%([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%] ;
       if (mMatchedTemplateDelimiterIndex < 0) {
-        token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
-        advance () ;
+        [self advance] ;
       }
     }
-    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar != '\0') && mNoLexicalError) {
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
 %  foreach LEXICAL_ATTRIBUTE_MAP do
-    %    mLexicalAttribute_%([key string]) ([mLexicalType initialization]) % ;\n%
+    %      %([mLexicalType cocoaResetPrefix])%mLexicalAttribute_%([key string]) ([mLexicalType cocoaReset]) % ;\n%
   end foreach
 %    mTokenFirstLocation = mCurrentLocation ;
 %
@@ -175,13 +134,13 @@
       ([mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT])
     end foreach
   end block
-%if (testForInputChar ('\0')) { // End of source text ? 
+%if ([self testForInputChar:'\0']) { // End of source text ? 
         mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
       }else{ // Unknown input character
-        mNoLexicalError = NO ;
+        scanningOk = NO ;
       }
     }
-    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray [mTokenCode - 1]) {
+    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% [mTokenCode - 1]) {
       mMatchedTemplateDelimiterIndex = -1 ;
     }
   %else
@@ -198,16 +157,13 @@
 %if ([self testForInputChar:'\0']) { // End of source text ? 
       mTokenCode = %LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
     }else{ // Unknown input character
-      mNoLexicalError = NO ;
+      scanningOk = NO ;
     }
   //--- Error ?
-    if (! mNoLexicalError) {
+    if (! scanningOk) {
       mTokenCode = -1 ;
       [self advance] ;
     }%end if%
-  }
-  if ((mCurrentChar == '\0') && ([mTemplateStringBeforeToken length] > 0)) {
-    mTokenCode = 0 ;
   }
 }
 

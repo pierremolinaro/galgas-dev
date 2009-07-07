@@ -77,7 +77,7 @@ override reader @lexicalStringNotMatch generateCocoaConditionCode
 :
   outGeneratedCode := "[self notTestForInputString:@" ;
   outGeneratedCode .= [mString utf8Representation] ;
-  outGeneratedCode .= " error:& mNoLexicalError]" ;
+  outGeneratedCode .= " error:& scanningOk]" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -212,7 +212,7 @@ override reader @lexicalErrorByDefault generateCocoaDefaultSendCode
   ?@string unused inScannerClassName
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "mNoLexicalError = NO ;\n" ;
+  outGeneratedCode := "scanningOk = NO ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -235,7 +235,7 @@ override reader @lexicalStructuredSendInstruction generateCocoaInstructionCode
   outGeneratedCode := "" ;
   foreach mLexicalSendSearchList do
     outGeneratedCode .= "if (mTokenCode == 0) {\n" ;
-    outGeneratedCode .= "  mTokenCode = search_into_" . mSearchListName . " (mLexicalAttribute_" . mAttributeName . ") ;\n" ;
+    outGeneratedCode .= "  mTokenCode = search_into_" . [inScannerClassName identifierRepresentation] . "_" . mSearchListName . " (mLexicalAttribute_" . mAttributeName . ") ;\n" ;
     outGeneratedCode .= "}\n" ;
   end foreach ;
   outGeneratedCode .= "if (mTokenCode == 0) {\n" ;
@@ -269,7 +269,7 @@ override reader @lexicalRepeatInstruction generateCocoaInstructionCode
 #---
   foreach mLexicalWhileBranchList
   do
-    outGeneratedCode .= "if (mNoLexicalError && (" ;
+    outGeneratedCode .= "if (scanningOk && (" ;
     outGeneratedCode .= [mWhileExpression generateCocoaConditionCode !inLexiqueAnalysisContext] ;
     outGeneratedCode .= ")) {\n" ;
     [!?outGeneratedCode incIndentation !2] ;
@@ -284,7 +284,7 @@ override reader @lexicalRepeatInstruction generateCocoaInstructionCode
                       "  mLoop = NO ;\n"
                       "}\n" ;
   [!?outGeneratedCode decIndentation !2] ;
-  outGeneratedCode .= "}while (mLoop && mNoLexicalError) ;\n"
+  outGeneratedCode .= "}while (mLoop && scanningOk) ;\n"
                       "mLoop = YES ;\n" ;
 end reader ;
 
@@ -299,7 +299,7 @@ override reader @lexicalSelectInstruction generateCocoaInstructionCode
 #---
   foreach mLexicalSelectBranchList
   do
-    outGeneratedCode .= "if (mNoLexicalError && (" ;
+    outGeneratedCode .= "if (scanningOk && (" ;
     outGeneratedCode .= [mSelectExpression generateCocoaConditionCode !inLexiqueAnalysisContext] ;
     outGeneratedCode .= ")) {\n" ;
     [!?outGeneratedCode incIndentation !2] ;
@@ -329,7 +329,7 @@ override reader @lexicalRoutineInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "scanner_cocoa_routine_" . mRoutineName . " (& mNoLexicalError" ;
+  outGeneratedCode := "scanner_cocoa_routine_" . mRoutineName . " (& scanningOk" ;
   foreach mActualArgumentList do
     outGeneratedCode .= ", " . [mLexicalRoutineActualArgument generateCocoaRoutineArgument !inLexiqueAnalysisContext] ;
   end foreach ;
@@ -353,7 +353,7 @@ override reader @lexicalErrorInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "mNoLexicalError = NO ;\n" ;
+  outGeneratedCode := "scanningOk = NO ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -418,7 +418,7 @@ override reader @lexicalImplicitRule generateCocoaCode
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*] ;
   outGeneratedCode := "" ;
   foreach > tokenSortedList do
-    outGeneratedCode .= "if (mNoLexicalError && [self testForInputString:@" ;
+    outGeneratedCode .= "if (scanningOk && [self testForInputString:@" ;
     outGeneratedCode .= [mName utf8Representation] ;
     outGeneratedCode .= " advance:YES]) {\n" ;
     outGeneratedCode .= "  mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
@@ -433,7 +433,7 @@ override reader @lexicalExplicitRule generateCocoaCode
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "if (mNoLexicalError && (" ;
+  outGeneratedCode := "if (scanningOk && (" ;
   outGeneratedCode .= [mLexicalRuleExpression generateCocoaConditionCode !inLexiqueAnalysisContext] ;
   outGeneratedCode .= ")) {\n" ;
   [!?outGeneratedCode incIndentation !2] ;
