@@ -21,9 +21,6 @@ class cPtr_typeConditionCaractere : public cPtr_typeConditionLexicale {
   private : typedef cPtr_typeConditionLexicale inherited ;
 //--- START OF USER ZONE 2
 
-  public : virtual void
-  generateLexicalCondition (AC_OutputStream & inCppFile,
-                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) ;
 
 //--- END OF USER ZONE 2
 

@@ -200,21 +200,6 @@ nonterminal <lexical_send_instruction>
 label parse
 ;
 
-extern routine generate_scanner
-  ??@bool inIsTemplate
-  ??@templateDelimiterMap inTemplateDelimiterMap
-  ??@templateReplacementMap inTemplateReplacementMap
-  ??@lstring lexiqueName 
-  ??@typeLexicalAttributesMap table_attributs
-  ??@typeTableDefinitionTerminaux table_des_terminaux
-  ??@typeTableTablesDeMotsReserves table_tables_mots_reserves
-  ??@typeListeTestsEtInstructions lexicalRulesList
-  ??@typeTableMessagesErreurs table_messages
-  ??@styleList styleList
-  ??@stringset inUsedErrorMessageSet
-  ??@tokensInListMap inTokensInListMap
-;
-
 nonterminal <extern_routine_or_function_declaration> ;
 
 #-------------------------------------------------------------------*
@@ -262,13 +247,7 @@ rule <galgas_component>
   $lexique$ ;
   @lstring lexiqueName ;
   $identifier$ ? lexiqueName ;
-  @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
-  if [lexiqueName string] != basename then
-    warning lexiqueName: "GALGAS 1.7.5 and later checks "
-      "the component name ('" . [lexiqueName string]
-    . "') against the source file base name ('" . basename . "'): they should be identical"
-    ;
-  end if ; 
+  error lexiqueName: "in GALGAS 1.9.0 and later, extension of lexique component file should be '.gLexique'" ;
   $:$ ;
 #--- Errors messages, key words, attributes, terminal symbols and rules
   @M_terminalSymbolsMapForUse terminalSymbolsMapForUse [emptyMap] ;
@@ -356,21 +335,6 @@ rule <galgas_component>
   if isTemplate & ([templateDelimiterMap count] == 0) then
     error here: "a template lexique should define at least one template" ;
   end if ;
-#--- Generate scanner
-  generate_scanner
-    !isTemplate
-    !templateDelimiterMap
-    !templateReplacementMap
-    !lexiqueName 
-    !table_attributs
-    !table_des_terminaux
-    !table_tables_mots_reserves
-    !lexicalRulesList
-    !table_messages
-    !styleList
-    !usedErrorMessageSet
-    !tokensInListMap
-  ;
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 :

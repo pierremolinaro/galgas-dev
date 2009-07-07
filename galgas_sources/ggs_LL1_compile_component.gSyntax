@@ -22,6 +22,8 @@ import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 
 import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;
+import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
+import semantics guiCompilation in "guiCompilation.gSemantics" ;
 import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
 import semantics mda_galgas_routines in "mda_galgas_routines.gSemantics" ;
 
@@ -212,6 +214,23 @@ rule <galgas_component>
         ![@parsedOptionComponentMap emptyMap]
       ] ;
       compileOptionComponent !fileName !s !?parsedComponentStruct ;
+    elsif (sourceFileKind == [@EXsourceFileKind lexiqueSourceFile]) & ([fileName pathExtension] == "gLexique") then
+      @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      @parsedComponentStruct parsedComponentStruct [new
+        ![@parsedSemanticsComponentMap emptyMap]
+        ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedOptionComponentMap emptyMap]
+      ] ;
+      compileLexiqueComponent !fileName !s !?parsedComponentStruct ;
+    elsif (sourceFileKind == [@EXsourceFileKind guiSourceFile]) & ([fileName pathExtension] == "gGui") then
+      @string s := [[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT" ;
+      @parsedComponentStruct parsedComponentStruct [new
+        ![@parsedSemanticsComponentMap emptyMap]
+        ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedOptionComponentMap emptyMap]
+      ] ;
+      @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;
+      compileGuiComponent ![@lstring new !absoluteFilePath ![fileName location]] !s !?parsedComponentStruct ;
     elsif sourceFileKind != [@EXsourceFileKind externSourceFile] then
       grammar galgas_LL1_grammar label compileFile in fileName dependency "galgas-dep" in "DEPENDENCIES" ;
     end if ;

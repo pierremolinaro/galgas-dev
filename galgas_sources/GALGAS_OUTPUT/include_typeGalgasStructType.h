@@ -26,10 +26,6 @@ class cPtr_typeGalgasStructType : public cPtr_AC_galgasType {
                                 AC_OutputStream & inHfile) const ;
 
   public : virtual void
-  generateAttributeInitialization (const GGS_lstring & nom,
-                                   AC_OutputStream & inCppFile) const ;
-
-  public : virtual void
   generateCppClassName (AC_OutputStream & fichier) const ;
 
   public : virtual void

@@ -252,7 +252,7 @@ routine compileGuiComponent
   if [@uint errorCount] == 0 then
     [@string generateFile
       !inOutputDirectory
-      ![componentName string] . "-2.m"
+      ![componentName string] . ".m"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper guiGenerationTemplates.gui_implementation !context]

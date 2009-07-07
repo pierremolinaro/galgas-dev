@@ -27,9 +27,6 @@ public : virtual void generateAttributeGetLexicalValue (const C_String & inAttri
 public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
                                                     AC_OutputStream & inHfile) const ;
 
-public : virtual void generateAttributeInitialization (const GGS_lstring & nom,
-                                                       AC_OutputStream & inCppFile) const ;
-
 public : virtual C_String lexicalAttributeCppType (void) const ;
 
 public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;

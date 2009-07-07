@@ -648,7 +648,6 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.gTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentRoot LEXIQUE_COMPONENT_ROOT
   ;
   template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.gTemplate"
     ?@string unused LEXIQUE_CLASS_NAME
@@ -942,7 +941,6 @@ routine compileLexiqueComponent
       ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
          !lexiqueClassName
          !lexiqueAnalysisContext
-         !lexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
