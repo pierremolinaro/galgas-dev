@@ -20,9 +20,6 @@
 class cPtr_typeEmissionParDefaut : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-public : virtual void generateDefaultToken (const C_String & inLexiqueName,
-                                            AC_OutputStream & inCppFile) const = 0 ;
-
 //--- END OF USER ZONE 2
 
 //--- Constructor

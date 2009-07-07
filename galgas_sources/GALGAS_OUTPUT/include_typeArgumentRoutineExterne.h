@@ -20,7 +20,6 @@
 class cPtr_typeArgumentRoutineExterne : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-public : virtual void generateExternArgument (AC_OutputStream & inCppFile) const = 0 ;
 
 //--- END OF USER ZONE 2
 

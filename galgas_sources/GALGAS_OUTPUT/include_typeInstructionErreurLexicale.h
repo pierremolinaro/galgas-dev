@@ -21,11 +21,6 @@ class cPtr_typeInstructionErreurLexicale : public cPtr_typeInstructionLexicale {
   private : typedef cPtr_typeInstructionLexicale inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generate_scanner_instruction (const C_String & inLexiqueName,
-                                                    const bool inGenerateEnterToken,
-                                                    AC_OutputStream & inCppFile,
-                              TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const ;
-
 //--- END OF USER ZONE 2
 
 //--- Constructor

@@ -84,200 +84,65 @@ nonterminal <parse_lexique_for_importing>
 label parse
 ;
 
-extern routine generateCocoaComponent
-  ??@lstring nomPRGMprincipal
-  ??@lstring inGUIkindName
-  ??@lstringlist inNIBandClassList
-  ??@EXtextMacroList inTextMacroList
-  ??@string inBlockComment
-  ??@lstring inLexiqueClassName
-  ??@M_optionComponents inOptionsComponents
-  ??@labelForPopUpList inLabelForPopUpList
-  ??@uint inTerminalSymbolCount
-;
-
 #--------------------------------------------------------------------------------*
 
 rule <galgas_component>
-  ?!@M_lexiqueComponents ioLexiqueMapForUse
-  ?!@M_semanticsComponents ioSemanticsComponentsMap
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
+  ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
-  ?!@M_grammarComponents ioGrammarComponentsMap
-  ?!@M_optionComponents ioOptionsComponentsMap
-  ?!@EXsemanticContext ioSemanticContext
+  ?!@M_grammarComponents unused ioGrammarComponentsMap
+  ?!@M_optionComponents unused ioOptionsComponentsMap
+  ?!@EXsemanticContext unused ioSemanticContext
 :
   $gui$ ;
 #--- Definition du programme
   @lstring guiComponentName ;
   $identifier$ ? guiComponentName ;
-  @string basename := [[[@string stringWithSourceFilePath] lastPathComponent] stringByDeletingPathExtension] ;
-  if [guiComponentName string] != basename then
-    warning guiComponentName: "GALGAS 1.7.5 and later checks "
-      "the component name ('" . [guiComponentName string]
-    . "') against the source file base name ('" . basename . "'): they should be identical"
-    ;
-  end if ; 
-  @lstring guiKindName ;
-  $literal_string$ ? guiKindName ;
-#--- Grammar reference
-  @lstring grammarName ;
+  error guiComponentName: "in GALGAS 1.9.0 and later, extension of gui component file should be '.gGui'" ;
+  $literal_string$ ? * ;
   select
-    grammarName := [@lstring new !"" !here] ;
   or
     $grammar$ ;
-    $identifier$ ? grammarName ;
+    $identifier$ ? * ;
   end select ;
   $:$ ;
   repeat
   while
     $import$ ;
-    warning here:"this construct has no effect when source file name extension is '.ggs'" ;
     $literal_string$ ? * ;
     $;$ ;
   end repeat ;    
-#--- Import semantics
-  @ModelMap modelMap [emptyMap] ;
-  @ActionMap actionMap [emptyMap] ;
-  @stringset inclusionsForHeaderFile ;
-  @stringset inclusionsForImplementationFile ;
-  @M_optionComponents optionsComponentsMapForUse [emptyMap] ;
-  @M_semanticsEntitiesForUse componentEntitiesMap ;
-  @stringset classNamesSet [emptySet] ;
-  @typeTableEnAvant tableEnAvant [emptyMap] ;
-  @stringset includedSemanticsComponents ;
-  @stringset includedOptionComponents ;
-  @stringset includedMetamodelComponents ;
-  @stringset includedGrammarComponents ;
-  <import_headers_semantics_and_grammars>
-    ?includedSemanticsComponents
-    ?includedMetamodelComponents
-    ?includedOptionComponents
-    ?includedGrammarComponents
-    !?ioLexiqueMapForUse
-    !?ioSemanticsComponentsMap
-    !?ioGrammarComponentsMap
-    !?ioOptionsComponentsMap
-    ?inclusionsForImplementationFile
-    ?inclusionsForHeaderFile
-    ?optionsComponentsMapForUse
-    ?modelMap
-    ?actionMap
-    ?componentEntitiesMap
-    ?tableEnAvant
-    !?ioSemanticContext
-  ;
-  @lstring lexiqueClassName ;
-  @M_nonterminalSymbolAltsForGrammar nonterminalSymbolParametersMap ;
-  @M_optionComponents optionsComponentsMap ;
-  if [ioGrammarComponentsMap count] == 1 then
-    @lstring grammarKey [new !"" !here] ;
-    foreach ioGrammarComponentsMap (@lstring kKey 3*) do
-      grammarKey := kKey ;
-    end foreach ;
-    [ioGrammarComponentsMap searchKey
-      !grammarKey
-      ?nonterminalSymbolParametersMap
-      ?lexiqueClassName
-      ?optionsComponentsMap
-    ] ;
-  elsif [grammarName string] == "" then
-    error here: "the grammar should be named in the header, as follows (replace xxx by actual grammar name):\n"
-    . "gui " . guiComponentName . "\"" . guiKindName . "\" grammar xxx :"
-    -> nonterminalSymbolParametersMap, lexiqueClassName, optionsComponentsMap ;
-  else
-    [ioGrammarComponentsMap searchKey
-      !grammarName
-      ?nonterminalSymbolParametersMap
-      ?lexiqueClassName
-      ?optionsComponentsMap
-    ] ;
-  end if ;
-  @lstring altName := [@lstring new !"" !here] ;
-  [nonterminalSymbolParametersMap searchKey !altName ?*] ;
-#--- Retrieve lexique infos
-  @M_terminalSymbolsMapForUse terminalSymbolMap ;
-  @bool lexiqueImported ;
+  <import_headers_semantics_and_grammars> parse ;
   select
-    lexiqueImported := false ;
-    terminalSymbolMap := [@M_terminalSymbolsMapForUse emptyMap] ;
   or
     $import__$ ;
-    @lstring lexiqueFileName ;
-    $literal_string$ ? lexiqueFileName ;
+    $literal_string$ ? * ;
     $;$ ;
-    <parse_lexique_for_importing>
-      !lexiqueFileName
-      !?ioLexiqueMapForUse
-    ;
-    [ioLexiqueMapForUse searchKey !lexiqueClassName ?terminalSymbolMap] ;
-    lexiqueImported := true ;
+    <parse_lexique_for_importing> parse ;
   end select ;
 #--- Assignment list
-  @lstringlist nibAndClassList [emptyList] ;
-  @labelForPopUpList labelForPopUpList [emptyList] ;
-  @EXtextMacroList textMacroList [emptyList] ;
-  @string blockComment := "" ; # Means undefined
   repeat
   while
     $label$ ;
-    if not lexiqueImported then
-      error here: "the lexique should be imported by an import__ \"...\" statement." ;
-    end if ;
-    @lstring terminal1 ;
-    $terminal$ ? terminal1 ;
-    @luint terminal1ID ;
-    [terminalSymbolMap searchKeyGetID !terminal1 ?terminal1ID ?*] ; 
+    $terminal$ ? * ;
     $,$ ;
-    @lstring terminal2 ;
-    $terminal$ ? terminal2 ;
-    @luint terminal2ID ;
-    [terminalSymbolMap searchKeyGetID !terminal2 ?terminal2ID ?*] ;
-    labelForPopUpList +=
-      !terminal1
-      ![terminal1ID uint]
-      !terminal2
-      ![terminal2ID uint]
-    ;
+    $terminal$ ? * ;
     $;$ ;
   while
-    $identifier$ ?@lstring  settingName ;
-    @lstring entryName ;
+    $identifier$ ? * ;
     select
-      entryName := [@lstring new !"" !here] ;
     or
-      $literal_string$ ? entryName ;
+      $literal_string$ ? * ;
     end select ;
     $:$ ;
-    @lstring sourceExpression [new !"" !here] ;
     repeat
-      $literal_string$ ?@lstring s ;
-      sourceExpression := [@lstring new ![sourceExpression string] . [s string] ![s location]] ;
+      $literal_string$ ? * ;
     while
     end repeat ;
-    if [sourceExpression string] == "" then
-      error sourceExpression: "this string should not be empty" ;
-    end if ;
-    if [settingName string] == "nibAndMainClass" then
-      nibAndClassList += !sourceExpression ;
-    elsif [settingName string] == "textMacro" then
-      if [entryName string] == "" then
-        error entryName: "this string should not be empty" ;
-      end if ;
-      textMacroList += !entryName !sourceExpression ;
-    elsif [settingName string] == "blockComment" then
-      if blockComment != "" then
-        error settingName: "this key is already defined" ;
-      else
-        blockComment := [sourceExpression string] ;
-      end if ;
-    else
-      error settingName: "unkown key" ;
-    end if ;
     $;$ ;
   while
     $with$ ;
     $lexique$ ;
-    warning here : "the 'with lexique' construct has no effect when 'gui' component file extension is '.ggs'" ;
     $literal_string$ ?* ;
     ${$ ;
     repeat
@@ -306,18 +171,6 @@ rule <galgas_component>
     end repeat ;
     $}$ ;    
   end repeat ;
-#--- Generate Cocoa c++ file
-  generateCocoaComponent
-    !guiComponentName
-    !guiKindName
-    !nibAndClassList
-    !textMacroList
-    !blockComment
-    !lexiqueClassName
-    !optionsComponentsMap
-    !labelForPopUpList
-    ![terminalSymbolMap count]
-  ;
   $end$ ;
   $gui$ ;
   $;$ ;

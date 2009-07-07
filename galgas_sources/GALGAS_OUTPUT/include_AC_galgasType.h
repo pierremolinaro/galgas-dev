@@ -29,10 +29,6 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
   generateAttributeDeclaration (const GGS_lstring & nom,
                                 AC_OutputStream & inHfile) const = 0 ;
 
-  public : virtual void
-  generateAttributeInitialization (const GGS_lstring & nom,
-                                   AC_OutputStream & inCppFile) const = 0 ;
-
   public : virtual C_String
   lexicalAttributeCppType (void) const ;
 

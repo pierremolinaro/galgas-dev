@@ -23,9 +23,6 @@ class cDecoderState ;
 class cPtr_typeConditionLexicale : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void
-  generateLexicalCondition (AC_OutputStream & inCppFile,
-                          TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) = 0 ;
 
 //--- END OF USER ZONE 2
 

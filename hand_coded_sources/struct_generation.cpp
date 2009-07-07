@@ -274,13 +274,6 @@ generateAttributeDeclaration (const GGS_lstring & /* nom */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasStructType::
-generateAttributeInitialization (const GGS_lstring & /* nom */,
-                                 AC_OutputStream & /* inCppFile */) const {
-}  
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasStructType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mStructTypeName ;
 }

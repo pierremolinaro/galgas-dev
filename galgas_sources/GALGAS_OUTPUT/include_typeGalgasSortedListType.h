@@ -25,11 +25,7 @@ class cPtr_typeGalgasSortedListType : public cPtr_typeGalgasUndefinedSortedListT
   generateAttributeDeclaration (const GGS_lstring & nom,
                                 AC_OutputStream & inHfile) const ;
 
-  public : virtual void
-  generateAttributeInitialization (const GGS_lstring & nom,
-                                   AC_OutputStream & inCppFile) const ;
-
-  public : virtual void
+ public : virtual void
   generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- END OF USER ZONE 2

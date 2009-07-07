@@ -21,7 +21,6 @@ class cPtr_typeArgumentEntier : public cPtr_typeArgumentRoutineExterne {
   private : typedef cPtr_typeArgumentRoutineExterne inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generateExternArgument (AC_OutputStream & inCppFile) const ;
 
 //--- END OF USER ZONE 2
 

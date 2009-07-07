@@ -20,12 +20,6 @@
 class cPtr_typeInstructionLexicale : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void
-  generate_scanner_instruction (const C_String & inLexiqueName,
-                                const bool inGenerateEnterToken,
-                                AC_OutputStream & inCppFile,
-                                TC_UniqueArray <C_String> & ioUnicodeStringToGenerate) const = 0 ;
-
 //--- END OF USER ZONE 2
 
 //--- Constructor

@@ -19,10 +19,6 @@
 gui cocoaGalgas "cocoa" :
 import "galgas_cli_options.gOption" ;
 
-import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-import__ "galgas_scanner.gLexique" ;
-
 nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
 
 #--------------------------------------------------------------------------------*
