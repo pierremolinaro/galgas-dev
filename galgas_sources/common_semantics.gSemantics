@@ -857,6 +857,9 @@ class @typeGalgas_uint extends @AC_galgasType {
     !@typeListeAttributsSemantiques outAccessorTypesList
     !@bool outHasLexiqueAndLocationArguments
   :
+    if [inClassMethodName string] == "sequenceNumber" then
+    warning inClassMethodName: "Obsolete !" ;
+    end if ;
     outHasLexiqueAndLocationArguments := true ;
     if ([inClassMethodName string] == "max") |
        ([inClassMethodName string] == "sequenceNumber") |  
