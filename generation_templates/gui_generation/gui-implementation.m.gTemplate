@@ -143,8 +143,8 @@ end foreach
 
 //---------------------------------------------------------------------------*
 
-NSObject <OCP_TokenizerProtocol> * tokenizerForExtension (const NSString * inExtension) {
-  NSObject <OCP_TokenizerProtocol> * result = nil ;\n%
+OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
+  OC_Lexique * result = nil ;\n%
 foreach [GUI_CONTEXT mExtensionMap]
   before %  if%
   do % ([inExtension isEqualToString:@%([key utf8Representation])%]) {\n%

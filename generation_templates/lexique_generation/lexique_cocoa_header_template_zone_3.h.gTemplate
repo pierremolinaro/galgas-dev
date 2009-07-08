@@ -10,6 +10,8 @@
 - (NSString *) styleNameForStyleIndex: (SInt32) inIndex ;
 
 - (NSString *) styleIdentifierForStyleIndex: (SInt32) inIndex ;
+
+- (BOOL) isTemplateLexique ;
 @end
 
 //---------------------------------------------------------------------------*
