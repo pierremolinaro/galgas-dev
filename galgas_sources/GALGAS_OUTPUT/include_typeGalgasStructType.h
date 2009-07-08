@@ -22,15 +22,7 @@ class cPtr_typeGalgasStructType : public cPtr_AC_galgasType {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateAttributeDeclaration (const GGS_lstring & nom,
-                                AC_OutputStream & inHfile) const ;
-
-  public : virtual void
   generateCppClassName (AC_OutputStream & fichier) const ;
-
-  public : virtual void
-  generateAttributeGetLexicalValue (const C_String & inAttributeName,
-                                    AC_OutputStream & inCppFile) const ;
 
 //--- END OF USER ZONE 2
 

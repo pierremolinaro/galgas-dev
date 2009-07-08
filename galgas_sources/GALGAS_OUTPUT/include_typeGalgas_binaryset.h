@@ -22,14 +22,6 @@ class cPtr_typeGalgas_binaryset : public cPtr_AC_galgasType {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
-                                    AC_OutputStream & /* inCppFile */) const {}
-
-  public : virtual void
-  generateAttributeDeclaration (const GGS_lstring & /* nom */,
-                                AC_OutputStream & /* inHfile */) const {}
-
-  public : virtual void
   generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- END OF USER ZONE 2

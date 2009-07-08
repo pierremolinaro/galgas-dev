@@ -267,22 +267,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 void cPtr_typeGalgasStructType::
-generateAttributeDeclaration (const GGS_lstring & /* nom */,
-                              AC_OutputStream & /* inHfile */) const {
-}  
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasStructType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mStructTypeName ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasStructType::
-generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
-                                  AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*

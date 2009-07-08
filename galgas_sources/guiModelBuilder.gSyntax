@@ -39,52 +39,10 @@ rule <gui_component_start_symbol>
   $identifier$ ?@lstring mGUIName ;
   $literal_string$ ?@lstring mGUIClass ;
   $:$ ;
-#--- Loop on import declarations
   @lstringlist importedOptionList [emptyList] ;
-  repeat
-  while
-    $import$ ;
-    $literal_string$ ?@lstring optionReference ;
-    importedOptionList += !optionReference ;
-    $;$ ;
-  while
-    $import__$ ;
-    warning here: "when source file extension is '.gGui', the 'import__' construct is obsolete and has no effect: you can delete it" ;
-    $literal_string$ ? * ;
-    $;$ ;
-  while
-    $import$ ;
-    warning here: "when source file extension is '.gGui', the 'import' construct is obsolete and has no effect: you can delete it" ;
-    select
-      $semantics$ ;
-    or
-      $lexique$ ;
-   or
-      $grammar$ ;
-    or
-      $syntax$ ;
-    or
-      $option$ ;
-    end select ;
-    $identifier$ ?* ;
-    $in$ ;
-    $literal_string$ ? * ;
-    $;$ ;
-  end repeat ;
-#--- Attributes and labels
   @guiSimpleAttributeList simpleGlobalAttributes [emptyList] ;
   @withLexiqueList withLexiqueList [emptyList] ;
   repeat
-  while
-    $identifier$ ?* ;
-    warning here: "when source file extension is '.gGui', this construct outside a 'with lexique' is obsolete and has no effect: you can delete it" ;
-    $literal_string$ ?* ;
-    $:$ ;
-    repeat
-      $literal_string$ ?* ;
-    while
-    end repeat ;
-    $;$ ;
   while
     $identifier$ ?@lstring mKey ;
     $:$ ;
@@ -97,58 +55,58 @@ rule <gui_component_start_symbol>
     $;$ ;
     simpleGlobalAttributes += !mKey !mValue ;
   while
-    $label$ ;
-    warning here: "when source file extension is '.gGui', the 'label' construct outside a 'with lexique' is obsolete and has no effect: you can delete it" ;
-    $terminal$ ?* ;
-    $,$ ;
-    $terminal$ ?* ;
-    $;$ ;
-  while
     $with$ ;
-    $lexique$ ;
-    $literal_string$ ?@lstring lexiqueReference ;
-    @guiLabelList labels [emptyList] ;
-    @guiSimpleAttributeList simpleAttributes [emptyList] ;
-    @guiCompoundAttributeList compoundAttributes [emptyList] ;
-    ${$ ;
-    repeat
-    while
-      $label$ ;
-      @lstringlist terminalList [emptyList] ;
+    select
+      $option$ ;
+      $literal_string$ ?@lstring optionReference ;
+      importedOptionList += !optionReference ;
+      $;$ ;
+    or
+      $lexique$ ;
+      $literal_string$ ?@lstring lexiqueReference ;
+      @guiLabelList labels [emptyList] ;
+      @guiSimpleAttributeList simpleAttributes [emptyList] ;
+      @guiCompoundAttributeList compoundAttributes [emptyList] ;
+      ${$ ;
       repeat
-        $terminal$ ? @lstring terminal ;
-        terminalList += !terminal ;
       while
-        $,$ ;
-      end repeat ;
-      $;$ ;
-      labels += !terminalList !here ;
-    while
-      $identifier$ ?@lstring key ;
-      $literal_string$ ?@lstring name ;
-      $:$ ;
-      @lstring value [new !"" !here] ;
-      repeat
-        $literal_string$ ?@lstring v ;
-        value := [@lstring new ![value string] . [v string] ![v location]] ;
+        $label$ ;
+        @lstringlist terminalList [emptyList] ;
+        repeat
+          $terminal$ ? @lstring terminal ;
+          terminalList += !terminal ;
+        while
+          $,$ ;
+        end repeat ;
+        $;$ ;
+        labels += !terminalList !here ;
       while
+        $identifier$ ?@lstring key ;
+        $literal_string$ ?@lstring name ;
+        $:$ ;
+        @lstring value [new !"" !here] ;
+        repeat
+          $literal_string$ ?@lstring v ;
+          value := [@lstring new ![value string] . [v string] ![v location]] ;
+        while
+        end repeat ;
+        $;$ ;
+        compoundAttributes += !key !name !value ;
+      while
+        $identifier$ ?@lstring name ;
+        $:$ ;
+        $literal_string$ ?@lstring value ;
+        $;$ ;
+        simpleAttributes += !name !value ;
       end repeat ;
-      $;$ ;
-      compoundAttributes += !key !name !value ;
-    while
-      $identifier$ ?@lstring name ;
-      $:$ ;
-      $literal_string$ ?@lstring value ;
-      $;$ ;
-      simpleAttributes += !name !value ;
-    end repeat ;
-    $}$ ;
-    withLexiqueList += 
-      !lexiqueReference
-      !labels
-      !simpleAttributes
-      !compoundAttributes
-    ;
+      $}$ ;
+      withLexiqueList += 
+        !lexiqueReference
+        !labels
+        !simpleAttributes
+        !compoundAttributes
+      ;
+    end select ;
   end repeat ;
 #---
   $end$ ;

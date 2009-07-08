@@ -182,17 +182,9 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2 << "NULL} ;\n"
                     "    TC_UniqueArray <C_String> sourceFilesArray ;\n"
                     "  //--- Analyze Command Line Options\n"
-                    "    bool cocoaOutput = false ;\n"
                     "    F_Analyze_CLI_Options (argc, argv,\n"
-                    "                           " ;
-  generatedZone2.appendCLiteralStringConstant (inVersionString) ;
-  generatedZone2 << ",\n"
-                    "                           sourceFilesArray,\n"
-                    "                           extensions,\n"
-                    "                           helpMessages,\n"
-                    "                           cocoaOutput) ;\n"
-                    "    C_galgas_io_parameters IOparameters  (cocoaOutput,\n"
-                    "      #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+                    "                           "
+                   "      #ifndef DO_NOT_GENERATE_CHECKINGS\n"
                     "        " ;
   generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << " \" [debug]\",\n"
@@ -201,10 +193,12 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.appendCLiteralStringConstant (inVersionString) ;
   generatedZone2 << ",\n"
                     "      #endif\n"
-                    "      argv [1]) ;\n"
+                    "                           sourceFilesArray,\n"
+                    "                           extensions,\n"
+                    "                           helpMessages) ;\n"
                     "  //--- Build galgas io object\n"
                     "    C_galgas_io * galgasIOptr = NULL ;\n"
-                    "    macroMyNew (galgasIOptr, C_galgas_io (IOparameters, C_galgas_io::kTerminalOutputKind COMMA_HERE)) ;\n"
+                    "    macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;\n"
                     "  //--- Common lexique object\n"
                     "    C_Compiler * _commonLexique = NULL ;\n"
                     "    macroMyNew (_commonLexique, C_Compiler (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
