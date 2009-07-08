@@ -49,10 +49,6 @@ label importOptions
   ?!@M_optionComponents ioOptionsComponentsMap
 ;
 
-extern routine buildLexicalRulesFromList
-  ?!@typeTableMotsReserves keyWordsMap
-  ?!@typeListeTestsEtInstructions outLexicalRulesList ;
-
 nonterminal <style_declaration>
   ?!@M_styles ioStylesMap
   ?!@styleList ioStyleList
@@ -229,7 +225,7 @@ end routine ;
 #-------------------------------------------------------------------*
 
 rule <galgas_component>
-  ?!@M_lexiqueComponents ioLexiqueMapForUse
+  ?!@M_lexiqueComponents unused ioLexiqueMapForUse
   ?!@M_semanticsComponents unused ioSemanticsComponentsMap
   ?!@M_syntaxComponents unused ioSyntaxComponentsMap
   ?!@M_grammarComponents unused ioGrammarComponentsMap
@@ -237,104 +233,38 @@ rule <galgas_component>
   ?!@EXsemanticContext unused ioSemanticContext
 :
 #--- Lexique header
-  @bool isTemplate ;
   select
-    isTemplate := false ;
   or
     $template$ ;
-    isTemplate := true ;
   end select ;
   $lexique$ ;
   @lstring lexiqueName ;
   $identifier$ ? lexiqueName ;
   error lexiqueName: "in GALGAS 1.9.0 and later, extension of lexique component file should be '.gLexique'" ;
   $:$ ;
-#--- Errors messages, key words, attributes, terminal symbols and rules
-  @M_terminalSymbolsMapForUse terminalSymbolsMapForUse [emptyMap] ;
-  @typeLexicalAttributesMap table_attributs [emptyMap] ;
-  @typeTableDefinitionTerminaux table_des_terminaux [emptyMap] ;
-  @typeTableMessagesErreurs table_messages [emptyMap] ;
-  @typeTableTablesDeMotsReserves table_tables_mots_reserves [emptyMap] ;
-  @typeListeTestsEtInstructions lexicalRulesList [emptyList] ;
-  @stringset usedErrorMessageSet [emptySet] ;
-  @tokensInListMap tokensInListMap [emptyMap] ;
-  @templateDelimiterMap templateDelimiterMap [emptyMap] ;
-  @templateReplacementMap templateReplacementMap [emptyMap] ;
-#--- Define lexical types
-  @EXLexicalTypeMap lexicalTypeMap ;
-  buildLexicalTypeMap ?lexicalTypeMap ;
-
-#-- Styles map
-  @M_styles stylesMap [emptyMap] ;
-  @lstring defaultStringIdentifier [new !"" !here] ;
-  [!?stylesMap insertKey !defaultStringIdentifier] ;
-  @styleList styleList [emptyList] ;
-  styleList += !"" !"Default style" ;
   repeat
   while 
     <extern_routine_or_function_declaration> ;
   while 
-    <style_declaration> !?stylesMap !?styleList ;
+    <style_declaration> parse ;
   while
-    <template_declaration>
-     !isTemplate
-     !?templateDelimiterMap
-    ;
+    <template_declaration> parse ;
   while
-    <replace_declaration>
-      !isTemplate
-      !?templateReplacementMap
-    ;
+    <replace_declaration> parse ;
   while
-    <attribute_or_terminal_symbol_declaration>
-      !?table_des_terminaux
-      !?table_attributs
-      !?terminalSymbolsMapForUse
-      !lexicalTypeMap
-      !stylesMap
-      !isTemplate
-    ;
+    <attribute_or_terminal_symbol_declaration> parse ;
   while
-    <key_words_list_declaration>
-      !?table_tables_mots_reserves
-      !?table_attributs
-      !?table_des_terminaux
-      !?terminalSymbolsMapForUse
-      !stylesMap
-      !?tokensInListMap
-      !isTemplate
-    ;
+    <key_words_list_declaration> parse ;
   while
-    <lexical_error_message_declaration>
-      !?table_messages
-    ;
+    <lexical_error_message_declaration> parse ;
   while
     $rule$ ;
-    <lexical_rule>
-      !?lexicalRulesList
-      !?table_des_terminaux
-      !?table_messages
-      !?table_attributs
-      !?table_tables_mots_reserves
-      !?usedErrorMessageSet
-    ;
+    <lexical_rule> parse ;
     $;$ ;
   end repeat ;
   $end$ ;
   $lexique$ ;
   $;$ ;
-#--- Warn unused error messages
-  foreach table_messages (@lstring kKey *) do
-    if not [usedErrorMessageSet hasKey ![kKey string]] then
-      warning kKey:"this error message is not used" ;
-    end if ;
-  end foreach ;
-#--- Enter lexique in lexique map
-  [!?ioLexiqueMapForUse insertKey !lexiqueName !terminalSymbolsMapForUse] ;
-#--- For a template lexique, al least one template should be defined
-  if isTemplate & ([templateDelimiterMap count] == 0) then
-    error here: "a template lexique should define at least one template" ;
-  end if ;
 label importLexique
   ?!@M_lexiqueComponents ioLexiqueMapForUse
 :
@@ -969,7 +899,7 @@ end rule ;
 #-------------------------------------------------------------------*
 
 rule <lexical_rule>
-  ?!@typeListeTestsEtInstructions ioLexicalRulesList
+  ?!@typeListeTestsEtInstructions unused ioLexicalRulesList
   ?!@typeTableDefinitionTerminaux unused table_des_terminaux
   ?!@typeTableMessagesErreurs unused table_des_messages_erreur
   ?!@typeLexicalAttributesMap unused table_attributs
@@ -984,7 +914,7 @@ rule <lexical_rule>
   @typeTableMotsReserves keyWordsMap ;
   [table_tables_mots_reserves searchKey !listName ?keyWordsMap] ;
 #--- Build lexical analyser rules
-  buildLexicalRulesFromList !?keyWordsMap !?ioLexicalRulesList ;
+#  buildLexicalRulesFromList !?keyWordsMap !?ioLexicalRulesList ;
 end rule ;
 
 #-------------------------------------------------------------------*

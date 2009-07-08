@@ -41,13 +41,6 @@
 
 //--- Enter Token
   protected : void enterToken (const cTokenFor_%LEXIQUE_CLASS_NAME% & inToken) ;
-
-//--- TEMPORARY
-  public : virtual uint8 terminalStyleIndex (const sint32 /* inTerminal */) { return 0 ; }
-  protected : virtual sint16 parseLexicalTokenForLexicalColoring (void) { return 0 ; }
-  public : static sint32 getStylesCount (void) { return 0 ; }
-  public : static const char * getStyleName (const sint32 /* inIndex */) { return "" ; }
-  public : static const char * getStyleIdentifier (const sint32 /* inIndex */) { return "" ; }
 } ;
 
 //---------------------------------------------------------------------------*

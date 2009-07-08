@@ -737,12 +737,6 @@
 		CFDACD531003E15B0096A8E5 /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
 		CFDACD551003E16C0096A8E5 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
 		CFDACD561003E16E0096A8E5 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
-		CFDACD6A1003EC750096A8E5 /* scanner_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD691003EC750096A8E5 /* scanner_generation.cpp */; };
-		CFDACD6B1003EC750096A8E5 /* scanner_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD691003EC750096A8E5 /* scanner_generation.cpp */; };
-		CFDACD6C1003EC750096A8E5 /* scanner_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD691003EC750096A8E5 /* scanner_generation.cpp */; };
-		CFDACD6D1003EC750096A8E5 /* scanner_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD691003EC750096A8E5 /* scanner_generation.cpp */; };
-		CFDACD6E1003EC750096A8E5 /* scanner_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD691003EC750096A8E5 /* scanner_generation.cpp */; };
-		CFDACD6F1003EC750096A8E5 /* scanner_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD691003EC750096A8E5 /* scanner_generation.cpp */; };
 		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
@@ -1690,7 +1684,6 @@
 		CFDA3E02090E758600FEB333 /* semantics_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = semantics_semantics.h; sourceTree = "<group>"; };
 		CFDACCB71003CC160096A8E5 /* cocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cocoaGalgas.m; sourceTree = "<group>"; };
 		CFDACD051003D0B60096A8E5 /* F_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = F_main.cpp; sourceTree = "<group>"; };
-		CFDACD691003EC750096A8E5 /* scanner_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_generation.cpp; sourceTree = "<group>"; };
 		CFDAE7050AD19F3E00713406 /* PMDownloadData.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMDownloadData.h; sourceTree = "<group>"; };
 		CFDAE7060AD19F3E00713406 /* PMDownloadData.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMDownloadData.m; sourceTree = "<group>"; };
 		CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMDownloadFile.h; sourceTree = "<group>"; };
@@ -2481,7 +2474,6 @@
 				CFA3131609FD3B95006B55E7 /* cGalgasVariablesMap.hh */,
 				CFA3131709FD3B95006B55E7 /* cTableMethodesAimplementer.h */,
 				CFA3131809FD3B95006B55E7 /* cTableMethodesAimplementer.hh */,
-				CFF53777057A507100854C83 /* Scanner Component */,
 				CFF5378D057A50FF00854C83 /* Semantics Component */,
 				CFF537FB057A530200854C83 /* Program Component */,
 				CFF537B5057A51D300854C83 /* Parser Component */,
@@ -2527,14 +2519,6 @@
 				CF0AF9330FED32DB0007E6B2 /* lexiqueCocoaGeneration.h */,
 			);
 			name = "Lexique Component";
-			sourceTree = "<group>";
-		};
-		CFF53777057A507100854C83 /* Scanner Component */ = {
-			isa = PBXGroup;
-			children = (
-				CFDACD691003EC750096A8E5 /* scanner_generation.cpp */,
-			);
-			name = "Scanner Component";
 			sourceTree = "<group>";
 		};
 		CFF53780057A50B300854C83 /* Semantics Component */ = {
@@ -3348,7 +3332,6 @@
 				CFDACD371003DF470096A8E5 /* syntaxSLRgrammar.cpp in Sources */,
 				CFDACD421003E0120096A8E5 /* instructionMetamodel.cpp in Sources */,
 				CFDACD4A1003E0510096A8E5 /* semanticsMetamodel.cpp in Sources */,
-				CFDACD6A1003EC750096A8E5 /* scanner_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3522,7 +3505,6 @@
 				CF074C361000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA31000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
 				CFDACD081003D0B60096A8E5 /* F_main.cpp in Sources */,
-				CFDACD6C1003EC750096A8E5 /* scanner_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3696,7 +3678,6 @@
 				CF074C341000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA11000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
 				CFDACD091003D0B60096A8E5 /* F_main.cpp in Sources */,
-				CFDACD6D1003EC750096A8E5 /* scanner_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3881,7 +3862,6 @@
 				CFDACD531003E15B0096A8E5 /* guiCompilation.cpp in Sources */,
 				CFDACD551003E16C0096A8E5 /* guiMetamodel.cpp in Sources */,
 				CFDACD561003E16E0096A8E5 /* guiModelBuilder.cpp in Sources */,
-				CFDACD6B1003EC750096A8E5 /* scanner_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4055,7 +4035,6 @@
 				CF074C321000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074C9F1000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
 				CFDACD0A1003D0B60096A8E5 /* F_main.cpp in Sources */,
-				CFDACD6E1003EC750096A8E5 /* scanner_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4229,7 +4208,6 @@
 				CF074C2F1000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074C9C1000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
 				CFDACD0B1003D0B60096A8E5 /* F_main.cpp in Sources */,
-				CFDACD6F1003EC750096A8E5 /* scanner_generation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

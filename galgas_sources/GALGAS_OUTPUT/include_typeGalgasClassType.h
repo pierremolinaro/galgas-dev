@@ -21,12 +21,6 @@ class cPtr_typeGalgasClassType : public cPtr_typeGalgasUndefinedClassType {
   private : typedef cPtr_typeGalgasUndefinedClassType inherited ;
 //--- START OF USER ZONE 2
 
-public : virtual void generateAttributeGetLexicalValue (const C_String & /* inAttributeName */,
-                                                        AC_OutputStream & /* inCppFile */) const {}
-
-public : virtual void generateAttributeDeclaration (const GGS_lstring & nom,
-                                                    AC_OutputStream & inHfile) const ;
-
 public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- END OF USER ZONE 2

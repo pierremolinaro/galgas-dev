@@ -886,13 +886,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_enum::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -904,13 +897,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgasListmapType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mListmapTypeName ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasListmapType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -928,13 +914,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_jokerInParameterList::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -949,13 +928,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasExternType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -967,13 +939,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgas_bool::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_bool" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_bool::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1004,13 +969,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_string::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1022,13 +980,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgas_double::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_double" ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_double::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1046,13 +997,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_uint::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1064,13 +1008,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgas_uint64::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_uint64 " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_uint64::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1088,13 +1025,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_sint::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1106,13 +1036,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgas_sint64::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_sint64 " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_sint64::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1130,13 +1053,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_char::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1148,13 +1064,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgasUndefinedExternType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mGalgasClassName ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasUndefinedExternType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1284,13 +1193,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_stringset::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1302,13 +1204,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgas_location::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_location " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgas_location::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1326,13 +1221,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasListType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1344,13 +1232,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgasSortedListType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mListTypeName << " " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasSortedListType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1368,13 +1249,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasUndefinedListType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1389,13 +1263,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasUndefinedSortedListType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1410,13 +1277,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasMapType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1428,13 +1288,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgasUndefinedMapType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mMapTypeName << " " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasUndefinedMapType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1452,13 +1305,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasClassType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1470,13 +1316,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgasUndefinedClassType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mClassTypeName << " " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasUndefinedClassType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1494,13 +1333,6 @@ generateCppClassName (AC_OutputStream & inFile) const {
 }
 
 //---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasUndefinedMapindexType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
-}
-
-//---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -1512,13 +1344,6 @@ generateAttributeDeclaration (const GGS_lstring & /* inName */,
 void cPtr_typeGalgasMapindexType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_"  << mMapindexTypeName << " " ;
-}
-
-//---------------------------------------------------------------------------*
-
-void cPtr_typeGalgasMapindexType::
-generateAttributeDeclaration (const GGS_lstring & /* inName */,
-                              AC_OutputStream & /* inCppFile */) const {
 }
 
 //---------------------------------------------------------------------------*

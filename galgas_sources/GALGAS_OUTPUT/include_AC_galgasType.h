@@ -22,17 +22,6 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
   public : virtual void
-  generateAttributeGetLexicalValue (const C_String & inAttributeName,
-                                    AC_OutputStream & inCppFile) const = 0 ;
-
-  public : virtual void
-  generateAttributeDeclaration (const GGS_lstring & nom,
-                                AC_OutputStream & inHfile) const = 0 ;
-
-  public : virtual C_String
-  lexicalAttributeCppType (void) const ;
-
-  public : virtual void
   generateCppClassName (AC_OutputStream & fichier) const = 0 ;
 
   public : void

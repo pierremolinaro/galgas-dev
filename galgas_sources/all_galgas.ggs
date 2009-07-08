@@ -129,7 +129,6 @@ project all_galgas:
   extern "categoryMethods.cpp" : makefile ;
   extern "cDecisionTableElement.cpp" : makefile ;
   extern "class_generation.cpp" : makefile ;
-  extern "cocoa_generation.cpp" : makefile ;
   extern "cVocabulary.cpp" : makefile ;
   extern "domain_generation.cpp" : makefile ;
   extern "empty_strings_computations.cpp" : makefile ;
@@ -150,7 +149,6 @@ project all_galgas:
   extern "parser_instructions.cpp" : makefile ;
   extern "prgm_generation.cpp" : makefile ;
   extern "printOriginalGrammar.cpp" : makefile ;
-  extern "scanner_generation.cpp" : makefile ;
   extern "semantics_generation.cpp" : makefile ;
   extern "semantics_instructions.cpp" : makefile ;
   extern "SLR_computations.cpp" : makefile ;

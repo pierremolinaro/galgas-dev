@@ -17,7 +17,7 @@
 #---------------------------------------------------------------------------*
 
 gui cocoaGalgas "cocoa" :
-import "galgas_cli_options.gOption" ;
+with option "galgas_cli_options.gOption" ;
 
 nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
 
