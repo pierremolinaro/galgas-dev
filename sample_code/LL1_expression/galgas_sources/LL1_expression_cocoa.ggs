@@ -1,3 +1,0 @@
-gui LL1_expression_cocoa "cocoa":
-import grammar LL1_expression_grammar in "LL1_expression_grammar.ggs" ;
-end gui ;

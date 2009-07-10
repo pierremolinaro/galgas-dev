@@ -6,6 +6,6 @@ project all_xml_parsing :
 
   semantics "xml_parsing_semantics.ggs" : makefile, xcode_tool ;
   option "xml_parsing_options.gOption" : makefile, xcode_tool, xcode_app ;
-  gui "xml_parsing_cocoa.ggs" : xcode_tool, xcode_app ;
+  gui "xml_parsing_cocoa.gGui" : xcode_tool, xcode_app ;
   program "xml_parsing_program.ggs" : makefile, xcode_tool ;
 end project ;

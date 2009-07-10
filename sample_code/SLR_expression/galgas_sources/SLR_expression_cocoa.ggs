@@ -1,3 +1,0 @@
-gui SLR_expression_cocoa "cocoa":
-import grammar SLR_expression_grammar in "SLR_expression_grammar.ggs" ;
-end gui ;

@@ -163,7 +163,6 @@ routine build_LIBPM_COCOA_GALGAS_group
   fileList += !"I_Orange14.png" ;
   fileList += !"I_Red14.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
-  fileList += !"OCP_TokenizerProtocol.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
 #--- Enter nib files
   enter_nib_in_group

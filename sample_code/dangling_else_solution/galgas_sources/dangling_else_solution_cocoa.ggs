@@ -1,3 +1,0 @@
-gui dangling_else_solution_cocoa "cocoa":
-import grammar dangling_else_solution_grammar in "dangling_else_solution_grammar.ggs" ;
-end gui ;

@@ -4,7 +4,7 @@ project all_LL1_expression:
   semantics "LL1_expression_semantics.ggs" : makefile, xcode_tool ;
   syntax "LL1_expression_syntax.ggs" : makefile, xcode_tool ;
   grammar "LL1_expression_grammar.ggs" : makefile, xcode_tool ;
-  gui "LL1_expression_cocoa.ggs" : xcode_tool, xcode_app ;
+  gui "LL1_expression_cocoa.gGui" : xcode_tool, xcode_app ;
   program "LL1_expression_program.ggs" : makefile, xcode_tool ;
 end project ;
 
