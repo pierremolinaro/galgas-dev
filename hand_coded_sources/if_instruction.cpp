@@ -667,7 +667,7 @@ void cPtr_typeLiteralUInt64Expression::
 generateExpression (AC_OutputStream & ioCppFile) const {
   ioCppFile.appendCString ("GGS_uint64 (") ;
   ioCppFile.appendUnsigned64 (mLiteralInt.uint64Value ()) ;
-  ioCppFile.appendCString ("U)") ;
+  ioCppFile.appendCString ("ULL)") ;
 }
 
 //---------------------------------------------------------------------------*

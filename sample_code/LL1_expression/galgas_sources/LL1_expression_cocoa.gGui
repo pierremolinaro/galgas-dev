@@ -1,0 +1,7 @@
+gui LL1_expression_cocoa "cocoa":
+with option "LL1_expression_options.gOption" ;
+with lexique "LL1_expression_lexique.gLexique" {
+  fileExtension: "LL1_expression" ;
+  title: "Source" ;
+}
+end gui ;

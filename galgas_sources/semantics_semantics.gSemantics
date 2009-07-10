@@ -60,7 +60,7 @@ list @typeSemanticsTypesList {
 #---------------------------------------------------------------------------*
 
 map @typeVariablesMap
-  class cGalgasVariablesMap ; 
+  class cGalgasVariablesMap ;
 #--- Inserting
   insert insertInArgument error message "the variable '%' is already declared" ;
   insert insertUnusedInArgument error message "the variable '%' is already declared" ;

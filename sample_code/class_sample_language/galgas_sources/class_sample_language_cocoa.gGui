@@ -1,0 +1,8 @@
+gui class_sample_language_cocoa "cocoa":
+with option "class_sample_language_options.gOption" ;
+
+with lexique "class_sample_language_lexique.gLexique" {
+  fileExtension: "class_sample_language" ;
+  title:"Source" ;
+}
+end gui ;

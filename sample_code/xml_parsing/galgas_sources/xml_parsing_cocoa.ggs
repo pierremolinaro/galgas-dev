@@ -1,5 +1,0 @@
-gui xml_parsing_cocoa "cocoa" :
-  import semantics xml_types in "../../../../libpm/galgas_components/xml_types.ggs" ;
-  import option xml_parsing_options in "xml_parsing_options.gOption" ;
-  import grammar xml_parsing_grammar in "../../../../libpm/galgas_components/xml_parsing_grammar.ggs" ;
-end gui ;

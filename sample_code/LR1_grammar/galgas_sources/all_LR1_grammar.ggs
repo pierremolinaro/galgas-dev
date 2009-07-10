@@ -4,8 +4,7 @@ project all_LR1_grammar:
   semantics "LR1_grammar_semantics.ggs" : makefile, xcode_tool ;
   syntax "LR1_grammar_syntax.ggs" : makefile, xcode_tool ;
   grammar "LR1_grammar_grammar.ggs" : makefile, xcode_tool ;
-  gui "LR1_grammar_cocoa.ggs" : xcode_tool, xcode_app ;
+  gui "LR1_grammar_cocoa.gGui" : xcode_tool, xcode_app ;
   program "LR1_grammar_program.ggs" : makefile, xcode_tool ;
 end project ;
-
 
