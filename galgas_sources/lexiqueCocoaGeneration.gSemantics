@@ -373,7 +373,8 @@ override reader @lexicalTagInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "const UInt32 locationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n" ;
+  outGeneratedCode := "scanningPointStructForCocoa locationForTag_" . mLexicalTagName . " ;\n" ;
+  outGeneratedCode .= "[self saveScanningPoint: & locationForTag_" . mLexicalTagName . "] ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -383,7 +384,7 @@ override reader @lexicalRewindInstruction generateCocoaInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
+  outGeneratedCode := "[self restoreScanningPoint: & locationForTag_" . mLexicalTagName . "] ;\n" ;
   outGeneratedCode .= "mTokenCode = " . inScannerClassName . "_1_" . [mTerminalName identifierRepresentation] . " ;\n" ;
 end reader ;
 
