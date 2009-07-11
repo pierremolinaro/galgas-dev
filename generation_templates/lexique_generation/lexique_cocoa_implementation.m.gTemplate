@@ -51,7 +51,7 @@
       else
         %@%([mEndString utf8Representation])%,%
       end if
-      % nil, %
+      % %
       ([not mPreservesStartDelimiter ocString])
       %}%
     between %,\n%
