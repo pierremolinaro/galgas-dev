@@ -483,9 +483,6 @@
 		CF7B06290AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CF7B06330AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
 		CF7B06350AEE387C00E94B20 /* AC_galgas_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */; };
-		CF7BFF821008E81E00B4BACF /* OC_GGS_HiddenDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7BFF811008E81E00B4BACF /* OC_GGS_HiddenDocument.m */; };
-		CF7BFF831008E81E00B4BACF /* OC_GGS_HiddenDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7BFF811008E81E00B4BACF /* OC_GGS_HiddenDocument.m */; };
-		CF7BFF841008E81E00B4BACF /* OC_GGS_HiddenDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7BFF811008E81E00B4BACF /* OC_GGS_HiddenDocument.m */; };
 		CF7D283A0D830C8E00F40DB6 /* struct_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */; };
 		CF7D283B0D830C8E00F40DB6 /* struct_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */; };
 		CF7D283D0D830C8E00F40DB6 /* struct_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */; };
@@ -1339,8 +1336,6 @@
 		CF7A1403058CEFE2007126C1 /* galgasDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7B06240AEE387C00E94B20 /* AC_galgas_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_list.h; sourceTree = "<group>"; };
 		CF7B06250AEE387C00E94B20 /* AC_galgas_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_list.cpp; sourceTree = "<group>"; };
-		CF7BFF801008E81E00B4BACF /* OC_GGS_HiddenDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_HiddenDocument.h; sourceTree = "<group>"; };
-		CF7BFF811008E81E00B4BACF /* OC_GGS_HiddenDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_HiddenDocument.m; sourceTree = "<group>"; };
 		CF7D281E0D830B4300F40DB6 /* include_C_structToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_C_structToImplement.h; sourceTree = "<group>"; };
 		CF7D281F0D830B4300F40DB6 /* include_typeGalgasStructType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasStructType.h; sourceTree = "<group>"; };
 		CF7D28390D830C8E00F40DB6 /* struct_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = struct_generation.cpp; sourceTree = "<group>"; };
@@ -2045,8 +2040,6 @@
 				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
 				CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */,
 				CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */,
-				CF7BFF801008E81E00B4BACF /* OC_GGS_HiddenDocument.h */,
-				CF7BFF811008E81E00B4BACF /* OC_GGS_HiddenDocument.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -3179,7 +3172,6 @@
 				CFAE5AA010021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCBA1003CC160096A8E5 /* cocoaGalgas.m in Sources */,
-				CF7BFF831008E81E00B4BACF /* OC_GGS_HiddenDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3713,7 +3705,6 @@
 				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCB91003CC160096A8E5 /* cocoaGalgas.m in Sources */,
-				CF7BFF821008E81E00B4BACF /* OC_GGS_HiddenDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4244,7 +4235,6 @@
 				CFAE5AA210021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1D10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFDACCB81003CC160096A8E5 /* cocoaGalgas.m in Sources */,
-				CF7BFF841008E81E00B4BACF /* OC_GGS_HiddenDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
