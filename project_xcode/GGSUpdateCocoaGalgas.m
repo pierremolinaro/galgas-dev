@@ -585,6 +585,7 @@
   [task waitUntilExit] ;
   int status = [task terminationStatus] ;
   [task release] ;
+  task = nil ;
   if (status == 0) {
     task = [[NSTask alloc] init] ;
     [task setLaunchPath:@"/usr/bin/tar"] ;
@@ -601,6 +602,7 @@
     [task waitUntilExit] ;
     status = [task terminationStatus] ;
     [task release] ;
+    task = nil ;
   }
   return status ;
 }

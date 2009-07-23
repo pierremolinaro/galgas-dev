@@ -346,7 +346,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           inCppFile << "END_PRODUCTION\n" ;
         }
       }
-      ioProductionIndex += (sint16) (derivationLength + 1) ;
+      ioProductionIndex = (sint16) (ioProductionIndex + derivationLength + 1) ;
     }
   }
 }
@@ -391,7 +391,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         inCppFile << "-1, // Choice "
                   << cStringWithSigned ((sint32)(j - firstProduction + 1))
                   << "\n" ;
-        ioDecisionTableIndex += (sint16) p.aPremierDeProduction.getValuesCount () ;
+        ioDecisionTableIndex = (sint16) (ioDecisionTableIndex + p.aPremierDeProduction.getValuesCount ()) ;
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;
