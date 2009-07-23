@@ -354,10 +354,10 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
     ioCppFile << ") ;\n" ;
   }
-  GGS_templateInstructionList::cEnumerator currentInstruction (mDoInstructionList, true) ;
-  while (currentInstruction.hasCurrentObject ()) {
-    currentInstruction._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
-    currentInstruction.next () ;
+  GGS_templateInstructionList::cEnumerator currentInstructionDo (mDoInstructionList, true) ;
+  while (currentInstructionDo.hasCurrentObject ()) {
+    currentInstructionDo._mInstruction (HERE) (HERE)->generateTemplateInstruction (ioCppFile) ;
+    currentInstructionDo.next () ;
   }
   if (mBetweenInstructionList.count () > 0) {
     ioCppFile << "if (enumerator_" ;

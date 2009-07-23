@@ -146,7 +146,7 @@ appendTerminalMessageToSyntaxErrorMessage (const sint16 inTerminalIndex,
 
 C_String %LEXIQUE_CLASS_NAME%::
 getCurrentTokenString (const cToken * inTokenPtr) const {
-  cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (cTokenFor_%LEXIQUE_CLASS_NAME% *) inTokenPtr ;
+  const cTokenFor_%LEXIQUE_CLASS_NAME% * ptr = (const cTokenFor_%LEXIQUE_CLASS_NAME% *) inTokenPtr ;
   C_String s ;
   if (ptr == NULL) {
     s.appendCString("$$") ;

@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate list declaration and implementation                             *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -348,7 +348,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "    }\n" ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
-    inHfile << "  public : /* const */ " ;
+    inHfile << "    public : /* const */ " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
     current.next () ;
@@ -1052,7 +1052,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current._mAttributType (HERE)(HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
                  "  macroValidPointerThere (mCurrentEnumeratedObject) ;\n"
-                 "  return ((cElement *) mCurrentEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
+                 "  return ((/* const */ cElement *) mCurrentEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
                  "}\n\n" ;
     current.next () ;
   }
@@ -1311,7 +1311,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (current.hasCurrentObject ()) {
     inHfile << "    public : /* const */ " ;
     current._mAttributType (HERE)(HERE)->generateCppClassName (inHfile) ;
-    inHfile << "  & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
+    inHfile << " & _" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const ;\n" ;
     current.next () ;
   }
   inHfile << "  } ;\n" ;
@@ -1407,7 +1407,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "sint32 elementOf_GGS_" << aNomListe << "::\n"
                "compareForSorting (const cSortedListElement * inOperand) const {\n"
-               "  elementOf_GGS_" << aNomListe << " * operand = (elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
+               "  const elementOf_GGS_" << aNomListe << " * operand = (const elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
   
   GGS_EXsortDescriptorList::cEnumerator sortAttribute (mSortDescriptorList, true) ;
   if (sortAttribute.hasCurrentObject ()) {
@@ -1838,7 +1838,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & GGS_" << aNomListe << "::cEnumerator::_" << current._mAttributeName (HERE) << " (LOCATION_ARGS) const {\n"
                  "  macroValidPointerThere (mCurrentEnumeratedObject) ;\n"
-                 "  return ((cElement *) mCurrentEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
+                 "  return ((/* const */ cElement *) mCurrentEnumeratedObject)->" << current._mAttributeName (HERE) << " ;\n"
                  "}\n\n" ;
     current.next () ;
   }

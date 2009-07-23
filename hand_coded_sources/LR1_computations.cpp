@@ -2,8 +2,10 @@
 //                                                                           *
 //     Routines for LR(1) grammar computations                               *
 //                                                                           *
-//  Copyright (C) 2002, ..., 2007 Pierre Molinaro.                           *
+//  Copyright (C) 2002, ..., 2009 Pierre Molinaro.                           *
+//                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -1168,7 +1170,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                     "#define ACCEPT (1)\n"
                     "#define END (-1)\n\n" ;
   generatedZone3 << "static const sint16 gActionTable [] = {" ;
-  bool first = true ;
+  bool isFirst = true ;
   sint32 startIndex = 0 ;
   for (sint32 i=0 ; i<rowsCount ; i++) {
     startIndexArray.addObject (startIndex) ;
@@ -1179,8 +1181,8 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
         generatedZone3 << "\n" ;
-        if (first) {
-          first = false ;
+        if (isFirst) {
+          isFirst = false ;
           generatedZone3 << "  " ;
         }else{
           generatedZone3 << ", " ;
@@ -1202,11 +1204,11 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   }
   generatedZone3 << "} ;\n\n"
                     "static const uint32 gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
-  first = true ;
+  isFirst = true ;
   { for (sint32 i=0 ; i<rowsCount ; i++) {
       generatedZone3 << "\n" ;
-      if (first) {
-        first = false ;
+      if (isFirst) {
+        isFirst = false ;
         generatedZone3 << "  " ;
       }else{
         generatedZone3 << ", " ;
@@ -1292,16 +1294,16 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   GGS_M_nonTerminalSymbolsForGrammar::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
-    GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
-    while (currentAltForNonTerminal.hasCurrentObject ()) {
+    GGS_M_nonterminalSymbolAltsForGrammar::cEnumerator currentAltForNonTerminal2 (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
+    while (currentAltForNonTerminal2.hasCurrentObject ()) {
       generatedZone3 << "void " ;
       generatedZone3 << inTargetFileName
                      << "::\n"
-                     << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal._key (HERE)
+                     << "nt_" << nonTerminal._key (HERE) << "_" << currentAltForNonTerminal2._key (HERE)
                      << " (" << inLexiqueName << " & inLexique" ;
       const sint32 pureBNFleftNonterminalIndex = nonTerminal._mID (HERE) ;
       const sint32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
+      GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal2._mFormalParametersList (HERE), true) ;
       sint16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         generatedZone3 << ",\n                                " ;
@@ -1323,7 +1325,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      currentAltForNonTerminal._key (HERE),
+                                                                      currentAltForNonTerminal2._key (HERE),
                                                                       generatedZone3) ;
           generatedZone3 << "    break ;\n" ;
         }
@@ -1332,7 +1334,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                  "    inLexique.internalBottomUpParserError (HERE) ;\n"
                         "  }\n" ;
       generatedZone3 << "}\n\n" ;
-      currentAltForNonTerminal.next () ;
+      currentAltForNonTerminal2.next () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
