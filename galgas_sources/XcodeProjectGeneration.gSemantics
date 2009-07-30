@@ -83,6 +83,7 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"GGS_char" ;
   out_cpp_and_h_fileList += !"GGS_string" ;
   out_cpp_and_h_fileList += !"GGS_uint" ;
+  out_cpp_and_h_fileList += !"GGS_data" ;
   out_cpp_and_h_fileList += !"GGS_location" ;
   out_cpp_and_h_fileList += !"GGS_ldouble" ;
   out_cpp_and_h_fileList += !"GGS_lsint" ;
