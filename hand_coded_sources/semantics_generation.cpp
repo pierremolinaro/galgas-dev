@@ -486,6 +486,7 @@ generate_header_file (C_Compiler & inLexique,
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"galgas/C_GGS_Object.h\"\n"
                     "#include \"galgas/GGS_location.h\"\n"
+                    "#include \"galgas/GGS_data.h\"\n"
                     "#include \"galgas/GGS_lbool.h\"\n"
                     "#include \"galgas/GGS_lchar.h\"\n"
                     "#include \"galgas/GGS_lstring.h\"\n"
@@ -869,6 +870,20 @@ generatePublicDeclaration (AC_OutputStream & inHfile,
 void cPtr_typeGalgasDomainType::
 generateCppClassName (AC_OutputStream & inFile) const {
   inFile << "GGS_" << mDomainTypeName ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_typeGalgas_data::
+generateCppClassName (AC_OutputStream & inFile) const {
+  inFile << "GGS_data" ;
 }
 
 //---------------------------------------------------------------------------*
