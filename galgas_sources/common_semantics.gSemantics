@@ -1941,6 +1941,18 @@ class @typeGalgas_data extends @AC_galgasType {
     if [inModifierName string] == "appendByte" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "appendShortBE" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "appendShortLE" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "appendUIntBE" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
+    elsif [inModifierName string] == "appendUIntLE" then
+      outModifierSignature := [@L_EXsignature emptyList] ;
+      outModifierSignature += ![@typeGalgas_uint new] ![@EXformalArgumentPassingMode argumentIn] ;
     elsif [inModifierName string] == "appendUTF8String" then
       outModifierSignature := [@L_EXsignature emptyList] ;
       outModifierSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentIn] ;

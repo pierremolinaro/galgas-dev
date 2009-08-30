@@ -157,6 +157,8 @@
   }else{
     NSString * version = [NSString
       stringWithContentsOfFile:libpmVersionFilePath
+      encoding:NSASCIIStringEncoding
+      error:NULL
     ] ;
     NSString * s = [NSString stringWithFormat:@"libpm build number: %@", version] ;
     [mLIBPMStatusTextField setStringValue:s] ;

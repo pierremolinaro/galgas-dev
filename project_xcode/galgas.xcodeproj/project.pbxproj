@@ -56,6 +56,13 @@
 		CF0676470E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CF0676480E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CF0676490E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
+		CF06F5C91049592F005F03FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C51049592F005F03FA /* MainMenu.xib */; };
+		CF06F5CA1049592F005F03FA /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */; };
+		CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C51049592F005F03FA /* MainMenu.xib */; };
+		CF06F5CC1049592F005F03FA /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */; };
+		CF06F5CD1049592F005F03FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C51049592F005F03FA /* MainMenu.xib */; };
+		CF06F5CE1049592F005F03FA /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */; };
+		CF06F7EF10498E5B005F03FA /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CF074BC41000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */; };
 		CF074BC51000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */; };
 		CF074BC61000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */; };
@@ -110,8 +117,6 @@
 		CF0CB8660BC0203700E6FABE /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CF0CB8860BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
 		CF0CB88A0BC0273E00E6FABE /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
-		CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
-		CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CF21A4F10BAEE75A00C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
 		CF21A4F20BAEE75C00C34B66 /* ggs_LL1_compile_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53813057A53F300854C83 /* ggs_LL1_compile_component.cpp */; };
 		CF21A50F0BAEEB4300C34B66 /* galgas_LL1_grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5380B057A53D600854C83 /* galgas_LL1_grammar.cpp */; };
@@ -421,8 +426,6 @@
 		CF6DF22F09E3F3A700506859 /* I_SaveAs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596E08536A130077AEAF /* I_SaveAs.tiff */; };
 		CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596F08536A130077AEAF /* I_Stop.tiff */; };
 		CF6DF23109E3F3A700506859 /* I_Window.png in Resources */ = {isa = PBXBuildFile; fileRef = CF82597008536A130077AEAF /* I_Window.png */; };
-		CF6DF23209E3F3A700506859 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF82598C08536A1F0077AEAF /* MainMenu.nib */; };
-		CF6DF23309E3F3A700506859 /* OC_GGS_Document.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */; };
 		CF6DF24109E3F3A700506859 /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
@@ -511,8 +514,6 @@
 		CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
 		CF82598808536A130077AEAF /* OC_GGS_RulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerView.m */; };
 		CF82598A08536A130077AEAF /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597A08536A130077AEAF /* OC_GGS_TextView.m */; };
-		CF82599008536A1F0077AEAF /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF82598C08536A1F0077AEAF /* MainMenu.nib */; };
-		CF82599108536A1F0077AEAF /* OC_GGS_Document.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */; };
 		CF8259CA08536A5B0077AEAF /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
 		CF8259D408536A5B0077AEAF /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
 		CF8259EC08536A7E0077AEAF /* C_HTML_FileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8259D808536A7E0077AEAF /* C_HTML_FileWrite.cpp */; };
@@ -539,6 +540,9 @@
 		CF825AD508536B780077AEAF /* F_GetPrime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A6F08536B780077AEAF /* F_GetPrime.cpp */; };
 		CF825AD908536B780077AEAF /* MF_Assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7308536B780077AEAF /* MF_Assert.cpp */; };
 		CF825ADB08536B780077AEAF /* MF_MemoryControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7508536B780077AEAF /* MF_MemoryControl.cpp */; };
+		CF83184C104A7A9200FDF2EC /* galgasUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */; };
+		CF83184D104A7A9200FDF2EC /* galgasUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */; };
+		CF83184E104A7A9200FDF2EC /* galgasUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */; };
 		CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF8D519B0E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
@@ -733,11 +737,7 @@
 		CFDACD311003DF0B0096A8E5 /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
 		CFDACD321003DF0C0096A8E5 /* guiModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C810C12C38A0066ACB3 /* guiModelBuilder.cpp */; };
 		CFDACD331003DF0F0096A8E5 /* guiMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26C7F0C12C38A0066ACB3 /* guiMetamodel.cpp */; };
-		CFDACD351003DF450096A8E5 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
-		CFDACD361003DF460096A8E5 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
-		CFDACD371003DF470096A8E5 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
 		CFDACD421003E0120096A8E5 /* instructionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */; };
-		CFDACD4A1003E0510096A8E5 /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CFDACD4D1003E0EE0096A8E5 /* semanticsMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */; };
 		CFDACD511003E1330096A8E5 /* instructionMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5470BC3D8F6005A1AEC /* instructionMetamodel.cpp */; };
 		CFDACD531003E15B0096A8E5 /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
@@ -1044,9 +1044,6 @@
 		CFEDF4D60C2D16840038713A /* I_SaveAs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596E08536A130077AEAF /* I_SaveAs.tiff */; };
 		CFEDF4D70C2D16840038713A /* I_Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596F08536A130077AEAF /* I_Stop.tiff */; };
 		CFEDF4D80C2D16840038713A /* I_Window.png in Resources */ = {isa = PBXBuildFile; fileRef = CF82597008536A130077AEAF /* I_Window.png */; };
-		CFEDF4D90C2D16840038713A /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF82598C08536A1F0077AEAF /* MainMenu.nib */; };
-		CFEDF4DA0C2D16840038713A /* OC_GGS_Document.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */; };
-		CFEDF4DC0C2D16840038713A /* galgasUpdate.nib in Resources */ = {isa = PBXBuildFile; fileRef = CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */; };
 		CFEDF4E40C2D16840038713A /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CFEDF4E50C2D16840038713A /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CFEDF4E60C2D16840038713A /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
@@ -1199,6 +1196,8 @@
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		CF06F5C61049592F005F03FA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CF06F5C81049592F005F03FA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/OC_GGS_Document.xib; sourceTree = "<group>"; };
 		CF074BC21000BB6E00F45986 /* C_BoolCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_BoolCommandLineOption.h; sourceTree = "<group>"; };
 		CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_BoolCommandLineOption.cpp; sourceTree = "<group>"; };
 		CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntCommandLineOption.h; sourceTree = "<group>"; };
@@ -1237,7 +1236,6 @@
 		CF158B440DFD65E1005BF0E0 /* include_formalParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_formalParameter.h; sourceTree = "<group>"; };
 		CF197A3B0C944C5B002069B2 /* include_C_parse_loop_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_parse_loop_instruction.h; sourceTree = "<group>"; };
 		CF19AF770A2B718E00813ED1 /* include_C_while_instruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_C_while_instruction.h; sourceTree = "<group>"; };
-		CF1EF67E0AD15BB70091DDE8 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/galgasUpdate.nib; sourceTree = "<group>"; };
 		CF2944FB0E0972A400511E49 /* include_categoryMethodDeclaration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_categoryMethodDeclaration.h; sourceTree = "<group>"; };
 		CF2944FE0E0972A400511E49 /* include_typeGalgasListmapToImplement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapToImplement.h; sourceTree = "<group>"; };
 		CF2944FF0E0972A400511E49 /* include_typeGalgasListmapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasListmapType.h; sourceTree = "<group>"; };
@@ -1371,8 +1369,6 @@
 		CF82597908536A130077AEAF /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextView.h; sourceTree = "<group>"; };
 		CF82597A08536A130077AEAF /* OC_GGS_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextView.m; sourceTree = "<group>"; };
 		CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_CocoaGalgasPrefix.pch; sourceTree = "<group>"; };
-		CF82598D08536A1F0077AEAF /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
-		CF82598F08536A1F0077AEAF /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/OC_GGS_Document.nib; sourceTree = "<group>"; };
 		CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = F_Analyze_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_Analyze_CLI_Options.h; sourceTree = "<group>"; };
 		CF82599B08536A5B0077AEAF /* mainForLIBPM.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = mainForLIBPM.h; sourceTree = "<group>"; };
@@ -1406,6 +1402,7 @@
 		CF825A7808536B780077AEAF /* TF_sup.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = TF_sup.h; sourceTree = "<group>"; };
 		CF825A7908536B780077AEAF /* TF_Swap.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = TF_Swap.h; sourceTree = "<group>"; };
 		CF82944F0587AE820058E762 /* galgas_LL1_prgm.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_LL1_prgm.h; sourceTree = "<group>"; };
+		CF83184B104A7A9200FDF2EC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/galgasUpdate.xib; sourceTree = "<group>"; };
 		CF85E4B10A385AB600A190C1 /* include_typeLogicalNegate.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLogicalNegate.h; sourceTree = "<group>"; };
 		CF89D5590A359BEA0042BDEC /* include_typeLiteralSInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralSInt64Expression.h; sourceTree = "<group>"; };
 		CF89D55A0A359BEA0042BDEC /* include_typeLiteralUInt64Expression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeLiteralUInt64Expression.h; sourceTree = "<group>"; };
@@ -1932,7 +1929,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */,
+				CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */,
 				CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */,
 				CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
@@ -2010,8 +2007,8 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
-				CF82598C08536A1F0077AEAF /* MainMenu.nib */,
-				CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */,
+				CF06F5C51049592F005F03FA /* MainMenu.xib */,
+				CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */,
 				CFCF63250FFEA33800EF3A10 /* I_Orange14.png */,
@@ -3072,15 +3069,15 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D15AC270486D014006FF6A4 /* GALGAS Cocoa (universal) */,
 				8DD76F620486A84900D96B5E /* GALGAS tool LL1 (universal) */,
 				CF7A1402058CEFE2007126C1 /* GALGAS tool LL1 debug (universal) */,
-				CF6DF20D09E3F3A700506859 /* GALGAS Cocoa (i386) */,
+				8D15AC270486D014006FF6A4 /* GALGAS Cocoa (universal) */,
 				CF6DF12309E3F23700506859 /* GALGAS tool LL1 (i386) */,
 				CF6DF19C09E3F30400506859 /* GALGAS tool LL1 debug (i386) */,
-				CFEDF4BF0C2D16840038713A /* GALGAS Cocoa (PPC) */,
+				CF6DF20D09E3F3A700506859 /* GALGAS Cocoa (i386) */,
 				CFEDF2040C2D161F0038713A /* GALGAS tool LL1 (PPC) */,
 				CFEDF3650C2D16610038713A /* GALGAS tool LL1 debug (PPC) */,
+				CFEDF4BF0C2D16840038713A /* GALGAS Cocoa (PPC) */,
 				CF3728130FD9A21200EA9161 /* All Targets */,
 			);
 		};
@@ -3098,14 +3095,14 @@
 				CF82597E08536A130077AEAF /* I_SaveAs.tiff in Resources */,
 				CF82597F08536A130077AEAF /* I_Stop.tiff in Resources */,
 				CF82598008536A130077AEAF /* I_Window.png in Resources */,
-				CF82599008536A1F0077AEAF /* MainMenu.nib in Resources */,
-				CF82599108536A1F0077AEAF /* OC_GGS_Document.nib in Resources */,
-				CF1EF67F0AD15BB70091DDE8 /* galgasUpdate.nib in Resources */,
 				CF976F0B0AD9954600D81E5D /* galgas in Resources */,
 				CF976F0D0AD9954B00D81E5D /* galgasDebug in Resources */,
 				CFC1506B0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */,
 				CFCF63290FFEA33800EF3A10 /* I_Orange14.png in Resources */,
 				CFCF632A0FFEA33800EF3A10 /* I_Red14.png in Resources */,
+				CF06F5CD1049592F005F03FA /* MainMenu.xib in Resources */,
+				CF06F5CE1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
+				CF83184E104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3123,12 +3120,12 @@
 				CF6DF22F09E3F3A700506859 /* I_SaveAs.tiff in Resources */,
 				CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */,
 				CF6DF23109E3F3A700506859 /* I_Window.png in Resources */,
-				CF6DF23209E3F3A700506859 /* MainMenu.nib in Resources */,
-				CF6DF23309E3F3A700506859 /* OC_GGS_Document.nib in Resources */,
-				CF1EF6800AD15BB70091DDE8 /* galgasUpdate.nib in Resources */,
 				CFC1506C0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */,
 				CFCF63270FFEA33800EF3A10 /* I_Orange14.png in Resources */,
 				CFCF63280FFEA33800EF3A10 /* I_Red14.png in Resources */,
+				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
+				CF06F5CC1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
+				CF83184C104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3144,14 +3141,14 @@
 				CFEDF4D60C2D16840038713A /* I_SaveAs.tiff in Resources */,
 				CFEDF4D70C2D16840038713A /* I_Stop.tiff in Resources */,
 				CFEDF4D80C2D16840038713A /* I_Window.png in Resources */,
-				CFEDF4D90C2D16840038713A /* MainMenu.nib in Resources */,
-				CFEDF4DA0C2D16840038713A /* OC_GGS_Document.nib in Resources */,
-				CFEDF4DC0C2D16840038713A /* galgasUpdate.nib in Resources */,
 				CFEDF51A0C2D189C0038713A /* galgasPPC in Resources */,
 				CFEDF51B0C2D189D0038713A /* galgasDebugPPC in Resources */,
 				CFC1506D0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */,
 				CFCF632B0FFEA33800EF3A10 /* I_Orange14.png in Resources */,
 				CFCF632C0FFEA33800EF3A10 /* I_Red14.png in Resources */,
+				CF06F5C91049592F005F03FA /* MainMenu.xib in Resources */,
+				CF06F5CA1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
+				CF83184D104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3337,12 +3334,9 @@
 				CFDACD311003DF0B0096A8E5 /* guiCompilation.cpp in Sources */,
 				CFDACD321003DF0C0096A8E5 /* guiModelBuilder.cpp in Sources */,
 				CFDACD331003DF0F0096A8E5 /* guiMetamodel.cpp in Sources */,
-				CFDACD351003DF450096A8E5 /* syntaxMetamodel.cpp in Sources */,
-				CFDACD361003DF460096A8E5 /* syntaxModelBuilder.cpp in Sources */,
-				CFDACD371003DF470096A8E5 /* syntaxSLRgrammar.cpp in Sources */,
 				CFDACD421003E0120096A8E5 /* instructionMetamodel.cpp in Sources */,
-				CFDACD4A1003E0510096A8E5 /* semanticsMetamodel.cpp in Sources */,
 				CFCF13151020BB91003E9964 /* GGS_data.cpp in Sources */,
+				CF06F7EF10498E5B005F03FA /* semanticsMetamodel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4323,28 +4317,28 @@
 			name = Credits.rtf;
 			sourceTree = SOURCE_ROOT;
 		};
-		CF1EF67D0AD15BB70091DDE8 /* galgasUpdate.nib */ = {
+		CF06F5C51049592F005F03FA /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CF1EF67E0AD15BB70091DDE8 /* English */,
+				CF06F5C61049592F005F03FA /* English */,
 			);
-			name = galgasUpdate.nib;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		CF82598C08536A1F0077AEAF /* MainMenu.nib */ = {
+		CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CF82598D08536A1F0077AEAF /* English */,
+				CF06F5C81049592F005F03FA /* English */,
 			);
-			name = MainMenu.nib;
+			name = OC_GGS_Document.xib;
 			sourceTree = "<group>";
 		};
-		CF82598E08536A1F0077AEAF /* OC_GGS_Document.nib */ = {
+		CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CF82598F08536A1F0077AEAF /* English */,
+				CF83184B104A7A9200FDF2EC /* English */,
 			);
-			name = OC_GGS_Document.nib;
+			name = galgasUpdate.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -4364,9 +4358,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				INSTALL_PATH = "$(HOME)/bin";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PRODUCT_NAME = galgas;
-				SDKROOT = macosx10.4;
 				ZERO_LINK = NO;
 			};
 			name = Default;
@@ -4383,11 +4375,9 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_CFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebug;
-				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4434,7 +4424,6 @@
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = 4.0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -4464,7 +4453,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
 				PREBINDING = NO;
-				SDKROOT = macosx10.4;
+				SDKROOT = macosx10.5;
 			};
 			name = Default;
 		};
@@ -4486,9 +4475,7 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PRODUCT_NAME = galgasI386;
-				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4500,10 +4487,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugI386;
-				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4541,9 +4526,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				INSTALL_PATH = "$(HOME)/bin";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				PRODUCT_NAME = galgasPPC;
-				SDKROOT = macosx10.3.9;
 			};
 			name = Default;
 		};
@@ -4556,11 +4539,9 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
 				OTHER_CFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugPPC;
-				SDKROOT = macosx10.3.9;
 			};
 			name = Default;
 		};

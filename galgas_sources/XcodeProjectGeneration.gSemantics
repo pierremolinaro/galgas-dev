@@ -165,17 +165,17 @@ routine build_LIBPM_COCOA_GALGAS_group
   fileList += !"I_Red14.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
-#--- Enter nib files
-  enter_nib_in_group
+#--- Enter Resource files
+  enter_xib_in_group
    !?ioXcodeProjectDescription
    !"English.lproj"
-   !"MainMenu.nib"
+   !"MainMenu.xib"
    !?ioFileListForGroup
   ;
-  enter_nib_in_group
+  enter_xib_in_group
    !?ioXcodeProjectDescription
    !"English.lproj"
-   !"OC_GGS_Document.nib"
+   !"OC_GGS_Document.xib"
    !?ioFileListForGroup
   ;
 #---
@@ -353,14 +353,14 @@ routine build_PROJECT_RESOURCES_group
 :
   @stringlist fileList := inIconFiles ;
   fileList += !"Info.plist" ;
-#--- Enter nib files
-  enter_nib_in_group
+#--- Enter Resources files
+  enter_xib_in_group
    !?ioXcodeProjectDescription
    !"English.lproj"
    !"Credits.rtf"
    !?ioFileListForGroup
   ;
-  enter_nib_in_group
+  enter_plist_strings_in_group
    !?ioXcodeProjectDescription
    !"English.lproj"
    !"InfoPlist.strings"
@@ -704,8 +704,8 @@ routine build_RESOURCES_for_resources_build_phase
   fileList += !"I_Window.png" ;
   fileList += !"I_Orange14.png" ;
   fileList += !"I_Red14.png" ;
-  fileList += !"MainMenu.nib" ;
-  fileList += !"OC_GGS_Document.nib" ;
+  fileList += !"MainMenu.xib" ;
+  fileList += !"OC_GGS_Document.xib" ;
   fileList += !"InfoPlist.strings" ;
   fileList += !"Credits.rtf" ;
 #---
