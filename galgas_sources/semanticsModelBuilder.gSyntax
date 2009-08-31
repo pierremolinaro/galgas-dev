@@ -202,7 +202,8 @@ rule <map_method_declaration> ?!@mapMethodList ioMapMethodList :
   end select ;
   $;$ ;
   ioMapMethodList +=
-    !mMethodName    !mAlternateMethodName
+    !mMethodName
+    !mAlternateMethodName
     !mErrorMessage
     !mShadowErrorMessage
   ;
