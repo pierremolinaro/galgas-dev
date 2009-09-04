@@ -4347,10 +4347,7 @@
 		CF0DA691085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -4359,7 +4356,6 @@
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				INSTALL_PATH = "$(HOME)/bin";
 				PRODUCT_NAME = galgas;
-				ZERO_LINK = NO;
 			};
 			name = Default;
 		};
