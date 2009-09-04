@@ -326,7 +326,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           inCppFile << ", " ;
         }
         if (item < derivationLength) {
-          const long v = p.aDerivation (item COMMA_HERE) ;
+          const sint32 v = p.aDerivation (item COMMA_HERE) ;
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
             inCppFile << "TERMINAL ("
                     << inLexiqueName << "::" << inLexiqueName
