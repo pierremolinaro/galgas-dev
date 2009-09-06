@@ -32,6 +32,7 @@ include ../galgas_sources/GALGAS_OUTPUT/file_list.mke
 #                                                               *
 #---------------------------------------------------------------*
 
+#include $(LIB_PM_PATH)/included_makefiles/x86linux_on_macosx_llvm-clang-r81088_tools_32.mke
 include $(LIB_PM_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_32.mke
 
 #---------------------------------------------------------------*
