@@ -12,19 +12,21 @@
 @implementation PMCocoaGalgasUpdaterWindow
 
 - (id) initWithContentRect:(NSRect)contentRect
-       styleMask:(unsigned int)styleMask
+       styleMask:(NSUInteger)styleMask
        backing:(NSBackingStoreType)backingType
        defer:(BOOL)flag {
   const NSRect screenRect = [[NSScreen mainScreen] frame] ;
   const NSPoint screenCenter = {NSMidX (screenRect), NSMidY (screenRect)} ;
   NSRect r ;
-  r.origin.x = screenCenter.x - contentRect.size.width / 2.0 ;
-  r.origin.y = screenCenter.y - contentRect.size.height / 2.0 ;
+  r.origin.x = screenCenter.x - contentRect.size.width / 2.0f ;
+  r.origin.y = screenCenter.y - contentRect.size.height / 2.0f ;
   r.size = contentRect.size ;
-  self = [super initWithContentRect:r
-                styleMask:NSBorderlessWindowMask
-                backing:backingType
-                defer:flag] ;
+  self = [super
+    initWithContentRect:r
+    styleMask:NSBorderlessWindowMask
+    backing:backingType
+    defer:flag
+  ] ;
   if (self) {
     [self setBackgroundColor: [NSColor clearColor]];
     [self setOpaque:NO] ;

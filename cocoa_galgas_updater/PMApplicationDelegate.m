@@ -198,7 +198,12 @@
   //NSLog (@"cocoaGalgasUpdaterDirectory '%@'", cocoaGalgasUpdaterDirectory) ;
 //--- Get path for Cocoa Galgas Application
   NSString * currentCanariApplicationPathDescriptorFile = [NSString stringWithFormat:@"%@/cocoa_galgas_path.txt", cocoaGalgasUpdaterDirectory] ;
-  mCurrentCocoaGalgasApplicationPath = [NSString stringWithContentsOfFile:currentCanariApplicationPathDescriptorFile] ;
+  NSStringEncoding encoding ;
+  mCurrentCocoaGalgasApplicationPath = [NSString
+    stringWithContentsOfFile:currentCanariApplicationPathDescriptorFile
+    usedEncoding:& encoding
+    error:NULL
+  ] ;
   [mCurrentCocoaGalgasApplicationPath retain] ;
   //NSLog (@"mCurrentCocoaGalgasApplicationPath '%@'", mCurrentCocoaGalgasApplicationPath) ;
   BOOL ok = mCurrentCocoaGalgasApplicationPath != nil ;
@@ -301,7 +306,7 @@
   }else{
 //--- Copy application
     OSStatus myStatus = 0 ;
-    { const char * copyDirArguments [] = {"-r", [inSourceFullPath cString], [inTemporaryDir cString], NULL} ;
+    { const char * copyDirArguments [] = {"-r", [inSourceFullPath cStringUsingEncoding:NSUTF8StringEncoding], [inTemporaryDir cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
       FILE * myCommunicationPipe = NULL ;
       mCurrentOperation = @"copy with privileges" ;
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
@@ -317,7 +322,7 @@
     }
   //--- Suppress current application
     if (myStatus == 0) {
-      const char * const removeDirArguments [] = {"-fr", [inFinalFullPath cString], NULL} ;
+      const char * const removeDirArguments [] = {"-fr", [inFinalFullPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
       FILE * myCommunicationPipe = NULL ;
       mCurrentOperation = @"remove previous with privileges" ;
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
@@ -333,7 +338,7 @@
     }
   //--- Rename new application
     if (myStatus == 0) {
-      const char * const renameDirArguments [] = {[inTemporaryDir cString], [inFinalFullPath cString], NULL} ;
+      const char * const renameDirArguments [] = {[inTemporaryDir cStringUsingEncoding:NSUTF8StringEncoding], [inFinalFullPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
       FILE * myCommunicationPipe = NULL ;
       mCurrentOperation = @"move new with privileges" ;
       myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
@@ -583,7 +588,7 @@
         attributes:nil
       ] ;
     }else{
-      const char * const createDirArguments [] = {[newDirectory cString], NULL} ;
+      const char * const createDirArguments [] = {[newDirectory cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
       FILE * myCommunicationPipe = NULL ;
       OSStatus myStatus = AuthorizationExecuteWithPrivileges (mAuthorizationRef,
                                                               "/bin/mkdir", 
