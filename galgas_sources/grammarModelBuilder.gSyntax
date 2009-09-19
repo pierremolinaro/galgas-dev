@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax grammarModelBuilder :
+with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
@@ -51,8 +52,16 @@ rule <grammar_component_start_symbol>
   $identifier$ ? @lstring mGrammarName ;
   $literal_string$ ? @lstring mGrammarClass ;
   $:$ ;
+#--- New style imports
+  @lstringlist syntaxComponents [emptyList] ;
+  repeat
+    $with$ ;
+    $literal_string$ ? @lstring syntaxComponent ;
+    $;$ ;
+    syntaxComponents += !syntaxComponent ;
+  while
+  end repeat ;
 #--- Old style imports
-#--- Loop on import declarations
   repeat
   while
     $import$ ;
@@ -104,6 +113,7 @@ rule <grammar_component_start_symbol>
   outGrammarComponentRoot := [@grammarComponentRoot new
     !mGrammarName
     !mGrammarClass
+    !syntaxComponents
     !mStartSymbol
     !mLabelList
     !mUnusedNonterminalList

@@ -18,6 +18,8 @@
 #---------------------------------------------------------------------------*
 
 syntax semanticInstructionListModelBuilder :
+with "galgas_scanner.gLexique" ;
+
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;

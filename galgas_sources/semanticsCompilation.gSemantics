@@ -453,6 +453,10 @@ routine compileSemanticsComponent
 #---- Build semantic context
   @semanticContext semanticContext ;
   buildSemanticContext !semanticDeclarationList ![semanticsComponentRoot mEndOfSourceFile] ?semanticContext ;
+#--- Perform semantic analysis
+
+#--- Perform Code Generation
+
 end routine ;
 
 #---------------------------------------------------------------------------*

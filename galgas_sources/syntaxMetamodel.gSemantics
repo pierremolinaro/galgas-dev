@@ -19,7 +19,9 @@
 
 semantics syntaxMetamodel :
 
-import "semanticsMetamodel.gSemantics" ;
+import "expressionMetamodel.gSemantics" ;
+import "parameterArgumentMetamodel.gSemantics" ;
+import "instructionMetamodel.gSemantics" ;
 
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
@@ -42,7 +44,7 @@ list @nonTerminalLabelList {
 
 list @nonterminalDeclarationList {
   @lstring mNonterminalName ;
-  @nonTerminalLabelList mLabels ; # [1, *]
+  @nonTerminalLabelList mLabels ;
   @bool mHasParseLabel ;
 }
 
@@ -139,6 +141,7 @@ class @blockInstruction extends @syntaxInstruction {
 
 class @syntaxComponentRoot {
   @lstring mSyntaxComponentName ;
+  @lstring mImportedLexiqueReference ;
   @nonterminalDeclarationList mNonterminalDeclarationList ;
   @syntaxRuleList mRuleList ;
   @semanticDeclarationStruct mSemanticDeclarations ;

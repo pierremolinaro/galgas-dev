@@ -211,6 +211,7 @@ rule <galgas_component>
       @parsedComponentStruct parsedComponentStruct [new
         ![@parsedSemanticsComponentMap emptyMap]
         ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
       ] ;
       compileOptionComponent !fileName !s !?parsedComponentStruct ;
@@ -219,6 +220,7 @@ rule <galgas_component>
       @parsedComponentStruct parsedComponentStruct [new
         ![@parsedSemanticsComponentMap emptyMap]
         ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
       ] ;
       compileLexiqueComponent !fileName !s !?parsedComponentStruct ;
@@ -227,6 +229,7 @@ rule <galgas_component>
       @parsedComponentStruct parsedComponentStruct [new
         ![@parsedSemanticsComponentMap emptyMap]
         ![@parsedLexiqueComponentMap emptyMap]
+        ![@parsedSyntaxComponentMap emptyMap]
         ![@parsedOptionComponentMap emptyMap]
       ] ;
       @string absoluteFilePath := [fileName absolutePathFromPath ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]] ;

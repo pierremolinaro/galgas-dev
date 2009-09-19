@@ -18,6 +18,9 @@
 #---------------------------------------------------------------------------*
 
 grammar galgasTemplateGrammar "SLR" :
+  with "galgasTemplateParser.gSyntax" ;
+  with "templateExpressionParser.gSyntax" ;
+
   import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
   import syntax galgasTemplateParser in "galgasTemplateParser.gSyntax" ;
   import syntax templateExpressionParser in "templateExpressionParser.gSyntax" ;

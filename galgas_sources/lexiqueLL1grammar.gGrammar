@@ -18,6 +18,8 @@
 #---------------------------------------------------------------------------*
 
 grammar lexiqueLL1grammar "LL1" :
+  with "lexiqueModelBuilder.gSyntax" ;
+
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax lexiqueModelBuilder in "lexiqueModelBuilder.gSyntax" ;
 

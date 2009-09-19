@@ -1,0 +1,57 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Syntax component compilation                                             *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics syntaxCompilation :
+import "syntaxMetamodel.gSemantics" ;
+import "semanticsMetamodel.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
+import semantics semanticsMetamodel in "semanticsMetamodel.gSemantics" ;
+import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+
+routine compileSyntaxComponent
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+#--- Parse source file
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  @lstring basenameKey [new !basename !here] ;
+  @syntaxComponentRoot syntaxComponentRoot ;
+  if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
+    [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?syntaxComponentRoot] ;
+  else
+    grammar syntaxSLRgrammar in inSourceFile ?syntaxComponentRoot ;
+    [!?ioParsedComponentStruct.mParsedSyntaxComponentMap insertKey !basenameKey !syntaxComponentRoot] ;
+  end if ;
+#--- Check component name
+  @lstring componentName := [syntaxComponentRoot mSyntaxComponentName] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ;
+#--- Semantics analysis
+
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

@@ -18,6 +18,8 @@
 #---------------------------------------------------------------------------*
 
 syntax syntaxModelBuilder :
+with "galgas_scanner.gLexique" ;
+
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
@@ -65,6 +67,10 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
 #--- Semantics Component Name
   $identifier$ ? @lstring mSyntaxComponentName ;
   $:$ ;
+#--- Imported lexique
+  $with$ ;
+  $literal_string$ ? @lstring importedLexiqueReference ;
+  $;$ ;
 #--- Loop on import declarations
   repeat
   while
@@ -109,6 +115,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentRoot outSyntaxComponentRoo
   $;$ ;
   outSyntaxComponentRoot := [@syntaxComponentRoot new
     !mSyntaxComponentName
+    !importedLexiqueReference
     !mNonterminalDeclarationList
     !mRuleList
     !mSemanticDeclarations

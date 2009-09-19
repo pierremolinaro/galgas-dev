@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax programModelBuilder :
+with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics expressionMetamodel in "expressionMetamodel.gSemantics" ;
