@@ -1,0 +1,164 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Grammar component compilation                                            *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics grammarCompilation :
+import "grammarMetamodel.gSemantics" ;
+#import "semanticsSemantics.gSemantics" ;
+import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
+#import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
+import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
+import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N O N    T E R M I N A L   M A P                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonTerminalMap {
+  @nonTerminalLabelList mLabels ;
+  @bool mHasParseLabel ;
+  insert insertKey error message "the '@%K' non terminal has been already declared in %L" ;
+  search searchKey error message "the '@%K' non terminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine compileGrammarComponent
+  ??@lstring inSourceFile
+  ??@string unused inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+  @grammarComponentRoot grammarComponentRoot ;
+  grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
+#--- Check component name
+  @lstring componentName := [grammarComponentRoot mGrammarName] ;
+  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" . [componentName string]
+    . "') against the source file base name ('" . basename . "'): they should be identical"
+    ;
+  end if ;
+#--- Parse syntax components
+  @string lexiqueComponent := "" ; # Empty string means unknown
+  foreach [grammarComponentRoot mSyntaxComponents] do
+    if [mValue pathExtension] != "gSyntax" then
+      error mValue: "a syntax component file should have '.gSyntax' as path extension" ;
+    else
+      @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
+      @syntaxComponentRoot syntaxComponentRoot ;
+      if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey !syntaxComponentName] then
+        [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey ![@lstring new !syntaxComponentName !here] ?syntaxComponentRoot] ;
+      else
+        @string sourceFilePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
+        grammar syntaxSLRgrammar in [@lstring new !sourceFilePath ![mValue location]] ?syntaxComponentRoot ;
+        [!?ioParsedComponentStruct.mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !syntaxComponentRoot] ;
+      end if ;
+    #--- Handle lexique component
+      @string currentLexiqueName := [[[syntaxComponentRoot mImportedLexiqueReference] lastPathComponent] stringByDeletingPathExtension] ;
+      if lexiqueComponent == "" then
+        lexiqueComponent := currentLexiqueName ;
+      elsif lexiqueComponent != currentLexiqueName then
+        error mValue : "this syntax component uses '"
+          . currentLexiqueName . "' lexique component, but the first syntax component uses the '"
+          . lexiqueComponent . "' lexique component (they should be the same)" ;
+      end if ;
+    #--- Handle non terminal declarations
+      @nonTerminalMap nonTerminalMap [emptyMap] ;
+      foreach [syntaxComponentRoot mNonterminalDeclarationList] do
+        if [nonTerminalMap hasKey ![mNonterminalName string]] then
+          @nonTerminalLabelList labels ;
+          @bool hasParseLabel ;
+          [nonTerminalMap searchKey
+            !mNonterminalName
+            ?labels
+            ?hasParseLabel
+          ] ;
+         #--- Compare 'parse' label
+          if mHasParseLabel & not hasParseLabel then
+            error mNonterminalName: "this declaration has a 'parse' label, but declaration of the same non terminal in " 
+            . [[nonTerminalMap locationForKey ![mNonterminalName string]] locationString]
+            . " does not have a 'parse' label" ;
+          elsif (not mHasParseLabel) &  hasParseLabel then
+            error mNonterminalName: "this declaration has no 'parse' label, but declaration of the same non terminal in " 
+            . [[nonTerminalMap locationForKey ![mNonterminalName string]] locationString]
+            . " has a 'parse' label" ;
+          end if ;
+        #--- Compare regular labels
+          if [labels length] != [mLabels length] then
+            error mNonterminalName: "this declaration names " 
+              . [[mLabels length] string]
+              . " labels, but declaration of the same non terminal in " 
+              . [[nonTerminalMap locationForKey ![mNonterminalName string]] locationString]
+              . " names"
+              . [[labels length] string]
+              . " labels."
+            ;
+          else
+            foreach mLabels, labels (@lstring labelName @formalParameterList formalParameters) do
+              if mLabelName != labelName then
+                error mLabelName: "this label should be identical to the label '"
+                . labelName
+                . "' declared in " 
+                . [[labelName location] locationString]
+                ;
+              end if ;
+              foreach mFormalParameters, formalParameters (@formalArgumentPassingMode formalParameterPassingMode
+                                                           @lstring formalParameterTypeName
+                                                           *
+                                                           *) do
+                
+                if mFormalParameterPassingMode != formalParameterPassingMode then
+                  error mFormalParameterName: "the passing mode ("
+                  . [mFormalParameterPassingMode string]
+                  . ") for this parameter should be identical to the passing mode ("
+                  . [formalParameterPassingMode string]
+                  . ") of the parameter declared in"
+                  . [[labelName location] locationString]
+                  ;
+                end if ;
+                if [mFormalParameterName string] != [formalParameterTypeName string] then
+                  error mFormalParameterName: "this type name should be identical to the '@"
+                  . labelName
+                  . "' type name used in " 
+                  . [[labelName location] locationString]
+                  ;
+                end if ;
+              end foreach ;
+            end foreach ;
+          end if ;
+        else
+          [!?nonTerminalMap insertKey
+            !mNonterminalName
+            !mLabels
+            !mHasParseLabel
+          ] ;
+        end if ;
+      end foreach ;
+    #--- Handle syntax rules
+      foreach [syntaxComponentRoot mRuleList] do
+      
+      end foreach ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

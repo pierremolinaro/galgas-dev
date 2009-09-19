@@ -49,6 +49,7 @@ message "a GALGAS option source file"
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
     ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
   compileOptionComponent !inSourceFile !outputDirectory !?parsedComponentStruct ;

@@ -69,17 +69,19 @@ project all_galgas :
   semantics "syntaxMetamodel.gSemantics" : makefile ;
   syntax "syntaxModelBuilder.gSyntax" : makefile ;
   grammar "syntaxSLRgrammar.gGrammar" : makefile ;
+  semantics "syntaxCompilation.gSemantics" : makefile ;
 
 #--- Grammar component
   semantics "grammarMetamodel.gSemantics" : makefile ;
   syntax "grammarModelBuilder.gSyntax" : makefile ;
   grammar "grammarLL1grammar.gGrammar" : makefile ;
-  semantics "guiCompilation.gSemantics" : makefile ;
+  semantics "grammarCompilation.gSemantics" : makefile ;
 
 #--- GUI component
   semantics "guiMetamodel.gSemantics" : makefile ;
   syntax "guiModelBuilder.gSyntax" : makefile ;
-  grammar "guiLL1grammar.gGrammar" : makefile ;
+  grammar "guiGrammar.gGrammar" : makefile ;
+  semantics "guiCompilation.gSemantics" : makefile ;
 
 #--- Program component
   semantics "programMetamodel.gSemantics" : makefile ;

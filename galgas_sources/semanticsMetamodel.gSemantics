@@ -21,11 +21,13 @@ semantics semanticsMetamodel :
 import "instructionMetamodel.gSemantics" ;
 import "lexiqueMetamodel.gSemantics" ;
 import "optionMetamodel.gSemantics" ;
+import "syntaxMetamodel.gSemantics" ;
 
 import semantics lexiqueMetamodel in "lexiqueMetamodel.gSemantics" ;
 import semantics parameterArgumentMetamodel in "parameterArgumentMetamodel.gSemantics" ;
 import semantics instructionMetamodel in "instructionMetamodel.gSemantics" ;
 import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
+import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -339,9 +341,18 @@ map @parsedOptionComponentMap {
 
 #---------------------------------------------------------------------------*
 
+map @parsedSyntaxComponentMap {
+  @syntaxComponentRoot mSyntaxComponentRoot ;
+  insert insertKey error message "the '%K' syntax component has already been parsed" ;
+  search searchKey error message "the '%K' syntax component symbol is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @parsedComponentStruct {
   @parsedSemanticsComponentMap mParsedSemanticsComponentMap ;
   @parsedLexiqueComponentMap mParsedLexiqueComponentMap ;
+  @parsedSyntaxComponentMap mParsedSyntaxComponentMap ;
   @parsedOptionComponentMap mParsedOptionComponentMap ;
 }
 

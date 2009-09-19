@@ -277,6 +277,13 @@ rule <galgas_component>
     ;
   end if ; 
   $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
 #--- Define lexique
   @M_terminalSymbolsMapForUse tableTerminaux ;
   @lstring  lexiqueName ;
@@ -387,6 +394,13 @@ label importSyntax
   @lstring syntaxComponentName ;
   $identifier$ ? syntaxComponentName ;
   $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
 #--- Lexique
   @lstring lexiqueName ;
   @M_lexiqueComponents lexiqueMapForUse [emptyMap] ;
@@ -458,6 +472,13 @@ label importSemantics
   $syntax$ ;
   $identifier$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
   <get_lexique_infos> parse ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -475,6 +496,13 @@ label importLexique
   $syntax$ ;
   $identifier$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
   <get_lexique_infos> parse ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -494,6 +522,13 @@ label importGrammarForSemantics
   $syntax$ ;
   $identifier$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
   <get_lexique_infos> parse ;
   <import_headers_semantics_and_grammars> parse ;
   repeat
@@ -511,6 +546,13 @@ label importOptions
   $syntax$ ;
   $identifier$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  select
+  or
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end select ;
   <get_lexique_infos> parse ;
   <import_headers_semantics_and_grammars> parse ;
   repeat

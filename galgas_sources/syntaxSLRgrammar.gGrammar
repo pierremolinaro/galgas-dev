@@ -18,6 +18,11 @@
 #---------------------------------------------------------------------------*
 
 grammar syntaxSLRgrammar "SLR" :
+  with "syntaxModelBuilder.gSyntax" ;
+  with "expressionModelBuilder.gSyntax" ;
+  with "parameterArgumentBuilder.gSyntax" ;
+  with "semanticInstructionListModelBuilder.gSyntax" ;
+
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax syntaxModelBuilder in "syntaxModelBuilder.gSyntax" ;
   import syntax expressionModelBuilder in "expressionModelBuilder.gSyntax" ;

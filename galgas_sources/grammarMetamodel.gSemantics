@@ -41,6 +41,7 @@ list @grammarLabelList {
 class @grammarComponentRoot {
   @lstring mGrammarName ;
   @lstring mGrammarClass ;
+  @lstringlist mSyntaxComponents ;
   @lstring mStartSymbol ;
   @grammarLabelList mLabelList ;
   @lstringlist mUnusedNonterminalList ;

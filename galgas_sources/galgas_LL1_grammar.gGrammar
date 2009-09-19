@@ -17,6 +17,18 @@
 #---------------------------------------------------------------------------*
 
 grammar galgas_LL1_grammar "LR1" :
+  with "grammar_parser.gSyntax" ;
+  with "ggs_LL1_compile_component.gSyntax" ;
+  with "galgas_start.gSyntax" ;
+  with "program_parser.gSyntax" ;
+  with "domain_parser.gSyntax" ;
+  with "cli_options_parser.gSyntax" ;
+  with "cocoa_parser.gSyntax" ;
+  with "scanner_parser.gSyntax" ;
+  with "expression_parser.gSyntax" ;
+  with "parser_parser.gSyntax"  ;
+  with "semantics_parser.gSyntax" ;
+
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import option galgas_cli_options in "galgas_cli_options.gOption" ;
   import syntax grammar_parser in "grammar_parser.gSyntax" ;

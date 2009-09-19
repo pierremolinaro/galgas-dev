@@ -119,6 +119,13 @@ rule <galgas_component>
   @lstring grammarClass ;
   $literal_string$ ? grammarClass ;
   $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
 #--- Parse lexique reference
   @M_terminalSymbolsMapForUse terminalSymbolMap ;
   @lstring lexiqueName ;
@@ -289,6 +296,13 @@ label importLexique
   $identifier$ ? * ;
   $literal_string$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   <get_lexique_infos> parse ;
   repeat
     $import$ ;
@@ -345,6 +359,13 @@ label importSyntax
   $identifier$ ? * ;
   $literal_string$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   <get_lexique_infos> parse ;
   repeat
     $import$ ;
@@ -402,6 +423,13 @@ label importSemantics
   $identifier$ ? * ;
   $literal_string$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   <get_lexique_infos> parse ;
   repeat
     $import$ ;
@@ -460,6 +488,13 @@ label importGrammarForSemantics
   $identifier$ ? grammarName ;
   $literal_string$ ? * ; # Ignore grammar class
   $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
    @lstring lexiqueName ;
   <get_lexique_infos> getLexiqueName ?lexiqueName ;
   @M_nonterminalSymbolAltsForGrammar grammarAltMap [emptyMap] ;
@@ -538,6 +573,13 @@ label importOptions
   $identifier$ ? * ;
   $literal_string$ ? * ;
   $:$ ;
+#--- Ignore new importation syntax
+  repeat
+  while
+    $with$ ;
+    $literal_string$ ? * ;
+    $;$ ;
+  end repeat ;
   <get_lexique_infos> parse ;
   repeat
     $import$ ;
