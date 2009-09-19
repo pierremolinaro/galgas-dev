@@ -91,7 +91,7 @@ message "a GALGAS option source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileOptionComponent !inSourceFile ! outputDirectory (!inSourceFile) !?parsedComponentStruct ;
+  compileOptionComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -104,7 +104,7 @@ message "a GALGAS lexique source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileLexiqueComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct ;
+  compileLexiqueComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -117,7 +117,7 @@ message "a GALGAS semantics source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileSemanticsComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
+  compileSemanticsComponent !inSourceFile !outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -148,7 +148,7 @@ message "a GALGAS GUI source file"
     ![@parsedLexiqueComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileGuiComponent !inSourceFile ! outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct ;
+  compileGuiComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
