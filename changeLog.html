@@ -18,6 +18,11 @@
  <body>
   <div style="font: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>1.9.1</p>
+   <ul>
+    <li>Bug fix: selection extension in Cocoa GALGAS editor;</li>
+    <li>Bug fix: crash on opening some source files;</li>
+   </ul>
    <p>1.9.0</p>
    <ul>
     <li><span class="hilite">New lexique compiler</span>: now use '.gLexique' extension for lexique component (instead of '.ggs');</li>
@@ -268,7 +273,7 @@
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), the <span class="api">Update from File System</span> operation can lead to an infinite loop;</li>
     <li>Bug fix: in release 1.6.3 of Cocoa GALGAS (and GALGAS generated Cocoa applications), changing a lexical color can lead to an infinite loop;</li>
     <li>new feature for GALGAS generated Cocoa application: definition pop up button management: see [<a href="http://galgas.rts-software.org/doku.php?id=1.6.4">1.6.4 release notes</a>];</li>
-    <li>New <span class="api">description</span> key word: it can be used in pseudo-reader call <tt>[<i>expression</i> <strong>description</strong>]</tt>, ensuring source compatibility from previous releases;</li>
+    <li>New <span class="api">description</span> key word: it can be used in pseudo-reader call <em>[<i>expression</i> <strong>description</strong>]</em>, ensuring source compatibility from previous releases;</li>
     <li>New <span class="api">@lstringlist</span> type: see <a href="http://galgas.rts-software.org/doku.php?id=lstringlist_type"><span class="api">@lstringlist</span> definition</a>;</li>
     <li>New <span class="api">map</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=map_types#keylist"><span class="api">keyList</span></a> that returns a list built with the key values of all entries;</li>
     <li>New <span class="api">@binaryset</span> reader: <a href="http://galgas.rts-software.org/doku.php?id=binaryset_type#containsvalue"><span class="api">containsValue</span></a> that tests if a binary set contains a given value;</li>
@@ -443,7 +448,7 @@
      <li>Added two new lexical actions (thanks to Mika&euml;l Briday): <span class="api">enterBinDigitIntoUInt</span> and <span class="api">enterBinDigitIntoUInt64</span> that enable building an 32-bit and 64-bit unsigned value from binary string;</li>
      <li>In Cocoa GALGAS Applications (and Cocoa GALGAS generated applications), the ruler thickness is now adjusted to display 5 digit line numbers.</li>
      <li>From now, GALGAS compilers (and GALGAS generated tools) run silently without any message on success (of course, warnings and errors are still displayed);</li>
-     <li>From now, GALGAS compilers (and GALGAS generated tools) have a new command line option <span class="api">--verbose</span> (shortly <tt>-v</tt>) that enables message displaying, as for previous releases.</li>
+     <li>From now, GALGAS compilers (and GALGAS generated tools) have a new command line option <span class="api">--verbose</span> (shortly <em>-v</em>) that enables message displaying, as for previous releases.</li>
    </ul>
    <p>1.4.2</p>
    <ul>
