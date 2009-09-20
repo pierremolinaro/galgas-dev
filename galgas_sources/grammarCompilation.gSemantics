@@ -131,6 +131,24 @@ abstract method @syntaxInstruction buildSyntaxInstructionList
 ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#  B U I L D    S Y N T A X    I N S T R U C T I O N    L I S T             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine buildSyntaxInstructionList
+  ??@syntaxInstructionList inInstructionList
+  !@syntaxInstructionList outSyntaxInstructionList
+:
+  outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
+  foreach inInstructionList do
+    [mInstruction buildSyntaxInstructionList !?outSyntaxInstructionList] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                     buildSyntaxInstructionList                            *
+#---------------------------------------------------------------------------*
 
 override method @semanticInstruction buildSyntaxInstructionList
   ?!@syntaxInstructionList unused ioSyntaxInstructionList
@@ -156,47 +174,61 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @repeatInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 :
+  @syntaxInstructionList repeatedInstructionList ;
+  buildSyntaxInstructionList !mRepeatedInstructionList ?repeatedInstructionList ;
+  @listOfSyntaxInstructionList repeatBranchList [emptyList] ;
+  foreach mRepeatBranchList do
+    @syntaxInstructionList syntaxInstructionList ;
+    buildSyntaxInstructionList !mSyntaxInstructionList ?syntaxInstructionList ;
+    repeatBranchList += !syntaxInstructionList ;
+  end foreach ;
+  @repeatInstruction ri [new
+    !repeatedInstructionList
+    !repeatBranchList
+  ] ;
+  ioSyntaxInstructionList += !ri ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @selectInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 :
+  @listOfSyntaxInstructionList selectBranchList [emptyList] ;
+  foreach mSelectBranchList do
+    @syntaxInstructionList syntaxInstructionList ;
+    buildSyntaxInstructionList !mSyntaxInstructionList ?syntaxInstructionList ;
+    selectBranchList += !syntaxInstructionList ;
+  end foreach ;
+  @selectInstruction si [new
+    !selectBranchList
+  ] ;
+  ioSyntaxInstructionList += !si ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseDoInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 :
+  @syntaxInstructionList instructionList ;
+  [mParseDoBranchList first ?instructionList] ;
+  foreach instructionList do
+    [mInstruction buildSyntaxInstructionList !?ioSyntaxInstructionList] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @blockInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 :
-end method ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  B U I L D    S Y N T A X    I N S T R U C T I O N    L I S T             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine buildSyntaxInstructionList
-  ??@syntaxInstructionList inInstructionList
-  !@syntaxInstructionList outSyntaxInstructionList
-:
-  outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
-  foreach inInstructionList do
-    [mInstruction buildSyntaxInstructionList !?outSyntaxInstructionList] ;
-  
+  foreach mInstructionList do
+    [mInstruction buildSyntaxInstructionList !?ioSyntaxInstructionList] ;
   end foreach ;
-end routine ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -213,7 +245,6 @@ routine handleRules
     [mLabelList first ?* ?* ?instructionList] ;
     @syntaxInstructionList syntaxInstructionList ;
     buildSyntaxInstructionList !instructionList ?syntaxInstructionList ;
-
   end foreach ;
 end routine ;
 
