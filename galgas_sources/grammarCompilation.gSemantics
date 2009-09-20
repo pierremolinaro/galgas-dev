@@ -19,6 +19,8 @@
 semantics grammarCompilation :
 import "grammarMetamodel.gSemantics" ;
 #import "semanticsSemantics.gSemantics" ;
+
+
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 #import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
@@ -36,6 +38,184 @@ map @nonTerminalMap {
   insert insertKey error message "the '@%K' non terminal has been already declared in %L" ;
   search searchKey error message "the '@%K' non terminal is not declared" ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  H A N D L E    N O N    T E R M I N A L   D E C L A R A T I O N S        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine handleNonTerminalDeclarations
+  !@nonTerminalMap outNonTerminalMap
+  ??@nonterminalDeclarationList inNonterminalDeclarationList
+:
+  outNonTerminalMap := [@nonTerminalMap emptyMap] ;
+  foreach inNonterminalDeclarationList do
+    if [outNonTerminalMap hasKey ![mNonterminalName string]] then
+      @nonTerminalLabelList labels ;
+      @bool hasParseLabel ;
+      [outNonTerminalMap searchKey
+        !mNonterminalName
+        ?labels
+        ?hasParseLabel
+      ] ;
+     #--- Compare 'parse' label
+      if mHasParseLabel & not hasParseLabel then
+        error mNonterminalName: "this declaration has a 'parse' label, but declaration of the same non terminal in " 
+        . [[outNonTerminalMap locationForKey ![mNonterminalName string]] locationString]
+        . " does not have a 'parse' label" ;
+      elsif (not mHasParseLabel) &  hasParseLabel then
+        error mNonterminalName: "this declaration has no 'parse' label, but declaration of the same non terminal in " 
+        . [[outNonTerminalMap locationForKey ![mNonterminalName string]] locationString]
+        . " has a 'parse' label" ;
+      end if ;
+    #--- Compare regular labels
+      if [labels length] != [mLabels length] then
+        error mNonterminalName: "this declaration names " 
+          . [[mLabels length] string]
+          . " labels, but declaration of the same non terminal in " 
+          . [[outNonTerminalMap locationForKey ![mNonterminalName string]] locationString]
+          . " names"
+          . [[labels length] string]
+          . " labels."
+        ;
+      else
+        foreach mLabels, labels (@lstring labelName @formalParameterList formalParameters) do
+          if mLabelName != labelName then
+            error mLabelName: "this label should be identical to the label '"
+            . labelName
+            . "' declared in " 
+            . [[labelName location] locationString]
+            ;
+          end if ;
+          foreach mFormalParameters, formalParameters (@formalArgumentPassingMode formalParameterPassingMode
+                                                       @lstring formalParameterTypeName
+                                                       *
+                                                       *) do
+            
+            if mFormalParameterPassingMode != formalParameterPassingMode then
+              error mFormalParameterName: "the passing mode ("
+              . [mFormalParameterPassingMode string]
+              . ") for this parameter should be identical to the passing mode ("
+              . [formalParameterPassingMode string]
+              . ") of the parameter declared in"
+              . [[labelName location] locationString]
+              ;
+            end if ;
+            if [mFormalParameterName string] != [formalParameterTypeName string] then
+              error mFormalParameterName: "this type name should be identical to the '@"
+              . labelName
+              . "' type name used in " 
+              . [[labelName location] locationString]
+              ;
+            end if ;
+          end foreach ;
+        end foreach ;
+      end if ;
+    else
+      [!?outNonTerminalMap insertKey
+        !mNonterminalName
+        !mLabels
+        !mHasParseLabel
+      ] ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                     buildSyntaxInstructionList                            *
+#---------------------------------------------------------------------------*
+
+abstract method @syntaxInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @nonterminalCallInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+#  ioSyntaxInstructionList += !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @terminalCheckInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+#  ioSyntaxInstructionList += !self ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @repeatInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selectInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @parseDoInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @blockInstruction buildSyntaxInstructionList
+  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  B U I L D    S Y N T A X    I N S T R U C T I O N    L I S T             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine buildSyntaxInstructionList
+  ??@syntaxInstructionList inInstructionList
+  !@syntaxInstructionList outSyntaxInstructionList
+:
+  outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
+  foreach inInstructionList do
+    [mInstruction buildSyntaxInstructionList !?outSyntaxInstructionList] ;
+  
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  H A N D L E    R U L E S                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine handleRules
+  ??@syntaxRuleList inRuleList
+:
+  foreach inRuleList do
+  #--- We get only the first label (all syntax signatures are the same)
+    @syntaxInstructionList instructionList ;
+    [mLabelList first ?* ?* ?instructionList] ;
+    @syntaxInstructionList syntaxInstructionList ;
+    buildSyntaxInstructionList !instructionList ?syntaxInstructionList ;
+
+  end foreach ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -80,81 +260,15 @@ routine compileGrammarComponent
           . lexiqueComponent . "' lexique component (they should be the same)" ;
       end if ;
     #--- Handle non terminal declarations
-      @nonTerminalMap nonTerminalMap [emptyMap] ;
-      foreach [syntaxComponentRoot mNonterminalDeclarationList] do
-        if [nonTerminalMap hasKey ![mNonterminalName string]] then
-          @nonTerminalLabelList labels ;
-          @bool hasParseLabel ;
-          [nonTerminalMap searchKey
-            !mNonterminalName
-            ?labels
-            ?hasParseLabel
-          ] ;
-         #--- Compare 'parse' label
-          if mHasParseLabel & not hasParseLabel then
-            error mNonterminalName: "this declaration has a 'parse' label, but declaration of the same non terminal in " 
-            . [[nonTerminalMap locationForKey ![mNonterminalName string]] locationString]
-            . " does not have a 'parse' label" ;
-          elsif (not mHasParseLabel) &  hasParseLabel then
-            error mNonterminalName: "this declaration has no 'parse' label, but declaration of the same non terminal in " 
-            . [[nonTerminalMap locationForKey ![mNonterminalName string]] locationString]
-            . " has a 'parse' label" ;
-          end if ;
-        #--- Compare regular labels
-          if [labels length] != [mLabels length] then
-            error mNonterminalName: "this declaration names " 
-              . [[mLabels length] string]
-              . " labels, but declaration of the same non terminal in " 
-              . [[nonTerminalMap locationForKey ![mNonterminalName string]] locationString]
-              . " names"
-              . [[labels length] string]
-              . " labels."
-            ;
-          else
-            foreach mLabels, labels (@lstring labelName @formalParameterList formalParameters) do
-              if mLabelName != labelName then
-                error mLabelName: "this label should be identical to the label '"
-                . labelName
-                . "' declared in " 
-                . [[labelName location] locationString]
-                ;
-              end if ;
-              foreach mFormalParameters, formalParameters (@formalArgumentPassingMode formalParameterPassingMode
-                                                           @lstring formalParameterTypeName
-                                                           *
-                                                           *) do
-                
-                if mFormalParameterPassingMode != formalParameterPassingMode then
-                  error mFormalParameterName: "the passing mode ("
-                  . [mFormalParameterPassingMode string]
-                  . ") for this parameter should be identical to the passing mode ("
-                  . [formalParameterPassingMode string]
-                  . ") of the parameter declared in"
-                  . [[labelName location] locationString]
-                  ;
-                end if ;
-                if [mFormalParameterName string] != [formalParameterTypeName string] then
-                  error mFormalParameterName: "this type name should be identical to the '@"
-                  . labelName
-                  . "' type name used in " 
-                  . [[labelName location] locationString]
-                  ;
-                end if ;
-              end foreach ;
-            end foreach ;
-          end if ;
-        else
-          [!?nonTerminalMap insertKey
-            !mNonterminalName
-            !mLabels
-            !mHasParseLabel
-          ] ;
-        end if ;
-      end foreach ;
+      @nonTerminalMap nonTerminalMap ;
+      handleNonTerminalDeclarations
+        ?nonTerminalMap
+        ![syntaxComponentRoot mNonterminalDeclarationList]
+      ;
     #--- Handle syntax rules
-      foreach [syntaxComponentRoot mRuleList] do
-      
-      end foreach ;
+      handleRules
+        ![syntaxComponentRoot mRuleList]
+      ;
     end if ;
   end foreach ;
 end routine ;
