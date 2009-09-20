@@ -680,6 +680,30 @@
 		CFCB12930D9D74330016BE3F /* galgasTemplateGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB12570D9D74330016BE3F /* galgasTemplateGrammar.cpp */; };
 		CFCB12950D9D74330016BE3F /* galgasTemplateParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB12590D9D74330016BE3F /* galgasTemplateParser.cpp */; };
 		CFCB12970D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
+		CFCD021C1066412100EA0463 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
+		CFCD021F1066414000EA0463 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFCD02201066414100EA0463 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFCD02211066414200EA0463 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFCD02241066416300EA0463 /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
+		CFCD02271066417900EA0463 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFCD02281066418300EA0463 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFCD02291066418300EA0463 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFCD022C106641B800EA0463 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFCD022D106641B900EA0463 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFCD0230106641DF00EA0463 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFCD0233106641F900EA0463 /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
+		CFCD02361066420C00EA0463 /* parameterArgumentBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154310C106A8200A1D904 /* parameterArgumentBuilder.cpp */; };
+		CFCD02371066420D00EA0463 /* parameterArgumentMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE154330C106A8200A1D904 /* parameterArgumentMetamodel.cpp */; };
+		CFCD02381066420E00EA0463 /* expressionModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEE57840BFB5A4200B99D47 /* expressionModelBuilder.cpp */; };
+		CFCD02391066420F00EA0463 /* semanticInstructionListModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E5340BC3D89C005A1AEC /* semanticInstructionListModelBuilder.cpp */; };
+		CFCD023A1066421000EA0463 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
+		CFCD023B1066421200EA0463 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
+		CFCD023C1066421300EA0463 /* semanticsModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */; };
+		CFCD023D1066421D00EA0463 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
+		CFCD023E1066421E00EA0463 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
+		CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
+		CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
+		CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
 		CFCF13151020BB91003E9964 /* GGS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF13141020BB91003E9964 /* GGS_data.cpp */; };
 		CFCF13161020BB91003E9964 /* GGS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF13141020BB91003E9964 /* GGS_data.cpp */; };
 		CFCF13171020BB91003E9964 /* GGS_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCF13141020BB91003E9964 /* GGS_data.cpp */; };
@@ -2567,12 +2591,12 @@
 				CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */,
 				CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */,
 				CFFE920D0B7CC06E009BCBF5 /* domain_parser.h */,
-				CF76F4A0090E739A00036FAC /* expression_parser.h */,
 				CFF53781057A50D600854C83 /* expression_parser.cpp */,
-				CF76F499090E738800036FAC /* semantics_parser.h */,
+				CF76F4A0090E739A00036FAC /* expression_parser.h */,
 				CFF53785057A50E400854C83 /* semantics_parser.cpp */,
-				CFDA3E02090E758600FEB333 /* semantics_semantics.h */,
+				CF76F499090E738800036FAC /* semantics_parser.h */,
 				CFF53787057A50E400854C83 /* semantics_semantics.cpp */,
+				CFDA3E02090E758600FEB333 /* semantics_semantics.h */,
 			);
 			name = "Semantics Component";
 			sourceTree = "<group>";
@@ -3368,6 +3392,18 @@
 				CF06F7EF10498E5B005F03FA /* semanticsMetamodel.cpp in Sources */,
 				CF0EA2FA1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32610654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
+				CFCD021C1066412100EA0463 /* semanticsCompilation.cpp in Sources */,
+				CFCD021F1066414000EA0463 /* syntaxMetamodel.cpp in Sources */,
+				CFCD02201066414100EA0463 /* syntaxModelBuilder.cpp in Sources */,
+				CFCD02211066414200EA0463 /* syntaxSLRgrammar.cpp in Sources */,
+				CFCD02241066416300EA0463 /* semanticsModelBuilder.cpp in Sources */,
+				CFCD02271066417900EA0463 /* semanticsSLRgrammar.cpp in Sources */,
+				CFCD02281066418300EA0463 /* grammarMetamodel.cpp in Sources */,
+				CFCD02291066418300EA0463 /* grammarModelBuilder.cpp in Sources */,
+				CFCD022C106641B800EA0463 /* parameterArgumentBuilder.cpp in Sources */,
+				CFCD022D106641B900EA0463 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFCD0230106641DF00EA0463 /* expressionModelBuilder.cpp in Sources */,
+				CFCD0233106641F900EA0463 /* semanticInstructionListModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3907,6 +3943,18 @@
 				CFCF13161020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FB1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32710654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
+				CFCD02361066420C00EA0463 /* parameterArgumentBuilder.cpp in Sources */,
+				CFCD02371066420D00EA0463 /* parameterArgumentMetamodel.cpp in Sources */,
+				CFCD02381066420E00EA0463 /* expressionModelBuilder.cpp in Sources */,
+				CFCD02391066420F00EA0463 /* semanticInstructionListModelBuilder.cpp in Sources */,
+				CFCD023A1066421000EA0463 /* semanticsCompilation.cpp in Sources */,
+				CFCD023B1066421200EA0463 /* semanticsSLRgrammar.cpp in Sources */,
+				CFCD023C1066421300EA0463 /* semanticsModelBuilder.cpp in Sources */,
+				CFCD023D1066421D00EA0463 /* syntaxMetamodel.cpp in Sources */,
+				CFCD023E1066421E00EA0463 /* syntaxModelBuilder.cpp in Sources */,
+				CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */,
+				CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */,
+				CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
