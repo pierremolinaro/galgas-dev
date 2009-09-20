@@ -140,17 +140,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 :
-#  ioSyntaxInstructionList += !self ;
+  ioSyntaxInstructionList += !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction buildSyntaxInstructionList
-  ?!@syntaxInstructionList unused ioSyntaxInstructionList
+  ?!@syntaxInstructionList ioSyntaxInstructionList
 :
-#  ioSyntaxInstructionList += !self ;
+  ioSyntaxInstructionList += !self ;
 end method ;
 
 #---------------------------------------------------------------------------*

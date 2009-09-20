@@ -629,7 +629,8 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 
 void cPtr_typeCppThisInCategoryName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
-  inFile << "? /* self in category method*/" ;
+  inFile << "operand_"
+         << cStringWithUnsigned (mVariableLocation.location ()) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -159,7 +159,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << " () {}\n\n" ;
 //--- Pointer assignment constructor
   inHfile << "//--- Pointer assignment constructor\n"
-             "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) ;\n\n" ;
+             "  public : GGS_" << aNomClasse << " (const cPtr__AC_galgas_class * inPointer) ;\n\n" ;
 
   inHfile << "//--- Object assignment constructor\n"
              "  public : GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) ;\n\n" ;
@@ -753,8 +753,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Pointer assignment constructor
   inCppFile << "GGS_" << aNomClasse << "::\n"
-               "GGS_" << aNomClasse << " (cPtr__AC_galgas_class * inPointer) {\n"
-               "  macroAssignPointer (mPointer, inPointer) ;\n"
+               "GGS_" << aNomClasse << " (const cPtr__AC_galgas_class * inPointer) {\n"
+               "  macroAssignPointer (mPointer, (cPtr__AC_galgas_class *) inPointer) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
