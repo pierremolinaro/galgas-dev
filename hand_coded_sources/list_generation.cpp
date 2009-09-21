@@ -85,7 +85,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : virtual void\n"
              "  appendForDescription (C_Compiler & inLexique,\n"
              "                        C_String & ioString,\n"
-             "                        const sint32 inIndentation\n"
+             "                        const PMSInt32 inIndentation\n"
              "                        COMMA_LOCATION_ARGS) const ;\n\n" ;
 
 //--- Friend declaration
@@ -122,7 +122,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Constructor 'listWithValue'
              "  public : static GGS_" << aNomListe << " constructor_listWithValue (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  sint32 numeroVariable = 0 ;
+  PMSInt32 numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                                " ;
@@ -139,8 +139,8 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Get sublist\n"
              "  protected : void\n"
              "  internalSubListWithRange (GGS_" << aNomListe << " & ioList,\n"
-             "                            const sint32 inFirstIndex,\n"
-             "                            const sint32 inCount) const ;\n\n"
+             "                            const PMSInt32 inFirstIndex,\n"
+             "                            const PMSInt32 inCount) const ;\n\n"
              "  public : GGS_" << aNomListe << "\n"
              "  reader_subListWithRange (C_Compiler & inLexique,\n"
              "                           const GGS_uint & inFirstIndex,\n"
@@ -252,7 +252,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Direct element access
 //             "//--- Direct element access\n"
-//             "  public : cElement * operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const ;\n"
+//             "  public : cElement * operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Prepend a new value
              "  public : void modifier_prependValue (C_Compiler & inLexique" ;
@@ -305,7 +305,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
-             "                      const sint32 inIndentation = 0) const ;\n\n" ;
+             "                      const PMSInt32 inIndentation = 0) const ;\n\n" ;
 
 //--- Direct read access
   inHfile << "//--------------------------------- Direct Read Access\n" ;
@@ -376,7 +376,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_listTypeToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -385,7 +385,7 @@ void cPtr_C_listTypeToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 //------------- Implementation de l'element de liste -----------------
   inCppFile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
@@ -394,7 +394,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
                "elementOf_GGS_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  sint32 numeroVariable = 0 ;
+  PMSInt32 numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                                " ;
@@ -454,13 +454,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                  "appendForDescription (C_Compiler & /* inLexique */,\n"
                  "                          C_String & /* ioString */,\n"
-                 "                          const sint32 /* inIndentation */\n"
+                 "                          const PMSInt32 /* inIndentation */\n"
                  "                          COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
   }else{
     inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                  "appendForDescription (C_Compiler & inLexique,\n"
                  "                          C_String & ioString,\n"
-                 "                          const sint32 inIndentation\n"
+                 "                          const PMSInt32 inIndentation\n"
                  "                          COMMA_LOCATION_ARGS) const {\n" ;
     numeroVariable = 0 ;
     while (current.hasCurrentObject ()) {
@@ -590,7 +590,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Direct element access
 /*  inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << aNomListe << "::cEnumerator GGS_" << aNomListe << "::\n"
-               "operator () (const sint32 inIndex COMMA_LOCATION_ARGS) const {\n"
+               "operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {\n"
                "  MF_AssertThere (inIndex >= 0, \"inIndex (%ld) < 0\", inIndex, 0) ;\n"
                "  MF_AssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
                "  return (cElement *) objectAtIndexOrNULL (inIndex) ;\n"
@@ -759,16 +759,16 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Implement 'subListWithRange' reader
   inCppFile << "void GGS_" << aNomListe << "::\n"
                "internalSubListWithRange (GGS_" << aNomListe << " & ioList,\n"
-               "                          const sint32 inFirstIndex,\n"
-               "                          const sint32 inCount) const {\n"
+               "                          const PMSInt32 inFirstIndex,\n"
+               "                          const PMSInt32 inCount) const {\n"
                "  ioList.alloc () ;\n"
                "  if (inCount > 0) {\n"
                "    cElement * ptr = firstObject () ;\n"
-               "    for (sint32 i=0 ; i<inFirstIndex ; i++) {\n"
+               "    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {\n"
                "      macroValidPointer (ptr) ;\n"
                "      ptr = ptr->nextObject () ;\n"
                "    }\n"
-               "    for (sint32 i=0 ; i<inCount ; i++) {\n"
+               "    for (PMSInt32 i=0 ; i<inCount ; i++) {\n"
                "      macroValidPointer (ptr) ;\n"
                "      ioList._addAssign_operation (" ;
   current.rewind () ;
@@ -795,8 +795,8 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {\n"
-               "    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;\n"
-               "    const sint32 rangeCount = (sint32) inCount.uintValue () ;\n"
+               "    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;\n"
+               "    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;\n"
                "    if ((firstIndex + rangeCount) > count ()) {\n"
                "      inLexique.onTheFlyRunTimeError (\"'subListWithRange' method invoked with upper bound greater than list object count\" COMMA_THERE) ;\n"
                "    }else{\n"
@@ -813,7 +813,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  if (isBuilt () && inIndex.isBuilt ()) {\n"
-               "    const sint32 startIndex = (sint32) inIndex.uintValue () ;\n"
+               "    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;\n"
                "    if (startIndex > count ()) {\n"
                "      inLexique.onTheFlyRunTimeError (\"'subListFromIndex' method invoked with start index greater than list object count\" COMMA_THERE) ;\n"
                "    }else{\n"
@@ -828,7 +828,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
                "reader_description (C_Compiler & inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
-               "                    const sint32 inIndentation) const {\n"
+               "                    const PMSInt32 inIndentation) const {\n"
                "  return _description (inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
@@ -1109,13 +1109,13 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  isEqualToObject (const cSortedListElement * inOperand) const ;\n"
 //--- Virtual method for implementing element comparison
              "//--- Method used for sorting elements\n"
-             "  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
+             "  protected : virtual PMSInt32 compareForSorting (const cSortedListElement * inOperand) const ;\n"
 //--- Method for list 'description' reader
              "//--- Method used for description\n"
              "  public : virtual void\n"
              "  appendForDescription (C_Compiler & inLexique,\n"
              "                        C_String & ioString,\n"
-             "                        const sint32 inIndentation\n"
+             "                        const PMSInt32 inIndentation\n"
              "                        COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Friend declaration
@@ -1159,7 +1159,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Constructor 'sortedListWithValue'
              "  public : static GGS_" << aNomListe << " constructor_sortedListWithValue (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  sint32 numeroVariable = 0 ;
+  PMSInt32 numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                           " ;
@@ -1293,7 +1293,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Reader 'description\n"
              "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const sint32 inIndentation = 0) const ;\n"
+             "                                          const PMSInt32 inIndentation = 0) const ;\n"
 
 //--- Enumerator declaration
              "//--------------------------------- Sorted List Enumerator\n"
@@ -1337,7 +1337,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_sortedListTypeToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -1346,7 +1346,7 @@ void cPtr_C_sortedListTypeToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 //------------- Implementation de l'element de liste -----------------
   inCppFile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
@@ -1355,7 +1355,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "elementOf_GGS_" << aNomListe << "::\n"
                "elementOf_GGS_" << aNomListe << " (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mNonExternAttributesList, true) ;
-  sint32 numeroVariable = 0 ;
+  PMSInt32 numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) inCppFile << ",\n                                " ;
     inCppFile << "const " ;
@@ -1405,13 +1405,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
 
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "sint32 elementOf_GGS_" << aNomListe << "::\n"
+  inCppFile << "PMSInt32 elementOf_GGS_" << aNomListe << "::\n"
                "compareForSorting (const cSortedListElement * inOperand) const {\n"
                "  const elementOf_GGS_" << aNomListe << " * operand = (const elementOf_GGS_" << aNomListe << " *) inOperand ;\n" ;
   
   GGS_EXsortDescriptorList::cEnumerator sortAttribute (mSortDescriptorList, true) ;
   if (sortAttribute.hasCurrentObject ()) {
-    inCppFile << "  sint32 result = "
+    inCppFile << "  PMSInt32 result = "
               << (sortAttribute._mAscendingOrder (HERE).boolValue () ? "" : "- ")
               << sortAttribute._mSortAttribute (HERE)
               << ".compareForSortedList (operand->" << sortAttribute._mSortAttribute (HERE) << ") ;\n" ;
@@ -1432,7 +1432,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void elementOf_GGS_" << aNomListe << "::\n"
                "appendForDescription (C_Compiler & inLexique,\n"
                "                      C_String & ioString,\n"
-               "                      const sint32 inIndentation\n"
+               "                      const PMSInt32 inIndentation\n"
                "                      COMMA_LOCATION_ARGS) const {\n" ;
   current.rewind () ;
   numeroVariable = 0 ;
@@ -1656,7 +1656,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_string GGS_" << aNomListe << "::\n"
                "reader_description (C_Compiler & inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
-               "                    const sint32 inIndentation) const {\n"
+               "                    const PMSInt32 inIndentation) const {\n"
                "  return _description (inLexique, \"@" << aNomListe << "\", inIndentation COMMA_THERE) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;

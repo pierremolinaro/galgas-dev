@@ -37,7 +37,7 @@ cElementTableControlePhase (const INFO & inInfo,
                             const enumNatureEntite nature,
                             const enumEtatVariable etat,
                             const GGS_lstring & clef,
-                            const sint32 numeroElement,
+                            const PMSInt32 numeroElement,
                             const bool inIsDeclaredUnused,
                             const bool inUsed) :
 mInfPtr (NULL),
@@ -109,7 +109,7 @@ reader_hasKey (C_Compiler & /* inLexique */,
     cElement * current = mRoot ;
     while ((current != NULL) && ! found) {
       macroValidPointer (current) ;
-      const sint32 comparaison = current->mKey.string ().compareStringByLength (inKey.string ()) ;
+      const PMSInt32 comparaison = current->mKey.string ().compareStringByLength (inKey.string ()) ;
       if (comparaison > 0) {
         current = current->mInfPtr ;
       }else if (comparaison < 0) {
@@ -198,7 +198,7 @@ void cGalgasVariablesMap <INFO>::rotateRight (cElement * & a) {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertInArgument (C_Compiler & inLexique,
                   const INFO & inInfo,
                   const GGS_lstring & clef,
@@ -212,7 +212,7 @@ insertInArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertUnusedInArgument (C_Compiler & inLexique,
                         const INFO & inInfo,
                         const GGS_lstring & clef,
@@ -226,7 +226,7 @@ insertUnusedInArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertInOutArgument (C_Compiler & inLexique,
                      const INFO & inInfo,
                      const GGS_lstring & clef,
@@ -240,7 +240,7 @@ insertInOutArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertUsedInOutArgument (C_Compiler & inLexique,
                          const INFO & inInfo,
                          const GGS_lstring & clef,
@@ -255,7 +255,7 @@ insertUsedInOutArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertUnusedInOutArgument (C_Compiler & inLexique,
                            const INFO & inInfo,
                            const GGS_lstring & clef,
@@ -269,7 +269,7 @@ insertUnusedInOutArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertOutArgument (C_Compiler & inLexique,
                    const INFO & inInfo,
                    const GGS_lstring & clef,
@@ -285,7 +285,7 @@ insertOutArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertWithInstructionLocalVariable (C_Compiler & inLexique,
                                     const INFO & inInfo,
                                     const GGS_lstring & clef,
@@ -301,7 +301,7 @@ insertWithInstructionLocalVariable (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertLocalVariable (C_Compiler & inLexique,
                      const INFO & inInfo,
                      const GGS_lstring & clef,
@@ -316,7 +316,7 @@ insertLocalVariable (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertConstInArgument (C_Compiler & inLexique,
                        const INFO & inInfo,
                        const GGS_lstring & clef,
@@ -331,7 +331,7 @@ insertConstInArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertUsedConstInArgument (C_Compiler & inLexique,
                            const INFO & inInfo,
                            const GGS_lstring & clef,
@@ -346,7 +346,7 @@ insertUsedConstInArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
                            const INFO & inInfo,
                            const GGS_lstring & clef,
@@ -361,7 +361,7 @@ insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertUnusedConstInArgument (C_Compiler & inLexique,
                              const INFO & inInfo,
                              const GGS_lstring & clef,
@@ -376,7 +376,7 @@ insertUnusedConstInArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::
+PMSInt32 cGalgasVariablesMap <INFO>::
 insertKey (C_Compiler & inLexique,
            const INFO & inInfo,
            const enumNatureEntite nature,
@@ -388,7 +388,7 @@ insertKey (C_Compiler & inLexique,
            const char * messageErreurInsertion,
            const bool inSearchForShadow
            COMMA_LOCATION_ARGS) {
-  sint32 resultat = -1 ; // Erreur 'insertion incorrecte'
+  PMSInt32 resultat = -1 ; // Erreur 'insertion incorrecte'
   if (isBuilt () && inKey.isBuilt ()) {
   //--- Warns for shadows ?
     if (inSearchForShadow) {
@@ -400,7 +400,7 @@ insertKey (C_Compiler & inLexique,
         cElement * result = surchargeCourante->champTable ;
         while ((result != NULL) && ! found) {
           macroValidPointer (result) ;
-          const sint32 comparaison = result->mKey.compareStringByLength (inKey) ;
+          const PMSInt32 comparaison = result->mKey.compareStringByLength (inKey) ;
           if (comparaison > 0) {
             result = result->mInfPtr ;
           }else if (comparaison < 0) {
@@ -451,7 +451,7 @@ internalRecursiveInsert (bool & insertionOk,
     extension = true ;
   }else{
     macroValidPointer (racine) ;
-    const sint32 comparaison = racine->mKey.compareStringByLength (clef) ;
+    const PMSInt32 comparaison = racine->mKey.compareStringByLength (clef) ;
     if (comparaison > 0) {
       internalRecursiveInsert (insertionOk, inInfo, nature, etat, inIsDeclaredUnused, inUsed, clef, racine->mInfPtr, extension) ;
       if (extension) {
@@ -512,7 +512,7 @@ chercherInterne (C_Compiler & inLexique,
     bool found = false ;
     while ((resultat != NULL) && ! found) {
       macroValidPointer (resultat) ;
-      const sint32 comparaison = resultat->mKey.compareStringByLength (clef) ;
+      const PMSInt32 comparaison = resultat->mKey.compareStringByLength (clef) ;
       if (comparaison > 0) {
         resultat = resultat->mInfPtr ;
       }else if (comparaison < 0) {
@@ -529,7 +529,7 @@ chercherInterne (C_Compiler & inLexique,
       found = false ;
       while ((resultat != NULL) && ! found) {
         macroValidPointer (resultat) ;
-        const sint32 comparaison = resultat->mKey.compareStringByLength (clef) ;
+        const PMSInt32 comparaison = resultat->mKey.compareStringByLength (clef) ;
         if (comparaison > 0) {
           resultat = resultat->mInfPtr ;
         }else if (comparaison < 0) {
@@ -996,7 +996,7 @@ bool cGalgasVariablesMap <INFO>::isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cGalgasVariablesMap <INFO>::count (void) const {
+PMSInt32 cGalgasVariablesMap <INFO>::count (void) const {
   return mListLength ;
 }
 

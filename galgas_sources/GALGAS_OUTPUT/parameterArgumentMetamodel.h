@@ -98,7 +98,7 @@ class GGS_formalArgumentPassingMode {
   private : inline GGS_formalArgumentPassingMode (const enumeration inValue) : mValue (inValue) {}
 
 //--- Bit count for bdd
-  public : static inline uint16 bitCount (void) { return 3 ; }
+  public : static inline PMUInt16 bitCount (void) { return 3 ; }
 
 //--- Is built ?
   public : bool isBuilt (void) const ;
@@ -130,7 +130,7 @@ class GGS_formalArgumentPassingMode {
 //--- 'description' reader
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
 
 //--- Drop operation
   public : inline void drop (void) { mValue = kNotBuilt ; }
@@ -164,8 +164,8 @@ class GGS_formalParameterList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_formalParameterList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_formalParameterList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -252,7 +252,7 @@ class GGS_formalParameterList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_formalArgumentPassingMode
@@ -324,8 +324,8 @@ class GGS_formalInputParameterList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_formalInputParameterList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_formalInputParameterList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -404,7 +404,7 @@ class GGS_formalInputParameterList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -755,8 +755,8 @@ class GGS_actualParameterList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_actualParameterList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_actualParameterList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -819,7 +819,7 @@ class GGS_actualParameterList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_actualParameter 
@@ -866,8 +866,8 @@ class GGS_actualInputParameterList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_actualInputParameterList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_actualInputParameterList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -938,7 +938,7 @@ class GGS_actualInputParameterList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -1008,7 +1008,7 @@ class elementOf_GGS_formalParameterList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1046,7 +1046,7 @@ class elementOf_GGS_formalInputParameterList : public AC_galgas_list::cListEleme
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1079,7 +1079,7 @@ class cPtr_actualParameter : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -1115,7 +1115,7 @@ class cPtr_outputActualParameter : public cPtr_actualParameter {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1160,7 +1160,7 @@ class cPtr_outputInputActualParameter : public cPtr_actualParameter {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1205,7 +1205,7 @@ class cPtr_inputActualParameter : public cPtr_actualParameter {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1246,7 +1246,7 @@ class cPtr_inputJokerActualParameter : public cPtr_actualParameter {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1284,7 +1284,7 @@ class elementOf_GGS_actualParameterList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1320,7 +1320,7 @@ class elementOf_GGS_actualInputParameterList : public AC_galgas_list::cListEleme
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration

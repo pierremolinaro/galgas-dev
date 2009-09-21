@@ -33,7 +33,7 @@
 void cPtr_typeCallOfTypeMethodInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
 
@@ -97,7 +97,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeMethodCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
 
@@ -238,7 +238,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 void cPtr_typeModifierCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
 
@@ -308,7 +308,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 void cPtr_typeInstructionAppelMethodeListe::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -370,7 +370,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 void cPtr_C_grammarInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -462,7 +462,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeSendInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -506,11 +506,11 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeRoutineCallInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
-    sint16 nombreArgumentsTestes = 0 ;
+    PMSInt16 nombreArgumentsTestes = 0 ;
     if (mIsExternActionCall.boolValue ()) {
       GGS_typeExpressionList::cEnumerator argCourant (mExpressionsList, true) ;
       GGS_L_EXsignature::cEnumerator typeArgumentCourant (mFormalParameterList, true) ;
@@ -594,7 +594,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeWithInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {

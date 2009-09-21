@@ -34,7 +34,7 @@
 void cPtr_C_while_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -118,7 +118,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeForeachInstruction::
 generateSimpleInstruction (AC_OutputStream & ioCppFile,
                            const C_String & inTargetFileName,
-                           sint32 & ioPrototypeIndex,
+                           PMSInt32 & ioPrototypeIndex,
                            const bool inGenerateDebug) const {
   ioCppFile << "{\n" ;
   ioCppFile.incIndentation (+2) ;
@@ -214,7 +214,7 @@ generateSimpleInstruction (AC_OutputStream & ioCppFile,
 void cPtr_typeForeachInstruction::
 generateInstructionWithOptions (AC_OutputStream & ioCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   ioCppFile << "{\n" ;
   ioCppFile.incIndentation (+2) ;
@@ -245,7 +245,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
   }
 //--- Test if enumerated objects have element, and if while expression is initially true
   enumeratedVariable.rewind () ;
-  const sint32 locationForLoopVar = enumeratedVariable._mLocationOffset (HERE).location () ;
+  const PMSInt32 locationForLoopVar = enumeratedVariable._mLocationOffset (HERE).location () ;
   if (enumeratedVariable._mNewStyle (HERE).boolValue ()) {
     ioCppFile << "if (enumerator_" ;
     ioCppFile.appendSigned (enumeratedVariable._mLocationOffset (HERE).location ()) ;
@@ -380,7 +380,7 @@ generateInstructionWithOptions (AC_OutputStream & ioCppFile,
 void cPtr_typeForeachInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {

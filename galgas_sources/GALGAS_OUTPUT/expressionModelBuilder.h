@@ -97,32 +97,32 @@ class expressionModelBuilder {
   protected : void pr_expression_expressionModelBuilder_55_17_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_0 (galgas_scanner &) = 0 ;
 
   protected : void pr_concatenation_term_expressionModelBuilder_74_25_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_1 (galgas_scanner &) = 0 ;
 
   protected : void pr_relation_term_expressionModelBuilder_100_20_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_2 (galgas_scanner &) = 0 ;
 
   protected : void pr_relation_factor_expressionModelBuilder_119_22_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_3 (galgas_scanner &) = 0 ;
 
   protected : void pr_simple_expression_expressionModelBuilder_173_24_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_4 (galgas_scanner &) = 0 ;
 
   protected : void pr_term_expressionModelBuilder_213_11_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_factor_expressionModelBuilder_246_13_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
@@ -136,9 +136,9 @@ class expressionModelBuilder {
   protected : void pr_factor_expressionModelBuilder_284_13_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_expressionModelBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_6 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_expressionModelBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_7 (galgas_scanner &) = 0 ;
 
   protected : void pr_factor_expressionModelBuilder_323_13_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
@@ -155,7 +155,7 @@ class expressionModelBuilder {
   protected : void pr_factor_expressionModelBuilder_371_13_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_8 (galgas_scanner &) = 0 ;
 
   protected : void pr_factor_expressionModelBuilder_388_13_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
@@ -181,20 +181,20 @@ class expressionModelBuilder {
   protected : void pr_factor_expressionModelBuilder_475_13_ (galgas_scanner &,
                                 GGS_semanticExpression  &) ;
 
-  protected : virtual sint16 select_expressionModelBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_9 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_expressionModelBuilder_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_10 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_expressionModelBuilder_11 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_11 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_expressionModelBuilder_12 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_12 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_expressionModelBuilder_13 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_expressionModelBuilder_13 (galgas_scanner &) = 0 ;
 
   protected : void pr_output_expression_list_expressionModelBuilder_562_29_ (galgas_scanner &,
                                 GGS_outExpressionList  &) ;
 
-  protected : virtual sint16 select_repeat_expressionModelBuilder_14 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_expressionModelBuilder_14 (galgas_scanner &) = 0 ;
 
 } ;
 

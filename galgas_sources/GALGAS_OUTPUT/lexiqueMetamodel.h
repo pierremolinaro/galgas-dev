@@ -274,8 +274,8 @@ class GGS_lexicalInstructionList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalInstructionList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalInstructionList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -338,7 +338,7 @@ class GGS_lexicalInstructionList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lexicalInstruction 
@@ -386,8 +386,8 @@ class GGS_metamodelTemplateDelimitorList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_metamodelTemplateDelimitorList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_metamodelTemplateDelimitorList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -466,7 +466,7 @@ class GGS_metamodelTemplateDelimitorList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -530,8 +530,8 @@ class GGS_templateReplacementList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_templateReplacementList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_templateReplacementList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -610,7 +610,7 @@ class GGS_templateReplacementList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -727,8 +727,8 @@ class GGS_lexicalRuleList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalRuleList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalRuleList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -791,7 +791,7 @@ class GGS_lexicalRuleList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_abstractLexicalRule 
@@ -956,8 +956,8 @@ class GGS_lexicalMessageDeclarationList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalMessageDeclarationList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalMessageDeclarationList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1028,7 +1028,7 @@ class GGS_lexicalMessageDeclarationList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -1083,8 +1083,8 @@ class GGS_lexicalAttributeList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalAttributeList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalAttributeList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1155,7 +1155,7 @@ class GGS_lexicalAttributeList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -1210,8 +1210,8 @@ class GGS_lexicalStyleList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalStyleList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalStyleList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1282,7 +1282,7 @@ class GGS_lexicalStyleList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -1340,8 +1340,8 @@ class GGS_terminalDeclarationList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_terminalDeclarationList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_terminalDeclarationList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1436,7 +1436,7 @@ class GGS_terminalDeclarationList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -1516,8 +1516,8 @@ class GGS_lexicalListEntryList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalListEntryList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalListEntryList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1596,7 +1596,7 @@ class GGS_lexicalListEntryList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -1662,8 +1662,8 @@ class GGS_lexicalListDeclarationList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalListDeclarationList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalListDeclarationList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1758,7 +1758,7 @@ class GGS_lexicalListDeclarationList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -2191,8 +2191,8 @@ class GGS_lexicalSendSearchList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalSendSearchList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalSendSearchList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2263,7 +2263,7 @@ class GGS_lexicalSendSearchList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -2607,8 +2607,8 @@ class GGS_lexicalWhileBranchList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalWhileBranchList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalWhileBranchList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2679,7 +2679,7 @@ class GGS_lexicalWhileBranchList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lexicalExpression 
@@ -2794,8 +2794,8 @@ class GGS_lexicalSelectBranchList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalSelectBranchList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalSelectBranchList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2866,7 +2866,7 @@ class GGS_lexicalSelectBranchList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lexicalExpression 
@@ -3036,8 +3036,8 @@ class GGS_lexicalRoutineCallActualArgumentList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalRoutineCallActualArgumentList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalRoutineCallActualArgumentList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -3100,7 +3100,7 @@ class GGS_lexicalRoutineCallActualArgumentList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_abstractLexicalRoutineActualArgument 
@@ -3381,8 +3381,8 @@ class GGS_lexicalFunctionCallActualArgumentList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalFunctionCallActualArgumentList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalFunctionCallActualArgumentList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -3445,7 +3445,7 @@ class GGS_lexicalFunctionCallActualArgumentList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lexicalRoutineOrFunctionFormalInputArgument 
@@ -4137,7 +4137,7 @@ class GGS_lexicalArgumentMode {
   private : inline GGS_lexicalArgumentMode (const enumeration inValue) : mValue (inValue) {}
 
 //--- Bit count for bdd
-  public : static inline uint16 bitCount (void) { return 2 ; }
+  public : static inline PMUInt16 bitCount (void) { return 2 ; }
 
 //--- Is built ?
   public : bool isBuilt (void) const ;
@@ -4165,7 +4165,7 @@ class GGS_lexicalArgumentMode {
 //--- 'description' reader
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
 
 //--- Drop operation
   public : inline void drop (void) { mValue = kNotBuilt ; }
@@ -4198,8 +4198,8 @@ class GGS_lexicalExternRoutineFormalArgumentList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalExternRoutineFormalArgumentList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalExternRoutineFormalArgumentList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -4278,7 +4278,7 @@ class GGS_lexicalExternRoutineFormalArgumentList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lexicalArgumentMode
@@ -4342,8 +4342,8 @@ class GGS_externRoutineList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_externRoutineList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_externRoutineList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -4422,7 +4422,7 @@ class GGS_externRoutineList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -4485,8 +4485,8 @@ class GGS_lexicalExternFunctionFormalArgumentList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_lexicalExternFunctionFormalArgumentList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_lexicalExternFunctionFormalArgumentList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -4557,7 +4557,7 @@ class GGS_lexicalExternFunctionFormalArgumentList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -4613,8 +4613,8 @@ class GGS_externFunctionList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_externFunctionList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_externFunctionList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -4693,7 +4693,7 @@ class GGS_externFunctionList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -4846,7 +4846,7 @@ class cPtr_lexicalExpression : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -4879,7 +4879,7 @@ class cPtr_lexicalInstruction : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -4913,7 +4913,7 @@ class elementOf_GGS_lexicalInstructionList : public AC_galgas_list::cListElement
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4951,7 +4951,7 @@ class elementOf_GGS_metamodelTemplateDelimitorList : public AC_galgas_list::cLis
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4989,7 +4989,7 @@ class elementOf_GGS_templateReplacementList : public AC_galgas_list::cListElemen
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5022,7 +5022,7 @@ class cPtr_abstractLexicalRule : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -5056,7 +5056,7 @@ class elementOf_GGS_lexicalRuleList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5092,7 +5092,7 @@ class cPtr_lexicalImplicitRule : public cPtr_abstractLexicalRule {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5137,7 +5137,7 @@ class cPtr_lexicalExplicitRule : public cPtr_abstractLexicalRule {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5180,7 +5180,7 @@ class elementOf_GGS_lexicalMessageDeclarationList : public AC_galgas_list::cList
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5216,7 +5216,7 @@ class elementOf_GGS_lexicalAttributeList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5252,7 +5252,7 @@ class elementOf_GGS_lexicalStyleList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5294,7 +5294,7 @@ class elementOf_GGS_terminalDeclarationList : public AC_galgas_list::cListElemen
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5332,7 +5332,7 @@ class elementOf_GGS_lexicalListEntryList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5374,7 +5374,7 @@ class elementOf_GGS_lexicalListDeclarationList : public AC_galgas_list::cListEle
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5412,7 +5412,7 @@ class cPtr_lexicalOrExpression : public cPtr_lexicalExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5455,7 +5455,7 @@ class cPtr_lexicalCharacterSetMatch : public cPtr_lexicalExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5498,7 +5498,7 @@ class cPtr_lexicalCharacterMatch : public cPtr_lexicalExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5543,7 +5543,7 @@ class cPtr_lexicalCharacterIntervalMatch : public cPtr_lexicalExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5586,7 +5586,7 @@ class cPtr_lexicalStringMatch : public cPtr_lexicalExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5631,7 +5631,7 @@ class cPtr_lexicalStringNotMatch : public cPtr_lexicalExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5674,7 +5674,7 @@ class elementOf_GGS_lexicalSendSearchList : public AC_galgas_list::cListElement 
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5707,7 +5707,7 @@ class cPtr_lexicalSendDefaultAction : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -5745,7 +5745,7 @@ class cPtr_lexicalStructuredSendInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5788,7 +5788,7 @@ class cPtr_lexicalSimpleSendInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5831,7 +5831,7 @@ class cPtr_lexicalSendTerminalByDefault : public cPtr_lexicalSendDefaultAction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5874,7 +5874,7 @@ class cPtr_lexicalErrorByDefault : public cPtr_lexicalSendDefaultAction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5917,7 +5917,7 @@ class elementOf_GGS_lexicalWhileBranchList : public AC_galgas_list::cListElement
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -5955,7 +5955,7 @@ class cPtr_lexicalRepeatInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -5998,7 +5998,7 @@ class elementOf_GGS_lexicalSelectBranchList : public AC_galgas_list::cListElemen
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6036,7 +6036,7 @@ class cPtr_lexicalSelectInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6078,7 +6078,7 @@ class cPtr_abstractLexicalRoutineActualArgument : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -6112,7 +6112,7 @@ class elementOf_GGS_lexicalRoutineCallActualArgumentList : public AC_galgas_list
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6152,7 +6152,7 @@ class cPtr_lexicalRoutineInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6196,7 +6196,7 @@ class cPtr_lexicalAttributeInputOutputArgument : public cPtr_abstractLexicalRout
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6236,7 +6236,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgument : public cPtr__AC_galgas_
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -6273,7 +6273,7 @@ class cPtr_lexicalFormalInputArgument : public cPtr_abstractLexicalRoutineActual
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6314,7 +6314,7 @@ class elementOf_GGS_lexicalFunctionCallActualArgumentList : public AC_galgas_lis
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6350,7 +6350,7 @@ class cPtr_lexicalAttributeInputArgument : public cPtr_lexicalRoutineOrFunctionF
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6393,7 +6393,7 @@ class cPtr_lexicalCharacterInputArgument : public cPtr_lexicalRoutineOrFunctionF
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6436,7 +6436,7 @@ class cPtr_lexicalUnsignedInputArgument : public cPtr_lexicalRoutineOrFunctionFo
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6479,7 +6479,7 @@ class cPtr_lexicalCurrentCharacterInputArgument : public cPtr_lexicalRoutineOrFu
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6524,7 +6524,7 @@ class cPtr_lexicalFunctionInputArgument : public cPtr_lexicalRoutineOrFunctionFo
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6567,7 +6567,7 @@ class cPtr_lexicalDropInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6610,7 +6610,7 @@ class cPtr_lexicalErrorInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6653,7 +6653,7 @@ class cPtr_lexicalWarningInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6696,7 +6696,7 @@ class cPtr_lexicalTagInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6741,7 +6741,7 @@ class cPtr_lexicalRewindInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6782,7 +6782,7 @@ class cPtr_lexicalLogInstruction : public cPtr_lexicalInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -6824,7 +6824,7 @@ class elementOf_GGS_lexicalExternRoutineFormalArgumentList : public AC_galgas_li
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6862,7 +6862,7 @@ class elementOf_GGS_externRoutineList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6898,7 +6898,7 @@ class elementOf_GGS_lexicalExternFunctionFormalArgumentList : public AC_galgas_l
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6936,7 +6936,7 @@ class elementOf_GGS_externFunctionList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -6993,7 +6993,7 @@ class cPtr_lexiqueComponentRoot : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

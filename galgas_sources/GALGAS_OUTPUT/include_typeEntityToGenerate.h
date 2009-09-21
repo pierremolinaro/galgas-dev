@@ -34,11 +34,11 @@ public : virtual bool isCppClassNeeded (void) const = 0 ;
 
 public : virtual void generateCppClassDeclaration (AC_OutputStream & inHfile,
                                                    const C_String & inTargetFileName,
-                                                   sint32 & ioPrototypeIndex) const = 0 ;
+                                                   PMSInt32 & ioPrototypeIndex) const = 0 ;
 public : virtual void generateCppClassImplementation (C_Compiler & inLexique,
                                                   AC_OutputStream & inCppFile,
                                                   const C_String & inTargetFileName,
-                                                  sint32 & ioPrototypeIndex,
+                                                  PMSInt32 & ioPrototypeIndex,
                                                   const bool inGenerateDebug) const = 0 ;
 
 //--- END OF USER ZONE 2
@@ -62,7 +62,7 @@ public : virtual void generateCppClassImplementation (C_Compiler & inLexique,
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI

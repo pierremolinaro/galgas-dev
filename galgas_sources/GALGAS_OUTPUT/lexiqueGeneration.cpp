@@ -61,7 +61,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalExpression__generateConditionC
 
 void
 enterCategoryReader__lexicalExpression__generateConditionCode (typeCategoryReader__lexicalExpression__generateConditionCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalExpression__generateConditionCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -236,7 +236,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalRoutineOrFunctionFormalInputAr
 
 void
 enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument (typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -377,7 +377,7 @@ static TC_UniqueArray <typeCategoryReader__abstractLexicalRoutineActualArgument_
 
 void
 enterCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument (typeCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__abstractLexicalRoutineActualArgument__generateRoutineArgument.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -457,7 +457,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalSendDefaultAction__generateDef
 
 void
 enterCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode (typeCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalSendDefaultAction__generateDefaultSendCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -540,7 +540,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalInstruction__generateInstructi
 
 void
 enterCategoryReader__lexicalInstruction__generateInstructionCode (typeCategoryReader__lexicalInstruction__generateInstructionCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalInstruction__generateInstructionCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -927,7 +927,7 @@ static TC_UniqueArray <typeCategoryReader__abstractLexicalRule__generateCode> gD
 
 void
 enterCategoryReader__abstractLexicalRule__generateCode (typeCategoryReader__abstractLexicalRule__generateCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__abstractLexicalRule__generateCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 

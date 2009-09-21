@@ -77,7 +77,7 @@ typedef GGS_string (*typeCategoryReader__lexicalExpression__generateCocoaConditi
 
 void
 enterCategoryReader__lexicalExpression__generateCocoaConditionCode (typeCategoryReader__lexicalExpression__generateCocoaConditionCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -98,7 +98,7 @@ typedef GGS_string (*typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgu
 
 void
 enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument (typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -120,7 +120,7 @@ typedef GGS_string (*typeCategoryReader__abstractLexicalRoutineActualArgument__g
 
 void
 enterCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument (typeCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -142,7 +142,7 @@ typedef GGS_string (*typeCategoryReader__lexicalSendDefaultAction__generateCocoa
 
 void
 enterCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (typeCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -165,7 +165,7 @@ typedef GGS_string (*typeCategoryReader__lexicalInstruction__generateCocoaInstru
 
 void
 enterCategoryReader__lexicalInstruction__generateCocoaInstructionCode (typeCategoryReader__lexicalInstruction__generateCocoaInstructionCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -188,7 +188,7 @@ typedef GGS_string (*typeCategoryReader__abstractLexicalRule__generateCocoaCode)
 
 void
 enterCategoryReader__abstractLexicalRule__generateCocoaCode (typeCategoryReader__abstractLexicalRule__generateCocoaCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 

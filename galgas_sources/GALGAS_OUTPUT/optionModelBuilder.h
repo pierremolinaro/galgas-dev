@@ -78,7 +78,7 @@ class optionModelBuilder {
   protected : void pr_option_component_start_symbol_optionModelBuilder_32_36_ (galgas_scanner &,
                                 GGS_optionComponentRoot  &) ;
 
-  protected : virtual sint16 select_repeat_optionModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_optionModelBuilder_0 (galgas_scanner &) = 0 ;
 
   protected : void pr_option_optionModelBuilder_56_13_ (galgas_scanner &,
                                 GGS_commandLineOptionList  &) ;

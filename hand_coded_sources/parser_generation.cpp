@@ -64,7 +64,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeNonterminalToGenerate::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
                              const C_String & /* inTargetFileName */,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
   GGS_M_nonterminalSymbolAlts::cEnumerator currentAltForNonTerminal (mNonterminalSymbolParametersMap, true) ;
   while (currentAltForNonTerminal.hasCurrentObject ()) {
     inHfile << "  protected : virtual void nt_" << aNomNonTerminal << "_" << currentAltForNonTerminal._key (HERE)
@@ -86,7 +86,7 @@ void cPtr_typeNonterminalToGenerate::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                 const C_String & /* inTargetFileName */,
-                                sint32 & /* ioPrototypeIndex */,
+                                PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
 }
 
@@ -127,8 +127,8 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeProductionAengendrer::
 generateCppClassDeclaration (AC_OutputStream & inHfile,
                                const C_String & inTargetFileName,
-                               sint32 & ioPrototypeIndex) const {
-  const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
+                               PMSInt32 & ioPrototypeIndex) const {
+  const PMSInt32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool prototypesForSelectedAndRepeatNotDeclared = true ;
   while (currentAltForNonTerminal.hasCurrentObject ()) {
@@ -175,10 +175,10 @@ void cPtr_typeProductionAengendrer::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & inTargetFileName,
-                                  sint32 & ioPrototypeIndex,
+                                  PMSInt32 & ioPrototypeIndex,
                                   const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of production rule '") + aNomProduction + "'") ;
-  const sint32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
+  const PMSInt32 select_repeat_prototypeIndexStart = ioPrototypeIndex ;
   GGS_typeAltProductionsMap::cEnumerator currentAltForNonTerminal (mAltProductionMap, true) ;
   bool first = true ;
   while (currentAltForNonTerminal.hasCurrentObject ()) {
@@ -314,7 +314,7 @@ engendrerDeclarationPrototypesReglesDeProduction (const GGS_lstring & nomComposa
   inHfile << "class " << nomComposant << " {\n"
            << "  public : virtual ~" << nomComposant << " (void) {}\n\n" ;
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
-  sint32 select_repeat_production_index = 0 ;
+  PMSInt32 select_repeat_production_index = 0 ;
   while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateCppClassDeclaration (inHfile,
                                                                     nomComposant,

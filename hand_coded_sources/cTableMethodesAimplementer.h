@@ -53,11 +53,11 @@ template <typename INFO> class cElementTableMethodesAimplementer {
   public : GGS_lstring mKey ;
   public : INFO mInfo ;
   public : const bool champEstAbstraite ;
-  public : const sint32 mEntryIndex ;
+  public : const PMSInt32 mEntryIndex ;
   public : inline cElement * nextObject (void) const { return mNextItem ; }
   public : cElementTableMethodesAimplementer (const INFO & info,
                                               const GGS_lstring & clef,
-                                              const sint32 numeroElement,
+                                              const PMSInt32 numeroElement,
                                               const bool estAbstraite) ;
   public : ~cElementTableMethodesAimplementer (void) ;
 
@@ -79,9 +79,9 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : cElementTableMethodesAimplementer <INFO> * mRoot ;
   public : cElementTableMethodesAimplementer <INFO> * mFirstItem ;
   public : cElementTableMethodesAimplementer <INFO> * mLastItem ;
-  private : sint32 mListLength ;
-  public : sint32 count (void) const ;
-  public : sint32 * mReferenceCountPtr ;
+  private : PMSInt32 mListLength ;
+  public : PMSInt32 count (void) const ;
+  public : PMSInt32 * mReferenceCountPtr ;
 
   public : cTableMethodesAimplementer (void) ; // Default Constructor
   public : virtual ~cTableMethodesAimplementer (void) ;
@@ -95,14 +95,14 @@ template <typename INFO> class cTableMethodesAimplementer {
   public : void drop (void) ;
   protected : void insulateMap (void) ;
 
-  public : sint32 insertAbstract (C_Compiler & inLexique,
+  public : PMSInt32 insertAbstract (C_Compiler & inLexique,
                                   const INFO & info,
                                   const GGS_lstring & clef,
                                   const GGS_location & inLocation,
                                   const char * messageErreurInsertion
                                   COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertNotAbstract (C_Compiler & inLexique,
+  public : PMSInt32 insertNotAbstract (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                      const GGS_location & inLocation,
@@ -111,7 +111,7 @@ template <typename INFO> class cTableMethodesAimplementer {
 
   private : void internalRecursiveInsert (const INFO & info,
                                  const GGS_lstring & clef,
-                                 sint32 & numero, // renvoie -1 si erreur
+                                 PMSInt32 & numero, // renvoie -1 si erreur
                                  const bool estAbstraite,
                                  cElementTableMethodesAimplementer <INFO> * & racine) ;
 } ;

@@ -315,7 +315,7 @@ class templateExpressionParser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : virtual sint16 select_repeat_templateExpressionParser_0 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_templateExpressionParser_0 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_expression_templateExpressionParser_567_17_parse (galgasTemplateScanner & inLexique) ;
 
@@ -327,7 +327,7 @@ class templateExpressionParser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : virtual sint16 select_repeat_templateExpressionParser_1 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_templateExpressionParser_1 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_relation_term_templateExpressionParser_635_20_parse (galgasTemplateScanner & inLexique) ;
 
@@ -339,7 +339,7 @@ class templateExpressionParser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : virtual sint16 select_templateExpressionParser_2 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_templateExpressionParser_2 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_relation_factor_templateExpressionParser_682_22_parse (galgasTemplateScanner & inLexique) ;
 
@@ -351,7 +351,7 @@ class templateExpressionParser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : virtual sint16 select_repeat_templateExpressionParser_3 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_templateExpressionParser_3 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_simple_expression_templateExpressionParser_815_24_parse (galgasTemplateScanner & inLexique) ;
 
@@ -363,7 +363,7 @@ class templateExpressionParser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : virtual sint16 select_repeat_templateExpressionParser_4 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_templateExpressionParser_4 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_term_templateExpressionParser_909_11_parse (galgasTemplateScanner & inLexique) ;
 
@@ -495,11 +495,11 @@ class templateExpressionParser {
                                 GGS_typeExpression  &,
                                 GGS_AC_galgasType  &) ;
 
-  protected : virtual sint16 select_templateExpressionParser_5 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_templateExpressionParser_5 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_templateExpressionParser_6 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_templateExpressionParser_6 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_templateExpressionParser_7 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_templateExpressionParser_7 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_factor_templateExpressionParser_1265_13_parse (galgasTemplateScanner & inLexique) ;
 
@@ -529,7 +529,7 @@ class templateExpressionParser {
                                 const GGS_M_optionComponents  ,
                                 GGS_typeVariablesMap  &) ;
 
-  protected : virtual sint16 select_repeat_templateExpressionParser_8 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_templateExpressionParser_8 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_output_expression_list_templateExpressionParser_1536_29_parse (galgasTemplateScanner & inLexique) ;
 

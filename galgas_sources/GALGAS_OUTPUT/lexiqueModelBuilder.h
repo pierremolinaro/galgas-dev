@@ -134,23 +134,23 @@ class lexiqueModelBuilder {
   protected : void pr_lexique_component_start_symbol_lexiqueModelBuilder_73_37_ (galgas_scanner &,
                                 GGS_lexiqueComponentRoot  &) ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_2 (galgas_scanner &) = 0 ;
 
   protected : void pr_template_delimitor_lexiqueModelBuilder_144_25_ (galgas_scanner &,
                                 GGS_metamodelTemplateDelimitorList  &) ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_4 (galgas_scanner &) = 0 ;
 
   protected : void pr_template_replacement_lexiqueModelBuilder_168_27_ (galgas_scanner &,
                                 GGS_templateReplacementList  &) ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_message_declaration_lexiqueModelBuilder_189_34_ (galgas_scanner &,
                                 GGS_lexicalMessageDeclarationList  &) ;
@@ -161,7 +161,7 @@ class lexiqueModelBuilder {
   protected : void pr_lexical_explicit_rule_lexiqueModelBuilder_213_28_ (galgas_scanner &,
                                 GGS_lexicalRuleList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_6 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_instruction_lexiqueModelBuilder_229_26_ (galgas_scanner &,
                                 GGS_lexicalInstructionList  &) ;
@@ -172,39 +172,39 @@ class lexiqueModelBuilder {
   protected : void pr_lexical_send_instruction_lexiqueModelBuilder_247_31_ (galgas_scanner &,
                                 GGS_lexicalInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_7 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_8 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_instruction_lexiqueModelBuilder_280_26_ (galgas_scanner &,
                                 GGS_lexicalInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_9 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_10 (galgas_scanner &) = 0 ;
 
   protected : void pr_repeat_while_branch_lexiqueModelBuilder_304_26_ (galgas_scanner &,
                                 GGS_lexicalWhileBranchList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_11 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_11 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_instruction_lexiqueModelBuilder_319_26_ (galgas_scanner &,
                                 GGS_lexicalInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_12 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_12 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_13 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_13 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_14 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_14 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_instruction_lexiqueModelBuilder_353_26_ (galgas_scanner &,
                                 GGS_lexicalInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_15 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_15 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_16 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_16 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_17 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_17 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_output_effective_argument_lexiqueModelBuilder_394_40_ (galgas_scanner &,
                                 GGS_lexicalRoutineOrFunctionFormalInputArgument  &) ;
@@ -226,7 +226,7 @@ class lexiqueModelBuilder {
                                 const GGS_lstring  ,
                                 GGS_lexicalRoutineOrFunctionFormalInputArgument  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_18 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_18 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_instruction_lexiqueModelBuilder_453_26_ (galgas_scanner &,
                                 GGS_lexicalInstructionList  &) ;
@@ -252,7 +252,7 @@ class lexiqueModelBuilder {
   protected : void pr_lexical_term_lexiqueModelBuilder_519_19_ (galgas_scanner &,
                                 GGS_lexicalExpression  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_19 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_19 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_factor_lexiqueModelBuilder_532_21_ (galgas_scanner &,
                                 GGS_lexicalExpression  &) ;
@@ -263,7 +263,7 @@ class lexiqueModelBuilder {
   protected : void pr_lexical_factor_lexiqueModelBuilder_552_21_ (galgas_scanner &,
                                 GGS_lexicalExpression  &) ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_20 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_20 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_factor_lexiqueModelBuilder_567_21_ (galgas_scanner &,
                                 GGS_lexicalExpression  &) ;
@@ -271,18 +271,18 @@ class lexiqueModelBuilder {
   protected : void pr_lexical_list_declaration_lexiqueModelBuilder_574_31_ (galgas_scanner &,
                                 GGS_lexicalListDeclarationList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_21 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_21 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_22 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_22 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_23 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_23 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_list_entry_lexiqueModelBuilder_610_25_ (galgas_scanner &,
                                 GGS_lexicalListEntryList  &) ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_24 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_24 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_25 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_25 (galgas_scanner &) = 0 ;
 
   protected : void pr_lexical_attribute_declaration_lexiqueModelBuilder_631_36_ (galgas_scanner &,
                                 GGS_lexicalAttributeList  &) ;
@@ -290,13 +290,13 @@ class lexiqueModelBuilder {
   protected : void pr_terminal_declaration_lexiqueModelBuilder_642_27_ (galgas_scanner &,
                                 GGS_terminalDeclarationList  &) ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_26 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_26 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_27 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_27 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_28 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_28 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_29 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_29 (galgas_scanner &) = 0 ;
 
   protected : void pr_style_declaration_lexiqueModelBuilder_681_24_ (galgas_scanner &,
                                 GGS_lexicalStyleList  &) ;
@@ -305,17 +305,17 @@ class lexiqueModelBuilder {
                                 GGS_externRoutineList  &,
                                 GGS_externFunctionList  &) ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_30 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_30 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_31 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_31 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_32 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_32 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_lexiqueModelBuilder_33 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_lexiqueModelBuilder_33 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_34 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_34 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_lexiqueModelBuilder_35 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_lexiqueModelBuilder_35 (galgas_scanner &) = 0 ;
 
 } ;
 

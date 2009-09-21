@@ -334,9 +334,9 @@ class parser_parser {
                                 GGS_M_optionComponents  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : virtual sint16 select_parser_parser_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_parser_parser_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_1 (galgas_scanner &) = 0 ;
 
   protected : void pr_galgas_component_parser_parser_257_23_importGrammarForSemantics (galgas_scanner &,
                                 GGS_M_grammarComponents  &,
@@ -363,7 +363,7 @@ class parser_parser {
                                 GGS_M_lexiqueComponents  &,
                                 GGS_lstring  &) ;
 
-  protected : virtual sint16 select_parser_parser_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_2 (galgas_scanner &) = 0 ;
 
   protected : void pr_get_lexique_infos_parser_parser_575_24_getLexiqueName (galgas_scanner &,
                                 GGS_lstring  &) ;
@@ -421,11 +421,11 @@ class parser_parser {
                                 GGS_lstring  ,
                                 GGS_EXsemanticContext &) ;
 
-  protected : virtual sint16 select_parser_parser_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_parser_parser_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_4 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parser_parser_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_declaration_parser_parser_1322_25_importSyntax (galgas_scanner &,
                                 GGS_M_nonTerminalSymbolsForGrammar  &,
@@ -446,9 +446,9 @@ class parser_parser {
                                 GGS_lstring  ,
                                 GGS_EXsemanticContext &) ;
 
-  protected : virtual sint16 select_parser_parser_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_6 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_parser_parser_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_7 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_declaration_parser_parser_1511_25_importSyntax (galgas_scanner &,
                                 GGS_M_nonTerminalSymbolsForGrammar  &,
@@ -508,7 +508,7 @@ class parser_parser {
                                 const GGS_bool ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : virtual sint16 select_parser_parser_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_8 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_parser_parser_1806_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
@@ -529,7 +529,7 @@ class parser_parser {
                                 const GGS_bool ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : virtual sint16 select_repeat_parser_parser_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_9 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_parser_parser_1897_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
@@ -550,7 +550,7 @@ class parser_parser {
                                 const GGS_bool ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : virtual sint16 select_repeat_parser_parser_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_10 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_parser_parser_2002_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
@@ -571,11 +571,11 @@ class parser_parser {
                                 const GGS_bool ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : virtual sint16 select_parser_parser_11 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parser_parser_11 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_parser_parser_12 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_12 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_parser_parser_13 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_13 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_parser_parser_2108_25_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;
@@ -596,7 +596,7 @@ class parser_parser {
                                 const GGS_bool ,
                                 const GGS_EXsemanticContext ) ;
 
-  protected : virtual sint16 select_repeat_parser_parser_14 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parser_parser_14 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instructions_list_no_verif_parser_parser_2347_40_importSyntax (galgas_scanner &,
                                 GGS_L_ruleSyntaxSignature  &) ;

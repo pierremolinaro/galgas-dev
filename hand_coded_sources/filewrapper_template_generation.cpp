@@ -87,7 +87,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_filewrapperTemplateToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                              const C_String & /* inTargetFileName */,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -96,7 +96,7 @@ void cPtr_C_filewrapperTemplateToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & ioCppFile,
                                 const C_String & /* inTargetFileName */,
-                                sint32 & /* ioPrototypeIndex */,
+                                PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   ioCppFile.appendCppTitleComment (C_String ("'") + mTemplateName + "' template of '" + mFilewrapperName + "' filewrapper") ;
   ioCppFile << "GGS_string\n"
@@ -119,7 +119,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   current.rewind () ;
   if (current.hasCurrentObject ()) {
     ioCppFile << "  const bool isBuilt = " ;
-    sint32 numeroVariable = 0 ;
+    PMSInt32 numeroVariable = 0 ;
     while (current.hasCurrentObject ()) {
       if (numeroVariable != 0) {
         ioCppFile << "\n    && " ;
@@ -169,7 +169,7 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
             << "if (indentation_"
             << cStringWithSigned (mMagicNumber.location ())
             << ".isBuilt ()) {\n"
-               "  result.incIndentation ((sint32) indentation_"
+               "  result.incIndentation ((PMSInt32) indentation_"
             << cStringWithSigned (mMagicNumber.location ())
             << ".uintValue ()) ;\n"
                "}\n" ;
@@ -182,7 +182,7 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
             << "if (indentation_"
             << cStringWithSigned (mMagicNumber.location ())
             << ".isBuilt ()) {\n"
-               "  result.incIndentation (- ((sint32) indentation_"
+               "  result.incIndentation (- ((PMSInt32) indentation_"
             << cStringWithSigned (mMagicNumber.location ())
             << ".uintValue ())) ;\n"
                "}\n" ;

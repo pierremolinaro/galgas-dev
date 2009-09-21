@@ -75,17 +75,17 @@ class guiModelBuilder {
   protected : void pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner &,
                                 GGS_guiComponentRoot  &) ;
 
-  protected : virtual sint16 select_repeat_guiModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_guiModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_guiModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_guiModelBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_guiModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_guiModelBuilder_2 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_guiModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_guiModelBuilder_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_guiModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_guiModelBuilder_4 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_guiModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_guiModelBuilder_5 (galgas_scanner &) = 0 ;
 
 } ;
 

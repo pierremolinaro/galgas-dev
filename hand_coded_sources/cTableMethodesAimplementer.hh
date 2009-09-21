@@ -46,7 +46,7 @@ template <typename INFO>
 cElementTableMethodesAimplementer <INFO>::
 cElementTableMethodesAimplementer (const INFO & info,
                                    const GGS_lstring & clef,
-                                   const sint32 numeroElement,
+                                   const PMSInt32 numeroElement,
                                    const bool estAbstraite) :
 mNextItem (NULL),
 mInfPtr (NULL),
@@ -130,11 +130,11 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::drop (void) {
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) == 1) {
       macroMyDelete (mRoot, cElement) ;
-      macroMyDelete (mReferenceCountPtr, sint32) ;
+      macroMyDelete (mReferenceCountPtr, PMSInt32) ;
     }else{
       mRoot = (cElement *) NULL ;
       (*mReferenceCountPtr) -- ;
-      mReferenceCountPtr = (sint32 *) NULL ;
+      mReferenceCountPtr = (PMSInt32 *) NULL ;
     }
   }
 }
@@ -148,7 +148,7 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::drop (void) {
 template <typename INFO>
 void cTableMethodesAimplementer <INFO>::build (void) {
   drop () ;
-  macroMyNew (mReferenceCountPtr, sint32 (1)) ;
+  macroMyNew (mReferenceCountPtr, PMSInt32 (1)) ;
 }
 
 
@@ -160,8 +160,8 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
     macroValidPointer (mReferenceCountPtr) ;
     if ((*mReferenceCountPtr) > 1) {
       (*mReferenceCountPtr) -- ;
-      mReferenceCountPtr = (sint32 *) NULL ;
-      macroMyNew (mReferenceCountPtr, sint32 (1)) ;
+      mReferenceCountPtr = (PMSInt32 *) NULL ;
+      macroMyNew (mReferenceCountPtr, PMSInt32 (1)) ;
       cElementTableMethodesAimplementer <INFO> * p = mFirstItem ;
       mLastItem = (cElement *) NULL ;
       mFirstItem = (cElement *) NULL ;
@@ -169,7 +169,7 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
       mListLength = 0 ;
       while (p != NULL) {
         macroValidPointer (p) ;
-        sint32 numeroElement ;
+        PMSInt32 numeroElement ;
         internalRecursiveInsert (p->mInfo, p->mKey, numeroElement, p->champEstAbstraite, mRoot) ;
         p = p->mNextItem ;
       }
@@ -180,13 +180,13 @@ template <typename INFO> void cTableMethodesAimplementer <INFO>::insulateMap (vo
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Compiler & inLexique,
+PMSInt32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Compiler & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) {
-  sint32 numeroElement = -1 ;
+  PMSInt32 numeroElement = -1 ;
   if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
@@ -203,13 +203,13 @@ sint32 cTableMethodesAimplementer <INFO>::insertAbstract (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Compiler & inLexique,
+PMSInt32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Compiler & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) {
-  sint32 numeroElement = -1 ;
+  PMSInt32 numeroElement = -1 ;
   if (isBuilt ()) {
   //--- Si la table est referencee plusieurs fois, la dupliquer
     insulateMap () ;
@@ -228,7 +228,7 @@ sint32 cTableMethodesAimplementer <INFO>::insertNotAbstract (C_Compiler & inLexi
 template <typename INFO>
 void cTableMethodesAimplementer <INFO>::internalRecursiveInsert (const INFO & info,
                                                               const GGS_lstring & clef,
-                                                           sint32 & numeroElement,
+                                                           PMSInt32 & numeroElement,
                                                         const bool estAbstraite,
                       cElementTableMethodesAimplementer <INFO> * & racine) {
   if (racine == NULL) {
@@ -248,7 +248,7 @@ void cTableMethodesAimplementer <INFO>::internalRecursiveInsert (const INFO & in
     mListLength ++ ;
   }else{
     macroValidPointer (racine) ;
-    const sint32 comparaison = racine->mKey.compareStringByLength (clef) ;
+    const PMSInt32 comparaison = racine->mKey.compareStringByLength (clef) ;
     if (comparaison > 0) {
       internalRecursiveInsert (info, clef, numeroElement, estAbstraite, racine->mInfPtr) ;
     }else if (comparaison < 0) {
@@ -269,7 +269,7 @@ bool cTableMethodesAimplementer <INFO>::isBuilt (void) const {
 //---------------------------------------------------------------------------*
 
 template <typename INFO>
-sint32 cTableMethodesAimplementer <INFO>::count (void) const {
+PMSInt32 cTableMethodesAimplementer <INFO>::count (void) const {
   return mListLength ;
 }
 

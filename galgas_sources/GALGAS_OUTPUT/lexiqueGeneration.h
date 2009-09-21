@@ -77,7 +77,7 @@ typedef GGS_string (*typeCategoryReader__lexicalExpression__generateConditionCod
 
 void
 enterCategoryReader__lexicalExpression__generateConditionCode (typeCategoryReader__lexicalExpression__generateConditionCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -98,7 +98,7 @@ typedef GGS_string (*typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgu
 
 void
 enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument (typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateRoutineOrFunctionArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -119,7 +119,7 @@ typedef GGS_string (*typeCategoryReader__abstractLexicalRoutineActualArgument__g
 
 void
 enterCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument (typeCategoryReader__abstractLexicalRoutineActualArgument__generateRoutineArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -141,7 +141,7 @@ typedef GGS_string (*typeCategoryReader__lexicalSendDefaultAction__generateDefau
 
 void
 enterCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode (typeCategoryReader__lexicalSendDefaultAction__generateDefaultSendCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -164,7 +164,7 @@ typedef GGS_string (*typeCategoryReader__lexicalInstruction__generateInstruction
 
 void
 enterCategoryReader__lexicalInstruction__generateInstructionCode (typeCategoryReader__lexicalInstruction__generateInstructionCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -187,7 +187,7 @@ typedef GGS_string (*typeCategoryReader__abstractLexicalRule__generateCode)  (C_
 
 void
 enterCategoryReader__abstractLexicalRule__generateCode (typeCategoryReader__abstractLexicalRule__generateCode inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 

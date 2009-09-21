@@ -239,7 +239,7 @@ bool GGS_EXtargetFileListMap::cElement::isEqual (const cPtrListMapObject * inOpe
 
 C_String GGS_EXtargetFileListMap::cElement::
 _description (C_Compiler & inLexique,
-              const sint32 inIndentation
+              const PMSInt32 inIndentation
               COMMA_LOCATION_ARGS) const {
   const GGS_string s = mListObject.reader_description (inLexique COMMA_THERE, inIndentation) ;
   return s.string () ;
@@ -280,8 +280,8 @@ dotAssign_operation (const GGS_EXtargetFileListMap inOperand) {
     }else if (inOperand.count (HERE) > 0) {
       cPtrDictionary * dictPtr = macroPtr (inOperand, cPtrDictionary)  ;
       cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;
-      const sint32 objectCount = dictPtr->count () ;
-      for (sint32 i=0 ; i<objectCount ; i++) {
+      const PMSInt32 objectCount = dictPtr->count () ;
+      for (PMSInt32 i=0 ; i<objectCount ; i++) {
         const GGS_string key = nodeSortedArray [i].key () ;
         const PM_C_Object object = nodeSortedArray [i].mObject ;
         cElement * elementPtr = macroPtr (object, cElement) ;
@@ -358,8 +358,8 @@ reader_keyList (C_Compiler & /* inLexique */
     result = GGS_stringlist::constructor_emptyList () ;
     cPtrDictionary * dictPtr = macroPtr (*this, cPtrDictionary)  ;
     cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;
-    const sint32 objectCount = dictPtr->count () ;
-    for (sint32 i=0 ; i<objectCount ; i++) {
+    const PMSInt32 objectCount = dictPtr->count () ;
+    for (PMSInt32 i=0 ; i<objectCount ; i++) {
       const GGS_string key = nodeSortedArray [i].key () ;
       result._addAssign_operation (key) ;
     }
@@ -452,7 +452,7 @@ operator_strictSup (const GGS_EXsourceFileKind inOperand) const {
 GGS_string GGS_EXsourceFileKind::
 reader_description (C_Compiler & /* inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
-                    const sint32 /* inIndentation */) const {
+                    const PMSInt32 /* inIndentation */) const {
   C_String s ;
   s << "<enum @EXsourceFileKind" ;
   switch (mValue) {
@@ -506,7 +506,7 @@ mSourceKind () {
 
 elementOf_GGS_EXsourceFileMap::
 elementOf_GGS_EXsourceFileMap (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_EXsourceFileMap & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -516,9 +516,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_EXsourceFileMap::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -609,7 +609,7 @@ void GGS_EXsourceFileMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -624,7 +624,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_EXsourceFileKind& inParameter1,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inParameter0.isBuilt ()
    && inParameter1.isBuilt ()
@@ -640,7 +640,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -673,7 +673,7 @@ searchElement (C_Compiler & inLexique,
     outParameter0 = node->mInfo.mFullPath ;
     outParameter1 = node->mInfo.mSourceKind ;
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -861,14 +861,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_EXsourceFileMap::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @EXsourceFileMap " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;

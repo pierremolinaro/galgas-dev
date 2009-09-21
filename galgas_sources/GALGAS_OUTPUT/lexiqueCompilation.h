@@ -80,7 +80,7 @@ typedef void (*typeCategoryMethod__lexicalSendDefaultAction__checkLexicalDefault
 
 void
 enterCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction (typeCategoryMethod__lexicalSendDefaultAction__checkLexicalDefaultAction inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -102,7 +102,7 @@ typedef void (*typeCategoryMethod__lexicalExpression__checkLexicalExpression)  (
 
 void
 enterCategoryMethod__lexicalExpression__checkLexicalExpression (typeCategoryMethod__lexicalExpression__checkLexicalExpression inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -125,7 +125,7 @@ typedef void (*typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__
 
 void
 enterCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument (typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalFunctionCallArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -148,7 +148,7 @@ typedef void (*typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__
 
 void
 enterCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument (typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgument__checkLexicalRoutineCallArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -172,7 +172,7 @@ typedef void (*typeCategoryMethod__abstractLexicalRoutineActualArgument__checkLe
 
 void
 enterCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument (typeCategoryMethod__abstractLexicalRoutineActualArgument__checkLexicalRoutineCallArgument inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -195,7 +195,7 @@ typedef void (*typeCategoryMethod__lexicalInstruction__checkLexicalInstruction) 
 
 void
 enterCategoryMethod__lexicalInstruction__checkLexicalInstruction (typeCategoryMethod__lexicalInstruction__checkLexicalInstruction inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 
@@ -217,7 +217,7 @@ typedef void (*typeCategoryMethod__abstractLexicalRule__checkLexicalRule)  (C_Co
 
 void
 enterCategoryMethod__abstractLexicalRule__checkLexicalRule (typeCategoryMethod__abstractLexicalRule__checkLexicalRule inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 

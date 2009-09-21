@@ -114,8 +114,8 @@ routine_appendJokersIfNeeded (C_Compiler &,
                               GGS_uint inFormalParametersCount,
                               GGS_typeCplusPlusName inNullName
                               COMMA_UNUSED_LOCATION_ARGS) {
-  const uint32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
-  const uint32 formalParametersCount = inFormalParametersCount.uintValue () ;
+  const PMUInt32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
+  const PMUInt32 formalParametersCount = inFormalParametersCount.uintValue () ;
   for (unsigned i=effectiveArgumentsCount ; i<formalParametersCount ; i++) {
     ioVariablesList._addAssign_operation (inNullName) ;
   }
@@ -174,7 +174,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeRoutineAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName */,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -183,7 +183,7 @@ void cPtr_typeRoutineAengendrer::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of routine \"") + mRoutineName + "\"") ;
   inCppFile << "void routine_" << mRoutineName << " (C_Compiler &" ;
@@ -275,7 +275,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeFonctionAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName */,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -284,7 +284,7 @@ void cPtr_typeFonctionAengendrer::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of function \"") + mFunctionName + "\"") ;
   mReturnedType (HERE)->generateCppClassName (inCppFile) ;
@@ -385,7 +385,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeRoutineExterneAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName */,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -394,7 +394,7 @@ void cPtr_typeRoutineExterneAengendrer::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 }
 
@@ -452,7 +452,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeFonctionExterneAengendrer::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName */,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -461,7 +461,7 @@ void cPtr_typeFonctionExterneAengendrer::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 }
 
@@ -1437,7 +1437,7 @@ generate_cpp_file (C_Compiler & inLexique,
 //--- Engendrer les implementations
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
   GGS_typeEntitiesToGenerateList::cEnumerator element (listeEntitesAengendrer, true) ;
-  sint32 select_repeat_production_index = 0 ;
+  PMSInt32 select_repeat_production_index = 0 ;
   while (element.hasCurrentObject ()) {
     element._mEntityToGenerate (HERE) (HERE)->generateCppClassImplementation (inLexique,
                                          generatedZone3,

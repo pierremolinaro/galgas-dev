@@ -44,8 +44,8 @@ generatePredeclarations (AC_OutputStream & inHfile) const {
 void cPtr_enumGalgasType::
 generateHdeclarations (AC_OutputStream & inHfile) const {
 //--- Compute bit count for BDDs (set operations)
-  uint16 bitCount = 0 ;
-  sint32 n = mConstantMap.count () ;
+  PMUInt16 bitCount = 0 ;
+  PMSInt32 n = mConstantMap.count () ;
   while (n > 0) {
     bitCount ++ ;
     n >>= 1 ;
@@ -71,7 +71,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Internal constructor\n"
              "  private : inline GGS_" << mEnumTypeName << " (const enumeration inValue) : mValue (inValue) {}\n\n"
              "//--- Bit count for bdd\n"
-             "  public : static inline uint16 bitCount (void) { return " << cStringWithSigned (bitCount) << " ; }\n\n"
+             "  public : static inline PMUInt16 bitCount (void) { return " << cStringWithSigned (bitCount) << " ; }\n\n"
              "//--- Is built ?\n"
              "  public : bool isBuilt (void) const ;\n\n"
              "//--- Construction from GALGAS constructor\n" ;
@@ -154,7 +154,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- 'description' reader\n"
              "  public : GGS_string reader_description (C_Compiler & inLexique\n"
              "                                          COMMA_LOCATION_ARGS,\n"
-             "                                          const sint32 inIndentation = 0) const ;\n\n"
+             "                                          const PMSInt32 inIndentation = 0) const ;\n\n"
              "//--- Drop operation\n"
              "  public : inline void drop (void) { mValue = kNotBuilt ; }\n\n"
              "//--- Comparison operators\n"           
@@ -185,7 +185,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_enumGalgasType::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -194,7 +194,7 @@ void cPtr_enumGalgasType::
 generateCppClassImplementation (C_Compiler & inCompiler,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mEnumTypeName + "' Enumeration") ;
   
@@ -403,8 +403,8 @@ generateCppClassImplementation (C_Compiler & inCompiler,
 
 
 //--- Operators
-  const sint32 constantCount = mConstantMap.count () ;
-  const sint32 squareConstantCount = constantCount * constantCount ;
+  const PMSInt32 constantCount = mConstantMap.count () ;
+  const PMSInt32 squareConstantCount = constantCount * constantCount ;
   TC_UniqueArray <C_String> constantNameArray (constantCount COMMA_HERE) ;
   GGS_enumConstantMap::cEnumerator constant (mConstantMap, true) ;
   while (constant.hasCurrentObject ()) {
@@ -414,17 +414,17 @@ generateCppClassImplementation (C_Compiler & inCompiler,
   GGS_enumOperatorMap::cEnumerator currentOperator (mOperatorMap) ;
   while (currentOperator.hasCurrentObject ()) {
     TC_UniqueArray <C_String> resultArray (constantCount * constantCount COMMA_HERE) ;
-    TC_UniqueArray <sint32> errorArray (constantCount * constantCount COMMA_HERE) ;
+    TC_UniqueArray <PMSInt32> errorArray (constantCount * constantCount COMMA_HERE) ;
     const C_String defaultResult = C_String ("kNotBuilt") ;
-    for (sint32 i=0 ; i<squareConstantCount ; i++) {
+    for (PMSInt32 i=0 ; i<squareConstantCount ; i++) {
       resultArray.addObject (defaultResult) ;
       errorArray.addObject (-1) ; // 'Internal error: combination not handled
     }
     GGS_enumOperatorDefinitionList::cEnumerator definition (currentOperator._mActionDefinitionList (HERE), true)  ;
-    sint32 errorMessageIndex = 1 ;
+    PMSInt32 errorMessageIndex = 1 ;
     while (definition.hasCurrentObject ()) {
-      const sint32 kIndex = ((sint32) definition._mLeftSourceStateIndex (HERE).uintValue ()) * constantCount
-                          + (sint32) definition._mRightSourceStateIndex (HERE).uintValue () ;
+      const PMSInt32 kIndex = ((PMSInt32) definition._mLeftSourceStateIndex (HERE).uintValue ()) * constantCount
+                          + (PMSInt32) definition._mRightSourceStateIndex (HERE).uintValue () ;
       resultArray (kIndex COMMA_HERE) = C_String ("enum_") + definition._mTargetState (HERE).string () ;
       if (errorArray (kIndex COMMA_HERE) != -1) { // Currently undefined
         definition._mLeftSourceStateIndex (HERE).signalSemanticError (inCompiler, "This combination is already defined" COMMA_HERE) ;
@@ -441,9 +441,9 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     inCppFile << "static const GGS_" << mEnumTypeName << "::enumeration kResultFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE)
               << " [" << cStringWithSigned (squareConstantCount) << "] = {" ;
-    for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
-      for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
-        const sint32 kIndex = leftOp * constantCount + rightOp ;
+    for (PMSInt32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
+      for (PMSInt32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
+        const PMSInt32 kIndex = leftOp * constantCount + rightOp ;
         inCppFile << "\n  "
                      "GGS_" << mEnumTypeName << "::" << resultArray (kIndex COMMA_HERE) ;
         if (kIndex < (squareConstantCount-1)) {
@@ -454,12 +454,12 @@ generateCppClassImplementation (C_Compiler & inCompiler,
     }
     inCppFile << "\n} ;\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "static const sint32 kErrorFor" << mEnumTypeName
+    inCppFile << "static const PMSInt32 kErrorFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE)
               << " [" << cStringWithSigned (squareConstantCount) << "] = {" ;
-    for (sint32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
-      for (sint32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
-        const sint32 kIndex = leftOp * constantCount + rightOp ;
+    for (PMSInt32 leftOp=0 ; leftOp<constantCount ; leftOp++) {
+      for (PMSInt32 rightOp=0 ; rightOp<constantCount ; rightOp++) {
+        const PMSInt32 kIndex = leftOp * constantCount + rightOp ;
         inCppFile << "\n  " << cStringWithSigned (errorArray (kIndex COMMA_HERE)) ;
         if (kIndex < (squareConstantCount-1)) {
           inCppFile << "," ;
@@ -500,10 +500,10 @@ generateCppClassImplementation (C_Compiler & inCompiler,
                  "  #endif\n"
                  "  enumeration result = kNotBuilt ;\n"
                  "  if ((mValue > 0) && (inOperand.mValue > 0)) {\n"
-                 "    const sint32 kIndex = (mValue - 1) * " << cStringWithSigned (mConstantMap.count ()) << " + inOperand.mValue - 1 ;\n"
+                 "    const PMSInt32 kIndex = (mValue - 1) * " << cStringWithSigned (mConstantMap.count ()) << " + inOperand.mValue - 1 ;\n"
                  "    result = kResultFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE) << " [kIndex] ;\n"
-                 "    const sint32 error = kErrorFor" << mEnumTypeName
+                 "    const PMSInt32 error = kErrorFor" << mEnumTypeName
               << "_" << currentOperator._key (HERE) << " [kIndex] ;\n"
                  "    if (error != 0) {\n"
                  "      switch (error) {\n" ;
@@ -545,7 +545,7 @@ generateCppClassImplementation (C_Compiler & inCompiler,
             << "::\n"
                "reader_description (C_Compiler & /* inLexique */\n"
                "                    COMMA_UNUSED_LOCATION_ARGS,\n"
-               "                    const sint32 /* inIndentation */) const {\n"
+               "                    const PMSInt32 /* inIndentation */) const {\n"
                "  C_String s ;\n"
                "  s << \"<enum @" << mEnumTypeName << "\" ;\n"
                "  switch (mValue) {\n" ;

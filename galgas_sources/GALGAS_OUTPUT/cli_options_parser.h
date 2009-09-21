@@ -105,7 +105,7 @@ class cli_options_parser {
                                 GGS_M_optionComponents  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : virtual sint16 select_repeat_cli_options_parser_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_cli_options_parser_0 (galgas_scanner &) = 0 ;
 
   protected : void pr_galgas_component_cli_options_parser_56_23_importGrammarForSemantics (galgas_scanner &,
                                 GGS_M_grammarComponents  &,

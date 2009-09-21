@@ -82,7 +82,7 @@ class GGS_sourceFileKind {
   private : inline GGS_sourceFileKind (const enumeration inValue) : mValue (inValue) {}
 
 //--- Bit count for bdd
-  public : static inline uint16 bitCount (void) { return 4 ; }
+  public : static inline PMUInt16 bitCount (void) { return 4 ; }
 
 //--- Is built ?
   public : bool isBuilt (void) const ;
@@ -124,7 +124,7 @@ class GGS_sourceFileKind {
 //--- 'description' reader
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
 
 //--- Drop operation
   public : inline void drop (void) { mValue = kNotBuilt ; }
@@ -157,8 +157,8 @@ class GGS_projectSourceList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_projectSourceList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_projectSourceList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -237,7 +237,7 @@ class GGS_projectSourceList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_sourceFileKind
@@ -313,7 +313,7 @@ class elementOf_GGS_projectSourceList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration

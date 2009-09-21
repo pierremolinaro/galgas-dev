@@ -83,41 +83,41 @@ class grammarModelBuilder {
   protected : void pr_grammar_component_start_symbol_grammarModelBuilder_48_37_ (galgas_scanner &,
                                 GGS_grammarComponentRoot  &) ;
 
-  protected : virtual sint16 select_repeat_grammarModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_grammarModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_grammarModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_grammarModelBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_grammarModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_grammarModelBuilder_2 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_grammarModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_grammarModelBuilder_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_grammarModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_grammarModelBuilder_4 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_grammarModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_grammarModelBuilder_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_grammar_start_symbol_label_grammarModelBuilder_125_33_ (galgas_scanner &,
                                 const GGS_lstring  ,
                                 GGS_grammarLabelList  &) ;
 
-  protected : virtual sint16 select_repeat_grammarModelBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_grammarModelBuilder_6 (galgas_scanner &) = 0 ;
 
   protected : void pr_label_formal_parameter_grammarModelBuilder_145_29_ (galgas_scanner &,
                                 GGS_lstring  &,
                                 GGS_startSymbolLabelFormalParameterList  &) ;
 
-  protected : virtual sint16 select_grammarModelBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_grammarModelBuilder_7 (galgas_scanner &) = 0 ;
 
   protected : void pr_label_formal_parameter_grammarModelBuilder_165_29_ (galgas_scanner &,
                                 GGS_lstring  &,
                                 GGS_startSymbolLabelFormalParameterList  &) ;
 
-  protected : virtual sint16 select_grammarModelBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_grammarModelBuilder_8 (galgas_scanner &) = 0 ;
 
   protected : void pr_label_formal_parameter_grammarModelBuilder_185_29_ (galgas_scanner &,
                                 GGS_lstring  &,
                                 GGS_startSymbolLabelFormalParameterList  &) ;
 
-  protected : virtual sint16 select_grammarModelBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_grammarModelBuilder_9 (galgas_scanner &) = 0 ;
 
   protected : void pr_label_formal_parameter_grammarModelBuilder_205_29_ (galgas_scanner &,
                                 GGS_lstring  &,

@@ -26,10 +26,10 @@ generateHdeclarations (AC_OutputStream & /* inHfile */) const {
 
 //---------------------------------------------------------------------------*
 
-static sint32
+static PMSInt32
 wrapperFileCount (const GGS_wrapperFileSortedList & inRegularFileSortedList,
                   const GGS_wrapperDirectorySortedList & inDirectorySortedList) {
-  sint32 count = inRegularFileSortedList.count () ;
+  PMSInt32 count = inRegularFileSortedList.count () ;
   GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
   while (d.hasCurrentObject ()) {
     count += wrapperFileCount (d._mRegularFileSortedList (HERE),
@@ -45,8 +45,8 @@ void cPtr_C_wrapperToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
                          C_Compiler & /* inLexique */) const {
   inHfile.appendCppTitleComment (C_String ("Declarations for '") + mWrapperName + "' wrapper") ;
-  const sint32 n = wrapperFileCount (mRegularFileSortedList, mDirectorySortedList) ;
-  for (sint32 i=0 ; i<n ; i++) {
+  const PMSInt32 n = wrapperFileCount (mRegularFileSortedList, mDirectorySortedList) ;
+  for (PMSInt32 i=0 ; i<n ; i++) {
     inHfile << "extern const char * gWrapperFileContent_"
             << cStringWithSigned (i)
             << "_" << mWrapperName
@@ -73,7 +73,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_wrapperToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                              const C_String & /* inTargetFileName */,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -84,9 +84,9 @@ generateWrapperContents (AC_OutputStream & inCppFile,
                          const GGS_wrapperDirectorySortedList & inDirectorySortedList,
                          const C_String & inWrapperName,
                          const C_String & inWrapperDirectory,
-                         const uint32 inWrapperDirectoryIndex) {
+                         const PMUInt32 inWrapperDirectoryIndex) {
 //--- Recursively generate sub directories
-  TC_UniqueArray <uint32> subDirectories ;
+  TC_UniqueArray <PMUInt32> subDirectories ;
   GGS_wrapperDirectorySortedList::cEnumerator d (inDirectorySortedList, true) ;
   while (d.hasCurrentObject ()) {
     generateWrapperContents (inCppFile,
@@ -99,7 +99,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     d.next () ;  
   }
 //--- Generate regular files
-  TC_UniqueArray <uint32> wrapperFileIndexes ;
+  TC_UniqueArray <PMUInt32> wrapperFileIndexes ;
   GGS_wrapperFileSortedList::cEnumerator f (inRegularFileSortedList, true) ;
   while (f.hasCurrentObject ()) {
     TC_UniqueArray <unsigned char> binaryData ;
@@ -117,7 +117,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
     inCppFile.appendSigned (binaryData.count () + 1) ;
     inCppFile << " bytes\n" ;
     bool header = false ;
-    for (sint32 i=0 ; i<binaryData.count () ; i++) {
+    for (PMSInt32 i=0 ; i<binaryData.count () ; i++) {
       if (! header) {
         inCppFile << "  \"" ;
         header = true ;
@@ -134,8 +134,8 @@ generateWrapperContents (AC_OutputStream & inCppFile,
         inCppFile.appendUnicodeCharacter (TO_UNICODE (c) COMMA_HERE) ;
       }else{
         char buffer [12] ;
-        const sint32 n = UTF8StringFromUTF32Character (TO_UNICODE (c), buffer) ;
-        for (sint32 j=0 ; j<n ; j++) {
+        const PMSInt32 n = UTF8StringFromUTF32Character (TO_UNICODE (c), buffer) ;
+        for (PMSInt32 j=0 ; j<n ; j++) {
           inCppFile.appendCString ("\\x") ;
           inCppFile.appendUnsignedHex2 (buffer [j]) ;
           inCppFile.appendCString ("\"\"") ;
@@ -167,7 +167,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   inCppFile << " [" ;
   inCppFile.appendSigned (wrapperFileIndexes.count () + 1) ;
   inCppFile << "] = {\n" ;
-  for (sint32 i=0 ; i<wrapperFileIndexes.count () ; i++) {
+  for (PMSInt32 i=0 ; i<wrapperFileIndexes.count () ; i++) {
     inCppFile << "  & gWrapperFile_" ;
     inCppFile.appendUnsigned (wrapperFileIndexes (i COMMA_HERE)) ;
     inCppFile << "_" << inWrapperName
@@ -184,7 +184,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   inCppFile << " [" ;
   inCppFile.appendSigned (subDirectories.count () + 1) ; 
   inCppFile << "] = {\n" ;
-  for (sint32 i=0 ; i<subDirectories.count () ; i++) {
+  for (PMSInt32 i=0 ; i<subDirectories.count () ; i++) {
     inCppFile << "  & gWrapperDirectory_" ;
     inCppFile.appendUnsigned (subDirectories (i COMMA_HERE)) ;
     inCppFile << "_" << inWrapperName << ",\n" ;
@@ -222,7 +222,7 @@ void cPtr_C_wrapperToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
-                                sint32 & /* ioPrototypeIndex */,
+                                PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of wrapper '") + mWrapperName + "'") ;
   generateWrapperContents (inCppFile, mRegularFileSortedList, mDirectorySortedList, mWrapperName, "", 0) ;
