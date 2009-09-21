@@ -105,11 +105,11 @@ class syntaxModelBuilder {
   protected : void pr_syntax_component_start_symbol_syntaxModelBuilder_65_36_ (galgas_scanner &,
                                 GGS_syntaxComponentRoot  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_syntaxModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_syntaxModelBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_2 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_nonterminal_label_declaration_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -122,9 +122,9 @@ class syntaxModelBuilder {
   protected : void pr_nonterminal_declaration_syntaxModelBuilder_146_30_ (galgas_scanner &,
                                 GGS_nonterminalDeclarationList  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_syntaxModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_syntaxModelBuilder_4 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_syntax_rule_label_ (galgas_scanner &,
                                 const GGS_lstring  ,
@@ -137,17 +137,17 @@ class syntaxModelBuilder {
   protected : void pr_syntax_rule_declaration_syntaxModelBuilder_206_30_ (galgas_scanner &,
                                 GGS_syntaxRuleList  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_list_syntaxModelBuilder_232_30_ (galgas_scanner &,
                                 GGS_syntaxInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_6 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_syntaxModelBuilder_252_25_ (galgas_scanner &,
                                 GGS_syntaxInstruction  &) ;
 
-  protected : virtual sint16 select_syntaxModelBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_syntaxModelBuilder_7 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_syntaxModelBuilder_279_25_ (galgas_scanner &,
                                 GGS_syntaxInstruction  &) ;
@@ -155,17 +155,17 @@ class syntaxModelBuilder {
   protected : void pr_syntax_instruction_syntaxModelBuilder_296_25_ (galgas_scanner &,
                                 GGS_syntaxInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_8 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_syntaxModelBuilder_323_25_ (galgas_scanner &,
                                 GGS_syntaxInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_9 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_syntaxModelBuilder_349_25_ (galgas_scanner &,
                                 GGS_syntaxInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_syntaxModelBuilder_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_syntaxModelBuilder_10 (galgas_scanner &) = 0 ;
 
   protected : void pr_syntax_instruction_syntaxModelBuilder_376_25_ (galgas_scanner &,
                                 GGS_syntaxInstruction  &) ;

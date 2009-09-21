@@ -123,7 +123,7 @@ class galgasTemplateParser {
                                 const GGS_M_optionComponents  ,
                                 GGS_templateInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_0 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_0 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_template_instruction_galgasTemplateParser_152_27_ (galgasTemplateScanner &,
                                 GGS_typeVariablesMap  &,
@@ -132,23 +132,23 @@ class galgasTemplateParser {
                                 const GGS_M_optionComponents  ,
                                 GGS_templateInstructionList  &) ;
 
-  protected : virtual sint16 select_galgasTemplateParser_1 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_galgasTemplateParser_1 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_galgasTemplateParser_2 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_galgasTemplateParser_2 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_galgasTemplateParser_3 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_galgasTemplateParser_3 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_4 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_4 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_5 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_5 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_galgasTemplateParser_6 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_galgasTemplateParser_6 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_7 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_7 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_galgasTemplateParser_8 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_galgasTemplateParser_8 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_9 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_9 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_template_instruction_galgasTemplateParser_308_27_ (galgasTemplateScanner &,
                                 GGS_typeVariablesMap  &,
@@ -157,13 +157,13 @@ class galgasTemplateParser {
                                 const GGS_M_optionComponents  ,
                                 GGS_templateInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_10 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_10 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_11 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_11 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_galgasTemplateParser_12 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_galgasTemplateParser_12 (galgasTemplateScanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_13 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_13 (galgasTemplateScanner &) = 0 ;
 
   protected : void pr_lexique_component_start_symbol_galgasTemplateParser_376_37_ (galgasTemplateScanner &,
                                 GGS_typeVariablesMap  &,
@@ -172,7 +172,7 @@ class galgasTemplateParser {
                                 const GGS_M_optionComponents  ,
                                 GGS_templateInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_galgasTemplateParser_14 (galgasTemplateScanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgasTemplateParser_14 (galgasTemplateScanner &) = 0 ;
 
 } ;
 

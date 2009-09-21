@@ -34,38 +34,38 @@
 
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
-                      const uint16 inBDDBitCount,
+                      const PMUInt16 inBDDBitCount,
                       C_BDD_Set1 & ex_outUsefulSymbols,
-                      const uint16 inStartSymbolIndex,
-                      sint32 & outIterationsCount) {
+                      const PMUInt16 inStartSymbolIndex,
+                      PMSInt32 & outIterationsCount) {
 //--- Traverse all productions for getting direct accessibility
   C_BDD_Set2 ex_accessibility (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_leftNonterminal (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_rightVocabulary (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_rightSymbol (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD accessibility ;
-  for (sint32 i=0 ; i<inPureBNFproductions.length () ; i++) {
+  for (PMSInt32 i=0 ; i<inPureBNFproductions.length () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
     if (p.aDerivation.count () > 0) {
       ex_rightVocabulary.clear () ;
       C_BDD rightVocabulary ;
-      for (sint32 j=0 ; j<p.aDerivation.count () ; j++) {
-        ex_rightSymbol.initDimension2 (C_BDD::kEqual, (uint16) p.aDerivation (j COMMA_HERE)) ;
+      for (PMSInt32 j=0 ; j<p.aDerivation.count () ; j++) {
+        ex_rightSymbol.initDimension2 (C_BDD::kEqual, (PMUInt16) p.aDerivation (j COMMA_HERE)) ;
         ex_rightVocabulary |= ex_rightSymbol ;
         const C_BDD rightSymbol =
            C_BDD::varCompareConst (inBDDBitCount,
                                    inBDDBitCount,
                                    C_BDD::kEqual,
-                                   (uint32) p.aDerivation (j COMMA_HERE)) ;  
+                                   (PMUInt32) p.aDerivation (j COMMA_HERE)) ;  
         rightVocabulary |= rightSymbol ;
       }
       const C_BDD leftNonterminal =
            C_BDD::varCompareConst (0,
                                    inBDDBitCount,
                                    C_BDD::kEqual,
-                                   (uint32) p.aNumeroNonTerminalGauche) ;  
+                                   (PMUInt32) p.aNumeroNonTerminalGauche) ;  
       accessibility |= leftNonterminal & rightVocabulary ;
-      ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16) p.aNumeroNonTerminalGauche) ;
+      ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (PMUInt16) p.aNumeroNonTerminalGauche) ;
       ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
     }
   } 
@@ -76,7 +76,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   const C_BDD initialValue = C_BDD::varCompareConst (0,
                                                      inBDDBitCount,
                                                      C_BDD::kEqual,
-                                                     (uint32) inStartSymbolIndex) ;  
+                                                     (PMUInt32) inStartSymbolIndex) ;  
   C_BDD outUsefulSymbols = accessibility.accessibleStates (initialValue, inBDDBitCount, NULL) ;
   if (! outUsefulSymbols.isEqualToBDD (ex_outUsefulSymbols.bdd ())) {
     printf ("\n********* USEFUL SYMBOLS ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
@@ -96,15 +96,15 @@ static bool
 displayUnusefulSymbols (C_Compiler & inLexique,
                         const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
                         const C_BDD_Set1 & inUsefulSymbols,
-                        const uint16 inBDDBitCount,
+                        const PMUInt16 inBDDBitCount,
                         C_HTML_FileWrite * inHTMLfile,
                         const cVocabulary & inVocabulary,
-                        const sint32 inIterationCount,
+                        const PMSInt32 inIterationCount,
                         const bool inVerboseOptionOn) {
-  TC_UniqueArray <uint32> unusedNonTerminalArray ;
+  TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
   GGS_M_unusedNonTerminalSymbolsForGrammar::cEnumerator currentNT (inUnusedNonTerminalSymbolsForGrammar) ;
   while (currentNT.hasCurrentObject ()) {
-    const uint32 nt = currentNT._mSymbolIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
+    const PMUInt32 nt = currentNT._mSymbolIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
     unusedNonTerminalArray.addObject (nt) ;
     // printf ("DECLARED UNUSED %u ", nt) ;
     currentNT.next () ;
@@ -119,27 +119,27 @@ displayUnusefulSymbols (C_Compiler & inLexique,
     inHTMLfile->outputRawData ("</p>") ;
   }
 //--- Get index of last non terminal to check (don't check augmented symbol '<>')
-  const uint32 lastNonterminalToCheck = (uint32) (inVocabulary.getAllSymbolsCount () - 2) ;
+  const PMUInt32 lastNonterminalToCheck = (PMUInt32) (inVocabulary.getAllSymbolsCount () - 2) ;
 
   C_BDD_Set1 ex_unusefulSymbols = (~ inUsefulSymbols) ;
   C_BDD_Set1 temp (ex_unusefulSymbols) ;
   temp.init (C_BDD::kLowerOrEqual, lastNonterminalToCheck) ;
   ex_unusefulSymbols &= temp ;
-  temp.init (C_BDD::kStrictGreater, (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; // Don't display 'empty string' symbol
+  temp.init (C_BDD::kStrictGreater, (PMUInt32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; // Don't display 'empty string' symbol
   ex_unusefulSymbols &= temp ;
 
   const C_BDD unusefulSymbols = (~ inUsefulSymbols.bdd ())
     & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kLowerOrEqual, lastNonterminalToCheck)
-    & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kStrictGreater, (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ())
+    & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kStrictGreater, (PMUInt32) inVocabulary.getEmptyStringTerminalSymbolIndex ())
   ;
 
 //--- Compute user useless symbol count
   TC_UniqueArray <bool> uselessArray ;
   ex_unusefulSymbols.getArray (uselessArray) ;
-  uint32 userUselessSymbolCount = 0 ;
-  const sint32 symbolsCount = inVocabulary.originalGrammarSymbolsCount () ;
-  for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-    if (uselessArray (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ( (uint32) symbol)) {
+  PMUInt32 userUselessSymbolCount = 0 ;
+  const PMSInt32 symbolsCount = inVocabulary.originalGrammarSymbolsCount () ;
+  for (PMSInt32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+    if (uselessArray (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ( (PMUInt32) symbol)) {
       userUselessSymbolCount += uselessArray (symbol COMMA_HERE) ;
       // printf ("ACTUALLY UNUSED %u ", symbol) ;
     }
@@ -166,7 +166,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
       TC_UniqueArray <bool> array ;
       ex_unusefulSymbols.getArray (array) ;
       inHTMLfile->outputRawData ("<code>") ;
-      for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+      for (PMSInt32 symbol=0 ; symbol < symbolsCount ; symbol++) {
         if (array (symbol COMMA_HERE)) {
           inHTMLfile->outputRawData ("<br>") ;
           inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
@@ -194,8 +194,8 @@ displayUnusefulSymbols (C_Compiler & inLexique,
       warningMessage << " useless symbols, not declared as unused: " ;
     }
     bool first = true ;
-    for (sint32 symbol=0 ; symbol < symbolsCount ; symbol++) {
-      if (uselessArray (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ((uint32) symbol)) {
+    for (PMSInt32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+      if (uselessArray (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ((PMUInt32) symbol)) {
         if (first) {
           first = false ;
         }else{
@@ -208,9 +208,9 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   }
   
 //--- Check if there are nonterminal symbols declared as unused and actually used
-  uint32 declaredUnusedAndActuallyUsedCount = 0 ;
-  for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
-    if (! uselessArray ((sint32) unusedNonTerminalArray (i COMMA_HERE) COMMA_HERE)) {
+  PMUInt32 declaredUnusedAndActuallyUsedCount = 0 ;
+  for (PMSInt32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
+    if (! uselessArray ((PMSInt32) unusedNonTerminalArray (i COMMA_HERE) COMMA_HERE)) {
       declaredUnusedAndActuallyUsedCount ++ ;
     }
   }
@@ -224,8 +224,8 @@ displayUnusefulSymbols (C_Compiler & inLexique,
       warningMessage << " useful symbols declared as unused: " ;
     }
     bool first = true ;
-    for (sint32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
-      const sint32 symbol = (sint32) unusedNonTerminalArray (i COMMA_HERE) ;
+    for (PMSInt32 i=0 ; i<unusedNonTerminalArray.count () ; i++) {
+      const PMSInt32 symbol = (PMSInt32) unusedNonTerminalArray (i COMMA_HERE) ;
       if (! uselessArray (symbol COMMA_HERE)) {
         if (first) {
           first = false ;
@@ -247,7 +247,7 @@ void
 useful_symbols_computations (C_Compiler & inLexique,
                              const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
-                             const uint16 inBDDBitCount,
+                             const PMUInt16 inBDDBitCount,
                              const cVocabulary & inVocabulary,
                              C_HTML_FileWrite * inHTMLfile,
                              C_BDD_Set1 & outUsefulSymbols,
@@ -262,11 +262,11 @@ useful_symbols_computations (C_Compiler & inLexique,
   if (inHTMLfile != NULL) {
     inHTMLfile->appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
-  sint32 iterationsCount = 0 ;
+  PMSInt32 iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,
                         inBDDBitCount,
                         outUsefulSymbols,
-                        (uint16) inVocabulary.getStartSymbol (),
+                        (PMUInt16) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
   const bool warning = displayUnusefulSymbols (inLexique,
                                                inUnusedNonTerminalSymbolsForGrammar,

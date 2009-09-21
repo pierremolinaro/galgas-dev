@@ -29,10 +29,10 @@ class cPtr_AC_instruction_ForGrammar : public cPtr__AC_galgas_class {
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ;
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
-                                                  sint32 & ioCount) = 0 ;
-  public : virtual void buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                                      TC_UniqueArray <sint16> & ioInstructionsList) = 0 ;
-  public : virtual void buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
+                                                  PMSInt32 & ioCount) = 0 ;
+  public : virtual void buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
+                                      TC_UniqueArray <PMSInt16> & ioInstructionsList) = 0 ;
+  public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) = 0 ;
   public : virtual void fixInfos (class cInfo & inInfo,
@@ -62,7 +62,7 @@ class cPtr_AC_instruction_ForGrammar : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI

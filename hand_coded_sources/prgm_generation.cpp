@@ -127,7 +127,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                  << (lexiqueIsUsedInPrologue ? "inLexique" : "/* inLexique */")
                  << ",\n"
                     "                     const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {\n" ;
-  sint32 unusedPrototypeIndex = 0 ;
+  PMSInt32 unusedPrototypeIndex = 0 ;
   generateInstructionListForList (inPrologueInstructionList,
                                   generatedZone2,
                                   "",
@@ -157,7 +157,7 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
   generatedZone2.appendCppTitleComment ("M A I N    F O R    L I B P M") ;
   generatedZone2 << "int mainForLIBPM  (const int argc, const char * argv []) {\n"
                     "  bool verboseOptionOn = true ;\n"
-                    "  sint16 returnCode = 0 ; // No error\n"
+                    "  PMSInt16 returnCode = 0 ; // No error\n"
                     "//--- Fix parameters for BDD package\n"
                     "  C_BDD::setHashMapSize (19) ;\n"
                     "  C_BDD::setITEcacheSize (17) ;\n"
@@ -218,18 +218,18 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "    try{\n"
                     "      verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;\n"
                     "      " << inProgramComponentName << "_prologue (* _commonLexique, sourceFilesArray) ;\n"
-                    "      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
+                    "      for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {\n"
                     "        try {\n"
                     "          const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;\n"
-                    "          sint16 r = 0 ;\n" ;
+                    "          PMSInt16 r = 0 ;\n" ;
   generatedZone2.incIndentation (+10) ;
-  uint32 grammarIndex = 0 ;
+  PMUInt32 grammarIndex = 0 ;
   GGS_ruleDescriptorForProgramList::cEnumerator currentRule (inRuleDescriptorForProgramList, true) ;
   while (currentRule.hasCurrentObject ()) {
     if (grammarIndex > 0) {
       generatedZone2 << "}else " ;
     }
-    sint32 prototypeIndex = 0 ;
+    PMSInt32 prototypeIndex = 0 ;
     generatedZone2 << "if (fileExtension.compare (\"" << currentRule._mSourceExtension (HERE) << "\") == 0) {\n"
                       "  C_Compiler & inLexique = * _commonLexique ;\n"
                       "  const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;\n"
@@ -319,15 +319,15 @@ generate_cpp_file_for_prgm (C_Compiler & inLexique,
                     "  #endif\n"
                     "  if (verboseOptionOn) {\n"
                     "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "      const uint64 maxUsedMemorySize = getMaxUsedMemorySize () ;\n"
-                    "      const uint64 oneMegaByte = 1 << 20 ;\n"
-                    "      const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;\n"
-                    "      const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;\n"
+                    "      const PMUInt64 maxUsedMemorySize = getMaxUsedMemorySize () ;\n"
+                    "      const PMUInt64 oneMegaByte = 1 << 20 ;\n"
+                    "      const PMUInt64 megaBytes = maxUsedMemorySize / oneMegaByte ;\n"
+                    "      const PMUInt64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;\n"
                     "      co << cStringWithSigned (getCreatedDynamicObjectsTotalCount ())\n"
                     "         << \" C++ objects have been created (\" ;\n"
                     "      co.appendUnsigned64 (megaBytes) ;\n"
                     "      co << \".\" ;\n"
-                    "      co.appendUnsignedWithZeroFill ((uint32) fraction, 3) ;\n"
+                    "      co.appendUnsignedWithZeroFill ((PMUInt32) fraction, 3) ;\n"
                     "      co << \" MB).\\n\" ;\n"
                     "      deactivateMemoryControl () ;\n"
                     "      if ((getAllocationBalance () != 0) && (returnCode == 0)) {\n"

@@ -41,7 +41,7 @@ class cPtr_mapIndexProperty : public cPtr_metamodelProperty {
 //--- Method for 'description' reader
   public : virtual void appendForDescription (C_Lexique & inLexique,
                                               C_String & ioString,
-                                              const sint32 inIndentation
+                                              const PMSInt32 inIndentation
                                               COMMA_LOCATION_ARGS) const ;
 //--- Comparison
   public : virtual bool isEqualToObject (C_Compiler &, const C_GGS_Object * inOperand COMMA_LOCATION_ARGS) const ;

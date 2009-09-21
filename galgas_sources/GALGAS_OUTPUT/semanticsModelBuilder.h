@@ -101,9 +101,9 @@ class semanticsModelBuilder {
   protected : void pr_semantics_component_start_symbol_semanticsModelBuilder_59_39_ (galgas_scanner &,
                                 GGS_semanticsComponentRoot  &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_1 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_attribute_declaration_ (galgas_scanner &,
                                 GGS_attributeInCollectionList  &) = 0 ;
@@ -111,9 +111,9 @@ class semanticsModelBuilder {
   protected : void pr_attribute_declaration_semanticsModelBuilder_128_28_ (galgas_scanner &,
                                 GGS_attributeInCollectionList  &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_2 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_3 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_152_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
@@ -126,16 +126,16 @@ class semanticsModelBuilder {
   protected : void pr_map_method_declaration_semanticsModelBuilder_186_29_ (galgas_scanner &,
                                 GGS_mapMethodList  &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_4 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_216_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_6 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_7 (galgas_scanner &) = 0 ;
 
   protected : void pr_obsolete_declaration_semanticsModelBuilder_272_27_ (galgas_scanner &) ;
 
@@ -144,11 +144,11 @@ class semanticsModelBuilder {
 
   protected : void pr_obsolete_declaration_semanticsModelBuilder_310_27_ (galgas_scanner &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_8 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_9 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_10 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_class_message_declaration_ (galgas_scanner &,
                                 GGS_classMessageDefinitionList  &) = 0 ;
@@ -180,26 +180,26 @@ class semanticsModelBuilder {
   protected : void pr_lazy_attribute_declaration_semanticsModelBuilder_454_33_ (galgas_scanner &,
                                 GGS_lazyAttributeList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_11 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_11 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_478_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_12 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_12 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_13 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_13 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_14 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_14 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_554_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_15 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_15 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_578_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_16 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_16 (galgas_scanner &) = 0 ;
 
   protected : void pr_obsolete_declaration_semanticsModelBuilder_598_27_ (galgas_scanner &) ;
 
@@ -211,14 +211,14 @@ class semanticsModelBuilder {
   protected : void pr_sortedlist_sort_descriptor_semanticsModelBuilder_622_33_ (galgas_scanner &,
                                 GGS_sortedListSortDescriptorList  &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_17 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_17 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_637_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_18 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_18 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_19 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_19 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_enum_message_declaration_ (galgas_scanner &,
                                 GGS_enumMessageList  &) = 0 ;
@@ -226,7 +226,7 @@ class semanticsModelBuilder {
   protected : void pr_enum_message_declaration_semanticsModelBuilder_674_31_ (galgas_scanner &,
                                 GGS_enumMessageList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_20 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_20 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_enum_case_message_ (galgas_scanner &,
                                 GGS_enumCaseMessage  &) = 0 ;
@@ -234,7 +234,7 @@ class semanticsModelBuilder {
   protected : void pr_enum_case_message_semanticsModelBuilder_702_24_ (galgas_scanner &,
                                 GGS_enumCaseMessage  &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_21 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_21 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_enum_modifier_ (galgas_scanner &,
                                 GGS_enumModifierList  &) = 0 ;
@@ -242,7 +242,7 @@ class semanticsModelBuilder {
   protected : void pr_enum_modifier_semanticsModelBuilder_726_20_ (galgas_scanner &,
                                 GGS_enumModifierList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_22 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_22 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_enum_method_ (galgas_scanner &,
                                 GGS_enumMethodList  &) = 0 ;
@@ -250,7 +250,7 @@ class semanticsModelBuilder {
   protected : void pr_enum_method_semanticsModelBuilder_761_18_ (galgas_scanner &,
                                 GGS_enumMethodList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_23 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_23 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_enum_operator_ (galgas_scanner &,
                                 GGS_enumOperatorList  &) = 0 ;
@@ -258,29 +258,29 @@ class semanticsModelBuilder {
   protected : void pr_enum_operator_semanticsModelBuilder_794_20_ (galgas_scanner &,
                                 GGS_enumOperatorList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_24 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_24 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_832_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_25 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_25 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_26 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_26 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_27 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_27 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_28 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_28 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_29 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_29 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_896_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
 
-  protected : virtual sint16 select_semanticsModelBuilder_30 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticsModelBuilder_30 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_31 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_31 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticsModelBuilder_32 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticsModelBuilder_32 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticsModelBuilder_947_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;

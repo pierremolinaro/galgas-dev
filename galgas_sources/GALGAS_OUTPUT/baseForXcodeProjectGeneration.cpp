@@ -76,7 +76,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_XcodeObjectReferenceList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -219,16 +219,16 @@ constructor_listWithValue (const GGS_string& argument_0,
 
 void GGS_XcodeObjectReferenceList::
 internalSubListWithRange (GGS_XcodeObjectReferenceList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mRefString, ptr->mComment) ;
       ptr = ptr->nextObject () ;
@@ -245,8 +245,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_XcodeObjectReferenceList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -264,7 +264,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_XcodeObjectReferenceList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -279,7 +279,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_XcodeObjectReferenceList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@XcodeObjectReferenceList", inIndentation COMMA_THERE) ;
 }
 
@@ -500,7 +500,7 @@ GGS_string cPtr_Xcode_PBXFileReference_abstract::reader_PBXFileReferenceKey (C_C
 void cPtr_Xcode_PBXFileReference_abstract::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_abstract:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -657,7 +657,7 @@ cPtr_Xcode_productFileReference (const GGS_string& argument_0
 void cPtr_Xcode_productFileReference::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_productFileReference:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -809,7 +809,7 @@ method_productExtension (C_Compiler & /* inLexique */,
 void cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_CompiledMachOExecutable:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -980,7 +980,7 @@ method_productExtension (C_Compiler & /* inLexique */,
 void cPtr_Xcode_PBXFileReference_Application::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_Application:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1147,7 +1147,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_cppSourceFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_cppSourceFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1314,7 +1314,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_hSourceFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_hSourceFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1481,7 +1481,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_pchSourceFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_pchSourceFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1648,7 +1648,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_mSourceFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_mSourceFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1815,7 +1815,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_mmSourceFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_mmSourceFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1982,7 +1982,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_gifFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_gifFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2149,7 +2149,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_tiffFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_tiffFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2316,7 +2316,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_pngFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_pngFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2483,7 +2483,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_plistFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_plistFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2650,7 +2650,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_frameworkFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_frameworkFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2817,7 +2817,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_icnsFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_icnsFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2987,7 +2987,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_xibFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_xibFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3174,7 +3174,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFileReference_plistStringFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFileReference_plistStringFile:"
            << mFileName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3318,7 +3318,7 @@ mFileReference () {
 
 elementOf_GGS_Xcode_PBXFileReference_map::
 elementOf_GGS_Xcode_PBXFileReference_map (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_Xcode_PBXFileReference_map & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -3328,9 +3328,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_Xcode_PBXFileReference_map::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -3415,7 +3415,7 @@ void GGS_Xcode_PBXFileReference_map::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -3429,7 +3429,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_Xcode_PBXFileReference_abstract & inParameter0,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inParameter0.isBuilt ()
    && inKey.isBuilt ()) {
@@ -3443,7 +3443,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -3473,7 +3473,7 @@ searchElement (C_Compiler & inLexique,
   }else{
     outParameter0 = node->mInfo.mFileReference ;
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -3643,14 +3643,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_Xcode_PBXFileReference_map::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @Xcode_PBXFileReference_map " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;
@@ -3749,7 +3749,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXBuildFile::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXBuildFile:"
            << mSourceFile.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -3927,7 +3927,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXBuildFile_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -4055,16 +4055,16 @@ constructor_listWithValue (const GGS_Xcode_PBXBuildFile & argument_0) {
 
 void GGS_Xcode_PBXBuildFile_list::
 internalSubListWithRange (GGS_Xcode_PBXBuildFile_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mFile) ;
       ptr = ptr->nextObject () ;
@@ -4081,8 +4081,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -4100,7 +4100,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -4115,7 +4115,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXBuildFile_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXBuildFile_list", inIndentation COMMA_THERE) ;
 }
 
@@ -4304,7 +4304,7 @@ GGS_string cPtr_Xcode_PBXSourcesBuildPhase::reader_PBXSourcesBuildPhaseKey (C_Co
 void cPtr_Xcode_PBXSourcesBuildPhase::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXSourcesBuildPhase:"
            << mNameForComment.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -4499,7 +4499,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXSourcesBuildPhase_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -4627,16 +4627,16 @@ constructor_listWithValue (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
 internalSubListWithRange (GGS_Xcode_PBXSourcesBuildPhase_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mBuildPhase) ;
       ptr = ptr->nextObject () ;
@@ -4653,8 +4653,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -4672,7 +4672,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -4687,7 +4687,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXSourcesBuildPhase_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXSourcesBuildPhase_list", inIndentation COMMA_THERE) ;
 }
 
@@ -4876,7 +4876,7 @@ GGS_string cPtr_Xcode_PBXResourcesBuildPhase::reader_PBXResourcesBuildPhaseKey (
 void cPtr_Xcode_PBXResourcesBuildPhase::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXResourcesBuildPhase:"
            << mNameForComment.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5071,7 +5071,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXResourcesBuildPhase_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -5199,16 +5199,16 @@ constructor_listWithValue (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) 
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
 internalSubListWithRange (GGS_Xcode_PBXResourcesBuildPhase_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mBuildPhase) ;
       ptr = ptr->nextObject () ;
@@ -5225,8 +5225,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -5244,7 +5244,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -5259,7 +5259,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXResourcesBuildPhase_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXResourcesBuildPhase_list", inIndentation COMMA_THERE) ;
 }
 
@@ -5476,7 +5476,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 void cPtr_Xcode_PBXFrameworksBuildPhase::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXFrameworksBuildPhase:"
            << mNameForComment.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5671,7 +5671,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -5799,16 +5799,16 @@ constructor_listWithValue (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0)
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
 internalSubListWithRange (GGS_Xcode_PBXFrameworksBuildPhase_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mBuildPhase) ;
       ptr = ptr->nextObject () ;
@@ -5825,8 +5825,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -5844,7 +5844,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -5859,7 +5859,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXFrameworksBuildPhase_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXFrameworksBuildPhase_list", inIndentation COMMA_THERE) ;
 }
 
@@ -6051,7 +6051,7 @@ GGS_string cPtr_Xcode_PBXGroup::reader_PBXGroupKey (C_Compiler & inLexique COMMA
 void cPtr_Xcode_PBXGroup::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_PBXGroup:"
            << mGroupName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -6263,7 +6263,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXGroup_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -6391,16 +6391,16 @@ constructor_listWithValue (const GGS_Xcode_PBXGroup & argument_0) {
 
 void GGS_Xcode_PBXGroup_list::
 internalSubListWithRange (GGS_Xcode_PBXGroup_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mGroup) ;
       ptr = ptr->nextObject () ;
@@ -6417,8 +6417,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -6436,7 +6436,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -6451,7 +6451,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXGroup_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXGroup_list", inIndentation COMMA_THERE) ;
 }
 
@@ -6656,7 +6656,7 @@ GGS_string cPtr_Xcode_XCBuildConfiguration::reader_XCBuildConfigurationKey (C_Co
 void cPtr_Xcode_XCBuildConfiguration::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_XCBuildConfiguration:"
            << mSettings.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -6848,7 +6848,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_XCBuildConfiguration_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -6976,16 +6976,16 @@ constructor_listWithValue (const GGS_Xcode_XCBuildConfiguration & argument_0) {
 
 void GGS_Xcode_XCBuildConfiguration_list::
 internalSubListWithRange (GGS_Xcode_XCBuildConfiguration_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mBuildConfig) ;
       ptr = ptr->nextObject () ;
@@ -7002,8 +7002,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -7021,7 +7021,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -7036,7 +7036,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_XCBuildConfiguration_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_XCBuildConfiguration_list", inIndentation COMMA_THERE) ;
 }
 
@@ -7212,7 +7212,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXNativeTarget_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -7445,16 +7445,16 @@ constructor_listWithValue (const GGS_string& argument_0,
 
 void GGS_Xcode_PBXNativeTarget_list::
 internalSubListWithRange (GGS_Xcode_PBXNativeTarget_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mTargetKey, ptr->mTargetName, ptr->mTargetConfiguration, ptr->mProductInstallPath, ptr->mProductName, ptr->mProduct, ptr->mBuildPhaseKeyList, ptr->mDependencyKeyList) ;
       ptr = ptr->nextObject () ;
@@ -7471,8 +7471,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXNativeTarget_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -7490,7 +7490,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXNativeTarget_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -7505,7 +7505,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXNativeTarget_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXNativeTarget_list", inIndentation COMMA_THERE) ;
 }
 
@@ -8027,7 +8027,7 @@ GGS_string cPtr_Xcode_targetDependencyDescription::reader_PBXTargetDependencyKey
 void cPtr_Xcode_targetDependencyDescription::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@Xcode_targetDependencyDescription:"
            << mDependencyTarget.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -8205,7 +8205,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_targetDependencyDescription_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -8333,16 +8333,16 @@ constructor_listWithValue (const GGS_Xcode_targetDependencyDescription & argumen
 
 void GGS_Xcode_targetDependencyDescription_list::
 internalSubListWithRange (GGS_Xcode_targetDependencyDescription_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mDependency) ;
       ptr = ptr->nextObject () ;
@@ -8359,8 +8359,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -8378,7 +8378,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -8393,7 +8393,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_targetDependencyDescription_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_targetDependencyDescription_list", inIndentation COMMA_THERE) ;
 }
 
@@ -8554,7 +8554,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_Xcode_PBXVariantGroup_list::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -8712,16 +8712,16 @@ constructor_listWithValue (const GGS_string& argument_0,
 
 void GGS_Xcode_PBXVariantGroup_list::
 internalSubListWithRange (GGS_Xcode_PBXVariantGroup_list & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mPBXVariantKey, ptr->mPBXFileReferenceKey, ptr->mName) ;
       ptr = ptr->nextObject () ;
@@ -8738,8 +8738,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXVariantGroup_list result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -8757,7 +8757,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXVariantGroup_list result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -8772,7 +8772,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_Xcode_PBXVariantGroup_list::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@Xcode_PBXVariantGroup_list", inIndentation COMMA_THERE) ;
 }
 
@@ -9124,7 +9124,7 @@ constructor_new (const GGS_Xcode_PBXFileReference_map & argument_0,
 GGS_string GGS_XcodeProjectDescription::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String _s ;
   _s << "<struct @XcodeProjectDescription" ;
   if (isBuilt ()) {

@@ -155,7 +155,7 @@ class GGS_variableStateAutomaton {
   private : inline GGS_variableStateAutomaton (const enumeration inValue) : mValue (inValue) {}
 
 //--- Bit count for bdd
-  public : static inline uint16 bitCount (void) { return 4 ; }
+  public : static inline PMUInt16 bitCount (void) { return 4 ; }
 
 //--- Is built ?
   public : bool isBuilt (void) const ;
@@ -201,7 +201,7 @@ class GGS_variableStateAutomaton {
 //--- 'description' reader
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
 
 //--- Drop operation
   public : inline void drop (void) { mValue = kNotBuilt ; }
@@ -383,7 +383,7 @@ class GGS_variableMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_variableMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_variableMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -534,7 +534,7 @@ class GGS_typeMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_typeMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_typeMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -578,7 +578,7 @@ class GGS_typeMapIndex : public AC_galgas_mapindex {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--- Type Method 'makeRegularIndex'
   public : static void
@@ -672,7 +672,7 @@ class GGS_sortedTypeList : public AC_galgas_sortedlist {
 //--- Reader 'description
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
 //--------------------------------- Sorted List Enumerator
   public : class cEnumerator : public cAbstractSortedListEnumerator {
   //--- Constructor
@@ -706,8 +706,8 @@ class GGS_typeList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_typeList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_typeList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -770,7 +770,7 @@ class GGS_typeList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_ACGalgasType 
@@ -818,8 +818,8 @@ class GGS_signature : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_signature & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_signature
   reader_subListWithRange (C_Compiler & inLexique,
@@ -898,7 +898,7 @@ class GGS_signature : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_typeMapIndex 
@@ -961,8 +961,8 @@ class GGS_attributeList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_attributeList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_attributeList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1033,7 +1033,7 @@ class GGS_attributeList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_typeMapIndex 
@@ -2152,8 +2152,8 @@ class GGS_classMethodList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_classMethodList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_classMethodList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2224,7 +2224,7 @@ class GGS_classMethodList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -2516,8 +2516,8 @@ class GGS_sortDescriptorList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_sortDescriptorList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_sortDescriptorList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2588,7 +2588,7 @@ class GGS_sortDescriptorList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -2871,7 +2871,7 @@ class GGS_enumConstructorMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_enumConstructorMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_enumConstructorMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -3025,7 +3025,7 @@ class GGS_routineMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_routineMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_routineMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -3126,7 +3126,7 @@ class GGS_functionMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_functionMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_functionMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -3168,8 +3168,8 @@ class GGS_classIndexList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_classIndexList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_classIndexList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -3232,7 +3232,7 @@ class GGS_classIndexList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_typeMapIndex 
@@ -3277,7 +3277,7 @@ class GGS_descendantClassListMap : public AC_galgas_listmap {
  //--- Description
     public : virtual C_String
     _description (C_Compiler & inLexique,
-                  const sint32 inIndentation
+                  const PMSInt32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
     public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;
@@ -3342,7 +3342,7 @@ class e_variableMap {
 class elementOf_GGS_variableMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_variableMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_variableMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_variableMap * nextObject (void) const { return (elementOf_GGS_variableMap *) mNextItem ; }
@@ -3354,9 +3354,9 @@ class elementOf_GGS_variableMap : public AC_galgas_map_element {
   public : e_variableMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -3411,7 +3411,7 @@ class cPtr_ACGalgasType : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -3435,7 +3435,7 @@ class e_typeMap {
 class elementOf_GGS_typeMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_typeMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_typeMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_typeMap * nextObject (void) const { return (elementOf_GGS_typeMap *) mNextItem ; }
@@ -3447,9 +3447,9 @@ class elementOf_GGS_typeMap : public AC_galgas_map_element {
   public : e_typeMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -3475,12 +3475,12 @@ class elementOf_GGS_sortedTypeList : public AC_galgas_sortedlist::cSortedListEle
   protected : virtual bool
   isEqualToObject (const cSortedListElement * inOperand) const ;
 //--- Method used for sorting elements
-  protected : virtual sint32 compareForSorting (const cSortedListElement * inOperand) const ;
+  protected : virtual PMSInt32 compareForSorting (const cSortedListElement * inOperand) const ;
 //--- Method used for description
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
   friend class GGS_sortedTypeList ;
 } ;
@@ -3512,7 +3512,7 @@ class elementOf_GGS_typeList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -3550,7 +3550,7 @@ class elementOf_GGS_signature : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -3586,7 +3586,7 @@ class elementOf_GGS_attributeList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -3620,7 +3620,7 @@ class cPtr_locationGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3658,7 +3658,7 @@ class cPtr_stringGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3696,7 +3696,7 @@ class cPtr_charGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3734,7 +3734,7 @@ class cPtr_boolGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3772,7 +3772,7 @@ class cPtr_uintGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3810,7 +3810,7 @@ class cPtr_sintGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3848,7 +3848,7 @@ class cPtr_uint64GalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3886,7 +3886,7 @@ class cPtr_sint64GalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3924,7 +3924,7 @@ class cPtr_doubleGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3962,7 +3962,7 @@ class cPtr_lstringGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4000,7 +4000,7 @@ class cPtr_lcharGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4038,7 +4038,7 @@ class cPtr_lboolGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4076,7 +4076,7 @@ class cPtr_luintGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4114,7 +4114,7 @@ class cPtr_lsintGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4152,7 +4152,7 @@ class cPtr_luint64GalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4190,7 +4190,7 @@ class cPtr_lsint64GalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4228,7 +4228,7 @@ class cPtr_ldoubleGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4266,7 +4266,7 @@ class cPtr_stringsetGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4304,7 +4304,7 @@ class cPtr_binarysetGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4344,7 +4344,7 @@ class elementOf_GGS_classMethodList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4393,7 +4393,7 @@ class cPtr_classGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4438,7 +4438,7 @@ class cPtr_listGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4488,7 +4488,7 @@ class cPtr_listmapGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4533,7 +4533,7 @@ class cPtr_structGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4576,7 +4576,7 @@ class elementOf_GGS_sortDescriptorList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4616,7 +4616,7 @@ class cPtr_sortedlistGalgasType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4661,7 +4661,7 @@ class cPtr_mapType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4713,7 +4713,7 @@ class cPtr_mapindexType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4742,7 +4742,7 @@ class e_enumConstructorMap {
 class elementOf_GGS_enumConstructorMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_enumConstructorMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_enumConstructorMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_enumConstructorMap * nextObject (void) const { return (elementOf_GGS_enumConstructorMap *) mNextItem ; }
@@ -4754,9 +4754,9 @@ class elementOf_GGS_enumConstructorMap : public AC_galgas_map_element {
   public : e_enumConstructorMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -4791,7 +4791,7 @@ class cPtr_enumType : public cPtr_ACGalgasType {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4822,7 +4822,7 @@ class e_routineMap {
 class elementOf_GGS_routineMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_routineMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_routineMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_routineMap * nextObject (void) const { return (elementOf_GGS_routineMap *) mNextItem ; }
@@ -4834,9 +4834,9 @@ class elementOf_GGS_routineMap : public AC_galgas_map_element {
   public : e_routineMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -4858,7 +4858,7 @@ class e_functionMap {
 class elementOf_GGS_functionMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_functionMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_functionMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_functionMap * nextObject (void) const { return (elementOf_GGS_functionMap *) mNextItem ; }
@@ -4870,9 +4870,9 @@ class elementOf_GGS_functionMap : public AC_galgas_map_element {
   public : e_functionMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -4903,7 +4903,7 @@ class elementOf_GGS_classIndexList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4941,7 +4941,7 @@ class GGS_semanticContext {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 //--- Galgas 'new' destructor
   public : static GGS_semanticContext constructor_new (const GGS_typeMap & argument_0,
                  const GGS_routineMap & argument_1,

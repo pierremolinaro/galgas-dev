@@ -91,7 +91,7 @@ mProductionIndex () {
 //---------------------------------------------------------------------------*
 
 void cProduction::
-engendrerAppelProduction (const sint16 nombreDeParametres,
+engendrerAppelProduction (const PMSInt16 nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const C_String & inAltName,
                           AC_OutputStream & fichierCPP) const {
@@ -101,7 +101,7 @@ engendrerAppelProduction (const sint16 nombreDeParametres,
              << mSourceFileName << "_" << cStringWithSigned (aLigneDefinition)
              << "_" << cStringWithSigned (aColonneDefinition) << "_" << inAltName
              << " (inLexique" ;
-  for (sint32 i=1 ; i<nombreDeParametres ; i++) {
+  for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
     fichierCPP << "," ;
     if ((i % 5) == 4) {
       fichierCPP << "\n                 " ;
@@ -132,14 +132,14 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
     inHTMLfile->appendCppTitleComment ("Step 2 : searching for identical productions", "title") ;
   }
   bool ok = true ;
-  for (sint32 i=0 ; i<productions.length () ; i++) {
+  for (PMSInt32 i=0 ; i<productions.length () ; i++) {
     const cProduction & pi = productions (i COMMA_HERE) ;
-    for (sint32 j=i+1 ; j<productions.length () ; j++) {
+    for (PMSInt32 j=i+1 ; j<productions.length () ; j++) {
       const cProduction & pj = productions (j COMMA_HERE) ;
       bool identiques = pi.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche ;
       if (identiques) {
         identiques = pi.aDerivation.count () == pj.aDerivation.count () ;
-        for (sint32 t=0 ; (t<pi.aDerivation.count ()) && identiques ; t++) {
+        for (PMSInt32 t=0 ; (t<pi.aDerivation.count ()) && identiques ; t++) {
           identiques = pi.aDerivation (t COMMA_HERE) == pj.aDerivation (t COMMA_HERE) ;
         }
       }
@@ -175,7 +175,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
                            const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList,
                            const C_String & inLexiqueName,
-                           const uint32 inOriginalGrammarStartSymbol,
+                           const PMUInt32 inOriginalGrammarStartSymbol,
                            const C_String & inTargetFileName,
                            const cVocabulary & inVocabulary) {
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
@@ -225,7 +225,7 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         parametre.next () ;
       }
       generatedZone3 << ") ;\n" ; 
-      if (nonTerminal._mID (HERE) == (sint32) inOriginalGrammarStartSymbol) {
+      if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : static "
                           "void _performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
                        << " (C_Compiler & _inCompiler"
@@ -268,9 +268,9 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
     nonTerminal.next () ;
   }
 //--- declaration des non-terminaux pour les instructions choix et repeter
-  for (sint32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     if (inVocabulary.needToGenerateChoice (i COMMA_HERE)) {
-      generatedZone3 << "  public : virtual sint16 " << inVocabulary.getSymbol (i COMMA_HERE) << " ("
+      generatedZone3 << "  public : virtual PMSInt16 " << inVocabulary.getSymbol (i COMMA_HERE) << " ("
             << inLexiqueName << " &) ;\n" ;
     }
   }
@@ -472,9 +472,9 @@ static const char k_default_style [] = {
 
 //---------------------------------------------------------------------------*
 
-static uint16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
-  uint16 bddBitCount = 0 ;
-  uint32 temp = (uint32) (inVocabulary.getAllSymbolsCount () - 1) ;
+static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
+  PMUInt16 bddBitCount = 0 ;
+  PMUInt32 temp = (PMUInt32) (inVocabulary.getAllSymbolsCount () - 1) ;
   while (temp != 0) {
     temp >>= 1 ;
     bddBitCount ++ ;
@@ -615,10 +615,10 @@ analyzeGrammar (C_Compiler & inLexique,
   #endif
 
 //--- Define vocabulary BDD sets descriptor
-  const C_BDD_Descriptor vocabularyDescriptor ((uint32) (vocabulary.getAllSymbolsCount () - 1)) ;
+  const C_BDD_Descriptor vocabularyDescriptor ((PMUInt32) (vocabulary.getAllSymbolsCount () - 1)) ;
 
 //--- Compute the BDD bit count
-  const uint16 bddBitCount = bddBitCountForVocabulary (vocabulary) ;
+  const PMUInt16 bddBitCount = bddBitCountForVocabulary (vocabulary) ;
 
 //--- Search for identical productions -----------------------------------------------------------
   #ifdef LOG_GRAMMAR_COMPUTATIONS
@@ -644,9 +644,9 @@ analyzeGrammar (C_Compiler & inLexique,
   //--- Enregistrer les caracteristiques de la grammaire
     *HTMLfile << "For information :\n" ;
     HTMLfile->outputRawData ("<ul><li>") ;
-    *HTMLfile << cStringWithSigned ((sint32)(vocabulary.getTerminalSymbolsCount () - 1))
+    *HTMLfile << cStringWithSigned ((PMSInt32)(vocabulary.getTerminalSymbolsCount () - 1))
               << " terminal symbols, numbered from 0 to "
-              << cStringWithSigned ((sint32)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
+              << cStringWithSigned ((PMSInt32)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
     HTMLfile->outputRawData ("</li>\n<li>") ;
     *HTMLfile << " the 'empty string' symbol '$$' is numbered "
               << cStringWithSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) << " ;" ;
@@ -655,7 +655,7 @@ analyzeGrammar (C_Compiler & inLexique,
               << " nonterminal symbols in the pure BNF grammar, numbered from "
               << cStringWithSigned (vocabulary.getTerminalSymbolsCount ())
               << " to "
-              << cStringWithSigned ((sint32)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
+              << cStringWithSigned ((PMSInt32)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
     HTMLfile->outputRawData ("</li>\n<li>") ;
     *HTMLfile << "whole vocabulary : "
               << cStringWithSigned (vocabulary.getAllSymbolsCount ())
@@ -699,7 +699,7 @@ analyzeGrammar (C_Compiler & inLexique,
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
   C_BDD_Set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TC_UniqueArray <TC_UniqueArray <sint32> > FIRSTarray ;
+  TC_UniqueArray <TC_UniqueArray <PMSInt32> > FIRSTarray ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
@@ -730,7 +730,7 @@ analyzeGrammar (C_Compiler & inLexique,
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
   C_BDD_Set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TC_UniqueArray <TC_UniqueArray <sint32> > FOLLOWarray ;
+  TC_UniqueArray <TC_UniqueArray <PMSInt32> > FOLLOWarray ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations
@@ -835,7 +835,7 @@ analyzeGrammar (C_Compiler & inLexique,
 //--- END -------------------------------------------------------------------------------------------------------
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
-    C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((uint16) errorFlag) ;
+    C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((PMUInt16) errorFlag) ;
     if (HTMLfile != NULL) {
       HTMLfile->appendCppTitleComment (s, "title") ;
     }
@@ -854,7 +854,7 @@ analyzeGrammar (C_Compiler & inLexique,
   }else if (warningFlag) {
     C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
-    sint32 i = 1 ;
+    PMSInt32 i = 1 ;
     while (warningFlag != 0) {
       if ((warningFlag & 1) != 0) {
         s << " " << cStringWithSigned (i) ;

@@ -40,7 +40,7 @@ void
 generateInstructionListForList (const GGS_typeInstructionList & inList,
                                 AC_OutputStream & ioCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug,
                                 const bool inGenerateSemanticInstructions) ;
 
@@ -49,7 +49,7 @@ generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionList & inList
                                           AC_OutputStream & inHfile,
                                           const C_String & inLexiqueClassName,
                                           const C_String & inTargetFileName,
-                                          sint32 & ioPrototypeIndex,
+                                          PMSInt32 & ioPrototypeIndex,
                                           const bool inNotDeclared) ;
 
 bool

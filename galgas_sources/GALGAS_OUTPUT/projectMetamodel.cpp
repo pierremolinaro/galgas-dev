@@ -106,7 +106,7 @@ operator_strictSup (const GGS_sourceFileKind inOperand) const {
 GGS_string GGS_sourceFileKind::
 reader_description (C_Compiler & /* inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
-                    const sint32 /* inIndentation */) const {
+                    const PMSInt32 /* inIndentation */) const {
   C_String s ;
   s << "<enum @sourceFileKind" ;
   switch (mValue) {
@@ -178,7 +178,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_projectSourceList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -336,16 +336,16 @@ constructor_listWithValue (const GGS_sourceFileKind& argument_0,
 
 void GGS_projectSourceList::
 internalSubListWithRange (GGS_projectSourceList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mSourceKind, ptr->mFilePath, ptr->mTargetList) ;
       ptr = ptr->nextObject () ;
@@ -362,8 +362,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_projectSourceList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -381,7 +381,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_projectSourceList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -396,7 +396,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_projectSourceList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@projectSourceList", inIndentation COMMA_THERE) ;
 }
 

@@ -216,8 +216,8 @@ class GGS_semanticExpressionList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_semanticExpressionList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_semanticExpressionList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -280,7 +280,7 @@ class GGS_semanticExpressionList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_semanticExpression 
@@ -2866,7 +2866,7 @@ class cPtr_semanticExpression : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -2900,7 +2900,7 @@ class elementOf_GGS_semanticExpressionList : public AC_galgas_list::cListElement
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -2937,7 +2937,7 @@ class cPtr_outExpressionList : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -2980,7 +2980,7 @@ class cPtr_variableExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3021,7 +3021,7 @@ class cPtr_selfInExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3059,7 +3059,7 @@ class cPtr_hereExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3097,7 +3097,7 @@ class cPtr_trueExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3135,7 +3135,7 @@ class cPtr_falseExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3175,7 +3175,7 @@ class cPtr_literalCharExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3218,7 +3218,7 @@ class cPtr_literalStringExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3261,7 +3261,7 @@ class cPtr_literalDoubleExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3304,7 +3304,7 @@ class cPtr_literalUIntExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3347,7 +3347,7 @@ class cPtr_literalUInt64Expression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3390,7 +3390,7 @@ class cPtr_literalSIntExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3433,7 +3433,7 @@ class cPtr_literalSInt64Expression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3480,7 +3480,7 @@ class cPtr_constructorExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3527,7 +3527,7 @@ class cPtr_readerCallExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3572,7 +3572,7 @@ class cPtr_optionExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3619,7 +3619,7 @@ class cPtr_concatExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3666,7 +3666,7 @@ class cPtr_orExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3713,7 +3713,7 @@ class cPtr_xorExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3760,7 +3760,7 @@ class cPtr_andExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3807,7 +3807,7 @@ class cPtr_equalExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3854,7 +3854,7 @@ class cPtr_notEqualExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3901,7 +3901,7 @@ class cPtr_lowerOrEqualExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3948,7 +3948,7 @@ class cPtr_greaterOrEqualExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3995,7 +3995,7 @@ class cPtr_strictGreaterExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4042,7 +4042,7 @@ class cPtr_strictLowerExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4089,7 +4089,7 @@ class cPtr_rightShiftExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4136,7 +4136,7 @@ class cPtr_leftShiftExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4183,7 +4183,7 @@ class cPtr_addExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4230,7 +4230,7 @@ class cPtr_subExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4277,7 +4277,7 @@ class cPtr_multiplicationExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4324,7 +4324,7 @@ class cPtr_divisionExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4371,7 +4371,7 @@ class cPtr_moduloExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4416,7 +4416,7 @@ class cPtr_unaryMinusExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4461,7 +4461,7 @@ class cPtr_notExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4506,7 +4506,7 @@ class cPtr_negateExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4549,7 +4549,7 @@ class cPtr_varInExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4594,7 +4594,7 @@ class cPtr_descriptionInExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4643,7 +4643,7 @@ class cPtr_castInExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4686,7 +4686,7 @@ class cPtr_filewrapperObjectInstanciationInExpression : public cPtr_semanticExpr
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4731,7 +4731,7 @@ class cPtr_filewrapperInExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4778,7 +4778,7 @@ class cPtr_filewrapperTemplateInExpression : public cPtr_semanticExpression {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

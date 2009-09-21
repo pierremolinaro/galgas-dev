@@ -58,14 +58,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   while (currentRelation .hasCurrentObject ()) {
     inHfile << "//--- '" << currentRelation._key (HERE) << "' relation\n"
                "  protected : C_BDD _relationBDD_" << currentRelation._key (HERE) << " ;\n" ;
-    for (sint32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
-      inHfile << "  protected : uint16 _bitCount_" << cStringWithSigned (i) << "_forRelation_"
+    for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
+      inHfile << "  protected : PMUInt16 _bitCount_" << cStringWithSigned (i) << "_forRelation_"
               << currentRelation._key (HERE) << " ;\n" ;
     }
     inHfile << "  public : void modifier_addTo"
             << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
             << " (C_Compiler & inLexique,\n" ;
-    for (sint32 i=1 ; i<currentRelation._mDomains (HERE).count () ; i++) {
+    for (PMSInt32 i=1 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       inHfile << "                                    const GGS_string & inValue_" << cStringWithSigned (i) << ",\n" ;
     }
     inHfile << "                                    const GGS_string & inValue_"
@@ -105,7 +105,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_domainToImplement::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -114,7 +114,7 @@ void cPtr_C_domainToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
 
@@ -123,7 +123,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   GGS_domainRelationMap::cEnumerator currentRelation (mRelationMap) ;
   bool first = true ;
   while (currentRelation.hasCurrentObject ()) {
-    for (sint32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
+    for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       if (first) {
         inCppFile << " :\n" ;
         first = false ;
@@ -181,7 +181,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "modifier_addTo"
               << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
               << " (C_Compiler & /* inLexique */,\n" ;
-    for (sint32 i=1 ; i<currentRelation._mDomains (HERE).count () ; i++) {
+    for (PMSInt32 i=1 ; i<currentRelation._mDomains (HERE).count () ; i++) {
       inCppFile << "                                    const GGS_string & inValue_" << cStringWithSigned (i) << ",\n" ;
     }
     inCppFile << "                                    const GGS_string & inValue_"
@@ -190,9 +190,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                  "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
                  "  bool bitCountExtended = false ;\n" ;
     GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
-    sint32 idx = 1 ;
+    PMSInt32 idx = 1 ;
     while (currentDomainRelation.hasCurrentObject ()) {
-      inCppFile << "  const uint32 entry" << cStringWithSigned (idx) << " = findOrAddEntry (_attribute_" << currentDomainRelation._mValue (HERE)
+      inCppFile << "  const PMUInt32 entry" << cStringWithSigned (idx) << " = findOrAddEntry (_attribute_" << currentDomainRelation._mValue (HERE)
                 << ", inValue_" << cStringWithSigned (idx) << ", bitCountExtended) ;\n" ;
       idx ++ ;
       currentDomainRelation.next () ;
@@ -200,13 +200,13 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "  if (bitCountExtended) {\n"
                  "    updateRelationsAfterBitCountExtension () ;\n"
                  "  }\n"
-                 "  const uint32 entries [] = {entry1" ;
-    for (sint32 i=2 ;i<=currentRelation._mDomains (HERE).count () ; i++) {
+                 "  const PMUInt32 entries [] = {entry1" ;
+    for (PMSInt32 i=2 ;i<=currentRelation._mDomains (HERE).count () ; i++) {
       inCppFile << ", entry" << cStringWithSigned (i) ;
     }
     inCppFile << "} ;\n"
-                 "  const uint16 bitCounts [] = {_bitCount_0_forRelation_" << currentRelation._key (HERE) ;
-    for (sint32 i=1 ;i<currentRelation._mDomains (HERE).count () ; i++) {
+                 "  const PMUInt16 bitCounts [] = {_bitCount_0_forRelation_" << currentRelation._key (HERE) ;
+    for (PMSInt32 i=1 ;i<currentRelation._mDomains (HERE).count () ; i++) {
       inCppFile << ", _bitCount_" << cStringWithSigned (i) << "_forRelation_" << currentRelation._key (HERE) ;
     }
     inCppFile << "} ;\n"
@@ -221,17 +221,17 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "void GGS_" << mDomainName << "::\n"
                "updateRelationsAfterBitCountExtension (void) {\n" ;
   currentRelation.rewind () ;
-  sint32 relationIndex = 0 ;
+  PMSInt32 relationIndex = 0 ;
   while (currentRelation.hasCurrentObject ()) {
-    inCppFile << "  const uint16 bitNeededCountArray" << cStringWithSigned (relationIndex) << " [] = {" ;
+    inCppFile << "  const PMUInt16 bitNeededCountArray" << cStringWithSigned (relationIndex) << " [] = {" ;
     GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
     while (currentDomainRelation.hasCurrentObject ()) {
       inCppFile << "_attribute_" << currentDomainRelation._mValue (HERE) << ".mBitCount, " ;
       currentDomainRelation.next () ;
     }
     inCppFile << "0} ;\n" ;
-    inCppFile << "  uint16 * bitCountCurrentArray" << cStringWithSigned (relationIndex) << " [] = {" ;
-    sint32 relationDomainIndex = 0 ;
+    inCppFile << "  PMUInt16 * bitCountCurrentArray" << cStringWithSigned (relationIndex) << " [] = {" ;
+    PMSInt32 relationDomainIndex = 0 ;
     currentDomainRelation.rewind () ;
     while (currentDomainRelation.hasCurrentObject ()) {
       inCppFile << "& _bitCount_" << cStringWithSigned (relationDomainIndex) << "_forRelation_" << currentRelation._key (HERE) << ", " ;

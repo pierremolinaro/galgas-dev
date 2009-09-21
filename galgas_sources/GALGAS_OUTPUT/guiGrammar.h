@@ -40,12 +40,12 @@ class guiGrammar : public guiModelBuilder {
                                 const GGS_string inSourceString,
                                 GGS_guiComponentRoot &
                                 COMMA_LOCATION_ARGS) ;
-  public : virtual sint16 select_repeat_guiModelBuilder_0 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_guiModelBuilder_1 (galgas_scanner &) ;
-  public : virtual sint16 select_guiModelBuilder_2 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_guiModelBuilder_3 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_guiModelBuilder_4 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_guiModelBuilder_5 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_guiModelBuilder_0 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_guiModelBuilder_1 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_guiModelBuilder_2 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_guiModelBuilder_3 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_guiModelBuilder_4 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_guiModelBuilder_5 (galgas_scanner &) ;
 } ;
 
 //---------------------------------------------------------------------------*

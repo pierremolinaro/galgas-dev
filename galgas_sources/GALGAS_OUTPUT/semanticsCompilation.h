@@ -85,7 +85,7 @@ typedef void (*typeCategoryMethod__semanticDeclaration__enterType)  (C_Compiler 
 
 void
 enterCategoryMethod__semanticDeclaration__enterType (typeCategoryMethod__semanticDeclaration__enterType inRoutine,
-                     const sint32 inClassID) ;
+                     const PMSInt32 inClassID) ;
 
 //---------------------------------------------------------------------------*
 

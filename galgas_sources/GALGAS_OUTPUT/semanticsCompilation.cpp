@@ -137,7 +137,7 @@ static TC_UniqueArray <typeCategoryMethod__semanticDeclaration__enterType> gDisp
 
 void
 enterCategoryMethod__semanticDeclaration__enterType (typeCategoryMethod__semanticDeclaration__enterType inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForMethod__semanticDeclaration__enterType.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 

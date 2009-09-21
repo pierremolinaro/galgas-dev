@@ -96,6 +96,6 @@ class %LEXIQUE_CLASS_NAME% : public C_Lexique {
   #endif
 %if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
 //--- Scanner mode for template scanner
-  private : sint32 mMatchedTemplateDelimiterIndex ;
+  private : PMSInt32 mMatchedTemplateDelimiterIndex ;
 %end if%
 

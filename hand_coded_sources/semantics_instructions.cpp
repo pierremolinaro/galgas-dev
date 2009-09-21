@@ -30,7 +30,7 @@ void
 generateInstructionListForList (const GGS_typeInstructionList & inList,
                                 AC_OutputStream & ioCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug,
                                 const bool inGenerateSemanticInstructions) {
   ioCppFile.incIndentation (+2) ;
@@ -55,7 +55,7 @@ generateSelectAndRepeatPrototypesForList (const GGS_typeInstructionList & inList
                                           AC_OutputStream & inHfile,
                                           const C_String & inLexiqueClassName,
                                           const C_String & inTargetFileName,
-                                          sint32 & ioPrototypeIndex,
+                                          PMSInt32 & ioPrototypeIndex,
                                           const bool inNotDeclared) {
   GGS_typeInstructionList::cEnumerator current (inList, true) ;
   while (current.hasCurrentObject ()) {
@@ -120,7 +120,7 @@ void cPtr_typeInstruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
                                      const C_String & /* inTargetFileName */,
-                                     sint32 & /* ioPrototypeIndex */,
+                                     PMSInt32 & /* ioPrototypeIndex */,
                                      const bool /* inNotDeclared */) {
 }
 
@@ -136,7 +136,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
 void cPtr_typeSimpleExtractInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -230,7 +230,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeStructuredExtractInstructionWithElse::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -239,7 +239,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     ioCppFile << ".isBuilt ()) {\n" ;
     ioCppFile.incIndentation (+2) ;
     bool first = true ;
-    sint32 branchCount = 0 ;
+    PMSInt32 branchCount = 0 ;
     GGS_typeStructuredExtractCasesList::cEnumerator p (mCasesList, true) ;
     while (p.hasCurrentObject ()) {
       if (first) {
@@ -268,7 +268,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     generateInstructionListForList (mElseInstructionList, ioCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
-    for (sint32 i=0 ; i<branchCount ; i++) {
+    for (PMSInt32 i=0 ; i<branchCount ; i++) {
       ioCppFile << "}\n" ;
       ioCppFile.incIndentation (-2) ;
     }
@@ -332,7 +332,7 @@ generateInstructions (AC_OutputStream & inCppFile,
                       const GGS_typeStructuredCastBranchList & /* inBranchList */,
                       const C_String & /* inTemporaryVarName */,
                       const C_String & inTargetFileName,
-                      sint32 & ioPrototypeIndex,
+                      PMSInt32 & ioPrototypeIndex,
                       const bool inGenerateDebug) const {
   generateInstructionListForList (mElseInstructionList, inCppFile,
                                   inTargetFileName, ioPrototypeIndex,
@@ -368,7 +368,7 @@ generateInstructions (AC_OutputStream & inCppFile,
                       const GGS_typeStructuredCastBranchList & inBranchList,
                       const C_String & inTemporaryVarName,
                       const C_String & /* inTargetFileName */,
-                      sint32 & /* ioPrototypeIndex */,
+                      PMSInt32 & /* ioPrototypeIndex */,
                       const bool /* inGenerateDebug */) const {
   inCppFile << "const castBranchDescriptorType _castBranchDescriptor ["
             << cStringWithSigned (inBranchList.count ()) << "] = {\n" ;
@@ -422,7 +422,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeStructuredCastInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -528,7 +528,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeDropInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -571,7 +571,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeLogInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -619,7 +619,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeErrorInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -686,7 +686,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeWarningInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -735,7 +735,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeMessageInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -781,7 +781,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeMatchInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -801,7 +801,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       aNomCppVariable2 (HERE)->generateCplusPlusName (ioCppFile) ;
       ioCppFile << " (HERE) ;\n" ;
     }
-    sint32 index = 0 ;
+    PMSInt32 index = 0 ;
     GGS_L_matchInstructionCasesList::cEnumerator casCourant (aListeCas, true) ;
     while (casCourant.hasCurrentObject ()) {
       if (! mOperand1_isEnumeration.boolValue ()) {
@@ -845,7 +845,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
     generateInstructionListForList (mElseInstructionsList, ioCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
-    for (sint32 i=0 ; i<index ; i++) {
+    for (PMSInt32 i=0 ; i<index ; i++) {
       ioCppFile << "}\n" ;
       ioCppFile.incIndentation (-2) ;
     }
@@ -903,7 +903,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeIncrementInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -953,7 +953,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeDecrementInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -1003,7 +1003,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeAppendInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -1081,7 +1081,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeRemoveInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -1159,7 +1159,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeMapBlockPrologueInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -1223,7 +1223,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_typeMapBlockEpilogueInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {

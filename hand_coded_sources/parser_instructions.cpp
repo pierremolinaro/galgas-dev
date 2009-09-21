@@ -218,7 +218,7 @@ void cPtr_typeInstructionVerifSyntaxique::
 generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
                                      const C_String & /* inTargetFileName */,
-                                     sint32 & /* ioPrototypeIndex */,
+                                     PMSInt32 & /* ioPrototypeIndex */,
                                      const bool /* inNotDeclared */) {
 }
 
@@ -227,7 +227,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
 void cPtr_typeInstructionVerifSyntaxique::
 generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -301,7 +301,7 @@ void cPtr_typeInstructionAppelNonTerminal::
 generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
                                      const C_String & /* inLexiqueClassName */,
                                      const C_String & /* inTargetFileName */,
-                                     sint32 & /* ioPrototypeIndex */,
+                                     PMSInt32 & /* ioPrototypeIndex */,
                                      const bool /* inNotDeclared */) {
 }
 
@@ -310,7 +310,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & /* inHfile */,
 void cPtr_typeInstructionAppelNonTerminal::
 generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & /* inTargetFileName */,
-                       sint32 & /* ioPrototypeIndex */,
+                       PMSInt32 & /* ioPrototypeIndex */,
                        const bool /* inGenerateDebug */,
                        const bool inGenerateSemanticInstructions) const {
   inCppFile << "nt_" << mNonterminalName << "_"
@@ -376,10 +376,10 @@ void cPtr_C_select_instruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inLexiqueClassName,
                                      const C_String & inTargetFileName,
-                                     sint32 & ioPrototypeIndex,
+                                     PMSInt32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
-    inHfile << "  protected : virtual sint16 select_" << inTargetFileName
+    inHfile << "  protected : virtual PMSInt16 select_" << inTargetFileName
              << "_" << cStringWithSigned (ioPrototypeIndex)
              << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
@@ -401,7 +401,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 void cPtr_C_select_instruction::
 generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   inCppFile << "switch (select_" << inTargetFileName
@@ -409,7 +409,7 @@ generateInstruction (AC_OutputStream & inCppFile,
            << " (inLexique)) {\n" ;
   ioPrototypeIndex ++ ;
   GGS_typeListeBranchesInstructions::cEnumerator currentBranch (mIFbranchesList, true) ;
-  sint16 numeroBranche = 1 ;
+  PMSInt16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
   while (currentBranch.hasCurrentObject ()) {
     inCppFile << "case " << cStringWithSigned (numeroBranche) << " : {\n" ;
@@ -473,10 +473,10 @@ void cPtr_C_repeat_instruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inLexiqueClassName,
                                      const C_String & inTargetFileName,
-                                     sint32 & ioPrototypeIndex,
+                                     PMSInt32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   if (inNotDeclared) {
-    inHfile << "  protected : virtual sint16 select_repeat_" << inTargetFileName
+    inHfile << "  protected : virtual PMSInt16 select_repeat_" << inTargetFileName
             << "_" << cStringWithSigned (ioPrototypeIndex)
             << " (" << inLexiqueClassName << " &) = 0 ;\n\n" ;
   }
@@ -498,10 +498,10 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 void cPtr_C_repeat_instruction::
 generateInstruction (AC_OutputStream & inCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
-  const sint32 prototypeIndex = ioPrototypeIndex ;
+  const PMSInt32 prototypeIndex = ioPrototypeIndex ;
   ioPrototypeIndex ++ ;
   inCppFile << "{ bool syntaxRepeat_" << cStringWithSigned (prototypeIndex) << " = true ;\n"
                "  while (syntaxRepeat_" << cStringWithSigned (prototypeIndex) << ") {\n" ;
@@ -514,10 +514,10 @@ generateInstruction (AC_OutputStream & inCppFile,
            << "_" << cStringWithSigned (prototypeIndex)
            << " (inLexique)) {\n" ;
   currentBranch.next () ;
-  sint16 numeroBranche = 1 ;
+  PMSInt16 numeroBranche = 1 ;
   inCppFile.incIndentation (+2) ;
   while (currentBranch.hasCurrentObject ()) {
-    inCppFile << "case " << cStringWithSigned ((sint32) (numeroBranche + 1)) << " : {\n" ;
+    inCppFile << "case " << cStringWithSigned ((PMSInt32) (numeroBranche + 1)) << " : {\n" ;
     generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -582,10 +582,10 @@ void cPtr_C_parse_rewind_instruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                      const C_String & inLexiqueClassName,
                                      const C_String & inTargetFileName,
-                                     sint32 & ioPrototypeIndex,
+                                     PMSInt32 & ioPrototypeIndex,
                                      const bool inNotDeclared) {
   GGS_typeListeBranchesInstructions::cEnumerator p (mBranchList, true) ;
-  const sint32 prototypeIndex = ioPrototypeIndex ;
+  const PMSInt32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
   generateSelectAndRepeatPrototypesForList (p._mInstructionList (HERE),
                                             inHfile,
@@ -596,7 +596,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 //--- Other branches
   p.next () ;
   while (p.hasCurrentObject ()) {
-    sint32 tempPrototypeIndex = prototypeIndex ;
+    PMSInt32 tempPrototypeIndex = prototypeIndex ;
     generateSelectAndRepeatPrototypesForList (p._mInstructionList (HERE),
                                               inHfile,
                                               inLexiqueClassName,
@@ -612,12 +612,12 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 void cPtr_C_parse_rewind_instruction::
 generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   GGS_typeListeBranchesInstructions::cEnumerator p (mBranchList, true) ;
-  const sint32 v = mInstructionLocation.location () ; // For making 'context_xxx' variable unique
-  const sint32 prototypeIndex = ioPrototypeIndex ;
+  const PMSInt32 v = mInstructionLocation.location () ; // For making 'context_xxx' variable unique
+  const PMSInt32 prototypeIndex = ioPrototypeIndex ;
 //--- First branch
   inCppFile << "//--- First branch of parse/rewind instruction\n"
             << "  const C_parsingContext context_" << cStringWithSigned (v) << " = inLexique.parsingContext () ;\n" ;
@@ -629,7 +629,7 @@ generateInstruction (AC_OutputStream & inCppFile,
   while (p.hasCurrentObject ()) {
     inCppFile << "//--- Branch of parse/rewind instruction\n"
               << "  inLexique.setParsingContext (context_" << cStringWithSigned (v) << ") ;\n" ;
-    sint32 tempPrototypeIndex = prototypeIndex ;
+    PMSInt32 tempPrototypeIndex = prototypeIndex ;
     generateInstructionListForList (p._mInstructionList (HERE), inCppFile,
                                     inTargetFileName, tempPrototypeIndex,
                                     inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -685,10 +685,10 @@ void cPtr_C_parse_when_else_instruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                    const C_String & inLexiqueClassName,
                                    const C_String & inTargetFileName,
-                                   sint32 & ioPrototypeIndex,
+                                   PMSInt32 & ioPrototypeIndex,
                                    const bool inNotDeclared) {
   GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-  const sint32 kPrototypeIndex = ioPrototypeIndex ;
+  const PMSInt32 kPrototypeIndex = ioPrototypeIndex ;
 //--- Generate for first branch
   generateSelectAndRepeatPrototypesForList (currentBranch._mInstructionList (HERE),
                                             inHfile,
@@ -699,7 +699,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 //--- Generate for other branches
   currentBranch.next () ;
   while (currentBranch.hasCurrentObject ()) {
-    sint32 localPrototypeIndex = kPrototypeIndex ;
+    PMSInt32 localPrototypeIndex = kPrototypeIndex ;
     generateSelectAndRepeatPrototypesForList (currentBranch._mInstructionList (HERE),
                                               inHfile,
                                               inLexiqueClassName,
@@ -709,7 +709,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
     currentBranch.next () ;
   }
 //--- Generate for 'else' branch
-  sint32 localPrototypeIndex = kPrototypeIndex ;
+  PMSInt32 localPrototypeIndex = kPrototypeIndex ;
   generateSelectAndRepeatPrototypesForList (mElseInstructionsList,
                                             inHfile,
                                             inLexiqueClassName,
@@ -723,12 +723,12 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 void cPtr_C_parse_when_else_instruction::
 generateInstruction (AC_OutputStream & inCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
     GGS_L_expression_instructionsList_list::cEnumerator currentBranch (mIFbranchesList, true) ;
-    const sint32 kPrototypeIndex = ioPrototypeIndex ;
+    const PMSInt32 kPrototypeIndex = ioPrototypeIndex ;
     bool first = true ;
     while (currentBranch.hasCurrentObject ()) {
       if (first) {
@@ -739,7 +739,7 @@ generateInstruction (AC_OutputStream & inCppFile,
       inCppFile << "if ((" ;
       currentBranch._mIFexpression (HERE) (HERE)->generateExpression (inCppFile) ;
       inCppFile << ").isBuiltAndTrue ()) {\n" ;
-      sint32 localPrototypeIndex = kPrototypeIndex ;
+      PMSInt32 localPrototypeIndex = kPrototypeIndex ;
       generateInstructionListForList (currentBranch._mInstructionList (HERE), inCppFile,
                                       inTargetFileName, localPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -747,7 +747,7 @@ generateInstruction (AC_OutputStream & inCppFile,
     }
     if (mElseInstructionsList.count () > 0) {
       inCppFile << "}else{\n" ;
-      sint32 localPrototypeIndex = kPrototypeIndex ;
+      PMSInt32 localPrototypeIndex = kPrototypeIndex ;
       generateInstructionListForList (mElseInstructionsList, inCppFile,
                                       inTargetFileName, localPrototypeIndex,
                                       inGenerateDebug, inGenerateSemanticInstructions) ;
@@ -810,7 +810,7 @@ void cPtr_C_parse_loop_instruction::
 generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                    const C_String & inLexiqueClassName,
                                    const C_String & inTargetFileName,
-                                   sint32 & ioPrototypeIndex,
+                                   PMSInt32 & ioPrototypeIndex,
                                    const bool inNotDeclared) {
   generateSelectAndRepeatPrototypesForList (mInstructionList,
                                             inHfile,
@@ -825,7 +825,7 @@ generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
 void cPtr_C_parse_loop_instruction::
 generateInstruction (AC_OutputStream & inCppFile,
                      const C_String & inTargetFileName,
-                     sint32 & ioPrototypeIndex,
+                     PMSInt32 & ioPrototypeIndex,
                      const bool inGenerateDebug,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -840,9 +840,9 @@ generateInstruction (AC_OutputStream & inCppFile,
     mVariantExpression (HERE)->generateExpression (inCppFile) ;
     inCppFile << " ;\n" ;
   //--- First pass on instruction list (parse only)
-    const sint32 v = mEndOfInstructionLocation.location () ; // For making 'context_xxx' variable unique
+    const PMSInt32 v = mEndOfInstructionLocation.location () ; // For making 'context_xxx' variable unique
     inCppFile << "const C_parsingContext context_" << cStringWithSigned (v) << " = inLexique.parsingContext () ;\n" ;
-    const sint32 prototypeIndex = ioPrototypeIndex ;
+    const PMSInt32 prototypeIndex = ioPrototypeIndex ;
     inCppFile.incIndentation (-2) ;
     generateInstructionListForList (mInstructionList, inCppFile,
                                     inTargetFileName, ioPrototypeIndex,
@@ -864,7 +864,7 @@ generateInstruction (AC_OutputStream & inCppFile,
                  "    " << conditionVariable << " = GGS_bool (false) ;\n"
                  "  }else{\n" 
                  "    " << variantVariable << ".decrement_operation (inLexique COMMA_HERE) ;\n" ;
-    sint32 tempPrototypeIndex = prototypeIndex ;
+    PMSInt32 tempPrototypeIndex = prototypeIndex ;
     inCppFile.incIndentation (+2) ;
     generateInstructionListForList (mInstructionList, inCppFile,
                                     inTargetFileName, tempPrototypeIndex,

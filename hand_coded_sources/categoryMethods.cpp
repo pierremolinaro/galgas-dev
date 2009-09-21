@@ -67,7 +67,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "void\n"
                "enterCategoryMethod__" << mClassName << "__" << mMethodName
             << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-               "                     const sint32 inClassID) ;\n\n" ;
+               "                     const PMSInt32 inClassID) ;\n\n" ;
     inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryMethod__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryMethod__" << mClassName << "__" << mMethodName
@@ -102,7 +102,7 @@ enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
 void cPtr_categoryMethodToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                              const C_String & /* inTargetFileName*/,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -111,7 +111,7 @@ void cPtr_categoryMethodToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
 //--- Generate method
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
@@ -159,7 +159,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void\n"
                  "enterCategoryMethod__" << mClassName << "__" << mMethodName
               << " (typeCategoryMethod__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-                 "                     const sint32 inClassID) {\n"
+                 "                     const PMSInt32 inClassID) {\n"
                  "  gDispatchTableForMethod__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
@@ -227,7 +227,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "void\n"
                "enterCategoryReader__" << mClassName << "__" << mMethodName
             << " (typeCategoryReader__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-               "                     const sint32 inClassID) ;\n\n" ;
+               "                     const PMSInt32 inClassID) ;\n\n" ;
     inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryReader__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryReader__" << mClassName << "__" << mMethodName
@@ -262,7 +262,7 @@ enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
 void cPtr_categoryReaderToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                              const C_String & /* inTargetFileName*/,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -271,7 +271,7 @@ void cPtr_categoryReaderToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & inTargetFileName,
-                                sint32 & ioPrototypeIndex,
+                                PMSInt32 & ioPrototypeIndex,
                                 const bool inGenerateDebug) const {
 //--- Generate method
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
@@ -329,7 +329,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void\n"
                  "enterCategoryReader__" << mClassName << "__" << mMethodName
               << " (typeCategoryReader__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-                 "                     const sint32 inClassID) {\n"
+                 "                     const PMSInt32 inClassID) {\n"
                  "  gDispatchTableForReader__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
@@ -405,7 +405,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "typedef C_String (*typeCategoryTemplate__" << mClassName << "__" << mMethodName << ") "
                " (C_Compiler & inLexique"
             << ",\n                                "
-               "const sint32 inIndentation"
+               "const PMSInt32 inIndentation"
             << ",\n                                "
                "const cPtr_" << mClassName << " * inObjectPtr" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -422,7 +422,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "void\n"
                "enterCategoryTemplate__" << mClassName << "__" << mMethodName
             << " (typeCategoryTemplate__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-               "                     const sint32 inClassID) ;\n\n" ;
+               "                     const PMSInt32 inClassID) ;\n\n" ;
     inHfile.appendCppHyphenLineComment () ;
     inHfile << "typeCategoryTemplate__" << mClassName << "__" << mMethodName << "\n"
                "findCategoryTemplate__" << mClassName << "__" << mMethodName
@@ -457,7 +457,7 @@ enterPrologueEpilogueAction (AC_OutputStream & inPrologueActions,
 void cPtr_categoryTemplateToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
                              const C_String & /* inTargetFileName*/,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -466,7 +466,7 @@ void cPtr_categoryTemplateToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
-                                sint32 & /* ioPrototypeIndex */,
+                                PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
 //--- Generate method
   if (mCategoryMethodKind.enumValue () != GGS_categoryMethodKind::enum_abstractMethod) {
@@ -478,7 +478,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << " inLexique" ;
     }
     inCppFile << ",\n                                "
-                 "const sint32 inIndentation"
+                 "const PMSInt32 inIndentation"
                  ",\n                                "
                  "const cPtr_" << mClassName << " * operand_" << cStringWithSigned (mMagicNumber.location ()) ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;
@@ -521,7 +521,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void\n"
                  "enterCategoryTemplate__" << mClassName << "__" << mMethodName
               << " (typeCategoryTemplate__" << mClassName << "__" << mMethodName << " inRoutine,\n"
-                 "                     const sint32 inClassID) {\n"
+                 "                     const PMSInt32 inClassID) {\n"
                  "  gDispatchTableForTemplate__" << mClassName << "__" << mMethodName << ".forceObjectAtIndex (inClassID, inRoutine, NULL) ;\n"
                  "}\n\n" ;
     inCppFile.appendCppHyphenLineComment () ;
@@ -529,7 +529,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "static C_String\n"
                  "category_template__" << mClassName << "_defaultTemplate (C_Compiler &"
                  ",\n                                "
-                 "const sint32"
+                 "const PMSInt32"
                  ",\n                                "
                  "const cPtr_" << mClassName << " *" ;
     GGS_typeListeTypesEtNomsArgMethode::cEnumerator currentArgument (aListeTypeEtNomsArguments, true) ;

@@ -45,12 +45,12 @@ class cVocabulary {
 //--- Build vocabulary from original grammar
   public : void build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
                        const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-                       const uint32 inOriginalGrammarStartSymbol) ;
+                       const PMUInt32 inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol
   public : void addNonTerminalSymbol (const char * inPrefix,
                                       const C_String & inClassName,
-                                      const sint32 inOrderInSourceFile,
+                                      const PMSInt32 inOrderInSourceFile,
                                       const bool inGenerateChoice) ;
 
 //--- Add augmented symbol (for LR analyzers)
@@ -58,33 +58,33 @@ class cVocabulary {
 
 //--- Print symbol in file
   public : void printInFile (AC_OutputStream & inHTMLfile,
-                             const sint32 inSymbolIndex
+                             const PMSInt32 inSymbolIndex
                              COMMA_LOCATION_ARGS) const ;
 
 //--- Get 'empty string' terminal symbol index
-  public : sint32 getEmptyStringTerminalSymbolIndex (void) const ;
+  public : PMSInt32 getEmptyStringTerminalSymbolIndex (void) const ;
 
 //--- Get terminal symbols count
-  public : sint32 getTerminalSymbolsCount (void) const ;
+  public : PMSInt32 getTerminalSymbolsCount (void) const ;
 
 //--- Get non terminal symbols count
-  public : sint32 getNonTerminalSymbolsCount (void) const ;
+  public : PMSInt32 getNonTerminalSymbolsCount (void) const ;
 
 //--- Get all symbols count
-  public : sint32 getAllSymbolsCount (void) const ;
+  public : PMSInt32 getAllSymbolsCount (void) const ;
 
 //--- Get all original grammar symbols count
-  public : inline sint32 originalGrammarSymbolsCount (void) const { return mOriginalGrammarSymbolsCount ; }
+  public : inline PMSInt32 originalGrammarSymbolsCount (void) const { return mOriginalGrammarSymbolsCount ; }
 
 //--- Get symbol
-  public : C_String getSymbol (const sint32 symbolIndex
+  public : C_String getSymbol (const PMSInt32 symbolIndex
                                COMMA_LOCATION_ARGS) const ;
 
 //--- Get start symbol
-  public : sint32 getStartSymbol (void) const ;
+  public : PMSInt32 getStartSymbol (void) const ;
 
 //--- Is choice must be generated for a non terminal ?
-  public : bool needToGenerateChoice (const sint32 inSymbolIndex
+  public : bool needToGenerateChoice (const PMSInt32 inSymbolIndex
                                       COMMA_LOCATION_ARGS) const ;
 
 //--- No copy
@@ -94,9 +94,9 @@ class cVocabulary {
 //--- Private data
   private : TC_UniqueArray <C_String> mStringsArray ;
   private : TC_UniqueArray <bool> mGenerateChoiceArray ;
-  private : sint32 mTerminalSymbolsCount ;
-  private : sint32 mOriginalGrammarSymbolsCount ;
-  private : sint32 mStartSymbol ;
+  private : PMSInt32 mTerminalSymbolsCount ;
+  private : PMSInt32 mOriginalGrammarSymbolsCount ;
+  private : PMSInt32 mStartSymbol ;
 } ;
 
 //---------------------------------------------------------------------------*

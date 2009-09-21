@@ -95,7 +95,7 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_list_semanticInstructionListModelBuilder_56_32_ (galgas_scanner &,
                                 GGS_semanticInstructionList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_0 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_declaration_semanticInstructionListModelBuilder_72_27_ (galgas_scanner &,
                                 GGS_semanticDeclarationStruct &) ;
@@ -112,7 +112,7 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_176_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_1 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_204_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
@@ -129,28 +129,28 @@ class semanticInstructionListModelBuilder {
   protected : void pr_foreach_enumerated_object_semanticInstructionListModelBuilder_254_32_ (galgas_scanner &,
                                 GGS_foreachInstructionEnumeratedObjectList  &) ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_2 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_4 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_5 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_318_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_6 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_7 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_8 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_9 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_10 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_11 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_11 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_384_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
@@ -158,9 +158,9 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_400_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_12 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_12 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_13 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_13 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_435_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
@@ -168,14 +168,14 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_457_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_14 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_14 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_487_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_15 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_15 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_16 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_16 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_520_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
@@ -186,11 +186,11 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_557_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_17 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_17 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_18 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_18 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_19 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_19 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_match_entry_ (galgas_scanner &,
                                 GGS_matchEntryList  &) = 0 ;
@@ -201,9 +201,9 @@ class semanticInstructionListModelBuilder {
   protected : void pr_match_entry_semanticInstructionListModelBuilder_620_18_ (galgas_scanner &,
                                 GGS_matchEntryList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_20 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_20 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_21 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_21 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_match_instruction_branch_ (galgas_scanner &,
                                 GGS_matchInstructionBranchList  &) = 0 ;
@@ -211,16 +211,16 @@ class semanticInstructionListModelBuilder {
   protected : void pr_match_instruction_branch_semanticInstructionListModelBuilder_670_31_ (galgas_scanner &,
                                 GGS_matchInstructionBranchList  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_22 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_22 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_689_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_23 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_23 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_24 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_24 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_25 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_25 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_cast_instruction_branch_ (galgas_scanner &,
                                 GGS_castInstructionBranchList  &) = 0 ;
@@ -228,9 +228,9 @@ class semanticInstructionListModelBuilder {
   protected : void pr_cast_instruction_branch_semanticInstructionListModelBuilder_735_30_ (galgas_scanner &,
                                 GGS_castInstructionBranchList  &) ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_26 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_26 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_27 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_27 (galgas_scanner &) = 0 ;
 
   protected : virtual void nt_cast_else_or_default_ (galgas_scanner &,
                                 GGS_elseOrDefaultForCastInstruction  &) = 0 ;
@@ -244,22 +244,22 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_797_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_28 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_28 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_825_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_29 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_29 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_852_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_30 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_30 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_880_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_31 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_31 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_906_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
@@ -270,23 +270,23 @@ class semanticInstructionListModelBuilder {
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_952_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_32 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_32 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_972_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_33 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_33 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_34 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_34 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_semanticInstructionListModelBuilder_35 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_semanticInstructionListModelBuilder_35 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_1017_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_36 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_36 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_semanticInstructionListModelBuilder_37 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_semanticInstructionListModelBuilder_37 (galgas_scanner &) = 0 ;
 
   protected : void pr_semantic_instruction_semanticInstructionListModelBuilder_1052_27_ (galgas_scanner &,
                                 GGS_semanticInstruction  &) ;

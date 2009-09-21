@@ -81,8 +81,8 @@ class GGS_commandLineOptionList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_commandLineOptionList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_commandLineOptionList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -177,7 +177,7 @@ class GGS_commandLineOptionList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -336,7 +336,7 @@ class elementOf_GGS_commandLineOptionList : public AC_galgas_list::cListElement 
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -373,7 +373,7 @@ class cPtr_optionComponentRoot : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

@@ -24,7 +24,7 @@ class cPtr_C_select_instruction : public cPtr_typeParserInstruction {
   public : virtual void
   generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const ;
 
@@ -34,7 +34,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
 public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfile,
                                                          const C_String & inLexiqueClassName,
                                                          const C_String & inTargetFileName,
-                                                         sint32 & ioPrototypeIndex,
+                                                         PMSInt32 & ioPrototypeIndex,
                                                          const bool inNotDeclared) ;
 
   public : virtual bool
@@ -65,7 +65,7 @@ public : virtual void generateSelectAndRepeatPrototypes (AC_OutputStream & inHfi
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

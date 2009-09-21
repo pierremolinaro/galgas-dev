@@ -1867,7 +1867,7 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 void cPtr_C_if_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -1950,7 +1950,7 @@ formalCurrentObjectArgumentIsUsed (void) const {
 void cPtr_C_switch_instruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {

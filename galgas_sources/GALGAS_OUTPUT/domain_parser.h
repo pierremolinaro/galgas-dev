@@ -99,9 +99,9 @@ class domain_parser {
                                 GGS_M_semanticsEntitiesForUse  &,
                                 GGS_typeEntitiesToGenerateList  &) ;
 
-  protected : virtual sint16 select_repeat_domain_parser_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_domain_parser_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_domain_parser_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_domain_parser_1 (galgas_scanner &) = 0 ;
 
   protected : void pr_domain_declaration_domain_parser_65_25_parse (galgas_scanner & inLexique) ;
 

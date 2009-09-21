@@ -135,8 +135,8 @@ class GGS_XcodeObjectReferenceList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_XcodeObjectReferenceList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_XcodeObjectReferenceList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -207,7 +207,7 @@ class GGS_XcodeObjectReferenceList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -1286,7 +1286,7 @@ class GGS_Xcode_PBXFileReference_map : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_Xcode_PBXFileReference_map constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_Xcode_PBXFileReference_map & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -1390,8 +1390,8 @@ class GGS_Xcode_PBXBuildFile_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXBuildFile_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXBuildFile_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1454,7 +1454,7 @@ class GGS_Xcode_PBXBuildFile_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_PBXBuildFile 
@@ -1565,8 +1565,8 @@ class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXSourcesBuildPhase_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXSourcesBuildPhase_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1629,7 +1629,7 @@ class GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_PBXSourcesBuildPhase 
@@ -1740,8 +1740,8 @@ class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXResourcesBuildPhase_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXResourcesBuildPhase_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1804,7 +1804,7 @@ class GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_PBXResourcesBuildPhase 
@@ -1915,8 +1915,8 @@ class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXFrameworksBuildPhase_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXFrameworksBuildPhase_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -1979,7 +1979,7 @@ class GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_PBXFrameworksBuildPhase 
@@ -2092,8 +2092,8 @@ class GGS_Xcode_PBXGroup_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXGroup_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXGroup_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2156,7 +2156,7 @@ class GGS_Xcode_PBXGroup_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_PBXGroup 
@@ -2267,8 +2267,8 @@ class GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_XCBuildConfiguration_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_XCBuildConfiguration_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2331,7 +2331,7 @@ class GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_XCBuildConfiguration 
@@ -2384,8 +2384,8 @@ class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXNativeTarget_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXNativeTarget_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2504,7 +2504,7 @@ class GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -2669,8 +2669,8 @@ class GGS_Xcode_targetDependencyDescription_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_targetDependencyDescription_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_targetDependencyDescription_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2733,7 +2733,7 @@ class GGS_Xcode_targetDependencyDescription_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_Xcode_targetDependencyDescription 
@@ -2781,8 +2781,8 @@ class GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_Xcode_PBXVariantGroup_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_Xcode_PBXVariantGroup_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -2861,7 +2861,7 @@ class GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_string
@@ -3281,7 +3281,7 @@ class elementOf_GGS_XcodeObjectReferenceList : public AC_galgas_list::cListEleme
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -3327,7 +3327,7 @@ class cPtr_Xcode_PBXFileReference_abstract : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -3367,7 +3367,7 @@ class cPtr_Xcode_productFileReference : public cPtr_Xcode_PBXFileReference_abstr
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Galgas RTTI
@@ -3412,7 +3412,7 @@ class cPtr_Xcode_PBXFileReference_CompiledMachOExecutable : public cPtr_Xcode_pr
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3464,7 +3464,7 @@ class cPtr_Xcode_PBXFileReference_Application : public cPtr_Xcode_productFileRef
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3511,7 +3511,7 @@ class cPtr_Xcode_PBXFileReference_cppSourceFile : public cPtr_Xcode_PBXFileRefer
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3558,7 +3558,7 @@ class cPtr_Xcode_PBXFileReference_hSourceFile : public cPtr_Xcode_PBXFileReferen
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3605,7 +3605,7 @@ class cPtr_Xcode_PBXFileReference_pchSourceFile : public cPtr_Xcode_PBXFileRefer
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3652,7 +3652,7 @@ class cPtr_Xcode_PBXFileReference_mSourceFile : public cPtr_Xcode_PBXFileReferen
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3699,7 +3699,7 @@ class cPtr_Xcode_PBXFileReference_mmSourceFile : public cPtr_Xcode_PBXFileRefere
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3746,7 +3746,7 @@ class cPtr_Xcode_PBXFileReference_gifFile : public cPtr_Xcode_PBXFileReference_a
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3793,7 +3793,7 @@ class cPtr_Xcode_PBXFileReference_tiffFile : public cPtr_Xcode_PBXFileReference_
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3840,7 +3840,7 @@ class cPtr_Xcode_PBXFileReference_pngFile : public cPtr_Xcode_PBXFileReference_a
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3887,7 +3887,7 @@ class cPtr_Xcode_PBXFileReference_plistFile : public cPtr_Xcode_PBXFileReference
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3934,7 +3934,7 @@ class cPtr_Xcode_PBXFileReference_frameworkFile : public cPtr_Xcode_PBXFileRefer
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -3981,7 +3981,7 @@ class cPtr_Xcode_PBXFileReference_icnsFile : public cPtr_Xcode_PBXFileReference_
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4030,7 +4030,7 @@ class cPtr_Xcode_PBXFileReference_xibFile : public cPtr_Xcode_PBXFileReference_a
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4079,7 +4079,7 @@ class cPtr_Xcode_PBXFileReference_plistStringFile : public cPtr_Xcode_PBXFileRef
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4110,7 +4110,7 @@ class e_Xcode_PBXFileReference_map {
 class elementOf_GGS_Xcode_PBXFileReference_map : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_Xcode_PBXFileReference_map (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_Xcode_PBXFileReference_map & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_Xcode_PBXFileReference_map * nextObject (void) const { return (elementOf_GGS_Xcode_PBXFileReference_map *) mNextItem ; }
@@ -4122,9 +4122,9 @@ class elementOf_GGS_Xcode_PBXFileReference_map : public AC_galgas_map_element {
   public : e_Xcode_PBXFileReference_map mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -4167,7 +4167,7 @@ class cPtr_Xcode_PBXBuildFile : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4208,7 +4208,7 @@ class elementOf_GGS_Xcode_PBXBuildFile_list : public AC_galgas_list::cListElemen
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4251,7 +4251,7 @@ class cPtr_Xcode_PBXSourcesBuildPhase : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4292,7 +4292,7 @@ class elementOf_GGS_Xcode_PBXSourcesBuildPhase_list : public AC_galgas_list::cLi
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4335,7 +4335,7 @@ class cPtr_Xcode_PBXResourcesBuildPhase : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4376,7 +4376,7 @@ class elementOf_GGS_Xcode_PBXResourcesBuildPhase_list : public AC_galgas_list::c
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4424,7 +4424,7 @@ class cPtr_Xcode_PBXFrameworksBuildPhase : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4465,7 +4465,7 @@ class elementOf_GGS_Xcode_PBXFrameworksBuildPhase_list : public AC_galgas_list::
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4510,7 +4510,7 @@ class cPtr_Xcode_PBXGroup : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4551,7 +4551,7 @@ class elementOf_GGS_Xcode_PBXGroup_list : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4598,7 +4598,7 @@ class cPtr_Xcode_XCBuildConfiguration : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4639,7 +4639,7 @@ class elementOf_GGS_Xcode_XCBuildConfiguration_list : public AC_galgas_list::cLi
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4687,7 +4687,7 @@ class elementOf_GGS_Xcode_PBXNativeTarget_list : public AC_galgas_list::cListEle
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4728,7 +4728,7 @@ class cPtr_Xcode_targetDependencyDescription : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -4769,7 +4769,7 @@ class elementOf_GGS_Xcode_targetDependencyDescription_list : public AC_galgas_li
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4807,7 +4807,7 @@ class elementOf_GGS_Xcode_PBXVariantGroup_list : public AC_galgas_list::cListEle
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -4845,7 +4845,7 @@ class GGS_XcodeProjectDescription {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 //--- Galgas 'new' destructor
   public : static GGS_XcodeProjectDescription constructor_new (const GGS_Xcode_PBXFileReference_map & argument_0,
                  const GGS_Xcode_PBXBuildFile_list & argument_1,

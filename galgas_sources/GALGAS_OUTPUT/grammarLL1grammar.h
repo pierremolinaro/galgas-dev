@@ -46,16 +46,16 @@ class grammarLL1grammar : public grammarModelBuilder {
   public : virtual void nt_label_formal_parameter_ (galgas_scanner &,
                                 GGS_lstring &,
                                 GGS_startSymbolLabelFormalParameterList &) ;
-  public : virtual sint16 select_repeat_grammarModelBuilder_0 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_grammarModelBuilder_1 (galgas_scanner &) ;
-  public : virtual sint16 select_grammarModelBuilder_2 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_grammarModelBuilder_3 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_grammarModelBuilder_4 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_grammarModelBuilder_5 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_grammarModelBuilder_6 (galgas_scanner &) ;
-  public : virtual sint16 select_grammarModelBuilder_7 (galgas_scanner &) ;
-  public : virtual sint16 select_grammarModelBuilder_8 (galgas_scanner &) ;
-  public : virtual sint16 select_grammarModelBuilder_9 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_grammarModelBuilder_0 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_grammarModelBuilder_1 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_grammarModelBuilder_2 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_grammarModelBuilder_3 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_grammarModelBuilder_4 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_grammarModelBuilder_5 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_grammarModelBuilder_6 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_grammarModelBuilder_7 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_grammarModelBuilder_8 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_grammarModelBuilder_9 (galgas_scanner &) ;
 } ;
 
 //---------------------------------------------------------------------------*

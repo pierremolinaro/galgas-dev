@@ -49,7 +49,7 @@ class cPtr_typeEntiteFonction : public cPtr_AC_semanticsEntity {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

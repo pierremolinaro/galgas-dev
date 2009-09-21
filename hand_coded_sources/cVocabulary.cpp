@@ -46,7 +46,7 @@ cVocabulary::~cVocabulary (void) {
 void cVocabulary::
 build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
        const GGS_M_nonTerminalSymbolsForGrammar & inNonterminalSymbolsMapForGrammar,
-       const uint32 inOriginalGrammarStartSymbol) {
+       const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
@@ -69,43 +69,43 @@ build (const GGS_M_terminalSymbolsMapForUse & inTerminalSymbolMap,
   mGenerateChoiceArray.clear () ;
   mGenerateChoiceArray.addObjects (mOriginalGrammarSymbolsCount, false) ;
 //--- Define pure BNF grammar start symbol index
-  mStartSymbol = mTerminalSymbolsCount + (sint32) inOriginalGrammarStartSymbol ;
+  mStartSymbol = mTerminalSymbolsCount + (PMSInt32) inOriginalGrammarStartSymbol ;
 }
 
 //---------------------------------------------------------------------------*
 
-sint32 cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
+PMSInt32 cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
   return mTerminalSymbolsCount - 1 ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_String cVocabulary::getSymbol (const sint32 inSymbolIndex
+C_String cVocabulary::getSymbol (const PMSInt32 inSymbolIndex
                                  COMMA_LOCATION_ARGS) const {
   return mStringsArray (inSymbolIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
 
-sint32 cVocabulary::getStartSymbol (void) const {
+PMSInt32 cVocabulary::getStartSymbol (void) const {
   return mStartSymbol ;
 }
 
 //---------------------------------------------------------------------------*
 
-sint32 cVocabulary::getTerminalSymbolsCount (void) const {
+PMSInt32 cVocabulary::getTerminalSymbolsCount (void) const {
   return mTerminalSymbolsCount ;
 }
 
 //---------------------------------------------------------------------------*
 
-sint32 cVocabulary::getAllSymbolsCount (void) const {
+PMSInt32 cVocabulary::getAllSymbolsCount (void) const {
   return mStringsArray.count () ;
 }
 
 //---------------------------------------------------------------------------*
 
-sint32 cVocabulary::getNonTerminalSymbolsCount (void) const {
+PMSInt32 cVocabulary::getNonTerminalSymbolsCount (void) const {
   return mStringsArray.count () - mTerminalSymbolsCount ;
 }
 
@@ -113,7 +113,7 @@ sint32 cVocabulary::getNonTerminalSymbolsCount (void) const {
 
 void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
                                         const C_String & inClassName,
-                                        const sint32 inOrderInSourceFile,
+                                        const PMSInt32 inOrderInSourceFile,
                                         const bool inGenerateChoice) {
   C_String nt  ;
   nt << inPrefix
@@ -133,7 +133,7 @@ void cVocabulary::addAugmentedSymbol (void) {
 
 //---------------------------------------------------------------------------*
 
-bool cVocabulary::needToGenerateChoice (const sint32 inSymbolIndex
+bool cVocabulary::needToGenerateChoice (const PMSInt32 inSymbolIndex
                                         COMMA_LOCATION_ARGS) const {
   return mGenerateChoiceArray (inSymbolIndex COMMA_THERE) ;
 }
@@ -141,7 +141,7 @@ bool cVocabulary::needToGenerateChoice (const sint32 inSymbolIndex
 //---------------------------------------------------------------------------*
 
 void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
-                               const sint32 inSymbolIndex
+                               const PMSInt32 inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
     inHTMLfile << "$" << mStringsArray (inSymbolIndex COMMA_THERE) << "$" ;

@@ -110,7 +110,7 @@ mda_galgas_prgm_epilogue (C_Compiler & /* inLexique */,
 
 int mainForLIBPM  (const int argc, const char * argv []) {
   bool verboseOptionOn = true ;
-  sint16 returnCode = 0 ; // No error
+  PMSInt16 returnCode = 0 ; // No error
 //--- Fix parameters for BDD package
   C_BDD::setHashMapSize (19) ;
   C_BDD::setITEcacheSize (17) ;
@@ -153,10 +153,10 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     try{
       verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       mda_galgas_prgm_prologue (* _commonLexique, sourceFilesArray) ;
-      for (sint32 i=0 ; i<sourceFilesArray.count () ; i++) {
+      for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
         try {
           const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
-          sint16 r = 0 ;
+          PMSInt16 r = 0 ;
           if (fileExtension.compare ("ggs") == 0) {
             C_Compiler & inLexique = * _commonLexique ;
             const GGS_string _source (true, sourceFilesArray (i COMMA_HERE)) ;
@@ -945,15 +945,15 @@ int mainForLIBPM  (const int argc, const char * argv []) {
   #endif
   if (verboseOptionOn) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      const uint64 maxUsedMemorySize = getMaxUsedMemorySize () ;
-      const uint64 oneMegaByte = 1 << 20 ;
-      const uint64 megaBytes = maxUsedMemorySize / oneMegaByte ;
-      const uint64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;
+      const PMUInt64 maxUsedMemorySize = getMaxUsedMemorySize () ;
+      const PMUInt64 oneMegaByte = 1 << 20 ;
+      const PMUInt64 megaBytes = maxUsedMemorySize / oneMegaByte ;
+      const PMUInt64 fraction = ((maxUsedMemorySize % oneMegaByte) * 1000) / oneMegaByte ;
       co << cStringWithSigned (getCreatedDynamicObjectsTotalCount ())
          << " C++ objects have been created (" ;
       co.appendUnsigned64 (megaBytes) ;
       co << "." ;
-      co.appendUnsignedWithZeroFill ((uint32) fraction, 3) ;
+      co.appendUnsignedWithZeroFill ((PMUInt32) fraction, 3) ;
       co << " MB).\n" ;
       deactivateMemoryControl () ;
       if ((getAllocationBalance () != 0) && (returnCode == 0)) {

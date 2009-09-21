@@ -34,7 +34,7 @@
 void cPtr_C_assignmentInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -85,7 +85,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 void cPtr_C_declarationInstructionWithAssignment::
 generateInstruction (AC_OutputStream & ioCppFile,
                     const C_String & /* inTargetFileName */,
-                    sint32 & /* ioPrototypeIndex */,
+                    PMSInt32 & /* ioPrototypeIndex */,
                     const bool /* inGenerateDebug */,
                     const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -137,7 +137,7 @@ formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
 void cPtr_typeInstructionDeclarationVarLocale::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -183,7 +183,7 @@ static void
 generateInstructionPart (AC_OutputStream & ioCppFile,
                          const C_String & inTargetVariableCppName,
                          const cPtr_typeExpression  * inExpressionPtr,
-                         const sint32 inTargetVariableLineNumberInSourceFile,
+                         const PMSInt32 inTargetVariableLineNumberInSourceFile,
                          bool & ioPreviousWasLiteralString) {
   const cPtr_typeConcatOperation * p = dynamic_cast <const cPtr_typeConcatOperation *> (inExpressionPtr) ;
   if (p != NULL) {
@@ -246,7 +246,7 @@ usesLexiqueArgument (const cPtr_typeExpression * inExpressionPtr) {
 void cPtr_C_dotEqualInstruction::
 generateInstruction (AC_OutputStream & ioCppFile,
                      const C_String & /* inTargetFileName */,
-                     sint32 & /* ioPrototypeIndex */,
+                     PMSInt32 & /* ioPrototypeIndex */,
                      const bool /* inGenerateDebug */,
                      const bool inGenerateSemanticInstructions) const {
   if (inGenerateSemanticInstructions) {
@@ -257,7 +257,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    const sint32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
+    const PMSInt32 targetVariableLineNumberInSourceFile = mTargetVarCppName (HERE)->mVariableLocation.lineNumber () ;
     if (mSourceExpressionConverter.string ().length () > 0) {
       ioCppFile << targetVariableCppName
                 << ".dotAssign_operation (" ;

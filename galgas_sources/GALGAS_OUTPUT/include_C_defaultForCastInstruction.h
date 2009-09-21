@@ -26,7 +26,7 @@ class cPtr_C_defaultForCastInstruction : public cPtr_AC_elseOrDefaultForCastInst
                         const GGS_typeStructuredCastBranchList & inBranchList,
                         const C_String & inTemporaryVarName,
                         const C_String & inTargetFileName,
-                        sint32 & ioPrototypeIndex,
+                        PMSInt32 & ioPrototypeIndex,
                         const bool inGenerateDebug) const ;
 
   public : virtual bool isLexiqueFormalArgumentUsed (const bool inGenerateSemanticInstructions) const  ;
@@ -63,7 +63,7 @@ class cPtr_C_defaultForCastInstruction : public cPtr_AC_elseOrDefaultForCastInst
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

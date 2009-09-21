@@ -443,7 +443,7 @@ static const GGS_variableStateAutomaton::enumeration kResultForvariableStateAuto
 
 //---------------------------------------------------------------------------*
 
-static const sint32 kErrorForvariableStateAutomaton_endOfRepeatedBranch [121] = {
+static const PMSInt32 kErrorForvariableStateAutomaton_endOfRepeatedBranch [121] = {
   1, /* enum_constantInputFormalParameterDefined, enum_constantInputFormalParameterDefined */
   -1, /* enum_constantInputFormalParameterDefined, enum_constantInputFormalParameterUsed */
   -1, /* enum_constantInputFormalParameterDefined, enum_inputFormalParameterDefined */
@@ -579,9 +579,9 @@ operator_endOfRepeatedBranch (C_Compiler & inLexique,
   #endif
   enumeration result = kNotBuilt ;
   if ((mValue > 0) && (inOperand.mValue > 0)) {
-    const sint32 kIndex = (mValue - 1) * 11 + inOperand.mValue - 1 ;
+    const PMSInt32 kIndex = (mValue - 1) * 11 + inOperand.mValue - 1 ;
     result = kResultForvariableStateAutomaton_endOfRepeatedBranch [kIndex] ;
-    const sint32 error = kErrorForvariableStateAutomaton_endOfRepeatedBranch [kIndex] ;
+    const PMSInt32 error = kErrorForvariableStateAutomaton_endOfRepeatedBranch [kIndex] ;
     if (error != 0) {
       switch (error) {
       case 1:
@@ -607,7 +607,7 @@ operator_endOfRepeatedBranch (C_Compiler & inLexique,
 GGS_string GGS_variableStateAutomaton::
 reader_description (C_Compiler & /* inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
-                    const sint32 /* inIndentation */) const {
+                    const PMSInt32 /* inIndentation */) const {
   C_String s ;
   s << "<enum @variableStateAutomaton" ;
   switch (mValue) {
@@ -659,7 +659,7 @@ reader_description (C_Compiler & /* inLexique */
 
 elementOf_GGS_variableMap::
 elementOf_GGS_variableMap (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_variableMap & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -669,9 +669,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_variableMap::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -749,7 +749,7 @@ void GGS_variableMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -762,7 +762,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_lstring & inKey,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inKey.isBuilt ()) {
     insulateMap () ;
@@ -774,7 +774,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -801,7 +801,7 @@ searchElement (C_Compiler & inLexique,
      }
   }else{
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -1964,14 +1964,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_variableMap::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @variableMap " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;
@@ -2050,7 +2050,7 @@ method_generateImplementation (C_Compiler & /* inLexique */,
 void cPtr_ACGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@ACGalgasType:" ;
 }
@@ -2167,7 +2167,7 @@ mType () {
 
 elementOf_GGS_typeMap::
 elementOf_GGS_typeMap (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_typeMap & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -2177,9 +2177,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_typeMap::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -2264,7 +2264,7 @@ void GGS_typeMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -2278,7 +2278,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_ACGalgasType & inParameter0,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inParameter0.isBuilt ()
    && inKey.isBuilt ()) {
@@ -2292,7 +2292,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -2322,7 +2322,7 @@ searchElement (C_Compiler & inLexique,
   }else{
     outParameter0 = node->mInfo.mType ;
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -2484,14 +2484,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_typeMap::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @typeMap " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;
@@ -2548,7 +2548,7 @@ operator_isNotEqual (const GGS_typeMapIndex & inOperand) const {
 GGS_string GGS_typeMapIndex::
 reader_description (C_Compiler & /* inLexique */
                     COMMA_UNUSED_LOCATION_ARGS,
-                    const sint32 /* inIndentation */) const {
+                    const PMSInt32 /* inIndentation */) const {
   C_String s ;
   s << "<mapindex @typeMapIndex" ;
   switch (mState) {
@@ -2681,10 +2681,10 @@ isEqualToObject (const cSortedListElement * inOperand) const {
 
 //---------------------------------------------------------------------------*
 
-sint32 elementOf_GGS_sortedTypeList::
+PMSInt32 elementOf_GGS_sortedTypeList::
 compareForSorting (const cSortedListElement * inOperand) const {
   const elementOf_GGS_sortedTypeList * operand = (const elementOf_GGS_sortedTypeList *) inOperand ;
-  sint32 result = mSortString.compareForSortedList (operand->mSortString) ;
+  PMSInt32 result = mSortString.compareForSortedList (operand->mSortString) ;
   return result ;
 }
 
@@ -2693,7 +2693,7 @@ compareForSorting (const cSortedListElement * inOperand) const {
 void elementOf_GGS_sortedTypeList::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -2830,7 +2830,7 @@ constructor_sortedListWithValue (const GGS_ACGalgasType & argument_0,
 GGS_string GGS_sortedTypeList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@sortedTypeList", inIndentation COMMA_THERE) ;
 }
 
@@ -2975,7 +2975,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_typeList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -3103,16 +3103,16 @@ constructor_listWithValue (const GGS_ACGalgasType & argument_0) {
 
 void GGS_typeList::
 internalSubListWithRange (GGS_typeList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mType) ;
       ptr = ptr->nextObject () ;
@@ -3129,8 +3129,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_typeList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -3148,7 +3148,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_typeList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -3163,7 +3163,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_typeList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@typeList", inIndentation COMMA_THERE) ;
 }
 
@@ -3324,7 +3324,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_signature::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -3482,16 +3482,16 @@ constructor_listWithValue (const GGS_typeMapIndex & argument_0,
 
 void GGS_signature::
 internalSubListWithRange (GGS_signature & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mAttributeTypeIndex, ptr->mFormalArgumentName, ptr->mFormalArgumentPassingMode) ;
       ptr = ptr->nextObject () ;
@@ -3508,8 +3508,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_signature result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -3527,7 +3527,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_signature result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -3542,7 +3542,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_signature::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@signature", inIndentation COMMA_THERE) ;
 }
 
@@ -3796,7 +3796,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_attributeList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -3939,16 +3939,16 @@ constructor_listWithValue (const GGS_typeMapIndex & argument_0,
 
 void GGS_attributeList::
 internalSubListWithRange (GGS_attributeList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mAttributeTypeIndex, ptr->mAttributeName) ;
       ptr = ptr->nextObject () ;
@@ -3965,8 +3965,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_attributeList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -3984,7 +3984,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_attributeList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -3999,7 +3999,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_attributeList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@attributeList", inIndentation COMMA_THERE) ;
 }
 
@@ -4206,7 +4206,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_locationGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@locationGalgasType:" ;
 }
@@ -4354,7 +4354,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_stringGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@stringGalgasType:" ;
 }
@@ -4502,7 +4502,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_charGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@charGalgasType:" ;
 }
@@ -4650,7 +4650,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_boolGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@boolGalgasType:" ;
 }
@@ -4798,7 +4798,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_uintGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@uintGalgasType:" ;
 }
@@ -4946,7 +4946,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_sintGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@sintGalgasType:" ;
 }
@@ -5094,7 +5094,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_uint64GalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@uint64GalgasType:" ;
 }
@@ -5242,7 +5242,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_sint64GalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@sint64GalgasType:" ;
 }
@@ -5390,7 +5390,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_doubleGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@doubleGalgasType:" ;
 }
@@ -5538,7 +5538,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_lstringGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@lstringGalgasType:" ;
 }
@@ -5686,7 +5686,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_lcharGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@lcharGalgasType:" ;
 }
@@ -5834,7 +5834,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_lboolGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@lboolGalgasType:" ;
 }
@@ -5982,7 +5982,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_luintGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@luintGalgasType:" ;
 }
@@ -6130,7 +6130,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_lsintGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@lsintGalgasType:" ;
 }
@@ -6278,7 +6278,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_luint64GalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@luint64GalgasType:" ;
 }
@@ -6426,7 +6426,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_lsint64GalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@lsint64GalgasType:" ;
 }
@@ -6574,7 +6574,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_ldoubleGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@ldoubleGalgasType:" ;
 }
@@ -6722,7 +6722,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_stringsetGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@stringsetGalgasType:" ;
 }
@@ -6870,7 +6870,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_binarysetGalgasType::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@binarysetGalgasType:" ;
 }
@@ -7017,7 +7017,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_classMethodList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -7160,16 +7160,16 @@ constructor_listWithValue (const GGS_lstring & argument_0,
 
 void GGS_classMethodList::
 internalSubListWithRange (GGS_classMethodList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mMethodName, ptr->mMethodSignature) ;
       ptr = ptr->nextObject () ;
@@ -7186,8 +7186,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_classMethodList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -7205,7 +7205,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_classMethodList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -7220,7 +7220,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_classMethodList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@classMethodList", inIndentation COMMA_THERE) ;
 }
 
@@ -7504,7 +7504,7 @@ method_checkTypeCrossReferences (C_Compiler & inLexique,
 void cPtr_classGalgasType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@classGalgasType:"
            << mIsAbstract.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -7699,7 +7699,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_listGalgasType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@listGalgasType:"
            << mListTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -7879,7 +7879,7 @@ method_checkTypeCrossReferences (C_Compiler & inLexique,
 void cPtr_listmapGalgasType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@listmapGalgasType:"
            << mListmapTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -8037,7 +8037,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_structGalgasType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@structGalgasType:"
            << mStructTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -8183,7 +8183,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_sortDescriptorList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -8326,16 +8326,16 @@ constructor_listWithValue (const GGS_lstring & argument_0,
 
 void GGS_sortDescriptorList::
 internalSubListWithRange (GGS_sortDescriptorList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mAttributeName, ptr->mAscending) ;
       ptr = ptr->nextObject () ;
@@ -8352,8 +8352,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_sortDescriptorList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -8371,7 +8371,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_sortDescriptorList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -8386,7 +8386,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_sortDescriptorList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@sortDescriptorList", inIndentation COMMA_THERE) ;
 }
 
@@ -8607,7 +8607,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_sortedlistGalgasType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@sortedlistGalgasType:"
            << mListTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -8782,7 +8782,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_mapType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@mapType:"
            << mMapTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -8965,7 +8965,7 @@ method_checkTypeCrossReferences (C_Compiler & inLexique,
 void cPtr_mapindexType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@mapindexType:"
            << mMapIndexTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -9088,7 +9088,7 @@ C_galgasClassRunTimeInformation gClassInfoFor__mapindexType ("mapindexType", gCl
 
 elementOf_GGS_enumConstructorMap::
 elementOf_GGS_enumConstructorMap (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_enumConstructorMap & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -9098,9 +9098,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_enumConstructorMap::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -9178,7 +9178,7 @@ void GGS_enumConstructorMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -9191,7 +9191,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_lstring & inKey,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inKey.isBuilt ()) {
     insulateMap () ;
@@ -9203,7 +9203,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -9230,7 +9230,7 @@ searchElement (C_Compiler & inLexique,
      }
   }else{
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -9431,14 +9431,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_enumConstructorMap::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @enumConstructorMap " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;
@@ -9500,7 +9500,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_enumType::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@enumType:"
            << mEnumTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -9630,7 +9630,7 @@ mRoutineSignature () {
 
 elementOf_GGS_routineMap::
 elementOf_GGS_routineMap (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_routineMap & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -9640,9 +9640,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_routineMap::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -9727,7 +9727,7 @@ void GGS_routineMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -9741,7 +9741,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_signature & inParameter0,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inParameter0.isBuilt ()
    && inKey.isBuilt ()) {
@@ -9755,7 +9755,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -9785,7 +9785,7 @@ searchElement (C_Compiler & inLexique,
   }else{
     outParameter0 = node->mInfo.mRoutineSignature ;
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -9953,14 +9953,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_routineMap::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @routineMap " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;
@@ -10001,7 +10001,7 @@ mResultTypeIndex () {
 
 elementOf_GGS_functionMap::
 elementOf_GGS_functionMap (const GGS_lstring & inKey,
-              const sint32 inIndex,
+              const PMSInt32 inIndex,
               const e_functionMap & inInfo) :
 AC_galgas_map_element (inKey, inIndex),
 mInfo (inInfo) {
@@ -10011,9 +10011,9 @@ mInfo (inInfo) {
 
 void elementOf_GGS_functionMap::
 appendForMapDescription (C_Compiler & inLexique,
-                         const sint32 inElementIndex,
+                         const PMSInt32 inElementIndex,
                          C_String & ioString,
-                         const sint32 inIndentation
+                         const PMSInt32 inIndentation
                          COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -10104,7 +10104,7 @@ void GGS_functionMap::
 internalInsertForDuplication (AC_galgas_map_element * inPtr) {
   MF_Assert (reinterpret_cast <cElement *> (inPtr) != NULL, "Dynamic cast error", 0, 0) ;
   cElement * p = (cElement *) inPtr ;
-  sint32 attributeIndex = -1 ; // Unused here
+  PMSInt32 attributeIndex = -1 ; // Unused here
   GGS_location existingKeyLocation ; // Unused here
   internalInsert (p->mKey, (void *) & p->mInfo, attributeIndex, existingKeyLocation) ;
 }
@@ -10119,7 +10119,7 @@ insertElement (C_Compiler & inLexique,
                 const GGS_typeMapIndex & inParameter1,
                 GGS_luint * outIndex
                 COMMA_LOCATION_ARGS) {
-  sint32 elementID = - 1 ;
+  PMSInt32 elementID = - 1 ;
   if (isBuilt ()
    && inParameter0.isBuilt ()
    && inParameter1.isBuilt ()
@@ -10135,7 +10135,7 @@ insertElement (C_Compiler & inLexique,
     }
   }
   if (outIndex != NULL) {
-    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (uint32) elementID), inKey) ;
+    * outIndex = GGS_luint (GGS_uint (elementID >= 0, (PMUInt32) elementID), inKey) ;
   }
 }
 
@@ -10168,7 +10168,7 @@ searchElement (C_Compiler & inLexique,
     outParameter0 = node->mInfo.mFunctionSignature ;
     outParameter1 = node->mInfo.mResultTypeIndex ;
     if (outIndex != NULL) {
-      * outIndex = GGS_luint (GGS_uint (true, (uint32) node->mID), inKey) ;
+      * outIndex = GGS_luint (GGS_uint (true, (PMUInt32) node->mID), inKey) ;
     }
   }
 }
@@ -10342,14 +10342,14 @@ reader_overriddenMap (C_Compiler & /* inLexique */
 GGS_string GGS_functionMap::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String s ;
   s << "<map @functionMap " ;
   if (isBuilt ()) {
     s.appendSigned (count ()) ;
     s << " object" << ((count () > 1) ? "s " : " ") ;
     cElement * p = firstObject () ;
-    sint32 elementID = 0 ;
+    PMSInt32 elementID = 0 ;
     while (p != NULL) {
       macroValidPointer (p) ;
       p->appendForMapDescription (inLexique, elementID, s, inIndentation COMMA_THERE) ;
@@ -10408,7 +10408,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_classIndexList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -10536,16 +10536,16 @@ constructor_listWithValue (const GGS_typeMapIndex & argument_0) {
 
 void GGS_classIndexList::
 internalSubListWithRange (GGS_classIndexList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mClassMapindex) ;
       ptr = ptr->nextObject () ;
@@ -10562,8 +10562,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_classIndexList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -10581,7 +10581,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_classIndexList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -10596,7 +10596,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_classIndexList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@classIndexList", inIndentation COMMA_THERE) ;
 }
 
@@ -10747,7 +10747,7 @@ bool GGS_descendantClassListMap::cElement::isEqual (const cPtrListMapObject * in
 
 C_String GGS_descendantClassListMap::cElement::
 _description (C_Compiler & inLexique,
-              const sint32 inIndentation
+              const PMSInt32 inIndentation
               COMMA_LOCATION_ARGS) const {
   const GGS_string s = mListObject.reader_description (inLexique COMMA_THERE, inIndentation) ;
   return s.string () ;
@@ -10788,8 +10788,8 @@ dotAssign_operation (const GGS_descendantClassListMap inOperand) {
     }else if (inOperand.count (HERE) > 0) {
       cPtrDictionary * dictPtr = macroPtr (inOperand, cPtrDictionary)  ;
       cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;
-      const sint32 objectCount = dictPtr->count () ;
-      for (sint32 i=0 ; i<objectCount ; i++) {
+      const PMSInt32 objectCount = dictPtr->count () ;
+      for (PMSInt32 i=0 ; i<objectCount ; i++) {
         const GGS_string key = nodeSortedArray [i].key () ;
         const PM_C_Object object = nodeSortedArray [i].mObject ;
         cElement * elementPtr = macroPtr (object, cElement) ;
@@ -10866,8 +10866,8 @@ reader_keyList (C_Compiler & /* inLexique */
     result = GGS_stringlist::constructor_emptyList () ;
     cPtrDictionary * dictPtr = macroPtr (*this, cPtrDictionary)  ;
     cPtrDictionaryNode * nodeSortedArray = dictPtr->nodeSortedArray () ;
-    const sint32 objectCount = dictPtr->count () ;
-    for (sint32 i=0 ; i<objectCount ; i++) {
+    const PMSInt32 objectCount = dictPtr->count () ;
+    for (PMSInt32 i=0 ; i<objectCount ; i++) {
       const GGS_string key = nodeSortedArray [i].key () ;
       result._addAssign_operation (key) ;
     }
@@ -10972,7 +10972,7 @@ constructor_new (const GGS_typeMap & argument_0,
 GGS_string GGS_semanticContext::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   C_String _s ;
   _s << "<struct @semanticContext" ;
   if (isBuilt ()) {

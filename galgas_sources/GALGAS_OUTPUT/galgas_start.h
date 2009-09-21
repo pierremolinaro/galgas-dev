@@ -136,7 +136,7 @@ class galgas_start {
                                 GGS_M_optionComponents  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : virtual sint16 select_repeat_galgas_start_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_galgas_start_0 (galgas_scanner &) = 0 ;
 
   protected : void pr_galgas_start_symbol_galgas_start_83_26_compileFile (galgas_scanner &) ;
 

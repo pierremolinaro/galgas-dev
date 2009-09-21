@@ -46,10 +46,10 @@ class projectLL1grammar : public projectModelBuilder {
                                 GGS_lstring &,
                                 GGS_location &
                                 COMMA_LOCATION_ARGS) ;
-  public : virtual sint16 select_repeat_projectModelBuilder_0 (galgas_scanner &) ;
-  public : virtual sint16 select_projectModelBuilder_1 (galgas_scanner &) ;
-  public : virtual sint16 select_projectModelBuilder_2 (galgas_scanner &) ;
-  public : virtual sint16 select_repeat_projectModelBuilder_3 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_projectModelBuilder_0 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_projectModelBuilder_1 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_projectModelBuilder_2 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_projectModelBuilder_3 (galgas_scanner &) ;
 } ;
 
 //---------------------------------------------------------------------------*

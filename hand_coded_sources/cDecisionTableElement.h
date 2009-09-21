@@ -28,8 +28,8 @@
 //---------------------------------------------------------------------------*
 
 class cDecisionTableElement {
-  private : sint32 mParameter ;
-  public : inline sint32 parameter (void) const { return mParameter ; }
+  private : PMSInt32 mParameter ;
+  public : inline PMSInt32 parameter (void) const { return mParameter ; }
 
   public : typedef enum {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} enumDecision ;
   private : enumDecision mDecision ;
@@ -43,11 +43,11 @@ class cDecisionTableElement {
 
   public : cDecisionTableElement (const cDecisionTableElement & inSource) ;
 
-  private : cDecisionTableElement (const sint32 inParameter, const enumDecision inDecision) ;
+  private : cDecisionTableElement (const PMSInt32 inParameter, const enumDecision inDecision) ;
   
-  public : static cDecisionTableElement shiftDecision (const sint32 inNextState) ;
+  public : static cDecisionTableElement shiftDecision (const PMSInt32 inNextState) ;
 
-  public : static cDecisionTableElement reduceDecision (const sint32 inReduceProduction) ;
+  public : static cDecisionTableElement reduceDecision (const PMSInt32 inReduceProduction) ;
 
   public : static cDecisionTableElement acceptDecision (void) ;
 } ;

@@ -84,11 +84,11 @@ class programModelBuilder {
   protected : void pr_program_component_start_symbol_programModelBuilder_45_37_ (galgas_scanner &,
                                 GGS_programComponentRoot  &) ;
 
-  protected : virtual sint16 select_repeat_programModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_programModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_programModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_programModelBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_programModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_programModelBuilder_2 (galgas_scanner &) = 0 ;
 
 } ;
 

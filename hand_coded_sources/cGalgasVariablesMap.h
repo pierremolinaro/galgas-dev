@@ -103,9 +103,9 @@ template <typename INFO> class cElementTableControlePhase {
   public : cElementTableControlePhase <INFO> * mSupPtr ;
   public : const GGS_lstring mKey ;
   public : INFO mInfo ;
-  public : const sint32 mEntryIndex ;
+  public : const PMSInt32 mEntryIndex ;
   public : agregatChainageEtat * champChainageEtat ;
-  public : sint32 mBalance ;
+  public : PMSInt32 mBalance ;
   public : const enumNatureEntite champNature ;
   public : enumEtatVariable champEtat ;
   public : bool champUtilise ;
@@ -116,7 +116,7 @@ template <typename INFO> class cElementTableControlePhase {
                                        const enumNatureEntite nature,
                                        const enumEtatVariable etat,
                                        const GGS_lstring & clef,
-                                       const sint32 numeroElement,
+                                       const PMSInt32 numeroElement,
                                        const bool inIsDeclaredUnused,
                                        const bool inUsed) ;
   public : virtual ~cElementTableControlePhase (void) ;
@@ -135,7 +135,7 @@ template <typename INFO> class classeSurchargeTableControlePhase {
 //--- Attributs
   private : classeSurchargeTableControlePhase <INFO> * mNextItem ;
   public : cElementTableControlePhase <INFO> * champTable ;
-  public : sint16 champCompteur ;
+  public : PMSInt16 champCompteur ;
   public : inline classeSurchargeTableControlePhase <INFO> * nextObject (void) const { return mNextItem ; }
 //--- Constructeur (pas de destructeur)
   public : classeSurchargeTableControlePhase (void) :
@@ -157,8 +157,8 @@ template <typename INFO> class cGalgasVariablesMap {
   public : typedef classeSurchargeTableControlePhase <INFO> typeSurchargeTable ;
   public : cElement * mRoot ;
   public : typeSurchargeTable * aListeSurcharges ;
-  private : sint32 mListLength ;
-  public : sint32 count (void) const ;
+  private : PMSInt32 mListLength ;
+  public : PMSInt32 count (void) const ;
 
 //--- Handle copy
   public : cGalgasVariablesMap (const cGalgasVariablesMap <INFO> &) ;
@@ -181,84 +181,84 @@ template <typename INFO> class cGalgasVariablesMap {
   public : bool isBuilt (void) const ;
 
 //--- Insertion Methods
-  public : sint32 insertWithInstructionLocalVariable (C_Compiler & inLexique,
+  public : PMSInt32 insertWithInstructionLocalVariable (C_Compiler & inLexique,
                                                       const INFO & info,
                                                       const GGS_lstring & clef,
                                                       const GGS_location & inLocation,
                                                       const char * messageErreurInsertion
                                                       COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertInArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertInArgument (C_Compiler & inLexique,
                                     const INFO & info,
                                     const GGS_lstring & clef,
                                     const GGS_location & inLocation,
                                     const char * messageErreurInsertion
                                     COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUnusedInArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertUnusedInArgument (C_Compiler & inLexique,
                                           const INFO & info,
                                           const GGS_lstring & clef,
                                           const GGS_location & inLocation,
                                           const char * messageErreurInsertion
                                           COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertInOutArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertInOutArgument (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                      const char * messageErreurInsertion
                                      COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUsedInOutArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertUsedInOutArgument (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                            const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUnusedInOutArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertUnusedInOutArgument (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertOutArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertOutArgument (C_Compiler & inLexique,
                                    const INFO & info,
                                    const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                    const char * messageErreurInsertion
                                    COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertConstInArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertConstInArgument (C_Compiler & inLexique,
                                        const INFO & info,
                                        const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                        const char * messageErreurInsertion
                                        COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUsedConstInArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertUsedConstInArgument (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
+  public : PMSInt32 insertUsedConstInArgumentNoShadow (C_Compiler & inLexique,
                                            const INFO & info,
                                            const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                            const char * messageErreurInsertion
                                            COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertUnusedConstInArgument (C_Compiler & inLexique,
+  public : PMSInt32 insertUnusedConstInArgument (C_Compiler & inLexique,
                                              const INFO & info,
                                              const GGS_lstring & clef,
                                          const GGS_location & inLocation,
                                              const char * messageErreurInsertion
                                              COMMA_LOCATION_ARGS) ;
 
-  public : sint32 insertLocalVariable (C_Compiler & inLexique,
+  public : PMSInt32 insertLocalVariable (C_Compiler & inLexique,
                                      const INFO & info,
                                      const GGS_lstring & clef,
                                       const GGS_location & inLocation,
@@ -321,7 +321,7 @@ template <typename INFO> class cGalgasVariablesMap {
                                      const GGS_location & COMMA_LOCATION_ARGS) ;
 
 //--- Methodes internes privees
-  private : sint32 insertKey (C_Compiler & inLexique,
+  private : PMSInt32 insertKey (C_Compiler & inLexique,
                          const INFO & info,
                          const enumNatureEntite nature,
                          const enumEtatVariable etat,

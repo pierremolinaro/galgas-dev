@@ -70,7 +70,7 @@ generateClassMethodsImplementation (const GGS_typeTableMethodesAimplementer & in
     //--- Terminer la declaration
       inCppFile << " COMMA_UNUSED_LOCATION_ARGS) const {\n" ;
     //--- Engendrer la liste d'instructions
-      sint32 prototypeIndex = 0 ; // Non used here
+      PMSInt32 prototypeIndex = 0 ; // Non used here
       generateInstructionListForList (current->mInfo.mInstructionList, inCppFile,
                                       inTargetFileName, prototypeIndex,
                                       inGenerateDebug, true) ; 
@@ -179,7 +179,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "//--- 'new' constructor\n"
                "  public : static GGS_" << aNomClasse
             << " constructor_new (C_Compiler & inLexique" ;
-    sint32 variableIndex = 0 ;
+    PMSInt32 variableIndex = 0 ;
     GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
     while (current != NULL) {
       macroValidPointer (current) ;
@@ -387,7 +387,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : virtual void\n"
                     "  appendForDescription (C_Compiler & inLexique,\n"
                     "                        C_String & ioString,\n"
-                    "                        const sint32 inIndentation\n"
+                    "                        const PMSInt32 inIndentation\n"
                     "                        COMMA_LOCATION_ARGS) const ;\n" ;
   if (! mIsAbstract.boolValue ()){
     generatedZone3 << "\n"
@@ -454,7 +454,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_classToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -463,7 +463,7 @@ void cPtr_C_classToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & inTargetFileName,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool inGenerateDebug) const {
   inCppFile.appendCppTitleComment (C_String ("class 'cPtr_") + aNomClasse + "'") ;
 
@@ -476,7 +476,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   GGS_typeListeAttributsSemantiques::cElement * current = aListeTousAttributsNonExternes.firstObject () ;
   inCppFile << "cPtr_" << aNomClasse << "::\n"
                "cPtr_" << aNomClasse << " (" ;
-  sint16 variableIndex = 0 ;
+  PMSInt16 variableIndex = 0 ;
   while (current != NULL) {
     macroValidPointer (current) ;
     if (variableIndex > 0) {
@@ -495,7 +495,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "LOCATION_ARGS" ;
   }
   inCppFile << ")" ;
-  const sint32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
+  const PMSInt32 nombreArgumentsHerites = aListeTousAttributsNonExternes.count () - aListeAttributsCourants.count () ;
   current = aListeTousAttributsNonExternes.firstObject () ;
 //--- Call super class constructor
   inCppFile << "\n:" ;
@@ -506,7 +506,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   }
   inCppFile << " (" ;
   variableIndex = 0 ;
-  for (sint32 i=0 ; i<nombreArgumentsHerites ; i++)  {
+  for (PMSInt32 i=0 ; i<nombreArgumentsHerites ; i++)  {
     if (variableIndex > 0) {
       inCppFile << ", " ;
     }
@@ -613,7 +613,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
       inCppFile << "  " << currentOnceAttribute->mAttributeName << ".drop () ;\n" ;
       currentOnceAttribute = currentOnceAttribute->nextObject () ;
     }
-    sint32 prototypeIndex = 0 ; // Non used here
+    PMSInt32 prototypeIndex = 0 ; // Non used here
     generateInstructionListForList (currentLazyDeclaration->mInstructionList, inCppFile,
                                     inTargetFileName, prototypeIndex,
                                     inGenerateDebug, true) ; 
@@ -651,7 +651,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
             << ((current == NULL) ? "/* inLexique */" : "inLexique")
             << ",\n"
                "                      C_String & ioString,\n"
-               "                      const sint32 "
+               "                      const PMSInt32 "
             << ((current == NULL) ? "/* inIndentation */" : "inIndentation")
             << "\n"
                "                      " ;

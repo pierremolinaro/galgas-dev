@@ -61,7 +61,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalExpression__generateCocoaCondi
 
 void
 enterCategoryReader__lexicalExpression__generateCocoaConditionCode (typeCategoryReader__lexicalExpression__generateCocoaConditionCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalExpression__generateCocoaConditionCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -230,7 +230,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalRoutineOrFunctionFormalInputAr
 
 void
 enterCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument (typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalRoutineOrFunctionFormalInputArgument__generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -378,7 +378,7 @@ static TC_UniqueArray <typeCategoryReader__abstractLexicalRoutineActualArgument_
 
 void
 enterCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument (typeCategoryReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__abstractLexicalRoutineActualArgument__generateCocoaRoutineArgument.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -471,7 +471,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalSendDefaultAction__generateCoc
 
 void
 enterCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode (typeCategoryReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalSendDefaultAction__generateCocoaDefaultSendCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -554,7 +554,7 @@ static TC_UniqueArray <typeCategoryReader__lexicalInstruction__generateCocoaInst
 
 void
 enterCategoryReader__lexicalInstruction__generateCocoaInstructionCode (typeCategoryReader__lexicalInstruction__generateCocoaInstructionCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__lexicalInstruction__generateCocoaInstructionCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 
@@ -934,7 +934,7 @@ static TC_UniqueArray <typeCategoryReader__abstractLexicalRule__generateCocoaCod
 
 void
 enterCategoryReader__abstractLexicalRule__generateCocoaCode (typeCategoryReader__abstractLexicalRule__generateCocoaCode inRoutine,
-                     const sint32 inClassID) {
+                     const PMSInt32 inClassID) {
   gDispatchTableForReader__abstractLexicalRule__generateCocoaCode.forceObjectAtIndex (inClassID, inRoutine, NULL) ;
 }
 

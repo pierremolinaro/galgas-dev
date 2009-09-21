@@ -61,7 +61,7 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
                     "  public : GGS_string\n"
                     "  reader_description (C_Compiler & inLexique\n"
                     "                      COMMA_LOCATION_ARGS,\n"
-                    "                      const sint32 inIndentation = 0) const ;\n"
+                    "                      const PMSInt32 inIndentation = 0) const ;\n"
                     "//--- Constructors\n" ;
   GGS_M_externTypeConstructorMap::cEnumerator constructor (mConstructorMap) ;
   while (constructor.hasCurrentObject ()) {
@@ -111,7 +111,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_typeExternTypeToGenerate::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                                const C_String & /* inTargetFileName*/,
-                               sint32 & /* ioPrototypeIndex */) const {
+                               PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -120,7 +120,7 @@ void cPtr_typeExternTypeToGenerate::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & /* inCppFile */,
                                   const C_String & /* inTargetFileName */,
-                                  sint32 & /* ioPrototypeIndex */,
+                                  PMSInt32 & /* ioPrototypeIndex */,
                                   const bool /* inGenerateDebug */) const {
 }
 

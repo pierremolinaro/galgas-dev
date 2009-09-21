@@ -276,8 +276,8 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_typeListeBranchesInstructions & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_typeListeBranchesInstructions
   reader_subListWithRange (C_Compiler & inLexique,
@@ -340,7 +340,7 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_typeInstructionList 
@@ -507,8 +507,8 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_L_parse_rewind_signature_list & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_L_parse_rewind_signature_list
   reader_subListWithRange (C_Compiler & inLexique,
@@ -579,7 +579,7 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_L_ruleSyntaxSignature 
@@ -947,7 +947,7 @@ class GGS_typeAltProductionsMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_typeAltProductionsMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_typeAltProductionsMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -1079,7 +1079,7 @@ class elementOf_GGS_typeListeBranchesInstructions : public AC_galgas_list::cList
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1123,7 +1123,7 @@ class elementOf_GGS_L_parse_rewind_signature_list : public AC_galgas_list::cList
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1166,7 +1166,7 @@ class e_typeAltProductionsMap {
 class elementOf_GGS_typeAltProductionsMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_typeAltProductionsMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_typeAltProductionsMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_typeAltProductionsMap * nextObject (void) const { return (elementOf_GGS_typeAltProductionsMap *) mNextItem ; }
@@ -1178,9 +1178,9 @@ class elementOf_GGS_typeAltProductionsMap : public AC_galgas_map_element {
   public : e_typeAltProductionsMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 

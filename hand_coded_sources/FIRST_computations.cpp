@@ -32,30 +32,30 @@
 
 static C_BDD_Set2
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
-                  const uint16 inBDDBitCount,
+                  const PMUInt16 inBDDBitCount,
                   const TC_UniqueArray <bool> & inVocabularyDerivingInEmptyString,
-                  const sint32 inTerminalSymbolsCount,
+                  const PMSInt32 inTerminalSymbolsCount,
                   const C_BDD_Descriptor & inDescriptor,
-                  sint32 & outIterationsCount) {
+                  PMSInt32 & outIterationsCount) {
 //--- Compute direct firsts with each production
   C_BDD_Set2 ex_directFIRST (inDescriptor, inDescriptor) ;
   C_BDD_Set2 ex_pr (inDescriptor, inDescriptor) ;
   C_BDD_Set2 temp (inDescriptor, inDescriptor) ;
   C_BDD_Set2 ex_left (inDescriptor, inDescriptor) ;
   C_BDD directFIRST ;
-  for (sint32 i=0 ; i<inProductionRules.length () ; i++) {
+  for (PMSInt32 i=0 ; i<inProductionRules.length () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    const sint32 n = p.aDerivation.count () ;
+    const PMSInt32 n = p.aDerivation.count () ;
     if (n > 0) {
-      const C_BDD left = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
-      ex_left.initDimension1 (C_BDD::kEqual, (uint32) p.aNumeroNonTerminalGauche) ;
-      sint32 j = 0 ;
+      const C_BDD left = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (PMUInt32) p.aNumeroNonTerminalGauche) ;
+      ex_left.initDimension1 (C_BDD::kEqual, (PMUInt32) p.aNumeroNonTerminalGauche) ;
+      PMSInt32 j = 0 ;
       ex_pr.clear () ;
       C_BDD pr ;
       do{
-        temp.initDimension2 (C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+        temp.initDimension2 (C_BDD::kEqual, (PMUInt32) p.aDerivation (j COMMA_HERE)) ;
         ex_pr |= temp ;
-        pr |= C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32) p.aDerivation (j COMMA_HERE)) ;
+        pr |= C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (PMUInt32) p.aDerivation (j COMMA_HERE)) ;
         j++ ;
       }while ((j<n) && inVocabularyDerivingInEmptyString (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
       ex_directFIRST |= ex_left & ex_pr ;
@@ -78,12 +78,12 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   }
 
 //--- Delete nonterminal symbols in FIRST
-  temp.initDimension2 (C_BDD::kLowerOrEqual, (uint32) (inTerminalSymbolsCount - 1)) ;
+  temp.initDimension2 (C_BDD::kLowerOrEqual, (PMUInt32) (inTerminalSymbolsCount - 1)) ;
   ex_FIRST &= temp ;
   FIRST &= C_BDD::varCompareConst (inBDDBitCount,
                                    inBDDBitCount,
                                    C_BDD::kLowerOrEqual,
-                                   (uint32) (inTerminalSymbolsCount - 1)) ;
+                                   (PMUInt32) (inTerminalSymbolsCount - 1)) ;
   if (! FIRST.isEqualToBDD (ex_FIRST.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
@@ -95,25 +95,25 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 
 static bool
 displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
-                          const uint16 inBDDBitCount,
+                          const PMUInt16 inBDDBitCount,
                           const C_BDD_Set1 & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
                           const C_BDD_Set1 & inUsefulSymbols,
                           const C_BDD_Set2 & inFIRSTsets,
-                          TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
-                          const sint32 inIterationsCount,
+                          TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outFIRSTarray,
+                          const PMSInt32 inIterationsCount,
                           const bool inVerboseOptionOn) {
-  const sint32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
+  const PMSInt32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
   C_BDD_Set1 temp (inVocabularyDerivingInEmptyString) ;
-  temp.init (C_BDD::kEqual, (uint16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+  temp.init (C_BDD::kEqual, (PMUInt16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   const C_BDD_Set2 ex_nt_x_empty = inVocabularyDerivingInEmptyString * temp ;
 
   const C_BDD emptyStringTerminalSymbolIndex =
     C_BDD::varCompareConst (inBDDBitCount,
                             inBDDBitCount,
                             C_BDD::kEqual,
-                            (uint32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; 
+                            (PMUInt32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; 
   const C_BDD nt_x_empty = inVocabularyDerivingInEmptyString.bdd () & emptyStringTerminalSymbolIndex ;
   if (! nt_x_empty.isEqualToBDD (ex_nt_x_empty.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
@@ -131,15 +131,15 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 //--- Compute FIRST array
   ex_FIRST_with_empty.getArray (outFIRSTarray) ;
 
-  TC_UniqueArray <TC_UniqueArray <sint32> > FIRSTArray ;
-  FIRST_with_empty.getArray2 (FIRSTArray, (uint32) inVocabulary.getAllSymbolsCount(), inBDDBitCount, inBDDBitCount) ;
+  TC_UniqueArray <TC_UniqueArray <PMSInt32> > FIRSTArray ;
+  FIRST_with_empty.getArray2 (FIRSTArray, (PMUInt32) inVocabulary.getAllSymbolsCount(), inBDDBitCount, inBDDBitCount) ;
   if (outFIRSTarray != FIRSTArray) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
 
 //--- Display FIRST
-  const sint32 m = (sint32) ex_FIRST_with_empty.getValuesCount () ;
-/*   const sint32 mm = (sint32) FIRST_with_empty.valueCount (inBDDBitCount) ;
+  const PMSInt32 m = (PMSInt32) ex_FIRST_with_empty.getValuesCount () ;
+/*   const PMSInt32 mm = (PMSInt32) FIRST_with_empty.valueCount (inBDDBitCount) ;
   if (mm != m) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }*/
@@ -153,12 +153,12 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                    "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
     inHTMLfile->outputRawData ("</p>") ;
     inHTMLfile->outputRawData ("<table class=\"result\">") ;
-    for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+    for (PMSInt32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
       inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
       inHTMLfile->outputRawData ("</code></td><td><code>") ;
-      const sint32 length = outFIRSTarray (symbol COMMA_HERE).count () ;
-      for (sint32 e=0 ; e<length ; e++) {
+      const PMSInt32 length = outFIRSTarray (symbol COMMA_HERE).count () ;
+      for (PMSInt32 e=0 ; e<length ; e++) {
         *inHTMLfile << " " ;
         inVocabulary.printInFile (*inHTMLfile, outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
@@ -170,12 +170,12 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 
 //--- Ensemble des non-terminaux a verifier
   C_BDD_Set1 ex_ntToCheck (inUsefulSymbols) ;
-  ex_ntToCheck.init (C_BDD::kGreaterOrEqual,(uint32) inVocabulary.getTerminalSymbolsCount ()) ;
+  ex_ntToCheck.init (C_BDD::kGreaterOrEqual,(PMUInt32) inVocabulary.getTerminalSymbolsCount ()) ;
 
   const C_BDD ntToCheck = C_BDD::varCompareConst (0,
                                                   inBDDBitCount,
                                                   C_BDD::kGreaterOrEqual,
-                                                  (uint32) inVocabulary.getTerminalSymbolsCount ()) ; 
+                                                  (PMUInt32) inVocabulary.getTerminalSymbolsCount ()) ; 
 
 //--- Get nonterminal symbols in error
   const C_BDD_Set1 ex_ntInError = ex_ntToCheck & inUsefulSymbols & ~(ex_FIRST_with_empty.projeterSurAxe1 ()) ; 
@@ -183,8 +183,8 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   if (! ntInError.isEqualToBDD (ex_ntInError.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
-  const sint32 ntInErrorCount2 = (sint32) ntInError.valueCount (inBDDBitCount) ;
-  const sint32 ntInErrorCount = (sint32) ex_ntInError.getValuesCount () ;
+  const PMSInt32 ntInErrorCount2 = (PMSInt32) ntInError.valueCount (inBDDBitCount) ;
+  const PMSInt32 ntInErrorCount = (PMSInt32) ex_ntInError.getValuesCount () ;
   if (ntInErrorCount2 != ntInErrorCount) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
@@ -211,14 +211,14 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                   << ((ntInErrorCount>1) ? " has" : "s have")
                   << " an empty FIRST :" ;
       TC_UniqueArray <bool> errorArray2 ;
-      ntInError.getBoolArray (errorArray2, (uint32) inVocabulary.getAllSymbolsCount(), inBDDBitCount) ;
+      ntInError.getBoolArray (errorArray2, (PMUInt32) inVocabulary.getAllSymbolsCount(), inBDDBitCount) ;
       TC_UniqueArray <bool> errorArray ;
       ex_ntInError.getArray (errorArray) ;
       if (errorArray != errorArray2) {
         printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
       }
       inHTMLfile->outputRawData ("<code>") ;
-      for (sint32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+      for (PMSInt32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
         if (errorArray (symbol COMMA_HERE)) {
           *inHTMLfile << " " ;
           inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
@@ -244,14 +244,14 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    const uint16 inBDDBitCount,
+                    const PMUInt16 inBDDBitCount,
                     C_HTML_FileWrite * inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
                     const C_BDD_Set1 & inUsefulSymbols,
                     C_BDD_Set2 & outFIRSTsets,
-                    TC_UniqueArray <TC_UniqueArray <sint32> > & outFIRSTarray,
+                    TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outFIRSTarray,
                     const C_BDD_Descriptor & inDescriptor,
                     bool & outOk,
                     const bool inVerboseOptionOn) {
@@ -267,7 +267,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
   }
 
 //--- Compute FIRST sets
-  sint32 iterationsCount = 0 ;
+  PMSInt32 iterationsCount = 0 ;
   outFIRSTsets = computeFIRSTsets (inPureBNFproductions,
                                    inBDDBitCount,
                                    inVocabularyDerivingToEmpty_Array,

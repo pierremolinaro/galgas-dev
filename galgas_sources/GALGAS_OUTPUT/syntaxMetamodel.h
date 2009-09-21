@@ -99,8 +99,8 @@ class GGS_syntaxInstructionList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_syntaxInstructionList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_syntaxInstructionList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -163,7 +163,7 @@ class GGS_syntaxInstructionList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_syntaxInstruction 
@@ -210,8 +210,8 @@ class GGS_nonTerminalLabelList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_nonTerminalLabelList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_nonTerminalLabelList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -282,7 +282,7 @@ class GGS_nonTerminalLabelList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -338,8 +338,8 @@ class GGS_nonterminalDeclarationList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_nonterminalDeclarationList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_nonterminalDeclarationList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -418,7 +418,7 @@ class GGS_nonterminalDeclarationList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -482,8 +482,8 @@ class GGS_syntaxRuleLabelList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_syntaxRuleLabelList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_syntaxRuleLabelList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -562,7 +562,7 @@ class GGS_syntaxRuleLabelList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -625,8 +625,8 @@ class GGS_syntaxRuleList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_syntaxRuleList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_syntaxRuleList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -697,7 +697,7 @@ class GGS_syntaxRuleList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
@@ -873,8 +873,8 @@ class GGS_listOfSyntaxInstructionList : public AC_galgas_list {
 //--- Get sublist
   protected : void
   internalSubListWithRange (GGS_listOfSyntaxInstructionList & ioList,
-                            const sint32 inFirstIndex,
-                            const sint32 inCount) const ;
+                            const PMSInt32 inFirstIndex,
+                            const PMSInt32 inCount) const ;
 
   public : GGS_listOfSyntaxInstructionList
   reader_subListWithRange (C_Compiler & inLexique,
@@ -937,7 +937,7 @@ class GGS_listOfSyntaxInstructionList : public AC_galgas_list {
   public : GGS_string
   reader_description (C_Compiler & inLexique
                       COMMA_LOCATION_ARGS,
-                      const sint32 inIndentation = 0) const ;
+                      const PMSInt32 inIndentation = 0) const ;
 
 //--------------------------------- Direct Read Access
   public : GGS_syntaxInstructionList 
@@ -1304,7 +1304,7 @@ class elementOf_GGS_syntaxInstructionList : public AC_galgas_list::cListElement 
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1340,7 +1340,7 @@ class elementOf_GGS_nonTerminalLabelList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1378,7 +1378,7 @@ class elementOf_GGS_nonterminalDeclarationList : public AC_galgas_list::cListEle
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1416,7 +1416,7 @@ class elementOf_GGS_syntaxRuleLabelList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1452,7 +1452,7 @@ class elementOf_GGS_syntaxRuleList : public AC_galgas_list::cListElement {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1492,7 +1492,7 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1537,7 +1537,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1578,7 +1578,7 @@ class elementOf_GGS_listOfSyntaxInstructionList : public AC_galgas_list::cListEl
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Friend class declaration
@@ -1616,7 +1616,7 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1659,7 +1659,7 @@ class cPtr_selectInstruction : public cPtr_syntaxInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1702,7 +1702,7 @@ class cPtr_parseDoInstruction : public cPtr_syntaxInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1753,7 +1753,7 @@ class cPtr_blockInstruction : public cPtr_syntaxInstruction {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison
@@ -1803,7 +1803,7 @@ class cPtr_syntaxComponentRoot : public cPtr__AC_galgas_class {
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

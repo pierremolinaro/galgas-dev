@@ -88,38 +88,38 @@ class parameterArgumentBuilder {
   protected : void pr_formal_parameter_list_parameterArgumentBuilder_49_28_ (galgas_scanner &,
                                 GGS_formalParameterList  &) ;
 
-  protected : virtual sint16 select_repeat_parameterArgumentBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parameterArgumentBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_2 (galgas_scanner &) = 0 ;
 
   protected : void pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner &,
                                 GGS_actualParameterList  &) ;
 
-  protected : virtual sint16 select_repeat_parameterArgumentBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parameterArgumentBuilder_3 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_4 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_4 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_parameterArgumentBuilder_5 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parameterArgumentBuilder_5 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_6 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_6 (galgas_scanner &) = 0 ;
 
   protected : void pr_formal_input_parameter_list_parameterArgumentBuilder_151_34_ (galgas_scanner &,
                                 GGS_formalInputParameterList  &) ;
 
-  protected : virtual sint16 select_repeat_parameterArgumentBuilder_7 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parameterArgumentBuilder_7 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_8 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_8 (galgas_scanner &) = 0 ;
 
   protected : void pr_actual_input_parameter_list_parameterArgumentBuilder_179_34_ (galgas_scanner &,
                                 GGS_actualInputParameterList  &) ;
 
-  protected : virtual sint16 select_repeat_parameterArgumentBuilder_9 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_parameterArgumentBuilder_9 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_10 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_10 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_parameterArgumentBuilder_11 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_parameterArgumentBuilder_11 (galgas_scanner &) = 0 ;
 
 } ;
 

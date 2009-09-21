@@ -27,10 +27,10 @@ class cPtr_T_selectInstruction_forGrammarComponent : public cPtr_AC_instruction_
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ;
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
-                                                  sint32 & ioCount) ;
-  public : virtual void buildRightDerivation (const sint32 inTerminalSymbolsCount,
-                                      TC_UniqueArray <sint16> & ioInstructionsList) ;
-  public : virtual void buildSelectAndRepeatProductions (const sint32 inTerminalSymbolsCount,
+                                                  PMSInt32 & ioCount) ;
+  public : virtual void buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
+                                      TC_UniqueArray <PMSInt16> & ioInstructionsList) ;
+  public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
                                            const C_String & inSyntaxComponentName,
                                            cPureBNFproductionsList & ioProductions) ;
   public : virtual void fixInfos (cInfo & inInfo,
@@ -63,7 +63,7 @@ class cPtr_T_selectInstruction_forGrammarComponent : public cPtr_AC_instruction_
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

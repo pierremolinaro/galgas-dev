@@ -42,7 +42,7 @@ class optionLL1grammar : public optionModelBuilder {
                                 const GGS_string inSourceString,
                                 GGS_optionComponentRoot &
                                 COMMA_LOCATION_ARGS) ;
-  public : virtual sint16 select_repeat_optionModelBuilder_0 (galgas_scanner &) ;
+  public : virtual PMSInt16 select_repeat_optionModelBuilder_0 (galgas_scanner &) ;
 } ;
 
 //---------------------------------------------------------------------------*

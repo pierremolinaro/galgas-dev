@@ -115,7 +115,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GGS_L_syntaxComponents_ForGrammar & inSyntaxComponentsList) {
 //--- Print message
-  sint32 productionsCount = 0 ;
+  PMSInt32 productionsCount = 0 ;
   GGS_L_syntaxComponents_ForGrammar::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
     productionsCount += currentSyntaxComponent._mProductionRulesList (HERE).count () ;

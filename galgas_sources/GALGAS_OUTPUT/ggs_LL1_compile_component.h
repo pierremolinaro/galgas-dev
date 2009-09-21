@@ -84,7 +84,7 @@ class GGS_EXtargetFileListMap : public AC_galgas_listmap {
  //--- Description
     public : virtual C_String
     _description (C_Compiler & inLexique,
-                  const sint32 inIndentation
+                  const PMSInt32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
     public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;
@@ -157,7 +157,7 @@ class GGS_EXsourceFileKind {
   private : inline GGS_EXsourceFileKind (const enumeration inValue) : mValue (inValue) {}
 
 //--- Bit count for bdd
-  public : static inline uint16 bitCount (void) { return 4 ; }
+  public : static inline PMUInt16 bitCount (void) { return 4 ; }
 
 //--- Is built ?
   public : bool isBuilt (void) const ;
@@ -199,7 +199,7 @@ class GGS_EXsourceFileKind {
 //--- 'description' reader
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
 
 //--- Drop operation
   public : inline void drop (void) { mValue = kNotBuilt ; }
@@ -290,7 +290,7 @@ class GGS_EXsourceFileMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_EXsourceFileMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_EXsourceFileMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -354,7 +354,7 @@ class e_EXsourceFileMap {
 class elementOf_GGS_EXsourceFileMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_EXsourceFileMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_EXsourceFileMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_EXsourceFileMap * nextObject (void) const { return (elementOf_GGS_EXsourceFileMap *) mNextItem ; }
@@ -366,9 +366,9 @@ class elementOf_GGS_EXsourceFileMap : public AC_galgas_map_element {
   public : e_EXsourceFileMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 
@@ -444,13 +444,13 @@ class ggs_LL1_compile_component {
                                 GGS_M_optionComponents  &,
                                 GGS_EXsemanticContext &) ;
 
-  protected : virtual sint16 select_repeat_ggs_LL1_compile_component_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_ggs_LL1_compile_component_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_ggs_LL1_compile_component_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_ggs_LL1_compile_component_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_ggs_LL1_compile_component_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_ggs_LL1_compile_component_2 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_ggs_LL1_compile_component_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_ggs_LL1_compile_component_3 (galgas_scanner &) = 0 ;
 
   protected : void pr_galgas_component_ggs_LL1_compile_component_139_23_importGrammarForSemantics (galgas_scanner &,
                                 GGS_M_grammarComponents  &,

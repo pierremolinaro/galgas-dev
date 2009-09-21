@@ -143,7 +143,7 @@ class GGS_targetFileListMap : public AC_galgas_listmap {
  //--- Description
     public : virtual C_String
     _description (C_Compiler & inLexique,
-                  const sint32 inIndentation
+                  const PMSInt32 inIndentation
                   COMMA_LOCATION_ARGS) const ;
     public : virtual cPtrObject * _clone (LOCATION_ARGS) ;
     public : virtual bool isEqual (const cPtrListMapObject * inOperand) const ;
@@ -270,7 +270,7 @@ class GGS_sourceFileMap : public AC_galgas_map {
                                    COMMA_LOCATION_ARGS) const ;
   public : GGS_string reader_description (C_Compiler & inLexique
                                           COMMA_LOCATION_ARGS,
-                                          const sint32 inIndentation = 0) const ;
+                                          const PMSInt32 inIndentation = 0) const ;
   public : static GGS_sourceFileMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
                                             const GGS_sourceFileMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
@@ -313,7 +313,7 @@ class e_sourceFileMap {
 class elementOf_GGS_sourceFileMap : public AC_galgas_map_element {
 //--- Constructor
   public : elementOf_GGS_sourceFileMap (const GGS_lstring & inKey,
-                                     const sint32 inIndex,
+                                     const PMSInt32 inIndex,
                                      const e_sourceFileMap & inInfo) ;
 //--- Get pointers
   public : inline elementOf_GGS_sourceFileMap * nextObject (void) const { return (elementOf_GGS_sourceFileMap *) mNextItem ; }
@@ -325,9 +325,9 @@ class elementOf_GGS_sourceFileMap : public AC_galgas_map_element {
   public : e_sourceFileMap mInfo ;
 //--- Method for 'description' reader
   public : void appendForMapDescription (C_Compiler & inLexique,
-                                         const sint32 inElementIndex,
+                                         const PMSInt32 inElementIndex,
                                          C_String & ioString,
-                                         const sint32 inIndentation
+                                         const PMSInt32 inIndentation
                                          COMMA_LOCATION_ARGS) const ;
 } ;
 

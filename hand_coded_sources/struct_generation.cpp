@@ -56,11 +56,11 @@ generateHdeclarations_2 (AC_OutputStream & inHfile,
              "  public : GGS_string\n"
              "  reader_description (C_Compiler & inLexique\n"
              "                      COMMA_LOCATION_ARGS,\n"
-             "                      const sint32 inIndentation = 0) const ;\n"
+             "                      const PMSInt32 inIndentation = 0) const ;\n"
              "//--- Galgas 'new' destructor\n"
              "  public : static GGS_" << mStructName << " constructor_new (" ;
   GGS_typeListeAttributsSemantiques::cEnumerator current (mAttributeList, true) ;
-  sint32 numeroVariable = 0 ;
+  PMSInt32 numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inHfile << ",\n                 " ;
@@ -112,7 +112,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 void cPtr_C_structToImplement::
 generateCppClassDeclaration (AC_OutputStream & /* inHfile */,
                              const C_String & /* inTargetFileName */,
-                             sint32 & /* ioPrototypeIndex */) const {
+                             PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -121,7 +121,7 @@ void cPtr_C_structToImplement::
 generateCppClassImplementation (C_Compiler & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
-                                sint32 & /* ioPrototypeIndex */,
+                                PMSInt32 & /* ioPrototypeIndex */,
                                 const bool /* inGenerateDebug */) const {
   inCppFile.appendCppTitleComment (C_String ("Implementation of '") + mStructName + "' struct") ;
   inCppFile << "GGS_" << mStructName << "::GGS_" << mStructName << " (void) :\n" ;
@@ -209,7 +209,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile <<"GGS_" << mStructName << " GGS_" << mStructName << "::\n"
               "constructor_new (" ;
   current.rewind () ;
-  sint32 numeroVariable = 0 ;
+  PMSInt32 numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
     if (numeroVariable > 0) {
       inCppFile << ",\n                 " ;
@@ -236,7 +236,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_string GGS_" << mStructName << "::\n"
                "reader_description (C_Compiler & inLexique\n"
                "                    COMMA_LOCATION_ARGS,\n"
-               "                    const sint32 inIndentation) const {\n"
+               "                    const PMSInt32 inIndentation) const {\n"
                "  C_String _s ;\n"
                "  _s << \"<struct @" << mStructName << "\" ;\n"
                "  if (isBuilt ()) {\n" ;

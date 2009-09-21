@@ -70,7 +70,7 @@ cPtr_semanticExpression (LOCATION_ARGS)
 void cPtr_semanticExpression::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@semanticExpression:" ;
 }
@@ -200,7 +200,7 @@ isEqualToObject (const cListElement * inOperand) const {
 void elementOf_GGS_semanticExpressionList::
 appendForDescription (C_Compiler & inLexique,
                           C_String & ioString,
-                          const sint32 inIndentation
+                          const PMSInt32 inIndentation
                           COMMA_LOCATION_ARGS) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -328,16 +328,16 @@ constructor_listWithValue (const GGS_semanticExpression & argument_0) {
 
 void GGS_semanticExpressionList::
 internalSubListWithRange (GGS_semanticExpressionList & ioList,
-                          const sint32 inFirstIndex,
-                          const sint32 inCount) const {
+                          const PMSInt32 inFirstIndex,
+                          const PMSInt32 inCount) const {
   ioList.alloc () ;
   if (inCount > 0) {
     cElement * ptr = firstObject () ;
-    for (sint32 i=0 ; i<inFirstIndex ; i++) {
+    for (PMSInt32 i=0 ; i<inFirstIndex ; i++) {
       macroValidPointer (ptr) ;
       ptr = ptr->nextObject () ;
     }
-    for (sint32 i=0 ; i<inCount ; i++) {
+    for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
       ioList._addAssign_operation (ptr->mExpression) ;
       ptr = ptr->nextObject () ;
@@ -354,8 +354,8 @@ reader_subListWithRange (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_semanticExpressionList result ;
   if (isBuilt () && inFirstIndex.isBuilt () && inCount.isBuilt ()) {
-    const sint32 firstIndex = (sint32) inFirstIndex.uintValue () ;
-    const sint32 rangeCount = (sint32) inCount.uintValue () ;
+    const PMSInt32 firstIndex = (PMSInt32) inFirstIndex.uintValue () ;
+    const PMSInt32 rangeCount = (PMSInt32) inCount.uintValue () ;
     if ((firstIndex + rangeCount) > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListWithRange' method invoked with upper bound greater than list object count" COMMA_THERE) ;
     }else{
@@ -373,7 +373,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
                          COMMA_LOCATION_ARGS) const {
   GGS_semanticExpressionList result ;
   if (isBuilt () && inIndex.isBuilt ()) {
-    const sint32 startIndex = (sint32) inIndex.uintValue () ;
+    const PMSInt32 startIndex = (PMSInt32) inIndex.uintValue () ;
     if (startIndex > count ()) {
       inLexique.onTheFlyRunTimeError ("'subListFromIndex' method invoked with start index greater than list object count" COMMA_THERE) ;
     }else{
@@ -388,7 +388,7 @@ reader_subListFromIndex (C_Compiler & inLexique,
 GGS_string GGS_semanticExpressionList::
 reader_description (C_Compiler & inLexique
                     COMMA_LOCATION_ARGS,
-                    const sint32 inIndentation) const {
+                    const PMSInt32 inIndentation) const {
   return _description (inLexique, "@semanticExpressionList", inIndentation COMMA_THERE) ;
 }
 
@@ -558,7 +558,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_outExpressionList::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@outExpressionList:"
            << mExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -751,7 +751,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_variableExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@variableExpression:"
            << mVariableName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -909,7 +909,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_selfInExpression::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@selfInExpression:" ;
 }
@@ -1057,7 +1057,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_hereExpression::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@hereExpression:" ;
 }
@@ -1205,7 +1205,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_trueExpression::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@trueExpression:" ;
 }
@@ -1353,7 +1353,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_falseExpression::
 appendForDescription (C_Compiler & /* inLexique */,
                       C_String & ioString,
-                      const sint32 /* inIndentation */
+                      const PMSInt32 /* inIndentation */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   ioString << "->@falseExpression:" ;
 }
@@ -1509,7 +1509,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalCharExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalCharExpression:"
            << mCharacter.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1675,7 +1675,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalStringExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalStringExpression:"
            << mStringSequence.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -1841,7 +1841,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalDoubleExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalDoubleExpression:"
            << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2007,7 +2007,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalUIntExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalUIntExpression:"
            << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2173,7 +2173,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalUInt64Expression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalUInt64Expression:"
            << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2339,7 +2339,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalSIntExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalSIntExpression:"
            << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2505,7 +2505,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_literalSInt64Expression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@literalSInt64Expression:"
            << mValue.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -2677,7 +2677,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_constructorExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@constructorExpression:"
            << mTypeName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -2883,7 +2883,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_readerCallExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@readerCallExpression:"
            << mReceiver.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3086,7 +3086,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_optionExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@optionExpression:"
            << mOptionComponentName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3275,7 +3275,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_concatExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@concatExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3481,7 +3481,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_orExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@orExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3687,7 +3687,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_xorExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@xorExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -3893,7 +3893,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_andExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@andExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -4099,7 +4099,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_equalExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@equalExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -4305,7 +4305,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_notEqualExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@notEqualExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -4511,7 +4511,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_lowerOrEqualExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@lowerOrEqualExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -4717,7 +4717,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_greaterOrEqualExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@greaterOrEqualExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -4923,7 +4923,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_strictGreaterExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@strictGreaterExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5129,7 +5129,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_strictLowerExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@strictLowerExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5335,7 +5335,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_rightShiftExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@rightShiftExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5541,7 +5541,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_leftShiftExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@leftShiftExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5747,7 +5747,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_addExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@addExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -5953,7 +5953,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_subExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@subExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -6159,7 +6159,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_multiplicationExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@multiplicationExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -6365,7 +6365,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_divisionExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@divisionExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -6571,7 +6571,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_moduloExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@moduloExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -6774,7 +6774,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_unaryMinusExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@unaryMinusExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -6960,7 +6960,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_notExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@notExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -7146,7 +7146,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_negateExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@negateExpression:"
            << mOperatorLocation.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -7329,7 +7329,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_varInExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@varInExpression:"
            << mVarName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -7498,7 +7498,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_descriptionInExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@descriptionInExpression:"
            << mReceiverExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -7690,7 +7690,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_castInExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@castInExpression:"
            << mReceiverExpression.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -7907,7 +7907,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_filewrapperObjectInstanciationInExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@filewrapperObjectInstanciationInExpression:"
            << mFilewrapperName.reader_description  (inLexique COMMA_THERE, inIndentation + 1) ;
@@ -8076,7 +8076,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_filewrapperInExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@filewrapperInExpression:"
            << mFilewrapperName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)
@@ -8265,7 +8265,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 void cPtr_filewrapperTemplateInExpression::
 appendForDescription (C_Compiler & inLexique,
                       C_String & ioString,
-                      const sint32 inIndentation
+                      const PMSInt32 inIndentation
                       COMMA_LOCATION_ARGS) const {
   ioString << "->@filewrapperTemplateInExpression:"
            << mFilewrapperName.reader_description  (inLexique COMMA_THERE, inIndentation + 1)

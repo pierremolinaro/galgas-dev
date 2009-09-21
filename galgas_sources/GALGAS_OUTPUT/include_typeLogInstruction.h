@@ -24,7 +24,7 @@ class cPtr_typeLogInstruction : public cPtr_typeInstruction {
   public : virtual void
   generateInstruction (AC_OutputStream & inCppFile,
                        const C_String & inTargetFileName,
-                       sint32 & ioPrototypeIndex,
+                       PMSInt32 & ioPrototypeIndex,
                        const bool inGenerateDebug,
                        const bool inGenerateSemanticInstructions) const ;
 
@@ -60,7 +60,7 @@ public : virtual bool formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgu
   public : virtual void
   appendForDescription (C_Compiler & inLexique,
                         C_String & ioString,
-                        const sint32 inIndentation
+                        const PMSInt32 inIndentation
                         COMMA_LOCATION_ARGS) const ;
 
 //--- Comparison

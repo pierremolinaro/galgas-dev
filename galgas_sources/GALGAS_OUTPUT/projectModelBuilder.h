@@ -79,13 +79,13 @@ class projectModelBuilder {
                                 GGS_lstring  &,
                                 GGS_location  &) ;
 
-  protected : virtual sint16 select_repeat_projectModelBuilder_0 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_projectModelBuilder_0 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_projectModelBuilder_1 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_projectModelBuilder_1 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_projectModelBuilder_2 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_projectModelBuilder_2 (galgas_scanner &) = 0 ;
 
-  protected : virtual sint16 select_repeat_projectModelBuilder_3 (galgas_scanner &) = 0 ;
+  protected : virtual PMSInt16 select_repeat_projectModelBuilder_3 (galgas_scanner &) = 0 ;
 
 } ;
 

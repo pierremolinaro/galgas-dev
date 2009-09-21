@@ -38,7 +38,7 @@ void
 useful_symbols_computations (C_Compiler & inLexique,
                              const GGS_M_unusedNonTerminalSymbolsForGrammar & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
-                             const uint16 inBDDBitCount,
+                             const PMUInt16 inBDDBitCount,
                              const cVocabulary & inVocabulary,
                              C_HTML_FileWrite * inHTMLfile,
                              C_BDD_Set1 & outUsefulSymbols,
