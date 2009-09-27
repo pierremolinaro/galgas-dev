@@ -27,6 +27,8 @@ import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantic
 import semantics optionMetamodel in "optionMetamodel.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;
 import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
+import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
+import semantics guiCompilation in "guiCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #--- Prologue routine 
@@ -53,6 +55,38 @@ message "a GALGAS option source file"
     ![@parsedOptionComponentMap emptyMap]
   ] ;
   compileOptionComponent !inSourceFile !outputDirectory !?parsedComponentStruct ;
+}
+
+#---------------------------------------------------------------------------*
+
+when . "gLexique"
+message "a GALGAS lexique source file"
+??@lstring inSourceFile {
+  @string outputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+  outputDirectory .= "/GALGAS_OUTPUT" ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedSyntaxComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
+  ] ;
+  compileLexiqueComponent !inSourceFile ! outputDirectory !?parsedComponentStruct ;
+}
+
+#---------------------------------------------------------------------------*
+
+when . "gGui"
+message "a GALGAS gui source file"
+??@lstring inSourceFile {
+  @string outputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
+  outputDirectory .= "/GALGAS_OUTPUT" ;
+  @parsedComponentStruct parsedComponentStruct [new
+    ![@parsedSemanticsComponentMap emptyMap]
+    ![@parsedLexiqueComponentMap emptyMap]
+    ![@parsedSyntaxComponentMap emptyMap]
+    ![@parsedOptionComponentMap emptyMap]
+  ] ;
+  compileGuiComponent !inSourceFile ! outputDirectory !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
