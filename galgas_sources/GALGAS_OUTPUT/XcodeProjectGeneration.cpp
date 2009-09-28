@@ -82,12 +82,12 @@ void routine_build_LIBPM_BDD_source_files_for_sources_build_phase (C_Compiler & 
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_BDD_Descriptor.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_BDD_Set1.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_BDD_Set2.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_BDD_Set3.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_BDD.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_Display_BDD.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_BDD_Descriptor.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_BDD_Set1.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_BDD_Set2.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_BDD_Set3.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_BDD.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_Display_BDD.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (43)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_BDD_source_files_for_sources_build_phase\n") ;
@@ -106,44 +106,44 @@ void routine_getGALGAS_source_file_list (C_Compiler &,
     printf ("ENTER routine_getGALGAS_source_file_list at %s:%d\n", __FILE__, __LINE__) ;
   #endif
   var_cas_out_cpp_and_h_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("PM_C_Array")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("PM_C_Dictionary")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("PM_C_Object")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_listmap")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_map")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_list")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_sortedlist")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_mapindex")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_domain")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("AC_galgas_class")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("C_GGS_Object")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("C_galgas_CLI_Options")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("C_Compiler")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("C_Lexique")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("scanner_actions")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("C_galgas_io")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("predefined_types")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_binaryset")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_stringset")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_filewrapper")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_lsint64")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_luint64")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_sint64")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_uint64")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_double")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_sint")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_bool")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_char")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_string")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_uint")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_data")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_location")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_ldouble")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_lsint")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_lbool")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_lchar")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_lstring")) ;
-  var_cas_out_cpp_and_h_fileList._addAssign_operation (GGS_string ("GGS_luint")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("PM_C_Array")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("PM_C_Dictionary")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("PM_C_Object")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_listmap")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_map")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_list")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_sortedlist")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_mapindex")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_domain")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("AC_galgas_class")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("C_GGS_Object")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("C_galgas_CLI_Options")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("C_Compiler")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("C_Lexique")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("scanner_actions")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("C_galgas_io")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("predefined_types")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_binaryset")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_stringset")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_filewrapper")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_lsint64")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_luint64")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_sint64")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_uint64")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_double")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_sint")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_bool")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_char")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_string")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_uint")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_data")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_location")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_ldouble")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_lsint")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_lbool")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_lchar")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_lstring")) ;
+  var_cas_out_cpp_and_h_fileList.addAssign_operation (GGS_string ("GGS_luint")) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_getGALGAS_source_file_list\n") ;
   #endif
@@ -173,8 +173,8 @@ void routine_build_LIBPM_GALGAS_group (C_Compiler & inLexique,
       ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  operand_3910->mValue COMMA_SOURCE_FILE_AT_LINE (106)) ;
     }
   }
-  var_cas_fileList._addAssign_operation (GGS_string ("galgas_header.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("PP_GalgasPrefix.pch")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("galgas_header.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("PP_GalgasPrefix.pch")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (111)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_GALGAS_group\n") ;
@@ -202,7 +202,7 @@ void routine_build_LIBPM_GALGAS_files_for_sources_build_phase (C_Compiler & inLe
     const GGS_stringlist::cElement * operand_4554 = NULL ;
     while (((operand_4554 = enumerator_4554.nextObject ()))) {
       macroValidPointer (operand_4554) ;
-      var_cas_fileList._addAssign_operation ((operand_4554->mValue).operator_concat (GGS_string (".cpp"))) ;
+      var_cas_fileList.addAssign_operation ((operand_4554->mValue).operator_concat (GGS_string (".cpp"))) ;
     }
   }
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (131)) ;
@@ -239,15 +239,15 @@ void routine_build_LIBPM_COCOA_GALGAS_group (C_Compiler & inLexique,
   ::routine_append_m_h_files (inLexique,  var_cas_fileList,  GGS_string ("OC_GGS_TextView") COMMA_SOURCE_FILE_AT_LINE (156)) ;
   ::routine_append_m_h_files (inLexique,  var_cas_fileList,  GGS_string ("OC_GGS_DelegateForSyntaxColoring") COMMA_SOURCE_FILE_AT_LINE (157)) ;
   ::routine_append_m_h_files (inLexique,  var_cas_fileList,  GGS_string ("OC_GGS_BuildResultTextView") COMMA_SOURCE_FILE_AT_LINE (158)) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_ScrollToEndArrow.gif")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Action.tiff")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_SaveAs.tiff")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Stop.tiff")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Window.png")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Orange14.png")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Red14.png")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("F_CocoaWrapperForGalgas.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("PP_CocoaGalgasPrefix.pch")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_ScrollToEndArrow.gif")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Action.tiff")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_SaveAs.tiff")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Stop.tiff")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Window.png")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Orange14.png")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Red14.png")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("F_CocoaWrapperForGalgas.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("PP_CocoaGalgasPrefix.pch")) ;
   ::routine_enter_xib_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  GGS_string ("English.lproj"),  GGS_string ("MainMenu.xib"),  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (169)) ;
   ::routine_enter_xib_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  GGS_string ("English.lproj"),  GGS_string ("OC_GGS_Document.xib"),  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (175)) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (182)) ;
@@ -270,7 +270,7 @@ void routine_build_LIBPM_COCOA_UTILITIES_group (C_Compiler & inLexique,
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("main.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("main.m")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (198)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_COCOA_UTILITIES_group\n") ;
@@ -313,8 +313,8 @@ void routine_build_LIBPM_FILES_files_for_sources_build_phase (C_Compiler & inLex
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_HTML_FileWrite.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_TextFileWrite.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_HTML_FileWrite.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_TextFileWrite.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (232)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_FILES_files_for_sources_build_phase\n") ;
@@ -340,8 +340,8 @@ void routine_build_LIBPM_COMMAND_LINE_INTERFACE_group (C_Compiler & inLexique,
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("C_StringCommandLineOption") COMMA_SOURCE_FILE_AT_LINE (248)) ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("C_builtin_CLI_Options") COMMA_SOURCE_FILE_AT_LINE (249)) ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("F_Analyze_CLI_Options") COMMA_SOURCE_FILE_AT_LINE (250)) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("F_main.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("mainForLIBPM.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("F_main.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("mainForLIBPM.h")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (254)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_COMMAND_LINE_INTERFACE_group\n") ;
@@ -362,12 +362,12 @@ void routine_build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase (C
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_builtin_CLI_Options.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_BoolCommandLineOption.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_UIntCommandLineOption.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_StringCommandLineOption.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("F_Analyze_CLI_Options.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("F_main.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_builtin_CLI_Options.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_BoolCommandLineOption.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_UIntCommandLineOption.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_StringCommandLineOption.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("F_Analyze_CLI_Options.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("F_main.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (275)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase\n") ;
@@ -388,18 +388,18 @@ void routine_build_LIBPM_COLLECTIONS_group (C_Compiler & inLexique,
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_AVL_TreeForCollision.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_Array.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_Array2.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_BlockBinaryTreeForCollision.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_Block_AVL_TreeForCollision.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_FixedSizeArray.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_HashMap.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_LinearListForCollision.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_UniqueArray.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_UniqueArray2.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_UniqueFixedSizeArray.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TF_AVL_Tree.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_AVL_TreeForCollision.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_Array.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_Array2.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_BlockBinaryTreeForCollision.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_Block_AVL_TreeForCollision.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_FixedSizeArray.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_HashMap.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_LinearListForCollision.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_UniqueArray.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_UniqueArray2.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_UniqueFixedSizeArray.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TF_AVL_Tree.h")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (302)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_COLLECTIONS_group\n") ;
@@ -422,9 +422,9 @@ void routine_build_LIBPM_CACHE_group (C_Compiler & inLexique,
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("C_PrimeCache2") COMMA_SOURCE_FILE_AT_LINE (316)) ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("C_PrimeCache3") COMMA_SOURCE_FILE_AT_LINE (317)) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_prime_cache2.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_prime_cache3.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TC_prime_cache4.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_prime_cache2.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_prime_cache3.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TC_prime_cache4.h")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (322)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_CACHE_group\n") ;
@@ -445,8 +445,8 @@ void routine_build_LIBPM_CACHE_files_for_sources_build_phase (C_Compiler & inLex
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_PrimeCache2.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_PrimeCache3.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_PrimeCache2.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_PrimeCache3.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (340)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_CACHE_files_for_sources_build_phase\n") ;
@@ -468,7 +468,7 @@ void routine_build_PROJECT_RESOURCES_group (C_Compiler & inLexique,
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = var_cas_inIconFiles ;
-  var_cas_fileList._addAssign_operation (GGS_string ("Info.plist")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("Info.plist")) ;
   ::routine_enter_xib_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  GGS_string ("English.lproj"),  GGS_string ("Credits.rtf"),  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (357)) ;
   ::routine_enter_plist_strings_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  GGS_string ("English.lproj"),  GGS_string ("InfoPlist.strings"),  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (363)) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (370)) ;
@@ -495,7 +495,7 @@ void routine_build_LIBPM_STRINGS_group (C_Compiler & inLexique,
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("unicode_character_cpp") COMMA_SOURCE_FILE_AT_LINE (385)) ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("unicode_string_routines") COMMA_SOURCE_FILE_AT_LINE (386)) ;
   ::routine_append_m_h_files (inLexique,  var_cas_fileList,  GGS_string ("unicode_character_m") COMMA_SOURCE_FILE_AT_LINE (387)) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("cUnicodeData.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("cUnicodeData.h")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (390)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_STRINGS_group\n") ;
@@ -516,9 +516,9 @@ void routine_build_LIBPM_STRINGS_files_for_sources_build_phase (C_Compiler & inL
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_String.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("unicode_character_cpp.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("unicode_string_routines.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_String.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("unicode_character_cpp.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("unicode_string_routines.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (408)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_STRINGS_files_for_sources_build_phase\n") ;
@@ -545,10 +545,10 @@ void routine_build_LIBPM_UTILITIES_group (C_Compiler & inLexique,
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("F_DisplayException") COMMA_SOURCE_FILE_AT_LINE (425)) ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("MF_Assert") COMMA_SOURCE_FILE_AT_LINE (426)) ;
   ::routine_append_cpp_h_files (inLexique,  var_cas_fileList,  GGS_string ("MF_MemoryControl") COMMA_SOURCE_FILE_AT_LINE (427)) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("M_SourceLocation.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TF_inf.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TF_sup.h")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("TF_Swap.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("M_SourceLocation.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TF_inf.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TF_sup.h")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("TF_Swap.h")) ;
   ::routine_enter_files_in_group (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioFileListForGroup COMMA_SOURCE_FILE_AT_LINE (433)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_UTILITIES_group\n") ;
@@ -569,12 +569,12 @@ void routine_build_LIBPM_UTILITIES_files_for_sources_build_phase (C_Compiler & i
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("md5.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_Exception.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("F_GetPrime.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("F_DisplayException.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("MF_Assert.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("MF_MemoryControl.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("md5.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_Exception.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("F_GetPrime.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("F_DisplayException.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("MF_Assert.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("MF_MemoryControl.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (454)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_UTILITIES_files_for_sources_build_phase\n") ;
@@ -618,9 +618,9 @@ void routine_build_LIBPM_STREAMS_files_for_sources_build_phase (C_Compiler & inL
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_ErrorOut.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("AC_OutputStream.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_ConsoleOut.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_ErrorOut.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("AC_OutputStream.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_ConsoleOut.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (490)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_STREAMS_files_for_sources_build_phase\n") ;
@@ -663,8 +663,8 @@ void routine_build_LIBPM_TIME_files_for_sources_build_phase (C_Compiler & inLexi
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_DateTime.cpp")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("C_Timer.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_DateTime.cpp")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("C_Timer.cpp")) ;
   ::routine_enter_file_list_for_sources_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (524)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_LIBPM_TIME_files_for_sources_build_phase\n") ;
@@ -689,7 +689,7 @@ void routine_build_GENERATED_BY_GALGAS_files_for_sources_build_phase (C_Compiler
   {
     GGS_stringset::cEnumerator enumerator_16831 (var_cas_inComponentNameSet, true) ;
     while (enumerator_16831.hasCurrentObject ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_16831._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
+      var_cas_fileList.addAssign_operation ((enumerator_16831._key (HERE)).operator_concat (GGS_string (".cpp"))) ;
       enumerator_16831.next () ;
     }
   }
@@ -725,7 +725,7 @@ void routine_build_GENERATED_BY_GALGAS_group (C_Compiler & inLexique,
   {
     GGS_stringset::cEnumerator enumerator_17462 (var_cas_inGUISourceNameSet, true) ;
     while (enumerator_17462.hasCurrentObject ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_17462._key (HERE)).operator_concat (GGS_string (".m"))) ;
+      var_cas_fileList.addAssign_operation ((enumerator_17462._key (HERE)).operator_concat (GGS_string (".m"))) ;
       enumerator_17462.next () ;
     }
   }
@@ -756,7 +756,7 @@ void routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (C_Compi
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_17981._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (582)) ;
       if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
-        var_cas_fileList._addAssign_operation (enumerator_17981._key (HERE)) ;
+        var_cas_fileList.addAssign_operation (enumerator_17981._key (HERE)) ;
       }
       enumerator_17981.next () ;
     }
@@ -788,7 +788,7 @@ void routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (C_Comp
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_18670._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (604)) ;
       if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
-        var_cas_fileList._addAssign_operation (enumerator_18670._key (HERE)) ;
+        var_cas_fileList.addAssign_operation (enumerator_18670._key (HERE)) ;
       }
       enumerator_18670.next () ;
     }
@@ -820,7 +820,7 @@ void routine_build_HAND_CODED_SOURCES_group (C_Compiler & inLexique,
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_19333._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (626)) ;
       if ((((((var_cas_extension).operator_isEqual (GGS_string ("cpp"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("c")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
-        var_cas_fileList._addAssign_operation (enumerator_19333._key (HERE)) ;
+        var_cas_fileList.addAssign_operation (enumerator_19333._key (HERE)) ;
       }
       enumerator_19333.next () ;
     }
@@ -847,13 +847,13 @@ void routine_build_FRAMEWORKS_group (C_Compiler & inLexique,
   #endif
   GGS_stringset  var_cas_fileSet ;
   var_cas_fileSet = GGS_stringset ::constructor_emptySet () ;
-  var_cas_fileSet._addAssign_operation (GGS_string ("AppKit.framework")) ;
-  var_cas_fileSet._addAssign_operation (GGS_string ("Cocoa.framework")) ;
+  var_cas_fileSet.addAssign_operation (GGS_string ("AppKit.framework")) ;
+  var_cas_fileSet.addAssign_operation (GGS_string ("Cocoa.framework")) ;
   {
     GGS_stringset::cEnumerator enumerator_20073 (var_cas_inExternSourceForTool, true) ;
     while (enumerator_20073.hasCurrentObject ()) {
       if (((enumerator_20073._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (651))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
-        var_cas_fileSet._addAssign_operation (enumerator_20073._key (HERE)) ;
+        var_cas_fileSet.addAssign_operation (enumerator_20073._key (HERE)) ;
       }
       enumerator_20073.next () ;
     }
@@ -862,7 +862,7 @@ void routine_build_FRAMEWORKS_group (C_Compiler & inLexique,
     GGS_stringset::cEnumerator enumerator_20207 (var_cas_inExternSourceForApp, true) ;
     while (enumerator_20207.hasCurrentObject ()) {
       if (((enumerator_20207._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (656))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
-        var_cas_fileSet._addAssign_operation (enumerator_20207._key (HERE)) ;
+        var_cas_fileSet.addAssign_operation (enumerator_20207._key (HERE)) ;
       }
       enumerator_20207.next () ;
     }
@@ -892,7 +892,7 @@ void routine_build_FRAMEWORKS_for_frameworks_build_phase (C_Compiler & inLexique
     GGS_stringset::cEnumerator enumerator_20765 (var_cas_inExternFileSet, true) ;
     while (enumerator_20765.hasCurrentObject ()) {
       if (((enumerator_20765._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (677))).operator_isEqual (GGS_string ("framework"))).isBuiltAndTrue ()) {
-        var_cas_fileList._addAssign_operation (enumerator_20765._key (HERE)) ;
+        var_cas_fileList.addAssign_operation (enumerator_20765._key (HERE)) ;
       }
       enumerator_20765.next () ;
     }
@@ -919,19 +919,19 @@ void routine_build_RESOURCES_for_resources_build_phase (C_Compiler & inLexique,
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = var_cas_inIconFiles ;
-  var_cas_fileList._addAssign_operation (var_cas_inProjectName) ;
-  var_cas_fileList._addAssign_operation ((var_cas_inProjectName).operator_concat (GGS_string ("_debug"))) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_ScrollToEndArrow.gif")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Action.tiff")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_SaveAs.tiff")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Stop.tiff")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Window.png")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Orange14.png")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("I_Red14.png")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("MainMenu.xib")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_Document.xib")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("InfoPlist.strings")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("Credits.rtf")) ;
+  var_cas_fileList.addAssign_operation (var_cas_inProjectName) ;
+  var_cas_fileList.addAssign_operation ((var_cas_inProjectName).operator_concat (GGS_string ("_debug"))) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_ScrollToEndArrow.gif")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Action.tiff")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_SaveAs.tiff")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Stop.tiff")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Window.png")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Orange14.png")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("I_Red14.png")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("MainMenu.xib")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_Document.xib")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("InfoPlist.strings")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("Credits.rtf")) ;
   ::routine_enter_files_for_frameworks_build_phase (inLexique,  var_cas_ioXcodeProjectDescription,  var_cas_fileList,  var_cas_ioBuildPhaseList COMMA_SOURCE_FILE_AT_LINE (712)) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_RESOURCES_for_resources_build_phase\n") ;
@@ -956,26 +956,26 @@ void routine_build_COCOA_APP_files_for_sources_build_phase (C_Compiler & inLexiq
   #endif
   GGS_stringlist  var_cas_fileList ;
   var_cas_fileList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_fileList._addAssign_operation (GGS_string ("main.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("NSSplitViewExtensions.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("PMFontButton.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_Token.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_Lexique.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("unicode_character_m.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_BuildWindowController.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_BuildResult.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_CommandLineOption.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("enterDefaultCommandLineOptions.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_Document.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_PreferencesController.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_RulerView.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_TextView.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_DelegateForSyntaxColoring.m")) ;
-  var_cas_fileList._addAssign_operation (GGS_string ("OC_GGS_BuildResultTextView.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("main.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("NSSplitViewExtensions.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("PMFontButton.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_Token.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_Lexique.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("unicode_character_m.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_BuildWindowController.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_BuildResult.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_CommandLineOption.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("enterDefaultCommandLineOptions.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_Document.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_PreferencesController.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_RulerView.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_TextView.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_DelegateForSyntaxColoring.m")) ;
+  var_cas_fileList.addAssign_operation (GGS_string ("OC_GGS_BuildResultTextView.m")) ;
   {
     GGS_stringset::cEnumerator enumerator_23054 (var_cas_inGUISourceNameSet, true) ;
     while (enumerator_23054.hasCurrentObject ()) {
-      var_cas_fileList._addAssign_operation ((enumerator_23054._key (HERE)).operator_concat (GGS_string (".m"))) ;
+      var_cas_fileList.addAssign_operation ((enumerator_23054._key (HERE)).operator_concat (GGS_string (".m"))) ;
       enumerator_23054.next () ;
     }
   }
@@ -985,7 +985,7 @@ void routine_build_COCOA_APP_files_for_sources_build_phase (C_Compiler & inLexiq
       GGS_string var_cas_extension ;
       var_cas_extension = enumerator_23157._key (HERE).reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (752)) ;
       if ((((((var_cas_extension).operator_isEqual (GGS_string ("c"))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("cpp")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("m")))).operator_or ((var_cas_extension).operator_isEqual (GGS_string ("mm")))).isBuiltAndTrue ()) {
-        var_cas_fileList._addAssign_operation (enumerator_23157._key (HERE)) ;
+        var_cas_fileList.addAssign_operation (enumerator_23157._key (HERE)) ;
       }
       enumerator_23157.next () ;
     }
@@ -1121,7 +1121,7 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   ::routine_build_FRAMEWORKS_for_frameworks_build_phase (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inExternSourceNameSet_tool,  var_cas_listForFrameworksBuildPhaseOfTool COMMA_SOURCE_FILE_AT_LINE (1098)) ;
   GGS_stringlist  var_cas_toolTargetSettings ;
   var_cas_toolTargetSettings = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_toolTargetSettings._addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 2;")) ;
+  var_cas_toolTargetSettings.addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 2;")) ;
   GGS_string var_cas_toolTargetKey ;
   ::routine_add_tool_target (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inProjectName,  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1111))).operator_concat (GGS_string (" Tool")),  var_cas_toolTargetSettings,  GGS_string ("../../libpm/galgas/PP_GalgasPrefix.pch"),  var_cas_listForSourceBuildPhaseOfTool,  var_cas_listForFrameworksBuildPhaseOfTool,  GGS_stringlist ::constructor_emptyList (),  var_cas_toolTargetKey COMMA_SOURCE_FILE_AT_LINE (1108)) ;
   GGS_Xcode_PBXBuildFile_list  var_cas_listForSourceBuildPhaseOfDebugTool ;
@@ -1142,8 +1142,8 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   ::routine_build_FRAMEWORKS_for_frameworks_build_phase (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inExternSourceNameSet_tool,  var_cas_listForFrameworksBuildPhaseOfToolDebug COMMA_SOURCE_FILE_AT_LINE (1180)) ;
   GGS_stringlist  var_cas_debugToolTargetSettings ;
   var_cas_debugToolTargetSettings = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_debugToolTargetSettings._addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0;")) ;
-  var_cas_debugToolTargetSettings._addAssign_operation (GGS_string ("GCC_WARN_UNINITIALIZED_AUTOS = NO;")) ;
+  var_cas_debugToolTargetSettings.addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 0;")) ;
+  var_cas_debugToolTargetSettings.addAssign_operation (GGS_string ("GCC_WARN_UNINITIALIZED_AUTOS = NO;")) ;
   GGS_string var_cas_toolDebugTargetKey ;
   ::routine_add_tool_target (inLexique,  var_cas_XcodeProjectDescription,  (var_cas_inProjectName).operator_concat (GGS_string ("_debug")),  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1194))).operator_concat (GGS_string (" Tool Debug")),  var_cas_debugToolTargetSettings,  GGS_string (""),  var_cas_listForSourceBuildPhaseOfDebugTool,  var_cas_listForFrameworksBuildPhaseOfToolDebug,  GGS_stringlist ::constructor_emptyList (),  var_cas_toolDebugTargetKey COMMA_SOURCE_FILE_AT_LINE (1191)) ;
   GGS_Xcode_PBXBuildFile_list  var_cas_listForSourceBuildPhaseOfCocoaApp ;
@@ -1152,8 +1152,8 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   GGS_Xcode_PBXBuildFile_list  var_cas_listForFrameworksBuildPhaseOfCocoaApp ;
   var_cas_listForFrameworksBuildPhaseOfCocoaApp = GGS_Xcode_PBXBuildFile_list ::constructor_emptyList () ;
   var_cas_fileSet = var_cas_inExternSourceNameSet_app ;
-  var_cas_fileSet._addAssign_operation (GGS_string ("AppKit.framework")) ;
-  var_cas_fileSet._addAssign_operation (GGS_string ("Cocoa.framework")) ;
+  var_cas_fileSet.addAssign_operation (GGS_string ("AppKit.framework")) ;
+  var_cas_fileSet.addAssign_operation (GGS_string ("Cocoa.framework")) ;
   ::routine_build_FRAMEWORKS_for_frameworks_build_phase (inLexique,  var_cas_XcodeProjectDescription,  var_cas_fileSet,  var_cas_listForFrameworksBuildPhaseOfCocoaApp COMMA_SOURCE_FILE_AT_LINE (1218)) ;
   GGS_Xcode_PBXBuildFile_list  var_cas_listForResourcesBuildPhaseOfCocoaApp ;
   var_cas_listForResourcesBuildPhaseOfCocoaApp = GGS_Xcode_PBXBuildFile_list ::constructor_emptyList () ;
@@ -1161,18 +1161,18 @@ void routine_generateXcodeProject (C_Compiler & inLexique,
   ::routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (inLexique,  var_cas_XcodeProjectDescription,  var_cas_inExternSourceNameSet_app,  var_cas_listForResourcesBuildPhaseOfCocoaApp COMMA_SOURCE_FILE_AT_LINE (1232)) ;
   GGS_stringlist  var_cas_directDependencyList ;
   var_cas_directDependencyList = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_directDependencyList._addAssign_operation (var_cas_toolTargetKey) ;
-  var_cas_directDependencyList._addAssign_operation (var_cas_toolDebugTargetKey) ;
+  var_cas_directDependencyList.addAssign_operation (var_cas_toolTargetKey) ;
+  var_cas_directDependencyList.addAssign_operation (var_cas_toolDebugTargetKey) ;
   GGS_stringlist  var_cas_cocoaAppTargetSettings ;
   var_cas_cocoaAppTargetSettings = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_cocoaAppTargetSettings._addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 2;")) ;
+  var_cas_cocoaAppTargetSettings.addAssign_operation (GGS_string ("GCC_OPTIMIZATION_LEVEL = 2;")) ;
   GGS_string automatic_var_0 ;
   ::routine_add_app_target (inLexique,  var_cas_XcodeProjectDescription,  (GGS_string ("Cocoa")).operator_concat (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1247))),  (var_cas_inProjectName.reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (1248))).operator_concat (GGS_string (" Cocoa")),  var_cas_cocoaAppTargetSettings,  GGS_string ("../../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch"),  GGS_string ("Info.plist"),  var_cas_listForSourceBuildPhaseOfCocoaApp,  var_cas_listForFrameworksBuildPhaseOfCocoaApp,  var_cas_listForResourcesBuildPhaseOfCocoaApp,  var_cas_directDependencyList,  automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (1245)) ;
   GGS_stringlist  var_cas_pathes ;
   var_cas_pathes = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_pathes._addAssign_operation (GGS_string ("../galgas_sources/GALGAS_OUTPUT")) ;
-  var_cas_pathes._addAssign_operation (GGS_string ("../../libpm")) ;
-  var_cas_pathes._addAssign_operation (GGS_string ("../hand_coded_sources/**")) ;
+  var_cas_pathes.addAssign_operation (GGS_string ("../galgas_sources/GALGAS_OUTPUT")) ;
+  var_cas_pathes.addAssign_operation (GGS_string ("../../libpm")) ;
+  var_cas_pathes.addAssign_operation (GGS_string ("../hand_coded_sources/**")) ;
   GGS_stringlist  var_cas_projectDefaultSettings ;
   ::routine_enterProjectDefaultSettings (inLexique,  var_cas_pathes,  var_cas_projectDefaultSettings COMMA_SOURCE_FILE_AT_LINE (1264)) ;
   ::routine_generateXCodeFile (inLexique,  var_cas_XcodeProjectDescription,  var_cas_in_xcodeproj_filePath,  var_cas_projectDefaultSettings,  var_cas_inReferenceFilePath COMMA_SOURCE_FILE_AT_LINE (1270)) ;

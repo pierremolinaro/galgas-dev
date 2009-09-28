@@ -132,7 +132,7 @@ _internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_startSymbolLabelFormalParameterList::
-_addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
+addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -229,7 +229,7 @@ constructor_listWithValue (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_2) {
   GGS_startSymbolLabelFormalParameterList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -248,7 +248,7 @@ internalSubListWithRange (GGS_startSymbolLabelFormalParameterList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mFormalAgumentPassingMode, ptr->mTypeName, ptr->mArgumentName) ;
+      ioList.addAssign_operation (ptr->mFormalAgumentPassingMode, ptr->mTypeName, ptr->mArgumentName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -596,7 +596,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -686,7 +686,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1) {
   GGS_grammarLabelList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -705,7 +705,7 @@ internalSubListWithRange (GGS_grammarLabelList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLabelName, ptr->mFormalParameterList) ;
+      ioList.addAssign_operation (ptr->mLabelName, ptr->mFormalParameterList) ;
       ptr = ptr->nextObject () ;
     }
   }

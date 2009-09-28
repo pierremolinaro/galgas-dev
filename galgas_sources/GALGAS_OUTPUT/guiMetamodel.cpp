@@ -121,7 +121,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiSimpleAttributeList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -211,7 +211,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_guiSimpleAttributeList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -230,7 +230,7 @@ internalSubListWithRange (GGS_guiSimpleAttributeList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mKey, ptr->mValue) ;
+      ioList.addAssign_operation (ptr->mKey, ptr->mValue) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -541,7 +541,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiCompoundAttributeList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -638,7 +638,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2) {
   GGS_guiCompoundAttributeList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -657,7 +657,7 @@ internalSubListWithRange (GGS_guiCompoundAttributeList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mKey, ptr->mAttributeName, ptr->mValue) ;
+      ioList.addAssign_operation (ptr->mKey, ptr->mAttributeName, ptr->mValue) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1005,7 +1005,7 @@ _internalPrependValues (const GGS_lstringlist & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiLabelList::
-_addAssign_operation (const GGS_lstringlist & argument_0,
+addAssign_operation (const GGS_lstringlist & argument_0,
                                 const GGS_location & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -1095,7 +1095,7 @@ constructor_listWithValue (const GGS_lstringlist & argument_0,
                                 const GGS_location & argument_1) {
   GGS_guiLabelList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -1114,7 +1114,7 @@ internalSubListWithRange (GGS_guiLabelList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mTerminalList, ptr->mLocation) ;
+      ioList.addAssign_operation (ptr->mTerminalList, ptr->mLocation) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1436,7 +1436,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_withLexiqueList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_guiLabelList & argument_1,
                                 const GGS_guiSimpleAttributeList & argument_2,
                                 const GGS_guiCompoundAttributeList & argument_3) {
@@ -1540,7 +1540,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_guiCompoundAttributeList & argument_3) {
   GGS_withLexiqueList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -1559,7 +1559,7 @@ internalSubListWithRange (GGS_withLexiqueList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLexiqueFileName, ptr->mLabels, ptr->mSimpleAttributes, ptr->mCompoundAttributes) ;
+      ioList.addAssign_operation (ptr->mLexiqueFileName, ptr->mLabels, ptr->mSimpleAttributes, ptr->mCompoundAttributes) ;
       ptr = ptr->nextObject () ;
     }
   }

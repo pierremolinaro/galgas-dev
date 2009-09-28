@@ -72,7 +72,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "  public : GGS_" << mListmapTypeName << " operator_concat (const GGS_" << mListmapTypeName << " & inOperand) const ;\n\n"
              "//--- Handle '+=' operator\n"
              "  public : void\n"
-             "  _addAssign_operation (const GGS_string & inKey" ;
+             "  addAssign_operation (const GGS_string & inKey" ;
   GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mAttributesList, true) ;
   PMSInt32 attributeIndex = 0 ;
   while (currentAttribute.hasCurrentObject ()) {
@@ -219,9 +219,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "        bool wasInserted = false ;\n"
                "        cPtrDictionaryNode * nodePtr = findOrAddNodeForKey (key, wasInserted) ;\n"
                "        if (wasInserted) {\n"
-               "           cElement * elementPtr = NULL ;\n"
-               "           macroMyNew (elementPtr, cElement (HERE)) ;\n"
-               "           nodePtr->mObject._setPointer (elementPtr) ;\n"
+               "           cElement * p = NULL ;\n"
+               "           macroMyNew (p, cElement (HERE)) ;\n"
+               "           nodePtr->mObject.setPointer (p) ;\n"
                "        }\n"
                "        GGS_" << mListTypename << " & listPtr = macroPtr (nodePtr->mObject, cElement)->mListObject ;\n"
                "        listPtr.dotAssign_operation (elementPtr->mListObject) ;\n"
@@ -233,7 +233,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 //--- Handle '+=' operator
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "void GGS_" << mListmapTypeName << "::\n"
-               "_addAssign_operation (const GGS_string & inKey" ;
+               "addAssign_operation (const GGS_string & inKey" ;
   GGS_typeListeAttributsSemantiques::cEnumerator currentAttribute (mAttributesList, true) ;
   PMSInt32 attributeIndex = 0 ;
   while (currentAttribute.hasCurrentObject ()) {
@@ -258,12 +258,12 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    cPtrDictionaryNode * nodePtr = findOrAddNodeForKey (inKey, wasInserted) ;\n"
                "    MF_Assert (nodePtr != NULL, \"NULL pointer (was inserted %d)\", wasInserted, 0) ;\n"
                "    if (wasInserted) {\n"
-               "       cElement * elementPtr = NULL ;\n"
-               "       macroMyNew (elementPtr, cElement (HERE)) ;\n"
-               "       nodePtr->mObject._setPointer (elementPtr) ;\n"
+               "       cElement * p = NULL ;\n"
+               "       macroMyNew (p, cElement (HERE)) ;\n"
+               "       nodePtr->mObject.setPointer (p) ;\n"
                "    }\n"
                "    GGS_" << mListTypename << " & listPtr = macroPtr (nodePtr->mObject, cElement)->mListObject ;\n"
-               "    listPtr._addAssign_operation (" ;
+               "    listPtr.addAssign_operation (" ;
   currentAttribute.rewind () ;
   attributeIndex = 0 ;
   while (currentAttribute.hasCurrentObject ()) {
@@ -301,7 +301,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "reader_allKeys (C_Compiler & /* inLexique */\n"
                "                COMMA_UNUSED_LOCATION_ARGS) const {\n\n"
                "  GGS_stringset result ;\n"
-               "  result._setPointer (_pointer ()) ;\n"
+               "  result.setPointer (_pointer ()) ;\n"
                "  return result ;\n"
                "}\n\n" ;
 
@@ -318,7 +318,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    const PMSInt32 objectCount = dictPtr->count () ;\n"
                "    for (PMSInt32 i=0 ; i<objectCount ; i++) {\n"
                "      const GGS_string key = nodeSortedArray [i].key () ;\n"
-               "      result._addAssign_operation (key) ;\n"
+               "      result.addAssign_operation (key) ;\n"
                "    }\n"
                "  }\n"
                "  return result ;\n"

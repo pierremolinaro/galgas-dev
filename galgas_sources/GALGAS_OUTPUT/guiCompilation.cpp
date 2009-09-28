@@ -161,7 +161,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_guiCommandLineOptionList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_char& argument_2,
                                 const GGS_string& argument_3,
@@ -272,7 +272,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_4) {
   GGS_guiCommandLineOptionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -291,7 +291,7 @@ internalSubListWithRange (GGS_guiCommandLineOptionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mOptionComponent, ptr->mOptionIdentifier, ptr->mOptionChar, ptr->mOptionString, ptr->mComment) ;
+      ioList.addAssign_operation (ptr->mOptionComponent, ptr->mOptionIdentifier, ptr->mOptionChar, ptr->mOptionString, ptr->mComment) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1047,7 +1047,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_nibAndClassList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -1137,7 +1137,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   GGS_nibAndClassList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -1156,7 +1156,7 @@ internalSubListWithRange (GGS_nibAndClassList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mNibName, ptr->mClassName) ;
+      ioList.addAssign_operation (ptr->mNibName, ptr->mClassName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1456,7 +1456,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_textMacroList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -1546,7 +1546,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   GGS_textMacroList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -1565,7 +1565,7 @@ internalSubListWithRange (GGS_textMacroList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mKey, ptr->mContents) ;
+      ioList.addAssign_operation (ptr->mKey, ptr->mContents) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1898,7 +1898,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_importedLexiqueList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2,
                                 const GGS_textMacroList & argument_3,
@@ -2009,7 +2009,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_guiLabelList & argument_4) {
   GGS_importedLexiqueList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -2028,7 +2028,7 @@ internalSubListWithRange (GGS_importedLexiqueList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLexiqueClassName, ptr->mBlockComment, ptr->mTitle, ptr->mTextMacroList, ptr->mLabels) ;
+      ioList.addAssign_operation (ptr->mLexiqueClassName, ptr->mBlockComment, ptr->mTitle, ptr->mTextMacroList, ptr->mLabels) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2930,7 +2930,7 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
       }else{
         GGS_optionComponentRoot  automatic_var_0 ;
         ::routine_parseOptionComponent (inLexique,  GGS_lstring ::constructor_new (inLexique, operand_5108->mValue.ggs_string ().reader_absolutePathFromPath (inLexique, var_cas_inSourceFile.ggs_string ().reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (133)) COMMA_SOURCE_FILE_AT_LINE (133)), operand_5108->mValue.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (134)) COMMA_HERE),  var_cas_ioParsedComponentStruct,  automatic_var_0 COMMA_SOURCE_FILE_AT_LINE (131)) ;
-        var_cas_context.mImportedOptionComponentList._addAssign_operation (operand_5108->mValue.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (139)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (139))) ;
+        var_cas_context.mImportedOptionComponentList.addAssign_operation (operand_5108->mValue.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (139)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (139))) ;
       }
     }
   }
@@ -2947,7 +2947,7 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
         if (((var_cas_x.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (149))).operator_isNotEqual (GGS_uint (2U))).isBuiltAndTrue ()) {
           operand_5712->mValue.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the string string should conform to \"nib_name.nib_main_class\"") COMMA_SOURCE_FILE_AT_LINE (151)) ;
         }else{
-          var_cas_context.mNibAndClassList._addAssign_operation (var_cas_x.reader_mValueAtIndex (inLexique, GGS_uint (0U) COMMA_SOURCE_FILE_AT_LINE (153)), var_cas_x.reader_mValueAtIndex (inLexique, GGS_uint (1U) COMMA_SOURCE_FILE_AT_LINE (154))) ;
+          var_cas_context.mNibAndClassList.addAssign_operation (var_cas_x.reader_mValueAtIndex (inLexique, GGS_uint (0U) COMMA_SOURCE_FILE_AT_LINE (153)), var_cas_x.reader_mValueAtIndex (inLexique, GGS_uint (1U) COMMA_SOURCE_FILE_AT_LINE (154))) ;
         }
       }
     }
@@ -2973,7 +2973,7 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
         const GGS_terminalDeclarationList::cElement * operand_7105 = NULL ;
         while (((operand_7105 = enumerator_7105.nextObject ()))) {
           macroValidPointer (operand_7105) ;
-          var_cas_terminalSymbolSet._addAssign_operation (operand_7105->mName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (179))) ;
+          var_cas_terminalSymbolSet.addAssign_operation (operand_7105->mName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (179))) ;
         }
       }
       {
@@ -2986,7 +2986,7 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
             const GGS_lexicalListEntryList::cElement * operand_7308 = NULL ;
             while (((operand_7308 = enumerator_7308.nextObject ()))) {
               macroValidPointer (operand_7308) ;
-              var_cas_terminalSymbolSet._addAssign_operation (operand_7308->mTerminalSpelling.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (183))) ;
+              var_cas_terminalSymbolSet.addAssign_operation (operand_7308->mTerminalSpelling.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (183))) ;
             }
           }
         }
@@ -3018,7 +3018,7 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
           if (((operand_7890->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (202))).operator_isNotEqual (GGS_string ("textMacro"))).isBuiltAndTrue ()) {
             operand_7890->mKey.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("for a compound attribute, only the 'textMacro' key is valid") COMMA_SOURCE_FILE_AT_LINE (204)) ;
           }else{
-            var_cas_textMacroList._addAssign_operation (operand_7890->mAttributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (205)), operand_7890->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (205))) ;
+            var_cas_textMacroList.addAssign_operation (operand_7890->mAttributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (205)), operand_7890->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (205))) ;
           }
         }
       }
@@ -3063,7 +3063,7 @@ void routine_compileGuiComponent (C_Compiler & inLexique,
       if (((var_cas_hasTabViewTitle).operator_not ()).isBuiltAndTrue ()) {
         operand_6388->mLexiqueFileName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the 'title' key should be defined once (it is not defined)") COMMA_SOURCE_FILE_AT_LINE (241)) ;
       }
-      var_cas_context.mWithLexiqueList._addAssign_operation (operand_6388->mLexiqueFileName.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (244)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (244)), var_cas_blockComment, var_cas_tabViewTitle, var_cas_textMacroList, operand_6388->mLabels) ;
+      var_cas_context.mWithLexiqueList.addAssign_operation (operand_6388->mLexiqueFileName.ggs_string ().reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (244)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (244)), var_cas_blockComment, var_cas_tabViewTitle, var_cas_textMacroList, operand_6388->mLabels) ;
     }
   }
   if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE)).operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {

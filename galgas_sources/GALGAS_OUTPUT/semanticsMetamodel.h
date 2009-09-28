@@ -182,7 +182,7 @@ class GGS_attributeInCollectionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_attributeInCollectionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -391,7 +391,7 @@ class GGS_mapMethodList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_mapMethodList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3) ;
@@ -676,7 +676,7 @@ class GGS_abstractMethodDefinitionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_abstractMethodDefinitionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_abstractMethodDefinitionList operator_concat (const GGS_abstractMethodDefinitionList & inOperand) const ;
@@ -808,7 +808,7 @@ class GGS_overridenMethodDefinitionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_overridenMethodDefinitionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -952,7 +952,7 @@ class GGS_methodDefinitionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_methodDefinitionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -1091,7 +1091,7 @@ class GGS_classMessageDefinitionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_classMessageDefinitionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_classMessageDefinitionList operator_concat (const GGS_classMessageDefinitionList & inOperand) const ;
@@ -1223,7 +1223,7 @@ class GGS_lazyAttributeList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lazyAttributeList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_location & argument_0,
+  public : void addAssign_operation (const GGS_location & argument_0,
                                 const GGS_attributeInCollectionList & argument_1,
                                 const GGS_semanticInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -1558,7 +1558,7 @@ class GGS_sortedListSortDescriptorList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_sortedListSortDescriptorList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_sortedListSortDescriptorList operator_concat (const GGS_sortedListSortDescriptorList & inOperand) const ;
@@ -1747,7 +1747,7 @@ class GGS_enumMessageAssociationList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumMessageAssociationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_enumMessageAssociationList operator_concat (const GGS_enumMessageAssociationList & inOperand) const ;
@@ -1874,7 +1874,7 @@ class GGS_enumMessageList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumMessageList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_enumMessageAssociationList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_enumMessageList operator_concat (const GGS_enumMessageList & inOperand) const ;
@@ -2065,7 +2065,7 @@ class GGS_enumModifierCaseList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumModifierCaseList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumCaseMessage & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -2209,7 +2209,7 @@ class GGS_enumModifierList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumModifierList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumModifierCaseList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -2468,7 +2468,7 @@ class GGS_enumMethodCaseList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumMethodCaseList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_enumCaseMessage & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_enumMethodCaseList operator_concat (const GGS_enumMethodCaseList & inOperand) const ;
@@ -2600,7 +2600,7 @@ class GGS_enumMethodList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumMethodList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumMethodCaseList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -2749,7 +2749,7 @@ class GGS_enumOperatorCaseList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumOperatorCaseList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_enumCaseMessage & argument_3) ;
@@ -2905,7 +2905,7 @@ class GGS_enumOperatorList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_enumOperatorList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_enumOperatorCaseList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -3119,7 +3119,7 @@ class GGS_filewrapperTemplateList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_filewrapperTemplateList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_formalInputParameterList & argument_2) ;
 //--- Handling '.' GALGAS operator

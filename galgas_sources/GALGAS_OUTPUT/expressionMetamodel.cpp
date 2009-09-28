@@ -237,7 +237,7 @@ _internalPrependValues (const GGS_semanticExpression & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_semanticExpressionList::
-_addAssign_operation (const GGS_semanticExpression & argument_0) {
+addAssign_operation (const GGS_semanticExpression & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -320,7 +320,7 @@ GGS_semanticExpressionList  GGS_semanticExpressionList::
 constructor_listWithValue (const GGS_semanticExpression & argument_0) {
   GGS_semanticExpressionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -339,7 +339,7 @@ internalSubListWithRange (GGS_semanticExpressionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mExpression) ;
+      ioList.addAssign_operation (ptr->mExpression) ;
       ptr = ptr->nextObject () ;
     }
   }

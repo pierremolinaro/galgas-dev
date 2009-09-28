@@ -135,7 +135,7 @@ pr_nonterminal_label_declaration_syntaxModelBuilder_135_36_ (galgas_scanner & in
                                 GGS_nonTerminalLabelList  &var_cas_ioNonTerminalLabelList) {
   GGS_formalParameterList  var_cas_mFormalParameters ;
   nt_formal_parameter_list_ (inLexique, var_cas_mFormalParameters) ;
-  var_cas_ioNonTerminalLabelList._addAssign_operation (var_cas_inLabelName, var_cas_mFormalParameters) ;
+  var_cas_ioNonTerminalLabelList.addAssign_operation (var_cas_inLabelName, var_cas_mFormalParameters) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -186,7 +186,7 @@ pr_nonterminal_declaration_syntaxModelBuilder_146_30_ (galgas_scanner & inLexiqu
     }
   }
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_ioNonterminalDeclarationList._addAssign_operation (var_cas_mNonterminalName, var_cas_mLabels, var_cas_mHasParseLabel) ;
+  var_cas_ioNonterminalDeclarationList.addAssign_operation (var_cas_mNonterminalName, var_cas_mLabels, var_cas_mHasParseLabel) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -204,7 +204,7 @@ pr_syntax_rule_label_syntaxModelBuilder_188_24_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3A_) COMMA_HERE) ;
   GGS_syntaxInstructionList  var_cas_mSyntaxInstructionList ;
   nt_syntax_instruction_list_ (inLexique, var_cas_mSyntaxInstructionList) ;
-  var_cas_ioLabelList._addAssign_operation (var_cas_inLabelName, var_cas_mFormalParameters, var_cas_mSyntaxInstructionList) ;
+  var_cas_ioLabelList.addAssign_operation (var_cas_inLabelName, var_cas_mFormalParameters, var_cas_mSyntaxInstructionList) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -242,7 +242,7 @@ pr_syntax_rule_declaration_syntaxModelBuilder_206_30_ (galgas_scanner & inLexiqu
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_rule) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_ioRuleList._addAssign_operation (var_cas_mNonterminalName, var_cas_mLabelList) ;
+  var_cas_ioRuleList.addAssign_operation (var_cas_mNonterminalName, var_cas_mLabelList) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -261,12 +261,12 @@ pr_syntax_instruction_list_syntaxModelBuilder_232_30_ (galgas_scanner & inLexiqu
         case 2 : {
           GGS_semanticInstruction  var_cas_instruction ;
           nt_semantic_instruction_ (inLexique, var_cas_instruction) ;
-          var_cas_outSyntaxInstructionList._addAssign_operation (var_cas_instruction) ;
+          var_cas_outSyntaxInstructionList.addAssign_operation (var_cas_instruction) ;
           } break ;
         case 3 : {
           GGS_syntaxInstruction  var_cas_instruction ;
           nt_syntax_instruction_ (inLexique, var_cas_instruction) ;
-          var_cas_outSyntaxInstructionList._addAssign_operation (var_cas_instruction) ;
+          var_cas_outSyntaxInstructionList.addAssign_operation (var_cas_instruction) ;
           } break ;
         default :
           syntaxRepeat_6 = false ;
@@ -347,7 +347,7 @@ pr_syntax_instruction_syntaxModelBuilder_296_25_ (galgas_scanner & inLexique,
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_while) COMMA_HERE) ;
         GGS_syntaxInstructionList  var_cas_mInstructionList ;
         nt_syntax_instruction_list_ (inLexique, var_cas_mInstructionList) ;
-        var_cas_mRepeatBranchList._addAssign_operation (var_cas_mInstructionList) ;
+        var_cas_mRepeatBranchList.addAssign_operation (var_cas_mInstructionList) ;
       switch (select_repeat_syntaxModelBuilder_8 (inLexique)) {
         case 2 : {
           } break ;
@@ -377,12 +377,12 @@ pr_syntax_instruction_syntaxModelBuilder_323_25_ (galgas_scanner & inLexique,
   var_cas_mSelectBranchList = GGS_listOfSyntaxInstructionList ::constructor_emptyList () ;
   GGS_syntaxInstructionList  var_cas_instructionList ;
   nt_syntax_instruction_list_ (inLexique, var_cas_instructionList) ;
-  var_cas_mSelectBranchList._addAssign_operation (var_cas_instructionList) ;
+  var_cas_mSelectBranchList.addAssign_operation (var_cas_instructionList) ;
   { bool syntaxRepeat_9 = true ;
     while (syntaxRepeat_9) {
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_or) COMMA_HERE) ;
         nt_syntax_instruction_list_ (inLexique, var_cas_instructionList) ;
-        var_cas_mSelectBranchList._addAssign_operation (var_cas_instructionList) ;
+        var_cas_mSelectBranchList.addAssign_operation (var_cas_instructionList) ;
       switch (select_repeat_syntaxModelBuilder_9 (inLexique)) {
         case 2 : {
           } break ;
@@ -413,12 +413,12 @@ pr_syntax_instruction_syntaxModelBuilder_349_25_ (galgas_scanner & inLexique,
   var_cas_mParseDoBranchList = GGS_listOfSyntaxInstructionList ::constructor_emptyList () ;
   GGS_syntaxInstructionList  var_cas_instructionList ;
   nt_syntax_instruction_list_ (inLexique, var_cas_instructionList) ;
-  var_cas_mParseDoBranchList._addAssign_operation (var_cas_instructionList) ;
+  var_cas_mParseDoBranchList.addAssign_operation (var_cas_instructionList) ;
   { bool syntaxRepeat_10 = true ;
     while (syntaxRepeat_10) {
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_rewind) COMMA_HERE) ;
         nt_syntax_instruction_list_ (inLexique, var_cas_instructionList) ;
-        var_cas_mParseDoBranchList._addAssign_operation (var_cas_instructionList) ;
+        var_cas_mParseDoBranchList.addAssign_operation (var_cas_instructionList) ;
       switch (select_repeat_syntaxModelBuilder_10 (inLexique)) {
         case 2 : {
           } break ;

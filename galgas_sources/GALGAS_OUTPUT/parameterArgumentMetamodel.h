@@ -220,7 +220,7 @@ class GGS_formalParameterList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_formalParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
+  public : void addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3) ;
@@ -376,7 +376,7 @@ class GGS_formalInputParameterList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_formalInputParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -799,7 +799,7 @@ class GGS_actualParameterList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_actualParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_actualParameter & argument_0) ;
+  public : void addAssign_operation (const GGS_actualParameter & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_actualParameterList operator_concat (const GGS_actualParameterList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -914,7 +914,7 @@ class GGS_actualInputParameterList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_actualInputParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_actualInputParameterList operator_concat (const GGS_actualInputParameterList & inOperand) const ;

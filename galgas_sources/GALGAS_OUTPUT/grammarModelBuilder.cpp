@@ -68,7 +68,7 @@ pr_grammar_component_start_symbol_grammarModelBuilder_48_37_ (galgas_scanner & i
         inLexique.assignFromAttribute_tokenString (var_cas_syntaxComponent) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-        var_cas_syntaxComponents._addAssign_operation (var_cas_syntaxComponent) ;
+        var_cas_syntaxComponents.addAssign_operation (var_cas_syntaxComponent) ;
       switch (select_repeat_grammarModelBuilder_0 (inLexique)) {
         case 2 : {
           } break ;
@@ -149,7 +149,7 @@ pr_grammar_component_start_symbol_grammarModelBuilder_48_37_ (galgas_scanner & i
                 GGS_lstring  var_cas_nonterminalSymbolName ;
                 inLexique.assignFromAttribute_tokenString (var_cas_nonterminalSymbolName) ;
                 inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_non_5F_terminal_5F_symbol) COMMA_HERE) ;
-                var_cas_mUnusedNonterminalList._addAssign_operation (var_cas_nonterminalSymbolName) ;
+                var_cas_mUnusedNonterminalList.addAssign_operation (var_cas_nonterminalSymbolName) ;
               switch (select_repeat_grammarModelBuilder_5 (inLexique)) {
                 case 2 : {
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -197,7 +197,7 @@ pr_grammar_start_symbol_label_grammarModelBuilder_125_33_ (galgas_scanner & inLe
           if ((var_cas_argumentNameSet.reader_hasKey (inLexique, var_cas_argumentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (135)) COMMA_SOURCE_FILE_AT_LINE (135))).isBuiltAndTrue ()) {
             var_cas_argumentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("there is already an argument named '")).operator_concat (var_cas_argumentName)).operator_concat (GGS_string ("'")) COMMA_SOURCE_FILE_AT_LINE (137)) ;
           }
-          var_cas_argumentNameSet._addAssign_operation (var_cas_argumentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (138))) ;
+          var_cas_argumentNameSet.addAssign_operation (var_cas_argumentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (138))) ;
           } break ;
         default :
           syntaxRepeat_6 = false ;
@@ -205,7 +205,7 @@ pr_grammar_start_symbol_label_grammarModelBuilder_125_33_ (galgas_scanner & inLe
       }
     }
   }
-  var_cas_ioLabelList._addAssign_operation (var_cas_inLabelName, var_cas_mFormalParameterList) ;
+  var_cas_ioLabelList.addAssign_operation (var_cas_inLabelName, var_cas_mFormalParameterList) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -233,7 +233,7 @@ pr_label_formal_parameter_grammarModelBuilder_145_29_ (galgas_scanner & inLexiqu
   }
   inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
+  var_cas_ioStartSymbolLabelFormalParameterList.addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -261,7 +261,7 @@ pr_label_formal_parameter_grammarModelBuilder_165_29_ (galgas_scanner & inLexiqu
   }
   inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
+  var_cas_ioStartSymbolLabelFormalParameterList.addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -289,7 +289,7 @@ pr_label_formal_parameter_grammarModelBuilder_185_29_ (galgas_scanner & inLexiqu
   }
   inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentInOut (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
+  var_cas_ioStartSymbolLabelFormalParameterList.addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentInOut (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -308,7 +308,7 @@ pr_label_formal_parameter_grammarModelBuilder_205_29_ (galgas_scanner & inLexiqu
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_type_5F_name) COMMA_HERE) ;
   inLexique.assignFromAttribute_tokenString (var_cas_outArgumentName) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-  var_cas_ioStartSymbolLabelFormalParameterList._addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
+  var_cas_ioStartSymbolLabelFormalParameterList.addAssign_operation (GGS_formalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE), var_cas_mTypeName, var_cas_outArgumentName) ;
 }
 
 //---------------------------------------------------------------------------*

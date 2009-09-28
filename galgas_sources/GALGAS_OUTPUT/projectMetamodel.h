@@ -209,7 +209,7 @@ class GGS_projectSourceList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_projectSourceList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_sourceFileKind& argument_0,
+  public : void addAssign_operation (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) ;
 //--- Handling '.' GALGAS operator

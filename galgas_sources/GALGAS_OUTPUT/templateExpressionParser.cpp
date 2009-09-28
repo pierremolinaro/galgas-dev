@@ -1785,7 +1785,7 @@ pr_factor_templateExpressionParser_1265_13_ (galgasTemplateScanner & inLexique,
         const GGS_L_EXsignature::cElement * operand_51658 = NULL ;
         while (((operand_51658 = enumerator_51658.nextObject ()))) {
           macroValidPointer (operand_51658) ;
-          var_cas_formalAttributeList._addAssign_operation (operand_51658->mType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+          var_cas_formalAttributeList.addAssign_operation (operand_51658->mType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
         }
       }
       GGS_typeExpressionList  var_cas_expressionList ;
@@ -2034,7 +2034,7 @@ pr_factor_templateExpressionParser_1465_13_ (galgasTemplateScanner & inLexique,
     const GGS_L_EXsignature::cElement * operand_58980 = NULL ;
     while (((operand_58980 = enumerator_58980.nextObject ()))) {
       macroValidPointer (operand_58980) ;
-      var_cas_listeAttributsSemantiques._addAssign_operation (operand_58980->mType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+      var_cas_listeAttributsSemantiques.addAssign_operation (operand_58980->mType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     }
   }
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgasTemplateScanner::galgasTemplateScanner_1__28_) COMMA_HERE) ;
@@ -2104,8 +2104,8 @@ pr_output_expression_list_templateExpressionParser_1536_29_ (galgasTemplateScann
           nt_expression_ (inLexique, var_cas_inEntitiesMap, var_cas_inSemanticContext, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_expression, var_cas_resultType) ;
           GGS_location  var_cas_errorLocation ;
           var_cas_errorLocation = GGS_location (inLexique) ;
-          var_cas_effectiveTypesList._addAssign_operation (var_cas_resultType, var_cas_errorLocation) ;
-          var_cas_outExpressionList._addAssign_operation (var_cas_expression) ;
+          var_cas_effectiveTypesList.addAssign_operation (var_cas_resultType, var_cas_errorLocation) ;
+          var_cas_outExpressionList.addAssign_operation (var_cas_expression) ;
           } break ;
         default :
           syntaxRepeat_8 = false ;

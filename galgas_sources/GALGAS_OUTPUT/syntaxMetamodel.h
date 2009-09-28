@@ -143,7 +143,7 @@ class GGS_syntaxInstructionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_syntaxInstructionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_syntaxInstruction & argument_0) ;
+  public : void addAssign_operation (const GGS_syntaxInstruction & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_syntaxInstructionList operator_concat (const GGS_syntaxInstructionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -258,7 +258,7 @@ class GGS_nonTerminalLabelList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_nonTerminalLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_nonTerminalLabelList operator_concat (const GGS_nonTerminalLabelList & inOperand) const ;
@@ -390,7 +390,7 @@ class GGS_nonterminalDeclarationList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_nonterminalDeclarationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_nonTerminalLabelList & argument_1,
                                 const GGS_bool& argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -534,7 +534,7 @@ class GGS_syntaxRuleLabelList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_syntaxRuleLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_formalParameterList & argument_1,
                                 const GGS_syntaxInstructionList & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -673,7 +673,7 @@ class GGS_syntaxRuleList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_syntaxRuleList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_syntaxRuleLabelList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_syntaxRuleList operator_concat (const GGS_syntaxRuleList & inOperand) const ;
@@ -917,7 +917,7 @@ class GGS_listOfSyntaxInstructionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_listOfSyntaxInstructionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_syntaxInstructionList & argument_0) ;
+  public : void addAssign_operation (const GGS_syntaxInstructionList & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_listOfSyntaxInstructionList operator_concat (const GGS_listOfSyntaxInstructionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,

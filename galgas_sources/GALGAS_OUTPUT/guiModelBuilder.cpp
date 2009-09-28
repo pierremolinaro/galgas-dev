@@ -91,7 +91,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
             }
           }
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-          var_cas_simpleGlobalAttributes._addAssign_operation (var_cas_mKey, var_cas_mValue) ;
+          var_cas_simpleGlobalAttributes.addAssign_operation (var_cas_mKey, var_cas_mValue) ;
           } break ;
         case 3 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_with) COMMA_HERE) ;
@@ -101,7 +101,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
               GGS_lstring  var_cas_optionReference ;
               inLexique.assignFromAttribute_tokenString (var_cas_optionReference) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
-              var_cas_importedOptionList._addAssign_operation (var_cas_optionReference) ;
+              var_cas_importedOptionList.addAssign_operation (var_cas_optionReference) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               } break ;
             case 2 : {
@@ -128,7 +128,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
                             GGS_lstring  var_cas_terminal ;
                             inLexique.assignFromAttribute_tokenString (var_cas_terminal) ;
                             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_terminal) COMMA_HERE) ;
-                            var_cas_terminalList._addAssign_operation (var_cas_terminal) ;
+                            var_cas_terminalList.addAssign_operation (var_cas_terminal) ;
                           switch (select_repeat_guiModelBuilder_4 (inLexique)) {
                             case 2 : {
                               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -140,7 +140,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
                         }
                       }
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-                      var_cas_labels._addAssign_operation (var_cas_terminalList, GGS_location (inLexique)) ;
+                      var_cas_labels.addAssign_operation (var_cas_terminalList, GGS_location (inLexique)) ;
                       } break ;
                     case 3 : {
                       GGS_lstring  var_cas_key ;
@@ -168,7 +168,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
                         }
                       }
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-                      var_cas_compoundAttributes._addAssign_operation (var_cas_key, var_cas_name, var_cas_value) ;
+                      var_cas_compoundAttributes.addAssign_operation (var_cas_key, var_cas_name, var_cas_value) ;
                       } break ;
                     case 4 : {
                       GGS_lstring  var_cas_name ;
@@ -179,7 +179,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
                       inLexique.assignFromAttribute_tokenString (var_cas_value) ;
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-                      var_cas_simpleAttributes._addAssign_operation (var_cas_name, var_cas_value) ;
+                      var_cas_simpleAttributes.addAssign_operation (var_cas_name, var_cas_value) ;
                       } break ;
                     default :
                       syntaxRepeat_3 = false ;
@@ -188,7 +188,7 @@ pr_gui_component_start_symbol_guiModelBuilder_36_33_ (galgas_scanner & inLexique
                 }
               }
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
-              var_cas_withLexiqueList._addAssign_operation (var_cas_lexiqueReference, var_cas_labels, var_cas_simpleAttributes, var_cas_compoundAttributes) ;
+              var_cas_withLexiqueList.addAssign_operation (var_cas_lexiqueReference, var_cas_labels, var_cas_simpleAttributes, var_cas_compoundAttributes) ;
               } break ;
             default :
               break ;

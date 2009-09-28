@@ -151,7 +151,7 @@ class GGS_guiCommandLineOptionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_guiCommandLineOptionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_string& argument_0,
+  public : void addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_char& argument_2,
                                 const GGS_string& argument_3,
@@ -405,7 +405,7 @@ class GGS_nibAndClassList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_nibAndClassList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_string& argument_0,
+  public : void addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_nibAndClassList operator_concat (const GGS_nibAndClassList & inOperand) const ;
@@ -532,7 +532,7 @@ class GGS_textMacroList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_textMacroList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_string& argument_0,
+  public : void addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_textMacroList operator_concat (const GGS_textMacroList & inOperand) const ;
@@ -674,7 +674,7 @@ class GGS_importedLexiqueList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_importedLexiqueList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_string& argument_0,
+  public : void addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2,
                                 const GGS_textMacroList & argument_3,

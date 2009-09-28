@@ -1829,7 +1829,7 @@ pr_factor_expression_parser_1333_13_ (galgas_scanner & inLexique,
         GGS_lstring  var_cas_literalString ;
         inLexique.assignFromAttribute_tokenString (var_cas_literalString) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
-        var_cas_literalStringList._addAssign_operation (var_cas_literalString.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1345))) ;
+        var_cas_literalStringList.addAssign_operation (var_cas_literalString.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1345))) ;
       switch (select_repeat_expression_parser_8 (inLexique)) {
         case 2 : {
           } break ;
@@ -2406,7 +2406,7 @@ pr_factor_expression_parser_1732_13_ (galgas_scanner & inLexique,
     const GGS_L_EXsignature::cElement * operand_69527 = NULL ;
     while (((operand_69527 = enumerator_69527.nextObject ()))) {
       macroValidPointer (operand_69527) ;
-      var_cas_listeAttributsSemantiques._addAssign_operation (operand_69527->mType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+      var_cas_listeAttributsSemantiques.addAssign_operation (operand_69527->mType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     }
   }
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__28_) COMMA_HERE) ;
@@ -2507,8 +2507,8 @@ pr_output_expression_list_expression_parser_1825_29_ (galgas_scanner & inLexique
           nt_expression_ (inLexique, var_cas_inEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_inSemanticContext, var_cas_ioVariablesMap, var_cas_expression, var_cas_resultType) ;
           GGS_location  var_cas_errorLocation ;
           var_cas_errorLocation = GGS_location (inLexique) ;
-          var_cas_effectiveTypesList._addAssign_operation (var_cas_resultType, var_cas_errorLocation) ;
-          var_cas_outExpressionList._addAssign_operation (var_cas_expression) ;
+          var_cas_effectiveTypesList.addAssign_operation (var_cas_resultType, var_cas_errorLocation) ;
+          var_cas_outExpressionList.addAssign_operation (var_cas_expression) ;
           } break ;
         default :
           syntaxRepeat_13 = false ;
@@ -2588,11 +2588,11 @@ pr_parse_effective_input_parameters_list_expression_parser_1872_44_ (galgas_scan
               GGS_lstring  var_cas_constantName ;
               inLexique.assignFromAttribute_tokenString (var_cas_constantName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_argumentsList._addAssign_operation (var_cas_typeName, var_cas_constantName) ;
+              var_cas_argumentsList.addAssign_operation (var_cas_typeName, var_cas_constantName) ;
               } break ;
             case 2 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A_) COMMA_HERE) ;
-              var_cas_argumentsList._addAssign_operation (GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+              var_cas_argumentsList.addAssign_operation (GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
               } break ;
             case 3 : {
               GGS_luint  var_cas_jokerCountWithLocation ;
@@ -2611,7 +2611,7 @@ pr_parse_effective_input_parameters_list_expression_parser_1872_44_ (galgas_scan
                     _condition_74782 = GGS_bool (false) ;
                   }else{
                     _variant_74782.decrement_operation (inLexique COMMA_HERE) ;
-                    var_cas_argumentsList._addAssign_operation (GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+                    var_cas_argumentsList.addAssign_operation (GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
                     var_cas_jokerCount.decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (1903)) ;
                   }
                 }

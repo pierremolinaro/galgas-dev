@@ -621,7 +621,7 @@ category_method__nonterminalCallInstruction__buildSyntaxInstructionList (C_Compi
                                 GGS_syntaxInstructionList  & var_cas_ioSyntaxInstructionList
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_7628 != NULL) {
-    var_cas_ioSyntaxInstructionList._addAssign_operation (operand_7628) ;
+    var_cas_ioSyntaxInstructionList.addAssign_operation (operand_7628) ;
   }
 }
 
@@ -637,7 +637,7 @@ category_method__terminalCheckInstruction__buildSyntaxInstructionList (C_Compile
                                 GGS_syntaxInstructionList  & var_cas_ioSyntaxInstructionList
                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (operand_7880 != NULL) {
-    var_cas_ioSyntaxInstructionList._addAssign_operation (operand_7880) ;
+    var_cas_ioSyntaxInstructionList.addAssign_operation (operand_7880) ;
   }
 }
 
@@ -664,12 +664,12 @@ category_method__repeatInstruction__buildSyntaxInstructionList (C_Compiler & inL
         macroValidPointer (operand_8401) ;
         GGS_syntaxInstructionList  var_cas_syntaxInstructionList ;
         ::routine_buildSyntaxInstructionList (inLexique,  operand_8401->mSyntaxInstructionList,  var_cas_syntaxInstructionList COMMA_SOURCE_FILE_AT_LINE (184)) ;
-        var_cas_repeatBranchList._addAssign_operation (var_cas_syntaxInstructionList) ;
+        var_cas_repeatBranchList.addAssign_operation (var_cas_syntaxInstructionList) ;
       }
     }
     GGS_repeatInstruction  var_cas_ri ;
     var_cas_ri = GGS_repeatInstruction ::constructor_new (inLexique, var_cas_repeatedInstructionList, var_cas_repeatBranchList COMMA_HERE) ;
-    var_cas_ioSyntaxInstructionList._addAssign_operation (var_cas_ri) ;
+    var_cas_ioSyntaxInstructionList.addAssign_operation (var_cas_ri) ;
   }
 }
 
@@ -694,12 +694,12 @@ category_method__selectInstruction__buildSyntaxInstructionList (C_Compiler & inL
         macroValidPointer (operand_9019) ;
         GGS_syntaxInstructionList  var_cas_syntaxInstructionList ;
         ::routine_buildSyntaxInstructionList (inLexique,  operand_9019->mSyntaxInstructionList,  var_cas_syntaxInstructionList COMMA_SOURCE_FILE_AT_LINE (202)) ;
-        var_cas_selectBranchList._addAssign_operation (var_cas_syntaxInstructionList) ;
+        var_cas_selectBranchList.addAssign_operation (var_cas_syntaxInstructionList) ;
       }
     }
     GGS_selectInstruction  var_cas_si ;
     var_cas_si = GGS_selectInstruction ::constructor_new (inLexique, var_cas_selectBranchList COMMA_HERE) ;
-    var_cas_ioSyntaxInstructionList._addAssign_operation (var_cas_si) ;
+    var_cas_ioSyntaxInstructionList.addAssign_operation (var_cas_si) ;
   }
 }
 

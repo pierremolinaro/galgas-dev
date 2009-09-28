@@ -503,7 +503,7 @@ pr_factor_expressionModelBuilder_371_13_ (galgas_scanner & inLexique,
         GGS_lstring  var_cas_literalString ;
         inLexique.assignFromAttribute_tokenString (var_cas_literalString) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
-        var_cas_literalStringList._addAssign_operation (var_cas_literalString.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (376))) ;
+        var_cas_literalStringList.addAssign_operation (var_cas_literalString.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (376))) ;
       switch (select_repeat_expressionModelBuilder_8 (inLexique)) {
         case 2 : {
           } break ;
@@ -743,7 +743,7 @@ pr_output_expression_list_expressionModelBuilder_562_29_ (galgas_scanner & inLex
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__21_) COMMA_HERE) ;
           GGS_semanticExpression  var_cas_expression ;
           nt_expression_ (inLexique, var_cas_expression) ;
-          var_cas_expressionList._addAssign_operation (var_cas_expression) ;
+          var_cas_expressionList.addAssign_operation (var_cas_expression) ;
           } break ;
         default :
           syntaxRepeat_14 = false ;

@@ -318,7 +318,7 @@ class GGS_lexicalInstructionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalInstructionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lexicalInstruction & argument_0) ;
+  public : void addAssign_operation (const GGS_lexicalInstruction & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalInstructionList operator_concat (const GGS_lexicalInstructionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -438,7 +438,7 @@ class GGS_metamodelTemplateDelimitorList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_metamodelTemplateDelimitorList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -582,7 +582,7 @@ class GGS_templateReplacementList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_templateReplacementList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -771,7 +771,7 @@ class GGS_lexicalRuleList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalRuleList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_abstractLexicalRule & argument_0) ;
+  public : void addAssign_operation (const GGS_abstractLexicalRule & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalRuleList operator_concat (const GGS_lexicalRuleList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -1004,7 +1004,7 @@ class GGS_lexicalMessageDeclarationList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalMessageDeclarationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalMessageDeclarationList operator_concat (const GGS_lexicalMessageDeclarationList & inOperand) const ;
@@ -1131,7 +1131,7 @@ class GGS_lexicalAttributeList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalAttributeList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalAttributeList operator_concat (const GGS_lexicalAttributeList & inOperand) const ;
@@ -1258,7 +1258,7 @@ class GGS_lexicalStyleList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalStyleList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalStyleList operator_concat (const GGS_lexicalStyleList & inOperand) const ;
@@ -1400,7 +1400,7 @@ class GGS_terminalDeclarationList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_terminalDeclarationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3,
@@ -1568,7 +1568,7 @@ class GGS_lexicalListEntryList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalListEntryList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -1722,7 +1722,7 @@ class GGS_lexicalListDeclarationList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalListDeclarationList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstringlist & argument_3,
@@ -2239,7 +2239,7 @@ class GGS_lexicalSendSearchList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalSendSearchList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalSendSearchList operator_concat (const GGS_lexicalSendSearchList & inOperand) const ;
@@ -2655,7 +2655,7 @@ class GGS_lexicalWhileBranchList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalWhileBranchList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lexicalExpression & argument_0,
+  public : void addAssign_operation (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalWhileBranchList operator_concat (const GGS_lexicalWhileBranchList & inOperand) const ;
@@ -2842,7 +2842,7 @@ class GGS_lexicalSelectBranchList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalSelectBranchList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lexicalExpression & argument_0,
+  public : void addAssign_operation (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalSelectBranchList operator_concat (const GGS_lexicalSelectBranchList & inOperand) const ;
@@ -3080,7 +3080,7 @@ class GGS_lexicalRoutineCallActualArgumentList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalRoutineCallActualArgumentList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_abstractLexicalRoutineActualArgument & argument_0) ;
+  public : void addAssign_operation (const GGS_abstractLexicalRoutineActualArgument & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalRoutineCallActualArgumentList operator_concat (const GGS_lexicalRoutineCallActualArgumentList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -3425,7 +3425,7 @@ class GGS_lexicalFunctionCallActualArgumentList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalFunctionCallActualArgumentList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0) ;
+  public : void addAssign_operation (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalFunctionCallActualArgumentList operator_concat (const GGS_lexicalFunctionCallActualArgumentList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -4250,7 +4250,7 @@ class GGS_lexicalExternRoutineFormalArgumentList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalExternRoutineFormalArgumentList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
+  public : void addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -4394,7 +4394,7 @@ class GGS_externRoutineList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_externRoutineList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternRoutineFormalArgumentList & argument_1,
                                 const GGS_stringlist & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -4533,7 +4533,7 @@ class GGS_lexicalExternFunctionFormalArgumentList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_lexicalExternFunctionFormalArgumentList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_lexicalExternFunctionFormalArgumentList operator_concat (const GGS_lexicalExternFunctionFormalArgumentList & inOperand) const ;
@@ -4665,7 +4665,7 @@ class GGS_externFunctionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_externFunctionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternFunctionFormalArgumentList & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator

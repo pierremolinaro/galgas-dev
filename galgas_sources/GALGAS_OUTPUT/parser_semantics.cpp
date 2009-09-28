@@ -639,7 +639,7 @@ _internalPrependValues (const GGS_typeInstructionList & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeBranchesInstructions::
-_addAssign_operation (const GGS_typeInstructionList & argument_0) {
+addAssign_operation (const GGS_typeInstructionList & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -722,7 +722,7 @@ GGS_typeListeBranchesInstructions  GGS_typeListeBranchesInstructions::
 constructor_listWithValue (const GGS_typeInstructionList & argument_0) {
   GGS_typeListeBranchesInstructions result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -741,7 +741,7 @@ internalSubListWithRange (GGS_typeListeBranchesInstructions & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1365,7 +1365,7 @@ _internalPrependValues (const GGS_L_ruleSyntaxSignature & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_parse_rewind_signature_list::
-_addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
+addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -1455,7 +1455,7 @@ constructor_listWithValue (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) {
   GGS_L_parse_rewind_signature_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -1474,7 +1474,7 @@ internalSubListWithRange (GGS_L_parse_rewind_signature_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSignature, ptr->mErrorLocation) ;
+      ioList.addAssign_operation (ptr->mSignature, ptr->mErrorLocation) ;
       ptr = ptr->nextObject () ;
     }
   }

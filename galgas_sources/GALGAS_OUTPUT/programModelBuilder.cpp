@@ -136,7 +136,7 @@ pr_program_component_start_symbol_programModelBuilder_45_37_ (galgas_scanner & i
           GGS_semanticInstructionList  var_cas_mInstructionList ;
           nt_semantic_instruction_list_ (inLexique, var_cas_mInstructionList) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
-          var_cas_mProgramRules._addAssign_operation (var_cas_mSourceFileExtension, var_cas_mSourceFileHelp, var_cas_mSourceFileVariableName, var_cas_mInstructionList) ;
+          var_cas_mProgramRules.addAssign_operation (var_cas_mSourceFileExtension, var_cas_mSourceFileHelp, var_cas_mSourceFileVariableName, var_cas_mInstructionList) ;
           } break ;
         case 3 : {
           nt_semantic_declaration_ (inLexique, var_cas_mSemanticDeclarations) ;

@@ -141,7 +141,7 @@ class GGS_commandLineOptionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_commandLineOptionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lchar & argument_2,
                                 const GGS_lstring & argument_3,

@@ -974,7 +974,7 @@ _internalPrependValues (const GGS_typeInstruction & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeInstructionList::
-_addAssign_operation (const GGS_typeInstruction & argument_0) {
+addAssign_operation (const GGS_typeInstruction & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -1057,7 +1057,7 @@ GGS_typeInstructionList  GGS_typeInstructionList::
 constructor_listWithValue (const GGS_typeInstruction & argument_0) {
   GGS_typeInstructionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -1076,7 +1076,7 @@ internalSubListWithRange (GGS_typeInstructionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mInstruction) ;
+      ioList.addAssign_operation (ptr->mInstruction) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1328,7 +1328,7 @@ _internalPrependValues (const GGS_EXformalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_signature::
-_addAssign_operation (const GGS_EXformalArgumentPassingMode& argument_0,
+addAssign_operation (const GGS_EXformalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -1418,7 +1418,7 @@ constructor_listWithValue (const GGS_EXformalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_L_signature result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -1437,7 +1437,7 @@ internalSubListWithRange (GGS_L_signature & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mFormalArgumentPassingMode, ptr->mGalgasTypeName) ;
+      ioList.addAssign_operation (ptr->mFormalArgumentPassingMode, ptr->mGalgasTypeName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1726,7 +1726,7 @@ _internalPrependValues (const GGS_lstring & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListModel::
-_addAssign_operation (const GGS_lstring & argument_0) {
+addAssign_operation (const GGS_lstring & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -1809,7 +1809,7 @@ GGS_typeListModel  GGS_typeListModel::
 constructor_listWithValue (const GGS_lstring & argument_0) {
   GGS_typeListModel result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -1828,7 +1828,7 @@ internalSubListWithRange (GGS_typeListModel & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mTypeName) ;
+      ioList.addAssign_operation (ptr->mTypeName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -11269,7 +11269,7 @@ _internalPrependValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeTypesEtNomsArgMethode::
-_addAssign_operation (const GGS_AC_galgasType & argument_0,
+addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_EXformalArgumentPassingMode& argument_1,
                                 const GGS_typeCplusPlusName & argument_2,
                                 const GGS_bool& argument_3,
@@ -11380,7 +11380,7 @@ constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_4) {
   GGS_typeListeTypesEtNomsArgMethode result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -11399,7 +11399,7 @@ internalSubListWithRange (GGS_typeListeTypesEtNomsArgMethode & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mType, ptr->mFormalArgumentPassingMode, ptr->mCppName, ptr->mModeIn, ptr->mParameterName) ;
+      ioList.addAssign_operation (ptr->mType, ptr->mFormalArgumentPassingMode, ptr->mCppName, ptr->mModeIn, ptr->mParameterName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -12140,7 +12140,7 @@ _internalPrependValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeAttributsSemantiques::
-_addAssign_operation (const GGS_AC_galgasType & argument_0,
+addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -12230,7 +12230,7 @@ constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_typeListeAttributsSemantiques result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -12249,7 +12249,7 @@ internalSubListWithRange (GGS_typeListeAttributsSemantiques & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mAttributType, ptr->mAttributeName) ;
+      ioList.addAssign_operation (ptr->mAttributType, ptr->mAttributeName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -12549,7 +12549,7 @@ _internalPrependValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeTypesList::
-_addAssign_operation (const GGS_AC_galgasType & argument_0,
+addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_location & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -12639,7 +12639,7 @@ constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_location & argument_1) {
   GGS_typeTypesList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -12658,7 +12658,7 @@ internalSubListWithRange (GGS_typeTypesList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mType, ptr->mEndOfExpressionLocation) ;
+      ioList.addAssign_operation (ptr->mType, ptr->mEndOfExpressionLocation) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -12958,7 +12958,7 @@ _internalPrependValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_EXsignature::
-_addAssign_operation (const GGS_AC_galgasType & argument_0,
+addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_EXformalArgumentPassingMode& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -13048,7 +13048,7 @@ constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_EXformalArgumentPassingMode& argument_1) {
   GGS_L_EXsignature result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -13067,7 +13067,7 @@ internalSubListWithRange (GGS_L_EXsignature & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mType, ptr->mFormalArgumentPassingMode) ;
+      ioList.addAssign_operation (ptr->mType, ptr->mFormalArgumentPassingMode) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -14874,7 +14874,7 @@ _internalPrependValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_actualParametersSignature::
-_addAssign_operation (const GGS_AC_galgasType & argument_0,
+addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_EXactualParametersPassingMode& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -14964,7 +14964,7 @@ constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_EXactualParametersPassingMode& argument_1) {
   GGS_L_actualParametersSignature result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -14983,7 +14983,7 @@ internalSubListWithRange (GGS_L_actualParametersSignature & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mType, ptr->mFormalArgumentPassingMode) ;
+      ioList.addAssign_operation (ptr->mType, ptr->mFormalArgumentPassingMode) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -16047,8 +16047,8 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (866))).operator_isEqual (GGS_string ("valueWithMask"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (872)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -16261,7 +16261,7 @@ method_handleConstructorCall (C_Compiler & inLexique,
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (902))).operator_isEqual (GGS_string ("unicodeCharacterWithUnsigned"))).isBuiltAndTrue ()) {
     var_cas_outHasLexiqueAndLocationArguments = GGS_bool (true) ;
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (908)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -16473,17 +16473,17 @@ method_handleMethodInstructionCall (C_Compiler & inLexique,
   var_cas_outCategoryMethodClassBaseName = GGS_string ("") ;
   if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (942))).operator_isEqual (GGS_string ("writeToFile"))).isBuiltAndTrue ()) {
     var_cas_outReaderSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outReaderSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outReaderSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (945))).operator_isEqual (GGS_string ("writeToFileWhenDifferentContents"))).isBuiltAndTrue ()) {
     var_cas_outReaderSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outReaderSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outReaderSignature._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+    var_cas_outReaderSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outReaderSignature.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (949))).operator_isEqual (GGS_string ("writeToExecutableFile"))).isBuiltAndTrue ()) {
     var_cas_outReaderSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outReaderSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outReaderSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (952))).operator_isEqual (GGS_string ("makeDirectoryAndWriteToFile"))).isBuiltAndTrue ()) {
     var_cas_outReaderSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outReaderSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outReaderSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (955))).operator_isEqual (GGS_string ("makeDirectory"))).isBuiltAndTrue ()) {
     var_cas_outReaderSignature = GGS_L_EXsignature ::constructor_emptyList () ;
   }else{
@@ -16508,38 +16508,38 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (976))).operator_isEqual (GGS_string ("stringWithSequenceOfCharacters"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (980))).operator_isEqual (GGS_string ("stringWithMainFirstArgument"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (982))).operator_isEqual (GGS_string ("stringWithContentsOfFile"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (985))).operator_isEqual (GGS_string ("stringWithCurrentDateTime"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (987))).operator_isEqual (GGS_string ("stringWithEnvironmentVariable"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (990))).operator_isEqual (GGS_string ("stringWithEnvironmentVariableOrEmpty"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (993))).operator_isEqual (GGS_string ("CppLineComment"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (995))).operator_isEqual (GGS_string ("CppTitleComment"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (998))).operator_isEqual (GGS_string ("CppChar"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1001))).operator_isEqual (GGS_string ("CppString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1004))).operator_isEqual (GGS_string ("componentsJoinedByString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_stringlistType ;
     ::routine_extern_build_stringlist_type (inLexique,  var_cas_stringlistType COMMA_SOURCE_FILE_AT_LINE (1006)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_stringlistType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_stringlistType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1011)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -16554,17 +16554,17 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1020))).operator_isEqual (GGS_string ("setCapacity"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1023))).operator_isEqual (GGS_string ("incIndentation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1026))).operator_isEqual (GGS_string ("decIndentation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1029))).operator_isEqual (GGS_string ("setCharacterAtIndex"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this modifier is not defined") COMMA_SOURCE_FILE_AT_LINE (1036)) ;
     var_cas_outModifierSignature.drop () ;
@@ -16579,25 +16579,25 @@ method_handleClassMethodCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outTypeMethodSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inTypeMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1045))).operator_isEqual (GGS_string ("deleteFile"))).isBuiltAndTrue ()) {
     var_cas_outTypeMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inTypeMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1048))).operator_isEqual (GGS_string ("deleteFileIfExists"))).isBuiltAndTrue ()) {
     var_cas_outTypeMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inTypeMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1051))).operator_isEqual (GGS_string ("removeEmptyDirectory"))).isBuiltAndTrue ()) {
     var_cas_outTypeMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inTypeMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1054))).operator_isEqual (GGS_string ("removeDirectoryRecursively"))).isBuiltAndTrue ()) {
     var_cas_outTypeMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inTypeMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1057))).operator_isEqual (GGS_string ("generateFile"))).isBuiltAndTrue ()) {
     var_cas_outTypeMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inTypeMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This type method is not defined") COMMA_SOURCE_FILE_AT_LINE (1068)) ;
     var_cas_outTypeMethodSignature.drop () ;
@@ -17273,13 +17273,13 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1202))).operator_isEqual (GGS_string ("uint64MaskWithCompressedBitString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1205))).operator_isEqual (GGS_string ("uint64BaseValueWithCompressedBitString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1208))).operator_isEqual (GGS_string ("uint64WithBitString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1213)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -17675,79 +17675,79 @@ method_handleConstructorCall (C_Compiler & inLexique,
   var_cas_outHasLexiqueAndLocationArguments = GGS_bool (true) ;
   if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1258))).operator_isEqual (GGS_string ("binarySetWithBit"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1261))).operator_isEqual (GGS_string ("emptyBinarySet"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1263))).operator_isEqual (GGS_string ("fullBinarySet"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1265))).operator_isEqual (GGS_string ("binarySetWithPredicateString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1268))).operator_isEqual (GGS_string ("binarySetWithEqualComparison"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1273))).operator_isEqual (GGS_string ("binarySetWithNotEqualComparison"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1278))).operator_isEqual (GGS_string ("binarySetWithStrictLowerComparison"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1283))).operator_isEqual (GGS_string ("binarySetWithStrictGreaterComparison"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1288))).operator_isEqual (GGS_string ("binarySetWithLowerOrEqualComparison"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1293))).operator_isEqual (GGS_string ("binarySetWithGreaterOrEqualComparison"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1298))).operator_isEqual (GGS_string ("binarySetWithEqualToConstant"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1303))).operator_isEqual (GGS_string ("binarySetWithNotEqualToConstant"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1308))).operator_isEqual (GGS_string ("binarySetWithStrictLowerThanConstant"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1313))).operator_isEqual (GGS_string ("binarySetWithStrictGreaterThanConstant"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1318))).operator_isEqual (GGS_string ("binarySetWithLowerOrEqualToConstant"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1323))).operator_isEqual (GGS_string ("binarySetWithGreaterOrEqualToConstant"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1328))).operator_isEqual (GGS_string ("binarySetWithITE"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_binaryset ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1335)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -18296,8 +18296,8 @@ method_handleConstructorCall (C_Compiler & inLexique,
   var_cas_outHasLexiqueAndLocationArguments = GGS_bool (true) ;
   if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1393))).operator_isEqual (GGS_string ("new"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1397))).operator_isEqual (GGS_string ("retrieveAndResetTemplateString"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else{
@@ -18314,10 +18314,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1410))).operator_isEqual (GGS_string ("setString"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1413))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1419)) ;
     var_cas_outModifierSignature.drop () ;
@@ -18528,9 +18528,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1453)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -18545,10 +18545,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1462))).operator_isEqual (GGS_string ("setChar"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1465))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1471)) ;
     var_cas_outModifierSignature.drop () ;
@@ -18759,9 +18759,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1505)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -18776,10 +18776,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1514))).operator_isEqual (GGS_string ("setBool"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1517))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1523)) ;
     var_cas_outModifierSignature.drop () ;
@@ -18990,9 +18990,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1556)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -19007,10 +19007,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1565))).operator_isEqual (GGS_string ("setUint"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1568))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1574)) ;
     var_cas_outModifierSignature.drop () ;
@@ -19221,9 +19221,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1607)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -19238,10 +19238,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1616))).operator_isEqual (GGS_string ("setUint64"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1619))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1625)) ;
     var_cas_outModifierSignature.drop () ;
@@ -19452,9 +19452,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_sint ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1658)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -19469,10 +19469,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1667))).operator_isEqual (GGS_string ("setSint"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_sint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_sint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1670))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1676)) ;
     var_cas_outModifierSignature.drop () ;
@@ -19683,9 +19683,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_sint64 ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1709)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -19700,10 +19700,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1718))).operator_isEqual (GGS_string ("setSint64"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_sint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_sint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1721))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1727)) ;
     var_cas_outModifierSignature.drop () ;
@@ -19914,9 +19914,9 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_double ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_t = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1760)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -19931,10 +19931,10 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1769))).operator_isEqual (GGS_string ("setDouble"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_double ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_double ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1772))).operator_isEqual (GGS_string ("setLocation"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("variables of this type do not support modifier call") COMMA_SOURCE_FILE_AT_LINE (1778)) ;
     var_cas_outModifierSignature.drop () ;
@@ -20147,7 +20147,7 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
     GGS_AC_galgasType  var_cas_t ;
     var_cas_t = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else{
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("This constructor is not defined") COMMA_SOURCE_FILE_AT_LINE (1815)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -20161,7 +20161,7 @@ method_handleAddAssignOperatorCall (C_Compiler & inLexique,
                                 GGS_location  /* var_cas_inErrorLocation */,
                                 GGS_typeListeAttributsSemantiques & var_cas_outParametersList COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outParametersList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_outParametersList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outParametersList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20173,7 +20173,7 @@ method_handleMinusAssignOperatorCall (C_Compiler & inLexique,
   var_cas_outParametersList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   GGS_AC_galgasType  var_cas_t ;
   var_cas_t = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-  var_cas_outParametersList._addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outParametersList.addAssign_operation (var_cas_t, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20187,7 +20187,7 @@ method_acceptForeachInstruction (C_Compiler & inLexique,
                                 GGS_bool& var_cas_outNewStyle COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outNewStyle = GGS_bool (true) ;
   var_cas_outForeachList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_outForeachList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outForeachList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
   var_cas_outStyle = GGS_localConstantBuildStyleEnum::constructor_firstIsKeyOtherMapStyle (inLexique COMMA_HERE) ;
 }
 
@@ -20385,7 +20385,7 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1877))).operator_isEqual (GGS_string ("setCurrentDirectory"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this modifier is not defined") COMMA_SOURCE_FILE_AT_LINE (1883)) ;
     var_cas_outModifierSignature.drop () ;
@@ -20605,7 +20605,7 @@ method_handleMethodInstructionCall (C_Compiler & inLexique,
   var_cas_outCategoryMethodClassBaseName = GGS_string ("") ;
   if (((var_cas_inMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1926))).operator_isEqual (GGS_string ("writeToFile"))).isBuiltAndTrue ()) {
     var_cas_outMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outMethodSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outMethodSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this method is not defined ") COMMA_SOURCE_FILE_AT_LINE (1931)) ;
     var_cas_outMethodSignature.drop () ;
@@ -20620,25 +20620,25 @@ method_handleModifierCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outModifierSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1941))).operator_isEqual (GGS_string ("appendByte"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1944))).operator_isEqual (GGS_string ("appendShortBE"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1947))).operator_isEqual (GGS_string ("appendShortLE"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1950))).operator_isEqual (GGS_string ("appendUIntBE"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1953))).operator_isEqual (GGS_string ("appendUIntLE"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1956))).operator_isEqual (GGS_string ("appendUTF8String"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1959))).operator_isEqual (GGS_string ("appendData"))).isBuiltAndTrue ()) {
     var_cas_outModifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_data ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_data ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this modifier is not defined") COMMA_SOURCE_FILE_AT_LINE (1965)) ;
     var_cas_outModifierSignature.drop () ;
@@ -24471,7 +24471,7 @@ _internalPrependValues (const GGS_AC_instruction_ForGrammar & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_L_ruleSyntaxSignature::
-_addAssign_operation (const GGS_AC_instruction_ForGrammar & argument_0) {
+addAssign_operation (const GGS_AC_instruction_ForGrammar & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -24554,7 +24554,7 @@ GGS_L_ruleSyntaxSignature  GGS_L_ruleSyntaxSignature::
 constructor_listWithValue (const GGS_AC_instruction_ForGrammar & argument_0) {
   GGS_L_ruleSyntaxSignature result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -24573,7 +24573,7 @@ internalSubListWithRange (GGS_L_ruleSyntaxSignature & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mInstruction) ;
+      ioList.addAssign_operation (ptr->mInstruction) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -25570,7 +25570,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_productionRules_ForGrammarComponent::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_uint & argument_1,
                                 const GGS_L_ruleSyntaxSignature & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -25667,7 +25667,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_L_ruleSyntaxSignature & argument_2) {
   GGS_L_productionRules_ForGrammarComponent result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -25686,7 +25686,7 @@ internalSubListWithRange (GGS_L_productionRules_ForGrammarComponent & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLeftNonterminalSymbol, ptr->mLeftNonterminalSymbolIndex, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mLeftNonterminalSymbol, ptr->mLeftNonterminalSymbolIndex, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -27580,7 +27580,7 @@ _internalPrependValues (const GGS_L_ruleSyntaxSignature & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_L_branchList_ForGrammarComponent::
-_addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0) {
+addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -27663,7 +27663,7 @@ GGS_L_branchList_ForGrammarComponent  GGS_L_branchList_ForGrammarComponent::
 constructor_listWithValue (const GGS_L_ruleSyntaxSignature & argument_0) {
   GGS_L_branchList_ForGrammarComponent result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -27682,7 +27682,7 @@ internalSubListWithRange (GGS_L_branchList_ForGrammarComponent & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -28271,7 +28271,7 @@ _internalPrependValues (const GGS_M_nonTerminalSymbolsForGrammar & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_syntaxComponents_ForGrammar::
-_addAssign_operation (const GGS_M_nonTerminalSymbolsForGrammar & argument_0,
+addAssign_operation (const GGS_M_nonTerminalSymbolsForGrammar & argument_0,
                                 const GGS_L_productionRules_ForGrammarComponent & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -28368,7 +28368,7 @@ constructor_listWithValue (const GGS_M_nonTerminalSymbolsForGrammar & argument_0
                                 const GGS_lstring & argument_2) {
   GGS_L_syntaxComponents_ForGrammar result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -28387,7 +28387,7 @@ internalSubListWithRange (GGS_L_syntaxComponents_ForGrammar & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mNonterminalSymbolsMap, ptr->mProductionRulesList, ptr->mSyntaxComponentName) ;
+      ioList.addAssign_operation (ptr->mNonterminalSymbolsMap, ptr->mProductionRulesList, ptr->mSyntaxComponentName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -29499,7 +29499,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_insertOrSearchMethodList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_bool& argument_2,
                                 const GGS_string& argument_3) {
@@ -29603,7 +29603,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_string& argument_3) {
   GGS_insertOrSearchMethodList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -29622,7 +29622,7 @@ internalSubListWithRange (GGS_insertOrSearchMethodList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mMethodName, ptr->mErrorMessage, ptr->mIsGetIndexMethod, ptr->mShadowErrorMessage) ;
+      ioList.addAssign_operation (ptr->mMethodName, ptr->mErrorMessage, ptr->mIsGetIndexMethod, ptr->mShadowErrorMessage) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -30382,8 +30382,8 @@ method_handleModifierCall (C_Compiler & inLexique,
         macroValidPointer (operand_108819) ;
         var_cas_found = (((GGS_string ("set")).operator_concat (operand_108819->mAttributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2499)).reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (2499)))).operator_concat (GGS_string ("AtIndex"))).operator_isEqual (var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2499))) ;
         if ((var_cas_found).isBuiltAndTrue ()) {
-          var_cas_outModifierSignature._addAssign_operation (operand_108819->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
-          var_cas_outModifierSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+          var_cas_outModifierSignature.addAssign_operation (operand_108819->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+          var_cas_outModifierSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
         }
       }
     }
@@ -30900,8 +30900,8 @@ method_acceptForeachInstruction (C_Compiler & inLexique,
                                 GGS_bool& var_cas_outNewStyle COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outNewStyle = GGS_bool (true) ;
   var_cas_outForeachList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_outForeachList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
-  var_cas_outForeachList._addAssign_operation (mListType, GGS_lstring ::constructor_new (inLexique, GGS_string ("object"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outForeachList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outForeachList.addAssign_operation (mListType, GGS_lstring ::constructor_new (inLexique, GGS_string ("object"), GGS_location (inLexique) COMMA_HERE)) ;
   var_cas_outStyle = GGS_localConstantBuildStyleEnum::constructor_listStyle (inLexique COMMA_HERE) ;
 }
 
@@ -30936,7 +30936,7 @@ method_handleAddAssignOperatorCall (C_Compiler & inLexique,
                                 GGS_location  /* var_cas_inErrorLocation */,
                                 GGS_typeListeAttributsSemantiques & var_cas_outParametersList COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outParametersList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_outParametersList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outParametersList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
   var_cas_outParametersList = (var_cas_outParametersList).operator_concat (mAttributeList) ;
 }
 
@@ -31120,13 +31120,13 @@ void routine_build_uintlist_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("uintlist"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_uintlist_type\n") ;
@@ -31146,13 +31146,13 @@ void routine_build_luintlist_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_luint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_luint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_luint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_luint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_luint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_luint ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("luintlist"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_luintlist_type\n") ;
@@ -31172,13 +31172,13 @@ void routine_build_uint64list_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("uint64list"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_uint64list_type\n") ;
@@ -31198,13 +31198,13 @@ void routine_build_charlist_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("charlist"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_charlist_type\n") ;
@@ -31224,13 +31224,13 @@ void routine_build_lcharlist_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_lchar ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_lchar ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lcharlist"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_lcharlist_type\n") ;
@@ -31250,13 +31250,13 @@ void routine_build_stringlist_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("stringlist"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_stringlist_type\n") ;
@@ -31276,13 +31276,13 @@ void routine_build_lstringlist_type (C_Compiler & inLexique,
   #endif
   GGS_typeListeAttributsSemantiques  var_cas_attributesList ;
   var_cas_attributesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_attributesList._addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_attributesList.addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("mValue"), GGS_location (inLexique) COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_extractSignature ;
   var_cas_extractSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_extractSignature._addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+  var_cas_extractSignature.addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   GGS_L_EXsignature  var_cas_inputSignature ;
   var_cas_inputSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-  var_cas_inputSignature._addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+  var_cas_inputSignature.addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
   var_cas_outType = GGS_typeGalgasListType ::constructor_new (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("lstringlist"), GGS_location (inLexique) COMMA_HERE), var_cas_attributesList, var_cas_extractSignature, var_cas_inputSignature COMMA_HERE) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_build_lstringlist_type\n") ;
@@ -34173,7 +34173,7 @@ method_acceptForeachInstruction (C_Compiler & inLexique,
                                 GGS_bool& var_cas_outNewStyle COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outNewStyle = GGS_bool (false) ;
   var_cas_outForeachList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-  var_cas_outForeachList._addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outForeachList.addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("key"), GGS_location (inLexique) COMMA_HERE)) ;
   var_cas_outForeachList = (var_cas_outForeachList).operator_concat (mAttributeList) ;
   var_cas_outStyle = GGS_localConstantBuildStyleEnum::constructor_firstIsKeyOtherMapStyle (inLexique COMMA_HERE) ;
 }
@@ -34190,7 +34190,7 @@ method_handleConstructorCall (C_Compiler & inLexique,
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3106))).operator_isEqual (GGS_string ("mapWithMapToOverride"))).isBuiltAndTrue ()) {
     var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgasUndefinedMapType ::constructor_new (inLexique, mMapTypeName COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("\?\?\?"), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgasUndefinedMapType ::constructor_new (inLexique, mMapTypeName COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string ("\?\?\?"), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inClassMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3109))).operator_isEqual (GGS_string ("empty"))).isBuiltAndTrue ()) {
     var_cas_inClassMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("in GALGAS 1.3.0 and later, use 'emptyMap' constructor instead of 'empty' constructor") COMMA_SOURCE_FILE_AT_LINE (3111)) ;
     var_cas_outAccessorTypesList.drop () ;
@@ -35066,7 +35066,7 @@ method_handleMethodInstructionCall (C_Compiler & inLexique,
     const GGS_typeListeAttributsSemantiques::cElement * operand_137715 = NULL ;
     while (((operand_137715 = enumerator_137715.nextObject ()))) {
       macroValidPointer (operand_137715) ;
-      var_cas_outReaderSignature._addAssign_operation (operand_137715->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+      var_cas_outReaderSignature.addAssign_operation (operand_137715->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
     }
   }
 }
@@ -35079,9 +35079,9 @@ method_handleClassMethodCall (C_Compiler & inLexique,
                                 GGS_L_EXsignature & var_cas_outTypeMethodSignature COMMA_UNUSED_LOCATION_ARGS) const {
   if (((var_cas_inTypeMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3201))).operator_isEqual (GGS_string ("makeRegularIndex"))).isBuiltAndTrue ()) {
     var_cas_outTypeMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgasMapType ::constructor_new (inLexique, mMapTypeName, mMapAttributesList, aTableMethodesSurcharger, mModifierMethodMap, mReaderMethodMap COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentInOut (inLexique COMMA_HERE)) ;
-    var_cas_outTypeMethodSignature._addAssign_operation (GGS_typeGalgasMapindexType ::constructor_new (inLexique, mMapindexTypeName, mMapTypeName, mMapAttributesList, mMapIndexSearchReaderMap, aTableMethodesSurcharger, mModifierMethodMap, mReaderMethodMap COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgas_lstring ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgasMapType ::constructor_new (inLexique, mMapTypeName, mMapAttributesList, aTableMethodesSurcharger, mModifierMethodMap, mReaderMethodMap COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentInOut (inLexique COMMA_HERE)) ;
+    var_cas_outTypeMethodSignature.addAssign_operation (GGS_typeGalgasMapindexType ::constructor_new (inLexique, mMapindexTypeName, mMapTypeName, mMapAttributesList, mMapIndexSearchReaderMap, aTableMethodesSurcharger, mModifierMethodMap, mReaderMethodMap COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
   }else{
     var_cas_inTypeMethodName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("a map index only accepts 'regularIndex' type method") COMMA_SOURCE_FILE_AT_LINE (3231)) ;
     var_cas_outTypeMethodSignature.drop () ;
@@ -35544,7 +35544,7 @@ _internalPrependValues (const GGS_location & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_lazyAttributeList::
-_addAssign_operation (const GGS_location & argument_0,
+addAssign_operation (const GGS_location & argument_0,
                                 const GGS_typeListeAttributsSemantiques & argument_1,
                                 const GGS_typeInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -35641,7 +35641,7 @@ constructor_listWithValue (const GGS_location & argument_0,
                                 const GGS_typeInstructionList & argument_2) {
   GGS_L_lazyAttributeList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -35660,7 +35660,7 @@ internalSubListWithRange (GGS_L_lazyAttributeList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLocationMagicNumber, ptr->mComputedAttributeTypeAndNameList, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mLocationMagicNumber, ptr->mComputedAttributeTypeAndNameList, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -36013,7 +36013,7 @@ method_handleModifierCall (C_Compiler & inLexique,
       if (((var_cas_inModifierName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3304))).operator_isEqual (var_cas_testedModifierName)).isBuiltAndTrue ()) {
         var_cas_found = GGS_bool (true) ;
         if ((operand_141332->mInfo.mHasSetter).isBuiltAndTrue ()) {
-          var_cas_outModifierSignature._addAssign_operation (operand_141332->mInfo.mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+          var_cas_outModifierSignature.addAssign_operation (operand_141332->mInfo.mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
         }else{
           var_cas_inModifierName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((GGS_string ("This modifier corresponds to the '")).operator_concat (operand_141332->mKey)).operator_concat (GGS_string ("' attribute that is not declared as settable")) COMMA_SOURCE_FILE_AT_LINE (3310)) ;
           operand_141332->mKey.reader_location (inLexique COMMA_HERE).signalGGSSemanticWarning (inLexique, GGS_string ("attribute declaration pointed out by previous error") COMMA_SOURCE_FILE_AT_LINE (3310)) ;
@@ -37271,7 +37271,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumModifierDefinitionList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_typeInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -37368,7 +37368,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_2) {
   GGS_enumModifierDefinitionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -37387,7 +37387,7 @@ internalSubListWithRange (GGS_enumModifierDefinitionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSourceState, ptr->mTargetState, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mSourceState, ptr->mTargetState, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -38145,7 +38145,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumMethodDefinitionList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -38235,7 +38235,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   GGS_enumMethodDefinitionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -38254,7 +38254,7 @@ internalSubListWithRange (GGS_enumMethodDefinitionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSourceState, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mSourceState, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -39015,7 +39015,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_enumOperatorDefinitionList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_luint & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_luint & argument_3,
@@ -39140,7 +39140,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_6) {
   GGS_enumOperatorDefinitionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4, argument_5, argument_6) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4, argument_5, argument_6) ;
   return result ;
 }
 
@@ -39159,7 +39159,7 @@ internalSubListWithRange (GGS_enumOperatorDefinitionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLeftSourceState, ptr->mLeftSourceStateIndex, ptr->mRightSourceState, ptr->mRightSourceStateIndex, ptr->mTargetState, ptr->mTargetStateIndex, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mLeftSourceState, ptr->mLeftSourceStateIndex, ptr->mRightSourceState, ptr->mRightSourceStateIndex, ptr->mTargetState, ptr->mTargetStateIndex, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -43676,7 +43676,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_labelForPopUpList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_uint & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_uint & argument_3) {
@@ -43780,7 +43780,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_uint & argument_3) {
   GGS_labelForPopUpList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -43799,7 +43799,7 @@ internalSubListWithRange (GGS_labelForPopUpList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mTerminal1, ptr->mTerminal1ID, ptr->mTerminal2, ptr->mTerminal2ID) ;
+      ioList.addAssign_operation (ptr->mTerminal1, ptr->mTerminal1ID, ptr->mTerminal2, ptr->mTerminal2ID) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -44195,7 +44195,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_EXtextMacroList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -44285,7 +44285,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_EXtextMacroList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -44304,7 +44304,7 @@ internalSubListWithRange (GGS_EXtextMacroList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mKey, ptr->mContents) ;
+      ioList.addAssign_operation (ptr->mKey, ptr->mContents) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -44564,22 +44564,22 @@ void routine_handleStringReaderCall (C_Compiler & inLexique,
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3827))).operator_isEqual (GGS_string ("directoryExists"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3829))).operator_isEqual (GGS_string ("characterAtIndex"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_outReturnedType = GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3832))).operator_isEqual (GGS_string ("stringByRemovingCharacterAtIndex"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3835))).operator_isEqual (GGS_string ("pathExtension"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3837))).operator_isEqual (GGS_string ("rightSubString"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3840))).operator_isEqual (GGS_string ("leftSubString"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3843))).operator_isEqual (GGS_string ("subString"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3847))).operator_isEqual (GGS_string ("nativePathWithUnixPath"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
@@ -44599,26 +44599,26 @@ void routine_handleStringReaderCall (C_Compiler & inLexique,
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3863))).operator_isEqual (GGS_string ("stringByLeftPadding"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3867))).operator_isEqual (GGS_string ("stringByRightPadding"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3871))).operator_isEqual (GGS_string ("stringByLeftAndRightPadding"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_char ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3875))).operator_isEqual (GGS_string ("absolutePathFromPath"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3878))).operator_isEqual (GGS_string ("relativePathFromPath"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3881))).operator_isEqual (GGS_string ("stringByReplacingStringByString"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3885))).operator_isEqual (GGS_string ("lowercaseString"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3887))).operator_isEqual (GGS_string ("uppercaseString"))).isBuiltAndTrue ()) {
@@ -44626,25 +44626,25 @@ void routine_handleStringReaderCall (C_Compiler & inLexique,
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3889))).operator_isEqual (GGS_string ("reversedString"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3891))).operator_isEqual (GGS_string ("componentsSeparatedByString"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3893)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3894))).operator_isEqual (GGS_string ("regularFiles"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3896)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3897))).operator_isEqual (GGS_string ("hiddenFiles"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3899)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3900))).operator_isEqual (GGS_string ("directories"))).isBuiltAndTrue ()) {
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
     ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3902)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3903))).operator_isEqual (GGS_string ("directoriesWithExtensions"))).isBuiltAndTrue ()) {
     ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3904)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3907))).operator_isEqual (GGS_string ("regularFilesWithExtensions"))).isBuiltAndTrue ()) {
     ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (3908)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-    var_cas_outAccessorTypesList._addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+    var_cas_outAccessorTypesList.addAssign_operation (var_cas_outReturnedType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
   }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3911))).operator_isEqual (GGS_string ("system"))).isBuiltAndTrue ()) {
     var_cas_outReturnedType = GGS_typeGalgas_sint ::constructor_new (inLexique COMMA_HERE) ;
   }else{
@@ -44695,19 +44695,19 @@ void routine_handleReaderCall (C_Compiler & inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3951))).operator_isEqual (GGS_string ("directoryExistsAtPath"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3955))).operator_isEqual (GGS_string ("fileExistsAtPath"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3959))).operator_isEqual (GGS_string ("fileContentsAtPath"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3963))).operator_isEqual (GGS_string ("absolutePathForPath"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
           }else{
             var_cas_inReaderName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (3970)) ;
@@ -44778,130 +44778,130 @@ void routine_handleReaderCall (C_Compiler & inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4031))).operator_isEqual (GGS_string ("ITE"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4036))).operator_isEqual (GGS_string ("forAllOnBitIndex"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4040))).operator_isEqual (GGS_string ("forAllOnBitIndexAndBeyond"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4044))).operator_isEqual (GGS_string ("existOnBitIndex"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4048))).operator_isEqual (GGS_string ("existOnBitIndexAndBeyond"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4052))).operator_isEqual (GGS_string ("valueCount"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4056))).operator_isEqual (GGS_string ("compressedValueCount"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
             var_cas_outReturnedType = GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4059))).operator_isEqual (GGS_string ("uint64ValueList"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             ::routine_build_uint64list_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (4062)) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4063))).operator_isEqual (GGS_string ("stringValueList"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (4066)) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4067))).operator_isEqual (GGS_string ("predicateStringValue"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
             var_cas_outReturnedType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4070))).operator_isEqual (GGS_string ("compressedStringValueList"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (4073)) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4074))).operator_isEqual (GGS_string ("swap21"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4079))).operator_isEqual (GGS_string ("swap132"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4085))).operator_isEqual (GGS_string ("swap213"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4091))).operator_isEqual (GGS_string ("swap231"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4097))).operator_isEqual (GGS_string ("swap312"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4103))).operator_isEqual (GGS_string ("swap321"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4109))).operator_isEqual (GGS_string ("transitiveClosure"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4113))).operator_isEqual (GGS_string ("accessibleStates"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4118))).operator_isEqual (GGS_string ("equalTo"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4122))).operator_isEqual (GGS_string ("notEqualTo"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4126))).operator_isEqual (GGS_string ("lowerOrEqualTo"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4130))).operator_isEqual (GGS_string ("greaterOrEqualTo"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4134))).operator_isEqual (GGS_string ("greaterThan"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4138))).operator_isEqual (GGS_string ("lowerThan"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_inReceiverType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4142))).operator_isEqual (GGS_string ("binarySetByTranslatingFromIndex"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4147))).operator_isEqual (GGS_string ("containsValue"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint64 ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4153))).operator_isEqual (GGS_string ("existsOnBitRange"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else{
             var_cas_inReaderName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (4161)) ;
@@ -45019,8 +45019,8 @@ void routine_handleReaderCall (C_Compiler & inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4269))).operator_isEqual (GGS_string ("uintSlice"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4274))).operator_isEqual (GGS_string ("string"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
@@ -45217,16 +45217,16 @@ void routine_handleReaderCall (C_Compiler & inLexique,
             var_cas_outReturnedType = GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4453))).operator_isEqual (GGS_string ("subListFromIndex"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4457))).operator_isEqual (GGS_string ("subListWithRange"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
           }else{
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_uint ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_inReceiverType ;
             GGS_typeListeAttributsSemantiques  var_cas_attributeList ;
             var_cas_attributeList = var_cas_listType.reader_mAttributeList (inLexique COMMA_SOURCE_FILE_AT_LINE (4466)) ;
@@ -45260,11 +45260,11 @@ void routine_handleReaderCall (C_Compiler & inLexique,
         }else if (dynamic_cast <cPtr_typeGalgasMapType *> (_var_211436.getPtr ()) != NULL) {
           if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4488))).operator_isEqual (GGS_string ("hasKey"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4492))).operator_isEqual (GGS_string ("locationForKey"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4496))).operator_isEqual (GGS_string ("count"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
@@ -45290,7 +45290,7 @@ void routine_handleReaderCall (C_Compiler & inLexique,
           const GGS_typeGalgasListmapType var_cas_mapType (_var_211436.getPtr ()) ;
           if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4516))).operator_isEqual (GGS_string ("hasKey"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4520))).operator_isEqual (GGS_string ("allKeys"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
@@ -45303,7 +45303,7 @@ void routine_handleReaderCall (C_Compiler & inLexique,
             ::routine_build_stringlist_type (inLexique,  var_cas_outReturnedType COMMA_SOURCE_FILE_AT_LINE (4528)) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4529))).operator_isEqual (GGS_string ("listForKey"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
-            var_cas_outAccessorTypesList._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = var_cas_mapType.reader_mListType (inLexique COMMA_SOURCE_FILE_AT_LINE (4532)) ;
           }else{
             var_cas_inReaderName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this reader is not defined") COMMA_SOURCE_FILE_AT_LINE (4536)) ;
@@ -45315,7 +45315,7 @@ void routine_handleReaderCall (C_Compiler & inLexique,
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
             GGS_AC_galgasType  var_cas_keyType ;
             var_cas_keyType = GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE) ;
-            var_cas_outAccessorTypesList._addAssign_operation (var_cas_keyType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+            var_cas_outAccessorTypesList.addAssign_operation (var_cas_keyType, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
             var_cas_outReturnedType = GGS_typeGalgas_bool ::constructor_new (inLexique COMMA_HERE) ;
           }else if (((var_cas_inReaderName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4543))).operator_isEqual (GGS_string ("count"))).isBuiltAndTrue ()) {
             var_cas_outAccessorTypesList = GGS_typeListeAttributsSemantiques ::constructor_emptyList () ;
@@ -45446,7 +45446,7 @@ void routine_handleReaderCall (C_Compiler & inLexique,
                 const GGS_L_EXsignature::cElement * operand_210158 = NULL ;
                 while (((operand_210158 = enumerator_210158.nextObject ()))) {
                   macroValidPointer (operand_210158) ;
-                  var_cas_outAccessorTypesList._addAssign_operation (operand_210158->mType, GGS_lstring ::constructor_new (inLexique, GGS_string ("\?"), GGS_location (inLexique) COMMA_HERE)) ;
+                  var_cas_outAccessorTypesList.addAssign_operation (operand_210158->mType, GGS_lstring ::constructor_new (inLexique, GGS_string ("\?"), GGS_location (inLexique) COMMA_HERE)) ;
                 }
               }
             }
@@ -45553,7 +45553,7 @@ void routine_importSemanticsComponent (C_Compiler & inLexique,
         }
       }
     }
-    var_cas_ioAlreadyImportedSemanticsComponents._addAssign_operation (var_cas_inSemanticsComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4710))) ;
+    var_cas_ioAlreadyImportedSemanticsComponents.addAssign_operation (var_cas_inSemanticsComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4710))) ;
   }
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_importSemanticsComponent\n") ;
@@ -45831,7 +45831,7 @@ _internalPrependValues (const GGS_templateInstruction & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_templateInstructionList::
-_addAssign_operation (const GGS_templateInstruction & argument_0) {
+addAssign_operation (const GGS_templateInstruction & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -45914,7 +45914,7 @@ GGS_templateInstructionList  GGS_templateInstructionList::
 constructor_listWithValue (const GGS_templateInstruction & argument_0) {
   GGS_templateInstructionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -45933,7 +45933,7 @@ internalSubListWithRange (GGS_templateInstructionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mInstruction) ;
+      ioList.addAssign_operation (ptr->mInstruction) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -47132,7 +47132,7 @@ _internalPrependValues (const GGS_typeExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_templateInstructionIfBranchList::
-_addAssign_operation (const GGS_typeExpression & argument_0,
+addAssign_operation (const GGS_typeExpression & argument_0,
                                 const GGS_templateInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -47222,7 +47222,7 @@ constructor_listWithValue (const GGS_typeExpression & argument_0,
                                 const GGS_templateInstructionList & argument_1) {
   GGS_templateInstructionIfBranchList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -47241,7 +47241,7 @@ internalSubListWithRange (GGS_templateInstructionIfBranchList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mExpression, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mExpression, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }

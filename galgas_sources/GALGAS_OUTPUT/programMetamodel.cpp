@@ -143,7 +143,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionList & argument_3) {
@@ -247,7 +247,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_semanticInstructionList & argument_3) {
   GGS_programRuleList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -266,7 +266,7 @@ internalSubListWithRange (GGS_programRuleList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSourceFileExtension, ptr->mSourceFileHelp, ptr->mSourceFileVariableName, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mSourceFileExtension, ptr->mSourceFileHelp, ptr->mSourceFileVariableName, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }

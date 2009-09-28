@@ -588,7 +588,7 @@ void routine_compileOptionComponent (C_Compiler & inLexique,
       }else{
         operand_5540->mOptionTypeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only the @bool, @uint or @string types are allowed here") COMMA_SOURCE_FILE_AT_LINE (144)) ;
       }
-      var_cas_optionNameSet._addAssign_operation (operand_5540->mOptionInternalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (145))) ;
+      var_cas_optionNameSet.addAssign_operation (operand_5540->mOptionInternalName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (145))) ;
     }
   }
   if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE)).operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {

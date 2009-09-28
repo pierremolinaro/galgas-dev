@@ -121,7 +121,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -211,7 +211,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   GGS_XcodeObjectReferenceList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -230,7 +230,7 @@ internalSubListWithRange (GGS_XcodeObjectReferenceList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mRefString, ptr->mComment) ;
+      ioList.addAssign_operation (ptr->mRefString, ptr->mComment) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -3964,7 +3964,7 @@ _internalPrependValues (const GGS_Xcode_PBXBuildFile & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-_addAssign_operation (const GGS_Xcode_PBXBuildFile & argument_0) {
+addAssign_operation (const GGS_Xcode_PBXBuildFile & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -4047,7 +4047,7 @@ GGS_Xcode_PBXBuildFile_list  GGS_Xcode_PBXBuildFile_list::
 constructor_listWithValue (const GGS_Xcode_PBXBuildFile & argument_0) {
   GGS_Xcode_PBXBuildFile_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -4066,7 +4066,7 @@ internalSubListWithRange (GGS_Xcode_PBXBuildFile_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mFile) ;
+      ioList.addAssign_operation (ptr->mFile) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -4536,7 +4536,7 @@ _internalPrependValues (const GGS_Xcode_PBXSourcesBuildPhase & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-_addAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
+addAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -4619,7 +4619,7 @@ GGS_Xcode_PBXSourcesBuildPhase_list  GGS_Xcode_PBXSourcesBuildPhase_list::
 constructor_listWithValue (const GGS_Xcode_PBXSourcesBuildPhase & argument_0) {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -4638,7 +4638,7 @@ internalSubListWithRange (GGS_Xcode_PBXSourcesBuildPhase_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mBuildPhase) ;
+      ioList.addAssign_operation (ptr->mBuildPhase) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -5108,7 +5108,7 @@ _internalPrependValues (const GGS_Xcode_PBXResourcesBuildPhase & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-_addAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) {
+addAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -5191,7 +5191,7 @@ GGS_Xcode_PBXResourcesBuildPhase_list  GGS_Xcode_PBXResourcesBuildPhase_list::
 constructor_listWithValue (const GGS_Xcode_PBXResourcesBuildPhase & argument_0) {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -5210,7 +5210,7 @@ internalSubListWithRange (GGS_Xcode_PBXResourcesBuildPhase_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mBuildPhase) ;
+      ioList.addAssign_operation (ptr->mBuildPhase) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -5708,7 +5708,7 @@ _internalPrependValues (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-_addAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) {
+addAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -5791,7 +5791,7 @@ GGS_Xcode_PBXFrameworksBuildPhase_list  GGS_Xcode_PBXFrameworksBuildPhase_list::
 constructor_listWithValue (const GGS_Xcode_PBXFrameworksBuildPhase & argument_0) {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -5810,7 +5810,7 @@ internalSubListWithRange (GGS_Xcode_PBXFrameworksBuildPhase_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mBuildPhase) ;
+      ioList.addAssign_operation (ptr->mBuildPhase) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -6300,7 +6300,7 @@ _internalPrependValues (const GGS_Xcode_PBXGroup & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-_addAssign_operation (const GGS_Xcode_PBXGroup & argument_0) {
+addAssign_operation (const GGS_Xcode_PBXGroup & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -6383,7 +6383,7 @@ GGS_Xcode_PBXGroup_list  GGS_Xcode_PBXGroup_list::
 constructor_listWithValue (const GGS_Xcode_PBXGroup & argument_0) {
   GGS_Xcode_PBXGroup_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -6402,7 +6402,7 @@ internalSubListWithRange (GGS_Xcode_PBXGroup_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mGroup) ;
+      ioList.addAssign_operation (ptr->mGroup) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -6885,7 +6885,7 @@ _internalPrependValues (const GGS_Xcode_XCBuildConfiguration & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-_addAssign_operation (const GGS_Xcode_XCBuildConfiguration & argument_0) {
+addAssign_operation (const GGS_Xcode_XCBuildConfiguration & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -6968,7 +6968,7 @@ GGS_Xcode_XCBuildConfiguration_list  GGS_Xcode_XCBuildConfiguration_list::
 constructor_listWithValue (const GGS_Xcode_XCBuildConfiguration & argument_0) {
   GGS_Xcode_XCBuildConfiguration_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -6987,7 +6987,7 @@ internalSubListWithRange (GGS_Xcode_XCBuildConfiguration_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mBuildConfig) ;
+      ioList.addAssign_operation (ptr->mBuildConfig) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -7305,7 +7305,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_Xcode_XCBuildConfiguration & argument_2,
                                 const GGS_string& argument_3,
@@ -7437,7 +7437,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_stringlist & argument_7) {
   GGS_Xcode_PBXNativeTarget_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4, argument_5, argument_6, argument_7) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4, argument_5, argument_6, argument_7) ;
   return result ;
 }
 
@@ -7456,7 +7456,7 @@ internalSubListWithRange (GGS_Xcode_PBXNativeTarget_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mTargetKey, ptr->mTargetName, ptr->mTargetConfiguration, ptr->mProductInstallPath, ptr->mProductName, ptr->mProduct, ptr->mBuildPhaseKeyList, ptr->mDependencyKeyList) ;
+      ioList.addAssign_operation (ptr->mTargetKey, ptr->mTargetName, ptr->mTargetConfiguration, ptr->mProductInstallPath, ptr->mProductName, ptr->mProduct, ptr->mBuildPhaseKeyList, ptr->mDependencyKeyList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -8242,7 +8242,7 @@ _internalPrependValues (const GGS_Xcode_targetDependencyDescription & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-_addAssign_operation (const GGS_Xcode_targetDependencyDescription & argument_0) {
+addAssign_operation (const GGS_Xcode_targetDependencyDescription & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -8325,7 +8325,7 @@ GGS_Xcode_targetDependencyDescription_list  GGS_Xcode_targetDependencyDescriptio
 constructor_listWithValue (const GGS_Xcode_targetDependencyDescription & argument_0) {
   GGS_Xcode_targetDependencyDescription_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -8344,7 +8344,7 @@ internalSubListWithRange (GGS_Xcode_targetDependencyDescription_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mDependency) ;
+      ioList.addAssign_operation (ptr->mDependency) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -8607,7 +8607,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_string& argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -8704,7 +8704,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_2) {
   GGS_Xcode_PBXVariantGroup_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -8723,7 +8723,7 @@ internalSubListWithRange (GGS_Xcode_PBXVariantGroup_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mPBXVariantKey, ptr->mPBXFileReferenceKey, ptr->mName) ;
+      ioList.addAssign_operation (ptr->mPBXVariantKey, ptr->mPBXFileReferenceKey, ptr->mName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -9218,8 +9218,8 @@ void routine_enter_group (C_Compiler & inLexique,
   #endif
   GGS_Xcode_PBXGroup  var_cas_group ;
   var_cas_group = GGS_Xcode_PBXGroup ::constructor_new (inLexique, var_cas_inGroupName, var_cas_inGroupPath, var_cas_inGroupContentsKeyList COMMA_HERE) ;
-  var_cas_ioDescription.mProjectGroupList._addAssign_operation (var_cas_group) ;
-  var_cas_ioDescription.mMainGroupChildrenList._addAssign_operation (var_cas_group.reader_PBXGroupKey (inLexique COMMA_SOURCE_FILE_AT_LINE (479)), var_cas_inGroupName) ;
+  var_cas_ioDescription.mProjectGroupList.addAssign_operation (var_cas_group) ;
+  var_cas_ioDescription.mMainGroupChildrenList.addAssign_operation (var_cas_group.reader_PBXGroupKey (inLexique COMMA_SOURCE_FILE_AT_LINE (479)), var_cas_inGroupName) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_group\n") ;
   #endif
@@ -9242,8 +9242,8 @@ void routine_enter_subgroup (C_Compiler & inLexique,
   #endif
   GGS_Xcode_PBXGroup  var_cas_group ;
   var_cas_group = GGS_Xcode_PBXGroup ::constructor_new (inLexique, var_cas_inSubGroupName, var_cas_inSubGroupPath, var_cas_inSubGroupContentsKeyList COMMA_HERE) ;
-  var_cas_ioDescription.mProjectGroupList._addAssign_operation (var_cas_group) ;
-  var_cas_ioSuperGroupContentsKeyList._addAssign_operation (var_cas_group.reader_PBXGroupKey (inLexique COMMA_SOURCE_FILE_AT_LINE (501)), var_cas_inSubGroupName) ;
+  var_cas_ioDescription.mProjectGroupList.addAssign_operation (var_cas_group) ;
+  var_cas_ioSuperGroupContentsKeyList.addAssign_operation (var_cas_group.reader_PBXGroupKey (inLexique COMMA_SOURCE_FILE_AT_LINE (501)), var_cas_inSubGroupName) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_subgroup\n") ;
   #endif
@@ -9261,8 +9261,8 @@ void routine_append_cpp_h_files (C_Compiler &,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_append_cpp_h_files at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  var_cas_ioList._addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".cpp"))) ;
-  var_cas_ioList._addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".h"))) ;
+  var_cas_ioList.addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".cpp"))) ;
+  var_cas_ioList.addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".h"))) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_append_cpp_h_files\n") ;
   #endif
@@ -9280,8 +9280,8 @@ void routine_append_m_h_files (C_Compiler &,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_append_m_h_files at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  var_cas_ioList._addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".m"))) ;
-  var_cas_ioList._addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".h"))) ;
+  var_cas_ioList.addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".m"))) ;
+  var_cas_ioList.addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".h"))) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_append_m_h_files\n") ;
   #endif
@@ -9299,8 +9299,8 @@ void routine_append_mm_h_files (C_Compiler &,
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_append_mm_h_files at %s:%d\n", __FILE__, __LINE__) ;
   #endif
-  var_cas_ioList._addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".mm"))) ;
-  var_cas_ioList._addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".h"))) ;
+  var_cas_ioList.addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".mm"))) ;
+  var_cas_ioList.addAssign_operation ((var_cas_inBaseName).operator_concat (GGS_string (".h"))) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_append_mm_h_files\n") ;
   #endif
@@ -9324,7 +9324,7 @@ void routine_enter_cpp_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_cppSourceFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_cppSourceFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (534)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (535)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (535)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_cpp_file_in_group\n") ;
   #endif
@@ -9348,7 +9348,7 @@ void routine_enter_h_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_hSourceFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_hSourceFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (547)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (548)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (548)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_h_file_in_group\n") ;
   #endif
@@ -9372,7 +9372,7 @@ void routine_enter_pch_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_pchSourceFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_pchSourceFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (560)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (561)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (561)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_pch_file_in_group\n") ;
   #endif
@@ -9396,7 +9396,7 @@ void routine_enter_m_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_mSourceFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_mSourceFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (573)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (574)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (574)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_m_file_in_group\n") ;
   #endif
@@ -9420,7 +9420,7 @@ void routine_enter_mm_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_mmSourceFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_mmSourceFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (586)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (587)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (587)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_mm_file_in_group\n") ;
   #endif
@@ -9444,7 +9444,7 @@ void routine_enter_gif_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_gifFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_gifFile ::constructor_new (inLexique, var_cas_inFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (599)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (600)), var_cas_inFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (600)), var_cas_inFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_gif_file_in_group\n") ;
   #endif
@@ -9468,7 +9468,7 @@ void routine_enter_tiff_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_tiffFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_tiffFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (612)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (613)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (613)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_tiff_file_in_group\n") ;
   #endif
@@ -9492,7 +9492,7 @@ void routine_enter_png_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_pngFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_pngFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (625)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (626)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (626)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_png_file_in_group\n") ;
   #endif
@@ -9516,7 +9516,7 @@ void routine_enter_plist_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_plistFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_plistFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (638)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (639)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (639)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_plist_file_in_group\n") ;
   #endif
@@ -9540,7 +9540,7 @@ void routine_enter_framework_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_frameworkFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_frameworkFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (651)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (652)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (652)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_framework_file_in_group\n") ;
   #endif
@@ -9564,7 +9564,7 @@ void routine_enter_icns_file_in_group (C_Compiler & inLexique,
   GGS_Xcode_PBXFileReference_icnsFile  var_cas_ref ;
   var_cas_ref = GGS_Xcode_PBXFileReference_icnsFile ::constructor_new (inLexique, var_cas_inCppFile COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (664)) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (665)), var_cas_inCppFile) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (665)), var_cas_inCppFile) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_icns_file_in_group\n") ;
   #endif
@@ -9662,8 +9662,8 @@ void routine_enter_xib_in_group (C_Compiler & inLexique,
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (728)) ;
   GGS_string var_cas_PBXVariantGroupKey ;
   var_cas_PBXVariantGroupKey = GGS_uint ::constructor_sequenceNumber (inLexique COMMA_HERE).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (729)).reader_md5 (inLexique COMMA_SOURCE_FILE_AT_LINE (729)).reader_rightSubString (inLexique, GGS_uint (24U) COMMA_SOURCE_FILE_AT_LINE (729)) ;
-  var_cas_ioXcodeProjectDescription.mPBXVariantGroup_list._addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (732)), var_cas_in_xib_fileName) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_in_xib_fileName) ;
+  var_cas_ioXcodeProjectDescription.mPBXVariantGroup_list.addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (732)), var_cas_in_xib_fileName) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_in_xib_fileName) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_xib_in_group\n") ;
   #endif
@@ -9690,8 +9690,8 @@ void routine_enter_plist_strings_in_group (C_Compiler & inLexique,
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_key, var_cas_ref COMMA_SOURCE_FILE_AT_LINE (751)) ;
   GGS_string var_cas_PBXVariantGroupKey ;
   var_cas_PBXVariantGroupKey = GGS_uint ::constructor_sequenceNumber (inLexique COMMA_HERE).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (752)).reader_md5 (inLexique COMMA_SOURCE_FILE_AT_LINE (752)).reader_rightSubString (inLexique, GGS_uint (24U) COMMA_SOURCE_FILE_AT_LINE (752)) ;
-  var_cas_ioXcodeProjectDescription.mPBXVariantGroup_list._addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (755)), var_cas_in_plist_string_fileName) ;
-  var_cas_ioFileListForGroup._addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_in_plist_string_fileName) ;
+  var_cas_ioXcodeProjectDescription.mPBXVariantGroup_list.addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_ref.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (755)), var_cas_in_plist_string_fileName) ;
+  var_cas_ioFileListForGroup.addAssign_operation (var_cas_PBXVariantGroupKey, var_cas_in_plist_string_fileName) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_plist_strings_in_group\n") ;
   #endif
@@ -9719,8 +9719,8 @@ void routine_enter_file_for_sources_build_phase (C_Compiler & inLexique,
   }
   GGS_Xcode_PBXBuildFile  var_cas_build_file ;
   var_cas_build_file = GGS_Xcode_PBXBuildFile ::constructor_new (inLexique, var_cas_ref COMMA_HERE) ;
-  var_cas_ioXcodeProjectDescription.mAllBuildFileList._addAssign_operation (var_cas_build_file) ;
-  var_cas_ioBuildPhaseList._addAssign_operation (var_cas_build_file) ;
+  var_cas_ioXcodeProjectDescription.mAllBuildFileList.addAssign_operation (var_cas_build_file) ;
+  var_cas_ioBuildPhaseList.addAssign_operation (var_cas_build_file) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enter_file_for_sources_build_phase\n") ;
   #endif
@@ -9779,8 +9779,8 @@ void routine_enter_files_for_resources_build_phase (C_Compiler & inLexique,
       }
       GGS_Xcode_PBXBuildFile  var_cas_build_file ;
       var_cas_build_file = GGS_Xcode_PBXBuildFile ::constructor_new (inLexique, var_cas_ref COMMA_HERE) ;
-      var_cas_ioXcodeProjectDescription.mAllBuildFileList._addAssign_operation (var_cas_build_file) ;
-      var_cas_ioBuildPhaseList._addAssign_operation (var_cas_build_file) ;
+      var_cas_ioXcodeProjectDescription.mAllBuildFileList.addAssign_operation (var_cas_build_file) ;
+      var_cas_ioBuildPhaseList.addAssign_operation (var_cas_build_file) ;
     }
   }
   #ifdef DEBUG_TRACE_ENABLED
@@ -9815,8 +9815,8 @@ void routine_enter_files_for_frameworks_build_phase (C_Compiler & inLexique,
       }
       GGS_Xcode_PBXBuildFile  var_cas_build_file ;
       var_cas_build_file = GGS_Xcode_PBXBuildFile ::constructor_new (inLexique, var_cas_ref COMMA_HERE) ;
-      var_cas_ioXcodeProjectDescription.mAllBuildFileList._addAssign_operation (var_cas_build_file) ;
-      var_cas_ioBuildPhaseList._addAssign_operation (var_cas_build_file) ;
+      var_cas_ioXcodeProjectDescription.mAllBuildFileList.addAssign_operation (var_cas_build_file) ;
+      var_cas_ioBuildPhaseList.addAssign_operation (var_cas_build_file) ;
     }
   }
   #ifdef DEBUG_TRACE_ENABLED
@@ -9848,7 +9848,7 @@ void routine_add_tool_target (C_Compiler & inLexique,
   GGS_lstring  var_cas_projectNameKey ;
   var_cas_projectNameKey = GGS_lstring ::constructor_new (inLexique, var_cas_inProductFileName, GGS_location (inLexique) COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_projectNameKey, var_cas_toolFileReference COMMA_SOURCE_FILE_AT_LINE (897)) ;
-  var_cas_ioXcodeProjectDescription.mProductGroupChildrenList._addAssign_operation (var_cas_toolFileReference.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (899)), var_cas_inTargetName) ;
+  var_cas_ioXcodeProjectDescription.mProductGroupChildrenList.addAssign_operation (var_cas_toolFileReference.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (899)), var_cas_inTargetName) ;
   GGS_Xcode_PBXSourcesBuildPhase  var_cas_compileSourcesBuildPhase ;
   var_cas_compileSourcesBuildPhase = GGS_Xcode_PBXSourcesBuildPhase ::constructor_new (inLexique, GGS_string ("Sources"), var_cas_inSourcesToCompileKeyList COMMA_HERE) ;
   GGS_stringlist  var_cas_buildPhases ;
@@ -9856,20 +9856,20 @@ void routine_add_tool_target (C_Compiler & inLexique,
   if (((var_cas_inFrameworkKeyList.reader_length (inLexique COMMA_SOURCE_FILE_AT_LINE (907))).operator_strictSup (GGS_uint (0U))).isBuiltAndTrue ()) {
     GGS_Xcode_PBXFrameworksBuildPhase  var_cas_frameworksBuildPhase ;
     var_cas_frameworksBuildPhase = GGS_Xcode_PBXFrameworksBuildPhase ::constructor_new (inLexique, GGS_string ("Frameworks"), var_cas_inFrameworkKeyList COMMA_HERE) ;
-    var_cas_ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list._addAssign_operation (var_cas_frameworksBuildPhase) ;
-    var_cas_buildPhases._addAssign_operation (var_cas_frameworksBuildPhase.reader_PBXFrameworksBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (913))) ;
+    var_cas_ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list.addAssign_operation (var_cas_frameworksBuildPhase) ;
+    var_cas_buildPhases.addAssign_operation (var_cas_frameworksBuildPhase.reader_PBXFrameworksBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (913))) ;
   }
-  var_cas_ioXcodeProjectDescription.mPBXSourcesBuildPhase_list._addAssign_operation (var_cas_compileSourcesBuildPhase) ;
+  var_cas_ioXcodeProjectDescription.mPBXSourcesBuildPhase_list.addAssign_operation (var_cas_compileSourcesBuildPhase) ;
   if (((var_cas_inPrecompiledHeaderPath).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
-    var_cas_inTargetSettings._addAssign_operation (GGS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES;")) ;
-    var_cas_inTargetSettings._addAssign_operation (((GGS_string ("GCC_PREFIX_HEADER = \"")).operator_concat (var_cas_inPrecompiledHeaderPath)).operator_concat (GGS_string ("\";"))) ;
+    var_cas_inTargetSettings.addAssign_operation (GGS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES;")) ;
+    var_cas_inTargetSettings.addAssign_operation (((GGS_string ("GCC_PREFIX_HEADER = \"")).operator_concat (var_cas_inPrecompiledHeaderPath)).operator_concat (GGS_string ("\";"))) ;
   }
-  var_cas_inTargetSettings._addAssign_operation (((GGS_string ("PRODUCT_NAME = \"")).operator_concat (var_cas_inProductFileName)).operator_concat (GGS_string ("\";"))) ;
+  var_cas_inTargetSettings.addAssign_operation (((GGS_string ("PRODUCT_NAME = \"")).operator_concat (var_cas_inProductFileName)).operator_concat (GGS_string ("\";"))) ;
   GGS_Xcode_XCBuildConfiguration  var_cas_toolTargetBuildConfiguration ;
   var_cas_toolTargetBuildConfiguration = GGS_Xcode_XCBuildConfiguration ::constructor_new (inLexique, var_cas_inTargetSettings COMMA_HERE) ;
-  var_cas_ioXcodeProjectDescription.mBuildConfigurationList._addAssign_operation (var_cas_toolTargetBuildConfiguration) ;
+  var_cas_ioXcodeProjectDescription.mBuildConfigurationList.addAssign_operation (var_cas_toolTargetBuildConfiguration) ;
   var_cas_outTargetKey = GGS_uint ::constructor_sequenceNumber (inLexique COMMA_HERE).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (924)).reader_md5 (inLexique COMMA_SOURCE_FILE_AT_LINE (924)).reader_rightSubString (inLexique, GGS_uint (24U) COMMA_SOURCE_FILE_AT_LINE (924)) ;
-  var_cas_ioXcodeProjectDescription.mTargetList._addAssign_operation (var_cas_outTargetKey, var_cas_inTargetName, var_cas_toolTargetBuildConfiguration, GGS_string ("$(HOME)/bin"), var_cas_inProductFileName, var_cas_toolFileReference, var_cas_buildPhases, var_cas_inDirectDependencyList) ;
+  var_cas_ioXcodeProjectDescription.mTargetList.addAssign_operation (var_cas_outTargetKey, var_cas_inTargetName, var_cas_toolTargetBuildConfiguration, GGS_string ("$(HOME)/bin"), var_cas_inProductFileName, var_cas_toolFileReference, var_cas_buildPhases, var_cas_inDirectDependencyList) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_add_tool_target\n") ;
   #endif
@@ -9903,29 +9903,29 @@ void routine_add_app_target (C_Compiler & inLexique,
   GGS_lstring  var_cas_projectNameKey ;
   var_cas_projectNameKey = GGS_lstring ::constructor_new (inLexique, var_cas_inProductFileName, GGS_location (inLexique) COMMA_HERE) ;
   var_cas_ioXcodeProjectDescription.mFileReferenceMap.modifier_insertKey (inLexique, var_cas_projectNameKey, var_cas_toolFileReference COMMA_SOURCE_FILE_AT_LINE (956)) ;
-  var_cas_ioXcodeProjectDescription.mProductGroupChildrenList._addAssign_operation (var_cas_toolFileReference.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (958)), var_cas_inTargetName) ;
+  var_cas_ioXcodeProjectDescription.mProductGroupChildrenList.addAssign_operation (var_cas_toolFileReference.reader_PBXFileReferenceKey (inLexique COMMA_SOURCE_FILE_AT_LINE (958)), var_cas_inTargetName) ;
   GGS_Xcode_PBXResourcesBuildPhase  var_cas_resourcesBuildPhase ;
   var_cas_resourcesBuildPhase = GGS_Xcode_PBXResourcesBuildPhase ::constructor_new (inLexique, GGS_string ("Resources"), var_cas_inResourcesToCompileList COMMA_HERE) ;
-  var_cas_ioXcodeProjectDescription.mPBXResourcesBuildPhase_list._addAssign_operation (var_cas_resourcesBuildPhase) ;
-  var_cas_buildPhases._addAssign_operation (var_cas_resourcesBuildPhase.reader_PBXResourcesBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (965))) ;
+  var_cas_ioXcodeProjectDescription.mPBXResourcesBuildPhase_list.addAssign_operation (var_cas_resourcesBuildPhase) ;
+  var_cas_buildPhases.addAssign_operation (var_cas_resourcesBuildPhase.reader_PBXResourcesBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (965))) ;
   GGS_Xcode_PBXSourcesBuildPhase  var_cas_compileSourcesBuildPhase ;
   var_cas_compileSourcesBuildPhase = GGS_Xcode_PBXSourcesBuildPhase ::constructor_new (inLexique, GGS_string ("Sources"), var_cas_inSourcesToCompileKeyList COMMA_HERE) ;
-  var_cas_ioXcodeProjectDescription.mPBXSourcesBuildPhase_list._addAssign_operation (var_cas_compileSourcesBuildPhase) ;
-  var_cas_buildPhases._addAssign_operation (var_cas_compileSourcesBuildPhase.reader_PBXSourcesBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (972))) ;
+  var_cas_ioXcodeProjectDescription.mPBXSourcesBuildPhase_list.addAssign_operation (var_cas_compileSourcesBuildPhase) ;
+  var_cas_buildPhases.addAssign_operation (var_cas_compileSourcesBuildPhase.reader_PBXSourcesBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (972))) ;
   GGS_Xcode_PBXFrameworksBuildPhase  var_cas_frameworksBuildPhase ;
   var_cas_frameworksBuildPhase = GGS_Xcode_PBXFrameworksBuildPhase ::constructor_new (inLexique, GGS_string ("Frameworks"), var_cas_inFrameworksToCompileList COMMA_HERE) ;
-  var_cas_ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list._addAssign_operation (var_cas_frameworksBuildPhase) ;
-  var_cas_buildPhases._addAssign_operation (var_cas_frameworksBuildPhase.reader_PBXFrameworksBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (979))) ;
+  var_cas_ioXcodeProjectDescription.mPBXFrameworksBuildPhase_list.addAssign_operation (var_cas_frameworksBuildPhase) ;
+  var_cas_buildPhases.addAssign_operation (var_cas_frameworksBuildPhase.reader_PBXFrameworksBuildPhaseKey (inLexique COMMA_SOURCE_FILE_AT_LINE (979))) ;
   if (((var_cas_inPrecompiledHeaderPath).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
-    var_cas_inTargetSettings._addAssign_operation (GGS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES;")) ;
-    var_cas_inTargetSettings._addAssign_operation (((GGS_string ("GCC_PREFIX_HEADER = \"")).operator_concat (var_cas_inPrecompiledHeaderPath)).operator_concat (GGS_string ("\";"))) ;
+    var_cas_inTargetSettings.addAssign_operation (GGS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES;")) ;
+    var_cas_inTargetSettings.addAssign_operation (((GGS_string ("GCC_PREFIX_HEADER = \"")).operator_concat (var_cas_inPrecompiledHeaderPath)).operator_concat (GGS_string ("\";"))) ;
   }
   if (((var_cas_inInfoPListFile).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
-    var_cas_inTargetSettings._addAssign_operation (((GGS_string ("INFOPLIST_FILE = \"")).operator_concat (var_cas_inInfoPListFile)).operator_concat (GGS_string ("\";"))) ;
+    var_cas_inTargetSettings.addAssign_operation (((GGS_string ("INFOPLIST_FILE = \"")).operator_concat (var_cas_inInfoPListFile)).operator_concat (GGS_string ("\";"))) ;
   }
-  var_cas_inTargetSettings._addAssign_operation (GGS_string ("GCC_WARN_UNUSED_PARAMETER = NO;")) ;
-  var_cas_inTargetSettings._addAssign_operation (GGS_string ("GCC_WARN_PROTOTYPE_CONVERSION = NO;\n")) ;
-  var_cas_inTargetSettings._addAssign_operation (((GGS_string ("PRODUCT_NAME = \"")).operator_concat (var_cas_inProductFileName)).operator_concat (GGS_string ("\";"))) ;
+  var_cas_inTargetSettings.addAssign_operation (GGS_string ("GCC_WARN_UNUSED_PARAMETER = NO;")) ;
+  var_cas_inTargetSettings.addAssign_operation (GGS_string ("GCC_WARN_PROTOTYPE_CONVERSION = NO;\n")) ;
+  var_cas_inTargetSettings.addAssign_operation (((GGS_string ("PRODUCT_NAME = \"")).operator_concat (var_cas_inProductFileName)).operator_concat (GGS_string ("\";"))) ;
   GGS_stringlist  var_cas_targetDependencyKeyList ;
   var_cas_targetDependencyKeyList = GGS_stringlist ::constructor_emptyList () ;
   {
@@ -9935,15 +9935,15 @@ void routine_add_app_target (C_Compiler & inLexique,
       macroValidPointer (operand_40576) ;
       GGS_Xcode_targetDependencyDescription  var_cas_d ;
       var_cas_d = GGS_Xcode_targetDependencyDescription ::constructor_new (inLexique, operand_40576->mValue COMMA_HERE) ;
-      var_cas_targetDependencyKeyList._addAssign_operation (var_cas_d.reader_PBXTargetDependencyKey (inLexique COMMA_SOURCE_FILE_AT_LINE (995))) ;
-      var_cas_ioXcodeProjectDescription.mDependencyList._addAssign_operation (var_cas_d) ;
+      var_cas_targetDependencyKeyList.addAssign_operation (var_cas_d.reader_PBXTargetDependencyKey (inLexique COMMA_SOURCE_FILE_AT_LINE (995))) ;
+      var_cas_ioXcodeProjectDescription.mDependencyList.addAssign_operation (var_cas_d) ;
     }
   }
   GGS_Xcode_XCBuildConfiguration  var_cas_toolTargetBuildConfiguration ;
   var_cas_toolTargetBuildConfiguration = GGS_Xcode_XCBuildConfiguration ::constructor_new (inLexique, var_cas_inTargetSettings COMMA_HERE) ;
-  var_cas_ioXcodeProjectDescription.mBuildConfigurationList._addAssign_operation (var_cas_toolTargetBuildConfiguration) ;
+  var_cas_ioXcodeProjectDescription.mBuildConfigurationList.addAssign_operation (var_cas_toolTargetBuildConfiguration) ;
   var_cas_outTargetKey = GGS_uint ::constructor_sequenceNumber (inLexique COMMA_HERE).reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1001)).reader_md5 (inLexique COMMA_SOURCE_FILE_AT_LINE (1001)).reader_rightSubString (inLexique, GGS_uint (24U) COMMA_SOURCE_FILE_AT_LINE (1001)) ;
-  var_cas_ioXcodeProjectDescription.mTargetList._addAssign_operation (var_cas_outTargetKey, var_cas_inTargetName, var_cas_toolTargetBuildConfiguration, GGS_string ("$(HOME)/bin"), var_cas_inProductFileName, var_cas_toolFileReference, var_cas_buildPhases, var_cas_targetDependencyKeyList) ;
+  var_cas_ioXcodeProjectDescription.mTargetList.addAssign_operation (var_cas_outTargetKey, var_cas_inTargetName, var_cas_toolTargetBuildConfiguration, GGS_string ("$(HOME)/bin"), var_cas_inProductFileName, var_cas_toolFileReference, var_cas_buildPhases, var_cas_targetDependencyKeyList) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_add_app_target\n") ;
   #endif
@@ -9974,46 +9974,46 @@ void routine_enterProjectDefaultSettings (C_Compiler &,
     }
   }
   var_cas_outProjectDefaultSettings = GGS_stringlist ::constructor_emptyList () ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("ALWAYS_SEARCH_USER_PATHS = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("ARCHS = (\n"
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("ALWAYS_SEARCH_USER_PATHS = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("ARCHS = (\n"
     "\t\t\t\t\tppc,\n"
     "\t\t\t\t\ti386,\n"
     "\t\t\t\t);")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_DEBUGGING_SYMBOLS = default;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_THREADSAFE_STATICS = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_TREAT_WARNINGS_AS_ERRORS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_64_TO_32_BIT_CONVERSION = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_ABOUT_MISSING_NEWLINE = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_ABOUT_RETURN_TYPE = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_INHIBIT_ALL_WARNINGS = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_MISSING_PARENTHESES = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_PEDANTIC = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_PROTOTYPE_CONVERSION = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_SHADOW = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_SIGN_COMPARE = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNINITIALIZED_AUTOS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNKNOWN_PRAGMAS = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNUSED_FUNCTION = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNUSED_LABEL = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNUSED_PARAMETER = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNUSED_VALUE = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("GCC_WARN_UNUSED_VARIABLE = YES;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (((GGS_string ("HEADER_SEARCH_PATHS = (\n")).operator_concat (var_cas_pathString)).operator_concat (GGS_string ("\t\t\t\t);"))) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("PREBINDING = NO;")) ;
-  var_cas_outProjectDefaultSettings._addAssign_operation (GGS_string ("SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_DEBUGGING_SYMBOLS = default;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_THREADSAFE_STATICS = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_TREAT_WARNINGS_AS_ERRORS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_64_TO_32_BIT_CONVERSION = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_ABOUT_MISSING_NEWLINE = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_ABOUT_RETURN_TYPE = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_INHIBIT_ALL_WARNINGS = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_MISSING_PARENTHESES = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_PEDANTIC = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_PROTOTYPE_CONVERSION = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_SHADOW = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_SIGN_COMPARE = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNINITIALIZED_AUTOS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNKNOWN_PRAGMAS = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNUSED_FUNCTION = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNUSED_LABEL = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNUSED_PARAMETER = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNUSED_VALUE = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("GCC_WARN_UNUSED_VARIABLE = YES;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (((GGS_string ("HEADER_SEARCH_PATHS = (\n")).operator_concat (var_cas_pathString)).operator_concat (GGS_string ("\t\t\t\t);"))) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("PREBINDING = NO;")) ;
+  var_cas_outProjectDefaultSettings.addAssign_operation (GGS_string ("SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;")) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_enterProjectDefaultSettings\n") ;
   #endif
@@ -10484,11 +10484,11 @@ void routine_generateXCodeFile (C_Compiler & inLexique,
   var_cas_projectName = var_cas_in_xcodeproj_filePath.reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (1283)).reader_stringByDeletingPathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (1283)) ;
   GGS_Xcode_XCBuildConfiguration  var_cas_defaultProjectConfiguration ;
   var_cas_defaultProjectConfiguration = GGS_Xcode_XCBuildConfiguration ::constructor_new (inLexique, var_cas_inProjectDefaultSettings COMMA_HERE) ;
-  var_cas_inXcodeProjectDescription.mBuildConfigurationList._addAssign_operation (var_cas_defaultProjectConfiguration) ;
+  var_cas_inXcodeProjectDescription.mBuildConfigurationList.addAssign_operation (var_cas_defaultProjectConfiguration) ;
   ::routine_enter_group (inLexique,  var_cas_inXcodeProjectDescription,  GGS_string ("Products"),  GGS_string (""),  var_cas_inXcodeProjectDescription.reader_mProductGroupChildrenList (inLexique COMMA_SOURCE_FILE_AT_LINE (1292)) COMMA_SOURCE_FILE_AT_LINE (1288)) ;
   GGS_Xcode_PBXGroup  var_cas_mainGroup ;
   var_cas_mainGroup = GGS_Xcode_PBXGroup ::constructor_new (inLexique, GGS_string (""), GGS_string (""), var_cas_inXcodeProjectDescription.reader_mMainGroupChildrenList (inLexique COMMA_SOURCE_FILE_AT_LINE (1295)) COMMA_HERE) ;
-  var_cas_inXcodeProjectDescription.mProjectGroupList._addAssign_operation (var_cas_mainGroup) ;
+  var_cas_inXcodeProjectDescription.mProjectGroupList.addAssign_operation (var_cas_mainGroup) ;
   GGS_string var_cas_fileNewContents ;
   ::routine_buildXcodeProjectString (inLexique,  var_cas_inXcodeProjectDescription,  var_cas_projectName,  var_cas_mainGroup.reader_PBXGroupKey (inLexique COMMA_SOURCE_FILE_AT_LINE (1302)),  var_cas_defaultProjectConfiguration.reader_XCBuildConfigurationKey (inLexique COMMA_SOURCE_FILE_AT_LINE (1303)),  var_cas_fileNewContents COMMA_SOURCE_FILE_AT_LINE (1299)) ;
   if (((GGS_uint ::constructor_errorCount (inLexique COMMA_HERE)).operator_isEqual (GGS_uint (0U))).isBuiltAndTrue ()) {

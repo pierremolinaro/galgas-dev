@@ -543,7 +543,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     if (((((operand_8855->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (199))).operator_isNotEqual (GGS_string ("makefile"))).operator_and ((operand_8855->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (199))).operator_isNotEqual (GGS_string ("xcode_tool")))).operator_and ((operand_8855->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (199))).operator_isNotEqual (GGS_string ("xcode_app")))).isBuiltAndTrue ()) {
                       operand_8855->mValue.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("the target name should be \"makefile\", \"xcode_tool\" or \"xcode_app\"") COMMA_SOURCE_FILE_AT_LINE (201)) ;
                     }else{
-                      var_cas_targetFileListMap._addAssign_operation (operand_8855->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (202)), var_cas_baseName) ;
+                      var_cas_targetFileListMap.addAssign_operation (operand_8855->mValue.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (202)), var_cas_baseName) ;
                     }
                   }
                 }
@@ -649,7 +649,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                 var_cas_galgasSourceList = GGS_string ("") ;
                 GGS_stringset  var_cas_pathSet ;
                 var_cas_pathSet = GGS_stringset ::constructor_emptySet () ;
-                var_cas_pathSet._addAssign_operation (GGS_string ("SOURCES_DIR += ../hand_coded_sources\n")) ;
+                var_cas_pathSet.addAssign_operation (GGS_string ("SOURCES_DIR += ../hand_coded_sources\n")) ;
                 {
                   GGS_stringlist::cEnumerator enumerator_12390 (var_cas_makefileFiles, true) ;
                   const GGS_stringlist::cElement * operand_12390 = NULL ;
@@ -665,9 +665,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     var_cas_filePath = var_cas_fullPath.reader_stringByDeletingLastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (286)) ;
                     if (((var_cas_sourceKind).operator_isEqual (GGS_sourceFileKind::constructor_externSourceFile (inLexique COMMA_HERE))).isBuiltAndTrue ()) {
                       if (((var_cas_filePath.reader_firstCharacterOrNul (inLexique COMMA_SOURCE_FILE_AT_LINE (288))).operator_isEqual (GGS_char (TO_UNICODE ('/')))).isBuiltAndTrue ()) {
-                        var_cas_pathSet._addAssign_operation (((GGS_string ("SOURCES_DIR += ")).operator_concat (var_cas_filePath)).operator_concat (GGS_string ("\n"))) ;
+                        var_cas_pathSet.addAssign_operation (((GGS_string ("SOURCES_DIR += ")).operator_concat (var_cas_filePath)).operator_concat (GGS_string ("\n"))) ;
                       }else if (((var_cas_filePath).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
-                        var_cas_pathSet._addAssign_operation (((GGS_string ("SOURCES_DIR += ../hand_coded_sources/")).operator_concat (var_cas_filePath)).operator_concat (GGS_string ("\n"))) ;
+                        var_cas_pathSet.addAssign_operation (((GGS_string ("SOURCES_DIR += ../hand_coded_sources/")).operator_concat (var_cas_filePath)).operator_concat (GGS_string ("\n"))) ;
                       }
                       var_cas_externSourceFileList.appendCString ("SOURCES += ") ;
                       var_cas_externSourceFileList.dotAssign_operation (var_cas_fullPath.reader_lastPathComponent (inLexique COMMA_SOURCE_FILE_AT_LINE (293))) ;
@@ -754,42 +754,42 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     switch (var_cas_sourceKind.enumValue ()) {
                     case GGS_sourceFileKind::enum_externSourceFile:
                       {
-                      var_cas_externSourceSet_tool._addAssign_operation (var_cas_fullPath) ;
+                      var_cas_externSourceSet_tool.addAssign_operation (var_cas_fullPath) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_lexiqueSourceFile:
                       {
-                      var_cas_scannerSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_scannerSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_guiSourceFile:
                       {
-                      var_cas_guiSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_guiSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_optionSourceFile:
                       {
-                      var_cas_optionSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_optionSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_syntaxSourceFile:
                       {
-                      var_cas_syntaxSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_syntaxSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_semanticsSourceFile:
                       {
-                      var_cas_semanticsSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_semanticsSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_grammarSourceFile:
                       {
-                      var_cas_grammarSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_grammarSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_programSourceFile:
                       {
-                      var_cas_programSourceSet_tool._addAssign_operation (operand_15528->mValue) ;
+                      var_cas_programSourceSet_tool.addAssign_operation (operand_15528->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::kNotBuilt:
@@ -827,42 +827,42 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                     switch (var_cas_sourceKind.enumValue ()) {
                     case GGS_sourceFileKind::enum_externSourceFile:
                       {
-                      var_cas_externSourceSet_app._addAssign_operation (var_cas_fullPath) ;
+                      var_cas_externSourceSet_app.addAssign_operation (var_cas_fullPath) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_lexiqueSourceFile:
                       {
-                      var_cas_scannerSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_scannerSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_guiSourceFile:
                       {
-                      var_cas_guiSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_guiSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_optionSourceFile:
                       {
-                      var_cas_optionSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_optionSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_syntaxSourceFile:
                       {
-                      var_cas_syntaxSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_syntaxSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_semanticsSourceFile:
                       {
-                      var_cas_semanticsSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_semanticsSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_grammarSourceFile:
                       {
-                      var_cas_grammarSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_grammarSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::enum_programSourceFile:
                       {
-                      var_cas_programSourceSet_app._addAssign_operation (operand_16800->mValue) ;
+                      var_cas_programSourceSet_app.addAssign_operation (operand_16800->mValue) ;
                       }
                       break ;
                     case GGS_sourceFileKind::kNotBuilt:
