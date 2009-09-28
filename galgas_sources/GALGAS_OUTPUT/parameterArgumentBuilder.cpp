@@ -95,7 +95,7 @@ pr_formal_parameter_list_parameterArgumentBuilder_49_28_ (galgas_scanner & inLex
           GGS_lstring  var_cas_mFormalParameterName ;
           inLexique.assignFromAttribute_tokenString (var_cas_mFormalParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          var_cas_outFormalParameterList._addAssign_operation (var_cas_mFormalParameterPassingMode, var_cas_mFormalParameterTypeName, var_cas_mFormalParameterName, var_cas_mIsUnused) ;
+          var_cas_outFormalParameterList.addAssign_operation (var_cas_mFormalParameterPassingMode, var_cas_mFormalParameterTypeName, var_cas_mFormalParameterName, var_cas_mIsUnused) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;
@@ -123,7 +123,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner & inLex
           switch (select_parameterArgumentBuilder_4 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A_) COMMA_HERE) ;
-              var_cas_outActualParameterList._addAssign_operation (GGS_inputJokerActualParameter ::constructor_new (inLexique COMMA_HERE)) ;
+              var_cas_outActualParameterList.addAssign_operation (GGS_inputJokerActualParameter ::constructor_new (inLexique COMMA_HERE)) ;
               } break ;
             case 2 : {
               GGS_luint  var_cas_count ;
@@ -145,7 +145,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner & inLex
                       _condition_4980 = GGS_bool (false) ;
                     }else{
                       _variant_4980.decrement_operation (inLexique COMMA_HERE) ;
-                      var_cas_outActualParameterList._addAssign_operation (GGS_inputJokerActualParameter ::constructor_new (inLexique COMMA_HERE)) ;
+                      var_cas_outActualParameterList.addAssign_operation (GGS_inputJokerActualParameter ::constructor_new (inLexique COMMA_HERE)) ;
                       var_cas_n.decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (110)) ;
                     }
                   }
@@ -160,7 +160,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner & inLex
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__21_) COMMA_HERE) ;
           GGS_semanticExpression  var_cas_e ;
           nt_expression_ (inLexique, var_cas_e) ;
-          var_cas_outActualParameterList._addAssign_operation (GGS_outputActualParameter ::constructor_new (inLexique, var_cas_e COMMA_HERE)) ;
+          var_cas_outActualParameterList.addAssign_operation (GGS_outputActualParameter ::constructor_new (inLexique, var_cas_e COMMA_HERE)) ;
           } break ;
         case 4 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__21__3F_) COMMA_HERE) ;
@@ -177,7 +177,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner & inLex
                   GGS_lstring  var_cas_structAttributeName ;
                   inLexique.assignFromAttribute_tokenString (var_cas_structAttributeName) ;
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-                  var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
+                  var_cas_structAttributeList.addAssign_operation (var_cas_structAttributeName) ;
                   } break ;
                 default :
                   syntaxRepeat_5 = false ;
@@ -185,7 +185,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner & inLex
               }
             }
           }
-          var_cas_outActualParameterList._addAssign_operation (GGS_outputInputActualParameter ::constructor_new (inLexique, var_cas_outputInputActualParameterName, var_cas_structAttributeList COMMA_HERE)) ;
+          var_cas_outActualParameterList.addAssign_operation (GGS_outputInputActualParameter ::constructor_new (inLexique, var_cas_outputInputActualParameterName, var_cas_structAttributeList COMMA_HERE)) ;
           } break ;
         case 5 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F_) COMMA_HERE) ;
@@ -204,7 +204,7 @@ pr_actual_parameter_list_parameterArgumentBuilder_91_28_ (galgas_scanner & inLex
           GGS_lstring  var_cas_inputActualParameterName ;
           inLexique.assignFromAttribute_tokenString (var_cas_inputActualParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          var_cas_outActualParameterList._addAssign_operation (GGS_inputActualParameter ::constructor_new (inLexique, var_cas_declarationTypeName, var_cas_inputActualParameterName COMMA_HERE)) ;
+          var_cas_outActualParameterList.addAssign_operation (GGS_inputActualParameter ::constructor_new (inLexique, var_cas_declarationTypeName, var_cas_inputActualParameterName COMMA_HERE)) ;
           } break ;
         default :
           syntaxRepeat_3 = false ;
@@ -247,7 +247,7 @@ pr_formal_input_parameter_list_parameterArgumentBuilder_151_34_ (galgas_scanner 
           GGS_lstring  var_cas_mFormalParameterName ;
           inLexique.assignFromAttribute_tokenString (var_cas_mFormalParameterName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          var_cas_outFormalInputParameterList._addAssign_operation (var_cas_mFormalParameterTypeName, var_cas_mFormalParameterName, var_cas_mIsUnused) ;
+          var_cas_outFormalInputParameterList.addAssign_operation (var_cas_mFormalParameterTypeName, var_cas_mFormalParameterName, var_cas_mIsUnused) ;
           } break ;
         default :
           syntaxRepeat_7 = false ;
@@ -297,7 +297,7 @@ pr_actual_input_parameter_list_parameterArgumentBuilder_179_34_ (galgas_scanner 
             default :
               break ;
           }
-          var_cas_outActualInputParameterList._addAssign_operation (var_cas_mActualParameterTypeName, var_cas_mActualParameterName) ;
+          var_cas_outActualInputParameterList.addAssign_operation (var_cas_mActualParameterTypeName, var_cas_mActualParameterName) ;
           } break ;
         default :
           syntaxRepeat_9 = false ;

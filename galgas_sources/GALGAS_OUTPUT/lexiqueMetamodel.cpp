@@ -364,7 +364,7 @@ _internalPrependValues (const GGS_lexicalInstruction & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalInstructionList::
-_addAssign_operation (const GGS_lexicalInstruction & argument_0) {
+addAssign_operation (const GGS_lexicalInstruction & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -447,7 +447,7 @@ GGS_lexicalInstructionList  GGS_lexicalInstructionList::
 constructor_listWithValue (const GGS_lexicalInstruction & argument_0) {
   GGS_lexicalInstructionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -466,7 +466,7 @@ internalSubListWithRange (GGS_lexicalInstructionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mInstruction) ;
+      ioList.addAssign_operation (ptr->mInstruction) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -729,7 +729,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_metamodelTemplateDelimitorList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -826,7 +826,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2) {
   GGS_metamodelTemplateDelimitorList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -845,7 +845,7 @@ internalSubListWithRange (GGS_metamodelTemplateDelimitorList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mStartString, ptr->mOptionList, ptr->mEndString) ;
+      ioList.addAssign_operation (ptr->mStartString, ptr->mOptionList, ptr->mEndString) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1204,7 +1204,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_templateReplacementList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -1301,7 +1301,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2) {
   GGS_templateReplacementList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -1320,7 +1320,7 @@ internalSubListWithRange (GGS_templateReplacementList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mMatchString, ptr->mReplacementString, ptr->mReplacementFunction) ;
+      ioList.addAssign_operation (ptr->mMatchString, ptr->mReplacementString, ptr->mReplacementFunction) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1784,7 +1784,7 @@ _internalPrependValues (const GGS_abstractLexicalRule & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRuleList::
-_addAssign_operation (const GGS_abstractLexicalRule & argument_0) {
+addAssign_operation (const GGS_abstractLexicalRule & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -1867,7 +1867,7 @@ GGS_lexicalRuleList  GGS_lexicalRuleList::
 constructor_listWithValue (const GGS_abstractLexicalRule & argument_0) {
   GGS_lexicalRuleList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -1886,7 +1886,7 @@ internalSubListWithRange (GGS_lexicalRuleList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLexicalRule) ;
+      ioList.addAssign_operation (ptr->mLexicalRule) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2490,7 +2490,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageDeclarationList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -2580,7 +2580,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalMessageDeclarationList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -2599,7 +2599,7 @@ internalSubListWithRange (GGS_lexicalMessageDeclarationList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mMessageName, ptr->mMessageValue) ;
+      ioList.addAssign_operation (ptr->mMessageName, ptr->mMessageValue) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2899,7 +2899,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -2989,7 +2989,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalAttributeList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -3008,7 +3008,7 @@ internalSubListWithRange (GGS_lexicalAttributeList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mTypeName, ptr->mName) ;
+      ioList.addAssign_operation (ptr->mTypeName, ptr->mName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -3308,7 +3308,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalStyleList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -3398,7 +3398,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalStyleList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -3417,7 +3417,7 @@ internalSubListWithRange (GGS_lexicalStyleList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mName, ptr->mComment) ;
+      ioList.addAssign_operation (ptr->mName, ptr->mComment) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -3750,7 +3750,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalDeclarationList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstring & argument_3,
@@ -3861,7 +3861,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_4) {
   GGS_terminalDeclarationList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -3880,7 +3880,7 @@ internalSubListWithRange (GGS_terminalDeclarationList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mName, ptr->mSentAttributeList, ptr->mSyntaxErrorMessage, ptr->mStyle, ptr->mOptionList) ;
+      ioList.addAssign_operation (ptr->mName, ptr->mSentAttributeList, ptr->mSyntaxErrorMessage, ptr->mStyle, ptr->mOptionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -4335,7 +4335,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListEntryList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -4432,7 +4432,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_2) {
   GGS_lexicalListEntryList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -4451,7 +4451,7 @@ internalSubListWithRange (GGS_lexicalListEntryList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mEntrySpelling, ptr->mTerminalSpelling, ptr->mFeatureList) ;
+      ioList.addAssign_operation (ptr->mEntrySpelling, ptr->mTerminalSpelling, ptr->mFeatureList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -4832,7 +4832,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalListDeclarationList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_lstringlist & argument_3,
@@ -4943,7 +4943,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lexicalListEntryList & argument_4) {
   GGS_lexicalListDeclarationList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -4962,7 +4962,7 @@ internalSubListWithRange (GGS_lexicalListDeclarationList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mName, ptr->mStyle, ptr->mSyntaxErrorMessage, ptr->mSentAttributeList, ptr->mEntryList) ;
+      ioList.addAssign_operation (ptr->mName, ptr->mStyle, ptr->mSyntaxErrorMessage, ptr->mSentAttributeList, ptr->mEntryList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -6462,7 +6462,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSendSearchList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -6552,7 +6552,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalSendSearchList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -6571,7 +6571,7 @@ internalSubListWithRange (GGS_lexicalSendSearchList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mAttributeName, ptr->mSearchListName) ;
+      ioList.addAssign_operation (ptr->mAttributeName, ptr->mSearchListName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -7682,7 +7682,7 @@ _internalPrependValues (const GGS_lexicalExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalWhileBranchList::
-_addAssign_operation (const GGS_lexicalExpression & argument_0,
+addAssign_operation (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -7772,7 +7772,7 @@ constructor_listWithValue (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   GGS_lexicalWhileBranchList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -7791,7 +7791,7 @@ internalSubListWithRange (GGS_lexicalWhileBranchList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mWhileExpression, ptr->mWhileInstructionList) ;
+      ioList.addAssign_operation (ptr->mWhileExpression, ptr->mWhileInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -8277,7 +8277,7 @@ _internalPrependValues (const GGS_lexicalExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSelectBranchList::
-_addAssign_operation (const GGS_lexicalExpression & argument_0,
+addAssign_operation (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -8367,7 +8367,7 @@ constructor_listWithValue (const GGS_lexicalExpression & argument_0,
                                 const GGS_lexicalInstructionList & argument_1) {
   GGS_lexicalSelectBranchList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -8386,7 +8386,7 @@ internalSubListWithRange (GGS_lexicalSelectBranchList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSelectExpression, ptr->mSelectInstructionList) ;
+      ioList.addAssign_operation (ptr->mSelectExpression, ptr->mSelectInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -9005,7 +9005,7 @@ _internalPrependValues (const GGS_abstractLexicalRoutineActualArgument & argumen
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineCallActualArgumentList::
-_addAssign_operation (const GGS_abstractLexicalRoutineActualArgument & argument_0) {
+addAssign_operation (const GGS_abstractLexicalRoutineActualArgument & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -9088,7 +9088,7 @@ GGS_lexicalRoutineCallActualArgumentList  GGS_lexicalRoutineCallActualArgumentLi
 constructor_listWithValue (const GGS_abstractLexicalRoutineActualArgument & argument_0) {
   GGS_lexicalRoutineCallActualArgumentList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -9107,7 +9107,7 @@ internalSubListWithRange (GGS_lexicalRoutineCallActualArgumentList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLexicalRoutineActualArgument) ;
+      ioList.addAssign_operation (ptr->mLexicalRoutineActualArgument) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -10023,7 +10023,7 @@ _internalPrependValues (const GGS_lexicalRoutineOrFunctionFormalInputArgument & 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionCallActualArgumentList::
-_addAssign_operation (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0) {
+addAssign_operation (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -10106,7 +10106,7 @@ GGS_lexicalFunctionCallActualArgumentList  GGS_lexicalFunctionCallActualArgument
 constructor_listWithValue (const GGS_lexicalRoutineOrFunctionFormalInputArgument & argument_0) {
   GGS_lexicalFunctionCallActualArgumentList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -10125,7 +10125,7 @@ internalSubListWithRange (GGS_lexicalFunctionCallActualArgumentList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLexicalActualInputArgument) ;
+      ioList.addAssign_operation (ptr->mLexicalActualInputArgument) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -12365,7 +12365,7 @@ _internalPrependValues (const GGS_lexicalArgumentMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternRoutineFormalArgumentList::
-_addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
+addAssign_operation (const GGS_lexicalArgumentMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -12462,7 +12462,7 @@ constructor_listWithValue (const GGS_lexicalArgumentMode& argument_0,
                                 const GGS_lstring & argument_2) {
   GGS_lexicalExternRoutineFormalArgumentList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -12481,7 +12481,7 @@ internalSubListWithRange (GGS_lexicalExternRoutineFormalArgumentList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mPassingMode, ptr->mLexicalTypeName, ptr->mFormalArgumentName) ;
+      ioList.addAssign_operation (ptr->mPassingMode, ptr->mLexicalTypeName, ptr->mFormalArgumentName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -12840,7 +12840,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_externRoutineList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternRoutineFormalArgumentList & argument_1,
                                 const GGS_stringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -12937,7 +12937,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_stringlist & argument_2) {
   GGS_externRoutineList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -12956,7 +12956,7 @@ internalSubListWithRange (GGS_externRoutineList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mRoutineName, ptr->mLexicalRoutineFormalArgumentList, ptr->mErrorMessageList) ;
+      ioList.addAssign_operation (ptr->mRoutineName, ptr->mLexicalRoutineFormalArgumentList, ptr->mErrorMessageList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -13304,7 +13304,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExternFunctionFormalArgumentList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -13394,7 +13394,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_lexicalExternFunctionFormalArgumentList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -13413,7 +13413,7 @@ internalSubListWithRange (GGS_lexicalExternFunctionFormalArgumentList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mLexicalTypeName, ptr->mFormalArgumentName) ;
+      ioList.addAssign_operation (ptr->mLexicalTypeName, ptr->mFormalArgumentName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -13724,7 +13724,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_externFunctionList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lexicalExternFunctionFormalArgumentList & argument_1,
                                 const GGS_lstring & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -13821,7 +13821,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_2) {
   GGS_externFunctionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -13840,7 +13840,7 @@ internalSubListWithRange (GGS_externFunctionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mFunctionName, ptr->mLexicalFunctionFormalArgumentList, ptr->mReturnedTypeName) ;
+      ioList.addAssign_operation (ptr->mFunctionName, ptr->mLexicalFunctionFormalArgumentList, ptr->mReturnedTypeName) ;
       ptr = ptr->nextObject () ;
     }
   }

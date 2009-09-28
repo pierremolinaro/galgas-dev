@@ -110,7 +110,7 @@ _internalPrependValues (const GGS_typeCplusPlusName & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeCplusPlusNameList::
-_addAssign_operation (const GGS_typeCplusPlusName & argument_0) {
+addAssign_operation (const GGS_typeCplusPlusName & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -193,7 +193,7 @@ GGS_typeCplusPlusNameList  GGS_typeCplusPlusNameList::
 constructor_listWithValue (const GGS_typeCplusPlusName & argument_0) {
   GGS_typeCplusPlusNameList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -212,7 +212,7 @@ internalSubListWithRange (GGS_typeCplusPlusNameList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mCppName) ;
+      ioList.addAssign_operation (ptr->mCppName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -826,7 +826,7 @@ _internalPrependValues (const GGS_AC_galgasType & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeSemanticsTypesList::
-_addAssign_operation (const GGS_AC_galgasType & argument_0,
+addAssign_operation (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -916,7 +916,7 @@ constructor_listWithValue (const GGS_AC_galgasType & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_typeSemanticsTypesList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -935,7 +935,7 @@ internalSubListWithRange (GGS_typeSemanticsTypesList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mType, ptr->mGalgasVariableName) ;
+      ioList.addAssign_operation (ptr->mType, ptr->mGalgasVariableName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -1737,7 +1737,7 @@ _internalPrependValues (const GGS_typeCplusPlusName & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_assignedVariables::
-_addAssign_operation (const GGS_typeCplusPlusName & argument_0,
+addAssign_operation (const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -1827,7 +1827,7 @@ constructor_listWithValue (const GGS_typeCplusPlusName & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_L_assignedVariables result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -1846,7 +1846,7 @@ internalSubListWithRange (GGS_L_assignedVariables & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->aNomVariableCible, ptr->aNomAttributSource) ;
+      ioList.addAssign_operation (ptr->aNomVariableCible, ptr->aNomAttributSource) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2262,7 +2262,7 @@ _internalPrependValues (const GGS_typeCible & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeCibles::
-_addAssign_operation (const GGS_typeCible & argument_0) {
+addAssign_operation (const GGS_typeCible & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -2345,7 +2345,7 @@ GGS_typeListeCibles  GGS_typeListeCibles::
 constructor_listWithValue (const GGS_typeCible & argument_0) {
   GGS_typeListeCibles result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -2364,7 +2364,7 @@ internalSubListWithRange (GGS_typeListeCibles & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->aCible) ;
+      ioList.addAssign_operation (ptr->aCible) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2616,7 +2616,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_nameWithType::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -2706,7 +2706,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_L_nameWithType result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -2725,7 +2725,7 @@ internalSubListWithRange (GGS_L_nameWithType & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mType, ptr->mName) ;
+      ioList.addAssign_operation (ptr->mType, ptr->mName) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -3125,7 +3125,7 @@ _internalPrependValues (const GGS_typeExpression & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeExpressionList::
-_addAssign_operation (const GGS_typeExpression & argument_0) {
+addAssign_operation (const GGS_typeExpression & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -3208,7 +3208,7 @@ GGS_typeExpressionList  GGS_typeExpressionList::
 constructor_listWithValue (const GGS_typeExpression & argument_0) {
   GGS_typeExpressionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -3227,7 +3227,7 @@ internalSubListWithRange (GGS_typeExpressionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mExpression) ;
+      ioList.addAssign_operation (ptr->mExpression) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -3468,7 +3468,7 @@ _internalPrependValues (const GGS_typeCplusPlusName & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_varToDropList::
-_addAssign_operation (const GGS_typeCplusPlusName & argument_0) {
+addAssign_operation (const GGS_typeCplusPlusName & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -3551,7 +3551,7 @@ GGS_varToDropList  GGS_varToDropList::
 constructor_listWithValue (const GGS_typeCplusPlusName & argument_0) {
   GGS_varToDropList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -3570,7 +3570,7 @@ internalSubListWithRange (GGS_varToDropList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mVarToDrop) ;
+      ioList.addAssign_operation (ptr->mVarToDrop) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -15896,7 +15896,7 @@ _internalPrependValues (const GGS_typeExpression & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_expression_instructionsList_list::
-_addAssign_operation (const GGS_typeExpression & argument_0,
+addAssign_operation (const GGS_typeExpression & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -15986,7 +15986,7 @@ constructor_listWithValue (const GGS_typeExpression & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   GGS_L_expression_instructionsList_list result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -16005,7 +16005,7 @@ internalSubListWithRange (GGS_L_expression_instructionsList_list & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mIFexpression, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mIFexpression, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -16491,7 +16491,7 @@ _internalPrependValues (const GGS_stringset & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_switchBranchlist::
-_addAssign_operation (const GGS_stringset & argument_0,
+addAssign_operation (const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -16581,7 +16581,7 @@ constructor_listWithValue (const GGS_stringset & argument_0,
                                 const GGS_typeInstructionList & argument_1) {
   GGS_L_switchBranchlist result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -16600,7 +16600,7 @@ internalSubListWithRange (GGS_L_switchBranchlist & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mConstantSet, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mConstantSet, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -17870,12 +17870,12 @@ void routine_verifierCompatibiliteArgEffectifsSignature (C_Compiler & inLexique,
               var_cas_cppVarName = GGS_typeLocationAutomaticName ::constructor_new (inLexique, GGS_location (inLexique), GGS_uint ::constructor_sequenceNumber (inLexique COMMA_HERE) COMMA_HERE) ;
               GGS_typeExpression  var_cas_e ;
               var_cas_e = GGS_typeVarInExpression ::constructor_new (inLexique, var_cas_cppVarName, GGS_lstringlist ::constructor_emptyList () COMMA_HERE) ;
-              var_cas_ioExpressionList._addAssign_operation (var_cas_e) ;
+              var_cas_ioExpressionList.addAssign_operation (var_cas_e) ;
               GGS_typeInstruction  var_cas_i ;
               var_cas_i = GGS_typeInstructionDeclarationVarLocale ::constructor_new (inLexique, var_cas_cppVarName, operand_38085->mType COMMA_HERE) ;
-              var_cas_ioInstructionsList._addAssign_operation (var_cas_i) ;
+              var_cas_ioInstructionsList.addAssign_operation (var_cas_i) ;
             }else{
-              var_cas_ioExpressionList._addAssign_operation (operand_38149->mExpression) ;
+              var_cas_ioExpressionList.addAssign_operation (operand_38149->mExpression) ;
             }
           }
         }
@@ -17925,7 +17925,7 @@ method_verifierType (C_Compiler & inLexique,
                                 GGS_lstring & /* var_cas_nomAttributSource */,
                                 GGS_L_assignedVariables & /* var_cas_listeAffectations */,
                                 GGS_typeCplusPlusNameList & var_cas_outAllVariablesList COMMA_UNUSED_LOCATION_ARGS) const {
-  var_cas_outAllVariablesList._addAssign_operation (GGS_typeNullName ::constructor_new (inLexique, GGS_location (inLexique) COMMA_HERE)) ;
+  var_cas_outAllVariablesList.addAssign_operation (GGS_typeNullName ::constructor_new (inLexique, GGS_location (inLexique) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -18099,8 +18099,8 @@ method_verifierType (C_Compiler & inLexique,
                                 GGS_L_assignedVariables & var_cas_listeAffectations,
                                 GGS_typeCplusPlusNameList & var_cas_ioAllVariablesList COMMA_UNUSED_LOCATION_ARGS) const {
   ::routine_checkAssignmentTypesCompatibility (inLexique,  aTypeVarDest,  var_cas_typeArgumentFormel,  aPositionVariableCible,  GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (948)) ;
-  var_cas_listeAffectations._addAssign_operation (mCppName, var_cas_nomAttributSource) ;
-  var_cas_ioAllVariablesList._addAssign_operation (mCppName) ;
+  var_cas_listeAffectations.addAssign_operation (mCppName, var_cas_nomAttributSource) ;
+  var_cas_ioAllVariablesList.addAssign_operation (mCppName) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -19891,7 +19891,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_L_matchInstructionCasesList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_typeInstructionList & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -19988,7 +19988,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_2) {
   GGS_L_matchInstructionCasesList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -20007,7 +20007,7 @@ internalSubListWithRange (GGS_L_matchInstructionCasesList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mCase1_name, ptr->mCase2_name, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mCase1_name, ptr->mCase2_name, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -20734,7 +20734,7 @@ _internalPrependValues (const GGS_bool& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_foreachEnumerationList::
-_addAssign_operation (const GGS_bool& argument_0,
+addAssign_operation (const GGS_bool& argument_0,
                                 const GGS_typeExpression & argument_1,
                                 const GGS_location & argument_2,
                                 const GGS_string& argument_3,
@@ -20845,7 +20845,7 @@ constructor_listWithValue (const GGS_bool& argument_0,
                                 const GGS_bool& argument_4) {
   GGS_foreachEnumerationList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -20864,7 +20864,7 @@ internalSubListWithRange (GGS_foreachEnumerationList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mNewStyle, ptr->mSourceExpression, ptr->mLocationOffset, ptr->mCppTypeName, ptr->mAscending) ;
+      ioList.addAssign_operation (ptr->mNewStyle, ptr->mSourceExpression, ptr->mLocationOffset, ptr->mCppTypeName, ptr->mAscending) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -21862,7 +21862,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredExtractCasesList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_location & argument_1,
                                 const GGS_typeInstructionList & argument_2,
                                 const GGS_bool& argument_3) {
@@ -21966,7 +21966,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_3) {
   GGS_typeStructuredExtractCasesList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -21985,7 +21985,7 @@ internalSubListWithRange (GGS_typeStructuredExtractCasesList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mClassName, ptr->mResultVarID, ptr->mInstructionList, ptr->mNoUsedParameter) ;
+      ioList.addAssign_operation (ptr->mClassName, ptr->mResultVarID, ptr->mInstructionList, ptr->mNoUsedParameter) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -23088,7 +23088,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeStructuredCastBranchList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1,
                                 const GGS_typeCplusPlusNameList & argument_2,
                                 const GGS_typeInstructionList & argument_3) {
@@ -23192,7 +23192,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_3) {
   GGS_typeStructuredCastBranchList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -23211,7 +23211,7 @@ internalSubListWithRange (GGS_typeStructuredCastBranchList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mCastClassName, ptr->mCheckForKindOfClass, ptr->mLocalConstantName, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mCastClassName, ptr->mCheckForKindOfClass, ptr->mLocalConstantName, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -26093,7 +26093,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_EXsortDescriptorList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -26183,7 +26183,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_1) {
   GGS_EXsortDescriptorList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -26202,7 +26202,7 @@ internalSubListWithRange (GGS_EXsortDescriptorList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSortAttribute, ptr->mAscendingOrder) ;
+      ioList.addAssign_operation (ptr->mSortAttribute, ptr->mAscendingOrder) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -28707,7 +28707,7 @@ _internalPrependValues (const GGS_typeEntityToGenerate & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeEntitiesToGenerateList::
-_addAssign_operation (const GGS_typeEntityToGenerate & argument_0) {
+addAssign_operation (const GGS_typeEntityToGenerate & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -28790,7 +28790,7 @@ GGS_typeEntitiesToGenerateList  GGS_typeEntitiesToGenerateList::
 constructor_listWithValue (const GGS_typeEntityToGenerate & argument_0) {
   GGS_typeEntitiesToGenerateList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -28809,7 +28809,7 @@ internalSubListWithRange (GGS_typeEntitiesToGenerateList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mEntityToGenerate) ;
+      ioList.addAssign_operation (ptr->mEntityToGenerate) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -29817,7 +29817,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_ruleDescriptorForProgramList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_typeInstructionList & argument_3) {
@@ -29921,7 +29921,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_typeInstructionList & argument_3) {
   GGS_ruleDescriptorForProgramList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -29940,7 +29940,7 @@ internalSubListWithRange (GGS_ruleDescriptorForProgramList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSourceExtension, ptr->mHelpMessage, ptr->mSourceFileName, ptr->mInstructionList) ;
+      ioList.addAssign_operation (ptr->mSourceExtension, ptr->mHelpMessage, ptr->mSourceFileName, ptr->mInstructionList) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -30371,7 +30371,7 @@ _internalAppendValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileSortedList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_uint & argument_2,
                                 const GGS_uint & argument_3) {
@@ -30454,7 +30454,7 @@ constructor_sortedListWithValue (const GGS_string& argument_0,
                            const GGS_uint & argument_3) {
   GGS_wrapperFileSortedList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -30729,7 +30729,7 @@ _internalAppendValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectorySortedList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_wrapperFileSortedList & argument_1,
                                 const GGS_wrapperDirectorySortedList & argument_2,
                                 const GGS_uint & argument_3) {
@@ -30812,7 +30812,7 @@ constructor_sortedListWithValue (const GGS_string& argument_0,
                            const GGS_uint & argument_3) {
   GGS_wrapperDirectorySortedList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 

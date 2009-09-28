@@ -258,7 +258,7 @@ _internalPrependValues (const GGS_formalArgumentPassingMode& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_formalParameterList::
-_addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
+addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_bool& argument_3) {
@@ -362,7 +362,7 @@ constructor_listWithValue (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_bool& argument_3) {
   GGS_formalParameterList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3) ;
   return result ;
 }
 
@@ -381,7 +381,7 @@ internalSubListWithRange (GGS_formalParameterList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mFormalParameterPassingMode, ptr->mFormalParameterTypeName, ptr->mFormalParameterName, ptr->mIsUnused) ;
+      ioList.addAssign_operation (ptr->mFormalParameterPassingMode, ptr->mFormalParameterTypeName, ptr->mFormalParameterName, ptr->mIsUnused) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -788,7 +788,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_formalInputParameterList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -885,7 +885,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_bool& argument_2) {
   GGS_formalInputParameterList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -904,7 +904,7 @@ internalSubListWithRange (GGS_formalInputParameterList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mFormalParameterTypeName, ptr->mFormalParameterName, ptr->mIsUnused) ;
+      ioList.addAssign_operation (ptr->mFormalParameterTypeName, ptr->mFormalParameterName, ptr->mIsUnused) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2054,7 +2054,7 @@ _internalPrependValues (const GGS_actualParameter & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_actualParameterList::
-_addAssign_operation (const GGS_actualParameter & argument_0) {
+addAssign_operation (const GGS_actualParameter & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -2137,7 +2137,7 @@ GGS_actualParameterList  GGS_actualParameterList::
 constructor_listWithValue (const GGS_actualParameter & argument_0) {
   GGS_actualParameterList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -2156,7 +2156,7 @@ internalSubListWithRange (GGS_actualParameterList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mActualParameter) ;
+      ioList.addAssign_operation (ptr->mActualParameter) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -2408,7 +2408,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_actualInputParameterList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -2498,7 +2498,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_actualInputParameterList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -2517,7 +2517,7 @@ internalSubListWithRange (GGS_actualInputParameterList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mActualParameterTypeName, ptr->mActualParameterName) ;
+      ioList.addAssign_operation (ptr->mActualParameterTypeName, ptr->mActualParameterName) ;
       ptr = ptr->nextObject () ;
     }
   }

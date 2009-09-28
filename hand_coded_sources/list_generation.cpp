@@ -231,7 +231,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Handle '.=' operator\n"
              "  public : void dotAssign_operation (const GGS_" << aNomListe << " inOperand) ;\n\n"
              "//--- Handling '+=' GALGAS operator\n"
-             "  public : void _addAssign_operation (" ;
+             "  public : void addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -545,9 +545,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- Generate _addAssign_operation
+//--- Generate addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_addAssign_operation (" ;
+               "addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -740,7 +740,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result.alloc () ;\n"
-               "  result._addAssign_operation (" ;
+               "  result.addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -770,7 +770,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "    }\n"
                "    for (PMSInt32 i=0 ; i<inCount ; i++) {\n"
                "      macroValidPointer (ptr) ;\n"
-               "      ioList._addAssign_operation (" ;
+               "      ioList.addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1253,7 +1253,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Append a new value
              "//--- Handling '+=' GALGAS operator\n"
-             "  public : void _addAssign_operation (" ;
+             "  public : void addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1505,9 +1505,9 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
-//--- Generate _addAssign_operation
+//--- Generate addAssign_operation
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "_addAssign_operation (" ;
+               "addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1636,7 +1636,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << ") {\n"
                "  GGS_" << aNomListe << " result ;\n"
                "  result.alloc () ;\n"
-               "  result._addAssign_operation (" ;
+               "  result.addAssign_operation (" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {

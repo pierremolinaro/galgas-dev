@@ -260,7 +260,7 @@ class GGS_semanticExpressionList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_semanticExpressionList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_semanticExpression & argument_0) ;
+  public : void addAssign_operation (const GGS_semanticExpression & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_semanticExpressionList operator_concat (const GGS_semanticExpressionList & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,

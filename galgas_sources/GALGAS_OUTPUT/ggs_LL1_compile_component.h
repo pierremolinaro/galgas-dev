@@ -102,7 +102,7 @@ class GGS_EXtargetFileListMap : public AC_galgas_listmap {
 
 //--- Handle '+=' operator
   public : void
-  _addAssign_operation (const GGS_string & inKey,
+  addAssign_operation (const GGS_string & inKey,
                         const GGS_string& inAttribute0) ;
 
 //--- For 'description' reader

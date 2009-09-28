@@ -1013,7 +1013,7 @@ generateInstruction (AC_OutputStream & ioCppFile,
       ioCppFile << "." << structAttribute._mValue (HERE) ;
       structAttribute.next () ;
     }
-    ioCppFile << "._addAssign_operation (" ;
+    ioCppFile << ".addAssign_operation (" ;
     GGS_typeExpressionList::cEnumerator exp (mSourceExpressions, true) ;
     bool first = true ;
     while (exp.hasCurrentObject ()) {

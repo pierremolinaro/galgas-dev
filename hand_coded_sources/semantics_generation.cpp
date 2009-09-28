@@ -117,7 +117,7 @@ routine_appendJokersIfNeeded (C_Compiler &,
   const PMUInt32 effectiveArgumentsCount = inEffectiveArgumentsCount.uintValue () ;
   const PMUInt32 formalParametersCount = inFormalParametersCount.uintValue () ;
   for (unsigned i=effectiveArgumentsCount ; i<formalParametersCount ; i++) {
-    ioVariablesList._addAssign_operation (inNullName) ;
+    ioVariablesList.addAssign_operation (inNullName) ;
   }
 }
 
@@ -630,7 +630,7 @@ generateCplusPlusName (AC_OutputStream & inFile) const {
 void cPtr_typeCppThisInCategoryName::
 generateCplusPlusName (AC_OutputStream & inFile) const {
   inFile << "operand_"
-         << cStringWithUnsigned (mVariableLocation.location ()) ;
+         << cStringWithSigned (mVariableLocation.location ()) ;
 }
 
 //---------------------------------------------------------------------------*

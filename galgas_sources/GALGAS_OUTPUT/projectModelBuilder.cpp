@@ -114,7 +114,7 @@ pr_project_component_start_symbol_projectModelBuilder_36_37_ (galgas_scanner & i
                     GGS_lstring  var_cas_targetName ;
                     inLexique.assignFromAttribute_tokenString (var_cas_targetName) ;
                     inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-                    var_cas_targetList._addAssign_operation (var_cas_targetName) ;
+                    var_cas_targetList.addAssign_operation (var_cas_targetName) ;
                   switch (select_repeat_projectModelBuilder_3 (inLexique)) {
                     case 2 : {
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -130,7 +130,7 @@ pr_project_component_start_symbol_projectModelBuilder_36_37_ (galgas_scanner & i
               break ;
           }
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-          var_cas_outProjectSourceList._addAssign_operation (var_cas_sourceFileKind, var_cas_filePath, var_cas_targetList) ;
+          var_cas_outProjectSourceList.addAssign_operation (var_cas_sourceFileKind, var_cas_filePath, var_cas_targetList) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;

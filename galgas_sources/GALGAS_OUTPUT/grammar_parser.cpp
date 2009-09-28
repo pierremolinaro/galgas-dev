@@ -165,7 +165,7 @@ pr_galgas_component_grammar_parser_100_23_ (galgas_scanner & inLexique,
             if (((var_cas_lexiqueName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (196))).operator_isNotEqual (var_cas_importedLexiqueComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (196)))).isBuiltAndTrue ()) {
               var_cas_syntaxComponentName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this component does not use the previously declared lexique") COMMA_SOURCE_FILE_AT_LINE (198)) ;
             }
-            var_cas_syntaxComponentsList._addAssign_operation (var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_syntaxComponentName) ;
+            var_cas_syntaxComponentsList.addAssign_operation (var_cas_importedNonterminalSymbolsMap, var_cas_importedProductionRulesList, var_cas_syntaxComponentName) ;
             {
               GGS_M_nonTerminalSymbolsForGrammar::cEnumerator enumerator_7829 (var_cas_importedNonterminalSymbolsMap, true) ;
               const GGS_M_nonTerminalSymbolsForGrammar::cElement * operand_7829 = NULL ;

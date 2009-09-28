@@ -2855,7 +2855,7 @@ _internalPrependValues (const GGS_string& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_styleList::
-_addAssign_operation (const GGS_string& argument_0,
+addAssign_operation (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -2945,7 +2945,7 @@ constructor_listWithValue (const GGS_string& argument_0,
                                 const GGS_string& argument_1) {
   GGS_styleList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -2964,7 +2964,7 @@ internalSubListWithRange (GGS_styleList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mStyleName, ptr->mTitle) ;
+      ioList.addAssign_operation (ptr->mStyleName, ptr->mTitle) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -5421,7 +5421,7 @@ _internalPrependValues (const GGS_typeConditionLexicale & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeConditionsLexicales::
-_addAssign_operation (const GGS_typeConditionLexicale & argument_0) {
+addAssign_operation (const GGS_typeConditionLexicale & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -5504,7 +5504,7 @@ GGS_typeListeConditionsLexicales  GGS_typeListeConditionsLexicales::
 constructor_listWithValue (const GGS_typeConditionLexicale & argument_0) {
   GGS_typeListeConditionsLexicales result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -5523,7 +5523,7 @@ internalSubListWithRange (GGS_typeListeConditionsLexicales & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->attributCondition) ;
+      ioList.addAssign_operation (ptr->attributCondition) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -5891,7 +5891,7 @@ _internalPrependValues (const GGS_typeInstructionLexicale & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_tListeInstructionsLexicales::
-_addAssign_operation (const GGS_typeInstructionLexicale & argument_0) {
+addAssign_operation (const GGS_typeInstructionLexicale & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -5974,7 +5974,7 @@ GGS_tListeInstructionsLexicales  GGS_tListeInstructionsLexicales::
 constructor_listWithValue (const GGS_typeInstructionLexicale & argument_0) {
   GGS_tListeInstructionsLexicales result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -5993,7 +5993,7 @@ internalSubListWithRange (GGS_tListeInstructionsLexicales & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->attributInstruction) ;
+      ioList.addAssign_operation (ptr->attributInstruction) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -6245,7 +6245,7 @@ _internalPrependValues (const GGS_typeListeConditionsLexicales & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeTestsEtInstructions::
-_addAssign_operation (const GGS_typeListeConditionsLexicales & argument_0,
+addAssign_operation (const GGS_typeListeConditionsLexicales & argument_0,
                                 const GGS_tListeInstructionsLexicales & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -6335,7 +6335,7 @@ constructor_listWithValue (const GGS_typeListeConditionsLexicales & argument_0,
                                 const GGS_tListeInstructionsLexicales & argument_1) {
   GGS_typeListeTestsEtInstructions result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -6354,7 +6354,7 @@ internalSubListWithRange (GGS_typeListeTestsEtInstructions & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->attributListeConditions, ptr->attributListeInstructions) ;
+      ioList.addAssign_operation (ptr->attributListeConditions, ptr->attributListeInstructions) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -6770,7 +6770,7 @@ _internalPrependValues (const GGS_typeArgumentRoutineExterne & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeArgumentsRoutExterne::
-_addAssign_operation (const GGS_typeArgumentRoutineExterne & argument_0) {
+addAssign_operation (const GGS_typeArgumentRoutineExterne & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -6853,7 +6853,7 @@ GGS_typeListeArgumentsRoutExterne  GGS_typeListeArgumentsRoutExterne::
 constructor_listWithValue (const GGS_typeArgumentRoutineExterne & argument_0) {
   GGS_typeListeArgumentsRoutExterne result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -6872,7 +6872,7 @@ internalSubListWithRange (GGS_typeListeArgumentsRoutExterne & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->attributArgument) ;
+      ioList.addAssign_operation (ptr->attributArgument) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -7965,7 +7965,7 @@ _internalPrependValues (const GGS_luint & argument_0
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeMessagesErreur::
-_addAssign_operation (const GGS_luint & argument_0) {
+addAssign_operation (const GGS_luint & argument_0) {
   if (isBuilt ()&& argument_0.isBuilt ()) {
     _insulateList () ;
     _internalAppendValues (argument_0
@@ -8048,7 +8048,7 @@ GGS_typeListeMessagesErreur  GGS_typeListeMessagesErreur::
 constructor_listWithValue (const GGS_luint & argument_0) {
   GGS_typeListeMessagesErreur result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0) ;
+  result.addAssign_operation (argument_0) ;
   return result ;
 }
 
@@ -8067,7 +8067,7 @@ internalSubListWithRange (GGS_typeListeMessagesErreur & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mErrorMessageIndex) ;
+      ioList.addAssign_operation (ptr->mErrorMessageIndex) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -8778,7 +8778,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_typeListeRecherche::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()) {
     _insulateList () ;
@@ -8868,7 +8868,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1) {
   GGS_typeListeRecherche result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1) ;
+  result.addAssign_operation (argument_0, argument_1) ;
   return result ;
 }
 
@@ -8887,7 +8887,7 @@ internalSubListWithRange (GGS_typeListeRecherche & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->attributNomAttribut, ptr->attributNomTable) ;
+      ioList.addAssign_operation (ptr->attributNomAttribut, ptr->attributNomTable) ;
       ptr = ptr->nextObject () ;
     }
   }
@@ -11053,13 +11053,13 @@ void routine_appendToLexicalInstructionList (C_Compiler & inLexique,
   var_cas_lexicalConditionsList = GGS_typeListeConditionsLexicales ::constructor_emptyList () ;
   GGS_typeConditionLexicale  var_cas_c ;
   var_cas_c = GGS_typeConditionChaine ::constructor_new (inLexique, var_cas_ioDefinitionString COMMA_HERE) ;
-  var_cas_lexicalConditionsList._addAssign_operation (var_cas_c) ;
+  var_cas_lexicalConditionsList.addAssign_operation (var_cas_c) ;
   GGS_typeInstructionLexicale  var_cas_lexicalInstruction ;
   var_cas_lexicalInstruction = GGS_typeInstructionEmettreSimple ::constructor_new (inLexique, var_cas_ioTerminalSymbolName COMMA_HERE) ;
   GGS_tListeInstructionsLexicales  var_cas_instructionList ;
   var_cas_instructionList = GGS_tListeInstructionsLexicales ::constructor_emptyList () ;
-  var_cas_instructionList._addAssign_operation (var_cas_lexicalInstruction) ;
-  var_cas_ioLexicalRulesList._addAssign_operation (var_cas_lexicalConditionsList, var_cas_instructionList) ;
+  var_cas_instructionList.addAssign_operation (var_cas_lexicalInstruction) ;
+  var_cas_ioLexicalRulesList.addAssign_operation (var_cas_lexicalConditionsList, var_cas_instructionList) ;
   #ifdef DEBUG_TRACE_ENABLED
     printf ("LEAVE routine_appendToLexicalInstructionList\n") ;
   #endif

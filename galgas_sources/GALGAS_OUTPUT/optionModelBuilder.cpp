@@ -104,7 +104,7 @@ pr_option_optionModelBuilder_56_13_ (galgas_scanner & inLexique,
   inLexique.assignFromAttribute_tokenString (var_cas_mOptionComment) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_ioCommandLineOptionList._addAssign_operation (var_cas_mOptionTypeName, var_cas_mOptionInternalName, var_cas_mOptionInvocationLetter, var_cas_mOptionInvocationString, var_cas_mOptionComment) ;
+  var_cas_ioCommandLineOptionList.addAssign_operation (var_cas_mOptionTypeName, var_cas_mOptionInternalName, var_cas_mOptionInvocationLetter, var_cas_mOptionInvocationString, var_cas_mOptionComment) ;
 }
 
 //---------------------------------------------------------------------------*

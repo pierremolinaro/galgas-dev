@@ -154,7 +154,7 @@ _internalPrependValues (const GGS_lstring & argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionList::
-_addAssign_operation (const GGS_lstring & argument_0,
+addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lchar & argument_2,
                                 const GGS_lstring & argument_3,
@@ -265,7 +265,7 @@ constructor_listWithValue (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_4) {
   GGS_commandLineOptionList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2, argument_3, argument_4) ;
   return result ;
 }
 
@@ -284,7 +284,7 @@ internalSubListWithRange (GGS_commandLineOptionList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mOptionTypeName, ptr->mOptionInternalName, ptr->mOptionInvocationLetter, ptr->mOptionInvocationString, ptr->mOptionComment) ;
+      ioList.addAssign_operation (ptr->mOptionTypeName, ptr->mOptionInternalName, ptr->mOptionInvocationLetter, ptr->mOptionInvocationString, ptr->mOptionComment) ;
       ptr = ptr->nextObject () ;
     }
   }

@@ -231,7 +231,7 @@ _internalPrependValues (const GGS_sourceFileKind& argument_0,
 //---------------------------------------------------------------------------*
 
 void GGS_projectSourceList::
-_addAssign_operation (const GGS_sourceFileKind& argument_0,
+addAssign_operation (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2) {
   if (isBuilt ()&& argument_0.isBuilt ()&& argument_1.isBuilt ()&& argument_2.isBuilt ()) {
@@ -328,7 +328,7 @@ constructor_listWithValue (const GGS_sourceFileKind& argument_0,
                                 const GGS_lstringlist & argument_2) {
   GGS_projectSourceList result ;
   result.alloc () ;
-  result._addAssign_operation (argument_0, argument_1, argument_2) ;
+  result.addAssign_operation (argument_0, argument_1, argument_2) ;
   return result ;
 }
 
@@ -347,7 +347,7 @@ internalSubListWithRange (GGS_projectSourceList & ioList,
     }
     for (PMSInt32 i=0 ; i<inCount ; i++) {
       macroValidPointer (ptr) ;
-      ioList._addAssign_operation (ptr->mSourceKind, ptr->mFilePath, ptr->mTargetList) ;
+      ioList.addAssign_operation (ptr->mSourceKind, ptr->mFilePath, ptr->mTargetList) ;
       ptr = ptr->nextObject () ;
     }
   }

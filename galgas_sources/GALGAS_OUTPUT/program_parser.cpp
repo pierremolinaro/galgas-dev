@@ -87,11 +87,11 @@ pr_galgas_component_program_parser_103_23_ (galgas_scanner & inLexique,
   GGS_stringset  var_cas_includedGrammarComponents ;
   GGS_M_optionComponents  var_cas_optionsComponentsMap ;
   nt_import_headers_semantics_and_grammars_ (inLexique, var_cas_includedSemanticsComponents, var_cas_includedMetamodelComponents, var_cas_includedOptionComponents, var_cas_includedGrammarComponents, var_cas_ioLexiqueMapForUse, var_cas_ioSemanticsComponentsMap, var_cas_ioGrammarComponentsMap, var_cas_ioOptionsComponentsMap, var_cas_inclusionsForImplementationFile, var_cas_inclusionsForHeaderFile, var_cas_optionsComponentsMap, var_cas_modelMap, var_cas_actionMap, var_cas_componentEntitiesMap, var_cas_tableEnAvant, var_cas_ioSemanticContext) ;
-  var_cas_inclusionsForImplementationFile._addAssign_operation ((var_cas_nomPRGMprincipal.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (158))).operator_concat (GGS_string (".h"))) ;
+  var_cas_inclusionsForImplementationFile.addAssign_operation ((var_cas_nomPRGMprincipal.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (158))).operator_concat (GGS_string (".h"))) ;
   {
     GGS_stringset::cEnumerator enumerator_6482 (var_cas_includedSemanticsComponents, true) ;
     while (enumerator_6482.hasCurrentObject ()) {
-      var_cas_inclusionsForImplementationFile._addAssign_operation ((enumerator_6482._key (HERE)).operator_concat (GGS_string (".h"))) ;
+      var_cas_inclusionsForImplementationFile.addAssign_operation ((enumerator_6482._key (HERE)).operator_concat (GGS_string (".h"))) ;
       enumerator_6482.next () ;
     }
   }
@@ -202,7 +202,7 @@ pr_galgas_component_program_parser_103_23_ (galgas_scanner & inLexique,
         var_cas_tableEnAvant = GGS_typeTableEnAvant ::constructor_emptyMap (inLexique COMMA_HERE) ;
         nt_semantic_instructions_list_ (inLexique, var_cas_tableEnAvant, var_cas_componentEntitiesMap, var_cas_optionsComponentsMap, var_cas_variablesMap, var_cas_instructionList, var_cas_ioSemanticContext) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
-        var_cas_ruleDescriptorForProgramList._addAssign_operation (var_cas_sourceExtension, var_cas_helpMessage, var_cas_argumentName, var_cas_instructionList) ;
+        var_cas_ruleDescriptorForProgramList.addAssign_operation (var_cas_sourceExtension, var_cas_helpMessage, var_cas_argumentName, var_cas_instructionList) ;
       switch (select_repeat_program_parser_3 (inLexique)) {
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_when) COMMA_HERE) ;

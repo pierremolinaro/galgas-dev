@@ -436,8 +436,8 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_ (galgas_scanne
               GGS_lstring  var_cas_optionComponentName ;
               inLexique.assignFromAttribute_tokenString (var_cas_optionComponentName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_outInclusionsForHeaderFile._addAssign_operation (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (920))) ;
-              var_cas_outImportedOptionComponents._addAssign_operation (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (921))) ;
+              var_cas_outInclusionsForHeaderFile.addAssign_operation (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (920))) ;
+              var_cas_outImportedOptionComponents.addAssign_operation (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (921))) ;
               GGS_M_cli_options  var_cas_boolOptionsMap ;
               GGS_M_cli_options  var_cas_uintOptionsMap ;
               GGS_M_cli_options  var_cas_stringOptionsMap ;
@@ -459,8 +459,8 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_ (galgas_scanne
               GGS_lstring  var_cas_grammarComponentName ;
               inLexique.assignFromAttribute_tokenString (var_cas_grammarComponentName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_outInclusionsForImplementationFile._addAssign_operation ((var_cas_grammarComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (939))).operator_concat (GGS_string (".h"))) ;
-              var_cas_outImportedGrammarComponents._addAssign_operation (var_cas_grammarComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (940))) ;
+              var_cas_outInclusionsForImplementationFile.addAssign_operation ((var_cas_grammarComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (939))).operator_concat (GGS_string (".h"))) ;
+              var_cas_outImportedGrammarComponents.addAssign_operation (var_cas_grammarComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (940))) ;
               GGS_M_grammarComponents  var_cas_grammarComponentsMap ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
               GGS_lstring  var_cas_sourceFile ;
@@ -496,7 +496,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_ (galgas_scanne
                       }
                       GGS_AC_galgasType  var_cas_type ;
                       var_cas_type = GGS_typeEntiteType::castFrom (inLexique, var_cas_e.getPtr (), true, operand_34326->mGalgasTypeName COMMA_SOURCE_FILE_AT_LINE (961)).reader_aDefType (inLexique COMMA_SOURCE_FILE_AT_LINE (961)) ;
-                      var_cas_formalParametersList._addAssign_operation (var_cas_type, operand_34326->mFormalArgumentPassingMode) ;
+                      var_cas_formalParametersList.addAssign_operation (var_cas_type, operand_34326->mFormalArgumentPassingMode) ;
                     }
                   }
                   var_cas_grammarAltMap.modifier_insertKey (inLexique, operand_34197->mKey, var_cas_formalParametersList COMMA_SOURCE_FILE_AT_LINE (964)) ;
@@ -515,7 +515,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_ (galgas_scanne
                   var_cas_extension.isBuilt ()) {
                 ::routine_buildFileNameWithPath (inLexique,  var_cas_fileNameWithPath,  var_cas_path,  var_cas_grammarComponentName,  var_cas_extension COMMA_SOURCE_FILE_AT_LINE (971)) ;
               }
-              var_cas_outInclusionsForImplementationFile._addAssign_operation (var_cas_fileNameWithPath.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (972))) ;
+              var_cas_outInclusionsForImplementationFile.addAssign_operation (var_cas_fileNameWithPath.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (972))) ;
               {
                 GGS_M_grammarComponents::cEnumerator enumerator_35265 (var_cas_grammarComponentsMap, true) ;
                 const GGS_M_grammarComponents::cElement * operand_35265 = NULL ;
@@ -532,13 +532,13 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_ (galgas_scanne
               GGS_lstring  var_cas_componentName ;
               inLexique.assignFromAttribute_tokenString (var_cas_componentName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_outInclusionsForHeaderFile._addAssign_operation (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (990))) ;
+              var_cas_outInclusionsForHeaderFile.addAssign_operation (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (990))) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
               GGS_lstring  var_cas_sourceFile ;
               inLexique.assignFromAttribute_tokenString (var_cas_sourceFile) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
               if (((var_cas_outImportedSemanticsComponentNameSet.reader_hasKey (inLexique, var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (994)) COMMA_SOURCE_FILE_AT_LINE (994))).operator_not ()).isBuiltAndTrue ()) {
-                var_cas_outImportedSemanticsComponentNameSet._addAssign_operation (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (995))) ;
+                var_cas_outImportedSemanticsComponentNameSet.addAssign_operation (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (995))) ;
                 ::routine_parse_semantics_component_for_importing (inLexique,  var_cas_sourceFile,  var_cas_ioSemanticsComponentsMap,  var_cas_ioSemanticContext,  var_cas_outImportedSemanticsComponentNameSet COMMA_SOURCE_FILE_AT_LINE (997)) ;
                 GGS_M_semanticsEntitiesForUse  var_cas_importedEntities ;
                 GGS_M_optionComponents  var_cas_importedOptionsComponentsMap ;
@@ -621,7 +621,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_importSemantics
               GGS_lstring  var_cas_optionComponentName ;
               inLexique.assignFromAttribute_tokenString (var_cas_optionComponentName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_outIncludedOptionComponents._addAssign_operation (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1058))) ;
+              var_cas_outIncludedOptionComponents.addAssign_operation (var_cas_optionComponentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1058))) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_literal_5F_string) COMMA_HERE) ;
               nt_parse_option_component_for_importing_parse (inLexique) ;
@@ -638,7 +638,7 @@ pr_import_headers_semantics_and_grammars_semantics_parser_840_44_importSemantics
               GGS_lstring  var_cas_componentName ;
               inLexique.assignFromAttribute_tokenString (var_cas_componentName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_outIncludedSemanticsComponents._addAssign_operation (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1072))) ;
+              var_cas_outIncludedSemanticsComponents.addAssign_operation (var_cas_componentName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1072))) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_in) COMMA_HERE) ;
               GGS_lstring  var_cas_sourceFile ;
               inLexique.assignFromAttribute_tokenString (var_cas_sourceFile) ;
@@ -780,7 +780,7 @@ pr_semantics_declaration_semantics_parser_1109_28_ (galgas_scanner & inLexique,
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
       GGS_typeEntityToGenerate  var_cas_ea ;
       var_cas_ea = GGS_typeRoutineAengendrer ::constructor_new (inLexique, var_cas_routineName, var_cas_listeTypeEtNomsArguments, var_cas_ioInstructionList COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_ea) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_ea) ;
       var_cas_tableRoutinesAimplementer.modifier_insertKey (inLexique, var_cas_routineName COMMA_SOURCE_FILE_AT_LINE (1176)) ;
       } break ;
     default :
@@ -938,7 +938,7 @@ pr_semantics_declaration_semantics_parser_1243_28_ (galgas_scanner & inLexique,
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
       GGS_typeEntityToGenerate  var_cas_ea ;
       var_cas_ea = GGS_typeFonctionAengendrer ::constructor_new (inLexique, var_cas_routineName, var_cas_listeTypeEtNomsArguments, var_cas_returnedType, var_cas_returnedVar, var_cas_ioInstructionList COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_ea) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_ea) ;
       var_cas_tableRoutinesAimplementer.modifier_insertKey (inLexique, var_cas_routineName COMMA_SOURCE_FILE_AT_LINE (1336)) ;
       } break ;
     default :
@@ -1195,7 +1195,7 @@ pr_parent_class_semantics_parser_1468_19_importSemantics (galgas_scanner & inLex
       }
     }
   }
-  var_cas_outSuperClasses._addAssign_operation (var_cas_superClassName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1541))) ;
+  var_cas_outSuperClasses.addAssign_operation (var_cas_superClassName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1541))) ;
   var_cas_outMessageMap = GGS_classMessageMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
   var_cas_outSuperClasses = GGS_stringset ::constructor_emptySet () ;
   var_cas_outAttributeList = GGS_typeListModel ::constructor_emptyList () ;
@@ -1384,7 +1384,7 @@ pr_lazy_reader_semantics_parser_1703_18_ (galgas_scanner & inLexique,
         GGS_typeCplusPlusName  var_cas_nomCpp ;
         var_cas_nomCpp = GGS_typeDirectName ::constructor_new (inLexique, var_cas_attributeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (1734)), var_cas_attributeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (1734)) COMMA_HERE) ;
         var_cas_methodLocalVariablesMap.modifier_insertOutArgument (inLexique, var_cas_attributeName, var_cas_t, var_cas_nomCpp COMMA_SOURCE_FILE_AT_LINE (1735)) ;
-        var_cas_computedAttributeTypeAndNameList._addAssign_operation (var_cas_t, var_cas_attributeName) ;
+        var_cas_computedAttributeTypeAndNameList.addAssign_operation (var_cas_t, var_cas_attributeName) ;
       switch (select_repeat_semantics_parser_5 (inLexique)) {
         case 2 : {
           } break ;
@@ -1396,7 +1396,7 @@ pr_lazy_reader_semantics_parser_1703_18_ (galgas_scanner & inLexique,
   }
   GGS_L_lazyAttributeList  var_cas_lazyAttributeListForSelfAndSuper ;
   var_cas_lazyAttributeListForSelfAndSuper = var_cas_ioLazyAttributeList ;
-  var_cas_lazyAttributeListForSelfAndSuper._addAssign_operation (GGS_location (inLexique), var_cas_computedAttributeTypeAndNameList, GGS_typeInstructionList ::constructor_emptyList ()) ;
+  var_cas_lazyAttributeListForSelfAndSuper.addAssign_operation (GGS_location (inLexique), var_cas_computedAttributeTypeAndNameList, GGS_typeInstructionList ::constructor_emptyList ()) ;
   GGS_AC_galgasType  var_cas_typeDefinition ;
   var_cas_typeDefinition = GGS_typeGalgasClassType ::constructor_new (inLexique, var_cas_inCurrentClassName, var_cas_tableDesMethodes, var_cas_listeTousAttributsSemantiques, var_cas_tableDesClassesAncetres, var_cas_messageMapForHeirs, var_cas_tableAttributsHerites, var_cas_inClassIsAbstract, var_cas_inClassMessage, GGS_bool (false), var_cas_lazyAttributeListForSelfAndSuper COMMA_HERE) ;
   var_cas_methodLocalVariablesMap.modifier_insertUsedConstInArgument (inLexique, GGS_lstring ::constructor_new (inLexique, GGS_string ("self"), GGS_location (inLexique) COMMA_HERE), var_cas_typeDefinition, GGS_typeCppThisName ::constructor_new (inLexique, GGS_location (inLexique) COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (1758)) ;
@@ -1414,7 +1414,7 @@ pr_lazy_reader_semantics_parser_1703_18_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_lazy) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_ioLazyAttributeList._addAssign_operation (GGS_location (inLexique), var_cas_computedAttributeTypeAndNameList, var_cas_instructionsList) ;
+  var_cas_ioLazyAttributeList.addAssign_operation (GGS_location (inLexique), var_cas_computedAttributeTypeAndNameList, var_cas_instructionsList) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1603,7 +1603,7 @@ pr_class_declaration_semantics_parser_1802_24_ (galgas_scanner & inLexique,
             temp_74101 (HERE)->method_searchKey (inLexique, operand_74042->mAttributeName, automatic_var_15, var_cas_hasSetter, automatic_var_16 COMMA_SOURCE_FILE_AT_LINE (1990)) ;
           }
           if ((var_cas_hasSetter).isBuiltAndTrue ()) {
-            var_cas_setterAttributeModifierToImplementList._addAssign_operation (operand_74042->mAttributType, operand_74042->mAttributeName) ;
+            var_cas_setterAttributeModifierToImplementList.addAssign_operation (operand_74042->mAttributType, operand_74042->mAttributeName) ;
           }
         }
       }
@@ -1622,13 +1622,13 @@ pr_class_declaration_semantics_parser_1802_24_ (galgas_scanner & inLexique,
             temp_74511 (HERE)->method_searchKey (inLexique, operand_74452->mAttributeName, automatic_var_17, automatic_var_18, var_cas_hasGetter COMMA_SOURCE_FILE_AT_LINE (2002)) ;
           }
           if ((var_cas_hasGetter).isBuiltAndTrue ()) {
-            var_cas_getterAttributeReaderToImplementList._addAssign_operation (operand_74452->mAttributType, operand_74452->mAttributeName) ;
+            var_cas_getterAttributeReaderToImplementList.addAssign_operation (operand_74452->mAttributType, operand_74452->mAttributeName) ;
           }
         }
       }
       GGS_typeEntityToGenerate  var_cas_def ;
       var_cas_def = GGS_C_classToImplement ::constructor_new (inLexique, var_cas_abstractClassName, var_cas_inIsAbstract, var_cas_listeTousAttributsSemantiques, var_cas_tableDesMethodes, var_cas_tableMethodesAimplementer, var_cas_listeAttributsSemantiquesCourants, var_cas_tableDesClassesAncetres, var_cas_tableMessagesClasseConcrete, var_cas_classMessage, var_cas_hasGeneratedInSeparateFileSetting, var_cas_onceReaderListToImplement, var_cas_setterAttributeModifierToImplementList, var_cas_getterAttributeReaderToImplementList COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
       } break ;
     default :
@@ -2096,8 +2096,8 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
           GGS_AC_galgasType  var_cas_type_semantique ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-          var_cas_listeDeTypes._addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
-          var_cas_outSignatureForGrammar._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_listeDeTypes.addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
+          var_cas_outSignatureForGrammar.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           GGS_lstring  var_cas_nomArgument ;
           GGS_bool var_cas_modeIn ;
           var_cas_modeIn = GGS_bool (true) ;
@@ -2108,7 +2108,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2487)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2487)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertUnusedConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2489)) ;
               } break ;
             case 2 : {
@@ -2116,7 +2116,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2492)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2492)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2494)) ;
               } break ;
             default :
@@ -2130,8 +2130,8 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
           GGS_AC_galgasType  var_cas_type_semantique ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-          var_cas_listeDeTypes._addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
-          var_cas_outSignatureForGrammar._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_listeDeTypes.addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
+          var_cas_outSignatureForGrammar.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_12 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2140,7 +2140,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2513)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2513)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertUnusedInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2515)) ;
               } break ;
             case 2 : {
@@ -2149,7 +2149,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2519)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2519)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2521)) ;
               } break ;
             default :
@@ -2163,8 +2163,8 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
           GGS_AC_galgasType  var_cas_type_semantique ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-          var_cas_listeDeTypes._addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
-          var_cas_outSignatureForGrammar._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_listeDeTypes.addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
+          var_cas_outSignatureForGrammar.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           GGS_lstring  var_cas_nomArgument ;
           switch (select_semantics_parser_13 (inLexique)) {
             case 1 : {
@@ -2173,7 +2173,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2540)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2540)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (false), var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (false), var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertUnusedInOutArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2542)) ;
               } break ;
             case 2 : {
@@ -2181,7 +2181,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2545)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2545)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (false), var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (false), var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertInOutArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2547)) ;
               } break ;
             default :
@@ -2195,8 +2195,8 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
           GGS_AC_galgasType  var_cas_type_semantique ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-          var_cas_listeDeTypes._addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
-          var_cas_outSignatureForGrammar._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_listeDeTypes.addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
+          var_cas_outSignatureForGrammar.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           GGS_lstring  var_cas_nomArgument ;
           inLexique.assignFromAttribute_tokenString (var_cas_nomArgument) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
@@ -2204,7 +2204,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_ (galgas_scanner & inLexique,
           var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2564)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2564)) COMMA_HERE) ;
           GGS_bool var_cas_modeIn ;
           var_cas_modeIn = GGS_bool (false) ;
-          var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
+          var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
           var_cas_tableArgumentsMethode.modifier_insertOutArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2567)) ;
           } break ;
         default :
@@ -2230,7 +2230,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_importGrammarForSemantics (gal
           var_cas_passingMode = GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE) ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_importGrammarForSemantics (inLexique, var_cas_galgasTypeName) ;
-          var_cas_outSignature._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_outSignature.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_11 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2249,7 +2249,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_importGrammarForSemantics (gal
           var_cas_passingMode = GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE) ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_importGrammarForSemantics (inLexique, var_cas_galgasTypeName) ;
-          var_cas_outSignature._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_outSignature.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_12 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2268,7 +2268,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_importGrammarForSemantics (gal
           var_cas_passingMode = GGS_EXformalArgumentPassingMode::constructor_argumentInOut (inLexique COMMA_HERE) ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_importGrammarForSemantics (inLexique, var_cas_galgasTypeName) ;
-          var_cas_outSignature._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_outSignature.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_13 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2287,7 +2287,7 @@ pr_formal_arguments_list_semantics_parser_2457_28_importGrammarForSemantics (gal
           var_cas_passingMode = GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE) ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_importGrammarForSemantics (inLexique, var_cas_galgasTypeName) ;
-          var_cas_outSignature._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_outSignature.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
           } break ;
         default :
@@ -2390,8 +2390,8 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_ (galgas_scanner & inLex
           GGS_AC_galgasType  var_cas_type_semantique ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-          var_cas_listeDeTypes._addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
-          var_cas_outSignatureForGrammar._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_listeDeTypes.addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
+          var_cas_outSignatureForGrammar.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           GGS_lstring  var_cas_nomArgument ;
           GGS_bool var_cas_modeIn ;
           var_cas_modeIn = GGS_bool (true) ;
@@ -2402,7 +2402,7 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_ (galgas_scanner & inLex
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2654)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2654)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertUnusedConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2656)) ;
               } break ;
             case 2 : {
@@ -2410,7 +2410,7 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_ (galgas_scanner & inLex
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2659)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2659)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, var_cas_modeIn, var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2661)) ;
               } break ;
             default :
@@ -2424,8 +2424,8 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_ (galgas_scanner & inLex
           GGS_AC_galgasType  var_cas_type_semantique ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-          var_cas_listeDeTypes._addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
-          var_cas_outSignatureForGrammar._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_listeDeTypes.addAssign_operation (var_cas_type_semantique, var_cas_passingMode) ;
+          var_cas_outSignatureForGrammar.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_16 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2434,7 +2434,7 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_ (galgas_scanner & inLex
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2680)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2680)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertUnusedInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2682)) ;
               } break ;
             case 2 : {
@@ -2443,7 +2443,7 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_ (galgas_scanner & inLex
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               GGS_typeCplusPlusName  var_cas_natureNom ;
               var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2686)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2686)) COMMA_HERE) ;
-              var_cas_listeTypeEtNomsArguments._addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+              var_cas_listeTypeEtNomsArguments.addAssign_operation (var_cas_type_semantique, var_cas_passingMode, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
               var_cas_tableArgumentsMethode.modifier_insertInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (2688)) ;
               } break ;
             default :
@@ -2473,7 +2473,7 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_importGrammarForSemantic
           var_cas_passingMode = GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE) ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_importGrammarForSemantics (inLexique, var_cas_galgasTypeName) ;
-          var_cas_outSignature._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_outSignature.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_15 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2492,7 +2492,7 @@ pr_formal_input_arguments_list_semantics_parser_2624_34_importGrammarForSemantic
           var_cas_passingMode = GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE) ;
           GGS_lstring  var_cas_galgasTypeName ;
           nt_formal_argument_type_importGrammarForSemantics (inLexique, var_cas_galgasTypeName) ;
-          var_cas_outSignature._addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
+          var_cas_outSignature.addAssign_operation (var_cas_passingMode, var_cas_galgasTypeName) ;
           switch (select_semantics_parser_16 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_unused) COMMA_HERE) ;
@@ -2621,7 +2621,7 @@ pr_instruction_beginning_with_identifier_semantics_parser_2752_44_ (galgas_scann
   ::routine_checkAssignmentTypesCompatibility (inLexique,  var_cas_targetVarType,  var_cas_sourceType,  GGS_location (inLexique),  GGS_bool (true) COMMA_SOURCE_FILE_AT_LINE (2777)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_assignmentInstruction ::constructor_new (inLexique, var_cas_targetVarCppName, GGS_lstringlist ::constructor_emptyList (), var_cas_sourceExpression COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2657,7 +2657,7 @@ pr_instruction_beginning_with_identifier_semantics_parser_2791_44_ (galgas_scann
         GGS_lstring  var_cas_structAttributeName ;
         inLexique.assignFromAttribute_tokenString (var_cas_structAttributeName) ;
         inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-        var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
+        var_cas_structAttributeList.addAssign_operation (var_cas_structAttributeName) ;
         GGS_typeGalgasStructType  var_cas_structType ;
         var_cas_structType = GGS_typeGalgasStructType::castFrom (inLexique, var_cas_targetType.getPtr (), true, var_cas_structAttributeName COMMA_SOURCE_FILE_AT_LINE (2810)) ;
         GGS_bool var_cas_found ;
@@ -2691,7 +2691,7 @@ pr_instruction_beginning_with_identifier_semantics_parser_2791_44_ (galgas_scann
   ::routine_checkAssignmentTypesCompatibility (inLexique,  var_cas_targetType,  var_cas_sourceType,  GGS_location (inLexique),  GGS_bool (true) COMMA_SOURCE_FILE_AT_LINE (2835)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_assignmentInstruction ::constructor_new (inLexique, var_cas_nomCppVariableSource, var_cas_structAttributeList, var_cas_sourceExpression COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2789,7 +2789,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_2
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_dotEqualInstruction ::constructor_new (inLexique, var_cas_inTargetVarCppName, var_cas_inStructAttributeList, var_cas_sourceExpression, var_cas_sourceExpressionConverter COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2834,7 +2834,7 @@ pr_input_parameters_list_semantics_parser_2919_28_ (galgas_scanner & inLexique,
                   GGS_typeCplusPlusName  var_cas_nomCppVariable ;
                   var_cas_nomCppVariable = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomVariableDest.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (2943)), var_cas_nomVariableDest.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (2943)) COMMA_HERE) ;
                   var_cas_ioVariablesMap.modifier_insertLocalVariable (inLexique, var_cas_nomVariableDest, var_cas_definitionType, var_cas_nomCppVariable COMMA_SOURCE_FILE_AT_LINE (2944)) ;
-                  var_cas_ioInstructionList._addAssign_operation (GGS_typeInstructionDeclarationVarLocale ::constructor_new (inLexique, var_cas_nomCppVariable, var_cas_definitionType COMMA_HERE)) ;
+                  var_cas_ioInstructionList.addAssign_operation (GGS_typeInstructionDeclarationVarLocale ::constructor_new (inLexique, var_cas_nomCppVariable, var_cas_definitionType COMMA_HERE)) ;
                   } break ;
                 case 2 : {
                   inLexique.assignFromAttribute_tokenString (var_cas_nomVariableDest) ;
@@ -2846,11 +2846,11 @@ pr_input_parameters_list_semantics_parser_2919_28_ (galgas_scanner & inLexique,
               GGS_AC_galgasType  var_cas_typeVarDest ;
               GGS_typeCplusPlusName  var_cas_nomCppDest ;
               var_cas_ioVariablesMap.modifier_searchForWriteAccess (inLexique, var_cas_nomVariableDest, var_cas_typeVarDest, var_cas_nomCppDest COMMA_SOURCE_FILE_AT_LINE (2951)) ;
-              var_cas_listeCibles._addAssign_operation (GGS_typeEntiteDest ::constructor_new (inLexique, var_cas_typeVarDest, var_cas_nomCppDest, GGS_location (inLexique) COMMA_HERE)) ;
+              var_cas_listeCibles.addAssign_operation (GGS_typeEntiteDest ::constructor_new (inLexique, var_cas_typeVarDest, var_cas_nomCppDest, GGS_location (inLexique) COMMA_HERE)) ;
               } break ;
             case 2 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A_) COMMA_HERE) ;
-              var_cas_listeCibles._addAssign_operation (GGS_typeJoker ::constructor_new (inLexique COMMA_HERE)) ;
+              var_cas_listeCibles.addAssign_operation (GGS_typeJoker ::constructor_new (inLexique COMMA_HERE)) ;
               } break ;
             case 3 : {
               GGS_luint  var_cas_jokerCountWithLocation ;
@@ -2869,7 +2869,7 @@ pr_input_parameters_list_semantics_parser_2919_28_ (galgas_scanner & inLexique,
                     _condition_111528 = GGS_bool (false) ;
                   }else{
                     _variant_111528.decrement_operation (inLexique COMMA_HERE) ;
-                    var_cas_listeCibles._addAssign_operation (GGS_typeJoker ::constructor_new (inLexique COMMA_HERE)) ;
+                    var_cas_listeCibles.addAssign_operation (GGS_typeJoker ::constructor_new (inLexique COMMA_HERE)) ;
                     var_cas_jokerCount.decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (2964)) ;
                   }
                 }
@@ -3014,7 +3014,7 @@ pr_instruction_beginning_with_identifier_semantics_parser_3015_44_ (galgas_scann
           GGS_lstring  var_cas_structAttributeName ;
           inLexique.assignFromAttribute_tokenString (var_cas_structAttributeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
+          var_cas_structAttributeList.addAssign_operation (var_cas_structAttributeName) ;
           GGS_typeGalgasStructType  var_cas_structType ;
           var_cas_structType = GGS_typeGalgasStructType::castFrom (inLexique, var_cas_targetType.getPtr (), true, var_cas_structAttributeName COMMA_SOURCE_FILE_AT_LINE (3035)) ;
           GGS_bool var_cas_found ;
@@ -3094,8 +3094,8 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3
         GGS_typeExpression  var_cas_expression ;
         GGS_AC_galgasType  var_cas_resultType ;
         nt_expression_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_inSemanticContext, var_cas_ioVariablesMap, var_cas_expression, var_cas_resultType) ;
-        var_cas_typeList._addAssign_operation (var_cas_resultType, GGS_location (inLexique)) ;
-        var_cas_expressionList._addAssign_operation (var_cas_expression) ;
+        var_cas_typeList.addAssign_operation (var_cas_resultType, GGS_location (inLexique)) ;
+        var_cas_expressionList.addAssign_operation (var_cas_expression) ;
       switch (select_repeat_semantics_parser_23 (inLexique)) {
         case 2 : {
           } break ;
@@ -3123,7 +3123,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeAppendInstruction ::constructor_new (inLexique, var_cas_inNomCppVariableSource, var_cas_inStructAttributeList, var_cas_expressionList COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3178,8 +3178,8 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3
         GGS_typeExpression  var_cas_expression ;
         GGS_AC_galgasType  var_cas_resultType ;
         nt_expression_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_inSemanticContext, var_cas_ioVariablesMap, var_cas_expression, var_cas_resultType) ;
-        var_cas_typeList._addAssign_operation (var_cas_resultType, GGS_location (inLexique)) ;
-        var_cas_expressionList._addAssign_operation (var_cas_expression) ;
+        var_cas_typeList.addAssign_operation (var_cas_resultType, GGS_location (inLexique)) ;
+        var_cas_expressionList.addAssign_operation (var_cas_expression) ;
       switch (select_repeat_semantics_parser_24 (inLexique)) {
         case 2 : {
           } break ;
@@ -3207,7 +3207,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeRemoveInstruction ::constructor_new (inLexique, var_cas_inNomCppVariableSource, var_cas_inStructAttributeList, var_cas_expressionList COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3253,7 +3253,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeIncrementInstruction ::constructor_new (inLexique, var_cas_inNomCppVariableSource, var_cas_inStructAttributeList, GGS_location (inLexique) COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3286,7 +3286,7 @@ pr_instruction_beginning_with_identifier_and_structure_access_semantics_parser_3
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeDecrementInstruction ::constructor_new (inLexique, var_cas_inNomCppVariableSource, var_cas_inStructAttributeList, GGS_location (inLexique) COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3354,8 +3354,8 @@ pr_parse_parameters_list_semantics_parser_3268_28_ (galgas_scanner & inLexique,
           nt_expression_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_inSemanticContext, var_cas_ioVariablesMap, var_cas_expressionValue, var_cas_expressionType) ;
           GGS_EXactualParametersPassingMode var_cas_parameterPassingMode ;
           var_cas_parameterPassingMode = GGS_EXactualParametersPassingMode::constructor_parameterOut (inLexique COMMA_HERE) ;
-          var_cas_listeTypesParametresEffectifs._addAssign_operation (var_cas_expressionType, var_cas_parameterPassingMode) ;
-          var_cas_outExpressionList._addAssign_operation (var_cas_expressionValue) ;
+          var_cas_listeTypesParametresEffectifs.addAssign_operation (var_cas_expressionType, var_cas_parameterPassingMode) ;
+          var_cas_outExpressionList.addAssign_operation (var_cas_expressionValue) ;
           } break ;
         case 3 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F_) COMMA_HERE) ;
@@ -3364,8 +3364,8 @@ pr_parse_parameters_list_semantics_parser_3268_28_ (galgas_scanner & inLexique,
           switch (select_semantics_parser_26 (inLexique)) {
             case 1 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2A_) COMMA_HERE) ;
-              var_cas_listeTypesParametresEffectifs._addAssign_operation (GGS_typeGalgas_jokerInParameterList ::constructor_new (inLexique COMMA_HERE), var_cas_parameterPassingMode) ;
-              var_cas_outExpressionList._addAssign_operation (GGS_typeJokerInExpression ::constructor_new (inLexique COMMA_HERE)) ;
+              var_cas_listeTypesParametresEffectifs.addAssign_operation (GGS_typeGalgas_jokerInParameterList ::constructor_new (inLexique COMMA_HERE), var_cas_parameterPassingMode) ;
+              var_cas_outExpressionList.addAssign_operation (GGS_typeJokerInExpression ::constructor_new (inLexique COMMA_HERE)) ;
               } break ;
             case 2 : {
               GGS_luint  var_cas_jokerCountWithLocation ;
@@ -3384,8 +3384,8 @@ pr_parse_parameters_list_semantics_parser_3268_28_ (galgas_scanner & inLexique,
                     _condition_126361 = GGS_bool (false) ;
                   }else{
                     _variant_126361.decrement_operation (inLexique COMMA_HERE) ;
-                    var_cas_listeTypesParametresEffectifs._addAssign_operation (GGS_typeGalgas_jokerInParameterList ::constructor_new (inLexique COMMA_HERE), var_cas_parameterPassingMode) ;
-                    var_cas_outExpressionList._addAssign_operation (GGS_typeJokerInExpression ::constructor_new (inLexique COMMA_HERE)) ;
+                    var_cas_listeTypesParametresEffectifs.addAssign_operation (GGS_typeGalgas_jokerInParameterList ::constructor_new (inLexique COMMA_HERE), var_cas_parameterPassingMode) ;
+                    var_cas_outExpressionList.addAssign_operation (GGS_typeJokerInExpression ::constructor_new (inLexique COMMA_HERE)) ;
                     var_cas_jokerCount.decrement_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (3312)) ;
                   }
                 }
@@ -3398,14 +3398,14 @@ pr_parse_parameters_list_semantics_parser_3268_28_ (galgas_scanner & inLexique,
               inLexique.assignFromAttribute_tokenString (var_cas_nomArgument) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
               var_cas_ioVariablesMap.modifier_searchForWriteAccess (inLexique, var_cas_nomArgument, var_cas_typeArgument, var_cas_nomCppArgument COMMA_SOURCE_FILE_AT_LINE (3319)) ;
-              var_cas_listeTypesParametresEffectifs._addAssign_operation (var_cas_typeArgument, var_cas_parameterPassingMode) ;
+              var_cas_listeTypesParametresEffectifs.addAssign_operation (var_cas_typeArgument, var_cas_parameterPassingMode) ;
               GGS_typeExpression  var_cas_e ;
               var_cas_e = GGS_typeVarInExpression ::constructor_new (inLexique, var_cas_nomCppArgument, GGS_lstringlist ::constructor_emptyList () COMMA_HERE) ;
-              var_cas_outExpressionList._addAssign_operation (var_cas_e) ;
+              var_cas_outExpressionList.addAssign_operation (var_cas_e) ;
               if ((var_cas_exclusiveVariables.reader_hasKey (inLexique, var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3323)) COMMA_SOURCE_FILE_AT_LINE (3323))).isBuiltAndTrue ()) {
                 var_cas_nomArgument.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this object is already named as input or output/input effectif argument of current instruction") COMMA_SOURCE_FILE_AT_LINE (3325)) ;
               }else{
-                var_cas_exclusiveVariables._addAssign_operation (var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3326))) ;
+                var_cas_exclusiveVariables.addAssign_operation (var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3326))) ;
               }
               var_cas_outHasInputParameter = GGS_bool (true) ;
               } break ;
@@ -3448,7 +3448,7 @@ pr_parse_parameters_list_semantics_parser_3268_28_ (galgas_scanner & inLexique,
                   if (((var_cas_found).operator_not ()).isBuiltAndTrue ()) {
                     var_cas_structAttributeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, ((((GGS_string ("the '@")).operator_concat (var_cas_structType.reader_mStructTypeName (inLexique COMMA_SOURCE_FILE_AT_LINE (3349)))).operator_concat (GGS_string ("' does not define a '"))).operator_concat (var_cas_structAttributeName)).operator_concat (GGS_string ("' attribute")) COMMA_SOURCE_FILE_AT_LINE (3350)) ;
                   }
-                  var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
+                  var_cas_structAttributeList.addAssign_operation (var_cas_structAttributeName) ;
                   } break ;
                 default :
                   syntaxRepeat_27 = false ;
@@ -3458,14 +3458,14 @@ pr_parse_parameters_list_semantics_parser_3268_28_ (galgas_scanner & inLexique,
           }
           GGS_EXactualParametersPassingMode var_cas_parameterPassingMode ;
           var_cas_parameterPassingMode = GGS_EXactualParametersPassingMode::constructor_parameterOutIn (inLexique COMMA_HERE) ;
-          var_cas_listeTypesParametresEffectifs._addAssign_operation (var_cas_typeArgument, var_cas_parameterPassingMode) ;
+          var_cas_listeTypesParametresEffectifs.addAssign_operation (var_cas_typeArgument, var_cas_parameterPassingMode) ;
           GGS_typeExpression  var_cas_e ;
           var_cas_e = GGS_typeVarInExpression ::constructor_new (inLexique, var_cas_nomCppArgument, var_cas_structAttributeList COMMA_HERE) ;
-          var_cas_outExpressionList._addAssign_operation (var_cas_e) ;
+          var_cas_outExpressionList.addAssign_operation (var_cas_e) ;
           if ((var_cas_exclusiveVariables.reader_hasKey (inLexique, var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3357)) COMMA_SOURCE_FILE_AT_LINE (3357))).isBuiltAndTrue ()) {
             var_cas_nomArgument.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("this object is already named as input or output/input effectif argument of current instruction") COMMA_SOURCE_FILE_AT_LINE (3359)) ;
           }else{
-            var_cas_exclusiveVariables._addAssign_operation (var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3360))) ;
+            var_cas_exclusiveVariables.addAssign_operation (var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3360))) ;
           }
           } break ;
         default :
@@ -3653,7 +3653,7 @@ pr_extract_instruction_semantics_parser_3432_26_ (galgas_scanner & inLexique,
   if (temp_133617.isBuilt ()) {
     temp_133617 (HERE)->method_searchKey (inLexique, var_cas_messageName COMMA_SOURCE_FILE_AT_LINE (3489)) ;
   }
-  var_cas_ioInstructionList._addAssign_operation (GGS_typeSimpleExtractInstruction ::constructor_new (inLexique, var_cas_inSourceVarCppName, var_cas_nomClasse, var_cas_listeAffectationParametresEffectifs, var_cas_errorExpression, var_cas_messageName COMMA_HERE)) ;
+  var_cas_ioInstructionList.addAssign_operation (GGS_typeSimpleExtractInstruction ::constructor_new (inLexique, var_cas_inSourceVarCppName, var_cas_nomClasse, var_cas_listeAffectationParametresEffectifs, var_cas_errorExpression, var_cas_messageName COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3724,7 +3724,7 @@ pr_extract_instruction_semantics_parser_3502_26_ (galgas_scanner & inLexique,
         GGS_typeInstructionList  var_cas_instructionsList ;
         var_cas_instructionsList = GGS_typeInstructionList ::constructor_emptyList () ;
         nt_semantic_instructions_list_ (inLexique, var_cas_inTableEnAvant, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_instructionsList, var_cas_inSemanticContext) ;
-        var_cas_casesList._addAssign_operation (var_cas_nomType1, var_cas_indicatif1, var_cas_instructionsList, var_cas_noUsedParameter) ;
+        var_cas_casesList.addAssign_operation (var_cas_nomType1, var_cas_indicatif1, var_cas_instructionsList, var_cas_noUsedParameter) ;
         var_cas_ioVariablesMap.epilogue_testPart (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (3519)) ;
       switch (select_repeat_semantics_parser_28 (inLexique)) {
         case 2 : {
@@ -3741,7 +3741,7 @@ pr_extract_instruction_semantics_parser_3502_26_ (galgas_scanner & inLexique,
   GGS_typeInstructionList  var_cas_elseInstructionList ;
   var_cas_elseInstructionList = GGS_typeInstructionList ::constructor_emptyList () ;
   nt_semantic_instructions_list_ (inLexique, var_cas_inTableEnAvant, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_elseInstructionList, var_cas_inSemanticContext) ;
-  var_cas_ioInstructionList._addAssign_operation (GGS_typeStructuredExtractInstructionWithElse ::constructor_new (inLexique, var_cas_inSourceVarCppName, var_cas_casesList, var_cas_elseInstructionList COMMA_HERE)) ;
+  var_cas_ioInstructionList.addAssign_operation (GGS_typeStructuredExtractInstructionWithElse ::constructor_new (inLexique, var_cas_inSourceVarCppName, var_cas_casesList, var_cas_elseInstructionList COMMA_HERE)) ;
   var_cas_ioVariablesMap.epilogue_testPart (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (3563)) ;
   var_cas_ioVariablesMap.epilogue_testBloc (inLexique COMMA_SOURCE_FILE_AT_LINE (3517)) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
@@ -3855,7 +3855,7 @@ pr_semantic_instruction_semantics_parser_3589_27_ (galgas_scanner & inLexique,
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
             GGS_typeCplusPlusName  var_cas_localConstantCppName ;
             var_cas_localConstantCppName = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_localConstantName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (3653)), var_cas_localConstantName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3653)) COMMA_HERE) ;
-            var_cas_localConstantCppNameList._addAssign_operation (var_cas_localConstantCppName) ;
+            var_cas_localConstantCppNameList.addAssign_operation (var_cas_localConstantCppName) ;
             var_cas_ioVariablesMap.modifier_insertConstInArgument (inLexique, var_cas_localConstantName, var_cas_typeDefinition, var_cas_localConstantCppName COMMA_SOURCE_FILE_AT_LINE (3655)) ;
             } break ;
           case 3 : {
@@ -3865,7 +3865,7 @@ pr_semantic_instruction_semantics_parser_3589_27_ (galgas_scanner & inLexique,
             inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
             GGS_typeCplusPlusName  var_cas_localConstantCppName ;
             var_cas_localConstantCppName = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_localConstantName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (3660)), var_cas_localConstantName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (3660)) COMMA_HERE) ;
-            var_cas_localConstantCppNameList._addAssign_operation (var_cas_localConstantCppName) ;
+            var_cas_localConstantCppNameList.addAssign_operation (var_cas_localConstantCppName) ;
             var_cas_ioVariablesMap.modifier_insertUnusedConstInArgument (inLexique, var_cas_localConstantName, var_cas_typeDefinition, var_cas_localConstantCppName COMMA_SOURCE_FILE_AT_LINE (3662)) ;
             } break ;
           default :
@@ -3875,7 +3875,7 @@ pr_semantic_instruction_semantics_parser_3589_27_ (galgas_scanner & inLexique,
         GGS_typeInstructionList  var_cas_instructionsList ;
         var_cas_instructionsList = GGS_typeInstructionList ::constructor_emptyList () ;
         nt_semantic_instructions_list_ (inLexique, var_cas_inTableEnAvant, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_instructionsList, var_cas_inSemanticContext) ;
-        var_cas_branchList._addAssign_operation (var_cas_castedTypeName, var_cas_checkForKindOfClass, var_cas_localConstantCppNameList, var_cas_instructionsList) ;
+        var_cas_branchList.addAssign_operation (var_cas_castedTypeName, var_cas_checkForKindOfClass, var_cas_localConstantCppNameList, var_cas_instructionsList) ;
         var_cas_ioVariablesMap.epilogue_testPart (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (3619)) ;
       switch (select_repeat_semantics_parser_29 (inLexique)) {
         case 2 : {
@@ -3918,7 +3918,7 @@ pr_semantic_instruction_semantics_parser_3589_27_ (galgas_scanner & inLexique,
   var_cas_ioVariablesMap.epilogue_testBloc (inLexique COMMA_SOURCE_FILE_AT_LINE (3617)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeStructuredCastInstruction ::constructor_new (inLexique, GGS_location (inLexique), var_cas_sourceExpression, var_cas_sourceExpressionTypeName, var_cas_branchList, var_cas_elseOrDefault COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_cast) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
@@ -4049,7 +4049,7 @@ pr_semantic_instruction_semantics_parser_3780_27_ (galgas_scanner & inLexique,
         var_cas_ioVariablesMap.modifier_searchForReadOnlyAccess (inLexique, var_cas_galgasVariableName, automatic_var_20, var_cas_nomCppVar COMMA_SOURCE_FILE_AT_LINE (3793)) ;
         GGS_typeInstruction  var_cas_instruction ;
         var_cas_instruction = GGS_typeLogInstruction ::constructor_new (inLexique, var_cas_galgasVariableName, var_cas_nomCppVar COMMA_HERE) ;
-        var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+        var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
       switch (select_repeat_semantics_parser_33 (inLexique)) {
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -4109,7 +4109,7 @@ pr_semantic_instruction_semantics_parser_3808_27_ (galgas_scanner & inLexique,
         var_cas_ioVariablesMap.modifier_searchForDestructiveReadAccess (inLexique, var_cas_nom, automatic_var_21, var_cas_nomCppVar COMMA_SOURCE_FILE_AT_LINE (3821)) ;
         GGS_typeInstruction  var_cas_instruction ;
         var_cas_instruction = GGS_typeDropInstruction ::constructor_new (inLexique, var_cas_nomCppVar COMMA_HERE) ;
-        var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+        var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
       switch (select_repeat_semantics_parser_34 (inLexique)) {
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -4187,7 +4187,7 @@ pr_instruction_beginning_with_identifier_semantics_parser_3838_44_ (galgas_scann
   nt_actual_parameters_list_ (inLexique, var_cas_signatureRoutine, var_cas_expressionsList, var_cas_ioVariablesMap, var_cas_inOptionsComponentsMapForUse, var_cas_inSemanticContext, var_cas_ioComponentSemanticsEntitiesMap, var_cas_ioInstructionList) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeRoutineCallInstruction ::constructor_new (inLexique, var_cas_nomVarDest, var_cas_expressionsList, var_cas_signatureRoutine, var_cas_isExternActionCall COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4249,7 +4249,7 @@ pr_semantic_instruction_semantics_parser_3898_27_ (galgas_scanner & inLexique,
               GGS_lstring  var_cas_structAttributeName ;
               inLexique.assignFromAttribute_tokenString (var_cas_structAttributeName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
+              var_cas_structAttributeList.addAssign_operation (var_cas_structAttributeName) ;
               GGS_typeGalgasStructType  var_cas_structType ;
               var_cas_structType = GGS_typeGalgasStructType::castFrom (inLexique, var_cas_variableType.getPtr (), true, var_cas_structAttributeName COMMA_SOURCE_FILE_AT_LINE (3965)) ;
               GGS_bool var_cas_found ;
@@ -4312,7 +4312,7 @@ pr_semantic_instruction_semantics_parser_3898_27_ (galgas_scanner & inLexique,
     default :
       break ;
   }
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__5D_) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
@@ -4442,7 +4442,7 @@ pr_warning_instruction_semantics_parser_4080_26_ (galgas_scanner & inLexique,
   var_cas_gs = GGS_typeGalgas_string::castFrom (inLexique, var_cas_warningMessageExpressionType.getPtr (), true, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (4113)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeWarningInstruction ::constructor_new (inLexique, var_cas_errorExpression, var_cas_warningMessageExpression, GGS_location (inLexique) COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
 
@@ -4523,7 +4523,7 @@ pr_error_instruction_semantics_parser_4146_24_ (galgas_scanner & inLexique,
             GGS_typeCplusPlusName  var_cas_varCppName ;
             GGS_AC_galgasType  automatic_var_22 ;
             var_cas_ioVariablesMap.modifier_searchForWriteAccess (inLexique, var_cas_nomVariable, automatic_var_22, var_cas_varCppName COMMA_SOURCE_FILE_AT_LINE (4189)) ;
-            var_cas_variablesToDrop._addAssign_operation (var_cas_varCppName) ;
+            var_cas_variablesToDrop.addAssign_operation (var_cas_varCppName) ;
           switch (select_repeat_semantics_parser_38 (inLexique)) {
             case 2 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -4541,7 +4541,7 @@ pr_error_instruction_semantics_parser_4146_24_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeErrorInstruction ::constructor_new (inLexique, var_cas_errorLocationExpression, var_cas_errorMessageExpression, GGS_location (inLexique), var_cas_variablesToDrop COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4601,7 +4601,7 @@ pr_semantic_instruction_semantics_parser_4212_27_ (galgas_scanner & inLexique,
   var_cas_gs = GGS_typeGalgas_string::castFrom (inLexique, var_cas_messageExpressionType.getPtr (), true, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (4234)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeMessageInstruction ::constructor_new (inLexique, var_cas_messageExpression, var_cas_instructionLocation COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
 
@@ -4644,7 +4644,7 @@ pr_semantic_instruction_semantics_parser_4247_27_ (galgas_scanner & inLexique,
         GGS_typeInstructionList  var_cas_listeInstructionsBrancheTest ;
         var_cas_listeInstructionsBrancheTest = GGS_typeInstructionList ::constructor_emptyList () ;
         nt_semantic_instructions_list_no_verif_ (inLexique, var_cas_inTableEnAvant, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_listeInstructionsBrancheTest, var_cas_inSemanticContext) ;
-        var_cas_listeBranchesTest._addAssign_operation (var_cas_testBranche, var_cas_listeInstructionsBrancheTest) ;
+        var_cas_listeBranchesTest.addAssign_operation (var_cas_testBranche, var_cas_listeInstructionsBrancheTest) ;
         var_cas_ioVariablesMap.epilogue_testPart (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (4259)) ;
       switch (select_repeat_semantics_parser_39 (inLexique)) {
         case 2 : {
@@ -4675,7 +4675,7 @@ pr_semantic_instruction_semantics_parser_4247_27_ (galgas_scanner & inLexique,
   var_cas_ioVariablesMap.epilogue_testBloc (inLexique COMMA_SOURCE_FILE_AT_LINE (4257)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_if_instruction ::constructor_new (inLexique, var_cas_listeBranchesTest, var_cas_listeInstructionsBrancheAutre COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
 
@@ -4753,7 +4753,7 @@ pr_semantic_instruction_semantics_parser_4318_27_ (galgas_scanner & inLexique,
               GGS_lstring  var_cas_enumConstantName ;
               inLexique.assignFromAttribute_tokenString (var_cas_enumConstantName) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-              var_cas_branchConstantSet._addAssign_operation (var_cas_enumConstantName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4353))) ;
+              var_cas_branchConstantSet.addAssign_operation (var_cas_enumConstantName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (4353))) ;
               GGS_bool automatic_var_23 ;
               const GGS_enumConstantMap  temp_166361 = var_cas_enumConstantesMap ;
               if (temp_166361.isBuilt ()) {
@@ -4778,7 +4778,7 @@ pr_semantic_instruction_semantics_parser_4318_27_ (galgas_scanner & inLexique,
         GGS_typeInstructionList  var_cas_branchInstructionList ;
         var_cas_branchInstructionList = GGS_typeInstructionList ::constructor_emptyList () ;
         nt_semantic_instructions_list_no_verif_ (inLexique, var_cas_inTableEnAvant, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_branchInstructionList, var_cas_inSemanticContext) ;
-        var_cas_switchBranchlist._addAssign_operation (var_cas_branchConstantSet, var_cas_branchInstructionList) ;
+        var_cas_switchBranchlist.addAssign_operation (var_cas_branchConstantSet, var_cas_branchInstructionList) ;
         var_cas_ioVariablesMap.epilogue_testPart (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (4363)) ;
       switch (select_repeat_semantics_parser_41 (inLexique)) {
         case 2 : {
@@ -4803,7 +4803,7 @@ pr_semantic_instruction_semantics_parser_4318_27_ (galgas_scanner & inLexique,
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_switch_instruction ::constructor_new (inLexique, var_cas_switchExpression, var_cas_enumTypeName, var_cas_switchBranchlist COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_switch) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
@@ -4894,7 +4894,7 @@ pr_semantic_instruction_semantics_parser_4399_27_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_loop) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5041,7 +5041,7 @@ pr_semantic_instruction_semantics_parser_4483_27_ (galgas_scanner & inLexique,
   }
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_grammarInstruction ::constructor_new (inLexique, var_cas_sourceIsFile, var_cas_sourceExpression, var_cas_grammarName, var_cas_expressionsList, var_cas_altName, var_cas_lexiqueClassName, var_cas_sentStringName, var_cas_depFileExpression, var_cas_depFilePath COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
 
@@ -5124,7 +5124,7 @@ pr_semantic_instruction_semantics_parser_4638_27_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeSendInstruction ::constructor_new (inLexique, var_cas_expression COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5186,7 +5186,7 @@ pr_semantic_instruction_semantics_parser_4675_27_ (galgas_scanner & inLexique,
           GGS_lstring  var_cas_structAttributeName ;
           inLexique.assignFromAttribute_tokenString (var_cas_structAttributeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-          var_cas_structAttributeList._addAssign_operation (var_cas_structAttributeName) ;
+          var_cas_structAttributeList.addAssign_operation (var_cas_structAttributeName) ;
           var_cas_instructionLocation = var_cas_structAttributeName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (4710)) ;
           GGS_typeGalgasStructType  var_cas_structType ;
           var_cas_structType = GGS_typeGalgasStructType::castFrom (inLexique, var_cas_targetType.getPtr (), true, var_cas_structAttributeName COMMA_SOURCE_FILE_AT_LINE (4711)) ;
@@ -5261,7 +5261,7 @@ pr_semantic_instruction_semantics_parser_4675_27_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeWithInstruction ::constructor_new (inLexique, var_cas_mapTypeName, var_cas_accessedVariableCppName, var_cas_structAttributeList, var_cas_errorMessageName, var_cas_keyExpression, var_cas_doBranchInstructionList, var_cas_elseBranchInstructionList, var_cas_instructionLocation COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5483,7 +5483,7 @@ pr_constant_while_before_in_foreach_instruction_semantics_parser_4815_51_secondP
           default :
             break ;
         }
-        var_cas_outForeachEnumerationList._addAssign_operation (var_cas_iteratorNewStyle, var_cas_sourceExpression, var_cas_magicNumber, var_cas_typeName, var_cas_ascending) ;
+        var_cas_outForeachEnumerationList.addAssign_operation (var_cas_iteratorNewStyle, var_cas_sourceExpression, var_cas_magicNumber, var_cas_typeName, var_cas_ascending) ;
       switch (select_repeat_semantics_parser_50 (inLexique)) {
         case 2 : {
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -5693,7 +5693,7 @@ pr_semantic_instruction_semantics_parser_5012_27_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_foreach) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5920,7 +5920,7 @@ pr_semantic_instruction_semantics_parser_5224_27_ (galgas_scanner & inLexique,
           GGS_typeInstructionList  var_cas_instructionsList ;
           var_cas_instructionsList = GGS_typeInstructionList ::constructor_emptyList () ;
           nt_semantic_instructions_list_ (inLexique, var_cas_inTableEnAvant, var_cas_ioComponentSemanticsEntitiesMap, var_cas_inOptionsComponentsMapForUse, var_cas_ioVariablesMap, var_cas_instructionsList, var_cas_inSemanticContext) ;
-          var_cas_casesList._addAssign_operation (var_cas_case1_name, var_cas_case2_name, var_cas_instructionsList) ;
+          var_cas_casesList.addAssign_operation (var_cas_case1_name, var_cas_case2_name, var_cas_instructionsList) ;
           var_cas_ioVariablesMap.epilogue_testPart (inLexique, GGS_location (inLexique) COMMA_SOURCE_FILE_AT_LINE (5269)) ;
           } break ;
         default :
@@ -5941,7 +5941,7 @@ pr_semantic_instruction_semantics_parser_5224_27_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_typeMatchInstruction ::constructor_new (inLexique, var_cas_operand1_location, var_cas_operand2_location, var_cas_operand1_cppName, var_cas_operand2_cppName, var_cas_operand1_typeName, var_cas_operand2_typeName, var_cas_operand1_isEnumeration, var_cas_operand2_isEnumeration, var_cas_casesList, var_cas_elsePartInstructionsList COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6040,7 +6040,7 @@ pr_optional_assignment_semantics_parser_5366_26_ (galgas_scanner & inLexique,
                                 const GGS_M_optionComponents  /* var_cas_inOptionsComponentsMapForUse */,
                                 const GGS_EXsemanticContext /* var_cas_inSemanticContext */,
                                 const GGS_M_semanticsEntitiesForUse  /* var_cas_ioComponentSemanticsEntitiesMap */) {
-  var_cas_ioInstructionList._addAssign_operation (GGS_typeInstructionDeclarationVarLocale ::constructor_new (inLexique, var_cas_inVariableCppName, var_cas_inVariableType COMMA_HERE)) ;
+  var_cas_ioInstructionList.addAssign_operation (GGS_typeInstructionDeclarationVarLocale ::constructor_new (inLexique, var_cas_inVariableCppName, var_cas_inVariableType COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6073,7 +6073,7 @@ pr_optional_assignment_semantics_parser_5382_26_ (galgas_scanner & inLexique,
   ::routine_checkAssignmentTypesCompatibility (inLexique,  var_cas_inVariableType,  var_cas_sourceType,  GGS_location (inLexique),  GGS_bool (true) COMMA_SOURCE_FILE_AT_LINE (5406)) ;
   GGS_typeInstruction  var_cas_instruction ;
   var_cas_instruction = GGS_C_declarationInstructionWithAssignment ::constructor_new (inLexique, var_cas_inVariableType, var_cas_inTargetVariableCppName, var_cas_sourceExpression COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (var_cas_instruction) ;
+  var_cas_ioInstructionList.addAssign_operation (var_cas_instruction) ;
   GGS_AC_galgasType  automatic_var_27 ;
   GGS_typeCplusPlusName  automatic_var_28 ;
   var_cas_ioVariablesMap.modifier_searchForWriteAccess (inLexique, var_cas_inTargetVarName, automatic_var_27, automatic_var_28 COMMA_SOURCE_FILE_AT_LINE (5411)) ;
@@ -6119,7 +6119,7 @@ pr_optional_assignment_semantics_parser_5416_26_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__5D_) COMMA_HERE) ;
   GGS_typeExpression  var_cas_e ;
   var_cas_e = GGS_typeConstructorExpression ::constructor_new (inLexique, var_cas_inVariableType, var_cas_constructorName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5449)), var_cas_hasLexiqueAndLocationArguments, var_cas_expressionList COMMA_HERE) ;
-  var_cas_ioInstructionList._addAssign_operation (GGS_C_declarationInstructionWithAssignment ::constructor_new (inLexique, var_cas_inVariableType, var_cas_inTargetVariableCppName, var_cas_e COMMA_HERE)) ;
+  var_cas_ioInstructionList.addAssign_operation (GGS_C_declarationInstructionWithAssignment ::constructor_new (inLexique, var_cas_inVariableType, var_cas_inTargetVariableCppName, var_cas_e COMMA_HERE)) ;
   GGS_AC_galgasType  automatic_var_29 ;
   GGS_typeCplusPlusName  automatic_var_30 ;
   var_cas_ioVariablesMap.modifier_searchForWriteAccess (inLexique, var_cas_inTargetVarName, automatic_var_29, automatic_var_30 COMMA_SOURCE_FILE_AT_LINE (5455)) ;
@@ -6220,7 +6220,7 @@ pr_semantics_declaration_semantics_parser_5464_28_ (galgas_scanner & inLexique,
       var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_mapindexTypeName, GGS_typeEntiteType ::constructor_new (inLexique, var_cas_t COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (5521)) ;
       GGS_typeEntityToGenerate  var_cas_e ;
       var_cas_e = GGS_C_mapindexToImplement ::constructor_new (inLexique, var_cas_mapindexTypeName, var_cas_mapTypeName, var_cas_mapAttributesList, var_cas_mapIndexSearchReaderMap COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_e) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_e) ;
       } break ;
     default :
       break ;
@@ -6401,7 +6401,7 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
               GGS_lstring  var_cas_errorMessage ;
               nt_ex_map_method_ (inLexique, var_cas_nomMethode, var_cas_errorMessage) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-              var_cas_insertMethodList._addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5634)), GGS_bool (true), GGS_string ("")) ;
+              var_cas_insertMethodList.addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5634)), GGS_bool (true), GGS_string ("")) ;
               } break ;
             case 3 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_search) COMMA_HERE) ;
@@ -6409,7 +6409,7 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
               GGS_lstring  var_cas_errorMessage ;
               nt_ex_map_method_ (inLexique, var_cas_nomMethode, var_cas_errorMessage) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-              var_cas_searchMethodList._addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5641)), GGS_bool (true), GGS_string ("")) ;
+              var_cas_searchMethodList.addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5641)), GGS_bool (true), GGS_string ("")) ;
               } break ;
             case 4 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_block) COMMA_HERE) ;
@@ -6467,25 +6467,25 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
           macroValidPointer (operand_212612) ;
           GGS_L_EXsignature  var_cas_methodSignature ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_212809 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_212809 = NULL ;
             while (((operand_212809 = enumerator_212809.nextObject ()))) {
               macroValidPointer (operand_212809) ;
-              var_cas_methodSignature._addAssign_operation (operand_212809->mAttributType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_212809->mAttributType, var_cas_inPassingMode) ;
             }
           }
           var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, operand_212612->mMethodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (5704)) ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-          var_cas_methodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_213239 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_213239 = NULL ;
             while (((operand_213239 = enumerator_213239.nextObject ()))) {
               macroValidPointer (operand_213239) ;
-              var_cas_methodSignature._addAssign_operation (operand_213239->mAttributType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_213239->mAttributType, var_cas_inPassingMode) ;
             }
           }
           GGS_lstring  var_cas_insertKeyAndGetIndexName ;
@@ -6500,25 +6500,25 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
           macroValidPointer (operand_213588) ;
           GGS_L_EXsignature  var_cas_methodSignature ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_213783 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_213783 = NULL ;
             while (((operand_213783 = enumerator_213783.nextObject ()))) {
               macroValidPointer (operand_213783) ;
-              var_cas_methodSignature._addAssign_operation (operand_213783->mAttributType, var_cas_outPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_213783->mAttributType, var_cas_outPassingMode) ;
             }
           }
           var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, operand_213588->mMethodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (5722)) ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-          var_cas_methodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_214211 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_214211 = NULL ;
             while (((operand_214211 = enumerator_214211.nextObject ()))) {
               macroValidPointer (operand_214211) ;
-              var_cas_methodSignature._addAssign_operation (operand_214211->mAttributType, var_cas_outPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_214211->mAttributType, var_cas_outPassingMode) ;
             }
           }
           GGS_lstring  var_cas_insertKeyAndGetIndexName ;
@@ -6533,7 +6533,7 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
       var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_mapTypeName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (5742)) ;
       GGS_typeEntityToGenerate  var_cas_def ;
       var_cas_def = GGS_typeDefinitionTableAimplementer ::constructor_new (inLexique, var_cas_mapTypeName, var_cas_listeTousAttributsSemantiques, var_cas_cppClassName, var_cas_insertMethodList, var_cas_searchMethodList, var_cas_tableMethodesBloc COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
       } break ;
     case 3 : {
@@ -6600,32 +6600,32 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               GGS_L_EXsignature  var_cas_methodSignature ;
               var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-              var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
               {
                 GGS_typeListeAttributsSemantiques::cEnumerator enumerator_217605 (var_cas_listeTousAttributsSemantiques, true) ;
                 const GGS_typeListeAttributsSemantiques::cElement * operand_217605 = NULL ;
                 while (((operand_217605 = enumerator_217605.nextObject ()))) {
                   macroValidPointer (operand_217605) ;
-                  var_cas_methodSignature._addAssign_operation (operand_217605->mAttributType, var_cas_outPassingMode) ;
+                  var_cas_methodSignature.addAssign_operation (operand_217605->mAttributType, var_cas_outPassingMode) ;
                 }
               }
               var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_methodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (5806)) ;
-              var_cas_removeMethodList._addAssign_operation (var_cas_methodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5807)), GGS_bool (false), GGS_string ("")) ;
+              var_cas_removeMethodList.addAssign_operation (var_cas_methodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5807)), GGS_bool (false), GGS_string ("")) ;
               if (((var_cas_getIndexMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5809))).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                 GGS_L_EXsignature  var_cas_getIndexMethodSignature ;
                 var_cas_getIndexMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
                 {
                   GGS_typeListeAttributsSemantiques::cEnumerator enumerator_218194 (var_cas_listeTousAttributsSemantiques, true) ;
                   const GGS_typeListeAttributsSemantiques::cElement * operand_218194 = NULL ;
                   while (((operand_218194 = enumerator_218194.nextObject ()))) {
                     macroValidPointer (operand_218194) ;
-                    var_cas_getIndexMethodSignature._addAssign_operation (operand_218194->mAttributType, var_cas_outPassingMode) ;
+                    var_cas_getIndexMethodSignature.addAssign_operation (operand_218194->mAttributType, var_cas_outPassingMode) ;
                   }
                 }
                 var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_getIndexMethodName, var_cas_getIndexMethodSignature COMMA_SOURCE_FILE_AT_LINE (5816)) ;
-                var_cas_removeMethodList._addAssign_operation (var_cas_getIndexMethodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5817)), GGS_bool (true), GGS_string ("")) ;
+                var_cas_removeMethodList.addAssign_operation (var_cas_getIndexMethodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5817)), GGS_bool (true), GGS_string ("")) ;
               }
               } break ;
             case 3 : {
@@ -6658,32 +6658,32 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               GGS_L_EXsignature  var_cas_methodSignature ;
               var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-              var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
               {
                 GGS_typeListeAttributsSemantiques::cEnumerator enumerator_219290 (var_cas_listeTousAttributsSemantiques, true) ;
                 const GGS_typeListeAttributsSemantiques::cElement * operand_219290 = NULL ;
                 while (((operand_219290 = enumerator_219290.nextObject ()))) {
                   macroValidPointer (operand_219290) ;
-                  var_cas_methodSignature._addAssign_operation (operand_219290->mAttributType, var_cas_inPassingMode) ;
+                  var_cas_methodSignature.addAssign_operation (operand_219290->mAttributType, var_cas_inPassingMode) ;
                 }
               }
               var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_methodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (5843)) ;
-              var_cas_insertMethodList._addAssign_operation (var_cas_methodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5844)), GGS_bool (false), var_cas_shadowErrorMessage) ;
+              var_cas_insertMethodList.addAssign_operation (var_cas_methodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5844)), GGS_bool (false), var_cas_shadowErrorMessage) ;
               if (((var_cas_getIndexMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5846))).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                 GGS_L_EXsignature  var_cas_getIndexMethodSignature ;
                 var_cas_getIndexMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
                 {
                   GGS_typeListeAttributsSemantiques::cEnumerator enumerator_219894 (var_cas_listeTousAttributsSemantiques, true) ;
                   const GGS_typeListeAttributsSemantiques::cElement * operand_219894 = NULL ;
                   while (((operand_219894 = enumerator_219894.nextObject ()))) {
                     macroValidPointer (operand_219894) ;
-                    var_cas_getIndexMethodSignature._addAssign_operation (operand_219894->mAttributType, var_cas_inPassingMode) ;
+                    var_cas_getIndexMethodSignature.addAssign_operation (operand_219894->mAttributType, var_cas_inPassingMode) ;
                   }
                 }
                 var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_getIndexMethodName, var_cas_getIndexMethodSignature COMMA_SOURCE_FILE_AT_LINE (5853)) ;
-                var_cas_insertMethodList._addAssign_operation (var_cas_getIndexMethodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5854)), GGS_bool (true), var_cas_shadowErrorMessage) ;
+                var_cas_insertMethodList.addAssign_operation (var_cas_getIndexMethodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5854)), GGS_bool (true), var_cas_shadowErrorMessage) ;
               }
               } break ;
             case 4 : {
@@ -6698,32 +6698,32 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               GGS_L_EXsignature  var_cas_methodSignature ;
               var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-              var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
               {
                 GGS_typeListeAttributsSemantiques::cEnumerator enumerator_220676 (var_cas_listeTousAttributsSemantiques, true) ;
                 const GGS_typeListeAttributsSemantiques::cElement * operand_220676 = NULL ;
                 while (((operand_220676 = enumerator_220676.nextObject ()))) {
                   macroValidPointer (operand_220676) ;
-                  var_cas_methodSignature._addAssign_operation (operand_220676->mAttributType, var_cas_outPassingMode) ;
+                  var_cas_methodSignature.addAssign_operation (operand_220676->mAttributType, var_cas_outPassingMode) ;
                 }
               }
               var_cas_mapReaderMethodMap.modifier_insertKey (inLexique, var_cas_methodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (5870)) ;
-              var_cas_searchMethodList._addAssign_operation (var_cas_methodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5871)), GGS_bool (false), GGS_string ("")) ;
+              var_cas_searchMethodList.addAssign_operation (var_cas_methodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5871)), GGS_bool (false), GGS_string ("")) ;
               if (((var_cas_getIndexMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5873))).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                 GGS_L_EXsignature  var_cas_getIndexMethodSignature ;
                 var_cas_getIndexMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
                 {
                   GGS_typeListeAttributsSemantiques::cEnumerator enumerator_221295 (var_cas_listeTousAttributsSemantiques, true) ;
                   const GGS_typeListeAttributsSemantiques::cElement * operand_221295 = NULL ;
                   while (((operand_221295 = enumerator_221295.nextObject ()))) {
                     macroValidPointer (operand_221295) ;
-                    var_cas_getIndexMethodSignature._addAssign_operation (operand_221295->mAttributType, var_cas_outPassingMode) ;
+                    var_cas_getIndexMethodSignature.addAssign_operation (operand_221295->mAttributType, var_cas_outPassingMode) ;
                   }
                 }
                 var_cas_mapReaderMethodMap.modifier_insertKey (inLexique, var_cas_getIndexMethodName, var_cas_getIndexMethodSignature COMMA_SOURCE_FILE_AT_LINE (5880)) ;
-                var_cas_searchMethodList._addAssign_operation (var_cas_getIndexMethodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5881)), GGS_bool (true), GGS_string ("")) ;
+                var_cas_searchMethodList.addAssign_operation (var_cas_getIndexMethodName, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5881)), GGS_bool (true), GGS_string ("")) ;
               }
               } break ;
             default :
@@ -6742,8 +6742,8 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
             var_cas_modifierName = ((GGS_string ("set")).operator_concat (operand_221696->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5887)).reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (5887)))).operator_concat (GGS_string ("ForKey")) ;
             GGS_L_EXsignature  var_cas_modifierSignature ;
             var_cas_modifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-            var_cas_modifierSignature._addAssign_operation (operand_221696->mInfo.mAttributType, var_cas_inPassingMode) ;
-            var_cas_modifierSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), var_cas_inPassingMode) ;
+            var_cas_modifierSignature.addAssign_operation (operand_221696->mInfo.mAttributType, var_cas_inPassingMode) ;
+            var_cas_modifierSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), var_cas_inPassingMode) ;
             var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, var_cas_modifierName, GGS_location (inLexique) COMMA_HERE), var_cas_modifierSignature COMMA_SOURCE_FILE_AT_LINE (5891)) ;
           }
         }
@@ -6755,7 +6755,7 @@ pr_semantics_declaration_semantics_parser_5597_28_ (galgas_scanner & inLexique,
       var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_mapTypeName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (5903)) ;
       GGS_typeEntityToGenerate  var_cas_def ;
       var_cas_def = GGS_C_mapToImplement ::constructor_new (inLexique, var_cas_mapTypeName, var_cas_enumTypeName, var_cas_checkFinalStateMethod, var_cas_listeTousAttributsSemantiques, var_cas_tableAttributs, var_cas_insertMethodList, var_cas_searchMethodList, var_cas_removeMethodList COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
       } break ;
     default :
@@ -6808,7 +6808,7 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
               GGS_lstring  var_cas_errorMessage ;
               nt_ex_map_method_ (inLexique, var_cas_nomMethode, var_cas_errorMessage) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-              var_cas_insertMethodList._addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5953)), GGS_bool (true), GGS_string ("")) ;
+              var_cas_insertMethodList.addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5953)), GGS_bool (true), GGS_string ("")) ;
               } break ;
             case 3 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_search) COMMA_HERE) ;
@@ -6816,7 +6816,7 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
               GGS_lstring  var_cas_errorMessage ;
               nt_ex_map_method_ (inLexique, var_cas_nomMethode, var_cas_errorMessage) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-              var_cas_searchMethodList._addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5960)), GGS_bool (true), GGS_string ("")) ;
+              var_cas_searchMethodList.addAssign_operation (var_cas_nomMethode, var_cas_errorMessage.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (5960)), GGS_bool (true), GGS_string ("")) ;
               } break ;
             case 4 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_block) COMMA_HERE) ;
@@ -6874,25 +6874,25 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
           macroValidPointer (operand_226533) ;
           GGS_L_EXsignature  var_cas_methodSignature ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_226730 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_226730 = NULL ;
             while (((operand_226730 = enumerator_226730.nextObject ()))) {
               macroValidPointer (operand_226730) ;
-              var_cas_methodSignature._addAssign_operation (operand_226730->mAttributType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_226730->mAttributType, var_cas_inPassingMode) ;
             }
           }
           var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, operand_226533->mMethodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (6023)) ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-          var_cas_methodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_227160 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_227160 = NULL ;
             while (((operand_227160 = enumerator_227160.nextObject ()))) {
               macroValidPointer (operand_227160) ;
-              var_cas_methodSignature._addAssign_operation (operand_227160->mAttributType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_227160->mAttributType, var_cas_inPassingMode) ;
             }
           }
           GGS_lstring  var_cas_insertKeyAndGetIndexName ;
@@ -6907,25 +6907,25 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
           macroValidPointer (operand_227509) ;
           GGS_L_EXsignature  var_cas_methodSignature ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_227706 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_227706 = NULL ;
             while (((operand_227706 = enumerator_227706.nextObject ()))) {
               macroValidPointer (operand_227706) ;
-              var_cas_methodSignature._addAssign_operation (operand_227706->mAttributType, var_cas_outPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_227706->mAttributType, var_cas_outPassingMode) ;
             }
           }
           var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, operand_227509->mMethodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (6041)) ;
           var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-          var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-          var_cas_methodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+          var_cas_methodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
           {
             GGS_typeListeAttributsSemantiques::cEnumerator enumerator_228137 (var_cas_listeTousAttributsSemantiques, true) ;
             const GGS_typeListeAttributsSemantiques::cElement * operand_228137 = NULL ;
             while (((operand_228137 = enumerator_228137.nextObject ()))) {
               macroValidPointer (operand_228137) ;
-              var_cas_methodSignature._addAssign_operation (operand_228137->mAttributType, var_cas_outPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (operand_228137->mAttributType, var_cas_outPassingMode) ;
             }
           }
           GGS_lstring  var_cas_insertKeyAndGetIndexName ;
@@ -6992,27 +6992,27 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               GGS_L_EXsignature  var_cas_methodSignature ;
               var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-              var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
               {
                 GGS_typeListeAttributsSemantiques::cEnumerator enumerator_230496 (var_cas_listeTousAttributsSemantiques, true) ;
                 const GGS_typeListeAttributsSemantiques::cElement * operand_230496 = NULL ;
                 while (((operand_230496 = enumerator_230496.nextObject ()))) {
                   macroValidPointer (operand_230496) ;
-                  var_cas_methodSignature._addAssign_operation (operand_230496->mAttributType, var_cas_outPassingMode) ;
+                  var_cas_methodSignature.addAssign_operation (operand_230496->mAttributType, var_cas_outPassingMode) ;
                 }
               }
               var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_methodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (6110)) ;
               if (((var_cas_getIndexMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (6112))).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                 GGS_L_EXsignature  var_cas_getIndexMethodSignature ;
                 var_cas_getIndexMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
                 {
                   GGS_typeListeAttributsSemantiques::cEnumerator enumerator_231041 (var_cas_listeTousAttributsSemantiques, true) ;
                   const GGS_typeListeAttributsSemantiques::cElement * operand_231041 = NULL ;
                   while (((operand_231041 = enumerator_231041.nextObject ()))) {
                     macroValidPointer (operand_231041) ;
-                    var_cas_getIndexMethodSignature._addAssign_operation (operand_231041->mAttributType, var_cas_outPassingMode) ;
+                    var_cas_getIndexMethodSignature.addAssign_operation (operand_231041->mAttributType, var_cas_outPassingMode) ;
                   }
                 }
                 var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_getIndexMethodName, var_cas_getIndexMethodSignature COMMA_SOURCE_FILE_AT_LINE (6119)) ;
@@ -7037,27 +7037,27 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               GGS_L_EXsignature  var_cas_methodSignature ;
               var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-              var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
               {
                 GGS_typeListeAttributsSemantiques::cEnumerator enumerator_231722 (var_cas_listeTousAttributsSemantiques, true) ;
                 const GGS_typeListeAttributsSemantiques::cElement * operand_231722 = NULL ;
                 while (((operand_231722 = enumerator_231722.nextObject ()))) {
                   macroValidPointer (operand_231722) ;
-                  var_cas_methodSignature._addAssign_operation (operand_231722->mAttributType, var_cas_inPassingMode) ;
+                  var_cas_methodSignature.addAssign_operation (operand_231722->mAttributType, var_cas_inPassingMode) ;
                 }
               }
               var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_methodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (6138)) ;
               if (((var_cas_getIndexMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (6140))).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                 GGS_L_EXsignature  var_cas_getIndexMethodSignature ;
                 var_cas_getIndexMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
                 {
                   GGS_typeListeAttributsSemantiques::cEnumerator enumerator_232266 (var_cas_listeTousAttributsSemantiques, true) ;
                   const GGS_typeListeAttributsSemantiques::cElement * operand_232266 = NULL ;
                   while (((operand_232266 = enumerator_232266.nextObject ()))) {
                     macroValidPointer (operand_232266) ;
-                    var_cas_getIndexMethodSignature._addAssign_operation (operand_232266->mAttributType, var_cas_inPassingMode) ;
+                    var_cas_getIndexMethodSignature.addAssign_operation (operand_232266->mAttributType, var_cas_inPassingMode) ;
                   }
                 }
                 var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, var_cas_getIndexMethodName, var_cas_getIndexMethodSignature COMMA_SOURCE_FILE_AT_LINE (6147)) ;
@@ -7072,27 +7072,27 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
               GGS_L_EXsignature  var_cas_methodSignature ;
               var_cas_methodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-              var_cas_methodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+              var_cas_methodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
               {
                 GGS_typeListeAttributsSemantiques::cEnumerator enumerator_232867 (var_cas_listeTousAttributsSemantiques, true) ;
                 const GGS_typeListeAttributsSemantiques::cElement * operand_232867 = NULL ;
                 while (((operand_232867 = enumerator_232867.nextObject ()))) {
                   macroValidPointer (operand_232867) ;
-                  var_cas_methodSignature._addAssign_operation (operand_232867->mAttributType, var_cas_outPassingMode) ;
+                  var_cas_methodSignature.addAssign_operation (operand_232867->mAttributType, var_cas_outPassingMode) ;
                 }
               }
               var_cas_mapReaderMethodMap.modifier_insertKey (inLexique, var_cas_methodName, var_cas_methodSignature COMMA_SOURCE_FILE_AT_LINE (6161)) ;
               if (((var_cas_getIndexMethodName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (6163))).operator_isNotEqual (GGS_string (""))).isBuiltAndTrue ()) {
                 GGS_L_EXsignature  var_cas_getIndexMethodSignature ;
                 var_cas_getIndexMethodSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
-                var_cas_getIndexMethodSignature._addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_lstringType, var_cas_inPassingMode) ;
+                var_cas_getIndexMethodSignature.addAssign_operation (var_cas_luintType, var_cas_outPassingMode) ;
                 {
                   GGS_typeListeAttributsSemantiques::cEnumerator enumerator_233452 (var_cas_listeTousAttributsSemantiques, true) ;
                   const GGS_typeListeAttributsSemantiques::cElement * operand_233452 = NULL ;
                   while (((operand_233452 = enumerator_233452.nextObject ()))) {
                     macroValidPointer (operand_233452) ;
-                    var_cas_getIndexMethodSignature._addAssign_operation (operand_233452->mAttributType, var_cas_outPassingMode) ;
+                    var_cas_getIndexMethodSignature.addAssign_operation (operand_233452->mAttributType, var_cas_outPassingMode) ;
                   }
                 }
                 var_cas_mapReaderMethodMap.modifier_insertKey (inLexique, var_cas_getIndexMethodName, var_cas_getIndexMethodSignature COMMA_SOURCE_FILE_AT_LINE (6170)) ;
@@ -7114,8 +7114,8 @@ pr_semantics_declaration_semantics_parser_5597_28_importSemantics (galgas_scanne
             var_cas_modifierName = ((GGS_string ("set")).operator_concat (operand_233771->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (6176)).reader_stringByCapitalizingFirstCharacter (inLexique COMMA_SOURCE_FILE_AT_LINE (6176)))).operator_concat (GGS_string ("ForKey")) ;
             GGS_L_EXsignature  var_cas_modifierSignature ;
             var_cas_modifierSignature = GGS_L_EXsignature ::constructor_emptyList () ;
-            var_cas_modifierSignature._addAssign_operation (operand_233771->mInfo.mAttributType, var_cas_inPassingMode) ;
-            var_cas_modifierSignature._addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), var_cas_inPassingMode) ;
+            var_cas_modifierSignature.addAssign_operation (operand_233771->mInfo.mAttributType, var_cas_inPassingMode) ;
+            var_cas_modifierSignature.addAssign_operation (GGS_typeGalgas_string ::constructor_new (inLexique COMMA_HERE), var_cas_inPassingMode) ;
             var_cas_mapModifierMethodMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, var_cas_modifierName, GGS_location (inLexique) COMMA_HERE), var_cas_modifierSignature COMMA_SOURCE_FILE_AT_LINE (6180)) ;
           }
         }
@@ -7381,7 +7381,7 @@ pr_semantics_declaration_beginning_by_abstract_semantics_parser_6236_50_ (galgas
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   GGS_typeInstructionList  var_cas_instructionList ;
   var_cas_instructionList = GGS_typeInstructionList ::constructor_emptyList () ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (GGS_categoryMethodToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_methodName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_methodName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6291)) COMMA_HERE)) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (GGS_categoryMethodToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_methodName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_methodName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6291)) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7546,7 +7546,7 @@ pr_semantics_declaration_semantics_parser_6332_28_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_method) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (GGS_categoryMethodToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_methodName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_methodName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6440)) COMMA_HERE)) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (GGS_categoryMethodToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_methodName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_methodName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6440)) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7697,7 +7697,7 @@ pr_semantics_declaration_beginning_by_abstract_semantics_parser_6492_50_ (galgas
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
   GGS_typeInstructionList  var_cas_instructionList ;
   var_cas_instructionList = GGS_typeInstructionList ::constructor_emptyList () ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (GGS_categoryReaderToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_readerName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_readerName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6555)), var_cas_returnedType, var_cas_returnedCppVarName COMMA_HERE)) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (GGS_categoryReaderToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_readerName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_readerName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6555)), var_cas_returnedType, var_cas_returnedCppVarName COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7895,7 +7895,7 @@ pr_semantics_declaration_semantics_parser_6606_28_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_reader) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (GGS_categoryReaderToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_readerName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_readerName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6736)), var_cas_returnedType, var_cas_returnedCppVarName COMMA_HERE)) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (GGS_categoryReaderToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_readerName, var_cas_listeTypeEtNomsArguments, var_cas_instructionList, var_cas_readerName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6736)), var_cas_returnedType, var_cas_returnedCppVarName COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8044,7 +8044,7 @@ pr_semantics_declaration_beginning_by_abstract_semantics_parser_6798_50_ (galgas
   }
   var_cas_baseClassName = var_cas_className.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (6843)) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (GGS_categoryTemplateToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_templateName, var_cas_listeTypeEtNomsArguments, GGS_templateInstructionList ::constructor_emptyList (), var_cas_templateName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6853)) COMMA_HERE)) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (GGS_categoryTemplateToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_templateName, var_cas_listeTypeEtNomsArguments, GGS_templateInstructionList ::constructor_emptyList (), var_cas_templateName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (6853)) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8233,7 +8233,7 @@ pr_semantics_declaration_semantics_parser_6895_28_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_end) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_template) COMMA_HERE) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (GGS_categoryTemplateToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_templateName, var_cas_listeTypeEtNomsArguments, var_cas_templateInstructionList, var_cas_templateName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (7013)) COMMA_HERE)) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (GGS_categoryTemplateToImplement ::constructor_new (inLexique, var_cas_categoryMethodKind, var_cas_baseClassName, var_cas_className, var_cas_templateName, var_cas_listeTypeEtNomsArguments, var_cas_templateInstructionList, var_cas_templateName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (7013)) COMMA_HERE)) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8377,8 +8377,8 @@ pr_semantics_declaration_semantics_parser_7069_28_ (galgas_scanner & inLexique,
         const GGS_typeListeAttributsSemantiques::cElement * operand_272757 = NULL ;
         while (((operand_272757 = enumerator_272757.nextObject ()))) {
           macroValidPointer (operand_272757) ;
-          var_cas_extractSignature._addAssign_operation (operand_272757->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
-          var_cas_inputSignature._addAssign_operation (operand_272757->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+          var_cas_extractSignature.addAssign_operation (operand_272757->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+          var_cas_inputSignature.addAssign_operation (operand_272757->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
         }
       }
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
@@ -8389,7 +8389,7 @@ pr_semantics_declaration_semantics_parser_7069_28_ (galgas_scanner & inLexique,
       var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_listTypeName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (7117)) ;
       GGS_typeEntityToGenerate  var_cas_def ;
       var_cas_def = GGS_C_listTypeToImplement ::constructor_new (inLexique, var_cas_listTypeName, var_cas_listeTousAttributsSemantiques COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
       } break ;
     default :
       break ;
@@ -8439,8 +8439,8 @@ pr_semantics_declaration_semantics_parser_7069_28_importSemantics (galgas_scanne
         const GGS_typeListeAttributsSemantiques::cElement * operand_274947 = NULL ;
         while (((operand_274947 = enumerator_274947.nextObject ()))) {
           macroValidPointer (operand_274947) ;
-          var_cas_extractSignature._addAssign_operation (operand_274947->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
-          var_cas_inputSignature._addAssign_operation (operand_274947->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
+          var_cas_extractSignature.addAssign_operation (operand_274947->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+          var_cas_inputSignature.addAssign_operation (operand_274947->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentIn (inLexique COMMA_HERE)) ;
         }
       }
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
@@ -8523,7 +8523,7 @@ pr_semantics_declaration_semantics_parser_7184_28_ (galgas_scanner & inLexique,
         const GGS_typeListeAttributsSemantiques::cElement * operand_277506 = NULL ;
         while (((operand_277506 = enumerator_277506.nextObject ()))) {
           macroValidPointer (operand_277506) ;
-          var_cas_extractSignature._addAssign_operation (operand_277506->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+          var_cas_extractSignature.addAssign_operation (operand_277506->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
         }
       }
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
@@ -8553,7 +8553,7 @@ pr_semantics_declaration_semantics_parser_7184_28_ (galgas_scanner & inLexique,
               if (temp_278427.isBuilt ()) {
                 temp_278427 (HERE)->method_acceptToBeSortKeyInSortedListDefinition (inLexique, var_cas_sortAttribute COMMA_SOURCE_FILE_AT_LINE (7240)) ;
               }
-              var_cas_usedSortedAttributes._addAssign_operation (var_cas_sortAttribute.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (7241))) ;
+              var_cas_usedSortedAttributes.addAssign_operation (var_cas_sortAttribute.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (7241))) ;
             }
             GGS_bool var_cas_ascendingOrder ;
             switch (select_semantics_parser_75 (inLexique)) {
@@ -8568,7 +8568,7 @@ pr_semantics_declaration_semantics_parser_7184_28_ (galgas_scanner & inLexique,
               default :
                 break ;
             }
-            var_cas_sortDescriptorList._addAssign_operation (var_cas_sortAttribute, var_cas_ascendingOrder) ;
+            var_cas_sortDescriptorList.addAssign_operation (var_cas_sortAttribute, var_cas_ascendingOrder) ;
           switch (select_repeat_semantics_parser_74 (inLexique)) {
             case 2 : {
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__2C_) COMMA_HERE) ;
@@ -8585,7 +8585,7 @@ pr_semantics_declaration_semantics_parser_7184_28_ (galgas_scanner & inLexique,
       var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_listTypeName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (7257)) ;
       GGS_typeEntityToGenerate  var_cas_def ;
       var_cas_def = GGS_C_sortedListTypeToImplement ::constructor_new (inLexique, var_cas_listTypeName, var_cas_listeTousAttributsSemantiques, var_cas_sortDescriptorList COMMA_HERE) ;
-      var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+      var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
       } break ;
     default :
       break ;
@@ -8633,7 +8633,7 @@ pr_semantics_declaration_semantics_parser_7184_28_importSemantics (galgas_scanne
         const GGS_typeListeAttributsSemantiques::cElement * operand_280520 = NULL ;
         while (((operand_280520 = enumerator_280520.nextObject ()))) {
           macroValidPointer (operand_280520) ;
-          var_cas_extractSignature._addAssign_operation (operand_280520->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
+          var_cas_extractSignature.addAssign_operation (operand_280520->mAttributType, GGS_EXformalArgumentPassingMode::constructor_argumentOut (inLexique COMMA_HERE)) ;
         }
       }
       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
@@ -8789,9 +8789,9 @@ pr_attributes_definition_list_semantics_parser_7335_33_ (galgas_scanner & inLexi
               break ;
           }
           var_cas_tableAttributs.modifier_insertKey (inLexique, var_cas_attributeName, var_cas_definitionType, var_cas_hasSetter, var_cas_hasGetter COMMA_SOURCE_FILE_AT_LINE (7384)) ;
-          var_cas_listeTousAttributsSemantiques._addAssign_operation (var_cas_definitionType, var_cas_attributeName) ;
-          var_cas_listeAttributsSemantiquesCourants._addAssign_operation (var_cas_definitionType, var_cas_attributeName) ;
-          var_cas_outAttributeListModel._addAssign_operation (var_cas_typeName) ;
+          var_cas_listeTousAttributsSemantiques.addAssign_operation (var_cas_definitionType, var_cas_attributeName) ;
+          var_cas_listeAttributsSemantiquesCourants.addAssign_operation (var_cas_definitionType, var_cas_attributeName) ;
+          var_cas_outAttributeListModel.addAssign_operation (var_cas_typeName) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
           } break ;
         default :
@@ -8883,7 +8883,7 @@ pr_semantics_declaration_semantics_parser_7398_28_ (galgas_scanner & inLexique,
   var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_listmapTypeName, GGS_typeEntiteType ::constructor_new (inLexique, var_cas_c COMMA_HERE) COMMA_SOURCE_FILE_AT_LINE (7425)) ;
   GGS_typeEntityToGenerate  var_cas_def ;
   var_cas_def = GGS_typeGalgasListmapToImplement ::constructor_new (inLexique, var_cas_listmapTypeName, var_cas_listTypeName, var_cas_listType.reader_mAttributeList (inLexique COMMA_SOURCE_FILE_AT_LINE (7429)) COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -8969,7 +8969,7 @@ pr_semantics_declaration_semantics_parser_7468_28_ (galgas_scanner & inLexique,
   var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_listTypeName, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (7501)) ;
   GGS_typeEntityToGenerate  var_cas_def ;
   var_cas_def = GGS_C_structToImplement ::constructor_new (inLexique, var_cas_listTypeName, var_cas_listeTousAttributsSemantiques COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_def) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_def) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9050,7 +9050,7 @@ void routine_recursivelyEnumerateDirectories (C_Compiler & inLexique,
       if ((var_cas_inExtensionMap.reader_hasKey (inLexique, operand_290759->mValue.reader_pathExtension (inLexique COMMA_SOURCE_FILE_AT_LINE (7567)) COMMA_SOURCE_FILE_AT_LINE (7567))).isBuiltAndTrue ()) {
         GGS_string var_cas_absoluteFilePath ;
         var_cas_absoluteFilePath = ((var_cas_inAbsoluteSourcePath).operator_concat (GGS_string ("/"))).operator_concat (operand_290759->mValue) ;
-        var_cas_outWrapperFileSortedList._addAssign_operation (operand_290759->mValue, var_cas_absoluteFilePath, var_cas_currentDirectoryIndex, var_cas_ioWrapperFileIndex) ;
+        var_cas_outWrapperFileSortedList.addAssign_operation (operand_290759->mValue, var_cas_absoluteFilePath, var_cas_currentDirectoryIndex, var_cas_ioWrapperFileIndex) ;
         var_cas_ioRegularFileMap.modifier_insertKey (inLexique, GGS_lstring ::constructor_new (inLexique, (var_cas_inPathInWrapper).operator_concat (operand_290759->mValue), GGS_location (inLexique) COMMA_HERE), var_cas_currentDirectoryIndex, var_cas_ioWrapperFileIndex COMMA_SOURCE_FILE_AT_LINE (7576)) ;
         var_cas_ioWrapperFileIndex.increment_operation (inLexique COMMA_SOURCE_FILE_AT_LINE (7581)) ;
       }
@@ -9069,7 +9069,7 @@ void routine_recursivelyEnumerateDirectories (C_Compiler & inLexique,
       GGS_uint  var_cas_theDirectoryIndex ;
       var_cas_theDirectoryIndex = var_cas_ioWrapperDirectoryIndex ;
       ::routine_recursivelyEnumerateDirectories (inLexique,  ((var_cas_inAbsoluteSourcePath).operator_concat (GGS_string ("/"))).operator_concat (operand_291513->mValue),  ((var_cas_inPathInWrapper).operator_concat (operand_291513->mValue)).operator_concat (GGS_string ("/")),  var_cas_inExtensionMap,  var_cas_internalWrapperFileSortedList,  var_cas_internalWrapperDirectorySortedList,  var_cas_ioWrapperFileIndex,  var_cas_ioWrapperDirectoryIndex,  var_cas_ioRegularFileMap COMMA_SOURCE_FILE_AT_LINE (7591)) ;
-      var_cas_outWrapperDirectorySortedList._addAssign_operation (operand_291513->mValue, var_cas_internalWrapperFileSortedList, var_cas_internalWrapperDirectorySortedList, var_cas_theDirectoryIndex) ;
+      var_cas_outWrapperDirectorySortedList.addAssign_operation (operand_291513->mValue, var_cas_internalWrapperFileSortedList, var_cas_internalWrapperDirectorySortedList, var_cas_theDirectoryIndex) ;
     }
   }
   #ifdef DEBUG_TRACE_ENABLED
@@ -9148,7 +9148,7 @@ pr_semantics_declaration_semantics_parser_7612_28_ (galgas_scanner & inLexique,
     ::routine_recursivelyEnumerateDirectories (inLexique,  var_cas_absoluteSourcePath,  GGS_string ("/"),  var_cas_extensionMap,  var_cas_wrapperFileSortedList,  var_cas_wrapperDirectorySortedList,  var_cas_wrapperFileIndex,  var_cas_wrapperDirectoryIndex,  var_cas_regularFileMap COMMA_SOURCE_FILE_AT_LINE (7656)) ;
     GGS_typeEntityToGenerate  var_cas_w ;
     var_cas_w = GGS_C_wrapperToImplement ::constructor_new (inLexique, var_cas_wrapperName, var_cas_sourcePath.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (7669)), var_cas_extensionMap, var_cas_wrapperFileSortedList, var_cas_wrapperDirectorySortedList COMMA_HERE) ;
-    var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_w) ;
+    var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_w) ;
   }
   GGS_filewrapperTemplateMap  var_cas_templateMap ;
   var_cas_templateMap = GGS_filewrapperTemplateMap ::constructor_emptyMap (inLexique COMMA_HERE) ;
@@ -9180,7 +9180,7 @@ pr_semantics_declaration_semantics_parser_7612_28_ (galgas_scanner & inLexique,
                   GGS_AC_galgasType  var_cas_type_semantique ;
                   GGS_lstring  var_cas_galgasTypeName ;
                   nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-                  var_cas_formalAttributeList._addAssign_operation (var_cas_type_semantique, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+                  var_cas_formalAttributeList.addAssign_operation (var_cas_type_semantique, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
                   GGS_bool var_cas_parameterIsUsed ;
                   switch (select_semantics_parser_83 (inLexique)) {
                     case 1 : {
@@ -9198,7 +9198,7 @@ pr_semantics_declaration_semantics_parser_7612_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_cppName ;
                   var_cas_cppName = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_parameterName.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (7717)), var_cas_parameterName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (7717)) COMMA_HERE) ;
-                  var_cas_templateArgumentTypesList._addAssign_operation (var_cas_type_semantique, GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE), var_cas_cppName, GGS_bool (true), var_cas_parameterName) ;
+                  var_cas_templateArgumentTypesList.addAssign_operation (var_cas_type_semantique, GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE), var_cas_cppName, GGS_bool (true), var_cas_parameterName) ;
                   if ((var_cas_parameterIsUsed).isBuiltAndTrue ()) {
                     var_cas_templateVariableMap.modifier_insertConstInArgument (inLexique, var_cas_parameterName, var_cas_type_semantique, var_cas_cppName COMMA_SOURCE_FILE_AT_LINE (7720)) ;
                   }else{
@@ -9228,7 +9228,7 @@ pr_semantics_declaration_semantics_parser_7612_28_ (galgas_scanner & inLexique,
                                           var_cas_templateInstructionList
                                           COMMA_SOURCE_FILE_AT_LINE (7727)) ;
           }
-          var_cas_listeEntitesAengendrer._addAssign_operation (GGS_C_filewrapperTemplateToImplement ::constructor_new (inLexique, var_cas_wrapperName, var_cas_templateName, var_cas_templateArgumentTypesList, var_cas_templateInstructionList COMMA_HERE)) ;
+          var_cas_listeEntitesAengendrer.addAssign_operation (GGS_C_filewrapperTemplateToImplement ::constructor_new (inLexique, var_cas_wrapperName, var_cas_templateName, var_cas_templateArgumentTypesList, var_cas_templateInstructionList COMMA_HERE)) ;
           inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
           } break ;
         default :
@@ -9333,7 +9333,7 @@ pr_semantics_declaration_semantics_parser_7612_28_importSemantics (galgas_scanne
                   GGS_AC_galgasType  var_cas_type_semantique ;
                   GGS_lstring  var_cas_galgasTypeName ;
                   nt_formal_argument_type_ (inLexique, var_cas_ioComponentSemanticsEntitiesMap, var_cas_type_semantique, var_cas_tableEnAvant, var_cas_galgasTypeName) ;
-                  var_cas_formalAttributeList._addAssign_operation (var_cas_type_semantique, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
+                  var_cas_formalAttributeList.addAssign_operation (var_cas_type_semantique, GGS_lstring ::constructor_new (inLexique, GGS_string (""), GGS_location (inLexique) COMMA_HERE)) ;
                   switch (select_semantics_parser_83 (inLexique)) {
                     case 1 : {
                       } break ;
@@ -9530,7 +9530,7 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_7891_47_ (galgas_sc
                   GGS_lstring  var_cas_parameterName ;
                   inLexique.assignFromAttribute_tokenString (var_cas_parameterName) ;
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-                  var_cas_constructorArgumentTypesList._addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
+                  var_cas_constructorArgumentTypesList.addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
                   } break ;
                 default :
                   syntaxRepeat_85 = false ;
@@ -9585,7 +9585,7 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_7891_47_ (galgas_sc
                       GGS_lstring  var_cas_parameterName ;
                       inLexique.assignFromAttribute_tokenString (var_cas_parameterName) ;
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-                      var_cas_addAssignOperatorCallTypeList._addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
+                      var_cas_addAssignOperatorCallTypeList.addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
                       } break ;
                     default :
                       syntaxRepeat_87 = false ;
@@ -9612,7 +9612,7 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_7891_47_ (galgas_sc
   }
   GGS_typeEntityToGenerate  var_cas_t ;
   var_cas_t = GGS_typeExternTypeToGenerate ::constructor_new (inLexique, var_cas_externTypeName, var_cas_constructorsMap, var_cas_modifiersMap, var_cas_readersInInstructionMap, var_cas_acceptAddAssignOperatorCall, var_cas_addAssignOperatorCallTypeList COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_t) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_t) ;
   GGS_AC_galgasType  var_cas_c ;
   var_cas_c = GGS_typeGalgasExternType ::constructor_new (inLexique, var_cas_externTypeName, var_cas_constructorsMap, var_cas_modifiersMap, var_cas_readersInInstructionMap, var_cas_acceptAddAssignOperatorCall, var_cas_addAssignOperatorCallTypeList COMMA_HERE) ;
   GGS_AC_semanticsEntity  var_cas_e ;
@@ -9676,8 +9676,8 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_7891_47_importSeman
                   GGS_lstring  var_cas_parameterName ;
                   inLexique.assignFromAttribute_tokenString (var_cas_parameterName) ;
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-                  var_cas_constructorArgumentTypesList._addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
-                  var_cas_formalInputArgumentList._addAssign_operation (var_cas_galgasTypeName) ;
+                  var_cas_constructorArgumentTypesList.addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
+                  var_cas_formalInputArgumentList.addAssign_operation (var_cas_galgasTypeName) ;
                   } break ;
                 default :
                   syntaxRepeat_85 = false ;
@@ -9738,8 +9738,8 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_7891_47_importSeman
                       GGS_lstring  var_cas_parameterName ;
                       inLexique.assignFromAttribute_tokenString (var_cas_parameterName) ;
                       inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
-                      var_cas_addAssignOperatorCallTypeList._addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
-                      var_cas_addAssignFormalInputArgumentList._addAssign_operation (var_cas_galgasTypeName) ;
+                      var_cas_addAssignOperatorCallTypeList.addAssign_operation (var_cas_type_semantique, var_cas_parameterName) ;
+                      var_cas_addAssignFormalInputArgumentList.addAssign_operation (var_cas_galgasTypeName) ;
                       } break ;
                     default :
                       syntaxRepeat_87 = false ;
@@ -10069,7 +10069,7 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_8261_47_ (galgas_sc
   var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_nomAction, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (8285)) ;
   GGS_typeEntityToGenerate  var_cas_ea ;
   var_cas_ea = GGS_typeRoutineExterneAengendrer ::constructor_new (inLexique, var_cas_nomAction, var_cas_listeDeTypes COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_ea) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_ea) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
 
@@ -10165,7 +10165,7 @@ pr_semantics_declaration_begining_by_extern_semantics_parser_8325_47_ (galgas_sc
   var_cas_ioComponentSemanticsEntitiesMap.modifier_insertKey (inLexique, var_cas_nomAction, var_cas_entite COMMA_SOURCE_FILE_AT_LINE (8374)) ;
   GGS_typeEntityToGenerate  var_cas_ea ;
   var_cas_ea = GGS_typeFonctionExterneAengendrer ::constructor_new (inLexique, var_cas_nomAction, var_cas_listeDeTypes, var_cas_returnedType COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_ea) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_ea) ;
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3B_) COMMA_HERE) ;
 }
 
@@ -10344,7 +10344,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8502)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8502)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertUnusedConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8504)) ;
                   } break ;
                 case 2 : {
@@ -10353,13 +10353,13 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8508)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8508)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8510)) ;
                   } break ;
                 default :
                   break ;
               }
-              var_cas_signature._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
+              var_cas_signature.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
               } break ;
             default :
               break ;
@@ -10413,7 +10413,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   default :
                     break ;
                 }
-                var_cas_enumOperatorDefinitionList._addAssign_operation (var_cas_leftConstant, var_cas_leftConstantIndex, var_cas_rightConstant, var_cas_rightConstantIndex, var_cas_targetConstant, var_cas_targetConstantIndex, var_cas_instructionList) ;
+                var_cas_enumOperatorDefinitionList.addAssign_operation (var_cas_leftConstant, var_cas_leftConstantIndex, var_cas_rightConstant, var_cas_rightConstantIndex, var_cas_targetConstant, var_cas_targetConstantIndex, var_cas_instructionList) ;
               switch (select_repeat_semantics_parser_94 (inLexique)) {
                 case 2 : {
                   } break ;
@@ -10460,7 +10460,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8585)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8585)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertUnusedConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8587)) ;
                   } break ;
                 case 2 : {
@@ -10469,13 +10469,13 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8591)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8591)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8593)) ;
                   } break ;
                 default :
                   break ;
               }
-              var_cas_signature._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
+              var_cas_signature.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
               } break ;
             default :
               break ;
@@ -10520,7 +10520,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   default :
                     break ;
                 }
-                var_cas_enumActionDefinitionList._addAssign_operation (var_cas_sourceName, var_cas_targetName, var_cas_instructionList) ;
+                var_cas_enumActionDefinitionList.addAssign_operation (var_cas_sourceName, var_cas_targetName, var_cas_instructionList) ;
               switch (select_repeat_semantics_parser_98 (inLexique)) {
                 case 2 : {
                   } break ;
@@ -10577,7 +10577,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8662)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8662)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertUnusedConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8664)) ;
                   } break ;
                 case 2 : {
@@ -10586,13 +10586,13 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8668)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8668)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8670)) ;
                   } break ;
                 default :
                   break ;
               }
-              var_cas_signature._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
+              var_cas_signature.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
               } break ;
             default :
               break ;
@@ -10628,7 +10628,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
                   default :
                     break ;
                 }
-                var_cas_enumActionDefinitionList._addAssign_operation (var_cas_sourceName, var_cas_instructionList) ;
+                var_cas_enumActionDefinitionList.addAssign_operation (var_cas_sourceName, var_cas_instructionList) ;
               switch (select_repeat_semantics_parser_102 (inLexique)) {
                 case 2 : {
                   } break ;
@@ -10696,7 +10696,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
               if (temp_332927.isBuilt ()) {
                 temp_332927 (HERE)->method_searchKey (inLexique, var_cas_name, var_cas_cstString COMMA_SOURCE_FILE_AT_LINE (8738)) ;
               }
-              var_cas_messageStringList._addAssign_operation (var_cas_cstString) ;
+              var_cas_messageStringList.addAssign_operation (var_cas_cstString) ;
             }
           }
           var_cas_enumMessageMap.modifier_insertKey (inLexique, var_cas_messageName, var_cas_messageStringList COMMA_SOURCE_FILE_AT_LINE (8742)) ;
@@ -10710,7 +10710,7 @@ pr_semantics_declaration_semantics_parser_8439_28_ (galgas_scanner & inLexique,
   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__7D_) COMMA_HERE) ;
   GGS_typeEntityToGenerate  var_cas_e ;
   var_cas_e = GGS_enumGalgasType ::constructor_new (inLexique, var_cas_enumTypeName, var_cas_constantMap, var_cas_enumMessageMap, var_cas_modifierMap, var_cas_methodMap, var_cas_operatorMap COMMA_HERE) ;
-  var_cas_listeEntitesAengendrer._addAssign_operation (var_cas_e) ;
+  var_cas_listeEntitesAengendrer.addAssign_operation (var_cas_e) ;
   GGS_AC_galgasType  var_cas_t ;
   var_cas_t = GGS_typeGalgas_enum ::constructor_new (inLexique, var_cas_enumTypeName, var_cas_constantMap, var_cas_enumMessageMap, var_cas_modifierMap, var_cas_methodMap, var_cas_operatorMap COMMA_HERE) ;
   GGS_AC_semanticsEntity  var_cas_ee ;
@@ -10825,7 +10825,7 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8831)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8831)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertUnusedConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8833)) ;
                   } break ;
                 case 2 : {
@@ -10834,13 +10834,13 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
                   inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1_identifier) COMMA_HERE) ;
                   GGS_typeCplusPlusName  var_cas_natureNom ;
                   var_cas_natureNom = GGS_typeAutomaticName ::constructor_new (inLexique, var_cas_nomArgument.reader_location (inLexique COMMA_SOURCE_FILE_AT_LINE (8837)), var_cas_nomArgument.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (8837)) COMMA_HERE) ;
-                  var_cas_argumentList._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
+                  var_cas_argumentList.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn, var_cas_natureNom, GGS_bool (true), var_cas_nomArgument) ;
                   var_cas_localVariableMap.modifier_insertConstInArgument (inLexique, var_cas_nomArgument, var_cas_type_semantique, var_cas_natureNom COMMA_SOURCE_FILE_AT_LINE (8839)) ;
                   } break ;
                 default :
                   break ;
               }
-              var_cas_signature._addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
+              var_cas_signature.addAssign_operation (var_cas_type_semantique, var_cas_argumentConstantIn) ;
               } break ;
             default :
               break ;
@@ -10894,7 +10894,7 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
                   default :
                     break ;
                 }
-                var_cas_enumOperatorDefinitionList._addAssign_operation (var_cas_leftConstant, var_cas_leftConstantIndex, var_cas_rightConstant, var_cas_rightConstantIndex, var_cas_targetConstant, var_cas_targetConstantIndex, var_cas_instructionList) ;
+                var_cas_enumOperatorDefinitionList.addAssign_operation (var_cas_leftConstant, var_cas_leftConstantIndex, var_cas_rightConstant, var_cas_rightConstantIndex, var_cas_targetConstant, var_cas_targetConstantIndex, var_cas_instructionList) ;
               switch (select_repeat_semantics_parser_94 (inLexique)) {
                 case 2 : {
                   } break ;
@@ -10920,7 +10920,7 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
             case 1 : {
               } break ;
             case 2 : {
-              var_cas_signature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+              var_cas_signature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F__3F_) COMMA_HERE) ;
               GGS_lstring  var_cas_typeName ;
               inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
@@ -10978,7 +10978,7 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
                   default :
                     break ;
                 }
-                var_cas_enumActionDefinitionList._addAssign_operation (var_cas_sourceName, var_cas_targetName, GGS_typeInstructionList ::constructor_emptyList ()) ;
+                var_cas_enumActionDefinitionList.addAssign_operation (var_cas_sourceName, var_cas_targetName, GGS_typeInstructionList ::constructor_emptyList ()) ;
               switch (select_repeat_semantics_parser_98 (inLexique)) {
                 case 2 : {
                   } break ;
@@ -11004,7 +11004,7 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
             case 1 : {
               } break ;
             case 2 : {
-              var_cas_signature._addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
+              var_cas_signature.addAssign_operation (GGS_typeGalgas_location ::constructor_new (inLexique COMMA_HERE), GGS_EXformalArgumentPassingMode::constructor_argumentConstantIn (inLexique COMMA_HERE)) ;
               inLexique.acceptTerminal (ACCEPT_TERMINAL (galgas_scanner::galgas_scanner_1__3F__3F_) COMMA_HERE) ;
               GGS_lstring  var_cas_typeName ;
               inLexique.assignFromAttribute_tokenString (var_cas_typeName) ;
@@ -11053,7 +11053,7 @@ pr_semantics_declaration_semantics_parser_8439_28_importSemantics (galgas_scanne
                   default :
                     break ;
                 }
-                var_cas_enumActionDefinitionList._addAssign_operation (var_cas_sourceName, GGS_typeInstructionList ::constructor_emptyList ()) ;
+                var_cas_enumActionDefinitionList.addAssign_operation (var_cas_sourceName, GGS_typeInstructionList ::constructor_emptyList ()) ;
               switch (select_repeat_semantics_parser_102 (inLexique)) {
                 case 2 : {
                   } break ;

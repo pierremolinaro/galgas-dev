@@ -141,7 +141,7 @@ class GGS_programRuleList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_programRuleList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2,
                                 const GGS_semanticInstructionList & argument_3) ;

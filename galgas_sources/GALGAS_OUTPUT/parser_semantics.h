@@ -320,7 +320,7 @@ class GGS_typeListeBranchesInstructions : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_typeListeBranchesInstructions inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_typeInstructionList & argument_0) ;
+  public : void addAssign_operation (const GGS_typeInstructionList & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typeListeBranchesInstructions operator_concat (const GGS_typeListeBranchesInstructions & inOperand) const ;
   public : void modifier_prependValue (C_Compiler & inLexique,
@@ -555,7 +555,7 @@ class GGS_L_parse_rewind_signature_list : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_L_parse_rewind_signature_list inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
+  public : void addAssign_operation (const GGS_L_ruleSyntaxSignature & argument_0,
                                 const GGS_location & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_L_parse_rewind_signature_list operator_concat (const GGS_L_parse_rewind_signature_list & inOperand) const ;

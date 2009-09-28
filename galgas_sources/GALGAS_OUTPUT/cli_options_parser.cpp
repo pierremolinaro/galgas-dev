@@ -211,7 +211,7 @@ pr_galgas_component_cli_options_parser_56_23_importOptions (galgas_scanner & inL
           }else{
             var_cas_typeName.reader_location (inLexique COMMA_HERE).signalGGSSemanticError (inLexique, GGS_string ("only @bool, @uint or @string types can be used here") COMMA_SOURCE_FILE_AT_LINE (215)) ;
           }
-          var_cas_optionNameSet._addAssign_operation (var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (216))) ;
+          var_cas_optionNameSet.addAssign_operation (var_cas_typeName.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (216))) ;
           } break ;
         default :
           syntaxRepeat_0 = false ;

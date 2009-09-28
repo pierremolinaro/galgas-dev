@@ -135,7 +135,7 @@ class GGS_startSymbolLabelFormalParameterList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_startSymbolLabelFormalParameterList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
+  public : void addAssign_operation (const GGS_formalArgumentPassingMode& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2) ;
 //--- Handling '.' GALGAS operator
@@ -274,7 +274,7 @@ class GGS_grammarLabelList : public AC_galgas_list {
   public : void dotAssign_operation (const GGS_grammarLabelList inOperand) ;
 
 //--- Handling '+=' GALGAS operator
-  public : void _addAssign_operation (const GGS_lstring & argument_0,
+  public : void addAssign_operation (const GGS_lstring & argument_0,
                                 const GGS_startSymbolLabelFormalParameterList & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_grammarLabelList operator_concat (const GGS_grammarLabelList & inOperand) const ;
