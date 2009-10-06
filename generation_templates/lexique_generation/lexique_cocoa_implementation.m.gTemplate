@@ -60,6 +60,19 @@
 %
 //---------------------------------------------------------------------------*
 //                                                                           *
+//                           Template Replacments                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+% foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
+    before %static NSString * kTemplateReplacementArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% [%([[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] + 1 string])%] = {\n  %
+    do %@%([mMatchString utf8Representation])%, %
+    after %nil\n} ;%
+  end foreach
+%
+
+//---------------------------------------------------------------------------*
+//                                                                           *
 //            Terminal Symbols as end of script in template mark             *
 //                                                                           *
 //---------------------------------------------------------------------------*
@@ -113,6 +126,9 @@
       }
     }
     while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\0')) {
+      %if [[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] > 0 then%
+      [self searchForReplacementPattern:kTemplateReplacementArray_galgasTemplateScanner] ;
+      %end if%
       mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%([LEXIQUE_CLASS_NAME identifierRepresentation])% listLength:%([[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string])%] ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         [self advance] ;
