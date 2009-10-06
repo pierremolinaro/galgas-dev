@@ -18,6 +18,7 @@
 
 semantics grammarCompilation :
 import "grammarMetamodel.gSemantics" ;
+import "galgas_cli_options.gOption" ;
 #import "semanticsSemantics.gSemantics" ;
 
 
@@ -25,6 +26,7 @@ import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 #import semantics semanticsSemantics in "semanticsSemantics.gSemantics" ;
 import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
+import option galgas_cli_options in "galgas_cli_options.gOption" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -37,6 +39,19 @@ map @nonTerminalMap {
   @bool mHasParseLabel ;
   insert insertKey error message "the '@%K' non terminal has been already declared in %L" ;
   search searchKey error message "the '@%K' non terminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E N E R A T I O N    F I L E W R A P P E R S                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper grammarGenerationTemplates in "../generation_templates/grammar_generation" {
+} {
+  template html "grammar.html.gTemplate"
+    ?@string GRAMMAR_NAME
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -302,6 +317,14 @@ routine compileGrammarComponent
       ;
     end if ;
   end foreach ;
+#---- Build HTML file
+  if [option galgas_cli_options.outputHTMLgrammarFile] then
+    @string s := [filewrapper grammarGenerationTemplates.html
+      ![componentName string]
+    ] ;
+    @string htmlOutputFileName := [inSourceFile stringByDeletingPathExtension] . ".html" ;
+    [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
