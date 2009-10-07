@@ -422,7 +422,13 @@ routine compileGrammarComponent
       ;
     end if ;
   end foreach ;
-#---- Build HTML file
+#--- Build pure BNF productions
+  @syntaxRuleListForGrammar pureSyntaxRuleListForGrammar [emptyList] ;
+  foreach syntaxRuleListForGrammar do
+  
+  
+  end foreach ;
+#--- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     @string s := [filewrapper grammarGenerationTemplates.html
       ![componentName string]
