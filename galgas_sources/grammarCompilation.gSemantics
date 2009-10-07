@@ -43,19 +43,6 @@ map @nonTerminalMap {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  G E N E R A T I O N    F I L E W R A P P E R S                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-filewrapper grammarGenerationTemplates in "../generation_templates/grammar_generation" {
-} {
-  template html "grammar.html.gTemplate"
-    ?@string GRAMMAR_NAME
-  ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  H A N D L E    N O N    T E R M I N A L   D E C L A R A T I O N S        *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -246,13 +233,128 @@ override method @blockInstruction buildSyntaxInstructionList
 end method ;
 
 #---------------------------------------------------------------------------*
+
+list @syntaxRuleListForGrammar {
+  @lstring mLeftNonTerminal ;
+  @syntaxInstructionList mSyntaxInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+#                     buildSyntaxInstructionList                            *
+#---------------------------------------------------------------------------*
+
+abstract reader @syntaxInstruction htmlListing
+  -> @string outListing
+;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @nonterminalCallInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "<span class=\"galgas_nonterminal\">&lt;" . mNonterminalName . "&gt;; </span>" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @terminalCheckInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "<span class=\"galgas_terminal\">$" . [mTerminalName HTMLRepresentation] . "$; </span>" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @repeatInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "<span class=\"galgas_structure\">"
+  . "<span class=\"galgas_keyword\">repeat</span>"
+  . "<span class=\"within_galgas_structure\">" ;
+  foreach mRepeatedInstructionList do
+    outListing .= [mInstruction htmlListing] ;
+  end foreach ;
+  outListing .= "</span>" ;
+  foreach mRepeatBranchList do
+    outListing .= "<span class=\"galgas_keyword\">while</span>" ;
+    outListing .= "<span class=\"within_galgas_structure\">" ;
+    foreach mSyntaxInstructionList do
+      outListing .= [mInstruction htmlListing] ;
+    end foreach ;
+    outListing .= "</span>" ;
+  end foreach ;
+  outListing .= "<span class=\"galgas_keyword\">end repeat</span>"
+  . "</span>" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @selectInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "<span class=\"galgas_structure\">"
+  . "<span class=\"galgas_keyword\">select</span>" ;
+  foreach mSelectBranchList
+  do
+    outListing .= "<span class=\"within_galgas_structure\">" ;
+    foreach mSyntaxInstructionList do
+      outListing .= [mInstruction htmlListing] ;
+    end foreach ;
+    outListing .= "</span>" ;
+  between 
+   outListing .= "<span class=\"galgas_keyword\">or</span>" ;
+  end foreach ;
+  outListing .= "<span class=\"galgas_keyword\">end select</span>"
+  . "</span>" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @parseDoInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "[Parse do]" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @blockInstruction htmlListing
+  -> @string outListing
+:
+  outListing := "[block]" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
-#  H A N D L E    R U L E S                                                 *
+#  G E N E R A T I O N    F I L E W R A P P E R S                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine handleRules
+filewrapper grammarGenerationTemplates in "../generation_templates/grammar_generation" {
+} {
+  template html "grammar.html.gTemplate"
+    ?@string GRAMMAR_NAME
+    ?@syntaxRuleListForGrammar SYNTAX_RULE_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  B U I L D    R U L E    L I S T                                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine buildRuleList
   ??@syntaxRuleList inRuleList
+  ?!@syntaxRuleListForGrammar ioSyntaxRuleListForGrammar
 :
   foreach inRuleList do
   #--- We get only the first label (all syntax signatures are the same)
@@ -260,6 +362,7 @@ routine handleRules
     [mLabelList first ?* ?* ?instructionList] ;
     @syntaxInstructionList syntaxInstructionList ;
     buildSyntaxInstructionList !instructionList ?syntaxInstructionList ;
+    ioSyntaxRuleListForGrammar += !mNonterminalName !syntaxInstructionList ;
   end foreach ;
 end routine ;
 
@@ -283,6 +386,7 @@ routine compileGrammarComponent
   end if ;
 #--- Parse syntax components
   @string lexiqueComponent := "" ; # Empty string means unknown
+  @syntaxRuleListForGrammar syntaxRuleListForGrammar [emptyList] ;
   foreach [grammarComponentRoot mSyntaxComponents] do
     if [mValue pathExtension] != "gSyntax" then
       error mValue: "a syntax component file should have '.gSyntax' as path extension" ;
@@ -312,8 +416,9 @@ routine compileGrammarComponent
         ![syntaxComponentRoot mNonterminalDeclarationList]
       ;
     #--- Handle syntax rules
-      handleRules
+      buildRuleList
         ![syntaxComponentRoot mRuleList]
+        !?syntaxRuleListForGrammar
       ;
     end if ;
   end foreach ;
@@ -321,6 +426,7 @@ routine compileGrammarComponent
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     @string s := [filewrapper grammarGenerationTemplates.html
       ![componentName string]
+      !syntaxRuleListForGrammar
     ] ;
     @string htmlOutputFileName := [inSourceFile stringByDeletingPathExtension] . ".html" ;
     [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
