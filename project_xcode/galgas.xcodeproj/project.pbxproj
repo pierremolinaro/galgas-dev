@@ -4504,6 +4504,7 @@
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
 				INSTALL_PATH = "$(HOME)/bin";
 				PRODUCT_NAME = galgas;
+				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4519,6 +4520,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebug;
+				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4616,7 +4618,9 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
+				GCC_VERSION = 4.0;
 				PRODUCT_NAME = galgasI386;
+				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4627,9 +4631,11 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = 4.0;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugI386;
+				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4666,8 +4672,10 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../../libpm/galgas/PP_GalgasPrefix.pch;
+				GCC_VERSION = 4.0;
 				INSTALL_PATH = "$(HOME)/bin";
 				PRODUCT_NAME = galgasPPC;
+				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
@@ -4678,11 +4686,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = 4.0;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_CFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = galgasDebugPPC;
+				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
