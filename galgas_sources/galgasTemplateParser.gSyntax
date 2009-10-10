@@ -105,6 +105,28 @@ end rule ;
 
 rule <template_instruction>
   ?!@typeVariablesMap ioTemplateVariableMap
+  ??@EXsemanticContext unused inSemanticContext
+  ??@M_semanticsEntitiesForUse unused inComponentSemanticsEntitiesMap
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@templateInstructionList ioResultingInstructionList
+:
+  $:$ ;
+  @lstring columnConstantName ;
+  $identifier$ ? columnConstantName ;
+  @typeCplusPlusName cppName := [@typeAutomaticName new ![columnConstantName location] ![columnConstantName string]] ;
+  [!?ioTemplateVariableMap insertConstInArgument
+    !columnConstantName
+    ![@typeGalgas_string new]
+    !cppName
+  ] ;
+  ioResultingInstructionList += ![@templateInstructionColumnString new !cppName] ;
+  $:$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@typeVariablesMap ioTemplateVariableMap
   ??@EXsemanticContext inSemanticContext
   ??@M_semanticsEntitiesForUse inComponentSemanticsEntitiesMap
   ??@M_optionComponents inOptionsComponentsMapForUse
