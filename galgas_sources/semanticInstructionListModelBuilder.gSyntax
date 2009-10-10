@@ -990,12 +990,13 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
   <expression> ? mSourceExpression ;
   @actualParameterList mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
-  @lstring mReturnedModelName ; # Empty string if no returned model
+#--- Dependency (obsolete ?)
   select
-    mReturnedModelName := [@lstring new !"" !here] ;
   or
-    $->$ ;
-    $identifier$ ? mReturnedModelName ;
+    $dependency$ ;
+    <expression> ? * ;
+    $in$ ;
+    <expression> ? * ;
   end select ;
   $;$ ;
   outInstruction := [@grammarInstruction new
@@ -1004,7 +1005,6 @@ rule <semantic_instruction> !@semanticInstruction outInstruction :
     !mSourceExpression
     !sourceExpressionIsFile
     !mActualParameterList
-    !mReturnedModelName
   ] ;
 end rule ;
 

@@ -75,6 +75,7 @@ project all_galgas:
 
 #--- Semantics Component
   semantics "semanticsMetamodel.gSemantics" : makefile ;
+  syntax    "semanticDeclarationModelBuilder.gSyntax" : makefile ;
   syntax    "semanticsModelBuilder.gSyntax" : makefile ;
   grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
   semantics "semanticsSemantics.gSemantics" : makefile ;
@@ -90,6 +91,7 @@ project all_galgas:
   semantics "grammarMetamodel.gSemantics" : makefile ;
   syntax    "grammarModelBuilder.gSyntax" : makefile ;
   grammar   "grammarLL1grammar.gGrammar" : makefile ;
+  semantics "buildPureBNFproductions.gSemantics" : makefile ;
   semantics "grammarCompilation.gSemantics" : makefile ;
 
 #--- Program component

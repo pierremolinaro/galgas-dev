@@ -580,13 +580,13 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & _inCompiler"
+                       << " (C_Compiler & inCompiler"
                           ",\n                                "
-                          "const C_String & _inDependancyExtension"
+                          "const C_String & inDependancyExtension"
                           ",\n                                "
-                          "const C_String & _inDependancyPath"
+                          "const C_String & inDependancyPath"
                           ",\n                                "
-                          "GGS_string * _inSentStringPtr"
+                          "GGS_string * inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring _inFileName" ;
         GGS_L_signature::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
@@ -602,13 +602,13 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "COMMA_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  const C_String sourceFileName = _inFileName.string ().isAbsolutePath ()\n"
                           "    ? _inFileName.string ()\n"
-                          "    : _inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
+                          "    : inCompiler.sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (_inFileName.string ()) ;\n"
                           "  if (sourceFileName.fileExists ()) {\n"
                           "    " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "    macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inDependancyExtension, _inDependancyPath, _inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner_, " << inLexiqueName << " (& inCompiler, inDependancyExtension, inDependancyPath, inCompiler.ioParametersPtr (), sourceFileName COMMA_HERE)) ;\n"
                           "    if (scanner_->needsCompiling ()) {\n"
                           "      if (scanner_->sourceText () != NULL) {\n"
-                          "        scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
+                          "        scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "        const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                         gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
@@ -626,14 +626,14 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
-                          "          if (_inSentStringPtr != NULL) {\n"
-                          "            _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "          if (inSentStringPtr != NULL) {\n"
+                          "            inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
                           "          }\n"
                           "        }\n" ;
         generatedZone3 << "      }else{\n"
                           "        C_String message ;\n"
                           "        message << \"the '\" << sourceFileName << \"' file exits, but cannot be read\" ;\n"
-                          "        _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
+                          "        _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -649,7 +649,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
-                          "    _inFileName.signalSemanticError (_inCompiler, message COMMA_THERE) ;\n" ;
+                          "    _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -666,9 +666,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "void " ;
         generatedZone3 << inTargetFileName
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & _inCompiler"
+                       << " (C_Compiler & inCompiler"
                           ",\n                                "
-                          "GGS_string * _inSentStringPtr"
+                          "GGS_string * inSentStringPtr"
                           ",\n                                "
                           "const GGS_string _inSourceString" ;
         parametre.rewind () ;
@@ -683,8 +683,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3 << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  " << inLexiqueName << " * scanner_ = NULL ;\n"
-                          "  macroMyNew (scanner_, " << inLexiqueName << " (& _inCompiler, _inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
-                          "  scanner_->mPerformGeneration = _inCompiler.mPerformGeneration ;\n" ;
+                          "  macroMyNew (scanner_, " << inLexiqueName << " (& inCompiler, inCompiler.ioParametersPtr (), _inSourceString.string (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "  scanner_->mPerformGeneration = inCompiler.mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner_->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                   gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
@@ -702,8 +702,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << ") ;\n"
-                          "    if (_inSentStringPtr != NULL) {\n"
-                          "      _inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
+                          "    if (inSentStringPtr != NULL) {\n"
+                          "      inSentStringPtr->dotAssign_operation (scanner_->sentString ()) ;\n"
                           "    }\n"
                           "  }\n" ;
         generatedZone3 << "  macroDetachPointer (scanner_, " << inLexiqueName << ") ;\n" ;

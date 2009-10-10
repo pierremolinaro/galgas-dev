@@ -185,6 +185,12 @@
 		CF2A8852058CCF53003EF2F4 /* GGS_luint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53893057A558F00854C83 /* GGS_luint.cpp */; };
 		CF2A8854058CCF55003EF2F4 /* GGS_string.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53895057A558F00854C83 /* GGS_string.cpp */; };
 		CF2A8856058CCF56003EF2F4 /* GGS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53897057A558F00854C83 /* GGS_uint.cpp */; };
+		CF2B9F5A1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
+		CF2B9F5B1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
+		CF2B9F5C1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
+		CF2B9F5D1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
+		CF2B9F5E1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
+		CF2B9F5F1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */; };
 		CF31B5400DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5440DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
@@ -218,6 +224,12 @@
 		CF4895700B66682D005A9E78 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
 		CF4895720B66682D005A9E78 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
 		CF4895760B66682D005A9E78 /* predefined_types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4895680B66682D005A9E78 /* predefined_types.cpp */; };
+		CF4F2BB91080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
+		CF4F2BBA1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
+		CF4F2BBB1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
+		CF4F2BBC1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
+		CF4F2BBD1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
+		CF4F2BBE1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */; };
 		CF507CA90B6F854B00ECFEEB /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */; };
 		CF507CAF0B6F854B00ECFEEB /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */; };
 		CF507CB10B6F854B00ECFEEB /* AC_galgas_domain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */; };
@@ -1288,6 +1300,8 @@
 		CF2B86690FD2EF4E00C5160F /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
 		CF2B9F231080A61C0081CD13 /* grammar.html.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grammar.html.gTemplate; sourceTree = "<group>"; };
 		CF2B9F241080A61C0081CD13 /* lexiqueLL1grammar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lexiqueLL1grammar.html; sourceTree = "<group>"; };
+		CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildPureBNFproductions.cpp; sourceTree = "<group>"; };
+		CF2B9F591080B6350081CD13 /* buildPureBNFproductions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildPureBNFproductions.h; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33992D0EDDC2A900F0330E /* include_typeEntiteFonction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonction.h; sourceTree = "<group>"; };
@@ -1333,6 +1347,8 @@
 		CF4895690B66682D005A9E78 /* predefined_types.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = predefined_types.h; sourceTree = "<group>"; };
 		CF48FB050BA7FB9500785C28 /* include_typeDescriptionInExpression.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeDescriptionInExpression.h; sourceTree = "<group>"; };
 		CF4CBBBF09FF941700C0A868 /* include_typeRemoveInstruction.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeRemoveInstruction.h; sourceTree = "<group>"; };
+		CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticDeclarationModelBuilder.cpp; sourceTree = "<group>"; };
+		CF4F2BB81080E0260053782C /* semanticDeclarationModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticDeclarationModelBuilder.h; sourceTree = "<group>"; };
 		CF507CA70B6F854B00ECFEEB /* AC_galgas_domain.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_domain.cpp; sourceTree = "<group>"; };
 		CF507CA80B6F854B00ECFEEB /* AC_galgas_domain.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = AC_galgas_domain.h; sourceTree = "<group>"; };
 		CF50ACA70A4025280081917E /* include_typeGalgasNewClassType.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = include_typeGalgasNewClassType.h; sourceTree = "<group>"; };
@@ -2061,6 +2077,8 @@
 		CF9040E3057F26B5007362F4 /* Grammar Component */ = {
 			isa = PBXGroup;
 			children = (
+				CF2B9F581080B6350081CD13 /* buildPureBNFproductions.cpp */,
+				CF2B9F591080B6350081CD13 /* buildPureBNFproductions.h */,
 				CF0EA2F81065320F00679ABC /* grammarCompilation.cpp */,
 				CF0EA2F91065320F00679ABC /* grammarCompilation.h */,
 				CFDD306D0C11C9440089A9F3 /* grammarLL1grammar.cpp */,
@@ -2658,6 +2676,8 @@
 				CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */,
 				CF0CB8560BC0203600E6FABE /* semanticsMetamodel.cpp */,
 				CF0CB8570BC0203600E6FABE /* semanticsMetamodel.h */,
+				CF4F2BB71080E0250053782C /* semanticDeclarationModelBuilder.cpp */,
+				CF4F2BB81080E0260053782C /* semanticDeclarationModelBuilder.h */,
 				CF0CB86A0BC0273E00E6FABE /* semanticsModelBuilder.cpp */,
 				CF0CB86B0BC0273E00E6FABE /* semanticsModelBuilder.h */,
 				CFFE920C0B7CC06E009BCBF5 /* domain_parser.cpp */,
@@ -3475,6 +3495,8 @@
 				CFCD022D106641B900EA0463 /* parameterArgumentMetamodel.cpp in Sources */,
 				CFCD0230106641DF00EA0463 /* expressionModelBuilder.cpp in Sources */,
 				CFCD0233106641F900EA0463 /* semanticInstructionListModelBuilder.cpp in Sources */,
+				CF2B9F5A1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
+				CF4F2BB91080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3651,6 +3673,8 @@
 				CFCF13171020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FC1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32810654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
+				CF2B9F5C1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
+				CF4F2BBB1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3827,6 +3851,8 @@
 				CFCF13181020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FD1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32910654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
+				CF2B9F5D1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
+				CF4F2BBC1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4026,6 +4052,8 @@
 				CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */,
 				CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */,
 				CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */,
+				CF2B9F5B1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
+				CF4F2BBA1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4202,6 +4230,8 @@
 				CFCF13191020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FE1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32A10654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
+				CF2B9F5E1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
+				CF4F2BBD1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4378,6 +4408,8 @@
 				CFCF131A1020BB91003E9964 /* GGS_data.cpp in Sources */,
 				CF0EA2FF1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32B10654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
+				CF2B9F5F1080B6350081CD13 /* buildPureBNFproductions.cpp in Sources */,
+				CF4F2BBE1080E0260053782C /* semanticDeclarationModelBuilder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
