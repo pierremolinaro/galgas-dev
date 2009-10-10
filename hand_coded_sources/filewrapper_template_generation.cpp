@@ -336,6 +336,9 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
       currentInstruction.next () ;
     }
   }
+  if (mIndexIdentifier.string ().length () > 0) {
+    ioCppFile << "GGS_uint var_cas_" << mIndexIdentifier << " (true, 0) ;\n" ;
+  }
   if (mNewEnumerationStyle.boolValue ()) {
     ioCppFile <<  "while (enumerator_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
@@ -376,6 +379,9 @@ generateTemplateInstruction (AC_OutputStream & ioCppFile) const {
     ioCppFile << "enumerator_" ;
     ioCppFile.appendSigned (mInstructionLocation.location ()) ;
     ioCppFile << ".next () ;\n" ;
+  }
+  if (mIndexIdentifier.string ().length () > 0) {
+    ioCppFile << "var_cas_" << mIndexIdentifier << ".increment_operation (inLexique COMMA_HERE) ;\n" ;
   }
   ioCppFile.incIndentation (-2) ;
   ioCppFile << "}\n" ;
@@ -422,7 +428,7 @@ isConstantUsed (const GGS_typeCplusPlusName & inCppName) const {
 
 bool cPtr_templateInstructionForeach::
 isUsingLexiqueArgument (void) const {
-  bool used = mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+  bool used = mExpression (HERE)->isLexiqueFormalArgumentUsedForTest () || (mIndexIdentifier.string ().length () > 0) ;
   GGS_templateInstructionList::cEnumerator instruction (mDoInstructionList, true) ;
   while (instruction.hasCurrentObject () && ! used) {
     used = instruction._mInstruction (HERE) (HERE)->isUsingLexiqueArgument () ;

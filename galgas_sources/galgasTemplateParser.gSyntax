@@ -236,6 +236,16 @@ rule <template_instruction>
         firstOne := false ;
       end foreach ;
       $do$ ;
+      @lstring indexIdentifier ;
+      select
+        indexIdentifier := [@lstring new !"" !here] ;
+      or
+        $??$ ;
+        $identifier$ ? indexIdentifier ;
+        @typeCplusPlusName cppName := [@typeAutomaticName new ![indexIdentifier location] ![indexIdentifier string]] ;
+        [!?ioTemplateVariableMap insertConstInArgument !indexIdentifier ![@typeGalgas_uint new] !cppName] ;
+        $:$ ;
+      end select ;
       @templateInstructionList doInstructionList [emptyList] ;
       enterTemplateString !?doInstructionList ;
       repeat
@@ -298,6 +308,7 @@ rule <template_instruction>
    !instructionLocation
    !beforeInstructionList
    !doInstructionList
+   !indexIdentifier
    !betweenInstructionList
    !afterInstructionList
   ] ;

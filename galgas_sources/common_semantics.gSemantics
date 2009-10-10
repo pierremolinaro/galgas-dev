@@ -4862,6 +4862,7 @@ class @templateInstructionForeach extends @templateInstruction {
   @location mInstructionLocation feature nogetter ;
   @templateInstructionList mBeforeInstructionList feature nogetter ;
   @templateInstructionList mDoInstructionList feature nogetter ;
+  @lstring mIndexIdentifier feature nogetter ;
   @templateInstructionList mBetweenInstructionList feature nogetter ;
   @templateInstructionList mAfterInstructionList feature nogetter ;
 }
