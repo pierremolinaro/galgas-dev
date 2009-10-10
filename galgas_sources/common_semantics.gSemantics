@@ -4854,6 +4854,12 @@ class @templateInstructionConstant extends @templateInstruction {
 
 #---------------------------------------------------------------------------*
 
+class @templateInstructionColumnString extends @templateInstruction {
+  @typeCplusPlusName mCppName feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @templateInstructionForeach extends @templateInstruction {
   @bool mIsAscending feature nogetter ;
   @string mCppExpressionTypeName feature nogetter ;
