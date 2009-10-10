@@ -187,6 +187,7 @@ override method @repeatInstruction buildSyntaxInstructionList
     repeatBranchList += !syntaxInstructionList ;
   end foreach ;
   @repeatInstruction ri [new
+    !mRepeatInstructionLocation
     !repeatedInstructionList
     !repeatBranchList
   ] ;
@@ -205,6 +206,7 @@ override method @selectInstruction buildSyntaxInstructionList
     selectBranchList += !syntaxInstructionList ;
   end foreach ;
   @selectInstruction si [new
+    !mSelectInstructionLocation
     !selectBranchList
   ] ;
   ioSyntaxInstructionList += !si ;
@@ -235,6 +237,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 list @syntaxRuleListForGrammar {
+  @string mSyntaxComponentName ;
   @lstring mLeftNonTerminal ;
   @syntaxInstructionList mSyntaxInstructionList ;
 }
@@ -260,7 +263,7 @@ end reader ;
 override reader @nonterminalCallInstruction htmlListing
   -> @string outListing
 :
-  outListing := "<span class=\"galgas_nonterminal\">&lt;" . mNonterminalName . "&gt;; </span>" ;
+  outListing := "<span class=\"galgas_nonterminal\">&lt;" . mNonterminalName . "&gt;</span>" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -268,7 +271,7 @@ end reader ;
 override reader @terminalCheckInstruction htmlListing
   -> @string outListing
 :
-  outListing := "<span class=\"galgas_terminal\">$" . [mTerminalName HTMLRepresentation] . "$; </span>" ;
+  outListing := "<span class=\"galgas_terminal\">$" . [mTerminalName HTMLRepresentation] . "$</span>" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -354,6 +357,7 @@ filewrapper grammarGenerationTemplates in "../generation_templates/grammar_gener
 #---------------------------------------------------------------------------*
 
 routine buildRuleList
+  ??@string inSyntaxComponentName
   ??@syntaxRuleList inRuleList
   ?!@syntaxRuleListForGrammar ioSyntaxRuleListForGrammar
 :
@@ -363,7 +367,7 @@ routine buildRuleList
     [mLabelList first ?* ?* ?instructionList] ;
     @syntaxInstructionList syntaxInstructionList ;
     buildSyntaxInstructionList !instructionList ?syntaxInstructionList ;
-    ioSyntaxRuleListForGrammar += !mNonterminalName !syntaxInstructionList ;
+    ioSyntaxRuleListForGrammar += !inSyntaxComponentName !mNonterminalName !syntaxInstructionList ;
   end foreach ;
 end routine ;
 
@@ -374,16 +378,16 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 abstract method @syntaxInstruction buildPureSyntaxInstruction
-  ??@lstring inCurrentLeftNonTerminal
+  ??@string inSyntaxComponent
   ?!@syntaxRuleListForGrammar ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList ioPureSyntaxInstructionList
   ?!@uint ioAddedNonTerminalCount
 ;
 
 #---------------------------------------------------------------------------*
 
 routine buildPureSyntaxInstructionList
-  ??@lstring inCurrentLeftNonTerminal
+  ??@string inSyntaxComponent
   ??@syntaxInstructionList inSyntaxInstructionList
   !@syntaxInstructionList outPureSyntaxInstructionList
   ?!@syntaxRuleListForGrammar ioPureSyntaxRuleListForGrammar
@@ -391,14 +395,12 @@ routine buildPureSyntaxInstructionList
 :
   outPureSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
   foreach inSyntaxInstructionList do
-    @syntaxInstruction pureSyntaxInstruction ;
     [mInstruction buildPureSyntaxInstruction
-      !inCurrentLeftNonTerminal
+      !inSyntaxComponent
       !?ioPureSyntaxRuleListForGrammar
-      ?pureSyntaxInstruction
+      !?outPureSyntaxInstructionList
       !?ioAddedNonTerminalCount
     ] ;
-    outPureSyntaxInstructionList += !pureSyntaxInstruction ;
   end foreach ;
 end routine ;
 
@@ -407,101 +409,105 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @semanticInstruction buildPureSyntaxInstruction
-  ??@lstring unused inCurrentLeftNonTerminal
+  ??@string unused inSyntaxComponent
   ?!@syntaxRuleListForGrammar unused ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList unused ioPureSyntaxInstructionList
   ?!@uint unused ioAddedNonTerminalCount
 :
-  error here : "internal error (use debug tool)" -> outPureSyntaxInstruction ;
+  error here : "internal error (use debug tool)" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction buildPureSyntaxInstruction
-  ??@lstring unused inCurrentLeftNonTerminal
+  ??@string unused inSyntaxComponent
   ?!@syntaxRuleListForGrammar unused ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList ioPureSyntaxInstructionList
   ?!@uint unused ioAddedNonTerminalCount
 :
-  outPureSyntaxInstruction := self ;
+  ioPureSyntaxInstructionList += !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction buildPureSyntaxInstruction
-  ??@lstring unused inCurrentLeftNonTerminal
+  ??@string unused inSyntaxComponent
   ?!@syntaxRuleListForGrammar unused ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList ioPureSyntaxInstructionList
   ?!@uint unused ioAddedNonTerminalCount
 :
-  outPureSyntaxInstruction := self ;
+  ioPureSyntaxInstructionList += !self ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @repeatInstruction buildPureSyntaxInstruction
-  ??@lstring inCurrentLeftNonTerminal
+  ??@string inSyntaxComponent
   ?!@syntaxRuleListForGrammar ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList ioPureSyntaxInstructionList
   ?!@uint ioAddedNonTerminalCount
 :
-#--- Ceate new non terminal symbols
-  @lstring selectRepeatAddedNonTerminal [new
-    !"select_repeat_" . inCurrentLeftNonTerminal . "_" . [ioAddedNonTerminalCount string]
-    ![inCurrentLeftNonTerminal location]
-  ] ;
-  ioAddedNonTerminalCount ++ ;
-  @lstring repeatAddedNonTerminal [new
-    !"repeat_" . inCurrentLeftNonTerminal . "_" . [ioAddedNonTerminalCount string]
-    ![inCurrentLeftNonTerminal location]
-  ] ;
-  ioAddedNonTerminalCount ++ ;
-#--- Add syntax instruction
-  outPureSyntaxInstruction := [@nonterminalCallInstruction new
-    !selectRepeatAddedNonTerminal
-    ![@lstring new !"" !here] # no Label
-    ![@actualParameterList emptyList]
-  ] ;
-#--- Create "select_repeat_..." single rule
+#--- How the sequence 'A ; repeat X while Y while Z ... end repeat ; B' is translated into pure BNF productions
+# A new non terminal, call it <T> is created (in fact, in the BNF file, this non terminal has a mangled
+# name from source file, location line and column : <select_repeat_SOURCEFILE_LINE_COLUMN>)
+#
+# The sequence is translated into 'A ; X ; <T> ; B'.
+#
+# 1 empty production is added :
+#         <T> -> .
+#
+# Every while branch gives a new production :
+#         <T> -> Y X <T>
+#         <T> -> Z X <T>
+#         ...
+#
+#--- Build 'X' transformed in pure BNF
   @syntaxInstructionList repeatedPureInstructionList ;
   buildPureSyntaxInstructionList
-    !inCurrentLeftNonTerminal
+    !inSyntaxComponent
     !mRepeatedInstructionList
     ?repeatedPureInstructionList
     !?ioPureSyntaxRuleListForGrammar
     !?ioAddedNonTerminalCount
   ;
-  repeatedPureInstructionList += ![@nonterminalCallInstruction new
-    !repeatAddedNonTerminal
+#--- Create new non terminal symbols
+  @lstring selectRepeatAddedNonTerminal [new
+    !"select_repeat_" . inSyntaxComponent . "_" . [ioAddedNonTerminalCount string]
+    !mRepeatInstructionLocation
+  ] ;
+  ioAddedNonTerminalCount ++ ;
+#--- Append pure syntax instruction to current pure instruction list
+  ioPureSyntaxInstructionList .= repeatedPureInstructionList ;
+  ioPureSyntaxInstructionList += ![@nonterminalCallInstruction new
+    !selectRepeatAddedNonTerminal
     ![@lstring new !"" !here] # no Label
     ![@actualParameterList emptyList]
   ] ;
+#--- Add Empty production
   ioPureSyntaxRuleListForGrammar +=
+    !inSyntaxComponent
     !selectRepeatAddedNonTerminal
-    !repeatedPureInstructionList
-  ;
-#--- Create "repeat_..." empty rule
-  ioPureSyntaxRuleListForGrammar +=
-    !repeatAddedNonTerminal
     ![@syntaxInstructionList emptyList]
   ;
 #--- Create "repeat_..." rules
   foreach mRepeatBranchList do
     @syntaxInstructionList pureInstructionList ;
     buildPureSyntaxInstructionList
-      !inCurrentLeftNonTerminal
+      !inSyntaxComponent
       !mSyntaxInstructionList
       ?pureInstructionList
       !?ioPureSyntaxRuleListForGrammar
       !?ioAddedNonTerminalCount
     ;
+    pureInstructionList .= repeatedPureInstructionList ;
     pureInstructionList += ![@nonterminalCallInstruction new
       !selectRepeatAddedNonTerminal
       ![@lstring new !"" !here] # no Label
       ![@actualParameterList emptyList]
     ] ;
     ioPureSyntaxRuleListForGrammar +=
-      !repeatAddedNonTerminal
+      !inSyntaxComponent
+      !selectRepeatAddedNonTerminal
       !pureInstructionList
     ;
   end foreach ;
@@ -510,17 +516,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @selectInstruction buildPureSyntaxInstruction
-  ??@lstring inCurrentLeftNonTerminal
+  ??@string inSyntaxComponent
   ?!@syntaxRuleListForGrammar ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList ioPureSyntaxInstructionList
   ?!@uint ioAddedNonTerminalCount
 :
   @lstring selectAddedNonTerminal [new
-    !"select_" . inCurrentLeftNonTerminal . "_" . [ioAddedNonTerminalCount string]
-    ![inCurrentLeftNonTerminal location]
+    !"select_" . inSyntaxComponent . "_" . [ioAddedNonTerminalCount string]
+    !mSelectInstructionLocation
   ] ;
   ioAddedNonTerminalCount ++ ;
-  outPureSyntaxInstruction := [@nonterminalCallInstruction new
+  ioPureSyntaxInstructionList += ![@nonterminalCallInstruction new
     !selectAddedNonTerminal
     ![@lstring new !"" !here] # no Label
     ![@actualParameterList emptyList]
@@ -528,13 +534,14 @@ override method @selectInstruction buildPureSyntaxInstruction
   foreach mSelectBranchList do
     @syntaxInstructionList pureSyntaxInstructionList ;
     buildPureSyntaxInstructionList
-      !inCurrentLeftNonTerminal
+      !inSyntaxComponent
       !mSyntaxInstructionList
       ?pureSyntaxInstructionList
       !?ioPureSyntaxRuleListForGrammar
       !?ioAddedNonTerminalCount
     ;
     ioPureSyntaxRuleListForGrammar +=
+      !inSyntaxComponent
       !selectAddedNonTerminal
       !pureSyntaxInstructionList
     ;
@@ -544,23 +551,23 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseDoInstruction  buildPureSyntaxInstruction
-  ??@lstring unused inCurrentLeftNonTerminal
+  ??@string unused inSyntaxComponent
   ?!@syntaxRuleListForGrammar unused ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList unused ioPureSyntaxInstructionList
   ?!@uint unused ioAddedNonTerminalCount
 :
-  error here : "internal error (use debug tool)" -> outPureSyntaxInstruction ;
+  error here : "internal error (use debug tool)" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @blockInstruction buildPureSyntaxInstruction
-  ??@lstring unused inCurrentLeftNonTerminal
+  ??@string unused inSyntaxComponent
   ?!@syntaxRuleListForGrammar unused ioPureSyntaxRuleListForGrammar
-  !@syntaxInstruction outPureSyntaxInstruction
+  ?!@syntaxInstructionList unused ioPureSyntaxInstructionList
   ?!@uint unused ioAddedNonTerminalCount
 :
-  error here : "internal error (use debug tool)" -> outPureSyntaxInstruction ;
+  error here : "internal error (use debug tool)" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -614,31 +621,46 @@ routine compileGrammarComponent
       ;
     #--- Handle syntax rules
       buildRuleList
+        !syntaxComponentName
         ![syntaxComponentRoot mRuleList]
         !?syntaxRuleListForGrammar
       ;
     end if ;
   end foreach ;
-#--- Build pure BNF productions
+#---------------------------------------------------------- Build pure BNF productions
   @syntaxRuleListForGrammar pureSyntaxRuleListForGrammar [emptyList] ;
   @syntaxRuleListForGrammar addedPureSyntaxRuleListForGrammar [emptyList] ;
   @uint addedNonTerminalCount := 0 ;
   foreach syntaxRuleListForGrammar do
     @syntaxInstructionList pureSyntaxInstructionList ;
     buildPureSyntaxInstructionList
-      !mLeftNonTerminal
+      !mSyntaxComponentName
       !mSyntaxInstructionList
       ?pureSyntaxInstructionList
       !?addedPureSyntaxRuleListForGrammar
       !?addedNonTerminalCount
     ;
     pureSyntaxRuleListForGrammar +=
+      !mSyntaxComponentName
       !mLeftNonTerminal
       !pureSyntaxInstructionList
     ;
   end foreach ;
+#--- Append added production
   pureSyntaxRuleListForGrammar := pureSyntaxRuleListForGrammar . addedPureSyntaxRuleListForGrammar ;
-#--- Build HTML file
+#--- Append production for root symbol
+  @lstring addedRootNonTerminal [new !"" !here] ;
+  pureSyntaxRuleListForGrammar +=
+    !""
+    !addedRootNonTerminal
+    ![@syntaxInstructionList listWithValue ![@nonterminalCallInstruction new
+      ![grammarComponentRoot mStartSymbol]
+      ![@lstring new !"" !here] # no Label
+      ![@actualParameterList emptyList]
+     ]]
+  ;
+
+#---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     @string s := [filewrapper grammarGenerationTemplates.html
       ![componentName string]
