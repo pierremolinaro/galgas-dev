@@ -1286,6 +1286,8 @@
 		CF2945830E09805600511E49 /* AC_galgas_listmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_galgas_listmap.cpp; sourceTree = "<group>"; };
 		CF2945840E09805600511E49 /* AC_galgas_listmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_galgas_listmap.h; sourceTree = "<group>"; };
 		CF2B86690FD2EF4E00C5160F /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
+		CF2B9F231080A61C0081CD13 /* grammar.html.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grammar.html.gTemplate; sourceTree = "<group>"; };
+		CF2B9F241080A61C0081CD13 /* lexiqueLL1grammar.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lexiqueLL1grammar.html; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33992D0EDDC2A900F0330E /* include_typeEntiteFonction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeEntiteFonction.h; sourceTree = "<group>"; };
@@ -2008,6 +2010,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF2B9F221080A61C0081CD13 /* grammar_generation */ = {
+			isa = PBXGroup;
+			children = (
+				CF2B9F231080A61C0081CD13 /* grammar.html.gTemplate */,
+				CF2B9F241080A61C0081CD13 /* lexiqueLL1grammar.html */,
+			);
+			path = grammar_generation;
+			sourceTree = "<group>";
+		};
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -2067,6 +2078,7 @@
 		CFA3D5401067EE7400C480D2 /* generation_templates */ = {
 			isa = PBXGroup;
 			children = (
+				CF2B9F221080A61C0081CD13 /* grammar_generation */,
 				CFA3D5411067EE9400C480D2 /* gui_generation */,
 				CFA3D5431067EE9400C480D2 /* lexique_generation */,
 				CFA3D54A1067EE9400C480D2 /* option_generation */,

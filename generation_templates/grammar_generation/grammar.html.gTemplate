@@ -124,8 +124,9 @@ Original grammar
 </table>
 <p><a name="pure_bnf"></a>Listing of the %([[PURE_SYNTAX_RULE_LIST length] string])% BNF productions :</p>
 <table class="result">
-% foreach PURE_SYNTAX_RULE_LIST do
+% foreach PURE_SYNTAX_RULE_LIST do ??index :
   %<tr class="result_line">%
+    %<td class="result_line">%([index string])%</td>%
     %<td class="result_line">rule <code>&lt;%([mLeftNonTerminal string])%&gt;</code><br>%([mLeftNonTerminal locationString])%</td>%
     %<td><code>%
       foreach mSyntaxInstructionList
