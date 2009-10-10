@@ -20,6 +20,7 @@
 #---------------------------------------------------------------------------*
 
 syntax domain_parser :
+with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 

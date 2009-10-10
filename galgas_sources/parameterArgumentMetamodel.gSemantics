@@ -39,11 +39,26 @@ enum @formalArgumentPassingMode {
     argumentOut -> "an output (!) formal argument" ;
     argumentInOut -> "an input/output (?!) argument" ;
   end reader ;
+
   reader string :
     argumentConstantIn -> "??" ;
     argumentIn -> "?" ;
     argumentOut -> "!" ;
     argumentInOut -> "?!" ;
+  end reader ;
+
+  reader generation1ForFormalParameter :
+    argumentConstantIn -> "const " ;
+    argumentIn -> "" ;
+    argumentOut -> "" ;
+    argumentInOut -> "" ;
+  end reader ;
+
+  reader generation2ForFormalParameter :
+    argumentConstantIn -> "" ;
+    argumentIn -> "" ;
+    argumentOut -> " &" ;
+    argumentInOut -> " &" ;
   end reader ;
 }
 

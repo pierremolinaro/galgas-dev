@@ -22,16 +22,17 @@ grammar syntaxSLRgrammar "SLR" :
   with "expressionModelBuilder.gSyntax" ;
   with "parameterArgumentBuilder.gSyntax" ;
   with "semanticInstructionListModelBuilder.gSyntax" ;
+  with "semanticDeclarationModelBuilder.gSyntax" ;
 
   import lexique galgas_scanner in "galgas_scanner.gLexique" ;
   import syntax syntaxModelBuilder in "syntaxModelBuilder.gSyntax" ;
   import syntax expressionModelBuilder in "expressionModelBuilder.gSyntax" ;
   import syntax parameterArgumentBuilder in "parameterArgumentBuilder.gSyntax" ;
   import syntax semanticInstructionListModelBuilder in "semanticInstructionListModelBuilder.gSyntax" ;
+  import syntax semanticDeclarationModelBuilder in "semanticDeclarationModelBuilder.gSyntax" ;
 
   root <syntax_component_start_symbol>
     !@syntaxComponentRoot outSyntaxComponentRoot
   ; # SLR
 
-  unused <formal_input_parameter_list> ;
 end grammar ;

@@ -17,6 +17,7 @@
 #---------------------------------------------------------------------------*
 
 syntax ggs_LL1_compile_component :
+with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 

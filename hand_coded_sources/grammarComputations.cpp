@@ -228,13 +228,13 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
       if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
         generatedZone3 << "  public : static "
                           "void _performSourceFileParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & _inCompiler"
+                       << " (C_Compiler & inCompiler"
                           ",\n                                "
-                          "const C_String & _inDependancyExtension"
+                          "const C_String & inDependancyExtension"
                           ",\n                                "
-                          "const C_String & _inDependancyPath"
+                          "const C_String & inDependancyPath"
                           ",\n                                "
-                          "GGS_string * _inSentStringPtr"
+                          "GGS_string * inSentStringPtr"
                           ",\n                                "
                           "const GGS_lstring inFileName" ;
         parametre.rewind () ;
@@ -248,9 +248,9 @@ generateGrammarHeaderFile (C_Compiler & inLexique,
         generatedZone3 << "  public : static " ;
         generatedZone3 << "void " ;
         generatedZone3 << "_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE)
-                       << " (C_Compiler & _inCompiler"
+                       << " (C_Compiler & inCompiler"
                           ",\n                                "
-                          "GGS_string * _inSentStringPtr"
+                          "GGS_string * inSentStringPtr"
                           ",\n                                "
                           "const GGS_string inSourceString" ;
         parametre.rewind () ;

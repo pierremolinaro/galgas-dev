@@ -17,6 +17,7 @@
 #---------------------------------------------------------------------------*
 
 syntax galgas_start :
+with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import option galgas_cli_options in "galgas_cli_options.gOption" ;
