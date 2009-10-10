@@ -99,6 +99,7 @@ list @listOfSyntaxInstructionList {
 #---------------------------------------------------------------------------*
 
 class @repeatInstruction extends @syntaxInstruction {
+  @location mRepeatInstructionLocation ;
   @syntaxInstructionList mRepeatedInstructionList ;
   @listOfSyntaxInstructionList mRepeatBranchList ;
 }
@@ -110,6 +111,7 @@ class @repeatInstruction extends @syntaxInstruction {
 #---------------------------------------------------------------------------*
 
 class @selectInstruction extends @syntaxInstruction {
+  @location mSelectInstructionLocation ;
   @listOfSyntaxInstructionList mSelectBranchList ;
 }
 

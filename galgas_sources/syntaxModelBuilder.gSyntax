@@ -295,6 +295,7 @@ end rule ;
 
 rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $repeat$ ;
+  @location mRepeatInstructionLocation := here ;
   @syntaxInstructionList mRepeatedInstructionList ;
   <syntax_instruction_list> ? mRepeatedInstructionList ;
   @listOfSyntaxInstructionList mRepeatBranchList [emptyList] ;
@@ -309,6 +310,7 @@ rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $repeat$ ;
   $;$ ;
   outInstruction := [@repeatInstruction new
+    !mRepeatInstructionLocation
     !mRepeatedInstructionList
     !mRepeatBranchList
   ] ;
@@ -322,6 +324,7 @@ end rule ;
 
 rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $select$ ;
+  @location mSelectInstructionLocation := here ;
   @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
   @syntaxInstructionList instructionList ;
   <syntax_instruction_list> ? instructionList ;
@@ -336,6 +339,7 @@ rule <syntax_instruction> !@syntaxInstruction outInstruction :
   $select$ ;
   $;$ ;
   outInstruction := [@selectInstruction new
+    !mSelectInstructionLocation
     !mSelectBranchList
   ] ;
 end rule ;
