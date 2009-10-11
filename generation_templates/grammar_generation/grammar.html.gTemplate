@@ -138,221 +138,61 @@ Original grammar
 %
 </table>
 
-<p><a name="vocabulary"></a></p><table class="result"><tr><td class="result_title"colspan="2">Vocabulary</td></tr>
-<tr class="result_line"><td class="result_line">0</td><td><code>$identifier$</code></td></tr>
-<tr class="result_line"><td class="result_line">1</td><td><code>$abstract$</code></td></tr>
-<tr class="result_line"><td class="result_line">2</td><td><code>$after$</code></td></tr>
-<tr class="result_line"><td class="result_line">3</td><td><code>$before$</code></td></tr>
-<tr class="result_line"><td class="result_line">4</td><td><code>$between$</code></td></tr>
-<tr class="result_line"><td class="result_line">5</td><td><code>$block$</code></td></tr>
-<tr class="result_line"><td class="result_line">6</td><td><code>$cast$</code></td></tr>
-<tr class="result_line"><td class="result_line">7</td><td><code>$class$</code></td></tr>
-<tr class="result_line"><td class="result_line">8</td><td><code>$compile$</code></td></tr>
-<tr class="result_line"><td class="result_line">9</td><td><code>$const$</code></td></tr>
-<tr class="result_line"><td class="result_line">10</td><td><code>$constructor$</code></td></tr>
-<tr class="result_line"><td class="result_line">11</td><td><code>$default$</code></td></tr>
-<tr class="result_line"><td class="result_line">12</td><td><code>$description$</code></td></tr>
-<tr class="result_line"><td class="result_line">13</td><td><code>$dependency$</code></td></tr>
-<tr class="result_line"><td class="result_line">14</td><td><code>$do$</code></td></tr>
-<tr class="result_line"><td class="result_line">15</td><td><code>$domain$</code></td></tr>
-<tr class="result_line"><td class="result_line">16</td><td><code>$drop$</code></td></tr>
-<tr class="result_line"><td class="result_line">17</td><td><code>$else$</code></td></tr>
-<tr class="result_line"><td class="result_line">18</td><td><code>$elsif$</code></td></tr>
-<tr class="result_line"><td class="result_line">19</td><td><code>$end$</code></td></tr>
-<tr class="result_line"><td class="result_line">20</td><td><code>$enum$</code></td></tr>
-<tr class="result_line"><td class="result_line">21</td><td><code>$error$</code></td></tr>
-<tr class="result_line"><td class="result_line">22</td><td><code>$extends$</code></td></tr>
-<tr class="result_line"><td class="result_line">23</td><td><code>$extern$</code></td></tr>
-<tr class="result_line"><td class="result_line">24</td><td><code>$extract$</code></td></tr>
-<tr class="result_line"><td class="result_line">25</td><td><code>$false$</code></td></tr>
-<tr class="result_line"><td class="result_line">26</td><td><code>$feature$</code></td></tr>
-<tr class="result_line"><td class="result_line">27</td><td><code>$filewrapper$</code></td></tr>
-<tr class="result_line"><td class="result_line">28</td><td><code>$foreach$</code></td></tr>
-<tr class="result_line"><td class="result_line">29</td><td><code>$function$</code></td></tr>
-<tr class="result_line"><td class="result_line">30</td><td><code>$grammar$</code></td></tr>
-<tr class="result_line"><td class="result_line">31</td><td><code>$gui$</code></td></tr>
-<tr class="result_line"><td class="result_line">32</td><td><code>$here$</code></td></tr>
-<tr class="result_line"><td class="result_line">33</td><td><code>$if$</code></td></tr>
-<tr class="result_line"><td class="result_line">34</td><td><code>$import$</code></td></tr>
-<tr class="result_line"><td class="result_line">35</td><td><code>$import__$</code></td></tr>
-<tr class="result_line"><td class="result_line">36</td><td><code>$in$</code></td></tr>
-<tr class="result_line"><td class="result_line">37</td><td><code>$insert$</code></td></tr>
-<tr class="result_line"><td class="result_line">38</td><td><code>$label$</code></td></tr>
-<tr class="result_line"><td class="result_line">39</td><td><code>$lazy$</code></td></tr>
-<tr class="result_line"><td class="result_line">40</td><td><code>$lexique$</code></td></tr>
-<tr class="result_line"><td class="result_line">41</td><td><code>$list$</code></td></tr>
-<tr class="result_line"><td class="result_line">42</td><td><code>$listmap$</code></td></tr>
-<tr class="result_line"><td class="result_line">43</td><td><code>$log$</code></td></tr>
-<tr class="result_line"><td class="result_line">44</td><td><code>$loop$</code></td></tr>
-<tr class="result_line"><td class="result_line">45</td><td><code>$map$</code></td></tr>
-<tr class="result_line"><td class="result_line">46</td><td><code>$mapindex$</code></td></tr>
-<tr class="result_line"><td class="result_line">47</td><td><code>$match$</code></td></tr>
-<tr class="result_line"><td class="result_line">48</td><td><code>$message$</code></td></tr>
-<tr class="result_line"><td class="result_line">49</td><td><code>$method$</code></td></tr>
-<tr class="result_line"><td class="result_line">50</td><td><code>$mod$</code></td></tr>
-<tr class="result_line"><td class="result_line">51</td><td><code>$modifier$</code></td></tr>
-<tr class="result_line"><td class="result_line">52</td><td><code>$nonterminal$</code></td></tr>
-<tr class="result_line"><td class="result_line">53</td><td><code>$not$</code></td></tr>
-<tr class="result_line"><td class="result_line">54</td><td><code>$on$</code></td></tr>
-<tr class="result_line"><td class="result_line">55</td><td><code>$operator$</code></td></tr>
-<tr class="result_line"><td class="result_line">56</td><td><code>$option$</code></td></tr>
-<tr class="result_line"><td class="result_line">57</td><td><code>$or$</code></td></tr>
-<tr class="result_line"><td class="result_line">58</td><td><code>$override$</code></td></tr>
-<tr class="result_line"><td class="result_line">59</td><td><code>$parse$</code></td></tr>
-<tr class="result_line"><td class="result_line">60</td><td><code>$project$</code></td></tr>
-<tr class="result_line"><td class="result_line">61</td><td><code>$program$</code></td></tr>
-<tr class="result_line"><td class="result_line">62</td><td><code>$reader$</code></td></tr>
-<tr class="result_line"><td class="result_line">63</td><td><code>$remove$</code></td></tr>
-<tr class="result_line"><td class="result_line">64</td><td><code>$replace$</code></td></tr>
-<tr class="result_line"><td class="result_line">65</td><td><code>$repeat$</code></td></tr>
-<tr class="result_line"><td class="result_line">66</td><td><code>$rewind$</code></td></tr>
-<tr class="result_line"><td class="result_line">67</td><td><code>$root$</code></td></tr>
-<tr class="result_line"><td class="result_line">68</td><td><code>$routine$</code></td></tr>
-<tr class="result_line"><td class="result_line">69</td><td><code>$rule$</code></td></tr>
-<tr class="result_line"><td class="result_line">70</td><td><code>$search$</code></td></tr>
-<tr class="result_line"><td class="result_line">71</td><td><code>$select$</code></td></tr>
-<tr class="result_line"><td class="result_line">72</td><td><code>$self$</code></td></tr>
-<tr class="result_line"><td class="result_line">73</td><td><code>$semantics$</code></td></tr>
-<tr class="result_line"><td class="result_line">74</td><td><code>$send$</code></td></tr>
-<tr class="result_line"><td class="result_line">75</td><td><code>$sortedlist$</code></td></tr>
-<tr class="result_line"><td class="result_line">76</td><td><code>$state$</code></td></tr>
-<tr class="result_line"><td class="result_line">77</td><td><code>$struct$</code></td></tr>
-<tr class="result_line"><td class="result_line">78</td><td><code>$style$</code></td></tr>
-<tr class="result_line"><td class="result_line">79</td><td><code>$switch$</code></td></tr>
-<tr class="result_line"><td class="result_line">80</td><td><code>$syntax$</code></td></tr>
-<tr class="result_line"><td class="result_line">81</td><td><code>$tag$</code></td></tr>
-<tr class="result_line"><td class="result_line">82</td><td><code>$template$</code></td></tr>
-<tr class="result_line"><td class="result_line">83</td><td><code>$then$</code></td></tr>
-<tr class="result_line"><td class="result_line">84</td><td><code>$true$</code></td></tr>
-<tr class="result_line"><td class="result_line">85</td><td><code>$unused$</code></td></tr>
-<tr class="result_line"><td class="result_line">86</td><td><code>$warning$</code></td></tr>
-<tr class="result_line"><td class="result_line">87</td><td><code>$when$</code></td></tr>
-<tr class="result_line"><td class="result_line">88</td><td><code>$while$</code></td></tr>
-<tr class="result_line"><td class="result_line">89</td><td><code>$with$</code></td></tr>
-<tr class="result_line"><td class="result_line">90</td><td><code>$literal_double$</code></td></tr>
-<tr class="result_line"><td class="result_line">91</td><td><code>$unsigned_literal_integer$</code></td></tr>
-<tr class="result_line"><td class="result_line">92</td><td><code>$signed_literal_integer$</code></td></tr>
-<tr class="result_line"><td class="result_line">93</td><td><code>$unsigned_literal_integer64$</code></td></tr>
-<tr class="result_line"><td class="result_line">94</td><td><code>$signed_literal_integer64$</code></td></tr>
-<tr class="result_line"><td class="result_line">95</td><td><code>$.$</code></td></tr>
-<tr class="result_line"><td class="result_line">96</td><td><code>$.=$</code></td></tr>
-<tr class="result_line"><td class="result_line">97</td><td><code>$...$</code></td></tr>
-<tr class="result_line"><td class="result_line">98</td><td><code>$type_name$</code></td></tr>
-<tr class="result_line"><td class="result_line">99</td><td><code>$literal_char$</code></td></tr>
-<tr class="result_line"><td class="result_line">100</td><td><code>$terminal$</code></td></tr>
-<tr class="result_line"><td class="result_line">101</td><td><code>$*$</code></td></tr>
-<tr class="result_line"><td class="result_line">102</td><td><code>$|$</code></td></tr>
-<tr class="result_line"><td class="result_line">103</td><td><code>$,$</code></td></tr>
-<tr class="result_line"><td class="result_line">104</td><td><code>$+$</code></td></tr>
-<tr class="result_line"><td class="result_line">105</td><td><code>$--$</code></td></tr>
-<tr class="result_line"><td class="result_line">106</td><td><code>$::$</code></td></tr>
-<tr class="result_line"><td class="result_line">107</td><td><code>$>$</code></td></tr>
-<tr class="result_line"><td class="result_line">108</td><td><code>$;$</code></td></tr>
-<tr class="result_line"><td class="result_line">109</td><td><code>$:$</code></td></tr>
-<tr class="result_line"><td class="result_line">110</td><td><code>$-$</code></td></tr>
-<tr class="result_line"><td class="result_line">111</td><td><code>$($</code></td></tr>
-<tr class="result_line"><td class="result_line">112</td><td><code>$)$</code></td></tr>
-<tr class="result_line"><td class="result_line">113</td><td><code>$->$</code></td></tr>
-<tr class="result_line"><td class="result_line">114</td><td><code>$?$</code></td></tr>
-<tr class="result_line"><td class="result_line">115</td><td><code>$==$</code></td></tr>
-<tr class="result_line"><td class="result_line">116</td><td><code>$??$</code></td></tr>
-<tr class="result_line"><td class="result_line">117</td><td><code>$!$</code></td></tr>
-<tr class="result_line"><td class="result_line">118</td><td><code>$:=$</code></td></tr>
-<tr class="result_line"><td class="result_line">119</td><td><code>$++$</code></td></tr>
-<tr class="result_line"><td class="result_line">120</td><td><code>$[$</code></td></tr>
-<tr class="result_line"><td class="result_line">121</td><td><code>$]$</code></td></tr>
-<tr class="result_line"><td class="result_line">122</td><td><code>$+=$</code></td></tr>
-<tr class="result_line"><td class="result_line">123</td><td><code>$?!$</code></td></tr>
-<tr class="result_line"><td class="result_line">124</td><td><code>$!?$</code></td></tr>
-<tr class="result_line"><td class="result_line">125</td><td><code>$/$</code></td></tr>
-<tr class="result_line"><td class="result_line">126</td><td><code>$!=$</code></td></tr>
-<tr class="result_line"><td class="result_line">127</td><td><code>$>=$</code></td></tr>
-<tr class="result_line"><td class="result_line">128</td><td><code>$&$</code></td></tr>
-<tr class="result_line"><td class="result_line">129</td><td><code>${$</code></td></tr>
-<tr class="result_line"><td class="result_line">130</td><td><code>$}$</code></td></tr>
-<tr class="result_line"><td class="result_line">131</td><td><code>$-=$</code></td></tr>
-<tr class="result_line"><td class="result_line">132</td><td><code>$^$</code></td></tr>
-<tr class="result_line"><td class="result_line">133</td><td><code>$>>$</code></td></tr>
-<tr class="result_line"><td class="result_line">134</td><td><code>$~$</code></td></tr>
-<tr class="result_line"><td class="result_line">135</td><td><code>$<-$</code></td></tr>
-<tr class="result_line"><td class="result_line">136</td><td><code>$<$</code></td></tr>
-<tr class="result_line"><td class="result_line">137</td><td><code>$<->$</code></td></tr>
-<tr class="result_line"><td class="result_line">138</td><td><code>$<=$</code></td></tr>
-<tr class="result_line"><td class="result_line">139</td><td><code>$<<$</code></td></tr>
-<tr class="result_line"><td class="result_line">140</td><td><code>$non_terminal_symbol$</code></td></tr>
-<tr class="result_line"><td class="result_line">141</td><td><code>$literal_string$</code></td></tr>
-<tr class="result_line"><td class="result_line">142</td><td><code>$comment$</code></td></tr>
-<tr class="result_line"><td class="result_line">143</td><td><code>$$</code></td></tr>
-<tr class="result_line"><td class="result_line">144</td><td><code>&lt;extern_routine_or_function_declaration&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">145</td><td><code>&lt;function_call_or_attribute&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">146</td><td><code>&lt;lexical_attribute_declaration&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">147</td><td><code>&lt;lexical_explicit_rule&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">148</td><td><code>&lt;lexical_expression&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">149</td><td><code>&lt;lexical_factor&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">150</td><td><code>&lt;lexical_implicit_rule&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">151</td><td><code>&lt;lexical_instruction&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">152</td><td><code>&lt;lexical_list_declaration&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">153</td><td><code>&lt;lexical_list_entry&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">154</td><td><code>&lt;lexical_message_declaration&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">155</td><td><code>&lt;lexical_output_effective_argument&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">156</td><td><code>&lt;lexical_send_instruction&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">157</td><td><code>&lt;lexical_term&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">158</td><td><code>&lt;lexique_component_start_symbol&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">159</td><td><code>&lt;repeat_while_branch&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">160</td><td><code>&lt;style_declaration&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">161</td><td><code>&lt;template_delimitor&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">162</td><td><code>&lt;template_replacement&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">163</td><td><code>&lt;terminal_declaration&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">164</td><td><code>&lt;select_lexiqueModelBuilder_0&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">165</td><td><code>&lt;select_repeat_lexiqueModelBuilder_1&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">166</td><td><code>&lt;select_lexiqueModelBuilder_2&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">167</td><td><code>&lt;select_lexiqueModelBuilder_3&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">168</td><td><code>&lt;select_repeat_lexiqueModelBuilder_4&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">169</td><td><code>&lt;select_lexiqueModelBuilder_5&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">170</td><td><code>&lt;select_repeat_lexiqueModelBuilder_6&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">171</td><td><code>&lt;select_repeat_lexiqueModelBuilder_7&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">172</td><td><code>&lt;select_lexiqueModelBuilder_8&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">173</td><td><code>&lt;select_repeat_lexiqueModelBuilder_9&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">174</td><td><code>&lt;select_repeat_lexiqueModelBuilder_10&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">175</td><td><code>&lt;select_repeat_lexiqueModelBuilder_11&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">176</td><td><code>&lt;select_repeat_lexiqueModelBuilder_12&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">177</td><td><code>&lt;select_repeat_lexiqueModelBuilder_13&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">178</td><td><code>&lt;select_repeat_lexiqueModelBuilder_14&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">179</td><td><code>&lt;select_repeat_lexiqueModelBuilder_15&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">180</td><td><code>&lt;select_lexiqueModelBuilder_16&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">181</td><td><code>&lt;select_repeat_lexiqueModelBuilder_17&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">182</td><td><code>&lt;select_repeat_lexiqueModelBuilder_18&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">183</td><td><code>&lt;select_repeat_lexiqueModelBuilder_19&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">184</td><td><code>&lt;select_lexiqueModelBuilder_20&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">185</td><td><code>&lt;select_repeat_lexiqueModelBuilder_21&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">186</td><td><code>&lt;select_lexiqueModelBuilder_22&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">187</td><td><code>&lt;select_repeat_lexiqueModelBuilder_23&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">188</td><td><code>&lt;select_lexiqueModelBuilder_24&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">189</td><td><code>&lt;select_lexiqueModelBuilder_25&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">190</td><td><code>&lt;select_repeat_lexiqueModelBuilder_26&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">191</td><td><code>&lt;select_lexiqueModelBuilder_27&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">192</td><td><code>&lt;select_lexiqueModelBuilder_28&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">193</td><td><code>&lt;select_repeat_lexiqueModelBuilder_29&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">194</td><td><code>&lt;select_lexiqueModelBuilder_30&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">195</td><td><code>&lt;select_repeat_lexiqueModelBuilder_31&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">196</td><td><code>&lt;select_lexiqueModelBuilder_32&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">197</td><td><code>&lt;select_lexiqueModelBuilder_33&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">198</td><td><code>&lt;select_repeat_lexiqueModelBuilder_34&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">199</td><td><code>&lt;select_repeat_lexiqueModelBuilder_35&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">200</td><td><code>&lt;&gt;</code></td></tr>
-</table><p><a name="identical_productions"></a></p><table class="title"><tr><td>
-Step 2 : searching for identical productions
-</td></tr></table>
-<p><span class="success">Ok : all productions are different.
-</span></p>For information :
-<ul><li>143 terminal symbols, numbered from 0 to 142 ;</li>
-<li> the 'empty string' symbol '$$' is numbered 143 ;</li>
-<li>57 nonterminal symbols in the pure BNF grammar, numbered from 144 to 200 ;</li>
-<li>whole vocabulary : 201 elements, 8 bits for BDDs.</li>
-</ul>
-<table class="title"><tr><td>
-Useful terminal and nonterminal symbols
-</td></tr></table>
+<p><a name="vocabulary"></a></p>
+<table class="title">
+<tr><td>Vocabulary</td></tr>
+</table>
+<p></p>
+
+<table class="result">
+%
+ foreach TERMINAL_MAP do
+  %<tr class="result_line">%
+    %<td class="result_line">%![mIndex string]%</td>%
+    %<td class="result_line"><code>$%![[key string] HTMLRepresentation]%$</code></td>%
+  %</tr>%
+  end foreach
+ foreach NON_TERMINAL_MAP do
+  %<tr class="result_line">%
+    %<td class="result_line">%![mIndex string]%</td>%
+    %<td class="result_line"><code>&lt;%![[key string] HTMLRepresentation]%&gt;</td>%
+  %</tr>%
+  end foreach
+%
+</table>
+
+<p>For information :
+  <ul><li>%![[TERMINAL_MAP count] string]% terminal symbols, numbered from 0 to %![[TERMINAL_MAP count] - 1 string]% ;</li>
+    <li> the 'empty string' symbol '$$' is numbered ??? ;</li>
+    <li>%![[NON_TERMINAL_MAP count] string]% nonterminal symbols in the pure BNF grammar, numbered from %![[TERMINAL_MAP count] string]% to %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
+    <li>whole vocabulary : %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] string]% elements, %![BIT_COUNT_FOR_BDDS string]% bits for BDDs.</li>
+  </ul>
+</p>
+
+
+<p><a name="identical_productions"></a></p>
+<table class="title">
+  <tr><td>Checking all productions are different</td></tr>
+</table>
+%
+ if [IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] == 0 then
+  %<p><span class="success">Ok : all productions are different.</span></p>%
+ else
+   if [IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] == 1 then
+     %<p><span class="error">Error;<span> 1 collision has been detected:%
+   else
+     %<p><span class="error">Error;<span> %![[IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] string]% collisions have been detected:%
+   end if
+   %<ul>%
+   foreach IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST do
+     %<li>%![mValue HTMLRepresentation]%;</li>%
+    end foreach
+    %</ul></p>%
+ end if
+%
+
+<table class="title"><tr><td>Useful terminal and nonterminal symbols</td></tr></table>
+
 <p><a name="useful_symbols"></a>Calculus completed in 10 iterations.
 </p><p><span class="success">All terminal and nonterminal symbols are useful.
 
