@@ -6,7 +6,7 @@
 //---------------------------------------------------------------------------*
 
 %foreach BOOL_OPTION_MAP do
-  %extern C_BoolCommandLineOption gOption_%([OPTION_COMPONENT_NAME identifierRepresentation])%_%([key identifierRepresentation])% ;\n\n%
+  %extern C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![key identifierRepresentation]% ;\n\n%
 end foreach
 %//---------------------------------------------------------------------------*
 //                                                                           *
@@ -15,7 +15,7 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %foreach UINT_OPTION_MAP do
-  %extern C_UIntCommandLineOption gOption_%([OPTION_COMPONENT_NAME identifierRepresentation])%_%([key identifierRepresentation])% ;\n\n%
+  %extern C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![key identifierRepresentation]% ;\n\n%
 end foreach
 %//---------------------------------------------------------------------------*
 //                                                                           *
@@ -24,7 +24,7 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %foreach STRING_OPTION_MAP do
-  %extern C_StringCommandLineOption gOption_%([OPTION_COMPONENT_NAME identifierRepresentation])%_%([key identifierRepresentation])% ;\n\n%
+  %extern C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![key identifierRepresentation]% ;\n\n%
 end foreach
 %//---------------------------------------------------------------------------*
 

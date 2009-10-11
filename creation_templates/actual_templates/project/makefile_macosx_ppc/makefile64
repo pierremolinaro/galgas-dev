@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-# MAKEFILE for building "%PROJECT_NAME%" 64-bits command line tools for Mac OS X   *
+# MAKEFILE for building "%!PROJECT_NAME%" 64-bits command line tools for Mac OS X   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%64
-EXECUTABLE_DEBUG := %PROJECT_NAME%64_debug
+EXECUTABLE := %!PROJECT_NAME%64
+EXECUTABLE_DEBUG := %!PROJECT_NAME%64_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *

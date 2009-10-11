@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#MAKEFILE for building "%PROJECT_NAME%" 32-bit command line tools for x86 Linux, built on Mac OS X*
+#MAKEFILE for building "%!PROJECT_NAME%" 32-bit command line tools for x86 Linux, built on Mac OS X*
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%
-EXECUTABLE_DEBUG := %PROJECT_NAME%_debug
+EXECUTABLE := %!PROJECT_NAME%
+EXECUTABLE_DEBUG := %!PROJECT_NAME%_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *

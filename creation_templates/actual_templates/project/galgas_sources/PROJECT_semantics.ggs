@@ -1,5 +1,5 @@
-semantics %PROJECT_NAME%_semantics :
-  import option %PROJECT_NAME%_options in "%PROJECT_NAME%_options.gOption" ;
+semantics %!PROJECT_NAME%_semantics :
+  import option %!PROJECT_NAME%_options in "%!PROJECT_NAME%_options.gOption" ;
 
 # ADD YOUR CODE HERE
 

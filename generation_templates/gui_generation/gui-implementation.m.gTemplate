@@ -9,10 +9,10 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 %foreach [GUI_CONTEXT mWithLexiqueList] do
-  %#import "%mLexiqueClassName%-cocoa.m"\n%
+  %#import "%!mLexiqueClassName%-cocoa.m"\n%
 end foreach
 foreach [GUI_CONTEXT mNibAndClassList] do
-  %#import "%mClassName%.h"\n%
+  %#import "%!mClassName%.h"\n%
 end foreach%
 #ifdef USER_DEFAULT_COLORS_DEFINED
   #import "user_default_colors.h"
@@ -31,7 +31,7 @@ end foreach%
 NSArray * nibsAndClasses (void) {
   return [NSArray arrayWithObjects:
 %foreach [GUI_CONTEXT mNibAndClassList] do
-  %    [NSArray arrayWithObjects:@"%mNibName%", [%mClassName% class], nil],\n%
+  %    [NSArray arrayWithObjects:@"%!mNibName%", [%!mClassName% class], nil],\n%
 end foreach%    nil
   ] ;
 }
@@ -48,7 +48,7 @@ end foreach%    nil
 
 %
 foreach [GUI_CONTEXT mImportedOptionComponentList] do
-  %#import "%mValue%-cocoa.m"\n%
+  %#import "%!mValue%-cocoa.m"\n%
 end foreach
 %
 //---------------------------------------------------------------------------*
@@ -58,29 +58,29 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
                    NSMutableArray * ioStringOptionArray) {
 %
 foreach [GUI_CONTEXT mImportedOptionComponentList] do
-  %  enterOptionsFor_%([mValue identifierRepresentation])% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray) ;\n%
+  %  enterOptionsFor_%![mValue identifierRepresentation]% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray) ;\n%
 end foreach
 %}
 
 %foreach [GUI_CONTEXT mWithLexiqueList] do
   %//---------------------------------------------------------------------------*\n\n%
-  %#pragma mark Lexique %mLexiqueClassName%\n\n%
+  %#pragma mark Lexique %!mLexiqueClassName%\n\n%
   %//---------------------------------------------------------------------------*\n%
   %//                                                                           *\n%
   %//                     P O P    U P    L I S T    D A T A                    *\n%
   %//                                                                           *\n%
   %//---------------------------------------------------------------------------*\n\n%
   foreach mLabels do
-    %static const UInt16 gPopUpData_%([mLexiqueClassName identifierRepresentation])%_%([[mLocation locationIndex] string])% [%([[mTerminalList length] + 1 string])%] = {\n%
+    %static const UInt16 gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![[mTerminalList length] + 1 string]%] = {\n%
       foreach mTerminalList do
-        %  %mLexiqueClassName%_1_%([mValue identifierRepresentation])%,\n%
+        %  %!mLexiqueClassName%_1_%![mValue identifierRepresentation]%,\n%
       end foreach    
     %  0\n%
     %} ;\n\n%
   end foreach
-  %static const UInt16 * gPopUpData_%([mLexiqueClassName identifierRepresentation])% [%([[mLabels length] + 1 string])%] = {\n%
+  %static const UInt16 * gPopUpData_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels length] + 1 string]%] = {\n%
   foreach mLabels do
-    %  gPopUpData_%([mLexiqueClassName identifierRepresentation])%_%([[mLocation locationIndex] string])%,\n%
+    %  gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
   end foreach
     %  NULL\n%
     %} ;\n\n%
@@ -89,7 +89,7 @@ end foreach
   %//                            Lexique interface                              *\n%
   %//                                                                           *\n%
   %//---------------------------------------------------------------------------*\n\n%
-  %@interface OC_Tokenizer_%mLexiqueClassName% : OC_Lexique_%mLexiqueClassName% {\n\n%
+  %@interface OC_Tokenizer_%!mLexiqueClassName% : OC_Lexique_%!mLexiqueClassName% {\n\n%
   %}\n\n%
   %- (NSString *) blockComment ;\n\n%
   %- (const UInt16 * *) popupListData ;\n\n%
@@ -99,28 +99,28 @@ end foreach
   %- (NSString *) tabItemTitle ;\n\n%
   %@end\n\n%
   %//---------------------------------------------------------------------------*\n\n%
-  %@implementation OC_Tokenizer_%mLexiqueClassName%\n\n%
+  %@implementation OC_Tokenizer_%!mLexiqueClassName%\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (NSString *) blockComment {\n%
-  %  return @%([mBlockComment utf8Representation])% ;\n%
+  %  return @%![mBlockComment utf8Representation]% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (const UInt16 * *) popupListData {\n%
-  %  return gPopUpData_%([mLexiqueClassName identifierRepresentation])% ;\n%
+  %  return gPopUpData_%![mLexiqueClassName identifierRepresentation]% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (UInt32) textMacroCount {\n%
-  %  return %([[mTextMacroList length] string])% ;\n%
+  %  return %![[mTextMacroList length] string]% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (NSString *) tabItemTitle {\n%
-  %  return @%([mTitle utf8Representation])% ;\n%
+  %  return @%![mTitle utf8Representation]% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n%
-  %  static NSString * kTextMacroTitle [%([[mTextMacroList length] + 1 string])%] = {\n%
+  %  static NSString * kTextMacroTitle [%![[mTextMacroList length] + 1 string]%] = {\n%
   foreach mTextMacroList do
-    %    @%([mKey utf8Representation])%,\n%
+    %    @%![mKey utf8Representation]%,\n%
   end foreach
   %    NULL\n%
   %  } ;\n%
@@ -128,9 +128,9 @@ end foreach
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n%
-  %  static NSString * kTextMacroContent [%([[mTextMacroList length] + 1 string])%] = {\n%
+  %  static NSString * kTextMacroContent [%![[mTextMacroList length] + 1 string]%] = {\n%
   foreach mTextMacroList do
-    %    @%([mContents utf8Representation])%,\n%
+    %    @%![mContents utf8Representation]%,\n%
   end foreach
   %    NULL\n%
   %  } ;\n%
@@ -147,8 +147,8 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
   OC_Lexique * result = nil ;\n%
 foreach [GUI_CONTEXT mExtensionMap]
   before %  if%
-  do % ([inExtension isEqualToString:@%([key utf8Representation])%]) {\n%
-     %    result = [[[OC_Tokenizer_%mLexiqueName% alloc] init] autorelease] ;\n%
+  do % ([inExtension isEqualToString:@%![key utf8Representation]%]) {\n%
+     %    result = [[[OC_Tokenizer_%!mLexiqueName% alloc] init] autorelease] ;\n%
   between %  }else if%
   after %  }\n%
 end foreach
@@ -160,7 +160,7 @@ end foreach
 NSArray * tokenizers (void) {
   return [NSArray arrayWithObjects:
 %foreach [GUI_CONTEXT mWithLexiqueList] do
-  %    [[[OC_Tokenizer_%mLexiqueClassName% alloc] init] autorelease],\n%
+  %    [[[OC_Tokenizer_%!mLexiqueClassName% alloc] init] autorelease],\n%
 end foreach
 %    nil
   ] ;

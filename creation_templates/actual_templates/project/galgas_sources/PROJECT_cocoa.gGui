@@ -1,9 +1,9 @@
-gui %PROJECT_NAME%_cocoa "cocoa" :
+gui %!PROJECT_NAME%_cocoa "cocoa" :
 
-with option "%PROJECT_NAME%_options.gOption" ;
+with option "%!PROJECT_NAME%_options.gOption" ;
 
-with lexique "%PROJECT_NAME%_lexique.gLexique" {
-  fileExtension: "%PROJECT_NAME%" ;
+with lexique "%!PROJECT_NAME%_lexique.gLexique" {
+  fileExtension: "%!PROJECT_NAME%" ;
   title: "Source" ;
 }
 

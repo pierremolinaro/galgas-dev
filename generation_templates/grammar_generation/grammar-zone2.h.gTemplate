@@ -1,8 +1,8 @@
-#ifndef GRAMMAR_%GRAMMAR_NAME%_HAS_BEEN_DEFINED
-#define GRAMMAR_%GRAMMAR_NAME%_HAS_BEEN_DEFINED
+#ifndef GRAMMAR_%!GRAMMAR_NAME%_HAS_BEEN_DEFINED
+#define GRAMMAR_%!GRAMMAR_NAME%_HAS_BEEN_DEFINED
 
 //---------------------------------------------------------------------------*
 
 %foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents] do
-%#include "%([[mValue string] stringByDeletingPathExtension])%.h"\n%
+%#include "%![[mValue string] stringByDeletingPathExtension]%.h"\n%
 end foreach%

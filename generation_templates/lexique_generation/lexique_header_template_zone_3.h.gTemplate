@@ -1,28 +1,28 @@
 
 //--- Terminal symbols enumeration
-  public : enum {%LEXIQUE_CLASS_NAME%_1_%
+  public : enum {%!LEXIQUE_CLASS_NAME%_1_%
     foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
-      %,\n  %LEXIQUE_CLASS_NAME%_1_% ([[mTerminalName string] identifierRepresentation])
+      %,\n  %!LEXIQUE_CLASS_NAME%_1_% ![[mTerminalName string] identifierRepresentation]
     end foreach
   %} ;
 %
   foreach DELIMITOR_LIST_LIST do
-    %\n//--- Key words table '%([mName string])%'\n%
-    %  public : static PMSInt16 search_into_%([mName string])% (const C_String & inSearchedString) ;\n%
+    %\n//--- Key words table '%![mName string]%'\n%
+    %  public : static PMSInt16 search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
   end foreach
 %  
 
 //--- Assign from attribute
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : void assignFromAttribute_%([key string])% (%([mLexicalType exportedCPPTypeName])% & outValue) const ;\n%
+    %  public : void assignFromAttribute_%![key string]% (%![mLexicalType exportedCPPTypeName]% & outValue) const ;\n%
   end foreach
 %
 
 //--- Attribute access
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %([mLexicalType cppTypeName])% attributeValue_%([key string])% (void) const ;\n%
+    %  public : %![mLexicalType cppTypeName]% attributeValue_%![key string]% (void) const ;\n%
   end foreach
 %
 
@@ -34,13 +34,13 @@
                                                               C_String & messageErreur) ;
 
 //--- Get terminal count
-  public : virtual PMSInt16 terminalVocabularyCount (void) const { return %([[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string])% ; }
+  public : virtual PMSInt16 terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_%LEXIQUE_CLASS_NAME% & inToken) ;
+  protected : void enterToken (const cTokenFor_%!LEXIQUE_CLASS_NAME% & inToken) ;
 } ;
 
 //---------------------------------------------------------------------------*

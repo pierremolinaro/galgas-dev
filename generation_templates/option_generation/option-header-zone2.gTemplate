@@ -1,5 +1,5 @@
-#ifndef %OPTION_COMPONENT_NAME%_0_DEFINED
-#define %OPTION_COMPONENT_NAME%_0_DEFINED
+#ifndef %!OPTION_COMPONENT_NAME%_0_DEFINED
+#define %!OPTION_COMPONENT_NAME%_0_DEFINED
 
 //---------------------------------------------------------------------------*
 

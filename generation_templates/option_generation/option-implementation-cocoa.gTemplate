@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------*
 
-#import "%OPTION_COMPONENT_NAME%-cocoa.h"
+#import "%!OPTION_COMPONENT_NAME%-cocoa.h"
 #import "OC_GGS_CommandLineOption.h"
 
 //---------------------------------------------------------------------------*
 
-void enterOptionsFor_%([OPTION_COMPONENT_NAME identifierRepresentation])% (NSMutableArray * ioBoolOptionArray,
+void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (NSMutableArray * ioBoolOptionArray,
                                                        NSMutableArray * ioUIntOptionArray,
                                                        NSMutableArray * ioStringOptionArray) {
 %if ([BOOL_OPTION_MAP count] + [UINT_OPTION_MAP count] + [STRING_OPTION_MAP count]) > 0 then
@@ -13,33 +13,33 @@ void enterOptionsFor_%([OPTION_COMPONENT_NAME identifierRepresentation])% (NSMut
 end if
 foreach BOOL_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%([OPTION_COMPONENT_NAME utf8Representation])%\n%
-  %    identifier:@%([key utf8Representation])%\n%
-  %    commandChar:%([[[mOptionChar char] uint] string])%\n%
-  %    commandString:@%([mOptionString utf8Representation])%\n%
-  %    comment:@%([mComment utf8Representation])%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
+  %    identifier:@%![key utf8Representation]%\n%
+  %    commandChar:%![[[mOptionChar char] uint] string]%\n%
+  %    commandString:@%![mOptionString utf8Representation]%\n%
+  %    comment:@%![mComment utf8Representation]%\n%
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
   %  [option release] ;\n%
 end foreach
 foreach UINT_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%([OPTION_COMPONENT_NAME utf8Representation])%\n%
-  %    identifier:@%([key utf8Representation])%\n%
-  %    commandChar:%([[[mOptionChar char] uint] string])%\n%
-  %    commandString:@%([mOptionString utf8Representation])%\n%
-  %    comment:@%([mComment utf8Representation])%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
+  %    identifier:@%![key utf8Representation]%\n%
+  %    commandChar:%![[[mOptionChar char] uint] string]%\n%
+  %    commandString:@%![mOptionString utf8Representation]%\n%
+  %    comment:@%![mComment utf8Representation]%\n%
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
   %  [option release] ;\n%
 end foreach
 foreach STRING_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
-  %    initWithDomainName:@%([OPTION_COMPONENT_NAME utf8Representation])%\n%
-  %    identifier:@%([key utf8Representation])%\n%
-  %    commandChar:%([[[mOptionChar char] uint] string])%\n%
-  %    commandString:@%([mOptionString utf8Representation])%\n%
-  %    comment:@%([mComment utf8Representation])%\n%
+  %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
+  %    identifier:@%![key utf8Representation]%\n%
+  %    commandChar:%![[[mOptionChar char] uint] string]%\n%
+  %    commandString:@%![mOptionString utf8Representation]%\n%
+  %    comment:@%![mComment utf8Representation]%\n%
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
   %  [option release] ;\n%

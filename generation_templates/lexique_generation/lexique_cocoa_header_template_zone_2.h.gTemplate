@@ -9,12 +9,12 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
     if mIsExtern then
-      %\nvoid scanner_cocoa_routine_%([key string])% (BOOL * ioScanningOk%
+      %\nvoid scanner_cocoa_routine_%![key string]% (BOOL * ioScanningOk%
       foreach mLexicalRoutineFormalArgumentList do
-        %,\n                %([mLexicalFormalArgumentMode cppConstInFormalArgument])
-                             ([mLexicalFormalArgumentType cocoaTypeName])
-                             ([mLexicalFormalArgumentMode cocoaPointerInFormalArgument])
-                             % %mArgumentNameForComment
+        %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
+                             ![mLexicalFormalArgumentType cocoaTypeName]
+                             ![mLexicalFormalArgumentMode cocoaPointerInFormalArgument]
+                             % %!mArgumentNameForComment
       end foreach
       %) ;\n%
     end if
@@ -28,9 +28,9 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
     if mIsExtern then
-      %\n%([mReturnedLexicalType cppTypeName])% scanner_cocoa_function_%([key string])% (BOOL * ioScanningOk%
+      %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%![key string]% (BOOL * ioScanningOk%
       foreach mLexicalTypeList do
-        %,\n                const %([mLexicalType cppTypeName])% %mArgumentNameForComment
+        %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end foreach
       %) ;\n%
     end if
@@ -43,9 +43,9 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-enum {%LEXIQUE_CLASS_NAME%_1_%
+enum {%!LEXIQUE_CLASS_NAME%_1_%
     foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
-      %,\n  % LEXIQUE_CLASS_NAME %_1_% ([[mTerminalName string] identifierRepresentation])
+      %,\n  %!LEXIQUE_CLASS_NAME %_1_% ![[mTerminalName string] identifierRepresentation]
     end foreach
   %\n} ;
 
@@ -55,11 +55,11 @@ enum {%LEXIQUE_CLASS_NAME%_1_%
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-@interface OC_Lexique_%LEXIQUE_CLASS_NAME% : OC_Lexique {
+@interface OC_Lexique_%!LEXIQUE_CLASS_NAME% : OC_Lexique {
 //--- Attributes
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  @private %([mLexicalType cocoaTypeName])% mLexicalAttribute_%([key string])% ;\n%
+    %  @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%![key string]% ;\n%
   end foreach
 %
 }
