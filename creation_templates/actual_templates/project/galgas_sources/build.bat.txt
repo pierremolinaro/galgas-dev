@@ -1,2 +1,2 @@
-galgas -v all_%PROJECT_NAME%.ggs
+galgas -v all_%!PROJECT_NAME%.ggs
 pause

@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#MAKEFILE for building "%PROJECT_NAME%" command line tools for Win32, built with MSYS*
+#MAKEFILE for building "%!PROJECT_NAME%" command line tools for Win32, built with MSYS*
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%.exe
-EXECUTABLE_DEBUG := %PROJECT_NAME%_debug.exe
+EXECUTABLE := %!PROJECT_NAME%.exe
+EXECUTABLE_DEBUG := %!PROJECT_NAME%_debug.exe
 
 #---------------------------------------------------------------------------*
 #                                                                           *

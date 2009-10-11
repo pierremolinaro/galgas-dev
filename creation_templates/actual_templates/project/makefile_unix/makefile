@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    MAKEFILE for building "%PROJECT_NAME%" 32-bit command line tools for Unix     *
+#    MAKEFILE for building "%!PROJECT_NAME%" 32-bit command line tools for Unix     *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -10,8 +10,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-EXECUTABLE := %PROJECT_NAME%
-EXECUTABLE_DEBUG := %PROJECT_NAME%_debug
+EXECUTABLE := %!PROJECT_NAME%
+EXECUTABLE_DEBUG := %!PROJECT_NAME%_debug
 
 #---------------------------------------------------------------------------*
 #                                                                           *

@@ -67,7 +67,7 @@ rule <template_instruction>
   ??@M_optionComponents inOptionsComponentsMapForUse
   ?!@templateInstructionList ioResultingInstructionList
 :
-  $($ ;
+  $!$ ;
   @typeExpression expression ;
   @AC_galgasType resultType ;
   <expression>
@@ -80,7 +80,6 @@ rule <template_instruction>
   ;
   @typeGalgas_string x := (cast resultType if >= @typeGalgas_string else error here) ;
   ioResultingInstructionList += ![@templateInstructionExpression new !expression] ;
-  $)$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -94,6 +93,7 @@ rule <template_instruction>
 :
   @lstring parameterName ;
   $identifier$ ? parameterName ;
+  warning parameterName:" old style construct, for GALGAS 1.9.3 and later, use '!' prefix" ;
   @AC_galgasType type ;
   @typeCplusPlusName cppName ;
   [!?ioTemplateVariableMap searchForReadOnlyAccess !parameterName ?type ?cppName] ;
@@ -120,7 +120,6 @@ rule <template_instruction>
     !cppName
   ] ;
   ioResultingInstructionList += ![@templateInstructionColumnString new !cppName] ;
-  $:$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*

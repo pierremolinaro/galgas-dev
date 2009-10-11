@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>'%GRAMMAR_NAME%' grammar</title>
+<title>'%!GRAMMAR_NAME%' grammar</title>
 <style type="text/css">body {
   font-family: Helvetica, sans-serif ;
   font-size: small ;
@@ -101,17 +101,17 @@ span.galgas_nonterminal {
   display: block ;
 }
 </style></head><body><div>
-<h1>'%GRAMMAR_NAME%' grammar</h1><p><a class="header_link" href="#pure_bnf">Pure BNF productions</a></p><p><a class="header_link" href="#vocabulary">Vocabulary</a></p><p><a class="header_link" href="#identical_productions">Identical productions</a></p><p><a class="header_link" href="#useful_symbols">Useful symbols</a></p><p><a class="header_link" href="#empty_strings">Empty string derivations</a></p><p><a class="header_link" href="#first_sets">First sets</a></p><p><a class="header_link" href="#follow_by_empty">Follow by empty</a></p><p><a class="header_link" href="#grammar">Grammar analysis</a></p><table class="title"><tr><td>
+<h1>'%!GRAMMAR_NAME%' grammar</h1><p><a class="header_link" href="#pure_bnf">Pure BNF productions</a></p><p><a class="header_link" href="#vocabulary">Vocabulary</a></p><p><a class="header_link" href="#identical_productions">Identical productions</a></p><p><a class="header_link" href="#useful_symbols">Useful symbols</a></p><p><a class="header_link" href="#empty_strings">Empty string derivations</a></p><p><a class="header_link" href="#first_sets">First sets</a></p><p><a class="header_link" href="#follow_by_empty">Follow by empty</a></p><p><a class="header_link" href="#grammar">Grammar analysis</a></p><table class="title"><tr><td>
 Original grammar
 </td></tr></table>
-<p>The original grammar has %([[SYNTAX_RULE_LIST length] string])% productions.</p>
+<p>The original grammar has %![[SYNTAX_RULE_LIST length] string]% productions.</p>
 <table class="result">
 % foreach SYNTAX_RULE_LIST do
   %<tr class="result_line">%
-    %<td class="result_line">rule <code>&lt;%([mLeftNonTerminal string])%&gt;</code><br>%([mLeftNonTerminal locationString])%</td>%
+    %<td class="result_line">rule <code>&lt;%![mLeftNonTerminal string]%&gt;</code><br>%![mLeftNonTerminal locationString]%</td>%
     %<td><code>%
       foreach mSyntaxInstructionList
-      do ([mInstruction htmlListing])
+      do ![mInstruction htmlListing]
       end foreach
     %</code></td>%
   %</tr>%
@@ -122,15 +122,15 @@ Original grammar
 <table class="title">
 <tr><td>Pure BNF productions list</td></tr>
 </table>
-<p><a name="pure_bnf"></a>Listing of the %([[PURE_SYNTAX_RULE_LIST length] string])% BNF productions :</p>
+<p><a name="pure_bnf"></a>Listing of the %![[PURE_SYNTAX_RULE_LIST length] string]% BNF productions :</p>
 <table class="result">
 % foreach PURE_SYNTAX_RULE_LIST do ??index :
   %<tr class="result_line">%
-    %<td class="result_line">%([index string])%</td>%
-    %<td class="result_line">rule <code>&lt;%([mLeftNonTerminal string])%&gt;</code><br>%([mLeftNonTerminal locationString])%</td>%
+    %<td class="result_line">%![index string]%</td>%
+    %<td class="result_line">rule <code>&lt;%![mLeftNonTerminal string]%&gt;</code><br>%![mLeftNonTerminal locationString]%</td>%
     %<td><code>%
       foreach mSyntaxInstructionList
-      do ([mInstruction htmlListing])
+      do ![mInstruction htmlListing]
       end foreach
     %</code></td>%
   %</tr>%

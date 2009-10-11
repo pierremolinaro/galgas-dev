@@ -1,6 +1,6 @@
 
-#ifndef %LEXIQUE_CLASS_NAME%_0_DEFINED
-#define %LEXIQUE_CLASS_NAME%_0_DEFINED
+#ifndef %!LEXIQUE_CLASS_NAME%_0_DEFINED
+#define %!LEXIQUE_CLASS_NAME%_0_DEFINED
 
 //---------------------------------------------------------------------------*
 
@@ -22,15 +22,15 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
     if mIsExtern then
-      %\nvoid scanner_routine_%([key string])% (C_Lexique & inLexique%
+      %\nvoid scanner_routine_%![key string]% (C_Lexique & inLexique%
       foreach mLexicalRoutineFormalArgumentList do
-        %,\n                %([mLexicalFormalArgumentMode cppConstInFormalArgument])
-                             ([mLexicalFormalArgumentType cppTypeName])
-                             ([mLexicalFormalArgumentMode cppReferenceInFormalArgument])
-                             % %mArgumentNameForComment
+        %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
+                             ![mLexicalFormalArgumentType cppTypeName]
+                             ![mLexicalFormalArgumentMode cppReferenceInFormalArgument]
+                             % %!mArgumentNameForComment
       end foreach
       foreach mErrorMessageList do
-        %,\n                const char * %mValue
+        %,\n                const char * %!mValue
       end foreach
       %) ;\n%
     end if
@@ -44,9 +44,9 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
     if mIsExtern then
-      %\n%([mReturnedLexicalType cppTypeName])% scanner_function_%([key string])% (C_Lexique & inLexique%
+      %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%![key string]% (C_Lexique & inLexique%
       foreach mLexicalTypeList do
-        %,\n                const %([mLexicalType cppTypeName])% %mArgumentNameForComment
+        %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end foreach
       %) ;\n%
     end if
@@ -58,13 +58,13 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cTokenFor_%LEXIQUE_CLASS_NAME% : public cToken {
+class cTokenFor_%!LEXIQUE_CLASS_NAME% : public cToken {
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %([mLexicalType cppTypeName])% mLexicalAttribute_%([key string])% ;\n%
+    %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![key string]% ;\n%
   end foreach
 %
-  public : cTokenFor_%LEXIQUE_CLASS_NAME% (void) ;
+  public : cTokenFor_%!LEXIQUE_CLASS_NAME% (void) ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -73,16 +73,16 @@ class cTokenFor_%LEXIQUE_CLASS_NAME% : public cToken {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class %LEXIQUE_CLASS_NAME% : public C_Lexique {
+class %!LEXIQUE_CLASS_NAME% : public C_Lexique {
 //--- Constructors
-  public : %LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
+  public : %!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
                        const C_String & inDependencyFilePath,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public : %LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
+  public : %!LEXIQUE_CLASS_NAME% (C_Compiler * inCallerCompiler,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceString,
                        const C_String & inStringForError
@@ -92,7 +92,7 @@ class %LEXIQUE_CLASS_NAME% : public C_Lexique {
 //    an error if a direct delete is performed; only the static method
 //    C_GGS_Object::detachPointer may invoke delete.
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected : virtual ~%LEXIQUE_CLASS_NAME% (void) {}
+    protected : virtual ~%!LEXIQUE_CLASS_NAME% (void) {}
   #endif
 %if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
 //--- Scanner mode for template scanner
