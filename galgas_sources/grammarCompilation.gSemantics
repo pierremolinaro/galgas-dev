@@ -60,7 +60,7 @@ map @vocabularyMap {
 #---------------------------------------------------------------------------*
 
 list @derivationList {
-  @uintlist mDerivation ;
+  @uint64list mDerivation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -362,12 +362,14 @@ end reader ;
 
 abstract method @syntaxInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @semanticInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -375,6 +377,7 @@ end method ;
 
 override method @nonterminalCallInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -382,9 +385,11 @@ end method ;
 
 override method @terminalCheckInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap ioVocabularyMap
+  ?!@stringlist ioVocabularyListForDisplaying
 :
   if not [ioVocabularyMap hasKey ![mTerminalName string]] then
     [!?ioVocabularyMap insertKey !mTerminalName ![ioVocabularyMap count]] ;
+    ioVocabularyListForDisplaying += !"$" . mTerminalName . "$" ;
   end if ;
 end method ;
 
@@ -392,6 +397,7 @@ end method ;
 
 override method @repeatInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -399,6 +405,7 @@ end method ;
 
 override method @selectInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -406,6 +413,7 @@ end method ;
 
 override method @parseDoInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -413,6 +421,7 @@ end method ;
 
 override method @blockInstruction enterTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioVocabularyMap
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -423,7 +432,8 @@ end method ;
 abstract method @syntaxInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
+  ?!@uint64list unused ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 ;
 
 #---------------------------------------------------------------------------*
@@ -431,7 +441,8 @@ abstract method @syntaxInstruction enterNonTerminalSymbolIntoVocabulary
 override method @semanticInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
+  ?!@uint64list unused ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -440,14 +451,16 @@ end method ;
 override method @nonterminalCallInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap ioNonTerminalMap
   ??@vocabularyMap inTerminalMap
-  ?!@uintlist ioRightDerivation
+  ?!@uint64list ioRightDerivation
+  ?!@stringlist ioVocabularyListForDisplaying
 :
   if not [ioNonTerminalMap hasKey ![mNonterminalName string]] then
-    [!?ioNonTerminalMap insertKey !mNonterminalName ![ioNonTerminalMap count]] ;
+    [!?ioNonTerminalMap insertKey !mNonterminalName ![ioNonTerminalMap count] + [inTerminalMap count]] ;
+    ioVocabularyListForDisplaying += !"<" . mNonterminalName . ">" ;
   end if ;
   @uint nonterminalIndex ;
   [ioNonTerminalMap searchKey !mNonterminalName ?nonterminalIndex] ;
-  ioRightDerivation += !nonterminalIndex + [inTerminalMap count] ;
+  ioRightDerivation += ![nonterminalIndex uint64] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -455,11 +468,12 @@ end method ;
 override method @terminalCheckInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap inTerminalMap
-  ?!@uintlist ioRightDerivation
+  ?!@uint64list ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
   @uint terminalIndex ;
   [inTerminalMap searchKey !mTerminalName ?terminalIndex] ;
-  ioRightDerivation += !terminalIndex ;
+  ioRightDerivation += ![terminalIndex uint64] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -467,7 +481,8 @@ end method ;
 override method @repeatInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
+  ?!@uint64list unused ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -476,7 +491,8 @@ end method ;
 override method @selectInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
+  ?!@uint64list unused ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -485,7 +501,8 @@ end method ;
 override method @parseDoInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
+  ?!@uint64list unused ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -494,7 +511,8 @@ end method ;
 override method @blockInstruction enterNonTerminalSymbolIntoVocabulary
   ?!@vocabularyMap unused ioNonTerminalMap
   ??@vocabularyMap unused ioTerminalMap
-  ?!@uintlist unused ioRightDerivation
+  ?!@uint64list unused ioRightDerivation
+  ?!@stringlist unused ioVocabularyListForDisplaying
 :
 end method ;
 
@@ -634,7 +652,7 @@ routine compileGrammarComponent
   end foreach ;
 #--- Append added production
   pureSyntaxRuleListForGrammar .= addedPureSyntaxRuleListForGrammar ;
-#--- Append production for root symbol
+#--- Append production for root symbol <>
   @lstring addedRootNonTerminal [new !"" !here] ;
   pureSyntaxRuleListForGrammar +=
     !""
@@ -657,11 +675,12 @@ routine compileGrammarComponent
   @productionListMap productionListMap [emptyMap] ;
   @productionIndexListMap productionIndexListMap [emptyMap] ;
   @stringlist identicalDerivationErrorMessageList [emptyList] ;
+  @stringlist vocabularyListForDisplaying [emptyList] ;
 #--- Enter terminal symbols
   @vocabularyMap terminalMap [emptyMap] ;
   foreach pureSyntaxRuleListForGrammar do
     foreach mSyntaxInstructionList do
-      [mInstruction enterTerminalSymbolIntoVocabulary !?terminalMap] ;
+      [mInstruction enterTerminalSymbolIntoVocabulary !?terminalMap !?vocabularyListForDisplaying] ;
     end foreach ;
   end foreach ;
   @uint terminalSymbolCount := [terminalMap count] ;
@@ -669,11 +688,12 @@ routine compileGrammarComponent
   @vocabularyMap nonterminalMap [emptyMap] ;
   foreach pureSyntaxRuleListForGrammar :idx do
     if not [nonterminalMap hasKey ![mLeftNonTerminal string]] then
-      [!?nonterminalMap insertKey !mLeftNonTerminal ![nonterminalMap count]] ;
+      [!?nonterminalMap insertKey !mLeftNonTerminal ![terminalMap count] + [nonterminalMap count]] ;
+      vocabularyListForDisplaying += !"<" . mLeftNonTerminal . ">" ;
     end if ;
-    @uintlist rightDerivation [emptyList] ;
+    @uint64list rightDerivation [emptyList] ;
     foreach mSyntaxInstructionList do
-      [mInstruction enterNonTerminalSymbolIntoVocabulary !?nonterminalMap !terminalMap !?rightDerivation] ;
+      [mInstruction enterNonTerminalSymbolIntoVocabulary !?nonterminalMap !terminalMap !?rightDerivation !?vocabularyListForDisplaying] ;
     end foreach ;
   #--- Check production is dictinct from previous ones
     @derivationList previousDerivations := [productionListMap listForKey ![mLeftNonTerminal string]] ;
@@ -704,10 +724,49 @@ routine compileGrammarComponent
       productionIndexListMap += ![mLeftNonTerminal string] !idx ;
     end if ;
   end foreach ;
-  @uint bitCountForBDDs := [[terminalMap count] + [nonterminalMap count] significantBitCount] ;
+  @uint vocabularyCount := [terminalMap count] + [nonterminalMap count] ;
+  @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
   if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
     message " ok\n" ;
   end if ;  
+#---------------------------------------------------------- Computing useful vocabulary
+  if [option .verbose_output] then
+    message "  Checking all non terminal symbols are useful..." ;
+  end if ;  
+  @binaryset elementaryUtility [emptyBinarySet] ;
+  foreach productionListMap do
+    @binaryset derivation [emptyBinarySet] ;
+    foreach object do
+      foreach mDerivation do
+        derivation := derivation | [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !mValue] ;
+      end foreach ;
+    end foreach ;
+    @uint nonterminalIndex ;
+    [nonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
+    derivation := derivation & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]] ;
+    elementaryUtility := elementaryUtility | derivation ;
+  end foreach ;
+#--- Computing transitive closure
+  @binaryset startSymbol [binarySetWithEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
+  @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
+  @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
+  @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
+  @uint64list unusefulSymbolList := [unusefulSymbols uint64ValueList !bitCountForBDDs] ;
+  if [option .verbose_output] then
+    if [unusefulSymbolList length] == 0 then
+      message " ok\n" ;
+    else
+      message " error\n" ;
+    end if ;
+  end if ;
+  if [unusefulSymbolList length] > 0 then
+    @string errorMessage := "the grammar contains " . [[unusefulSymbolList length] string] . " useless symbol(s): " ;
+    foreach unusefulSymbolList
+    do errorMessage .= [vocabularyListForDisplaying mValueAtIndex ![mValue uint]] ;
+    between errorMessage .= ", " ;
+    end foreach ;
+    error here: errorMessage ;
+  end if ;
 #---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     @string s := [filewrapper grammarGenerationTemplates.html
