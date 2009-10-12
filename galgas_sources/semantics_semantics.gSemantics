@@ -476,6 +476,14 @@ class @typeConstructorExpression extends @typeExpression {
  
 #---------------------------------------------------------------------------*
 
+class @typeIfThenElseExpression extends @typeExpression {
+  @typeExpression mIfExpression ;
+  @typeExpression mThenExpression ;
+  @typeExpression mElseExpression ;
+}
+ 
+#---------------------------------------------------------------------------*
+
 class @typeTestComplement extends @typeExpression {
   @location mOperatorLocation ;
   @typeExpression mExpression ;
@@ -678,6 +686,18 @@ class @typeTextTableCall extends @typeExpression {
 class @C_assignmentInstruction extends @typeInstruction {
   @typeCplusPlusName mTargetVarCppName ;
   @lstringlist mStructAttributeList ;
+  @typeExpression mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   C O N S T A N T    D E C L A R A T I O N    I N S T R U C T I O N       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @C_constantDeclarationInstruction extends @typeInstruction {
+  @AC_galgasType mTargetType ;
+  @typeCplusPlusName mTargetVarCppName ;
   @typeExpression mSourceExpression ;
 }
 

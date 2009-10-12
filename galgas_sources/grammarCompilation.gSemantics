@@ -724,8 +724,8 @@ routine compileGrammarComponent
       productionIndexListMap += ![mLeftNonTerminal string] !idx ;
     end if ;
   end foreach ;
-  @uint vocabularyCount := [terminalMap count] + [nonterminalMap count] ;
-  @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
+  const @uint vocabularyCount := [terminalMap count] + [nonterminalMap count] ;
+  const @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
   if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
     message " ok\n" ;
   end if ;  
@@ -753,11 +753,7 @@ routine compileGrammarComponent
   @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
   @stringlist unusefulSymbolList := [unusefulSymbols stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
   if [option .verbose_output] then
-    if [unusefulSymbolList length] == 0 then
-      message " ok\n" ;
-    else
-      message " error\n" ;
-    end if ;
+    message if [unusefulSymbolList length] == 0 then " ok\n" else " error\n" end ;
   end if ;
   if [unusefulSymbolList length] > 0 then
     @string errorMessage := "the grammar contains " . [[unusefulSymbolList length] string] . " useless symbol(s): " ;
