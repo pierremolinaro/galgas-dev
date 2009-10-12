@@ -4066,6 +4066,11 @@ routine handleReaderCall
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         build_stringlist_type ?outReturnedType ;
+      elsif [inReaderName string] == "stringValueListWithNameList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        build_stringlist_type ?outReturnedType ;
+        outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
       elsif [inReaderName string] == "predicateStringValue" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
