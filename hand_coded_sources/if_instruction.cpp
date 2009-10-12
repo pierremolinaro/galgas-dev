@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate 'if' instruction                                                *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -22,6 +22,57 @@
 #include "utilities/MF_MemoryControl.h"
 #include "semantics_instructions.h"
 #include "semantics_semantics.h"
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+void cPtr_typeIfThenElseExpression::
+generateExpression (AC_OutputStream & ioCppFile) const {
+  ioCppFile << "((" ;
+  mIfExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ").isBuiltAndTrue () ? (" ;
+  mThenExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << ") : (" ;
+  mElseExpression (HERE)->generateExpression (ioCppFile) ;
+  ioCppFile << "))" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeIfThenElseExpression::
+formalArgumentIsUsedForTest (const GGS_typeCplusPlusName & inArgumentCppName) const {
+  return mIfExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mThenExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+    || mElseExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)
+  ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeIfThenElseExpression::
+formalCurrentObjectArgumentIsUsedForTest (void) const {
+  return mIfExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+    || mThenExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+    || mElseExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest ()
+  ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_typeIfThenElseExpression::
+isLexiqueFormalArgumentUsedForTest (void) const {
+  return mIfExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+    || mThenExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+    || mElseExpression (HERE)->isLexiqueFormalArgumentUsedForTest ()
+  ;
+}
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark -
+#endif
 
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*

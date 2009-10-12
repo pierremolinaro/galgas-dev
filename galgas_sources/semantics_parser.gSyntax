@@ -4027,6 +4027,91 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#             C O N S T A N T    D E C L A R A T I O N                      *
+#                                                                           *
+#  const idf := ... ;                                                       *
+#  const idf [ ... ] ;                                                      *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@EXsemanticContext inSemanticContext
+:
+  $const$ ;
+#--- Type name
+  @AC_galgasType targetVarType ;
+  @lstring targetTypeName ;
+  <type_parsing>
+    !inTableEnAvant
+    !ioComponentSemanticsEntitiesMap
+    ?targetVarType
+    ?targetTypeName
+  ;
+#--- Variable name
+  @lstring targetVarName ;
+  $identifier$ ? targetVarName ;
+#--- Source expression
+  @typeExpression sourceExpression ;
+  select
+    $:=$ ;
+  #--- Parse source expression
+    @AC_galgasType sourceExpressionType ;
+    <expression>
+      !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !inSemanticContext
+      !?ioVariablesMap
+      ?sourceExpression
+      ?sourceExpressionType
+    ;
+  #--- Match target and source types
+    checkAssignmentTypesCompatibility !targetVarType !sourceExpressionType !here !true ;
+  or
+  #--- Indicate variable is written
+    $[$ ;
+  #--- Class method name
+    @lstring constructorName ;
+    $identifier$ ? constructorName ;
+    @typeListeAttributsSemantiques listeAttributsSemantiques ;
+    @bool hasLexiqueAndLocationArguments ;
+    [targetVarType handleConstructorCall !constructorName ?listeAttributsSemantiques ?hasLexiqueAndLocationArguments] ;
+  #--- Actual arguments
+    @typeExpressionList expressionList ;
+    <output_expression_list>
+      ?expressionList
+      !listeAttributsSemantiques
+      !ioComponentSemanticsEntitiesMap
+      !inOptionsComponentsMapForUse
+      !inSemanticContext
+      !?ioVariablesMap
+    ;
+    $]$ ;
+  #--- Build source expression
+    sourceExpression := [@typeConstructorExpression new 
+      !targetVarType
+      ![constructorName string]
+      !hasLexiqueAndLocationArguments
+      !expressionList
+    ] ;
+  end select ;
+  $;$ ;
+#--- Declare constant
+  @typeCplusPlusName targetVarCppName := [@typeAutomaticName new ![targetVarName location] ![targetVarName string]] ;
+  [!?ioVariablesMap insertConstInArgument !targetVarName !targetVarType !targetVarCppName] ;
+#--- Generate instruction
+  ioInstructionList += ![@C_constantDeclarationInstruction new
+    !targetVarType
+    !targetVarCppName 
+    !sourceExpression
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #             I N S T R U C T I O N   B E G I N N I N G                     *
 #               W I T H    A N    I D E N T I F I E R                       *
 #                                                                           *

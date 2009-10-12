@@ -2,7 +2,7 @@
 //                                                                           *
 //  Generate assignment instructions                                         *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2008 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
@@ -21,6 +21,55 @@
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_TextFileWrite.h"
 #include "semantics_semantics.h"
+
+//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Constant declaration
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cPtr_C_constantDeclarationInstruction::
+generateInstruction (AC_OutputStream & ioCppFile,
+                    const C_String & /* inTargetFileName */,
+                    PMSInt32 & /* ioPrototypeIndex */,
+                    const bool /* inGenerateDebug */,
+                    const bool inGenerateSemanticInstructions) const {
+  if (inGenerateSemanticInstructions) {
+    ioCppFile << "const " ;
+    mTargetType (HERE)->generateCppClassName (ioCppFile) ;
+    ioCppFile << " " ;
+    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
+    ioCppFile << " = " ;
+    mSourceExpression (HERE)->generateExpression (ioCppFile) ;
+    ioCppFile << " ;\n" ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_constantDeclarationInstruction::
+isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
+  return mSourceExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_constantDeclarationInstruction::
+formalCurrentObjectArgumentIsUsed (void) const {
+  return mSourceExpression (HERE)->formalCurrentObjectArgumentIsUsedForTest () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool cPtr_C_constantDeclarationInstruction::
+formalArgumentIsUsed (const GGS_typeCplusPlusName & inArgumentCppName,
+                      const bool /* inGenerateSemanticInstructions */) const {
+  return mTargetVarCppName.isSameObjectAs (inArgumentCppName)
+      || (mSourceExpression (HERE)->formalArgumentIsUsedForTest (inArgumentCppName)) ;
+}
 
 //---------------------------------------------------------------------------*
 //---------------------------------------------------------------------------*

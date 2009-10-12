@@ -1491,6 +1491,75 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
+#   F A C T O R    :    if cond1 then exp1 elsif cond2 exp2 ... else exp3 end  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  ??@M_semanticsEntitiesForUse inEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ??@EXsemanticContext inSemanticContext
+  ?!@typeVariablesMap ioVariablesMap
+  !@typeExpression outExpression
+  !@AC_galgasType outResultType
+:
+#--- if expression
+  $if$ ;
+  @typeExpression ifExpression ;
+  @AC_galgasType ifExpressionType ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?ifExpression
+    ?ifExpressionType
+  ;
+#--- check if expression is boolean
+  @typeGalgas_bool gb := (cast ifExpressionType if >= @typeGalgas_bool else error here) ;
+#--- then expression
+  $then$ ;
+  @typeExpression thenExpression ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?thenExpression
+    ?outResultType
+  ;
+#--- else expression
+  $else$ ;
+  @location errorLocation := here ;
+  @typeExpression elseExpression ;
+  @AC_galgasType elseExpressionType ;
+  <expression>
+    !inEntitiesMap
+    !inOptionsComponentsMapForUse
+    !inSemanticContext
+    !?ioVariablesMap
+    ?elseExpression
+    ?elseExpressionType
+  ;
+#--- check outResultType == elseExpressionType
+  checkAssignmentTypesCompatibility
+    !outResultType
+    !elseExpressionType
+    !errorLocation
+    !true
+  ;
+#---
+  $end$ ;
+#---
+  outExpression := [@typeIfThenElseExpression new
+    !ifExpression
+    !thenExpression
+    !elseExpression
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
 #                         F A C T O R                                          *
 #                                                                              *
 #   description          :   [expression description]                          *
