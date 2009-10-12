@@ -751,7 +751,7 @@ routine compileGrammarComponent
   @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
   @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
   @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
-  @uint64list unusefulSymbolList := [unusefulSymbols uint64ValueList !bitCountForBDDs] ;
+  @stringlist unusefulSymbolList := [unusefulSymbols stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
   if [option .verbose_output] then
     if [unusefulSymbolList length] == 0 then
       message " ok\n" ;
@@ -762,7 +762,7 @@ routine compileGrammarComponent
   if [unusefulSymbolList length] > 0 then
     @string errorMessage := "the grammar contains " . [[unusefulSymbolList length] string] . " useless symbol(s): " ;
     foreach unusefulSymbolList
-    do errorMessage .= [vocabularyListForDisplaying mValueAtIndex ![mValue uint]] ;
+    do errorMessage .= mValue ;
     between errorMessage .= ", " ;
     end foreach ;
     error here: errorMessage ;

@@ -1066,4 +1066,8 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+#nonterminal <sdfgh> ;
+#rule <sdfgh> : end rule ;
+
+
 end syntax ;
