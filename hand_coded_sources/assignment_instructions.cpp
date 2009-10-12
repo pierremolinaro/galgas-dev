@@ -142,9 +142,6 @@ generateInstruction (AC_OutputStream & ioCppFile,
     mVariableType (HERE)->generateCppClassName (ioCppFile) ;
     ioCppFile << " " ;
     mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
-    ioCppFile << " ;\n" ;
-  //--- Generate assignment
-    mTargetVarCppName (HERE)->generateCplusPlusName (ioCppFile) ;
     ioCppFile << " = " ;
     mSourceExpression (HERE)->generateExpression (ioCppFile) ;
     ioCppFile << " ;\n" ;
