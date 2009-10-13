@@ -532,6 +532,7 @@ filewrapper grammarGenerationTemplates in "../generation_templates/grammar_gener
     ?@vocabularyMap NON_TERMINAL_MAP
     ?@uint BIT_COUNT_FOR_BDDS
     ?@stringlist IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST
+    ?@stringlist USELESS_NON_TERMINAL_SYMBOL_LIST
   ;
   template optionHeaderZone2 "grammar-zone2.h.gTemplate"
     ?@string GRAMMAR_NAME
@@ -576,7 +577,7 @@ routine compileGrammarComponent
 :
   @grammarComponentRoot grammarComponentRoot ;
   grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
-#--- Check component name
+#---------------------------------------------------------- Check component name
   @lstring componentName := [grammarComponentRoot mGrammarName] ;
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   if [componentName string] != basename then
@@ -585,7 +586,7 @@ routine compileGrammarComponent
     . "') against the source file base name ('" . basename . "'): they should be identical"
     ;
   end if ;
-#--- Parse syntax components
+#---------------------------------------------------------- Parse syntax components
   @nonTerminalMap nonTerminalMap [emptyMap] ;
   @string lexiqueComponent := "" ; # Empty string means unknown
   @syntaxRuleListForGrammar syntaxRuleListForGrammar [emptyList] ;
@@ -622,6 +623,12 @@ routine compileGrammarComponent
         ![syntaxComponentRoot mRuleList]
         !?syntaxRuleListForGrammar
       ;
+    end if ;
+  end foreach ;
+#---------------------------------------------------------- Symbols declared unused
+  foreach [grammarComponentRoot mUnusedNonterminalList] do
+    if not [nonTerminalMap hasKey ![mValue string]] then
+      error mValue : "the '<" . mValue . ">' non terminal is not declared by syntax components" ;
     end if ;
   end foreach ;
 #---------------------------------------------------------- Build pure BNF productions
@@ -724,7 +731,8 @@ routine compileGrammarComponent
       productionIndexListMap += ![mLeftNonTerminal string] !idx ;
     end if ;
   end foreach ;
-  const @uint vocabularyCount := [terminalMap count] + [nonterminalMap count] ;
+  const @uint terminalCount := [terminalMap count] ;
+  const @uint vocabularyCount := terminalCount + [nonterminalMap count] ;
   const @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
   if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
     message " ok\n" ;
@@ -747,22 +755,39 @@ routine compileGrammarComponent
     elementaryUtility := elementaryUtility | derivation ;
   end foreach ;
 #--- Computing transitive closure
-  @binaryset startSymbol [binarySetWithEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
-  @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
-  @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
-  @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
-  @stringlist unusefulSymbolList := [unusefulSymbols stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
+  const @binaryset startSymbol [binarySetWithEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
+  const @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
+#--- Compute and display useless symbols
+  const @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
+  const @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
+  @binaryset unusefulNonTerminals := unusefulSymbols & [@binaryset binarySetWithGreaterOrEqualToConstant !0 !bitCountForBDDs ![terminalCount uint64]] ;
+  foreach [grammarComponentRoot mUnusedNonterminalList] do
+    @uint nonTerminalSymbolIndex ;
+    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
+    unusefulNonTerminals := unusefulNonTerminals & ~ [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonTerminalSymbolIndex uint64]] ;
+  end foreach ;
+  const @stringlist unusefulNonTerminalList := [unusefulNonTerminals stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
   if [option .verbose_output] then
-    message if [unusefulSymbolList length] == 0 then " ok\n" else " error\n" end ;
+    message if [unusefulNonTerminalList length] == 0 then " ok\n" else " warning\n" end ;
   end if ;
-  if [unusefulSymbolList length] > 0 then
-    @string errorMessage := "the grammar contains " . [[unusefulSymbolList length] string] . " useless symbol(s): " ;
-    foreach unusefulSymbolList
+  if [unusefulNonTerminalList length] > 0 then
+    @string errorMessage := "the grammar contains "
+    . [[unusefulNonTerminalList length] string]
+    . " useless symbol" . if [unusefulNonTerminalList length] > 1 then "s" else "" end . ": " ;
+    foreach unusefulNonTerminalList
     do errorMessage .= mValue ;
     between errorMessage .= ", " ;
     end foreach ;
-    error here: errorMessage ;
+    warning here: errorMessage ;
   end if ;
+#---------------------------------------------------------- Check nonterminal symbols declared as useless are actually useless
+  foreach [grammarComponentRoot mUnusedNonterminalList] do
+    @uint nonTerminalSymbolIndex ;
+    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
+    if [usefulSymbols containsValue ![nonTerminalSymbolIndex uint64] !0 !bitCountForBDDs] then
+      warning mValue : "the '<" . mValue . ">' non terminal is declared as unused, but it is actually useful" ;
+    end if ;
+  end foreach ;
 #---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     @string s := [filewrapper grammarGenerationTemplates.html
@@ -773,6 +798,7 @@ routine compileGrammarComponent
       !nonterminalMap
       !bitCountForBDDs
       !identicalDerivationErrorMessageList
+      !unusefulNonTerminalList
     ] ;
     [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
   else

@@ -35,4 +35,5 @@ grammar syntaxSLRgrammar "SLR" :
     !@syntaxComponentRoot outSyntaxComponentRoot
   ; # SLR
 
+#  unused <sdfgh> ;
 end grammar ;

@@ -139,9 +139,7 @@ Original grammar
 </table>
 
 <p><a name="vocabulary"></a></p>
-<table class="title">
-<tr><td>Vocabulary</td></tr>
-</table>
+<table class="title"><tr><td>Vocabulary</td></tr></table>
 <p></p>
 
 <table class="result">
@@ -174,31 +172,44 @@ Original grammar
 <table class="title">
   <tr><td>Checking all productions are different</td></tr>
 </table>
-%
+<p></p>
+<p>%
  if [IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] == 0 then
-  %<p><span class="success">Ok : all productions are different.</span></p>%
+  %<span class="success">Ok : all productions are different.</span>%
  else
    if [IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] == 1 then
-     %<p><span class="error">Error;<span> 1 collision has been detected:%
+     %<span class="error">Error;<span> 1 collision has been detected:%
    else
-     %<p><span class="error">Error;<span> %![[IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] string]% collisions have been detected:%
+     %<span class="error">Error;<span> %![[IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST length] string]% collisions have been detected:%
    end if
    %<ul>%
    foreach IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST do
      %<li>%![mValue HTMLRepresentation]%;</li>%
     end foreach
-    %</ul></p>%
+    %</ul>%
  end if
-%
+%</p>
 
-<table class="title"><tr><td>Useful terminal and nonterminal symbols</td></tr></table>
+<p><a name="useful_symbols"></a></p>
+<table class="title"><tr><td>Useful nonterminal symbols</td></tr></table>
+<p></p>
+<p>%
+ if [USELESS_NON_TERMINAL_SYMBOL_LIST length] == 0 then
+   %<span class="success">All nonterminal symbols are useful.</span>%
+ else
+   %<span class="warning">Warning: the grammar contains %![[USELESS_NON_TERMINAL_SYMBOL_LIST length] string]% useless symbol%if [USELESS_NON_TERMINAL_SYMBOL_LIST length] > 1 then %s% end if%:</span>%
+   %<ul>%
+   foreach USELESS_NON_TERMINAL_SYMBOL_LIST do
+     %<li><code>%![mValue HTMLRepresentation]%</code></li>%
+   end foreach
+   %</ul>%
+  end if
+%</p>
 
-<p><a name="useful_symbols"></a>Calculus completed in 10 iterations.
-</p><p><span class="success">All terminal and nonterminal symbols are useful.
+<table class="title"><tr><td>------------------------------------------</td></tr></table>
 
-</span></p><table class="title"><tr><td>
-Searching for nonterminal symbols deriving in empty string
-</td></tr></table>
+<table class="title"><tr><td>Searching for nonterminal symbols deriving in empty string</td></tr></table>
+
 <p><a name="empty_strings"></a>32 nonterminal symbols have a empty production :
 </p><table class="result"><tr class="result_line"><td class="result_line">0</td><td><code>&lt;function_call_or_attribute&gt;</code></td></tr>
 <tr class="result_line"><td class="result_line">1</td><td><code>&lt;select_lexiqueModelBuilder_0&gt;</code></td></tr>
