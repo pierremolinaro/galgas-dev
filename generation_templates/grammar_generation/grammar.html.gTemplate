@@ -161,8 +161,9 @@ Original grammar
 
 <p>For information :
   <ul><li>%![[TERMINAL_MAP count] string]% terminal symbols, numbered from 0 to %![[TERMINAL_MAP count] - 1 string]% ;</li>
-    <li> the 'empty string' symbol '$$' is numbered ??? ;</li>
+    <li> the 'end of source file' symbol '$$' is numbered %![[TERMINAL_MAP count] - 1 string]% ;</li>
     <li>%![[NON_TERMINAL_MAP count] string]% nonterminal symbols in the pure BNF grammar, numbered from %![[TERMINAL_MAP count] string]% to %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
+    <li> the actual start symbol '&lt;&gt;' is numbered %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
     <li>whole vocabulary : %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] string]% elements, %![BIT_COUNT_FOR_BDDS string]% bits for BDDs.</li>
   </ul>
 </p>
@@ -206,46 +207,27 @@ Original grammar
   end if
 %</p>
 
+<a name="empty_strings"></a>
+<table class="title"><tr><td>Nonterminal symbols deriving in empty string</td></tr></table>
+<p></p>
+<p>%
+ if [SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING length] == 0 then
+   %No symbol is deriving into empty string.%
+ else
+   ![[SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING length] string]% symbol%if [SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING length] > 1 then %s are% else % is% end if% deriving into empty string:%
+   %<table class="result">%
+   foreach SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING do
+     %<tr class="result_line"><td class="result_line"><code>%![mValue HTMLRepresentation]%</code></td></tr>%
+   end foreach
+   %</table>%
+  end if
+%</p>
+
+
 <table class="title"><tr><td>------------------------------------------</td></tr></table>
 
-<table class="title"><tr><td>Searching for nonterminal symbols deriving in empty string</td></tr></table>
 
-<p><a name="empty_strings"></a>32 nonterminal symbols have a empty production :
-</p><table class="result"><tr class="result_line"><td class="result_line">0</td><td><code>&lt;function_call_or_attribute&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">1</td><td><code>&lt;select_lexiqueModelBuilder_0&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">2</td><td><code>&lt;select_repeat_lexiqueModelBuilder_1&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">3</td><td><code>&lt;select_lexiqueModelBuilder_3&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">4</td><td><code>&lt;select_repeat_lexiqueModelBuilder_4&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">5</td><td><code>&lt;select_repeat_lexiqueModelBuilder_6&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">6</td><td><code>&lt;select_repeat_lexiqueModelBuilder_7&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">7</td><td><code>&lt;select_repeat_lexiqueModelBuilder_9&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">8</td><td><code>&lt;select_repeat_lexiqueModelBuilder_10&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">9</td><td><code>&lt;select_repeat_lexiqueModelBuilder_11&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">10</td><td><code>&lt;select_repeat_lexiqueModelBuilder_12&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">11</td><td><code>&lt;select_repeat_lexiqueModelBuilder_13&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">12</td><td><code>&lt;select_repeat_lexiqueModelBuilder_14&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">13</td><td><code>&lt;select_repeat_lexiqueModelBuilder_15&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">14</td><td><code>&lt;select_lexiqueModelBuilder_16&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">15</td><td><code>&lt;select_repeat_lexiqueModelBuilder_17&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">16</td><td><code>&lt;select_repeat_lexiqueModelBuilder_18&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">17</td><td><code>&lt;select_repeat_lexiqueModelBuilder_19&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">18</td><td><code>&lt;select_lexiqueModelBuilder_20&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">19</td><td><code>&lt;select_repeat_lexiqueModelBuilder_21&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">20</td><td><code>&lt;select_lexiqueModelBuilder_22&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">21</td><td><code>&lt;select_repeat_lexiqueModelBuilder_23&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">22</td><td><code>&lt;select_lexiqueModelBuilder_24&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">23</td><td><code>&lt;select_lexiqueModelBuilder_25&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">24</td><td><code>&lt;select_repeat_lexiqueModelBuilder_26&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">25</td><td><code>&lt;select_lexiqueModelBuilder_27&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">26</td><td><code>&lt;select_lexiqueModelBuilder_28&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">27</td><td><code>&lt;select_repeat_lexiqueModelBuilder_29&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">28</td><td><code>&lt;select_repeat_lexiqueModelBuilder_31&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">29</td><td><code>&lt;select_lexiqueModelBuilder_33&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">30</td><td><code>&lt;select_repeat_lexiqueModelBuilder_34&gt;</code></td></tr>
-<tr class="result_line"><td class="result_line">31</td><td><code>&lt;select_repeat_lexiqueModelBuilder_35&gt;</code></td></tr>
-</table><p>Nonterminal symbols deriving indirectly in empty string : calculus in 2 iterations.
-</p><p>No more than those deriving directly to the empty string.
-</p><p><a name="first_sets"></a></p><table class="title"><tr><td>
+<p><a name="first_sets"></a></p><table class="title"><tr><td>
 FIRST set
 </td></tr></table>
 <p>Calculus completed in 5 iterations, 179 values ;
