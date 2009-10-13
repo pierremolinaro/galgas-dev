@@ -28,4 +28,9 @@ list @LCHARLIST {
   @lchar mValue ;
 }
 
+list @RELATIONSTRINGLIST {
+  @string mLeftOperand ;
+  @STRINGLIST mRightList ;
+}
+
 end semantics ;

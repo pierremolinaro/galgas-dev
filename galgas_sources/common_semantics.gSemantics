@@ -2777,6 +2777,34 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   G A L G A S    r e l a t i o n S t r i n g L i s t    T Y P E           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine build_relationStringList_type !@AC_galgasType outType :
+  @typeListeAttributsSemantiques attributesList [emptyList] ;
+  attributesList += ![@typeGalgas_string new] ![@lstring new !"mLeftOperand" !here] ;
+  @AC_galgasType stringlistType ; build_stringlist_type ?stringlistType ;
+  attributesList += !stringlistType ![@lstring new !"mRightList" !here] ;
+
+  @L_EXsignature extractSignature [emptyList] ;
+  extractSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentOut] ;
+  extractSignature += !stringlistType ![@EXformalArgumentPassingMode argumentOut] ;
+
+  @L_EXsignature inputSignature [emptyList] ;
+  inputSignature += ![@typeGalgas_string new] ![@EXformalArgumentPassingMode argumentConstantIn] ;
+  inputSignature += !stringlistType ![@EXformalArgumentPassingMode argumentConstantIn] ;
+
+  outType := [@typeGalgasListType new
+    ![@lstring new !"relationStringList" !here]
+    !attributesList
+    !extractSignature
+    !inputSignature
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   G A L G A S    L S T R I N G L I S T    T Y P E                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -4071,6 +4099,12 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         build_stringlist_type ?outReturnedType ;
         outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
+      elsif [inReaderName string] == "relationStringListWithNameList" then
+        outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+        outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
+        @AC_galgasType t ; build_stringlist_type ?t ;
+        outAccessorTypesList += !t ![@lstring new !"" !here] ;
+        build_relationStringList_type ?outReturnedType ;
       elsif [inReaderName string] == "predicateStringValue" then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outReturnedType := [@typeGalgas_string new] ;
@@ -4809,6 +4843,11 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   build_lstringlist_type ?t ;
   e := [@typeEntiteType new !t] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lstringlist" !here] !e] ;
+
+  build_relationStringList_type ?t ;
+  e := [@typeEntiteType new !t] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"relationStringList" !here] !e] ;
+
 end routine ;
 
 #---------------------------------------------------------------------------*
