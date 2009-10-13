@@ -60,16 +60,14 @@ map @vocabularyMap {
 #---------------------------------------------------------------------------*
 
 list @derivationList {
+  @uint64 mLeftTerminalIndex ;
+  @uint mProductionIndex ;
   @uint64list mDerivation ;
 }
 
 #---------------------------------------------------------------------------*
 
 listmap @productionListMap (@derivationList) ;
-
-#---------------------------------------------------------------------------*
-
-listmap @productionIndexListMap (@uintlist) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -533,6 +531,7 @@ filewrapper grammarGenerationTemplates in "../generation_templates/grammar_gener
     ?@uint BIT_COUNT_FOR_BDDS
     ?@stringlist IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST
     ?@stringlist USELESS_NON_TERMINAL_SYMBOL_LIST
+    ?@stringlist SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING
   ;
   template optionHeaderZone2 "grammar-zone2.h.gTemplate"
     ?@string GRAMMAR_NAME
@@ -659,16 +658,21 @@ routine compileGrammarComponent
   end foreach ;
 #--- Append added production
   pureSyntaxRuleListForGrammar .= addedPureSyntaxRuleListForGrammar ;
-#--- Append production for root symbol <>
-  @lstring addedRootNonTerminal [new !"" !here] ;
+#--- Append production for start symbol <>
+  @syntaxInstructionList syntaxInstructionList [emptyList] ;
+  syntaxInstructionList += ![@nonterminalCallInstruction new
+    ![grammarComponentRoot mStartSymbol]
+    ![@lstring new !"" !here] # no Label
+    ![@actualParameterList emptyList]
+  ] ;
+  syntaxInstructionList += ![@terminalCheckInstruction new
+    ![@lstring new !"" !here] # The terminal symbol is $$
+    ![@actualInputParameterList emptyList]
+  ] ;
   pureSyntaxRuleListForGrammar +=
     !""
-    !addedRootNonTerminal
-    ![@syntaxInstructionList listWithValue ![@nonterminalCallInstruction new
-      ![grammarComponentRoot mStartSymbol]
-      ![@lstring new !"" !here] # no Label
-      ![@actualParameterList emptyList]
-     ]]
+    ![@lstring new !"" !here] # Start symbol is <>
+    !syntaxInstructionList
   ;
   if [option .verbose_output] then
     message "  Building pure BNF productions... " . [[pureSyntaxRuleListForGrammar length] string] . " productions\n" ;
@@ -680,7 +684,6 @@ routine compileGrammarComponent
   end if ;  
   @string htmlOutputFileName := [inSourceFile stringByDeletingPathExtension] . ".html" ;
   @productionListMap productionListMap [emptyMap] ;
-  @productionIndexListMap productionIndexListMap [emptyMap] ;
   @stringlist identicalDerivationErrorMessageList [emptyList] ;
   @stringlist vocabularyListForDisplaying [emptyList] ;
 #--- Enter terminal symbols
@@ -704,9 +707,8 @@ routine compileGrammarComponent
     end foreach ;
   #--- Check production is dictinct from previous ones
     @derivationList previousDerivations := [productionListMap listForKey ![mLeftNonTerminal string]] ;
-    @uintlist previousDerivationsIndexes := [productionIndexListMap listForKey ![mLeftNonTerminal string]] ;
     @bool ok := true ;
-    foreach previousDerivations, previousDerivationsIndexes while ok do
+    foreach previousDerivations while ok do
       if mDerivation == rightDerivation then
         ok := false ;
         if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
@@ -715,7 +717,7 @@ routine compileGrammarComponent
         @string errorMessage := "for <"
         . mLeftNonTerminal
         . "> non terminal, productions "
-        . [mValue string]
+        . [mProductionIndex string]
         . " and " . [idx string] . " are identical" ;
         identicalDerivationErrorMessageList += !errorMessage ;
         if [option galgas_cli_options.outputHTMLgrammarFile] then
@@ -727,8 +729,9 @@ routine compileGrammarComponent
       end if ;
     end foreach ;
     if ok then
-      productionListMap += ![mLeftNonTerminal string] !rightDerivation ;
-      productionIndexListMap += ![mLeftNonTerminal string] !idx ;
+      @uint leftTerminalIndex ;
+      [nonterminalMap searchKey !mLeftNonTerminal ?leftTerminalIndex] ;
+      productionListMap += ![mLeftNonTerminal string] ![leftTerminalIndex uint64] !idx !rightDerivation ;
     end if ;
   end foreach ;
   const @uint terminalCount := [terminalMap count] ;
@@ -788,8 +791,19 @@ routine compileGrammarComponent
       warning mValue : "the '<" . mValue . ">' non terminal is declared as unused, but it is actually useful" ;
     end if ;
   end foreach ;
+#---------------------------------------------------------- Symbols deriving in empty string
+  @binaryset symbolsDirectlyDerivingInEmptyString [emptyBinarySet] ;
+  foreach productionListMap do
+    foreach object do
+      if [mDerivation length] == 0 then
+        symbolsDirectlyDerivingInEmptyString := symbolsDirectlyDerivingInEmptyString
+          | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !mLeftTerminalIndex] ;
+      end if ;
+    end foreach ;
+  end foreach ;
 #---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
+    const @stringlist listOfSymbolsDirectlyDerivingInEmptyString := [symbolsDirectlyDerivingInEmptyString stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
     @string s := [filewrapper grammarGenerationTemplates.html
       ![componentName string]
       !syntaxRuleListForGrammar
@@ -799,6 +813,7 @@ routine compileGrammarComponent
       !bitCountForBDDs
       !identicalDerivationErrorMessageList
       !unusefulNonTerminalList
+      !listOfSymbolsDirectlyDerivingInEmptyString
     ] ;
     [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
   else
