@@ -532,6 +532,8 @@ filewrapper grammarGenerationTemplates in "../generation_templates/grammar_gener
     ?@stringlist IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST
     ?@stringlist USELESS_NON_TERMINAL_SYMBOL_LIST
     ?@stringlist SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING
+    ?@relationStringList FIRST_SET
+    ?@uint64 FIRST_SET_VALUE_COUNT
   ;
   template optionHeaderZone2 "grammar-zone2.h.gTemplate"
     ?@string GRAMMAR_NAME
@@ -801,6 +803,21 @@ routine compileGrammarComponent
       end if ;
     end foreach ;
   end foreach ;
+#---------------------------------------------------------- Computing FIRST set
+  @binaryset elementaryFIRSTset [emptyBinarySet] ;
+  foreach productionListMap do
+    @binaryset elementaryFIRSTsetForNonTerminal [emptyBinarySet] ;
+    @uint64 leftNonTerminalIndex := 0L ;
+    foreach object do
+      if [mDerivation length] > 0 then
+        leftNonTerminalIndex := mLeftTerminalIndex ;
+        @uint64 firstSymbol ;
+        [mDerivation first ?firstSymbol] ;
+        elementaryFIRSTsetForNonTerminal := elementaryFIRSTsetForNonTerminal | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !firstSymbol] ;
+      end if ;
+    end foreach ;
+    elementaryFIRSTset := elementaryFIRSTset | (elementaryFIRSTsetForNonTerminal & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !leftNonTerminalIndex]) ;
+  end foreach ;
 #---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     const @stringlist listOfSymbolsDirectlyDerivingInEmptyString := [symbolsDirectlyDerivingInEmptyString stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
@@ -814,6 +831,8 @@ routine compileGrammarComponent
       !identicalDerivationErrorMessageList
       !unusefulNonTerminalList
       !listOfSymbolsDirectlyDerivingInEmptyString
+      ![elementaryFIRSTset relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
+      ![elementaryFIRSTset valueCount !bitCountForBDDs + bitCountForBDDs]
     ] ;
     [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
   else
