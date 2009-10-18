@@ -1,0 +1,10 @@
+semantics grammarComputationsWithBDDs :
+
+domain @grammarDomain (V) { 
+ nonterminalsWithEmptyProduction [V] ;
+ nonterminalsWithOneElementProduction [V, V] ;
+ nonterminalsWithTwoElementProduction [V, V, V] ;
+
+}
+
+end semantics ;

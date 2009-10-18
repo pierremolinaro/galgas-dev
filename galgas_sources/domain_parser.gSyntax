@@ -71,7 +71,7 @@ rule <domain_declaration>
   $domain$ ;
   @lstring domainTypeName ;
   $type_name$ ? domainTypeName ;
-  ${$ ;
+  $($ ;
   @domainAttributeMap attributeMap [emptyMap] ;
   @domainModifierMap domainModifierMap [emptyMap] ;
   @L_EXsignature domainModifierAttributeList [emptyList] ;
@@ -81,12 +81,6 @@ rule <domain_declaration>
   ;
   @domainRelationMap relationMap [emptyMap] ;
   repeat
-  while
-    @lstring attributeTypeName ;
-    $type_name$ ? attributeTypeName ;
-    if [attributeTypeName string] != "string" then
-      error attributeTypeName: "only the '@string' is supported here" ;
-    end if ;
     @lstring attributeName ;
     $identifier$ ? attributeName ;
     if [propertyNameSet hasKey ![attributeName string]] then
@@ -97,7 +91,12 @@ rule <domain_declaration>
       @lstring addModifierName [new !"addTo" . [attributeName stringByCapitalizingFirstCharacter] ![attributeName location]] ;
       [!?domainModifierMap insertKey !addModifierName !domainModifierAttributeList] ;
     end if ;
-    $;$ ;
+  while
+    $,$ ;
+  end repeat ;
+  $)$ ;
+  ${$ ;
+  repeat
   while
     @lstring relationTypeName ;
     $identifier$ ? relationTypeName ;

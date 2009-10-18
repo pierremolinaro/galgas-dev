@@ -2,9 +2,10 @@
 //                                                                           *
 //  Generate domain class                                                    *
 //                                                                           *
-//  Copyright (C) 2007 Pierre Molinaro.                                      *
+//  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -45,45 +46,39 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "class GGS_" << mDomainName << " : public AC_galgas_domain {\n" ;
   GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
   while (currentAttribute.hasCurrentObject ()) {
-    inHfile << "//--- '" << currentAttribute._key (HERE) << "' attribute\n"
-               "  protected : cDomainAttribute _attribute_" << currentAttribute._key (HERE) << " ;\n"
-               "  public : void modifier_addTo"
-            << currentAttribute._key (HERE).stringWithUpperCaseFirstLetter ()
-            << " (C_Compiler & inLexique,\n"
-               "                                    const GGS_string & inNewValue\n"
-               "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
+    inHfile << "//--- '" << currentAttribute._key (HERE) << "' domain\n"
+               "  protected : GGS_stringlist mDomain_" << currentAttribute._key (HERE) << " ;\n"
+               "  protected : PMUInt16 mBDDVariableCountForDomain_" << currentAttribute._key (HERE) << " ;\n\n" ;
     currentAttribute.next () ;
   }
   GGS_domainRelationMap::cEnumerator currentRelation (mRelationMap) ;
   while (currentRelation .hasCurrentObject ()) {
     inHfile << "//--- '" << currentRelation._key (HERE) << "' relation\n"
-               "  protected : C_BDD _relationBDD_" << currentRelation._key (HERE) << " ;\n" ;
-    for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
-      inHfile << "  protected : PMUInt16 _bitCount_" << cStringWithSigned (i) << "_forRelation_"
-              << currentRelation._key (HERE) << " ;\n" ;
-    }
+               "  protected : C_BDD mBDDForRelation_" << currentRelation._key (HERE) << " ;\n" ;
     inHfile << "  public : void modifier_addTo"
             << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
-            << " (C_Compiler & inLexique,\n" ;
-    for (PMSInt32 i=1 ; i<currentRelation._mDomains (HERE).count () ; i++) {
-      inHfile << "                                    const GGS_string & inValue_" << cStringWithSigned (i) << ",\n" ;
+            << " (C_Compiler & inLexique" ;
+    for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
+      inHfile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
     }
-    inHfile << "                                    const GGS_string & inValue_"
-            << cStringWithSigned (currentRelation._mDomains (HERE).count ())
-            << "\n"
+    inHfile << "\n"
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
     currentRelation.next () ;
   }
-  inHfile << "//--- Adjusting relation BDDs afeter bit count change\n"
-             "  protected : void updateRelationsAfterBitCountExtension (void) ;\n"
-             "//--- Constructor\n"
+  inHfile << "//--- Default constructor\n"
              "  public : GGS_" << mDomainName << " (void) ;\n\n"
              "//--- Destructor\n"
              "  public : virtual ~GGS_" << mDomainName << " (void) ;\n\n"
-             "//--- 'emptyDomain' GALGAS constructor\n"
+             "//--- 'domainWithNames' GALGAS constructor\n"
              "  public : static GGS_" << mDomainName << "\n"
-             "  constructor_emptyDomain (C_Compiler & inLexique\n"
-             "                           COMMA_LOCATION_ARGS) ;\n"
+             "  constructor_domainWithNames (C_Compiler & inLexique" ;
+  currentAttribute.rewind () ;
+  while (currentAttribute.hasCurrentObject ()) {
+    inHfile << ",\n                               const GGS_stringlist & inDomain_"
+            << currentAttribute._key (HERE) ;
+    currentAttribute.next () ;
+  }
+  inHfile << "\n                               COMMA_LOCATION_ARGS) ;\n"
              "} ;\n\n" ;
 }
 
@@ -104,7 +99,7 @@ enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
 
 void cPtr_C_domainToImplement::
 generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
-                               const C_String & /* inTargetFileName*/,
+                            const C_String & /* inTargetFileName*/,
                                PMSInt32 & /* ioPrototypeIndex */) const {
 }
 
@@ -119,20 +114,19 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppTitleComment (C_String ("Class for '") + mDomainName + "' Domain") ;
 
 //--- Constructor
-  inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void)" ;
+  inCppFile << "GGS_" << mDomainName << "::GGS_" << mDomainName << " (void) :\n"
+               "AC_galgas_domain ()" ;
+  GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
+  while (currentAttribute.hasCurrentObject ()) {
+    inCppFile << ",\n"
+                 "mDomain_" << currentAttribute._key (HERE) << " (),\n"
+                 "mBDDVariableCountForDomain_" << currentAttribute._key (HERE) << " (0)" ;
+    currentAttribute.next () ;
+  }
   GGS_domainRelationMap::cEnumerator currentRelation (mRelationMap) ;
-  bool first = true ;
   while (currentRelation.hasCurrentObject ()) {
-    for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
-      if (first) {
-        inCppFile << " :\n" ;
-        first = false ;
-      }else{
-        inCppFile << ",\n" ;
-      }
-      inCppFile << "_bitCount_" << cStringWithSigned (i) << "_forRelation_"
-                << currentRelation._key (HERE) << "  (0)" ;
-    }
+    inCppFile << ",\n"
+                 "mBDDForRelation_" << currentRelation._key (HERE) << " ()" ;
     currentRelation.next () ;
   }
   inCppFile << " {\n"
@@ -143,35 +137,32 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile << "GGS_" << mDomainName << "::~GGS_" << mDomainName << " (void) {\n"
                "}\n\n" ;
 
-//--- 'emptyDomain' constructor
+//--- 'domainWithNames' constructor
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_" << mDomainName << " GGS_" << mDomainName << "::\n"
-               "constructor_emptyDomain (C_Compiler & /* inLexique */\n"
-               "                         COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  GGS_" << mDomainName << " result ;\n"
-               "  result.mIsBuilt = true ;\n"
-               "  return result ;\n"
-               "}\n\n" ;
-
-//--- Accessors
-  GGS_domainAttributeMap::cEnumerator currentAttribute (mAttributeMap) ;
+               "constructor_domainWithNames (C_Compiler & /* inLexique */" ;
+  currentAttribute.rewind () ;
   while (currentAttribute.hasCurrentObject ()) {
-    inCppFile.appendCppHyphenLineComment () ;
-    inCppFile << "void GGS_" << mDomainName << "::\n"
-                 "modifier_addTo"
-            << currentAttribute._key (HERE).stringWithUpperCaseFirstLetter ()
-            << " (C_Compiler & /* inLexique */,\n"
-               "                                    const GGS_string & inNewValue\n"
-               "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
-               "  bool bitCountExtended = false ;\n"
-               "  findOrAddEntry (_attribute_" << currentAttribute._key (HERE)
-            << ", inNewValue, bitCountExtended) ;\n"
-               "  if (bitCountExtended) {\n"
-               "    updateRelationsAfterBitCountExtension () ;\n"
-               "  }\n"
-               "}\n\n" ;
+    inCppFile << ",\n                             const GGS_stringlist & inDomain_"
+              << currentAttribute._key (HERE) ;
     currentAttribute.next () ;
   }
+  inCppFile << "\n                             COMMA_UNUSED_LOCATION_ARGS) {\n"
+               "  GGS_" << mDomainName << " result ;\n"
+               "  result.mIsBuilt = true ;\n" ;
+  currentAttribute.rewind () ;
+  while (currentAttribute.hasCurrentObject ()) {
+    inCppFile << "  result.mDomain_"
+              << currentAttribute._key (HERE)
+              << " = inDomain_"
+              << currentAttribute._key (HERE)
+              << " ;\n"
+               "  result.mBDDVariableCountForDomain_" << currentAttribute._key (HERE)
+            << " = AC_galgas_domain::bitCountForDomainSize (inDomain_" << currentAttribute._key (HERE) << ".count ()) ;\n" ;
+    currentAttribute.next () ;
+  }
+  inCppFile << "  return result ;\n"
+               "}\n\n" ;
 
 //--- Relation
   currentRelation.rewind () ;
@@ -180,74 +171,51 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile << "void GGS_" << mDomainName << "::\n"
                  "modifier_addTo"
               << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
-              << " (C_Compiler & /* inLexique */,\n" ;
-    for (PMSInt32 i=1 ; i<currentRelation._mDomains (HERE).count () ; i++) {
-      inCppFile << "                                    const GGS_string & inValue_" << cStringWithSigned (i) << ",\n" ;
+              << " (C_Compiler & /* inLexique */" ;
+    for (PMSInt32 i=0 ; i<currentRelation._mDomains (HERE).count () ; i++) {
+      inCppFile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
     }
-    inCppFile << "                                    const GGS_string & inValue_"
-              << cStringWithSigned (currentRelation._mDomains (HERE).count ())
-              << "\n"
+    inCppFile << "\n"
                  "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
-                 "  bool bitCountExtended = false ;\n" ;
+                 "  if (isBuilt ()" ;
     GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
-    PMSInt32 idx = 1 ;
+    PMSInt32 idx = 0 ;
     while (currentDomainRelation.hasCurrentObject ()) {
-      inCppFile << "  const PMUInt32 entry" << cStringWithSigned (idx) << " = findOrAddEntry (_attribute_" << currentDomainRelation._mValue (HERE)
-                << ", inValue_" << cStringWithSigned (idx) << ", bitCountExtended) ;\n" ;
+      inCppFile << " && inValue_" << cStringWithSigned (idx) << ".isBuilt ()" ;
       idx ++ ;
       currentDomainRelation.next () ;
     }
-    inCppFile << "  if (bitCountExtended) {\n"
-                 "    updateRelationsAfterBitCountExtension () ;\n"
+    inCppFile << ") {\n"
+                 "    PMUInt16 idx = 0 ;\n" ;
+    currentDomainRelation.rewind () ;
+    idx = 0 ;
+    while (currentDomainRelation.hasCurrentObject ()) {
+      inCppFile << "    const C_BDD value_" << cStringWithSigned (idx)
+                << " = C_BDD::varCompareConst (idx, mBDDVariableCountForDomain_" << currentDomainRelation._mValue (HERE)
+                << ", C_BDD::kEqual, inValue_" << cStringWithSigned (idx) << ".uintValue ()) ;\n"
+                << "    idx += mBDDVariableCountForDomain_" << currentDomainRelation._mValue (HERE)
+                << " ;\n" ;
+      idx ++ ;
+      currentDomainRelation.next () ;
+    }
+    inCppFile << "    mBDDForRelation_"
+              << currentRelation._key (HERE)
+              << " |= " ;
+    idx = 0 ;
+    currentDomainRelation.rewind () ;
+    while (currentDomainRelation.hasCurrentObject ()) {
+      if (idx > 0) {
+        inCppFile << " & " ;
+      }
+      inCppFile << "value_" << cStringWithSigned (idx) ;
+      idx ++ ;
+      currentDomainRelation.next () ;
+    }
+    inCppFile << " ;\n"
                  "  }\n"
-                 "  const PMUInt32 entries [] = {entry1" ;
-    for (PMSInt32 i=2 ;i<=currentRelation._mDomains (HERE).count () ; i++) {
-      inCppFile << ", entry" << cStringWithSigned (i) ;
-    }
-    inCppFile << "} ;\n"
-                 "  const PMUInt16 bitCounts [] = {_bitCount_0_forRelation_" << currentRelation._key (HERE) ;
-    for (PMSInt32 i=1 ;i<currentRelation._mDomains (HERE).count () ; i++) {
-      inCppFile << ", _bitCount_" << cStringWithSigned (i) << "_forRelation_" << currentRelation._key (HERE) ;
-    }
-    inCppFile << "} ;\n"
-                 "  _relationBDD_" << currentRelation._key (HERE)
-              << " |= C_BDD::bddWithConstants (entries, bitCounts, "
-              << cStringWithSigned (currentRelation._mDomains (HERE).count ()) << ") ;\n"
                  "}\n\n" ;
     currentRelation.next () ;
   }
-
-  inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "void GGS_" << mDomainName << "::\n"
-               "updateRelationsAfterBitCountExtension (void) {\n" ;
-  currentRelation.rewind () ;
-  PMSInt32 relationIndex = 0 ;
-  while (currentRelation.hasCurrentObject ()) {
-    inCppFile << "  const PMUInt16 bitNeededCountArray" << cStringWithSigned (relationIndex) << " [] = {" ;
-    GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
-    while (currentDomainRelation.hasCurrentObject ()) {
-      inCppFile << "_attribute_" << currentDomainRelation._mValue (HERE) << ".mBitCount, " ;
-      currentDomainRelation.next () ;
-    }
-    inCppFile << "0} ;\n" ;
-    inCppFile << "  PMUInt16 * bitCountCurrentArray" << cStringWithSigned (relationIndex) << " [] = {" ;
-    PMSInt32 relationDomainIndex = 0 ;
-    currentDomainRelation.rewind () ;
-    while (currentDomainRelation.hasCurrentObject ()) {
-      inCppFile << "& _bitCount_" << cStringWithSigned (relationDomainIndex) << "_forRelation_" << currentRelation._key (HERE) << ", " ;
-      relationDomainIndex ++ ;
-      currentDomainRelation.next () ;
-    }
-    inCppFile << "NULL} ;\n"
-                 "  _relationBDD_" << currentRelation._key (HERE) << " = "
-              << " _relationBDD_" << currentRelation._key (HERE)
-              << ".updateRelation (bitNeededCountArray" << cStringWithSigned (relationIndex)
-              << ", bitCountCurrentArray" << cStringWithSigned (relationIndex)
-              << ", " << cStringWithSigned (currentRelation._mDomains (HERE).count ()) << ") ;\n" ;
-    relationIndex ++ ;
-    currentRelation.next () ;
-  }
-  inCppFile << "}\n\n" ;
 }
                 
 //---------------------------------------------------------------------------*

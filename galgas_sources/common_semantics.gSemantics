@@ -4099,7 +4099,7 @@ routine handleReaderCall
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         build_stringlist_type ?outReturnedType ;
         outAccessorTypesList += !outReturnedType ![@lstring new !"" !here] ;
-      elsif [inReaderName string] == "relationStringListWithNameList" then
+      elsif ([inReaderName string] == "relationStringListWithNameList") | ([inReaderName string] == "tripleRelationStringListWithNameList") then
         outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
         outAccessorTypesList += ![@typeGalgas_uint new] ![@lstring new !"" !here] ;
         @AC_galgasType t ; build_stringlist_type ?t ;
