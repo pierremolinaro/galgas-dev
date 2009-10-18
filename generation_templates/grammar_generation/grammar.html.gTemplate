@@ -101,9 +101,18 @@ span.galgas_nonterminal {
   display: block ;
 }
 </style></head><body><div>
-<h1>'%!GRAMMAR_NAME%' grammar</h1><p><a class="header_link" href="#pure_bnf">Pure BNF productions</a></p><p><a class="header_link" href="#vocabulary">Vocabulary</a></p><p><a class="header_link" href="#identical_productions">Identical productions</a></p><p><a class="header_link" href="#useful_symbols">Useful symbols</a></p><p><a class="header_link" href="#empty_strings">Empty string derivations</a></p><p><a class="header_link" href="#first_sets">First sets</a></p><p><a class="header_link" href="#follow_by_empty">Follow by empty</a></p><p><a class="header_link" href="#grammar">Grammar analysis</a></p><table class="title"><tr><td>
-Original grammar
-</td></tr></table>
+<h1>'%!GRAMMAR_NAME%' grammar</h1>
+<p><a class="header_link" href="#pure_bnf">Pure BNF productions</a></p>
+<p><a class="header_link" href="#identical_productions">Identical productions</a></p>
+<p><a class="header_link" href="#pureBDD">Transformation into BDDs</a></p>
+<p><a class="header_link" href="#useful_symbols">Useful symbols</a></p>
+<p><a class="header_link" href="#empty_strings">Empty string derivations</a></p>
+<p><a class="header_link" href="#first_sets">First sets</a></p>
+<p><a class="header_link" href="#follow_by_empty">Follow by empty</a></p>
+<p><a class="header_link" href="#grammar">Grammar analysis</a></p>
+
+<table class="title"><tr><td>Original grammar</td></tr></table>
+
 <p>The original grammar has %![[SYNTAX_RULE_LIST length] string]% productions.</p>
 <table class="result">
 % foreach SYNTAX_RULE_LIST do
@@ -138,36 +147,6 @@ Original grammar
 %
 </table>
 
-<p><a name="vocabulary"></a></p>
-<table class="title"><tr><td>Vocabulary</td></tr></table>
-<p></p>
-
-<table class="result">
-%
- foreach TERMINAL_MAP do
-  %<tr class="result_line">%
-    %<td class="result_line">%![mIndex string]%</td>%
-    %<td class="result_line"><code>$%![[key string] HTMLRepresentation]%$</code></td>%
-  %</tr>%
-  end foreach
- foreach NON_TERMINAL_MAP do
-  %<tr class="result_line">%
-    %<td class="result_line">%![mIndex string]%</td>%
-    %<td class="result_line"><code>&lt;%![[key string] HTMLRepresentation]%&gt;</td>%
-  %</tr>%
-  end foreach
-%
-</table>
-
-<p>For information :
-  <ul><li>%![[TERMINAL_MAP count] string]% terminal symbols, numbered from 0 to %![[TERMINAL_MAP count] - 1 string]% ;</li>
-    <li> the 'end of source file' symbol '$$' is numbered %![[TERMINAL_MAP count] - 1 string]% ;</li>
-    <li>%![[NON_TERMINAL_MAP count] string]% nonterminal symbols in the pure BNF grammar, numbered from %![[TERMINAL_MAP count] string]% to %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
-    <li> the actual start symbol '&lt;&gt;' is numbered %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
-    <li>whole vocabulary : %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] string]% elements, %![BIT_COUNT_FOR_BDDS string]% bits for BDDs.</li>
-  </ul>
-</p>
-
 
 <p><a name="identical_productions"></a></p>
 <table class="title">
@@ -190,6 +169,69 @@ Original grammar
     %</ul>%
  end if
 %</p>
+
+<p><a name="pureBDD"></a></p>
+<table class="title"><tr><td>Transformation into BDDs</td></tr></table>
+<p></p>
+
+<p>For information :
+  <ul><li>%![[TERMINAL_MAP count] string]% terminal symbols, numbered from 0 to %![[TERMINAL_MAP count] - 1 string]% ;</li>
+    <li> the 'end of source file' symbol '$$' is numbered %![[TERMINAL_MAP count] - 1 string]% ;</li>
+    <li>%![[NON_TERMINAL_MAP count] string]% nonterminal symbols in the pure BNF grammar, numbered from %![[TERMINAL_MAP count] string]% to %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
+    <li> the actual start symbol '&lt;&gt;' is numbered %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% ;</li>
+    <li> %![ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD string]% additional non terminal symbols needed by BDD transformation, numbered from %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] - 1 string]% to %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] + ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD - 1 string]% ;</li>
+    <li>whole vocabulary : %![[NON_TERMINAL_MAP count] + [TERMINAL_MAP count] + ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD string]% elements, %![BIT_COUNT_FOR_BDDS string]% bits for BDDs.</li>
+  </ul>
+</p>
+
+<p>Vocabulary:</p>
+<table class="result">
+%
+ foreach ALL_VOCABULARY_FOR_BDD do ??IDX:
+  %<tr class="result_line">%
+    %<td class="result_line">%![IDX string]%</td>%
+    %<td class="result_line"><code>%![mValue HTMLRepresentation]%</code></td>%
+  %</tr>%
+  end foreach
+%
+</table>
+
+<p>%![[NON_TERMINAL_WITH_EMPTY_PRODUCTION_LIST length] string] % non terminal %if [NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] > 1 then %symbols have% else %symbol has% end if % an empty production:</p>
+<table class="result">
+%
+ foreach NON_TERMINAL_WITH_EMPTY_PRODUCTION_LIST do
+  %<tr class="result_line">%
+    %<td class="result_line"><code>%![mValue HTMLRepresentation]%</code></td>%
+  %</tr>%
+  end foreach
+%
+</table>
+
+<p>%![[NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] string] % non terminal %if [NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST length] > 1 then %symbols have% else %symbol has% end if % a one element production:</p>
+<table class="result">
+%
+  foreach NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST do
+    foreach mRightList do
+      %<tr class="result_line"><td class="result_line"><code>%![mLeftOperand HTMLRepresentation]% ::= %![mValue HTMLRepresentation]%</code></td></tr>%
+    end foreach
+  end foreach
+%
+</table>
+
+
+<p>%![[NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] string] % non terminal %if [NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST length] > 1 then %symbols have% else %symbol has% end if % a one element production:</p>
+<table class="result">
+%
+  foreach NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST do
+    foreach mRightList do
+      %<tr class="result_line"><td class="result_line"><code>%![mLeftOperand HTMLRepresentation]% ::= %![mValue HTMLRepresentation]%</code></td></tr>%
+    end foreach
+  end foreach
+%
+</table>
+
+
+
 
 <p><a name="useful_symbols"></a></p>
 <table class="title"><tr><td>Useful nonterminal symbols</td></tr></table>

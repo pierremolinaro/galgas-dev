@@ -4478,7 +4478,8 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   Instruction 'while ... do ... end while ;'                              *
+#  Instruction                                                              *
+#  loop variant : instructions while condition do instructions end loop ;   *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
