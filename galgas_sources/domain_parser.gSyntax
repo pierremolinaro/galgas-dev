@@ -4,7 +4,7 @@
 #                                                                           *
 #  Started february 9, 2007.                                                *
 #                                                                           *
-#  Copyright (C) 2007 Pierre Molinaro.                                      *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -54,6 +54,32 @@ label parse
 nonterminal <domain_declaration>
   ?!@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
   ?!@typeEntitiesToGenerateList listeEntitesAengendrer
+label parse
+;
+
+nonterminal <semantic_instruction>
+  ??@typeTableEnAvant inTableEnAvant
+  ??@M_semanticsEntitiesForUse ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents inOptionsComponentsMapForUse
+  ?!@typeVariablesMap ioVariablesMap
+  ?!@typeInstructionList ioInstructionList
+  ??@EXsemanticContext inSemanticContext
+label parse
+;
+
+nonterminal <domain_instruction>
+label parse
+;
+
+nonterminal <domain_expression>
+label parse
+;
+
+nonterminal <domain_term>
+label parse
+;
+
+nonterminal <domain_factor>
 label parse
 ;
 
@@ -109,19 +135,21 @@ rule <domain_declaration>
       [attributeMap searchKey !attributeName] ;
       domains += ![attributeName string] ;
       relationModifierAttributeList +=
-        ![@typeGalgas_string new]
+        ![@typeGalgas_uint new]
         ![@EXformalArgumentPassingMode argumentConstantIn]
       ;
     while
       $,$ ;
     end repeat ;
     if [propertyNameSet hasKey ![relationTypeName string]] then
-     error relationTypeName:"the domain has already a property named '" . [relationTypeName string] . "'" ;
+     error relationTypeName: "the domain has already a property named '" . [relationTypeName string] . "'" ;
     else
+      [!?relationMap insertKey !relationTypeName !domains] ;
       propertyNameSet += ![relationTypeName string] ;
       @lstring addModifierName [new !"addTo" . [relationTypeName stringByCapitalizingFirstCharacter] ![relationTypeName location]] ;
       [!?domainModifierMap insertKey !addModifierName !relationModifierAttributeList] ;
-      [!?relationMap insertKey !relationTypeName !domains] ;
+      addModifierName := [@lstring new !"reset" . [relationTypeName stringByCapitalizingFirstCharacter] ![relationTypeName location]] ;
+      [!?domainModifierMap insertKey !addModifierName ![@L_EXsignature emptyList]] ;
     end if ;
     $]$ ;
     $;$ ;
@@ -168,6 +196,130 @@ label importSemantics
     !?ioComponentSemanticsEntitiesMap
     !?listeEntitesAengendrer
   ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  ??@typeTableEnAvant unused inTableEnAvant
+  ??@M_semanticsEntitiesForUse unused ioComponentSemanticsEntitiesMap
+  ??@M_optionComponents unused inOptionsComponentsMapForUse
+  ?!@typeVariablesMap unused ioVariablesMap
+  ?!@typeInstructionList unused ioInstructionList
+  ??@EXsemanticContext unused inSemanticContext
+:
+  $domain$ ;
+  $identifier$ ? @lstring domainName ;
+  ${$ ;
+  repeat
+    <domain_instruction> ;
+  while
+  end repeat ;
+  $}$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_instruction>
+:
+  $identifier$ ? @lstring relationName ;
+  $[$ ;
+  repeat
+    $identifier$ ? @lstring domainName ;
+    $identifier$ ? @lstring variableName ;
+  while
+    $,$ ;
+  end repeat ;
+  $]$ ;
+  select
+    $:=$ ;
+  or
+    $+=$ ;
+  or
+    $-=$ ;
+  end select ;
+  <domain_expression> ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_expression>
+:
+  <domain_term> ;
+  repeat
+  while
+    $|$ ;
+    <domain_term> ;
+  end repeat ; 
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_term>
+:
+  <domain_factor> ;
+  repeat
+  while
+    $&$ ;
+    <domain_factor> ;
+  end repeat ; 
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_factor>
+:
+  $~$ ;
+  <domain_factor> ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_factor>
+:
+  $identifier$ ?@lstring relationName ;
+  $[$ ;
+  repeat
+    $identifier$ ? @lstring domainName ;
+  while
+    $,$ ;
+  end repeat ;
+  $]$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_factor>
+:
+  $($ ;
+  <domain_expression> ;
+  $)$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_factor>
+:
+  $?$ ;
+  $identifier$ ? @lstring domainName ;
+  $identifier$ ? @lstring variableName ;
+  $($ ;
+  <domain_expression> ;
+  $)$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <domain_factor>
+:
+  $!$ ;
+  $identifier$ ? @lstring domainName ;
+  $identifier$ ? @lstring variableName ;
+  $($ ;
+  <domain_expression> ;
+  $)$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
