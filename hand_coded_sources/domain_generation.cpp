@@ -52,7 +52,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     currentAttribute.next () ;
   }
   GGS_domainRelationMap::cEnumerator currentRelation (mRelationMap) ;
-  while (currentRelation .hasCurrentObject ()) {
+  while (currentRelation.hasCurrentObject ()) {
     inHfile << "//--- '" << currentRelation._key (HERE) << "' relation\n"
                "  protected : C_BDD mBDDForRelation_" << currentRelation._key (HERE) << " ;\n" ;
     inHfile << "  public : void modifier_addTo"
@@ -62,6 +62,11 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
       inHfile << ",\n                                    const GGS_uint & inValue_" << cStringWithSigned (i) ;
     }
     inHfile << "\n"
+               "                                    COMMA_LOCATION_ARGS) ;\n"
+               "  public : void modifier_reset"
+            << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
+            << " (C_Compiler & inLexique"
+               "\n"
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
     currentRelation.next () ;
   }
@@ -213,6 +218,17 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     }
     inCppFile << " ;\n"
                  "  }\n"
+                 "}\n\n" ;
+    inCppFile.appendCppHyphenLineComment () ;
+    inCppFile << "void GGS_" << mDomainName << "::\n"
+                 "modifier_reset"
+              << currentRelation._key (HERE).stringWithUpperCaseFirstLetter ()
+              << " (C_Compiler & /* inLexique */"
+                 "\n"
+                 "                                    COMMA_UNUSED_LOCATION_ARGS) {\n"
+                 "  mBDDForRelation_"
+              << currentRelation._key (HERE)
+              << ".setToFalse () ;\n"
                  "}\n\n" ;
     currentRelation.next () ;
   }
