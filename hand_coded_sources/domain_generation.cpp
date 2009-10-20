@@ -68,6 +68,14 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
             << " (C_Compiler & inLexique"
                "\n"
                "                                    COMMA_LOCATION_ARGS) ;\n\n" ;
+    GGS_stringlist::cEnumerator currentDomainRelation (currentRelation._mDomains (HERE), true) ;
+    if (currentDomainRelation.count () == 1) {
+      inHfile << "  public : GGS_stringlist reader_"
+              << currentRelation._key (HERE)
+              << "StringValueList (C_Compiler & inLexique"
+                 "\n"
+                 "                                    COMMA_LOCATION_ARGS) const ;\n\n" ;
+    }
     currentRelation.next () ;
   }
   inHfile << "//--- Default constructor\n"
@@ -230,6 +238,34 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
               << currentRelation._key (HERE)
               << ".setToFalse () ;\n"
                  "}\n\n" ;
+    currentDomainRelation.rewind () ;
+    if (currentDomainRelation.count () == 1) {
+      inCppFile.appendCppHyphenLineComment () ;
+      inCppFile << "GGS_stringlist GGS_" << mDomainName << "::\n"
+                   "reader_"
+                << currentRelation._key (HERE)
+                << "StringValueList (C_Compiler & inLexique"
+                   "\n"
+                   "                                    COMMA_LOCATION_ARGS) const {\n"
+                   "  GGS_stringlist result ;\n"
+                   "  if (isBuilt ()) {\n"
+                   "    TC_UniqueArray <PMUInt64> valuesArray ;\n"
+                   "    mBDDForRelation_"
+                << currentRelation._key (HERE)
+                << ".buildValuesArray (valuesArray, mBDDVariableCountForDomain_"
+                << currentDomainRelation._mValue (HERE)
+                << ") ;\n"
+                   "    result = GGS_stringlist::constructor_emptyList () ;\n"
+                   "    for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {\n"
+                   "      const PMUInt64 v = valuesArray (i COMMA_HERE) ;\n"
+                   "      result.addAssign_operation (mDomain_"
+                << currentDomainRelation._mValue (HERE)
+                << ".reader_mValueAtIndex (inLexique, GGS_uint64 (true, v).reader_uint (inLexique COMMA_THERE) COMMA_THERE)) ;\n"
+                   "    }\n"
+                   "  }\n"
+                   "  return result ;\n"
+                   "}\n\n" ;
+    }
     currentRelation.next () ;
   }
 }

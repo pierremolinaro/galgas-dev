@@ -24,6 +24,7 @@ import "buildPureBNFproductions.gSemantics" ;
 
 import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 import semantics buildPureBNFproductions in "buildPureBNFproductions.gSemantics" ;
+import semantics grammarComputationsWithBDDs in "grammarComputationsWithBDDs.gSemantics" ;
 import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
 import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
 import option galgas_cli_options in "galgas_cli_options.gOption" ;
@@ -40,34 +41,6 @@ map @nonTerminalMap {
   insert insertKey error message "the '@%K' non terminal has been already declared in %L" ;
   search searchKey error message "the '@%K' non terminal is not declared" ;
 }
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# V O C A B U L A R Y   M A P                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @vocabularyMap {
-  @uint mIndex ;
-  insert insertKey error message "the '@%K' symbol has been already declared in %L" ;
-  search searchKey error message "the '@%K' symbol is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# P R O D U C T I O N   L I S T    M A P                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @derivationList {
-  @uint64 mLeftTerminalIndex ;
-  @uint mProductionIndex ;
-  @uint64list mDerivation ;
-}
-
-#---------------------------------------------------------------------------*
-
-listmap @productionListMap (@derivationList) ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -584,17 +557,17 @@ routine compileGrammarComponent
   @grammarComponentRoot grammarComponentRoot ;
   grammar grammarLL1grammar in inSourceFile ?grammarComponentRoot ;
 #---------------------------------------------------------- Check component name
-  @lstring componentName := [grammarComponentRoot mGrammarName] ;
-  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  if [componentName string] != basename then
-    warning componentName: "GALGAS checks "
-      "the component name ('" . [componentName string]
+  const @lstring grammarComponentName := [grammarComponentRoot mGrammarName] ;
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  if [grammarComponentName string] != basename then
+    warning grammarComponentName: "GALGAS checks "
+      "the component name ('" . [grammarComponentName string]
     . "') against the source file base name ('" . basename . "'): they should be identical"
     ;
   end if ;
 #---------------------------------------------------------- Parse syntax components
   @nonTerminalMap nonTerminalMap [emptyMap] ;
-  @string lexiqueComponent := "" ; # Empty string means unknown
+  @string lexiqueComponentName := "" ; # Empty string means unknown
   @syntaxRuleListForGrammar syntaxRuleListForGrammar [emptyList] ;
   foreach [grammarComponentRoot mSyntaxComponents] do
     if [mValue pathExtension] != "gSyntax" then
@@ -611,12 +584,12 @@ routine compileGrammarComponent
       end if ;
     #--- Handle lexique component
       @string currentLexiqueName := [[[syntaxComponentRoot mImportedLexiqueReference] lastPathComponent] stringByDeletingPathExtension] ;
-      if lexiqueComponent == "" then
-        lexiqueComponent := currentLexiqueName ;
-      elsif lexiqueComponent != currentLexiqueName then
+      if lexiqueComponentName == "" then
+        lexiqueComponentName := currentLexiqueName ;
+      elsif lexiqueComponentName != currentLexiqueName then
         error mValue : "this syntax component uses '"
           . currentLexiqueName . "' lexique component, but the first syntax component uses the '"
-          . lexiqueComponent . "' lexique component (they should be the same)" ;
+          . lexiqueComponentName . "' lexique component (they should be the same)" ;
       end if ;
     #--- Handle non terminal declarations
       handleNonTerminalDeclarations
@@ -629,12 +602,6 @@ routine compileGrammarComponent
         ![syntaxComponentRoot mRuleList]
         !?syntaxRuleListForGrammar
       ;
-    end if ;
-  end foreach ;
-#---------------------------------------------------------- Symbols declared unused
-  foreach [grammarComponentRoot mUnusedNonterminalList] do
-    if not [nonTerminalMap hasKey ![mValue string]] then
-      error mValue : "the '<" . mValue . ">' non terminal is not declared by syntax components" ;
     end if ;
   end foreach ;
 #---------------------------------------------------------- Build pure BNF productions
@@ -748,157 +715,189 @@ routine compileGrammarComponent
   if [option .verbose_output] & ([identicalDerivationErrorMessageList length] == 0) then
     message " ok\n" ;
   end if ;  
-#---------------------------------------------------------- BDD parameters
-  const @uint terminalCount := [terminalMap count] ;
-  const @uint vocabularyCount := terminalCount + [nonterminalMap count] + additionalNonTerminalSymbolsForPureBDDrules ;
-  const @uint startSymbolIndex := terminalCount + [nonterminalMap count] - 1 ;
-  const @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
-#  log additionalNonTerminalSymbolsForPureBDDrules ;
-  @uint idx := 0 ;
-  loop additionalNonTerminalSymbolsForPureBDDrules :
-  while idx < additionalNonTerminalSymbolsForPureBDDrules  do
-    vocabularyListForDisplaying += !"<" . [idx string] . ">" ;
-    idx ++ ;
-  end loop ;
-  
-#---------------------------------------------------------- Building pure BDD rules
-  @binaryset nonTerminalsWithEmptyProduction [emptyBinarySet] ; # Set of <T>, with <T> ::= ^ rule
-  @binaryset productionsWithSingleDerivation [emptyBinarySet] ; # Set of (T, X), with <T> ::= X rule
-  @binaryset productionsWithDoubleDerivation [emptyBinarySet] ; # Set of (T, X, Y), with <T> ::= X Y rule
-  @uint64 addedNonTerminalIndex := [terminalCount + [nonterminalMap count] uint64] ;
-  foreach productionListMap do
-    @uint nonterminalIndex ;
-    [nonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
-    foreach object do
-      if [mDerivation length] == 0 then # Empty derivation
-        nonTerminalsWithEmptyProduction := nonTerminalsWithEmptyProduction |
-          [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]]
-        ;
-      elsif [mDerivation length] == 1 then # Single derivation
-        const @uint64 derivation0 := [mDerivation mValueAtIndex !0] ;
-        productionsWithSingleDerivation := productionsWithSingleDerivation
-         | ([@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs ![nonterminalIndex uint64]]
-          & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !derivation0]
-           ) ;
-      elsif [mDerivation length] == 2 then # Double derivation
-        const @uint64 derivation0 := [mDerivation mValueAtIndex !0] ;
-        const @uint64 derivation1 := [mDerivation mValueAtIndex !1] ;
-        productionsWithDoubleDerivation := productionsWithDoubleDerivation
-         | ([@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs ![nonterminalIndex uint64]]
-          & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation0]
-          & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !derivation1]
-           ) ;
-      else
-        @uint64 currentLeftNonTerminal := [nonterminalIndex uint64] ;
-        foreach mDerivation :idx do
-          if idx < ([mDerivation length] - 2) then
-            const @uint64 derivation := [mDerivation mValueAtIndex !idx] ;
-            productionsWithDoubleDerivation := productionsWithDoubleDerivation
-             | ([@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !currentLeftNonTerminal]
-                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation]
-                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs !addedNonTerminalIndex]
-               ) ;
-            currentLeftNonTerminal := addedNonTerminalIndex ;
-            addedNonTerminalIndex ++ ;
-          elsif idx == ([mDerivation length] - 2) then
-            const @uint64 derivation0 := [mDerivation mValueAtIndex !idx] ;
-            const @uint64 derivation1 := [mDerivation mValueAtIndex !idx+1] ;
-            productionsWithDoubleDerivation := productionsWithDoubleDerivation
-             | ([@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !currentLeftNonTerminal]
-                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation0]
-                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs !derivation1]
-               ) ;
-           end if ;
-        end foreach ;
-      end if ;
-    end foreach ;
+#---------------------------------------------------------- Symbols declared unused
+  @uintlist unusedNonterminalSymbolList [emptyList] ;
+  foreach [grammarComponentRoot mUnusedNonterminalList] do
+    with !?nonterminalMap searchKey !mValue do
+      unusedNonterminalSymbolList += !mIndex ;
+    else
+      error mValue : "the '<" . mValue . ">' non terminal is not declared by syntax components" ;
+    end with ;
   end foreach ;
-#---------------------------------------------------------- Computing useful vocabulary
-  if [option .verbose_output] then
-    message "  Checking all non terminal symbols are useful..." ;
-  end if ;
-#--- elementaryUtility (X, Y) : if X is useful, then Y is useful
-  @binaryset elementaryUtility := productionsWithSingleDerivation ; # Single derivations are useful
-#--- Double derivation T ::= X Y : Add (T, X)
-  elementaryUtility := elementaryUtility | [productionsWithDoubleDerivation existOnBitIndexAndBeyond!bitCountForBDDs + bitCountForBDDs] ;
-  elementaryUtility := elementaryUtility | [[productionsWithDoubleDerivation swap132 !bitCountForBDDs !bitCountForBDDs !bitCountForBDDs] existOnBitIndexAndBeyond!bitCountForBDDs + bitCountForBDDs] ;
-#--- Double derivation T ::= X Y : Add (T, Y)
+#---------------------------------------------------------- Start symbol
+  @uint startSymbolIndex ;
+  with !?nonterminalMap searchKey ![grammarComponentRoot mStartSymbol] do
+    startSymbolIndex := mIndex ;
+  else
+    error [grammarComponentRoot mStartSymbol] : "the '<" . [grammarComponentRoot mStartSymbol]
+    . ">' non terminal is not declared by syntax components, it cannot be used as start symbol"
+    -> startSymbolIndex ;
+  end with ;
+#---------------------------------------------------------- Analyze grammar
+  @string HTMLFileHeader ;
+  @string HTMLFileContents ;
+  newGrammarAnalyzer
+    !grammarComponentName
+    !startSymbolIndex
+    !lexiqueComponentName
+    !nonterminalMap
+    !terminalMap
+    !productionListMap
+    !unusedNonterminalSymbolList
+    ?HTMLFileHeader
+    ?HTMLFileContents
+  ;
+##---------------------------------------------------------- BDD parameters
+#  const @uint terminalCount := [terminalMap count] ;
+#  const @uint vocabularyCount := terminalCount + [nonterminalMap count] + additionalNonTerminalSymbolsForPureBDDrules ;
+#  const @uint startSymbolIndexForBDD := terminalCount + [nonterminalMap count] - 1 ;
+#  const @uint bitCountForBDDs := [vocabularyCount significantBitCount] ;
+##  log additionalNonTerminalSymbolsForPureBDDrules ;
+#  @uint idx := 0 ;
+#  loop additionalNonTerminalSymbolsForPureBDDrules :
+#  while idx < additionalNonTerminalSymbolsForPureBDDrules  do
+#    vocabularyListForDisplaying += !"<" . [idx string] . ">" ;
+#    idx ++ ;
+#  end loop ;
+#  
+##---------------------------------------------------------- Building pure BDD rules
+#  @binaryset nonTerminalsWithEmptyProduction [emptyBinarySet] ; # Set of <T>, with <T> ::= ^ rule
+#  @binaryset productionsWithSingleDerivation [emptyBinarySet] ; # Set of (T, X), with <T> ::= X rule
+#  @binaryset productionsWithDoubleDerivation [emptyBinarySet] ; # Set of (T, X, Y), with <T> ::= X Y rule
+#  @uint64 addedNonTerminalIndex := [terminalCount + [nonterminalMap count] uint64] ;
 #  foreach productionListMap do
-#    @binaryset derivation [emptyBinarySet] ;
-#    foreach object do
-#      foreach mDerivation do
-#        derivation := derivation | [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !mValue] ;
-#      end foreach ;
-#    end foreach ;
 #    @uint nonterminalIndex ;
 #    [nonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
-#    derivation := derivation & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]] ;
-#    elementaryUtility := elementaryUtility | derivation ;
+#    foreach object do
+#      if [mDerivation length] == 0 then # Empty derivation
+#        nonTerminalsWithEmptyProduction := nonTerminalsWithEmptyProduction |
+#          [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]]
+#        ;
+#      elsif [mDerivation length] == 1 then # Single derivation
+#        const @uint64 derivation0 := [mDerivation mValueAtIndex !0] ;
+#        productionsWithSingleDerivation := productionsWithSingleDerivation
+#         | ([@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs ![nonterminalIndex uint64]]
+#          & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !derivation0]
+#           ) ;
+#      elsif [mDerivation length] == 2 then # Double derivation
+#        const @uint64 derivation0 := [mDerivation mValueAtIndex !0] ;
+#        const @uint64 derivation1 := [mDerivation mValueAtIndex !1] ;
+#        productionsWithDoubleDerivation := productionsWithDoubleDerivation
+#         | ([@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs ![nonterminalIndex uint64]]
+#          & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation0]
+#          & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !derivation1]
+#           ) ;
+#      else
+#        @uint64 currentLeftNonTerminal := [nonterminalIndex uint64] ;
+#        foreach mDerivation :idx do
+#          if idx < ([mDerivation length] - 2) then
+#            const @uint64 derivation := [mDerivation mValueAtIndex !idx] ;
+#            productionsWithDoubleDerivation := productionsWithDoubleDerivation
+#             | ([@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !currentLeftNonTerminal]
+#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation]
+#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs !addedNonTerminalIndex]
+#               ) ;
+#            currentLeftNonTerminal := addedNonTerminalIndex ;
+#            addedNonTerminalIndex ++ ;
+#          elsif idx == ([mDerivation length] - 2) then
+#            const @uint64 derivation0 := [mDerivation mValueAtIndex !idx] ;
+#            const @uint64 derivation1 := [mDerivation mValueAtIndex !idx+1] ;
+#            productionsWithDoubleDerivation := productionsWithDoubleDerivation
+#             | ([@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !currentLeftNonTerminal]
+#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !derivation0]
+#                & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs + bitCountForBDDs !bitCountForBDDs !derivation1]
+#               ) ;
+#           end if ;
+#        end foreach ;
+#      end if ;
+#    end foreach ;
 #  end foreach ;
-#--- Computing transitive closure
-  const @binaryset startSymbol [binarySetWithEqualToConstant !0 !bitCountForBDDs ![startSymbolIndex uint64]] ;
-  const @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
-#--- Compute and display useless symbols
-  const @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
-  const @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
-  @binaryset unusefulNonTerminals := unusefulSymbols & [@binaryset binarySetWithGreaterOrEqualToConstant !0 !bitCountForBDDs ![terminalCount uint64]] ;
-  foreach [grammarComponentRoot mUnusedNonterminalList] do
-    @uint nonTerminalSymbolIndex ;
-    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
-    unusefulNonTerminals := unusefulNonTerminals & ~ [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonTerminalSymbolIndex uint64]] ;
-  end foreach ;
-  const @stringlist unusefulNonTerminalList := [unusefulNonTerminals stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
-  if [option .verbose_output] then
-    message if [unusefulNonTerminalList length] == 0 then " ok\n" else " warning\n" end ;
-  end if ;
-  if [unusefulNonTerminalList length] > 0 then
-    @string errorMessage := "the grammar contains "
-    . [[unusefulNonTerminalList length] string]
-    . " useless symbol" . if [unusefulNonTerminalList length] > 1 then "s" else "" end . ": " ;
-    foreach unusefulNonTerminalList
-    do errorMessage .= mValue ;
-    between errorMessage .= ", " ;
-    end foreach ;
-    warning here: errorMessage ;
-  end if ;
-#---------------------------------------------------------- Check nonterminal symbols declared as useless are actually useless
-  foreach [grammarComponentRoot mUnusedNonterminalList] do
-    @uint nonTerminalSymbolIndex ;
-    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
-    if [usefulSymbols containsValue ![nonTerminalSymbolIndex uint64] !0 !bitCountForBDDs] then
-      warning mValue : "the '<" . mValue . ">' non terminal is declared as unused, but it is actually useful" ;
-    end if ;
-  end foreach ;
-#---------------------------------------------------------- Symbols deriving in empty string
-  @binaryset symbolsDirectlyDerivingInEmptyString [emptyBinarySet] ;
-  foreach productionListMap do
-    foreach object do
-      if [mDerivation length] == 0 then
-        symbolsDirectlyDerivingInEmptyString := symbolsDirectlyDerivingInEmptyString
-          | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !mLeftTerminalIndex] ;
-      end if ;
-    end foreach ;
-  end foreach ;
-#---------------------------------------------------------- Computing FIRST set
-  @binaryset elementaryFIRSTset [emptyBinarySet] ;
-  foreach productionListMap do
-    @binaryset elementaryFIRSTsetForNonTerminal [emptyBinarySet] ;
-    @uint64 leftNonTerminalIndex := 0L ;
-    foreach object do
-      if [mDerivation length] > 0 then
-        leftNonTerminalIndex := mLeftTerminalIndex ;
-        @uint64 firstSymbol ;
-        [mDerivation first ?firstSymbol] ;
-        elementaryFIRSTsetForNonTerminal := elementaryFIRSTsetForNonTerminal | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !firstSymbol] ;
-      end if ;
-    end foreach ;
-    elementaryFIRSTset := elementaryFIRSTset | (elementaryFIRSTsetForNonTerminal & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !leftNonTerminalIndex]) ;
-  end foreach ;
+##---------------------------------------------------------- Computing useful vocabulary
+#  if [option .verbose_output] then
+#    message "  Checking all non terminal symbols are useful..." ;
+#  end if ;
+##--- elementaryUtility (X, Y) : if X is useful, then Y is useful
+#  @binaryset elementaryUtility := productionsWithSingleDerivation ; # Single derivations are useful
+##--- Double derivation T ::= X Y : Add (T, X)
+#  elementaryUtility := elementaryUtility | [productionsWithDoubleDerivation existOnBitIndexAndBeyond!bitCountForBDDs + bitCountForBDDs] ;
+#  elementaryUtility := elementaryUtility | [[productionsWithDoubleDerivation swap132 !bitCountForBDDs !bitCountForBDDs !bitCountForBDDs] existOnBitIndexAndBeyond!bitCountForBDDs + bitCountForBDDs] ;
+##--- Double derivation T ::= X Y : Add (T, Y)
+##  foreach productionListMap do
+##    @binaryset derivation [emptyBinarySet] ;
+##    foreach object do
+##      foreach mDerivation do
+##        derivation := derivation | [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !mValue] ;
+##      end foreach ;
+##    end foreach ;
+##    @uint nonterminalIndex ;
+##    [nonterminalMap searchKey ![@lstring new !key !here] ?nonterminalIndex] ;
+##    derivation := derivation & [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonterminalIndex uint64]] ;
+##    elementaryUtility := elementaryUtility | derivation ;
+##  end foreach ;
+##--- Computing transitive closure
+#  const @binaryset startSymbol [binarySetWithEqualToConstant !0 !bitCountForBDDs ![startSymbolIndexForBDD uint64]] ;
+#  const @binaryset usefulSymbols := [elementaryUtility accessibleStates !startSymbol !bitCountForBDDs] ;
+##--- Compute and display useless symbols
+#  const @binaryset allSymbols [binarySetWithLowerOrEqualToConstant !0 !bitCountForBDDs ![vocabularyCount - 1 uint64]] ;
+#  const @binaryset unusefulSymbols := allSymbols & ~ usefulSymbols ;
+#  @binaryset unusefulNonTerminals := unusefulSymbols & [@binaryset binarySetWithGreaterOrEqualToConstant !0 !bitCountForBDDs ![terminalCount uint64]] ;
+#  foreach [grammarComponentRoot mUnusedNonterminalList] do
+#    @uint nonTerminalSymbolIndex ;
+#    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
+#    unusefulNonTerminals := unusefulNonTerminals & ~ [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs ![nonTerminalSymbolIndex uint64]] ;
+#  end foreach ;
+#  const @stringlist unusefulNonTerminalList := [unusefulNonTerminals stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
+#  if [option .verbose_output] then
+#    message if [unusefulNonTerminalList length] == 0 then " ok\n" else " warning\n" end ;
+#  end if ;
+#  if [unusefulNonTerminalList length] > 0 then
+#    @string errorMessage := "the grammar contains "
+#    . [[unusefulNonTerminalList length] string]
+#    . " useless symbol" . if [unusefulNonTerminalList length] > 1 then "s" else "" end . ": " ;
+#    foreach unusefulNonTerminalList
+#    do errorMessage .= mValue ;
+#    between errorMessage .= ", " ;
+#    end foreach ;
+#    warning here: errorMessage ;
+#  end if ;
+##---------------------------------------------------------- Check nonterminal symbols declared as useless are actually useless
+#  foreach [grammarComponentRoot mUnusedNonterminalList] do
+#    @uint nonTerminalSymbolIndex ;
+#    [nonterminalMap searchKey !mValue ?nonTerminalSymbolIndex] ;
+#    if [usefulSymbols containsValue ![nonTerminalSymbolIndex uint64] !0 !bitCountForBDDs] then
+#      warning mValue : "the '<" . mValue . ">' non terminal is declared as unused, but it is actually useful" ;
+#    end if ;
+#  end foreach ;
+##---------------------------------------------------------- Symbols deriving in empty string
+#  @binaryset symbolsDirectlyDerivingInEmptyString [emptyBinarySet] ;
+#  foreach productionListMap do
+#    foreach object do
+#      if [mDerivation length] == 0 then
+#        symbolsDirectlyDerivingInEmptyString := symbolsDirectlyDerivingInEmptyString
+#          | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !mLeftTerminalIndex] ;
+#      end if ;
+#    end foreach ;
+#  end foreach ;
+##---------------------------------------------------------- Computing FIRST set
+#  @binaryset elementaryFIRSTset [emptyBinarySet] ;
+#  foreach productionListMap do
+#    @binaryset elementaryFIRSTsetForNonTerminal [emptyBinarySet] ;
+#    @uint64 leftNonTerminalIndex := 0L ;
+#    foreach object do
+#      if [mDerivation length] > 0 then
+#        leftNonTerminalIndex := mLeftTerminalIndex ;
+#        @uint64 firstSymbol ;
+#        [mDerivation first ?firstSymbol] ;
+#        elementaryFIRSTsetForNonTerminal := elementaryFIRSTsetForNonTerminal | [@binaryset binarySetWithEqualToConstant !0 !bitCountForBDDs !firstSymbol] ;
+#      end if ;
+#    end foreach ;
+#    elementaryFIRSTset := elementaryFIRSTset | (elementaryFIRSTsetForNonTerminal & [@binaryset binarySetWithEqualToConstant !bitCountForBDDs !bitCountForBDDs !leftNonTerminalIndex]) ;
+#  end foreach ;
 #---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
     const @stringlist listOfSymbolsDirectlyDerivingInEmptyString := [symbolsDirectlyDerivingInEmptyString stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
     @string s := [filewrapper grammarGenerationTemplates.html
-      ![componentName string]
+      ![grammarComponentName string]
       !syntaxRuleListForGrammar
       !pureSyntaxRuleListForGrammar
       !vocabularyListForDisplaying
@@ -923,19 +922,19 @@ routine compileGrammarComponent
   if [@uint errorCount] == 0 then
     [@string generateFile
       !inOutputDirectory
-      ![componentName string] . ".h"
+      ![grammarComponentName string] . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper grammarGenerationTemplates.optionHeaderZone2
-        ![componentName string]
+        ![grammarComponentName string]
         !grammarComponentRoot
       ]
       !"\n\n" # Defaut user zone2
       ![filewrapper grammarGenerationTemplates.optionHeaderZone3
-        ![componentName string]
+        ![grammarComponentName string]
         !grammarComponentRoot
         !nonTerminalMap
-        !lexiqueComponent
+        !lexiqueComponentName
         !addedNonTerminalList
       ]
     ] ;
