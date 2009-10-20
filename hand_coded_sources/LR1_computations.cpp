@@ -989,7 +989,7 @@ class c_LR1_items_sets_collection {
 //--- Display LR1 items set
   public : void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_HTML_FileWrite & inHTMLfile) ;
+                         C_HTML_FileWrite & inHTMLfile) const ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of SLR table)
   public : void getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
@@ -1036,7 +1036,7 @@ searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
 void c_LR1_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_HTML_FileWrite & inHTMLfile) {
+         C_HTML_FileWrite & inHTMLfile) const {
   for (PMSInt32 i=0 ; i<m_LR1_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile << "S" << cStringWithSigned (i) ;
@@ -1205,16 +1205,15 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   generatedZone3 << "} ;\n\n"
                     "static const PMUInt32 gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
   isFirst = true ;
-  { for (PMSInt32 i=0 ; i<rowsCount ; i++) {
-      generatedZone3 << "\n" ;
-      if (isFirst) {
-        isFirst = false ;
-        generatedZone3 << "  " ;
-      }else{
-        generatedZone3 << ", " ;
-      }
-      generatedZone3 << cStringWithSigned (startIndexArray (i COMMA_HERE)) << "  // S" << cStringWithSigned (i) ;
+  for (PMSInt32 i=0 ; i<rowsCount ; i++) {
+    generatedZone3 << "\n" ;
+    if (isFirst) {
+      isFirst = false ;
+      generatedZone3 << "  " ;
+    }else{
+      generatedZone3 << ", " ;
     }
+    generatedZone3 << cStringWithSigned (startIndexArray (i COMMA_HERE)) << "  // S" << cStringWithSigned (i) ;
   }
   generatedZone3 << "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
@@ -1222,10 +1221,9 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 //--- Get successor count, by state
   TC_UniqueArray <PMSInt32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const PMSInt32 transitionsCount = inTransitionList.length () ;
-  { for (PMSInt32 i=0 ; i<transitionsCount ; i++) {
-      if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
-        stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
-      }
+  for (PMSInt32 i=0 ; i<transitionsCount ; i++) {
+    if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
+      stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
     }
   }
 
@@ -1686,12 +1684,16 @@ LR1_computations (C_Compiler & inLexique,
         inVocabulary.printInFile (*inHTMLfile, terminal COMMA_HERE) ;
         *inHTMLfile << "] : accept" ;
         inHTMLfile->outputRawData ("</code>") ;
-        if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
+      }
+      if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
+        conflictCount ++ ;
+        if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<span class=\"error\">") ;
           *inHTMLfile << " *** CONFLICT ***" ;
           inHTMLfile->outputRawData ("</span>") ;
-          conflictCount ++ ;
         }
+      }
+      if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("</td></tr>") ;
       }
       SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
@@ -1712,12 +1714,16 @@ LR1_computations (C_Compiler & inLexique,
           *inHTMLfile << "] : reduce by " ;
           inVocabulary.printInFile (*inHTMLfile, leftNonTerminal COMMA_HERE) ;
           inHTMLfile->outputRawData ("</code>") ;
-          if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
+        }
+        if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
+          conflictCount ++ ;
+          if (inHTMLfile != NULL) {
             inHTMLfile->outputRawData ("<span class=\"error\">") ;
             *inHTMLfile << " *** CONFLICT ***" ;
             inHTMLfile->outputRawData ("</span>") ;
-            conflictCount ++ ;
           }
+        }
+        if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("</td></tr>") ;
         }
         SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;

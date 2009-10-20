@@ -91,7 +91,7 @@ message "a GALGAS option source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileOptionComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct ;
+  compileOptionComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -105,7 +105,7 @@ message "a GALGAS lexique source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileLexiqueComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct ;
+  compileLexiqueComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -119,7 +119,7 @@ message "a GALGAS semantics source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileSemanticsComponent !inSourceFile !outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
+  compileSemanticsComponent !inSourceFile !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -133,7 +133,7 @@ message "a GALGAS syntax source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileSyntaxComponent !inSourceFile !outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
+  compileSyntaxComponent !inSourceFile !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -147,7 +147,7 @@ message "a GALGAS grammar source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileGrammarComponent !inSourceFile !outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
+  compileGrammarComponent !inSourceFile !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -161,7 +161,7 @@ message "a GALGAS GUI source file"
     ![@parsedSyntaxComponentMap emptyMap]
     ![@parsedOptionComponentMap emptyMap]
   ] ;
-  compileGuiComponent !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct ;
+  compileGuiComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -182,8 +182,8 @@ message "a GALGAS program source file"
 when . "gProject"
 message "a GALGAS project source file"
 ??@lstring inSourceFile {
-  @string outputDirectoryTEMP := outputDirectoryTEMP (!inSourceFile) ;
-  @string outputDirectory := outputDirectory (!inSourceFile) ;
+  @string outputDirectoryTEMP := outputDirectoryTEMP [!inSourceFile] ;
+  @string outputDirectory := outputDirectory [!inSourceFile] ;
 #--- Parse metamodel component
   @projectSourceList projectSourceList ;
   @lstring projectName ;
@@ -248,13 +248,13 @@ message "a GALGAS project source file"
       end if ;
     when syntaxSourceFile :
       if extension == "gSyntax" then
-        compileSyntaxComponent !fullFilePath !outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
+        compileSyntaxComponent !fullFilePath !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
       else
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
       end if ;
     when grammarSourceFile :
       if extension == "gGrammar" then
-        compileGrammarComponent !fullFilePath !outputDirectoryTEMP (!inSourceFile) !?parsedComponentStruct;
+        compileGrammarComponent !fullFilePath !outputDirectoryTEMP [!inSourceFile] !?parsedComponentStruct;
       else
         error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
       end if ;

@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS semantics component parser definition                             *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -1835,7 +1835,7 @@ rule <factor>
   foreach signatureRoutine do
     listeAttributsSemantiques += !mType ![@lstring new !"" !here] ;
   end foreach ;
-  $($ ;
+  $[$ ;
   <output_expression_list>
     ?expressionList
     !listeAttributsSemantiques
@@ -1844,13 +1844,13 @@ rule <factor>
     !inSemanticContext
     !?ioVariablesMap
   ;
-  $)$ ;
+  $]$ ;
   outExpression := [@typeFunctionCall new !functionName !expressionList] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   R E A D    A C C E S S    T O    A N    E N T I T Y                        *
+#   R E A D    A C C E S S    T O    A    V A R I A B L E                      *
 #                                                                              *
 #------------------------------------------------------------------------------*
 

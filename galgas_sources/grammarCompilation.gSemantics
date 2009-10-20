@@ -499,19 +499,21 @@ filewrapper grammarGenerationTemplates in "../generation_templates/grammar_gener
     ?@string GRAMMAR_NAME
     ?@syntaxRuleListForGrammar SYNTAX_RULE_LIST
     ?@syntaxRuleListForGrammar PURE_SYNTAX_RULE_LIST
-    ?@stringlist ALL_VOCABULARY_FOR_BDD
-    ?@vocabularyMap TERMINAL_MAP
-    ?@uint ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD
-    ?@vocabularyMap NON_TERMINAL_MAP
-    ?@uint BIT_COUNT_FOR_BDDS
-    ?@stringlist NON_TERMINAL_WITH_EMPTY_PRODUCTION_LIST
-    ?@relationStringList NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST
-    ?@relationStringList NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST
     ?@stringlist IDENTICAL_DERIVATION_ERROR_MESSAGE_LIST
-    ?@stringlist USELESS_NON_TERMINAL_SYMBOL_LIST
-    ?@stringlist SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING
-    ?@relationStringList FIRST_SET
-    ?@uint64 FIRST_SET_VALUE_COUNT
+    ?@string HTML_FILE_HEADER
+    ?@string HTML_FILE_CONTENTS
+#    ?@stringlist ALL_VOCABULARY_FOR_BDD
+#    ?@vocabularyMap TERMINAL_MAP
+#    ?@uint ADDITIONAL_NON_TERMINAL_COUNT_FOR_BDD
+#    ?@vocabularyMap NON_TERMINAL_MAP
+#    ?@uint BIT_COUNT_FOR_BDDS
+#    ?@stringlist NON_TERMINAL_WITH_EMPTY_PRODUCTION_LIST
+#    ?@relationStringList NON_TERMINAL_WITH_ONE_ELEMENT_PRODUCTION_LIST
+#    ?@relationStringList NON_TERMINAL_WITH_TWO_ELEMENT_PRODUCTION_LIST
+#    ?@stringlist USELESS_NON_TERMINAL_SYMBOL_LIST
+#    ?@stringlist SYMBOLS_DIRECTLY_DERIVING_IN_EMPTY_STRING
+#    ?@relationStringList FIRST_SET
+#    ?@uint64 FIRST_SET_VALUE_COUNT
   ;
   template optionHeaderZone2 "grammar-zone2.h.gTemplate"
     ?@string GRAMMAR_NAME
@@ -895,24 +897,26 @@ routine compileGrammarComponent
 #  end foreach ;
 #---------------------------------------------------------- Build HTML file
   if [option galgas_cli_options.outputHTMLgrammarFile] then
-    const @stringlist listOfSymbolsDirectlyDerivingInEmptyString := [symbolsDirectlyDerivingInEmptyString stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
+#    const @stringlist listOfSymbolsDirectlyDerivingInEmptyString := [symbolsDirectlyDerivingInEmptyString stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying] ;
     @string s := [filewrapper grammarGenerationTemplates.html
       ![grammarComponentName string]
       !syntaxRuleListForGrammar
       !pureSyntaxRuleListForGrammar
-      !vocabularyListForDisplaying
-      !terminalMap
-      !additionalNonTerminalSymbolsForPureBDDrules
-      !nonterminalMap
-      !bitCountForBDDs
-      ![nonTerminalsWithEmptyProduction stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-      ![productionsWithSingleDerivation relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-      ![productionsWithDoubleDerivation tripleRelationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
       !identicalDerivationErrorMessageList
-      !unusefulNonTerminalList
-      !listOfSymbolsDirectlyDerivingInEmptyString
-      ![elementaryFIRSTset relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
-      ![elementaryFIRSTset valueCount !bitCountForBDDs + bitCountForBDDs]
+      !HTMLFileHeader
+      !HTMLFileContents
+#      !vocabularyListForDisplaying
+#      !terminalMap
+#      !additionalNonTerminalSymbolsForPureBDDrules
+#      !nonterminalMap
+#      !bitCountForBDDs
+#      ![nonTerminalsWithEmptyProduction stringValueListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
+#      ![productionsWithSingleDerivation relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
+#      ![productionsWithDoubleDerivation tripleRelationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
+#      !unusefulNonTerminalList
+#      !listOfSymbolsDirectlyDerivingInEmptyString
+#      ![elementaryFIRSTset relationStringListWithNameList !bitCountForBDDs !vocabularyListForDisplaying]
+#      ![elementaryFIRSTset valueCount !bitCountForBDDs + bitCountForBDDs]
     ] ;
     [s writeToFileWhenDifferentContents !htmlOutputFileName ?*] ;
   else
